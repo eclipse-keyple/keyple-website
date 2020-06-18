@@ -1,1 +1,1 @@
-Repository to the keyple.org website of the 'Eclipse Keyple' project
+Repository to the www.keyple.org website of the 'Eclipse Keyple' project
