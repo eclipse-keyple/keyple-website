@@ -8,7 +8,7 @@ weight = 10  # Order that this section will appear.
 title = "Eclipse Keyple™"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
-hero_media = "Keyple,-open-source-ticketing-schema-schéma.png"
+hero_media = "Keyple-open-source-ticketing-schema-schema.png"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -37,7 +37,7 @@ hero_media = "Keyple,-open-source-ticketing-schema-schéma.png"
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
 #   Remove a link/note by deleting a cta/note block.
 [cta]
-  url = "docs/getstarted_java/"
+  url = "docs/getstarted-java/"
   label = "Get Started"
   icon_pack = "fas"
   icon = "download"
