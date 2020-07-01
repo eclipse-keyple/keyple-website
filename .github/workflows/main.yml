@@ -20,6 +20,10 @@ jobs:
           hugo-version: '0.71.1'
           extended: true
 
+      - name: Setup Academic
+        run: npm install gcushen/hugo-academic
+        working-directory: ./
+        
       - name: Build
         run: hugo --minify
         working-directory: ./
