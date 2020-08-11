@@ -10,6 +10,11 @@ menu:
     parent: Get Started
     weight: 100
 
+reading_time: true  # Show estimated reading time?
+share: true  # Show social sharing links?
+profile: true  # Show author profile?
+comments: true  # Show comments?
+
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
 weight: 100
 ---
