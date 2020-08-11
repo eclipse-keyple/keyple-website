@@ -1,5 +1,5 @@
 +++
-widget = "featurette"  # See https://sourcethemes.com/academic/docs/page-builder/
+widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 40  # Order that this section will appear.
@@ -45,3 +45,5 @@ subtitle = ""
  # CSS class.
  css_class = ""
 +++
+
+{{< figure library="true" src="RVB_RATP_SMART_SYSTEMS_HD.png" title="Keyple schema" >}}{{< figure library="true" src="logo-ubitransport-hauteur-1024x544.jpg" title="Keyple schema" >}}{{< figure library="true" src="Famoco_Logo_3000x3000.png" title="Keyple schema" >}}
