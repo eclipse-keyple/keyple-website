@@ -13,7 +13,7 @@
 #   Latest themes (may require updating): https://sourcethemes.com/academic/themes/
 #   Browse built-in themes in `themes/academic/data/themes/`
 #   Browse user installed themes in `data/themes/`
-theme = "ocean"
+theme = "keyple-theme"
 
 # Enable users to switch between day and night mode?
 day_night = true
@@ -22,7 +22,7 @@ day_night = true
 #   Latest font sets (may require updating): https://sourcethemes.com/academic/themes/
 #   Browse built-in font sets in `themes/academic/data/fonts/`
 #   Browse user installed font sets in `data/fonts/`
-font = ""
+font = "keyple-font"
 
 # Choose a font size.
 # Sizes: XS (extra small), S (small), M (medium), L (large - DEFAULT), XL (extra large)
@@ -48,7 +48,7 @@ local_business_type = ""
 org_name = "Eclipse"
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
-description = ""
+description = "Keyple™ accelerates the integration and development of ticketing and access control applications by enabling all to implement systems based on a common, open and modular platform, while benefiting from Calypso®'s key features of reliability, security and interoperability."
 
 ############################
 ## Site Features
@@ -88,7 +88,7 @@ show_related = {docs = true, page = true, post = true, project = true, publicati
 ############################
 
 # Enter contact details (optional). To hide a field, clear it to "".
-email = "keyple@calypsonet.org"
+# email = "keyple@calypsonet.org"
 # phone = "888 888 88 88"
 
 # Address
@@ -273,7 +273,7 @@ plugins_js  = []
   #   1: Google Maps
   #   2: OpenStreetMap (Mapnik)
   #   3: OpenStreetMap (Mapbox)
-  engine = 2
+  engine = 0
   api_key = ""
   zoom = 15
 

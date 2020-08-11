@@ -8,7 +8,7 @@ weight = 10  # Order that this section will appear.
 title = "Eclipse Keyple™"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
-hero_media = "Keyple-open-source-ticketing-schema-schema.png"
+hero_media = "featured-background.png"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -20,8 +20,8 @@ hero_media = "Keyple-open-source-ticketing-schema-schema.png"
   # color = "navy"
   
   # Background gradient.
-  gradient_start = "#4bb4e3"
-  gradient_end = "#2b94c3"
+  # gradient_start = "#4bb4e3"
+  # gradient_end = "#2b94c3"
   
   # Background image.
   image = "keyple twitter.jpg"  # Name of image in `static/img/`.
@@ -40,7 +40,7 @@ hero_media = "Keyple-open-source-ticketing-schema-schema.png"
   url = "docs/getstarted-java/"
   label = "Get Started"
   icon_pack = "fas"
-  icon = "download"
+  icon = "rocket"
   
 [cta_alt]
   url = "docs/"
@@ -53,5 +53,6 @@ hero_media = "Keyple-open-source-ticketing-schema-schema.png"
 
 **The first open source API for contactless ticketing and access control**
 
+Keyple™ accelerates the integration and development of ticketing and access control applications by enabling all to implement systems based on a common, open and modular platform, while benefiting from Calypso®'s key features of reliability, security and interoperability.
 
-<span style="text-shadow: none;"><a class="github-button" href="https://github.com/calypsonet/keyple-doc/" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span>
+<span style="text-shadow: none;"><a class="github-button" href="https://github.com/eclipse/keyple/" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span>

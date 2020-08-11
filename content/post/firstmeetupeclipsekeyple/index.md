@@ -6,7 +6,7 @@ subtitle: ""
 summary: ""
 authors: [Calypso Networks Association]
 tags: ["Ticketing", "OpenSource", "SDK", "API", "Eclipse", "Keyple", "opensolutions", "maas", "CNA"]
-categories: []
+categories: ["Events"]
 date: 2020-07-01T15:19:23+02:00
 lastmod: 2020-07-01T15:19:23+02:00
 featured: false
