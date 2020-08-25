@@ -5,7 +5,7 @@ active = true  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
 title = "Want to know more ?"
-subtitle = "Subscribe to the [user mailing list](https://accounts.eclipse.org/mailing-list/keyple-user) or to the [developer mailing list](https://accounts.eclipse.org/mailing-list/keyple-dev)"
+subtitle = "Subscribe to the [user mailing list](https://accounts.eclipse.org/mailing-list/keyple-user) and/or to the [developer mailing list](https://accounts.eclipse.org/mailing-list/keyple-dev)"
 
 # Showcase personal skills or business features.
 # Add/remove as many `[[feature]]` blocks below as you like.
@@ -20,7 +20,7 @@ subtitle = "Subscribe to the [user mailing list](https://accounts.eclipse.org/ma
   icon = "github"
   icon_pack = "fab"
   name = "Contributions welcome!"
-  description = "We do a [Pull Request](https://github.com/eclipse/keyple/pulls) contributions workflow on **GitHub**. New users are always welcome!"  
+  description = "The [Keyple source code](https://github.com/eclipse/keyple) is available on **GitHub**. You'll find more information on how to contribute to the project in the README.md contained there. New users are always welcome!"  
   
 [[feature]]
   icon = "twitter"

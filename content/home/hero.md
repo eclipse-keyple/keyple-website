@@ -33,9 +33,6 @@ hero_media = "featured-background.png"
   # Text color (true=light or false=dark).
   text_color_light = true
 
-# Call to action links (optional).
-#   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
-#   Remove a link/note by deleting a cta/note block.
 [cta]
   url = "docs/getstarted-java/"
   label = "Get Started"
@@ -44,14 +41,14 @@ hero_media = "featured-background.png"
   
 [cta_alt]
   url = "docs/"
-  label = "View Documentation"
+  label = "**View Documentation**"
 
 # Note. An optional note to show underneath the links.
 [cta_note]
-  label = '<a class="js-github-release" href="https://github.com/eclipse/keyple-java/releases" data-repo="eclipse/keyple-java">Latest release Java<!-- V --></a> <a class="js-github-release" href="https://github.com/eclipse/keyple-cpp/releases" data-repo="eclipse/keyple-cpp">Latest release C++<!-- V --></a>'
+  label = '<a style="color:Orange;" class="js-github-release" href="https://github.com/eclipse/keyple-java/releases" data-repo="eclipse/keyple-java">Latest release Keyple Java<!-- V --></a> <a class="js-github-release" href="https://github.com/eclipse/keyple-cpp/releases" data-repo="eclipse/keyple-cpp">Latest release Keyple C++<!-- V --></a>'
 +++
 
-**The first open source API for contactless ticketing and access control**
+# The first open source API for contactless ticketing and access control
 
 Keyple™ accelerates the integration and development of ticketing and access control applications by enabling all to implement systems based on a common, open and modular platform, while benefiting from Calypso®'s key features of reliability, security and interoperability.
 

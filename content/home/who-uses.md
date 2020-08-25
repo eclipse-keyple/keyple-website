@@ -46,4 +46,4 @@ subtitle = ""
  css_class = ""
 +++
 
-{{< figure library="true" src="RVB_RATP_SMART_SYSTEMS_HD.png" title="Keyple schema" >}}{{< figure library="true" src="logo-ubitransport-hauteur-1024x544.jpg" title="Keyple schema" >}}{{< figure library="true" src="Famoco_Logo_3000x3000.png" title="Keyple schema" >}}
+{{< figure library="true" src="RVB_RATP_SMART_SYSTEMS_HD.png" >}}{{< figure library="true" src="logo-ubitransport-hauteur-1024x544.jpg" >}}{{< figure library="true" src="Famoco_Logo_3000x3000.png" >}}
