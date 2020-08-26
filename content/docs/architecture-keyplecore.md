@@ -1,5 +1,5 @@
 ---
-title: Keyple ‘Core’ – User guide (high level API)
+title: Keyple ‘Core’ – Architecture
 linktitle: Keyple Core
 toc: true
 type: docs
@@ -7,7 +7,7 @@ date: "2020-02-24T00:00:00+01:00"
 draft: false
 menu:
   docs:
-    parent: User Guides
+    parent: Architecture
     weight: 200
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)

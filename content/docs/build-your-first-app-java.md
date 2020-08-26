@@ -7,7 +7,7 @@ date: "2020-02-24T00:00:00+01:00"
 draft: false
 menu:
   docs:
-    parent: Get Started
+    parent: Build your first app
     weight: 100
 
 reading_time: true  # Show estimated reading time?

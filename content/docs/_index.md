@@ -7,7 +7,6 @@ menu:
   docs:
     name: Architecture
     weight: 1
-
 # Optional header image (relative to `static/img/` folder).
 header:
   caption: ""
