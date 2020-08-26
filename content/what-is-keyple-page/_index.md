@@ -7,7 +7,6 @@ lastmod:
 
 # Optional header image (relative to `static/img/` folder).
 header:
-  caption: ""
   image: "keyple twitter.jpg"
   caption: "Image credit: [**Academic**](https://github.com/gcushen/hugo-academic/)"
 ---
