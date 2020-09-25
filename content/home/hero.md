@@ -19,7 +19,7 @@ hero_media = "hero-image.png"
   text_color_light = true
 
 [cta]
-  url = "docs/getstarted-java/"
+  url = "docs/build-your-first-app/"
   label = "Get Started"
   icon_pack = "fas"
   icon = "rocket"
