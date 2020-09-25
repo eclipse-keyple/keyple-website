@@ -1,15 +1,11 @@
 +++
-widget = "featurette" 
+widget = "blank"
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 20  # Order that this section will appear.
+weight = 40  # Order that this section will appear.
 
-title = "Solutions"
-subtitle = ""
-
-[design]
-  # Choose how many columns the section has. Valid values: 1 or 2.
-  columns = "1"
+title = "Who uses Eclipse Keyple?"
+subtitle = "To add your company, made a [Pull request](https://github.com/eclipse/keyple-website/pulls) contributions on GitHub."
 
 [design.background]
   # Background image.
@@ -21,12 +17,6 @@ subtitle = ""
 
   # Text color (true=light or false=dark).
   text_color_light = false
-
-[design.spacing]
-  # Customize the section spacing. Order is top, right, bottom, left.
-  padding = ["20px", "0", "20px", "0"]
 +++
 
-{{< figure library="true" src="keyple-schema.png" >}}
-
-[List of available Keyple™ Components]({{< ref "/components/_index.md" >}})
+{{< gallery album="users" >}}

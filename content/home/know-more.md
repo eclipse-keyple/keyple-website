@@ -7,9 +7,17 @@ weight = 50  # Order that this section will appear.
 title = "Want to know more ?"
 subtitle = "Subscribe to the [user mailing list](https://accounts.eclipse.org/mailing-list/keyple-user) and/or to the [developer mailing list](https://accounts.eclipse.org/mailing-list/keyple-dev)"
 
-# Showcase personal skills or business features.
-# Add/remove as many `[[feature]]` blocks below as you like.
-# For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
+[design.background]
+  # Background image.
+  image = "homepage-background.png"  # Name of image in `static/img/`.
+  image_darken = 0  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
+  image_size = "cover"  #  Options are `cover` (default), `contain`, or `actual` size.
+  image_position = "center"  # Options include `left`, `center` (default), or `right`.
+  image_parallax = false  # Use a fun parallax-like fixed background effect? true/false
+
+  # Text color (true=light or false=dark).
+  text_color_light = false
+
 [[feature]]
   icon = "lightbulb"
   icon_pack = "fas"
@@ -27,21 +35,4 @@ subtitle = "Subscribe to the [user mailing list](https://accounts.eclipse.org/ma
   icon_pack = "fab"
   name = "Follow us on [Twitter](https://twitter.com/keyple_org)!"
   description = "For announcement of latest features etc."
-
-# Uncomment to use emoji icons.
-# [[feature]]
-#  icon = "😄"
-#  icon_pack = "emoji"
-#  name = "Emojiness"
-#  description = "100%"  
-
-# Uncomment to use custom SVG icons.
-# Place custom SVG icon in `assets/images/icon-pack/`, creating folders if necessary.
-# Reference the SVG icon name (without `.svg` extension) in the `icon` field.
-# [[feature]]
-#  icon = "your-custom-icon-name"
-#  icon_pack = "custom"
-#  name = "Surfing"
-#  description = "90%"
-
 +++

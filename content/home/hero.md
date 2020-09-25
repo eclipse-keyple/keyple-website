@@ -8,27 +8,12 @@ weight = 10  # Order that this section will appear.
 title = "Eclipse Keyple™"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
-hero_media = "featured-background.png"
+hero_media = "hero-image.png"
 
-[design.background]
-  # Apply a background color, gradient, or image.
-  #   Uncomment (by removing `#`) an option to apply it.
-  #   Choose a light or dark text color by setting `text_color_light`.
-  #   Any HTML color name or Hex value is valid.
-
-  # Background color.
-  # color = "navy"
-  
-  # Background gradient.
-  # gradient_start = "#4bb4e3"
-  # gradient_end = "#2b94c3"
-  
+[design.background] 
   # Background image.
-  image = "keyple twitter.jpg"  # Name of image in `static/img/`.
-  image_darken = 0.7  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
-  # image_size = "cover"  #  Options are `cover` (default), `contain`, or `actual` size.
-  # image_position = "center"  # Options include `left`, `center` (default), or `right`.
-  # image_parallax = false  # Use a fun parallax-like fixed background effect? true/false
+  image = "hero-background.jpg"  # Name of image in `static/img/`.
+  image_darken = 0.8  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
   
   # Text color (true=light or false=dark).
   text_color_light = true
@@ -45,7 +30,7 @@ hero_media = "featured-background.png"
 
 # Note. An optional note to show underneath the links.
 [cta_note]
-  label = '<a style="color:Orange;" class="js-github-release" href="https://github.com/eclipse/keyple-java/releases" data-repo="eclipse/keyple-java">Latest release Keyple Java<!-- V --></a> <a class="js-github-release" href="https://github.com/eclipse/keyple-cpp/releases" data-repo="eclipse/keyple-cpp">Latest release Keyple C++<!-- V --></a>'
+  label = '<a href="/components/">List of available Keyple™ Components</a>'
 +++
 
 # The first open source API for contactless ticketing and access control
