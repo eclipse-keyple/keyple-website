@@ -1,0 +1,36 @@
+<!------ Java-Kotlin-Cpp tabs ---------->
+<section class="project-tab" id="tabs">
+    <div class="container" style="margin: 0; padding: 0">
+        <div class="flex-row">
+            <div>
+                <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                        <a aria-controls="nav-java" aria-selected="true" class="nav-item nav-link active"
+                           data-toggle="tab" href="#nav-java" id="nav-java-tab" role="tab">
+                            JAVA
+                        </a>
+                        <a aria-controls="nav-kotlin" aria-selected="false" class="nav-item nav-link" data-toggle="tab"
+                           href="#nav-kotlin" id="nav-kotlin-tab" role="tab">
+                            KOTLIN
+                        </a>
+                        <a aria-controls="nav-cpp" aria-selected="false" class="nav-item nav-link" data-toggle="tab"
+                           href="#nav-cpp" id="nav-cpp-tab" role="tab">
+                            C++
+                        </a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div aria-labelledby="nav-java-tab" class="tab-pane fade show active" id="nav-java" role="tabpanel">
+                        <div>{{ highlight (.Get "java") "java" "linenos=table" }}</div>
+                    </div>
+                    <div aria-labelledby="nav-kotlin-tab" class="tab-pane fade" id="nav-kotlin" role="tabpanel">
+                        <div>{{ highlight (.Get "kotlin") "kt" "linenos=table" }}</div>
+                    </div>
+                    <div aria-labelledby="nav-cpp-tab" class="tab-pane fade" id="nav-cpp" role="tabpanel">
+                        <div>{{ highlight (.Get "cpp") "cpp" "linenos=table" }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
