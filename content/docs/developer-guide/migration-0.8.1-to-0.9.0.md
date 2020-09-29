@@ -7,7 +7,7 @@ draft: false
 weight: 350
 ---
 
-This guide is intended to help a user of version 0.8.1 of Keyple Java to upgrade his application to the 0.9 alpha version of the library.
+This guide is intended to help a user of version 0.8.1 of Keyple Java to upgrade his application to the 0.9.0 version of the library.
 
 From a user API point of view, the changes relate to the following topics:
 
