@@ -3,7 +3,7 @@ title: (WIP)Develop a Plugin
 type: book
 toc: true
 draft: false
-weight: 320
+weight: 330
 ---
 
 This guide will provide nescessary steps to develop a Keyple plugin for a device. In order to flatten the learning curve, we'll 

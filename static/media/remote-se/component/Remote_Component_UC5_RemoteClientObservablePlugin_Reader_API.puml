@@ -1,0 +1,69 @@
+@startuml
+title
+    UC 5: RemoteClientObservablePlugin - Reader (07/10/2020)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+skinparam Shadowing false
+skinparam component {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+hide <<red>> stereotype
+hide <<purple>> stereotype
+hide <<blue>> stereotype
+hide <<green>> stereotype
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+package "Client App" {
+    [<i>Ticketing Service</i>] as master
+    package "Keyple Remote Virtual Lib" as virtualKeyple {
+        [Reader] as virtualReader <<blue>>
+        [RemoteClientObservablePlugin] <<green>>
+    }
+}
+[Card]
+package "Server App" {
+    package "Keyple Remote Native Lib" as nativeKeyple {
+        [Reader] as nativeReader <<blue>>
+        [ObservablePlugin] <<green>>
+        [NativeServerService] <<green>>
+    }
+}
+
+'utilisation
+start -> master
+master -> [RemoteClientObservablePlugin]
+master -> virtualReader
+[RemoteClientObservablePlugin] --> virtualReader
+
+[RemoteClientObservablePlugin] <-> [NativeServerService]
+virtualReader -up-> [NativeServerService]
+
+[NativeServerService] -> [ObservablePlugin]
+[NativeServerService] -> nativeReader
+[ObservablePlugin] --> nativeReader
+nativeReader --> [Card]
+
+[RemoteClientObservablePlugin] .left.> master #Green : <color:green>Reader Event
+[ObservablePlugin] .left.> [NativeServerService] #Green : <color:green>Reader Event
+
+@enduml
