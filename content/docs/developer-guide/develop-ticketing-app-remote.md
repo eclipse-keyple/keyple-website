@@ -20,9 +20,9 @@ The **Keyple Remote Plugin** is composed of two main libraries, each depending o
 
 | Library | Description | GitHub |
 | ------- | ----------- | :----: |
-| `Remote Native` | Must be used by the application installed on the terminal having local access to the smart card reader. | [{{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-se/nativese/README.md) |
-| `Remote Virtual` | Must be used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely. | [{{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-se/virtualse/README.md) |
-| `Remote Core` | Contains all the common components used by `Remote Native` and `Remote Virtual` libraries such as nodes used for communication management. **Therefore, you do not have to import it explicitly because it's imported by transitivity.** | [{{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-se/core/README.md) |
+| `Remote Native` | Must be used by the application installed on the terminal having local access to the smart card reader. | [{{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/nativese/README.md) |
+| `Remote Virtual` | Must be used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely. | [{{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/virtualse/README.md) |
+| `Remote Core` | Contains all the common components used by `Remote Native` and `Remote Virtual` libraries such as nodes used for communication management. **Therefore, you do not have to import it explicitly because it's imported by transitivity.** | [{{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/core/README.md) |
 
 </div>
 <style>
@@ -38,7 +38,7 @@ The **Keyple Remote Plugin** is composed of two main libraries, each depending o
 
 1. Read first [Overview](#overview) chapter.
 2. Find your use case with the help of chapter [Use cases](#use-cases). This will help you determine exactly which interfaces to use.
-3. Import [Remote Native](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-se/nativese/README.md) and/or [Remote Virtual](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-se/virtualse/README.md) libraries depending on your use case.
+3. Import [Remote Native](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/nativese/README.md) and/or [Remote Virtual](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/virtualse/README.md) libraries depending on your use case.
 4. Using chapter [Network configuration](#network-configuration), you must implement the transport layer using the sequence diagram adapted to your network configuration.
 5. Implement your ticketing services as specified in the associated use case.
 
@@ -102,15 +102,15 @@ The following sequence diagram shows from a ticketing application point of view:
 
 In this diagram, the network layer is deliberately hidden. Its implementation is described in the [Network configuration](#network-configuration) paragraph.
 
-{{< figure library="true" src="remote-se/sequence/Remote_Sequence_RemoteServerPlugin_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/sequence/Remote_Sequence_RemoteServerPlugin_API.svg" title="" >}}
 
 #### UC 1
 
-{{< figure library="true" src="remote-se/component/Remote_Component_UC1_RemoteServerPlugin_Reader_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/component/Remote_Component_UC1_RemoteServerPlugin_Reader_API.svg" title="" >}}
 
 #### UC 2
 
-{{< figure library="true" src="remote-se/component/Remote_Component_UC2_RemoteServerPlugin_ObservableReader_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/component/Remote_Component_UC2_RemoteServerPlugin_ObservableReader_API.svg" title="" >}}
 
 ### Remote Client Plugin
 
@@ -118,19 +118,19 @@ This plugin allows controlling from a **client** terminal a smart card reader pl
 
 #### UC 3
 
-{{< figure library="true" src="remote-se/component/Remote_Component_UC3_RemoteClientPlugin_Reader_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/component/Remote_Component_UC3_RemoteClientPlugin_Reader_API.svg" title="" >}}
 
 #### UC 4
 
-{{< figure library="true" src="remote-se/component/Remote_Component_UC4_RemoteClientPlugin_ObservableReader_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/component/Remote_Component_UC4_RemoteClientPlugin_ObservableReader_API.svg" title="" >}}
 
 #### UC 5
 
-{{< figure library="true" src="remote-se/component/Remote_Component_UC5_RemoteClientObservablePlugin_Reader_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/component/Remote_Component_UC5_RemoteClientObservablePlugin_Reader_API.svg" title="" >}}
 
 #### UC 6
 
-{{< figure library="true" src="remote-se/component/Remote_Component_UC6_RemoteClientObservablePlugin_ObservableReader_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/component/Remote_Component_UC6_RemoteClientObservablePlugin_ObservableReader_API.svg" title="" >}}
 
 ### Remote Pool Client Plugin
 
@@ -138,7 +138,7 @@ This plugin allows controlling from a **client** terminal a pool of smart cards 
 
 #### UC 7
 
-{{< figure library="true" src="remote-se/component/Remote_Component_UC7_RemotePoolClientPlugin_Reader_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/component/Remote_Component_UC7_RemotePoolClientPlugin_Reader_API.svg" title="" >}}
 
 ## Network configuration
 
@@ -154,7 +154,7 @@ If you want to implement a Client-Server communication protocol, such as standar
 
 Here is the minimal algorithm to implement in a context with a **single server instance**:
 
-{{< figure library="true" src="remote-se/sequence/Remote_Sequence_SyncNode_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/sequence/Remote_Sequence_SyncNode_API.svg" title="" >}}
 
 In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a `serverNodeId` are routed to the server associated with a `KeypleServerSyncNode` node having the `serverNodeId`.
 
@@ -166,7 +166,7 @@ If you want to implement a Full-Duplex communication protocol, such as Web Socke
 
 Here is the minimal algorithm to implement:
 
-{{< figure library="true" src="remote-se/sequence/Remote_Sequence_AsyncNode_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/sequence/Remote_Sequence_AsyncNode_API.svg" title="" >}}
 
 ## Exchanged data
 
@@ -176,4 +176,4 @@ However, it is necessary in some contexts to access certain information such as 
 
 ## Public Global API
 
-{{< figure library="true" src="remote-se/class/Remote_Class_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/class/Remote_Class_API.svg" title="" >}}
