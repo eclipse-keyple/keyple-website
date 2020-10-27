@@ -1,5 +1,5 @@
 ---
-title: (WIP)Develop a Plugin
+title: Develop a Plugin
 type: book
 toc: true
 draft: false

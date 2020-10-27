@@ -1,7 +1,7 @@
 ---
 title: "Release 0.9.0 Java on the field"
 subtitle: ""
-summary: "Version 0.9.0 of the Java implementation of Eclipse Keyple was released September 11, 2020."
+summary: "Version 0.9.0 of the Java implementation of Eclipse Keyple™ was released September 11, 2020."
 authors: [Calypso Networks Association]
 tags: ["Eclipse", "Keyple", "Release", "OpenSource", "SDK", "API", "OpenSolutions", "Ticketing", "MaaS", "CNA"]
 categories: [Release]
@@ -10,11 +10,11 @@ featured: false
 draft: false
 ---
 
-We are pleased to announce that the version 0.9.0 of the Java implementation of Eclipse Keyple was released September 11th, 2020.
+We are pleased to announce that the version 0.9.0 of the Java implementation of Eclipse Keyple™ was released September 11th, 2020.
 
-The main improvement on the Calypso extension is the addition of high-level API to manage the portable object response. 
-Now the APDU responses of the Calypso cards are automatically parsed to fill card images.
-Currently all the components of Eclipse Keyple Java are following the same versioning.
+The main improvement on the Calypso® extension is the addition of high-level API to manage the portable object response. 
+Now the APDU responses of the Calypso® cards are automatically parsed to fill card images.
+Currently all the components of Eclipse Keyple™ Java are following the same versioning.
 
 From the version 1.0.0 scheduled for November 2020, the components will be defined with their own versioning in order to stabilize as possible the different APIs.
 

@@ -30,5 +30,5 @@ Discover more about CNA here : http://calypsonet-asso.org
 
 Calypso Networks Association provides a [Calypso Test Kit](https://www.calypsonet-asso.org/content/calypso-test-kit).
 The Calypso Test Kit aims at helping ticketing system developers to fully experience 
-Eclipse Keyple with a set of Calypso SAM and Calypso certified portable objects from 
+Eclipse Keyple™ with a set of Calypso® SAM and Calypso® certified portable objects from 
 several manufacturers in various configurations. 

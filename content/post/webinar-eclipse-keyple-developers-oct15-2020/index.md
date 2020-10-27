@@ -1,9 +1,7 @@
 ---
-# Documentation: https://sourcethemes.com/academic/docs/managing-content/
-
-title: "Webinar Eclipse Keyple for Developers, Thursday, October 15, 2020 "
+title: "Webinar Eclipse Keyple™ for Developers, Thursday, October 15, 2020 "
 subtitle: ""
-summary: ""
+summary: "Are you a mobility aggregator, a system integrator, an event manager, a developer or a multi-mobility startup?"
 authors: [Calypso Networks Association]
 tags: ["Eclipse", "Keyple", "Events", "OpenSource", "SDK", "API", "OpenSolutions", "Ticketing", "MaaS", "CNA", "Mobility"]
 categories: ["Events"]
@@ -13,19 +11,20 @@ draft: false
 
 links:
   - icon_pack: fas
-    icon: edit
-    name: Register
-    url: 'https://docs.google.com/forms/d/e/1FAIpQLSePQ8ZI5JE97j3gZcmP4uy-YRzB5WsIuaYMEFPXtl_vK4vWjA/viewform'
+    icon: file-pdf
+    name: Discover the presentation
+    url: 'https://drive.google.com/file/d/1HdrThZD70bFIun8jFLYKfgozyCvX9SQg/view'
 ---
-## Are you a mobility aggregator, a system integrator, an event manager,  a developer or a multi-mobility startup?
+## Are you a mobility aggregator, a system integrator, an event manager, a developer or a multi-mobility startup?
 
 Do you want to have easy access to a highly secure and interoperable standard, Calypso®, to reduce your costs and 
 accelerate your developments, to move from a black box to an open and modular solution with access to multiple 
 hardware platforms, to enable partnerships with multimodal transport, building facilities including parking, 
-tourism and events… or just discover what Eclipse Keyple is and how it works?
+tourism and events… or just discover what Eclipse Keyple™ is and how it works?
+
+On October 15, 2020, we organized a webinar Eclipse Keyple™ for Developers! 
  
-Join the Calypso Technical Webinar about Eclipse Keyple.
+See the whole event on video:
+{{< youtube v6EKq6ZwJUc >}}
 
-{{< icon name="calendar" pack="fas" >}} **Tuesday 15th October 2020**
-
-{{< icon name="clock" pack="fas" >}} **3.00 - 5.00 PM CET**
+{{< icon name="file-pdf" pack="fas" >}} Discover the [presentation](https://drive.google.com/file/d/1HdrThZD70bFIun8jFLYKfgozyCvX9SQg/view).

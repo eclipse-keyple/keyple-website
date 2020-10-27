@@ -1,5 +1,5 @@
 ---
-title: (WIP)Develop a Local Ticketing Application
+title: Develop a Local Ticketing Application
 type: book
 toc: true
 draft: false

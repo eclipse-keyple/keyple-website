@@ -1,22 +1,19 @@
 +++
-widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
-headless = true  # This file represents a page section.
-active = true  # Activate this widget? true/false
-weight = 20  # Order that this section will appear.
+widget = "blank" 
+headless = false  
+active = true  
+weight = 20 
 
-title = "Keyple Core"
-subtitle = "List of Keyple core component"
+title = "Eclipse Keyple™ Core"
+subtitle = "List of Eclipse Keyple™ core component"
 
 [design]
-  # Choose how many columns the section has. Valid values: 1 or 2.
   columns = "1"
 
 [design.background]
-  # Text color (true=light or false=dark).
   text_color_light = false
 
 [design.spacing]
-  # Customize the section spacing. Order is top, right, bottom, left.
   padding = ["20px", "0", "20px", "0"]
 +++
 

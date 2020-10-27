@@ -36,9 +36,9 @@ SPDX-License-Identifier: EPL-2.0
 
 ## Related projects
 
-### [Academic](https://github.com/gcushen/hugo-academic)
+### [Wowchemy](https://github.com/wowchemy/wowchemy-hugo-modules)
 
-[Academic theme](https://sourcethemes.com/academic/) for [Hugo](https://gohugo.io/). 
+[Academic theme](https://wowchemy.com/) for [Hugo](https://gohugo.io/). 
 
 ## Bugs and feature requests
 

@@ -1,6 +1,6 @@
 ---
 title: Global Architecture of Keyple
-linktitle: (WIP)Global Architecture 
+linktitle: Global Architecture 
 type: book
 toc: true
 draft: false

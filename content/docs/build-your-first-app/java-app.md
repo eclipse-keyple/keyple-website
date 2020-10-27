@@ -1,13 +1,13 @@
 ---
 title: Build your First Java Application
-linktitle: (WIP)Java App
+linktitle: Java App
 type: book
 toc: true
 draft: false
 weight: 210
 ---
 
-This getting stated contains one ready-to-execute JAVA example starting from a new Gradle project.
+This getting started contains one ready-to-execute JAVA example starting from a new Gradle project.
 
 The example demonstrate Keyple capabilities with the Keyple PCSC plugin and PO/SAM provided in the Calypso Test Kit.
 
@@ -17,7 +17,7 @@ The example can run on any machine: Linux, Windows and MacOS. If not installed i
 
 Java 1.6 or newer
 
-Gradle (any version) download
+[Gradle (any version)](https://gradle.org/install/)
 
 We recommend that you use a Java IDE like Eclipse or Intellij to create your new Gradle project.
 
@@ -28,9 +28,9 @@ Add the following statements to your build.gradle file to import Keyple componen
 ```java
 repositories {
     //to import snapshots
-    maven {url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    //maven {url 'https://oss.sonatype.org/content/repositories/snapshots' }
     //to import releases
-    //maven { url 'https://oss.sonatype.org/content/repositories/releases' }
+    maven { url 'https://oss.sonatype.org/content/repositories/releases' }
 }
 
 dependencies {
@@ -51,341 +51,209 @@ dependencies {
     implementation "org.slf4j:slf4j-ext:1.7.25"
 }
 ```
-Copy the source code below in a new Java Class named Demo_CalypsoTestKit_App2_Pcsc:
+Copy the source code below in a new Java Class named DemoPoAuthentication:
 ```java
-/********************************************************************************
- * Copyright (c) Calypso Networks Association 2020 https://www.calypsonet-asso.org/
+/* **************************************************************************************
+ * Copyright (c) 2020 Calypso Networks Association https://www.calypsonet-asso.org/
  *
- * See the NOTICE file(s) distributed with this work for additional information regarding copyright
- * ownership.
+ * See the NOTICE file(s) distributed with this work for additional information
+ * regarding copyright ownership.
  *
- * This program and the accompanying materials are made available under the terms of the Eclipse
- * Public License 2.0 which is available at http://www.eclipse.org/legal/epl-2.0
+ * This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License 2.0 which is available at http://www.eclipse.org/legal/epl-2.0
  *
  * SPDX-License-Identifier: EPL-2.0
- ********************************************************************************/
+ ************************************************************************************** */
 
-import org.eclipse.keyple.calypso.command.po.parser.ReadDataStructure;
-import org.eclipse.keyple.calypso.command.po.parser.ReadRecordsRespPars;
-import org.eclipse.keyple.calypso.command.sam.SamRevision;
 import org.eclipse.keyple.calypso.transaction.*;
+import org.eclipse.keyple.calypso.transaction.PoSelector.*;
+import org.eclipse.keyple.calypso.command.sam.SamRevision;
 import org.eclipse.keyple.core.selection.*;
 import org.eclipse.keyple.core.seproxy.*;
-import org.eclipse.keyple.core.seproxy.exception.KeypleBaseException;
-import org.eclipse.keyple.core.seproxy.exception.KeypleReaderException;
-import org.eclipse.keyple.core.seproxy.exception.NoStackTraceThrowable;
-import org.eclipse.keyple.core.seproxy.protocol.SeCommonProtocols;
+import org.eclipse.keyple.core.seproxy.SeSelector.*;
 import org.eclipse.keyple.core.util.ByteArrayUtil;
-import org.eclipse.keyple.plugin.pcsc.PcscPlugin;
-import org.eclipse.keyple.plugin.pcsc.PcscPluginFactory;
-import org.eclipse.keyple.plugin.pcsc.PcscProtocolSetting;
-import org.eclipse.keyple.plugin.pcsc.PcscReader;
+import org.eclipse.keyple.plugin.pcsc.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Demo_CalypsoTestKit_App2_Pcsc  {
+public class DemoPoAuthentication  {
 
-    private static final Logger logger =
-            LoggerFactory.getLogger(Demo_CalypsoTestKit_App2_Pcsc.class);
+    private static final Logger logger = LoggerFactory.getLogger(DemoPoAuthentication.class);
 
-    /* Plugin name */
-    private final static String PLUGIN_NAME = "PcscPlugin";
-    /* PO Reader name */
-    private final static String PO_READER_NAME = "ASK LoGO 0";
-    /* SAM Reader name */
-    private final static String SAM_READER_NAME = "Identive CLOUD 2700 R Smart Card Reader 0";
+    // PO Reader name  
+    private final static String PO_READER_NAME = "XXX";
+    
+    // SAM Reader name
+    private final static String SAM_READER_NAME = "XXX";
 
-    /* AID: Keyple test kit profile 1, Application 2 */
+    // Keyple test kit profile 1, Application 2
     private final static String AID = "315449432E49434131";
-
-
     private final static byte RECORD_NUMBER_1 = 1;
+    private final static byte SFI_Environment = (byte) 0x07;
 
-    private final static byte SFI_EnvironmentAndHolder = (byte) 0x07;
+    public static void main(String[] args) {
 
-
-    public static void main(String[] args) throws KeypleBaseException, NoStackTraceThrowable {
-
-        /* Get the instance of the SeProxyService (Singleton pattern) */
+        // Get the instance of the SeProxyService (Singleton pattern)
         SeProxyService seProxyService = SeProxyService.getInstance();
 
-        logger.info(
-                "=================================================================================");
-        logger.info(
-                "=                     Configuration of the PO & SAM Readers                     =");
-        logger.info(
-                "=================================================================================");
+        logger.info("============================================================================");
+        logger.info("=                  Get and Configure the PO & SAM Readers                  =");
+        logger.info("============================================================================");
+        
+        // Register the PcscPlugin with SeProxyService, get the corresponding generic ReaderPlugin
+        ReaderPlugin readerPlugin = seProxyService.registerPlugin(new PcscPluginFactory());
 
-        /* Assign PcscPlugin to the SeProxyService */
-        seProxyService.registerPlugin(new PcscPluginFactory());
+        // Get the PO reader 
+        SeReader poReader = readerPlugin.getReader(PO_READER_NAME);
 
-        /* Get the PcscPlugin */
-        ReaderPlugin plugin = seProxyService.getPlugin(PcscPlugin.PLUGIN_NAME);
+        // Configure the PO reader parameters
+        ((PcscReader)poReader).setContactless(true);    
 
-        /* Get the PO reader */
-        SeReader poReader = plugin.getReader(PO_READER_NAME);
+        // Get a SAM reader
+        SeReader samReader = readerPlugin.getReader(SAM_READER_NAME);
 
-        /* Sets the PO reader parameters for contactless secure elements */
-        setContactlessSettings(poReader);
+        // Eventually, configure the SAM reader parameters
+        // ...
 
-        /* Get a SAM reader */
-        SeReader samReader = plugin.getReader(SAM_READER_NAME);
+        logger.info("============================================================================");
+        logger.info("=              Create a SAM resource after selecting the SAM               =");
+        logger.info("============================================================================");
 
-        /* Sets the reader parameters for contacts secure elements */
-        setContactsSettings(samReader);
+        // Prepare the selector to ensure the correct SAM is used
+        SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.AUTO).build();
 
-        logger.info(
-                "=================================================================================");
-        logger.info(
-                "=                       Opening logical channel with the SAM                    =");
-        logger.info(
-                "=================================================================================");
-        /*
-         * Open logical channel for the SAM inserted in the reader
-         * (We expect the right is inserted)
-         */
-        SamResource samResource = checkSamAndOpenChannel(samReader);
-
-        /* Check if the readers exists */
-        if (poReader == null || samResource == null) {
-            throw new IllegalStateException("Bad PO or SAM reader setup");
+        // Make the SAM selection
+        SeSelection samSelection = new SeSelection();
+        samSelection.prepareSelection(new SamSelectionRequest(samSelector));
+        CalypsoSam calypsoSam;
+        if (samReader.isSePresent()) {
+        	SelectionsResult selectionsResult = samSelection.processExplicitSelection(samReader);
+        	if (selectionsResult.hasActiveSelection()) {
+        		calypsoSam = (CalypsoSam) selectionsResult.getActiveMatchingSe();
+        	} else {
+        		throw new IllegalStateException("SAM matching failed!");
+        	}
+        } else {
+        	throw new IllegalStateException("No SAM is present in the reader " + samReader.getName());
         }
+        
+        // Associate the calypsoSam and the samReader to create the samResource
+        SeResource<CalypsoSam> samResource = new SeResource<CalypsoSam>(samReader, calypsoSam);
+        
+        // Prepare the security settings used during the Calypso transaction
+        PoSecuritySettings poSecuritySettings = new PoSecuritySettings.PoSecuritySettingsBuilder(samResource).build();
 
-        logger.info("======= Secure reading of Environment and Holder file & Po Authentication =======");
-        logger.info("= PO Reader  NAME = {}", poReader.getName());
-        logger.info("= SAM Reader  NAME = {}", samResource.getSeReader().getName());
+        logger.info("============================================================================");
+        logger.info("=           Display basic information about the readers and SAM            =");
+        logger.info("============================================================================");
 
-        /* Check if a PO is present in the reader */
+        logger.info(
+        		"= PO Reader Name = {}", 
+        		poReader.getName());
+        String samSerialNumber = ByteArrayUtil.toHex(samResource.getMatchingSe().getSerialNumber());
+        logger.info(
+        		"= SAM Reader Name = {}, Serial Number = {}",
+        		samResource.getSeReader().getName(),
+                samSerialNumber);
+        
+        logger.info("============================================================================");
+        logger.info("=                     Prepare the Calypso PO selection                     =");
+        logger.info("============================================================================");
+
+        // Prepare a Calypso PO selection
+        SeSelection seSelection = new SeSelection();
+
+        // Setting of an AID based selection of a Calypso Revision 3.1 PO
+        //
+        // Select the first application matching the selection AID whatever the card communication protocol
+        // Keep the logical channel open after the selection
+        //
+        // Calypso selection: configures a PoSelectionRequest with all the desired attributes to
+        // make the selection and read additional information afterwards
+        PoSelectionRequest poSelectionRequest = new PoSelectionRequest(
+                PoSelector.builder()
+                        .aidSelector(AidSelector.builder().aidToSelect(AID).build()) // the application identifier
+                        .invalidatedPo(InvalidatedPo.REJECT) // to indicate if an invalidated PO should be accepted or not
+                        .build());
+
+        // Add the selection case to the current selection 
+        // (we could have added other cases)
+        seSelection.prepareSelection(poSelectionRequest);
+
+        logger.info("============================================================================");
+        logger.info("=                  Check if a PO is present in the reader                  =");
+        logger.info("============================================================================");
+        
         if (poReader.isSePresent()) {
+            logger.info("============================================================================");
+            logger.info("=                    Start of the Calypso PO processing                    =");
+            logger.info("============================================================================");
+            logger.info("=                             1st PO exchange                              =");
+            logger.info("=                           AID based selection                            =");
+            logger.info("============================================================================");
 
-            logger.info(
-                    "=================================================================================");
-            logger.info(
-                    "=                       Start of the Calypso PO processing.                     =");
-            logger.info(
-                    "=================================================================================");
-            logger.info(
-                    "=                                1st PO exchange                                =");
-            logger.info(
-                    "=                              AID based selection                              =");
-            logger.info(
-                    "=================================================================================");
+            try {
+            	// Actual PO communication: operate through a single request the Calypso PO selection
+            	CalypsoPo calypsoPo =
+                    (CalypsoPo) seSelection.processExplicitSelection(poReader).getActiveMatchingSe();
 
-            /*
-             * Prepare a Calypso PO selection
-             */
-            SeSelection seSelection = new SeSelection();
+            	logger.info("The selection of the PO has succeeded.");
 
-            /*
-             * Setting of an AID based selection of a Calypso REV3 PO
-             *
-             * Select the first application matching the selection AID whatever the SE communication protocol
-             * Keep the logical channel open after the selection
-             *
-             * Calypso PO selection: configures a PoSelectionRequest with all the desired attributes to
-             * make the selection and read additional information afterwards
-             */
-            PoSelectionRequest poSelectionRequest = new PoSelectionRequest(
-                    new PoSelector( //the selector to target a particular SE
-                            SeCommonProtocols.PROTOCOL_ISO14443_4, // the SE communication protocol
-                            null, // the ATR filter
-                            new PoSelector.PoAidSelector( // the AID selection data
-                                    new SeSelector.AidSelector.IsoAid(AID), // the application identifier
-                                    PoSelector.InvalidatedPo.REJECT), // an enum value to indicate if an invalidated PO should be accepted or not
-                            "AID: "+ AID), // information string (to be printed in logs)
-                    ChannelState.KEEP_OPEN); // tell if the channel is to be closed or not after the command
+            	logger.info("============================================================================");
+                logger.info("=                            2nd PO exchange                               =");
+                logger.info("=                     Open a Calypso secure session                        =");
+                logger.info("=                  Reading of Environment file (SFI=07h)                   =");
+                logger.info("============================================================================");
 
-            /*
-             * Add the selection case to the current selection (we could have added other cases
-             * here)
-             */
-            seSelection.prepareSelection(poSelectionRequest);
+                // Create a PoTransaction object to manage the Calypso transaction
+                PoTransaction poTransaction = new PoTransaction(
+                		new SeResource<CalypsoPo>(poReader, calypsoPo), 
+                		poSecuritySettings);
 
-            /*
-             * Actual PO communication: operate through a single request the Calypso PO selection
-             * and the file read
-             */
-            SelectionsResult selectionsResult = seSelection.processExplicitSelection(poReader);
-
-            if (selectionsResult.hasActiveSelection()) {
-                MatchingSelection matchingSelection = selectionsResult.getActiveSelection();
-
-                CalypsoPo calypsoPo = (CalypsoPo) matchingSelection.getMatchingSe();
-                logger.info("The selection of the PO has succeeded.");
-
-                logger.info(
-                        "=================================================================================");
-                logger.info(
-                        "=                                2nd PO exchange                                =");
-                logger.info(
-                        "=                             Open a secure session                             =");
-                logger.info(
-                        "=                Reading of Environment and Holder file (SFI=07h)               =");
-                logger.info(
-                        "=================================================================================");
-
-                PoTransaction poTransaction = new PoTransaction(new PoResource(poReader, calypsoPo),
-                        samResource, new SecuritySettings());
-
-                /*
-                 * Prepare the reading order and keep the associated parser for later use once the
-                 * transaction has been processed.
-                 */
-                int readEnvironmentAndHolderParserIndex = poTransaction.prepareReadRecordsCmd(
-                        SFI_EnvironmentAndHolder, // the sfi top select
-                        ReadDataStructure.SINGLE_RECORD_DATA, // read mode enum to indicate a SINGLE, MULTIPLE or COUNTER read
-                        RECORD_NUMBER_1, // the record number to read (or first record to read in case of several records)
-                        String.format( // extra information included in the logs (can be null or empty)
-                                "EventLog (SFI=%02X, recnbr=%d))",
-                                SFI_EnvironmentAndHolder,
-                                RECORD_NUMBER_1));
-
-                /*
-                 * Open Session for the debit key
-                 */
-                boolean poProcessStatus = poTransaction.processOpening(
-                        PoTransaction.ModificationMode.ATOMIC,
-                        PoTransaction.SessionAccessLevel.SESSION_LVL_DEBIT, (byte) 0, (byte) 0);
-
-                if (!poProcessStatus) {
-                    throw new IllegalStateException("processingOpening failure.");
+                // Read the Environment file at the Session Opening
+                // (we could have added other commands)
+                poTransaction.prepareReadRecordFile(
+                		SFI_Environment, // the sfi to select
+                		RECORD_NUMBER_1);
+                
+                // Open Session with the debit key
+                poTransaction.processOpening(PoTransaction.SessionSetting.AccessLevel.SESSION_LVL_DEBIT);
+                   
+                // Get the Environment data
+                ElementaryFile efEnvironment = calypsoPo.getFileBySfi(SFI_Environment);
+                
+                String environmentLog = ByteArrayUtil.toHex(efEnvironment.getData().getContent());
+                logger.info("File Environment log: {}", environmentLog);
+                
+                if (!calypsoPo.isDfRatified()) {
+                	logger.info("============= Previous Calypso Secure Session was not ratified =============");
                 }
 
-                if (!poTransaction.wasRatified()) {
-                    logger.info(
-                            "=================== Previous Secure Session was not ratified ====================");
-                }
+                logger.info("============================================================================");
+                logger.info("=                            3th PO exchange                               =");
+                logger.info("=                     Close the Calypso secure session                     =");
+                logger.info("============================================================================");
+                
+                // To close the channel with the PO after the closing
+                poTransaction.prepareReleasePoChannel();
+                
+                // Close the Calypso Secure Session
+                // A ratification command will be sent (CONTACTLESS_MODE)         
+                poTransaction.processClosing();
 
-
-                /*
-                 * Retrieve the data read from the parser updated during the transaction process
-                 */
-                byte EnvironmentAndHolderLog[] = (((ReadRecordsRespPars) poTransaction
-                        .getResponseParser(readEnvironmentAndHolderParserIndex)).getRecords())
-                        .get((int) RECORD_NUMBER_1);
-
-                /* Log the result */
-                logger.info("Environment And Holder file data: {}", ByteArrayUtil.toHex(EnvironmentAndHolderLog));
-
-                logger.info(
-                        "=================================================================================");
-                logger.info(
-                        "=                                3th PO exchange                                =");
-                logger.info(
-                        "=                           Close the secure session                            =");
-                logger.info(
-                        "=================================================================================");
-                /*
-                 * Close the Secure Session.
-                 * A ratification command will be sent (CONTACTLESS_MODE).
-                 */
-                poProcessStatus = poTransaction.processClosing(ChannelState.CLOSE_AFTER);
-
-                if (!poProcessStatus) {
-                    throw new IllegalStateException("processClosing failure.");
-                }
-
-                logger.info(
-                        "=================================================================================");
-                logger.info(
-                        "=                       Successful mutual authentication                        =");
-                logger.info(
-                        "=                       End of the Calypso PO processing                        =");
-                logger.info(
-                        "=================================================================================");
-            } else {
-                logger.error("The selection of the PO has failed.");
+                logger.info("============================================================================");
+                logger.info("=              The Calypso secure session ended successfully               =");
+                logger.info("=                   (Successful mutual authentication)                     =");
+                logger.info("=                    End of the Calypso PO processing                      =");
+                logger.info("============================================================================");
+            } catch (Exception e) {
+                logger.error("Exception: {}", e.getMessage());
             }
         } else {
-            logger.error("No PO were detected.");
+            logger.error("The selection of the PO has failed.");
         }
         System.exit(0);
-    }
-
-    /**
-     * Sets the reader parameters for contactless secure elements
-     *
-     * @param reader the reader to configure
-     * @throws KeypleBaseException in case of an error while settings the parameters
-     */
-    private static void setContactlessSettings(SeReader reader) throws KeypleBaseException {
-        /* Enable logging */
-        reader.setParameter(PcscReader.SETTING_KEY_LOGGING, "true");
-
-        /* Contactless SE works with T1 protocol */
-        reader.setParameter(PcscReader.SETTING_KEY_PROTOCOL, PcscReader.SETTING_PROTOCOL_T1);
-
-        /*
-         * PC/SC card access mode:
-         * The PO reader is set to EXCLUSIVE mode to avoid side effects during the selection step
-         * that may result in session failures.
-         */
-        reader.setParameter(PcscReader.SETTING_KEY_MODE, PcscReader.SETTING_MODE_EXCLUSIVE);
-
-        /* Set the PO reader protocol flag */
-        reader.addSeProtocolSetting(
-                SeCommonProtocols.PROTOCOL_ISO14443_4,
-                PcscProtocolSetting.PCSC_PROTOCOL_SETTING.get(SeCommonProtocols.PROTOCOL_ISO14443_4));
-    }
-
-    /**
-     * Sets the reader parameters for contacts secure elements
-     *
-     * @param reader the reader to configure
-     * @throws KeypleBaseException in case of an error while settings the parameters
-     */
-    private static void setContactsSettings(SeReader reader) throws KeypleBaseException {
-        /* Enable logging */
-        reader.setParameter(PcscReader.SETTING_KEY_LOGGING, "true");
-
-        /* Contactless SE works with T0 protocol */
-        reader.setParameter(PcscReader.SETTING_KEY_PROTOCOL, PcscReader.SETTING_PROTOCOL_T0);
-
-        /*
-         * PC/SC card access mode:
-         * The SAM is left in the SHARED mode (by default) to avoid automatic resets due to the
-         * limited time between two consecutive exchanges granted by Windows.
-         */
-        reader.setParameter(PcscReader.SETTING_KEY_MODE, PcscReader.SETTING_MODE_SHARED);
-
-        /* Set the SAM reader protocol flag */
-        reader.addSeProtocolSetting(
-                SeCommonProtocols.PROTOCOL_ISO7816_3,
-                PcscProtocolSetting.PCSC_PROTOCOL_SETTING.get(SeCommonProtocols.PROTOCOL_ISO7816_3));
-    }
-
-    /**
-     * Check SAM presence and consistency and return a SamResource when everything is correct.
-     *
-     * Throw an exception if the expected SAM is not available
-     *
-     * @param samReader the SAM reader
-     */
-    private static SamResource checkSamAndOpenChannel(SeReader samReader) {
-        /*
-         * Check the availability of the SAM doing a ATR based selection,
-         * open its physical and logical channels,
-         * keep it open
-         */
-        SeSelection samSelection = new SeSelection();
-
-        SamSelector samSelector = new SamSelector(SamRevision.C1, ".*", "Selection SAM C1");
-
-        /* Prepare selector, ignore AbstractMatchingSe here */
-        samSelection.prepareSelection(new SamSelectionRequest(samSelector, ChannelState.KEEP_OPEN));
-        CalypsoSam calypsoSam;
-
-        try {
-            calypsoSam = (CalypsoSam) samSelection.processExplicitSelection(samReader)
-                    .getActiveSelection().getMatchingSe();
-            if (!calypsoSam.isSelected()) {
-                throw new IllegalStateException("Unable to open a logical channel for SAM!");
-            }
-        } catch (KeypleReaderException e) {
-            throw new IllegalStateException("SAM Reader exception: " + e.getMessage());
-        }
-        return new SamResource(samReader, calypsoSam);
     }
 }
 ```
@@ -398,7 +266,7 @@ Copy the properties file below in a new properties file named simplelogger.prope
 # Default logging detail level for all instances of SimpleLogger.
 # Must be one of ("trace", "debug", "info", "warn", or "error").
 # If not specified, defaults to "info".
-org.slf4j.simpleLogger.defaultLogLevel=trace
+org.slf4j.simpleLogger.defaultLogLevel=debug
 
 # Logging detail level for a SimpleLogger instance named "xxxxx".
 # Must be one of ("trace", "debug", "info", "warn", or "error").
@@ -444,8 +312,7 @@ Configure the PO and SAM readers you use in the java file (you have to respect t
     /* SAM Reader name */
     private final static String SAM_READER_NAME = "XXX";
 ```
-If you don’t know the reader name, run the application in debug mode and get the reader name in plugin variable returned by:
-> seProxyService.getPlugin(PLUGIN_NAME) methode: plugin -> readers -> X -> terminal -> name .
+If you don’t know the reader name, run the application in debug mode and get the reader name in plugin variable
 
 Run the application.
 

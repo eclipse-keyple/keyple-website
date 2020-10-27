@@ -16,7 +16,7 @@
 theme = "keyple-theme"
 
 # Enable users to switch between day and night mode?
-day_night = true
+day_night = false
 
 # Override the theme's font set (optional).
 #   Latest font sets (may require updating): https://sourcethemes.com/academic/themes/
@@ -57,7 +57,7 @@ description = "Keyple™ accelerates the integration and development of ticketin
 # Enable source code highlighting? true/false
 # Documentation: https://sourcethemes.com/academic/docs/writing-markdown-latex/#highlighting-options
 highlight = true
-highlight_languages = ["java", "kotlin"]  # Add support for highlighting additional languages
+highlight_languages = ["java", "kotlin", "cpp"]  # Add support for highlighting additional languages
 # highlight_style = "github"  # For supported styles, see https://cdnjs.com/libraries/highlight.js/
 
 # Enable LaTeX math rendering? true/false
@@ -84,7 +84,6 @@ show_related = {docs = true, page = true, post = true, project = true, publicati
 
 # Contact links
 contact_links = [
-  {icon = "twitter", icon_pack = "fab", name = "Keyple", link = "https://twitter.com/keyple_org"},
   {icon = "comments", icon_pack = "fas", name = "Discuss on Forum", link = "https://www.eclipse.org/forums/index.php/f/446/"},
   ]
 
@@ -95,8 +94,6 @@ contact_links = [
 # Default image for social sharing and search engines. Place image in `static/img/` folder and specify image name here.
 sharing_image = ""
 
-# Twitter username (without @). Used when a visitor shares your site on Twitter.
-twitter = "keyple_org"
 
 ############################
 ## Regional Settings

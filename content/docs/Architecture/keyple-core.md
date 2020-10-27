@@ -1,6 +1,6 @@
 ---
 title: Keyple Core Architecture
-linktitle: (WIP)Keyple Core
+linktitle: Keyple Core
 type: book
 toc: true
 draft: false

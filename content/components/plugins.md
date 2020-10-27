@@ -1,22 +1,19 @@
 +++
-widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
-headless = true  # This file represents a page section.
-active = true  # Activate this widget? true/false
-weight = 30  # Order that this section will appear.
+widget = "blank" 
+headless = false  
+active = true  
+weight = 30 
 
-title = "Keyple Plugins"
-subtitle = "List of all available Keyple plugins"
+title = "Eclipse Keyple™ Plugins"
+subtitle = "List of all available Eclipse Keyple™ plugins"
 
 [design]
-  # Choose how many columns the section has. Valid values: 1 or 2.
   columns = "1"
 
 [design.background]
-  # Text color (true=light or false=dark).
   text_color_light = false
 
 [design.spacing]
-  # Customize the section spacing. Order is top, right, bottom, left.
   padding = ["20px", "0", "20px", "0"]
 +++
 
@@ -102,38 +99,6 @@ subtitle = "List of all available Keyple plugins"
     <td><a class="js-github-release" href="https://github.com/eclipse/keyple-java/releases" data-repo="eclipse/keyple-java"><!-- V --></a></td>
     <td><a href="https://keyple.org" title="Keyple project"> Keyple project</a></td>
     <td><span style="text-shadow: none;"><a class="github-button" href="https://github.com/eclipse/keyple-java/" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span></td>
-  </tr>
-  <tr>
-    <td>Wizway</td>
-    <td>Android 4.4 minimum</td>
-    <td>JVM</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><a href="https://www.wizwaysolutions.com/">Wizway Solutions</a></td>
-    <td></td>
-  </tr>
-  </tr>
-  <tr>
-    <td>C-One 2</td>
-    <td>Coppernic C-One 2 HF ASK </td>
-    <td>JVM</td>
-    <td><a href="https://github.com/Coppernic/keyple-java/">GitHub</a></td>
-    <td><a href="https://github.com/Coppernic/keyple-java/tree/develop/android/keyple-plugin/android-cone2/">Source code</a></td>
-    <td><a class="js-github-release" href="https://github.com/Coppernic/keyple-java/releases" data-repo="calypsonet/keyple-famoco"><!-- V --></a></td>
-    <td><a href="https://www.coppernic.fr/"><img src="img/Coppernic 600x600.png" width="50px"></a></td>
-    <td><span><a class="github-button" href="https://github.com/Coppernic/keyple-java" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span></td>
-  </tr>
-  </tr>
-  <tr>
-    <td>Famoco</td>
-    <td>Famoco FX200, FX205</td>
-    <td>JVM</td>
-    <td><a href="https://github.com/calypsonet/keyple-famoco/">GitHub</a></td>
-    <td><a href="https://help.famoco.com/">Help Center</a></td>
-    <td><a class="js-github-release" href="https://github.com/calypsonet/keyple-famoco/releases" data-repo="calypsonet/keyple-famoco"><!-- V --></a></td>
-    <td><a href="https://www.famoco.com/"><img src="img/Logo fAMOCO Keyple.png" width="50px"></a></td>
-    <td><span><a class="github-button" href="https://github.com/calypsonet/keyple-famoco/" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span></td>
   </tr>
 </table>
 

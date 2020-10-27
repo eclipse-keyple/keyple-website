@@ -1,5 +1,5 @@
 +++
-title = "What is Calypso?"
+title = "What is Calypso®?"
 subtitle = ""
 summary = ""
 date = ""
@@ -19,7 +19,7 @@ name = "Follow Calypso Networks Association"
 url = "https://www.linkedin.com/company/calypso-networks-association/"
 
 [menu.main]
-    parent = "What is Eclipse Keyple"
+    parent = "What is Eclipse Keyple™"
 +++
 
 Calypso® is a set of specifications describing a fast and secure off-line contactless transaction, between a portable object and a terminal. 

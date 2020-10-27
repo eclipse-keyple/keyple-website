@@ -1,22 +1,20 @@
 +++
-widget = "featurette"
-headless = true  # This file represents a page section.
-active = true  # Activate this widget? true/false
-weight = 50  # Order that this section will appear.
+widget = "featurette" 
+headless = true 
+active = true 
+weight = 50 
 
-title = "Want to know more ?"
-subtitle = "Subscribe to the [user mailing list](https://accounts.eclipse.org/mailing-list/keyple-user) and/or to the [developer mailing list](https://accounts.eclipse.org/mailing-list/keyple-dev)"
+title = "Want to know more ?" 
+subtitle = "" 
 
 [design.background]
-  # Background image.
-  image = "homepage-background.png"  # Name of image in `static/img/`.
-  image_darken = 0  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
-  image_size = "cover"  #  Options are `cover` (default), `contain`, or `actual` size.
-  image_position = "center"  # Options include `left`, `center` (default), or `right`.
-  image_parallax = false  # Use a fun parallax-like fixed background effect? true/false
+  image = "homepage-background.png" 
+  image_darken = 0 
+  image_size = "cover" 
+  image_position = "center" 
+  image_parallax = false 
 
-  # Text color (true=light or false=dark).
-  text_color_light = false
+  text_color_light = false 
 
 [[feature]]
   icon = "lightbulb"
@@ -31,8 +29,8 @@ subtitle = "Subscribe to the [user mailing list](https://accounts.eclipse.org/ma
   description = "The [Keyple source code](https://github.com/eclipse/keyple) is available on **GitHub**. You'll find more information on how to contribute to the project in the README.md contained there. New users are always welcome!"  
   
 [[feature]]
-  icon = "twitter"
-  icon_pack = "fab"
-  name = "Follow us on [Twitter](https://twitter.com/keyple_org)!"
-  description = "For announcement of latest features etc."
+  icon = "envelope"
+  icon_pack = "fas"
+  name = "Follow us!"
+  description = "Subscribe to the [user mailing list](https://accounts.eclipse.org/mailing-list/keyple-user) for Keyple progress information and user discussions. And to the [developer mailing list](https://accounts.eclipse.org/mailing-list/keyple-dev) for Keyple developer discussions."
 +++

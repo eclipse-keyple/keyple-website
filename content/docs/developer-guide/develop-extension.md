@@ -1,5 +1,5 @@
 ---
-title: (WIP)Develop an Extension
+title: Develop an Extension
 type: book
 toc: true
 draft: false

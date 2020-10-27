@@ -1,6 +1,6 @@
 ---
 title: Keyple Calypso Architecture
-linktitle: (WIP)Keyple Calypso
+linktitle: Keyple Calypso
 type: book
 toc: true
 draft: false
