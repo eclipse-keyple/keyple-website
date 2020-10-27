@@ -1,7 +1,7 @@
 @startuml
 title
     Keyple Remote Plugin
-    Public API (08/10/2020)
+    Public API (23/10/2020)
 end title
 
 ' == THEME ==
@@ -71,20 +71,20 @@ package org.eclipse.keyple.core.seproxy {
     }
 }
 
-package org.eclipse.keyple.plugin.remotese {
+package org.eclipse.keyple.plugin.remote {
 
-    package virtualse {
+    package virtual {
 
         ' Remote Handlers
             +interface "<< <back:#82E0AA>ObservablePlugin</back> >>\nRemoteServerPlugin" as RemoteServerPlugin {
                 +RemoteServerReader getReader (String name)
-                +void terminateService (\n    String virtualReaderName,\n    Object userOutputData,\n    boolean unregisterVirtualReader)
+                +void terminateService (\n    String virtualReaderName,\n    Object userOutputData)
             }
             ' Remote Readers
             +interface "<< <back:#D0ECE7>Reader</back> >>\nRemoteServerReader" as RemoteServerReader {
                 +String getServiceId ()
                 +<T> T getUserInputData (Class<T> classOfT)
-                +<T extends AbstractMatchingSe> T getInitialSeContent (\n    Class<T> classOfMatchingSe)
+                +<T extends AbstractSmartCard> T getInitialCardContent (\n    Class<T> classOfSmartCard)
             }
             +interface "<< <back:#FDEBD0>ObservableReader</back> >>\nRemoteServerObservableReader" as RemoteServerObservableReader extends RemoteServerReader {
             }
@@ -95,7 +95,7 @@ package org.eclipse.keyple.plugin.remotese {
             +interface "<< <back:#AED6F1>PoolPlugin</back> >>\nRemotePoolClientPlugin" as RemotePoolClientPlugin {
             }
 
-        package impl as virtualSeImpl {
+        package impl as virtualImpl {
 
             ' Factories
             +class "<< <back:#F5B7B1>PluginFactory</back> >>\nRemoteServerPluginFactory" as RemoteServerPluginFactory {
@@ -254,7 +254,7 @@ package org.eclipse.keyple.plugin.remotese {
 
     }
 
-    package nativese {
+    package native {
 
             +interface NativeClientService {
                 +<T> T executeRemoteService (\n    RemoteServiceParameters parameters,\n    Class<T> classOfT)
@@ -264,7 +264,7 @@ package org.eclipse.keyple.plugin.remotese {
             }
             +class "Builder" as RemoteServiceParametersBuilder {
                 +Builder withUserInputData (Object userInputData)
-                +Builder withInitialSeContent (AbstractMatchingSe matchingSe)
+                +Builder withInitialCardContent (AbstractSmartCard smartCard)
                 +RemoteServiceParameters build ()
             }
             +interface NativeServerService {
@@ -272,15 +272,19 @@ package org.eclipse.keyple.plugin.remotese {
             +interface NativePoolServerService {
             }
 
-        package impl as nativeSeImpl {
+        package impl as nativeImpl {
 
             ' Factories
             +class NativeClientServiceFactory {
                 + {static} NodeStep builder ()
             }
             +interface "NodeStep" as NativeClientServiceFactoryNodeStep {
-                + ReaderStep withAsyncNode (KeypleClientAsync endpoint)
+                + TimeoutStep withAsyncNode (KeypleClientAsync endpoint)
                 + ReaderStep withSyncNode (KeypleClientSync endpoint)
+            }
+            +interface "TimeoutStep" as NativeClientServiceFactoryTimeoutStep {
+                + ReaderStep usingDefaultTimeout ()
+                + ReaderStep usingCustomTimeout (int timeoutInSeconds)
             }
             +interface "ReaderStep" as NativeClientServiceFactoryReaderStep {
                 + BuilderStep withReaderObservation (KeypleClientReaderEventFilter filter)
@@ -367,7 +371,9 @@ NativeClientService ..> RemoteServiceParameters #C_USE : use >
 RemoteServiceParameters +-- RemoteServiceParametersBuilder #C_LINK
 
 NativeClientServiceFactory ..> NativeClientServiceFactoryNodeStep #C_USE
+NativeClientServiceFactoryNodeStep ..> NativeClientServiceFactoryTimeoutStep #C_USE
 NativeClientServiceFactoryNodeStep ..> NativeClientServiceFactoryReaderStep #C_USE
+NativeClientServiceFactoryTimeoutStep ..> NativeClientServiceFactoryReaderStep #C_USE
 NativeClientServiceFactoryReaderStep ..> NativeClientServiceFactoryBuilderStep #C_USE
 
 NativeServerServiceFactory ..> NativeServerServiceFactoryNodeStep #C_USE
@@ -409,10 +415,10 @@ RemoteClientUtils -[hidden]- NativeClientServiceFactory
 package org.eclipse.keyple.core.seproxy #C_GREY1 {}
 package event #C_GREY2 {}
 package core #C_GREY1 {}
-package nativese #C_GREY1 {}
-package nativeSeImpl #C_GREY2 {}
-package virtualse #C_GREY1 {}
-package virtualSeImpl #C_GREY2 {}
+package native #C_GREY1 {}
+package nativeImpl #C_GREY2 {}
+package virtual #C_GREY1 {}
+package virtualImpl #C_GREY2 {}
 
 abstract PluginFactory <<grey>> #F5B7B1
 interface Plugin <<grey>> #D2B4DE
@@ -433,6 +439,7 @@ interface RemoteServerPluginFactoryBuilderStep <<green>>
 interface NativeClientService <<green>>
 class NativeClientServiceFactory <<green>>
 interface NativeClientServiceFactoryNodeStep <<green>>
+interface NativeClientServiceFactoryTimeoutStep <<green>>
 interface NativeClientServiceFactoryReaderStep <<green>>
 interface NativeClientServiceFactoryBuilderStep <<green>>
 class RemoteServiceParameters <<green>>

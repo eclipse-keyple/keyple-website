@@ -1,9 +1,7 @@
 @startuml
-title
-    Keyple Remote Plugin
-    RemoteServerPlugin API (16/06/2020)
-    (with an ObservableReader)
-end title
+footer
+    Keyple Remote Plugin - RemoteServerPlugin API with an ObservableReader (22/10/2020)
+end footer
 
 ' == THEME ==
 
@@ -34,40 +32,40 @@ end box
 == Virtual Lib Initialization ==
 
 activate server #Pink
-server -> remotePlugin ** : seProxyService.registerPlugin\n (RemoteServerPluginFactory...\n    .withPluginObserver (this)...)
+server -> remotePlugin ** : smartCardService.registerPlugin\n (RemoteServerPluginFactory...\n    .withPluginObserver (this)...)
 server -> server : Awaiting receipt of\n a Plugin Event...
 
 == Native Lib Initialization ==
 
 activate client #Pink
 client -> nativeService ** : NativeClientServiceFactory...
-client -> plugin ** : seProxyService.registerPlugin\n (new XXXFactory())
+client -> plugin ** : smartCardService.registerPlugin\n (new XXXFactory())
 activate plugin #LightBlue
 plugin -> reader ** : create
 return
 
-== Native SeSelection ==
+== Native CardSelection ==
 
 client -> client : Start Ticketing Service
 client -> plugin : getReader (name)
 activate plugin #LightBlue
 return reader
-client -> client : prepareSeSelection (reader)
-client -> reader : setSeSelectionRequest
+client -> client : prepareCardSelection (reader)
+client -> reader : setCardSelectionRequest ()
 activate reader #LightBlue
 
 activate se #LightYellow
 se ->> reader : SE_MATCHED Event
 reader -> se : C-APDU
 se --> reader : R-APDU
-return <color:red>**matchingSe**</color>
+return <color:red>**smartCard**</color>
 
 == Execute Remote Service for a specific Observable Native Reader ==
 
-client -> client : prepareUserInputData ()
+client -> client : prepare userInputData
 
 client -> client : NativeClientUtils.getService ()
-client -> nativeService : executeRemoteService (\n RemoteServiceParameters\n   .builder(<color:blue>**serviceId**</color>, reader)\n   .withInitialSeContent(<color:red>**matchingSe**</color>)\n   .withUserInputData(<color:green>**userInputData**</color>).build(),\n UserOutputDataFactory)
+client -> nativeService : executeRemoteService (\n RemoteServiceParameters\n   .builder(<color:blue>**serviceId**</color>, reader)\n   .withInitialCardContent(<color:red>**smartCard**</color>)\n   .withUserInputData(<color:green>**userInputData**</color>).build(),\n classOfUserOutputData)
 activate nativeService #LightBlue
 
 nativeService -> remotePlugin
@@ -87,10 +85,10 @@ server -> server : Find ticketing service\nto start using <color:blue>**serviceI
 == Remote Ticketing Service ==
 
 server -> server : Start Ticketing Service
-server -> virtualReader : getInitialSeContent ()
+server -> virtualReader : getInitialCardContent\n (classOfSmartCard)
 activate virtualReader #LightBlue
-return <color:red>**matchingSe**</color>
-server -> virtualReader : getUserInputData\n (UserInputDataFactory)
+return <color:red>**smartCard**</color>
+server -> virtualReader : getUserInputData\n (classOfUserInputData)
 activate virtualReader #LightBlue
 return <color:green>**userInputData**</color>
 server -> virtualReader : addObserver (this)
@@ -98,16 +96,16 @@ activate virtualReader #LightBlue
 return
 server -> server : continue...
 
-loop #C_LIGHT_ORANGE SE exchanges
-    server -> server : prepareSeRequest\n (virtualReader)
-    server -> virtualReader : processSeRequest ()
+loop #C_LIGHT_ORANGE Card exchanges
+    server -> server : prepareCardRequest\n (virtualReader)
+    server -> virtualReader : processCardRequest ()
     activate virtualReader #LightBlue
     virtualReader -> se : C-APDU
     se --> virtualReader : R-APDU
     return response
 end loop
 
-server -> server : prepareUserOutputData ()
+server -> server : prepare UserOutputData
 server -> remotePlugin : terminateService (virtualReaderName, <color:purple>**userOutputData**</color>)
 activate remotePlugin #LightBlue
 remotePlugin -x virtualReader : remove virtual reader if needed

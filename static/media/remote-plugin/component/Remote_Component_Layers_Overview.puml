@@ -1,0 +1,68 @@
+@startuml
+footer
+    Keyple Remote Plugin - Layers Overview (15/10/2020)
+end footer
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+skinparam Shadowing false
+skinparam component {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+hide <<red>> stereotype
+hide <<purple>> stereotype
+hide <<blue>> stereotype
+hide <<green>> stereotype
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+[Hardware Reader\n(PO, SAM, HSM,...)] as reader <<red>>
+
+package "Terminal with 'hardware' reader" {
+    [Application] as appA
+    package "Keyple" as nativeKeyple {
+        [**Keyple Remote Plugin**\n("native" components)] as nativeLib <<blue>>
+        [Keyple Core & Solution] as nativeKeypleLibs <<purple>>
+    }
+    [Network Endpoint] as endpointA <<green>>
+}
+
+package "Terminal with 'virtual' reader" {
+    [Application] as appB
+    package "Keyple" as virtualKeyple {
+        [Keyple Core & Solution] as virtualKeypleLibs <<purple>>
+        [**Keyple Remote Plugin**\n("virtual" components)] as virtualLib <<blue>>
+    }
+    [Network Endpoint] as endpointB <<green>>
+}
+
+reader - nativeKeypleLibs
+
+appA -- nativeKeypleLibs
+nativeKeypleLibs -- nativeLib
+nativeLib -- endpointA
+
+endpointA - endpointB
+
+appB -- virtualKeypleLibs
+virtualKeypleLibs -- virtualLib
+virtualLib -- endpointB
+
+@enduml
