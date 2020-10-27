@@ -316,4 +316,6 @@ If you don’t know the reader name, run the application in debug mode and get t
 
 Run the application.
 
-Note: All project dependencies, including Keyple components, are downloaded during the first run, which can take several minutes.
+{{% alert note %}}
+All project dependencies, including Keyple components, are downloaded during the first run, which can take several minutes.
+{{% /alert %}}

@@ -35,7 +35,7 @@ subtitle = "List of all available Eclipse Keyple™ plugins"
     <td>PC, MAC, Android</td>
     <td>JVM</td>
     <td><a href="https://github.com/eclipse/keyple-java/">GitHub</a></td>
-    <td><a href="/docs/">Description</a></td>
+    <td><a href="/reference/keyple-java-plugin-stub/">JavaDoc</a></td>
     <td><a class="js-github-release" href="https://github.com/eclipse/keyple-java/releases" data-repo="eclipse/keyple-java"><!-- V --></a></td>
     <td><a href="https://keyple.org" title="Keyple project"> Keyple project</a></td>
     <td><span style="text-shadow: none;"><a class="github-button" href="https://github.com/eclipse/keyple-java/" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span></td>
@@ -45,27 +45,17 @@ subtitle = "List of all available Eclipse Keyple™ plugins"
     <td>PC, MAC</td>
     <td>Native C++</td>
     <td><a href="https://github.com/eclipse/keyple-cpp/">GitHub</a></td>
-    <td><a href="/docs/">Description</a></td>
+    <td></td>
     <td><a class="js-github-release" href="https://github.com/eclipse/keyple-cpp/releases" data-repo="eclipse/keyple-cpp"><!-- V --></a></td>
     <td><a href="https://keyple.org" title="Keyple project"> Keyple project</a></td>
     <td><span style="text-shadow: none;"><a class="github-button" href="https://github.com/eclipse/keyple-cpp/" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span></td>
-  </tr>
-  <tr>
-    <td>Smart Card I/O</td>
-    <td>PC/SC Reader<br>(Windows PC/SC WinScard API,<br>Unix PC/SC lite API)</td>
-    <td>JVM</td>
-    <td><a href="https://github.com/eclipse/keyple-java/">GitHub</a></td>
-    <td><a href="/docs/">Description</a></td>
-    <td><a class="js-github-release" href="https://github.com/eclipse/keyple-java/releases" data-repo="eclipse/keyple-java"><!-- V --></a></td>
-    <td><a href="https://keyple.org" title="Keyple project"> Keyple project</a></td>
-    <td><span style="text-shadow: none;"><a class="github-button" href="https://github.com/eclipse/keyple-java/" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span></td>
   </tr>
   <tr>
     <td>PC/SC - Java</td>
     <td>PC/SC Reader<br>(Windows PC/SC WinScard API,<br>Unix PC/SC lite API)</td>
     <td>JVM</td>
     <td><a href="https://github.com/eclipse/keyple-java/">GitHub</a></td>
-    <td><a href="/docs/">Description</a></td>
+    <td><a href="/reference/keyple-java-plugin-pcsc/">JavaDoc</a></td>
     <td><a class="js-github-release" href="https://github.com/eclipse/keyple-java/releases" data-repo="eclipse/keyple-java"><!-- V --></a></td>
     <td><a href="https://keyple.org" title="Keyple project"> Keyple project</a></td>
     <td><span style="text-shadow: none;"><a class="github-button" href="https://github.com/eclipse/keyple-java/" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span></td>
@@ -75,7 +65,7 @@ subtitle = "List of all available Eclipse Keyple™ plugins"
     <td>PC/SC Reader<br>(Windows PC/SC WinScard API,<br>Unix PC/SC lite API)</td>
     <td>Native C++</td>
     <td><a href="https://github.com/eclipse/keyple-cpp/">GitHub</a></td>
-    <td><a href="/docs/">Description</a></td>
+    <td></td>
     <td><a class="js-github-release" href="https://github.com/eclipse/keyple-cpp/releases" data-repo="eclipse/keyple-cpp"><!-- V --></a></td>
     <td><a href="https://keyple.org" title="Keyple project"> Keyple project</a></td>
     <td><span style="text-shadow: none;"><a class="github-button" href="https://github.com/eclipse/keyple-cpp/" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span></td>
@@ -85,7 +75,7 @@ subtitle = "List of all available Eclipse Keyple™ plugins"
     <td>Android 4.4 minimum</td>
     <td>JVM</td>
     <td><a href="https://github.com/eclipse/keyple-java/">GitHub</a></td>
-    <td><a href="/docs/">Description</a></td>
+    <td><a href="/reference/keyple-android-plugin-nfc/">JavaDoc</a></td>
     <td><a class="js-github-release" href="https://github.com/eclipse/keyple-java/releases" data-repo="eclipse/keyple-java"><!-- V --></a></td>
     <td><a href="https://keyple.org" title="Keyple project"> Keyple project</a></td>
     <td><span style="text-shadow: none;"><a class="github-button" href="https://github.com/eclipse/keyple-java/" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span></td>
@@ -95,7 +85,7 @@ subtitle = "List of all available Eclipse Keyple™ plugins"
     <td>Android 4.4 minimum</td>
     <td>JVM</td>
     <td><a href="https://github.com/eclipse/keyple-java/">GitHub</a></td>
-    <td><a href="/docs/">Description</a></td>
+    <td><a href="/reference/keyple-android-plugin-omapi/">JavaDoc</a></td>
     <td><a class="js-github-release" href="https://github.com/eclipse/keyple-java/releases" data-repo="eclipse/keyple-java"><!-- V --></a></td>
     <td><a href="https://keyple.org" title="Keyple project"> Keyple project</a></td>
     <td><span style="text-shadow: none;"><a class="github-button" href="https://github.com/eclipse/keyple-java/" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span></td>
