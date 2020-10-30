@@ -1,0 +1,114 @@
+@startuml
+title
+    Keyple Remote Plugin - Core API - 1.0.0 (28/10/2020)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+package "org.eclipse.keyple.plugin.remote.core" as core {
+    ' Nodes & Senders
+    +interface KeypleClientAsyncNode {
+        +void onOpen (String sessionId)
+        +void onMessage (KeypleMessageDto msg)
+        +void onClose (String sessionId)
+        +void onError (String sessionId, Throwable error)
+    }
+    +interface KeypleServerAsyncNode {
+        +void onMessage (KeypleMessageDto msg)
+        +void onError (String sessionId, Throwable error)
+    }
+    +interface KeypleClientSyncNode {
+    }
+    +interface KeypleServerSyncNode {
+        +List<KeypleMessageDto> onRequest (KeypleMessageDto msg)
+    }
+    ' SPI
+    package spi {
+        +interface KeypleClientAsync {
+            +void openSession (String sessionId)
+            +void sendMessage (KeypleMessageDto msg)
+            +void closeSession (String sessionId)
+        }
+        +interface KeypleServerAsync {
+            +void sendMessage (KeypleMessageDto msg)
+        }
+        +interface KeypleClientSync {
+            +List<KeypleMessageDto> sendRequest (KeypleMessageDto msg)
+        }
+    }
+    ' DTO
+    +class KeypleMessageDto {
+        + String sessionId
+        + String action
+        + String clientNodeId
+        + String serverNodeId
+        + String nativeReaderName
+        + String virtualReaderName
+        + String body
+        + getters()...
+        + setters()...
+    }
+}
+
+' Associations
+KeypleClientSyncNode --> KeypleClientSync #C_LINK : use >
+KeypleClientAsyncNode --> KeypleClientAsync #C_LINK : use >
+KeypleServerAsyncNode --> KeypleServerAsync #C_LINK : use >
+
+' == LAYOUT ==
+
+KeypleServerSyncNode -[hidden]- KeypleMessageDto
+
+' == STYLE ==
+
+package core #C_GREY1 {}
+package spi #C_GREY2 {}
+
+KeypleClientSyncNode <<red>>
+KeypleServerSyncNode <<red>>
+KeypleClientAsyncNode <<red>>
+KeypleServerAsyncNode <<red>>
+
+KeypleMessageDto <<grey>>
+
+@enduml

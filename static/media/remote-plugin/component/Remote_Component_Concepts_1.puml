@@ -1,0 +1,70 @@
+@startuml
+footer
+    Keyple Remote Plugin - Concepts - Main Use Case (29/10/2020)
+end footer
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define COLOR_RED E74C3C
+!define COLOR_PURPLE 8E44AD
+!define COLOR_BLUE 3498DB
+!define COLOR_GREEN 27AE60
+!define COLOR_GREY 2C3E50
+skinparam Shadowing false
+skinparam component {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+hide <<red>> stereotype
+hide <<purple>> stereotype
+hide <<blue>> stereotype
+hide <<green>> stereotype
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+[Hardware Reader A\n(PO, SAM, HSM,...)] as readerA <<green>>
+package "Terminal A with 'hardware' reader" {
+    [Application] as appA
+    [**Native Service**] as nativeServiceA <<red>>
+    [Native\nPlugin A] as nativePluginA <<green>>
+    [Native\nReader A] as nativeReaderA <<green>>
+}
+package "Terminal with 'virtual' reader" {
+    [Application] as app
+    [**Remote Plugin**] as remotePlugin <<red>>
+    [Virtual\nReader A] as virtualReaderA <<green>>
+}
+
+'utilisation
+
+appA -- nativePluginA #LightGrey
+appA -- nativeReaderA #LightGrey
+appA -- nativeServiceA
+nativePluginA -left- nativeReaderA #COLOR_GREEN
+nativeServiceA -left- nativePluginA #COLOR_GREEN
+nativeServiceA -left- nativeReaderA #COLOR_GREEN
+nativeReaderA -left- readerA #COLOR_GREEN
+
+nativeServiceA - remotePlugin
+
+app -- remotePlugin
+app -- virtualReaderA #LightGrey
+remotePlugin - virtualReaderA #COLOR_GREEN
+
+@enduml
