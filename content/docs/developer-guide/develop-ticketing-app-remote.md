@@ -18,7 +18,7 @@ The diagram below shows the role of the **Keyple Remote Plugin** components in t
 
 ## How to use it ?
 
-1. In pre-requisite, read page [Develop a Local Ticketing Application](../develop-ticketing-app-local) to understand the main concepts of Keyple in a local application.
+1. In pre-requisite, read page [Develop a Local Ticketing Application]({{< relref "develop-ticketing-app-local.md" >}}) to understand the main concepts of Keyple in a local application.
 1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the **Keyple Remote Plugin** solution.
 1. Read the introduction of chapter [Plugins](#plugins) to be informed about the different plugins and APIs proposed by the solution.
 1. Using chapter [Use cases](#use-cases), find your use case. This will help you to determine exactly which library and API to use.
