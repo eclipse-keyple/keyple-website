@@ -37,7 +37,7 @@ Here are the main concepts to keep in mind before continuing to read this develo
 | **Virtual Lib** | This is the library `keyple-plugin-remote-virtual`.<br>It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely. |
 | **Native Lib** | This is the library `keyple-plugin-remote-native`.<br>It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application. |
 | **Remote Plugin** | Part of the **Virtual Lib**, this is a Keyple plugin which provides only **Virtual Readers** to the application. It manages data exchanges with the **Native Service**. This plugin must be registered to the smart card service like any Keyple plugin. |
-| **Virtual Reader** | Part of the **Virtual Lib**, this is a Keyple reader which has some specificities :<br>- each virtual reader is connected to a native reader ;<br>- any command sent by the application to a virtual reader will be forwarded to the associated native reader ;<br>- any event occurs on a native reader or plugin will be forwarded to the associated remote virtual reader or plugin. |
+| **Virtual Reader** | Part of the **Remote Plugin**, this is a Keyple reader which has some specificities :<br>- each virtual reader is connected to a native reader ;<br>- any command sent by the application to a virtual reader will be forwarded to the associated native reader ;<br>- any event occurs on a native reader or plugin will be forwarded to the associated remote virtual reader or plugin. |
 | **Native Service** | Part of the **Native Lib**, this service ensures data exchange between the **Remote Plugin** and native plugins and readers. It must be initialized and started by the host application. |
 | **Factory** | **Remote Plugin** and **Native Service** each have a specific factory class to initialize them. |
 | **Utility** | **Remote Plugin** and **Native Service** each have a specific utility class to access them everywhere in the code. |
@@ -55,9 +55,21 @@ The diagram below illustrates the main functional concepts through a standard us
 
 {{< figure library="true" src="remote-plugin/component/Remote_Component_Concepts_1.svg" title="" >}}
 
-The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals :
+The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.
+
+These could be for example a ticketing reloading service, where the intelligence would be on the terminal with virtual readers, with thin clients on A & B terminals communicating locally with the cards.
+
+In this use case, the **Remote Plugin** is used for card communication.
 
 {{< figure library="true" src="remote-plugin/component/Remote_Component_Concepts_2.svg" title="" >}}
+
+Here is another example, but this time it illustrates several **Remote Plugins** connected to the same **Native Service**.
+
+These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.
+
+In this use case, the **Remote Plugin** is used for SAM communication.
+
+{{< figure library="true" src="remote-plugin/component/Remote_Component_Concepts_3.svg" title="" >}}
 
 ## Plugins
  
@@ -92,7 +104,7 @@ This plugin allows controlling from a **server** terminal a smart card reader pl
 
 | API | Client | Server |
 | --- | ------ | ------ |
-| **Library** | Remote Native | Remote Virtual |
+| **Library** | Native Lib | Virtual Lib |
 | **Remote Plugin** / **Native Service** | `NativeClientService` | `RemoteServerPlugin` |
 | **Factory** | `NativeClientServiceFactory` | `RemoteServerPluginFactory` |
 | **Utility** | `NativeClientUtils` | `RemoteServerUtils` |
@@ -137,7 +149,7 @@ This plugin allows controlling from a **client** terminal a smart card reader pl
 
 | API | Client | Server |
 | --- | ------ | ------ |
-| **Library** | Remote Virtual | Remote Native |
+| **Library** | Virtual Lib | Native Lib |
 | **Remote Plugin** / **Native Service** | `RemoteClientPlugin` | `NativeServerService` |
 | **Factory** | `RemoteClientPluginFactory` | `NativeServerServiceFactory` |
 | **Utility** | `RemoteClientUtils` | `NativeServerUtils` |
@@ -160,7 +172,7 @@ Please note that this mode is possible only if the native plugin is observable.
 
 | API | Client | Server |
 | --- | ------ | ------ |
-| **Library** | Remote Virtual | Remote Native |
+| **Library** | Virtual Lib | Native Lib |
 | **Remote Plugin** / **Native Service** | `RemoteClientObservablePlugin` | `NativeServerService` |
 | **Factory** | `RemoteClientPluginFactory` | `NativeServerServiceFactory` |
 | **Utility** | `RemoteClientUtils` | `NativeServerUtils` |
@@ -181,7 +193,7 @@ This plugin allows controlling from a **client** terminal a pool of smart cards 
 
 | API | Client | Server |
 | --- | ------ | ------ |
-| **Library** | Remote Virtual | Remote Native |
+| **Library** | Virtual Lib | Native Lib |
 | **Remote Plugin** / **Native Service** | `RemotePoolClientPlugin` | `NativePoolServerService` |
 | **Factory** | `RemotePoolClientPluginFactory` | `NativePoolServerServiceFactory` |
 | **Utility** | `RemotePoolClientUtils` | `NativePoolServerUtils` |
@@ -198,9 +210,19 @@ This plugin allows controlling from a **client** terminal a pool of smart cards 
 
 ## Plugins APIs
 
-### Common API
+The class diagrams below shows the different APIs exposed and SPIs required by the **Keyple Remote Plugin** solution.
 
-This API is common to **Remote Plugin** and **Native Service** APIs :
+An **SPI** (Service Provider Interface) is an interface that must be implemented by the user.
+
+Here are the available APIs depending on the library imported by your project :
+
+|     | Virtual Lib | Native Lib |
+| --- | :---------: | :--------: |
+| [Common API](#common-api) | :heavy_check_mark: | :heavy_check_mark: |
+| [Remote Plugin API](#remote-plugin-api) | :heavy_check_mark: | |
+| [Native Service API](#native-service-api) | | :heavy_check_mark: |
+
+### Common API
 
 {{< figure library="true" src="remote-plugin/class/Remote_Class_Core_API.svg" title="" >}}
 

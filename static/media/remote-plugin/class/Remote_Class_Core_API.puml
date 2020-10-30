@@ -45,6 +45,12 @@ hide <<grey>> stereotype
 
 ' == CONTENT ==
 
+package Legend {
+    interface "**Node API**" as nodeApi <<red>>
+    interface "**DTO**" as dtoApi <<grey>>
+    interface "**SPI** (Service Provider Interface)\nMust be implemented by the user" as spiApi
+}
+
 package "org.eclipse.keyple.plugin.remote.core" as core {
     ' Nodes & Senders
     +interface KeypleClientAsyncNode {
@@ -98,6 +104,9 @@ KeypleServerAsyncNode --> KeypleServerAsync #C_LINK : use >
 ' == LAYOUT ==
 
 KeypleServerSyncNode -[hidden]- KeypleMessageDto
+
+nodeApi -[hidden]- KeypleClientSyncNode
+spiApi -[hidden]- KeypleServerAsyncNode
 
 ' == STYLE ==
 
