@@ -92,11 +92,9 @@ The **Keyple Remote Plugin** solution provides **3** different specific **Remote
 
 Moreover, some plugins have different modes in which they allow or not the observation of plugin or reader events (such as smart card insertion, reader connection, etc...).
 
-Each **Remote Plugin** is connected to a specific **Native Service** and is dependent on a specific node type (synchronous or asynchronous).
-That's why it's very important to understand the following coexistence limitations :
+It is important to note that each **Remote Plugin** and **Native Service** components are dependent to a specific network protocol type (synchronous or asynchronous).
 
-* There can be **only one instance** of a specific **Native Service** per application.
-* There can be **only one instance** of a specific **Remote Plugin** per application and per network communication configuration. There can therefore be a maximum of 2 instances of a specific **Remote Plugin** per application, one with a synchronous and the other one with an asynchronous network communication configuration.
+Therefore, there can only be a maximum of 2 instances of the same **Remote Plugin** or **Native Service** per application, one with a synchronous and the other one with an asynchronous network communication configuration.
 
 ### RemoteServerPlugin
 
