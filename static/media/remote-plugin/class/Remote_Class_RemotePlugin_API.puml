@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple Remote Plugin - Remote Plugin API - 1.0.0 (28/10/2020)
+    Keyple Remote Plugin - Remote Plugin API - 1.0.0 (02/11/2020)
 end title
 
 ' == THEME ==
@@ -51,7 +51,7 @@ package Legend {
     interface "**RemotePoolClientPlugin API**" as poolClientApi <<blue>>
 }
 
-package "org.eclipse.keyple.plugin.remote.virtual" as virtual {
+package "org.eclipse.keyple.plugin.remote" as root {
 
     ' Remote Handlers
     +interface "<<<back:yellow>ObservablePlugin</back>>>\nRemoteServerPlugin" as RemoteServerPlugin {
@@ -72,30 +72,30 @@ package "org.eclipse.keyple.plugin.remote.virtual" as virtual {
     }
     +interface "<<<back:yellow>PoolPlugin</back>>>\nRemotePoolClientPlugin" as RemotePoolClientPlugin {
     }
-    package impl as virtualImpl {
-        ' Utilitaires Master
-        +class RemoteServerUtils {
-            ____
+    package impl as rootImpl {
+        ' Utilities
+        +class RemoteServerPluginUtils {
+            __
             + {static} RemoteServerPlugin getAsyncPlugin ()
             + {static} KeypleServerAsyncNode getAsyncNode ()
-            ....
+            ..
             + {static} RemoteServerPlugin getSyncPlugin ()
             + {static} KeypleServerSyncNode getSyncNode ()
         }
-        +class RemoteClientUtils {
-            ____
+        +class RemoteClientPluginUtils {
+            __
             + {static} RemoteClientPlugin getAsyncPlugin ()
             + {static} RemoteClientObservablePlugin getAsyncObservablePlugin ()
             + {static} KeypleClientAsyncNode getAsyncNode ()
-            ....
+            ..
             + {static} RemoteClientPlugin getSyncPlugin ()
             + {static} RemoteClientObservablePlugin getSyncObservablePlugin ()
         }
-        +class RemotePoolClientUtils {
-            ____
+        +class RemotePoolClientPluginUtils {
+            __
             + {static} RemotePoolClientPlugin getAsyncPlugin ()
             + {static} KeypleClientAsyncNode getAsyncNode ()
-            ....
+            ..
             + {static} RemotePoolClientPlugin getSyncPlugin ()
         }
         ' Factories
@@ -170,8 +170,12 @@ package "org.eclipse.keyple.plugin.remote.virtual" as virtual {
             + {static} NodeStep builder ()
         }
         +class "NodeStep" as RemotePoolClientPluginFactoryNodeStep {
-            + BuilderStep withAsyncNode (\n    KeypleClientAsync endpoint)
-            + BuilderStep withSyncNode (\n    KeypleClientSync endpoint)
+            + TimeoutStep withAsyncNode (\n    KeypleClientAsync endpoint)
+            + TimeoutStep withSyncNode (\n    KeypleClientSync endpoint)
+        }
+        +interface "TimeoutStep" as RemotePoolClientPluginFactoryTimeoutStep {
+            + BuilderStep usingDefaultTimeout ()
+            + BuilderStep usingCustomTimeout (int timeoutInSeconds)
         }
         +interface "BuilderStep" as RemotePoolClientPluginFactoryBuilderStep {
             + RemotePoolClientPluginFactory build ()
@@ -204,7 +208,8 @@ RemoteClientPluginFactoryServerPushReaderEventStrategyStep ..> RemoteClientPlugi
 RemoteClientPluginFactorySyncNodeReaderEventNotificationPoolStep ..> RemoteClientPluginFactoryBuilderStep #C_USE
 
 RemotePoolClientPluginFactory ..> RemotePoolClientPluginFactoryNodeStep #C_USE
-RemotePoolClientPluginFactoryNodeStep ..> RemotePoolClientPluginFactoryBuilderStep #C_USE
+RemotePoolClientPluginFactoryNodeStep ..> RemotePoolClientPluginFactoryTimeoutStep #C_USE
+RemotePoolClientPluginFactoryTimeoutStep ..> RemotePoolClientPluginFactoryBuilderStep #C_USE
 
 RemoteServerPlugin *--> "1..N" RemoteServerReader #C_LINK : readers
 
@@ -214,20 +219,20 @@ serverApi -[hidden]- RemoteServerPlugin
 clientApi -[hidden]- RemoteClientPlugin
 poolClientApi -[hidden]- RemotePoolClientPlugin
 
-RemoteServerObservableReader -[hidden]- RemoteServerUtils
-RemoteClientObservablePlugin -[hidden]- RemoteClientUtils
-RemotePoolClientPlugin -[hidden]- RemotePoolClientUtils
+RemoteServerObservableReader -[hidden]- RemoteServerPluginUtils
+RemoteClientObservablePlugin -[hidden]- RemoteClientPluginUtils
+RemotePoolClientPlugin -[hidden]- RemotePoolClientPluginUtils
 
-RemoteServerUtils -[hidden]- RemoteServerPluginFactory
-RemoteClientUtils -[hidden]- RemoteClientPluginFactory
-RemotePoolClientUtils -[hidden]- RemotePoolClientPluginFactory
+RemoteServerPluginUtils -[hidden]- RemoteServerPluginFactory
+RemoteClientPluginUtils -[hidden]- RemoteClientPluginFactory
+RemotePoolClientPluginUtils -[hidden]- RemotePoolClientPluginFactory
 
 ' == STYLE ==
 
-package virtual #C_GREY1 {}
-package virtualImpl #C_GREY2 {}
+package root #C_GREY1 {}
+package rootImpl #C_GREY2 {}
 
-class RemoteServerUtils <<green>>
+class RemoteServerPluginUtils <<green>>
 interface RemoteServerPlugin <<green>>
 interface RemoteServerReader <<green>>
 interface RemoteServerObservableReader <<green>>
@@ -237,7 +242,7 @@ interface RemoteServerPluginFactoryPluginObserverStep <<green>>
 interface RemoteServerPluginFactoryEventNotificationPoolStep <<green>>
 interface RemoteServerPluginFactoryBuilderStep <<green>>
 
-class RemoteClientUtils <<purple>>
+class RemoteClientPluginUtils <<purple>>
 interface RemoteClientPlugin <<purple>>
 class RemoteClientPluginFactory <<purple>>
 interface RemoteClientPluginFactoryNodeStep <<purple>>
@@ -255,10 +260,11 @@ interface RemoteClientPluginFactoryBuilderStep <<purple>>
 
 interface RemoteClientObservablePlugin <<purple>>
 
-class RemotePoolClientUtils <<blue>>
+class RemotePoolClientPluginUtils <<blue>>
 interface RemotePoolClientPlugin <<blue>>
 class RemotePoolClientPluginFactory <<blue>>
 interface RemotePoolClientPluginFactoryNodeStep <<blue>>
+interface RemotePoolClientPluginFactoryTimeoutStep <<blue>>
 interface RemotePoolClientPluginFactoryBuilderStep <<blue>>
 
 @enduml

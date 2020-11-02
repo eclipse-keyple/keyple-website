@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple Remote Plugin - Native Service API - 1.0.0 (28/10/2020)
+    Keyple Remote Plugin - Native Service API - 1.0.0 (02/11/2020)
 end title
 
 ' == THEME ==
@@ -52,7 +52,7 @@ package Legend {
     interface "**SPI** (Service Provider Interface)\nMust be implemented by the user" as spiApi
 }
 
-package "org.eclipse.keyple.plugin.remote.nativ" as native {
+package "org.eclipse.keyple.plugin.remote" as root {
 
     +interface NativeClientService {
         +<T> T executeRemoteService (\n    RemoteServiceParameters parameters,\n    Class<T> classOfT)
@@ -76,18 +76,25 @@ package "org.eclipse.keyple.plugin.remote.nativ" as native {
             +void afterPropagation (Object userOutputData)
         }
     }
-    package impl as nativeImpl {
-        ' Utilitaires Slave
-        +class NativeClientUtils {
-            + {static} NativeClientService getService ()
+    package impl as impl {
+        ' Utilities
+        +class NativeClientServiceUtils {
+            --
+            + {static} NativeClientService getAsyncService ()
             + {static} KeypleClientAsyncNode getAsyncNode ()
+            ..
+            + {static} NativeClientService getSyncService ()
         }
-        +class NativeServerUtils {
+        +class NativeServerServiceUtils {
+            --
             + {static} KeypleServerAsyncNode getAsyncNode ()
+            ..
             + {static} KeypleServerSyncNode getSyncNode ()
         }
-        +class NativePoolServerUtils {
+        +class NativePoolServerServiceUtils {
+            --
             + {static} KeypleServerAsyncNode getAsyncNode ()
+            ..
             + {static} KeypleServerSyncNode getSyncNode ()
         }
         ' Factories
@@ -155,19 +162,19 @@ clientApi -[hidden]- NativeServerService
 poolClientApi -[hidden]- NativePoolServerService
 spiApi -[hidden]- KeypleClientReaderEventFilter
 
-RemoteServiceParametersBuilder -[hidden]- NativeClientUtils
-NativeServerService -[hidden]- NativeServerUtils
-NativePoolServerService -[hidden]- NativePoolServerUtils
+RemoteServiceParametersBuilder -[hidden]- NativeClientServiceUtils
+NativeServerService -[hidden]- NativeServerServiceUtils
+NativePoolServerService -[hidden]- NativePoolServerServiceUtils
 
-NativeClientUtils -[hidden]- NativeClientServiceFactory
-NativeServerUtils -[hidden]- NativeServerServiceFactory
-NativePoolServerUtils -[hidden]- NativePoolServerServiceFactory
+NativeClientServiceUtils -[hidden]- NativeClientServiceFactory
+NativeServerServiceUtils -[hidden]- NativeServerServiceFactory
+NativePoolServerServiceUtils -[hidden]- NativePoolServerServiceFactory
 
 ' == STYLE ==
 
-package native #C_GREY1 {}
+package root #C_GREY1 {}
 package spi #C_GREY2 {}
-package nativeImpl #C_GREY2 {}
+package impl #C_GREY2 {}
 
 interface NativeClientService <<green>>
 class NativeClientServiceFactory <<green>>
@@ -177,18 +184,18 @@ interface NativeClientServiceFactoryReaderStep <<green>>
 interface NativeClientServiceFactoryBuilderStep <<green>>
 class RemoteServiceParameters <<green>>
 class RemoteServiceParametersBuilder <<green>>
-class NativeClientUtils <<green>>
+class NativeClientServiceUtils <<green>>
 
 interface NativeServerService <<purple>>
 class NativeServerServiceFactory <<purple>>
 interface NativeServerServiceFactoryNodeStep <<purple>>
 interface NativeServerServiceFactoryBuilderStep <<purple>>
-class NativeServerUtils <<purple>>
+class NativeServerServiceUtils <<purple>>
 
 interface NativePoolServerService <<blue>>
 class NativePoolServerServiceFactory <<blue>>
 interface NativePoolServerServiceFactoryNodeStep <<blue>>
 interface NativePoolServerServiceFactoryBuilderStep <<blue>>
-class NativePoolServerUtils <<blue>>
+class NativePoolServerServiceUtils <<blue>>
 
 @enduml

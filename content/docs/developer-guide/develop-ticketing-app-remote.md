@@ -8,7 +8,7 @@ weight: 320
 
 ## Overview
 
-**Keyple provides the "Keyple Remote Plugin" solution which allows a terminal to communicate with a smart card reader plugged into another terminal**.
+**Keyple provides the "Keyple Remote Plugin" solution which allows a terminal to communicate with a smart card reader available in another terminal**.
 
 In this way, you can manage transactions within a distributed architecture.
 
@@ -20,7 +20,7 @@ The diagram below shows the role of the **Keyple Remote Plugin** components in t
 
 1. In pre-requisite, read page [Develop a Local Ticketing Application]({{< relref "develop-ticketing-app-local.md" >}}) to understand the main concepts of Keyple in a local application.
 1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the **Keyple Remote Plugin** solution.
-1. Read the introduction of chapter [Plugins](#plugins) to be informed about the different plugins and APIs proposed by the solution.
+1. Read the introduction of chapter [Remote Plugins](#remote-plugins) to be informed about the different plugins and APIs proposed by the solution.
 1. Using chapter [Use cases](#use-cases), find your use case. This will help you to determine exactly which library and API to use.
 1. Using chapter [Download](#download), import into your project the libraries specified by your use case.
 1. Using chapter [Network configuration](#network-configuration), implement the transport layer adapted to your network configuration.
@@ -71,17 +71,17 @@ In this use case, the **Remote Plugin** is used for SAM communication.
 
 {{< figure library="true" src="remote-plugin/component/Remote_Component_Concepts_3.svg" title="" >}}
 
-## Plugins
+## Remote Plugins
  
-The **Keyple Remote Plugin** solution provides **3** different specific **Remote Plugin** components, each one having a specific API described in chapter [Plugins APIs](#plugins-apis) designed on a **Client-Server** model in which **the Client is always the initiator of the processing** :
+The **Keyple Remote Plugin** solution provides **3** different specific **Remote Plugin** components, each one having a specific API described in chapter [Remote Plugins APIs](#remote-plugins-apis) designed on a **Client-Server** model in which **the Client is always the initiator of the processing** :
 
 <div id="plugins-table-1">
 
 | Plugin | Description |
 | ------ | ----------- |
-| [RemoteServerPlugin](#remoteserverplugin) | Allows to control from a **server** terminal a smart card reader plugged into a **client** terminal (e.g. PO reader). |
-| [RemoteClientPlugin](#remoteclientplugin) or<br>[RemoteClientObservablePlugin](#remoteclientobservableplugin) | Allows to control from a **client** terminal a smart card reader plugged into a **server** terminal (e.g. SAM reader). |
-| [RemotePoolClientPlugin](#remotepoolclientplugin) | Allows to control from a **client** terminal a **pool** of smart cards readers plugged into a **server** terminal (e.g. HSM readers). |
+| [RemoteServerPlugin](#remoteserverplugin) | Allows to control from a **server** terminal a smart card reader available on a **client** terminal (e.g. PO reader). |
+| [RemoteClientPlugin](#remoteclientplugin) or<br>[RemoteClientObservablePlugin](#remoteclientobservableplugin) | Allows to control from a **client** terminal a smart card reader available on a **server** terminal (e.g. SAM reader). |
+| [RemotePoolClientPlugin](#remotepoolclientplugin) | Allows to control from a **client** terminal a **pool** of smart cards readers available on a **server** terminal (e.g. HSM readers). |
 
 </div>
 <style>
@@ -90,31 +90,29 @@ The **Keyple Remote Plugin** solution provides **3** different specific **Remote
 }
 </style>
 
-More over, some plugins have different modes in which they allow or not the observation of plugin or reader events (such as smart card insertion, reader connection, etc...).
+Moreover, some plugins have different modes in which they allow or not the observation of plugin or reader events (such as smart card insertion, reader connection, etc...).
 
 Each **Remote Plugin** is connected to a specific **Native Service** and is dependent on a specific node type (synchronous or asynchronous).
-That-s why it's very important to understand the following coexistence limitations :
+That's why it's very important to understand the following coexistence limitations :
 
 * There can be **only one instance** of a specific **Native Service** per application.
 * There can be **only one instance** of a specific **Remote Plugin** per application and per network communication configuration. There can therefore be a maximum of 2 instances of a specific **Remote Plugin** per application, one with a synchronous and the other one with an asynchronous network communication configuration.
 
 ### RemoteServerPlugin
 
-This plugin allows controlling from a **server** terminal a smart card reader plugged into a **client** terminal (e.g. PO reader). 
+This plugin allows controlling from a **server** terminal a smart card reader available on a **client** terminal (e.g. PO reader). 
 
 | API | Client | Server |
 | --- | ------ | ------ |
 | **Library** | Native Lib | Virtual Lib |
 | **Remote Plugin** / **Native Service** | `NativeClientService` | `RemoteServerPlugin` |
 | **Factory** | `NativeClientServiceFactory` | `RemoteServerPluginFactory` |
-| **Utility** | `NativeClientUtils` | `RemoteServerUtils` |
+| **Utility** | `NativeClientServiceUtils` | `RemoteServerPluginUtils` |
 
-#### USE
-
-Please note that this plugin is observable **only to trigger ticketing services** on the server side, but does not allow observation on the native plugin (reader insertion, etc...).
+#### USE AND SEQUENCE OF OPERATIONS
 
 * Server side :
-    1. configure the factory by providing the network and plugin observer implementation,
+    1. configure the factory by providing the network and plugin observer implementation. Please note that **this plugin is observable only to trigger ticketing services** on the server side, but does not allow observation on the native plugin (reader insertion, etc...),
     1. register the **Remote Plugin** to the smart card service using the factory,
     1. await for events of type `PluginEvent.READER_CONNECTED`,
     1. when an event occurs, get the specified virtual reader from the **Remote Plugin**,
@@ -145,16 +143,16 @@ Note that the network layer is deliberately hide in this diagram. Its implementa
 
 ### RemoteClientPlugin
 
-This plugin allows controlling from a **client** terminal a smart card reader plugged into a **server** terminal (e.g. SAM reader).
+This plugin allows controlling from a **client** terminal a smart card reader available on a **server** terminal (e.g. SAM reader).
 
 | API | Client | Server |
 | --- | ------ | ------ |
 | **Library** | Virtual Lib | Native Lib |
 | **Remote Plugin** / **Native Service** | `RemoteClientPlugin` | `NativeServerService` |
 | **Factory** | `RemoteClientPluginFactory` | `NativeServerServiceFactory` |
-| **Utility** | `RemoteClientUtils` | `NativeServerUtils` |
+| **Utility** | `RemoteClientPluginUtils` | `NativeServerServiceUtils` |
 
-#### USE
+#### USE AND SEQUENCE OF OPERATIONS
 
 * Server side :
     1. configure the factory and start the **Native Service** by providing the network implementation,
@@ -166,7 +164,7 @@ This plugin allows controlling from a **client** terminal a smart card reader pl
     
 ### RemoteClientObservablePlugin
 
-This plugin is a [RemoteClientPlugin](#remoteclientplugin) which also allows to observe the plugin events.
+This plugin is a [RemoteClientPlugin](#remoteclientplugin) which also allows to observe the plugin events (such as reader connection, etc...).
 
 Please note that this mode is possible only if the native plugin is observable.
 
@@ -175,9 +173,9 @@ Please note that this mode is possible only if the native plugin is observable.
 | **Library** | Virtual Lib | Native Lib |
 | **Remote Plugin** / **Native Service** | `RemoteClientObservablePlugin` | `NativeServerService` |
 | **Factory** | `RemoteClientPluginFactory` | `NativeServerServiceFactory` |
-| **Utility** | `RemoteClientUtils` | `NativeServerUtils` |
+| **Utility** | `RemoteClientPluginUtils` | `NativeServerServiceUtils` |
 
-#### USE
+#### USE AND SEQUENCE OF OPERATIONS
 
 * Server side :
     1. configure the factory and start the **Native Service** by providing the network implementation,
@@ -189,16 +187,16 @@ Please note that this mode is possible only if the native plugin is observable.
     
 ### RemotePoolClientPlugin
 
-This plugin allows controlling from a **client** terminal a pool of smart cards readers plugged into a **server** terminal (e.g. HSM readers).
+This plugin allows controlling from a **client** terminal a pool of smart cards readers available on a **server** terminal (e.g. HSM readers).
 
 | API | Client | Server |
 | --- | ------ | ------ |
 | **Library** | Virtual Lib | Native Lib |
 | **Remote Plugin** / **Native Service** | `RemotePoolClientPlugin` | `NativePoolServerService` |
 | **Factory** | `RemotePoolClientPluginFactory` | `NativePoolServerServiceFactory` |
-| **Utility** | `RemotePoolClientUtils` | `NativePoolServerUtils` |
+| **Utility** | `RemotePoolClientPluginUtils` | `NativePoolServerServiceUtils` |
 
-#### USE
+#### USE AND SEQUENCE OF OPERATIONS
 
 * Server
     1. configure the factory and start the **Native Service** by providing the network implementation,
@@ -208,7 +206,7 @@ This plugin allows controlling from a **client** terminal a pool of smart cards 
     2. register the **Remote Plugin** to the smart card service using the factory,
     3. use the **Remote Plugin** and its virtual readers as a native pool plugin with native readers.
 
-## Plugins APIs
+## Remote Plugins APIs
 
 The class diagrams below shows the different APIs exposed and SPIs required by the **Keyple Remote Plugin** solution.
 
@@ -224,7 +222,7 @@ Here are the available APIs depending on the library imported by your project :
 
 ### Common API
 
-{{< figure library="true" src="remote-plugin/class/Remote_Class_Core_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/class/Remote_Class_Common_API.svg" title="" >}}
 
 ### Remote Plugin API
 
@@ -394,7 +392,7 @@ Here is the minimal algorithm to implement :
 
 ### Exchanged data
 
-The data exchanged between **Remote Plugin** and **Native Service** components are contain in the POJO object `KeypleMessageDto`. It is built and processed by the plugin and **you don't need to modify it**.
+The data exchanged between **Remote Plugin** and **Native Service** components are contain in the DTO (Data Transfer Object) `KeypleMessageDto`. It is built and processed by the plugin and **you don't need to modify it**.
 
 However, it is necessary in some contexts to access certain information such as the `sessionId` in the case of asynchronous communication or the `serverNodeId` in the case of synchronous communication with several server instances.
 
@@ -448,4 +446,4 @@ Native Lib
 
 * [Virtual Lib {{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/virtual/README.md)
 * [Native Lib {{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/native/README.md)
-* [Core Lib {{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/core/README.md)
+* [Common Lib {{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/common/README.md)

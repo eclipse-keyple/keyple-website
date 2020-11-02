@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple Remote Plugin - Core API - 1.0.0 (28/10/2020)
+    Keyple Remote Plugin - Common API - 1.0.0 (02/11/2020)
 end title
 
 ' == THEME ==
@@ -51,7 +51,7 @@ package Legend {
     interface "**SPI** (Service Provider Interface)\nMust be implemented by the user" as spiApi
 }
 
-package "org.eclipse.keyple.plugin.remote.core" as core {
+package "org.eclipse.keyple.plugin.remote" as root {
     ' Nodes & Senders
     +interface KeypleClientAsyncNode {
         +void onOpen (String sessionId)
@@ -110,7 +110,7 @@ spiApi -[hidden]- KeypleServerAsyncNode
 
 ' == STYLE ==
 
-package core #C_GREY1 {}
+package root #C_GREY1 {}
 package spi #C_GREY2 {}
 
 KeypleClientSyncNode <<red>>
