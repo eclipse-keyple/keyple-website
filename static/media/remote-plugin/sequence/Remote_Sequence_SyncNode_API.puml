@@ -1,8 +1,7 @@
 @startuml
 
 title
-    Keyple Remote Plugin
-    Sync Node API (08/10/2020)
+    Keyple Remote Plugin - Sync Node API (03/11/2020)
 end title
 
 ' == THEME ==
@@ -29,9 +28,9 @@ note right
     To access the node it is necessary
     to use the utility class corresponding
     to the server configuration :
-    * **Remote**ServerUtils
-    * **Native**ServerUtils
-    * **NativePool**ServerUtils
+    * **RemotePlugin**ServerUtils
+    * **LocalService**ServerUtils
+    * **PoolLocalService**ServerUtils
 end note
 userServerController -> serverNode : onRequest (<color:red>dtoA</color>)
 activate serverNode #LightBlue

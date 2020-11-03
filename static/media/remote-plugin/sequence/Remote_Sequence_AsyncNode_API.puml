@@ -1,8 +1,7 @@
 @startuml
 
 title
-    Keyple Remote Plugin
-    Async Node API (08/10/2020)
+    Keyple Remote Plugin - Async Node API (03/11/2020)
 end title
 
 ' == THEME ==
@@ -31,6 +30,14 @@ deactivate userServerEndpoint
 activate userClientEndpoint #Pink
 userClientEndpoint -> userClientEndpoint : registerSession (<color:green>sessionId</color>, Session)
 userClientEndpoint -> userClientEndpoint : [...]ClientUtils.getAsyncNode ()
+note over userClientEndpoint
+    To retrieve the node it is necessary
+    to use the utility class corresponding
+    to the client configuration :
+    * **LocalService**ClientUtils
+    * **RemotePlugin**ClientUtils
+    * **PoolRemotePlugin**ClientUtils
+end note
 userClientEndpoint -> clientNode : onOpen (<color:green>sessionId</color>)
 activate clientNode #LightBlue
 clientNode -> userClientEndpoint : sendMessage (<color:red>dtoA</color>)
@@ -54,9 +61,9 @@ note over userServerEndpoint
     To access the node it is necessary
     to use the utility class corresponding
     to the server configuration :
-    * **Remote**ServerUtils
-    * **Native**ServerUtils
-    * **NativePool**ServerUtils
+    * **RemotePlugin**ServerUtils
+    * **LocalService**ServerUtils
+    * **PoolLocalService**ServerUtils
 end note
 userServerEndpoint -> serverNode : onMessage (<color:red>dtoA</color>)
 activate serverNode #LightBlue
@@ -70,14 +77,6 @@ deactivate userServerEndpoint
 
 activate userClientEndpoint #Pink
 userClientEndpoint -> userClientEndpoint : [...]ClientUtils.getAsyncNode ()
-note over userClientEndpoint
-    To retrieve the node it is necessary
-    to use the utility class corresponding
-    to the client configuration :
-    * **Native**ClientUtils
-    * **Remote**ClientUtils
-    * **RemotePool**ClientUtils
-end note
 userClientEndpoint -> clientNode : onMessage (<color:blue>dtoB</color>)
 activate clientNode #LightBlue
 return

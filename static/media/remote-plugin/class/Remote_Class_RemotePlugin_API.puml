@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple Remote Plugin - Remote Plugin API - 1.0.0 (02/11/2020)
+    Keyple Remote Plugin - Remote Plugin API - 1.0.0 (03/11/2020)
 end title
 
 ' == THEME ==
@@ -46,225 +46,225 @@ hide <<grey>> stereotype
 ' == CONTENT ==
 
 package Legend {
-    interface "**RemoteServerPlugin API**" as serverApi <<green>>
-    interface "**RemoteClientPlugin API** or\n**RemoteClientObservablePlugin API**" as clientApi <<purple>>
-    interface "**RemotePoolClientPlugin API**" as poolClientApi <<blue>>
+    interface "**RemotePluginServer API**" as serverApi <<green>>
+    interface "**RemotePluginClient API** or\n**ObservableRemotePluginClient API**" as clientApi <<purple>>
+    interface "**PoolRemotePluginClient API**" as poolClientApi <<blue>>
 }
 
 package "org.eclipse.keyple.plugin.remote" as root {
 
     ' Remote Handlers
-    +interface "<<<back:yellow>ObservablePlugin</back>>>\nRemoteServerPlugin" as RemoteServerPlugin {
-        +RemoteServerReader getReader (String name)
-        +void terminateService (\n    String virtualReaderName,\n    Object userOutputData)
+    +interface "<<<back:yellow>ObservablePlugin</back>>>\nRemotePluginServer" as RemotePluginServer {
+        +RemoteReaderServer getReader (String name)
+        +void terminateService (\n    String remoteReaderName,\n    Object userOutputData)
     }
     ' Remote Readers
-    +interface "<<<back:yellow>Reader</back>>>\nRemoteServerReader" as RemoteServerReader {
+    +interface "<<<back:yellow>Reader</back>>>\nRemoteReaderServer" as RemoteReaderServer {
         +String getServiceId ()
         +<T> T getUserInputData (Class<T> classOfT)
         +<T extends AbstractSmartCard> T getInitialCardContent (\n    Class<T> classOfSmartCard)
     }
-    +interface "<<<back:yellow>ObservableReader</back>>>\nRemoteServerObservableReader" as RemoteServerObservableReader extends RemoteServerReader {
+    +interface "<<<back:yellow>ObservableReader</back>>>\nObservableRemoteReaderServer" as ObservableRemoteReaderServer extends RemoteReaderServer {
     }
-    +interface "<<<back:yellow>Plugin</back>>>\nRemoteClientPlugin" as RemoteClientPlugin {
+    +interface "<<<back:yellow>Plugin</back>>>\nRemotePluginClient" as RemotePluginClient {
     }
-    +interface "<<<back:yellow>ObservablePlugin</back>>>\nRemoteClientObservablePlugin" as RemoteClientObservablePlugin extends RemoteClientPlugin {
+    +interface "<<<back:yellow>ObservablePlugin</back>>>\nObservableRemotePluginClient" as ObservableRemotePluginClient extends RemotePluginClient {
     }
-    +interface "<<<back:yellow>PoolPlugin</back>>>\nRemotePoolClientPlugin" as RemotePoolClientPlugin {
+    +interface "<<<back:yellow>PoolPlugin</back>>>\nPoolRemotePluginClient" as PoolRemotePluginClient {
     }
     package impl as rootImpl {
         ' Utilities
-        +class RemoteServerPluginUtils {
+        +class RemotePluginServerUtils {
             __
-            + {static} RemoteServerPlugin getAsyncPlugin ()
+            + {static} RemotePluginServer getAsyncPlugin ()
             + {static} KeypleServerAsyncNode getAsyncNode ()
             ..
-            + {static} RemoteServerPlugin getSyncPlugin ()
+            + {static} RemotePluginServer getSyncPlugin ()
             + {static} KeypleServerSyncNode getSyncNode ()
         }
-        +class RemoteClientPluginUtils {
+        +class RemotePluginClientUtils {
             __
-            + {static} RemoteClientPlugin getAsyncPlugin ()
-            + {static} RemoteClientObservablePlugin getAsyncObservablePlugin ()
+            + {static} RemotePluginClient getAsyncPlugin ()
+            + {static} ObservableRemotePluginClient getAsyncObservablePlugin ()
             + {static} KeypleClientAsyncNode getAsyncNode ()
             ..
-            + {static} RemoteClientPlugin getSyncPlugin ()
-            + {static} RemoteClientObservablePlugin getSyncObservablePlugin ()
+            + {static} RemotePluginClient getSyncPlugin ()
+            + {static} ObservableRemotePluginClient getSyncObservablePlugin ()
         }
-        +class RemotePoolClientPluginUtils {
+        +class PoolRemotePluginClientUtils {
             __
-            + {static} RemotePoolClientPlugin getAsyncPlugin ()
+            + {static} PoolRemotePluginClient getAsyncPlugin ()
             + {static} KeypleClientAsyncNode getAsyncNode ()
             ..
-            + {static} RemotePoolClientPlugin getSyncPlugin ()
+            + {static} PoolRemotePluginClient getSyncPlugin ()
         }
         ' Factories
-        +class "<<<back:yellow>PluginFactory</back>>>\nRemoteServerPluginFactory" as RemoteServerPluginFactory {
+        +class "<<<back:yellow>PluginFactory</back>>>\nRemotePluginServerFactory" as RemotePluginServerFactory {
             + {static} NodeStep builder ()
         }
-        +interface "NodeStep" as RemoteServerPluginFactoryNodeStep {
+        +interface "NodeStep" as RemotePluginServerFactoryNodeStep {
             + PluginObservationStep withAsyncNode (\n    KeypleServerAsync endpoint)
             + PluginObservationStep withSyncNode ()
         }
-        +interface "PluginObserverStep" as RemoteServerPluginFactoryPluginObserverStep {
+        +interface "PluginObserverStep" as RemotePluginServerFactoryPluginObserverStep {
             + EventNotificationPoolStep withPluginObserver (\n    ObservablePlugin.PluginObserver observer)
         }
-        +interface "EventNotificationPoolStep" as RemoteServerPluginFactoryEventNotificationPoolStep {
+        +interface "EventNotificationPoolStep" as RemotePluginServerFactoryEventNotificationPoolStep {
             + BuilderStep usingDefaultEventNotificationPool ()
             + BuilderStep usingEventNotificationPool (\n    ExecutorService eventNotificationPool)
         }
-        +interface "BuilderStep" as RemoteServerPluginFactoryBuilderStep {
-            + RemoteServerPluginFactory build ()
+        +interface "BuilderStep" as RemotePluginServerFactoryBuilderStep {
+            + RemotePluginServerFactory build ()
         }
-        +class "<<<back:yellow>PluginFactory</back>>>\nRemoteClientPluginFactory" as RemoteClientPluginFactory {
+        +class "<<<back:yellow>PluginFactory</back>>>\nRemotePluginClientFactory" as RemotePluginClientFactory {
             + {static} NodeStep builder ()
         }
-        +interface "NodeStep" as RemoteClientPluginFactoryNodeStep {
+        +interface "NodeStep" as RemotePluginClientFactoryNodeStep {
             + AsyncNodePluginStep withAsyncNode (\n    KeypleClientAsync endpoint)
             + SyncNodePluginStep withSyncNode (\n    KeypleClientSync endpoint)
         }
-        +interface "AsyncNodePluginStep" as RemoteClientPluginFactoryAsyncNodePluginStep {
+        +interface "AsyncNodePluginStep" as RemotePluginClientFactoryAsyncNodePluginStep {
             + AsyncNodePluginEventNotificationPoolStep withPluginObservation ()
             + AsyncNodeReaderStep withoutPluginObservation ()
         }
-        +interface "AsyncNodePluginEventNotificationPoolStep" as RemoteClientPluginFactoryAsyncNodePluginEventNotificationPoolStep {
+        +interface "AsyncNodePluginEventNotificationPoolStep" as RemotePluginClientFactoryAsyncNodePluginEventNotificationPoolStep {
             + AsyncNodeReaderStep usingDefaultEventNotificationPool ()
             + AsyncNodeReaderStep usingEventNotificationPool (\n    ExecutorService eventNotificationPool)
         }
-        +interface "AsyncNodeReaderStep" as RemoteClientPluginFactoryAsyncNodeReaderStep {
+        +interface "AsyncNodeReaderStep" as RemotePluginClientFactoryAsyncNodeReaderStep {
             + AsyncNodeReaderEventNotificationPoolStep withReaderObservation ()
             + BuilderStep withoutReaderObservation ()
         }
-        +interface "AsyncNodeReaderEventNotificationPoolStep" as RemoteClientPluginFactoryAsyncNodeReaderEventNotificationPoolStep {
+        +interface "AsyncNodeReaderEventNotificationPoolStep" as RemotePluginClientFactoryAsyncNodeReaderEventNotificationPoolStep {
             + BuilderStep usingDefaultEventNotificationPool ()
             + BuilderStep usingEventNotificationPool (\n    ExecutorService eventNotificationPool)
         }
-        +interface "SyncNodePluginStep" as RemoteClientPluginFactorySyncNodePluginStep {
+        +interface "SyncNodePluginStep" as RemotePluginClientFactorySyncNodePluginStep {
             + ServerPushPluginEventStrategyStep withPluginObservation ()
             + SyncNodeReaderStep withoutPluginObservation ()
         }
-        +interface "ServerPushPluginEventStrategyStep" as RemoteClientPluginFactoryServerPushPluginEventStrategyStep {
+        +interface "ServerPushPluginEventStrategyStep" as RemotePluginClientFactoryServerPushPluginEventStrategyStep {
             + SyncNodePluginEventNotificationPoolStep usingPluginPollingStrategy (\n    int requestFrequencyInSeconds)
             + SyncNodePluginEventNotificationPoolStep usingPluginLongPollingStrategy (\n    int requestTimeoutInSeconds)
         }
-        +interface "SyncNodePluginEventNotificationPoolStep" as RemoteClientPluginFactorySyncNodePluginEventNotificationPoolStep {
+        +interface "SyncNodePluginEventNotificationPoolStep" as RemotePluginClientFactorySyncNodePluginEventNotificationPoolStep {
             + SyncNodeReaderStep usingDefaultEventNotificationPool ()
             + SyncNodeReaderStep usingEventNotificationPool (\n    ExecutorService eventNotificationPool)
         }
-        +interface "SyncNodeReaderStep" as RemoteClientPluginFactorySyncNodeReaderStep {
+        +interface "SyncNodeReaderStep" as RemotePluginClientFactorySyncNodeReaderStep {
             + ServerPushReaderEventStrategyStep withReaderObservation ()
             + BuilderStep withoutReaderObservation ()
         }
-        +interface "ServerPushReaderEventStrategyStep" as RemoteClientPluginFactoryServerPushReaderEventStrategyStep {
+        +interface "ServerPushReaderEventStrategyStep" as RemotePluginClientFactoryServerPushReaderEventStrategyStep {
             + SyncNodeReaderEventNotificationPoolStep usingReaderPollingStrategy (\n    int requestFrequencyInSeconds)
             + SyncNodeReaderEventNotificationPoolStep usingReaderLongPollingStrategy (\n    int requestTimeoutInSeconds)
         }
-        +interface "SyncNodeReaderEventNotificationPoolStep" as RemoteClientPluginFactorySyncNodeReaderEventNotificationPoolStep {
+        +interface "SyncNodeReaderEventNotificationPoolStep" as RemotePluginClientFactorySyncNodeReaderEventNotificationPoolStep {
             + BuilderStep usingDefaultEventNotificationPool ()
             + BuilderStep usingEventNotificationPool (\n    ExecutorService eventNotificationPool)
         }
-        +interface "BuilderStep" as RemoteClientPluginFactoryBuilderStep {
-            + RemoteClientPluginFactory build ()
+        +interface "BuilderStep" as RemotePluginClientFactoryBuilderStep {
+            + RemotePluginClientFactory build ()
         }
-        +class "<<<back:yellow>PluginFactory</back>>>\nRemotePoolClientPluginFactory" as RemotePoolClientPluginFactory {
+        +class "<<<back:yellow>PluginFactory</back>>>\nPoolRemotePluginClientFactory" as PoolRemotePluginClientFactory {
             + {static} NodeStep builder ()
         }
-        +class "NodeStep" as RemotePoolClientPluginFactoryNodeStep {
+        +class "NodeStep" as PoolRemotePluginClientFactoryNodeStep {
             + TimeoutStep withAsyncNode (\n    KeypleClientAsync endpoint)
             + TimeoutStep withSyncNode (\n    KeypleClientSync endpoint)
         }
-        +interface "TimeoutStep" as RemotePoolClientPluginFactoryTimeoutStep {
+        +interface "TimeoutStep" as PoolRemotePluginClientFactoryTimeoutStep {
             + BuilderStep usingDefaultTimeout ()
             + BuilderStep usingCustomTimeout (int timeoutInSeconds)
         }
-        +interface "BuilderStep" as RemotePoolClientPluginFactoryBuilderStep {
-            + RemotePoolClientPluginFactory build ()
+        +interface "BuilderStep" as PoolRemotePluginClientFactoryBuilderStep {
+            + PoolRemotePluginClientFactory build ()
         }
     }
 }
 
 ' Associations
-RemoteServerPluginFactory ..> RemoteServerPluginFactoryNodeStep #C_USE
-RemoteServerPluginFactoryNodeStep ..> RemoteServerPluginFactoryPluginObserverStep #C_USE
-RemoteServerPluginFactoryPluginObserverStep ..> RemoteServerPluginFactoryEventNotificationPoolStep #C_USE
-RemoteServerPluginFactoryEventNotificationPoolStep ..> RemoteServerPluginFactoryBuilderStep #C_USE
+RemotePluginServerFactory ..> RemotePluginServerFactoryNodeStep #C_USE
+RemotePluginServerFactoryNodeStep ..> RemotePluginServerFactoryPluginObserverStep #C_USE
+RemotePluginServerFactoryPluginObserverStep ..> RemotePluginServerFactoryEventNotificationPoolStep #C_USE
+RemotePluginServerFactoryEventNotificationPoolStep ..> RemotePluginServerFactoryBuilderStep #C_USE
 
-RemoteClientPluginFactory ..> RemoteClientPluginFactoryNodeStep #C_USE
-RemoteClientPluginFactoryNodeStep ..> RemoteClientPluginFactoryAsyncNodePluginStep #C_USE
-RemoteClientPluginFactoryAsyncNodePluginStep ..> RemoteClientPluginFactoryAsyncNodePluginEventNotificationPoolStep #C_USE
-RemoteClientPluginFactoryAsyncNodePluginEventNotificationPoolStep ..> RemoteClientPluginFactoryAsyncNodeReaderStep #C_USE
-RemoteClientPluginFactoryAsyncNodePluginStep ..> RemoteClientPluginFactoryAsyncNodeReaderStep #C_USE
-RemoteClientPluginFactoryNodeStep ..> RemoteClientPluginFactorySyncNodePluginStep #C_USE
-RemoteClientPluginFactorySyncNodePluginStep ..> RemoteClientPluginFactoryServerPushPluginEventStrategyStep #C_USE
-RemoteClientPluginFactoryServerPushPluginEventStrategyStep ..> RemoteClientPluginFactorySyncNodePluginEventNotificationPoolStep #C_USE
-RemoteClientPluginFactorySyncNodePluginStep ..> RemoteClientPluginFactorySyncNodeReaderStep #C_USE
-RemoteClientPluginFactoryAsyncNodeReaderStep ..> RemoteClientPluginFactoryAsyncNodeReaderEventNotificationPoolStep #C_USE
-RemoteClientPluginFactoryAsyncNodeReaderEventNotificationPoolStep ..> RemoteClientPluginFactoryBuilderStep #C_USE
-RemoteClientPluginFactoryAsyncNodeReaderStep ..> RemoteClientPluginFactoryBuilderStep #C_USE
-RemoteClientPluginFactorySyncNodePluginEventNotificationPoolStep ..> RemoteClientPluginFactorySyncNodeReaderStep #C_USE
-RemoteClientPluginFactorySyncNodeReaderStep ..> RemoteClientPluginFactoryBuilderStep #C_USE
-RemoteClientPluginFactorySyncNodeReaderStep ..> RemoteClientPluginFactoryServerPushReaderEventStrategyStep #C_USE
-RemoteClientPluginFactoryServerPushReaderEventStrategyStep ..> RemoteClientPluginFactorySyncNodeReaderEventNotificationPoolStep #C_USE
-RemoteClientPluginFactorySyncNodeReaderEventNotificationPoolStep ..> RemoteClientPluginFactoryBuilderStep #C_USE
+RemotePluginClientFactory ..> RemotePluginClientFactoryNodeStep #C_USE
+RemotePluginClientFactoryNodeStep ..> RemotePluginClientFactoryAsyncNodePluginStep #C_USE
+RemotePluginClientFactoryAsyncNodePluginStep ..> RemotePluginClientFactoryAsyncNodePluginEventNotificationPoolStep #C_USE
+RemotePluginClientFactoryAsyncNodePluginEventNotificationPoolStep ..> RemotePluginClientFactoryAsyncNodeReaderStep #C_USE
+RemotePluginClientFactoryAsyncNodePluginStep ..> RemotePluginClientFactoryAsyncNodeReaderStep #C_USE
+RemotePluginClientFactoryNodeStep ..> RemotePluginClientFactorySyncNodePluginStep #C_USE
+RemotePluginClientFactorySyncNodePluginStep ..> RemotePluginClientFactoryServerPushPluginEventStrategyStep #C_USE
+RemotePluginClientFactoryServerPushPluginEventStrategyStep ..> RemotePluginClientFactorySyncNodePluginEventNotificationPoolStep #C_USE
+RemotePluginClientFactorySyncNodePluginStep ..> RemotePluginClientFactorySyncNodeReaderStep #C_USE
+RemotePluginClientFactoryAsyncNodeReaderStep ..> RemotePluginClientFactoryAsyncNodeReaderEventNotificationPoolStep #C_USE
+RemotePluginClientFactoryAsyncNodeReaderEventNotificationPoolStep ..> RemotePluginClientFactoryBuilderStep #C_USE
+RemotePluginClientFactoryAsyncNodeReaderStep ..> RemotePluginClientFactoryBuilderStep #C_USE
+RemotePluginClientFactorySyncNodePluginEventNotificationPoolStep ..> RemotePluginClientFactorySyncNodeReaderStep #C_USE
+RemotePluginClientFactorySyncNodeReaderStep ..> RemotePluginClientFactoryBuilderStep #C_USE
+RemotePluginClientFactorySyncNodeReaderStep ..> RemotePluginClientFactoryServerPushReaderEventStrategyStep #C_USE
+RemotePluginClientFactoryServerPushReaderEventStrategyStep ..> RemotePluginClientFactorySyncNodeReaderEventNotificationPoolStep #C_USE
+RemotePluginClientFactorySyncNodeReaderEventNotificationPoolStep ..> RemotePluginClientFactoryBuilderStep #C_USE
 
-RemotePoolClientPluginFactory ..> RemotePoolClientPluginFactoryNodeStep #C_USE
-RemotePoolClientPluginFactoryNodeStep ..> RemotePoolClientPluginFactoryTimeoutStep #C_USE
-RemotePoolClientPluginFactoryTimeoutStep ..> RemotePoolClientPluginFactoryBuilderStep #C_USE
+PoolRemotePluginClientFactory ..> PoolRemotePluginClientFactoryNodeStep #C_USE
+PoolRemotePluginClientFactoryNodeStep ..> PoolRemotePluginClientFactoryTimeoutStep #C_USE
+PoolRemotePluginClientFactoryTimeoutStep ..> PoolRemotePluginClientFactoryBuilderStep #C_USE
 
-RemoteServerPlugin *--> "1..N" RemoteServerReader #C_LINK : readers
+RemotePluginServer *--> "1..N" RemoteReaderServer #C_LINK : readers
 
 ' == LAYOUT ==
 
-serverApi -[hidden]- RemoteServerPlugin
-clientApi -[hidden]- RemoteClientPlugin
-poolClientApi -[hidden]- RemotePoolClientPlugin
+serverApi -[hidden]- RemotePluginServer
+clientApi -[hidden]- RemotePluginClient
+poolClientApi -[hidden]- PoolRemotePluginClient
 
-RemoteServerObservableReader -[hidden]- RemoteServerPluginUtils
-RemoteClientObservablePlugin -[hidden]- RemoteClientPluginUtils
-RemotePoolClientPlugin -[hidden]- RemotePoolClientPluginUtils
+ObservableRemoteReaderServer -[hidden]- RemotePluginServerUtils
+ObservableRemotePluginClient -[hidden]- RemotePluginClientUtils
+PoolRemotePluginClient -[hidden]- PoolRemotePluginClientUtils
 
-RemoteServerPluginUtils -[hidden]- RemoteServerPluginFactory
-RemoteClientPluginUtils -[hidden]- RemoteClientPluginFactory
-RemotePoolClientPluginUtils -[hidden]- RemotePoolClientPluginFactory
+RemotePluginServerUtils -[hidden]- RemotePluginServerFactory
+RemotePluginClientUtils -[hidden]- RemotePluginClientFactory
+PoolRemotePluginClientUtils -[hidden]- PoolRemotePluginClientFactory
 
 ' == STYLE ==
 
 package root #C_GREY1 {}
 package rootImpl #C_GREY2 {}
 
-class RemoteServerPluginUtils <<green>>
-interface RemoteServerPlugin <<green>>
-interface RemoteServerReader <<green>>
-interface RemoteServerObservableReader <<green>>
-class RemoteServerPluginFactory <<green>>
-interface RemoteServerPluginFactoryNodeStep <<green>>
-interface RemoteServerPluginFactoryPluginObserverStep <<green>>
-interface RemoteServerPluginFactoryEventNotificationPoolStep <<green>>
-interface RemoteServerPluginFactoryBuilderStep <<green>>
+class RemotePluginServerUtils <<green>>
+interface RemotePluginServer <<green>>
+interface RemoteReaderServer <<green>>
+interface ObservableRemoteReaderServer <<green>>
+class RemotePluginServerFactory <<green>>
+interface RemotePluginServerFactoryNodeStep <<green>>
+interface RemotePluginServerFactoryPluginObserverStep <<green>>
+interface RemotePluginServerFactoryEventNotificationPoolStep <<green>>
+interface RemotePluginServerFactoryBuilderStep <<green>>
 
-class RemoteClientPluginUtils <<purple>>
-interface RemoteClientPlugin <<purple>>
-class RemoteClientPluginFactory <<purple>>
-interface RemoteClientPluginFactoryNodeStep <<purple>>
-interface RemoteClientPluginFactoryAsyncNodePluginStep <<purple>>
-interface RemoteClientPluginFactoryAsyncNodePluginEventNotificationPoolStep <<purple>>
-interface RemoteClientPluginFactoryAsyncNodeReaderStep <<purple>>
-interface RemoteClientPluginFactoryAsyncNodeReaderEventNotificationPoolStep <<purple>>
-interface RemoteClientPluginFactorySyncNodePluginStep <<purple>>
-interface RemoteClientPluginFactoryServerPushPluginEventStrategyStep <<purple>>
-interface RemoteClientPluginFactorySyncNodePluginEventNotificationPoolStep <<purple>>
-interface RemoteClientPluginFactorySyncNodeReaderStep <<purple>>
-interface RemoteClientPluginFactoryServerPushReaderEventStrategyStep <<purple>>
-interface RemoteClientPluginFactorySyncNodeReaderEventNotificationPoolStep <<purple>>
-interface RemoteClientPluginFactoryBuilderStep <<purple>>
+class RemotePluginClientUtils <<purple>>
+interface RemotePluginClient <<purple>>
+class RemotePluginClientFactory <<purple>>
+interface RemotePluginClientFactoryNodeStep <<purple>>
+interface RemotePluginClientFactoryAsyncNodePluginStep <<purple>>
+interface RemotePluginClientFactoryAsyncNodePluginEventNotificationPoolStep <<purple>>
+interface RemotePluginClientFactoryAsyncNodeReaderStep <<purple>>
+interface RemotePluginClientFactoryAsyncNodeReaderEventNotificationPoolStep <<purple>>
+interface RemotePluginClientFactorySyncNodePluginStep <<purple>>
+interface RemotePluginClientFactoryServerPushPluginEventStrategyStep <<purple>>
+interface RemotePluginClientFactorySyncNodePluginEventNotificationPoolStep <<purple>>
+interface RemotePluginClientFactorySyncNodeReaderStep <<purple>>
+interface RemotePluginClientFactoryServerPushReaderEventStrategyStep <<purple>>
+interface RemotePluginClientFactorySyncNodeReaderEventNotificationPoolStep <<purple>>
+interface RemotePluginClientFactoryBuilderStep <<purple>>
 
-interface RemoteClientObservablePlugin <<purple>>
+interface ObservableRemotePluginClient <<purple>>
 
-class RemotePoolClientPluginUtils <<blue>>
-interface RemotePoolClientPlugin <<blue>>
-class RemotePoolClientPluginFactory <<blue>>
-interface RemotePoolClientPluginFactoryNodeStep <<blue>>
-interface RemotePoolClientPluginFactoryTimeoutStep <<blue>>
-interface RemotePoolClientPluginFactoryBuilderStep <<blue>>
+class PoolRemotePluginClientUtils <<blue>>
+interface PoolRemotePluginClient <<blue>>
+class PoolRemotePluginClientFactory <<blue>>
+interface PoolRemotePluginClientFactoryNodeStep <<blue>>
+interface PoolRemotePluginClientFactoryTimeoutStep <<blue>>
+interface PoolRemotePluginClientFactoryBuilderStep <<blue>>
 
 @enduml

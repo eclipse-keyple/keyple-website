@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple Remote Plugin - Common API - 1.0.0 (02/11/2020)
+    Keyple Remote Plugin - Common API - 1.0.0 (03/11/2020)
 end title
 
 ' == THEME ==
@@ -88,8 +88,8 @@ package "org.eclipse.keyple.plugin.remote" as root {
         + String action
         + String clientNodeId
         + String serverNodeId
-        + String nativeReaderName
-        + String virtualReaderName
+        + String localReaderName
+        + String remoteReaderName
         + String body
         + getters()...
         + setters()...

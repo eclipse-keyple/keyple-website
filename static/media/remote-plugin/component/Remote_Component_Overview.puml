@@ -1,6 +1,6 @@
 @startuml
 footer
-    Keyple Remote Plugin - Overview (15/10/2020)
+    Keyple Remote Plugin - Overview (03/11/2020)
 end footer
 
 ' == THEME ==
@@ -35,34 +35,34 @@ hide <<grey>> stereotype
 
 [Hardware Reader\n(PO, SAM, HSM,...)] as reader <<red>>
 
-package "Terminal with 'hardware' reader" {
+package "Terminal with 'local' reader" {
     [Application] as appA
-    package "Keyple" as nativeKeyple {
-        [**Keyple Remote Plugin**\n("native" components)] as nativeLib <<blue>>
-        [Keyple Core & Solution] as nativeKeypleLibs <<purple>>
+    package "Keyple" as localKeyple {
+        [**Keyple Remote Plugin**\n("local" components)] as localLib <<blue>>
+        [Keyple Core & Solution] as localKeypleLibs <<purple>>
     }
     [Network Endpoint] as endpointA <<green>>
 }
 
-package "Terminal with 'virtual' reader" {
+package "Terminal with 'remote' reader" {
     [Application] as appB
-    package "Keyple" as virtualKeyple {
-        [Keyple Core & Solution] as virtualKeypleLibs <<purple>>
-        [**Keyple Remote Plugin**\n("virtual" components)] as virtualLib <<blue>>
+    package "Keyple" as remoteKeyple {
+        [Keyple Core & Solution] as remoteKeypleLibs <<purple>>
+        [**Keyple Remote Plugin**\n("remote" components)] as remoteLib <<blue>>
     }
     [Network Endpoint] as endpointB <<green>>
 }
 
-reader - nativeKeypleLibs
+reader - localKeypleLibs
 
-appA -- nativeKeypleLibs
-nativeKeypleLibs -- nativeLib
-nativeLib -- endpointA
+appA -- localKeypleLibs
+localKeypleLibs -- localLib
+localLib -- endpointA
 
 endpointA - endpointB
 
-appB -- virtualKeypleLibs
-virtualKeypleLibs -- virtualLib
-virtualLib -- endpointB
+appB -- remoteKeypleLibs
+remoteKeypleLibs -- remoteLib
+remoteLib -- endpointB
 
 @enduml

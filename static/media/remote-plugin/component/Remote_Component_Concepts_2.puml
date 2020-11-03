@@ -1,6 +1,6 @@
 @startuml
 footer
-    Keyple Remote Plugin - Concepts - One Remote Plugin connected to many Native Services (30/10/2020)
+    Keyple Remote Plugin - Concepts - One Remote Plugin connected to many Local Services (03/11/2020)
 end footer
 
 ' == THEME ==
@@ -41,63 +41,63 @@ hide <<grey>> stereotype
 [Hardware Reader A\n(PO)] as readerA <<green>>
 [Hardware Reader B\n(PO)] as readerB <<blue>>
 [Hardware Reader C\n(PO)] as readerC <<purple>>
-package "Terminal A with 'hardware' reader" {
+package "Terminal A with 'local' reader" {
     [Application] as appA
-    [**Native Service**] as nativeServiceA <<red>>
-    [Native\nPlugin A] as nativePluginA <<green>>
-    [Native\nReader A] as nativeReaderA <<green>>
+    [**Local Service**] as localServiceA <<red>>
+    [Local\nPlugin A] as localPluginA <<green>>
+    [Local\nReader A] as localReaderA <<green>>
 }
-package "Terminal with 'virtual' reader" {
+package "Terminal with 'remote' reader" {
     [Application] as app
     [**Remote Plugin**] as remotePlugin <<red>>
-    [Virtual\nReader A] as virtualReaderA <<green>>
-    [Virtual\nReader B] as virtualReaderB <<blue>>
-    [Virtual\nReader C] as virtualReaderC <<purple>>
+    [Remote\nReader A] as remoteReaderA <<green>>
+    [Remote\nReader B] as remoteReaderB <<blue>>
+    [Remote\nReader C] as remoteReaderC <<purple>>
 }
-package "Terminal B with 'hardware' reader" {
+package "Terminal B with 'local' reader" {
     [Application] as appB
-    [**Native Service**] as nativeServiceB <<red>>
-    [Native\nPlugin B] as nativePluginB <<blue>>
-    [Native\nReader B] as nativeReaderB <<blue>>
-    [Native\nPlugin C] as nativePluginC <<purple>>
-    [Native\nReader C] as nativeReaderC <<purple>>
+    [**Local Service**] as localServiceB <<red>>
+    [Local\nPlugin B] as localPluginB <<blue>>
+    [Local\nReader B] as localReaderB <<blue>>
+    [Local\nPlugin C] as localPluginC <<purple>>
+    [Local\nReader C] as localReaderC <<purple>>
 }
 
 'utilisation
 
-appA -- nativePluginA #LightGrey
-appA -- nativeReaderA #LightGrey
-appA -- nativeServiceA
-nativePluginA -- nativeReaderA #COLOR_GREEN
-nativeServiceA -- nativePluginA #COLOR_GREEN
-nativeServiceA -- nativeReaderA #COLOR_GREEN
-nativeReaderA -- readerA #COLOR_GREEN
+appA -- localPluginA #LightGrey
+appA -- localReaderA #LightGrey
+appA -- localServiceA
+localPluginA -- localReaderA #COLOR_GREEN
+localServiceA -- localPluginA #COLOR_GREEN
+localServiceA -- localReaderA #COLOR_GREEN
+localReaderA -- readerA #COLOR_GREEN
 
-nativeServiceA - remotePlugin
+localServiceA - remotePlugin
 
 app -- remotePlugin
-app -- virtualReaderA #LightGrey
-app -- virtualReaderB #LightGrey
-app -- virtualReaderC #LightGrey
-remotePlugin -- virtualReaderA #COLOR_GREEN
-remotePlugin -- virtualReaderB #COLOR_BLUE
-remotePlugin -- virtualReaderC #COLOR_PURPLE
+app -- remoteReaderA #LightGrey
+app -- remoteReaderB #LightGrey
+app -- remoteReaderC #LightGrey
+remotePlugin -- remoteReaderA #COLOR_GREEN
+remotePlugin -- remoteReaderB #COLOR_BLUE
+remotePlugin -- remoteReaderC #COLOR_PURPLE
 
-remotePlugin - nativeServiceB
+remotePlugin - localServiceB
 
-appB -- nativePluginB #LightGrey
-appB -- nativeReaderB #LightGrey
-appB -- nativeServiceB
-nativePluginB -- nativeReaderB #COLOR_BLUE
-nativeServiceB -- nativePluginB #COLOR_BLUE
-nativeServiceB -- nativeReaderB #COLOR_BLUE
-nativeReaderB -- readerB #COLOR_BLUE
+appB -- localPluginB #LightGrey
+appB -- localReaderB #LightGrey
+appB -- localServiceB
+localPluginB -- localReaderB #COLOR_BLUE
+localServiceB -- localPluginB #COLOR_BLUE
+localServiceB -- localReaderB #COLOR_BLUE
+localReaderB -- readerB #COLOR_BLUE
 
-appB -- nativePluginC #LightGrey
-appB -- nativeReaderC #LightGrey
-nativeServiceB -- nativePluginC #COLOR_PURPLE
-nativeServiceB -- nativeReaderC #COLOR_PURPLE
-nativePluginC -- nativeReaderC #COLOR_PURPLE
-nativeReaderC -- readerC #COLOR_PURPLE
+appB -- localPluginC #LightGrey
+appB -- localReaderC #LightGrey
+localServiceB -- localPluginC #COLOR_PURPLE
+localServiceB -- localReaderC #COLOR_PURPLE
+localPluginC -- localReaderC #COLOR_PURPLE
+localReaderC -- readerC #COLOR_PURPLE
 
 @enduml

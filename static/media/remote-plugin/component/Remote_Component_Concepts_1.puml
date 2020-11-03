@@ -1,6 +1,6 @@
 @startuml
 footer
-    Keyple Remote Plugin - Concepts - Main Use Case (29/10/2020)
+    Keyple Remote Plugin - Concepts - Main Use Case (03/11/2020)
 end footer
 
 ' == THEME ==
@@ -39,32 +39,32 @@ hide <<grey>> stereotype
 ' == CONTENT ==
 
 [Hardware Reader A\n(PO, SAM, HSM,...)] as readerA <<green>>
-package "Terminal A with 'hardware' reader" {
+package "Terminal A with 'local' reader" {
     [Application] as appA
-    [**Native Service**] as nativeServiceA <<red>>
-    [Native\nPlugin A] as nativePluginA <<green>>
-    [Native\nReader A] as nativeReaderA <<green>>
+    [**Local Service**] as localServiceA <<red>>
+    [Local\nPlugin A] as localPluginA <<green>>
+    [Local\nReader A] as localReaderA <<green>>
 }
-package "Terminal with 'virtual' reader" {
+package "Terminal B with 'remote' reader" {
     [Application] as app
     [**Remote Plugin**] as remotePlugin <<red>>
-    [Virtual\nReader A] as virtualReaderA <<green>>
+    [Remote\nReader A] as remoteReaderA <<green>>
 }
 
 'utilisation
 
-appA -- nativePluginA #LightGrey
-appA -- nativeReaderA #LightGrey
-appA -- nativeServiceA
-nativePluginA -left- nativeReaderA #COLOR_GREEN
-nativeServiceA -left- nativePluginA #COLOR_GREEN
-nativeServiceA -left- nativeReaderA #COLOR_GREEN
-nativeReaderA -left- readerA #COLOR_GREEN
+appA -- localPluginA #LightGrey
+appA -- localReaderA #LightGrey
+appA -- localServiceA
+localPluginA -left- localReaderA #COLOR_GREEN
+localServiceA -left- localPluginA #COLOR_GREEN
+localServiceA -left- localReaderA #COLOR_GREEN
+localReaderA -left- readerA #COLOR_GREEN
 
-nativeServiceA - remotePlugin
+localServiceA - remotePlugin
 
 app -- remotePlugin
-app -- virtualReaderA #LightGrey
-remotePlugin - virtualReaderA #COLOR_GREEN
+app -- remoteReaderA #LightGrey
+remotePlugin - remoteReaderA #COLOR_GREEN
 
 @enduml
