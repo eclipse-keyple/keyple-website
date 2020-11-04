@@ -46,44 +46,49 @@ hide <<grey>> stereotype
 ' == CONTENT ==
 
 package Legend {
-    interface "**Node API**" as nodeApi <<red>>
-    interface "**DTO**" as dtoApi <<grey>>
-    interface "**SPI** (Service Provider Interface)\nMust be implemented by the user" as spiApi
+    interface " " as syncNodeApi
+    note top of syncNodeApi : **Sync Node API**
+    interface " " as asyncNodeApi <<red>>
+    note top of asyncNodeApi : **Async Node API**
+    interface " " as dtoApi <<grey>>
+    note top of dtoApi : **DTO** (Data Transfer Object)
+    package "spi" as legendSpi #C_GREY3 {}
+    note top of legendSpi : Contains **SPI**s (Service Provider Interfaces)\n which must be implemented by the user
 }
 
 package "org.eclipse.keyple.plugin.remote" as root {
     ' Nodes & Senders
-    +interface KeypleClientAsyncNode {
+    +interface AsyncNodeClient {
         +void onOpen (String sessionId)
-        +void onMessage (KeypleMessageDto msg)
+        +void onMessage (MessageDto msg)
         +void onClose (String sessionId)
         +void onError (String sessionId, Throwable error)
     }
-    +interface KeypleServerAsyncNode {
-        +void onMessage (KeypleMessageDto msg)
+    +interface AsyncNodeServer {
+        +void onMessage (MessageDto msg)
         +void onError (String sessionId, Throwable error)
     }
-    +interface KeypleClientSyncNode {
+    +interface SyncNodeClient {
     }
-    +interface KeypleServerSyncNode {
-        +List<KeypleMessageDto> onRequest (KeypleMessageDto msg)
+    +interface SyncNodeServer {
+        +List<MessageDto> onRequest (MessageDto msg)
     }
     ' SPI
     package spi {
-        +interface KeypleClientAsync {
+        +interface AsyncEndpointClient {
             +void openSession (String sessionId)
-            +void sendMessage (KeypleMessageDto msg)
+            +void sendMessage (MessageDto msg)
             +void closeSession (String sessionId)
         }
-        +interface KeypleServerAsync {
-            +void sendMessage (KeypleMessageDto msg)
+        +interface AsyncEndpointServer {
+            +void sendMessage (MessageDto msg)
         }
-        +interface KeypleClientSync {
-            +List<KeypleMessageDto> sendRequest (KeypleMessageDto msg)
+        +interface SyncEndpointClient {
+            +List<MessageDto> sendRequest (MessageDto msg)
         }
     }
     ' DTO
-    +class KeypleMessageDto {
+    +class MessageDto {
         + String sessionId
         + String action
         + String clientNodeId
@@ -97,27 +102,31 @@ package "org.eclipse.keyple.plugin.remote" as root {
 }
 
 ' Associations
-KeypleClientSyncNode --> KeypleClientSync #C_LINK : use >
-KeypleClientAsyncNode --> KeypleClientAsync #C_LINK : use >
-KeypleServerAsyncNode --> KeypleServerAsync #C_LINK : use >
+SyncNodeClient --> SyncEndpointClient #C_LINK : use >
+AsyncNodeClient --> AsyncEndpointClient #C_LINK : use >
+AsyncNodeServer --> AsyncEndpointServer #C_LINK : use >
 
 ' == LAYOUT ==
 
-KeypleServerSyncNode -[hidden]- KeypleMessageDto
+dtoApi -[hidden]- SyncNodeServer
+SyncNodeServer -[hidden]- MessageDto
 
-nodeApi -[hidden]- KeypleClientSyncNode
-spiApi -[hidden]- KeypleServerAsyncNode
+syncNodeApi -[hidden]- SyncNodeClient
+syncNodeApi -[hidden]- SyncNodeServer
+
+asyncNodeApi -[hidden]- AsyncNodeClient
+asyncNodeApi -[hidden]- AsyncNodeServer
 
 ' == STYLE ==
 
 package root #C_GREY1 {}
-package spi #C_GREY2 {}
+package spi #C_GREY3 {}
 
-KeypleClientSyncNode <<red>>
-KeypleServerSyncNode <<red>>
-KeypleClientAsyncNode <<red>>
-KeypleServerAsyncNode <<red>>
+AsyncNodeClient <<red>>
+AsyncNodeServer <<red>>
+AsyncEndpointClient <<red>>
+AsyncEndpointServer <<red>>
 
-KeypleMessageDto <<grey>>
+MessageDto <<grey>>
 
 @enduml

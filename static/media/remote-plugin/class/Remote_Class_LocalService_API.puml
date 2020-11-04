@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple Remote Plugin - Local Service API - 1.0.0 (02/11/2020)
+    Keyple Remote Plugin - Local Service API - 1.0.0 (04/11/2020)
 end title
 
 ' == THEME ==
@@ -46,10 +46,14 @@ hide <<grey>> stereotype
 ' == CONTENT ==
 
 package Legend {
-    interface "**RemotePluginServer API**" as serverApi <<green>>
-    interface "**RemotePluginClient API** or\n**ObservableRemotePluginClient API**" as clientApi <<purple>>
-    interface "**PoolRemotePluginClient API**" as poolClientApi <<blue>>
-    interface "**SPI** (Service Provider Interface)\nMust be implemented by the user" as spiApi
+    interface " " as serverApi <<green>>
+    note top of serverApi : **RemotePluginServer API**
+    interface " " as clientApi <<purple>>
+    note top of clientApi : **RemotePluginClient API** &\n**ObservableRemotePluginClient API**
+    interface " " as poolClientApi <<blue>>
+    note top of poolClientApi : **PoolRemotePluginClient API**
+    package "spi" as legendSpi #C_GREY3 {}
+    note top of legendSpi : Contains **SPI**s (Service Provider Interfaces)\n which must be implemented by the user
 }
 
 package "org.eclipse.keyple.plugin.remote" as root {
@@ -70,7 +74,7 @@ package "org.eclipse.keyple.plugin.remote" as root {
     +interface PoolLocalServiceServer {
     }
     package spi {
-        +interface KeypleClientReaderEventFilter {
+        +interface ObservableReaderEventFilter {
             +Object beforePropagation (ReaderEvent event)
             +Class<? extends Object> getUserOutputDataClass ()
             +void afterPropagation (Object userOutputData)
@@ -110,7 +114,7 @@ package "org.eclipse.keyple.plugin.remote" as root {
             + ReaderStep usingCustomTimeout (int timeoutInSeconds)
         }
         +interface "ReaderStep" as LocalServiceClientFactoryReaderStep {
-            + BuilderStep withReaderObservation (KeypleClientReaderEventFilter filter)
+            + BuilderStep withReaderObservation (ObservableReaderEventFilter filter)
             + BuilderStep withoutReaderObservation ()
         }
         +interface "BuilderStep" as LocalServiceClientFactoryBuilderStep {
@@ -160,7 +164,7 @@ PoolLocalServiceServerFactoryNodeStep ..> PoolLocalServiceServerFactoryBuilderSt
 serverApi -[hidden]- LocalServiceClient
 clientApi -[hidden]- LocalServiceServer
 poolClientApi -[hidden]- PoolLocalServiceServer
-spiApi -[hidden]- KeypleClientReaderEventFilter
+legendSpi -[hidden]- ObservableReaderEventFilter
 
 RemoteServiceParametersBuilder -[hidden]- LocalServiceClientUtils
 LocalServiceServer -[hidden]- LocalServiceServerUtils
@@ -173,7 +177,7 @@ PoolLocalServiceServerUtils -[hidden]- PoolLocalServiceServerFactory
 ' == STYLE ==
 
 package root #C_GREY1 {}
-package spi #C_GREY2 {}
+package spi #C_GREY3 {}
 package impl #C_GREY2 {}
 
 interface LocalServiceClient <<green>>
@@ -185,6 +189,7 @@ interface LocalServiceClientFactoryBuilderStep <<green>>
 class RemoteServiceParameters <<green>>
 class RemoteServiceParametersBuilder <<green>>
 class LocalServiceClientUtils <<green>>
+interface ObservableReaderEventFilter <<green>>
 
 interface LocalServiceServer <<purple>>
 class LocalServiceServerFactory <<purple>>

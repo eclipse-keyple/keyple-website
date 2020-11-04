@@ -362,8 +362,8 @@ Choose this mode if you want to implement a Client-Server **Synchronous** commun
 
 |     | Client | Server |
 | --- | ------ | ------ |
-| SPI to be implemented | `KeypleClientSync` | - |
-| Node API | `KeypleClientSyncNode` | `KeypleServerSyncNode` |
+| SPI to be implemented | `SyncEndpointClient` | - |
+| Node API | `SyncNodeClient` | `SyncNodeServer` |
 | Methods to be used when initializing the factory | `withSyncNode(...)` | `withSyncNode()` |
 | Utility method to use to access the node | - | `getSyncNode()` |
 
@@ -371,7 +371,7 @@ Here is the minimal algorithm to implement in a context with a **single server i
 
 {{< figure library="true" src="remote-plugin/sequence/Remote_Sequence_SyncNode_API.svg" title="" >}}
 
-In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a `serverNodeId` are routed to the server associated with a `KeypleServerSyncNode` node having the `serverNodeId`.
+In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a `serverNodeId` are routed to the server associated with a `SyncNodeServer` node having the `serverNodeId`.
 
 ### Asynchronous
 
@@ -379,8 +379,8 @@ Choose this mode if you want to implement a Full-Duplex **Asynchronous** communi
 
 |     | Client | Server |
 | --- | ------ | ------ |
-| SPI to be implemented | `KeypleClientAsync` | `KeypleServerAsync` |
-| Node API | `KeypleClientAsyncNode` | `KeypleServerAsyncNode` |
+| SPI to be implemented | `AsyncEndpointClient` | `AsyncEndpointServer` |
+| Node API | `AsyncNodeClient` | `AsyncNodeServer` |
 | Methods to be used when initializing the factory | `withAsyncNode(...)` | `withAsyncNode(...)` |
 | Utility method to use to access the node | `getAsyncNode()` | `getAsyncNode()` |
 
@@ -390,7 +390,7 @@ Here is the minimal algorithm to implement :
 
 ### Exchanged data
 
-The data exchanged between **Remote Plugin** and **Local Service** components are contain in the DTO (Data Transfer Object) `KeypleMessageDto`. It is built and processed by the plugin and **you don't need to modify it**.
+The data exchanged between **Remote Plugin** and **Local Service** components are contain in the DTO (Data Transfer Object) `MessageDto`. It is built and processed by the plugin and **you don't need to modify it**.
 
 However, it is necessary in some contexts to access certain information such as the `sessionId` in the case of asynchronous communication or the `serverNodeId` in the case of synchronous communication with several server instances.
 

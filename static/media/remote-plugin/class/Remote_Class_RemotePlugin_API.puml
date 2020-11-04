@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple Remote Plugin - Remote Plugin API - 1.0.0 (03/11/2020)
+    Keyple Remote Plugin - Remote Plugin API - 1.0.0 (04/11/2020)
 end title
 
 ' == THEME ==
@@ -46,9 +46,12 @@ hide <<grey>> stereotype
 ' == CONTENT ==
 
 package Legend {
-    interface "**RemotePluginServer API**" as serverApi <<green>>
-    interface "**RemotePluginClient API** or\n**ObservableRemotePluginClient API**" as clientApi <<purple>>
-    interface "**PoolRemotePluginClient API**" as poolClientApi <<blue>>
+    interface " " as serverApi <<green>>
+    note top of serverApi : **RemotePluginServer API**
+    interface " " as clientApi <<purple>>
+    note top of clientApi : **RemotePluginClient API** &\n**ObservableRemotePluginClient API**
+    interface " " as poolClientApi <<blue>>
+    note top of poolClientApi : **PoolRemotePluginClient API**
 }
 
 package "org.eclipse.keyple.plugin.remote" as root {
