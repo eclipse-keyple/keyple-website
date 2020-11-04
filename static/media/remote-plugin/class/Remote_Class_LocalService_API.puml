@@ -134,8 +134,11 @@ package "org.eclipse.keyple.plugin.remote" as root {
             + {static} NodeStep builder ()
         }
         +interface "NodeStep" as PoolLocalServiceServerFactoryNodeStep {
-            + BuilderStep withAsyncNode (KeypleServerAsync endpoint)
-            + BuilderStep withSyncNode ()
+            + PluginStep withAsyncNode (KeypleServerAsync endpoint)
+            + PluginStep withSyncNode ()
+        }
+        +interface "PluginStep" as PoolLocalServiceServerFactoryPluginStep {
+            + BuilderStep withPoolPlugins (String... poolPluginNames)
         }
         +interface "BuilderStep" as PoolLocalServiceServerFactoryBuilderStep {
             + PoolLocalServiceServer getService ()
@@ -157,7 +160,8 @@ LocalServiceServerFactory ..> LocalServiceServerFactoryNodeStep #C_USE
 LocalServiceServerFactoryNodeStep ..> LocalServiceServerFactoryBuilderStep #C_USE
 
 PoolLocalServiceServerFactory ..> PoolLocalServiceServerFactoryNodeStep #C_USE
-PoolLocalServiceServerFactoryNodeStep ..> PoolLocalServiceServerFactoryBuilderStep #C_USE
+PoolLocalServiceServerFactoryNodeStep ..> PoolLocalServiceServerFactoryPluginStep #C_USE
+PoolLocalServiceServerFactoryPluginStep ..> PoolLocalServiceServerFactoryBuilderStep #C_USE
 
 ' == LAYOUT ==
 
@@ -200,6 +204,7 @@ class LocalServiceServerUtils <<purple>>
 interface PoolLocalServiceServer <<blue>>
 class PoolLocalServiceServerFactory <<blue>>
 interface PoolLocalServiceServerFactoryNodeStep <<blue>>
+interface PoolLocalServiceServerFactoryPluginStep <<blue>>
 interface PoolLocalServiceServerFactoryBuilderStep <<blue>>
 class PoolLocalServiceServerUtils <<blue>>
 
