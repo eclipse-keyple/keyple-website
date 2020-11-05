@@ -92,9 +92,9 @@ The **Keyple Remote Plugin** solution provides **3** different specific **Remote
 
 Moreover, some plugins have different modes in which they allow or not the observation of plugin or reader events (such as smart card insertion, reader connection, etc...).
 
-It is important to note that each **Remote Plugin** and **Local Service** components are dependent to a specific network protocol type (synchronous or asynchronous).
+Each **Remote Plugin** and **Local Service** has a default name, but it's possible to specify a custom name during the initialization phase.
 
-Therefore, there can only be a maximum of 2 instances of the same **Remote Plugin** or **Local Service** per application, one with a synchronous and the other one with an asynchronous network communication configuration.
+It is thus possible to have within an application as many instances of a specific **Remote Plugin** or **Local Service** as desired.
 
 ### RemotePluginServer
 
@@ -365,7 +365,7 @@ Choose this mode if you want to implement a Client-Server **Synchronous** commun
 | SPI to be implemented | `SyncEndpointClient` | - |
 | Node API | `SyncNodeClient` | `SyncNodeServer` |
 | Methods to be used when initializing the factory | `withSyncNode(...)` | `withSyncNode()` |
-| Utility method to use to access the node | - | `getSyncNode()` |
+| Utility method to use to access the node | - | `getSyncNode()` or<br> `getSyncNode(...)` |
 
 Here is the minimal algorithm to implement in a context with a **single server instance** :
 
@@ -382,7 +382,7 @@ Choose this mode if you want to implement a Full-Duplex **Asynchronous** communi
 | SPI to be implemented | `AsyncEndpointClient` | `AsyncEndpointServer` |
 | Node API | `AsyncNodeClient` | `AsyncNodeServer` |
 | Methods to be used when initializing the factory | `withAsyncNode(...)` | `withAsyncNode(...)` |
-| Utility method to use to access the node | `getAsyncNode()` | `getAsyncNode()` |
+| Utility method to use to access the node | `getAsyncNode()` or<br> `getAsyncNode(...)` | `getAsyncNode()` or<br> `getAsyncNode(...)` |
 
 Here is the minimal algorithm to implement :
 

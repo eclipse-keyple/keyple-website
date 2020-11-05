@@ -1,6 +1,6 @@
 @startuml
 footer
-    Keyple Remote Plugin - RemotePluginServer API with an ObservableReader (03/11/2020)
+    Keyple Remote Plugin - RemotePluginServer API with an ObservableReader (05/11/2020)
 end footer
 
 ' == THEME ==
@@ -64,7 +64,7 @@ return <color:red>**smartCard**</color>
 
 client -> client : prepare userInputData
 
-client -> client : LocalClientUtils.getService ()
+client -> client : LocalClientUtils.getLocalService ()
 client -> localService : executeRemoteService (\n RemoteServiceParameters\n   .builder(<color:blue>**serviceId**</color>, reader)\n   .withInitialCardContent(<color:red>**smartCard**</color>)\n   .withUserInputData(<color:green>**userInputData**</color>).build(),\n classOfUserOutputData)
 activate localService #LightBlue
 

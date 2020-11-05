@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple Remote Plugin - Local Service API - 1.0.0 (04/11/2020)
+    Keyple Remote Plugin - Local Service API - 1.0.0 (05/11/2020)
 end title
 
 ' == THEME ==
@@ -84,34 +84,43 @@ package "org.eclipse.keyple.plugin.remote" as root {
         ' Utilities
         +class LocalServiceClientUtils {
             --
-            + {static} LocalServiceClient getAsyncService ()
-            + {static} KeypleClientAsyncNode getAsyncNode ()
+            + {static} LocalServiceClient getLocalService ()
+            + {static} LocalServiceClient getLocalService (String localServiceName)
             ..
-            + {static} LocalServiceClient getSyncService ()
+            + {static} AsyncNodeClient getAsyncNode ()
+            + {static} AsyncNodeClient getAsyncNode (String localServiceName)
         }
         +class LocalServiceServerUtils {
             --
-            + {static} KeypleServerAsyncNode getAsyncNode ()
+            + {static} AsyncNodeServer getAsyncNode ()
+            + {static} AsyncNodeServer getAsyncNode (String localServiceName)
             ..
-            + {static} KeypleServerSyncNode getSyncNode ()
+            + {static} SyncNodeServer getSyncNode ()
+            + {static} SyncNodeServer getSyncNode (String localServiceName)
         }
         +class PoolLocalServiceServerUtils {
             --
-            + {static} KeypleServerAsyncNode getAsyncNode ()
+            + {static} AsyncNodeServer getAsyncNode ()
+            + {static} AsyncNodeServer getAsyncNode (String localServiceName)
             ..
-            + {static} KeypleServerSyncNode getSyncNode ()
+            + {static} SyncNodeServer getSyncNode ()
+            + {static} SyncNodeServer getSyncNode (String localServiceName)
         }
         ' Factories
         +class LocalServiceClientFactory {
-            + {static} NodeStep builder ()
+            + {static} NameStep builder ()
+        }
+        +interface "NameStep" as LocalServiceClientFactoryNameStep {
+            + NodeStep withDefaultServiceName ()
+            + NodeStep withServiceName (String localServiceName)
         }
         +interface "NodeStep" as LocalServiceClientFactoryNodeStep {
-            + TimeoutStep withAsyncNode (KeypleClientAsync endpoint)
-            + ReaderStep withSyncNode (KeypleClientSync endpoint)
+            + TimeoutStep withAsyncNode (AsyncEndpointClient endpoint)
+            + ReaderStep withSyncNode (SyncEndpointClient endpoint)
         }
         +interface "TimeoutStep" as LocalServiceClientFactoryTimeoutStep {
             + ReaderStep usingDefaultTimeout ()
-            + ReaderStep usingCustomTimeout (int timeoutInSeconds)
+            + ReaderStep usingTimeout (int timeoutInSeconds)
         }
         +interface "ReaderStep" as LocalServiceClientFactoryReaderStep {
             + BuilderStep withReaderObservation (ObservableReaderEventFilter filter)
@@ -121,20 +130,28 @@ package "org.eclipse.keyple.plugin.remote" as root {
             + LocalServiceClient getService ()
         }
         +class LocalServiceServerFactory {
-            + {static} NodeStep builder ()
+            + {static} NameStep builder ()
+        }
+        +interface "NameStep" as LocalServiceServerFactoryNameStep {
+            + NodeStep withDefaultServiceName ()
+            + NodeStep withServiceName (String localServiceName)
         }
         +interface "NodeStep" as LocalServiceServerFactoryNodeStep {
-            + BuilderStep withAsyncNode (KeypleServerAsync endpoint)
+            + BuilderStep withAsyncNode (AsyncEndpointServer endpoint)
             + BuilderStep withSyncNode ()
         }
         +interface "BuilderStep" as LocalServiceServerFactoryBuilderStep {
             + LocalServiceServer getService ()
         }
         +class PoolLocalServiceServerFactory {
-            + {static} NodeStep builder ()
+            + {static} NameStep builder ()
+        }
+        +interface "NameStep" as PoolLocalServiceServerFactoryNameStep {
+            + NodeStep withDefaultServiceName ()
+            + NodeStep withServiceName (String localServiceName)
         }
         +interface "NodeStep" as PoolLocalServiceServerFactoryNodeStep {
-            + PluginStep withAsyncNode (KeypleServerAsync endpoint)
+            + PluginStep withAsyncNode (AsyncEndpointServer endpoint)
             + PluginStep withSyncNode ()
         }
         +interface "PluginStep" as PoolLocalServiceServerFactoryPluginStep {
@@ -150,16 +167,19 @@ package "org.eclipse.keyple.plugin.remote" as root {
 LocalServiceClient ..> RemoteServiceParameters #C_USE : use >
 RemoteServiceParameters +-- RemoteServiceParametersBuilder #C_LINK
 
-LocalServiceClientFactory ..> LocalServiceClientFactoryNodeStep #C_USE
+LocalServiceClientFactory ..> LocalServiceClientFactoryNameStep #C_USE
+LocalServiceClientFactoryNameStep ..> LocalServiceClientFactoryNodeStep #C_USE
 LocalServiceClientFactoryNodeStep ..> LocalServiceClientFactoryTimeoutStep #C_USE
 LocalServiceClientFactoryNodeStep ..> LocalServiceClientFactoryReaderStep #C_USE
 LocalServiceClientFactoryTimeoutStep ..> LocalServiceClientFactoryReaderStep #C_USE
 LocalServiceClientFactoryReaderStep ..> LocalServiceClientFactoryBuilderStep #C_USE
 
-LocalServiceServerFactory ..> LocalServiceServerFactoryNodeStep #C_USE
+LocalServiceServerFactory ..> LocalServiceServerFactoryNameStep #C_USE
+LocalServiceServerFactoryNameStep ..> LocalServiceServerFactoryNodeStep #C_USE
 LocalServiceServerFactoryNodeStep ..> LocalServiceServerFactoryBuilderStep #C_USE
 
-PoolLocalServiceServerFactory ..> PoolLocalServiceServerFactoryNodeStep #C_USE
+PoolLocalServiceServerFactory ..> PoolLocalServiceServerFactoryNameStep #C_USE
+PoolLocalServiceServerFactoryNameStep ..> PoolLocalServiceServerFactoryNodeStep #C_USE
 PoolLocalServiceServerFactoryNodeStep ..> PoolLocalServiceServerFactoryPluginStep #C_USE
 PoolLocalServiceServerFactoryPluginStep ..> PoolLocalServiceServerFactoryBuilderStep #C_USE
 
@@ -186,6 +206,7 @@ package impl #C_GREY2 {}
 
 interface LocalServiceClient <<green>>
 class LocalServiceClientFactory <<green>>
+interface LocalServiceClientFactoryNameStep <<green>>
 interface LocalServiceClientFactoryNodeStep <<green>>
 interface LocalServiceClientFactoryTimeoutStep <<green>>
 interface LocalServiceClientFactoryReaderStep <<green>>
@@ -197,12 +218,14 @@ interface ObservableReaderEventFilter <<green>>
 
 interface LocalServiceServer <<purple>>
 class LocalServiceServerFactory <<purple>>
+interface LocalServiceServerFactoryNameStep <<purple>>
 interface LocalServiceServerFactoryNodeStep <<purple>>
 interface LocalServiceServerFactoryBuilderStep <<purple>>
 class LocalServiceServerUtils <<purple>>
 
 interface PoolLocalServiceServer <<blue>>
 class PoolLocalServiceServerFactory <<blue>>
+interface PoolLocalServiceServerFactoryNameStep <<blue>>
 interface PoolLocalServiceServerFactoryNodeStep <<blue>>
 interface PoolLocalServiceServerFactoryPluginStep <<blue>>
 interface PoolLocalServiceServerFactoryBuilderStep <<blue>>
