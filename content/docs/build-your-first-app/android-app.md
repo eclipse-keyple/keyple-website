@@ -249,7 +249,7 @@ Now we've seen we can select our PO we can retrieve more data from it.
 
 ### Reading Environment and usage
 
-In the below example we'll read Environment and Usage data of an Hoplink container. We'll do this improving 'handlePO()' method.
+In the below example we'll read Environment and Usage data of an Hoplink container.
 
 ```kotlin
     ...
