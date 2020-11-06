@@ -9,16 +9,16 @@ weight: 220
 
 # Introduction 
 ## Overview
-**Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy to implement solution to provide Smartcard communication functionalities in their own mobile application.**
+**Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy to implement solution to provide SmartCard communication functionalities in their own mobile application.**
  
 For exemple, Keyple could be used to facilitate the development of a ticketing application based of the use of conteners on a SIM card and relying on [Android SE OMAPI](https://developer.android.com/reference/android/se/omapi/package-summary). 
-Keyple could also be used to develop an application reading smartcard content through NFC using [Android NFC](https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc).
+Keyple could also be used to develop an application reading SmartCard content through NFC using [Android NFC](https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc).
 
 {{< figure library="true" src="android-app/component/Android_App_Overview.png" title="" >}} 
  
 As Keyple request low level reader access, the key features of Keyple SDK relies on components called 'Plugins'. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer's own custom SDKs. 
 
-This guide will describe how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso Smartcard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.
+This guide will describe how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso SmartCard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.
 
 ## What to we need for this guide?
 
@@ -82,7 +82,7 @@ implementation "org.eclipse.keyple:keyple-java-calypso:$keyple_version"
 ## Initializing the SDK
 ### Register a plugin
 
-In order to setup Keyple, we need to register at least one plugin. Here we register our NFC plugin. To do so, we use the singleton SmartCardService the plugin Factory. (See plugin development guide to know more about plugin)
+In order to setup Keyple, we need to register at least one plugin. Here we register our NFC plugin. To do so, we use the singleton SmartCardService and the plugin Factory. (See plugin development guide to know more about plugins)
 
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,6 +100,8 @@ Note: Plugins Factory's initialisation could request more steps to execute befor
 
 ### Unregister a plugin
 
+Clean resources.
+
 ```kotlin
 override fun onDestroy() {
     super.onCreate(savedInstanceState)
@@ -115,7 +117,7 @@ override fun onDestroy() {
 
 ## Retrieve a specific reader
 
-With the plugin registered we can retrieve all instance of the component mapping the Smartcard readers provided by this plugins. Here we want to retrieve the NFC reader.
+With the plugin registered we can retrieve all instances of the component mapping the SmartCard readers. Here we want to retrieve the NFC reader.
 
 ```kotlin
 //We keep a reference to the reader for later use
@@ -127,7 +129,7 @@ reader = plugin.readers[AndroidNfcReader.READER_NAME] as AndroidNfcReader
 
 ## Add observer to handle NFC events
 
-When native NFC is activated on an Android device, the OS dispatches insertion events occuring in the NFC detection field. In our application, we need detect it in order to proceed to exchanges with the Smartcard.
+When native NFC is activated on an Android device, the OS dispatches insertion events occurring in the NFC detection field. In our application, we need detect it in order to proceed to exchanges with the SmartCard.
 
 ```kotlin
 //To keep it simple we choose to have our MainActivity implementing ObservableReader.ReaderObserver 
@@ -141,7 +143,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
     //this method is not triggered in UI thread
     override fun update(event: ReaderEvent) {
         if(event.eventType == ReaderEvent.EventType.CARD_INSERTED){
-            //We'll select PO when Smartcard is presented in field
+            //We'll select PO when SmartCard is presented in field
             //Method handlePo is described below
             handlePo()
         }
@@ -184,7 +186,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 }
 ```
 
-Now we can detect when a Smartcard is presented in the field, we can proceed to card application selection and data reading.
+Now we can detect when a SmartCard is presented in the field, we can proceed to card application selection and data reading.
 
 ## Handling a Calypso PO
 
@@ -264,7 +266,7 @@ In the below example we'll read Environment and Usage data of an Hoplink contain
         poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFUsage, 1)
         ...
         
-        //Hoplink is a Calypso PO, we can cast the smartcard
+        //Hoplink is a Calypso PO, we can cast the SmartCard
         //with CalypsoPo class, representing the PO content.
         val calypsoPO = selectionResult.activeSmartCard as CalypsoPo
         val environment = calypsoPO.getFileBySfi(sfiHoplinkEFEnvironment)
@@ -404,7 +406,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
                         Toast.makeText(this, String.format("Selected, Fci %s",
                             ByteArrayUtil.toHex(fci)), Toast.LENGTH_SHORT).show()
 
-                        //Hoplink is a Calypso PO, we can cast the smartcard
+                        //Hoplink is a Calypso PO, we can cast the SmartCard
                         //with CalypsoPo class, representing the PO content.
                         val calypsoPO = selectionResult.activeSmartCard as CalypsoPo
                         val environment = calypsoPO.getFileBySfi(sfiHoplinkEFEnvironment)
@@ -423,7 +425,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 }
 ```
 
-#FAQ:
+# FAQ:
 
 **How to fix "More than one file was found with OS independent path 'META-INF/NOTICE.md'."**
 
@@ -438,3 +440,6 @@ android{
 ```
 
 **Where can I see more examples**
+
+Android native plugins are provided with example applications. Check it to see more use cases: [Examples](https://github.com/eclipse/keyple-java/tree/master/java/example)
+
