@@ -9,23 +9,38 @@ weight: 220
 
 # Introduction 
 ## Overview
+**Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy to implement solution to provide Smartcard communication functionalities in their own mobile application.**
+ 
+For exemple, Keyple could be used to facilitate the development of a ticketing application based of the use of conteners on a SIM card and relying on [Android SE OMAPI](https://developer.android.com/reference/android/se/omapi/package-summary). 
+Keyple could also be used to develop an application reading smartcard content through NFC using [Android NFC](https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc).
 
-Keyple SDK is supported by the Operating System Android. As Keyple request low level reader access, the key features of 
-the SDK relies on components called 'Plugins'.
+{{< figure library="true" src="android-app/component/Android_App_Overview.png" title="" >}} 
+ 
+As Keyple request low level reader access, the key features of Keyple SDK relies on components called 'Plugins'. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer's own custom SDKs. 
 
-Keyple Android Plugins are low level implementation of Keyple contracts described in the section 'Develop a plugin' in Developer 
-guide. Once a plugin is provided, any classic Android application can use Keyple to provide ticketing features. 
+This guide will describe how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso Smartcard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.
 
-This Guide will describe how to start a ticketing application using Keyple SDK.
+## What to we need for this guide?
 
-## Compatibility
-
+* Retail Device with NFC powered by android.nfc library (integrated into standard Android SDK).
 * Android OS 19+
+* A NFC SmartCard with Calypso PO
 
 # Integration
+## Application setup
+
+Like for any other Android NFC Application, we need to declare items in the application manifest. 
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    ...
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-feature android:name="android.hardware.nfc" android:required="true" />
+    ...
+</manifest>
+```
+
 
 ## SDK Integration
-
 ### Keyple Core 
 
 This high-level API is convenient for developers implementing smart card processing application for terminal interfaced 
@@ -45,299 +60,182 @@ Please refer to Architecture/Keyle Core
 There are many Keyple plugins available, the one to use depends on the device and ticketing tools you are aiming to 
 use.
 
-For a standard device the keyple-android-plugin-nfc and keyple-android-plugin-omapi should be be used. They will allow keyple to 
-connect to, respectively, a smart card in the NFC field of the device or, a smart card inserted in a SIM like port. The 
-plugins for Android are Android Libraries (AAR).
-
-To use the plugins simply import it within the gradle dependencies of your Android application.
+To use the NFC plugin simply import it within the gradle dependencies of your Android application.
 
 ```gradle
-implementation "org.eclipse.keyple:keyple-android-plugin-omapi:$keyple_version"
+implementation "org.eclipse.keyple:keyple-android-nfc:$keyple_version"
 ```
 
 ### Keyple Calypso
 
-The Keyple Calypso User API is an extension of the Keyple Core User API to manage Calypso Portable Object securely using 
-Calypso SAM.
+The Keyple Calypso User API is an extension of the Keyple Core User API to manage Calypso Portable Objects.
 
 Please refer to Architecture/Keyle Calypso
 
 To use Keyple Calypso User API simply import the jar within the gradle dependencies of your Android application.
 
 ```gradle
-implementation "org.eclipse.keyple:keyple-android-plugin-omapi:$keyple_version"
+implementation "org.eclipse.keyple:keyple-java-calypso:$keyple_version"
 ```
 
+# Let's code
 ## Initializing the SDK
-
 ### Register a plugin
 
-The Singleton SeProxyService is the entry point of the SE Proxy Service, its instance has to be called by a 
-ticketing application in order to establish a link with a SE’s application.
-
-In order to access to SE we have to register at least one plugin.
+In order to setup Keyple, we need to register at least one plugin. Here we register our NFC plugin. To do so, we use the singleton SmartCardService the plugin Factory. (See plugin development guide to know more about plugin)
 
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    /* register Omapi Plugin to the SeProxyService */
+    /* register Android NFC Plugin to the SmartCardService */
     try {
-        SeProxyService.getInstance().registerPlugin(AndroidOmapiPluginFactory(this))
-    } catch (e: KeyplePluginInstantiationException) {
-    /* do something with it */
+        SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory())
+    }catch (e: KeypleException){
+        /* do something with it */
     }
 }
 ```
 
-### Retrieve the readers
+Note: Plugins Factory's initialisation could request more steps to execute before passing it to registerPlugin(). It depends on plugins, please check the documentation or usage exemple of desired plugin.
 
-With the plugin registered we can retrieve all instance of the component mapping the smartcard readers provided by this 
-plugins. For example, some plugins provide access to contact and contactless readers)
-
-```kotlin
-//PLUGIN_NAME is a constant provided by the keyple plugin 
-val readers = SeProxyService.getInstance().getPlugin(PLUGIN_NAME).readers
-```
-
-### Retrieve one specific reader
-
-It is also possible to retrieve a specific reader.
+### Unregister a plugin
 
 ```kotlin
-//PLUGIN_NAME and READER_NAME are constants provided by the used keyple plugin 
-val reader = SeProxyService.getInstance().getPlugin(PLUGIN_NAME).getReader(READER_NAME)
-```
-
-## Select a PO
-
-### SeProxy API
-
-Using a reader, it is possible to select a PO using its AID. Here we use the low level SeProxy API of Keyple core to do so.
-
-```kotlin
- /*
- * Configuration of the selector
- * Setting of an AID based selection of a Calypso REV3 PO
- */
-val seSelector = SeSelector.builder()
-        .seProtocol(SeCommonProtocols.PROTOCOL_ISO7816_3)
-        .aidSelector(AidSelector.builder().aidToSelect(poAid).build())
-        .build()
-//build the request by passing the seSelector. 
-//As second parameter of the SeRequest consctructor, an APDU can be added to be executed
-//right after the selection.
-val seRequest = SeRequest(seSelector, null)
-
-//A ProxyReader is a physical reader, it allows to send and receive synchronised APDUS
-val seResponse = (reader.value as ProxyReader).transmitSeRequest(seRequest, ChannelControl.KEEP_OPEN)
-
-//Check is selection is successful
-if (seResponse?.selectionStatus?.hasMatched() == true) {
-    //Selection is done
-} else {
-    //Selection failed
-}
-```
-
-### Selection API
-
-The bellow example illustrates the same operation using the Selection API, an higher level API of Keyple Core. 
- 
-```kotlin
-var seSelection = SeSelection()
-
-/* 
- * Close the channel after the selection 
- */
-seSelection.prepareReleaseSeChannel()
-
-/*
- * AID based selection: get the first application occurrence matching the AID, keep the
- * physical channel open
- */
-seSelection.prepareSelection(GenericSeSelectionRequest(
-        SeSelector.builder()
-                .seProtocol(SeCommonProtocols.PROTOCOL_ISO14443_4)
-                .aidSelector(AidSelector.builder()
-                        .aidToSelect(seAidPrefix)
-                        .fileOccurrence(AidSelector.FileOccurrence.FIRST)
-                        .fileControlInformation(AidSelector.FileControlInformation.FCI).build())
-                .build()))
-seSelection.prepareSelection(poSelectionRequest)
-
-/*
- * Execution og the selection
- */
-val selectionsResult = seSelection.processExplicitSelection(reader)
-
-/**
- * Check if PO has been selected successfuly
- */
-if (selectionsResult.hasActiveSelection()) {
-    //Selection is done
-    val matchedSe = selectionsResult.activeMatchingSe
-    val fci = matchedSe.fciBytes
-    val atr = matchedSe.atrBytes
-} else {
-    //Selection failed
-}
-```
-
-## Reading and writing data
-
-### Reading Environment and usage
-
-Exemple of reading Environmement and usage data of an Hoplink application. As Hoplink is a calypso application, we can map 
-cast the result of the selection with CalypsoPo. It will allow us to easily access calypso datas.
-
-```kotlin
-var poAid= "A000000291A000000191"
-val sfiHoplinkEFEnvironment = 0x14.toByte()
-val sfiHoplinkEFUsage = 0x1A.toByte()
-
-/*
- * Prepare a Calypso PO selection
- */
-val seSelection = SeSelection()
-
-/*
- * Setting of an AID based selection of a Calypso REV3 PO
- *
- * Select the first application matching the selection AID whatever the SE
- * communication protocol keep the logical channel open after the selection
- */
-
-/*
- * Calypso selection: configures a PoSelectionRequest with all the desired
- * attributes to make the selection and read additional information afterwards
- */
-val poSelectionRequest = PoSelectionRequest(
-        PoSelector.builder()
-                .seProtocol(SeCommonProtocols.PROTOCOL_ISO7816_3)
-                .aidSelector(AidSelector.builder().aidToSelect(poAid).build())
-                .invalidatedPo(InvalidatedPo.REJECT).build())
-
-/*
- * Prepare the reading order and keep the associated parser for later use once
- * the selection has been made.
- */
-poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFEnvironment, 1)
-
-poSelectionRequest.prepareReadRecordFile(
-        sfiHoplinkEFUsage, 1)
-
-/*
- * Add the selection case to the current selection (we could have added other
- * cases here)
- *
- * Ignore the returned index since we have only one selection here.
- */
-seSelection.prepareSelection(poSelectionRequest)
-
-/*
- * Actual PO communication: operate through a single request the Calypso PO
- * selection and the file read
- */
-try {
-    val selectionsResult = seSelection.processExplicitSelection(seReader)
-
-    if (selectionsResult.hasActiveSelection()) {
-        val calypsoPo = selectionsResult.activeMatchingSe as CalypsoPo
-        val environmentAndHolder = calypsoPo.getFileBySfi(sfiHoplinkEFEnvironment).data.content
-        val usage = calypsoPo.getFileBySfi(sfiHoplinkEFUsage).data.content
-    } else {
-       //The selection of the PO Failed
+override fun onDestroy() {
+    super.onCreate(savedInstanceState)
+    /* Unregister Android NFC Plugin to the SmartCardService */
+    try {
+        SmartCardService.getInstance().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
+    }catch (e: KeypleException){
+        /* do something with it */
     }
-} catch (e: Exception) {
-    //The selection of the PO Failed with an error
+    super.onDestroy()
 }
-
 ```
 
-### Incrementing a counter
+## Retrieve a specific reader
 
-In this example, we'll increase Counter 1 by 10 on a contactless ticketing NFC PO. The counter will be increased
-when the PO will enter NFC Field.
+With the plugin registered we can retrieve all instance of the component mapping the Smartcard readers provided by this plugins. Here we want to retrieve the NFC reader.
 
-#### Setup to catch reader event
 ```kotlin
-/*
- * In order to received readers events (Inserted, removed etc..), the interface ObservableReader.ReaderObserver must be 
- * implemented.
- *    
- */
+//We keep a reference to the reader for later use
+private lateinit var reader: AndroidNfcReader
+...
+//PLUGIN_NAME and READER_NAME are constants provided by the used Keyple plugin 
+reader = plugin.readers[AndroidNfcReader.READER_NAME] as AndroidNfcReader
+```
 
-import org.eclipse.keyple.core.seproxy.event.ObservableReader
-import org.eclipse.keyple.core.seproxy.event.ReaderEvent
+## Add observer to handle NFC events
 
-class MainActivity : ObservableReader.ReaderObserver{
+When native NFC is activated on an Android device, the OS dispatches insertion events occuring in the NFC detection field. In our application, we need detect it in order to proceed to exchanges with the Smartcard.
 
-    //Initialise Android NFC Reader
-    override fun initReaders() {
-      // Initialize SEProxy with Android Plugins
-        val nfcPlugin = SeProxyService.getInstance().registerPlugin(AndroidNfcPluginFactory())
-        //Example of plugin for device with a sam reader
-        val samPlugin = SeProxyService.getInstance().registerPlugin(AndroidFamocoPluginFactory())
-
-        // Configuration of AndroidNfc Reader
-        poReader = nfcPlugin.getReader(AndroidNfcReader.READER_NAME) as AndroidNfcReader
-        poReader.setParameter("FLAG_READER_RESET_STATE", "0")
-        poReader.setParameter("FLAG_READER_PRESENCE_CHECK_DELAY", "100")
-        poReader.setParameter("FLAG_READER_NO_PLATFORM_SOUNDS", "0")
-        poReader.setParameter("FLAG_READER_SKIP_NDEF_CHECK", "0")
-        
-        (poReader as ObservableReader).addObserver(this)
-        (poReader as ObservableReader).addSeProtocolSetting(SeCommonProtocols.PROTOCOL_ISO14443_4, 
-                                            AndroidNfcProtocolSettings.getSetting(SeCommonProtocols.PROTOCOL_ISO14443_4))
+```kotlin
+//To keep it simple we choose to have our MainActivity implementing ObservableReader.ReaderObserver 
+//interface. 
+class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
+    ...        
+    reader.addObserver(this)
+    ...
+    //Belongs to ObservableReader.ReaderObserver
+    //NFC Reader events will be received here.
+    //this method is not triggered in UI thread
+    override fun update(event: ReaderEvent) {
+        if(event.eventType == ReaderEvent.EventType.CARD_INSERTED){
+            //We'll select PO when Smartcard is presented in field
+            //Method handlePo is described below
+            handlePo()
+        }
     }
+}
+```
 
-    // Reader event will be caught in this method
-    override fun update(event: ReaderEvent?) {
-        CoroutineScope(Dispatchers.Main).launch {
-            when (event?.eventType) {
-                ReaderEvent.EventType.SE_MATCHED -> {
-                    //PO with set AID detected
-                    samReader.setParameter(AndroidFamocoReader.FLAG_READER_RESET_STATE, "")
-                    val samResource = checkSamAndOpenChannel(samReader)
+Now we have an access to our NFC Reader, we can activate Card Detection.
 
-                    val selectionsResult = seSelection.processDefaultSelection(event.defaultSelectionsResponse)
-                    if (selectionsResult.hasActiveSelection()) {
-                        val calypsoPo = selectionsResult.activeMatchingSe as CalypsoPo
-                        val poTransaction = PoTransaction(SeResource(poReader, calypsoPo), getSecuritySettings(samResource))
-                        when (transactionType) {
-                            TransactionType.INCREASE -> {
-                                /*
-                                * Open Session for the debit key
-                                */
-                                poTransaction.processOpening(PoTransaction.SessionSetting.AccessLevel.SESSION_LVL_LOAD)
+## Activate Card detection
 
-                                poTransaction.prepareReadRecordFile(CalypsoClassicInfo.SFI_Counter1, CalypsoClassicInfo.RECORD_NUMBER_1.toInt())
-                                poTransaction.processPoCommandsInSession()
-        
-                                //Process PO increase counter by 10
-                                poTransaction.prepareIncreaseCounter(CalypsoClassicInfo.SFI_Counter1, CalypsoClassicInfo.RECORD_NUMBER_1.toInt(), 10)
-                                poTransaction.processClosing(ChannelControl.CLOSE_AFTER)
-                                addResultEvent("Increase by 10: SUCCESS")
-                            }
-                        }
-                    }
-                    //Notifying Keyple that we handled event
-                    (poReader as ObservableReader).notifySeProcessed()
-                }
+We will start detection as soon as our application comes in foreground and stop when application go background.
 
-                ReaderEvent.EventType.SE_INSERTED -> {
-                    //PO detected but AID didn't match with AID set
+```kotlin
+class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
+    override fun onResume() {
+        super.onResume()
+        reader?.let {
+            //Set Keyple in a detection mode 
+            //We choose to stop detection as soon as one card is detected
+            it.startCardDetection(ObservableReader.PollingMode.SINGLESHOT)
+            //Activate NFC detection (To be removed soon for merge with below step)
+            it.enableNFCReaderMode(this)
+        }
+    }
+}
+```
 
-                    //Notifying Keyple that we handled event
-                    (poReader as ObservableReader).notifySeProcessed()
-                }
+## Deactivate Card detection
 
-                ReaderEvent.EventType.SE_REMOVED -> {
-                    //Action when SE is Removed
-                }
+```kotlin
+class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
+    override fun onPause() {
+        reader?.let {
+            it.disableNFCReaderMode(this)
+            it.stopCardDetection()
+        }
+        super.onPause()
+    }
+}
+```
 
-                ReaderEvent.EventType.TIMEOUT_ERROR -> {
-                    //Action when timeout with SE
+Now we can detect when a Smartcard is presented in the field, we can proceed to card application selection and data reading.
+
+## Handling a Calypso PO
+
+### Calypso Selection API
+
+With Keyple, PO selection and FCI retrieving can be done using only Keyple Core, but Keyple Calypso API provides specific tools to handle Calypso POs and make the process a bit more simple.
+
+```kotlin
+fun handlePo(){
+    reader?.let {
+        //check if card is in the NFC field
+        if(it.isCardPresent){
+
+            //Instanciate class handling card selection process 
+            val cardSelection = CardSelection()
+            //We only want to select the PO so we choose to close communication channel once 
+            //selection is done
+            cardSelection.prepareReleaseChannel()
+
+            //We build a selection request managing specific characteristics of Calypso POs
+            val poSelectionRequest = PoSelectionRequest(
+                PoSelector
+                    .builder()
+                    //Smarcard standard protocol
+                    .cardProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name)
+                    .aidSelector(
+                        CardSelector.AidSelector.builder()
+                            .aidToSelect(YOUR_AID)  //Set the AID of your Calypso PO
+                            //indicates how to carry out the file occurrence in accordance with 
+                            //ISO7816-4
+                            .fileOccurrence(CardSelector.AidSelector.FileOccurrence.FIRST)
+                            //indicates which template is expected in accordance with ISO7816-4
+                            .fileControlInformation(
+                                CardSelector.AidSelector.FileControlInformation.FCI)
+                            .build()
+                    ).build())
+            cardSelection.prepareSelection(poSelectionRequest)
+
+            //Proceed to selection using the reader
+            val selectionResult = cardSelection.processExplicitSelection(it)
+
+            runOnUiThread {
+                //We check the selection result and read the FCI
+                if(selectionResult.hasActiveSelection()){
+                    val matchedSmartCard = selectionResult.activeSmartCard
+                    val fci = matchedSmartCard.fciBytes
+                    Toast.makeText(this, String.format("Selected, Fci %s", 
+                        ByteArrayUtil.toHex(fci)), Toast.LENGTH_LONG).show()
+                }else {
+                    Toast.makeText(this, 
+                        String.format("Not selected"), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -345,40 +243,198 @@ class MainActivity : ObservableReader.ReaderObserver{
 }
 ```
 
-#### Launch detection
+Now we've seen we can select our PO we can retrieve more data from it.
+
+### Reading Environment and usage
+
+In the below example we'll read Environment and Usage data of an Hoplink container. We'll do this improving 'handlePO()' method.
 
 ```kotlin
-   /* Prepare a Calypso PO selection */
-   val seSelection = SeSelection(MultiSeRequestProcessing.FIRST_MATCH)
-   
-    /* Calypso selection: configures a PoSelector with all the desired attributes to make the selection and read additional information afterwards */
-   val poSelectionRequest = PoSelectionRequest(PoSelector.builder()
-        .seProtocol(SeCommonProtocols.PROTOCOL_ISO14443_4)
-        .aidSelector(SeSelector.AidSelector.builder().aidToSelect(CalypsoClassicInfo.AID).build())
-        .invalidatedPo(PoSelector.InvalidatedPo.REJECT).build())
+    ...
+    //Data related to Hoplink
+    val poAid= "A000000291A000000191"
+    val sfiHoplinkEFEnvironment = 0x14.toByte()
+    val sfiHoplinkEFUsage = 0x1A.toByte()
+    ...
+    private fun handlePo(){
+        ...
+        //Prepare the reading order. We'll read the first record of the EF
+        //specified by its SFI. This reading will be done within explicit selection.
+        poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFEnvironment, 1)
+        poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFUsage, 1)
+        ...
+        
+        //Hoplink is a Calypso PO, we can cast the smartcard
+        //with CalypsoPo class, representing the PO content.
+        val calypsoPO = selectionResult.activeSmartCard as CalypsoPo
+        val environment = calypsoPO.getFileBySfi(sfiHoplinkEFEnvironment)
+        val usage = calypsoPO.getFileBySfi(sfiHoplinkEFUsage)
+        Toast.makeText(this, String.format("Environment %s",
+            ByteArrayUtil.toHex(environment.data.content)), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, String.format("Usage %s",
+            ByteArrayUtil.toHex(usage.data.content)), Toast.LENGTH_SHORT).show()
 
-    /* Prepare the reading order */
-    poSelectionRequest.prepareReadRecordFile(CalypsoClassicInfo.SFI_EnvironmentAndHolder, CalypsoClassicInfo.RECORD_NUMBER_1.toInt())
-
-    /*
-     * Add the selection request to the current selection (we could have added other request
-     * here)
-     */
-    seSelection.prepareSelection(poSelectionRequest)
-
-    /*
-    * Provide the SeReader with the selection operation to be processed when a PO is
-    * inserted.
-    */
-    (poReader as ObservableReader).setDefaultSelectionRequest(seSelection.selectionOperation,
-        ObservableReader.NotificationMode.MATCHED_ONLY)
-
-    // notify reader that se detection has been launched
-    poReader.startSeDetection(ObservableReader.PollingMode.REPEATING)
+    }
 ```
 
+## Full code
 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.eclipse.keyple.android.quickstart">
+
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:screenOrientation="portrait"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+```
+
+```kotlin
+class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
+
+    private var reader: AndroidNfcReader? = null
+    val poAid= "A000000291A000000191"
+    val sfiHoplinkEFEnvironment = 0x14.toByte()
+    val sfiHoplinkEFUsage = 0x1A.toByte()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        try {
+            val plugin = SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory())
+            val reader = plugin.readers[AndroidNfcReader.READER_NAME] as AndroidNfcReader
+            reader.addObserver(this)
+            reader.activateProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name, ContactlessCardCommonProtocols.ISO_14443_4.name)
+            this.reader = reader
+        }catch (e: KeypleException){
+            Timber.e(e)
+            Toast.makeText(this, String.format("Error: %s", e.message), Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        reader?.let {
+            it.startCardDetection(ObservableReader.PollingMode.SINGLESHOT)
+            it.enableNFCReaderMode(this)
+            Toast.makeText(this, String.format("Hunt enabled"), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onPause() {
+        reader?.let {
+            it.disableNFCReaderMode(this)
+            it.stopCardDetection()
+        }
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        SmartCardService.getInstance().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
+        reader = null
+        super.onDestroy()
+    }
+
+    override fun update(event: ReaderEvent) {
+        Timber.d("Event: %s", event.eventType.name)
+        runOnUiThread {
+            Toast.makeText(this, String.format("Event: %s", event.eventType.name),
+                Toast.LENGTH_SHORT).show()
+        }
+        if(event.eventType == ReaderEvent.EventType.CARD_INSERTED){
+            handlePo()
+        }
+    }
+
+    //With Calypso API
+    private fun handlePo(){
+        reader?.let {
+            if(it.isCardPresent){
+                val cardSelection = CardSelection()
+                cardSelection.prepareReleaseChannel()
+                val poSelectionRequest = PoSelectionRequest(
+                        PoSelector
+                                .builder()
+                                .cardProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name)
+                                .aidSelector(
+                                        CardSelector.AidSelector.builder()
+                                                .aidToSelect(poAid)
+                                                .fileOccurrence(
+                                                    CardSelector.AidSelector.FileOccurrence.FIRST)
+                                                .fileControlInformation(
+                                                    CardSelector.AidSelector.FileControlInformation.FCI)
+                                                .build()
+                                ).build())
+
+                cardSelection.prepareSelection(poSelectionRequest)
+
+                //Prepare the reading order. We'll read the first record of the EF
+                //specified by his SFI. This reading will be done with selection.
+                poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFEnvironment, 1)
+                poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFUsage, 1)
+
+                //Selection and file reading will be done here
+                val selectionResult = cardSelection.processExplicitSelection(it)
+
+                runOnUiThread {
+                    if(selectionResult.hasActiveSelection()){
+                        val matchedSmartCard = selectionResult.activeSmartCard
+                        val fci = matchedSmartCard.fciBytes
+                        Toast.makeText(this, String.format("Selected, Fci %s",
+                            ByteArrayUtil.toHex(fci)), Toast.LENGTH_SHORT).show()
+
+                        //Hoplink is a Calypso PO, we can cast the smartcard
+                        //with CalypsoPo class, representing the PO content.
+                        val calypsoPO = selectionResult.activeSmartCard as CalypsoPo
+                        val environment = calypsoPO.getFileBySfi(sfiHoplinkEFEnvironment)
+                        val usage = calypsoPO.getFileBySfi(sfiHoplinkEFUsage)
+                        Toast.makeText(this, String.format("Environment %s",
+                            ByteArrayUtil.toHex(environment.data.content)), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, String.format("Usage %s",
+                            ByteArrayUtil.toHex(usage.data.content)), Toast.LENGTH_SHORT).show()
+                    }else {
+                        Toast.makeText(this, String.format("Not selected"), Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+}
+```
 
 #FAQ:
 
-When should I use the Selection API instead of SeProxy API?
+**How to fix "More than one file was found with OS independent path 'META-INF/NOTICE.md'."**
+
+Add lines below to your :app build.gradle file 
+
+```gradle
+android{
+    packagingOptions {
+        exclude 'META-INF/NOTICE.md'
+    }
+}
+```
+
+**Where can I see more examples**
