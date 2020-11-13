@@ -34,8 +34,9 @@ Here are the main concepts to keep in mind before continuing to read this develo
 
 | Concept | Description |
 | ------- | ----------- |
-| **Remote Lib** | This is the library `keyple-plugin-remote-remote`.<br>It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely. |
-| **Local Lib** | This is the library `keyple-plugin-remote-local`.<br>It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application. |
+| **Remote Lib** | This is the library `keyple-java-plugin-remote-remote`.<br>It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely. |
+| **Local Lib** | This is the library `keyple-java-plugin-remote-local`.<br>It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application. |
+| **Common Lib** | This is the library `keyple-java-plugin-remote-common`.<br>This library is **implicitly** imported by **Remote Lib** and **Local Lib** because it contains common elements. |
 | **Remote Plugin** | Part of the **Remote Lib**, this is a Keyple plugin which provides only **Remote Readers** to the application. It manages data exchanges with the **Local Service**. This plugin must be registered to the smart card service like any Keyple plugin. |
 | **Remote Reader** | Part of the **Remote Plugin**, this is a Keyple reader which has some specificities :<br>- each remote reader is connected to a local reader ;<br>- any command sent by the application to a remote reader will be forwarded to the associated local reader ;<br>- any event occurs on a local reader or plugin will be forwarded to the associated remote reader or plugin. |
 | **Local Service** | Part of the **Local Lib**, this service ensures data exchange between the **Remote Plugin** and local plugins and readers. It must be initialized and started by the host application. |
@@ -218,15 +219,23 @@ Here are the available APIs depending on the library imported by your project :
 | [Remote Plugin API](#remote-plugin-api) | :heavy_check_mark: | |
 | [Local Service API](#local-service-api) | | :heavy_check_mark: |
 
+The associated **API** documentations are accessible from the page [API Reference]({{< relref "api-reference.md" >}}).
+
 ### Common API
+
+The associated **API** documentation is available <a href="/reference/keyple-java-plugin-remote-common/index.html" target="blank">here</a>.
 
 {{< figure library="true" src="remote-plugin/class/Remote_Class_Common_API.svg" title="" >}}
 
 ### Remote Plugin API
 
+The associated **API** documentation is available <a href="/reference/keyple-java-plugin-remote-remote/index.html" target="blank">here</a>.
+
 {{< figure library="true" src="remote-plugin/class/Remote_Class_RemotePlugin_API.svg" title="" >}}
 
 ### Local Service API
+
+The associated **API** documentation is available <a href="/reference/keyple-java-plugin-remote-local/index.html" target="blank">here</a>.
 
 {{< figure library="true" src="remote-plugin/class/Remote_Class_LocalService_API.svg" title="" >}}
 
@@ -396,52 +405,56 @@ However, it is necessary in some contexts to access certain information such as 
 
 ## Download
 
-### Releases
+### JARs
 
-| Version | Date | Release note |
-| ------- | ---- | ------------ |
-| **1.0.0** | DD/MM/YYYY | First version |
+All deliverables (JARs, changelogs, javadocs) are available on the [Maven Central Repository](https://search.maven.org/).
 
-### Using Gradle
+So you can use [Gradle](https://gradle.org/) or [Maven](https://maven.apache.org/) to import the JARs into your project or download them directly from the **Maven Central Repository**.
 
-Remote Lib
+Note that it is **strongly recommended** to use the same version for **Remote Lib** and **Local Lib**.
+
+#### GRADLE
+
+* Remote Lib
 ```
-implementation 'org.eclipse.keyple:keyple-java-plugin-remote-remote:[TO_BE_REPLACED_BY_VERSION]' 
-```
-
-Local Lib
-```
-implementation 'org.eclipse.keyple:keyple-java-plugin-remote-local:[TO_BE_REPLACED_BY_VERSION]' 
+implementation 'org.eclipse.keyple:keyple-java-plugin-remote-remote:1.0.0' 
 ```
 
-### Using Maven
+* Local Lib
+```
+implementation 'org.eclipse.keyple:keyple-java-plugin-remote-local:1.0.0' 
+```
 
-Remote Lib
+#### MAVEN
+
+* Remote Lib
 ```
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-java-plugin-remote-remote</artifactId>
-  <version>[TO_BE_REPLACED_BY_VERSION]</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
-Local Lib
+* Local Lib
 ```
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-java-plugin-remote-local</artifactId>
-  <version>[TO_BE_REPLACED_BY_VERSION]</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
-### Binaries & Documentation
+#### MAVEN CENTRAL REPOSITORY
 
-| Version | Binaries | Javadoc |
-| ------- | -------- | ------- |
-| **1.0.0** | keyple-java-plugin-remote-remote-1.0.0.jar<br>keyple-java-plugin-remote-local-1.0.0.jar | keyple-java-plugin-remote-remote-doc-1.0.0.zip<br>keyple-java-plugin-remote-local-doc-1.0.0.zip |
+* <a href="https://search.maven.org/search?q=a:keyple-java-plugin-remote-common" target="blank">Common Lib</a>
+* <a href="https://search.maven.org/search?q=a:keyple-java-plugin-remote-remote" target="blank">Remote Lib</a>
+* <a href="https://search.maven.org/search?q=a:keyple-java-plugin-remote-local" target="blank">Local Lib</a>
 
 ### Sources
 
-* [Remote Lib {{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/remote/README.md)
-* [Local Lib {{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/local/README.md)
-* [Common Lib {{< icon name="github" pack="fab" >}}](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/common/README.md)
+The sources are available on <a href="https://github.com/" target="blank">GitHub</a> :
+
+* [Common Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/common/README.md)
+* [Remote Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/remote/README.md)
+* [Local Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/local/README.md)
