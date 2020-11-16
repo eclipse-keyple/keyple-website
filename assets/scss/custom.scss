@@ -1,0 +1,115 @@
+footer {
+    background-color: #1D87BB;
+}
+footer a {
+    color: #FFF;
+}
+footer a:hover {
+    color: #FFF;
+}
+footer ul {
+    padding-left: 0;
+}
+footer li {
+    line-height: 1.42857143;
+    position: relative;
+    display: block;
+    color: #FFF;
+}
+
+.project-tab {
+}
+.project-tab #tabs {
+  background: #007b5e;
+  color: #eee;
+}
+.project-tab #tabs h6.section-title {
+  color: #eee;
+}
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #0062cc;
+  background-color: transparent;
+  border-color: transparent transparent #f3f3f3;
+  border-bottom: 3px solid !important;
+  font-size: 1em;
+  font-weight: bold;
+}
+.project-tab .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  color: #0062cc;
+  font-size: 1em;
+  font-weight: 600;
+}
+.project-tab .nav-link:hover {
+  border: none;
+}
+.project-tab thead {
+  background: #f3f3f3;
+  color: #333;
+}
+.project-tab a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+.copy-code-button {
+  color: #e7edf0;
+  background-color: rgb(63, 81, 181);
+  border-color: #fff;
+  /* right-align */
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+
+  margin-bottom: -2px;
+  padding: 0px 8px;
+  font-size: 0.8em;
+}
+
+.copy-code-button:hover {
+  cursor: pointer;
+  background-color: rgb(63, 81, 181);
+}
+
+.copy-code-button:focus {
+  /* Avoid an ugly focus outline on click in Chrome,
+       but darken the button for accessibility.
+       See https://stackoverflow.com/a/25298082/1481479 */
+  background-color: #e6e6e6;
+  outline: 0;
+}
+
+.copy-code-button:active {
+  background-color: #d9d9d9;
+}
+
+.highlight pre {
+  /* Avoid pushing up the copy buttons. */
+  margin: 0;
+}
+
+#parser-commands {
+  background-color: white;
+}
+.parser-po-row {
+  background-color: lavender !important;
+}
+
+.keyple-adopters>li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+.keyple-adopters>li img {
+    max-height: 95px;
+    padding: 10px;
+    min-width: 170px;
+    max-width: 170px;
+}
+div.eclipsefdn-adopters {
+    background-color: white;
+}
