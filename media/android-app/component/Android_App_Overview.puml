@@ -1,0 +1,54 @@
+@startuml
+footer
+    Example of Keyple Android Application architecture- Overview (03/11/2020)
+end footer
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+skinparam Shadowing false
+skinparam component {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+hide <<red>> stereotype
+hide <<purple>> stereotype
+hide <<blue>> stereotype
+hide <<green>> stereotype
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+package "Terminal with native reader" {
+    package "Android application" {
+        [User Interface] as UI
+        [Core Layer] as core
+        [Data Layer] as data
+        package "Keyple" as localKeyple {
+            [**Keyple Android Plugin**\n(plugin related to hardware)] as localLib <<blue>>
+            [Keyple Core & Solution] as localKeypleLibs <<purple>>
+        }
+    }
+    [Hardware Reader\n(NFC, OMAPI, custom,...)] as reader <<red>>
+}
+UI -- core
+core -- data
+data -- localKeypleLibs
+localKeypleLibs -- localLib
+localLib -- reader
+
+@enduml

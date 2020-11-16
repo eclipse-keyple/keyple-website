@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Build your First App | Eclipse Keyple</title><link>/keyple-website/docs/build-your-first-app/</link><atom:link href="/keyple-website/docs/build-your-first-app/index.xml" rel="self" type="application/rss+xml"/><description>Build your First App</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>/keyple-website/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Build your First App</title><link>/keyple-website/docs/build-your-first-app/</link></image><item><title>Build your First Java Application</title><link>/keyple-website/docs/build-your-first-app/java-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/keyple-website/docs/build-your-first-app/java-app/</guid><description>&lt;p>This getting started contains one ready-to-execute JAVA example starting from a new Gradle project.&lt;/p>
+&lt;p>The example demonstrate Keyple capabilities with the Keyple PCSC plugin and PO/SAM provided in the Calypso Test Kit.&lt;/p>
+&lt;h2 id="build">Build&lt;/h2>
+&lt;p>The example can run on any machine: Linux, Windows and MacOS. If not installed in your machine, you will need to download :&lt;/p>
+&lt;p>Java 1.6 or newer&lt;/p>
+&lt;p>
+&lt;a href="https://gradle.org/install/" target="_blank" rel="noopener">Gradle (any version)&lt;/a>&lt;/p>
+&lt;p>We recommend that you use a Java IDE like Eclipse or Intellij to create your new Gradle project.&lt;/p>
+&lt;p>Create a new Gradle project.&lt;/p>
+&lt;p>Add the following statements to your build.gradle file to import Keyple components into your project:&lt;/p>
+&lt;pre>&lt;code class="language-java">repositories {
+//to import snapshots
+//maven {url 'https://oss.sonatype.org/content/repositories/snapshots' }
+//to import releases
+maven { url 'https://oss.sonatype.org/content/repositories/releases' }
+}
+dependencies {
+//Keyple core is a mandatory library for using Keyple, in this case import the last version of keyple-java-core
+implementation group: 'org.eclipse.keyple', name: 'keyple-java-core', version: '+'
+//Import Calypso library to support Calypso Portable Object, in this case import the last version of keyple-java-calypso
+implementation group: 'org.eclipse.keyple', name: 'keyple-java-calypso', version: '+'
+//Import PCSC library to use a Pcsc reader, in this case import the last version of keyple-java-plugin-pcsc
+implementation group: 'org.eclipse.keyple', name: 'keyple-java-plugin-pcsc', version: '+'
+}
+&lt;/code>&lt;/pre>
+&lt;p>Add the following statements to your build.gradle file to import Logger components into your project:&lt;/p>
+&lt;pre>&lt;code class="language-java">dependencies {
+implementation &amp;quot;org.slf4j:slf4j-simple:1.7.25&amp;quot;
+implementation &amp;quot;org.slf4j:slf4j-ext:1.7.25&amp;quot;
+}
+&lt;/code>&lt;/pre>
+&lt;p>Copy the source code below in a new Java Class named DemoPoAuthentication:&lt;/p>
+&lt;pre>&lt;code class="language-java">/* **************************************************************************************
+* Copyright (c) 2020 Calypso Networks Association https://www.calypsonet-asso.org/
+*
+* See the NOTICE file(s) distributed with this work for additional information
+* regarding copyright ownership.
+*
+* This program and the accompanying materials are made available under the terms of the
+* Eclipse Public License 2.0 which is available at http://www.eclipse.org/legal/epl-2.0
+*
+* SPDX-License-Identifier: EPL-2.0
+************************************************************************************** */
+import org.eclipse.keyple.calypso.transaction.*;
+import org.eclipse.keyple.calypso.transaction.PoSelector.*;
+import org.eclipse.keyple.calypso.command.sam.SamRevision;
+import org.eclipse.keyple.core.selection.*;
+import org.eclipse.keyple.core.seproxy.*;
+import org.eclipse.keyple.core.seproxy.SeSelector.*;
+import org.eclipse.keyple.core.util.ByteArrayUtil;
+import org.eclipse.keyple.plugin.pcsc.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+public class DemoPoAuthentication {
+private static final Logger logger = LoggerFactory.getLogger(DemoPoAuthentication.class);
+// PO Reader name
+private final static String PO_READER_NAME = &amp;quot;XXX&amp;quot;;
+// SAM Reader name
+private final static String SAM_READER_NAME = &amp;quot;XXX&amp;quot;;
+// Keyple test kit profile 1, Application 2
+private final static String AID = &amp;quot;315449432E49434131&amp;quot;;
+private final static byte RECORD_NUMBER_1 = 1;
+private final static byte SFI_Environment = (byte) 0x07;
+public static void main(String[] args) {
+// Get the instance of the SeProxyService (Singleton pattern)
+SeProxyService seProxyService = SeProxyService.getInstance();
+logger.info(&amp;quot;============================================================================&amp;quot;);
+logger.info(&amp;quot;= Get and Configure the PO &amp;amp; SAM Readers =&amp;quot;);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+// Register the PcscPlugin with SeProxyService, get the corresponding generic ReaderPlugin
+ReaderPlugin readerPlugin = seProxyService.registerPlugin(new PcscPluginFactory());
+// Get the PO reader
+SeReader poReader = readerPlugin.getReader(PO_READER_NAME);
+// Configure the PO reader parameters
+((PcscReader)poReader).setContactless(true);
+// Get a SAM reader
+SeReader samReader = readerPlugin.getReader(SAM_READER_NAME);
+// Eventually, configure the SAM reader parameters
+// ...
+logger.info(&amp;quot;============================================================================&amp;quot;);
+logger.info(&amp;quot;= Create a SAM resource after selecting the SAM =&amp;quot;);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+// Prepare the selector to ensure the correct SAM is used
+SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.AUTO).build();
+// Make the SAM selection
+SeSelection samSelection = new SeSelection();
+samSelection.prepareSelection(new SamSelectionRequest(samSelector));
+CalypsoSam calypsoSam;
+if (samReader.isSePresent()) {
+SelectionsResult selectionsResult = samSelection.processExplicitSelection(samReader);
+if (selectionsResult.hasActiveSelection()) {
+calypsoSam = (CalypsoSam) selectionsResult.getActiveMatchingSe();
+} else {
+throw new IllegalStateException(&amp;quot;SAM matching failed!&amp;quot;);
+}
+} else {
+throw new IllegalStateException(&amp;quot;No SAM is present in the reader &amp;quot; + samReader.getName());
+}
+// Associate the calypsoSam and the samReader to create the samResource
+SeResource&amp;lt;CalypsoSam&amp;gt; samResource = new SeResource&amp;lt;CalypsoSam&amp;gt;(samReader, calypsoSam);
+// Prepare the security settings used during the Calypso transaction
+PoSecuritySettings poSecuritySettings = new PoSecuritySettings.PoSecuritySettingsBuilder(samResource).build();
+logger.info(&amp;quot;============================================================================&amp;quot;);
+logger.info(&amp;quot;= Display basic information about the readers and SAM =&amp;quot;);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+logger.info(
+&amp;quot;= PO Reader Name = {}&amp;quot;,
+poReader.getName());
+String samSerialNumber = ByteArrayUtil.toHex(samResource.getMatchingSe().getSerialNumber());
+logger.info(
+&amp;quot;= SAM Reader Name = {}, Serial Number = {}&amp;quot;,
+samResource.getSeReader().getName(),
+samSerialNumber);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+logger.info(&amp;quot;= Prepare the Calypso PO selection =&amp;quot;);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+// Prepare a Calypso PO selection
+SeSelection seSelection = new SeSelection();
+// Setting of an AID based selection of a Calypso Revision 3.1 PO
+//
+// Select the first application matching the selection AID whatever the card communication protocol
+// Keep the logical channel open after the selection
+//
+// Calypso selection: configures a PoSelectionRequest with all the desired attributes to
+// make the selection and read additional information afterwards
+PoSelectionRequest poSelectionRequest = new PoSelectionRequest(
+PoSelector.builder()
+.aidSelector(AidSelector.builder().aidToSelect(AID).build()) // the application identifier
+.invalidatedPo(InvalidatedPo.REJECT) // to indicate if an invalidated PO should be accepted or not
+.build());
+// Add the selection case to the current selection
+// (we could have added other cases)
+seSelection.prepareSelection(poSelectionRequest);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+logger.info(&amp;quot;= Check if a PO is present in the reader =&amp;quot;);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+if (poReader.isSePresent()) {
+logger.info(&amp;quot;============================================================================&amp;quot;);
+logger.info(&amp;quot;= Start of the Calypso PO processing =&amp;quot;);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+logger.info(&amp;quot;= 1st PO exchange =&amp;quot;);
+logger.info(&amp;quot;= AID based selection =&amp;quot;);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+try {
+// Actual PO communication: operate through a single request the Calypso PO selection
+CalypsoPo calypsoPo =
+(CalypsoPo) seSelection.processExplicitSelection(poReader).getActiveMatchingSe();
+logger.info(&amp;quot;The selection of the PO has succeeded.&amp;quot;);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+logger.info(&amp;quot;= 2nd PO exchange =&amp;quot;);
+logger.info(&amp;quot;= Open a Calypso secure session =&amp;quot;);
+logger.info(&amp;quot;= Reading of Environment file (SFI=07h) =&amp;quot;);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+// Create a PoTransaction object to manage the Calypso transaction
+PoTransaction poTransaction = new PoTransaction(
+new SeResource&amp;lt;CalypsoPo&amp;gt;(poReader, calypsoPo),
+poSecuritySettings);
+// Read the Environment file at the Session Opening
+// (we could have added other commands)
+poTransaction.prepareReadRecordFile(
+SFI_Environment, // the sfi to select
+RECORD_NUMBER_1);
+// Open Session with the debit key
+poTransaction.processOpening(PoTransaction.SessionSetting.AccessLevel.SESSION_LVL_DEBIT);
+// Get the Environment data
+ElementaryFile efEnvironment = calypsoPo.getFileBySfi(SFI_Environment);
+String environmentLog = ByteArrayUtil.toHex(efEnvironment.getData().getContent());
+logger.info(&amp;quot;File Environment log: {}&amp;quot;, environmentLog);
+if (!calypsoPo.isDfRatified()) {
+logger.info(&amp;quot;============= Previous Calypso Secure Session was not ratified =============&amp;quot;);
+}
+logger.info(&amp;quot;============================================================================&amp;quot;);
+logger.info(&amp;quot;= 3th PO exchange =&amp;quot;);
+logger.info(&amp;quot;= Close the Calypso secure session =&amp;quot;);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+// To close the channel with the PO after the closing
+poTransaction.prepareReleasePoChannel();
+// Close the Calypso Secure Session
+// A ratification command will be sent (CONTACTLESS_MODE)
+poTransaction.processClosing();
+logger.info(&amp;quot;============================================================================&amp;quot;);
+logger.info(&amp;quot;= The Calypso secure session ended successfully =&amp;quot;);
+logger.info(&amp;quot;= (Successful mutual authentication) =&amp;quot;);
+logger.info(&amp;quot;= End of the Calypso PO processing =&amp;quot;);
+logger.info(&amp;quot;============================================================================&amp;quot;);
+} catch (Exception e) {
+logger.error(&amp;quot;Exception: {}&amp;quot;, e.getMessage());
+}
+} else {
+logger.error(&amp;quot;The selection of the PO has failed.&amp;quot;);
+}
+System.exit(0);
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>Copy the properties file below in a new properties file named simplelogger.properties in resources. The application log output format is configurable in this properties files.&lt;/p>
+&lt;pre>&lt;code class="language-properties"># SLF4J's SimpleLogger configuration file
+# Simple implementation of Logger that sends all enabled log messages, for all defined loggers, to System.err.
+# Default logging detail level for all instances of SimpleLogger.
+# Must be one of (&amp;quot;trace&amp;quot;, &amp;quot;debug&amp;quot;, &amp;quot;info&amp;quot;, &amp;quot;warn&amp;quot;, or &amp;quot;error&amp;quot;).
+# If not specified, defaults to &amp;quot;info&amp;quot;.
+org.slf4j.simpleLogger.defaultLogLevel=debug
+# Logging detail level for a SimpleLogger instance named &amp;quot;xxxxx&amp;quot;.
+# Must be one of (&amp;quot;trace&amp;quot;, &amp;quot;debug&amp;quot;, &amp;quot;info&amp;quot;, &amp;quot;warn&amp;quot;, or &amp;quot;error&amp;quot;).
+# If not specified, the default logging detail level is used.
+#org.slf4j.simpleLogger.log.xxxxx=
+# Set to true if you want the current date and time to be included in output messages.
+# Default is false, and will output the number of milliseconds elapsed since startup.
+org.slf4j.simpleLogger.showDateTime=true
+# The date and time format to be used in the output messages.
+# The pattern describing the date and time format is the same that is used in java.text.SimpleDateFormat.
+# If the format is not specified or is invalid, the default format is used.
+# The default format is yyyy-MM-dd HH:mm:ss:SSS Z.
+org.slf4j.simpleLogger.dateTimeFormat=[HH:mm:ss:SSS]
+# Set to true if you want to output the current thread name.
+# Defaults to true.
+org.slf4j.simpleLogger.showThreadName=true
+# Set to true if you want the Logger instance name to be included in output messages.
+# Defaults to true.
+org.slf4j.simpleLogger.showLogName=false
+# Set to true if you want the last component of the name to be included in output messages.
+# Defaults to false.
+org.slf4j.simpleLogger.showShortLogName=true
+org.slf4j.simpleLogger.levelInBrackets=true
+&lt;/code>&lt;/pre>
+&lt;h2 id="run">Run&lt;/h2>
+&lt;p>Connect your PO and SAM readers.&lt;/p>
+&lt;p>Put the SAM in the SAM reader.&lt;/p>
+&lt;p>Place the PO on the PO reader.&lt;/p>
+&lt;p>Configure the PO and SAM readers you use in the java file (you have to respect the case for the reader name) :&lt;/p>
+&lt;pre>&lt;code class="language-java"> /* PO Reader name */
+private final static String PO_READER_NAME = &amp;quot;XXX&amp;quot;;
+/* SAM Reader name */
+private final static String SAM_READER_NAME = &amp;quot;XXX&amp;quot;;
+&lt;/code>&lt;/pre>
+&lt;p>If you don’t know the reader name, run the application in debug mode and get the reader name in plugin variable&lt;/p>
+&lt;p>Run the application.&lt;/p>
+&lt;div class="alert alert-note">
+&lt;div>
+All project dependencies, including Keyple components, are downloaded during the first run, which can take several minutes.
+&lt;/div>
+&lt;/div></description></item><item><title>Build your First Android Application</title><link>/keyple-website/docs/build-your-first-app/android-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/keyple-website/docs/build-your-first-app/android-app/</guid><description>&lt;h1 id="introduction">Introduction&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>&lt;strong>Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy to implement solution to provide SmartCard communication functionalities in their own mobile application.&lt;/strong>&lt;/p>
+&lt;p>For exemple, Keyple could be used to facilitate the development of a ticketing application based of the use of conteners on a SIM card and relying on
+&lt;a href="https://developer.android.com/reference/android/se/omapi/package-summary" target="_blank" rel="noopener">Android SE OMAPI&lt;/a>.
+Keyple could also be used to develop an application reading SmartCard content through NFC using
+&lt;a href="https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc" target="_blank" rel="noopener">Android NFC&lt;/a>.&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/keyple-website/keyple-website/media/android-app/component/Android_App_Overview.png" >
+&lt;img src="/keyple-website/keyple-website/media/android-app/component/Android_App_Overview.png" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;p>As Keyple request low level reader access, the key features of Keyple SDK relies on components called &amp;lsquo;Plugins&amp;rsquo;. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer&amp;rsquo;s own custom SDKs.&lt;/p>
+&lt;p>This guide will describe how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso SmartCard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.&lt;/p>
+&lt;h2 id="what-to-we-need-for-this-guide">What to we need for this guide?&lt;/h2>
+&lt;ul>
+&lt;li>Retail Device with NFC powered by android.nfc library (integrated into standard Android SDK).&lt;/li>
+&lt;li>Android OS 19+&lt;/li>
+&lt;li>A NFC SmartCard with Calypso PO&lt;/li>
+&lt;/ul>
+&lt;h1 id="integration">Integration&lt;/h1>
+&lt;h2 id="application-setup">Application setup&lt;/h2>
+&lt;p>Like for any other Android NFC Application, we need to declare items in the application manifest.&lt;/p>
+&lt;pre>&lt;code class="language-xml">&amp;lt;manifest xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&amp;gt;
+...
+&amp;lt;uses-permission android:name=&amp;quot;android.permission.NFC&amp;quot; /&amp;gt;
+&amp;lt;uses-feature android:name=&amp;quot;android.hardware.nfc&amp;quot; android:required=&amp;quot;true&amp;quot; /&amp;gt;
+...
+&amp;lt;/manifest&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;h2 id="sdk-integration">SDK Integration&lt;/h2>
+&lt;h3 id="keyple-core">Keyple Core&lt;/h3>
+&lt;p>This high-level API is convenient for developers implementing smart card processing application for terminal interfaced
+with smart card readers. Access to the readers is provided by the plugins.&lt;/p>
+&lt;p>To use Keyple core API (and in fact, anything keyple&amp;rsquo;s related) import the jar within the gradle dependencies of your
+Android application.&lt;/p>
+&lt;pre>&lt;code class="language-gradle">implementation &amp;quot;org.eclipse.keyple:keyple-java-core:$keyple_version&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>Please refer to Architecture/Keyle Core&lt;/p>
+&lt;h3 id="keyple-plugins">Keyple Plugins&lt;/h3>
+&lt;p>There are many Keyple plugins available, the one to use depends on the device and ticketing tools you are aiming to
+use.&lt;/p>
+&lt;p>To use the NFC plugin simply import it within the gradle dependencies of your Android application.&lt;/p>
+&lt;pre>&lt;code class="language-gradle">implementation &amp;quot;org.eclipse.keyple:keyple-android-nfc:$keyple_version&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;h3 id="keyple-calypso">Keyple Calypso&lt;/h3>
+&lt;p>The Keyple Calypso User API is an extension of the Keyple Core User API to manage Calypso Portable Objects.&lt;/p>
+&lt;p>Please refer to Architecture/Keyle Calypso&lt;/p>
+&lt;p>To use Keyple Calypso User API simply import the jar within the gradle dependencies of your Android application.&lt;/p>
+&lt;pre>&lt;code class="language-gradle">implementation &amp;quot;org.eclipse.keyple:keyple-java-calypso:$keyple_version&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;h1 id="lets-code">Let&amp;rsquo;s code&lt;/h1>
+&lt;h2 id="initializing-the-sdk">Initializing the SDK&lt;/h2>
+&lt;h3 id="register-a-plugin">Register a plugin&lt;/h3>
+&lt;p>In order to setup Keyple, we need to register at least one plugin. Here we register our NFC plugin. To do so, we use the singleton SmartCardService and the plugin Factory. (See plugin development guide to know more about plugins)&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">override fun onCreate(savedInstanceState: Bundle?) {
+super.onCreate(savedInstanceState)
+/* register Android NFC Plugin to the SmartCardService */
+try {
+SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory())
+}catch (e: KeypleException){
+/* do something with it */
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>Note: Plugins Factory&amp;rsquo;s initialisation could request more steps to execute before passing it to registerPlugin(). It depends on plugins, please check the documentation or usage exemple of desired plugin.&lt;/p>
+&lt;h3 id="unregister-a-plugin">Unregister a plugin&lt;/h3>
+&lt;p>Clean resources.&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">override fun onDestroy() {
+super.onCreate(savedInstanceState)
+/* Unregister Android NFC Plugin to the SmartCardService */
+try {
+SmartCardService.getInstance().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
+}catch (e: KeypleException){
+/* do something with it */
+}
+super.onDestroy()
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="retrieve-a-specific-reader">Retrieve a specific reader&lt;/h2>
+&lt;p>With the plugin registered we can retrieve all instances of the component mapping the SmartCard readers. Here we want to retrieve the NFC reader.&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">//We keep a reference to the reader for later use
+private lateinit var reader: AndroidNfcReader
+...
+//PLUGIN_NAME and READER_NAME are constants provided by the used Keyple plugin
+reader = plugin.readers[AndroidNfcReader.READER_NAME] as AndroidNfcReader
+&lt;/code>&lt;/pre>
+&lt;h2 id="add-observer-to-handle-nfc-events">Add observer to handle NFC events&lt;/h2>
+&lt;p>When native NFC is activated on an Android device, the OS dispatches insertion events occurring in the NFC detection field. In our application, we need detect it in order to proceed to exchanges with the SmartCard.&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">//To keep it simple we choose to have our MainActivity implementing ObservableReader.ReaderObserver
+//interface.
+class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
+...
+reader.addObserver(this)
+...
+//Belongs to ObservableReader.ReaderObserver
+//NFC Reader events will be received here.
+//this method is not triggered in UI thread
+override fun update(event: ReaderEvent) {
+if(event.eventType == ReaderEvent.EventType.CARD_INSERTED){
+//We'll select PO when SmartCard is presented in field
+//Method handlePo is described below
+handlePo()
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>Now we have an access to our NFC Reader, we can activate Card Detection.&lt;/p>
+&lt;h2 id="activate-card-detection">Activate Card detection&lt;/h2>
+&lt;p>We will start detection as soon as our application comes in foreground and stop when application go background.&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
+override fun onResume() {
+super.onResume()
+reader?.let {
+//Set Keyple in a detection mode
+//We choose to stop detection as soon as one card is detected
+it.startCardDetection(ObservableReader.PollingMode.SINGLESHOT)
+//Activate NFC detection (To be removed soon for merge with below step)
+it.enableNFCReaderMode(this)
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="deactivate-card-detection">Deactivate Card detection&lt;/h2>
+&lt;pre>&lt;code class="language-kotlin">class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
+override fun onPause() {
+reader?.let {
+it.disableNFCReaderMode(this)
+it.stopCardDetection()
+}
+super.onPause()
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>Now we can detect when a SmartCard is presented in the field, we can proceed to card application selection and data reading.&lt;/p>
+&lt;h2 id="handling-a-calypso-po">Handling a Calypso PO&lt;/h2>
+&lt;h3 id="calypso-selection-api">Calypso Selection API&lt;/h3>
+&lt;p>With Keyple, PO selection and FCI retrieving can be done using only Keyple Core, but Keyple Calypso API provides specific tools to handle Calypso POs and make the process a bit more simple.&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">fun handlePo(){
+reader?.let {
+//check if card is in the NFC field
+if(it.isCardPresent){
+//Instanciate class handling card selection process
+val cardSelection = CardSelection()
+//We only want to select the PO so we choose to close communication channel once
+//selection is done
+cardSelection.prepareReleaseChannel()
+//We build a selection request managing specific characteristics of Calypso POs
+val poSelectionRequest = PoSelectionRequest(
+PoSelector
+.builder()
+//Smarcard standard protocol
+.cardProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name)
+.aidSelector(
+CardSelector.AidSelector.builder()
+.aidToSelect(YOUR_AID) //Set the AID of your Calypso PO
+//indicates how to carry out the file occurrence in accordance with
+//ISO7816-4
+.fileOccurrence(CardSelector.AidSelector.FileOccurrence.FIRST)
+//indicates which template is expected in accordance with ISO7816-4
+.fileControlInformation(
+CardSelector.AidSelector.FileControlInformation.FCI)
+.build()
+).build())
+cardSelection.prepareSelection(poSelectionRequest)
+//Proceed to selection using the reader
+val selectionResult = cardSelection.processExplicitSelection(it)
+runOnUiThread {
+//We check the selection result and read the FCI
+if(selectionResult.hasActiveSelection()){
+val matchedSmartCard = selectionResult.activeSmartCard
+val fci = matchedSmartCard.fciBytes
+Toast.makeText(this, String.format(&amp;quot;Selected, Fci %s&amp;quot;,
+ByteArrayUtil.toHex(fci)), Toast.LENGTH_LONG).show()
+}else {
+Toast.makeText(this,
+String.format(&amp;quot;Not selected&amp;quot;), Toast.LENGTH_SHORT).show()
+}
+}
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>Now we&amp;rsquo;ve seen we can select our PO we can retrieve more data from it.&lt;/p>
+&lt;h3 id="reading-environment-and-usage">Reading Environment and usage&lt;/h3>
+&lt;p>In the below example we&amp;rsquo;ll read Environment and Usage data of an Hoplink container.&lt;/p>
+&lt;pre>&lt;code class="language-kotlin"> ...
+//Data related to Hoplink
+val poAid= &amp;quot;A000000291A000000191&amp;quot;
+val sfiHoplinkEFEnvironment = 0x14.toByte()
+val sfiHoplinkEFUsage = 0x1A.toByte()
+...
+private fun handlePo(){
+...
+//Prepare the reading order. We'll read the first record of the EF
+//specified by its SFI. This reading will be done within explicit selection.
+poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFEnvironment, 1)
+poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFUsage, 1)
+...
+//Hoplink is a Calypso PO, we can cast the SmartCard
+//with CalypsoPo class, representing the PO content.
+val calypsoPO = selectionResult.activeSmartCard as CalypsoPo
+val environment = calypsoPO.getFileBySfi(sfiHoplinkEFEnvironment)
+val usage = calypsoPO.getFileBySfi(sfiHoplinkEFUsage)
+Toast.makeText(this, String.format(&amp;quot;Environment %s&amp;quot;,
+ByteArrayUtil.toHex(environment.data.content)), Toast.LENGTH_SHORT).show()
+Toast.makeText(this, String.format(&amp;quot;Usage %s&amp;quot;,
+ByteArrayUtil.toHex(usage.data.content)), Toast.LENGTH_SHORT).show()
+}
+&lt;/code>&lt;/pre>
+&lt;h2 id="full-code">Full code&lt;/h2>
+&lt;pre>&lt;code class="language-xml">&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;manifest xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+package=&amp;quot;org.eclipse.keyple.android.quickstart&amp;quot;&amp;gt;
+&amp;lt;uses-permission android:name=&amp;quot;android.permission.NFC&amp;quot; /&amp;gt;
+&amp;lt;uses-feature
+android:name=&amp;quot;android.hardware.nfc&amp;quot;
+android:required=&amp;quot;true&amp;quot; /&amp;gt;
+&amp;lt;application
+android:allowBackup=&amp;quot;true&amp;quot;
+android:screenOrientation=&amp;quot;portrait&amp;quot;
+android:icon=&amp;quot;@mipmap/ic_launcher&amp;quot;
+android:label=&amp;quot;@string/app_name&amp;quot;
+android:roundIcon=&amp;quot;@mipmap/ic_launcher_round&amp;quot;
+android:supportsRtl=&amp;quot;true&amp;quot;
+android:theme=&amp;quot;@style/AppTheme&amp;quot;&amp;gt;
+&amp;lt;activity android:name=&amp;quot;.MainActivity&amp;quot;&amp;gt;
+&amp;lt;intent-filter&amp;gt;
+&amp;lt;action android:name=&amp;quot;android.intent.action.MAIN&amp;quot; /&amp;gt;
+&amp;lt;category android:name=&amp;quot;android.intent.category.LAUNCHER&amp;quot; /&amp;gt;
+&amp;lt;/intent-filter&amp;gt;
+&amp;lt;/activity&amp;gt;
+&amp;lt;/application&amp;gt;
+&amp;lt;/manifest&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-kotlin">class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
+private var reader: AndroidNfcReader? = null
+val poAid= &amp;quot;A000000291A000000191&amp;quot;
+val sfiHoplinkEFEnvironment = 0x14.toByte()
+val sfiHoplinkEFUsage = 0x1A.toByte()
+override fun onCreate(savedInstanceState: Bundle?) {
+super.onCreate(savedInstanceState)
+setContentView(R.layout.activity_main)
+try {
+val plugin = SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory())
+val reader = plugin.readers[AndroidNfcReader.READER_NAME] as AndroidNfcReader
+reader.addObserver(this)
+reader.activateProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name, ContactlessCardCommonProtocols.ISO_14443_4.name)
+this.reader = reader
+}catch (e: KeypleException){
+Timber.e(e)
+Toast.makeText(this, String.format(&amp;quot;Error: %s&amp;quot;, e.message), Toast.LENGTH_LONG).show()
+}
+}
+override fun onResume() {
+super.onResume()
+reader?.let {
+it.startCardDetection(ObservableReader.PollingMode.SINGLESHOT)
+it.enableNFCReaderMode(this)
+Toast.makeText(this, String.format(&amp;quot;Hunt enabled&amp;quot;), Toast.LENGTH_SHORT).show()
+}
+}
+override fun onPause() {
+reader?.let {
+it.disableNFCReaderMode(this)
+it.stopCardDetection()
+}
+super.onPause()
+}
+override fun onDestroy() {
+SmartCardService.getInstance().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
+reader = null
+super.onDestroy()
+}
+override fun update(event: ReaderEvent) {
+Timber.d(&amp;quot;Event: %s&amp;quot;, event.eventType.name)
+runOnUiThread {
+Toast.makeText(this, String.format(&amp;quot;Event: %s&amp;quot;, event.eventType.name),
+Toast.LENGTH_SHORT).show()
+}
+if(event.eventType == ReaderEvent.EventType.CARD_INSERTED){
+handlePo()
+}
+}
+//With Calypso API
+private fun handlePo(){
+reader?.let {
+if(it.isCardPresent){
+val cardSelection = CardSelection()
+cardSelection.prepareReleaseChannel()
+val poSelectionRequest = PoSelectionRequest(
+PoSelector
+.builder()
+.cardProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name)
+.aidSelector(
+CardSelector.AidSelector.builder()
+.aidToSelect(poAid)
+.fileOccurrence(
+CardSelector.AidSelector.FileOccurrence.FIRST)
+.fileControlInformation(
+CardSelector.AidSelector.FileControlInformation.FCI)
+.build()
+).build())
+cardSelection.prepareSelection(poSelectionRequest)
+//Prepare the reading order. We'll read the first record of the EF
+//specified by his SFI. This reading will be done with selection.
+poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFEnvironment, 1)
+poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFUsage, 1)
+//Selection and file reading will be done here
+val selectionResult = cardSelection.processExplicitSelection(it)
+runOnUiThread {
+if(selectionResult.hasActiveSelection()){
+val matchedSmartCard = selectionResult.activeSmartCard
+val fci = matchedSmartCard.fciBytes
+Toast.makeText(this, String.format(&amp;quot;Selected, Fci %s&amp;quot;,
+ByteArrayUtil.toHex(fci)), Toast.LENGTH_SHORT).show()
+//Hoplink is a Calypso PO, we can cast the SmartCard
+//with CalypsoPo class, representing the PO content.
+val calypsoPO = selectionResult.activeSmartCard as CalypsoPo
+val environment = calypsoPO.getFileBySfi(sfiHoplinkEFEnvironment)
+val usage = calypsoPO.getFileBySfi(sfiHoplinkEFUsage)
+Toast.makeText(this, String.format(&amp;quot;Environment %s&amp;quot;,
+ByteArrayUtil.toHex(environment.data.content)), Toast.LENGTH_SHORT).show()
+Toast.makeText(this, String.format(&amp;quot;Usage %s&amp;quot;,
+ByteArrayUtil.toHex(usage.data.content)), Toast.LENGTH_SHORT).show()
+}else {
+Toast.makeText(this, String.format(&amp;quot;Not selected&amp;quot;), Toast.LENGTH_SHORT).show()
+}
+}
+}
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h1 id="faq">FAQ:&lt;/h1>
+&lt;p>&lt;strong>How to fix &amp;ldquo;More than one file was found with OS independent path &amp;lsquo;META-INF/NOTICE.md&amp;rsquo;.&amp;quot;&lt;/strong>&lt;/p>
+&lt;p>Add lines below to your :app build.gradle file&lt;/p>
+&lt;pre>&lt;code class="language-gradle">android{
+packagingOptions {
+exclude 'META-INF/NOTICE.md'
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>Where can I see more examples&lt;/strong>&lt;/p>
+&lt;p>Android native plugins are provided with example applications. Check it to see more use cases:
+&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example" target="_blank" rel="noopener">Examples&lt;/a>&lt;/p></description></item><item><title>Build your First C++ Application</title><link>/keyple-website/docs/build-your-first-app/cpp-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/keyple-website/docs/build-your-first-app/cpp-app/</guid><description/></item></channel></rss>

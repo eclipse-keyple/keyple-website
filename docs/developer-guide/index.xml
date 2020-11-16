@@ -1,0 +1,1236 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Developer Guides | Eclipse Keyple</title><link>/keyple-website/docs/developer-guide/</link><atom:link href="/keyple-website/docs/developer-guide/index.xml" rel="self" type="application/rss+xml"/><description>Developer Guides</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>/keyple-website/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Developer Guides</title><link>/keyple-website/docs/developer-guide/</link></image><item><title>Develop a Local Ticketing Application</title><link>/keyple-website/docs/developer-guide/develop-ticketing-app-local/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/keyple-website/docs/developer-guide/develop-ticketing-app-local/</guid><description>&lt;h2 id="test-shortcode-java-kotlin-cpp">Test shortcode &amp;ldquo;java-kotlin-cpp&amp;rdquo;&lt;/h2>
+&lt;section class="project-tab" id="tabs">
+&lt;div class="container" style="margin: 0; padding: 0">
+&lt;div class="flex-row">
+&lt;div>
+&lt;nav>
+&lt;div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+&lt;a aria-controls="nav-java" aria-selected="true" class="nav-item nav-link active"
+data-toggle="tab" href="#nav-java" id="nav-java-tab" role="tab">
+JAVA
+&lt;/a>
+&lt;a aria-controls="nav-kotlin" aria-selected="false" class="nav-item nav-link" data-toggle="tab"
+href="#nav-kotlin" id="nav-kotlin-tab" role="tab">
+KOTLIN
+&lt;/a>
+&lt;a aria-controls="nav-cpp" aria-selected="false" class="nav-item nav-link" data-toggle="tab"
+href="#nav-cpp" id="nav-cpp-tab" role="tab">
+C++
+&lt;/a>
+&lt;/div>
+&lt;/nav>
+&lt;div class="tab-content" id="nav-tabContent">
+&lt;div aria-labelledby="nav-java-tab" class="tab-pane fade show active" id="nav-java" role="tabpanel">
+&lt;div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">SelectionsResult selectionsResult &lt;span style="color:#f92672">=&lt;/span> seSelection&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">processExplicitSelection&lt;/span>&lt;span style="color:#f92672">(&lt;/span>reader&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>selectionsResult&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">hasActiveSelection&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+MatchingSe matchingSe &lt;span style="color:#f92672">=&lt;/span> selectionsResult&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getActiveMatchingSe&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;/div>
+&lt;div aria-labelledby="nav-kotlin-tab" class="tab-pane fade" id="nav-kotlin" role="tabpanel">
+&lt;div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-kt" data-lang="kt">&lt;span style="color:#66d9ef">val&lt;/span> selectionsResult = seSelection.processExplicitSelection(reader)
+&lt;span style="color:#66d9ef">if&lt;/span> (selectionsResult.hasActiveSelection()) {
+&lt;span style="color:#66d9ef">val&lt;/span> matchingSe = selectionsResult.activeMatchingSe
+}&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;/div>
+&lt;div aria-labelledby="nav-cpp-tab" class="tab-pane fade" id="nav-cpp" role="tabpanel">
+&lt;div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="color:#66d9ef">if&lt;/span> (selectionResult&lt;span style="color:#f92672">-&amp;gt;&lt;/span>hasActiveSelection()) {
+std&lt;span style="color:#f92672">::&lt;/span>shared_ptr&lt;span style="color:#f92672">&amp;lt;&lt;/span>MatchingSelection&lt;span style="color:#f92672">&amp;gt;&lt;/span> matchingSelection &lt;span style="color:#f92672">=&lt;/span>
+selectionResult&lt;span style="color:#f92672">-&amp;gt;&lt;/span>getActiveSelection();
+std&lt;span style="color:#f92672">::&lt;/span>shared_ptr&lt;span style="color:#f92672">&amp;lt;&lt;/span>CalypsoPo&lt;span style="color:#f92672">&amp;gt;&lt;/span> calypsoPo &lt;span style="color:#f92672">=&lt;/span>
+std&lt;span style="color:#f92672">::&lt;/span>dynamic_pointer_cast&lt;span style="color:#f92672">&amp;lt;&lt;/span>CalypsoPo&lt;span style="color:#f92672">&amp;gt;&lt;/span>(
+matchingSelection&lt;span style="color:#f92672">-&amp;gt;&lt;/span>getMatchingSe());
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/section>
+&lt;h2 id="standard-code-insertion">Standard code insertion&lt;/h2>
+&lt;pre>&lt;code class="language-kotlin">//nativeReader is an instance of android.se.omapi.Reader
+override fun checkSePresence(): Boolean {
+return nativeReader.isSecureElementPresent
+}
+&lt;/code>&lt;/pre></description></item><item><title>Develop a Remote Ticketing Application</title><link>/keyple-website/docs/developer-guide/develop-ticketing-app-remote/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/keyple-website/docs/developer-guide/develop-ticketing-app-remote/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>&lt;strong>Keyple provides the &amp;ldquo;Keyple Remote Plugin&amp;rdquo; solution which allows a terminal to communicate with a smart card reader available in another terminal&lt;/strong>.&lt;/p>
+&lt;p>In this way, you can manage transactions within a distributed architecture.&lt;/p>
+&lt;p>The diagram below shows the role of the &lt;strong>Keyple Remote Plugin&lt;/strong> components in the software layers used in a distributed architecture :&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/keyple-website/keyple-website/media/remote-plugin/component/Remote_Component_Overview.svg" >
+&lt;img src="/keyple-website/keyple-website/media/remote-plugin/component/Remote_Component_Overview.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="how-to-use-it-">How to use it ?&lt;/h2>
+&lt;ol>
+&lt;li>In pre-requisite, read page
+&lt;a href="/keyple-website/keyple-website/docs/developer-guide/develop-ticketing-app-local/">Develop a Local Ticketing Application&lt;/a> to understand the main concepts of Keyple in a local application.&lt;/li>
+&lt;li>Read chapter
+&lt;a href="#concepts">Concepts&lt;/a> to understand the main terms and concepts of the &lt;strong>Keyple Remote Plugin&lt;/strong> solution.&lt;/li>
+&lt;li>Read the introduction of chapter
+&lt;a href="#remote-plugins">Remote Plugins&lt;/a> to be informed about the different remote plugins and APIs proposed by the solution.&lt;/li>
+&lt;li>Using chapter
+&lt;a href="#use-cases">Use cases&lt;/a>, find your use case. This will help you to determine exactly which library and API to use.&lt;/li>
+&lt;li>Using chapter
+&lt;a href="#download">Download&lt;/a>, import into your project the libraries specified by your use case.&lt;/li>
+&lt;li>Using chapter
+&lt;a href="#network-configuration">Network configuration&lt;/a>, implement the transport layer adapted to your network configuration.&lt;/li>
+&lt;li>Implement your ticketing services as specified in the associated use case.&lt;/li>
+&lt;/ol>
+&lt;h2 id="concepts">Concepts&lt;/h2>
+&lt;p>Here are the main concepts to keep in mind before continuing to read this developer guide :&lt;/p>
+&lt;div id="concepts-table-1">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Concept&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Remote Lib&lt;/strong>&lt;/td>
+&lt;td>This is the library &lt;code>keyple-java-plugin-remote-remote&lt;/code>.&lt;br>It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Local Lib&lt;/strong>&lt;/td>
+&lt;td>This is the library &lt;code>keyple-java-plugin-remote-local&lt;/code>.&lt;br>It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Common Lib&lt;/strong>&lt;/td>
+&lt;td>This is the library &lt;code>keyple-java-plugin-remote-common&lt;/code>.&lt;br>This library is &lt;strong>implicitly&lt;/strong> imported by &lt;strong>Remote Lib&lt;/strong> and &lt;strong>Local Lib&lt;/strong> because it contains common elements.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Remote Plugin&lt;/strong>&lt;/td>
+&lt;td>Part of the &lt;strong>Remote Lib&lt;/strong>, this is a Keyple plugin which provides only &lt;strong>Remote Readers&lt;/strong> to the application. It manages data exchanges with the &lt;strong>Local Service&lt;/strong>. This plugin must be registered to the smart card service like any Keyple plugin.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Remote Reader&lt;/strong>&lt;/td>
+&lt;td>Part of the &lt;strong>Remote Plugin&lt;/strong>, this is a Keyple reader which has some specificities :&lt;br>- each remote reader is connected to a local reader ;&lt;br>- any command sent by the application to a remote reader will be forwarded to the associated local reader ;&lt;br>- any event occurs on a local reader or plugin will be forwarded to the associated remote reader or plugin.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Local Service&lt;/strong>&lt;/td>
+&lt;td>Part of the &lt;strong>Local Lib&lt;/strong>, this service ensures data exchange between the &lt;strong>Remote Plugin&lt;/strong> and local plugins and readers. It must be initialized and started by the host application.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Factory&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> each have a specific factory class to initialize them.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Utility&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> each have a specific utility class to access them everywhere in the code.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Node&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> each are bind to a specific internal node which is responsible for the interfacing with the &lt;strong>Network Endpoint&lt;/strong>.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Network Endpoint&lt;/strong>&lt;/td>
+&lt;td>At the user&amp;rsquo;s charge, this component ensures the network exchanges between the &lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> nodes.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;style>
+#concepts-table-1 table th:first-of-type {
+width: 130px;
+}
+&lt;/style>
+&lt;p>The diagram below illustrates the main functional concepts through a standard use case :&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/keyple-website/keyple-website/media/remote-plugin/component/Remote_Component_Concepts_1.svg" >
+&lt;img src="/keyple-website/keyple-website/media/remote-plugin/component/Remote_Component_Concepts_1.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.&lt;/p>
+&lt;p>These could be for example a ticketing reloading service, where the intelligence would be on the terminal with remote readers, with thin clients on A &amp;amp; B terminals communicating locally with the cards.&lt;/p>
+&lt;p>In this use case, the &lt;strong>Remote Plugin&lt;/strong> is used for card communication.&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/keyple-website/keyple-website/media/remote-plugin/component/Remote_Component_Concepts_2.svg" >
+&lt;img src="/keyple-website/keyple-website/media/remote-plugin/component/Remote_Component_Concepts_2.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;p>Here is another example, but this time it illustrates several &lt;strong>Remote Plugins&lt;/strong> connected to the same &lt;strong>Local Service&lt;/strong>.&lt;/p>
+&lt;p>These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.&lt;/p>
+&lt;p>In this use case, the &lt;strong>Remote Plugin&lt;/strong> is used for SAM communication.&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/keyple-website/keyple-website/media/remote-plugin/component/Remote_Component_Concepts_3.svg" >
+&lt;img src="/keyple-website/keyple-website/media/remote-plugin/component/Remote_Component_Concepts_3.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="remote-plugins">Remote Plugins&lt;/h2>
+&lt;p>The &lt;strong>Keyple Remote Plugin&lt;/strong> solution provides &lt;strong>3&lt;/strong> different specific &lt;strong>Remote Plugin&lt;/strong> components, each one having a specific API described in chapter
+&lt;a href="#remote-plugins-apis">Remote Plugins APIs&lt;/a> designed on a &lt;strong>Client-Server&lt;/strong> model in which &lt;strong>the Client is always the initiator of the communication&lt;/strong> :&lt;/p>
+&lt;div id="plugins-table-1">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Plugin&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>
+&lt;a href="#remotepluginserver">RemotePluginServer&lt;/a>&lt;/td>
+&lt;td>Allows a &lt;strong>server&lt;/strong> application to control a smart card reader available on a &lt;strong>client&lt;/strong> (e.g. PO reader).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;a href="#remotepluginclient">RemotePluginClient&lt;/a> or&lt;br>
+&lt;a href="#observableremotepluginclient">ObservableRemotePluginClient&lt;/a>&lt;/td>
+&lt;td>Allows a &lt;strong>client&lt;/strong> application to control a smart card reader available on a &lt;strong>server&lt;/strong> (e.g. SAM reader).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;a href="#poolremotepluginclient">PoolRemotePluginClient&lt;/a>&lt;/td>
+&lt;td>Allows a &lt;strong>client&lt;/strong> application to control a &lt;strong>pool&lt;/strong> of smart cards readers available on a &lt;strong>server&lt;/strong> (e.g. HSM readers).&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;style>
+#plugins-table-1 table th:first-of-type {
+width: 220px;
+}
+&lt;/style>
+&lt;p>Moreover, some plugins have different modes in which they allow or not the observation of plugin or reader events (such as smart card insertion, reader connection, etc&amp;hellip;).&lt;/p>
+&lt;p>Each &lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> has a default name, but it&amp;rsquo;s possible to specify a custom name during the initialization phase.&lt;/p>
+&lt;p>It is thus possible to have within an application as many instances of a specific &lt;strong>Remote Plugin&lt;/strong> or &lt;strong>Local Service&lt;/strong> as desired.&lt;/p>
+&lt;h3 id="remotepluginserver">RemotePluginServer&lt;/h3>
+&lt;p>This plugin allows a &lt;strong>server&lt;/strong> application to control a smart card reader available on a &lt;strong>client&lt;/strong> (e.g. PO reader).&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>API&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Library&lt;/strong>&lt;/td>
+&lt;td>Local Lib&lt;/td>
+&lt;td>Remote Lib&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Remote Plugin&lt;/strong> / &lt;strong>Local Service&lt;/strong>&lt;/td>
+&lt;td>&lt;code>LocalServiceClient&lt;/code>&lt;/td>
+&lt;td>&lt;code>RemotePluginServer&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Factory&lt;/strong>&lt;/td>
+&lt;td>&lt;code>LocalServiceClientFactory&lt;/code>&lt;/td>
+&lt;td>&lt;code>RemotePluginServerFactory&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Utility&lt;/strong>&lt;/td>
+&lt;td>&lt;code>LocalServiceClientUtils&lt;/code>&lt;/td>
+&lt;td>&lt;code>RemotePluginServerUtils&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="use-and-sequence-of-operations">USE AND SEQUENCE OF OPERATIONS&lt;/h4>
+&lt;ul>
+&lt;li>Server side :
+&lt;ol>
+&lt;li>configure the factory by providing the network and plugin observer implementation. Please note that &lt;strong>this plugin is observable only to trigger ticketing services&lt;/strong> on the server side, but does not allow observation on the local plugin (reader insertion, etc&amp;hellip;),&lt;/li>
+&lt;li>register the &lt;strong>Remote Plugin&lt;/strong> to the smart card service using the factory,&lt;/li>
+&lt;li>await for events of type &lt;code>PluginEvent.READER_CONNECTED&lt;/code>,&lt;/li>
+&lt;li>when an event occurs, get the specified remote reader from the &lt;strong>Remote Plugin&lt;/strong>,&lt;/li>
+&lt;li>use information inside the remote reader to identify the ticketing service to execute,&lt;/li>
+&lt;li>execute the specified ticketing service using the remote reader and all of its others information,&lt;/li>
+&lt;li>terminate the remote ticketing service using the &lt;strong>Remote Plugin&lt;/strong> API by transmitting if needed personal information to the client.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Client side :
+&lt;ol>
+&lt;li>configure the factory and start the &lt;strong>Local Service&lt;/strong> by providing the network implementation,&lt;/li>
+&lt;li>register at least a local plugin to the smart card service and get the local reader to connect to the server,&lt;/li>
+&lt;li>execute the remote service using the &lt;strong>Local Service&lt;/strong> API by indicating the ticketing service id to execute and transmitting to the server if needed personal information or smart card content previously read.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="illustration">ILLUSTRATION&lt;/h4>
+&lt;p>The following sequence diagram shows the capabilities of the plugin through an arbitrary example that illustrates :&lt;/p>
+&lt;ul>
+&lt;li>the initialization phase of the local and remote components ;&lt;/li>
+&lt;li>the registration of the local plugin and observable reader ;&lt;/li>
+&lt;li>the selection phase of an observable reader carried out directly by the client ;&lt;/li>
+&lt;li>the sending of the selection result and additional information to the server to remotely perform a specific ticketing service (materialization, validation, etc&amp;hellip;) ;&lt;/li>
+&lt;li>the reception by the server of the transmitted data ;&lt;/li>
+&lt;li>the execution of the remote ticketing service ;&lt;/li>
+&lt;li>the server subscription to observable reader events ;&lt;/li>
+&lt;li>the sending of information to the client at the end of processing.&lt;/li>
+&lt;/ul>
+&lt;p>Note that the network layer is deliberately hide in this diagram. Its implementation is describe in the
+&lt;a href="#network-configuration">Network configuration&lt;/a> chapter.&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/keyple-website/keyple-website/media/remote-plugin/sequence/Remote_Sequence_RemotePluginServer_API.svg" >
+&lt;img src="/keyple-website/keyple-website/media/remote-plugin/sequence/Remote_Sequence_RemotePluginServer_API.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;h3 id="remotepluginclient">RemotePluginClient&lt;/h3>
+&lt;p>This plugin allows a &lt;strong>client&lt;/strong> application to control a smart card reader available on a &lt;strong>server&lt;/strong> (e.g. SAM reader).&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>API&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Library&lt;/strong>&lt;/td>
+&lt;td>Remote Lib&lt;/td>
+&lt;td>Local Lib&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Remote Plugin&lt;/strong> / &lt;strong>Local Service&lt;/strong>&lt;/td>
+&lt;td>&lt;code>RemotePluginClient&lt;/code>&lt;/td>
+&lt;td>&lt;code>LocalServiceServer&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Factory&lt;/strong>&lt;/td>
+&lt;td>&lt;code>RemotePluginClientFactory&lt;/code>&lt;/td>
+&lt;td>&lt;code>LocalServiceServerFactory&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Utility&lt;/strong>&lt;/td>
+&lt;td>&lt;code>RemotePluginClientUtils&lt;/code>&lt;/td>
+&lt;td>&lt;code>LocalServiceServerUtils&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="use-and-sequence-of-operations-1">USE AND SEQUENCE OF OPERATIONS&lt;/h4>
+&lt;ul>
+&lt;li>Server side :
+&lt;ol>
+&lt;li>configure the factory and start the &lt;strong>Local Service&lt;/strong> by providing the network implementation,&lt;/li>
+&lt;li>register at least a local plugin to the smart card service.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Client side :
+&lt;ol>
+&lt;li>configure the factory by providing the network implementation,&lt;/li>
+&lt;li>register the &lt;strong>Remote Plugin&lt;/strong> to the smart card service using the factory,&lt;/li>
+&lt;li>use the &lt;strong>Remote Plugin&lt;/strong> and its remote readers as a local plugin with local readers.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="observableremotepluginclient">ObservableRemotePluginClient&lt;/h3>
+&lt;p>This plugin is a
+&lt;a href="#remotepluginclient">RemotePluginClient&lt;/a> which also allows to observe the plugin events (such as reader connection, etc&amp;hellip;).&lt;/p>
+&lt;p>Please note that this mode is possible only if the local plugin is observable.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>API&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Library&lt;/strong>&lt;/td>
+&lt;td>Remote Lib&lt;/td>
+&lt;td>Local Lib&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Remote Plugin&lt;/strong> / &lt;strong>Local Service&lt;/strong>&lt;/td>
+&lt;td>&lt;code>ObservableRemotePluginClient&lt;/code>&lt;/td>
+&lt;td>&lt;code>LocalServiceServer&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Factory&lt;/strong>&lt;/td>
+&lt;td>&lt;code>RemotePluginClientFactory&lt;/code>&lt;/td>
+&lt;td>&lt;code>LocalServiceServerFactory&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Utility&lt;/strong>&lt;/td>
+&lt;td>&lt;code>RemotePluginClientUtils&lt;/code>&lt;/td>
+&lt;td>&lt;code>LocalServiceServerUtils&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="use-and-sequence-of-operations-2">USE AND SEQUENCE OF OPERATIONS&lt;/h4>
+&lt;ul>
+&lt;li>Server side :
+&lt;ol>
+&lt;li>configure the factory and start the &lt;strong>Local Service&lt;/strong> by providing the network implementation,&lt;/li>
+&lt;li>register at least a local plugin to the smart card service.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Client side :
+&lt;ol>
+&lt;li>configure the factory by providing the network implementation,&lt;/li>
+&lt;li>register the &lt;strong>Remote Plugin&lt;/strong> to the smart card service using the factory,&lt;/li>
+&lt;li>use the &lt;strong>Remote Plugin&lt;/strong> and its remote readers as a local observable plugin with local readers.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="poolremotepluginclient">PoolRemotePluginClient&lt;/h3>
+&lt;p>This plugin allows a &lt;strong>client&lt;/strong> application to control a &lt;strong>pool&lt;/strong> of smart cards readers available on a &lt;strong>server&lt;/strong> (e.g. HSM readers).&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>API&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Library&lt;/strong>&lt;/td>
+&lt;td>Remote Lib&lt;/td>
+&lt;td>Local Lib&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Remote Plugin&lt;/strong> / &lt;strong>Local Service&lt;/strong>&lt;/td>
+&lt;td>&lt;code>PoolRemotePluginClient&lt;/code>&lt;/td>
+&lt;td>&lt;code>PoolLocalServiceServer&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Factory&lt;/strong>&lt;/td>
+&lt;td>&lt;code>PoolRemotePluginClientFactory&lt;/code>&lt;/td>
+&lt;td>&lt;code>PoolLocalServiceServerFactory&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Utility&lt;/strong>&lt;/td>
+&lt;td>&lt;code>PoolRemotePluginClientUtils&lt;/code>&lt;/td>
+&lt;td>&lt;code>PoolLocalServiceServerUtils&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="use-and-sequence-of-operations-3">USE AND SEQUENCE OF OPERATIONS&lt;/h4>
+&lt;ul>
+&lt;li>Server
+&lt;ol>
+&lt;li>configure the factory and start the &lt;strong>Local Service&lt;/strong> by providing the network implementation,&lt;/li>
+&lt;li>register at least a local pool plugin to the smart card service.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Client
+&lt;ol>
+&lt;li>configure the factory by providing the network implementation,&lt;/li>
+&lt;li>register the &lt;strong>Remote Plugin&lt;/strong> to the smart card service using the factory,&lt;/li>
+&lt;li>use the &lt;strong>Remote Plugin&lt;/strong> and its remote readers as a local pool plugin with local readers.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="remote-plugins-apis">Remote Plugins APIs&lt;/h2>
+&lt;p>The class diagrams below shows the different APIs exposed and SPIs required by the &lt;strong>Keyple Remote Plugin&lt;/strong> solution.&lt;/p>
+&lt;p>An &lt;strong>SPI&lt;/strong> (Service Provider Interface) is an interface that must be implemented by the user.&lt;/p>
+&lt;p>Here are the available APIs depending on the library imported by your project :&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th style="text-align:center">Remote Lib&lt;/th>
+&lt;th style="text-align:center">Local Lib&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>
+&lt;a href="#common-api">Common API&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">✔️&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;a href="#remote-plugin-api">Remote Plugin API&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;a href="#local-service-api">Local Service API&lt;/a>&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">✔️&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentations are accessible from the page
+&lt;a href="/keyple-website/keyple-website/docs/api-reference/">API Reference&lt;/a>.&lt;/p>
+&lt;h3 id="common-api">Common API&lt;/h3>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="/keyple-website/reference/keyple-java-plugin-remote-common/index.html" target="blank">here&lt;/a>.&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/keyple-website/keyple-website/media/remote-plugin/class/Remote_Class_Common_API.svg" >
+&lt;img src="/keyple-website/keyple-website/media/remote-plugin/class/Remote_Class_Common_API.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;h3 id="remote-plugin-api">Remote Plugin API&lt;/h3>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="/keyple-website/reference/keyple-java-plugin-remote-remote/index.html" target="blank">here&lt;/a>.&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/keyple-website/keyple-website/media/remote-plugin/class/Remote_Class_RemotePlugin_API.svg" >
+&lt;img src="/keyple-website/keyple-website/media/remote-plugin/class/Remote_Class_RemotePlugin_API.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;h3 id="local-service-api">Local Service API&lt;/h3>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="/keyple-website/reference/keyple-java-plugin-remote-local/index.html" target="blank">here&lt;/a>.&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/keyple-website/keyple-website/media/remote-plugin/class/Remote_Class_LocalService_API.svg" >
+&lt;img src="/keyple-website/keyple-website/media/remote-plugin/class/Remote_Class_LocalService_API.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;h2 id="use-cases">Use cases&lt;/h2>
+&lt;p>Here is a summary table of all proposed use cases. Search for the one that corresponds to your need and then look at the associated description :&lt;/p>
+&lt;div id="use-cases-table-2">
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">Use Case&lt;/th>
+&lt;th style="text-align:center">Reader type&lt;/th>
+&lt;th style="text-align:center">Reader endpoint&lt;/th>
+&lt;th style="text-align:center">Reader observation&lt;/th>
+&lt;th style="text-align:center">Plugin observation&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">
+&lt;a href="#uc-1">UC 1&lt;/a>&lt;/td>
+&lt;td style="text-align:center">Simple&lt;/td>
+&lt;td style="text-align:center">Client&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">
+&lt;a href="#uc-2">UC 2&lt;/a>&lt;/td>
+&lt;td style="text-align:center">Simple&lt;/td>
+&lt;td style="text-align:center">Client&lt;/td>
+&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">
+&lt;a href="#uc-3">UC 3&lt;/a>&lt;/td>
+&lt;td style="text-align:center">Simple&lt;/td>
+&lt;td style="text-align:center">Server&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">
+&lt;a href="#uc-4">UC 4&lt;/a>&lt;/td>
+&lt;td style="text-align:center">Simple&lt;/td>
+&lt;td style="text-align:center">Server&lt;/td>
+&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">
+&lt;a href="#uc-5">UC 5&lt;/a>&lt;/td>
+&lt;td style="text-align:center">Simple&lt;/td>
+&lt;td style="text-align:center">Server&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">✔️&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">
+&lt;a href="#uc-6">UC 6&lt;/a>&lt;/td>
+&lt;td style="text-align:center">Simple&lt;/td>
+&lt;td style="text-align:center">Server&lt;/td>
+&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">✔️&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">
+&lt;a href="#uc-7">UC 7&lt;/a>&lt;/td>
+&lt;td style="text-align:center">Pool&lt;/td>
+&lt;td style="text-align:center">Server&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
+&lt;style>
+#use-cases-table-2 table th:nth-of-type(6) {
+width: 240px;
+}
+&lt;/style>
+&lt;h4 id="uc-1">UC 1&lt;/h4>
+&lt;p>This use case requires to use the plugin
+&lt;a href="#remotepluginserver">RemotePluginServer&lt;/a>.&lt;/p>
+&lt;p>Use this mode if you don&amp;rsquo;t plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
+&lt;p>Please note that it is still possible to observe locally the reader on the client side if needed.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Methods to be used when initializing the factory&lt;/td>
+&lt;td>&lt;code>withoutReaderObservation()&lt;/code>&lt;/td>
+&lt;td>-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Possible readers to use&lt;/td>
+&lt;td>&lt;code>Reader&lt;/code> or &lt;code>ObservableReader&lt;/code>&lt;/td>
+&lt;td>&lt;code>RemoteReaderServer&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="uc-2">UC 2&lt;/h4>
+&lt;p>This use case requires to use the plugin
+&lt;a href="#remotepluginserver">RemotePluginServer&lt;/a>.&lt;/p>
+&lt;p>Use this mode if you plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
+&lt;p>Please note that this mode is only possible if the local reader is observable.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Methods to be used when initializing the factory&lt;/td>
+&lt;td>&lt;code>withReaderObservation(...)&lt;/code>&lt;/td>
+&lt;td>-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Possible readers to use&lt;/td>
+&lt;td>&lt;code>ObservableReader&lt;/code>&lt;/td>
+&lt;td>&lt;code>ObservableRemoteReaderServer&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>To observe &amp;ldquo;remotely&amp;rdquo; the reader events, you must :&lt;/p>
+&lt;ul>
+&lt;li>Server
+&lt;ol>
+&lt;li>register at least one observer to the remote reader created during the first client call and await for reader events,&lt;/li>
+&lt;li>retrieve the remote reader from the &lt;strong>Remote Plugin&lt;/strong> &lt;strong>imperatively&lt;/strong> using the reader name contained in the received event,&lt;/li>
+&lt;li>execute the ticketing service associated to the event using the remote reader and all of its others information,&lt;/li>
+&lt;li>terminate the remote ticketing service associated to the event using the &lt;strong>Remote Plugin&lt;/strong> API by transmitting if needed personal information to the client.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Client
+&lt;ol>
+&lt;li>execute a remote service first in order to connect a remote reader to the local reader and to allow the remote application to subscribe to the events of the remote reader.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="uc-3">UC 3&lt;/h4>
+&lt;p>This use case requires to use the plugin
+&lt;a href="#remotepluginclient">RemotePluginClient&lt;/a>.&lt;/p>
+&lt;p>Use this mode if you don&amp;rsquo;t plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
+&lt;p>Please note that it is still possible to observe locally the reader on the server side if needed.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Methods to be used when initializing the factory&lt;/td>
+&lt;td>&lt;code>withoutPluginObservation()&lt;/code>&lt;br>&lt;code>withoutReaderObservation()&lt;/code>&lt;/td>
+&lt;td>-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Possible readers to use&lt;/td>
+&lt;td>&lt;code>Reader&lt;/code>&lt;/td>
+&lt;td>&lt;code>Reader&lt;/code> or &lt;code>ObservableReader&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="uc-4">UC 4&lt;/h4>
+&lt;p>This use case requires to use the plugin
+&lt;a href="#remotepluginclient">RemotePluginClient&lt;/a>.&lt;/p>
+&lt;p>Use this mode if you plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
+&lt;p>Please note that this mode is only possible if the local reader is observable.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Methods to be used when initializing the factory&lt;/td>
+&lt;td>&lt;code>withoutPluginObservation()&lt;/code>&lt;br>&lt;code>withReaderObservation()&lt;/code>&lt;/td>
+&lt;td>-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Possible readers to use&lt;/td>
+&lt;td>&lt;code>ObservableReader&lt;/code>&lt;/td>
+&lt;td>&lt;code>ObservableReader&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="uc-5">UC 5&lt;/h4>
+&lt;p>This use case requires to use the plugin
+&lt;a href="#observableremotepluginclient">ObservableRemotePluginClient&lt;/a>.&lt;/p>
+&lt;p>Use this mode if you don&amp;rsquo;t plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
+&lt;p>Please note that it is still possible to observe locally the reader on the server side if needed.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Methods to be used when initializing the factory&lt;/td>
+&lt;td>&lt;code>withPluginObservation()&lt;/code>&lt;br>&lt;code>withoutReaderObservation()&lt;/code>&lt;/td>
+&lt;td>-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Possible readers to use&lt;/td>
+&lt;td>&lt;code>Reader&lt;/code>&lt;/td>
+&lt;td>&lt;code>Reader&lt;/code> or &lt;code>ObservableReader&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="uc-6">UC 6&lt;/h4>
+&lt;p>This use case requires to use the plugin
+&lt;a href="#observableremotepluginclient">ObservableRemotePluginClient&lt;/a>.&lt;/p>
+&lt;p>Use this mode if you plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
+&lt;p>Please note that this mode is only possible if the local reader is observable.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Methods to be used when initializing the factory&lt;/td>
+&lt;td>&lt;code>withPluginObservation()&lt;/code>&lt;br>&lt;code>withReaderObservation()&lt;/code>&lt;/td>
+&lt;td>-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Possible readers to use&lt;/td>
+&lt;td>&lt;code>ObservableReader&lt;/code>&lt;/td>
+&lt;td>&lt;code>ObservableReader&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="uc-7">UC 7&lt;/h4>
+&lt;p>This use case requires to use the plugin
+&lt;a href="#poolremotepluginclient">PoolRemotePluginClient&lt;/a>.&lt;/p>
+&lt;p>This unique mode proposed for this plugin does not allow to observe the local reader.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Methods to be used when initializing the factory&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Possible readers to use&lt;/td>
+&lt;td>&lt;code>Reader&lt;/code>&lt;/td>
+&lt;td>&lt;code>Reader&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="network-configuration">Network configuration&lt;/h2>
+&lt;p>The &lt;strong>Keyple Remote Plugin&lt;/strong> solution &lt;strong>does not provide&lt;/strong> the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between &lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> components.&lt;/p>
+&lt;h3 id="synchronous">Synchronous&lt;/h3>
+&lt;p>Choose this mode if you want to implement a Client-Server &lt;strong>Synchronous&lt;/strong> communication protocol, such as standard HTTP for example.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>SPI to be implemented&lt;/td>
+&lt;td>&lt;code>SyncEndpointClient&lt;/code>&lt;/td>
+&lt;td>-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Node API&lt;/td>
+&lt;td>&lt;code>SyncNodeClient&lt;/code>&lt;/td>
+&lt;td>&lt;code>SyncNodeServer&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Methods to be used when initializing the factory&lt;/td>
+&lt;td>&lt;code>withSyncNode(...)&lt;/code>&lt;/td>
+&lt;td>&lt;code>withSyncNode()&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Utility method to use to access the node&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>&lt;code>getSyncNode()&lt;/code> or&lt;br> &lt;code>getSyncNode(...)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Here is the minimal algorithm to implement in a context with a &lt;strong>single server instance&lt;/strong> :&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/keyple-website/keyple-website/media/remote-plugin/sequence/Remote_Sequence_SyncNode_API.svg" >
+&lt;img src="/keyple-website/keyple-website/media/remote-plugin/sequence/Remote_Sequence_SyncNode_API.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;p>In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a &lt;code>serverNodeId&lt;/code> are routed to the server associated with a &lt;code>SyncNodeServer&lt;/code> node having the &lt;code>serverNodeId&lt;/code>.&lt;/p>
+&lt;h3 id="asynchronous">Asynchronous&lt;/h3>
+&lt;p>Choose this mode if you want to implement a Full-Duplex &lt;strong>Asynchronous&lt;/strong> communication protocol, such as Web Sockets for example.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Client&lt;/th>
+&lt;th>Server&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>SPI to be implemented&lt;/td>
+&lt;td>&lt;code>AsyncEndpointClient&lt;/code>&lt;/td>
+&lt;td>&lt;code>AsyncEndpointServer&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Node API&lt;/td>
+&lt;td>&lt;code>AsyncNodeClient&lt;/code>&lt;/td>
+&lt;td>&lt;code>AsyncNodeServer&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Methods to be used when initializing the factory&lt;/td>
+&lt;td>&lt;code>withAsyncNode(...)&lt;/code>&lt;/td>
+&lt;td>&lt;code>withAsyncNode(...)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Utility method to use to access the node&lt;/td>
+&lt;td>&lt;code>getAsyncNode()&lt;/code> or&lt;br> &lt;code>getAsyncNode(...)&lt;/code>&lt;/td>
+&lt;td>&lt;code>getAsyncNode()&lt;/code> or&lt;br> &lt;code>getAsyncNode(...)&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Here is the minimal algorithm to implement :&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/keyple-website/keyple-website/media/remote-plugin/sequence/Remote_Sequence_AsyncNode_API.svg" >
+&lt;img src="/keyple-website/keyple-website/media/remote-plugin/sequence/Remote_Sequence_AsyncNode_API.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;h3 id="exchanged-data">Exchanged data&lt;/h3>
+&lt;p>The data exchanged between &lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> components are contain in the DTO (Data Transfer Object) &lt;code>MessageDto&lt;/code>. It is built and processed by the plugin and &lt;strong>you don&amp;rsquo;t need to modify it&lt;/strong>.&lt;/p>
+&lt;p>However, it is necessary in some contexts to access certain information such as the &lt;code>sessionId&lt;/code> in the case of asynchronous communication or the &lt;code>serverNodeId&lt;/code> in the case of synchronous communication with several server instances.&lt;/p>
+&lt;h2 id="download">Download&lt;/h2>
+&lt;h3 id="jars">JARs&lt;/h3>
+&lt;p>All deliverables (JARs, changelogs, javadocs) are available on the
+&lt;a href="https://search.maven.org/" target="_blank" rel="noopener">Maven Central Repository&lt;/a>.&lt;/p>
+&lt;p>So you can use
+&lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> or
+&lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a> to import the JARs into your project or download them directly from the &lt;strong>Maven Central Repository&lt;/strong>.&lt;/p>
+&lt;p>Note that it is &lt;strong>strongly recommended&lt;/strong> to use the same version for &lt;strong>Remote Lib&lt;/strong> and &lt;strong>Local Lib&lt;/strong>.&lt;/p>
+&lt;h4 id="gradle">GRADLE&lt;/h4>
+&lt;ul>
+&lt;li>Remote Lib&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>implementation 'org.eclipse.keyple:keyple-java-plugin-remote-remote:1.0.0'
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Local Lib&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>implementation 'org.eclipse.keyple:keyple-java-plugin-remote-local:1.0.0'
+&lt;/code>&lt;/pre>
+&lt;h4 id="maven">MAVEN&lt;/h4>
+&lt;ul>
+&lt;li>Remote Lib&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;keyple-java-plugin-remote-remote&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;1.0.0&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Local Lib&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;keyple-java-plugin-remote-local&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;1.0.0&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;h4 id="maven-central-repository">MAVEN CENTRAL REPOSITORY&lt;/h4>
+&lt;ul>
+&lt;li>&lt;a href="https://search.maven.org/search?q=a:keyple-java-plugin-remote-common" target="blank">Common Lib&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://search.maven.org/search?q=a:keyple-java-plugin-remote-remote" target="blank">Remote Lib&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://search.maven.org/search?q=a:keyple-java-plugin-remote-local" target="blank">Local Lib&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="sources">Sources&lt;/h3>
+&lt;p>The sources are available on &lt;a href="https://github.com/" target="blank">GitHub&lt;/a> :&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/common/README.md" target="_blank" rel="noopener">Common Lib&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/remote/README.md" target="_blank" rel="noopener">Remote Lib&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/local/README.md" target="_blank" rel="noopener">Local Lib&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Develop a Plugin</title><link>/keyple-website/docs/developer-guide/develop-plugin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/keyple-website/docs/developer-guide/develop-plugin/</guid><description>&lt;p>This guide will provide nescessary steps to develop a Keyple plugin for a device. In order to flatten the learning curve, we&amp;rsquo;ll
+illustrate the creation processus using the implementation of the Android NFC Plugin and OMAPI plugins.
+This plugins can be consulted with the keyple-java/android repository.&lt;/p>
+&lt;h2 id="imports">Imports&lt;/h2>
+&lt;p>Your plugin will use be based upon Keyple Core libraries:&lt;/p>
+&lt;pre>&lt;code class="language-gradle">implementation &amp;quot;org.eclipse.keyple:keyple-java-core:$keyple_version&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;h2 id="implement-keyple-reader">Implement Keyple Reader&lt;/h2>
+&lt;p>The basis component of a Keyple plugin is the implementation of an AbstractLocalReader. The AbstractLocalReader implementation will map the native reader&amp;rsquo;s
+features of the device to Keyple Reader component allowing to be used within the Keyple suite.&lt;/p>
+&lt;p>The &amp;lsquo;local&amp;rsquo; in AbstractLocalReader is used to specify devices physicaly connected to the device.&lt;/p>
+&lt;p>Relying on native libraries capacities of the device, implementations to be done are:&lt;/p>
+&lt;ul>
+&lt;li>checkSePresence()&lt;/li>
+&lt;li>getATR()&lt;/li>
+&lt;li>openPhysicalChannel()&lt;/li>
+&lt;li>closePhysicalChannel()&lt;/li>
+&lt;li>isPhysicalChannelOpen()&lt;/li>
+&lt;li>ProtocolFlagMatches()&lt;/li>
+&lt;li>TransmitApdu&lt;/li>
+&lt;/ul>
+&lt;p>###Examples&lt;/p>
+&lt;h4 id="checksepresence">checkSePresence()&lt;/h4>
+&lt;p>Allow Keyple to check if the secure elements is inserted or in the NFC field of the device.&lt;/p>
+&lt;p>OMAPI Exemple&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">//nativeReader is an instance of android.se.omapi.Reader
+override fun checkSePresence(): Boolean {
+return nativeReader.isSecureElementPresent
+}
+&lt;/code>&lt;/pre>
+&lt;p>Android NFC Example&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">//When a SE is presented in the NFC field, we can get a tagproxy object. When the SE is removed,
+//this value is reinited. So when it is not null, we can assume the SE is currently in the field.
+public override fun checkSePresence(): Boolean {
+return tagProxy != null
+}
+&lt;/code>&lt;/pre>
+&lt;h4 id="getatr">getAtr()&lt;/h4>
+&lt;p>OMAPI Exemple&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">//Session is a native object of android.se.omapi package
+override fun getATR(): ByteArray? {
+return session?.let {
+it.atr
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>Android NFC Example&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">//TagProxy is an object mapping android.nfc.tech.TagTechnology. Atr is obtained from data of this object (epending of protocol)
+public override fun getATR(): ByteArray? {
+val atr = tagProxy?.atr
+return if (atr?.isNotEmpty() == true) atr else null
+}
+&lt;/code>&lt;/pre>
+&lt;h4 id="openphysicalchannel">openPhysicalChannel()&lt;/h4>
+&lt;p>OMAPI Exemple&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">@Throws(KeypleReaderIOException::class)
+override fun openPhysicalChannel() {
+try {
+session = nativeReader.openSession()
+} catch (e: IOException) {
+throw KeypleReaderIOException(&amp;quot;IOException while opening physical channel.&amp;quot;, e)
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>Android NFC Example&lt;/p>
+&lt;pre>&lt;code class="language-kotlin">@Throws(KeypleReaderIOException::class)
+public override fun openPhysicalChannel() {
+if (tagProxy?.isConnected != true) {
+try {
+tagProxy?.connect()
+} catch (e: IOException) {
+throw KeypleReaderIOException(&amp;quot;Error while opening physical channel&amp;quot;, e)
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;p>Also, this implementation could be done extending AbstractObservableLocalReader. It provides :&lt;/p>
+&lt;ul>
+&lt;li>State machine regarding SE event: &amp;lsquo;WAIT_FOR_START_DETECTION&amp;rsquo;, &amp;lsquo;WAIT_FOR_SE_INSERTION&amp;rsquo;&amp;hellip;&lt;/li>
+&lt;li>Extended readers features
+&lt;ul>
+&lt;li>Smart Insertion Reader: Allow to detect SE insertion&lt;/li>
+&lt;li>Smart Removal Reader: Allow to detect SE Removal&lt;/li>
+&lt;li>Smart Selection Reader: Allow to use native SE selection process&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Develop an Extension</title><link>/keyple-website/docs/developer-guide/develop-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/keyple-website/docs/developer-guide/develop-extension/</guid><description/></item><item><title>Migration Guide - Keyple Java 0.8.1 to 0.9.0</title><link>/keyple-website/docs/developer-guide/migration-0.8.1-to-0.9.0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/keyple-website/docs/developer-guide/migration-0.8.1-to-0.9.0/</guid><description>&lt;p>This guide is intended to help a user of version 0.8.1 of Keyple Java to upgrade his application to the 0.9.0 version of the library.&lt;/p>
+&lt;p>From a user API point of view, the changes relate to the following topics:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;a href="#plugin-registration-in-the-seproxyservice">plugin registration in the SeProxyService&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#preparation-of-selection-cases">preparation of selection cases&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#retrieving-selection-results">retrieving selection results&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#definition-of-the-security-settings-of-the-transaction">definition of the security settings of the transaction&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#creation-of-the-potransaction-object">creation of the PoTransaction object&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#transaction-commands-preparation">transaction commands preparation&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#transaction-commands-processing">transaction commands processing&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#retrieving-data-read-from-pos">retrieving data read from POs&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#error-handling">error handling&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="plugin-registration-in-the-seproxyservice">Plugin registration in the SeProxyService&lt;/h2>
+&lt;p>The &lt;code>registerPlugin&lt;/code> method of the &lt;code>SeProxyService&lt;/code> class now returns the reference of the registered plugin.&lt;/p>
+&lt;p>This makes it possible, for example, to perform a reader setup in an application such as this one:&lt;/p>
+&lt;pre>&lt;code class="language-java"> // Create a PcscPlugin and register it into the SeProxyService
+ReaderPlugin pcscPlugin = seProxyService.registerPlugin(new PcscPluginFactory());`
+// Get the PO reader from the plugin
+SeReader poReader = pcscPlugin.getReader(&amp;quot;ASK LoGO 0&amp;quot;);
+&lt;/code>&lt;/pre>
+&lt;h2 id="preparation-of-selection-cases">Preparation of selection cases&lt;/h2>
+&lt;p>The &lt;code>AidSelector&lt;/code>, &lt;code>Selector&lt;/code> and &lt;code>PoSelector&lt;/code> classes now follow the Fluent Builder pattern for better handling of optional parameters.&lt;/p>
+&lt;p>The construction of an &lt;code>AidSelector&lt;/code> is as follows:&lt;/p>
+&lt;pre>&lt;code class="language-java">AidSelector appAidSelector = AidSelector.builder()
+.aidToSelect(AID)
+.fileControlInformation(AidSelector.FileControlInformation.FCI)
+.fileOccurrence(AidSelector.FileOccurrence.FIRST)
+.build();
+&lt;/code>&lt;/pre>
+&lt;p>The &lt;code>fileControlInformation&lt;/code> and &lt;code>fileOccurrence&lt;/code> fields are optional (shown here with their default values), so a simple version can be :&lt;/p>
+&lt;pre>&lt;code class="language-java">AidSelector aidSelector = AidSelector.builder().aidToSelect(CalypsoClassicInfo.AID).build();
+&lt;/code>&lt;/pre>
+&lt;p>The construction of a &lt;code>SeSelector&lt;/code> is as follows:&lt;/p>
+&lt;pre>&lt;code class="language-java">seSelector = SeSelector.builder()
+.seProtocol(SeCommonProtocols.PROTOCOL_ISO14443_4)
+.aidSelector(appAidSelector)
+.build();
+&lt;/code>&lt;/pre>
+&lt;p>The &lt;code>PoSelector&lt;/code> adds the possibility to specify that an invalidated PO should be processed&lt;/p>
+&lt;pre>&lt;code class="language-java">seSelector = SeSelector.builder()
+.seProtocol(SeCommonProtocols.PROTOCOL_ISO14443_4)
+.aidSelector(appAidSelector)
+.invalidatedPo(InvalidatedPo.ACCEPT)
+.build();
+&lt;/code>&lt;/pre>
+&lt;p>The management of PO commands to be performed after the selection step (when it has been successful) is handled by the methods of the &lt;code>PoSelectionRequest&lt;/code> class:&lt;/p>
+&lt;ul>
+&lt;li>preparing to read files has been simplified and is done using the unique following method:&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-java">public void prepareReadRecordFile(byte sfi, int recordNumber)
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>preparing to select files is done using the following method:&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-java">public void prepareSelectFile(byte[] lid)
+public void prepareSelectFile(short lid)
+&lt;/code>&lt;/pre>
+&lt;p>Note that from now the &amp;ldquo;prepare&amp;rdquo; methods no longer return indexes, the data will be placed in the CalypsoPo object.&lt;/p>
+&lt;h2 id="retrieving-selection-results">Retrieving selection results&lt;/h2>
+&lt;p>The &lt;code>MatchingSelection&lt;/code> class no longer exists.
+In the class &lt;code>SelectionsResult&lt;/code> (see &lt;code>processDefaultSelection/processExplicitSelection&lt;/code>):&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>getActiveSelection&lt;/code> is replaced by &lt;code>getActiveMatchingSe&lt;/code> which returns an &lt;code>AbstractMatchingSe&lt;/code> object (the still existing &lt;code>hasActiveSelection&lt;/code> method must be used before)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>getMatchingSelection&lt;/code> is replaced by &lt;code>getMatchingSe&lt;/code> which returns an &lt;code>AbstractMatchingSe&lt;/code> object (may be null if the index provided does not correspond to a successful selection case)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>getMatchingSelections&lt;/code> now returns a Map containing a list of associated &lt;code>AbstractMatchingSe&lt;/code> with the selection index that produced it (&lt;code>Map&amp;lt;Integer, AbstractMatchingSe&amp;gt;&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>a new &lt;code>hasSelectionMatched&lt;/code> method indicates whether the selection index provided corresponds to a successful selection case&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>a new &lt;code>getActiveSelectionIndex&lt;/code> method returns the index of the active selection (the still existing &lt;code>hasActiveSelection&lt;/code> method must be used before)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="definition-of-the-security-settings-of-the-transaction">Definition of the security settings of the transaction&lt;/h2>
+&lt;p>These parameters are defined via the &lt;code>PoSecuritySettings&lt;/code> class, whose construction now follows the Fluent Builder pattern.&lt;/p>
+&lt;p>All parameters are optional except the &lt;code>SamResource&lt;/code>.&lt;/p>
+&lt;p>Here is an example of a complete &lt;code>PoSecuritySettings&lt;/code> build:&lt;/p>
+&lt;pre>&lt;code class="language-java">poSecuritySettings = new PoSecuritySettings.PoSecuritySettingsBuilder(samResource)
+.sessionDefaultKif(AccessLevel.SESSION_LVL_PERSO, DEFAULT_KIF_PERSO)
+.sessionDefaultKif(AccessLevel.SESSION_LVL_LOAD, DEFAULT_KIF_LOAD)
+.sessionDefaultKif(AccessLevel.SESSION_LVL_DEBIT, DEFAULT_KIF_DEBIT)
+.sessionDefaultKeyRecordNumber(AccessLevel.SESSION_LVL_PERSO, DEFAULT_KEY_RECORD_NUMBER_PERSO)
+.sessionDefaultKeyRecordNumber(AccessLevel.SESSION_LVL_LOAD, DEFAULT_KEY_RECORD_NUMBER_LOAD)
+.sessionDefaultKeyRecordNumber(AccessLevel.SESSION_LVL_DEBIT, DEFAULT_KEY_RECORD_NUMBER_DEBIT)
+.sessionModificationMode(ModificationMode.ATOMIC)
+.ratificationMode(RatificationMode.CLOSE_RATIFIED)
+.sessionAuthorizedKvcList(authKvcs)
+.build();
+&lt;/code>&lt;/pre>
+&lt;h2 id="creation-of-the-potransaction-object">Creation of the PoTransaction object&lt;/h2>
+&lt;p>Since PoSecuritySettings now integrates SamResource, the construction of PoTransaction has evolved slightly.&lt;/p>
+&lt;p>Here is an example:&lt;/p>
+&lt;pre>&lt;code class="language-java">PoTransaction poTransaction = new PoTransaction(new PoResource(poReader, calypsoPo), poSecuritySettings);
+&lt;/code>&lt;/pre>
+&lt;h2 id="transaction-commands-preparation">Transaction commands preparation&lt;/h2>
+&lt;p>Just as with the &amp;ldquo;prepare&amp;rdquo; commands used for selection, the &amp;ldquo;prepare&amp;rdquo; commands used for transactions no longer return indexes.&lt;/p>
+&lt;p>The available commands in version 0.9 are:&lt;/p>
+&lt;pre>&lt;code class="language-java">public final void prepareSelectFile(SelectFileControl control)
+public final void prepareSelectFile(short lid)
+public final void prepareSelectFile(byte[] lid)
+public final void prepareReadRecordFile(byte sfi, int recordNumber)
+public final void prepareReadRecordFile(byte sfi, int firstRecordNumber, int numberOfRecords, int recordSize))
+public final void prepareReadCounterFile(byte sfi, int countersNumber)
+public final void prepareUpdateRecord(byte sfi, int recordNumber, byte[] recordData)
+public final void prepareWriteRecord(byte sfi, int recordNumber, byte[] recordData)
+public final void prepareAppendRecord(byte sfi, byte[] recordData)
+public final void prepareIncreaseCounter(byte sfi, int counterNumber, int incValue)
+public final void prepareDecreaseCounter(byte sfi, int counterNumber, int decValue)
+&lt;/code>&lt;/pre>
+&lt;h2 id="transaction-commands-processing">Transaction commands processing&lt;/h2>
+&lt;p>The &amp;ldquo;process&amp;rdquo; commands have also been revised and simplified.&lt;/p>
+&lt;p>They all return &lt;code>void&lt;/code>.&lt;/p>
+&lt;p>In case of failure a exception is raised (see below).&lt;/p>
+&lt;pre>&lt;code class="language-java">public final void processOpening(PoTransaction.SessionSetting.AccessLevel accessLevel)
+&lt;/code>&lt;/pre>
+&lt;p>The &lt;code>ModificationMode&lt;/code> is no longer required since it is integrated in the &lt;code>PoSecuritySettings&lt;/code>.&lt;/p>
+&lt;p>Parameters previously used to specify that a file is read at login are removed.&lt;/p>
+&lt;p>Instead, the first prepareReadFile command will be automatically taken into account.&lt;/p>
+&lt;pre>&lt;code class="language-java">public final void processPoCommands()
+public final void processPoCommandsInSession()
+public final void processCancel(ChannelControl channelControl)
+public final void processClosing(ChannelControl channelControl)
+&lt;/code>&lt;/pre>
+&lt;h2 id="retrieving-data-read-from-pos">Retrieving data read from POs&lt;/h2>
+&lt;p>This is a major evolution of the Keyple API. Previously, data read from Calyspo POs were retrieved by applications using &amp;ldquo;parser&amp;rdquo; methods.&lt;/p>
+&lt;p>With Keyple API 0.9, Calypso PO data is made available in the CalypsoPo object obtained during selection and enriched all along the operations performed with PoTransaction.&lt;/p>
+&lt;p>The public getter methods of CalypsoPo are:&lt;/p>
+&lt;pre>&lt;code class="language-java">public final String getDfName()
+public final byte[] getDfNameBytes()
+public final String getApplicationSerialNumber()
+public final byte[] getApplicationSerialNumberBytes()
+public final String getAtr()
+public final String getStartupInfo()
+public final PoRevision getRevision()
+public final byte getSessionModification()
+public final byte getApplicationType()
+public final byte getApplicationSubtype()
+public final byte getPlatform()
+public final byte getSoftwareIssuer()
+public final byte getSoftwareVersion()
+public final byte getSoftwareRevision()
+public final boolean isDeselectRatificationSupported()
+public final boolean isConfidentialSessionModeSupported()
+public final boolean isPublicAuthenticationSupported()
+public final boolean isPinFeatureAvailable()
+public final boolean isSvFeatureAvailable()
+public final boolean isDfInvalidated()
+public final boolean isDfRatified()
+public final DirectoryHeader getDirectoryHeader()
+public final ElementaryFile getFileBySfi(byte sfi)
+public final ElementaryFile getFileByLid(short lid)
+public final Map&amp;lt;Byte, ElementaryFile&amp;gt; getAllFiles()
+&lt;/code>&lt;/pre>
+&lt;p>Four new classes &lt;code>DirectoryHeader&lt;/code>, &lt;code>ElementaryFile&lt;/code>, &lt;code>FileHeader&lt;/code> and &lt;code>FileData&lt;/code> have been added.&lt;/p>
+&lt;h5 id="directoryheader">DirectoryHeader&lt;/h5>
+&lt;p>The public getters for this class are:&lt;/p>
+&lt;pre>&lt;code class="language-java">public short getLid()
+public byte[] getAccessConditions()
+public byte[] getKeyIndexes()
+public byte getDfStatus()
+public byte getKif(AccessLevel level)
+public byte getKvc(AccessLevel level)
+public String toString()
+&lt;/code>&lt;/pre>
+&lt;h5 id="elementaryfile">ElementaryFile&lt;/h5>
+&lt;p>The public getters for this class are:&lt;/p>
+&lt;pre>&lt;code class="language-java">public byte getSfi()
+public FileHeader getHeader()
+public FileData getData()
+public String toString()
+&lt;/code>&lt;/pre>
+&lt;h5 id="fileheader">FileHeader&lt;/h5>
+&lt;p>The public getters for this class are:&lt;/p>
+&lt;pre>&lt;code class="language-java">public short getLid()
+public int getRecordsNumber()
+public int getRecordSize()
+public FileType getType()
+public byte getDfStatus()
+public boolean isShared()
+public Short getSharedReference()
+public byte[] getAccessConditions()
+public byte[] getKeyIndexes()
+public String toString()
+&lt;/code>&lt;/pre>
+&lt;h5 id="filedata">FileData&lt;/h5>
+&lt;p>The public getters for this class are:&lt;/p>
+&lt;pre>&lt;code class="language-java">public byte[] getContent()
+public byte[] getContent(int numRecord)
+public byte[] getContent(int numRecord, int dataOffset, int dataLength)
+public SortedMap&amp;lt;Integer, byte[]&amp;gt; getAllRecordsContent()
+public int getContentAsCounterValue(int numCounter)
+public SortedMap&amp;lt;Integer, Integer&amp;gt; getAllCountersValue()
+public String toString()
+&lt;/code>&lt;/pre>
+&lt;p>So, for example to extract the contents of contract files present in the PO, the code might look like this:&lt;/p>
+&lt;pre>&lt;code class="language-java">[...]
+/* Read all 4 contracts command, record size set to 29 */
+poTransaction.prepareReadRecordFile(CalypsoClassicInfo.SFI_Contracts,
+CalypsoClassicInfo.RECORD_NUMBER_1, 4, 29);
+/* proceed with the sending of commands, don't close the channel */
+poTransaction.processPoCommandsInSession();
+ElementaryFile efContracts = calypsoPo.getFileBySfi(CalypsoClassicInfo.SFI_Contracts);
+SortedMap&amp;lt;Integer, byte[]&amp;gt; records = efContracts.getData().getAllRecordsContent();
+for (Map.Entry&amp;lt;Integer, byte[]&amp;gt; entry : records.entrySet()) {
+logger.info(&amp;quot;Contract #{}: {}&amp;quot;, entry.getKey(),
+ByteArrayUtil.toHex(entry.getValue()));
+}
+[...]
+&lt;/code>&lt;/pre>
+&lt;h2 id="error-handling">Error handling&lt;/h2>
+&lt;p>Since version 0.9, all Keyple exceptions are of the RuntimeException type.&lt;/p>
+&lt;p>Catching exceptions is therefore now optional.&lt;/p>
+&lt;p>However, it is possible to selectively catch certain exceptions in order to deal with particular cases.&lt;/p>
+&lt;p>The new hierarchy of Keyple exceptions is shown
+&lt;a href="https://keyple.atlassian.net/projects/KEYP/issues/KEYP-154?filter=allissues&amp;amp;orderby=priority%20DESC&amp;amp;keyword=exceptions" target="_blank" rel="noopener">here&lt;/a>&lt;/p></description></item></channel></rss>
