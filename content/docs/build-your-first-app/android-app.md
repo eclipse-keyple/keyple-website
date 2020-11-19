@@ -9,9 +9,9 @@ weight: 220
 
 # Introduction 
 ## Overview
-**Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy to implement solution to provide SmartCard communication functionalities in their own mobile application.**
+**Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy way to implement solution to provide SmartCard communication functionalities in their own mobile application.**
  
-For exemple, Keyple could be used to facilitate the development of a ticketing application based of the use of conteners on a SIM card and relying on [Android SE OMAPI](https://developer.android.com/reference/android/se/omapi/package-summary). 
+For example, Keyple could be used to facilitate the development of a ticketing application based on the use of conteners on a SIM card and relying on [Android SE OMAPI](https://developer.android.com/reference/android/se/omapi/package-summary). 
 Keyple could also be used to develop an application reading SmartCard content through NFC using [Android NFC](https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc).
 
 {{< figure library="true" src="android-app/component/Android_App_Overview.png" title="" >}} 
@@ -96,7 +96,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
-Note: Plugins Factory's initialisation could request more steps to execute before passing it to registerPlugin(). It depends on plugins, please check the documentation or usage exemple of desired plugin.
+Note: Plugins Factory's initialisation could request more steps to execute before passing it to registerPlugin(). It depends on plugins, please check the documentation or usage example of desired plugin.
 
 ### Unregister a plugin
 
@@ -104,13 +104,11 @@ Clean resources.
 
 ```kotlin
 override fun onDestroy() {
-    super.onCreate(savedInstanceState)
+    /* deactivate protocol */
+    reader?.deactivateProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name)
     /* Unregister Android NFC Plugin to the SmartCardService */
-    try {
-        SmartCardService.getInstance().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
-    }catch (e: KeypleException){
-        /* do something with it */
-    }
+    SmartCardService.getInstance().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
+    reader = null
     super.onDestroy()
 }
 ```
@@ -163,10 +161,8 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
         super.onResume()
         reader?.let {
             //Set Keyple in a detection mode 
-            //We choose to stop detection as soon as one card is detected
-            it.startCardDetection(ObservableReader.PollingMode.SINGLESHOT)
-            //Activate NFC detection (To be removed soon for merge with below step)
-            it.enableNFCReaderMode(this)
+            //We choose to continue waiting for a new card persentation
+            it.startCardDetection(ObservableReader.PollingMode.REPEATING)
         }
     }
 }
@@ -178,7 +174,6 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
     override fun onPause() {
         reader?.let {
-            it.disableNFCReaderMode(this)
             it.stopCardDetection()
         }
         super.onPause()
@@ -339,20 +334,21 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
         super.onResume()
         reader?.let {
             it.startCardDetection(ObservableReader.PollingMode.SINGLESHOT)
-            it.enableNFCReaderMode(this)
             Toast.makeText(this, String.format("Hunt enabled"), Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onPause() {
         reader?.let {
-            it.disableNFCReaderMode(this)
             it.stopCardDetection()
         }
         super.onPause()
     }
 
     override fun onDestroy() {
+        /* deactivate protocol */
+        reader?.deactivateProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name)
+        /* Unregister Android NFC Plugin to the SmartCardService */
         SmartCardService.getInstance().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
         reader = null
         super.onDestroy()

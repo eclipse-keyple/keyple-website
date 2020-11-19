@@ -1,0 +1,98 @@
+@startuml
+title
+    Keyple Plugin - Abstract Plugin classes- 1.0.0 (10/11/2020)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
++interface Plugin {
+
+}
+
++interface ObservablePlugin{
+}
+
+package "org.eclipse.keyple.core.plugin" as root {
+
+    +interface ObservablePluginNotifier {
+    }
+
+     +abstract class AbstractPlugin{
+        +final String getName()
+        +final Map<String, Reader> getReaders()
+        +final Set<String> getReaderNames()
+        +final Reader getReader(String name)
+        +void register()
+        +void unregister()
+        #void checkStatus()
+        #{abstract} Map<String, Reader> initNativeReaders()
+
+    }
+    +abstract class AbstractObservablePlugin {
+        +void addObserver(final ObservablePlugin.PluginObserver observer)
+        +void removeObserver(final ObservablePlugin.PluginObserver observer)
+        +void clearObservers()
+        +int countObservers()
+        +void notifyObservers(final PluginEvent event)
+        +void unregister()
+    }
+
+    +abstract class AbstractThreadedObservablePlugin {
+        +void addObserver(final ObservablePlugin.PluginObserver observer)
+        +void removeObserver(final ObservablePlugin.PluginObserver observer)
+        +void void clearObservers()
+        #void Boolean isMonitoring()
+        #{abstract} SortedSet<String> fetchNativeReadersNames()
+        #{abstract} Reader fetchNativeReader(String name)
+    }
+}
+
+
+' Associations
+Plugin <|-- AbstractPlugin #C_USE
+AbstractPlugin <|-- AbstractObservablePlugin #C_USE
+AbstractObservablePlugin <|-- AbstractThreadedObservablePlugin #C_USE
+Plugin <|-- ObservablePlugin #C_USE
+ObservablePlugin <|-- ObservablePluginNotifier #C_USE
+ObservablePluginNotifier <|-- AbstractObservablePlugin #C_USE
+@enduml
