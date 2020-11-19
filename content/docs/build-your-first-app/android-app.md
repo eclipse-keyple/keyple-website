@@ -89,7 +89,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     /* register Android NFC Plugin to the SmartCardService */
     try {
-        SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory())
+        SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory(this))
     }catch (e: KeypleException){
         /* do something with it */
     }
@@ -104,7 +104,7 @@ Clean resources.
 
 ```kotlin
 override fun onDestroy() {
-    super.onCreate(savedInstanceState)
+    
     /* Unregister Android NFC Plugin to the SmartCardService */
     try {
         SmartCardService.getInstance().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
@@ -151,6 +151,45 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 }
 ```
 
+
+## Activate a protocol
+
+Before starting to read a NFC tag, you must activate the protocol in which you wish to detect it.
+If you do not activate any protocol, no card will be detected by the Keyple library. 
+
+```kotlin
+class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
+  
+  override fun onCreate(savedInstanceState: Bundle?) {
+      super.onCreate(savedInstanceState)
+      ...
+      // with this protocol settings we activate the nfc for ISO1443_4 protocol
+      reader.activateProtocol(
+            ContactlessCardCommonProtocols.ISO_14443_4.name,
+            AndroidNfcProtocolSettings.getSetting(ContactlessCardCommonProtocols.ISO_14443_4.name)
+        )
+      ...
+  }
+}
+```
+
+## Deactivate a protocol
+
+When your are done with your NFC operations, you can deactivate the NFC protocol :
+
+```kotlin
+class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
+  
+    override fun onDestroy() {
+        ...
+        //Deactivate nfc for ISO1443_4 protocol
+        reader.deactivateProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name)
+        ...
+        super.onDestroy()
+    }
+}
+```
+
 Now we have an access to our NFC Reader, we can activate Card Detection.
 
 ## Activate Card detection
@@ -165,8 +204,6 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
             //Set Keyple in a detection mode 
             //We choose to stop detection as soon as one card is detected
             it.startCardDetection(ObservableReader.PollingMode.SINGLESHOT)
-            //Activate NFC detection (To be removed soon for merge with below step)
-            it.enableNFCReaderMode(this)
         }
     }
 }
@@ -178,7 +215,6 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
     override fun onPause() {
         reader?.let {
-            it.disableNFCReaderMode(this)
             it.stopCardDetection()
         }
         super.onPause()
@@ -327,7 +363,10 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
             val plugin = SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory())
             val reader = plugin.readers[AndroidNfcReader.READER_NAME] as AndroidNfcReader
             reader.addObserver(this)
-            reader.activateProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name, ContactlessCardCommonProtocols.ISO_14443_4.name)
+            reader.activateProtocol(
+                ContactlessCardCommonProtocols.ISO_14443_4.name,
+                AndroidNfcProtocolSettings.getSetting(ContactlessCardCommonProtocols.ISO_14443_4.name)
+            )
             this.reader = reader
         }catch (e: KeypleException){
             Timber.e(e)
@@ -339,20 +378,21 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
         super.onResume()
         reader?.let {
             it.startCardDetection(ObservableReader.PollingMode.SINGLESHOT)
-            it.enableNFCReaderMode(this)
             Toast.makeText(this, String.format("Hunt enabled"), Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onPause() {
         reader?.let {
-            it.disableNFCReaderMode(this)
             it.stopCardDetection()
         }
         super.onPause()
     }
 
     override fun onDestroy() {
+        reader?.let {
+            it.deactivateProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name)
+        }
         SmartCardService.getInstance().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
         reader = null
         super.onDestroy()
