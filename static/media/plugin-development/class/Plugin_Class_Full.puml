@@ -1,0 +1,310 @@
+@startuml
+title
+    Keyple Plugin - Package Overview - 1.0.0 (10/11/2020)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+package "org.eclipse.keyple.core.card.message" {
+    +interface ProxyReader {
+        ~List<CardSelectionResponse> transmitCardSelectionRequests(List<CardSelectionRequest> cardSelectionRequests,
+        MultiSelectionProcessing multiSelectionProcessing,ChannelControl channelControl)
+        ~CardResponse transmitCardRequest(CardRequest cardRequest, ChannelControl channelControl)
+        ~void releaseChannel()
+    }
+}
+
+package "org.eclipse.keyple.core.service" {
+    package "event" {
+      +interface ObservablePlugin{
+        ~void addObserver(final PluginObserver observer)
+        ~void removeObserver(final PluginObserver observer)
+        ~void clearObservers()
+        ~int countObservers()
+      }
+      ~interface PluginObserver{
+        ~void update(final PluginEvent event)
+      }
+      +interface ObservableReader {
+        ~void addObserver(final ReaderObserver observer)
+        ~void removeObserver(final ReaderObserver observer)
+        ~void clearObservers()
+        ~int countObservers()
+        ~void startCardDetection(PollingMode pollingMode)
+        ~void void stopCardDetection()
+        ~void setDefaultSelectionRequest(
+        AbstractDefaultSelectionsRequest defaultSelectionsRequest,NotificationMode notificationMode)
+        ~void setDefaultSelectionRequest(
+        AbstractDefaultSelectionsRequest defaultSelectionsRequest,NotificationMode notificationMode,PollingMode pollingMode);
+        ~void finalizeCardProcessing()
+      }
+      ~interface ReaderObserver{
+       ~void update(final ReaderEvent event)
+      }
+    }
+    ~interface ProxyElement{
+         ~String getName()
+    }
+    +interface Plugin {
+        ~Set<String> getReaderNames()
+        ~Map<String, Reader> getReaders()
+        ~Reader getReader(String name)
+        ~void register()
+        ~void unregister()
+    }
+    +interface Reader {
+        ~boolean isCardPresent()
+        ~activateProtocol(String readerProtocolName, String applicationProtocolName)
+        ~deactivateProtocol(String readerProtocolName)
+        ~boolean isContactless()
+        ~vvoid register()
+        ~vvoid unregister()
+    }
+}
+
+package "org.eclipse.keyple.core.plugin" as root {
+    +interface ObservablePluginNotifier {
+        ~notifyObservers(final PluginEvent event)
+    }
+    +abstract class AbstractPlugin{
+        +final String getName()
+        +final Map<String, Reader> getReaders()
+        +final Set<String> getReaderNames()
+        +final Reader getReader(String name)
+        +void register()
+        +void unregister()
+        #void checkStatus()
+        #{abstract} Map<String, Reader> initNativeReaders()
+
+    }
+    +abstract class AbstractObservablePlugin {
+        +void addObserver(final ObservablePlugin.PluginObserver observer)
+        +void removeObserver(final ObservablePlugin.PluginObserver observer)
+        +void clearObservers()
+        +int countObservers()
+        +void notifyObservers(final PluginEvent event)
+        +void unregister()
+    }
+
+    +abstract class AbstractThreadedObservablePlugin {
+        +void addObserver(final ObservablePlugin.PluginObserver observer)
+        +void removeObserver(final ObservablePlugin.PluginObserver observer)
+        +void void clearObservers()
+        #void Boolean isMonitoring()
+        #{abstract} SortedSet<String> fetchNativeReadersNames()
+        #{abstract} Reader fetchNativeReader(String name)
+    }
+
+    -class EventThread {
+        +void run()
+        ~void end()
+        ~void isMonitoring()
+        -void addReader(String readerName)
+        -void removeReader(Reader reader)
+        -void notifyChanges( luginEvent.EventType eventType,
+              SortedSet<String> changedReaderNames)
+        -void processChanges(SortedSet<String> actualNativeReadersNames)
+    }
+
+    package "reader"{
+        +interface ObservableReaderNotifier {
+            ~ApduResponse openChannelForAid(CardSelector.AidSelector aidSelector)
+            ~void closeLogicalChannel()
+        }
+        +interface SmartSelectionReader {
+            ~notifyObservers(final ReaderEvent event)
+        }
+        +interface SmartRemovalReader {
+            ~boolean waitForCardAbsentNative()
+            ~boolean stopWaitForCardRemoval()
+        }
+        +interface SmartInsertionReader {
+            ~boolean waitForCardPresent()
+            ~boolean stopWaitForCard()
+        }
+        +abstract class AbstractReader{
+            +String getName()
+            +String getPluginName()
+            +List<CardSelectionResponse> transmitCardSelectionRequests(List<CardSelectionRequest> cardSelectionRequests,
+            MultiSelectionProcessing multiSelectionProcessing, ChannelControl channelControl)
+            +CardResponse transmitCardRequest(CardRequest cardRequest,
+            ChannelControl channelControl)
+            +void register()
+            +void unregister()
+            #void checkStatus()
+            #{abstract} List<CardSelectionResponse> processCardSelectionRequests(List<CardSelectionRequest> cardSelectionRequests,
+            MultiSelectionProcessing multiSelectionProcessing,ChannelControl channelControl)
+            #{abstract} CardResponse processCardRequest(CardRequest cardRequest, ChannelControl channelControl)
+        }
+
+         +abstract class AbstractLocalReader{
+            +boolean isCardPresent()
+            +void releaseChannel()
+            +void activateProtocol(String readerProtocolName, String applicationProtocolName)
+            +void deactivateProtocol(String readerProtocolName)
+            ~isLogicalChannelOpen()
+            #void closeLogicalAndPhysicalChannels()
+            #List<CardSelectionResponse> processCardSelectionRequests(List<CardSelectionRequest> cardSelectionRequests,
+            MultiSelectionProcessing multiSelectionProcessing,ChannelControl channelControl)
+            #CardResponse processCardRequest()
+            -ApduResponse recoverSelectionFciData(CardSelector.AidSelector aidSelector)
+            -ApduResponse processExplicitAidSelection(CardSelector.AidSelector aidSelector)
+            -void openPhysicalChannelAndSetProtocol()
+            -void resetProtocolAndClosePhysicalChannel()
+            -void closeLogicalChannel()
+            -void computeCurrentProtocol()
+            -boolean checkAtr(byte[] atr, CardSelector.AtrFilter atrFilter)
+            -ApduResponse selectByAid(CardSelector.AidSelector aidSelector)
+            -SelectionStatus processSelection(CardSelector cardSelector)
+            -CardSelectionResponse processCardSelectionRequest(CardSelectionRequest cardSelectionRequest)
+            -CardResponse processCardRequest(CardRequest cardRequest)
+            -ApduResponse processApduRequest(ApduRequest apduRequest)
+            -ApduResponse case4HackGetResponse(int originalStatusCode)
+            #{abstract} boolean checkCardPresence()
+            #{abstract} byte[] getATR()
+            #{abstract} void openPhysicalChannel()
+            #{abstract} void closePhysicalChannel()
+            #{abstract} boolean isPhysicalChannelOpen()
+            #{abstract} boolean isCurrentProtocol(String readerProtocolName)
+            #{abstract} byte[] transmitApdu(byte[] apduIn)
+            #{abstract} void activateReaderProtocol(String readerProtocolName)
+            #{abstract} void deactivateReaderProtocol(String readerProtocolName)
+         }
+
+         +abstract class AbstractObservableLocalReader{
+            +{abstract} ObservableReaderStateService initStateService()
+            +void addObserver(final ObservableReader.ReaderObserver observer)
+            +void removeObserver(final ObservableReader.ReaderObserver observer)
+            +void notifyObservers(final ReaderEvent event)
+            +int countObservers()
+            +void clearObservers()
+            +boolean isCardPresent()
+            +void startCardDetection(ObservableReader.PollingMode pollingMode)
+            +void stopCardDetection()
+            +void setDefaultSelectionRequest(AbstractDefaultSelectionsRequest defaultSelectionsRequest,
+            ObservableReader.NotificationMode notificationMode)
+            +void setDefaultSelectionRequest(AbstractDefaultSelectionsRequest defaultSelectionsRequest,
+            ObservableReader.NotificationMode notificationMode,ObservableReader.PollingMode pollingMode)
+            +void terminateCardCommunication()
+            +void finalizeCardProcessing()
+            +void unregister()
+            ~ReaderEvent processCardInserted()
+            ~boolean isCardPresentPing()
+            ~void processCardRemoved()
+            ~ObservableReader.PollingMode getPollingMode()
+            ~void switchState(AbstractObservableState.MonitoringState stateId)
+            ~AbstractObservableState.MonitoringState getCurrentMonitoringState()
+            #void onEvent(InternalEvent event)
+
+         }
+
+         +abstract class AbstractObservableLocalAutonomousReader{
+            #void void onCardInserted()
+            #void void onCardRemoved()
+         }
+    }
+}
+
+
+' Associations
+ProxyElement <|-- Reader #C_USE
+ProxyElement <|-- Plugin #C_USE
+Reader <|- ProxyReader #C_USE
+Reader <|-- ObservableReader #C_USE
+ObservableReader +-- ReaderObserver #C_USE
+ObservableReader <|-- ObservableReaderNotifier #C_USE
+ObservableReaderNotifier <|-- SmartRemovalReader
+ObservableReaderNotifier <|-- SmartInsertionReader
+Plugin <|- AbstractPlugin #C_USE
+Plugin <|- ObservablePlugin #C_USE
+AbstractPlugin <|-- AbstractObservablePlugin #C_USE
+ObservablePluginNotifier <|-- AbstractObservablePlugin #C_USE
+AbstractObservablePlugin <|-- AbstractThreadedObservablePlugin #C_USE
+AbstractThreadedObservablePlugin +-- EventThread #C_USE
+ObservablePlugin <|--- ObservablePluginNotifier #C_USE
+ObservablePlugin +-- PluginObserver #C_USE
+ProxyReader <|--- AbstractReader #C_USE
+ProxyReader <|- SmartSelectionReader #C_USE
+AbstractReader <|-- AbstractLocalReader #C_USE
+AbstractLocalReader <|-- AbstractObservableLocalReader #C_USE
+AbstractObservableLocalReader <|-- AbstractObservableLocalAutonomousReader #C_USE
+ObservableReaderNotifier <|-- AbstractObservableLocalReader #C_USE
+
+' == LAYOUT ==
+
+
+' == STYLE ==
+
+'package root #C_GREY1 {}
+'package spi #C_GREY3 {}
+'package impl #C_GREY2 {}
+'
+'interface LocalServiceClient <<green>>
+'class LocalServiceClientFactory <<green>>
+'interface LocalServiceClientFactoryNameStep <<green>>
+'interface LocalServiceClientFactoryNodeStep <<green>>
+'interface LocalServiceClientFactoryTimeoutStep <<green>>
+'interface LocalServiceClientFactoryReaderStep <<green>>
+'interface LocalServiceClientFactoryBuilderStep <<green>>
+'class RemoteServiceParameters <<green>>
+'class RemoteServiceParametersBuilder <<green>>
+'class LocalServiceClientUtils <<green>>
+'interface ObservableReaderEventFilter <<green>>
+'
+'interface LocalServiceServer <<purple>>
+'class LocalServiceServerFactory <<purple>>
+'interface LocalServiceServerFactoryNameStep <<purple>>
+'interface LocalServiceServerFactoryNodeStep <<purple>>
+'interface LocalServiceServerFactoryBuilderStep <<purple>>
+'class LocalServiceServerUtils <<purple>>
+'
+'interface PoolLocalServiceServer <<blue>>
+'class PoolLocalServiceServerFactory <<blue>>
+'interface PoolLocalServiceServerFactoryNameStep <<blue>>
+'interface PoolLocalServiceServerFactoryNodeStep <<blue>>
+'interface PoolLocalServiceServerFactoryPluginStep <<blue>>
+'interface PoolLocalServiceServerFactoryBuilderStep <<blue>>
+'class PoolLocalServiceServerUtils <<blue>>
+
+
+
+@enduml
