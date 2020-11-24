@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple Remote Plugin - Remote Plugin API - 1.0.0 (05/11/2020)
+    Keyple Remote Plugin - Remote Plugin API - 1.0.0 (23/11/2020)
 end title
 
 ' == THEME ==
@@ -77,7 +77,7 @@ package "org.eclipse.keyple.plugin.remote" as root {
     }
     package impl as rootImpl {
         ' Utilities
-        +class RemotePluginServerUtils {
+        +class "**final** RemotePluginServerUtils" as RemotePluginServerUtils {
             __
             + {static} RemotePluginServer getRemotePlugin ()
             + {static} RemotePluginServer getRemotePlugin (String remotePluginName)
@@ -88,18 +88,18 @@ package "org.eclipse.keyple.plugin.remote" as root {
             + {static} SyncNodeServer getSyncNode ()
             + {static} SyncNodeServer getSyncNode (String remotePluginName)
         }
-        +class RemotePluginClientUtils {
+        +class "**final** RemotePluginClientUtils" as RemotePluginClientUtils {
             __
             + {static} RemotePluginClient getRemotePlugin ()
             + {static} RemotePluginClient getRemotePlugin (String remotePluginName)
             ..
-            + {static} ObservableRemotePluginClient getObservablePlugin ()
-            + {static} ObservableRemotePluginClient getObservablePlugin (String remotePluginName)
+            + {static} ObservableRemotePluginClient getObservableRemotePlugin ()
+            + {static} ObservableRemotePluginClient getObservableRemotePlugin (String remotePluginName)
             ..
             + {static} AsyncNodeClient getAsyncNode ()
             + {static} AsyncNodeClient getAsyncNode (String remotePluginName)
         }
-        +class PoolRemotePluginClientUtils {
+        +class "**final** PoolRemotePluginClientUtils" as PoolRemotePluginClientUtils {
             __
             + {static} PoolRemotePluginClient getRemotePlugin ()
             + {static} PoolRemotePluginClient getRemotePlugin (String remotePluginName)
@@ -108,7 +108,7 @@ package "org.eclipse.keyple.plugin.remote" as root {
             + {static} AsyncNodeClient getAsyncNode (String remotePluginName)
         }
         ' Factories
-        +class "<<<back:yellow>PluginFactory</back>>>\nRemotePluginServerFactory" as RemotePluginServerFactory {
+        +class "<<<back:yellow>PluginFactory</back>>>\n**final** RemotePluginServerFactory" as RemotePluginServerFactory {
             + {static} NameStep builder ()
         }
         +interface "NameStep" as RemotePluginServerFactoryNameStep {
@@ -129,7 +129,8 @@ package "org.eclipse.keyple.plugin.remote" as root {
         +interface "BuilderStep" as RemotePluginServerFactoryBuilderStep {
             + RemotePluginServerFactory build ()
         }
-        +class "<<<back:yellow>PluginFactory</back>>>\nRemotePluginClientFactory" as RemotePluginClientFactory {
+
+        +class "<<<back:yellow>PluginFactory</back>>>\n**final** RemotePluginClientFactory" as RemotePluginClientFactory {
             + {static} NameStep builder ()
         }
         +interface "NameStep" as RemotePluginClientFactoryNameStep {
@@ -183,7 +184,8 @@ package "org.eclipse.keyple.plugin.remote" as root {
         +interface "BuilderStep" as RemotePluginClientFactoryBuilderStep {
             + RemotePluginClientFactory build ()
         }
-        +class "<<<back:yellow>PluginFactory</back>>>\nPoolRemotePluginClientFactory" as PoolRemotePluginClientFactory {
+
+        +class "<<<back:yellow>PluginFactory</back>>>\n**final** PoolRemotePluginClientFactory" as PoolRemotePluginClientFactory {
             + {static} NameStep builder ()
         }
         +interface "NameStep" as PoolRemotePluginClientFactoryNameStep {
@@ -192,7 +194,7 @@ package "org.eclipse.keyple.plugin.remote" as root {
         }
         +class "NodeStep" as PoolRemotePluginClientFactoryNodeStep {
             + TimeoutStep withAsyncNode (AsyncEndpointClient endpoint)
-            + TimeoutStep withSyncNode (SyncEndpointClient endpoint)
+            + BuilderStep withSyncNode (SyncEndpointClient endpoint)
         }
         +interface "TimeoutStep" as PoolRemotePluginClientFactoryTimeoutStep {
             + BuilderStep usingDefaultTimeout ()
@@ -233,6 +235,7 @@ RemotePluginClientFactorySyncNodeReaderEventNotificationPoolStep ..> RemotePlugi
 PoolRemotePluginClientFactory ..> PoolRemotePluginClientFactoryNameStep #C_USE
 PoolRemotePluginClientFactoryNameStep ..> PoolRemotePluginClientFactoryNodeStep #C_USE
 PoolRemotePluginClientFactoryNodeStep ..> PoolRemotePluginClientFactoryTimeoutStep #C_USE
+PoolRemotePluginClientFactoryNodeStep ..> PoolRemotePluginClientFactoryBuilderStep #C_USE
 PoolRemotePluginClientFactoryTimeoutStep ..> PoolRemotePluginClientFactoryBuilderStep #C_USE
 
 RemotePluginServer *--> "1..N" RemoteReaderServer #C_LINK : readers

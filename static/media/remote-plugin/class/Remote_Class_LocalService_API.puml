@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple Remote Plugin - Local Service API - 1.0.0 (05/11/2020)
+    Keyple Remote Plugin - Local Service API - 1.0.0 (23/11/2020)
 end title
 
 ' == THEME ==
@@ -82,7 +82,7 @@ package "org.eclipse.keyple.plugin.remote" as root {
     }
     package impl as impl {
         ' Utilities
-        +class LocalServiceClientUtils {
+        +class "**final** LocalServiceClientUtils" as LocalServiceClientUtils {
             --
             + {static} LocalServiceClient getLocalService ()
             + {static} LocalServiceClient getLocalService (String localServiceName)
@@ -90,7 +90,7 @@ package "org.eclipse.keyple.plugin.remote" as root {
             + {static} AsyncNodeClient getAsyncNode ()
             + {static} AsyncNodeClient getAsyncNode (String localServiceName)
         }
-        +class LocalServiceServerUtils {
+        +class "**final** LocalServiceServerUtils" as LocalServiceServerUtils {
             --
             + {static} AsyncNodeServer getAsyncNode ()
             + {static} AsyncNodeServer getAsyncNode (String localServiceName)
@@ -98,7 +98,7 @@ package "org.eclipse.keyple.plugin.remote" as root {
             + {static} SyncNodeServer getSyncNode ()
             + {static} SyncNodeServer getSyncNode (String localServiceName)
         }
-        +class PoolLocalServiceServerUtils {
+        +class "**final** PoolLocalServiceServerUtils" as PoolLocalServiceServerUtils {
             --
             + {static} AsyncNodeServer getAsyncNode ()
             + {static} AsyncNodeServer getAsyncNode (String localServiceName)
@@ -107,7 +107,7 @@ package "org.eclipse.keyple.plugin.remote" as root {
             + {static} SyncNodeServer getSyncNode (String localServiceName)
         }
         ' Factories
-        +class LocalServiceClientFactory {
+        +class "**final** LocalServiceClientFactory" as LocalServiceClientFactory {
             + {static} NameStep builder ()
         }
         +interface "NameStep" as LocalServiceClientFactoryNameStep {
@@ -129,7 +129,8 @@ package "org.eclipse.keyple.plugin.remote" as root {
         +interface "BuilderStep" as LocalServiceClientFactoryBuilderStep {
             + LocalServiceClient getService ()
         }
-        +class LocalServiceServerFactory {
+
+        +class "**final** LocalServiceServerFactory" as LocalServiceServerFactory {
             + {static} NameStep builder ()
         }
         +interface "NameStep" as LocalServiceServerFactoryNameStep {
@@ -143,7 +144,8 @@ package "org.eclipse.keyple.plugin.remote" as root {
         +interface "BuilderStep" as LocalServiceServerFactoryBuilderStep {
             + LocalServiceServer getService ()
         }
-        +class PoolLocalServiceServerFactory {
+
+        +class "**final** PoolLocalServiceServerFactory" as PoolLocalServiceServerFactory {
             + {static} NameStep builder ()
         }
         +interface "NameStep" as PoolLocalServiceServerFactoryNameStep {
