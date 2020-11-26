@@ -87,7 +87,9 @@ package "org.eclipse.keyple.core.plugin" as root {
          }
 
          +abstract class AbstractObservableLocalReader{
-            +{abstract} ObservableReaderStateService initStateService()
+            #{abstract} void onStartDetection()
+            #{abstract} void onStopDetection()
+            #{abstract} ReaderObservationExceptionHandler getObservationExceptionHandler()
             +void addObserver(final ObservableReader.ReaderObserver observer)
             +void removeObserver(final ObservableReader.ReaderObserver observer)
             +void notifyObservers(final ReaderEvent event)
