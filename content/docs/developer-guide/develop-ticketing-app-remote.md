@@ -223,19 +223,19 @@ The associated **API** documentations are accessible from the page [API Referenc
 
 ### Network API
 
-The associated **API** documentation is available <a href="../../../api-reference/keyple-plugin-remote-network/1.0.0-alpha-1/index.html" target="blank">here</a>.
+The associated **API** documentation is available <a href="../../api-reference/keyple-plugin-remote-network/1.0.0-alpha-1/index.html" target="blank">here</a>.
 
 {{< figure library="true" src="remote-plugin/class/Remote_Class_Network_API.svg" title="" >}}
 
 ### Remote Plugin API
 
-The associated **API** documentation is available <a href="../../../api-reference/keyple-plugin-remote-remote/index.html" target="blank">here</a>.
+The associated **API** documentation is available <a href="../../api-reference/keyple-plugin-remote-remote/index.html" target="blank">here</a>.
 
 {{< figure library="true" src="remote-plugin/class/Remote_Class_RemotePlugin_API.svg" title="" >}}
 
 ### Local Service API
 
-The associated **API** documentation is available <a href="../../../api-reference/keyple-plugin-remote-local/index.html" target="blank">here</a>.
+The associated **API** documentation is available <a href="../../api-reference/keyple-plugin-remote-local/index.html" target="blank">here</a>.
 
 {{< figure library="true" src="remote-plugin/class/Remote_Class_LocalService_API.svg" title="" >}}
 
