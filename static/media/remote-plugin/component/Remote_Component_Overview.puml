@@ -1,6 +1,6 @@
 @startuml
 footer
-    Keyple Remote Plugin - Overview (03/11/2020)
+    Keyple Remote Plugins - Overview (03/11/2020)
 end footer
 
 ' == THEME ==
@@ -38,7 +38,7 @@ hide <<grey>> stereotype
 package "Terminal with 'local' reader" {
     [Application] as appA
     package "Keyple" as localKeyple {
-        [**Keyple Remote Plugin**\n("local" components)] as localLib <<blue>>
+        [**Keyple Remote Plugins**\n("local" components)] as localLib <<blue>>
         [Keyple Core & Solution] as localKeypleLibs <<purple>>
     }
     [Network Endpoint] as endpointA <<green>>
@@ -48,7 +48,7 @@ package "Terminal with 'remote' reader" {
     [Application] as appB
     package "Keyple" as remoteKeyple {
         [Keyple Core & Solution] as remoteKeypleLibs <<purple>>
-        [**Keyple Remote Plugin**\n("remote" components)] as remoteLib <<blue>>
+        [**Keyple Remote Plugins**\n("remote" components)] as remoteLib <<blue>>
     }
     [Network Endpoint] as endpointB <<green>>
 }

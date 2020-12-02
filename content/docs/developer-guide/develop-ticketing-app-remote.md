@@ -8,18 +8,18 @@ weight: 320
 
 ## Overview
 
-**Keyple provides the "Keyple Remote Plugin" solution which allows a terminal to communicate with a smart card reader available in another terminal**.
+**Keyple provides the "Keyple Remote Plugins" solution which allows a terminal to communicate with a smart card reader available in another terminal**.
 
 In this way, you can manage transactions within a distributed architecture.
 
-The diagram below shows the role of the **Keyple Remote Plugin** components in the software layers used in a distributed architecture :
+The diagram below shows the role of the **Keyple Remote Plugins** components in the software layers used in a distributed architecture :
 
 {{< figure library="true" src="remote-plugin/component/Remote_Component_Overview.svg" title="" >}}
 
 ## How to use it ?
 
 1. In pre-requisite, read page [Develop a Local Ticketing Application]({{< relref "develop-ticketing-app-local.md" >}}) to understand the main concepts of Keyple in a local application.
-1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the **Keyple Remote Plugin** solution.
+1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the **Keyple Remote Plugins** solution.
 1. Read the introduction of chapter [Remote Plugins](#remote-plugins) to be informed about the different remote plugins and APIs proposed by the solution.
 1. Using chapter [Use cases](#use-cases), find your use case. This will help you to determine exactly which library and API to use.
 1. Using chapter [Download](#download), import into your project the libraries specified by your use case.
@@ -34,9 +34,9 @@ Here are the main concepts to keep in mind before continuing to read this develo
 
 | Concept | Description |
 | ------- | ----------- |
-| **Remote Lib** | This is the library `keyple-java-plugin-remote-remote`.<br>It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely. |
-| **Local Lib** | This is the library `keyple-java-plugin-remote-local`.<br>It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application. |
-| **Common Lib** | This is the library `keyple-java-plugin-remote-common`.<br>This library is **implicitly** imported by **Remote Lib** and **Local Lib** because it contains common elements. |
+| **Remote Lib** | This is the library `keyple-plugin-remote-remote`.<br>It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely. |
+| **Local Lib** | This is the library `keyple-plugin-remote-local`.<br>It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application. |
+| **Network Lib** | This is the library `keyple-plugin-remote-network`.<br>This library is **implicitly** imported by **Remote Lib** and **Local Lib** because it contains common network elements. |
 | **Remote Plugin** | Part of the **Remote Lib**, this is a Keyple plugin which provides only **Remote Readers** to the application. It manages data exchanges with the **Local Service**. This plugin must be registered to the smart card service like any Keyple plugin. |
 | **Remote Reader** | Part of the **Remote Plugin**, this is a Keyple reader which has some specificities :<br>- each remote reader is connected to a local reader ;<br>- any command sent by the application to a remote reader will be forwarded to the associated local reader ;<br>- any event occurs on a local reader or plugin will be forwarded to the associated remote reader or plugin. |
 | **Local Service** | Part of the **Local Lib**, this service ensures data exchange between the **Remote Plugin** and local plugins and readers. It must be initialized and started by the host application. |
@@ -60,21 +60,21 @@ The second diagram below illustrates an arbitrary more complex possible use case
 
 These could be for example a ticketing reloading service, where the intelligence would be on the terminal with remote readers, with thin clients on A & B terminals communicating locally with the cards.
 
-In this use case, the **Remote Plugin** is used for card communication.
+In this use case, the **Keyple Remote Plugins** solution is use for card communication.
 
 {{< figure library="true" src="remote-plugin/component/Remote_Component_Concepts_2.svg" title="" >}}
 
-Here is another example, but this time it illustrates several **Remote Plugins** connected to the same **Local Service**.
+Here is another example, but this time it illustrates several **Remote Plugin** components connected to the same **Local Service**.
 
 These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.
 
-In this use case, the **Remote Plugin** is used for SAM communication.
+In this use case, the **Keyple Remote Plugins** solution is use for SAM communication.
 
 {{< figure library="true" src="remote-plugin/component/Remote_Component_Concepts_3.svg" title="" >}}
 
 ## Remote Plugins
  
-The **Keyple Remote Plugin** solution provides **3** different specific **Remote Plugin** components, each one having a specific API described in chapter [Remote Plugins APIs](#remote-plugins-apis) designed on a **Client-Server** model in which **the Client is always the initiator of the communication** :
+The **Keyple Remote Plugins** solution provides **3** different specific **Remote Plugin** components, each one having a specific API described in chapter [Remote Plugins APIs](#remote-plugins-apis) designed on a **Client-Server** model in which **the Client is always the initiator of the communication** :
 
 <div id="plugins-table-1">
 
@@ -207,7 +207,7 @@ This plugin allows a **client** application to control a **pool** of smart cards
 
 ## Remote Plugins APIs
 
-The class diagrams below shows the different APIs exposed and SPIs required by the **Keyple Remote Plugin** solution.
+The class diagrams below shows the different APIs exposed and SPIs required by the **Keyple Remote Plugins** solution.
 
 An **SPI** (Service Provider Interface) is an interface that must be implemented by the user.
 
@@ -215,27 +215,27 @@ Here are the available APIs depending on the library imported by your project :
 
 |     | Remote Lib | Local Lib |
 | --- | :---------: | :--------: |
-| [Common API](#common-api) | :heavy_check_mark: | :heavy_check_mark: |
+| [Network API](#network-api) | :heavy_check_mark: | :heavy_check_mark: |
 | [Remote Plugin API](#remote-plugin-api) | :heavy_check_mark: | |
 | [Local Service API](#local-service-api) | | :heavy_check_mark: |
 
 The associated **API** documentations are accessible from the page [API Reference]({{< relref "api-reference.md" >}}).
 
-### Common API
+### Network API
 
-The associated **API** documentation is available <a href="/reference/keyple-java-plugin-remote-common/index.html" target="blank">here</a>.
+The associated **API** documentation is available <a href="/reference/keyple-plugin-remote-network/index.html" target="blank">here</a>.
 
-{{< figure library="true" src="remote-plugin/class/Remote_Class_Common_API.svg" title="" >}}
+{{< figure library="true" src="remote-plugin/class/Remote_Class_Network_API.svg" title="" >}}
 
 ### Remote Plugin API
 
-The associated **API** documentation is available <a href="/reference/keyple-java-plugin-remote-remote/index.html" target="blank">here</a>.
+The associated **API** documentation is available <a href="/reference/keyple-plugin-remote-remote/index.html" target="blank">here</a>.
 
 {{< figure library="true" src="remote-plugin/class/Remote_Class_RemotePlugin_API.svg" title="" >}}
 
 ### Local Service API
 
-The associated **API** documentation is available <a href="/reference/keyple-java-plugin-remote-local/index.html" target="blank">here</a>.
+The associated **API** documentation is available <a href="/reference/keyple-plugin-remote-local/index.html" target="blank">here</a>.
 
 {{< figure library="true" src="remote-plugin/class/Remote_Class_LocalService_API.svg" title="" >}}
 
@@ -363,7 +363,7 @@ This unique mode proposed for this plugin does not allow to observe the local re
 
 ## Network configuration
 
-The **Keyple Remote Plugin** solution **does not provide** the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between **Remote Plugin** and **Local Service** components.
+The **Keyple Remote Plugins** solution **does not provide** the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between **Remote Plugin** and **Local Service** components.
 
 ### Synchronous
 
@@ -417,12 +417,12 @@ Note that it is **strongly recommended** to use the same version for **Remote Li
 
 * Remote Lib
 ```
-implementation 'org.eclipse.keyple:keyple-java-plugin-remote-remote:1.0.0' 
+implementation 'org.eclipse.keyple:keyple-plugin-remote-remote:1.0.0' 
 ```
 
 * Local Lib
 ```
-implementation 'org.eclipse.keyple:keyple-java-plugin-remote-local:1.0.0' 
+implementation 'org.eclipse.keyple:keyple-plugin-remote-local:1.0.0' 
 ```
 
 #### MAVEN
@@ -431,7 +431,7 @@ implementation 'org.eclipse.keyple:keyple-java-plugin-remote-local:1.0.0'
 ```
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-java-plugin-remote-remote</artifactId>
+  <artifactId>keyple-plugin-remote-remote</artifactId>
   <version>1.0.0</version>
 </dependency>
 ```
@@ -440,21 +440,21 @@ implementation 'org.eclipse.keyple:keyple-java-plugin-remote-local:1.0.0'
 ```
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-java-plugin-remote-local</artifactId>
+  <artifactId>keyple-plugin-remote-local</artifactId>
   <version>1.0.0</version>
 </dependency>
 ```
 
 #### MAVEN CENTRAL REPOSITORY
 
-* <a href="https://search.maven.org/search?q=a:keyple-java-plugin-remote-common" target="blank">Common Lib</a>
-* <a href="https://search.maven.org/search?q=a:keyple-java-plugin-remote-remote" target="blank">Remote Lib</a>
-* <a href="https://search.maven.org/search?q=a:keyple-java-plugin-remote-local" target="blank">Local Lib</a>
+* <a href="https://search.maven.org/search?q=a:keyple-plugin-remote-network" target="blank">Network Lib</a>
+* <a href="https://search.maven.org/search?q=a:keyple-plugin-remote-remote" target="blank">Remote Lib</a>
+* <a href="https://search.maven.org/search?q=a:keyple-plugin-remote-local" target="blank">Local Lib</a>
 
 ### Sources
 
 The sources are available on <a href="https://github.com/" target="blank">GitHub</a> :
 
-* [Common Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/common/README.md)
-* [Remote Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/remote/README.md)
-* [Local Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote-plugin/local/README.md)
+* [Network Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote/network/README.md)
+* [Remote Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote/remote/README.md)
+* [Local Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote/local/README.md)
