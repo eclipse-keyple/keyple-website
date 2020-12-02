@@ -7,10 +7,9 @@ The Eclipse Keyple website is generated with Hugo.
 [![Build Status](https://ci.eclipse.org/keyple/)](https://ci.eclipse.org/keyple/job/keyple-website/)
 
 ## Getting started
-
+Install [hugo extended](https://gohugo.io/getting-started/installing/) on your qmachine.
 Install dependencies, build assets and start a webserver:
 ```bash
-npm install 
 hugo server
 ```
 

@@ -3,6 +3,7 @@ name: github pages
 on:
   push:
     branches:
+      - master
       - develop
 
 jobs:
@@ -23,12 +24,6 @@ jobs:
       - name: Build
         run: hugo --minify
         working-directory: ./
-
-      - name: Upload Javadocs from Sonatype #1
-        run: chmod +x ./scripts/*
-
-      - name: Upload Javadocs from Sonatype #2
-        run: ./scripts/get_all_javadocs.sh
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

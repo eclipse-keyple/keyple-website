@@ -5,18 +5,18 @@ icon_pack: fas
 icon: plug
 weight: 400
 ---
-# JavaDoc 
+# JavaDoc
 The JavaDoc for the Keyple project is available online. The documentation is split into the following parts:
 
-RELEASES
-
-LATEST SNAPSHOTS
-- <a href="/keyple-website/reference/keyple-java-core/index.html" target="_blank">JavaDoc for the Keyple Core API</a>
-- <a href="/keyple-website/reference/keyple-java-calypso/index.html" target="_blank">JavaDoc for the Keyple Calypso API</a>
-- <a href="/keyple-website/reference/keyple-java-plugin-pcsc/index.html" target="_blank">JavaDoc for the Keyple PC/SC plugin API</a>
-- <a href="/keyple-website/reference/keyple-java-plugin-remotese/index.html" target="_blank">JavaDoc for the Keyple Remote SE plugin API</a>
-- <a href="/keyple-website/reference/keyple-java-plugin-stub/index.html" target="_blank">JavaDoc for the Keyple Stub plugin API</a>
-- <a href="/keyple-website/reference/keyple-android-plugin-nfc/index.html" target="_blank">JavaDoc for the Keyple Android NFC plugin API</a>
-- <a href="/keyple-website/reference/keyple-android-plugin-omapi/index.html" target="_blank">JavaDoc for the Keyple Android OMAPI plugin API</a>
+<div>
+	<select id="version_selection" style="float: right;" onchange="selectVersion()">
+		<option>1.0.0-alpha-1</option>
+		<option>0.9.0</option>
+		<option>0.8.1</option>
+	</select>
+	<h3>Modules</h3>
+</div>
+<ul id="module_list"></ul>
+<script src="select-api-version.js"></script>
 
 {{< list_children >}}
