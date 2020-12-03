@@ -89,7 +89,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     /* register Android NFC Plugin to the SmartCardService */
     try {
-        SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory(this))
+        val readerObservationExceptionHandler = ReaderObservationExceptionHandler { pluginName, readerName, e ->}
+        SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory(this, readerObservationExceptionHandler))
     }catch (e: KeypleException){
         /* do something with it */
     }
@@ -232,14 +233,14 @@ fun handlePo(){
         //check if card is in the NFC field
         if(it.isCardPresent){
 
-            //Instanciate class handling card selection process 
-            val cardSelection = CardSelection()
+            //Instanciate class handling card selection service 
+            val cardSelectionService = CardSelectionsService()
             //We only want to select the PO so we choose to close communication channel once 
             //selection is done
-            cardSelection.prepareReleaseChannel()
+            cardSelectionService.prepareReleaseChannel()
 
             //We build a selection request managing specific characteristics of Calypso POs
-            val poSelectionRequest = PoSelectionRequest(
+            val poSelection = PoSelection(
                 PoSelector
                     .builder()
                     //Smarcard standard protocol
@@ -255,10 +256,10 @@ fun handlePo(){
                                 CardSelector.AidSelector.FileControlInformation.FCI)
                             .build()
                     ).build())
-            cardSelection.prepareSelection(poSelectionRequest)
+            cardSelectionService.prepareSelection(poSelection)
 
             //Proceed to selection using the reader
-            val selectionResult = cardSelection.processExplicitSelection(it)
+            val selectionResult = cardSelectionService.processExplicitSelections(it)
 
             runOnUiThread {
                 //We check the selection result and read the FCI
@@ -294,8 +295,8 @@ In the below example we'll read Environment and Usage data of an Hoplink contain
         ...
         //Prepare the reading order. We'll read the first record of the EF
         //specified by its SFI. This reading will be done within explicit selection.
-        poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFEnvironment, 1)
-        poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFUsage, 1)
+        poSelection.prepareReadRecordFile(sfiHoplinkEFEnvironment, 1)
+        poSelection.prepareReadRecordFile(sfiHoplinkEFUsage, 1)
         ...
         
         //Hoplink is a Calypso PO, we can cast the SmartCard
@@ -356,7 +357,8 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         try {
-            val plugin = SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory())
+            val readerObservationExceptionHandler = ReaderObservationExceptionHandler { pluginName, readerName, e ->}
+            val plugin = SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory(this, readerObservationExceptionHandler))
             val reader = plugin.readers[AndroidNfcReader.READER_NAME] as AndroidNfcReader
             reader.addObserver(this)
             reader.activateProtocol(
@@ -410,9 +412,9 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
     private fun handlePo(){
         reader?.let {
             if(it.isCardPresent){
-                val cardSelection = CardSelection()
-                cardSelection.prepareReleaseChannel()
-                val poSelectionRequest = PoSelectionRequest(
+                val cardSelectionService = CardSelectionService()
+                cardSelectionService.prepareReleaseChannel()
+                val poSelection = PoSelection(
                         PoSelector
                                 .builder()
                                 .cardProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name)
@@ -426,15 +428,15 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
                                                 .build()
                                 ).build())
 
-                cardSelection.prepareSelection(poSelectionRequest)
+                cardSelectionService.prepareSelection(poSelection)
 
                 //Prepare the reading order. We'll read the first record of the EF
                 //specified by his SFI. This reading will be done with selection.
-                poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFEnvironment, 1)
-                poSelectionRequest.prepareReadRecordFile(sfiHoplinkEFUsage, 1)
+                poSelection.prepareReadRecordFile(sfiHoplinkEFEnvironment, 1)
+                poSelection.prepareReadRecordFile(sfiHoplinkEFUsage, 1)
 
                 //Selection and file reading will be done here
-                val selectionResult = cardSelection.processExplicitSelection(it)
+                val selectionResult = cardSelectionService.processExplicitSelections(it)
 
                 runOnUiThread {
                     if(selectionResult.hasActiveSelection()){
