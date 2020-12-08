@@ -7,8 +7,8 @@ draft: false
 weight: 220
 ---
 
-# Introduction 
-## Overview
+## Introduction 
+### Overview
 **Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy way to implement solution to provide SmartCard communication functionalities in their own mobile application.**
  
 For example, Keyple could be used to facilitate the development of a ticketing application based on the use of conteners on a SIM card and relying on [Android SE OMAPI](https://developer.android.com/reference/android/se/omapi/package-summary). 
@@ -20,14 +20,14 @@ As Keyple request low level reader access, the key features of Keyple SDK relies
 
 This guide will describe how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso SmartCard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.
 
-## What to we need for this guide?
+### What to we need for this guide?
 
 * Retail Device with NFC powered by android.nfc library (integrated into standard Android SDK).
 * Android OS 19+
 * A NFC SmartCard with Calypso PO
 
-# Integration
-## Application setup
+## Integration
+### Application setup
 
 Like for any other Android NFC Application, we need to declare items in the application manifest. 
 ```xml
@@ -40,8 +40,8 @@ Like for any other Android NFC Application, we need to declare items in the appl
 ```
 
 
-## SDK Integration
-### Keyple Core 
+### SDK Integration
+#### Keyple Core 
 
 This high-level API is convenient for developers implementing smart card processing application for terminal interfaced 
 with smart card readers. Access to the readers is provided by the plugins. 
@@ -55,7 +55,7 @@ implementation "org.eclipse.keyple:keyple-java-core:$keyple_version"
 
 Please refer to Architecture/Keyle Core
 
-### Keyple Plugins
+#### Keyple Plugins
 
 There are many Keyple plugins available, the one to use depends on the device and ticketing tools you are aiming to 
 use.
@@ -66,7 +66,7 @@ To use the NFC plugin simply import it within the gradle dependencies of your An
 implementation "org.eclipse.keyple:keyple-android-nfc:$keyple_version"
 ```
 
-### Keyple Calypso
+#### Keyple Calypso
 
 The Keyple Calypso User API is an extension of the Keyple Core User API to manage Calypso Portable Objects.
 
@@ -78,9 +78,9 @@ To use Keyple Calypso User API simply import the jar within the gradle dependenc
 implementation "org.eclipse.keyple:keyple-java-calypso:$keyple_version"
 ```
 
-# Let's code
-## Initializing the SDK
-### Register a plugin
+## Let's code
+### Initializing the SDK
+#### Register a plugin
 
 In order to setup Keyple, we need to register at least one plugin. Here we register our NFC plugin. To do so, we use the singleton SmartCardService and the plugin Factory. (See plugin development guide to know more about plugins)
 
@@ -99,7 +99,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 Note: Plugins Factory's initialisation could request more steps to execute before passing it to registerPlugin(). It depends on plugins, please check the documentation or usage example of desired plugin.
 
-### Unregister a plugin
+#### Unregister a plugin
 
 Clean resources.
 
@@ -113,7 +113,7 @@ override fun onDestroy() {
 }
 ```
 
-## Retrieve a specific reader
+### Retrieve a specific reader
 
 With the plugin registered we can retrieve all instances of the component mapping the SmartCard readers. Here we want to retrieve the NFC reader.
 
@@ -125,7 +125,7 @@ private lateinit var reader: AndroidNfcReader
 reader = plugin.readers[AndroidNfcReader.READER_NAME] as AndroidNfcReader
 ```
 
-## Add observer to handle NFC events
+### Add observer to handle NFC events
 
 When native NFC is activated on an Android device, the OS dispatches insertion events occurring in the NFC detection field. In our application, we need detect it in order to proceed to exchanges with the SmartCard.
 
@@ -150,7 +150,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 ```
 
 
-## Activate a protocol
+### Activate a protocol
 
 Before starting to read a NFC tag, you must activate the protocol in which you wish to detect it.
 If you do not activate any protocol, no card will be detected by the Keyple library. 
@@ -171,7 +171,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 }
 ```
 
-## Deactivate a protocol
+### Deactivate a protocol
 
 When your are done with your NFC operations, you can deactivate the NFC protocol :
 
@@ -190,7 +190,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 
 Now we have an access to our NFC Reader, we can activate Card Detection.
 
-## Activate Card detection
+### Activate Card detection
 
 We will start detection as soon as our application comes in foreground and stop when application go background.
 
@@ -206,7 +206,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 }
 ```
 
-## Deactivate Card detection
+### Deactivate Card detection
 
 ```kotlin
 class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
@@ -221,9 +221,9 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 
 Now we can detect when a SmartCard is presented in the field, we can proceed to card application selection and data reading.
 
-## Handling a Calypso PO
+### Handling a Calypso PO
 
-### Calypso Selection API
+#### Calypso Selection API
 
 With Keyple, PO selection and FCI retrieving can be done using only Keyple Core, but Keyple Calypso API provides specific tools to handle Calypso POs and make the process a bit more simple.
 
@@ -280,7 +280,7 @@ fun handlePo(){
 
 Now we've seen we can select our PO we can retrieve more data from it.
 
-### Reading Environment and usage
+#### Reading Environment and usage
 
 In the below example we'll read Environment and Usage data of an Hoplink container.
 
@@ -312,7 +312,7 @@ In the below example we'll read Environment and Usage data of an Hoplink contain
     }
 ```
 
-## Full code
+### Full code
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -464,7 +464,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 }
 ```
 
-# FAQ:
+## FAQ
 
 **How to fix "More than one file was found with OS independent path 'META-INF/NOTICE.md'."**
 
