@@ -8,13 +8,11 @@ weight: 310
 
 ## Foreword
 
-**Work in Progress**
+*Work in Progress*
 
-This section describes the core elements of Eclipse Keyple, i.e. the concepts and APIs of Keyple Core that are used to build any application implementing Eclipse Keyple.
+This section describes the core elements of **Eclipse Keyple**, i.e. the concepts and APIs of **Keyple Core** that are used to build any application implementing **Eclipse Keyple**.
 
-It is essential for the future user of Eclipse Keyple to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on Keyple Core.
-
-TBC
+It is essential for the future user of **Eclipse Keyple** to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on **Keyple Core**.
 
 ## Concepts
 
