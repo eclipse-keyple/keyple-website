@@ -17,9 +17,9 @@ It is essential for the future user of **Eclipse Keyple** to be familiar with wh
 ## Concepts
 
 ### Reader
-Keyple's primary goal being to interact with smart cards (or smartphones) worn by individuals, it is logical to put the Reader at the top of Keyple Core's concepts.
+Keyple's primary goal being to interact with smart cards (or smartphones) worn by individuals, it is logical to put the Reader at the top of **Keyple Core**'s concepts.
 
-Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via Keyple Core or using an extension (such as Keyple Calypso).
+Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via **Keyple Core** or using an extension (such as Keyple Calypso).
 
 These interfaces provide the means to
 * identify the underlying physical reader,
@@ -37,7 +37,7 @@ The Plugin interface essentially allows to list and retrieve the available reade
 
 ### SmartCardService
 
-This is the Keyple Core service that concentrates the knowledge of active plugins and readers.
+This is the **Keyple Core** service that concentrates the knowledge of active plugins and readers.
 
 At startup, a Keyple application must register the plugins it uses. Conversely, it can also unregister them.
 
@@ -65,7 +65,7 @@ The default selection principle consists in providing an observable reader with 
 
 ### AbstractSmartCard
 
-The AbstractSmartCard concept is used by specific extensions (e.g. Keyple Calypso) and by the Keyple Core selection mechanism. It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.
+The AbstractSmartCard concept is used by specific extensions (e.g. Keyple Calypso) and by the **Keyple Core** selection mechanism. It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.
 
 This container will be able to carry all the useful information known about the card.
 
@@ -73,4 +73,4 @@ Note: this concept, mentioned here for understanding, should not appear to the a
 
 
 ## Keyple Core API
-TDB
+TBC
