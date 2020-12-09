@@ -3,7 +3,7 @@ title: Develop a Plugin
 type: book
 toc: true
 draft: false
-weight: 330
+weight: 340
 ---
 
 ## Overview
