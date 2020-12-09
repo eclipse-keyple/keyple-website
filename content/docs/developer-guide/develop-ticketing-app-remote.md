@@ -136,7 +136,7 @@ The following sequence diagram shows the capabilities of the plugin through an a
 * the server subscription to observable reader events ;
 * the sending of information to the client at the end of processing.
 
-Note that the network layer is deliberately hide in this diagram. Its implementation is describe in the [Network configuration](#network-configuration) chapter.
+Note that the network layer is deliberately hide in this diagram. Its implementation is described in the [Network configuration](#network-configuration) chapter.
 
 {{< figure library="true" src="remote-plugin/sequence/Remote_Sequence_RemotePluginServer_API.svg" title="" >}}
 
@@ -229,13 +229,13 @@ The associated **API** documentation is available <a href="../../api-reference/k
 
 ### Remote Plugin API
 
-The associated **API** documentation is available <a href="../../api-reference/keyple-plugin-remote-remote/index.html" target="blank">here</a>.
+The associated **API** documentation is available <a href="../../api-reference/keyple-plugin-remote-remote/1.0.0-alpha-1/index.html" target="blank">here</a>.
 
 {{< figure library="true" src="remote-plugin/class/Remote_Class_RemotePlugin_API.svg" title="" >}}
 
 ### Local Service API
 
-The associated **API** documentation is available <a href="../../api-reference/keyple-plugin-remote-local/index.html" target="blank">here</a>.
+The associated **API** documentation is available <a href="../../api-reference/keyple-plugin-remote-local/1.0.0-alpha-1/index.html" target="blank">here</a>.
 
 {{< figure library="true" src="remote-plugin/class/Remote_Class_LocalService_API.svg" title="" >}}
 
@@ -399,9 +399,13 @@ Here is the minimal algorithm to implement :
 
 ### Exchanged data
 
-The data exchanged between **Remote Plugin** and **Local Service** components are contain in the DTO (Data Transfer Object) `MessageDto`. It is built and processed by the plugin and **you don't need to modify it**.
+The data exchanged between **Remote Plugin** and **Local Service** components are contained in the DTO (Data Transfer Object) `MessageDto`. It is built and processed by the plugin and **you don't need to modify it**.
 
 However, it is necessary in some contexts to access certain information such as the `sessionId` in the case of asynchronous communication or the `serverNodeId` in the case of synchronous communication with several server instances.
+
+## Examples
+
+All examples are available [here](https://github.com/eclipse/keyple-java/tree/develop/java/example/generic/remote).
 
 ## Download
 
@@ -455,6 +459,6 @@ implementation 'org.eclipse.keyple:keyple-plugin-remote-local:1.0.0'
 
 The sources are available on <a href="https://github.com/" target="blank">GitHub</a> :
 
-* [Network Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote/network/README.md)
-* [Remote Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote/remote/README.md)
-* [Local Lib](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote/local/README.md)
+* [Network Lib](https://github.com/eclipse/keyple-java/tree/develop/java/component/keyple-plugin/remote/network/)
+* [Remote Lib](https://github.com/eclipse/keyple-java/tree/develop/java/component/keyple-plugin/remote/remote/)
+* [Local Lib](https://github.com/eclipse/keyple-java/tree/develop/java/component/keyple-plugin/remote/local/)
