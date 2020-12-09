@@ -22,7 +22,7 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 
 ## How to use it
 
-1. In pre-requisite, read page [Develop a Local Ticketing Application]({{< relref "develop-ticketing-app-local.md" >}}) to understand the main concepts of Keyple in a local application.
+1. In pre-requisite, read page [Develop a Local Application]({{< relref "develop-local-application.md" >}}) to understand the main concepts of Keyple in a local application.
 1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the  **Keyple Calypso Extension** API.
 
 ## Concepts
