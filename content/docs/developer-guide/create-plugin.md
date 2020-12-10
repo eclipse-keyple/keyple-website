@@ -1,5 +1,5 @@
 ---
-title: Develop a Plugin
+title: Create a plugin
 type: book
 toc: true
 draft: false

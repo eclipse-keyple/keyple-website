@@ -1,6 +1,6 @@
 ---
-title: Build your First C++ Application
-linktitle: C++ App
+title: Build your first C++ application
+linktitle: C++
 type: book
 toc: true
 draft: false

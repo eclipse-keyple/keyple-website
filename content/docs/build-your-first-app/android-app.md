@@ -1,6 +1,6 @@
 ---
-title: Build your First Android Application
-linktitle: Android App
+title: Build your first Android application
+linktitle: Android
 type: book
 toc: true
 draft: false

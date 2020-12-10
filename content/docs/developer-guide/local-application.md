@@ -1,5 +1,5 @@
 ---
-title: Develop a Local App
+title: Local application
 type: book
 toc: true
 draft: false

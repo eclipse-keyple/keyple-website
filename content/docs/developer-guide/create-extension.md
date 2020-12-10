@@ -1,5 +1,5 @@
 ---
-title: Develop an Extension
+title: Create an extension
 type: book
 toc: true
 draft: false

@@ -1,5 +1,5 @@
 ---
-title: Build your First App
+title: Build your first app
 type: book
 icon_pack: fas
 icon: rocket

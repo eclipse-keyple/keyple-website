@@ -8,16 +8,16 @@ weight: 300
 
 {{% alert note %}}
 
-This page describes the core elements of **Eclipse Keyple**, i.e. the concepts and APIs of **Keyple Core** that are used to build any application implementing **Eclipse Keyple**.
+This page describes the core elements of **Keyple**, i.e. the concepts and APIs of **Keyple Core** that are used to build any application implementing **Keyple**.
 
-It is essential for the future user of **Eclipse Keyple** to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on **Keyple Core**.
+It is essential for the future user of **Keyple** to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on **Keyple Core**.
 
 {{% /alert %}}
 
 ### Reader
 Keyple's primary goal being to interact with smart cards (or smartphones) worn by individuals, it is logical to put the Reader at the top of **Keyple Core**'s concepts.
 
-Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via **Keyple Core** or using an extension (such as Keyple Calypso).
+Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via **Keyple Core** or using an extension (such as **Keyple Calypso**).
 
 These interfaces provide the means to
 * identify the underlying physical reader,
@@ -63,7 +63,7 @@ The **default selection** principle consists in providing an observable reader w
 
 ### Abstract smart card
 
-The **abstract smart card** concept is used by specific extensions (e.g. Keyple Calypso) and by the **Keyple Core** selection mechanism. It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.
+The **abstract smart card** concept is used by specific extensions (e.g. **Keyple Calypso**) and by the **Keyple Core** selection mechanism. It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.
 
 This container will be able to carry all the useful information known about the card.
 

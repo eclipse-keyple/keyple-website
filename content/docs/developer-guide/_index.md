@@ -1,5 +1,5 @@
 ---
-title: Developer Guides
+title: Developer guides
 type: book
 icon_pack: fas
 icon: chalkboard-teacher

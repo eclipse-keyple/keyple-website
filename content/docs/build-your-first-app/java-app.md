@@ -1,6 +1,6 @@
 ---
-title: Build your First Java Application
-linktitle: Java App
+title: Build your first Java application
+linktitle: Java
 type: book
 toc: true
 draft: false
