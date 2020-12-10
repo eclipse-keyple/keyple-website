@@ -1,5 +1,5 @@
 ---
-title: Develop a Local Application
+title: Develop a Local App
 type: book
 toc: true
 draft: false
@@ -14,7 +14,7 @@ This page describes the core elements of **Eclipse Keyple**, i.e. the concepts a
 
 It is essential for the future user of **Eclipse Keyple** to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on **Keyple Core**.
 
-## How to use it
+
 
 ## Concepts
 
@@ -37,13 +37,13 @@ Depending on its profile, an application may use different types of plugins to c
 
 The Plugin interface essentially allows to list and retrieve the available readers.
 
-### SmartCardService
+### Smart card service
 
 This is the **Keyple Core** service that concentrates the knowledge of active plugins and readers.
 
 At startup, a Keyple application must register the plugins it uses. Conversely, it can also unregister them.
 
-The SmartCardService will then make sure that the resources used are properly released.
+The **SmartCardService** will then make sure that the resources used are properly released.
 
 ### Observation
 
@@ -74,5 +74,14 @@ This container will be able to carry all the useful information known about the 
 Note: this concept, mentioned here for understanding, should not appear to the application developer if he uses a card extension.
 
 
+## Workflow
+TBC
+
 ## Keyple Core API
+TBC
+
+## Examples
+TBC
+
+## Download
 TBC

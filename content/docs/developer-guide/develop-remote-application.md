@@ -1,5 +1,5 @@
 ---
-title: Develop a Remote Application
+title: Develop a Remote App
 type: book
 toc: true
 draft: false
