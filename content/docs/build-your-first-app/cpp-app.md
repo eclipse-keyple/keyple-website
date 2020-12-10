@@ -70,7 +70,7 @@ The compiled dynamic libraries can now be found in the 'build/bin' folder.
 
 Copy the source code below in a new file, say main.cpp:
 
-```{cpp, class.output="scroll-100"}
+```cpp
 /**************************************************************************************************
  * Copyright (c) 2020 Calypso Networks Association                                                *
  * https://www.calypsonet-asso.org/                                                               *
@@ -361,7 +361,7 @@ int main(int argv, char **args)
 
 Create a CMakeLists.txt file as follows:
 
-```cmake
+```cpp
 #
 # Copyright (c) 2020 Calypso Networks Association https://www.calypsonet-asso.org/
 #
@@ -488,143 +488,169 @@ Run the application:
 ### Sample trace
 
 ```bash
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                  Get and Configure the PO & SAM Readers                  =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscPlugin                                                                    ]   initNativeReaders - getting card terminals
-[2020-12-09 00:01:22:482]   [ERROR]   [keyple::core::seproxy::plugin::ExecutorService                                                      ]   run - starting executor monitoring thread
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [PcscReaderImpl] constructor => using terminal OMNIKEY CardMan (076B:5421) 5421(1)
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME = transmission_mode, VALUE =
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME = protocol, VALUE =
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME = mode, VALUE =
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME = disconnect, VALUE =
-[2020-12-09 00:01:22:482]   [ERROR]   [keyple::core::seproxy::plugin::ExecutorService                                                      ]   run - starting executor monitoring thread
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [PcscReaderImpl] constructor => using terminal OMNIKEY CardMan (076B:5421) 5421(2)
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = transmission_mode, VALUE =
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = protocol, VALUE =
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = mode, VALUE =
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = disconnect, VALUE =
-[2020-12-09 00:01:22:482]   [ INFO]   [keyple::core::seproxy::SeProxyService                                                               ]   Registering a new Plugin to the platform : PcscPlugin
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = protocol, VALUE = T1
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME = protocol, VALUE = T0
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME = mode, VALUE = shared
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = mode, VALUE = shared
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =              Create a SAM resource after selecting the SAM               =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   protocolFlagMatches - physical channel not open, opening it
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] openAndConnect - protocol: T=0
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   openAndConnect - connecting tp OMNIKEY CardMan (076B:5421) 5421(1) with protocol: T=0, connectProtocol: 1 and sharingMode: 2
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   openAndConnect - card state: 84
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(1)] Opening of a physical SE channel in shared mode
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(1)] protocolFlagMatches => matching SE. PROTOCOLFLAG = SEPROTOCOL: {NAME = ISO 7816-3, TRANMISSIONMODE = CONTACTS}
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   processSeRequestSet - processing requests set
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequests => transmit SEREQUEST: {REQUESTS = ApduRequests: {}, SELECTOR = SESELECTOR: {SEPROTOCOL: {NAME = ISO 7816-3, TRANMISSIONMODE = CONTACTS}AIDSELECTOR = null, ATRFILTER: {REGEX = .*}}}
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequest => Logical channel open = 0
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequests => receive SERESPONSE: {RESPONSES = APDURESPONSES: {}, SELECTIONSTATUS = SELECTIONSTATUS: {ATR = ATR = 3b3f9600805a4880c1205017aec11a36829000, FCI = R-APDU: {STATUS = FAILURE, BYTES (0) = }, HASMATCHED = 1}, CHANNELWASOPEN = 0}
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =           Display basic information about the readers and SAM            =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   = PO Reader Name = OMNIKEY CardMan (076B:5421) 5421(2)
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   = SAM Reader Name = OMNIKEY CardMan (076B:5421) 5421(1), Serial Number = AEC11A36
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                     Prepare the Calypso PO selection                     =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                  Check if a PO is present in the reader                  =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                    Start of the Calypso PO processing                    =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                             1st PO exchange                              =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                           AID based selection                            =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   protocolFlagMatches - physical channel not open, opening it
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] openAndConnect - protocol: T=1
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   openAndConnect - connecting tp OMNIKEY CardMan (076B:5421) 5421(2) with protocol: T=1, connectProtocol: 2 and sharingMode: 2
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   openAndConnect - card state: 84
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(2)] Opening of a physical SE channel in shared mode
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(2)] protocolFlagMatches => matching SE. PROTOCOLFLAG = SEPROTOCOL: {NAME = ISO 14443-4, TRANMISSIONMODE = CONTACTLESS}
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   processSeRequestSet - processing requests set
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processSeRequests => transmit SEREQUEST: {REQUESTS = ApduRequests: {}, SELECTOR = SESELECTOR: {SEPROTOCOL: {NAME = ISO 14443-4, TRANMISSIONMODE = CONTACTLESS}AIDSELECTOR: {AIDTOSELECT = 315449432e49434131FILEOCCURRENCE: {ISOBITMASK = 0(0x00)}FILECONTROLINFORMATION: {ISOBITMASK = 0(0x00)}0x0}, ATRFILTER = null}}
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processSeRequest => Logical channel open = 0
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] openLogicalChannel => Select Application with AID = 315449432e49434131
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => APDUREQUEST: {NAME = Internal Select Application, RAWDATA = 00a4040009315449432e4943413100, CASE4 = 1}, elapsed 13c ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   transmitApdu
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - c-apdu >> 00a4040009315449432e4943413100
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - r-apdu << 6f238409315449432e49434131a516bf0c13c70800000000c17be1f653070a3c23051410019000
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (39) = 6f238409315449432e49434131a516bf0c13c70800000000c17be1f653070a3c23051410019000}, elapsed c ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processSeRequests => receive SERESPONSE: {RESPONSES = APDURESPONSES: {}, SELECTIONSTATUS = SELECTIONSTATUS: {ATR = ATR = 3b888001000000009171710098, FCI = R-APDU: {STATUS = SUCCESS, BYTES (27) = 6f238409315449432e49434131a516bf0c13c70800000000c17be1f653070a3c23051410019000}, HASMATCHED = 1}, CHANNELWASOPEN = 0}
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::calypso::command::po::parser::GetDataFciRespPars                                            ]   Application Serial Number = 00000000C17BE1F6
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::calypso::command::po::parser::GetDataFciRespPars                                            ]   Discretionary Data = 0a3c2305141001
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   The selection of the PO has succeeded
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                            2nd PO exchange                               =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                     Open a Calypso secure session                        =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                  Reading of Environment file (SFI=07h)                   =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequest => Logical channel open = 1
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => APDUREQUEST: {NAME = Select Diversifier, RAWDATA = 801400000800000000c17be1f6, CASE4 = 0}, elapsed 208 ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   transmitApdu
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - c-apdu >> 801400000800000000c17be1f6
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - r-apdu << 9000
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (2) = 9000}, elapsed 37 ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => APDUREQUEST: {NAME = Get Challenge, RAWDATA = 8084000004, CASE4 = 0}, elapsed 0 ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   transmitApdu
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - c-apdu >> 8084000004
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - r-apdu << ef48651d9000
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (6) = ef48651d9000}, elapsed 3 ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::calypso::transaction::SamCommandProcessor                                                   ]   identification: TERMINALCHALLENGE = ef48651d
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processSeRequest => Logical channel open = 1
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => APDUREQUEST: {NAME = Open Secure Session V3.1 - KEYINDEX=3, SFI=07, REC=1, RAWDATA = 008a0b3904ef48651d00, CASE4 = 1}, elapsed c7 ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   transmitApdu
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - c-apdu >> 008a0b3904ef48651d00
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - r-apdu << 030ab2cf0030791d00000000000000000000000000000000000000000000000000000000009000
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (39) = 030ab2cf0030791d00000000000000000000000000000000000000000000000000000000009000}, elapsed e ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::calypso::transaction::PoTransaction                                                         ]   processAtomicOpening => opening: CARDCHALLENGE = CF, POKIF = 30, POKVC = 79
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::calypso::transaction::SamCommandProcessor                                                   ]   initialize: POREVISION = REV3_1, SAMREVISION = C1, SESSIONENCRYPTION = 0, VERIFICATIONMODE = 0
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::calypso::transaction::SamCommandProcessor                                                   ]   initialize: VERIFICATIONMODE = 0, REV32MODE = 0, KEYRECNUMBER = 0(0x00)
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::calypso::transaction::SamCommandProcessor                                                   ]   initialize: KIF = 48(0x30), KVC = 79(0x79), DIGESTDATA = 030ab2cf0030791d0000000000000000000000000000000000000000000000000000000000
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   File Environment log: 0000000000000000000000000000000000000000000000000000000000
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                            3th PO exchange                               =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                     Close the Calypso secure session                     =
-[2020-12-09 00:01:22:482]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequest => Logical channel open = 1
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => APDUREQUEST: {NAME = Digest Init, RAWDATA = 808a00ff273079030ab2cf0030791d0000000000000000000000000000000000000000000000000000000000, CASE4 = 0}, elapsed 2f ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   transmitApdu
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - c-apdu >> 808a00ff273079030ab2cf0030791d0000000000000000000000000000000000000000000000000000000000
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - r-apdu << 9000
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (2) = 9000}, elapsed 6 ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => APDUREQUEST: {NAME = Digest Close, RAWDATA = 808e000004, CASE4 = 0}, elapsed 0 ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   transmitApdu
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - c-apdu >> 808e000004
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - r-apdu << 819e515d9000
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (6) = 819e515d9000}, elapsed 9 ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::calypso::transaction::SamCommandProcessor                                                   ]   SIGNATURE = 819e515d
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processSeRequest => Logical channel open = 1
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => APDUREQUEST: {NAME = Close Secure Session, RAWDATA = 008e800004819e515d00, CASE4 = 1}, elapsed 31 ms
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   transmitApdu
-[2020-12-09 00:01:22:482]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - c-apdu >> 008e800004819e515d00
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - r-apdu << 08d222e99000
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (6) = 08d222e99000}, elapsed 34 ms
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => APDUREQUEST: {NAME = , RAWDATA = 00b2000000, CASE4 = 0}, elapsed 0 ms
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   transmitApdu
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - c-apdu >> 00b2000000
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - r-apdu << 6b00
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => R-APDU: {STATUS = FAILURE, BYTES (2) = 6b00}, elapsed 2a ms
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   [OMNIKEY CardMan (076B:5421) 5421(2)] closePhysicalChannel
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(2)] closeAndDisconnect - reset: y
-[2020-12-09 00:01:23:483]   [ WARN]   [keyple::core::seproxy::plugin::WaitForStartDetect                                                   ]   [OMNIKEY CardMan (076B:5421) 5421(2)] Ignore =>  Event SE_PROCESSED received in currentState WAIT_FOR_START_DETECTION
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequest => Logical channel open = 1
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => APDUREQUEST: {NAME = Digest Authenticate, RAWDATA = 808200000408d222e9, CASE4 = 0}, elapsed 61 ms
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::plugin::pcsc::PcscReaderImpl                                                                ]   transmitApdu
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - c-apdu >> 808200000408d222e9
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::plugin::pcsc::PcscTerminal                                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - r-apdu << 9000
-[2020-12-09 00:01:23:483]   [DEBUG]   [keyple::core::seproxy::plugin::AbstractLocalReader                                                  ]   [OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (2) = 9000}, elapsed 5e ms
-[2020-12-09 00:01:23:483]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
-[2020-12-09 00:01:23:483]   [ INFO]   [DemoPoAuthentication                                                                                ]   =              The Calypso secure session ended successfully               =
-[2020-12-09 00:01:23:483]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                   (Successful mutual authentication)                     =
-[2020-12-09 00:01:23:483]   [ INFO]   [DemoPoAuthentication                                                                                ]   =                    End of the Calypso PO processing                      =
-[2020-12-09 00:01:23:483]   [ INFO]   [DemoPoAuthentication                                                                                ]   ============================================================================
+============================================================================
+=                  Get and Configure the PO & SAM Readers                  =
+============================================================================
+initNativeReaders - getting card terminals
+run - starting executor monitoring thread
+[PcscReaderImpl] constructor => using terminal OMNIKEY CardMan (076B:5421) 5421(1)
+[OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME =transmission_mode, VALUE =
+[OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME = protocol, VALUE =
+[OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME = mode, VALUE =
+[OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME = disconnect, VALUE =
+run - starting executor monitoring thread
+constructor => using terminal OMNIKEY CardMan (076B:5421) 5421(2)
+[OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = transmission_mode, VALUE =
+[OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = protocol, VALUE =
+[OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = mode, VALUE =
+[OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = disconnect, VALUE =
+Registering a new Plugin to the platform : PcscPlugin
+[OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = protocol, VALUE = T1
+[OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME = protocol, VALUE = T0
+[OMNIKEY CardMan (076B:5421) 5421(1)] setParameter => PCSC: Set a parameter. NAME = mode, VALUE = shared
+[OMNIKEY CardMan (076B:5421) 5421(2)] setParameter => PCSC: Set a parameter. NAME = mode, VALUE = shared
+============================================================================
+=              Create a SAM resource after selecting the SAM               =
+============================================================================
+protocolFlagMatches - physical channel not open, opening it
+[OMNIKEY CardMan (076B:5421) 5421(1)] openAndConnect - protocol: T=0
+openAndConnect - connecting tp OMNIKEY CardMan (076B:5421) 5421(1) with protocol: T=0, connectProtocol: 1
+    and sharingMode: 2
+openAndConnect - card state: 84
+[OMNIKEY CardMan (076B:5421) 5421(1)] Opening of a physical SE channel in shared mode
+[OMNIKEY CardMan (076B:5421) 5421(1)] protocolFlagMatches => matching SE. PROTOCOLFLAG = SEPROTOCOL:
+    {NAME = ISO 7816-3, TRANMISSIONMODE = CONTACTS}
+processSeRequestSet - processing requests set
+[OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequests => transmit SEREQUEST: {REQUESTS = ApduRequests: {},
+    SELECTOR = SESELECTOR: {SEPROTOCOL: {NAME = ISO 7816-3, TRANMISSIONMODE = CONTACTS}AIDSELECTOR = null,
+    ATRFILTER: {REGEX = .*}}}
+[OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequest => Logical channel open = 0
+[OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequests => receive SERESPONSE: {RESPONSES = APDURESPONSES: {},
+     SELECTIONSTATUS = SELECTIONSTATUS: {ATR = ATR = 3b3f9600805a4880c1205017aec11a36829000, FCI = R-APDU:
+     {STATUS = FAILURE, BYTES (0) = }, HASMATCHED = 1}, CHANNELWASOPEN = 0}
+============================================================================
+=           Display basic information about the readers and SAM            =
+============================================================================
+= PO Reader Name = OMNIKEY CardMan (076B:5421) 5421(2)
+= SAM Reader Name = OMNIKEY CardMan (076B:5421) 5421(1), Serial Number = AEC11A36
+============================================================================
+=                     Prepare the Calypso PO selection                     =
+============================================================================
+============================================================================
+=                  Check if a PO is present in the reader                  =
+============================================================================
+============================================================================
+=                    Start of the Calypso PO processing                    =
+============================================================================
+=                             1st PO exchange                              =
+=                           AID based selection                            =
+============================================================================
+protocolFlagMatches - physical channel not open, opening it
+[OMNIKEY CardMan (076B:5421) 5421(2)] openAndConnect - protocol: T=1
+openAndConnect - connecting tp OMNIKEY CardMan (076B:5421) 5421(2) with protocol: T=1, connectProtocol: 2
+    and sharingMode: 2
+openAndConnect - card state: 84
+[OMNIKEY CardMan (076B:5421) 5421(2)] Opening of a physical SE channel in shared mode
+[OMNIKEY CardMan (076B:5421) 5421(2)] protocolFlagMatches => matching SE. PROTOCOLFLAG = SEPROTOCOL:
+    {NAME = ISO 14443-4, TRANMISSIONMODE = CONTACTLESS}
+processSeRequestSet - processing requests set
+[OMNIKEY CardMan (076B:5421) 5421(2)] processSeRequests => transmit SEREQUEST: {REQUESTS = ApduRequests:
+    {}, SELECTOR = SESELECTOR: {SEPROTOCOL: {NAME = ISO 14443-4, TRANMISSIONMODE = CONTACTLESS}AIDSELECTOR:
+    {AIDTOSELECT = 315449432e49434131FILEOCCURRENCE: {ISOBITMASK = 0(0x00)}FILECONTROLINFORMATION:
+    {ISOBITMASK = 0(0x00)}0x0}, ATRFILTER = null}}
+[OMNIKEY CardMan (076B:5421) 5421(2)] processSeRequest => Logical channel open = 0
+[OMNIKEY CardMan (076B:5421) 5421(2)] openLogicalChannel => Select Application with AID = 315449432e49434131
+[OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => APDUREQUEST: {NAME = Internal Select Application,
+    RAWDATA = 00a4040009315449432e4943413100, CASE4 = 1}, elapsed 13c ms
+[OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - c-apdu >> 00a4040009315449432e4943413100
+[OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - r-apdu <<
+    6f238409315449432e49434131a516bf0c13c70800000000c17be1f653070a3c23051410019000
+[OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (39) = 6f238409315449432e49434131a516bf0c13c70800000000c17be1f653070a3c23051410019000}, elapsed c ms
+[OMNIKEY CardMan (076B:5421) 5421(2)] processSeRequests => receive SERESPONSE: {RESPONSES = APDURESPONSES: {},
+    SELECTIONSTATUS = SELECTIONSTATUS: {ATR = ATR = 3b888001000000009171710098, FCI = R-APDU: {STATUS = SUCCESS,
+    BYTES (27) = 6f238409315449432e49434131a516bf0c13c70800000000c17be1f653070a3c23051410019000}, HASMATCHED = 1},
+    CHANNELWASOPEN = 0}
+Application Serial Number = 00000000C17BE1F6
+Discretionary Data = 0a3c2305141001
+The selection of the PO has succeeded
+============================================================================
+=                            2nd PO exchange                               =
+=                     Open a Calypso secure session                        =
+=                  Reading of Environment file (SFI=07h)                   =
+============================================================================
+[OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequest => Logical channel open = 1
+[OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => APDUREQUEST: {NAME = Select Diversifier,
+    RAWDATA = 801400000800000000c17be1f6, CASE4 = 0}, elapsed 208 ms
+[OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - c-apdu >> 801400000800000000c17be1f6
+[OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - r-apdu << 9000
+[OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (2) =
+    9000}, elapsed 37 ms
+[OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => APDUREQUEST: {NAME = Get Challenge,
+    RAWDATA =  8084000004, CASE4 = 0}, elapsed 0 ms
+[OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - c-apdu >> 8084000004
+[OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - r-apdu << ef48651d9000
+[OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (6) =
+    ef48651d9000}, elapsed 3 ms
+identification: TERMINALCHALLENGE = ef48651d
+[OMNIKEY CardMan (076B:5421) 5421(2)] processSeRequest => Logical channel open = 1
+[OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => APDUREQUEST: {NAME = Open Secure Session
+    V3.1 -  KEYINDEX=3, SFI=07, REC=1, RAWDATA = 008a0b3904ef48651d00, CASE4 = 1}, elapsed c7 ms
+[OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - c-apdu >> 008a0b3904ef48651d00
+[OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - r-apdu <<
+    030ab2cf0030791d00000000000000000000000000000000000000000000000000000000009000
+[OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (39) = 030ab2cf0030791d00000000000000000000000000000000000000000000000000000000009000}, elapsed e ms
+processAtomicOpening => opening: CARDCHALLENGE = CF, POKIF = 30, POKVC = 79
+initialize: POREVISION = REV3_1, SAMREVISION = C1, SESSIONENCRYPTION = 0, VERIFICATIONMODE = 0
+initialize: VERIFICATIONMODE = 0, REV32MODE = 0, KEYRECNUMBER = 0(0x00)
+initialize: KIF = 48(0x30), KVC = 79(0x79), DIGESTDATA =
+    030ab2cf0030791d0000000000000000000000000000000000000000000000000000000000
+File Environment log: 0000000000000000000000000000000000000000000000000000000000
+============================================================================
+=                            3th PO exchange                               =
+=                     Close the Calypso secure session                     =
+============================================================================
+[OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequest => Logical channel open = 1
+[OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => APDUREQUEST: {NAME = Digest Init, RAWDATA = 808a00ff273079030ab2cf0030791d0000000000000000000000000000000000000000000000000000000000, CASE4 = 0},
+    elapsed 2f ms
+[OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - c-apdu >>
+    808a00ff273079030ab2cf0030791d0000000000000000000000000000000000000000000000000000000000
+[OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - r-apdu << 9000
+[OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (2) = 9000},
+    elapsed 6 ms
+[OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => APDUREQUEST: {NAME = Digest Close,
+    RAWDATA = 808e000004, CASE4 = 0}, elapsed 0 ms
+[OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - c-apdu >> 808e000004
+[OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - r-apdu << 819e515d9000
+[OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (6) =
+    819e515d9000}, elapsed 9 ms
+SIGNATURE = 819e515d
+[OMNIKEY CardMan (076B:5421) 5421(2)] processSeRequest => Logical channel open = 1
+[OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => APDUREQUEST: {NAME = Close Secure Session,
+    RAWDATA = 008e800004819e515d00, CASE4 = 1}, elapsed 31 ms
+[OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - c-apdu >> 008e800004819e515d00
+[OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - r-apdu << 08d222e99000
+[OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (6) =
+    08d222e99000}, elapsed 34 ms
+[OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => APDUREQUEST: {NAME = , RAWDATA = 00b2000000,
+    CASE4 = 0}, elapsed 0 ms
+[OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - c-apdu >> 00b2000000
+[OMNIKEY CardMan (076B:5421) 5421(2)] transmitApdu - r-apdu << 6b00
+[OMNIKEY CardMan (076B:5421) 5421(2)] processApduRequest => R-APDU: {STATUS = FAILURE, BYTES (2) = 6b00},
+    elapsed 2a ms
+[OMNIKEY CardMan (076B:5421) 5421(2)] closePhysicalChannel
+[OMNIKEY CardMan (076B:5421) 5421(2)] closeAndDisconnect - reset: y
+[OMNIKEY CardMan (076B:5421) 5421(2)] Ignore =>  Event SE_PROCESSED received in currentState
+    WAIT_FOR_START_DETECTION
+[OMNIKEY CardMan (076B:5421) 5421(1)] processSeRequest => Logical channel open = 1
+[OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => APDUREQUEST: {NAME = Digest Authenticate,
+    RAWDATA = 808200000408d222e9, CASE4 = 0}, elapsed 61 ms
+[OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - c-apdu >> 808200000408d222e9
+[OMNIKEY CardMan (076B:5421) 5421(1)] transmitApdu - r-apdu << 9000
+[OMNIKEY CardMan (076B:5421) 5421(1)] processApduRequest => R-APDU: {STATUS = SUCCESS, BYTES (2) = 9000},
+    elapsed 5e ms
+============================================================================
+=              The Calypso secure session ended successfully               =
+=                   (Successful mutual authentication)                     =
+=                    End of the Calypso PO processing                      =
+============================================================================
 ```
