@@ -6,15 +6,13 @@ draft: false
 weight: 310
 ---
 
-## Introduction
-
-*Work in Progress*
+{{% alert note %}}
 
 This page describes the core elements of **Eclipse Keyple**, i.e. the concepts and APIs of **Keyple Core** that are used to build any application implementing **Eclipse Keyple**.
 
 It is essential for the future user of **Eclipse Keyple** to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on **Keyple Core**.
 
-
+{{% /alert %}}
 
 ## Concepts
 
@@ -75,13 +73,31 @@ Note: this concept, mentioned here for understanding, should not appear to the a
 
 
 ## Workflow
-TBC
+* Creation of the Smart Card Service
+* Choose the plugin
+* Register the plugin
+* Observation of the plugin
+* Retrieve the reader
+* Observation of the reader
+* Container selection
+* Implementation of the application service
+* Stopping the application
 
 ## Keyple Core API
-TBC
+
+[Plugin-Reader class diagram]
+
+[Selection class diagram]
 
 ## Examples
-TBC
+
+* UseCase1_ExplicitSelectionAid
+* UseCase2_DefaultSelectionNotification
+* UseCase3_SequentialMultiSelection
+* UseCase4_GroupedMultiSelection
+* Demo_CardProtocolDetection
+* Demo_ObservableReaderNotification
 
 ## Download
-TBC
+
+[Keyple Core component]({{< ref "/components/_index.md" >}})
