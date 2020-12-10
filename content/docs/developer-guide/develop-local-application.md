@@ -6,13 +6,15 @@ draft: false
 weight: 310
 ---
 
-## Foreword
+## Introduction
 
 *Work in Progress*
 
-This section describes the core elements of **Eclipse Keyple**, i.e. the concepts and APIs of **Keyple Core** that are used to build any application implementing **Eclipse Keyple**.
+This page describes the core elements of **Eclipse Keyple**, i.e. the concepts and APIs of **Keyple Core** that are used to build any application implementing **Eclipse Keyple**.
 
 It is essential for the future user of **Eclipse Keyple** to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on **Keyple Core**.
+
+## How to use it
 
 ## Concepts
 
@@ -51,7 +53,7 @@ It consists in monitoring changes such as reader connection/disconnection or car
 
 Not all plugins and readers are observable.
 
-### Selection and default selection
+### Selection
 
 In Keyple the concept of selection is derived from the application selection defined by the ISO7816-4 standard.
 
@@ -61,11 +63,11 @@ This principle optimizes the processing by allowing the application to elaborate
 
 Several targets can be defined by the application according to the different customer cards expected.
 
-The default selection principle consists in providing an observable reader with a set of selection cases corresponding to the expected cards and receiving notifications containing not only the card identification but also the result of all additional commands that the application will have attached.
+The **default selection** principle consists in providing an observable reader with a set of selection cases corresponding to the expected cards and receiving notifications containing not only the card identification but also the result of all additional commands that the application will have attached.
 
-### AbstractSmartCard
+### Abstract smart card
 
-The AbstractSmartCard concept is used by specific extensions (e.g. Keyple Calypso) and by the **Keyple Core** selection mechanism. It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.
+The **abstract smart card** concept is used by specific extensions (e.g. Keyple Calypso) and by the **Keyple Core** selection mechanism. It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.
 
 This container will be able to carry all the useful information known about the card.
 
