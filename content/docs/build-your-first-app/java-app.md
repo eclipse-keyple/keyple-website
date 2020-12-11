@@ -29,20 +29,20 @@ repositories {
 
 dependencies {
     //Keyple core is a mandatory library for using Keyple, in this case import the last version of keyple-java-core
-    implementation group: 'org.eclipse.keyple', name: 'keyple-java-core', version: '+'
+    implementation group: 'org.eclipse.keyple', name: 'keyple-java-core', version: '1.0.0'
 
     //Import Calypso library to support Calypso Portable Object, in this case import the last version of keyple-java-calypso
-    implementation group: 'org.eclipse.keyple', name: 'keyple-java-calypso', version: '+'
+    implementation group: 'org.eclipse.keyple', name: 'keyple-java-calypso', version: '1.0.0'
 
     //Import PCSC library to use a Pcsc reader, in this case import the last version of keyple-java-plugin-pcsc
-    implementation group: 'org.eclipse.keyple', name: 'keyple-java-plugin-pcsc', version: '+'
+    implementation group: 'org.eclipse.keyple', name: 'keyple-java-plugin-pcsc', version: '1.0.0'
 }
 ```
 ## Let's code
 
 ### Configure PCSC plugin and readers
 
-The first step to use Keyple SDK is to initialize the plugin and smartcard readers. In this snippet the PCSC plugin is registered to the SmartCardService. Two readers needs to be connected to the local machine. Replace "PO_READER_NAME" and "SAM_READER_NAME" with the name of the USB readers. If you don’t know the reader name, run the application in debug mode and get the reader names from the Plugin object.
+The first step to use Keyple SDK is to initialize the plugin and smart card readers. In this snippet the PCSC plugin is registered to the SmartCardService. Two readers needs to be connected to the local machine. Replace "PO_READER_NAME" and "SAM_READER_NAME" with the name of the USB readers. If you don’t know the reader name, run the application in debug mode and get the reader names from the Plugin object.
 
 Copy the source code below in a new Java Class named DemoPoAuthentication. 
 
@@ -55,9 +55,7 @@ import org.eclipse.keyple.core.util.ByteArrayUtil;
 import org.eclipse.keyple.plugin.pcsc.*;
 
 public class DemoPoAuthentication  {
-
     public static void main(String[] args) {
-
         // Get the instance of the SmartCardService : main service of Keyple SDK
         SmartCardService smartCardService = SmartCardService.getInstance();
 
@@ -72,9 +70,7 @@ public class DemoPoAuthentication  {
 
         // Get a SAM reader
         PcscReader samReader = (PcscReader) plugin.getReader("SAM_READER_NAME");
-        
 //...
-
     }
 } 
 ```
@@ -84,73 +80,72 @@ public class DemoPoAuthentication  {
 Before executing a transaction each smart card should be selected. The next step is the selection of the SAM smart card, followed by the creation of the CalypsoSam resource which is necessary for the Calypso transaction.
 
 ```java
-        
-        // Prepare the selector to ensure the correct SAM is used
-        SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.AUTO).build();
-
-        // Make the SAM selection
-        CardSelection samSelection = new CardSelection();
-        samSelection.prepareSelection(new SamSelectionRequest(samSelector));
-        CalypsoSam calypsoSam;
-
-        //check that a smartcard is present in the SAM reader
-        if (!samReader.isCardPresent()) {
-            throw new IllegalStateException("No SAM is present in the reader " + samReader.getName());
-        }
-
-        SelectionsResult selectionsResult = samSelection.processExplicitSelection(samReader);
-
-        if (!selectionsResult.hasActiveSelection()) {
-            throw new IllegalStateException("SAM matching failed!");
-        }
-
-        calypsoSam = (CalypsoSam) selectionsResult.getActiveSmartCard();
-
-        // Associate the calypsoSam and the samReader to create the samResource
-        CardResource<CalypsoSam> samResource = new CardResource<CalypsoSam>(samReader, calypsoSam);
-
-        //...
-
+    //...
+    // Prepare the selector to ensure the correct SAM is used
+    SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.AUTO).build();
+    
+    // Make the SAM selection
+    CardSelection samSelection = new CardSelection();
+    samSelection.prepareSelection(new SamSelectionRequest(samSelector));
+    CalypsoSam calypsoSam;
+    
+    //check that a smartcard is present in the SAM reader
+    if (!samReader.isCardPresent()) {
+        throw new IllegalStateException("No SAM is present in the reader " + samReader.getName());
+    }
+    
+    SelectionsResult selectionsResult = samSelection.processExplicitSelection(samReader);
+    
+    if (!selectionsResult.hasActiveSelection()) {
+        throw new IllegalStateException("SAM matching failed!");
+    }
+    
+    calypsoSam = (CalypsoSam) selectionsResult.getActiveSmartCard();
+    
+    // Associate the calypsoSam and the samReader to create the samResource
+    CardResource<CalypsoSam> samResource = new CardResource<CalypsoSam>(samReader, calypsoSam);
+    //...
 ```
 ### Select PO resource
 
-Preparing the 1st PO exchange : after the selection of the SAM smartcard, we operate the AID based selection on the PO.
+Preparing the 1st PO exchange : after the selection of the SAM smart card, we operate the AID based selection on the PO.
 
 ```java
-        // Prepare a Calypso PO selection
-        CardSelection seSelection = new CardSelection();
-
-        // Setting of an AID based selection of a Calypso Revision 3.1 PO
-        //
-        // Select the first application matching the selection AID whatever the card communication protocol
-        // Keep the logical channel open after the selection
-        //
-        // Calypso selection: configures a PoSelectionRequest with all the desired attributes to
-        // make the selection and read additional information afterwards
-        PoSelectionRequest poSelectionRequest = new PoSelectionRequest(
-                PoSelector.builder()
-                        .aidSelector(CardSelector.AidSelector.builder().aidToSelect(AID).build()) // the application identifier
-                        .invalidatedPo(PoSelector.InvalidatedPo.REJECT) // to indicate if an invalidated PO should be accepted or not
-                        .build());
-
-        // Add the selection case to the current selection
-        // (we could have added other cases)
-        seSelection.prepareSelection(poSelectionRequest);
-        
-        if (!poReader.isCardPresent()) {
-            throw new IllegalStateException("The selection of the PO has failed.");
-        }
-        
-        // Actual PO communication: operate through a single request the Calypso PO selection
-        CalypsoPo calypsoPo = (CalypsoPo) seSelection.processExplicitSelection(poReader).getActiveSmartCard();
-
-  //...
+    //...
+    // Prepare a Calypso PO selection
+    CardSelection seSelection = new CardSelection();
+    
+    // Setting of an AID based selection of a Calypso Revision 3.1 PO
+    //
+    // Select the first application matching the selection AID whatever the card communication protocol
+    // Keep the logical channel open after the selection
+    //
+    // Calypso selection: configures a PoSelectionRequest with all the desired attributes to
+    // make the selection and read additional information afterwards
+    PoSelectionRequest poSelectionRequest = new PoSelectionRequest(
+            PoSelector.builder()
+                    .aidSelector(CardSelector.AidSelector.builder().aidToSelect(AID).build()) // the application identifier
+                    .invalidatedPo(PoSelector.InvalidatedPo.REJECT) // to indicate if an invalidated PO should be accepted or not
+                    .build());
+    
+    // Add the selection case to the current selection
+    // (we could have added other cases)
+    seSelection.prepareSelection(poSelectionRequest);
+    
+    if (!poReader.isCardPresent()) {
+        throw new IllegalStateException("The selection of the PO has failed.");
+    }
+    
+    // Actual PO communication: operate through a single request the Calypso PO selection
+    CalypsoPo calypsoPo = (CalypsoPo) seSelection.processExplicitSelection(poReader).getActiveSmartCard();
+    //...
 ```
 ### Transaction : open session
 
 2nd PO exchange : prepare the PoTransaction object with the reading of the environment file (SFI=07h) .
 
 ```java
+    //...
     // Prepare the security settings used during the Calypso transaction
     PoSecuritySettings poSecuritySettings = new PoSecuritySettings.PoSecuritySettingsBuilder(samResource).build();
    
@@ -177,26 +172,24 @@ Preparing the 1st PO exchange : after the selection of the SAM smartcard, we ope
     if (!calypsoPo.isDfRatified()) {
         System.out.println("============= Previous Calypso Secure Session was not ratified =============");
     }
-
   //...
 ```
 ### Transaction : close session
 
 The 3th PO exchange : the Calypso secure session is closed 
-
 ```java
+    //...
     // To close the channel with the PO after the closing
     poTransaction.prepareReleasePoChannel();
 
     // Close the Calypso Secure Session
     // A ratification command will be sent (CONTACTLESS_MODE)
     poTransaction.processClosing();
-
+    //...       
 ```
-
-Unregister the plugin before shutting down the application
-
+Finally unregister the plugin before shutting down the application
 ```java
+    //...    
     // To shutdown the application
     smartCardService.unregisterPlugin(plugin.getName());
     
@@ -208,11 +201,8 @@ Find the complete code source in the [example project](https://github.com/eclips
 ## Run
 
 1) Connect two USB PCSC Readers.
-
 2) Insert the SAM smart card in the SAM reader.
-
 3) Insert the PO smart card in the PO reader.
-
 4) Run the application.
 
 {{% alert note %}}
