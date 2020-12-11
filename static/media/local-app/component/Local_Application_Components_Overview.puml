@@ -35,16 +35,14 @@ hide <<grey>> stereotype
 package "Terminal with 'local' readers" {
     [Application] as appA
     package "Keyple" as localKeyple {
-        [**Keyple Plugin(s)**] as localLib <<blue>>
-        [Keyple Core & Extensions] as localKeypleLibs <<purple>>
+        [Keyple Core & companion modules] as localKeypleLibs <<purple>>
     }
 }
 
 
 
-appA -- localKeypleLibs
-localKeypleLibs -- localLib
-localLib -- reader
+appA - localKeypleLibs
+localKeypleLibs - reader
 
 
 @enduml
