@@ -4,8 +4,6 @@ Repository to the www.keyple.org website of the 'Eclipse Keyple' project.
 
 The Eclipse Keyple website is generated with Hugo.
 
-[![Build Status](https://ci.eclipse.org/keyple/)](https://ci.eclipse.org/keyple/job/keyple-website/)
-
 ## Getting started
 
 ### Local installation
@@ -47,9 +45,10 @@ If you want to avoid downloading modules at each run, install them locally by ru
 1. [Fork](https://help.github.com/articles/fork-a-repo/) the [eclipse/keyple-website](https://github.com/eclipse/keyple-website) repository
 2. Clone repository: `git clone https://github.com/[your_github_username]/keyple-website.git`
 3. Create your feature branch: `git checkout -b my-new-feature`
-4. Commit your changes: `git commit -m 'Add some feature' -s`
-5. Push feature branch: `git push origin my-new-feature`
-6. Submit a pull request
+4. Make your changes
+5. Commit your changes: `git commit -m "Add some feature" -s`
+6. Push feature branch: `git push origin my-new-feature`
+7. Submit a pull request
 
 
 ### Declared Project Licenses
@@ -64,7 +63,7 @@ SPDX-License-Identifier: EPL-2.0
 
 ### [Wowchemy](https://github.com/wowchemy/wowchemy-hugo-modules)
 
-[Academic theme](https://wowchemy.com/) for [Hugo](https://gohugo.io/). 
+[Wowchemy theme](https://wowchemy.com/) for [Hugo](https://gohugo.io/). 
 
 ## Bugs and feature requests
 
@@ -73,8 +72,8 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 ## Trademarks
 
 * Eclipse Keyple and the Eclipse Keyple project are Trademarks of the Eclipse Foundation, Inc.
-
 * Eclipse® is a Trademark of the Eclipse Foundation, Inc.
+* Eclipse Foundation is a Trademark of the Eclipse Foundation, Inc.
 
 ## Copyright and license
 

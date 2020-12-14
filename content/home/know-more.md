@@ -4,7 +4,7 @@ headless = true
 active = true 
 weight = 50 
 
-title = "Want to know more ?" 
+title = "Want to know more?" 
 subtitle = "" 
 
 [design.background]
@@ -19,7 +19,7 @@ subtitle = ""
 [[feature]]
   icon = "lightbulb"
   icon_pack = "fas"
-  name = "First Open Source project for ticketing!"
+  name = "First Open Source project for ticketing & access control!"
   description = "The very first Open Source SDK & API for contactless ticketing and access control is now available as an Eclipse Project! Please follow this space for updates!"
   
 [[feature]]
@@ -32,5 +32,5 @@ subtitle = ""
   icon = "envelope"
   icon_pack = "fas"
   name = "Follow us!"
-  description = "Subscribe to the [user mailing list](https://accounts.eclipse.org/mailing-list/keyple-user) for Keyple progress information and user discussions. And to the [developer mailing list](https://accounts.eclipse.org/mailing-list/keyple-dev) for Keyple developer discussions."
+  description = "Subscribe to the [mailing list](https://accounts.eclipse.org/mailing-list/keyple-dev) for Keyple progress information and discussions."
 +++

@@ -4,14 +4,14 @@ subtitle = ""
 summary = "Keyple makes contactless ticketing accessible."
 date = ""
 
-weight = 10
+weight = 50
 
 [menu.main]
     parent = "What is Eclipse Keyple™"
 +++
 
 The goal of Eclipse Keyple™ is to allow developers to easily implement fast and secure off-line contactless transactions 
-(using NFC cards, mobile phones, …) based on the Calypso standard.
+(using NFC cards, mobile phones, …) based on ticket processing integrating technologies other than Calypso®the Calypso standard.
 
 More specifically, Keyple™ is a set of open source libraries that will initially be available in Java and C++, 
 designed on the same mutual Object-Oriented Model compatible with any terminal architecture: mobile, embedded 

@@ -11,7 +11,7 @@ active = true
 weight = 30 
 
 title = "What's new ?"
-subtitle = "To add a news send your content to [user mailing list](https://accounts.eclipse.org/mailing-list/keyple-user) or made a [Pull request](https://github.com/eclipse/keyple-website/pulls) contributions on GitHub. "
+subtitle = "To add a news made a [Pull request](https://github.com/eclipse/keyple-website/pulls) contributions on GitHub."
 
 [content]
   page_type = "post"
