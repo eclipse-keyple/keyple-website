@@ -16,14 +16,14 @@ Keyple features. For example, Calypso Network Association provides **Keyple Caly
 The use of **Keyple Calypso Extension** open the ability to operate commands with a calypso Portable Object and to manage a 
 secure calypso transaction.
 
-The diagram below shows the role of the **Keyple Calypso Extension** components in the software layers for a local application :
+The diagram below shows the role of the **Keyple Calypso Extension** components in the software layers for a centralized application :
 
 {{< figure library="true" src="calypso-app-development/component/Local_Component_Overview.svg" title="" >}}
 
 ## Before you start
 1. In pre-requisite, have knowledge of the standard Calypso.
 1. Read the [common concepts]({{< relref "common-concepts.md" >}}) page and become familiar with the basic concepts on which **Keyple** is based.
-1. Any implementation of a Keyple application starts with the implementation of **Keyple Core**, please study the [workflow]({{< relref "local-application.md" >}}) proposed in Local application guide.
+1. Any implementation of a Keyple application starts with the implementation of **Keyple Core**, please study the [workflow]({{< relref "centralized-application.md" >}}) proposed in Centralized application guide.
 1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the  **Keyple Calypso Extension** API.
 1. Explore the [Keyple Calypso API](#keyplecalypsoapi) to discover all the possibilities offered by **Keyple Calypso Extension**.
 1. Take inspiration from the [examples](#examples).
@@ -31,7 +31,7 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 1. Using the [component]({{< ref "components/index.md" >}}) page, import **Keyple Core** and **Keyple Calyspo Extension** into your project and start playing with **Keyple**.
 
 ## How to use it
-1. In pre-requisite, read page [Develop a Local Application]({{< relref "local-application.md" >}}) to understand the main concepts of Keyple in a local application.
+1. In pre-requisite, read page [Develop a Centralized Application]({{< relref "centralized-application.md" >}}) to understand the main concepts of Keyple in a centralized application.
 1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the  **Keyple Calypso Extension** API.
 
 ## Concepts

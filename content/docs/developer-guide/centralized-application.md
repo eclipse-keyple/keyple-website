@@ -1,6 +1,6 @@
 ---
 
-title: Local application
+title: Centralized application
 type: book
 toc: true
 draft: false
@@ -9,7 +9,7 @@ weight: 310
 
 ## Overview
 
-A local application is an application that runs in a device in contact
+A centralized application is an application that runs in a device in contact
 with the end user.
 
 It has at least one local smart card reader and manages itself the
@@ -18,7 +18,7 @@ interaction with the user.
 In the ticketing industry, it is typically the software that runs a
 validator, a vending machine or a control terminal.
 
-The diagram below illustrates the organization of the local application
+The diagram below illustrates the organization of the local centralized
 components: {{< figure library="true"
 src="local-app/component/Local_Application_Components_Overview.svg"
 title="" >}}
@@ -426,8 +426,9 @@ to the reader (it is then named Default Selection) and will be processed
 automatically as soon as a card is presented. The application is then
 notified of the event with the data resulting from the selection.
 Depending on the selection settings, the application will be notified of
-all card presentations (CARD_INSERTED event) or only those presentations
-that led to a successful selection (CARD_MATCHED event).
+all card presentations (```CARD_INSERTED``` event) or only those
+presentations that led to a successful selection (```CARD_MATCHED```
+event).
 
 ###### Add a default selection
 
@@ -529,8 +530,8 @@ if (smartCard.hasAtr()) {
 ### Implementation of the application service
 
 The applicative processing of the card that follows the selection of the
-card is to be inserted in the processing of the CARD_INSERTED or
-CARD_MATCHED event.
+card is to be inserted in the processing of the ```CARD_INSERTED``` or
+```CARD_MATCHED``` event.
 
 It can be processed in the thread provided by the monitoring task or
 detached in a separate thread. The application developer must pay
@@ -551,57 +552,87 @@ smartCardService.unregisterPlugin(plugin.getName());
 
 ## Keyple Core API
 
-[Plugin-Reader class diagram]
+To learn all the details of the **Keyple Core** API, please consult the
+[Javadoc documentation]({{< relref
+"api-reference" >}}).
 
-[Selection class diagram]
+However, here are two diagrams showing the main features of Keyple Core:
+
+* The diagram below represents the main classes implemented around the
+  **Smart Card Service** with in particular the observation mechanisms.
+  {{< figure library="true"
+  src="local-app/component/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg"
+  title=""
+
+>}}
+
+* The diagram below represents the main classes used for selection
+  operations. {{< figure library="true"
+  src="local-app/component/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg"
+  title=""
+
+>}}
+
 
 ## Examples
 
 To help in the implementation of the different facilities offered by
 Keyple to process smart cards, a set of examples is present in the
-project repository.
+project repository
+[{{< icon name="github" pack="fab" >}} examples](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/pc)
 
 
+Nevertheless, you will find below a brief description of them:
 
-You will find below a short description of it:
-
-### UseCase1_ExplicitSelectionAid
+### Explicit Selection
 
 Shows the use of Keyple to make a card selection without observing the
 reader, based on testing the presence of the card by the application.
 
-### UseCase2_DefaultSelectionNotification
+[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/pc/UseCase1_ExplicitSelectionAid)
+
+### Default Selection
 
 Shows the use of Keyple to make a card selection with observation of the
 reader. A default selection is prepared, the presentation of a card
 triggers the notification of a reader event to the application.
 
-### UseCase3_SequentialMultiSelection
+[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/pc/UseCase2_DefaultSelectionNotification)
+
+### Sequential Multiple Selection
 
 Executes successively several independent selection operations with the
 use of the ISO 'NEXT' navigation flag.
 
+[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/pc/UseCase3_SequentialMultiSelection)
+
 Illustrates the case of a card exploration avec maintient du canal
 physique ouvert.
 
-### UseCase4_GroupedMultiSelection
+### Grouped Multiple Selection
 
 Executes a multiple selection with logical channel closure between each
 selection.
 
+[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/pc/UseCase4_GroupedMultiSelection)
+
 Allows the exploration of the applications of a card in a single
 operation but without selection at the end.
 
-### Demo_CardProtocolDetection
+### Demo Card Protocol Detection
 
 Demonstrates the use of Keyple in a context where several card
 technologies are likely to be processed by the application.
 
-### Demo_ObservableReaderNotification
+[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/pc/Demo_CardProtocolDetection)
+
+### Demo Observable Reader Notification
 
 Demonstrates the use of Keyple to implement the observation of a plugin
 and its readers. Readers are dynamically created and an observer is
 assigned to them.
+
+[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/pc/Demo_ObservableReaderNotification)
 
 ## Download
 
