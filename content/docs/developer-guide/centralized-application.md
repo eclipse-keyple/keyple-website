@@ -37,7 +37,7 @@ title="" >}}
 5. Follow the explanations given in the [Build your first app]({{<
    relref "build-your-first-app" >}}) section to configure your
    environment.
-6. Using the [component]({{< ref "components/index.md" >}}) page, import
+6. Using the [Java components]({{< ref "components-java/_index.md" >}}) or [C++ components]({{< ref "components-cpp/_index.md" >}}) pages, import
    **Keyple Core** into your project and start playing with **Keyple**.
 7. Don't forget to explore the potential of Keyple card-specific
    extensions such as **Keyple Calypso**.
@@ -79,7 +79,7 @@ without obligation, go for the PC/SC plugin.
 For an Andoid terminal environment, the plugin could be the standard
 Android NFC plugin or one of the plugins available from the industrial
 partners of the project. For a complete list of available plugins,
-please see this [page]({{< ref "components/index.md" >}}).
+please see the [Java]({{< ref "components-java/_index.md" >}}) or [C++]({{< ref "components-cpp/_index.md" >}}) pages.
 
 {{% alert note %}} A new plugin can also be [created]({{< relref
 "create-plugin" >}}) if the envisaged hardware does not yet have its
@@ -639,4 +639,5 @@ assigned to them.
 The artifact **Keyple Core** and how to integrate it into your
 application is available here:
 
-[Keyple Core component]({{< ref "/components" >}})
+* [Keyple Core Java component]({{< ref "/components-java/base/core" >}})
+* [Keyple Core C++ component]({{< ref "/components-cpp/base/core" >}})

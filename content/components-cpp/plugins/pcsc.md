@@ -27,7 +27,7 @@ It is compatible with **PC/SC Reader** (Windows PC/SC WinScard API, Unix PC/SC l
 ## Documentation
 
 <ul>
-    <li><a href="../../../docs/developer-guide/local-application">Developer guide</a></li>
+    <li><a href="../../../docs/developer-guide/centralized-application">Developer guide</a></li>
 </ul>
 
 ## Download

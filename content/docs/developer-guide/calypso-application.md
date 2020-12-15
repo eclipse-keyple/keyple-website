@@ -28,7 +28,7 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 1. Explore the [Keyple Calypso API](#keyplecalypsoapi) to discover all the possibilities offered by **Keyple Calypso Extension**.
 1. Take inspiration from the [examples](#examples).
 1. Follow the explanations given in the [Build your first app]({{< relref "build-your-first-app" >}}) section to configure your environment.
-1. Using the [component]({{< ref "components/index.md" >}}) page, import **Keyple Core** and **Keyple Calyspo Extension** into your project and start playing with **Keyple**.
+1. Using the [Java components]({{< ref "components-java/_index.md" >}}) or [C++ components]({{< ref "components-cpp/_index.md" >}}) page, import **Keyple Core** and **Keyple Calyspo Extension** into your project and start playing with **Keyple**.
 
 ## How to use it
 1. In pre-requisite, read page [Develop a Centralized Application]({{< relref "centralized-application.md" >}}) to understand the main concepts of Keyple in a centralized application.

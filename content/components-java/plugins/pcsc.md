@@ -27,7 +27,7 @@ It is compatible with **PC/SC Reader** (Windows PC/SC WinScard API, Unix PC/SC l
 ## Documentation
 
 <ul>
-    <li><a href="../../../docs/developer-guide/local-application">Developer guide</a></li>
+    <li><a href="../../../docs/developer-guide/centralized-application">Developer guide</a></li>
     <li><a href="../../../docs/api-reference/keyple-java-plugin-pcsc/{{% keyple-java-version %}}/index.html">JavaDoc API</a></li>
 </ul>
 

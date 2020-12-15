@@ -27,7 +27,7 @@ It is compatible with **PC** and **MAC** platforms.
 ## Documentation
 
 <ul>
-    <li><a href="../../../docs/developer-guide/local-application">Developer guide</a></li>
+    <li><a href="../../../docs/developer-guide/centralized-application">Developer guide</a></li>
 </ul>
 
 ## Download

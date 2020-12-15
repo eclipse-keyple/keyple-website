@@ -420,19 +420,19 @@ Note that it is **strongly recommended** to use the same version for **Remote Li
 #### GRADLE
 
 * Remote Lib
-```
+```gradle
 implementation 'org.eclipse.keyple:keyple-plugin-remote-remote:1.0.0' 
 ```
 
 * Local Lib
-```
+```gradle
 implementation 'org.eclipse.keyple:keyple-plugin-remote-local:1.0.0' 
 ```
 
 #### MAVEN
 
 * Remote Lib
-```
+```xml
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-plugin-remote-remote</artifactId>
@@ -441,7 +441,7 @@ implementation 'org.eclipse.keyple:keyple-plugin-remote-local:1.0.0'
 ```
 
 * Local Lib
-```
+```xml
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-plugin-remote-local</artifactId>

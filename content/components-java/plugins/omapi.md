@@ -30,7 +30,7 @@ This allows the app to benefit from enhanced SE-based security services.
 ## Documentation
 
 <ul>
-    <li><a href="../../../docs/developer-guide/local-application">Developer guide</a></li>
+    <li><a href="../../../docs/developer-guide/centralized-application">Developer guide</a></li>
     <li><a href="../../../docs/api-reference/keyple-android-plugin-omapi/{{% keyple-java-version %}}/index.html">JavaDoc API</a></li>
 </ul>
 
