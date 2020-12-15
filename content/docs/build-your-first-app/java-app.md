@@ -100,7 +100,7 @@ In this snippet the PC/SC plugin is registered to the SmartCardService.
 Two readers needs to be connected to the local machine. Replace
 "PO_READER_NAME" and "SAM_READER_NAME" with the name of the USB readers.
 
-If you don’t know the reader name, follow this
+If you don’t know the reader's names, follow this
 [note](#find-out-reader-names).
 
 ```java
@@ -396,7 +396,7 @@ Identify which reader will be the PO (contactless) reader and the SAM
 (contact) reader and replace ```PO_READER_NAME``` and
 ```SAM_READER_NAME``` with their values.
 
-[Back to top](#create-the-class-skeleton-and-configure-the-pcsc-plugin-and-the-readers)
+[Back to top](#create-the-class-skeleton)
 
 
 #### Full code
