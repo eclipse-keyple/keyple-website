@@ -50,10 +50,29 @@ Concentrate all known informations about the Personal Object being processed. Ac
 
 Calypso PO fields are populated from a CardSelectionResponse obtained through the process of a PO selection.
 
+```java
+    ...
+    //Retrieve PO's informations
+    String atr = calypsoPo.getAtr()
+    byte[] applicationSerial+Number = calypsoPo.getApplicationSerialNumber()
+    //SFI_EventLog = 0x08
+    ElementaryFile efEventLog = calypsoPo.getFileBySfi(SFI_EventLog);
+    //SFI_EnvironmentAndHolder = 0x07
+    ElementaryFile efEnvironmentAndHolder =calypsoPo.getFileBySfi(SFI_EnvironmentAndHolder);
+    ...
+```
+
 ### ElementaryFile
 
 Object containing the description of a Calypso Elementary File. Can be retrieved from Calypso PO using its SFI. 
 
+```java
+    ...
+    ElementaryFile efEventLog = calypsoPo.getFileBySfi(SFI_EventLog);
+    //Read data content of sevent log elemenatary file
+    String eventLog = ByteArrayUtil.toHex(efEventLog.getData().getContent());
+    ...
+```
 ### PoSelection
 
 Service extending Keyple Core Abstract Card Selection to manage specific features of Calypso POs during the selection:
@@ -106,10 +125,35 @@ Concentrates all the informations we know about the SAM currently selected. Acce
 
 Calypso SAM fields are populated by analysis of the ATR within a CardSelectionResponse obtained through the process of a SAM selection.
 
+```java
+    ...
+    byte[] serialNumber = calypsoSam.getSerialNumber()
+    ...
+```
+
 ### SamSelection
 
 Service extending Keyple Core Abstract Card Selection specialized to manage the specific characteristics of Calypso SAMs. 
 The service provides an instance of Calypso SAM and may execute the unlock command during the selection process.
+
+```java
+    ...
+    CardSelectionsService samSelection = new CardSelectionsService();
+
+    //Sam selection parameters
+    SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.C1).serialNumber(".*").build();
+    samSelection.prepareSelection(new SamSelection(samSelector));
+
+    //Sam reader retrieved from registered plugin
+    CardSelectionsResult cardSelectionsResult = samSelection.processExplicitSelections(samReader);
+    if (!cardSelectionsResult.hasActiveSelection()) {
+      throw new IllegalStateException("Unable to open a logical channel for SAM!");
+    }
+
+    //Cast selected card to CalypsoSam
+    CalypsoSam calypsoSam = (CalypsoSam) cardSelectionsResult.getActiveSmartCard();
+    ...
+```
 
 ### PoSecuritySettings
 
@@ -142,6 +186,11 @@ Concentrate the security settings involved in Calypso Secure Sessions:
 Services providing methods to allocate/deallocate SAM resources. Keyple Calypso API provides 3 type of managers: Default, 
 Factory, Pool. The choice of the manager to use depends on the abilities of the plugin used for the SAM connexion.
 
+```java
+    
+    
+```
+
 ### PoTransaction
 
 Service providing high-level API to manage transactions with a Calypso PO. The tied Calypso PO Object  is kept and updated at
@@ -152,12 +201,36 @@ This service workflow is composed of two steps:
 * Process the prepared commands. Regarding of commands, the presence of SAM could be mandatory.
 
 ```java
-    // Security settings
-    // Both Reload and Debit SV logs are requested
-    PoSecuritySettings poSecuritySettings =
-        new PoSecuritySettings.PoSecuritySettingsBuilder(samResource)
-            .svGetLogReadMode(SvSettings.LogRead.ALL)
-            .build();
+    ...
+    CardResource<CalypsoPo> poResource = new CardResource<CalypsoPo>(poReader, calypsoPo);
+    
+    PoTransaction poTransaction = new PoTransaction(poResource, poSecuritySettings);
+
+    // Read the EventLog file at the Session Opening
+    poTransaction.prepareReadRecordFile(CalypsoClassicInfo.SFI_EventLog, CalypsoClassicInfo.RECORD_NUMBER_1);
+
+    // Open a secure session (DEBIT level) and execute the prepared command
+    poTransaction.processOpening(PoTransaction.SessionSetting.AccessLevel.SESSION_LVL_DEBIT);
+
+    // Get and display the EventLog data
+    ElementaryFile efEventLog = calypsoPo.getFileBySfi(CalypsoClassicInfo.SFI_EventLog);
+
+    String eventLog = ByteArrayUtil.toHex(efEventLog.getData().getContent());
+    logger.info("File Event log: {}", eventLog);
+
+    // Prepare a SV Debit (this command could also have been placed before processOpening
+    // since it is not followed by any other command)
+    poTransaction.prepareSvGet(SvSettings.Operation.DEBIT, SvSettings.Action.DO);
+
+    // Execute the prepared command
+    poTransaction.processPoCommands();
+
+    //Get updated sv balance
+    int svBalance = calypsoPo.getSvBalance()
+
+    //Get the updated SV last transaction number
+    int svLastTNum = calypsoPo.getSvLastTNum()
+    ...
 ```
 
 ## API
