@@ -31,16 +31,13 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 1. Using the [component]({{< ref "components/index.md" >}}) page, import **Keyple Core** and **Keyple Calyspo Extension** into your project and start playing with **Keyple**.
 
 ## How to use it
-
 1. In pre-requisite, read page [Develop a Local Application]({{< relref "local-application.md" >}}) to understand the main concepts of Keyple in a local application.
 1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the  **Keyple Calypso Extension** API.
 
 ## Concepts
-
 Here are the main concepts to keep in mind before continuing to read this developer guide :
 
 ### Calypso PO
-
 Concentrate all known informations about the Personal Object being processed. Accessible informations are
 * The application identification fields (revision/version, class, DF name, serial number, ATR, issuer)
 * The indication of the presence of optional features (Stored Value, PIN, Rev3.2 mode, ratification management)
@@ -63,7 +60,6 @@ Calypso PO fields are populated from a CardSelectionResponse obtained through th
 ```
 
 ### ElementaryFile
-
 Object containing the description of a Calypso Elementary File. Can be retrieved from Calypso PO using its SFI. 
 
 ```java
@@ -112,7 +108,6 @@ possible responses to additional APDU commands executed after the selection.
 ```
 
 ### Calypso SAM
-
 Concentrates all the informations we know about the SAM currently selected. Accessible informations are:
  * The Sam Revision
  * The Serial number
@@ -132,7 +127,6 @@ Calypso SAM fields are populated by analysis of the ATR within a CardSelectionRe
 ```
 
 ### SamSelection
-
 Service extending Keyple Core Abstract Card Selection specialized to manage the specific characteristics of Calypso SAMs. 
 The service provides an instance of Calypso SAM and may execute the unlock command during the selection process.
 
@@ -156,7 +150,6 @@ The service provides an instance of Calypso SAM and may execute the unlock comma
 ```
 
 ### PoSecuritySettings
-
 Concentrate the security settings involved in Calypso Secure Sessions:
 * A reference to the Sam resource
 * The default KIF  
@@ -182,17 +175,10 @@ Concentrate the security settings involved in Calypso Secure Sessions:
 ```
 
 ### SAM Resource Managers
-
 Services providing methods to allocate/deallocate SAM resources. Keyple Calypso API provides 3 type of managers: Default, 
 Factory, Pool. The choice of the manager to use depends on the abilities of the plugin used for the SAM connexion.
 
-```java
-    
-    
-```
-
 ### PoTransaction
-
 Service providing high-level API to manage transactions with a Calypso PO. The tied Calypso PO Object  is kept and updated at
 each step of using this service. 
 
@@ -236,3 +222,5 @@ This service workflow is composed of two steps:
 ## API
 
 ## Examples
+Detailed use case examples can be seen here:
+[Example](https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/pc)
