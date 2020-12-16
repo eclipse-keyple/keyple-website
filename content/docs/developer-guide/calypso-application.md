@@ -16,14 +16,14 @@ Keyple features. For example, Calypso Network Association provides **Keyple Caly
 The use of **Keyple Calypso Extension** open the ability to operate commands with a calypso Portable Object and to manage a 
 secure calypso transaction.
 
-The diagram below shows the role of the **Keyple Calypso Extension** components in the software layers for a centralized application :
+The diagram below shows the role of the **Keyple Calypso Extension** components in the software layers for a standalone application :
 
 {{< figure library="true" src="calypso-app-development/component/Local_Component_Overview.svg" title="" >}}
 
 ## Before you start
 1. In pre-requisite, have knowledge of the standard Calypso.
 1. Read the [common concepts]({{< relref "common-concepts.md" >}}) page and become familiar with the basic concepts on which **Keyple** is based.
-1. Any implementation of a Keyple application starts with the implementation of **Keyple Core**, please study the [workflow]({{< relref "centralized-application.md" >}}) proposed in Centralized application guide.
+1. Any implementation of a Keyple application starts with the implementation of **Keyple Core**, please study the [workflow]({{< relref "standalone-application.md" >}}) proposed in Centralized application guide.
 1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the  **Keyple Calypso Extension** API.
 1. Explore the [Keyple Calypso API](#keyplecalypsoapi) to discover all the possibilities offered by **Keyple Calypso Extension**.
 1. Take inspiration from the [examples](#examples).
@@ -31,7 +31,7 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 1. Using the [Java components]({{< ref "components-java/core/_index.md" >}}) or [C++ components]({{< ref "components-cpp/core/_index.md" >}}) pages, import **Keyple Core** into your project.
 1. Using the [Java components]({{< ref "components-java/extensions/calypso.md" >}}) or [C++ components]({{< ref "components-cpp/extensions/calypso.md" >}}) pages, import **Keyple Calypso Extension** into your project.
 1. Start playing with **Keyple**.
-   
+
 ## Concepts
 Here are the main concepts to keep in mind before continuing to read this developer guide :
 

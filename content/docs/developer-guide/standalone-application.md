@@ -9,7 +9,7 @@ weight: 310
 
 ## Overview
 
-A centralized application is an application that runs in a device in contact
+A standalone application is an application that runs in a device in contact
 with the end user.
 
 It has at least one local smart card reader and manages itself the
@@ -18,7 +18,7 @@ interaction with the user.
 In the ticketing industry, it is typically the software that runs a
 validator, a vending machine or a control terminal.
 
-The diagram below illustrates the organization of the local centralized
+The diagram below illustrates the organization of the local standalone
 components: {{< figure library="true"
 src="local-app/component/Local_Application_Components_Overview.svg"
 title="" >}}

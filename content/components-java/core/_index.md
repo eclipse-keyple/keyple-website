@@ -24,7 +24,7 @@ The **Keyple Core** Java component is compatible with **PC**, **MAC** and **Andr
 
 ## Documentation
 
-* [Developer guide]({{< relref "../../../docs/developer-guide/centralized-application.md" >}})
+* [Developer guide]({{< relref "../../../docs/developer-guide/standalone-application.md" >}})
 * <a href="../../../docs/api-reference/keyple-java-core/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
 
 ## Download

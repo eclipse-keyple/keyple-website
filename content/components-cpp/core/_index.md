@@ -25,7 +25,7 @@ The **Keyple Core** C++ component is compatible with **PC** and **MAC** platform
 ## Documentation
 
 <ul>
-    <li><a href="../../../docs/developer-guide/centralized-application">Developer guide</a></li>
+    <li><a href="../../../docs/developer-guide/standalone-application">Developer guide</a></li>
 </ul>
 
 ## Download

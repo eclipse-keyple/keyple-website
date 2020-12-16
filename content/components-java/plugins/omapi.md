@@ -29,7 +29,7 @@ This allows the app to benefit from enhanced SE-based security services.
 
 ## Documentation
 
-* [Developer guide]({{< relref "../../../docs/developer-guide/centralized-application.md" >}})
+* [Developer guide]({{< relref "../../../docs/developer-guide/standalone-application.md" >}})
 * <a href="../../../docs/api-reference/keyple-android-plugin-omapi/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
 
 ## Download

@@ -26,7 +26,7 @@ It is compatible with **PC** and **MAC** platforms.
 
 ## Documentation
 
-* [Developer guide]({{< relref "../../../docs/developer-guide/centralized-application.md" >}})
+* [Developer guide]({{< relref "../../../docs/developer-guide/standalone-application.md" >}})
 
 ## Download
 
