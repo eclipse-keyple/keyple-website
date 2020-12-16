@@ -26,9 +26,7 @@ It is compatible with **PC** and **MAC** platforms.
 
 ## Documentation
 
-<ul>
-    <li><a href="../../../docs/developer-guide/centralized-application">Developer guide</a></li>
-</ul>
+* [Developer guide]({{< relref "../../../docs/developer-guide/centralized-application.md" >}})
 
 ## Download
 

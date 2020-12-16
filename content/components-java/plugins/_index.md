@@ -1,7 +1,7 @@
 ---
-title: Keyple Plugins
+title: Reader plugins
 type: book
-weight: 30
+weight: 40
 toc: false
 ---
 

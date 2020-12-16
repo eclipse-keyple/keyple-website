@@ -1,6 +1,6 @@
 ---
-title: Keyple DS Remote
-linktitle: DS Remote
+title: Keyple Distributed Remote
+linktitle: Remote
 type: book
 weight: 10
 toc: true
@@ -20,20 +20,18 @@ Keyple project
 
 ## Overview
 
-The **Keyple DS Remote** Java component is the part of the **Keyple DS (Distributed System)** solution which contains all the **remote** plugins.
+The **Keyple Distributed Remote** Java component is the part of the **Keyple Distributed** solution which contains all the **remote** plugins.
 
 It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely.
 
-It is important to note that it uses and exposes the APIs exposed by [Keyple DS Network]({{< relref "ds-network.md" >}}) component.
+It is important to note that it uses and exposes the APIs exposed by [Keyple Distributed Network]({{< relref "network.md" >}}) component.
 
 It is compatible with **PC**, **MAC** and **Android** platforms.
 
 ## Documentation
 
-<ul>
-    <li><a href="../../../docs/developer-guide/remote-application">Developer guide</a></li>
-    <li><a href="../../../docs/api-reference/keyple-plugin-remote-remote/{{% keyple-java-version %}}/index.html">JavaDoc API</a></li>
-</ul>
+* [Developer guide]({{< relref "../../../docs/developer-guide/distributed-application.md" >}})
+* <a href="../../../docs/api-reference/keyple-plugin-remote-remote/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
 
 ## Download
 

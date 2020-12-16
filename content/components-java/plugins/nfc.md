@@ -26,10 +26,8 @@ It is compatible with **Android 4.4 minimum**.
 
 ## Documentation
 
-<ul>
-    <li><a href="../../../docs/developer-guide/centralized-application">Developer guide</a></li>
-    <li><a href="../../../docs/api-reference/keyple-android-plugin-nfc/{{% keyple-java-version %}}/index.html">JavaDoc API</a></li>
-</ul>
+* [Developer guide]({{< relref "../../../docs/developer-guide/centralized-application.md" >}})
+* <a href="../../../docs/api-reference/keyple-android-plugin-nfc/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
 
 ## Download
 

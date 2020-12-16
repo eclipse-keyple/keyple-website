@@ -1,6 +1,6 @@
 ---
-title: Keyple DS Network
-linktitle: DS Network
+title: Keyple Distributed Network
+linktitle: Network
 type: book
 weight: 10
 toc: true
@@ -20,18 +20,16 @@ Keyple project
 
 ## Overview
 
-The **Keyple DS Network** Java component is the part of the **Keyple DS (Distributed System)** solution which contains the common network elements used by [Keyple DS Local]({{< relref "ds-local.md" >}}) and [Keyple DS Remote]({{< relref "ds-remote.md" >}}) components.
+The **Keyple Distributed Network** Java component is the part of the **Keyple Distributed** solution which contains the common network elements used by [Keyple Distributed Local]({{< relref "local.md" >}}) and [Keyple Distributed Remote]({{< relref "remote.md" >}}) components.
 
-This library **should not be import explicitly because it's imported by transitivity** by the main libraries.
+This library **should not be import explicitly because it's imported by transitivity** by the other components.
 
 It is compatible with **PC**, **MAC** and **Android** platforms.
 
 ## Documentation
 
-<ul>
-    <li><a href="../../../docs/developer-guide/remote-application">Developer guide</a></li>
-    <li><a href="../../../docs/api-reference/keyple-plugin-remote-network/{{% keyple-java-version %}}/index.html">JavaDoc API</a></li>
-</ul>
+* [Developer guide]({{< relref "../../../docs/developer-guide/distributed-application.md" >}})
+* <a href="../../../docs/api-reference/keyple-plugin-remote-network/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
 
 ## Download
 

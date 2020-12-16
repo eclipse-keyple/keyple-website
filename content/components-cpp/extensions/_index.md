@@ -1,7 +1,7 @@
 ---
-title: Keyple Extensions
+title: Card extensions
 type: book
-weight: 20
+weight: 30
 toc: false
 ---
 

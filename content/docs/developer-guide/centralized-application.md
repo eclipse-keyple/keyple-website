@@ -639,5 +639,5 @@ assigned to them.
 The artifact **Keyple Core** and how to integrate it into your
 application is available here:
 
-* [Keyple Core Java component]({{< ref "/components-java/base/core" >}})
-* [Keyple Core C++ component]({{< ref "/components-cpp/base/core" >}})
+* [Keyple Core Java component]({{< ref "/components-java/core" >}})
+* [Keyple Core C++ component]({{< ref "/components-cpp/core" >}})

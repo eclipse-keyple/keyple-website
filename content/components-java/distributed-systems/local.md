@@ -1,6 +1,6 @@
 ---
-title: Keyple DS Local
-linktitle: DS Local
+title: Keyple Distributed Local
+linktitle: Local
 type: book
 weight: 10
 toc: true
@@ -20,20 +20,18 @@ Keyple project
 
 ## Overview
 
-The **Keyple DS Local** Java component is the part of the **Keyple DS (Distributed System)** solution which contains all the **local** services.
+The **Keyple Distributed Local** Java component is the part of the **Keyple Distributed** solution which contains all the **local** services.
 
 It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.
 
-It is important to note that it uses and exposes the APIs exposed by [Keyple DS Network]({{< relref "ds-network.md" >}}) component.
+It is important to note that it uses and exposes the APIs exposed by [Keyple Distributed Network]({{< relref "network.md" >}}) component.
 
 It is compatible with **PC**, **MAC** and **Android** platforms.
 
 ## Documentation
 
-<ul>
-    <li><a href="../../../docs/developer-guide/remote-application">Developer guide</a></li>
-    <li><a href="../../../docs/api-reference/keyple-plugin-remote-local/{{% keyple-java-version %}}/index.html">JavaDoc API</a></li>
-</ul>
+* [Developer guide]({{< relref "../../../docs/developer-guide/distributed-application.md" >}})
+* <a href="../../../docs/api-reference/keyple-plugin-remote-local/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
 
 ## Download
 
