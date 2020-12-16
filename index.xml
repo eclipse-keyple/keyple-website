@@ -226,7 +226,7 @@ created, or may be created by developers, to allow ticket processing integrating
 &lt;p>Releases and snapshots are available from Maven central repositories.&lt;/p>
 &lt;h3 id="cloning-this-project">Cloning this project&lt;/h3>
 &lt;p>Examples provided in this project relies on symbolic links to handle their common dependencies. (Please refer to this
-&lt;a href="/java/example/README.md">file&lt;/a> for more information).&lt;/p>
+&lt;a href="./java/example/README.md">file&lt;/a> for more information).&lt;/p>
 &lt;p>Although symlink support should be provided out of the box for Unix users, &lt;strong>Windows users&lt;/strong> should be aware that the git option &lt;code>core.symlinks&lt;/code> needs to be enabled before
 &lt;a href="https://help.github.com/en/articles/cloning-a-repository" target="_blank" rel="noopener">cloning&lt;/a> this repo. Several solutions can be considered:&lt;/p>
 &lt;ul>
@@ -845,8 +845,8 @@ All project dependencies, including Keyple components, are downloaded during the
 Keyple could also be used to develop an application reading SmartCard content through NFC using
 &lt;a href="https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc" target="_blank" rel="noopener">Android NFC&lt;/a>.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/media/android-app/component/Android_App_Overview.png" >
-&lt;img src="/media/android-app/component/Android_App_Overview.png" alt="" >
+&lt;a data-fancybox="" href="./media/android-app/component/Android_App_Overview.png" >
+&lt;img src="./media/android-app/component/Android_App_Overview.png" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;p>As Keyple request low level reader access, the key features of Keyple SDK relies on components called &amp;lsquo;Plugins&amp;rsquo;. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer&amp;rsquo;s own custom SDKs.&lt;/p>
@@ -1272,14 +1272,14 @@ return nativeReader.isSecureElementPresent
 &lt;p>In this way, you can manage transactions within a distributed architecture.&lt;/p>
 &lt;p>The diagram below shows the role of the &lt;strong>Keyple Remote Plugin&lt;/strong> components in the software layers used in a distributed architecture :&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/media/remote-plugin/component/Remote_Component_Overview.svg" >
-&lt;img src="/media/remote-plugin/component/Remote_Component_Overview.svg" alt="" >
+&lt;a data-fancybox="" href="./media/remote-plugin/component/Remote_Component_Overview.svg" >
+&lt;img src="./media/remote-plugin/component/Remote_Component_Overview.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;h2 id="how-to-use-it-">How to use it ?&lt;/h2>
 &lt;ol>
 &lt;li>In pre-requisite, read page
-&lt;a href="/docs/developer-guide/develop-ticketing-app-local/">Develop a Local Ticketing Application&lt;/a> to understand the main concepts of Keyple in a local application.&lt;/li>
+&lt;a href="./docs/developer-guide/develop-ticketing-app-local/">Develop a Local Ticketing Application&lt;/a> to understand the main concepts of Keyple in a local application.&lt;/li>
 &lt;li>Read chapter
 &lt;a href="#concepts">Concepts&lt;/a> to understand the main terms and concepts of the &lt;strong>Keyple Remote Plugin&lt;/strong> solution.&lt;/li>
 &lt;li>Read the introduction of chapter
@@ -1353,24 +1353,24 @@ width: 130px;
 &lt;/style>
 &lt;p>The diagram below illustrates the main functional concepts through a standard use case :&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/media/remote-plugin/component/Remote_Component_Concepts_1.svg" >
-&lt;img src="/media/remote-plugin/component/Remote_Component_Concepts_1.svg" alt="" >
+&lt;a data-fancybox="" href="./media/remote-plugin/component/Remote_Component_Concepts_1.svg" >
+&lt;img src="./media/remote-plugin/component/Remote_Component_Concepts_1.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.&lt;/p>
 &lt;p>These could be for example a ticketing reloading service, where the intelligence would be on the terminal with remote readers, with thin clients on A &amp;amp; B terminals communicating locally with the cards.&lt;/p>
 &lt;p>In this use case, the &lt;strong>Remote Plugin&lt;/strong> is used for card communication.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/media/remote-plugin/component/Remote_Component_Concepts_2.svg" >
-&lt;img src="/media/remote-plugin/component/Remote_Component_Concepts_2.svg" alt="" >
+&lt;a data-fancybox="" href="./media/remote-plugin/component/Remote_Component_Concepts_2.svg" >
+&lt;img src="./media/remote-plugin/component/Remote_Component_Concepts_2.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;p>Here is another example, but this time it illustrates several &lt;strong>Remote Plugins&lt;/strong> connected to the same &lt;strong>Local Service&lt;/strong>.&lt;/p>
 &lt;p>These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.&lt;/p>
 &lt;p>In this use case, the &lt;strong>Remote Plugin&lt;/strong> is used for SAM communication.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/media/remote-plugin/component/Remote_Component_Concepts_3.svg" >
-&lt;img src="/media/remote-plugin/component/Remote_Component_Concepts_3.svg" alt="" >
+&lt;a data-fancybox="" href="./media/remote-plugin/component/Remote_Component_Concepts_3.svg" >
+&lt;img src="./media/remote-plugin/component/Remote_Component_Concepts_3.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;h2 id="remote-plugins">Remote Plugins&lt;/h2>
@@ -1481,8 +1481,8 @@ width: 220px;
 &lt;p>Note that the network layer is deliberately hide in this diagram. Its implementation is describe in the
 &lt;a href="#network-configuration">Network configuration&lt;/a> chapter.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/media/remote-plugin/sequence/Remote_Sequence_RemotePluginServer_API.svg" >
-&lt;img src="/media/remote-plugin/sequence/Remote_Sequence_RemotePluginServer_API.svg" alt="" >
+&lt;a data-fancybox="" href="./media/remote-plugin/sequence/Remote_Sequence_RemotePluginServer_API.svg" >
+&lt;img src="./media/remote-plugin/sequence/Remote_Sequence_RemotePluginServer_API.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;h3 id="remotepluginclient">RemotePluginClient&lt;/h3>
@@ -1668,26 +1668,26 @@ width: 220px;
 &lt;/tbody>
 &lt;/table>
 &lt;p>The associated &lt;strong>API&lt;/strong> documentations are accessible from the page
-&lt;a href="/docs/api-reference/">API Reference&lt;/a>.&lt;/p>
+&lt;a href="./docs/api-reference/">API Reference&lt;/a>.&lt;/p>
 &lt;h3 id="common-api">Common API&lt;/h3>
-&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="/reference/keyple-java-plugin-remote-common/index.html" target="blank">here&lt;/a>.&lt;/p>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="./reference/keyple-java-plugin-remote-common/index.html" target="blank">here&lt;/a>.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/media/remote-plugin/class/Remote_Class_Common_API.svg" >
-&lt;img src="/media/remote-plugin/class/Remote_Class_Common_API.svg" alt="" >
+&lt;a data-fancybox="" href="./media/remote-plugin/class/Remote_Class_Common_API.svg" >
+&lt;img src="./media/remote-plugin/class/Remote_Class_Common_API.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;h3 id="remote-plugin-api">Remote Plugin API&lt;/h3>
-&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="/reference/keyple-java-plugin-remote-remote/index.html" target="blank">here&lt;/a>.&lt;/p>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="./reference/keyple-java-plugin-remote-remote/index.html" target="blank">here&lt;/a>.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/media/remote-plugin/class/Remote_Class_RemotePlugin_API.svg" >
-&lt;img src="/media/remote-plugin/class/Remote_Class_RemotePlugin_API.svg" alt="" >
+&lt;a data-fancybox="" href="./media/remote-plugin/class/Remote_Class_RemotePlugin_API.svg" >
+&lt;img src="./media/remote-plugin/class/Remote_Class_RemotePlugin_API.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;h3 id="local-service-api">Local Service API&lt;/h3>
-&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="/reference/keyple-java-plugin-remote-local/index.html" target="blank">here&lt;/a>.&lt;/p>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="./reference/keyple-java-plugin-remote-local/index.html" target="blank">here&lt;/a>.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/media/remote-plugin/class/Remote_Class_LocalService_API.svg" >
-&lt;img src="/media/remote-plugin/class/Remote_Class_LocalService_API.svg" alt="" >
+&lt;a data-fancybox="" href="./media/remote-plugin/class/Remote_Class_LocalService_API.svg" >
+&lt;img src="./media/remote-plugin/class/Remote_Class_LocalService_API.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;h2 id="use-cases">Use cases&lt;/h2>
@@ -2002,8 +2002,8 @@ width: 240px;
 &lt;/table>
 &lt;p>Here is the minimal algorithm to implement in a context with a &lt;strong>single server instance&lt;/strong> :&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/media/remote-plugin/sequence/Remote_Sequence_SyncNode_API.svg" >
-&lt;img src="/media/remote-plugin/sequence/Remote_Sequence_SyncNode_API.svg" alt="" >
+&lt;a data-fancybox="" href="./media/remote-plugin/sequence/Remote_Sequence_SyncNode_API.svg" >
+&lt;img src="./media/remote-plugin/sequence/Remote_Sequence_SyncNode_API.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;p>In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a &lt;code>serverNodeId&lt;/code> are routed to the server associated with a &lt;code>SyncNodeServer&lt;/code> node having the &lt;code>serverNodeId&lt;/code>.&lt;/p>
@@ -2042,8 +2042,8 @@ width: 240px;
 &lt;/table>
 &lt;p>Here is the minimal algorithm to implement :&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/media/remote-plugin/sequence/Remote_Sequence_AsyncNode_API.svg" >
-&lt;img src="/media/remote-plugin/sequence/Remote_Sequence_AsyncNode_API.svg" alt="" >
+&lt;a data-fancybox="" href="./media/remote-plugin/sequence/Remote_Sequence_AsyncNode_API.svg" >
+&lt;img src="./media/remote-plugin/sequence/Remote_Sequence_AsyncNode_API.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;h3 id="exchanged-data">Exchanged data&lt;/h3>
@@ -2436,7 +2436,7 @@ Now the APDU responses of the Calypso® cards are automatically parsed to fill c
 Currently all the components of Eclipse Keyple™ Java are following the same versioning.&lt;/p>
 &lt;p>From the version 1.0.0 scheduled for November 2020, the components will be defined with their own versioning in order to stabilize as possible the different APIs.&lt;/p>
 &lt;p>
-&lt;a href="/docs/">Documentation&lt;/a> currently available:&lt;/p>
+&lt;a href="./docs/">Documentation&lt;/a> currently available:&lt;/p>
 &lt;ul>
 &lt;li>the project plan,&lt;/li>
 &lt;li>the guides of the different public API,&lt;/li>
