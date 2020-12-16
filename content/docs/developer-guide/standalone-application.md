@@ -1,6 +1,6 @@
 ---
 
-title: Centralized application
+title: Standalone application
 type: book
 toc: true
 draft: false

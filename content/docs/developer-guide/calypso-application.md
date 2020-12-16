@@ -23,7 +23,7 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 ## Before you start
 1. In pre-requisite, have knowledge of the standard Calypso.
 1. Read the [common concepts]({{< relref "common-concepts.md" >}}) page and become familiar with the basic concepts on which **Keyple** is based.
-1. Any implementation of a Keyple application starts with the implementation of **Keyple Core**, please study the [workflow]({{< relref "standalone-application.md" >}}) proposed in Centralized application guide.
+1. Any implementation of a Keyple application starts with the implementation of **Keyple Core**, please study the [workflow]({{< relref "standalone-application.md" >}}) proposed in Standalone application guide.
 1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the  **Keyple Calypso Extension** API.
 1. Explore the [Keyple Calypso API](#keyplecalypsoapi) to discover all the possibilities offered by **Keyple Calypso Extension**.
 1. Take inspiration from the [examples](#examples).

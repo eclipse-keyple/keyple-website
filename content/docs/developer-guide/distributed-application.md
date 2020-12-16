@@ -18,7 +18,7 @@ The diagram below shows the role of the **Keyple Distributed** components in the
 
 ## How to use it ?
 
-1. In pre-requisite, read page [Develop a Centralized Application]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application.
+1. In pre-requisite, read page [Develop a Standalone Application]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application.
 1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the **Keyple Distributed** solution.
 1. Read the introduction of chapter [Remote Plugins](#remote-plugins) to be informed about the different remote plugins and APIs proposed by the solution.
 1. Using chapter [Use cases](#use-cases), find your use case. This will help you to determine exactly which library and API to use.
