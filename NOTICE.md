@@ -38,14 +38,11 @@ The project maintains the following source code repositories:
 
 ### Font-Awesome (^4.7.0)
 
-* The Font Awesome font is licensed under the SIL OFL 1.1:
-** http://scripts.sil.org/OFL
-* Font Awesome CSS, LESS, and Sass files are licensed under the MIT License:
-** https://opensource.org/licenses/mit-license.html
-* The Font Awesome documentation is licensed under the CC BY 3.0 License:
-** https://creativecommons.org/licenses/by/3.0/
-* Attribution is no longer required as of Font Awesome 3.0, but much appreciated:
-** `Font Awesome by Dave Gandy - http://fontawesome.io`
+* The Font Awesome font is licensed under the SIL OFL 1.1: http://scripts.sil.org/OFL 
+
+* Font Awesome CSS, LESS, and Sass files are licensed under the MIT License: https://opensource.org/licenses/mit-license.html
+* The Font Awesome documentation is licensed under the CC BY 3.0 License: https://creativecommons.org/licenses/by/3.0/
+* Attribution is no longer required as of Font Awesome 3.0, but much appreciated: `Font Awesome by Dave Gandy - http://fontawesome.io`
 * Full details: http://fontawesome.io/license/
 
 ### Hugo (master)
@@ -54,10 +51,7 @@ The project maintains the following source code repositories:
 
 ### Freepik
 
-* The 'hero-image.jpg' image is designed by macrovector_official / Freepik 
-** http://www.freepik.com
-* The 'hero-background.jpg' image is designed by starline / Freepik 
-** http://www.freepik.com
+* The 'hero-image.jpg' image is designed by macrovector_official / Freepik: http://www.freepik.com
+* The 'hero-background.jpg' image is designed by starline / Freepik: http://www.freepik.com
 * The full terms of the license are described in section 7 of the Freepik
-terms of use, available online in the following link:
-** http://www.freepik.com/terms_of_use
+terms of use, available online in the following link: http://www.freepik.com/terms_of_use

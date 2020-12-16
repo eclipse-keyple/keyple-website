@@ -1,16 +1,10 @@
-# Contributing to Eclipse Keyple website
+# Contributing to 'Eclipse Keyple' website
 
 Thanks for your interest in this project.
 
 ## Project description
 
-Eclipse Keyple website is a project containing all the content of the keyple.org website. 
-
-* https://github.com/eclipse/keyple-website
-
-## Developer resources
-
-The project maintains the following source code repositories
+'Eclipse Keyple' website is a project containing all the content of the keyple.org website. 
 
 * https://github.com/eclipse/keyple-website
 

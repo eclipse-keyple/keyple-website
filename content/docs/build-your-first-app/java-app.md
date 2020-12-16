@@ -2,6 +2,7 @@
 
 title: Build your first Java application
 linktitle: Java
+summary: This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers.
 type: book
 toc: true
 draft: false
@@ -9,22 +10,22 @@ weight: 210
 -----------
 
 This quick start describes how to create a ready-to-execute Java
-command-line application that runs a simple Calypso card-based
-transaction involving two readers.
+command-line application that runs a simple transaction based on
+a Calypso portable object (PO) involving two smart card readers.
 
 {{% alert note %}}  
 The demonstration application created for this quick start requires a
-Calypo card and a Calypo SAM. {{% /alert %}}
+Calypo PO (contactless smart card, mobile phone with contactless 
+communication) and a Calypo Secure Access Module (SAM). {{% /alert %}}
 
 
 We will use three main components of Keyple:
-* [Keyple Core]({{< ref "components-java/core/" >}})
+* [Keyple Core]({{< ref "/components-java/core/" >}})
   which is the base component to which all the others refer,
-* [Keyple PC/SC plugin]({{< ref "components-java/plugins/pcsc" >}})
+* [Keyple PC/SC plugin]({{< ref "/components-java/plugins/pcsc" >}}) 
   to provide the ability to manage PC/SC readers,
-* [Keyple Calypso extension]({{< ref "components-java/extensions/calypso" >}})
-  to handle the commands sent to the Calypso Portable Object (PO) and
-  the Secure Access Module (SAM).
+* [Keyple Calypso extension]({{< ref "/components-java/extensions/calypso" >}}) 
+  to handle the commands sent to the Calypso PO and the Calypso SAM.
 
 In this guide [Gradle](https://gradle.org/) is used as build automation
 tool, but it is easy to transpose these explanations to another tool
@@ -90,20 +91,8 @@ that follow or copy the whole class at the bottom of this page.
 
 ### Create the class skeleton
 
-#### and configure the PC/SC plugin and the readers
-
-The first step to use Keyple SDK is to initialize the plugin and smart
-card readers.
-
 Copy the source code below in a new Java Class named
 DemoPoAuthentication.
-
-In this snippet the PC/SC plugin is registered to the SmartCardService.
-
-Two readers needs to be connected to the local machine. Replace
-"PO_READER_NAME" and "SAM_READER_NAME" with the name of the USB readers.
-
-If you don't know the names of the readers, read how to find them in the [FAQ](#faq).
 
 ```java
 import org.eclipse.keyple.calypso.command.sam.SamRevision;
@@ -115,36 +104,53 @@ import org.eclipse.keyple.plugin.pcsc.*;
 
 public class DemoPoAuthentication  {
     public static void main(String[] args) {
-        // Get the instance of the SmartCardService : main service of Keyple SDK
-        SmartCardService smartCardService = SmartCardService.getInstance();
-
-        // Register the PcscPlugin within the SmartCardService to use PC/SC readers
-        Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory());
-
-        // Get the PO reader
-        PcscReader poReader = (PcscReader) plugin.getReader("PO_READER_NAME");
-
-        // Configure the PO reader parameters
-        poReader.setContactless(true);
-
-        // Get the SAM reader
-        PcscReader samReader = (PcscReader) plugin.getReader("SAM_READER_NAME");
-        
         // ...
     }
 } 
 ```
 
-### Select the SAM
+### Configure the PC/SC plugin and the readers
+
+The first step to use Keyple is to initialize the plugin and smart card readers.
+
+In this snippet the PC/SC plugin is registered to the SmartCardService.
+
+Two readers needs to be connected to the local machine. Replace
+"PO_READER_NAME" and "SAM_READER_NAME" with the name of the USB readers.
+
+If you don't know the names of the readers, read how to find them in the [FAQ](#faq).
+
+```java
+//...
+// Get the instance of the SmartCardService : main service of Keyple SDK
+SmartCardService smartCardService = SmartCardService.getInstance();
+
+// Register the PcscPlugin within the SmartCardService to use PC/SC readers
+Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory());
+
+// Get the PO reader
+PcscReader poReader = (PcscReader) plugin.getReader("PO_READER_NAME");
+
+// Configure the PO reader parameters
+poReader.setContactless(true);
+
+// Get the SAM reader
+PcscReader samReader = (PcscReader) plugin.getReader("SAM_READER_NAME");
+// ...
+```
+
+### Select the Calypso SAM
 
 Before executing a transaction each smart card should be selected. The
-next step is the selection of the SAM smart card resulting in a
+next step is the selection of the Calypso SAM resulting in a
 CalypsoSam object.
 
 It is then combined with the SAM reader to form the SAM resource needed
 later within the transaction service.
 
 ```java
+//...
+
 // Prepare a SamSelector that identifies the Calypso SAM
 SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.AUTO).build();
 
@@ -166,16 +172,17 @@ CalypsoSam calypsoSam = (CalypsoSam) selectionsResult.getActiveSmartCard();
 
 // Associate the calypsoSam and the samReader to create a samResource
 CardResource<CalypsoSam> samResource = new CardResource<>(samReader, calypsoSam);
+
 //...
 ```
 
-### Select the PO
+### Select the Calypso PO
 
 1st PO exchange:
 
-The PO selection is made using the application's AID and results in a
-CalypsoPo object that will contain all the information extracted from
-the PO all along the transaction.
+The Calypso PO selection is made using the portable object application's AID 
+and results in a CalypsoPo object that will contain all the information extracted 
+from the Calypso PO all along the transaction.
 
 ```java
 // Prepare a Calypso PO selection
@@ -205,14 +212,14 @@ CalypsoPo calypsoPo = (CalypsoPo) seSelection.processExplicitSelection(poReader)
 //...
 ```
 
-### Opening the secure session
+### Open the Calypso secure session
 
 2nd PO exchange :
 
 The secure session opening operated by the PoTransaction service is
 combined with the reading of the environment file (SFI=07h).
 
-The PO/SAM mutual authentication process is initiated transparently.
+The mutual authentication process between Calypso PO and Calypso SAM is initiated transparently.
 
 ```java
 // Prepare the security settings used during the Calypso transaction
@@ -242,16 +249,16 @@ System.out.println("Environment file content: "+ environmentLog);
 //...
 ```
 
-### Transaction : close session
+### Close the Calypso secure session
 
 3rd PO exchange:
 
-Simply close the secure session.
+Simply close the Calypso secure session
 
 The mutual authentication is finalized, it includes the authentication
 of the data in the read file.
 
-Note: any technical, crytographic or content-related incident in the PO
+Note: any technical, crytographic or content-related incident in the Calypso PO
 would be signalled by an exception and would interrupt the thread of
 execution.
 
@@ -265,6 +272,8 @@ poTransaction.processClosing();
 System.out.println("The data read in session have been certified by the successful closing.");
 //...       
 ```
+
+### Unregister the plugin 
 
 Finally unregister the plugin before shutting down the application
 
@@ -280,8 +289,8 @@ Find the complete code source [below](#full-code).
 ## Run
 
 1) Connect two USB PC/SC Readers.
-2) Insert the SAM smart card in the SAM reader.
-3) Insert the PO smart card in the PO reader.
+2) Insert the Calypso SAM in the SAM reader.
+3) Insert the Calypso PO in the PO reader.
 4) Run the application.
 
 {{% alert note %}} All project dependencies, including Keyple

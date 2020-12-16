@@ -27,7 +27,8 @@ hero_media = "hero-image.jpg"
 
 # Note. An optional note to show underneath the links.
 [cta_note]
-  label = '<a href="/components/">List of available Eclipse Keyple™ Components</a>'
+  label = '<p><a href="/components-java/">List of available Eclipse Keyple™ Java Components</a></p> <p><a href="/components-cpp/">List of available Eclipse Keyple™ C++ Components</a></p>'
+  
 +++
 
 # The first open source API for contactless ticketing and access control
