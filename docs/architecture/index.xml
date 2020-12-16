@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>/keyple-website/docs/architecture/</link><atom:link href="/keyple-website/docs/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>/keyple-website/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Architecture</title><link>/keyple-website/docs/architecture/</link></image><item><title>Global Architecture of Keyple</title><link>/keyple-website/docs/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/keyple-website/docs/architecture/keyple-global/</guid><description>&lt;p>&lt;img src="docs/img/Keyple-components.svg" alt="global architecture" title="keyple SDK global architecture">&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>/docs/architecture/</link><atom:link href="/docs/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Architecture</title><link>/docs/architecture/</link></image><item><title>Global Architecture of Keyple</title><link>/docs/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/architecture/keyple-global/</guid><description>&lt;p>&lt;img src="docs/img/Keyple-components.svg" alt="global architecture" title="keyple SDK global architecture">&lt;/p>
 &lt;p>The API is currently divided in two major layers:&lt;/p>
 &lt;ul>
 &lt;li>The ‘Keyple Core' : a Secure Element Proxy API which allows managing SE readers in a generic way, whaterver the reader driver or environment, and for standalone or distributed solution (
@@ -110,7 +110,7 @@
 &lt;p>Releases and snapshots are available from Maven central repositories.&lt;/p>
 &lt;h3 id="cloning-this-project">Cloning this project&lt;/h3>
 &lt;p>Examples provided in this project relies on symbolic links to handle their common dependencies. (Please refer to this
-&lt;a href="/keyple-website/java/example/README.md">file&lt;/a> for more information).&lt;/p>
+&lt;a href="/java/example/README.md">file&lt;/a> for more information).&lt;/p>
 &lt;p>Although symlink support should be provided out of the box for Unix users, &lt;strong>Windows users&lt;/strong> should be aware that the git option &lt;code>core.symlinks&lt;/code> needs to be enabled before
 &lt;a href="https://help.github.com/en/articles/cloning-a-repository" target="_blank" rel="noopener">cloning&lt;/a> this repo. Several solutions can be considered:&lt;/p>
 &lt;ul>
@@ -205,7 +205,7 @@ To build the plugins, execute the following commands in the &lt;strong>/android 
 &lt;/code>&lt;/pre>
 &lt;h3 id="ci-and-docker">CI and Docker&lt;/h3>
 &lt;p>Eclipse CI tools to build and test the components are Open Source too. They can be found in this repository :
-&lt;a href="https://www.github.com/eclipse/keyple-ops" target="_blank" rel="noopener">Eclipse Keyple Ops&lt;/a>&lt;/p></description></item><item><title>Keyple Core Architecture</title><link>/keyple-website/docs/architecture/keyple-core/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/keyple-website/docs/architecture/keyple-core/</guid><description>&lt;p>This high-level API is convenient for developers implementing smart card processing application for terminal interfaced with smart card readers.&lt;/p>
+&lt;a href="https://www.github.com/eclipse/keyple-ops" target="_blank" rel="noopener">Eclipse Keyple Ops&lt;/a>&lt;/p></description></item><item><title>Keyple Core Architecture</title><link>/docs/architecture/keyple-core/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/architecture/keyple-core/</guid><description>&lt;p>This high-level API is convenient for developers implementing smart card processing application for terminal interfaced with smart card readers.&lt;/p>
 &lt;h2 id="packages--features">Packages &amp;amp; features&lt;/h2>
 &lt;p>The Keyple Core User API is a tool to manage readers, and to select “generic” Secure Elements.&lt;/p>
 &lt;table>
@@ -394,7 +394,7 @@ cf.
 &lt;blockquote>
 &lt;p>cf.
 &lt;a href="https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase4_SequentialMultiSelection/src/main/java/org/eclipse/keyple/example/generic/pc/usecase4/SequentialMultiSelection_Pcsc.java" target="_blank" rel="noopener">“Generic Use Case 4 / Sequential Multi-Selection”&lt;/a> example&lt;/p>
-&lt;/blockquote></description></item><item><title>Keyple Calypso Architecture</title><link>/keyple-website/docs/architecture/keyple-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/keyple-website/docs/architecture/keyple-calypso/</guid><description>&lt;h2 id="packages--features">Packages &amp;amp; features&lt;/h2>
+&lt;/blockquote></description></item><item><title>Keyple Calypso Architecture</title><link>/docs/architecture/keyple-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/architecture/keyple-calypso/</guid><description>&lt;h2 id="packages--features">Packages &amp;amp; features&lt;/h2>
 &lt;p>The &lt;strong>Keyple Calypso User API is an extension of the Keyple Core User API&lt;/strong> to manage Calypso Portable Object securely using Calypso SAM:&lt;/p>
 &lt;ul>
 &lt;li>The generic Secure Element selection is enhanced for the &lt;strong>selection of a Calypso PO&lt;/strong>. The FCI response is automatically analyzed in order to identify the revision and the features supported by the Calypso PO. The invalidation status is also checked.&lt;/li>
