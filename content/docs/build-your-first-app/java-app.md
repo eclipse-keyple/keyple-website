@@ -1,4 +1,5 @@
 ---
+
 title: Build your first Java application
 linktitle: Java
 type: book
@@ -88,7 +89,9 @@ You can either progressively copy each of the small portions of code
 that follow or copy the whole class at the bottom of this page.
 
 ### Create the class skeleton
+
 #### and configure the PC/SC plugin and the readers
+
 The first step to use Keyple SDK is to initialize the plugin and smart
 card readers.
 
@@ -100,8 +103,7 @@ In this snippet the PC/SC plugin is registered to the SmartCardService.
 Two readers needs to be connected to the local machine. Replace
 "PO_READER_NAME" and "SAM_READER_NAME" with the name of the USB readers.
 
-If you don’t know the reader's names, follow this
-[note](#find-out-reader-names).
+If you don’t know the reader's names, read the [FAQ](#faq).
 
 ```java
 import org.eclipse.keyple.calypso.command.sam.SamRevision;
@@ -283,12 +285,57 @@ Find the complete code source [below](#full-code).
 4) Run the application.
 
 {{% alert note %}} All project dependencies, including Keyple
-components, are downloaded during the first run, which can take some time. {{% /alert %}}
+components, are downloaded during the first run, which can take some
+time. {{% /alert %}}
 
 
 ## FAQ
 
-**How to activate Keyple logs?**
+**How do I find out the names of the readers?**
+
+To find out the names of the readers connected to your computer, we will
+use Keyple with the following class which prints in the console the
+number and names of the readers present:
+
+```java
+import org.eclipse.keyple.core.service.Plugin;
+import org.eclipse.keyple.core.service.SmartCardService;
+import org.eclipse.keyple.plugin.pcsc.PcscPluginFactory;
+
+import java.util.Set;
+
+public class ReaderDiscovery {
+
+    public static void main(String[] args) {
+
+        SmartCardService smartCardService = SmartCardService.getInstance();
+
+        Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory());
+
+        Set<String> names = plugin.getReaderNames();
+
+        System.out.println(names.size() + " readers found.");
+
+        for (String name : names) {
+            System.out.println('"' + name + '"');
+        }
+    }
+} 
+```
+
+The console output should look something like:
+
+```
+2 readers found.
+"ASK LoGO 0"
+"Identive CLOUD 2700 R Smart Card Reader 0"
+```
+
+Identify which reader will be the PO (contactless) reader and the SAM
+(contact) reader and replace ```PO_READER_NAME``` and
+```SAM_READER_NAME``` with their values.
+
+**How to activate the Keyple's logs?**
 
 As soon as the `slf4j` library is imported into the project, Keyple
 modules are able to produce logs.
@@ -351,55 +398,9 @@ disadvantage of generating a warning message with recent versions of the
 JVM. However, we have not found any problems with this implementation of
 the PC/SC plugin so far.
 
-
-#### Find out reader names
-
-To find out the names of the readers connected to your computer, we will
-use Keyple with the following class which prints in the console the
-number and names of the readers present:
-
-```java
-import org.eclipse.keyple.core.service.Plugin;
-import org.eclipse.keyple.core.service.SmartCardService;
-import org.eclipse.keyple.plugin.pcsc.PcscPluginFactory;
-
-import java.util.Set;
-
-public class ReaderDiscovery {
-
-    public static void main(String[] args) {
-
-        SmartCardService smartCardService = SmartCardService.getInstance();
-
-        Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory());
-
-        Set<String> names = plugin.getReaderNames();
-
-        System.out.println(names.size() + " readers found.");
-
-        for (String name : names) {
-            System.out.println('"' + name + '"');
-        }
-    }
-} 
-```
-
-The console output should look something like:
-
-```
-2 readers found.
-"ASK LoGO 0"
-"Identive CLOUD 2700 R Smart Card Reader 0"
-```
-
-Identify which reader will be the PO (contactless) reader and the SAM
-(contact) reader and replace ```PO_READER_NAME``` and
-```SAM_READER_NAME``` with their values.
-
-[Back to top](#create-the-class-skeleton)
-
-
 #### Full code
+
+Here is the complete code of this quick start in one single block.
 
 ```java
 import org.eclipse.keyple.calypso.command.sam.SamRevision;
