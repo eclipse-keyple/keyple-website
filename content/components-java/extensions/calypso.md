@@ -26,10 +26,8 @@ It can be used on **PC**, **MAC** and **Android** platforms.
 
 ## Documentation
 
-<ul>
-    <li><a href="../../../docs/developer-guide/calypso-application">Developer guide</a></li>
-    <li><a href="../../../docs/api-reference/keyple-java-calypso/{{% keyple-java-version %}}/index.html">JavaDoc API</a></li>
-</ul>
+* [Developer guide]({{< relref "../../../docs/developer-guide/calypso-application.md" >}})
+* <a href="../../../docs/api-reference/keyple-java-calypso/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
 
 ## Download
 

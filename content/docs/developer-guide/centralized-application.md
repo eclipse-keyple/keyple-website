@@ -614,10 +614,10 @@ physique ouvert.
 Executes a multiple selection with logical channel closure between each
 selection.
 
-[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/pc/UseCase4_GroupedMultiSelection)
-
 Allows the exploration of the applications of a card in a single
 operation but without selection at the end.
+
+[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/pc/UseCase4_GroupedMultiSelection)
 
 ### Demo Card Protocol Detection
 
@@ -639,5 +639,5 @@ assigned to them.
 The artifact **Keyple Core** and how to integrate it into your
 application is available here:
 
-* [Keyple Core Java component]({{< ref "/components-java/base/core" >}})
-* [Keyple Core C++ component]({{< ref "/components-cpp/base/core" >}})
+* [Keyple Core Java component]({{< ref "/components-java/core" >}})
+* [Keyple Core C++ component]({{< ref "/components-cpp/core" >}})

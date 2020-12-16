@@ -1,5 +1,5 @@
 ---
-title: Remote application
+title: Distributed application
 type: book
 toc: true
 draft: false
@@ -8,18 +8,18 @@ weight: 320
 
 ## Overview
 
-**Keyple provides the "Keyple Remote Plugins" solution which allows a terminal to communicate with a smart card reader available in another terminal**.
+**Keyple provides the "Keyple Distributed" solution which allows a terminal to communicate with a smart card reader available in another terminal**.
 
 In this way, you can manage transactions within a distributed architecture.
 
-The diagram below shows the role of the **Keyple Remote Plugins** components in the software layers used in a distributed architecture :
+The diagram below shows the role of the **Keyple Distributed** components in the software layers used in a distributed architecture :
 
 {{< figure library="true" src="remote-plugin/component/Remote_Component_Overview.svg" title="" >}}
 
 ## How to use it ?
 
 1. In pre-requisite, read page [Develop a Centralized Application]({{< relref "centralized-application.md" >}}) to understand the main concepts of Keyple in a centralized application.
-1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the **Keyple Remote Plugins** solution.
+1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the **Keyple Distributed** solution.
 1. Read the introduction of chapter [Remote Plugins](#remote-plugins) to be informed about the different remote plugins and APIs proposed by the solution.
 1. Using chapter [Use cases](#use-cases), find your use case. This will help you to determine exactly which library and API to use.
 1. Using chapter [Download](#download), import into your project the libraries specified by your use case.
@@ -60,7 +60,7 @@ The second diagram below illustrates an arbitrary more complex possible use case
 
 These could be for example a ticketing reloading service, where the intelligence would be on the terminal with remote readers, with thin clients on A & B terminals communicating locally with the cards.
 
-In this use case, the **Keyple Remote Plugins** solution is use for card communication.
+In this use case, the **Keyple Distributed** solution is use for card communication.
 
 {{< figure library="true" src="remote-plugin/component/Remote_Component_Concepts_2.svg" title="" >}}
 
@@ -68,13 +68,13 @@ Here is another example, but this time it illustrates several **Remote Plugin** 
 
 These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.
 
-In this use case, the **Keyple Remote Plugins** solution is use for SAM communication.
+In this use case, the **Keyple Distributed** solution is use for SAM communication.
 
 {{< figure library="true" src="remote-plugin/component/Remote_Component_Concepts_3.svg" title="" >}}
 
 ## Remote Plugins
  
-The **Keyple Remote Plugins** solution provides **3** different specific **Remote Plugin** components, each one having a specific API described in chapter [Remote Plugins APIs](#remote-plugins-apis) designed on a **Client-Server** model in which **the Client is always the initiator of the communication** :
+The **Keyple Distributed** solution provides **3** different specific **Remote Plugin** components, each one having a specific API described in chapter [Remote Plugins APIs](#remote-plugins-apis) designed on a **Client-Server** model in which **the Client is always the initiator of the communication** :
 
 <div id="plugins-table-1">
 
@@ -207,7 +207,7 @@ This plugin allows a **client** application to control a **pool** of smart cards
 
 ## Remote Plugins APIs
 
-The class diagrams below shows the different APIs exposed and SPIs required by the **Keyple Remote Plugins** solution.
+The class diagrams below shows the different APIs exposed and SPIs required by the **Keyple Distributed** solution.
 
 An **SPI** (Service Provider Interface) is an interface that must be implemented by the user.
 
@@ -363,7 +363,7 @@ This unique mode proposed for this plugin does not allow to observe the local re
 
 ## Network configuration
 
-The **Keyple Remote Plugins** solution **does not provide** the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between **Remote Plugin** and **Local Service** components.
+The **Keyple Distributed** solution **does not provide** the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between **Remote Plugin** and **Local Service** components.
 
 ### Synchronous
 
