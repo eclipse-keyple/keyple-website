@@ -13,7 +13,7 @@ Keyple project
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="download" pack="fas" >}}
 [Download](#download)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="github" pack="fab" >}}
-[GitHub](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/remote/network)
+[GitHub](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-distributed/network)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="exchange-alt" pack="fas" >}}
 [Changelogs](https://github.com/eclipse/keyple-java/releases/)
 {{% /alert %}}
@@ -29,7 +29,7 @@ It is compatible with **PC**, **MAC** and **Android** platforms.
 ## Documentation
 
 * [Developer guide]({{< relref "../../../docs/developer-guide/distributed-application.md" >}})
-* <a href="../../../docs/api-reference/keyple-plugin-remote-network/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
+* <a href="../../../docs/api-reference/keyple-java-distributed-network/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
 
 ## Download
 
@@ -38,7 +38,7 @@ All deliverables are available on the [Maven Central Repository](https://search.
 * Using [Gradle](https://gradle.org/)
 
 ```gradle
-implementation 'org.eclipse.keyple:keyple-plugin-remote-network:{{% keyple-java-version %}}'
+implementation 'org.eclipse.keyple:keyple-java-distributed-network:{{% keyple-java-version %}}'
 ```
 
 * Using [Maven](https://maven.apache.org/)
@@ -46,9 +46,9 @@ implementation 'org.eclipse.keyple:keyple-plugin-remote-network:{{% keyple-java-
 ```xml
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-plugin-remote-network</artifactId>
+  <artifactId>keyple-java-distributed-network</artifactId>
   <version>{{% keyple-java-version %}}</version>
 </dependency>
 ```
 
-* Direct [download](https://search.maven.org/search?q=a:keyple-plugin-remote-network)
+* Direct [download](https://search.maven.org/search?q=a:keyple-java-distributed-network)

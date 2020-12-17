@@ -1,0 +1,118 @@
+@startuml
+footer
+    Keyple Distributed - Reader Client Side API with an ObservableReader (05/11/2020)
+end footer
+
+' == THEME ==
+
+skinparam Shadowing false
+skinparam RoundCorner 10
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_LIGHT_YELLOW FEF9E7
+!define C_LIGHT_ORANGE FDF2E9
+
+' == CONTENT ==
+
+participant "Card" as se
+
+box "Client APP using Local Lib" #C_LIGHT_YELLOW
+participant "**ObservableReader**" as reader #LightBlue
+participant "**Plugin**" as plugin #LightBlue
+actor "**Ticketing Service**" as client
+participant "**LocalServiceClient**" as localService #LightBlue
+end box
+
+box "Server APP using Remote Lib" #C_LIGHT_ORANGE
+participant "**RemotePluginServer**" as remotePlugin #LightBlue
+participant "**ObservableRemoteReaderServer**" as remoteReader #LightBlue
+actor "**Remote Ticketing Service**:\n**<back:LightBlue>ObservablePlugin.PluginObserver**" as server
+end box
+
+== Remote Lib Initialization ==
+
+activate server #Pink
+server -> remotePlugin ** : smartCardService.registerPlugin\n (RemotePluginServerFactory...\n    .withPluginObserver (this)...)
+server -> server : Awaiting receipt of\n a Plugin Event...
+
+== Local Lib Initialization ==
+
+activate client #Pink
+client -> localService ** : LocalServiceClientFactory...
+client -> plugin ** : smartCardService.registerPlugin\n (new XXXFactory())
+activate plugin #LightBlue
+plugin -> reader ** : create
+return
+
+== Local CardSelection ==
+
+client -> client : Start Ticketing Service
+client -> plugin : getReader (name)
+activate plugin #LightBlue
+return reader
+client -> client : prepareCardSelection (reader)
+client -> reader : setCardSelectionRequest ()
+activate reader #LightBlue
+
+activate se #LightYellow
+se ->> reader : SE_MATCHED Event
+reader -> se : C-APDU
+se --> reader : R-APDU
+return <color:red>**smartCard**</color>
+
+== Execute Remote Service for a specific Observable Local Reader ==
+
+client -> client : prepare userInputData
+
+client -> client : LocalClientUtils.getLocalService ()
+client -> localService : executeRemoteService (\n RemoteServiceParameters\n   .builder(<color:blue>**serviceId**</color>, reader)\n   .withInitialCardContent(<color:red>**smartCard**</color>)\n   .withUserInputData(<color:green>**userInputData**</color>).build(),\n classOfUserOutputData)
+activate localService #LightBlue
+
+localService -> remotePlugin
+activate remotePlugin #LightBlue
+remotePlugin -> remoteReader ** : create
+remotePlugin ->> server : notify (READER_CONNECTED, remoteReaderName)
+deactivate remotePlugin
+
+server -> remotePlugin : getReader (remoteReaderName)
+activate remotePlugin #LightBlue
+return remoteReader
+server -> remoteReader : getServiceId ()
+activate remoteReader #LightBlue
+return <color:blue>**serviceId**</color>
+server -> server : Find ticketing service\nto start using <color:blue>**serviceId**</color>
+
+== Remote Ticketing Service ==
+
+server -> server : Start Ticketing Service
+server -> remoteReader : getInitialCardContent\n (classOfSmartCard)
+activate remoteReader #LightBlue
+return <color:red>**smartCard**</color>
+server -> remoteReader : getUserInputData\n (classOfUserInputData)
+activate remoteReader #LightBlue
+return <color:green>**userInputData**</color>
+server -> remoteReader : addObserver (this)
+activate remoteReader #LightBlue
+return
+server -> server : continue...
+
+loop #C_LIGHT_ORANGE Card exchanges
+    server -> server : prepareCardRequest\n (remoteReader)
+    server -> remoteReader : processCardRequest ()
+    activate remoteReader #LightBlue
+    remoteReader -> se : C-APDU
+    se --> remoteReader : R-APDU
+    return response
+end loop
+
+server -> server : prepare UserOutputData
+server -> remotePlugin : terminateService (remoteReaderName, <color:purple>**userOutputData**</color>)
+activate remotePlugin #LightBlue
+remotePlugin -x remoteReader : remove remote reader if needed
+
+remotePlugin --> localService
+deactivate remotePlugin
+localService --> client : <color:purple>**userOutputData**</color>
+deactivate localService
+
+@enduml

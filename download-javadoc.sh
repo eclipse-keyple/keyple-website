@@ -87,9 +87,9 @@ VERSION=${options[$?]}
 get_javadoc keyple-java-core ${VERSION}
 get_javadoc keyple-java-calypso ${VERSION}
 get_javadoc keyple-java-plugin-pcsc ${VERSION}
-get_javadoc keyple-plugin-remote-local ${VERSION}
-get_javadoc keyple-plugin-remote-network ${VERSION}
-get_javadoc keyple-plugin-remote-remote ${VERSION}
+get_javadoc keyple-java-distributed-local ${VERSION}
+get_javadoc keyple-java-distributed-network ${VERSION}
+get_javadoc keyple-java-distributed-remote ${VERSION}
 get_javadoc keyple-java-plugin-stub ${VERSION}
 get_javadoc keyple-android-plugin-nfc ${VERSION}
 get_javadoc keyple-android-plugin-omapi ${VERSION}
@@ -100,9 +100,9 @@ cat > "./static/docs/api-reference/list-${VERSION}.json" <<- EOF
   "keyple-java-core": "Keyple Core API",
   "keyple-java-calypso": "Keyple Calypso API",
   "keyple-java-plugin-pcsc": "Keyple PC/SC plugin API",
-  "keyple-plugin-remote-local": "Keyple Remote Plugins - Local Service API",
-  "keyple-plugin-remote-network": "Keyple Remote Plugins - Network API",
-  "keyple-plugin-remote-remote": "Keyple Remote Plugins - Remote Plugin API",
+  "keyple-java-distributed-local": "Keyple Distributed Local API",
+  "keyple-java-distributed-network": "Keyple Distributed Network API",
+  "keyple-java-distributed-remote": "Keyple Distributed Remote API",
   "keyple-java-plugin-stub": "Keyple Stub plugin API",
   "keyple-android-plugin-nfc": "Keyple Android NFC plugin API",
   "keyple-android-plugin-omapi": "Keyple Android OMAPI plugin API"
