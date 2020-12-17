@@ -1,0 +1,61 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+
+package org.eclipse.keyple.core #FFFFFF {
+'  package plugin.factory #FFFFFF {
+'    !include KeypleCore_Plugin_ClassDiag_ClassElements.iuml!PLUGIN_FACTORY_1_0_0
+'  }
+  package service #FFFFFF {
+    !include KeypleCore_Plugin_ClassDiag_ClassElements.iuml!PLUGIN_FACTORY_1_0_0
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_SERVICE_1_0_0
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_PLUGIN_1_0_0
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_READER_1_0_0
+
+    SmartCardService "1" *-down-> "*" Plugin : plugins
+    Plugin "1" *-right-> "*" Reader : readers
+
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_POOLPLUGIN
+    Plugin <|-- PoolPlugin : extends
+
+    package event #FFFFFF {
+      !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_OBSERVABLEPLUGIN_1_0_0
+      !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_OBSERVABLEREADER_1_0_0
+    }
+    Plugin <|-- ObservablePlugin : extends
+    Reader <|-- ObservableReader : extends
+  }
+
+'  PluginFactory "*" -down- "1" SmartCardService : sets >
+  PluginFactory "*" -right- "1" SmartCardService : sets >
+  PluginFactory "1" --> "1" Plugin : creates >
+}
+
+interface Plugin <<Plugin>>
+interface ObservablePlugin <<Plugin>>
+interface PoolPlugin <<Plugin>>
+hide <<Plugin>> stereotype
+
+interface Reader <<Reader>>
+interface ObservableReader <<Reader>>
+hide <<Reader>> stereotype
+
+skinparam class {
+  BackgroundColor<<Plugin>> Azure
+  BorderColor<<Plugin>> Blue
+  BackgroundColor<<Reader>> #EEFFEE
+  BorderColor<<Reader>> Green
+}
+@enduml

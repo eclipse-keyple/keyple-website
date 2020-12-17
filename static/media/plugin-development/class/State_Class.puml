@@ -1,0 +1,197 @@
+@startuml
+title
+    Keyple Plugin - Package Overview - 1.0.0 (10/11/2020)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+package "org.eclipse.keyple.core.plugin" as root {
+
+    package "reader"{
+
+          ~abstract class AbstractMonitoringJob{
+             ~abstract Runnable getMonitoringJob(AbstractObservableState state)
+             ~abstract void stop()
+          }
+
+          ~class CardAbsentPingMonitoringJob{
+            ~Runnable getMonitoringJob(final AbstractObservableState state)
+            ~stop()
+          }
+
+          ~class CardPresentMonitoringJob{
+            ~Runnable getMonitoringJob(final AbstractObservableState state)
+            ~stop()
+          }
+
+        ~class SmartInsertionMonitoringJob{
+            ~Runnable getMonitoringJob(final AbstractObservableState state)
+            ~stop()
+        }
+
+        ~class SmartRemovalMonitoringJob{
+            ~Runnable getMonitoringJob(final AbstractObservableState state)
+            ~stop()
+        }
+
+        ~abstract class AbstractObservableState{
+            +MonitoringState getMonitoringState()
+            #void switchState(AbstractObservableState.MonitoringState stateId)
+            ~void onActivate()
+            ~void onDeactivate()
+            ~{abstract} void onEvent(AbstractObservableLocalReader.InternalEvent event)
+        }
+
+        ~class WaitForCardInsertionState{
+            ~void onEvent(AbstractObservableLocalReader.InternalEvent event)
+        }
+
+        ~class WaitForCardProcessingState{
+            ~void onEvent(AbstractObservableLocalReader.InternalEvent event)
+        }
+
+        ~class WaitForCardRemovalState{
+            ~void onEvent(AbstractObservableLocalReader.InternalEvent event)
+        }
+
+        ~class WaitForStartDetectState{
+            ~void onEvent(AbstractObservableLocalReader.InternalEvent event)
+        }
+
+        +class ObservableReaderStateService{
+            +synchronized void switchState(AbstractObservableState.MonitoringState stateId)
+            +synchronized AbstractObservableState.MonitoringState getCurrentMonitoringState()
+            +{static} CardInsertionStep builder(AbstractObservableLocalReader reader)
+            #synchronized void onEvent(AbstractObservableLocalReader.InternalEvent event)
+            #synchronized AbstractObservableState getCurrentState()
+        }
+
+        +interface CardInsertionStep {
+            ~CardProcessingStep waitForCardInsertionWithNativeDetection()
+            ~CardProcessingStep waitForCardInsertionWithSmartDetection()
+            ~CardProcessingStep waitForCardInsertionWithPollingDetection()
+        }
+
+        +interface CardProcessingStep {
+            ~CardRemovalStep waitForCardProcessingWithNativeDetection()
+            ~CardRemovalStep waitForCardProcessingWithSmartDetection()
+        }
+
+        +interface CardRemovalStep {
+            ~BuilderStep waitForCardRemovalWithNativeDetection()
+            ~BuilderStep waitForCardRemovalWithSmartDetection()
+            ~BuilderStep waitForCardRemovalWithPollingDetection()
+        }
+
+        +interface BuilderStep {
+            ~ObservableReaderStateService build()
+        }
+
+        +class Builder{
+            +CardProcessingStep waitForCardInsertionWithNativeDetection()
+            +CardProcessingStep waitForCardInsertionWithPollingDetection()
+            +CardProcessingStep waitForCardInsertionWithSmartDetection()
+            +CardRemovalStep waitForCardProcessingWithNativeDetection()
+            +CardRemovalStep waitForCardProcessingWithSmartDetection()
+            +BuilderStep waitForCardRemovalWithNativeDetection()
+            +BuilderStep waitForCardRemovalWithPollingDetection()
+            +BuilderStep waitForCardRemovalWithSmartDetection()
+            +ObservableReaderStateService build()
+        }
+    }
+}
+
+
+' Associations
+AbstractMonitoringJob <|-- CardAbsentPingMonitoringJob #C_USE
+AbstractMonitoringJob <|-- CardPresentMonitoringJob #C_USE
+AbstractMonitoringJob <|-- SmartInsertionMonitoringJob #C_USE
+AbstractMonitoringJob <|-- SmartRemovalMonitoringJob #C_USE
+AbstractObservableState <|-- WaitForCardInsertionState #C_USE
+AbstractObservableState <|-- WaitForCardProcessingState #C_USE
+AbstractObservableState <|-- WaitForCardRemovalState #C_USE
+AbstractObservableState <|-- WaitForStartDetectState #C_USE
+ObservableReaderStateService +-- CardInsertionStep #C_USE
+ObservableReaderStateService +-- CardProcessingStep #C_USE
+ObservableReaderStateService +-- CardRemovalStep #C_USE
+ObservableReaderStateService +-- BuilderStep #C_USE
+ObservableReaderStateService +-- Builder #C_USE
+
+' == LAYOUT ==
+
+
+' == STYLE ==
+
+'package root #C_GREY1 {}
+'package spi #C_GREY3 {}
+'package impl #C_GREY2 {}
+'
+'interface LocalServiceClient <<green>>
+'class LocalServiceClientFactory <<green>>
+'interface LocalServiceClientFactoryNameStep <<green>>
+'interface LocalServiceClientFactoryNodeStep <<green>>
+'interface LocalServiceClientFactoryTimeoutStep <<green>>
+'interface LocalServiceClientFactoryReaderStep <<green>>
+'interface LocalServiceClientFactoryBuilderStep <<green>>
+'class RemoteServiceParameters <<green>>
+'class RemoteServiceParametersBuilder <<green>>
+'class LocalServiceClientUtils <<green>>
+'interface ObservableReaderEventFilter <<green>>
+'
+'interface LocalServiceServer <<purple>>
+'class LocalServiceServerFactory <<purple>>
+'interface LocalServiceServerFactoryNameStep <<purple>>
+'interface LocalServiceServerFactoryNodeStep <<purple>>
+'interface LocalServiceServerFactoryBuilderStep <<purple>>
+'class LocalServiceServerUtils <<purple>>
+'
+'interface PoolLocalServiceServer <<blue>>
+'class PoolLocalServiceServerFactory <<blue>>
+'interface PoolLocalServiceServerFactoryNameStep <<blue>>
+'interface PoolLocalServiceServerFactoryNodeStep <<blue>>
+'interface PoolLocalServiceServerFactoryPluginStep <<blue>>
+'interface PoolLocalServiceServerFactoryBuilderStep <<blue>>
+'class PoolLocalServiceServerUtils <<blue>>
+
+
+
+@enduml

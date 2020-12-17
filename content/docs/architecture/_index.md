@@ -3,7 +3,8 @@ title: Architecture
 type: book
 icon_pack: fas
 icon: sitemap
-weight: 100
+toc: false
+weight: 500
 ---
 
 {{< list_children >}}

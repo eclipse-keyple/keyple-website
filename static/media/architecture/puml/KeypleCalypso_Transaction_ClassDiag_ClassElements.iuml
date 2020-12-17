@@ -1,0 +1,746 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml(id=TRANSACTION_INVALIDATED_1_0_0)
++enum InvalidatedPo {
+  REJECT
+  ACCEPT
+}
+@enduml
+
+@startuml(id=TRANSACTION_PO_SHORT_1_0_0)
++class CalypsoPo {
+  ~CalypsoPo(<color:red>CardSelectionResponse</color> poSelectionResponse)
+  +<b>final</b> String getDfName()
+  +<b>final</b> String getApplicationSerialNumber()
+  +<b>final</b> String getAtr()
+  +<b>final</b> String getStartupInfo()
+  +<b>final</b> PoRevision getRevision()
+}
+@enduml
+
+@startuml(id=TRANSACTION_SELECTION_1_0_0)
++class "<b>final</b> PoSelector" as PoSelector {
+  -InvalidatedPo invalidatedPo = REJECT
+  -PoSelector(PoSelectorBuilder builder)
+  +{static} PoSelectorBuilder builder()
+}
+
++class PoSelectorBuilder {
+  -PoSelectorBuilder()
+  +PoSelector build()
+
+  +PoSelectorBuilder cardProtocol(String cardProtocol)
+  +PoSelectorBuilder atrFilter(AtrFilter atrFilter)
+  +PoSelectorBuilder aidSelector(AidSelector aidSelector)
+
+  +PoSelectorBuilder invalidatedPo(InvalidatedPo invalidatedPo)
+}
+
+
++class PoSelection {
+  +PoSelection(PoSelector poSelector)
+
+  +<b>final</b> prepareSelectFile(byte[] path)
+  +<b>final</b> prepareSelectFile(shord lid)
+  +<b>final</b> prepareSelectFile(SelectControl selectControl)
+
+  +<b>final</b> prepareReadRecordFile(byte sfi, int recordNumber)
+
+  #CalypsoPo parse(SelectionResponse selectionResponse)
+}
+
++class "<b>final</b> CardResource<CalypsoPo>" as PoResource {
+}
+@enduml
+
+@startuml(id=TRANSACTION_SELECTION_SAM_1_0_0)
++class "<b>final</b> SamSelector" as SamSelector {
+  -<b>final</b> SamRevision targetSamRevision
+  -<b>final</b> byte[] unlockData
+  -SamSelector(SamSelectorBuilder builder)
+  +{static} SamSelectorBuilder builder()
+}
+
++class SamSelectorBuilder {
+  +SamSelectorBuilder()
+  +SamSelectorBuilder cardProtocol(String cardProtocol)
+  +SamSelectorBuilder atrFilter(AtrFilter atrFilter)
+  +SamSelectorBuilder aidSelector(AidSelector aidSelector)
+
+  +SamSelectorBuilder samRevision(SamRevision samRevision)
+  +SamSelectorBuilder serialNumber(String serialNumber)
+  +SamSelectorBuilder samIdentifier(SamIdentifier samIdentifier)
+  +SamSelectorBuilder samUnlock(byte[] lock)
+
+  +SamSelector build()
+}
+
++class SamSelection {
+  +SamSelection(SamSelector samSelector)
+
+  #CalypsoSam parse(SelectionResponse selectionResponse)
+}
+
++class "<b>final</b> CardResource<CalypsoSam>" as SamResource {
+}
+
++class "<b>final</b> CalypsoSam" as CalypsoSam {
+  ~CalypsoSam(<color:red>CardSelectionResponse</color> samSelectionResponse)
+
+  +SamRevision getSamRevision()
+  +byte[] getSerialNumber()
+  +byte getPlatform()
+  +byte getApplicationType()
+  +byte getApplicationSubType()
+  +byte getSoftwareIssuer()
+}
+@enduml
+
+@startuml(id=TRANSACTION_SECURITYSETTING_1_0_0)
++class "static <b>final</b> PoSecuritySettingBuilder" as PoSecuritySettingBuilder {
+  +PoSecuritySettingBuilder(CardResource<CalypsoSam> samResource)
+
+  +PoSecuritySettingBuilder sessionModificationMode(ModificationMode sessionModificationMode)
+  +PoSecuritySettingBuilder ratificationMode(RatificationMode ratificationMode)
+  +PoSecuritySettingBuilder sessionDefaultKif(AccessLevel sessionAccessLevel, byte kif)
+  +PoSecuritySettingBuilder sessionDefaultKvc(AccessLevel sessionAccessLevel, byte kvc)
+  +PoSecuritySettingBuilder sessionDefaultKeyRecordNumber(AccessLevel sessionAccessLevel,
+    byte keyRecordNumber)
+  +PoSecuritySettingBuilder sessionAuthorizedKvcList(List<Byte> authorizedKvcList)
+
+  +PoSecuritySetting build()
+}
+
++class "<b>final</b> PoSecuritySetting" as PoSecuritySetting {
+  -final CardResource<CalypsoSam> samResource
+  -List<Byte> authorizedKvcList
+  -<b>final</b> EnumMap<AccessLevel, Byte> defaultKif
+  -<b>final</b> EnumMap<AccessLevel, Byte> defaultKvc
+  -<b>final</b> EnumMap<AccessLevel, Byte> defaultKeyRecordNumber
+  -<b>final</b> ModificationMode sessionModificationMode = ATOMIC
+  -<b>final</b> RatificationMode ratificationMode = CLOSE_RATIFIED
+  -<b>final</b> PinTransmissionMode ratificationMode = ENCRYPTED
+
+  +PoSecuritySetting(PoSecuritySettingBuilder builder);
+'  #PoRevokedService getPoRevokedService()
+'  #SamRevokedService getSamRevokedService()
+'  #PoHceService getPoHceService()
+
+'  +loadProperties(Properties propertyFile)
+
+  #ModificationMode getSessionModificationMode()
+  #RatificationMode getSessionRatificationMode()
+  #Byte getSessionDefaultKif(AccessLevel level)
+  #Byte getSessionDefaultKvc(AccessLevel level)
+  #Byte getSessionDefaultKeyRecordNumber(AccessLevel level)
+  #Boolean isSessionKvcAuthorized(byte kvc)
+
+  #PinTransmissionMode getPinTransmissionMode()
+  ~KeyReference getDefaultPinCipheringKey()
+
+
+  ~LogRead getSvGetLogReadMode()
+  ~NegativeBalance getSvNegativeBalance()
+  ~Boolean isSvKvcAuthorized(byte kvc) ???
+}
+
+note as N1
+Default values in PoTransaction if PoSecuritySetting doesn't specify it:
+  - session ModificationMode as ATOMIC
+  - session RatificationMode as CLOSE_RATIFIED
+  - PinTransmissionMode as ENCRYPTED if PoSecurity defined
+  - any KIF/KVC values are authorized
+  - no verification is done for: HCE token expiration, revoked PO or SAM
+end note
+@enduml
+
+@startuml(id=TRANSACTION_SECURITYSETTING_CalypsoAPI)
++class "static <b>final</b> PoSecuritySettingBuilder" as PoSecuritySettingBuilder {
+  -final SamResource samResource
+  -List<Byte> authorizedKvcList
+  -final EnumMap<AccessLevel, Byte> defaultKif
+  -final EnumMap<AccessLevel, Byte> defaultKvc
+  -final EnumMap<AccessLevel, Byte> defaultKeyRecordNumber
+  ModificationMode sessionModificationMode = ATOMIC
+  RatificationMode ratificationMode = CLOSE_RATIFIED
+
+  +PoSecuritySettingBuilder(SamResource samResource)
+
+  +PoSecuritySettingBuilder sessionModificationMode(ModificationMode sessionModificationMode)
+  +PoSecuritySettingBuilder ratificationMode(RatificationMode ratificationMode)
+  +PoSecuritySettingBuilder sessionDefaultKif(AccessLevel sessionAccessLevel, byte kif)
+  +PoSecuritySettingBuilder sessionDefaultKvc(AccessLevel sessionAccessLevel, byte kvc)
+  +PoSecuritySettingBuilder sessionDefaultKeyRecordNumber(AccessLevel sessionAccessLevel,
+    byte keyRecordNumber)
+  +PoSecuritySettingBuilder sessionAuthorizedKvcList(List<Byte> authorizedKvcList)
+
+  +PoSecuritySetting build()
+}
+
++class "<b>final</b> PoSecuritySetting" as PoSecuritySetting {
+  +PoSecuritySetting(SamResource samResource);
+'  +setPoRevokedService(PoRevokedService revokedPo)
+'  +setSamRevokedService(SamRevokedService revokedSam)
+'  +setPoHceService(PoHceService expiredHce)
+  #PoRevokedService getPoRevokedService()
+  #SamRevokedService getSamRevokedService()
+  #PoHceService getPoHceService()
+
+  +loadProperties(Properties propertyFile)
+
+  #ModificationMode getSessionModificationMode()
+  #RatificationMode getSessionRatificationMode()
+  #Byte getSessionDefaultKif(AccessLevel level)
+  #Byte getSessionDefaultKvc(AccessLevel level)
+  #Byte getSessionDefaultKeyRecordNumber(AccessLevel level)
+  #Boolean isSessionKvcAuthorized(byte kvc)
+
+'  +setPinTransmissionMode(PinTransmissionMode mode)
+  #PinTransmissionMode getPinTransmissionMode()
+
+'  +setSvGetLogReadMode(LogRead readRule)
+'  +setSvNegativeBalanceMode(NegativeBalance authorization)
+'  +setSvAuthorizedKvcList(byte[] kvc)
+  #LogRead getSvGetLogReadMode()
+  #NegativeBalance getSvNegativeBalance()
+  #Boolean isSvKvcAuthorized(byte kvc)
+}
+
+note as N1
+Default values in PoTransaction if PoSecuritySetting doesn't specify it:
+  - session ModificationMode as ATOMIC
+  - session RatificationMode as CLOSE_RATIFIED
+  - PinTransmissionMode as ENCRYPTED if PoSecurity defined
+  - any KIF/KVC values are authorized
+  - no verification is done for: HCE token expiration, revoked PO or SAM
+end note
+@enduml
+
+@startuml(id=TRANSACTION_SECURITYSERVICE)
++interface SamRevokedService {
+  +boolean isSamRevoked(byte[] 4bytesSerial, byte[][0..1] 3bytesCounter)
+}
+
++interface PoRevokedService {
+  +boolean isPoRevoked(byte[] 8bytesSerial)
+}
+
++interface PoHceService {
+  +boolean isCalypsoSerialExpired(byte[] 2bytesExpirationData)
+}
+@enduml
+
+@startuml(id=TRANSACTION_POTRANSACTION_0_8_0)
++class PoTransaction {
+  +PoTransaction(PoResource poResource, PoSecuritySetting[0..1] securitySetting)
+
+  +<b>final</b> processPoCommands(ChannelControl channel)
+  +<b>final</b> processOpening(AccessLevel level)
+  +<b>final</b> processPoCommandsInSession()
+  +<b>final</b> processClosing(ChannelControl channel)
+  +<b>final</b> processCancel(ChannelControl channel)
+  +<b>final</b> prepareManageSession(EncryptionMode encMode, AuthenticationMode authMode)
+  +<b>final</b> SessionSecureData getSessionSecureData()
+
+  +<b>final</b> prepareCheckPinStatus()
+  +<b>final</b> prepareVerifyPin(String pin)
+  +<b>final</b> prepareVerifyPin(byte[] pin)
+
+  +<b>final</b> prepareSvGet(SvSetting.Operation operation, SvSetting.Action action)
+  +<b>final</b> prepareSvReload(int amount, int date, int time, String free)
+  +<b>final</b> prepareSvReload(int amount, byte[] date, byte[] time, byte[] free)
+  +<b>final</b> prepareSvReload(int amount)
+  +<b>final</b> prepareSvDebit(int amount, int date, int time)
+  +<b>final</b> prepareSvDebit(int amount, byte[] date, byte[] time)
+  +<b>final</b> prepareSvDebit(int amount)
+  +<b>final</b> SvOperationSecureData getSvOperationSecureData()
+
+  +<b>final</b> prepareSelectFile(short lid)
+  +<b>final</b> prepareSelectFile(byte[] lid)
+  +<b>final</b> prepareSelectFile(SelectFileControl control)
+  'lecture d'un record hors session (Le à 00h)
+  +<b>final</b> prepareReadRecordFile(byte sfi, int recordNumber)
+  'exception si recordSize erronée
+  +<b>final</b> prepareReadRecordFile(byte sfi, int firstRecordNumber, int numberOfRecords, int recordSize))
+  +<b>final</b> prepareReadSubRecordFile(byte sfi, int firstRecordNumber, int numberOfRecord, int recordOffset,
+    int recordLength)
+  +<b>final</b> prepareReadBinaryFile(byte sfi, int dataLength, int[0..1] dataOffset)
+  'compteur simulé : exception si countersNumber<>1 et si countersNumber <> 1
+  +<b>final</b> prepareReadCounterFile(byte sfi, int countersNumber)
+  +<b>final</b> prepareAppendRecord(byte sfi, byte[] recordData)
+  +<b>final</b> prepareUpdateRecord(byte sfi, int recordNumber, byte[] recordData)
+  +<b>final</b> prepareWriteRecord(byte sfi, int recordNumber, byte[] recordData)
+  +<b>final</b> prepareUpdateBinaryFile(byte sfi, byte[] fileData, int[0..1] dataOffset)
+  +<b>final</b> prepareWriteBinaryFile(byte sfi, byte[] fileData, int[0..1] dataOffset)
+  +<b>final</b> prepareIncreaseCounter(byte sfi, int counterNumber, int incValue)
+  +<b>final</b> prepareDecreaseCounter(byte sfi, int counterNumber, int decValue)
+  +<b>final</b> prepareSetCounter(byte sfi, int counterNumber, int newValue)
+  +<b>final</b> int prepareSearchRecord(byte sfi, byte offset, SearchOffsetMode offsetMode, byte[] searchData,
+    Byte[] searchMask, SearchReadMode readMode)
+  +<b>final</b> int[] getSearchResult(int searchRequestNumber)
+
+  +<b>final</b> prepareInvalidate()
+  +<b>final</b> prepareRehabilitate()
+
+  +<b>final</b> prepareChangeKey(AccessLevel level)
+  +<b>final</b> prepareChangePin(String pin)
+  +<b>final</b> prepareChangePin(byte[] pin)
+}
+@enduml
+
+@startuml(id=TRANSACTION_POTRANSACTION_0_9_0)
++class PoTransaction {
+  +PoTransaction(PoResource poResource, PoSecuritySetting[0..1] securitySetting)
+
+  +<b>final</b> prepareReleaseChannel()
+
+  +<b>final</b> processPoCommands()
+  +<b>final</b> processOpening(AccessLevel level)
+  +<b>final</b> processClosing()
+  +<b>final</b> processCancel()
+
+  +<b>final</b> prepareCheckPinStatus()
+  +<b>final</b> processVerifyPin(String pin)
+  +<b>final</b> processVerifyPin(byte[] pin)
+
+  +<b>final</b> prepareSvGet(SvSetting.Operation operation, SvSetting.Action action)
+  +<b>final</b> prepareSvReload(int amount, int date, int time, String free)
+  +<b>final</b> prepareSvReload(int amount, byte[] date, byte[] time, byte[] free)
+  +<b>final</b> prepareSvReload(int amount)
+  +<b>final</b> prepareSvDebit(int amount, int date, int time)
+  +<b>final</b> prepareSvDebit(int amount, byte[] date, byte[] time)
+  +<b>final</b> prepareSvDebit(int amount)
+
+  +<b>final</b> prepareSelectFile(short lid)
+  +<b>final</b> prepareSelectFile(byte[] lid)
+  +<b>final</b> prepareSelectFile(SelectFileControl control)
+  'lecture d'un record hors session (Le à 00h)
+  +<b>final</b> prepareReadRecordFile(byte sfi, int recordNumber)
+  'exception si recordSize erronée
+  +<b>final</b> prepareReadRecordFile(byte sfi, int firstRecordNumber, int numberOfRecords, int recordSize))
+  +<b>final</b> prepareReadSubRecordFile(byte sfi, int firstRecordNumber, int numberOfRecord, int recordOffset, int recordLength)
+  +<b>final</b> prepareReadBinaryFile(byte sfi, int dataLength, int[0..1] dataOffset)
+  'compteur simulé : exception si countersNumber<>1 et si countersNumber <> 1
+  +<b>final</b> prepareReadCounterFile(byte sfi, int countersNumber)
+  +<b>final</b> prepareAppendRecord(byte sfi, byte[] recordData)
+  +<b>final</b> prepareUpdateRecord(byte sfi, int recordNumber, byte[] recordData)
+  +<b>final</b> prepareWriteRecord(byte sfi, int recordNumber, byte[] recordData)
+  +<b>final</b> prepareUpdateBinaryFile(byte sfi, byte[] fileData, int[0..1] dataOffset)
+  +<b>final</b> prepareWriteBinaryFile(byte sfi, byte[] fileData, int[0..1] dataOffset)
+  +<b>final</b> prepareIncreaseCounter(byte sfi, int counterNumber, int incValue)
+  +<b>final</b> prepareDecreaseCounter(byte sfi, int counterNumber, int decValue)
+  +<b>final</b> prepareSetCounter(byte sfi, int counterNumber, int newValue)
+'  +<b>final</b> int prepareSearchRecord(byte sfi, byte offset, SearchOffsetMode offsetMode, byte[] searchData, Byte[] searchMask, SearchReadMode readMode)
+'  +<b>final</b> int[] getSearchResult(int searchRequestNumber)
+
+  +<b>final</b> prepareInvalidate()
+  +<b>final</b> prepareRehabilitate()
+
+'  +<b>final</b> prepareChangeKey(AccessLevel level)
+'  +<b>final</b> prepareChangePin(String pin)
+'  +<b>final</b> prepareChangePin(byte[] pin)
+}
+@enduml
+
+@startuml(id=TRANSACTION_POTRANSACTION_CalypsoAPI)
++class PoTransaction {
+  +PoTransaction(PoResource poResource, PoSecuritySetting[0..1] securitySetting)
+
+  +<b>final</b> prepareReleaseChannel()
+
+  +<b>final</b> processPoCommands()
+  +<b>final</b> processOpening(AccessLevel level)
+  +<b>final</b> processClosing()
+  +<b>final</b> processCancel()
+  +<b>final</b> prepareManageSession(EncryptionMode encMode, AuthenticationMode authMode)
+  +<b>final</b> SessionSecureData getSessionSecureData()
+
+  +<b>final</b> prepareCheckPinStatus()
+  +<b>final</b> processVerifyPin(String pin)
+  +<b>final</b> processVerifyPin(byte[] pin)
+
+  +<b>final</b> prepareSvGet(SvSetting.Operation operation, SvSetting.Action action)
+  +<b>final</b> prepareSvReload(int amount, int date, int time, String free)
+  +<b>final</b> prepareSvReload(int amount, byte[] date, byte[] time, byte[] free)
+  +<b>final</b> prepareSvReload(int amount)
+  +<b>final</b> prepareSvDebit(int amount, int date, int time)
+  +<b>final</b> prepareSvDebit(int amount, byte[] date, byte[] time)
+  +<b>final</b> prepareSvDebit(int amount)
+  +<b>final</b> SvOperationSecureData getSvOperationSecureData()
+
+  +<b>final</b> prepareSelectFile(short lid)
+  +<b>final</b> prepareSelectFile(byte[] lid)
+  +<b>final</b> prepareSelectFile(SelectFileControl control)
+  'lecture d'un record hors session (Le à 00h)
+  +<b>final</b> prepareReadRecordFile(byte sfi, int recordNumber)
+  'exception si recordSize erronée
+  +<b>final</b> prepareReadRecordFile(byte sfi, int firstRecordNumber, int numberOfRecords, int recordSize))
+  +<b>final</b> prepareReadSubRecordFile(byte sfi, int firstRecordNumber, int numberOfRecord, int recordOffset, int recordLength)
+  +<b>final</b> prepareReadBinaryFile(byte sfi, int dataLength, int[0..1] dataOffset)
+  'compteur simulé : exception si countersNumber<>1 et si countersNumber <> 1
+  +<b>final</b> prepareReadCounterFile(byte sfi, int countersNumber)
+  +<b>final</b> prepareAppendRecord(byte sfi, byte[] recordData)
+  +<b>final</b> prepareUpdateRecord(byte sfi, int recordNumber, byte[] recordData)
+  +<b>final</b> prepareWriteRecord(byte sfi, int recordNumber, byte[] recordData)
+  +<b>final</b> prepareUpdateBinaryFile(byte sfi, byte[] fileData, int[0..1] dataOffset)
+  +<b>final</b> prepareWriteBinaryFile(byte sfi, byte[] fileData, int[0..1] dataOffset)
+  +<b>final</b> prepareIncreaseCounter(byte sfi, int counterNumber, int incValue)
+  +<b>final</b> prepareDecreaseCounter(byte sfi, int counterNumber, int decValue)
+  +<b>final</b> prepareSetCounter(byte sfi, int counterNumber, int newValue)
+  +<b>final</b> int prepareSearchRecord(byte sfi, byte offset, SearchOffsetMode offsetMode, byte[] searchData, Byte[] searchMask, SearchReadMode readMode)
+  +<b>final</b> int[] getSearchResult(int searchRequestNumber)
+
+  +<b>final</b> prepareInvalidate()
+  +<b>final</b> prepareRehabilitate()
+
+  +<b>final</b> prepareChangeKey(AccessLevel level)
+  +<b>final</b> prepareChangePin(String pin)
+  +<b>final</b> prepareChangePin(byte[] pin)
+}
+@enduml
+
+@startuml(id=TRANSACTION_POTRANSACTION_INTPARAM)
+-enum SessionState {
+  SESSION_UNITIALIZED,
+  SESSION_OPEN,
+  SESSION_CLOSED
+}
+
++class "<b>final</b> SessionSetting" as SessionSetting {
+}
+
++enum AccessLevel {
+  SESSION_LVL_PERSO("perso", byte 0x01),
+  SESSION_LVL_LOAD("load", byte 0x02),
+  SESSION_LVL_DEBIT("debit", byte 0x03)
+}
+
++enum ModificationMode {
+  ATOMIC,
+  MULTIPLE
+}
+
++enum RatificationMode {
+  CLOSE_RATIFIED,
+  CLOSE_NOT_RATIFIED
+}
+
++enum EncryptionMode {
+  ACTIVATE,
+  DEACTIVATE
+}
+
++enum AuthenticationMode {
+  REQUESTED,
+  NOT_REQUESTED
+}
+
++enum PinTransmissionMode {
+  PLAIN,
+  ENCRYPTED
+}
+
+together {
+  +class "<b>final</b> SvSetting" as SvSetting {
+  }
+
+  +enum Operation {
+    RELOAD,
+    DEBIT
+  }
+
+  +enum Action {
+    DO,
+    UNDO
+  }
+
+  +enum LogRead {
+    SINGLE,
+    ALL
+  }
+
+  +enum NegativeBalance {
+    FORBIDDEN,
+    AUTHORIZED
+  }
+}
+@enduml
+
+@startuml(id=TRANSACTION_POTRANSACTION_EXTPARAM)
++enum SelectFileControl {
+  FIRST_EF,
+  NEXT_EF,
+  CURRENT_DF
+}
+
+/'
++enum ChannelControl {
+  KEEP_OPEN
+  CLOSE_AFTER
+}
+'/
+@enduml
+
+@startuml(id=TRANSACTION_CALYPSOPO_0_8_0)
++class "<b>final</b> CalypsoPo" as CalypsoPo {
+  ~CalypsoPo(<color:red>SeResponse selectionResponse</color>)
+  +String getDfName()
+  +byte[] getDfNameBytes()
+  #byte[] getCalypsoSerialNumber()
+  #boolean isSerialNumberExpiring()
+  #byte[] getSerialNumberExpirationBytes()
+  +String getApplicationSerialNumber()
+  +byte[] getApplicationSerialNumberBytes()
+
+  +String getAtr()
+  +String getStartupInfo()
+  +PoRevision getRevision()
+  #PoClass getPoClass()
+  #boolean isModificationCounterInByte()
+  #int getModificationCounter()
+  +byte getSessionModification()
+  +byte getApplicationType()
+  +byte getApplicationSubtype()
+  +byte getSoftwareIssuer()
+  +byte getSoftwareVersion()
+  +byte getSoftwareRevision()
+}
+@enduml
+
+@startuml(id=TRANSACTION_CALYPSOPO_0_9_0)
++class CalypsoPo {
+  ~CalypsoPo(<color:red>SeResponse selectionResponse</color>)
+  +<b>final</b> String getDfName()
+  +<b>final</b> byte[] getDfNameBytes()
+  #<b>final</b> byte[] getCalypsoSerialNumber()
+  #<b>final</b> boolean isSerialNumberExpiring()
+  #<b>final</b> byte[] getSerialNumberExpirationBytes()
+  +<b>final</b> String getApplicationSerialNumber()
+  +<b>final</b> byte[] getApplicationSerialNumberBytes()
+
+  +<b>final</b> String getAtr()
+  +<b>final</b> String getStartupInfo()
+  +<b>final</b> PoRevision getRevision()
+  #<b>final</b> PoClass getPoClass()
+  #<b>final</b> boolean isModificationCounterInByte()
+  #<b>final</b> int getModificationCounter()
+  +<b>final</b> byte getSessionModification()
+  +<b>final</b> byte getApplicationType()
+  +<b>final</b> byte getApplicationSubtype()
+  +<b>final</b> byte getSoftwareIssuer()
+  +<b>final</b> byte getSoftwareVersion()
+  +<b>final</b> byte getSoftwareRevision()
+
+  +<b>final</b> boolean isDeselectRatificationSupported()
+  +<b>final</b> boolean isPinFeatureAvailable()
+  +<b>final</b> boolean isSvFeatureAvailable()
+
+  +<b>final</b> boolean isDfInvalidated()
+  +<b>final</b> boolean isDfRatified()
+
+  +<b>final</b> boolean isPinBlocked()
+  +<b>final</b> int getPinAttemptRemaining()
+
+  +<b>final</b> int getSvBalance()
+  +<b>final</b> int getSvLastTnum()
+  +<b>final</b> SvLoadLogRecord getSvLoadLogRecord()
+  +<b>final</b> SvDebitLogRecord getSvDebitLogLastRecord()
+  +<b>final</b> List<SvDebitLogRecord> getSvDebitLogAllRecords()
+
+  +<b>final</b> DirectoryHeader getDirectoryHeader()
+  +<b>final</b> ElementaryFile getFileBySfi(byte sfi)
+  +<b>final</b> ElementaryFile getFileByLid(short lid)
+  +<b>final</b> Map<Byte, ElementaryFile> getAllFiles()
+}
+@enduml
+
+@startuml(id=TRANSACTION_CALYPSOPO_CalypsoAPI)
++class CalypsoPo {
+  ~CalypsoPo(<color:red>SeResponse selectionResponse</color>)
+  +<b>final</b> String getDfName()
+  +<b>final</b> byte[] getDfNameBytes()
+  #<b>final</b> byte[] getCalypsoSerialNumber()
+  #<b>final</b> boolean isSerialNumberExpiring()
+  #<b>final</b> byte[] getSerialNumberExpirationBytes()
+  +<b>final</b> String getApplicationSerialNumber()
+  +<b>final</b> byte[] getApplicationSerialNumberBytes()
+
+  +<b>final</b> String getAtr()
+  +<b>final</b> String getStartupInfo()
+  +<b>final</b> PoRevision getRevision()
+  #<b>final</b> PoClass getPoClass()
+  #<b>final</b> boolean isModificationCounterInByte()
+  #<b>final</b> int getModificationCounter()
+  +<b>final</b> byte getSessionModification()
+  +<b>final</b> byte getApplicationType()
+  +<b>final</b> byte getApplicationSubtype()
+  +<b>final</b> byte getSoftwareIssuer()
+  +<b>final</b> byte getSoftwareVersion()
+  +<b>final</b> byte getSoftwareRevision()
+
+  +<b>final</b> boolean isDeselectRatificationSupported()
+  +<b>final</b> boolean isPinFeatureAvailable()
+  +<b>final</b> boolean isSvFeatureAvailable()
+  +<b>final</b> boolean isConfidentialSessionSupported()
+  +<b>final</b> boolean isPublicAuthenticationSupported()
+
+  +<b>final</b> boolean isDfInvalidated()
+  +<b>final</b> boolean isDfRatified()
+
+  +<b>final</b> boolean isPinBlocked()
+  +<b>final</b> int getPinAttemptRemaining()
+
+  +<b>final</b> int getSvBalance()
+  +<b>final</b> int getSvLastTnum()
+  +<b>final</b> SvLoadLogRecord getSvLoadLogRecord()
+  +<b>final</b> SvDebitLogRecord getSvDebitLogLastRecord()
+  +<b>final</b> List<SvDebitLogRecord> getSvDebitLogAllRecords()
+
+  +<b>final</b> DirectoryHeader getDirectoryHeader()
+  +<b>final</b> ElementaryFile getFileBySfi(byte sfi)
+  +<b>final</b> ElementaryFile getFileByLid(short lid)
+  +<b>final</b> Map<Byte, ElementaryFile> getAllFiles()
+}
+@enduml
+
+@startuml(id=TRANSACTION_CALYPSOPO_SPECIFIC)
++class SpecificPo {
+  ~CalypsoPo(<color:red>SeResponse selectionResponse</color>)
+
+
+  +<b>final</b> DirectoryHeader getDirectoryHeader()
+  +<b>final</b> ElementaryFile getFileBySfi(byte sfi)
+  +<b>final</b> ElementaryFile getFileByLid(short lid)
+  +<b>final</b> Map<Byte, ElementaryFile> getAllFiles()
+}
+
++class CalypsoPo {
+  ~CalypsoPo(<color:red>SeResponse selectionResponse</color>)
+
+
+  +<b>final</b> DirectoryHeader getDirectoryHeader()
+  +<b>final</b> ElementaryFile getFileBySfi(byte sfi)
+  +<b>final</b> ElementaryFile getFileByLid(short lid)
+  +<b>final</b> Map<Byte, ElementaryFile> getAllFiles()
+}
+@enduml
+
+@startuml(id=TRANSACTION_PO_DF)
++enum AccessLevel {
+  SESSION_LVL_PERSO
+  SESSION_LVL_LOAD
+  SESSION_LVL_DEBIT
+}
+
++class DirectoryHeader {
+  +short getLid()
+  +byte[] getAccessConditions()
+  +byte[] getKeyIndexes()
+
+  +boolean isKifAvailable(AccessLevel)
+  +Byte getKif(AccessLevel)
+  +boolean isKvcAvailable(AccessLevel)
+  +Byte getKvc(AccessLevel)
+}
+@enduml
+
+@startuml(id=TRANSACTION_PO_SV)
++class SvLoadLogRecord {
+  +int getAmount()
+  +int getBalance()
+  +int getLoadTime()
+  +byte[] getLoadTimeBytes()
+  +int getLoadDate()
+  +byte[] getLoadDateBytes()
+  +String getFreeByte()
+  +byte[] getFreeByteBytes()
+  +long getSamId()
+  +byte[] getSamIdBytes()
+  +int getSvTNum()
+  +byte[] getSvTNumBytes()
+}
+
++class SvDebitLogRecord {
+  +int getAmount()
+  +int getBalance()
+  +int getDebitTime()
+  +byte[] getDebitTimeBytes()
+  +int getDebitDate()
+  +byte[] getDebitDateBytes()
+  +long getSamId()
+  +byte[] getSamIdBytes()
+  +int getSvTNum()
+  +byte[] getSvTNumBytes()
+}
+@enduml
+
+@startuml(id=TRANSACTION_PO_EF)
++class ElementaryFile {
+  +byte getSfi()
+  +FileHeader getHeader()
+  +FileData getData()
+}
+
+note as N1
+   - For a Counter File - the number of record is
+  always 1.
+
+       - For a Binary File - the number of record is
+       always 1, the size of the record size is
+       corresponding to the size of the file.
+    end note
+
+    +enum FileType {
+      BINARY,
+      LINEAR,
+      CYCLIC,
+      SIMULATED_COUNTER,
+      COUNTERS
+    }
+
+    +class FileHeader {
+      +short getLid()
+      +int getRecordsNumber()
+      +int getRecordSize()
+      +FileType getType()
+
+      +boolean isShared()
+      +Short getSharedReference()
+      +byte[] getAccessConditions()
+      +byte[] getKeyIndexes()
+    }
+
+    note as N2
+       - By default getContent() returns the
+      bytes of the record 1 (for a binary file
+      it means all the bytes of the file).
+
+       - By default the dataOffset is 0 to
+      indicate the first byte of the record
+      (00h for the APDU command).
+
+       - If datalengh is absent, all the known
+      bytes are returned.
+    end note
+
+    +class FileData {
+      +byte[] getContent()
+      +byte[] getContent(int numRecord)
+      +byte[] getContent(int numRecord, int dataOffset, int dataLength)
+      +SortedMap<Integer, byte[]> getAllRecordsData()
+
+      +int getContentAsCounterValue(int numCounter)
+      +SortedMap<Integer, Integer> getAllCountersValue()
+    }
+@enduml

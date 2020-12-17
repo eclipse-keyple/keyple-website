@@ -1,0 +1,114 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+
+package org.eclipse.keyple.core #FFFFFF {
+
+  package service #FFFFFF {
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_READER_1_0_0
+
+    package event as even_request #FFFFFF {
+      !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!DEFAULT_DEFAULTSELECTION_1_0_0
+      !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_OBSERVABLEREADER_1_0_0
+
+      ObservableReader "1" o-up- "0..1" AbstractDefaultSelectionsRequest : processes >
+      ObservableReader "1" o-down- "0..1" AbstractDefaultSelectionsResponse : returns >
+    }
+
+    ObservableReader -left-|> Reader : extends
+  }
+
+  package card #FFFFFF {
+    package selection #FFFFFF {
+      !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_SELECTOR_1_0_0
+    }
+
+    package message #FFFFFF {
+      together {
+        !include KeypleCore_Card_ClassDiag_ClassElements.iuml!CARD_SELECTION_1_0_0
+        !include KeypleCore_Card_ClassDiag_ClassElements.iuml!CARD_PROXYREADER_1_0_0
+        !include KeypleCore_Card_ClassDiag_ClassElements.iuml!CARD_REQUEST_1_0_0
+        !include KeypleCore_Card_ClassDiag_ClassElements.iuml!SELECTION_CHANNEL_1_0_0
+        !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_MULTIPLE_1_0_0
+      }
+
+      CardSelectionRequest "1" o-left-> "0..1" CardRequest : contains >
+      ProxyReader "1" -left- "1" ChannelControl : sets >
+      MultiSelectionProcessing "1" -- "1" ProxyReader : sets <
+      CardSelectionResponse "1" o-left-> "0..1" CardResponse : contains >
+      ChannelControl -up[hidden]-> CardRequest
+      ChannelControl -down[hidden]-> CardResponse
+      MultiSelectionProcessing -right[hidden]-> ChannelControl
+      ProxyReader "1" -up- "+" CardSelectionRequest : sends >
+      ProxyReader "1" -down- "+" CardSelectionResponse : receives >
+      ProxyReader "1" -- "1" CardRequest : sends >
+      ProxyReader "1" -- "1" CardResponse : receives >
+
+      !include KeypleCore_Card_ClassDiag_ClassElements.iuml!CARD_APDUREQUEST_1_0_0
+      CardRequest "1" o-up-> "*" ApduRequest : contains >
+      CardResponse "0..1" o-down-> "*" ApduResponse : contains >
+
+      !include KeypleCore_Card_ClassDiag_ClassElements.iuml!CARD_STATUS_1_0_0
+      CardSelectionRequest "1" o-up-|> "1" CardSelector : contains >
+      CardSelectionResponse "1" o-down-> "1" SelectionStatus : contains >
+
+      SelectionStatus "1" o-left-> "0..1" ApduResponse : fci
+
+      !include KeypleCore_Card_ClassDiag_ClassElements.iuml!CARD_DEFAULTSELECTION_1_0_0
+      DefaultSelectionsRequest "1" o-left-> "+" CardSelectionRequest : contains >
+      DefaultSelectionsResponse "1" o-left-> "+" CardSelectionResponse : contains >
+    }
+  }
+  selection -down[hidden]- message
+
+'  card -right[hidden]- service
+  ProxyReader -right-|> Reader : extends
+  DefaultSelectionsRequest -right-|> AbstractDefaultSelectionsRequest : extends
+  DefaultSelectionsResponse -right-|> AbstractDefaultSelectionsResponse : extends
+}
+
+' Red
+skinparam ClassBackgroundColor<<redL>> #FDEDEC
+skinparam ClassBorderColor<<redB>> #E74C3C
+'hide <<red>> stereotype
+
+' Orange
+skinparam ClassBackgroundColor<<orangeL>> #FDF2E9
+skinparam ClassBorderColor<<orangeB>> #E67E22
+'hide <<orange>> stereotype
+
+class ApduRequest <<Send>>
+class CardRequest <<Send>>
+class CardSelectionRequest <<Send>>
+class DefaultSelectionsRequest <<Send>>
+class CardSelector <<Send>>
+class ChannelControl <<Send>>
+class MultiSelectionProcessing <<Send>>
+hide <<Send>> stereotype
+
+class CardResponse <<Receive>>
+class ApduResponse <<Receive>>
+class CardSelectionResponse <<Receive>>
+class SelectionStatus <<Receive>>
+class DefaultSelectionsResponse <<Receive>>
+hide <<Receive>> stereotype
+
+skinparam class {
+  BackgroundColor<<Send>> #FDF2E9
+  BorderColor<<Send>> #E67E22
+  BackgroundColor<<Receive>> #FDEDEC
+  BorderColor<<Receive>> #E74C3C
+}
+@enduml

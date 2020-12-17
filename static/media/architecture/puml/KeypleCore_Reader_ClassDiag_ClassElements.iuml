@@ -1,0 +1,302 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml(id=READER_SERVICE_1_0_0)
++class "<b>final</b> SmartCardService" as SmartCardService << Singleton >> {
+  -<b>final</b> {static}SmartCardService uniqueInstance
+  -<b>final</b> ConcurrentMap<String, Plugin> plugins
+  +{static}SmartCardService getInstance()
+  +String getVersion()
+
+  +Plugin registerPlugin(PluginFactory pluginFactory)
+  +boolean isRegistered(String pluginName)
+  +boolean unregisterPlugin(String pluginName)
+
+  +Plugin getPlugin(String name)
+  +Map<String, Plugin> getPlugins()
+}
+@enduml
+
+@startuml(id=READER_PLUGIN_1_0_0)
++interface Plugin {
+  +String getName()
+
+  +Map<String, Reader> getReaders()
+  +Set<String> getReaderNames()
+  +Reader getReader(String name)
+}
+@enduml
+
+@startuml(id=READER_PLUGIN_1_0_0_PLUGIN)
++interface Plugin {
+  +Map<String, Reader> <color:blue>getReaders</color>()
+  +Set<String> <color:blue>getReaderNames</color>()
+  +Reader <color:blue>getReader</color>(String name)
+}
+@enduml
+
+@startuml(id=READER_POOLPLUGIN)
++interface PoolPlugin {
+  +SortedSet<String> getReaderGroupReferences()
+  +Reader allocateReader(String groupReference)
+  +releaseReader(Reader reader)
+}
+@enduml
+
+@startuml(id=READER_READER_1_0_0)
++interface Reader {
+  +String getName()
+
+  +boolean isCardPresent()
+  +boolean isContactlessTransmission()
+
+  +activateProtocol(String applicationReference, String pluginReference)
+  +deactivateProtocol(String applicationReference)
+}
+@enduml
+
+@startuml(id=READER_READER_1_0_0_PLUGIN)
++interface Reader {
+  +boolean isCardPresent()
+  +activateProtocol(String applicationReference, String pluginReference)
+  +deactivateProtocol(String applicationReference)
+  +boolean <color:blue>isContactlessTransmission</color>()
+}
+@enduml
+
+@startuml(id=READER_UTIL_1_0_0_PLUGIN)
+~interface ProxyElement {
+  +String getName()
+}
+@enduml
+
+@startuml(id=READER_UTIL_1_0_0)
+enum ContactlessCardCommonProtocols {
+.. standard ..
+  ISO_14443_4
+.. NFC compliant ..
+  NFC_A_ISO_14443_3A
+  NFC_B_ISO_14443_3B
+  NFC_F_JIS_6319_4
+  NFC_V_ISO_15693
+.. proprietary ..
+  CALYPSO_OLD_CARD_PRIME
+}
+@enduml
+
+@startuml(id=READER_TERMINALAPPLICATION_1_0_0)
+package specific.terminal_application #85C1E9 {
+  class SpecificTerminal
+
+  class SpecificPluginObserver {
+    +update(ObservablePlugin plugin, AbstractPluginEvent event)
+  }
+  class SpecificReaderObserver {
+    +update(ObservableReader reader, ReaderEvent event)
+  }
+
+  SpecificTerminal -right[hidden]--> SpecificPluginObserver
+  SpecificPluginObserver -right[hidden]--> SpecificReaderObserver
+}
+@enduml
+
+@startuml(id=READER_SPECIFICPLUGIN_1_0_0)
+package specific.plugin #D7BDE2 {
+  +enum SpecificSupportedProtocols {
+    ISO_14443_4
+    CALYPSO_OLD_CARD_PRIME
+  }
+
+
+  +class "<b>final</b> SpecificPluginFactory" as SpecificPluginFactory {
+    +String getPluginName()
+    +Plugin getPluginInstance()
+  }
+
+  ~class SpecificPlugin << Singleton >> {
+    -String name
+    -SpecificPlugin()
+    +{static} SpecificPlugin getInstance()
+    +<b>final</b> String getName()
+'    +<b>final</b> List<SpecificReader> getReaders()
+  }
+
+  ~class SpecificReader {
+    -String name
+    #SpecificReader()
+    +<b>final</b> String getName()
+  }
+
+'  SpecificPluginFactory "1" --> "1" SpecificPlugin : creates
+'  SpecificPlugin "1" *--> "*" SpecificReader : readers
+  SpecificPluginFactory "1" -right-> "1" SpecificPlugin : creates
+  SpecificPlugin "1" *-right-> "*" SpecificReader : readers
+  SpecificSupportedProtocols -left[hidden]- SpecificReader
+}
+@enduml
+
+'---- PLUGIN EVENT -------------------------------------------------------------[
+@startuml(id=READER_PLUGINOBSERVER_1_0_0)
++interface PluginObserver {
+  +update(<b>final</b> PluginEvent event)
+}
+@enduml
+
+@startuml(id=READER_OBSERVABLEPLUGIN_1_0_0)
++interface ObservablePlugin {
+  +addObserver(<b>final</b> PluginObserver observer)
+  +removeObserver(<b>final</b> PluginObserver observer)
+  +clearObservers()
+  +int countObservers()
+}
+@enduml
+
+@startuml(id=READER_EVENTPLUGIN_1_0_0)
++enum "EventType" as EventType_Plugin {
+  READER_CONNECTED
+  READER_DISCONNECTED
+  +EventType(String name)
+  +String getName()
+}
+
++class "<b>final</b> PluginEvent" as PluginEvent {
+  +PluginEvent(String pluginName, String readerName,
+    EventType eventType)
+  +PluginEvent(String pluginName, Set<String> readerNames,
+    EventType eventType)
+
+  +String getPluginName()
+  +SortedSet<String> getReaderNames()
+  +EventType getEventType()
+}
+@enduml
+'---- PLUGIN EVENT -------------------------------------------------------------]
+
+'---- READER EVENT -------------------------------------------------------------[
+@startuml(id=READER_READEROBSERVER_1_0_0)
++interface ReaderObserver {
+  +update(<b>final</b> ReaderEvent event)
+}
+@enduml
+
+@startuml(id=READER_OBSERVABLEREADER_1_0_0)
++interface ObservableReader {
+  +addObserver(<b>final</b> ReaderObserver observer)
+  +removeObserver(<b>final</b> ReaderObserver observer)
+  +clearObservers()
+  +int countObservers()
+
+  +setDefaultSelections(AbstractDefaultSelectionsRequest
+    selectionsR, NotificationMode notificationM)
+  +setDefaultSelectionsAndStartCardDetection(AbstractDefaultSelectionsRequest
+    selectionsR, NotificationMode notificationM, PollingMode pollingM)
+  +startCardDetection(PollingMode pollingMode)
+  +stopCardDetection()
+
+  +finalizeCardProcessing()
+}
+@enduml
+
+@startuml(id=SEPROXY_OBSERVABLEREADER_ReaderAPI)
++interface ObservableReader {
+  +startSeDetection()
+  +stopSeDetection()
+'  +notifySeProcessed()
+}
+@enduml
+
+@startuml(id=SEPROXY_EVENTREADER_0_8)
++enum "EventType" as EventType_Reader {
+  IO_ERROR
+  SE_INSERTED
+  SE_MATCHED
+  SE_REMOVAL
+  +EventType(String name)
+  +String getName()
+}
+
++class "<b>final</b> ReaderEvent" as ReaderEvent {
+  +ReaderEvent(String pluginName, String readerName, EventType
+  eventType, DefaultSelectionsResponse[0..1] defaultSelectionsResponse)
+
+  +EventType getEventType()
+
+  +String getPluginName()
+  +String getReaderName()
+
+  +AbstractDefaultSelectionsResponse getDefaultSelectionsResponse()
+}
+@enduml
+
+@startuml(id=READER_EVENTREADER_1_0_0)
++enum "EventType" as EventType_Reader {
+  IO_ERROR
+  SE_INSERTED
+  SE_MATCHED
+  SE_REMOVAL
+  +EventType(String name)
+  +String getName()
+}
+
++class "<b>final</b> ReaderEvent" as ReaderEvent {
+  +ReaderEvent(String pluginName, String readerName, EventType
+  eventType, DefaultSelectionsResponse[0..1] defaultSelectionsResponse)
+
+  +EventType getEventType()
+
+  +String getPluginName()
+  +String getReaderName()
+  +Plugin getPlugin()
+  +Reader getReader()
+
+  +AbstractDefaultSelectionsResponse getDefaultSelectionsResponse()
+}
+@enduml
+
+@startuml(id=READER_READERNOTIFICATION_1_0_0)
++enum NotificationMode {
+  ALWAYS
+  MATCHED_ONLY
+  +NotificationMode(String name)
+  +String getName()
+  +{static}NotificationMode get(String name)
+}
+
++enum PollingMode {
+  REPEATING
+  SINGLESHOT
+}
+@enduml
+
+@startuml(id=READER_DEFAULTSELECTION_PUB_1_0_0)
++abstract AbstractDefaultSelectionsRequest {
+}
+
++abstract AbstractDefaultSelectionsResponse {
+}
+@enduml
+
+@startuml(id=DEFAULT_DEFAULTSELECTION_1_0_0)
++abstract AbstractDefaultSelectionsRequest {
+  #{abstract} List<SelectionRequest> getSelectionRequests()
+  #{abstract} MultiSelectionProcessing getMultiSelectionProcessing()
+  #{abstract} ChannelControl getChannelControl()
+}
+
++abstract AbstractDefaultSelectionsResponse {
+  #{abstract} +List<SelectionResponse> getSelectionResponses()
+}
+@enduml
+
+'---- READER EVENT -------------------------------------------------------------]
+

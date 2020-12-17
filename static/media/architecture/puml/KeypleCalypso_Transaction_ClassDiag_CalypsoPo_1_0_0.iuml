@@ -1,0 +1,60 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+
+package org.keyple.calypso.transaction #FFFFFF {
+'together {
+  !include KeypleCalypso_Transaction_ClassDiag_ClassElements.iuml!TRANSACTION_CALYPSOPO_0_9_0
+  !include KeypleCalypso_Transaction_ClassDiag_ClassElements.iuml!TRANSACTION_PO_DF
+
+  AccessLevel -down- DirectoryHeader
+
+/'
+  +enum PoCategory {
+    HCE,
+    PRIME_REV1,
+    PRIME_REV2,
+    PRIME_REV3,
+'    PRIME_APPLET,
+'    PRIME_NATIVE,
+    LIGHT,
+    BASIC
+  }
+'/
+
+  together {
+    !include KeypleCalypso_Transaction_ClassDiag_ClassElements.iuml!TRANSACTION_PO_SV
+    SvLoadLogRecord -[hidden]down-> SvDebitLogRecord
+  }
+
+  together {
+    !include KeypleCalypso_Transaction_ClassDiag_ClassElements.iuml!TRANSACTION_PO_EF
+    FileType --+ FileHeader
+
+    ElementaryFile "1" *-- "0..1" FileHeader
+    ElementaryFile "1" *-down- "0..1" FileData
+    FileHeader -[hidden]right--> FileData
+
+    FileHeader .down. N1
+    FileData .down. N2
+  }
+
+  CalypsoPo "1" *-left- "1" DirectoryHeader
+  CalypsoPo "1 " *-right- " 0..1" SvLoadLogRecord
+  CalypsoPo "1" *-- "0..3" SvDebitLogRecord
+'  CalypsoPo "*" -up- "1" PoCategory
+  CalypsoPo "1" *-down- "0..31" ElementaryFile
+}
+@enduml

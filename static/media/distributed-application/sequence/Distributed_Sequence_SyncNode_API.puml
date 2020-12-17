@@ -1,0 +1,42 @@
+@startuml
+
+title
+    Keyple Distributed - Sync Node API (04/11/2020)
+end title
+
+' == THEME ==
+
+skinparam Shadowing false
+skinparam RoundCorner 10
+
+' == CONTENT ==
+
+participant "nodeClient:\n**SyncNodeClient**" as nodeClient #LightBlue
+actor "userSenderClient:\n**<back:LightBlue>SyncEndpointClient**" as userSenderClient
+
+actor "userControllerServer" as userControllerServer
+participant "nodeServer:\n**SyncNodeServer**" as nodeServer #LightBlue
+
+activate nodeClient #LightBlue
+nodeClient -> userSenderClient : sendRequest (<color:red>dtoA</color>)
+activate userSenderClient #Pink
+userSenderClient -> userControllerServer : send synchronous request (<color:red>dtoA</color>)
+
+activate userControllerServer #Pink
+userControllerServer -> userControllerServer : [...]ServerUtils.getSyncNode ()
+note right
+    To access the node it is necessary
+    to use the utility class corresponding
+    to the server configuration :
+    * **RemotePlugin**ServerUtils
+    * **LocalService**ServerUtils
+    * **PoolLocalService**ServerUtils
+end note
+userControllerServer -> nodeServer : onRequest (<color:red>dtoA</color>)
+activate nodeServer #LightBlue
+return <color:blue>dtoB</color>
+return <color:blue>dtoB</color>
+return <color:blue>dtoB</color>
+
+
+@enduml

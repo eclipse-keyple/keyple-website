@@ -1,207 +1,216 @@
 ---
-title: Keyple Core Architecture
-linktitle: Keyple Core
+title: Keyple Core
 type: book
 toc: true
 draft: false
 weight: 120
 ---
 
-This high-level API is convenient for developers implementing smart card processing application for terminal interfaced with smart card readers.
+## Features / packages and corresponding usages
 
-## Packages & features
-The Keyple Core User API is a tool to manage readers, and to select “generic” Secure Elements.
+The Keyple Core is a tool to handle smart card reader and to operate generic processing with smart cards.
+
+The Core is divided in 4 sub-modules:
+- reader : includes the API to access and manage a reader.
+- plugin : provides factorized processing for the implementation of plugin.
+- card : the generic operation for smart cards.
+- service : the common interfaces and the main service of Keyple.
+
+According to the developer’s objective different API must be imported:
+- for the implementation of a smart card terminal application, only the high-level API of the ‘reader’ and ‘card’ modules.
+- to implement a plugin, all the ‘reader’ API and the low-level ‘plugin’ API.
+- to develop a dedicated library supporting the command sets and transaction features of a specific smart card solution, the low-level ‘reader’ and ‘card’ API.
 
 <table>
+<thead>
   <tr>
-    <td colspan="2"><b>Features</b></td>
-    <td><b>Packages</b></td>
+    <th>Module</th>
+    <th>Package</th>
+    <th>API<br/>level</th>
+    <th>Feature</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="4">Reader</td>
+    <td>org.eclipse.keyple.core.<b>service</b></td>
+    <td>high</td>
+    <td>Management of the smart card readers<br/>
+      <ul><li>Registration of plugins to the smart card Service<br/></li>
+        <li>Access to the readers through plugins</li></ul></td>
   </tr>
   <tr>
-    <td rowspan="3">SE reader management</td>
-    <td>Secure Element reader access</td>
-    <td>org.eclipse.keyple.core.<b>seproxy<b></td>
+    <td>org.eclipse.keyple.core.service.<b>event</b></td>
+    <td>high</td>
+    <td>Notifications of reader plug/unplug, of smart card insertion/removed<br/>
+      <ul><li>Define observers of plugins or readers<br/></li>
+        <li>Interface to be implemented by observers to be notified on plugin event or reader event<br/></li>
+        <li>For observable reader, setting of default selections, to automatically operate in case of smart card insertion</li></ul></td>
   </tr>
   <tr>
-    <td>Notifications of:
-           <li>reader plug/unplug,</li>
-           <li>SE insertion/remove</li>
-           Definition of automatic selection request in case of SE insertion on an Observable Reader.</td>
-    <td>org.eclipse.keyple.core.seproxy.<b>event<b></td>
+    <td>org.eclipse.keyple.core.service.util</td>
+    <td>high</td>
+    <td>Communication protocols setting for contactless/contacts Reader</td>
   </tr>
   <tr>
-    <td>Communication protocols filters (setting for contactless/contacts SE Reader)</td>
-    <td>org.eclipse.keyple.core.seproxy.<b>protocol<b></td>
+    <td>org.eclipse.keyple.card.<b>message</b></td>
+    <td>low</td>
+    <td>Transmission of grouped APDU commands to a Reader</td>
   </tr>
   <tr>
-    <td>SE selection</td>
-    <td>Generic selection of a Secure Element</td>
-    <td>org.eclipse.keyple.core.<b>selection<b></td>
+    <td>Plugin</td>
+    <td>org.eclipse.keyple.core.<b>plugin</b><br/>
+    <td>low</td>
+    <td>Reader plugins implementation<br/>
+      <ul><li>Utility classes providing generic processing for Readers </li></ul></td>
   </tr>
+  <tr>
+    <td rowspan="2">smart card</td>
+    <td>org.eclipse.keyple.card.<b>selection</b></td>
+    <td>high</td>
+    <td>Generic selection of a smart card<br/>
+      <ul><li>preparation of smart card selection requests<br></li>
+        <li>matching selection results as smart card images</li></ul></td>
+  </tr>
+  <tr>
+    <td>org.eclipse.keyple.core.card.<b>command</b></td>
+    <td>low</td>
+    <td>Generic API to develop a smart card specific library</td>
+  </tr>
+</tbody>
 </table>
 
+A terminal application operating smart card must only import the Keyple Core packages: ‘service’ and ‘card’.
 
-## Secure Element transaction sequence – setting & selection
-A Secure Element transaction starts with the setting of plugins in order to choose the reader to communicate with SE.
+{{< figure library="true" src="architecture/KeypleCore_Packages.svg" title="Core packages" >}}
 
-Using a SE reader, depending on its capabilities, there can be two ways to select a SE through it:
- - Either the processing of an “explicit selection”: if a SE is present in the reader, then the terminal directly operates a SE selection request through the reader.
- - Otherwise if the reader is “observable”, the operating of a “default selection”: in this case a default selection request is defined on the reader, the terminal observes the reader, and wait to be notified by the reader about a SE insertion and selection.
+A reader plugin could be implemented by importing the ‘plugin’, ‘card’ and ‘service’ packages.
 
-At the end the terminal gets a selected SE, it can follow by operating APDU commands with the selected SE until the communication channel is kept open.
-
-![SE Selection Scenarii scheme](../../img/KeypleCore-0-SE_SelectionScenarii.png "SE Selection Scenarii")
-
-Then a Keyple Core extension could be used to operates APDU commands with the selected SE solution.
-> The Keyple Calypso extension provides a high-level API to defined ticketing processing involving Calypso cards, cf.: [“Keyple Calypso User Guide”](https://github.com/eclipse/keyple-java/blob/master/docs/KeypleCalypso_UserGuide.adoc).
-
-## Secure Element Proxy Service API – readers management
-Using the Keyple Core, Secure Element Readers (SeReader) are managed through plugins (ReaderPlugin).
-
-The active plugins are registered to the SE Proxy Service (the singleton SeProxyService).
- - Each plugin is registered through a unique name to the SE Proxy Service.
- - Each reader of a plugin is also defined with a unique name inside the plugin.
-
-### Plugin setting
-To secure the usage of the SE Proxy API for the development of terminal applications, the internal implementation of plugins (classes SpecificPluginImpl & SpecificReaderImpl) is hidden.
-
- - For a specific plugin, only the plugin & reader interfaces (SpecificPlugin & SpecificReader) and the factory (class SpecificPluginFactory) are public.
- - The factory of a plugin is set to register a specific plugin to the SE Proxy Service.
-
-![SE Proxy - Plugin Setting scheme](../../img/KeypleCore-1-SE_Proxy-PluginSetting.png "SE Proxy - Plugin Setting")
-
-Most of plugins of local readers of Keyple are defined as singleton with a unique instance (e.g.: PC/SC, Android NFC, Android OMAPI, most of embedded readers).
-
-For the Remote SE plugin defined to manage remote readers, specific plugin instances are created for each communication interfaces.
-
-### SE readers’ access
-The SE Proxy Service allows to get all the list of the active plugins. A specific plugin could also be directly recovered through its name.
-
-In the same way, a plugin can provide the list of all the plugged readers.
-
-![SE Proxy - Reader Access scheme](../../img/KeypleCore-2-SE_Proxy-ReaderAccess.png "SE Proxy - Reader Access")
-
-Depending on the native reader technology, some specific parameters could be defined at the plugin or reader level.
-
-For a classic plugin, the number of readers is determinate, all the plugged readers of the plugin are directly available for the SE Proxy Service.
-
-#### Support of reader farm or HSM
-For systems based on a centralized security, in order to manage multiple remote terminal in parallel, central servers could requires to interface a huge number (several hundreds or thousands) of SE through a farm of readers or HSM (Hardware Security Module: an electronic board able to emulate multiple SE).
-
- - The multitude of embedded SE could be divided in different groups of profiles.
- - An HSM is often shared between several services, so the full set of readers isn't directly available for a service, a service has to request the allocation of a reader from a specific group.
-
-The SE Proxy Service could support reader farm or HSM though plugins managing "pool" of readers (ReaderPoolPlugin).
-
- - At the initialization, the list of reader is empty. The list is be filled depending on the reader allocations requested.
- - When not more required, a reader could be released from the pool.
-
-All plugins have to implement the interface ReaderPlugin and SeReader. A plugin managing a pool of reader should implement in addition the interface ReaderPoolPlugin.
-
-#### SE presence check & “explicit selection transaction”
-A SE reader has the capability to check is a SE is present or not.
-
-> For SE terminal processing for which the presence of a SE in a reader is "static' during a transaction, the transaction starts in general with the verification of the SE presence. If the SE is present, the transaction can continue with the selection of the SE. We call this kind of transaction: an "explicit selection transaction".
-
-### Plugin & Reader events
-For some SE terminal, the processing is dynamically driven by the insertion/remove of a SE in a reader, or by the plug/unplug of a reader.
-
-E.g., in transportation, the ticketing transaction of access control gates is often started when a contactless card is detected in the field of the reader. For that, in Keyple, a SE reader or a plugin has to be observable.
-
-![SE Proxy - Observer Pattern scheme](../../img/KeypleCore-3-SE_Proxy-ObserverPattern.png "SE Proxy - Observer Pattern")
-
-A plugin could be optionally observable (by implementing ObservablePlugin).
-
- - In this case a terminal application could observe the plugin (by implementing PluginObserver) in order to be notified (PluginEvent) when a new reader is plugged to the plugin, or when a referenced reader is unplugged.
- - To receive the notification of a specific plugin, the plugin observer should first be added to the observer list of the observable plugin.
-
-Depending on the capability of the plugin, a reader could be optionally observable (by implementing ObservableReader).
-
- - A terminal application could observe the plugin (by implementing ReaderObserver) in order to be notified (ReaderEvent) when a SE is inserted or removed from a specific.
- - The reader observer should be added to the observer list to receive the notifications the observable reader.
-
-By default, an observable reader notifies only the insertion or the remove of a SE.
-
-#### Plugin observability activation
-An observable plugin automatically starts to observe plugin events when at least one plugin observer is registered and stops the listening when the last plugin observer is removed.
-
-#### Automatic selection & “default selection transaction”
-On an observable reader, there is in addition the possibility to define a "default selection operation": in this case, when a SE is inserted, the observable reader tries automatically to select the inserted SE using the defined default setting.
-
- - If the inserted SE is successfully selected, then the observable reader notifies that "an inserted SE has matched the default selection" and provides the corresponding response.
- - Otherwise if the observable reader failed to select the inserted SE, it could just notify that a SE has been inserted.
-
-> For SE terminal for which the processing is "dynamically" driven by the presence of a SE in a reader, the transaction starts in general with the detection of the insertion of a SE and its automatic selection. The reader observer is then notified to analyze the response of the selected SE, and to continue the transaction with the SE. We call this kind of transaction: a "default selection transaction".
-
-![SE Proxy - SE Listening scheme](../../img/KeypleCore-4-SE_Proxy-SE_Listening.png "SE Proxy - SE Listening")
-
-#### Reader notification modes
-If no default selection is defined, an observable reader notifies its observers for “SE insertion” (whatever the SE detected) or “SE removed” events.
-A default selection could be defined for the “always” or the "matched only” notification mode.
-
- - In the always mode, if the inserted matches the default selection, the observers are notified about a “SE matched” event, otherwise an “SE insertion” event is notified.
- - In case of "matched only” mode, the observable reader doesn’t notify SE insertion event. The reader observer will be notified only if a default selection succeed on the observable reader; this configuration allows the reader observer to skip the processing of wrong SE insertions.
-
-#### Reader observability activation, “polling mode” & “SE removal procedure”
-For an observable reader, the listening of reader event requires also the registration of at least one reader observer.
-
-An observable reader could switch between four internal states: “Wait for start detection”, “Wait for SE insertion”, “Wait for SE processing”, “Wait for SE removal”.
-
- - At the wait for start detection, the observable reader doesn’t notify any event.
- - The start of the SE detection by an observable reader need to be  explicitly requested by an observer by setting a “polling mode” either through a ‘startSeDetection’ or a ‘setDefaultSelectionRequest’ commands. The SE detection could be started for polling mode defined either in “single shot” or “repeating” mode.
-   - In single shot mode, the observable reader stops the detection after the SE removal (back to the wait for start detection).
-   - In repeating mode, after the SE removal, the observable reader restart to detect another SE (back to the wait for SE insertion).
- - Wait for SE insertion, if a SE is inserted or selected, the registered reader observers are notified by the observable reader according to the defined notification mode. The observable reader switches to the wait for SE processing.
- - During the SE processing by the observers, the observable reader waits that an observer acknowledges the end of the SE processing.
- - There are two waits to ends the processing of an observed SE:
-   - Either an observer directly could stop the listening of the observable reader (‘stopSeDetection’ command). The observable reader switches to the wait for start detection, and the observers are immediately notified about the SE remove.
-   - Otherwise, the observers could wait for a clean remove of the SE from the observable reader; it’s the SE removal sequence:
-     - When the main reader observer has finished the processing of the SE, it could request the observable reader to wait for the remove of the SE (‘notifySeProcessed’ command).
-     - Finally, the reader observers could be notified when the SE is effectively removed.
-     - If the SE insertion listening started in the "repeating polling mode", then when the SE is removed, the observable reader automatically starts again the listening of a new SE insertion; otherwise a new explicit request to start the SE listening is required to restart the listening.
-
-## Secure Element Selection API
-### Selection parameters (Communication protocol, ATR, AID)
-To select a Secure Element, a SE Selector has to be defined, based on one to three parameters.
-
- - A SE selection could be defined for a specific communication protocol.
- - A SE could be filtered for an ATR (Answer To Reset) matching a specific regular expression.
- - A specific application of a SE could be selected by setting its AID (Application IDentifier). 
-
-![SE Proxy - SE Selector scheme](../../img/KeypleCore-5-SE_Proxy-SE_Selector.png "SE Proxy - SE Selector")
+A smart card specific library could be implemented on top of the ‘card’ package.
 
 
-### Selection transaction
-To operate a transaction with a SE, it should be firstly selected. The aim of the SE selection API is to get a SE resource: a set of a reader with a selected SE.
+## 'Service Interface'
+for the development of ticketing terminal application
 
-A SE Selection is managed in two steps:
+### Reader Access
+On Keyple, the smart card readers are managed through plugins in order to integrate specific reader solutions.
+The '**SmartCard Service**' singleton provides the unique name list of registered plugins. There can be three kinds of plugin:
+ - ‘**Plugin**’ is the generic interface to list the readers of a plugin, or to access to a specific reader with its name.
+ - The ‘**Observable Plugin**’ interface extends Plugins which have the capability to be observed: in order to notify registered Plugin Observers about the plug or unplug of readers. Plugin Observers could be added or removed to the Observable Plugin. Useful for systems allowing the hot plug / unplug of Readers.
+ - A ‘**Pool Plugin**’ is a plugin for which a Reader is available only after an explicit allocation. When not more necessary, a Reader must be released. Useful for server solutions managing farms of Readers or interfaced with HSM: unallocated Readers or HSM instances could be shared between several smartcard terminal solutions.
 
- - first the “preparations” of selection request based on SE selector,
- - next the “processing” of the selection requests.
+A smartcard Reader is identified through its unique name in a Plugin. There are two kinds of Reader:
+ - The ‘**Reader**’ is the generic interface to handle a smartcard reader. The presence of card in a Reader could be checked.
+ - The ‘**Observable Reader**’ interface extends Readers which have the capability to notify registered Reader Observers about the insertion or remove of a Card in the Reader. Reader Observers could be added or removed to the Observable Reader. Useful for systems automatically starting the processing of a Card at its insertion: like a ticketing validator.
+{{< figure library="true" src="architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" title="[Reader Access v1.0.0" >}}
 
-In order to manage multiple kinds of SE, several selection requests could be prepared with different selectors.
+(The APDU transmission with a Card is managed at a lower layer, through a Card Solution API.)
 
-Depending on the setting of the reader, the processing of the selection could be operated in two different ways:
+#### Specific Plugin integration
+The Plugins are registered to the SmartCard Service through related specific Plugin Factory.
+{{< figure library="true" src="architecture/KeypleCore_Reader_ClassDiag_SpecificPluginFactoryAndProtocol_1_0_0.svg" title="Specific Plugin v1.0.0" >}}
 
- - either in a “explicit” way after the checking of the SE presence,
- - or in a ”default” way for an observable reader detecting the insertion of a SE.
+#### Reader Notifications
+To be notified about '**Plugin Event**' or '**Reader Event**', a terminal application must implement the dedicated '**Plugin Observer**' or '**Reader Observer**' interfaces.
 
-> cf. [“Generic Use Case 1 / Explicit AID Selection”](https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase1_ExplicitSelectionAid/src/main/java/org/eclipse/keyple/example/generic/pc/usecase1/ExplicitSelectionAid_Pcsc.java) example<br>
-> cf. [“Generic Use Case 2 / Default Selection Notification”](https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase2_DefaultSelectionNotification/src/main/java/org/eclipse/keyple/example/generic/pc/usecase2/DefaultSelectionNotification_Pcsc.java) example
+{{< figure library="true" src="architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" title="Reader Notifications v1.0.0" >}}
 
-![SE Proxy - SE Selection scheme](../../img/KeypleCore-6-SE_Proxy-SE_Selection.png "SE Proxy - SE Selection")
+##### Plugin Event
+Several ‘Plugin Observers’ could be registered to an Observable Plugin.
+In case of reader connection / disconnection, the Observable Plugin notifies sequentially the registered Plugin Observers with the corresponding Plugin Event.
+The Observable Plugin is a blocking API, the thread managing the issuance of the Plugin Event waits the acknowledge of the Plugin Observer currently notified.
 
-In case a SE Selection is prepared with a channel control mode defined as “keep open”, then the different prepared selectors are operated with the presented SE, but the processing of the selection stops when a selector matches the SE.
+##### Reader Event
+Several ‘Reader Observers’ could be registered to an Observable Reader.
+In case of Card insertion / removal or selection match, the Observable Reader notifies sequentially the registered Reader Observers with the corresponding Reader Event. The Observable Reader could be a blocking API, the thread managing the issuance of the Plugin Event could wait the acknowledge of the notified Reader Observers.
 
- - The result of the SE selection could be a single ‘matching SE’: this SE is kept as selected in the reader. It’s possible to directly operate command with the SE.
+An Observable Reader has the capability to be set with a ‘Default Selections Request’: in this case when a Card is inserted in the Reader, the Reader will try to operate the configured default selections. If a selection successfully matches with the Card, instead to simply notify about the insertion of a Card, the Observable Reader will notify about a successful selection with a Card application.
+ - If the notification mode is defined as ‘always’, then in case of Card insertion, the Observable Reader will notify a matched card Reader Event in case of successful selection, or a simple card insertion Reader Event if not.
+ - If the notification mode is defined as ‘matched only’, then in case of Card insertion, simple card insertion Reader Events are not notified.
 
-But if a SE selection has been defined with a channel control mode at “close after”, in this case all the prepared SE selectors are operated whatever the matching result.
+When the processing of an inserted or matched Card is finished, a Reader Observer must release the logical channel with the Card, in order to prepare the Observable Reader to detect the removal of the Card.
 
- - After each selector processing, if a selector has matched, the logical channel with the SE is closed (the SE is no more selected).
- - If several applications of the presented SE have matched the selectors: the result of the processing of SE selections is a list matching SE, but all of them are deselected. To continue the SE processing, the terminal application has to choose one matching SE, and to select it again but in “keep open” channel control mode.
+##### Observable Reader states
+An Observable Reader is active only when at least one Reader Observer is registered, and if the start of the detection has been requested. 
+When active, an Observable Reader could switch between three internal states: ‘Wait for Card Insertion’, ‘Wait for Card Processing’, & ‘Wait for Card Removal’.
 
-> cf. [“Generic Use Case 3 / Grouped Multi-Selection”](https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase3_GroupedMultiSelection/src/main/java/org/eclipse/keyple/example/generic/pc/usecase3/GroupedMultiSelection_Pcsc.java) example
+In the nominal case, a Reader Observer indicates to the Observable Reader that the processing of the SE is finished by releasing the Card Channel.
+To manage a failure of the Reader Observer process, the Observable Reader interface provides also a method to finalize the Card processing.
 
-After the selection of a SE, using a SE resource, the terminal can continue by operating a specific transaction with the corresponding SE.
+{{< figure library="true" src="architecture/KeypleCore_Reader_StateDiag_ObservableReaderStates_1_0_0.svg" title="Observable Reader States" >}}
 
-> cf. [“Generic Use Case 4 / Sequential Multi-Selection”](https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase4_SequentialMultiSelection/src/main/java/org/eclipse/keyple/example/generic/pc/usecase4/SequentialMultiSelection_Pcsc.java) example
+The states could be switched:
+ - due to an explicit API request (blue arrows):
+   - the release of the Card Channel,
+   - the call of an Observable Reader method:
+     - the addition or the remove of an Observable Reader,
+     - a request to start or stop the detection, to finalize the Card processing.
+ - Or because of an external event (red arrows), the insertion or the remove of a Card.
+   - the insertion a Card causing the Observable Reader to notify a 'Card matched' Reader Event (in case of successful default selection) or a 'Card inserted' Reader Event (Notification Mode defined as always).
+   - the removal of a Card causing the Observable Reader to notify a 'Card removed' Reader Event.
+
+If a Card detection is started with the 'repeating' polling mode, then later when the Card is removed, the Reader starts again the detection of a new Card.
+
+Whatever the Plugin of Observable Reader, when waiting for the Card removal, any Observable Reader shall have the capability to notify the remove of the Card.
+Some Plugin solutions could have the capability to notify a Card removal also during the processing of the Card.
+
+
+### Card Selection
+
+#### Selection scenarios
+Depending on the Card transaction use case, or on the Reader capability, there are two ways to manage the Selection of a Card:
+ - Either on a simple Reader, a Selection could be operated directly by transmitting the Selection Request. In this case the same entity manages both the Card Selection and the Card processing.
+ - Otherwise, on an Observable Reader, a Default Selection could be defined. In this case the Selection is operated automatically at the insertion of the Card. In this case, the Card Selection is next managed by the Observable Reader, but the Card processing is managed by a Reader Observer.
+
+{{< figure library="true" src="architecture/KeypleCore_CardSelection_ActivityDiag_Scenarii.svg" title="Selection v1.0.0" >}}
+
+#### Selection setting and processing
+A Card Selection request is defined with a Card Selector. A Card Selector could be defined with tree optional levels of selection filter.
+ - The selection could be limited to match a specific card communication protocol.
+ - The Card ATR could be filtered to match a regular expression.
+ - If an AID is defined, the local reader transmits a Select Application APDU command to the card.
+If a SE Selector is defined without any filter, the selection is always successful if a card is present in the reader.
+
+Depending on the Keyple Card Solution extension library, a card request could be completed with specific card commands to operate at the selection (for example, a Select File for a specific DF LID, the read of a specific file).
+
+For terminal managing several kinds of card applications, a Card Selection could be prepared with several card selection request to operate sequentially with the card.
+
+According to the defined 'multi selection processing' mode, the card selection could stop at the first selection request matching card application, otherwise all the prepared card selection request could be operated.
+ - Before the new processing of card selection request, the logical channel previously opened is closed.
+ - The 'channel control' defines if the logical channel should be kept open or close after the last processed card selection request.
+
+{{< figure library="true" src="architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" title="Card Selection v1.0.0" >}}
+
+The result of a card request selection is a card image of a matching card. For a card selection with multiple requests, several matching card could be provided.
+
+## 'Card Interface'
+for the development of smartcard solution library
+
+The Keyple Calypso extension uses the card interface to exchange APDU commands with Calypso cards and SAM.
+
+### APDU Transmission
+{{< figure library="true" src="architecture/KeypleCore_Card_ClassDiag_CardMessage_1_0_0.svg" title="APDU Transmission v1.0.0" >}}
+
+## 'Plugin API'
+for the implementation of smartcard reader plugins
+
+### Plugin Factorized Processing
+
+The implementation of Plugins requires to extend the classes AbstractPlugin  and AbstractLocalReader.
+
+ - If the reader solution allows the hot plug/unplug of readers then AbstractThreadedObservablePlugin should be extended.
+ - In case the local reader has the capability to detect the insertion or the removal or a card, then AbstractObservableLocalReader should be extended.
+
+For reader solutions managing themselves the allocation of logical channel for communicatio with smart cards, the interface SmartSelectionReader should be implemented (e.g. it is the case for the OMAPI plugin).
+
+Only the abstract methods highlighted **in blue** have to be implemented have to be implemented by the specific plugins.
+
+For plugins with ObservableReader: depending on the capability of the reader solution different interfaces could be implemented:
+ - WaitForCardInsertionAutonomous
+ - WaitForCardRemovalAutonomous
+ - WaitForCardRemovalDuringProcessing or DontWaitForCardRemovalDuringProcessing
+ - WaitForCardInsertionBlocking or WaitForCardInsertionNonBlocking
+ - WaitForCardRemovalBlocking or WaitForCardRemovalNonBlocking
+ - AbstractObservableLocalAutonomousReader
+
+{{< figure library="true" src="architecture/KeypleCore_Plugin_ClassDiag_PluginImplementaion_1_0_0.svg" title="Plugin Factorized Processing v1.0.0" >}}

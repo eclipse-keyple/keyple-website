@@ -1,0 +1,271 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml(id=PLUGIN_FACTORY_1_0_0)
++interface PluginFactory {
+  +String getPluginName()
+  +Plugin getPluginInstance()
+}
+@enduml
+
+@startuml(id=PLUGIN_OBSERVABLE_NOTIFIER_1_0_0)
++interface ObservablePluginNotifier {
+  +notifyObservers(<b>final</b> PluginEvent event)
+}
+@enduml
+
+@startuml(id=READER_OBSERVABLE_NOTIFIER_1_0_0)
++interface ObservableReaderNotifier {
+  +notifyObservers(<b>final</b> ReaderEvent event)
+}
+@enduml
+
+@startuml(id=PLUGIN_SMART_SELECTION_1_0_0)
++interface SmartSelectionReader {
+  +ApduResponse <color:blue>openChannelForAid</color>(byte[] dfName)
+  +<color:blue>closeLogicalChannel()</color>()
+}
+@enduml
+
+@startuml(id=PLUGIN_SMART_OBSERVABLE_1_0_0)
++interface WaitForCardInsertionAutonomous {
+}
++interface WaitForCardRemovalAutonomous {
+}
++interface WaitForCardRemovalDuringProcessing {
+}
++interface DontWaitForCardRemovalDuringProcessing {
+}
++interface WaitForCardInsertionNonBlocking {
+}
++interface WaitForCardRemovalNonBlocking {
+}
++interface WaitForCardInsertionBlocking  {
+  +boolean <color:blue>waitForCardPresent</color>()
+  +<color:blue>stopWaitForCard</color>()
+}
++interface WaitForCardRemovalBlocking {
+  +boolean <color:blue>WaitForCardRemovalBlocking</color>()
+  +<color:blue>stopWaitForCardRemoval</color>()
+}
+@enduml
+
+@startuml(id=PLUGIN_PLUGIN_1_0_0)
++abstract AbstractPlugin {
+  -<b>final</b> String name
+  #ConcurrentHashMap<String, Reader> readers
+  -boolean isRegistered
+  --
+  #{abstract} AbstractPlugin(String name)
+'
+  .. implementation of the public interface Plugin ..
+  +<b>final</b> String getName()
+  +<b>final</b> Set<String> getReaderNames()
+  +<b>final</b> Reader getReader(String name)
+  +<b>final</b> Map<String, Reader> getReaders()
+'
+  .. protected abstract method to be implemented by <color:blue>native</color> Plugin ..
+  #{abstract} Map<String, Reader> <color:blue>initNativeReaders</color>()
+
+  .. deprecated internal registration - will be removed in v2.0.0 ..
+  ~checkStatus()
+  +register()
+  +unregister()
+}
+@enduml
+
+@startuml(id=PLUGIN_OBSERVALEPLUGIN_1_0_0)
++abstract AbstractObservablePlugin {
+  -List<PluginObserver> observers
+  -<b>final</b> final Object sync
+  --
+  #AbstractObservablePlugin(String name)
+'
+  .. implementation of the public interface ObservablePlugin ..
+  +addObserver(<b>final</b> PluginObserver observer)
+  +removeObserver(<b>final</b> PluginObserver observer)
+  +clearObservers()
+  +<b>final</b> int countObservers()
+
+  .. implementation of the public interface ObservablePluginNotifier ..
+  +<b>final</b> notifyObservers(<b>final</b> PluginEvent event)
+
+  .. deprecated internal registration - to be fixed in v2.0.0 ..
+  +unregister()
+}
+
++abstract AbstractThreadedObservablePlugin {
+  -{static}<b>final</b> long SETTING_THREAD_TIMEOUT_DEFAULT
+  #long threadWaitTimeout
+  -<b>final</b> SortedSet<String> nativeReadersames
+  -EventThread thread
+  --
+  #AbstractThreadedObservablePlugin(String name)
+'
+  .. Override of the implentation of the public interface ObservablePlugin ..
+  +<b>final</b> addObserver(<b>final</b> PluginObserver observer)
+  +<b>final</b> removeObserver(<b>final</b> PluginObserver observer)
+  +<b>final</b> clearObservers()
+
+  .. protected abstract methods to be implemented by <color:blue>native</color> ObservablePlugin ..
+  #{abstract} SortedSet<String> <color:blue>fetchNativeReadersNames</color>()
+  #{abstract} Reader <color:blue>fetchNativeReader</color>(String name)
+  #{abstract} PluginObservationExceptionHandler <color:blue>getObservationExceptionHandler</color>()
+
+  .. deprecated internal process ..
+  ~Boolean isMonitoring()
+}
+@enduml
+
+@startuml(id=PLUGIN_ABSTRACTREADER_1_0_0)
++abstract AbstractReader {
+  -<b>final</b> String pluginName
+  --
+  #AbstractReader(String pluginName, String name)
+  #<b>final</b> String getPluginName()
+'
+  .. implementation of tbe public interface ProxyReader ..
+  +<b>final</b> String getName()
+  +<b>final</b> List<CardSelectionResponse> transmitCardSelectionRequests(List<CardSelectionRequest> requests, MultiSelectionProcessing
+    selectionMode, ChannelControl channelControl)
+  +<b>final</b> CardResponse transmitCardRequest(CardRequest request, ChannelControl channelControl)
+.. no +<b>final</b> releaseChannel() ..
+'
+  .. protected abstract methods to be implemented by AbstractLocalReader or VirtualReader ..
+  #{abstract} List<CardSelectionResponse> processCardSelectionRequests(List<CardSelectionRequest> requests,
+    MultiSelectionProcessing selectionMode, ChannelControl channelControl)
+  #{abstract} CardResponse processCardRequest(CardRequest request, ChannelControl channelControl)
+..  #{abstract} terminateChannel() ..
+'
+  .. deprecated internal registration - will be removed in v2.0.0 ..
+  ~checkStatus()
+  ~register()
+  #unregister()
+}
+@enduml
+
+@startuml(id=PLUGIN_LOCALREADER_1_0_0)
++abstract AbstractLocalReader {
+  -{static}<b>final</b> byte[] getResponseHackRequestBytes
+  -boolean logicalChannelIsOpen
+  -CardSelector.AidSelector.IsoAid aidCurrentlySelected
+  -SelectionStatus currentSelectionStatus
+  -long before
+  -Map<String, String> protocolAssociations
+  --
+  #AbstractLocalReader(String pluginName, String name)'
+  .. implementation of the public interface CardReader ..
+  +<b>final</b> boolean isCardPresent()
+  +<b>final</b> activateProtocol(String readerProtocolName, String applicationProtocolName)
+  +<b>final</b> deactivateProtocol(String readerProtocolName)
+
+  .. implementation of tbe public interface ProxyReader ..
+  +<b>final</b> releaseChannel()
+'
+  .. implementation of the protected abstract methods of the class AbstractReader ..
+    ~<b>final</b> List<CardSelectionResponse> processCardSelectionRequests(List<CardSelectionRequest> requests,
+      MultiSelectionProcessing selectionMode, ChannelControl channelControl)
+    ~<b>final</b> CardResponse processCardRequest(CardRequest request, ChannelControl channelControl)
+..  ~<b>final</b> terminateChannel() ..
+'
+  .. protected abstract methods to be implemented by <color:blue>native</color> CardReader ..
+  #{abstract} <color:blue>activateReaderProtocol</color>(String readerProtocolName)
+  #{abstract} <color:blue>deactivateReaderProtocol</color>(String readerProtocolName)
+  #{abstract} boolean <color:blue>isCurrentProtocol</color>(String readerProtocolName)
+
+  #{abstract} boolean <color:blue>checkCardPresence</color>()
+
+  #{abstract} <color:blue>openPhysicalChannel</color>()
+  #{abstract} <color:blue>closePhysicalChannel</color>()
+  #{abstract} boolean <color:blue>isPhysicalChannelOpen</color>()
+
+  #{abstract} byte[] <color:blue>getATR</color>()
+  #{abstract} byte[] <color:blue>transmitApdu</color>(byte[] apduIn)
+  .. internal process ..
+  #closeLogicalAndPhysicalChannels()
+  -openPhysicalChannelAndSetProtocol()
+  -resetProtocolAndClosePhysicalChannel()
+'
+  -ApduResponse recoverSelectionFciData(CardSelector.AidSelector aidSelector)
+  -ApduResponse processExplicitAidSelection(CardSelector.AidSelector aidSelector)
+  -List<CardSelectionResponse> processCardSelectionRequest(CardSelectionRequest request)
+  -CardResponse processCardRequest(CardRequest request)
+  -ApduResponse processApduRequest(ApduRequest apduRequest)
+  -ApduResponse case4HackGetResponse(int originalStatusCode)
+  ~SelectionStatus openLogicalChannel(CardSelector selector)
+  ~<b>final</b> SelectionStatus openLogicalChannelAndSelect(CardSelector selector)
+  ~<b>final</b> boolean isLogicalChannelOpen()
+  -closeLogicalChannel()
+  ~closeLogicalAndPhysicalChannels()
+  ~{abstract} terminateSeCommunication()
+}
+@enduml
+
+@startuml(id=PLUGIN_OBSERVABLEREADER_1_0_0)
++abstract AbstractObservableLocalReader {
+  -List<ReaderObserver> observers
+  -DefaultSelectionsRequest[0..1] defaultSelectionsRequest
+  -NotificationMode notificationMode
+  -PollingMode currentPollingMode
+  ~<b>final</b> ObservableReaderStateService stateService
+  -<b>final</b> Object sync
+  --
+  #AbstractObservableLocalReader(String pluginName, String readerName)
+'
+'  .. implementation of the public interface CardReader ..
+'  +<b>final</b> boolean isCardPresent()                            <color:red>to remove !!</color>
+  .. implementation of the public interface ObservableReader ..
+  +<b>final</b> addObserver(ReaderObserver observer)
+  +<b>final</b> removeObserver(ReaderObserver observer)
+  +<b>final</b> clearObservers()
+  +<b>final</b> int countObservers()
+
+  +<b>final</b> setDefaultSelections(AbstractDefaultSelectionsRequest
+      selectionsR, NotificationMode notificationM)
+  +<b>final</b> setDefaultSelectionsAndStartCardDetection(AbstractDefaultSelectionsRequest
+      selectionsR, NotificationMode notificationM, PollingMode pollingM)
+  +<b>final</b> startCardDetection(PollingMode pollingMode)
+  +<b>final</b> stopCardDetection()
+
+  +<b>final</b> finalizeCardProcessing()
+'  ~<b>final</b> terminateCardCommunication()       <color:red>only one to keep ??</color>
+'
+  .. implementation the public interface ObservableReaderNotifier ..
+  +<b>final</b> notifyObservers(<b>final</b> ReaderEvent event)
+'
+'  .. protected abstract method to be implemented by <color:blue>native</color> ObservableReader ..
+'  #{abstract} ObservableReaderStateService <color:blue>initStateService</color>()
+  .. internal process ..
+  ~ObservableReaderStateService initStateService()
+  ~onEvent(InternalEvent event)
+  ~ReaderEvent processCardInserted()
+  ~boolean isCardPresentPing()
+  ~<b>final</b> processCardRemoved()
+  ~ObservableReader.PollingMode getPollingMode()
+  ~switchState(MonitoringState stateId)
+  ~MonitoringState getCurrentMonitoringState()
+}
+
++abstract AbstractObservableLocalAutonomousReader {
+  #AbstractObservableLocalAutonomousReader(String pluginName, String readerName) {
+  #<b>final</b> onCardInserted()
+  #<b>final</b> onCardRemoved()
+}
+
+@enduml
+
+@startuml(id=PLUGIN_POOLPLUGIN_1_0_0)
++abstract AbstractPoolPlugin {
+  #AbstractPoolPlugin(String name)
+}
+@enduml

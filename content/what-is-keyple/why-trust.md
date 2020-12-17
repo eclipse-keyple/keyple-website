@@ -4,16 +4,14 @@ subtitle = ""
 summary = ""
 date = ""
 
-weight = 40
+weight = 20
 
 [menu.main]
     parent = "What is Eclipse Keyple™"
 +++
 
-Eclipse Keyple™ is an Eclipse open source project developped and leaded by Calypso Networks Association, which has been the leader in contactless 
-electronic ticketing transportation standards since 2003. For many years, our mission has been to create innovative solutions that are fully 
-interoperable, reliable, secure, and open. We collaborate with a dynamic network of city leaders and transport authorities that are keen to work 
-with system integrators with Calypso standard expertise.
+Eclipse Keyple™ is an Eclipse open source project currently leaded by Calypso Networks Association, which has been the leader in contactless 
+electronic ticketing transportation standards since 2003.
 
 {{< youtube 3CWNho1rrSw >}}
 

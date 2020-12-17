@@ -1,0 +1,50 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+
+start
+partition "Reader initialization" {
+	:register plugin;
+	:get reader;
+	:prepare card selection request;
+}
+
+if (transaction mode?) then (explicit selection)
+	:test card presence;
+	:process explicit selection;
+else (default selection)
+	partition "Observer: observable reader setting" {
+	:default selection reader setting;
+	:reader notification subscribtion;
+	:"wait card detection";
+	}
+	detach
+	fork
+		:polling card presence);
+		detach
+		:card insertion;
+		:process default selection;
+		:notifies card inserted & selected;
+	end fork
+	detach
+	partition "Observer: reader notification processing" {
+		:process selection response;
+	}
+endif
+	:get selected card;
+-[#green,dashed]-> Then specific operations could
+  be processed with the card...;
+	:send APDU commands to the card;
+@enduml

@@ -1,0 +1,107 @@
+@startuml
+
+title
+    Keyple Distributed - Async Node API (04/11/2020)
+end title
+
+' == THEME ==
+
+skinparam Shadowing false
+skinparam RoundCorner 10
+
+' == CONTENT ==
+
+participant "nodeClient:\n**AsyncNodeClient**" as nodeClient #LightBlue
+actor "userEndpointClient:\n**<back:LightBlue>AsyncEndpointClient**" as userEndpointClient
+
+actor "userEndpointServer:\n**<back:LightBlue>AsyncEndpointServer**" as userEndpointServer
+participant "nodeServer:\n**AsyncNodeServer**" as nodeServer #LightBlue
+
+activate nodeClient #LightBlue
+nodeClient -> userEndpointClient : openSession (<color:green>sessionId</color>)
+activate userEndpointClient #Pink
+userEndpointClient ->> userEndpointServer : send asynchronous handshake
+return
+deactivate nodeClient
+
+activate userEndpointServer #Pink
+userEndpointServer --> userEndpointClient : Session
+deactivate userEndpointServer
+activate userEndpointClient #Pink
+userEndpointClient -> userEndpointClient : registerSession (<color:green>sessionId</color>, Session)
+userEndpointClient -> userEndpointClient : [...]ClientUtils.getAsyncNode ()
+note over userEndpointClient
+    To retrieve the node it is necessary
+    to use the utility class corresponding
+    to the client configuration :
+    * **LocalService**ClientUtils
+    * **RemotePlugin**ClientUtils
+    * **PoolRemotePlugin**ClientUtils
+end note
+userEndpointClient -> nodeClient : onOpen (<color:green>sessionId</color>)
+activate nodeClient #LightBlue
+nodeClient -> userEndpointClient : sendMessage (<color:red>dtoA</color>)
+activate userEndpointClient #LightYellow
+userEndpointClient -> userEndpointClient : findSesssion (<color:red>dtoA</color><color:green>.getSessionId()</color>)
+userEndpointClient ->> userEndpointServer : send asynchronous message (<color:red>dtoA</color>)
+return
+return
+deactivate userEndpointClient
+
+activate userEndpointServer #Pink
+userEndpointServer -> userEndpointServer : registerSession (<color:red>dtoA</color><color:green>.getSessionId()</color>)
+note over userEndpointServer
+    It is necessary to identify the client
+    via the "<color:green>sessionId</color>" field in the DTO
+    in order to be able to reply a new message
+    at a later date.
+end note
+userEndpointServer -> userEndpointServer : [...]ServerUtils.getAsyncNode ()
+note over userEndpointServer
+    To access the node it is necessary
+    to use the utility class corresponding
+    to the server configuration :
+    * **RemotePlugin**ServerUtils
+    * **LocalService**ServerUtils
+    * **PoolLocalService**ServerUtils
+end note
+userEndpointServer -> nodeServer : onMessage (<color:red>dtoA</color>)
+activate nodeServer #LightBlue
+nodeServer -> userEndpointServer : sendMessage (<color:blue>dtoB</color>)
+activate userEndpointServer #LightYellow
+userEndpointServer -> userEndpointServer : findSession (<color:blue>dtoB</color><color:green>.getSessionId()</color>)
+userEndpointServer ->> userEndpointClient : send asynchronous message (<color:blue>dtoB</color>)
+return
+return
+deactivate userEndpointServer
+
+activate userEndpointClient #Pink
+userEndpointClient -> userEndpointClient : [...]ClientUtils.getAsyncNode ()
+userEndpointClient -> nodeClient : onMessage (<color:blue>dtoB</color>)
+activate nodeClient #LightBlue
+return
+deactivate userEndpointClient
+
+nodeClient -> nodeClient
+activate nodeClient #LightBlue
+
+nodeClient -> userEndpointClient : closeSession (<color:green>sessionId</color>)
+activate userEndpointClient #Pink
+userEndpointClient ->> userEndpointServer : send asynchronous closeSession
+return
+deactivate nodeClient
+
+activate userEndpointServer #Pink
+userEndpointServer -> nodeServer : onClose (<color:green>sessionId</color>)
+activate nodeServer #LightBlue
+return
+userEndpointServer --> userEndpointClient : ok
+deactivate userEndpointServer
+activate userEndpointClient #Pink
+userEndpointClient -> userEndpointClient : unregisterSession (Session)
+userEndpointClient -> userEndpointClient : [...]ClientUtils.getAsyncNode ()
+userEndpointClient -> nodeClient : onClose (<color:green>sessionId</color>)
+deactivate userEndpointClient
+activate nodeClient #LightBlue
+
+@enduml

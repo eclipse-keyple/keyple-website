@@ -1,0 +1,68 @@
+@startuml
+footer
+    Keyple Distributed - Overview (03/11/2020)
+end footer
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+skinparam Shadowing false
+skinparam component {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+hide <<red>> stereotype
+hide <<purple>> stereotype
+hide <<blue>> stereotype
+hide <<green>> stereotype
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+[Hardware Reader\n(PO, SAM, HSM,...)] as reader <<red>>
+
+package "Terminal with 'local' reader" {
+    [Application] as appA
+    package "Keyple" as localKeyple {
+        [**Keyple Distributed**\n("local" components)] as localLib <<blue>>
+        [Keyple Core & Solution] as localKeypleLibs <<purple>>
+    }
+    [Network Endpoint] as endpointA <<green>>
+}
+
+package "Terminal with 'remote' reader" {
+    [Application] as appB
+    package "Keyple" as remoteKeyple {
+        [Keyple Core & Solution] as remoteKeypleLibs <<purple>>
+        [**Keyple Distributed**\n("remote" components)] as remoteLib <<blue>>
+    }
+    [Network Endpoint] as endpointB <<green>>
+}
+
+reader - localKeypleLibs
+
+appA -- localKeypleLibs
+localKeypleLibs -- localLib
+localLib -- endpointA
+
+endpointA - endpointB
+
+appB -- remoteKeypleLibs
+remoteKeypleLibs -- remoteLib
+remoteLib -- endpointB
+
+@enduml

@@ -1,0 +1,60 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+
+'package org.keyple.calypso.transaction #FFFFFF {
+together {
+  +class "CardResource<CalypsoPo>" as PoResource {
+    +CardResource(<color:red>Reader</color> poReader,
+    CalypsoPo po);
+  }
+
+  +class "CardResource<CalypsoSam>" as SamResource {
+    +CardResource(<color:red>Reader</color> samReader,
+    CalypsoSam sam);
+  }
+
+  +class "<b>final</b> PoSecuritySetting" as PoSecuritySetting {
+  }
+
+  +class CalypsoPo {
+    ~CalypsoPo(<color:red>CardSelectionResponse</color> selectionResponse)
+
+    +<b>final</b> String getDfName()
+    +<b>final</b> String getApplicationSerialNumber()
+    +<b>final</b> String getStartupInfo()
+
+    +<b>final</b> <color:royalBlue><b><i>boolean is_Xxx()</i></b></color>
+
+    +<b>final</b> <color:royalBlue><b><i>Xxx getData_Xxx()</i></b></color>
+  }
+
+  +class PoTransaction {
+    +PoTransaction(CardResource<CalypsoPo> po, PoSecuritySetting[0..1] securitySetting)
+
+    +<b>final</b> <color:royalBlue><b><i>prepareCommand_Xxx()</i></b></color>
+
+    +<b>final</b> <color:royalBlue><b><i>boolean processCommands_Xxx()</i></b></color>
+
+    +<b>final</b> <color:royalBlue><b><i>Xxx_SecureData getXxx_SecureData()</i></b></color>
+  }
+
+  PoTransaction "1" o-up- "1" PoResource
+  PoTransaction "1" o-up- "0..1" PoSecuritySetting
+  PoResource "1" o-down- "1" CalypsoPo
+  SamResource "0..1 " -right-o " 1" PoSecuritySetting
+  PoResource -right[hidden]- SamResource
+}
+@enduml

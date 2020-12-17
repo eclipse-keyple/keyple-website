@@ -1,182 +1,87 @@
 ---
-title: Global Architecture of Keyple
-linktitle: Global Architecture 
+title: Keyple Global Solution
 type: book
 toc: true
 draft: false
 weight: 110
 ---
 
-![global architecture](docs/img/Keyple-components.svg "keyple SDK global architecture")
+## Overview
 
-The API is currently divided in two major layers:
-- The ‘Keyple Core' : a Secure Element Proxy API which allows managing SE readers in a generic way, whaterver the reader driver or environment, and for standalone or distributed solution ([Keyple Core User Guide](./docs/KeypleCore_UserGuide.md)).
-- A ‘Calypso Keyple extension' : a high level Calypso Processing API allowing to operate commands with a Calypso Portable Object, and to manage a secure Calypso transaction ([Keyple Calypso User Guide](./docs/KeypleCalypso_UserGuide.md)).
+The Eclipse Keyple solution provides currently 2 modules:
+ - the 'Keyple Core', a universal smart card reader interface to manage the setting of smart card reader, the detection and the communication with smart card, and the selection of card application.
+ - the 'Keyple Calypso', a first smart card solution extension built on the Keyple Core, dedicated to manage Calypso processing, Calypso card identification, card command generation, card data recovery, authentication with the secure session.
 
-Dedicated reader’s plugins have to be implemented in order to interface the SE Proxy API with the specific reader’s drivers.
+{{< figure library="true" src="architecture/Keyple_Architecture_Global.svg" title="Keyple Architecture Global" >}}
 
-For a distributed architecture, the Remote SE Plugin should be used (([Keyple Remote SE User Guide](./docs/KeypleRemoteSe_UserGuide.md)).)
-### Supported platforms
-- Java SE 1.6 compact2
-- Android 4.4 KitKat API level 19
+The Keyple Core provides 3 interfaces:
+ - the 'Service API', to allow terminal application to handle reader & select card
+ - the 'Card API', for APDU command transmission, card data parsing
+ - the 'Plugin API', to integrate specific smart card reader solutions.
 
-### keyple-java repositories structure
+The Keyple Calypso extension provides the Calypso API: a high-level interface to manage Calypso card processing.
 
-- Modules that are provided as artifacts
-  - keyple-core: source and unit tests for the SE Proxy module (artifact : keyple-java-core)
-  - keyple-calypso: source and unit tests for the Calypso library (artifact : keyple-java-calypso)
-  - keyple-plugin: source and unit tests for the different plugins: smartcard.io PC/SC, Stub, Android NFC, Android OMAPI, etc.
-- developer support, testing
-  - example: source for Keyple implementation examples, generic or Calypso specific.
+## Application integration
 
-### Keyple features and corresponding packages
+The Card API is a low-level interface to manage the transmission of APDU commands with a smart card.
+A terminal application operating processing with a specific smart card solution could be implemented directly on top the Card API.
 
-Keyple features global for any Secure Element solution:
+{{< figure library="true" src="architecture/Keyple_Architecture_Application_Integration.svg" title="Keyple Architecture Application Integration" >}}
 
-| Features                                     | Packages  |
-| -------------------------------------------- |-------------|
-| Selections of Secure Elements (high level API) | org.eclipse.keyple.core.**selection** |
-| Management of SE readers | org.eclipse.keyple.core.**seproxy** |
-| Notifications of reader plug/unplug, of SE insertion/remove<ul><li>definition of automatic selection request in case of SE insertion on an Observable Reader.</li></ul> | org.eclipse.keyple.core.seproxy.**event** |
-| Communication protocols filters (setting for contactless/contacts SE Reader) | org.eclipse.keyple.core.seproxy.**protocol** |
-| Reader plugins implementation support <ul><li>Utility classes providing generic processing for SE Reader Plugins</li></ul> | org.eclipse.keyple.core.seproxy.**plugin** |
-| Transmition of grouped APDU commands to a SE Reader (low level API) | org.eclipse.keyple.core.seproxy.**message** |
-| SE specific library implementation support <ul><li>generic API to build a SE specific commands library</li></ul> | org.eclipse.keyple.core.**command** |
+Another way offering a better abstraction on smart card technical settings could be to implement on the Card API a smart card solution library extension providing a high level interface: a specific Solution API.
+This is how the Keyple Calypso extension has be defined, the Calypso API is a high level functional interface, which hides the low-level APDU operations.
 
-Keyple features defined to support the Calypso solution:
+## Reader integration
 
-| Features                                     | Packages  |
-| -------------------------------------------- |-------------|
-| Calypso Portable Object commands and secure transaction management <ul><li>high level CalypsoAPI, commands’ settings are limited to functional parameters</li><li>Calypso SAM (Secure Module) operations automatically processed</li></ul> | org.eclipse.keyple.calypso.**transaction** |
-| Calypso PO responses data parsing | org.eclipse.keyple.calypso.command.**po.parser** |
-| Calypso SAM responses data parsing | org.eclipse.keyple.calypso.command.**sam.parser** |
-| Calypso PO & SAM commands' sets<ul><li>low level Calypso API, commands’ settings include technical parameters specific to Calypso PO revisions or Calypso SAM revisions</li></ul> | <ul><li>org.eclipse.keyple.calypso.**command**</li><li>org.eclipse.keyple.calypso.command.**po**</li><li>org.eclipse.keyple.calypso.command.**po.builder**</li><li>org.eclipse.keyple.calypso.command.**po.parser.session**</li><li>org.eclipse.keyple.calypso.command.**sam.parser.session**</li><li>org.eclipse.keyple.calypso.command.**sam.builder**</li><li>org.eclipse.keyple.calypso.command.**sam**</li></ul> |
+### native integration
 
-### Keyple packages and corresponding usages
-Depending on the targetting usage: implementation of a ticketing **application** (blue circle), a reader **plugin** (red circle), or a **SE library** (green circle), only specific Keyple packages must be imported.
+The smart card readers could be directly integrated with the Keyple Core. By interfacing through the Plugin API, a specific plugin dedicated to a smart card reader solution, the Keyple Core could have the capability to fully manage the smart card readers corresponding to this native plugin.
 
-- generic packages for any SE solution
+{{< figure library="true" src="architecture/Keyple_Architecture_Reader_Integration_native.svg" title="Keyple Architecture Reader Integration Native" >}}
 
-![generic packages](docs/img/KeyplePackages_Core.svg "Keyple generic packages")
+The Eclipse Keyple project provides the plugin for the main standard smart card reader solutions.
 
-- specific packages for Calypso
+{{< figure library="true" src="architecture/Keyple_Architecture_Native_Plugins.svg" title="Keyple Architecture Native Plugins" >}}
 
-![Calypso packages](docs/img/KeyplePackages_Calypso.svg "Calypso packages")
----
+ - The PC/SC plugin is available for both the Java and the C++ implementation of Eclipse Keyple, it allows to interface PC/SC reader on Windows, Linux and Mac OS.
+ - For Android devices the NFC plugin allows to operate the standard NFC interface to handle external contactless smart card. And the OMAPI plugin provides the integration of internal eSE (embedded Secure Element) or UICC (SIM card). Both plugins support Keyple Java.
+ - The Remote plugin (part of the Core distributed extension) allows to operate remote smart card readers.
 
-## Getting started
-Releases and snapshots are available from Maven central repositories.
+### hybrid integration
 
-### Cloning this project
-Examples provided in this project relies on symbolic links to handle their common dependencies. (Please refer to this [file](/java/example/README.md) for more information).
+It's also possible to integrate Keyple in a terminal solution already embedding not Keyple based terminal applications operating smart card solutions. In those kinds of terminal, a Reader Manager has already the direct control on a smart card reader and manage the smart card detection: depending on the type of smart card identified on the reader, a specific terminal application is requested to operated the processing of the smart card.
 
-Although symlink support should be provided out of the box for Unix users, **Windows users** should be aware that the git option `core.symlinks` needs to be enabled before [cloning](https://help.github.com/en/articles/cloning-a-repository) this repo. Several solutions can be considered:
-- When installing git for Windows, an option `Enable symbolic links` can be choosen. If it has not been enabled and you want to set it via the installer, a reinstallation is needed
-- If you do not want to reinstall git, this option can be enabled afterward via the command line `git config core.symlinks true`
-- Also, the option can be enabled once only for this specific cloning operation with `git clone -c core.symlinks=true REPO_URL`
+{{< figure library="true" src="architecture/Keyple_Architecture_Reader_Integration_hybrid.svg" title="Keyple Architecture Hybrid Plugins" >}}
 
-It is important to note that for this option to be actually working, the Windows user needs to have the **_SeCreateSymbolicLink_ permission**: a user with admin rights is typically granted with this permission.
+In this case a reader manager plugin, also based on the Plugin API, could allow the Keyple Core to operate the processing of a specific smart card, when requested by the Reader Manager.
 
-### Import keyple components with Gradle
+For example, an EMV certified reader manager could call a Keyple application in case of PPSE selection failure.
 
-When using gradle, it is fairly simple to import Keyple components into your project. Just add the following statements to your build.gradle file :
+## Smart card processing
+### stand-alone
+By default, a terminal application manages the processing of a specific smart card in stand-alone with its local readers.
 
-```
-repositories {
-        //to import releases
-        maven { url 'https://oss.sonatype.org/content/repositories/releases' }
-        
-        //to import snapshots
-        maven {url 'https://oss.sonatype.org/content/repositories/snapshots' }
-}
+{{< figure library="true" src="architecture/Keyple_Architecture_Local_Plugin.svg" title="Keyple Architecture Local Plugin" >}}
 
-dependencies {
-     //Keyple core is a mandatory library for using Keyple, in this case import the last version of keyple-java-core
-    implementation group: 'org.eclipse.keyple', name: 'keyple-java-core', version: '0.8.1'
+### distributed
+The 'Distributed' extension of the Keyple Core provides a solution allowing a master terminal application to manage the processing of a smart card localized in a remote driven terminal.
+{{< figure library="true" src="architecture/Keyple_Architecture_Remote_Plugin.svg" title="Keyple Architecture Remote Plugin" >}}
 
-    //Import Calypso library to support Calypso Portable Object, in this case import the last version of keyple-java-calypso
-    implementation group: 'org.eclipse.keyple', name: 'keyple-java-calypso', version: '0.8.1'
-   
-    //Import PCSC library to use a Pcsc reader, in this case import the last version of keyple-java-plugin-pcsc
-    implementation group: 'org.eclipse.keyple', name: 'keyple-java-plugin-pcsc', version: '0.8.1'
-    ...
-}
-```
+## Smart card transaction
+There are two ways for a terminal application to manage a transaction with a smart card.
+ - Either the smart card processing could be directly started by the terminal application.
+ - Otherwise, the smart card processing could be launched when a smart card is inserted in a reader of the terminal.
+ 
+### explicit selection
+For a classic transaction,
+ - the presence of a card is firtsly checked on a reader,
+ - then the car is selected and identified,
+ - finally, a transaction is processed with the card application.
 
-## Artifacts
-The Eclipse Keyple Java artifacts are published on the Eclipse Keyple Project page [https://projects.eclipse.org/projects/iot.keyple/downloads] (available also on Maven).
+{{< figure library="true" src="architecture/Keyple_CardTransaction_ActivityDiag_ExplicitSelection.svg" title="[Keyple Transaction Explicit Selection" >}}
+ 
+### default selection
+ - For automatons (e.g. a ticketing validator), the ticketing transaction is often driven by the insertion of a card.
+ - Keyple Core allows to define a default selection on Observable Reader, and in return to be notified of successful selections.
 
-- Keyple modules:
-  - **'Keyple Core module' JAR**:  the generic API to manage Secure Element Readers and to select SE application.
-  - **'Keyple Calypso Library JAR'**: the Calypso API to operate a transaction with a Calypso Portable Object.
-- Keyple plugins:
-  - **'Keyple PC/SC plugin JAR'**: to manage PC/SC readers on a PC environment supporting the # javax.smartcardio API
-  - **'Keyple NFC Android plugin AAR'**: to operate the contactless reader of an Android Environment supporting the android.nfc API 
-  - **'Keyple OMAPI Android plugin AAR'**: to operate the internal contacts readers of an Android Environment supporting the OMAPI 
-  - **'Keyple "stub" plugin JAR'**: plugin to simulate the presence of fake readers with or without fake cards
-  - **'Keyple "Remote SE" plugin JARs'**: plugin & service to manage a SE remotely in a transparent way.
-
-## Building the Keyple components
-
-This guide helps developer that want to contribute to Keyple components base code. You can fork the project and contribute to it. Every contribution will be reviewed by the developper team and scan by our CI and quality code tools before being merged to the base code.
-
-### Java components
-
-#### Prerequisites
-Here are the prerequisites to build the keyple components (jars)
-- Java JDK 1.6, 1.7 or 1.8 (Java 11 is not supported yet)
-- Maven (any version) [available here](https://maven.apache.org/install.html)
-- Gradle (any version as we use the gradle wrapper) [available here](https://gradle.org/install/)
-
-
-#### Windows, Linux or Macos
-Following commands will build all the artifacts at once and install them into the local maven repository.  
-```
-./gradlew :installAll --info
-```
-
-### Android components
-If you want to build the keyple android components (aar plugins), you need : 
-- Java JDK 1.6, 1.7 or 1.8 (Java 11 is not supported yet)
-- Intellij 2018 community version or Android Studio 3.0
-- Android sdk 26 should be installed on your machine [follow those instructions](http://www.androiddocs.com/sdk/installing/index.html)
-- Gradle (any version as we use the gradle wrapper) [available here](https://gradle.org/install/)
-
-To acknowledge where is installed you Android SDK, you need to create a file `local.properties` in the ```/android```, ``/android/example/calypso/nfc``, ```/android/example/calypso/omapi``` folders with the following content 
-`sdk.dir=absolut/path/to/where/your/android/sdk/is`
-
-For instance ``sdk.dir=/Users/user/Library/Android/sdk``
-
-#### Linux or Macos
-
-First, you need to build and install locally the java component keyple-core (see above)
-To build the plugins, execute the following commands in the **/android folder**, the first command is required to be executed at least once to build the gradle wrapper.  
-```
-./gradlew installPlugin
-```
-
-To build the example app NFC and OMAPI, first, you need to build and install locally the java component keyple-core, keyple-calypso and keyple-android-plugin (see above)
-
-```
-./gradlew -b ./example/calypso/nfc/build.gradle assembleDebug 
-./gradlew -b ./example/calypso/omapi/build.gradle assembleDebug
-```
-
-#### Windows
-First, you need to build and install locally the java component keyple-core (see above)
-To build the plugins, execute the following commands in the **/android folder**, the first command is required to be executed at least once to build the gradle wrapper.  
-
-```
-.\gradlew.bat installPlugin
-```
-
-To build the example app NFC and OMAPI, first, you need to build and install locally the java component keyple-core, keyple-calypso and keyple-android-plugin (see above)
-
-
-```
-.\gradlew.bat -b ./example/calypso/nfc/build.gradle assembleDebug 
-.\gradlew.bat -b ./example/calypso/omapi/build.gradle assembleDebug
-```
-
-### CI and Docker 
-Eclipse CI tools to build and test the components are Open Source too. They can be found in this repository : [Eclipse Keyple Ops](https://www.github.com/eclipse/keyple-ops)
+{{< figure library="true" src="architecture/Keyple_CardTransaction_ActivityDiag_DefaultSelection.svg" title="[Keyple Transaction Default Selection" >}}

@@ -1,0 +1,71 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+
+package org.eclipse.keyple #FFFFFF {
+  package "calypso.transaction" as transaction_sam #FFFFFF {
+    !include KeypleCalypso_Transaction_ClassDiag_ClassElements.iuml!TRANSACTION_SELECTION_SAM_1_0_0
+
+    SamSelector +-up- "1+" SamSelectorBuilder : build <
+    SamSelection "1" o-up- "1" SamSelector
+    SamSelection -down- CalypsoSam : selects >
+    SamResource "1" *-up- "1" CalypsoSam
+  }
+
+  package core.card.selection #FFFFFF {
+      !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_SELECTOR_1_0_0
+      !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_SELECTOR_BUILDER_1_0_0
+
+      CardSelector +-up- "1+" CardSelectorBuilder : build <
+
+
+      !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_SELECTION_1_0_0
+      !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_REQUEST_1_0_0
+      !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_RESOURCE_1_0_0
+
+      AbstractCardSelection -down- AbstractSmartCard : selects >
+      CardSelectionsService "1" o-up- "*" AbstractCardSelection
+      CardResource_T "1" *-up- "1" AbstractSmartCard
+
+    AbstractCardSelection "1" o-up- "1" CardSelector
+  }
+
+  package "calypso.transaction" as transaction_po #FFFFFF {
+    !include KeypleCalypso_Transaction_ClassDiag_ClassElements.iuml!TRANSACTION_INVALIDATED_1_0_0
+    !include KeypleCalypso_Transaction_ClassDiag_ClassElements.iuml!TRANSACTION_PO_SHORT_1_0_0
+    !include KeypleCalypso_Transaction_ClassDiag_ClassElements.iuml!TRANSACTION_SELECTION_1_0_0
+
+    InvalidatedPo -left-+ PoSelector
+    PoSelector +-up- "1+" PoSelectorBuilder : build <
+    InvalidatedPo "0..1" -down-o "1" PoSelectorBuilder : set >
+
+    PoSelection "1" o-up- "1" PoSelector
+    PoSelection -down- CalypsoPo : selects >
+    PoResource "1" *-up- "1" CalypsoPo
+  }
+
+  PoSelectorBuilder -left-|> CardSelectorBuilder : extends
+  PoSelector -left-|> CardSelector : extends
+  PoSelection -left-|> AbstractCardSelection : extends
+  CalypsoPo -left-|> AbstractSmartCard : extends
+  PoResource .left.|> CardResource_T : <<bind>>T::CalypsoPo
+
+  CardSelectorBuilder <|-right- SamSelectorBuilder : extends
+  CardSelector <|-right- SamSelector : extends
+  AbstractCardSelection <|-right- SamSelection : extends
+  AbstractSmartCard <|-right- CalypsoSam : extends
+  CardResource_T <|.right. SamResource : <<bind>>T::CalypsoSam
+}
+@enduml

@@ -1,0 +1,169 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml(id=SELECTION_MULTIPLE_1_0_0)
++enum MultiSelectionProcessing {
+	FIRST_MATCH
+	PROCESS_ALL
+}
+@enduml
+
+@startuml(id=SELECTION_SELECTION_1_0_0)
++class "<b>final</b> CardSelectionsService" as CardSelectionsService {
+  +CardSelectionsService(MultiSelectionProcessing multiMode = FIRST_MATCH)
+
+  +int prepareSelection(AbstractCardSelection cardSelection)
+  +<b>final</b> prepareReleaseCardChannel()
+
+  +CardSelectionsResult processExplicitSelections(Reader reader)
+
+  +AbstractDefaultSelectionsRequest getDefaultSelectionsRequest()
+  +CardSelectionsResult processDefaultSelectionsResponse(
+    AbstractDefaultSelectionsResponse selectionResponse)
+}
+@enduml
+
+@startuml(id=SELECTION_REQUEST_1_0_0)
++abstract AbstractCardSelection {
+  +AbstractCardSelection(CardSelector selector)
+
+  #<b>final</b> addApduRequest(ApduRequest apduRequest)
+  ~<b>final</b> CardSelectionRequest getCardSelectionRequest()
+  {abstract} #AbstractSmartCard parse(CardResponse selectionResponse)
+
+  +CardSelector getCardSelector()
+}
+
++abstract AbstractSmartCard {
+  #AbstractSmartCard(CardSelectionResponse selectionResponse)
+
+  +boolean hasAtr()
+  +byte[] getAtrBytes()
+  +boolean hasFci()
+  +byte[] getFciBytes()
+}
+@enduml
+
+@startuml(id=SELECTION_REQUEST_ReaderAPI)
++abstract AbstractMatchingSe {
+  #AbstractMatchingSe(SeResponse selectionResponse)
+
+  +boolean hasAtr()
+  +byte[] getAtrBytes()
+  +boolean hasFci()
+  +byte[] getFciBytes()
+}
+@enduml
+
+@startuml(id=SELECTION_RESULT_1_0_0)
++class "<b>final</b> CardSelectionsResult" as CardSelectionsResult {
+  ~CardSelectionsResult()
+  ~addMatchingCard(int selectionIndex, AbstractSmartCard matchingSe)
+
+  +boolean hasActiveSelection()
+  +AbstractSmartCard getActiveSmartCard()
+
+  +int getActiveSelectionIndex()
+  +boolean hasSelectionMatched(int selectionIndex)
+  +AbstractSmartCard getMatchingCard(int selectionIndex)
+  +Map<Integer, AbstractSmartCard> getMatchingSelections()
+}
+@enduml
+
+@startuml(id=SELECTION_RESOURCE_1_0_0)
++class "<b>final</b> CardResource<T extends AbstractSmartCard>" as CardResource_T {
+  #CardResource(Reader reader, T card)
+  +Reader getReader()
+  +T getSmartCard()
+}
+@enduml
+
+'---- Card SELECTOR --------------------------------------------------------------[
+@startuml(id=SELECTION_SELECTOR_1_0_0)
++class CardSelector {
+  -String[0..1] cardProtocol
+  -AtrFilter[0..1] atrFilter
+  -AidSelector[0..1] aidSelector
+  #CardSelector(CardSelectorBuilder builder)
+  +{static}CardSelectorBuilder builder()
+
+  +String getCardProtocol()
+  +AtrFilter getAtrFilter()
+  +AidSelector getAidSelector()
+}
+@enduml
+
+@startuml(id=SELECTION_SELECTOR_BUILDER_1_0_0)
++class CardSelectorBuilder {
+  #CardSelectorBuilder()
+  +CardSelector build()
+
+  +CardSelectorBuilder cardProtocol(String seProtocol)
+  +CardSelectorBuilder atrFilter(CardSelector.AtrFilter atrFilter)
+  +CardSelectorBuilder aidSelector(CardSelector.AidSelector aidSelector)
+}
+@enduml
+
+@startuml(id=SELECTION_SELECTOR_AID_1_0_0)
++class "<b>final</b> AidSelector" as AidSelector <<static>> {
+  +{static} final int AID_MIN_LENGTH = 5
+  +{static} final int AID_MAX_LENGTH = 16
+
+  -AidSelector(AidSelectorBuilder builder)
+  +{static}AidSelectorBuilder builder()
+
+  +byte[] getAidToSelect()
+  +boolean isSelectNext()
+  +Set<Integer> getSuccessfulSelectionStatusCodes()
+}
+
++class AidSelectorBuilder {
+  -byte[5..16] aidToSelect;
+  -FileOccurrence[0..1] fileOccurrence = FIRST
+  -FileControlInformation[0..1] fileControlInformation = FCI
+  -AidSelectorBuilder()
+  +SeSelector.AidSelector build()
+
+  +AidSelectorBuilder aidToSelect(byte[] aid)
+  +AidSelectorBuilder aidToSelect(String aid)
+  +AidSelectorBuilder fileOccurrence(FileOccurrence fileOccurrence)
+  +AidSelectorBuilder fileControlInformation(FileControlInformation fileControlInformation)
+}
+@enduml
+
+@startuml(id=SELECTION_SELECTOR_COMPL_1_0_0)
++enum FileOccurrence {
+  FIRST
+  LAST
+  NEXT
+  PREVIOUS
+}
+
++enum FileControlInformation {
+  FCI
+  FCP
+  FMD
+  NO_RESPONSE
+}
+@enduml
+
+@startuml(id=SELECTION_SELECTOR_ATR_1_0_0)
++class "<b>final</b> AtrFilter" as AtrFilter <<static>> {
+  +AtrFilter(String atrRegex)
+
+  +String getAtrRegex()
+  +boolean atrMatches(byte[] atr)
+}
+@enduml
+
+'---- Card SELECTOR --------------------------------------------------------------]

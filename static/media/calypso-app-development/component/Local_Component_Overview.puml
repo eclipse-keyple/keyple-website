@@ -1,0 +1,56 @@
+@startuml
+footer
+    Keyple Standalone Application - Overview (08/12/2020)
+end footer
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+skinparam Shadowing false
+skinparam component {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+hide <<red>> stereotype
+hide <<purple>> stereotype
+hide <<blue>> stereotype
+hide <<green>> stereotype
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+[Remote SmartCard Reader\n(PO, SAM, HSM,...)] as reader <<red>>
+
+package "Terminal with SmartCard reader" {
+    [Application] as appA
+        package "Keyple Core & Solutions" as keypleCoreSolution {
+            [Keyple Plugins] as keyplePlugin <<blue>>
+            [Keyple Core] as keypleCore <<purple>>
+            [Keyple Calypso] as keypleCalypso
+        }
+    [Local SmartCard Reader] as deviceCardReader <<green>>
+    [Local SAM Reader] as localReader <<red>>
+}
+
+appA -- keypleCalypso
+keypleCalypso -- keypleCore
+keypleCore -- keyplePlugin
+keyplePlugin .. localReader
+deviceCardReader - keyplePlugin
+keyplePlugin .. reader
+
+@enduml

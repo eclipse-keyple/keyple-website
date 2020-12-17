@@ -1,0 +1,111 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+
+package org.keyple.calypso.transaction #FFFFFF {
+
++class PoSelectionRequest {
+  +PoSelectionRequest(PoSelector seSelector)
+
+  +<b>final</b> prepareSelectFile(byte[] path)
+  +<b>final</b> prepareSelectFile(shord lid)
+  +<b>final</b> prepareSelectFile(SelectControl selectControl)
+
+  +<b>final</b> prepareReadRecordFile(byte sfi, int recordNumber)
+
+  #CalypsoPo parse(SeResponse seResponse)
+}
+
++class CalypsoPo {
+  ~CalypsoPo(<color:red>CardSelectionResponse</color> poSelectionResponse)
+
+  +<b>final</b> DirectoryHeader getDirectoryHeader()
+  +<b>final</b> ElementaryFile getFileBySfi(byte sfi)
+  +<b>final</b> ElementaryFile getFileByLid(short lid)
+  +<b>final</b> Map<Byte, ElementaryFile> getAllFiles()
+}
+
++class PoTransaction {
+  +PoTransaction(SeResource<CalypsoPo> poResource, PoSecuritySetting[0..1] securitySetting)
+
+  +<b>final</b> prepareSelectFile(short lid)
+  +<b>final</b> prepareSelectFile(byte[] lid)
+  +<b>final</b> prepareSelectFile(SelectFileControl control)
+  'lecture d'un record hors session (Le à 00h)
+  +<b>final</b> prepareReadRecordFile(byte sfi, int recordNumber)
+  'exception si recordSize erronée
+  +<b>final</b> prepareReadRecordFile(byte sfi, int firstRecordNumber, int numberOfRecords, int recordSize))
+  +<b>final</b> prepareReadSubRecordFile(byte sfi, int firstRecordNumber, int numberOfRecord, int recordOffset,
+    int recordLength)
+  +<b>final</b> prepareReadBinaryFile(byte sfi, int dataLength, int[0..1] dataOffset)
+  'compteur simulé : exception si countersNumber<>1 et si countersNumber <> 1
+  +<b>final</b> prepareReadCounterFile(byte sfi, int countersNumber)
+  +<b>final</b> prepareAppendRecord(byte sfi, byte[] recordData)
+  +<b>final</b> prepareUpdateRecord(byte sfi, int recordNumber, byte[] recordData)
+  +<b>final</b> prepareWriteRecord(byte sfi, int recordNumber, byte[] recordData)
+  +<b>final</b> prepareUpdateBinaryFile(byte sfi, byte[] fileData, int[0..1] dataOffset)
+  +<b>final</b> prepareWriteBinaryFile(byte sfi, byte[] fileData, int[0..1] dataOffset)
+  +<b>final</b> prepareIncreaseCounter(byte sfi, int counterNumber, int incValue)
+  +<b>final</b> prepareDecreaseCounter(byte sfi, int counterNumber, int decValue)
+  +<b>final</b> prepareSetCounter(byte sfi, int counterNumber, int newValue)
+  +<b>final</b> int prepareSearchRecord(byte sfi, byte offset, SearchOffsetMode offsetMode, byte[] searchData,
+    Byte[] searchMask, SearchReadMode readMode)
+  +<b>final</b> int[] getSearchResult(int searchRequestNumber)
+}
+
+PoSelectionRequest -down- CalypsoPo
+CalypsoPo -down- PoTransaction
+}
+
+package ticketing.operator.specificdatamodel #FFFFFF {
+
++class "<b>final</b> SpecificPoSelectionRequest" as SpecificPoSelectionRequest {
+  +SpecificPoSelectionRequest(PoSelector seSelector)
+
+  +prepareReadEnvironment()
+  +prepareReadEventLog()
+
+  #SpecificCalypsoPo parse(SeResponse seResponse)
+}
+
++class "<b>final</b> SpecificCalypsoPo" as SpecificCalypsoPo {
+  +String getEnvironment()
+  +String getEventLog()
+  +String getContractTitle()
+  +int getNumberOfTicket()
+}
+
++class "<b>final</b> SpecificPoTransaction" as SpecificPoTransaction {
+  +SpecificPoTransaction(SeResource<SpecificCalypsoPo> specificPoResource,
+    PoSecuritySetting[0..1] securitySetting)
+
+  +prepareReadEnvironment()
+  +preparePersoEnvironment(String environmentData)
+  +prepareReadEventLog()
+  +prepareUpdateEventLog(String eventData)
+  +prepareReadContract()
+  +prepareLoadContract(String contractTitle, int numberOfTickets)
+  +prepareDebitTicket(String contractTitle, int numberOfTickets)
+}
+
+SpecificPoSelectionRequest -down- SpecificCalypsoPo
+SpecificCalypsoPo -down- SpecificPoTransaction
+}
+
+PoSelectionRequest <|-right- SpecificPoSelectionRequest : extends
+CalypsoPo <|-right- SpecificCalypsoPo : extends
+PoTransaction <|-right- SpecificPoTransaction : extends
+@enduml
+
