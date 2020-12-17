@@ -27,7 +27,7 @@ It is compatible with **PC**, **MAC** and **Android** platforms.
 ## Documentation
 
 * [Developer guide]({{< relref "../../../docs/developer-guide/standalone-application.md" >}})
-* <a href="../../../docs/api-reference/keyple-java-plugin-stub/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
+* <a href="../../../docs/api-reference/java-api/keyple-java-plugin-stub/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
 
 ## Download
 

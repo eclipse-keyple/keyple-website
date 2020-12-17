@@ -376,19 +376,19 @@ The associated **API** documentations are accessible from the page [API Referenc
 
 ### Network API
 
-The associated **API** documentation is available <a href="../../api-reference/keyple-java-distributed-network/1.0.0/index.html">here</a>.
+The associated **API** documentation is available <a href="../../api-reference/java-api/keyple-java-distributed-network/1.0.0/index.html">here</a>.
 
 {{< figure library="true" src="distributed-application/class/Distributed_Class_Network_API.svg" title="" >}}
 
 ### Remote API
 
-The associated **API** documentation is available <a href="../../api-reference/keyple-java-distributed-remote/1.0.0/index.html">here</a>.
+The associated **API** documentation is available <a href="../../api-reference/java-api/keyple-java-distributed-remote/1.0.0/index.html">here</a>.
 
 {{< figure library="true" src="distributed-application/class/Distributed_Class_Remote_API.svg" title="" >}}
 
 ### Local API
 
-The associated **API** documentation is available <a href="../../api-reference/keyple-java-distributed-local/1.0.0/index.html">here</a>.
+The associated **API** documentation is available <a href="../../api-reference/java-api/keyple-java-distributed-local/1.0.0/index.html">here</a>.
 
 {{< figure library="true" src="distributed-application/class/Distributed_Class_Local_API.svg" title="" >}}
 
