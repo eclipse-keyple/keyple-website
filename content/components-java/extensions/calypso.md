@@ -1,6 +1,7 @@
 ---
 title: Keyple Calypso
 linktitle: Calypso
+summary: The Keyple Calypso Java component is a Keyple extension for Calypso® technology.
 type: book
 weight: 10
 toc: true

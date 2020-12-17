@@ -1,6 +1,7 @@
 ---
 title: Keyple Plugin OMAPI
 linktitle: OMAPI
+summary: The Keyple Plugin OMAPI Java component is a Keyple plugin for Android devices using OMAPI technology.
 type: book
 weight: 10
 toc: true

@@ -1,6 +1,7 @@
 ---
 title: Keyple Plugin PC/SC
 linktitle: PC/SC
+summary: The Keyple Plugin PC/SC C++ component is a Keyple plugin for PC/SC smart card readers.
 type: book
 weight: 10
 toc: true

@@ -1,6 +1,7 @@
 ---
 title: Keyple Plugin NFC
 linktitle: NFC
+summary: The Keyple Plugin NFC Java component is a Keyple plugin for Android devices having NFC capabilities.
 type: book
 weight: 10
 toc: true

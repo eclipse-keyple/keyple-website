@@ -1,6 +1,7 @@
 ---
 title: Keyple Distributed Remote
 linktitle: Remote
+summary: The Keyple Distributed Remote Java component is the part of the Keyple Distributed solution which contains all the remote plugins.
 type: book
 weight: 10
 toc: true

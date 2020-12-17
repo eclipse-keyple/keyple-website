@@ -1,6 +1,7 @@
 ---
 title: Keyple Distributed Network
 linktitle: Network
+summary: The Keyple Distributed Network Java component is the part of the Keyple Distributed solution which contains the common network elements used by Keyple Distributed Local and Keyple Distributed Remote components.
 type: book
 weight: 10
 toc: true
