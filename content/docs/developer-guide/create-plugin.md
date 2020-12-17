@@ -30,14 +30,11 @@ one must be developed.
 The purpose of this guide is to support developers in this process.
 
 ## Existing plugins
-| Name | plateform |Import |    
-|  --- |  --- | --- | 
-| Keyple Android NFC | Android OS with android.nfc implementation | <a href="https://search.maven.org/search?q=a:keyple-android-plugin-nfc" target="blank">Maven central</a>
-| Keyple Android OMAPI | Android OS with android.se or Simalliance openmobileapi implementation| <a href="https://search.maven.org/search?q=a:keyple-android-plugin-omapi" target="blank">Maven Central</a>
-| Keyple Android Famoco | Famoco's Android device using **lib-secommunication-1.7.0** for NFC | Contact us
-| Keyple Android Coppernic | Coppernic's Android OS using ASK| Contact us
-| Keyple Android Wizway| Android OS with Wizway NFC Agent| Contact us
-| Keyple Java PCSC| Device running JVM with connected PC/SC reader| <a href="https://search.maven.org/search?q=a:keyple-java-plugin-pcsc" target="blank">Maven Central</a>
+The list of reader plugins is maintained on this pages:
+
+[Java Reader Plugins]({{< ref "components-java/plugins/_index.md" >}})
+
+[C++ Reader Plugins]({{< ref "components-cpp/plugins/_index.md" >}})
 
 
 
@@ -52,18 +49,18 @@ only have to use a few part of these elements.
 ## Steps
 Plugin's development relies on 3 main steps, each one consists in implementing a few set of abstract classes and interfaces of
 plugin package from Keyple Core API:
-1. Import Keyple dependency
+1. Import Keyple dependency 
 1. Implement a Keyple Reader
 1. Implement a Keyple Plugin
 1. Implement a Keyple Plugin Factory.
 
 
 ## Imports 
-Your plugin will use be based upon Keyple Core libraries:
+Your plugin will use be based upon Keyple Core library.
 
-```gradle
-implementation "org.eclipse.keyple:keyple-java-core:$keyple_version"
-```
+Using the [Java components]({{< ref "components-java/core/_index.md" >}}) or [C++ components]({{< ref "components-cpp/core/_index.md" >}})
+pages, import **Keyple Core** into your project.
+
 
 ## Implement Keyple Reader
 The first step of a Keyple plugin development is the implementation of Keyple Reader Interface (org.eclipse.keyple.core.Reader). 
@@ -883,73 +880,6 @@ public PcscPlugin getPlugin() {
       throw new KeyplePluginInstantiationException("Can not access smartcard.io readers", e);
     }
 }
-```
-
-# Imports
-## JARs
-
-All deliverables (JARs, AARs, changelogs, javadocs) are available on the [Maven Central Repository](https://search.maven.org/).
-
-So you can use [Gradle](https://gradle.org/) or [Maven](https://maven.apache.org/) to import the JARs into your project or download them directly from the **Maven Central Repository**.
-
-## GRADLE
-
-* Keyple Java Core
-```
-implementation 'org.eclipse.keyple:keyple-java-core:1.0.0' 
-```
-
-* Keyple Android Plugin NFC
-```
-implementation 'org.eclipse.keyple:keyple-android-plugin-nfc:1.0.0' 
-```
-
-* Keyple Android Plugin OMAPI
-```
-implementation 'org.eclipse.keyple:keyple-android-plugin-omapi:1.0.0' 
-```
-
-* Keyple Java Plugin PC/SC
-```
-implementation 'org.eclipse.keyple:keyple-java-plugin-pcsc:1.0.0' 
-```
-
-## MAVEN
-
-* Keyple Java Core
-```
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-java-core</artifactId>
-  <version>1.0.0</version>
-</dependency>
-```
-
-* Keyple Android Plugin NFC
-```
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-android-plugin-nfc</artifactId>
-  <version>1.0.0</version>
-</dependency>
-```
-
-* Keyple Android Plugin OMAPI
-```
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-android-plugin-omapi</artifactId>
-  <version>1.0.0</version>
-</dependency>
-```
-
-* Keyple Java Plugin PC/SC
-```
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-java-plugin-pcsc</artifactId>
-  <version>1.0.0</version>
-</dependency>
 ```
 
 ## Sources
