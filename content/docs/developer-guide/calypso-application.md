@@ -200,7 +200,6 @@ This service workflow is composed of two steps:
     ElementaryFile efEventLog = calypsoPo.getFileBySfi(CalypsoClassicInfo.SFI_EventLog);
 
     String eventLog = ByteArrayUtil.toHex(efEventLog.getData().getContent());
-    logger.info("File Event log: {}", eventLog);
 
     // Prepare a SV Debit (this command could also have been placed before processOpening
     // since it is not followed by any other command)
@@ -221,11 +220,13 @@ This service workflow is composed of two steps:
 * The diagram below represents the main classes implemented around the **Transaction package**.
   {{< figure library="true"
   src="calypso-app-development/class/TransactionPackage_Class.svg"
-  title=""
+  title="" >}}
 
->}}
-
-
+* The diagram below represents the main classes implemented around the **Command package**.
+  {{< figure library="true"
+  src="calypso-app-development/class/CommandPackage_Class.svg"
+  title="" >}}
+  
 ## Examples
 Detailed use case examples can be seen here:
 
