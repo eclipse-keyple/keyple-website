@@ -1,0 +1,168 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+
+package calypso {
+package transaction {
++class "CardResource<CalypsoSam>" as SamResource {
+  +CardResource(<color:red>Reader reader</color>, CalypsoSam sam)
+}
+}
+
+package sammanager {
+
++abstract SamResourceManagerFactory <<not prefixed Abstract !!! >> {
+  ~{static}<b>final</b> int MAX_BLOCKING_TIME = 1000
+  ~{static}<b>final</b> int DEFAULT_SLEEP_TIME = 10
+
+  +{static}SamResourceManager instantiate(ReaderPlugin readerPlugin, String samReaderFilter, int maxBlockingTime, int sleepTime)
+  +{static}SamResourceManager instantiate(ReaderPlugin readerPlugin, String samReaderFilter)
+'
+  +{static}SamResourceManager instantiate(ReaderPoolPlugin samReaderPoolPlugin, int maxBlockingTime, int sleepTime)
+  +{static}SamResourceManager instantiate(ReaderPoolPlugin samReaderPoolPlugin)
+}
+
+
++enum AllocationMode {
+  BLOCKING
+  NON_BLOCKING
+}
+
++abstract SamResourceManager <<not prefixed Abstract !!! >> {
+  #SamResourceManagerDefault.ManagedSamResource createSamResource(Reader samReader)
+  .. abstract methods to be implemented ..
+  +{abstract} CardResource<CalypsoSam> allocateSamResource(AllocationMode allocationMode, SamIdentifier samIdentifier)
+  +{abstract} freeSamResource(CardResource<CalypsoSam> samResource)
+}
+
+SamResourceManager +-up- AllocationMode
+SamResourceManager -up- SamResourceManagerFactory : build <
+
++class SamResourceManagerPool {
+  #<b>final</b> ReaderPlugin samReaderPlugin
+  -<b>final</b> int maxBlockingTime
+  -<b>final</b> int sleepTime
+
+  #SamResourceManagerPool(ReaderPoolPlugin samReaderPoolPlugin, int maxBlockingTime, int sleepTime)
+  .. Override SamResourceManager abstract methods ..
+  +CardResource<CalypsoSam> allocateSamResource(AllocationMode allocationMode, SamIdentifier samIdentifier)
+  +freeSamResource(CardResource<CalypsoSam> samResource)
+}
+
++class SamResourceManagerDefault {
+  -<b>final</b> ConcurrentMap<String, ManagedSamResource> localManagedSamResources
+  ~<b>final</b> SamResourceManagerDefault.ReaderObserver readerObserver // only used with observable
+  #<b>final</b> ReaderPlugin samReaderPlugin
+  -<b>final</b> int maxBlockingTime
+  -<b>final</b> int sleepTime
+--
+  #SamResourceManagerDefault(ReaderPlugin readerPlugin, String samReaderFilter, int maxBlockingTime, int sleepTime)
+  -initSamReader(Reader samReader, ReaderObserver readerObserver)
+  #removeResource(Reader samReader)
+
+  .. Override SamResourceManager abstract methods ..
+  +CardResource<CalypsoSam> allocateSamResource(AllocationMode allocationMode, SamIdentifier samIdentifier)
+  +freeSamResource(CardResource<CalypsoSam> samResource)
+}
+
+
+
+SamResourceManager <|-down- SamResourceManagerDefault : extends
+'SamResourceManager <|-down- SamResourceManagerPool : extends
+SamResourceManager <|-- SamResourceManagerPool : extends
+SamIdentifier -down[hidden]- SamResourceManagerPool
+
+
++enum SamResourceStatus {
+  FREE
+  BUSY
+}
+
+~class ManagedSamResource <<static>> {
+  -SamResourceStatus samResourceStatus
+  -SamIdentifier samIdentifier
+
+  +ManagedSamResource(Reader reader, CalypsoSam calypsoSam)
+  +boolean isSamResourceFree()
+  +setSamIdentifier(SamIdentifier samIdentifier)
+  +boolean isSamMatching(SamIdentifier samIdentifier)
+  +setSamResourceStatus(SamResourceStatus samResourceStatus)
+}
+
+ManagedSamResource -right- SamResourceManagerDefault : manages <
+
+~class PluginObserver {
+  ~<b>final</b> ReaderObserver readerObserver
+  ~<b>final</b> String samReaderFilter
+  ~Pattern p
+
+  ~PluginObserver(ReaderObserver readerObserver, String samReaderFilter)
+'
+  -- Override PluginObserver --
+  +update(PluginEvent event)
+}
+
+~class ReaderObserver {
+  ~ReaderObserver()
+'
+  -- Override ReaderObserver --
+  +update(ReaderEvent event)
+}
+
++class SamIdentifier {
+  ~SamRevision samRevision
+  ~String serialNumber
+  ~String groupReference
+
+  -SamIdentifier(SamIdentifierBuilder builder)
+
+  +{static} SamIdentifierBuilder builder()
+  +SamRevision getSamRevision()
+  +String getSerialNumber()
+  +String getGroupReference()
+  +boolean matches(SamIdentifier samIdentifier) // renam 'equals' or 'compare'
+}
+
++class SamIdentifierBuilder <<static>> {
+  -SamRevision samRevision
+  -String serialNumber
+  -String groupReference
+
+  +SamIdentifierBuilder samRevision(SamRevision samRevision)
+  +SamIdentifierBuilder serialNumber(String serialNumber)
+  +SamIdentifierBuilder groupReference(String groupReference)
+
+  +SamIdentifier build()
+}
+
+SamIdentifier +-up- SamIdentifierBuilder : builds <
+SamIdentifier -right- SamResourceManager
+}
+
+SamResourceManager -right- SamResource : provides >
+SamResource <|-- ManagedSamResource : extends
+'SamResourceManagerFactory -up- SamResource
+ManagedSamResource +-down- SamResourceStatus
+SamResourceManagerDefault +-down- PluginObserver
+SamResourceManagerDefault +-down- ReaderObserver
+}
+
+interface seproxy.event.PluginObserver
+interface seproxy.event.ReaderObserver
+PluginObserver .down.|> seproxy.event.PluginObserver : implements
+ReaderObserver .down.|> seproxy.event.ReaderObserver : implements
+
+
+@enduml

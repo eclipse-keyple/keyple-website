@@ -1,0 +1,105 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+
+!include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_TERMINALAPPLICATION_1_0_0
+
+package org.eclipse.keyple.core.service #FFFFFF {
+  class SmartCardService
+
+  package event #FFFFFF {
+'---- EVENT_PLUGIN -------------------------------------------------------------[
+'together {
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_EVENTPLUGIN_1_0_0
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_PLUGINOBSERVER_1_0_0
+    interface ObservablePlugin
+'}
+    EventType_Plugin -up-+ PluginEvent
+
+'---- EVENT_PLUGIN -------------------------------------------------------------]
+
+'---- EVENT_PLUGIN_RELATION ----------------------------------------------------[
+    PluginObserver "*" -down- "1" ObservablePlugin : observes >
+    PluginEvent . (ObservablePlugin, PluginObserver)
+    PluginObserver --o ObservablePlugin
+'---- EVENT_PLUGIN_RELATION ----------------------------------------------------]
+
+'---- EVENT_READER -------------------------------------------------------------[
+    EventType_Reader -up--+ ReaderEvent
+    ReaderEvent "1" o-down- "0..1" AbstractDefaultSelectionsResponse : contains >
+
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_READEROBSERVER_1_0_0
+    interface ObservableReader
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_READERNOTIFICATION_1_0_0
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_DEFAULTSELECTION_PUB_1_0_0
+'---- EVENT_READER -------------------------------------------------------------]
+
+'---- EVENT_READER_RELATION ----------------------------------------------------[
+    ReaderObserver "*" -down-- "1" ObservableReader : observes >
+    ReaderEvent . (ReaderObserver, ObservableReader)
+    ReaderObserver --o ObservableReader
+
+    PollingMode --+ ObservableReader
+    NotificationMode --+ ObservableReader
+    ObservableReader "1" o-up- "0..1" AbstractDefaultSelectionsRequest : set >
+AbstractDefaultSelectionsResponse -down[hidden]- AbstractDefaultSelectionsRequest
+'---- EVENT_READER_RELATION ----------------------------------------------------]
+  }
+
+  interface Plugin
+  interface Reader
+
+  SmartCardService "1" *--> "*" Plugin : plugins
+  Plugin "1" *-down-> "*" Reader : readers
+
+  ObservablePlugin -left-|> Plugin : extends
+  ObservableReader -left-|> Reader : extends
+}
+
+SpecificPluginObserver .down.|> PluginObserver : implements
+SpecificReaderObserver .down.|> ReaderObserver : implements
+SpecificTerminal -down- SmartCardService : uses >
+
+SpecificTerminal -right[hidden]--- SpecificPluginObserver
+SmartCardService -right[hidden]--> PluginObserver
+PluginObserver  -right[hidden]--> EventType_Plugin
+EventType_Plugin -right[hidden]--> EventType_Reader
+EventType_Reader  -right[hidden]--> ReaderObserver
+
+
+enum EventType_Plugin <<Plugin>>
+interface PluginObserver <<Plugin>>
+class PluginEvent <<Plugin>>
+interface ObservablePlugin <<Plugin>>
+hide <<Plugin>> stereotype
+
+enum EventType_Reader <<Reader>>
+interface ReaderObserver <<Reader>>
+class ReaderEvent <<Reader>>
+interface ObservableReader <<Reader>>
+enum PollingMode <<Reader>>
+enum NotificationMode <<Reader>>
+abstract AbstractDefaultSelectionsRequest <<Reader>>
+abstract AbstractDefaultSelectionsResponse <<Reader>>
+
+hide <<Reader>> stereotype
+
+skinparam class {
+  BackgroundColor<<Plugin>> Azure
+  BorderColor<<Plugin>> Blue
+  BackgroundColor<<Reader>> TECHNOLOGY
+  BorderColor<<Reader>> Green
+}
+@enduml

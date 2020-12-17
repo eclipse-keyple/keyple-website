@@ -1,86 +1,117 @@
 ---
-title: Keyple Calypso Architecture
-linktitle: Keyple Calypso
+title: Keyple Calypso
 type: book
 toc: true
 draft: false
 weight: 130
 ---
 
-## Packages & features
 
-The **Keyple Calypso User API is an extension of the Keyple Core User API** to manage Calypso Portable Object securely using Calypso SAM:
+## Features / packages and corresponding usages
 
- - The generic Secure Element selection is enhanced for the **selection of a Calypso PO**. The FCI response is automatically analyzed in order to identify the revision and the features supported by the Calypso PO. The invalidation status is also checked.
- - The selected Calypso PO object allows to automatically initialize a **Calypso PO transaction**: high level functional commands could be prepared and processed in order to **read or write data in the PO file structure**, outside or securely inside a **Calypso secure session**.
+The Calypso transaction API provides a high-level of abstraction to define functional commands to manage a secure session with a Calypso Portable Object, to update or authenticate its data.
+
+The transaction API is defined on a low-level Calypso commands API which contains the builders of PO and SAM APDU commands, and the corresponding parsers of APDU responses.
 
 <table>
+<thead>
   <tr>
-    <td colspan="2"><b>Features</b></td>
-    <td><b>Packages</b></td>
+    <th>Package</th>
+    <th>API<br/>level</th>
+    <th>Feature</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>org.eclipse.keyple.calypso.<b>transaction</b></td>
+    <td>high</td>
+    <td>Calypso Portable Object commands and secure transaction management<br/>
+      <ul><li>CalypsoAPI, commands’ settings are limited to functional parameters<br/></li>
+        <li>Calypso SAM (Secure Module) operations automatically processed<br/></li></ul>
+      (only functional parameters)</td>
   </tr>
   <tr>
-    <td rowspan="2" width="15%">Calypso PO operations</td>
-    <td width="50%">Selection of Calypso SE: PO or SAM
-PO transaction:
- <li>Read / update of data</li>
- <li>PO authentication</li></td>
-    <td width="35%">org.eclipse.keyple.calypso.<b>transaction<b></td>
+    <td>org.eclipse.keyple.calypso.<b>command</b><br/>
+      org.eclipse.keyple.calypso.<b>command</b>.po<br/>
+      org.eclipse.keyple.calypso.<b>command</b>.po.builder<br/>
+      org.eclipse.keyple.calypso.<b>command</b>.po.parser<br/>
+      org.eclipse.keyple.calypso.<b>command</b>.po.parser.session<br/>
+      org.eclipse.keyple.calypso.<b>command</b>.sam<br/>
+      org.eclipse.keyple.calypso.<b>command</b>.sam.builder<br/>
+      org.eclipse.keyple.calypso.<b>command</b>.sam.parser<br/>
+      org.eclipse.keyple.calypso.<b>command</b>.sam.parser.session</td>
+    <td>low</td>
+    <td>Calypso PO &amp; SAM APDU commands' sets<br/>
+      <ul><li>APDU command builders<br/></li>
+        <li>APDU response parsers<br/></li></ul>
+      (technical parameter settings specific to the PO &amp; SAM revisions)<br></td>
   </tr>
-  <tr>
-    <td>Calypso PO responses data parsing</td>
-    <td>org.eclipse.keyple.calypso.<b>command.po.parser<b></td>
-  </tr>  
+</tbody>
 </table>
 
+Ticketing terminal applications must import only the high-level Calypso transaction package.
 
-## Calypso Selection
+{{< figure library="true" src="architecture/KeypleCalypso_Packages.svg" title="Calypso packages" >}}
 
-The Calypso API to select a Portable object is an extension of the generic Secure Element selection Core API:
+The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages.
 
- - A PO AID selection could be defined to **accept or reject invalidated PO**.
- - A request for a SE selection is defined with SE selector containing at least an AID (to operate through a Select Application APDU command) or an ATR filter. A request for a PO selection could be enhanced to operate after the PO selector processing some APDU commands with the PO : **Select File or Read Records commands**.
- - In case of successful Calypso PO, the matching SE is retuned as a Calypso PO. The Calypso API analyzes the startup information of a Calypso PO in order to identify the kind of product, its revision, the optional features supported, the file structure used. Then for coming PO commands, the setting of the technical parameters automatically managed.
 
-The PO command grouped with the PO selection have to be “prepared” before the processing of a default or explicit SE selection.
+## Calypso Portable Object Selection
+Compared to the generic Card Selection API (cf. https://calypsonet.github.io/keyple/KeypleCoreApi/KeypleCore_ApplicationApi.html#card-selection), a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn't selected).
 
-> cf. [“Calypso Use Case 1 / Explicit AID Selection”](https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase1_ExplicitSelectionAid/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase1/ExplicitSelectionAid_Pcsc.java) example<br>
-> cf. [“Calypso Use Case 2 / Default Selection Notification”](https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase2_DefaultSelectionNotification/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase2/DefaultSelectionNotification_Pcsc.java) example
+In addition, a PO Selection Request provides methods:
 
-![Calypso - PO Selection scheme](../../img/KeypleCalypso-1-Transaction-PO_Selection.png "Calypso - PO Selection")
-A ‘PO resource’ is the set of a Calypso PO and the reader on which it is selected.
+ - to prepare Select File command (useful in particular to manage REV1 Calypso PO for which the select of the targeted DF is required).
+ - and to prepare simple read record command (useful to optimize the read of a file present on all targeted PO).
 
-In a same way the Calypso APO provides the tool to select a Calypso security module (a SAM). A SAM selector doesn’t support AID. The corresponding matching SE is a Calypso SAM. A Calypso SAM and the reader used for its selection defines a ‘SAM resource’.
+The matching SmartCard resulting from a PO Selection Request is a Calypso PO. In case file records have been read during the selection: the corresponding data could be recovered in the Calypso PO card image.
 
-## Calypso secure transaction
+{{< figure library="true" src="architecture/KeypleCalypso_Transaction_ClassDiag_PO_Selection_1_0_0.svg" title="Calypso Selection v1.0.0" >}}
 
-A PO transaction could be operated on a Calypso resource. In case a SAM resource is set, a PO transaction could support the Calypso secure session in order to manage a mutual authentication between the terminal and the Calypso PO.
+## Calypso Portable Object Transaction
 
-Through the PO transaction API, only the APDU commands for the PO are explicitly defined; the APDU commands for the SAM are automatically built by the library. Two kinds of methods are provided by the API: ‘**prepare**’ methods, and ‘**process**’ methods.
+A Card Resource is a set of a Reader and a **selected** Card application.
 
- - The ‘prepare’ methods allows to define PO file selection and PO data access operations (read or update of records for a specific file, append of record for a cyclic file, increase or decrease of the value of a counter).
- - A ‘process” method sends to the PO at least the previously prepared command.
-   - The process PO commands method could operated only if no secure session is currently open with the PO. If one or several PO commands have been prepared, a single request is done to the PO reader.
-   - The process opening method allows to manage the opening of a secure session.
-     - First a single request is operated to the SAM reader in order to set the PO serial as the cryptographic diversifier, and to get the terminal challenge for the session.
-     - Then another single request is done to the PO reader to play the prepared PO command, and to manage the opening of the PO session.
-   - A process PO command in session method could be processed only if a secure session is already open with PO.
-     - A single request Is operated with the PO reader to operate the prepared PO commands.
-     - Another single request is sent to the SAM reader to update the update the digest of the MAC session.
-   - The process closing method is used to manage the closing of the secure session with the PO.
-     - A first SAM request is operated to update the digest of the last prepared PO commands and to get the terminal session certificate (to save a PO request, the API anticipates the responses of the prepared PO commands).
-     - A single PO request is transmitted to run the last prepared PO command, to recover the PO session certificate, and to send the ratification signal if necessary.
-     - Finally, a second SAM request allows to authenticate the PO. If the transaction is successful the mutual authentication is valid, and the PO has atomically committed the requested data updates.
+ - A Calypso Portable Object is the image of a selected Calypso PO.
+ - A Calypso SAM is the image of a selected Calypso SAM.
 
-The minimal costs of a Calypso secure session are:
+To operate a Calypso transaction:
 
- - 3 PO requests (1 for the PO selection + 1 for the PO session opening + 1 for the PO session closing).
- - And 3 SAM requests if the SAM is already selected (1 for the PO session opening + 2 for the PO session closing); otherwise 4 SAM requests if the SAM isn’t already selected.
+ - At least a Calypso Resource (CardResource<CalypsoPo>) is required.
+ - A SAM Resource ((CardResource<CalypsoSam>) is required too if security features are involved (Calypso secure session, Stored value transaction, PIN encryption, etc…).
 
-![Calypso - PO Transaction scheme](../../img/KeypleCalypso-2-Transaction-PO_Session.png "Calypso - PO Transaction")
+A Calypso PO image provides public ‘getters’ in order to **recover** the information of the selected PO (startup data, file data, … etc).
 
-By default, the PO transaction manages the Calypso secure session as ‘atomic’: the cumulative amount of PO updates command can’t exceed the size of the PO session buffer.
-> cf. [“Calypso Use Case 4 / PO Authentication”](https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase4_PoAuthentication/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase4/PoAuthentication_Pcsc.java) example
+A transaction with a Calypso PO is fully managed through the PoTransaction object:
 
-The PO transaction could also be defined to allow multiple sessions: in this case the transaction is automatically split in several session as necessary.
-> cf. [“Calypso Use Case 5 / PO Multiple Session"](https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase5_MultipleSession/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase5/MultipleSession_Pcsc.java) example
+ - First a set of PO commands could be defined through ‘**prepare**’ commands.
+ - Next the prepared PO commands transmitted when operating a ‘**process**’ command.
+ - The responses of the PO are then recovered through the Calypso PO image.
+
+{{< figure library="true" src="architecture/KeypleCalypso_Transaction_ClassDiag_Overview.svg" title="Calypso API Global Architecture" >}}
+
+### Calypso card image
+When read commands have been exchanged with a Calypso PO, the corresponding data could be recovered by parsing the file structure of the PO card image.
+
+{{< figure library="true" src="architecture/KeypleCalypso_Transaction_ClassDiag_CalypsoPo_1_0_0.svg" title="Calypso PO card image" >}}
+
+### Calypso transaction
+Only the 'process' methods generate communication with the Calypso PO and SAM.
+ - processPoCommands is used to transmit a set of prepared PO commands (outside or inside a secure session).
+ - processOpening issues an Open Secure Session followed by the prepared PO commands.
+ - processClosing issues the last prepared PO commands and transmits a Close Secure Session.
+<!---
+ - prepareManageSession allows to change authenticate or change the encryption mode.
+-->
+
+The prepareReleaseChannel method allows to the logical channel with the Calypso PO at the end of the processing of the next process method.
+
+{{< figure library="true" src="architecture/KeypleCalypso_Transaction_ClassDiag_PoTransaction_1_0_0.svg" title="Calypso transaction" >}}
+
+## Data model extension
+
+{{< figure library="true" src="architecture/KeypleCalypso_Transaction_ClassDiag_SpecificPoTransaction_1_0_0.svg" title="Calypso Data Model" >}}
+
+## Secure session sequence
+
+{{< figure library="true" src="architecture/KeypleCalypso_Transaction_SequenceDiag_SecureSessionProcessing_1_0_0.svg" title="Calypso session" >}}
