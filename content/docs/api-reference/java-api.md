@@ -11,7 +11,6 @@ The JavaDoc for the Keyple project is available online. The documentation is spl
 <div>
 	<select id="version_selection" style="float: right;" onchange="selectVersion()">
 	    <option>1.0.0</option>
-		<option>1.0.0-alpha-1</option>
 		<option>0.9.0</option>
 		<option>0.8.1</option>
 	</select>

@@ -75,8 +75,8 @@ function get_javadoc() {
   mkdir -p "${BASE_PATH}/tmp"
   wget "${BASE_PATH}/tmp/${BASE_URL}/${1}/${VERSION}/${1}-${VERSION}-javadoc.jar"
 
-  mkdir -p "${BASE_PATH}/static/docs/api-reference/${1}/${VERSION}"
-  unzip "${BASE_PATH}/tmp/${1}-${VERSION}-javadoc.jar" -d "${BASE_PATH}/static/docs/api-reference/${1}/${VERSION}"
+  mkdir -p "${BASE_PATH}/static/docs/api-reference/java-api/${1}/${VERSION}"
+  unzip "${BASE_PATH}/tmp/${1}-${VERSION}-javadoc.jar" -d "${BASE_PATH}/static/docs/api-reference/java-api/${1}/${VERSION}"
 }
 
 BASE_URL="https://repo1.maven.org/maven2/org/eclipse/keyple"
@@ -95,7 +95,7 @@ get_javadoc keyple-android-plugin-nfc ${VERSION}
 get_javadoc keyple-android-plugin-omapi ${VERSION}
 
 
-cat > "./static/docs/api-reference/list-${VERSION}.json" <<- EOF
+cat > "./static/docs/api-reference/java-api/list-${VERSION}.json" <<- EOF
 {
   "keyple-java-core": "Keyple Core API",
   "keyple-java-calypso": "Keyple Calypso API",
@@ -110,7 +110,7 @@ cat > "./static/docs/api-reference/list-${VERSION}.json" <<- EOF
 EOF
 
 (
-  cd $(dirname "$0")/static/docs/api-reference
+  cd $(dirname "$0")/static/docs/api-reference/java-api
   for component in *; do
     [ ! -d "${component}" ] && break;
     (
