@@ -1,0 +1,132 @@
+@startuml
+title
+    Keyple Distributed Network API - 1.0.0 (03/11/2020)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+package Legend {
+    interface " " as syncNodeApi
+    note top of syncNodeApi : **Sync Node API**
+    interface " " as asyncNodeApi <<red>>
+    note top of asyncNodeApi : **Async Node API**
+    interface " " as dtoApi <<grey>>
+    note top of dtoApi : **DTO** (Data Transfer Object)
+    package "spi" as legendSpi #C_GREY3 {}
+    note top of legendSpi : Contains **SPI**s (Service Provider Interfaces)\n which must be implemented by the user
+}
+
+package "org.eclipse.keyple.distributed" as root {
+    ' Nodes & Senders
+    +interface AsyncNodeClient {
+        +void onOpen (String sessionId)
+        +void onMessage (MessageDto msg)
+        +void onClose (String sessionId)
+        +void onError (String sessionId, Throwable error)
+    }
+    +interface AsyncNodeServer {
+        +void onMessage (MessageDto msg)
+        +void onError (String sessionId, Throwable error)
+    }
+    +interface SyncNodeClient {
+    }
+    +interface SyncNodeServer {
+        +List<MessageDto> onRequest (MessageDto msg)
+    }
+    ' SPI
+    package spi {
+        +interface AsyncEndpointClient {
+            +void openSession (String sessionId)
+            +void sendMessage (MessageDto msg)
+            +void closeSession (String sessionId)
+        }
+        +interface AsyncEndpointServer {
+            +void sendMessage (MessageDto msg)
+        }
+        +interface SyncEndpointClient {
+            +List<MessageDto> sendRequest (MessageDto msg)
+        }
+    }
+    ' DTO
+    +class MessageDto {
+        + String sessionId
+        + String action
+        + String clientNodeId
+        + String serverNodeId
+        + String localReaderName
+        + String remoteReaderName
+        + String body
+        + getters()...
+        + setters()...
+    }
+}
+
+' Associations
+SyncNodeClient --> SyncEndpointClient #C_LINK : use >
+AsyncNodeClient --> AsyncEndpointClient #C_LINK : use >
+AsyncNodeServer --> AsyncEndpointServer #C_LINK : use >
+
+' == LAYOUT ==
+
+dtoApi -[hidden]- SyncNodeServer
+SyncNodeServer -[hidden]- MessageDto
+
+syncNodeApi -[hidden]- SyncNodeClient
+syncNodeApi -[hidden]- SyncNodeServer
+
+asyncNodeApi -[hidden]- AsyncNodeClient
+asyncNodeApi -[hidden]- AsyncNodeServer
+
+' == STYLE ==
+
+package root #C_GREY1 {}
+package spi #C_GREY3 {}
+
+AsyncNodeClient <<red>>
+AsyncNodeServer <<red>>
+AsyncEndpointClient <<red>>
+AsyncEndpointServer <<red>>
+
+MessageDto <<grey>>
+
+@enduml

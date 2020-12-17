@@ -1,0 +1,312 @@
+@startuml
+title
+    Keyple Calypso Extension - Transaction package overview- 1.0.0 (15/12/2020)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+package "org.eclipse.keyple.core.card"{
+    package "command"{
+        +interface CardCommand {
+
+        }
+
+        +abstract class AbstractApduCommandBuilder {
+
+        }
+
+        +abstract class AbstractIso7816CommandBuilder {
+
+        }
+
+        +abstract class AbstractApduResponseParser {
+
+        }
+    }
+
+}
+
+package "org.eclipse.keyple.calypso.command" as root {
+    package "po" {
+        +enum CalypsoPoCommand {
+            GET_DATA_FCI
+            OPEN_SESSION_10
+            OPEN_SESSION_24
+            OPEN_SESSION_31
+            OPEN_SESSION_32
+            CLOSE_SESSION
+            READ_RECORDS
+            UPDATE_RECORD
+            GET_DATA_TRACE
+            SV_GET
+            SV_DEBIT
+            REHABILITATE
+            WRITE_RECORD
+            APPEND_RECORD
+            GET_CHALLENGE
+            INCREASE
+            DECREASE
+            SELECT_FILE
+            CHANGE_KEY
+            VERIFY_PIN
+            SV_RELOAD
+            SV_UNDEBIT
+            INVALIDATE
+
+            +String getName()
+            +byte getInstructionByte()
+            +{static} getOpenSessionForRev(PoRevision rev)
+        }
+
+        +enum PoRevision {
+            REV1_0
+            REV2_4
+            REV3_1
+            REV3_1_CLAP
+            REV3_2
+        }
+
+        +class AbstractPoCommandBuilder<T extends AbstractPoResponseParser> {
+            +{abstract}T createResponseParser(ApduResponse apduResponse)
+            +CalypsoPoCommand getCommandRef()
+            +{abstract}boolean isSessionBufferUsed()
+        }
+
+        +class AbstractPoResponseParser {
+            +final AbstractPoCommandBuilder<AbstractPoResponseParser> getBuilder()
+            #final KeypleCardCommandException buildCommandException(...)
+            +void checkStatus()
+        }
+
+        package builder as poBuilder{
+            +class AppendRecordCmdBuild {
+            }
+            +class DecreaseCmdBuild {
+            }
+            +class GetDataFciCmdBuild {
+            }
+            +class GetDataTraceCmdBuild {
+            }
+            +class IncreaseCmdBuild {
+            }
+            +class ReadRecordsCmdBuild {
+            }
+            +class SelectFileCmdBuild {
+            }
+            +class UpdateRecordCmdBuild {
+            }
+            +class WriteRecordCmdBuild {
+            }
+            package security as builder.security{
+            }
+            package storedvalue as builder.storedvalue{
+            }
+        }
+
+        package parser as poParser{
+            +class AppendRecordRespPars {
+            }
+            +class DecreaseRespPars {
+            }
+            +class GetDataFciRespPars {
+            }
+            +class GetDataTraceRespPars {
+            }
+            +class IncreaseRespPars {
+            }
+            +class ReadRecordsRespPars {
+            }
+            +class SelectFileRespPars {
+            }
+            +class UpdateRecordRespPars {
+            }
+            +class WriteRecordRespPars {
+            }
+            package security as parser.security{
+            }
+            package storedvalue as parser.storedvalue{
+            }
+        }
+
+    }
+
+    package "sam" {
+        +class AbstractSamCommandBuilder<T extends AbstractSamResponseParser>{
+            +{abstract}T createResponseParser(ApduResponse apduResponse)
+            +CalypsoPoCommand getCommandRef()
+        }
+        +class AbstractSamResponseParser{
+            +final AbstractSamCommandBuilder<AbstractSamResponseParser> getBuilder()
+            +void checkStatus()
+            #Map<Integer, StatusProperties> getStatusTable()
+            #final KeypleCardCommandException buildCommandException(...)
+        }
+
+        +enum CalypsoSamCommand {
+            SELECT_DIVERSIFIER
+            GET_CHALLENGE
+            DIGEST_INIT
+            DIGEST_UPDATE
+            DIGEST_UPDATE_MULTIPLE
+            DIGEST_CLOSE
+            DIGEST_AUTHENTICATE
+            GIVE_RANDOM
+            CARD_GENERATE_KEY
+            CARD_CIPHER_PIN
+            UNLOCK
+            WRITE_KEY
+            READ_KEY_PARAMETERS
+            READ_EVENT_COUNTER
+            READ_CEILINGS
+            SV_CHECK
+            SV_PREPARE_DEBIT
+            SV_PREPARE_LOAD
+            SV_PREPARE_UNDEBIT
+
+            +String getName()
+            +byte getInstructionByte()
+        }
+
+        package builder as samBuilder{
+            package security as sam.builder.security{
+                +class CardCipherPinCmdBuild {
+                }
+                +class CardGenerateKeyCmdBuild {
+                }
+                +class DigestAuthenticateCmdBuild {
+                }
+                +class DigestCloseCmdBuild {
+                }
+                +class DigestInitCmdBuild {
+                }
+                +class DigestUpdateCmdBuild {
+                }
+                +class DigestUpdateMultipleCmdBuild {
+                }
+                +class GiveRandomCmdBuild {
+                }
+                +class SamGetChallengeCmdBuild {
+                }
+                +class SamReadCeilingsCmdBuild {
+                }
+                +class SamReadEventCounterCmdBuild {
+                }
+                +class SamReadKeyParametersCmdBuild {
+                }
+                +class SamWriteKeyCmdBuild {
+                }
+                +class SelectDiversifierCmdBuild {
+                }
+                +class SvCheckCmdBuild {
+                }
+                +class SvPrepareDebitCmdBuild {
+                }
+                +class SvPrepareLoadCmdBuild {
+                }
+                +class SvPrepareUndebitCmdBuild {
+                }
+                +class UnlockCmdBuild {
+                }
+            }
+        }
+
+        package parser as samParser{
+            package security as sam.parser.security{
+            +class CardCipherPinCmdPars {
+            }
+            +class CardGenerateKeyCmdPars {
+            }
+            +class DigestAuthenticateCmdPars {
+            }
+            +class DigestCloseCmdPars {
+            }
+            +class DigestInitCmdPars {
+            }
+            +class DigestUpdateCmdPars {
+            }
+            +class DigestUpdateMultipleCmdPars {
+            }
+            +class GiveRandomCmdPars{
+            }
+            +class SamGetChallengeCmdPars {
+            }
+            +class SamReadCeilingsCmdPars {
+            }
+            +class SamReadEventCounterCmdPars {
+            }
+            +class SamReadKeyParametersCmdPars {
+            }
+            +class SamWriteKeyCmdPars {
+            }
+            +class SelectDiversifierCmdPars {
+            }
+            +class SvCheckCmdPars {
+            }
+            +class SvPrepareDebitCmdPars {
+            }
+            +class SvPrepareLoadCmdPars {
+            }
+            +class SvPrepareUndebitCmdPars{
+            }
+            +class UnlockCmdPars {
+            }
+            }
+        }
+    }
+}
+
+' Associations
+AbstractApduCommandBuilder <|-- AbstractIso7816CommandBuilder #C_USE
+
+CardCommand <|-- CalypsoPoCommand #C_USE
+AbstractIso7816CommandBuilder <|-- AbstractPoCommandBuilder #C_USE
+AbstractApduResponseParser <|-- AbstractPoResponseParser #C_USE
+AbstractPoCommandBuilder <|--  poBuilder
+AbstractPoResponseParser <|--  poParser
+
+CardCommand <|-- CalypsoSamCommand #C_USE
+AbstractIso7816CommandBuilder <|-- AbstractSamCommandBuilder #C_USE
+AbstractApduResponseParser <|-- AbstractSamResponseParser #C_USE
+AbstractSamCommandBuilder <|--  samBuilder
+AbstractSamResponseParser <|--  samParser
+@enduml

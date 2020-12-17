@@ -1,0 +1,160 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml(id=SELECTION_CHANNEL_1_0_0)
++enum ChannelControl {
+	KEEP_OPEN
+	CLOSE_AFTER
+}
+@enduml
+
+@startuml(id=CARD_PROXYREADER_1_0_0)
++interface ProxyReader {
+  +List<CardSelectionResponse> transmitCardSelectionRequests(List<CardSelectionRequest> cardRequests,
+    MultiSelectionProcessing multiSelectionProcessing, ChannelControl channelControl)
+
+  +CardResponse transmitCardRequest(CardRequest cardRequest, ChannelControl channelControl)
+
+  +releaseChannel()
+}
+@enduml
+
+@startuml(id=CARD_DEFAULTSELECTION_1_0_0)
++class "<b>final</b> DefaultSelectionsRequest" as DefaultSelectionsRequest {
+  -<b>final</b> List<CardSelectionRequest> selectionRequests
+  -<b>final</b> MultiSelectionProcessing multiMode
+  -<b>final</b> ChannelControl channelControl
+'
+  +DefaultSelectionsRequest(List<CardSelectionRequest> selectionRequests,
+    MultiSelectionProcessing multiMode, ChannelControl channelControl)
+
+  +List<CardSelectionRequest> getSelectionRequests()
+  +MultiSelectionProcessing getMultiSelectionProcessing()
+  +ChannelControl getChannelControl()
+}
+
++class "<b>final</b> DefaultSelectionsResponse" as DefaultSelectionsResponse {
+  -<b>final</b> List<CardSelectionResponse> selectionResponses
+'
+  +DefaultSelectionsResponse(List<CardSelectionResponse> selectionResponses)
+
+  +List<CardSelectionResponse> getSelectionResponses()
+}
+@enduml
+
+@startuml(id=CARD_REQUEST_1_0_0)
++class "<b>final</b> CardRequest" as CardRequest {
+  -<b>final</b> List<ApduRequest> apduRequests
+
+  +CardRequest(List<ApduRequest> apduRequests)
+  +List<ApduRequest> getApduRequests()
+}
+
++class "<b>final</b> CardResponse" as CardResponse {
+  -<b>final</b> boolean logicalChannelStatus
+  -<b>final</b> List<ApduResponse> apduResponses
+
+  +CardResponse(boolean logicalChannelStatus, List<ApduResponse> apduResponses)
+  +CardResponse(boolean logicalChannelStatus)
+
+  +boolean isLogicalChannelOpen()
+  +List<ApduResponse> getApduResponses()
+}
+@enduml
+
+@startuml(id=CARD_SELECTION_1_0_0)
++class "<b>final</b> CardSelectionRequest" as CardSelectionRequest {
+  -<b>final</b> CardSelector selector
+  -<b>final</b> CardRequest apduRequests
+
+  +CardSelectionRequest(CardSelector selector, CardRequest apduRequests)
+  +CardSelectionRequest(CardSelector selector)
+
+  +CardSelector getCardSelector()
+  +CardRequest getCardRequest()
+}
+
++class "<b>final</b> CardSelectionResponse" as CardSelectionResponse {
+  -<b>final</b> SelectionStatus selectionStatus
+  -<b>final</b> CardResponse apduResponses
+
+  +CardSelectionResponse(SelectionStatus selectionStatus, CardResponse cardResponse)
+
+  +SelectionStatus getSelectionStatus()
+  +CardResponse getCardResponse()
+}
+@enduml
+
+@startuml(id=CARD_APDUREQUEST_1_0_0)
++class "<b>final</b> ApduRequest" as ApduRequest {
+  -byte[] bytes
+  -<b>final</b> boolean case4
+  -<b>final</b>Set<Integer> successfulStatusCodes
+  -String name
+
+  +ApduRequest(byte[] buffer, boolean case4)
+  +setName(<final> String name)
+  +setSuccessfulStatusCodes(Set<Integer> codes)
+
+  +byte[] getBytes()
+  +boolean isCase4()
+  +String getName()
+  +Set<Integer> getSuccessfulStatusCodes()
+}
+
+/'
++class "<b>final</b> ApduRequestBuilder" as ApduRequestBuilder {
+  -byte[] bytes
+  -<b>final</b> boolean case4
+  -<b>final</b>Set<Integer> successfulStatusCodes
+  -String name
+
+  +ApduRequest(byte[] buffer, boolean case4)
+  +setName(<final> String name)
+  +setSuccessfulStatusCodes(Set<Integer> codes)
+
+  +byte[] getBytes()
+  +boolean isCase4()
+  +String getName()
+  +Set<Integer> getSuccessfulStatusCodes()
+}
+'/
+
++class "<b>final</b> ApduResponse" as ApduResponse {
+  -<b>final</b> byte[] bytes
+  -<b>final</b> boolean successful
+
+  +ApduResponse(byte[] buffer)
+  +setSuccessfulStatusCodes(Set<Integer> codes)
+
+  +byte[] getBytes()
+  +byte[] getDataOut()
+  +int getStatusCode()
+
+  +boolean isSuccessful()
+}
+@enduml
+
+@startuml(id=CARD_STATUS_1_0_0)
++class SelectionStatus {
+  -<b>final</b> byte[] atr
+  -<b>final</b> ApduResponse fci
+  -<b>final</b> boolean isMatching
+
+  +SelectionStatus(AnswerToReset atr, ApduResponse fci, boolean isMatching)
+  +AnswerToReset getAtr()
+  +ApduResponse getFci()
+  +boolean hasMatched()
+}
+@enduml
+

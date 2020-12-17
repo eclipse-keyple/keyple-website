@@ -1,61 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>What is Eclipse Keyple™ | Eclipse Keyple</title><link>/what-is-keyple/</link><atom:link href="/what-is-keyple/index.xml" rel="self" type="application/rss+xml"/><description>What is Eclipse Keyple™</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>What is Eclipse Keyple™</title><link>/what-is-keyple/</link></image><item><title>Keyple's main features</title><link>/what-is-keyple/main-features/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/what-is-keyple/main-features/</guid><description>&lt;p>The goal of Eclipse Keyple™ is to allow developers to easily implement fast and secure off-line contactless transactions
-(using NFC cards, mobile phones, …) based on the Calypso standard.&lt;/p>
-&lt;p>More specifically, Keyple™ is a set of open source libraries that will initially be available in Java and C++,
-designed on the same mutual Object-Oriented Model compatible with any terminal architecture: mobile, embedded
-or server and Interoperable with any smart card reader solution: standard or proprietary, local or remote.&lt;/p>
-&lt;p>To fully understand how Keyple™ works, it is important to discern two main components of contactless ticketing technology:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Smart Card Readers&lt;/strong>: Readers are situated at the entrance and exit of events, venues and transport sites.
-For example, a smart card reader could be a terminal, a portable scanning laser gun, or a swipe tablet area that is embedded
-into a door, vehicle or gate. Code is written for a terminal to set the parameters for allowing cards or apps to transmit
-ticketing information data. Sometimes in a distributed architecture system design, the code for the reader is not on the
-terminal, but in a cloud environment, so the reader sends the data to cloud-based architecture.&lt;/li>
-&lt;li>&lt;strong>Ticketing application&lt;/strong>: This is behind-the-scenes code that is able to take the data from the smart card reader
-and, in milliseconds real-time, analyze the balance of the ticket, confirm the permissions for entry, and update the data
-on the ticket (for example, to confirm that the ticket holder can enter the gate or vehicle, and then to deduct the cost
-of the journey and calculate the new balance).&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>According to this scheme, Keyple™ defines two layers:&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Smart Card readers&lt;/strong> are integrated through plugins implementing the SE Proxy API which manages the communications with
-a smart card through any type of contactless or contact reader (local, remote, standard, proprietary…)&lt;/li>
-&lt;li>&lt;strong>Ticketing applications&lt;/strong> relies on a high-level Calypso® processing API to manage Calypso® commands &amp;amp; security features.
-This API uses the SE Proxy API to communicate with the reader&lt;/li>
-&lt;/ul>
-&lt;p>Keyple™ comes with dedicated plugins that integrate directly with smart card readers that have been built on standard
-software interfaces including PC/SC, Android NFC reader, and Android OMAPI.&lt;/p>
-&lt;p>In cases where there is a distributed architecture design, Keyple™ includes a Remote API plugin so that
-a smart card terminal can be operated remotely, as if it were local to the terminal, and ensures that robust security and
-speed is not sacrificed in a cloud-based system.&lt;/p>
-&lt;p>The Calypso Processing API is also available as a Keyple™ extension. This component carries out the terminal processing
-element of ticketing technology. Access to Calypso’s security features are automatically managed by the Keyple™ extension.&lt;/p></description></item><item><title>What is Calypso®?</title><link>/what-is-keyple/what-is-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/what-is-keyple/what-is-calypso/</guid><description>&lt;p>Calypso® is a set of specifications describing a fast and secure off-line contactless transaction, between a portable object and a terminal.
-It has been created for public transport ticketing at the end of the 1990s by some European public transport operators or authority
-(RATP and SNCF in Paris and all France, STIB in Brussels, OTLIS in Lisbon, ACTV in Venice, Konstanz in Germany), in order to create an open,
-interoperable and secure standard independent from industrials to ensure a real competition.&lt;/p>
-&lt;p>Today Calypso® represents 20% of the world market of contactless smart ticketing in 25 countries and 125 cities.
-It brings to his user a guarantee of security and interoperability which relies on a total compliance with existing standards
-(ISO 14443, ISO 7816-4, Global Platform). The Calypso® standard is managed by the Calypso Networks Association (CNA) ,
-which is led by transports operators and public authorities in order to ensure openness and independence from industrials
-in confront of other proprietary schemes.&lt;/p></description></item><item><title>Who is it for?</title><link>/what-is-keyple/who-is-it-for/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/what-is-keyple/who-is-it-for/</guid><description>&lt;p>Whether you are a transport authority or operator, a mobility provider, a system integrator, an event manager, a mobility aggregator
-or a multi-mobility startup, Eclipse Keyple™ allows you to:&lt;/p>
-&lt;ul>
-&lt;li>Have easy access to a highly secure and interoperable standard, Calypso®.&lt;/li>
-&lt;li>Reduce your costs and accelerate your developments.&lt;/li>
-&lt;li>Facilitate the integration of new services or technologies.&lt;/li>
-&lt;li>Quickly build new apps and integrations that conform to the Calypso standard and other ticketing schemas.&lt;/li>
-&lt;li>Use libraries to enable instant payments, remote top-ups, event and multimodal transport integrations, connection to park-and-ride services, and more.&lt;/li>
-&lt;li>Easily create applications or services compatible with existing card-centric or server-centric systems.&lt;/li>
-&lt;li>Benefit from a more diverse and easily collaborative network that encourages coopetition in a multimodal market: compete where you can, collaborate when necessary to create integrated mobility customer journeys.&lt;/li>
-&lt;li>Easily migrate from an existing, closed ticketing schemes to Calypso®, a high-end open ticketing, certified solution.&lt;/li>
-&lt;li>Harness the flexibility to introduce modern, mobile and new architecture systems while maintaining integrations to legacy infrastructure.&lt;/li>
-&lt;li>Ensure the sustainability and future-proofing of your ticketing system, as Keyple™ is compatible with any smart card reader and SIO-enabled terminal.&lt;/li>
-&lt;li>Unchain from vendor lock in, black box and single provider systems to an open solution with access to multiple suppliers.&lt;/li>
-&lt;li>Enable partnerships with multimodal transport, building facilities including parking, tourism operators and events to offer seamless, single ticketing across the end customer’s journey.&lt;/li>
-&lt;li>Easily integrate with public transport providers that are using the Calypso standard, today used in major cities around the world in over 25 countries.&lt;/li>
-&lt;/ul></description></item><item><title>Why trust Eclipse Keyple™?</title><link>/what-is-keyple/why-trust/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/what-is-keyple/why-trust/</guid><description>&lt;p>Eclipse Keyple™ is an Eclipse open source project developped and leaded by Calypso Networks Association, which has been the leader in contactless
-electronic ticketing transportation standards since 2003. For many years, our mission has been to create innovative solutions that are fully
-interoperable, reliable, secure, and open. We collaborate with a dynamic network of city leaders and transport authorities that are keen to work
-with system integrators with Calypso standard expertise.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>What is Eclipse Keyple™ | Eclipse Keyple</title><link>https://keyple.org/what-is-keyple/</link><atom:link href="https://keyple.org/what-is-keyple/index.xml" rel="self" type="application/rss+xml"/><description>What is Eclipse Keyple™</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>What is Eclipse Keyple™</title><link>https://keyple.org/what-is-keyple/</link></image><item><title>Overview</title><link>https://keyple.org/what-is-keyple/overview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/what-is-keyple/overview/</guid><description>&lt;p>Coming from a rather closed technical environment, ticketing for transport is essentially based on proprietary solutions provided by manufacturers.
+However, in order for the concept of Mobility as a Service to become a reality, and at a reasonable cost, the ecosystem should, as far as possible,
+rely on open standards, APIs and SDKs as well as Open Source technologies. This openness has already been a reality for several years in the field
+of passenger information and has enabled the explosion of rich and high-quality applications, thanks in particular to Open Data. Today, Eclipse
+Keyple™ is paving the way for ticketing to follow the same path, by making available for free the first fully Open Source API.&lt;/p>
+&lt;p>Eclipse Keyple™ accelerates the integration and development of ticketing applications by enabling multimodal transport services, public transport
+operators and event organizers to implement ticketing and access control systems based on a common, open and modular base.&lt;/p>
+&lt;p>Eclipse Keyple™ works with Keyple&amp;rsquo;s extensions. The first available extension allows you to benefit from Calypso®'s main features of reliability,
+security and interoperability.&lt;/p>
+&lt;p>Eclipse Keyple™ transforms complex contactless ticketing, transportation and event access systems into a simple integration to manage terminal
+readers and portals that use smart cards and mobile applications to enter and exit.&lt;/p>
+&lt;p>As an open source technology, Eclipse Keyple™ offers uniformity of structure but does not lock you into a specific ticketing system. Plugins and
+extensions are being created, or may be created by developers, to allow ticket processing integrating technologies other than Calypso®, based on
+several programming languages.&lt;/p></description></item><item><title>Why trust Eclipse Keyple™?</title><link>https://keyple.org/what-is-keyple/why-trust/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/what-is-keyple/why-trust/</guid><description>&lt;p>Eclipse Keyple™ is an Eclipse open source project currently leaded by Calypso Networks Association, which has been the leader in contactless
+electronic ticketing transportation standards since 2003.&lt;/p>
 &lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 &lt;iframe src="https://www.youtube.com/embed/3CWNho1rrSw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video">&lt;/iframe>
 &lt;/div>
@@ -94,15 +51,62 @@ with system integrators with Calypso standard expertise.&lt;/p>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>Overview</title><link>/what-is-keyple/overview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/what-is-keyple/overview/</guid><description>&lt;p>Coming from a rather closed technical environment, ticketing for transport is essentially based on proprietary solutions provided by manufacturers.
-However, in order for the concept of Mobility as a Service to become a reality, and at a reasonable cost, the ecosystem should, as far as possible,
-rely on open standards, APIs and SDKs as well as Open Source technologies. This openness has already been a reality for several years in the field
-of passenger information and has enabled the explosion of rich and high-quality applications, thanks in particular to Open Data. Today, CNA is
-paving the way for ticketing to follow the same path, by making available for free the first fully Open Source API: Eclipse Keyple™.&lt;/p>
-&lt;p>Eclipse Keyple™ accelerates the integration and development of ticketing applications by enabling multimodal transport services, public transport
-operators and event organizers to implement ticketing systems based on a common, open and modular base, while benefiting from Calypso®'s main features
-of reliability, security and interoperability.&lt;/p>
-&lt;p>Eclipse Keyple™ transforms complex contactless ticketing, transportation and event access systems into a simple integration to manage terminal readers
-and portals that use smart cards and mobile applications to enter and exit.&lt;/p>
-&lt;p>As an open source technology, Eclipse Keyple™ offers uniformity of structure but does not lock you into a specific ticketing system. Plugins are being
-created, or may be created by developers, to allow ticket processing integrating technologies other than Calypso®, based on several programming languages.&lt;/p></description></item></channel></rss>
+&lt;/table></description></item><item><title>Who is it for?</title><link>https://keyple.org/what-is-keyple/who-is-it-for/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/what-is-keyple/who-is-it-for/</guid><description>&lt;p>Whether you are a transport authority or operator, a mobility provider, a system integrator, an event manager, a mobility aggregator
+or a multi-mobility startup, Eclipse Keyple™ allows you to:&lt;/p>
+&lt;ul>
+&lt;li>Reduce your costs and accelerate your developments.&lt;/li>
+&lt;li>Facilitate the integration of new services or technologies.&lt;/li>
+&lt;li>Use libraries to enable instant payments, remote top-ups, event and multimodal transport integrations, connection to park-and-ride services, and more.&lt;/li>
+&lt;li>Easily create applications or services compatible with existing card-centric or server-centric systems.&lt;/li>
+&lt;li>Benefit from a more diverse and easily collaborative network that encourages coopetition in a multimodal market: compete where you can, collaborate when necessary to create integrated mobility customer journeys.&lt;/li>
+&lt;li>Harness the flexibility to introduce modern, mobile and new architecture systems while maintaining integrations to legacy infrastructure.&lt;/li>
+&lt;li>Ensure the sustainability and future-proofing of your ticketing system, as Keyple™ is compatible with any smart card reader and SIO-enabled terminal.&lt;/li>
+&lt;li>Unchain from vendor lock in, black box and single provider systems to an open solution with access to multiple suppliers.&lt;/li>
+&lt;li>Enable partnerships with multimodal transport, building facilities including parking, tourism operators and events to offer seamless, single ticketing across the end customer’s journey.&lt;/li>
+&lt;/ul>
+&lt;p>With Keyple Calypso extension:&lt;/p>
+&lt;ul>
+&lt;li>Have easy access to a highly secure and interoperable standard, Calypso®.&lt;/li>
+&lt;li>Quickly build new apps and integrations that conform to the Calypso® standard and other ticketing schemas.&lt;/li>
+&lt;li>Easily migrate from an existing, closed ticketing schemes to Calypso®, a high-end open ticketing, certified solution.&lt;/li>
+&lt;li>Easily integrate with public transport providers that are using the Calypso® standard, today used in major cities around the world in over 25 countries.&lt;/li>
+&lt;/ul></description></item><item><title>What is Calypso®?</title><link>https://keyple.org/what-is-keyple/what-is-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/what-is-keyple/what-is-calypso/</guid><description>&lt;p>Calypso® is a set of specifications describing a fast and secure off-line contactless transaction, between a portable object and a terminal.
+It has been created for public transport ticketing at the end of the 1990s by some European public transport operators or authority
+(RATP and SNCF in Paris and all France, STIB in Brussels, OTLIS in Lisbon, ACTV in Venice, Konstanz in Germany), in order to create an open,
+interoperable and secure standard independent from industrials to ensure a real competition.&lt;/p>
+&lt;p>Today Calypso® represents 20% of the world market of contactless smart ticketing in more than 25 countries and over 170 cities globally.
+It brings to his user a guarantee of security and interoperability which relies on a total compliance with existing standards
+(ISO 14443, ISO 7816-4, Global Platform). The Calypso® standard is managed by the Calypso Networks Association (CNA),
+which is led by transports operators and public authorities in order to ensure openness and independence from industrials
+in confront of other proprietary schemes.&lt;/p>
+&lt;p>Discover more about Calypso® here : &lt;a href="https://calypsonet.org/solutions-overview/">https://calypsonet.org/solutions-overview/&lt;/a>&lt;/p></description></item><item><title>Keyple's main features</title><link>https://keyple.org/what-is-keyple/main-features/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/what-is-keyple/main-features/</guid><description>&lt;p>The goal of Eclipse Keyple™ is to allow developers to easily implement fast and secure off-line contactless transactions
+(using NFC cards, mobile phones, …) based on ticket processing integrating technologies other than Calypso®the Calypso standard.&lt;/p>
+&lt;p>More specifically, Keyple™ is a set of open source libraries that will initially be available in Java and C++,
+designed on the same mutual Object-Oriented Model compatible with any terminal architecture: mobile, embedded
+or server and Interoperable with any smart card reader solution: standard or proprietary, local or remote.&lt;/p>
+&lt;p>To fully understand how Keyple™ works, it is important to discern two main components of contactless ticketing technology:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Smart Card Readers&lt;/strong>: Readers are situated at the entrance and exit of events, venues and transport sites.
+For example, a smart card reader could be a terminal, a portable scanning laser gun, or a swipe tablet area that is embedded
+into a door, vehicle or gate. Code is written for a terminal to set the parameters for allowing cards or apps to transmit
+ticketing information data. Sometimes in a distributed architecture system design, the code for the reader is not on the
+terminal, but in a cloud environment, so the reader sends the data to cloud-based architecture.&lt;/li>
+&lt;li>&lt;strong>Ticketing application&lt;/strong>: This is behind-the-scenes code that is able to take the data from the smart card reader
+and, in milliseconds real-time, analyze the balance of the ticket, confirm the permissions for entry, and update the data
+on the ticket (for example, to confirm that the ticket holder can enter the gate or vehicle, and then to deduct the cost
+of the journey and calculate the new balance).&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>According to this scheme, Keyple™ defines two layers:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Smart Card readers&lt;/strong> are integrated through plugins implementing the SE Proxy API which manages the communications with
+a smart card through any type of contactless or contact reader (local, remote, standard, proprietary…)&lt;/li>
+&lt;li>&lt;strong>Ticketing applications&lt;/strong> relies on a high-level Calypso® processing API to manage Calypso® commands &amp;amp; security features.
+This API uses the SE Proxy API to communicate with the reader&lt;/li>
+&lt;/ul>
+&lt;p>Keyple™ comes with dedicated plugins that integrate directly with smart card readers that have been built on standard
+software interfaces including PC/SC, Android NFC reader, and Android OMAPI.&lt;/p>
+&lt;p>In cases where there is a distributed architecture design, Keyple™ includes a Remote API plugin so that
+a smart card terminal can be operated remotely, as if it were local to the terminal, and ensures that robust security and
+speed is not sacrificed in a cloud-based system.&lt;/p>
+&lt;p>The Calypso Processing API is also available as a Keyple™ extension. This component carries out the terminal processing
+element of ticketing technology. Access to Calypso’s security features are automatically managed by the Keyple™ extension.&lt;/p></description></item></channel></rss>

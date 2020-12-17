@@ -1,0 +1,85 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+
+package org.eclipse.keyple.core #FFFFFF {
+  package "service" as reader_even #FFFFFF {
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_READER_1_0_0
+
+    package event #FFFFFF {
+      !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_DEFAULTSELECTION_PUB_1_0_0
+    }
+  }
+
+  package card.selection #FFFFFF {
+    !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_SELECTION_1_0_0
+    !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_MULTIPLE_1_0_0
+    !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_REQUEST_1_0_0
+    !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_RESULT_1_0_0
+    !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_RESOURCE_1_0_0
+
+    CardResource_T "1" *-right- "1" AbstractSmartCard
+
+    CardSelectionsService "1" o-down- "*" AbstractCardSelection
+    CardSelectionsService "1" o-left- "0..1" CardSelectionsResult
+
+    CardSelectionsResult "1" o-down- "*" AbstractSmartCard
+    AbstractSmartCard "1..0" -right- "1" AbstractCardSelection : selects <
+'  }
+
+'  package "seproxy" as seproxy_protocol #FFFFFF {
+'    package protocol #FFFFFF {
+'      !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SEPROXY_PROTOCOL_MODE
+'      !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SEPROXY_PROTOCOL_SETTING
+'
+'      TransmissionMode "1" -left-* "1" SeProtocol
+'      SeProtocol <|.down. SeCommonProtocols : implements
+'    }
+
+    !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_SELECTOR_1_0_0
+    !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_SELECTOR_BUILDER_1_0_0
+
+'    SeProtocol "0..1" -right- CardSelectorBuilder : set >
+
+    !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_SELECTOR_COMPL_1_0_0
+    !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_SELECTOR_ATR_1_0_0
+    !include KeypleCore_CardSelection_ClassDiag_ClassElements.iuml!SELECTION_SELECTOR_AID_1_0_0
+    AidSelector +-down- FileOccurrence
+    AidSelector +-down- FileControlInformation
+    AidSelector +-- "1+" AidSelectorBuilder : build <
+    AidSelectorBuilder "1" *-left- "0..1" FileOccurrence : set <
+    AidSelectorBuilder "1" *-right- "0..1" FileControlInformation : set <
+
+    CardSelectorBuilder o-down- "0..1" AidSelector : set <
+    CardSelectorBuilder o-up- "0..1" AtrFilter : set <
+
+    CardSelector +-- AidSelector
+    CardSelector +-left- AtrFilter
+    CardSelector +-- "1+" CardSelectorBuilder : build <
+
+    MultiSelectionProcessing -left- CardSelectionsService : set <
+
+    AbstractCardSelection "1" o-down- "1" CardSelector
+'    AbstractSmartCard "1" *-- "0..1" TransmissionMode
+  }
+
+  CardSelectionsService -up- Reader : sends <
+  CardSelectionsService -up- AbstractDefaultSelectionsRequest : exports >
+  CardSelectionsService -up- AbstractDefaultSelectionsResponse : imports >
+
+  CardSelectionsResult -up- Reader : receives <
+  Reader "0..1" --* "1" CardResource_T : connected to <
+}
+@enduml

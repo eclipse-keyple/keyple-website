@@ -1,0 +1,124 @@
+'---------------------------------------------------------------------------------
+' Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+'
+' See the NOTICE file(s) distributed with this work for additional
+' information regarding copyright ownership.
+'
+' This program and the accompanying materials are made available under the
+' terms of the Eclipse Public License 2.0 which is available at
+' http://www.eclipse.org/legal/epl-2.0
+'
+' SPDX-License-Identifier: EPL-2.0 4
+'---------------------------------------------------------------------------------
+
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+
+package org.eclipse.keyple.core #FFFFFF {
+  package "service" as core_reader #FFFFFF {
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_PLUGIN_1_0_0_PLUGIN
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_UTIL_1_0_0_PLUGIN
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_READER_1_0_0_PLUGIN
+  }
+
+  package card #FFFFFF {
+    !include KeypleCore_Card_ClassDiag_ClassElements.iuml!CARD_PROXYREADER_1_0_0
+  }
+  Plugin -right-|> ProxyElement : extends
+  ProxyElement <|-right- Reader : extends
+  Reader <|-down- ProxyReader : extends
+
+  package plugin #FFFFFF {
+    together {
+      !include KeypleCore_Plugin_ClassDiag_ClassElements.iuml!PLUGIN_PLUGIN_1_0_0
+      !include KeypleCore_Plugin_ClassDiag_ClassElements.iuml!PLUGIN_OBSERVALEPLUGIN_1_0_0
+      !include KeypleCore_Plugin_ClassDiag_ClassElements.iuml!PLUGIN_OBSERVABLE_NOTIFIER_1_0_0
+    }
+    AbstractPlugin <|-down- AbstractObservablePlugin : extends
+    AbstractObservablePlugin <|-down- AbstractThreadedObservablePlugin : extends
+    AbstractThreadedObservablePlugin -down[hidden]-> ObservablePluginNotifier
+    AbstractObservablePlugin ..|> ObservablePluginNotifier : implements
+
+'    package "reader" as plugin_reader #FFFFFF {
+    together {
+'      together {
+        !include KeypleCore_Plugin_ClassDiag_ClassElements.iuml!PLUGIN_ABSTRACTREADER_1_0_0
+'        class Toto
+'      }
+      together {
+        !include KeypleCore_Plugin_ClassDiag_ClassElements.iuml!PLUGIN_LOCALREADER_1_0_0
+        !include KeypleCore_Plugin_ClassDiag_ClassElements.iuml!PLUGIN_SMART_SELECTION_1_0_0
+      }
+      !include KeypleCore_Plugin_ClassDiag_ClassElements.iuml!PLUGIN_OBSERVABLEREADER_1_0_0
+      AbstractObservableLocalReader <|-right- AbstractObservableLocalAutonomousReader : extends
+
+together {
+        !include KeypleCore_Plugin_ClassDiag_ClassElements.iuml!READER_OBSERVABLE_NOTIFIER_1_0_0
+      together {
+        !include KeypleCore_Plugin_ClassDiag_ClassElements.iuml!PLUGIN_SMART_OBSERVABLE_1_0_0
+      }
+}
+      AbstractReader <|-down- AbstractLocalReader : extends
+      AbstractLocalReader <|-down- AbstractObservableLocalReader : extends
+      AbstractObservableLocalReader .down.|> ObservableReaderNotifier : implements
+
+      WaitForCardInsertionAutonomous -right[hidden]- WaitForCardRemovalAutonomous
+      WaitForCardRemovalDuringProcessing -right[hidden]- DontWaitForCardRemovalDuringProcessing
+      WaitForCardInsertionNonBlocking -right[hidden]- WaitForCardRemovalNonBlocking
+      WaitForCardInsertionBlocking -right[hidden]- WaitForCardRemovalBlocking
+
+      WaitForCardInsertionAutonomous -down[hidden]- WaitForCardRemovalDuringProcessing
+      WaitForCardRemovalDuringProcessing -down[hidden]- WaitForCardInsertionNonBlocking
+      WaitForCardInsertionNonBlocking -down[hidden]- WaitForCardInsertionBlocking
+
+      ObservableReaderNotifier <|-right- WaitForCardInsertionAutonomous : extends
+      ObservableReaderNotifier <|-- WaitForCardRemovalAutonomous : extends
+      ObservableReaderNotifier <|-right- WaitForCardRemovalDuringProcessing : extends
+      ObservableReaderNotifier <|-- DontWaitForCardRemovalDuringProcessing : extends
+      ObservableReaderNotifier <|-right- WaitForCardInsertionNonBlocking : extends
+      ObservableReaderNotifier <|-- WaitForCardRemovalNonBlocking : extends
+      ObservableReaderNotifier <|-right- WaitForCardInsertionBlocking : extends
+      ObservableReaderNotifier <|-- WaitForCardRemovalBlocking : extends
+/'
+      WaitForCardInsertionAutonomous -down[hidden]- WaitForCardRemovalAutonomous
+      WaitForCardRemovalAutonomous -down[hidden]- WaitForCardRemovalDuringProcessing
+      WaitForCardRemovalDuringProcessing -down[hidden]- DontWaitForCardRemovalDuringProcessing
+      DontWaitForCardRemovalDuringProcessing -down[hidden]- WaitForCardInsertionNonBlocking
+      WaitForCardInsertionNonBlocking -down[hidden]- WaitForCardRemovalNonBlocking
+      WaitForCardRemovalNonBlocking -down[hidden]- WaitForCardInsertionBlocking
+      WaitForCardInsertionBlocking -down[hidden]- WaitForCardRemovalBlocking
+
+      ObservableReaderNotifier <|-- WaitForCardInsertionAutonomous : extends
+      ObservableReaderNotifier <|-- WaitForCardRemovalAutonomous : extends
+      ObservableReaderNotifier <|-- WaitForCardRemovalDuringProcessing : extends
+      ObservableReaderNotifier <|-right- DontWaitForCardRemovalDuringProcessing : extends
+      ObservableReaderNotifier <|-- WaitForCardInsertionNonBlocking : extends
+      ObservableReaderNotifier <|-- WaitForCardRemovalNonBlocking : extends
+      ObservableReaderNotifier <|-- WaitForCardInsertionBlocking : extends
+      ObservableReaderNotifier <|-- WaitForCardRemovalBlocking : extends
+'/
+  }
+  Plugin <|.down. AbstractPlugin : implements
+  ProxyReader <|.down. AbstractReader : implements
+  ProxyReader <|-- SmartSelectionReader : extends
+
+  package service.event #FFFFFF {
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_OBSERVABLEPLUGIN_1_0_0
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_PLUGINOBSERVER_1_0_0
+    ObservablePlugin +-right- PluginObserver
+    ObservablePlugin "1" o-- "*" PluginObserver : observes <
+
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_READEROBSERVER_1_0_0
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_OBSERVABLEREADER_1_0_0
+    ReaderObserver -right-+ ObservableReader
+    ReaderObserver "*" --o "1" ObservableReader
+
+    PluginObserver -right[hidden]-> ReaderObserver
+  }
+  ObservablePluginNotifier -down-|> ObservablePlugin : extends
+  ObservableReaderNotifier -down-|> ObservableReader : extends
+
+  Plugin <|-- ObservablePlugin : extends
+  Reader <|------------ ObservableReader : extends
+}
+@enduml

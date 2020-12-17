@@ -1,0 +1,7 @@
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+hide empty description
+
+  "Wait for Card Insertion" -down[#Red]-> "Wait for Card Removal" : notifies card\ninserted\nor selected
+  "Wait for Card Removal" -up[#Red]-> "Wait for Card Insertion" : notifies card\nremoved
+@enduml

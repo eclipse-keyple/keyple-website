@@ -1,483 +1,519 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>/docs/architecture/</link><atom:link href="/docs/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Architecture</title><link>/docs/architecture/</link></image><item><title>Global Architecture of Keyple</title><link>/docs/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/architecture/keyple-global/</guid><description>&lt;p>&lt;img src="docs/img/Keyple-components.svg" alt="global architecture" title="keyple SDK global architecture">&lt;/p>
-&lt;p>The API is currently divided in two major layers:&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>https://keyple.org/docs/architecture/</link><atom:link href="https://keyple.org/docs/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Architecture</title><link>https://keyple.org/docs/architecture/</link></image><item><title>Keyple Global Solution</title><link>https://keyple.org/docs/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-global/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>The Eclipse Keyple solution provides currently 2 modules:&lt;/p>
 &lt;ul>
-&lt;li>The ‘Keyple Core' : a Secure Element Proxy API which allows managing SE readers in a generic way, whaterver the reader driver or environment, and for standalone or distributed solution (
-&lt;a href="./docs/KeypleCore_UserGuide.md">Keyple Core User Guide&lt;/a>).&lt;/li>
-&lt;li>A ‘Calypso Keyple extension' : a high level Calypso Processing API allowing to operate commands with a Calypso Portable Object, and to manage a secure Calypso transaction (
-&lt;a href="./docs/KeypleCalypso_UserGuide.md">Keyple Calypso User Guide&lt;/a>).&lt;/li>
+&lt;li>the &amp;lsquo;Keyple Core&amp;rsquo;, a universal smart card reader interface to manage the setting of smart card reader, the detection and the communication with smart card, and the selection of card application.&lt;/li>
+&lt;li>the &amp;lsquo;Keyple Calypso&amp;rsquo;, a first smart card solution extension built on the Keyple Core, dedicated to manage Calypso processing, Calypso card identification, card command generation, card data recovery, authentication with the secure session.&lt;/li>
 &lt;/ul>
-&lt;p>Dedicated reader’s plugins have to be implemented in order to interface the SE Proxy API with the specific reader’s drivers.&lt;/p>
-&lt;p>For a distributed architecture, the Remote SE Plugin should be used ((
-&lt;a href="./docs/KeypleRemoteSe_UserGuide.md">Keyple Remote SE User Guide&lt;/a>).)&lt;/p>
-&lt;h3 id="supported-platforms">Supported platforms&lt;/h3>
+&lt;figure id="figure-keyple-architecture-global">
+&lt;a data-fancybox="" href="../../media/architecture/Keyple_Architecture_Global.svg" data-caption="Keyple Architecture Global">
+&lt;img src="../../media/architecture/Keyple_Architecture_Global.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Keyple Architecture Global
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>The Keyple Core provides 3 interfaces:&lt;/p>
 &lt;ul>
-&lt;li>Java SE 1.6 compact2&lt;/li>
-&lt;li>Android 4.4 KitKat API level 19&lt;/li>
+&lt;li>the &amp;lsquo;Service API&amp;rsquo;, to allow terminal application to handle reader &amp;amp; select card&lt;/li>
+&lt;li>the &amp;lsquo;Card API&amp;rsquo;, for APDU command transmission, card data parsing&lt;/li>
+&lt;li>the &amp;lsquo;Plugin API&amp;rsquo;, to integrate specific smart card reader solutions.&lt;/li>
 &lt;/ul>
-&lt;h3 id="keyple-java-repositories-structure">keyple-java repositories structure&lt;/h3>
+&lt;p>The Keyple Calypso extension provides the Calypso API: a high-level interface to manage Calypso card processing.&lt;/p>
+&lt;h2 id="application-integration">Application integration&lt;/h2>
+&lt;p>The Card API is a low-level interface to manage the transmission of APDU commands with a smart card.
+A terminal application operating processing with a specific smart card solution could be implemented directly on top the Card API.&lt;/p>
+&lt;figure id="figure-keyple-architecture-application-integration">
+&lt;a data-fancybox="" href="../../media/architecture/Keyple_Architecture_Application_Integration.svg" data-caption="Keyple Architecture Application Integration">
+&lt;img src="../../media/architecture/Keyple_Architecture_Application_Integration.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Keyple Architecture Application Integration
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>Another way offering a better abstraction on smart card technical settings could be to implement on the Card API a smart card solution library extension providing a high level interface: a specific Solution API.
+This is how the Keyple Calypso extension has be defined, the Calypso API is a high level functional interface, which hides the low-level APDU operations.&lt;/p>
+&lt;h2 id="reader-integration">Reader integration&lt;/h2>
+&lt;h3 id="native-integration">native integration&lt;/h3>
+&lt;p>The smart card readers could be directly integrated with the Keyple Core. By interfacing through the Plugin API, a specific plugin dedicated to a smart card reader solution, the Keyple Core could have the capability to fully manage the smart card readers corresponding to this native plugin.&lt;/p>
+&lt;figure id="figure-keyple-architecture-reader-integration-native">
+&lt;a data-fancybox="" href="../../media/architecture/Keyple_Architecture_Reader_Integration_native.svg" data-caption="Keyple Architecture Reader Integration Native">
+&lt;img src="../../media/architecture/Keyple_Architecture_Reader_Integration_native.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Keyple Architecture Reader Integration Native
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>The Eclipse Keyple project provides the plugin for the main standard smart card reader solutions.&lt;/p>
+&lt;figure id="figure-keyple-architecture-native-plugins">
+&lt;a data-fancybox="" href="../../media/architecture/Keyple_Architecture_Native_Plugins.svg" data-caption="Keyple Architecture Native Plugins">
+&lt;img src="../../media/architecture/Keyple_Architecture_Native_Plugins.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Keyple Architecture Native Plugins
+&lt;/figcaption>
+&lt;/figure>
 &lt;ul>
-&lt;li>Modules that are provided as artifacts
+&lt;li>The PC/SC plugin is available for both the Java and the C++ implementation of Eclipse Keyple, it allows to interface PC/SC reader on Windows, Linux and Mac OS.&lt;/li>
+&lt;li>For Android devices the NFC plugin allows to operate the standard NFC interface to handle external contactless smart card. And the OMAPI plugin provides the integration of internal eSE (embedded Secure Element) or UICC (SIM card). Both plugins support Keyple Java.&lt;/li>
+&lt;li>The Remote plugin (part of the Core distributed extension) allows to operate remote smart card readers.&lt;/li>
+&lt;/ul>
+&lt;h3 id="hybrid-integration">hybrid integration&lt;/h3>
+&lt;p>It&amp;rsquo;s also possible to integrate Keyple in a terminal solution already embedding not Keyple based terminal applications operating smart card solutions. In those kinds of terminal, a Reader Manager has already the direct control on a smart card reader and manage the smart card detection: depending on the type of smart card identified on the reader, a specific terminal application is requested to operated the processing of the smart card.&lt;/p>
+&lt;figure id="figure-keyple-architecture-hybrid-plugins">
+&lt;a data-fancybox="" href="../../media/architecture/Keyple_Architecture_Reader_Integration_hybrid.svg" data-caption="Keyple Architecture Hybrid Plugins">
+&lt;img src="../../media/architecture/Keyple_Architecture_Reader_Integration_hybrid.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Keyple Architecture Hybrid Plugins
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>In this case a reader manager plugin, also based on the Plugin API, could allow the Keyple Core to operate the processing of a specific smart card, when requested by the Reader Manager.&lt;/p>
+&lt;p>For example, an EMV certified reader manager could call a Keyple application in case of PPSE selection failure.&lt;/p>
+&lt;h2 id="smart-card-processing">Smart card processing&lt;/h2>
+&lt;h3 id="stand-alone">stand-alone&lt;/h3>
+&lt;p>By default, a terminal application manages the processing of a specific smart card in stand-alone with its local readers.&lt;/p>
+&lt;figure id="figure-keyple-architecture-local-plugin">
+&lt;a data-fancybox="" href="../../media/architecture/Keyple_Architecture_Local_Plugin.svg" data-caption="Keyple Architecture Local Plugin">
+&lt;img src="../../media/architecture/Keyple_Architecture_Local_Plugin.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Keyple Architecture Local Plugin
+&lt;/figcaption>
+&lt;/figure>
+&lt;h3 id="distributed">distributed&lt;/h3>
+&lt;p>The &amp;lsquo;Distributed&amp;rsquo; extension of the Keyple Core provides a solution allowing a master terminal application to manage the processing of a smart card localized in a remote driven terminal.
+&lt;figure id="figure-keyple-architecture-remote-plugin">
+&lt;a data-fancybox="" href="../../media/architecture/Keyple_Architecture_Remote_Plugin.svg" data-caption="Keyple Architecture Remote Plugin">
+&lt;img src="../../media/architecture/Keyple_Architecture_Remote_Plugin.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Keyple Architecture Remote Plugin
+&lt;/figcaption>
+&lt;/figure>
+&lt;/p>
+&lt;h2 id="smart-card-transaction">Smart card transaction&lt;/h2>
+&lt;p>There are two ways for a terminal application to manage a transaction with a smart card.&lt;/p>
 &lt;ul>
-&lt;li>keyple-core: source and unit tests for the SE Proxy module (artifact : keyple-java-core)&lt;/li>
-&lt;li>keyple-calypso: source and unit tests for the Calypso library (artifact : keyple-java-calypso)&lt;/li>
-&lt;li>keyple-plugin: source and unit tests for the different plugins: smartcard.io PC/SC, Stub, Android NFC, Android OMAPI, etc.&lt;/li>
+&lt;li>Either the smart card processing could be directly started by the terminal application.&lt;/li>
+&lt;li>Otherwise, the smart card processing could be launched when a smart card is inserted in a reader of the terminal.&lt;/li>
 &lt;/ul>
-&lt;/li>
-&lt;li>developer support, testing
+&lt;h3 id="explicit-selection">explicit selection&lt;/h3>
+&lt;p>For a classic transaction,&lt;/p>
 &lt;ul>
-&lt;li>example: source for Keyple implementation examples, generic or Calypso specific.&lt;/li>
+&lt;li>the presence of a card is firtsly checked on a reader,&lt;/li>
+&lt;li>then the car is selected and identified,&lt;/li>
+&lt;li>finally, a transaction is processed with the card application.&lt;/li>
 &lt;/ul>
-&lt;/li>
+&lt;figure id="figure-keyple-transaction-explicit-selection">
+&lt;a data-fancybox="" href="../../media/architecture/Keyple_CardTransaction_ActivityDiag_ExplicitSelection.svg" data-caption="[Keyple Transaction Explicit Selection">
+&lt;img src="../../media/architecture/Keyple_CardTransaction_ActivityDiag_ExplicitSelection.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+[Keyple Transaction Explicit Selection
+&lt;/figcaption>
+&lt;/figure>
+&lt;h3 id="default-selection">default selection&lt;/h3>
+&lt;ul>
+&lt;li>For automatons (e.g. a ticketing validator), the ticketing transaction is often driven by the insertion of a card.&lt;/li>
+&lt;li>Keyple Core allows to define a default selection on Observable Reader, and in return to be notified of successful selections.&lt;/li>
 &lt;/ul>
-&lt;h3 id="keyple-features-and-corresponding-packages">Keyple features and corresponding packages&lt;/h3>
-&lt;p>Keyple features global for any Secure Element solution:&lt;/p>
+&lt;figure id="figure-keyple-transaction-default-selection">
+&lt;a data-fancybox="" href="../../media/architecture/Keyple_CardTransaction_ActivityDiag_DefaultSelection.svg" data-caption="[Keyple Transaction Default Selection">
+&lt;img src="../../media/architecture/Keyple_CardTransaction_ActivityDiag_DefaultSelection.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+[Keyple Transaction Default Selection
+&lt;/figcaption>
+&lt;/figure></description></item><item><title>Keyple Core</title><link>https://keyple.org/docs/architecture/keyple-core/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-core/</guid><description>&lt;h2 id="features--packages-and-corresponding-usages">Features / packages and corresponding usages&lt;/h2>
+&lt;p>The Keyple Core is a tool to handle smart card reader and to operate generic processing with smart cards.&lt;/p>
+&lt;p>The Core is divided in 4 sub-modules:&lt;/p>
+&lt;ul>
+&lt;li>reader : includes the API to access and manage a reader.&lt;/li>
+&lt;li>plugin : provides factorized processing for the implementation of plugin.&lt;/li>
+&lt;li>card : the generic operation for smart cards.&lt;/li>
+&lt;li>service : the common interfaces and the main service of Keyple.&lt;/li>
+&lt;/ul>
+&lt;p>According to the developer’s objective different API must be imported:&lt;/p>
+&lt;ul>
+&lt;li>for the implementation of a smart card terminal application, only the high-level API of the ‘reader’ and ‘card’ modules.&lt;/li>
+&lt;li>to implement a plugin, all the ‘reader’ API and the low-level ‘plugin’ API.&lt;/li>
+&lt;li>to develop a dedicated library supporting the command sets and transaction features of a specific smart card solution, the low-level ‘reader’ and ‘card’ API.&lt;/li>
+&lt;/ul>
 &lt;table>
 &lt;thead>
 &lt;tr>
-&lt;th>Features&lt;/th>
-&lt;th>Packages&lt;/th>
+&lt;th>Module&lt;/th>
+&lt;th>Package&lt;/th>
+&lt;th>API&lt;br/>level&lt;/th>
+&lt;th>Feature&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>Selections of Secure Elements (high level API)&lt;/td>
-&lt;td>org.eclipse.keyple.core.&lt;strong>selection&lt;/strong>&lt;/td>
+&lt;td rowspan="4">Reader&lt;/td>
+&lt;td>org.eclipse.keyple.core.&lt;b>service&lt;/b>&lt;/td>
+&lt;td>high&lt;/td>
+&lt;td>Management of the smart card readers&lt;br/>
+&lt;ul>&lt;li>Registration of plugins to the smart card Service&lt;br/>&lt;/li>
+&lt;li>Access to the readers through plugins&lt;/li>&lt;/ul>&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>Management of SE readers&lt;/td>
-&lt;td>org.eclipse.keyple.core.&lt;strong>seproxy&lt;/strong>&lt;/td>
+&lt;td>org.eclipse.keyple.core.service.&lt;b>event&lt;/b>&lt;/td>
+&lt;td>high&lt;/td>
+&lt;td>Notifications of reader plug/unplug, of smart card insertion/removed&lt;br/>
+&lt;ul>&lt;li>Define observers of plugins or readers&lt;br/>&lt;/li>
+&lt;li>Interface to be implemented by observers to be notified on plugin event or reader event&lt;br/>&lt;/li>
+&lt;li>For observable reader, setting of default selections, to automatically operate in case of smart card insertion&lt;/li>&lt;/ul>&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>Notifications of reader plug/unplug, of SE insertion/remove&lt;ul>&lt;li>definition of automatic selection request in case of SE insertion on an Observable Reader.&lt;/li>&lt;/ul>&lt;/td>
-&lt;td>org.eclipse.keyple.core.seproxy.&lt;strong>event&lt;/strong>&lt;/td>
+&lt;td>org.eclipse.keyple.core.service.util&lt;/td>
+&lt;td>high&lt;/td>
+&lt;td>Communication protocols setting for contactless/contacts Reader&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>Communication protocols filters (setting for contactless/contacts SE Reader)&lt;/td>
-&lt;td>org.eclipse.keyple.core.seproxy.&lt;strong>protocol&lt;/strong>&lt;/td>
+&lt;td>org.eclipse.keyple.card.&lt;b>message&lt;/b>&lt;/td>
+&lt;td>low&lt;/td>
+&lt;td>Transmission of grouped APDU commands to a Reader&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>Reader plugins implementation support &lt;ul>&lt;li>Utility classes providing generic processing for SE Reader Plugins&lt;/li>&lt;/ul>&lt;/td>
-&lt;td>org.eclipse.keyple.core.seproxy.&lt;strong>plugin&lt;/strong>&lt;/td>
+&lt;td>Plugin&lt;/td>
+&lt;td>org.eclipse.keyple.core.&lt;b>plugin&lt;/b>&lt;br/>
+&lt;td>low&lt;/td>
+&lt;td>Reader plugins implementation&lt;br/>
+&lt;ul>&lt;li>Utility classes providing generic processing for Readers &lt;/li>&lt;/ul>&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>Transmition of grouped APDU commands to a SE Reader (low level API)&lt;/td>
-&lt;td>org.eclipse.keyple.core.seproxy.&lt;strong>message&lt;/strong>&lt;/td>
+&lt;td rowspan="2">smart card&lt;/td>
+&lt;td>org.eclipse.keyple.card.&lt;b>selection&lt;/b>&lt;/td>
+&lt;td>high&lt;/td>
+&lt;td>Generic selection of a smart card&lt;br/>
+&lt;ul>&lt;li>preparation of smart card selection requests&lt;br>&lt;/li>
+&lt;li>matching selection results as smart card images&lt;/li>&lt;/ul>&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>SE specific library implementation support &lt;ul>&lt;li>generic API to build a SE specific commands library&lt;/li>&lt;/ul>&lt;/td>
-&lt;td>org.eclipse.keyple.core.&lt;strong>command&lt;/strong>&lt;/td>
+&lt;td>org.eclipse.keyple.core.card.&lt;b>command&lt;/b>&lt;/td>
+&lt;td>low&lt;/td>
+&lt;td>Generic API to develop a smart card specific library&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>Keyple features defined to support the Calypso solution:&lt;/p>
+&lt;p>A terminal application operating smart card must only import the Keyple Core packages: ‘service’ and ‘card’.&lt;/p>
+&lt;figure id="figure-core-packages">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCore_Packages.svg" data-caption="Core packages">
+&lt;img src="../../media/architecture/KeypleCore_Packages.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Core packages
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>A reader plugin could be implemented by importing the ‘plugin’, ‘card’ and ‘service’ packages.&lt;/p>
+&lt;p>A smart card specific library could be implemented on top of the ‘card’ package.&lt;/p>
+&lt;h2 id="service-interface">&amp;lsquo;Service Interface&amp;rsquo;&lt;/h2>
+&lt;p>for the development of ticketing terminal application&lt;/p>
+&lt;h3 id="reader-access">Reader Access&lt;/h3>
+&lt;p>On Keyple, the smart card readers are managed through plugins in order to integrate specific reader solutions.
+The &amp;lsquo;&lt;strong>SmartCard Service&lt;/strong>&amp;rsquo; singleton provides the unique name list of registered plugins. There can be three kinds of plugin:&lt;/p>
+&lt;ul>
+&lt;li>‘&lt;strong>Plugin&lt;/strong>’ is the generic interface to list the readers of a plugin, or to access to a specific reader with its name.&lt;/li>
+&lt;li>The ‘&lt;strong>Observable Plugin&lt;/strong>’ interface extends Plugins which have the capability to be observed: in order to notify registered Plugin Observers about the plug or unplug of readers. Plugin Observers could be added or removed to the Observable Plugin. Useful for systems allowing the hot plug / unplug of Readers.&lt;/li>
+&lt;li>A ‘&lt;strong>Pool Plugin&lt;/strong>’ is a plugin for which a Reader is available only after an explicit allocation. When not more necessary, a Reader must be released. Useful for server solutions managing farms of Readers or interfaced with HSM: unallocated Readers or HSM instances could be shared between several smartcard terminal solutions.&lt;/li>
+&lt;/ul>
+&lt;p>A smartcard Reader is identified through its unique name in a Plugin. There are two kinds of Reader:&lt;/p>
+&lt;ul>
+&lt;li>The ‘&lt;strong>Reader&lt;/strong>’ is the generic interface to handle a smartcard reader. The presence of card in a Reader could be checked.&lt;/li>
+&lt;li>The ‘&lt;strong>Observable Reader&lt;/strong>’ interface extends Readers which have the capability to notify registered Reader Observers about the insertion or remove of a Card in the Reader. Reader Observers could be added or removed to the Observable Reader. Useful for systems automatically starting the processing of a Card at its insertion: like a ticketing validator.
+&lt;figure id="figure-reader-access-v100">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" data-caption="[Reader Access v1.0.0">
+&lt;img src="../../media/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+[Reader Access v1.0.0
+&lt;/figcaption>
+&lt;/figure>
+&lt;/li>
+&lt;/ul>
+&lt;p>(The APDU transmission with a Card is managed at a lower layer, through a Card Solution API.)&lt;/p>
+&lt;h4 id="specific-plugin-integration">Specific Plugin integration&lt;/h4>
+&lt;p>The Plugins are registered to the SmartCard Service through related specific Plugin Factory.
+&lt;figure id="figure-specific-plugin-v100">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCore_Reader_ClassDiag_SpecificPluginFactoryAndProtocol_1_0_0.svg" data-caption="Specific Plugin v1.0.0">
+&lt;img src="../../media/architecture/KeypleCore_Reader_ClassDiag_SpecificPluginFactoryAndProtocol_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Specific Plugin v1.0.0
+&lt;/figcaption>
+&lt;/figure>
+&lt;/p>
+&lt;h4 id="reader-notifications">Reader Notifications&lt;/h4>
+&lt;p>To be notified about &amp;lsquo;&lt;strong>Plugin Event&lt;/strong>&amp;rsquo; or &amp;lsquo;&lt;strong>Reader Event&lt;/strong>&amp;rsquo;, a terminal application must implement the dedicated &amp;lsquo;&lt;strong>Plugin Observer&lt;/strong>&amp;rsquo; or &amp;lsquo;&lt;strong>Reader Observer&lt;/strong>&amp;rsquo; interfaces.&lt;/p>
+&lt;figure id="figure-reader-notifications-v100">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" data-caption="Reader Notifications v1.0.0">
+&lt;img src="../../media/architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Reader Notifications v1.0.0
+&lt;/figcaption>
+&lt;/figure>
+&lt;h5 id="plugin-event">Plugin Event&lt;/h5>
+&lt;p>Several ‘Plugin Observers’ could be registered to an Observable Plugin.
+In case of reader connection / disconnection, the Observable Plugin notifies sequentially the registered Plugin Observers with the corresponding Plugin Event.
+The Observable Plugin is a blocking API, the thread managing the issuance of the Plugin Event waits the acknowledge of the Plugin Observer currently notified.&lt;/p>
+&lt;h5 id="reader-event">Reader Event&lt;/h5>
+&lt;p>Several ‘Reader Observers’ could be registered to an Observable Reader.
+In case of Card insertion / removal or selection match, the Observable Reader notifies sequentially the registered Reader Observers with the corresponding Reader Event. The Observable Reader could be a blocking API, the thread managing the issuance of the Plugin Event could wait the acknowledge of the notified Reader Observers.&lt;/p>
+&lt;p>An Observable Reader has the capability to be set with a ‘Default Selections Request’: in this case when a Card is inserted in the Reader, the Reader will try to operate the configured default selections. If a selection successfully matches with the Card, instead to simply notify about the insertion of a Card, the Observable Reader will notify about a successful selection with a Card application.&lt;/p>
+&lt;ul>
+&lt;li>If the notification mode is defined as ‘always’, then in case of Card insertion, the Observable Reader will notify a matched card Reader Event in case of successful selection, or a simple card insertion Reader Event if not.&lt;/li>
+&lt;li>If the notification mode is defined as ‘matched only’, then in case of Card insertion, simple card insertion Reader Events are not notified.&lt;/li>
+&lt;/ul>
+&lt;p>When the processing of an inserted or matched Card is finished, a Reader Observer must release the logical channel with the Card, in order to prepare the Observable Reader to detect the removal of the Card.&lt;/p>
+&lt;h5 id="observable-reader-states">Observable Reader states&lt;/h5>
+&lt;p>An Observable Reader is active only when at least one Reader Observer is registered, and if the start of the detection has been requested.
+When active, an Observable Reader could switch between three internal states: ‘Wait for Card Insertion’, ‘Wait for Card Processing’, &amp;amp; ‘Wait for Card Removal’.&lt;/p>
+&lt;p>In the nominal case, a Reader Observer indicates to the Observable Reader that the processing of the SE is finished by releasing the Card Channel.
+To manage a failure of the Reader Observer process, the Observable Reader interface provides also a method to finalize the Card processing.&lt;/p>
+&lt;figure id="figure-observable-reader-states">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCore_Reader_StateDiag_ObservableReaderStates_1_0_0.svg" data-caption="Observable Reader States">
+&lt;img src="../../media/architecture/KeypleCore_Reader_StateDiag_ObservableReaderStates_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Observable Reader States
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>The states could be switched:&lt;/p>
+&lt;ul>
+&lt;li>due to an explicit API request (blue arrows):
+&lt;ul>
+&lt;li>the release of the Card Channel,&lt;/li>
+&lt;li>the call of an Observable Reader method:
+&lt;ul>
+&lt;li>the addition or the remove of an Observable Reader,&lt;/li>
+&lt;li>a request to start or stop the detection, to finalize the Card processing.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Or because of an external event (red arrows), the insertion or the remove of a Card.
+&lt;ul>
+&lt;li>the insertion a Card causing the Observable Reader to notify a &amp;lsquo;Card matched&amp;rsquo; Reader Event (in case of successful default selection) or a &amp;lsquo;Card inserted&amp;rsquo; Reader Event (Notification Mode defined as always).&lt;/li>
+&lt;li>the removal of a Card causing the Observable Reader to notify a &amp;lsquo;Card removed&amp;rsquo; Reader Event.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>If a Card detection is started with the &amp;lsquo;repeating&amp;rsquo; polling mode, then later when the Card is removed, the Reader starts again the detection of a new Card.&lt;/p>
+&lt;p>Whatever the Plugin of Observable Reader, when waiting for the Card removal, any Observable Reader shall have the capability to notify the remove of the Card.
+Some Plugin solutions could have the capability to notify a Card removal also during the processing of the Card.&lt;/p>
+&lt;h3 id="card-selection">Card Selection&lt;/h3>
+&lt;h4 id="selection-scenarios">Selection scenarios&lt;/h4>
+&lt;p>Depending on the Card transaction use case, or on the Reader capability, there are two ways to manage the Selection of a Card:&lt;/p>
+&lt;ul>
+&lt;li>Either on a simple Reader, a Selection could be operated directly by transmitting the Selection Request. In this case the same entity manages both the Card Selection and the Card processing.&lt;/li>
+&lt;li>Otherwise, on an Observable Reader, a Default Selection could be defined. In this case the Selection is operated automatically at the insertion of the Card. In this case, the Card Selection is next managed by the Observable Reader, but the Card processing is managed by a Reader Observer.&lt;/li>
+&lt;/ul>
+&lt;figure id="figure-selection-v100">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCore_CardSelection_ActivityDiag_Scenarii.svg" data-caption="Selection v1.0.0">
+&lt;img src="../../media/architecture/KeypleCore_CardSelection_ActivityDiag_Scenarii.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Selection v1.0.0
+&lt;/figcaption>
+&lt;/figure>
+&lt;h4 id="selection-setting-and-processing">Selection setting and processing&lt;/h4>
+&lt;p>A Card Selection request is defined with a Card Selector. A Card Selector could be defined with tree optional levels of selection filter.&lt;/p>
+&lt;ul>
+&lt;li>The selection could be limited to match a specific card communication protocol.&lt;/li>
+&lt;li>The Card ATR could be filtered to match a regular expression.&lt;/li>
+&lt;li>If an AID is defined, the local reader transmits a Select Application APDU command to the card.
+If a SE Selector is defined without any filter, the selection is always successful if a card is present in the reader.&lt;/li>
+&lt;/ul>
+&lt;p>Depending on the Keyple Card Solution extension library, a card request could be completed with specific card commands to operate at the selection (for example, a Select File for a specific DF LID, the read of a specific file).&lt;/p>
+&lt;p>For terminal managing several kinds of card applications, a Card Selection could be prepared with several card selection request to operate sequentially with the card.&lt;/p>
+&lt;p>According to the defined &amp;lsquo;multi selection processing&amp;rsquo; mode, the card selection could stop at the first selection request matching card application, otherwise all the prepared card selection request could be operated.&lt;/p>
+&lt;ul>
+&lt;li>Before the new processing of card selection request, the logical channel previously opened is closed.&lt;/li>
+&lt;li>The &amp;lsquo;channel control&amp;rsquo; defines if the logical channel should be kept open or close after the last processed card selection request.&lt;/li>
+&lt;/ul>
+&lt;figure id="figure-card-selection-v100">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" data-caption="Card Selection v1.0.0">
+&lt;img src="../../media/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Card Selection v1.0.0
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>The result of a card request selection is a card image of a matching card. For a card selection with multiple requests, several matching card could be provided.&lt;/p>
+&lt;h2 id="card-interface">&amp;lsquo;Card Interface&amp;rsquo;&lt;/h2>
+&lt;p>for the development of smartcard solution library&lt;/p>
+&lt;p>The Keyple Calypso extension uses the card interface to exchange APDU commands with Calypso cards and SAM.&lt;/p>
+&lt;h3 id="apdu-transmission">APDU Transmission&lt;/h3>
+&lt;figure id="figure-apdu-transmission-v100">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCore_Card_ClassDiag_CardMessage_1_0_0.svg" data-caption="APDU Transmission v1.0.0">
+&lt;img src="../../media/architecture/KeypleCore_Card_ClassDiag_CardMessage_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+APDU Transmission v1.0.0
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="plugin-api">&amp;lsquo;Plugin API&amp;rsquo;&lt;/h2>
+&lt;p>for the implementation of smartcard reader plugins&lt;/p>
+&lt;h3 id="plugin-factorized-processing">Plugin Factorized Processing&lt;/h3>
+&lt;p>The implementation of Plugins requires to extend the classes AbstractPlugin and AbstractLocalReader.&lt;/p>
+&lt;ul>
+&lt;li>If the reader solution allows the hot plug/unplug of readers then AbstractThreadedObservablePlugin should be extended.&lt;/li>
+&lt;li>In case the local reader has the capability to detect the insertion or the removal or a card, then AbstractObservableLocalReader should be extended.&lt;/li>
+&lt;/ul>
+&lt;p>For reader solutions managing themselves the allocation of logical channel for communicatio with smart cards, the interface SmartSelectionReader should be implemented (e.g. it is the case for the OMAPI plugin).&lt;/p>
+&lt;p>Only the abstract methods highlighted &lt;strong>in blue&lt;/strong> have to be implemented have to be implemented by the specific plugins.&lt;/p>
+&lt;p>For plugins with ObservableReader: depending on the capability of the reader solution different interfaces could be implemented:&lt;/p>
+&lt;ul>
+&lt;li>WaitForCardInsertionAutonomous&lt;/li>
+&lt;li>WaitForCardRemovalAutonomous&lt;/li>
+&lt;li>WaitForCardRemovalDuringProcessing or DontWaitForCardRemovalDuringProcessing&lt;/li>
+&lt;li>WaitForCardInsertionBlocking or WaitForCardInsertionNonBlocking&lt;/li>
+&lt;li>WaitForCardRemovalBlocking or WaitForCardRemovalNonBlocking&lt;/li>
+&lt;li>AbstractObservableLocalAutonomousReader&lt;/li>
+&lt;/ul>
+&lt;figure id="figure-plugin-factorized-processing-v100">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCore_Plugin_ClassDiag_PluginImplementaion_1_0_0.svg" data-caption="Plugin Factorized Processing v1.0.0">
+&lt;img src="../../media/architecture/KeypleCore_Plugin_ClassDiag_PluginImplementaion_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Plugin Factorized Processing v1.0.0
+&lt;/figcaption>
+&lt;/figure></description></item><item><title>Keyple Calypso</title><link>https://keyple.org/docs/architecture/keyple-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-calypso/</guid><description>&lt;h2 id="features--packages-and-corresponding-usages">Features / packages and corresponding usages&lt;/h2>
+&lt;p>The Calypso transaction API provides a high-level of abstraction to define functional commands to manage a secure session with a Calypso Portable Object, to update or authenticate its data.&lt;/p>
+&lt;p>The transaction API is defined on a low-level Calypso commands API which contains the builders of PO and SAM APDU commands, and the corresponding parsers of APDU responses.&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
-&lt;th>Features&lt;/th>
-&lt;th>Packages&lt;/th>
+&lt;th>Package&lt;/th>
+&lt;th>API&lt;br/>level&lt;/th>
+&lt;th>Feature&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>Calypso Portable Object commands and secure transaction management &lt;ul>&lt;li>high level CalypsoAPI, commands’ settings are limited to functional parameters&lt;/li>&lt;li>Calypso SAM (Secure Module) operations automatically processed&lt;/li>&lt;/ul>&lt;/td>
-&lt;td>org.eclipse.keyple.calypso.&lt;strong>transaction&lt;/strong>&lt;/td>
+&lt;td>org.eclipse.keyple.calypso.&lt;b>transaction&lt;/b>&lt;/td>
+&lt;td>high&lt;/td>
+&lt;td>Calypso Portable Object commands and secure transaction management&lt;br/>
+&lt;ul>&lt;li>CalypsoAPI, commands’ settings are limited to functional parameters&lt;br/>&lt;/li>
+&lt;li>Calypso SAM (Secure Module) operations automatically processed&lt;br/>&lt;/li>&lt;/ul>
+(only functional parameters)&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>Calypso PO responses data parsing&lt;/td>
-&lt;td>org.eclipse.keyple.calypso.command.&lt;strong>po.parser&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Calypso SAM responses data parsing&lt;/td>
-&lt;td>org.eclipse.keyple.calypso.command.&lt;strong>sam.parser&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Calypso PO &amp;amp; SAM commands' sets&lt;ul>&lt;li>low level Calypso API, commands’ settings include technical parameters specific to Calypso PO revisions or Calypso SAM revisions&lt;/li>&lt;/ul>&lt;/td>
-&lt;td>&lt;ul>&lt;li>org.eclipse.keyple.calypso.&lt;strong>command&lt;/strong>&lt;/li>&lt;li>org.eclipse.keyple.calypso.command.&lt;strong>po&lt;/strong>&lt;/li>&lt;li>org.eclipse.keyple.calypso.command.&lt;strong>po.builder&lt;/strong>&lt;/li>&lt;li>org.eclipse.keyple.calypso.command.&lt;strong>po.parser.session&lt;/strong>&lt;/li>&lt;li>org.eclipse.keyple.calypso.command.&lt;strong>sam.parser.session&lt;/strong>&lt;/li>&lt;li>org.eclipse.keyple.calypso.command.&lt;strong>sam.builder&lt;/strong>&lt;/li>&lt;li>org.eclipse.keyple.calypso.command.&lt;strong>sam&lt;/strong>&lt;/li>&lt;/ul>&lt;/td>
+&lt;td>org.eclipse.keyple.calypso.&lt;b>command&lt;/b>&lt;br/>
+org.eclipse.keyple.calypso.&lt;b>command&lt;/b>.po&lt;br/>
+org.eclipse.keyple.calypso.&lt;b>command&lt;/b>.po.builder&lt;br/>
+org.eclipse.keyple.calypso.&lt;b>command&lt;/b>.po.parser&lt;br/>
+org.eclipse.keyple.calypso.&lt;b>command&lt;/b>.po.parser.session&lt;br/>
+org.eclipse.keyple.calypso.&lt;b>command&lt;/b>.sam&lt;br/>
+org.eclipse.keyple.calypso.&lt;b>command&lt;/b>.sam.builder&lt;br/>
+org.eclipse.keyple.calypso.&lt;b>command&lt;/b>.sam.parser&lt;br/>
+org.eclipse.keyple.calypso.&lt;b>command&lt;/b>.sam.parser.session&lt;/td>
+&lt;td>low&lt;/td>
+&lt;td>Calypso PO &amp;amp; SAM APDU commands' sets&lt;br/>
+&lt;ul>&lt;li>APDU command builders&lt;br/>&lt;/li>
+&lt;li>APDU response parsers&lt;br/>&lt;/li>&lt;/ul>
+(technical parameter settings specific to the PO &amp;amp; SAM revisions)&lt;br>&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h3 id="keyple-packages-and-corresponding-usages">Keyple packages and corresponding usages&lt;/h3>
-&lt;p>Depending on the targetting usage: implementation of a ticketing &lt;strong>application&lt;/strong> (blue circle), a reader &lt;strong>plugin&lt;/strong> (red circle), or a &lt;strong>SE library&lt;/strong> (green circle), only specific Keyple packages must be imported.&lt;/p>
+&lt;p>Ticketing terminal applications must import only the high-level Calypso transaction package.&lt;/p>
+&lt;figure id="figure-calypso-packages">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCalypso_Packages.svg" data-caption="Calypso packages">
+&lt;img src="../../media/architecture/KeypleCalypso_Packages.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Calypso packages
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages.&lt;/p>
+&lt;h2 id="calypso-portable-object-selection">Calypso Portable Object Selection&lt;/h2>
+&lt;p>Compared to the generic Card Selection API (cf. &lt;a href="https://calypsonet.github.io/keyple/KeypleCoreApi/KeypleCore_ApplicationApi.html#card-selection),">https://calypsonet.github.io/keyple/KeypleCoreApi/KeypleCore_ApplicationApi.html#card-selection),&lt;/a> a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
+&lt;p>In addition, a PO Selection Request provides methods:&lt;/p>
 &lt;ul>
-&lt;li>generic packages for any SE solution&lt;/li>
+&lt;li>to prepare Select File command (useful in particular to manage REV1 Calypso PO for which the select of the targeted DF is required).&lt;/li>
+&lt;li>and to prepare simple read record command (useful to optimize the read of a file present on all targeted PO).&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="docs/img/KeyplePackages_Core.svg" alt="generic packages" title="Keyple generic packages">&lt;/p>
+&lt;p>The matching SmartCard resulting from a PO Selection Request is a Calypso PO. In case file records have been read during the selection: the corresponding data could be recovered in the Calypso PO card image.&lt;/p>
+&lt;figure id="figure-calypso-selection-v100">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCalypso_Transaction_ClassDiag_PO_Selection_1_0_0.svg" data-caption="Calypso Selection v1.0.0">
+&lt;img src="../../media/architecture/KeypleCalypso_Transaction_ClassDiag_PO_Selection_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Calypso Selection v1.0.0
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="calypso-portable-object-transaction">Calypso Portable Object Transaction&lt;/h2>
+&lt;p>A Card Resource is a set of a Reader and a &lt;strong>selected&lt;/strong> Card application.&lt;/p>
 &lt;ul>
-&lt;li>specific packages for Calypso&lt;/li>
+&lt;li>A Calypso Portable Object is the image of a selected Calypso PO.&lt;/li>
+&lt;li>A Calypso SAM is the image of a selected Calypso SAM.&lt;/li>
 &lt;/ul>
-&lt;h2 id="calypso-packagesdocsimgkeyplepackages_calypsosvg-calypso-packages">&lt;img src="docs/img/KeyplePackages_Calypso.svg" alt="Calypso packages" title="Calypso packages">&lt;/h2>
-&lt;h2 id="getting-started">Getting started&lt;/h2>
-&lt;p>Releases and snapshots are available from Maven central repositories.&lt;/p>
-&lt;h3 id="cloning-this-project">Cloning this project&lt;/h3>
-&lt;p>Examples provided in this project relies on symbolic links to handle their common dependencies. (Please refer to this
-&lt;a href="../../java/example/README.md">file&lt;/a> for more information).&lt;/p>
-&lt;p>Although symlink support should be provided out of the box for Unix users, &lt;strong>Windows users&lt;/strong> should be aware that the git option &lt;code>core.symlinks&lt;/code> needs to be enabled before
-&lt;a href="https://help.github.com/en/articles/cloning-a-repository" target="_blank" rel="noopener">cloning&lt;/a> this repo. Several solutions can be considered:&lt;/p>
+&lt;p>To operate a Calypso transaction:&lt;/p>
 &lt;ul>
-&lt;li>When installing git for Windows, an option &lt;code>Enable symbolic links&lt;/code> can be choosen. If it has not been enabled and you want to set it via the installer, a reinstallation is needed&lt;/li>
-&lt;li>If you do not want to reinstall git, this option can be enabled afterward via the command line &lt;code>git config core.symlinks true&lt;/code>&lt;/li>
-&lt;li>Also, the option can be enabled once only for this specific cloning operation with &lt;code>git clone -c core.symlinks=true REPO_URL&lt;/code>&lt;/li>
+&lt;li>At least a Calypso Resource (CardResource&lt;CalypsoPo>) is required.&lt;/li>
+&lt;li>A SAM Resource ((CardResource&lt;CalypsoSam>) is required too if security features are involved (Calypso secure session, Stored value transaction, PIN encryption, etc…).&lt;/li>
 &lt;/ul>
-&lt;p>It is important to note that for this option to be actually working, the Windows user needs to have the &lt;strong>&lt;em>SeCreateSymbolicLink&lt;/em> permission&lt;/strong>: a user with admin rights is typically granted with this permission.&lt;/p>
-&lt;h3 id="import-keyple-components-with-gradle">Import keyple components with Gradle&lt;/h3>
-&lt;p>When using gradle, it is fairly simple to import Keyple components into your project. Just add the following statements to your build.gradle file :&lt;/p>
-&lt;pre>&lt;code>repositories {
-//to import releases
-maven { url 'https://oss.sonatype.org/content/repositories/releases' }
-//to import snapshots
-maven {url 'https://oss.sonatype.org/content/repositories/snapshots' }
-}
-dependencies {
-//Keyple core is a mandatory library for using Keyple, in this case import the last version of keyple-java-core
-implementation group: 'org.eclipse.keyple', name: 'keyple-java-core', version: '0.8.1'
-//Import Calypso library to support Calypso Portable Object, in this case import the last version of keyple-java-calypso
-implementation group: 'org.eclipse.keyple', name: 'keyple-java-calypso', version: '0.8.1'
-//Import PCSC library to use a Pcsc reader, in this case import the last version of keyple-java-plugin-pcsc
-implementation group: 'org.eclipse.keyple', name: 'keyple-java-plugin-pcsc', version: '0.8.1'
-...
-}
-&lt;/code>&lt;/pre>
-&lt;h2 id="artifacts">Artifacts&lt;/h2>
-&lt;p>The Eclipse Keyple Java artifacts are published on the Eclipse Keyple Project page [https://projects.eclipse.org/projects/iot.keyple/downloads] (available also on Maven).&lt;/p>
+&lt;p>A Calypso PO image provides public ‘getters’ in order to &lt;strong>recover&lt;/strong> the information of the selected PO (startup data, file data, … etc).&lt;/p>
+&lt;p>A transaction with a Calypso PO is fully managed through the PoTransaction object:&lt;/p>
 &lt;ul>
-&lt;li>Keyple modules:
+&lt;li>First a set of PO commands could be defined through ‘&lt;strong>prepare&lt;/strong>’ commands.&lt;/li>
+&lt;li>Next the prepared PO commands transmitted when operating a ‘&lt;strong>process&lt;/strong>’ command.&lt;/li>
+&lt;li>The responses of the PO are then recovered through the Calypso PO image.&lt;/li>
+&lt;/ul>
+&lt;figure id="figure-calypso-api-global-architecture">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCalypso_Transaction_ClassDiag_Overview.svg" data-caption="Calypso API Global Architecture">
+&lt;img src="../../media/architecture/KeypleCalypso_Transaction_ClassDiag_Overview.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Calypso API Global Architecture
+&lt;/figcaption>
+&lt;/figure>
+&lt;h3 id="calypso-card-image">Calypso card image&lt;/h3>
+&lt;p>When read commands have been exchanged with a Calypso PO, the corresponding data could be recovered by parsing the file structure of the PO card image.&lt;/p>
+&lt;figure id="figure-calypso-po-card-image">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCalypso_Transaction_ClassDiag_CalypsoPo_1_0_0.svg" data-caption="Calypso PO card image">
+&lt;img src="../../media/architecture/KeypleCalypso_Transaction_ClassDiag_CalypsoPo_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Calypso PO card image
+&lt;/figcaption>
+&lt;/figure>
+&lt;h3 id="calypso-transaction">Calypso transaction&lt;/h3>
+&lt;p>Only the &amp;lsquo;process&amp;rsquo; methods generate communication with the Calypso PO and SAM.&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>&amp;lsquo;Keyple Core module&amp;rsquo; JAR&lt;/strong>: the generic API to manage Secure Element Readers and to select SE application.&lt;/li>
-&lt;li>&lt;strong>&amp;lsquo;Keyple Calypso Library JAR&amp;rsquo;&lt;/strong>: the Calypso API to operate a transaction with a Calypso Portable Object.&lt;/li>
+&lt;li>processPoCommands is used to transmit a set of prepared PO commands (outside or inside a secure session).&lt;/li>
+&lt;li>processOpening issues an Open Secure Session followed by the prepared PO commands.&lt;/li>
+&lt;li>processClosing issues the last prepared PO commands and transmits a Close Secure Session.&lt;/li>
 &lt;/ul>
-&lt;/li>
-&lt;li>Keyple plugins:
-&lt;ul>
-&lt;li>&lt;strong>&amp;lsquo;Keyple PC/SC plugin JAR&amp;rsquo;&lt;/strong>: to manage PC/SC readers on a PC environment supporting the # javax.smartcardio API&lt;/li>
-&lt;li>&lt;strong>&amp;lsquo;Keyple NFC Android plugin AAR&amp;rsquo;&lt;/strong>: to operate the contactless reader of an Android Environment supporting the android.nfc API&lt;/li>
-&lt;li>&lt;strong>&amp;lsquo;Keyple OMAPI Android plugin AAR&amp;rsquo;&lt;/strong>: to operate the internal contacts readers of an Android Environment supporting the OMAPI&lt;/li>
-&lt;li>&lt;strong>&amp;lsquo;Keyple &amp;ldquo;stub&amp;rdquo; plugin JAR&amp;rsquo;&lt;/strong>: plugin to simulate the presence of fake readers with or without fake cards&lt;/li>
-&lt;li>&lt;strong>&amp;lsquo;Keyple &amp;ldquo;Remote SE&amp;rdquo; plugin JARs&amp;rsquo;&lt;/strong>: plugin &amp;amp; service to manage a SE remotely in a transparent way.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h2 id="building-the-keyple-components">Building the Keyple components&lt;/h2>
-&lt;p>This guide helps developer that want to contribute to Keyple components base code. You can fork the project and contribute to it. Every contribution will be reviewed by the developper team and scan by our CI and quality code tools before being merged to the base code.&lt;/p>
-&lt;h3 id="java-components">Java components&lt;/h3>
-&lt;h4 id="prerequisites">Prerequisites&lt;/h4>
-&lt;p>Here are the prerequisites to build the keyple components (jars)&lt;/p>
-&lt;ul>
-&lt;li>Java JDK 1.6, 1.7 or 1.8 (Java 11 is not supported yet)&lt;/li>
-&lt;li>Maven (any version)
-&lt;a href="https://maven.apache.org/install.html" target="_blank" rel="noopener">available here&lt;/a>&lt;/li>
-&lt;li>Gradle (any version as we use the gradle wrapper)
-&lt;a href="https://gradle.org/install/" target="_blank" rel="noopener">available here&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h4 id="windows-linux-or-macos">Windows, Linux or Macos&lt;/h4>
-&lt;p>Following commands will build all the artifacts at once and install them into the local maven repository.&lt;/p>
-&lt;pre>&lt;code>./gradlew :installAll --info
-&lt;/code>&lt;/pre>
-&lt;h3 id="android-components">Android components&lt;/h3>
-&lt;p>If you want to build the keyple android components (aar plugins), you need :&lt;/p>
-&lt;ul>
-&lt;li>Java JDK 1.6, 1.7 or 1.8 (Java 11 is not supported yet)&lt;/li>
-&lt;li>Intellij 2018 community version or Android Studio 3.0&lt;/li>
-&lt;li>Android sdk 26 should be installed on your machine
-&lt;a href="http://www.androiddocs.com/sdk/installing/index.html" target="_blank" rel="noopener">follow those instructions&lt;/a>&lt;/li>
-&lt;li>Gradle (any version as we use the gradle wrapper)
-&lt;a href="https://gradle.org/install/" target="_blank" rel="noopener">available here&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>To acknowledge where is installed you Android SDK, you need to create a file &lt;code>local.properties&lt;/code> in the &lt;code>/android&lt;/code>, &lt;code>/android/example/calypso/nfc&lt;/code>, &lt;code>/android/example/calypso/omapi&lt;/code> folders with the following content
-&lt;code>sdk.dir=absolut/path/to/where/your/android/sdk/is&lt;/code>&lt;/p>
-&lt;p>For instance &lt;code>sdk.dir=/Users/user/Library/Android/sdk&lt;/code>&lt;/p>
-&lt;h4 id="linux-or-macos">Linux or Macos&lt;/h4>
-&lt;p>First, you need to build and install locally the java component keyple-core (see above)
-To build the plugins, execute the following commands in the &lt;strong>/android folder&lt;/strong>, the first command is required to be executed at least once to build the gradle wrapper.&lt;/p>
-&lt;pre>&lt;code>./gradlew installPlugin
-&lt;/code>&lt;/pre>
-&lt;p>To build the example app NFC and OMAPI, first, you need to build and install locally the java component keyple-core, keyple-calypso and keyple-android-plugin (see above)&lt;/p>
-&lt;pre>&lt;code>./gradlew -b ./example/calypso/nfc/build.gradle assembleDebug
-./gradlew -b ./example/calypso/omapi/build.gradle assembleDebug
-&lt;/code>&lt;/pre>
-&lt;h4 id="windows">Windows&lt;/h4>
-&lt;p>First, you need to build and install locally the java component keyple-core (see above)
-To build the plugins, execute the following commands in the &lt;strong>/android folder&lt;/strong>, the first command is required to be executed at least once to build the gradle wrapper.&lt;/p>
-&lt;pre>&lt;code>.\gradlew.bat installPlugin
-&lt;/code>&lt;/pre>
-&lt;p>To build the example app NFC and OMAPI, first, you need to build and install locally the java component keyple-core, keyple-calypso and keyple-android-plugin (see above)&lt;/p>
-&lt;pre>&lt;code>.\gradlew.bat -b ./example/calypso/nfc/build.gradle assembleDebug
-.\gradlew.bat -b ./example/calypso/omapi/build.gradle assembleDebug
-&lt;/code>&lt;/pre>
-&lt;h3 id="ci-and-docker">CI and Docker&lt;/h3>
-&lt;p>Eclipse CI tools to build and test the components are Open Source too. They can be found in this repository :
-&lt;a href="https://www.github.com/eclipse/keyple-ops" target="_blank" rel="noopener">Eclipse Keyple Ops&lt;/a>&lt;/p></description></item><item><title>Keyple Core Architecture</title><link>/docs/architecture/keyple-core/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/architecture/keyple-core/</guid><description>&lt;p>This high-level API is convenient for developers implementing smart card processing application for terminal interfaced with smart card readers.&lt;/p>
-&lt;h2 id="packages--features">Packages &amp;amp; features&lt;/h2>
-&lt;p>The Keyple Core User API is a tool to manage readers, and to select “generic” Secure Elements.&lt;/p>
-&lt;table>
-&lt;tr>
-&lt;td colspan="2">&lt;b>Features&lt;/b>&lt;/td>
-&lt;td>&lt;b>Packages&lt;/b>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td rowspan="3">SE reader management&lt;/td>
-&lt;td>Secure Element reader access&lt;/td>
-&lt;td>org.eclipse.keyple.core.&lt;b>seproxy&lt;b>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Notifications of:
-&lt;li>reader plug/unplug,&lt;/li>
-&lt;li>SE insertion/remove&lt;/li>
-Definition of automatic selection request in case of SE insertion on an Observable Reader.&lt;/td>
-&lt;td>org.eclipse.keyple.core.seproxy.&lt;b>event&lt;b>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Communication protocols filters (setting for contactless/contacts SE Reader)&lt;/td>
-&lt;td>org.eclipse.keyple.core.seproxy.&lt;b>protocol&lt;b>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>SE selection&lt;/td>
-&lt;td>Generic selection of a Secure Element&lt;/td>
-&lt;td>org.eclipse.keyple.core.&lt;b>selection&lt;b>&lt;/td>
-&lt;/tr>
-&lt;/table>
-&lt;h2 id="secure-element-transaction-sequence--setting--selection">Secure Element transaction sequence – setting &amp;amp; selection&lt;/h2>
-&lt;p>A Secure Element transaction starts with the setting of plugins in order to choose the reader to communicate with SE.&lt;/p>
-&lt;p>Using a SE reader, depending on its capabilities, there can be two ways to select a SE through it:&lt;/p>
-&lt;ul>
-&lt;li>Either the processing of an “explicit selection”: if a SE is present in the reader, then the terminal directly operates a SE selection request through the reader.&lt;/li>
-&lt;li>Otherwise if the reader is “observable”, the operating of a “default selection”: in this case a default selection request is defined on the reader, the terminal observes the reader, and wait to be notified by the reader about a SE insertion and selection.&lt;/li>
-&lt;/ul>
-&lt;p>At the end the terminal gets a selected SE, it can follow by operating APDU commands with the selected SE until the communication channel is kept open.&lt;/p>
-&lt;p>&lt;img src="../../img/KeypleCore-0-SE_SelectionScenarii.png" alt="SE Selection Scenarii scheme" title="SE Selection Scenarii">&lt;/p>
-&lt;p>Then a Keyple Core extension could be used to operates APDU commands with the selected SE solution.&lt;/p>
-&lt;blockquote>
-&lt;p>The Keyple Calypso extension provides a high-level API to defined ticketing processing involving Calypso cards, cf.:
-&lt;a href="https://github.com/eclipse/keyple-java/blob/master/docs/KeypleCalypso_UserGuide.adoc" target="_blank" rel="noopener">“Keyple Calypso User Guide”&lt;/a>.&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="secure-element-proxy-service-api--readers-management">Secure Element Proxy Service API – readers management&lt;/h2>
-&lt;p>Using the Keyple Core, Secure Element Readers (SeReader) are managed through plugins (ReaderPlugin).&lt;/p>
-&lt;p>The active plugins are registered to the SE Proxy Service (the singleton SeProxyService).&lt;/p>
-&lt;ul>
-&lt;li>Each plugin is registered through a unique name to the SE Proxy Service.&lt;/li>
-&lt;li>Each reader of a plugin is also defined with a unique name inside the plugin.&lt;/li>
-&lt;/ul>
-&lt;h3 id="plugin-setting">Plugin setting&lt;/h3>
-&lt;p>To secure the usage of the SE Proxy API for the development of terminal applications, the internal implementation of plugins (classes SpecificPluginImpl &amp;amp; SpecificReaderImpl) is hidden.&lt;/p>
-&lt;ul>
-&lt;li>For a specific plugin, only the plugin &amp;amp; reader interfaces (SpecificPlugin &amp;amp; SpecificReader) and the factory (class SpecificPluginFactory) are public.&lt;/li>
-&lt;li>The factory of a plugin is set to register a specific plugin to the SE Proxy Service.&lt;/li>
-&lt;/ul>
-&lt;p>&lt;img src="../../img/KeypleCore-1-SE_Proxy-PluginSetting.png" alt="SE Proxy - Plugin Setting scheme" title="SE Proxy - Plugin Setting">&lt;/p>
-&lt;p>Most of plugins of local readers of Keyple are defined as singleton with a unique instance (e.g.: PC/SC, Android NFC, Android OMAPI, most of embedded readers).&lt;/p>
-&lt;p>For the Remote SE plugin defined to manage remote readers, specific plugin instances are created for each communication interfaces.&lt;/p>
-&lt;h3 id="se-readers-access">SE readers’ access&lt;/h3>
-&lt;p>The SE Proxy Service allows to get all the list of the active plugins. A specific plugin could also be directly recovered through its name.&lt;/p>
-&lt;p>In the same way, a plugin can provide the list of all the plugged readers.&lt;/p>
-&lt;p>&lt;img src="../../img/KeypleCore-2-SE_Proxy-ReaderAccess.png" alt="SE Proxy - Reader Access scheme" title="SE Proxy - Reader Access">&lt;/p>
-&lt;p>Depending on the native reader technology, some specific parameters could be defined at the plugin or reader level.&lt;/p>
-&lt;p>For a classic plugin, the number of readers is determinate, all the plugged readers of the plugin are directly available for the SE Proxy Service.&lt;/p>
-&lt;h4 id="support-of-reader-farm-or-hsm">Support of reader farm or HSM&lt;/h4>
-&lt;p>For systems based on a centralized security, in order to manage multiple remote terminal in parallel, central servers could requires to interface a huge number (several hundreds or thousands) of SE through a farm of readers or HSM (Hardware Security Module: an electronic board able to emulate multiple SE).&lt;/p>
-&lt;ul>
-&lt;li>The multitude of embedded SE could be divided in different groups of profiles.&lt;/li>
-&lt;li>An HSM is often shared between several services, so the full set of readers isn&amp;rsquo;t directly available for a service, a service has to request the allocation of a reader from a specific group.&lt;/li>
-&lt;/ul>
-&lt;p>The SE Proxy Service could support reader farm or HSM though plugins managing &amp;ldquo;pool&amp;rdquo; of readers (ReaderPoolPlugin).&lt;/p>
-&lt;ul>
-&lt;li>At the initialization, the list of reader is empty. The list is be filled depending on the reader allocations requested.&lt;/li>
-&lt;li>When not more required, a reader could be released from the pool.&lt;/li>
-&lt;/ul>
-&lt;p>All plugins have to implement the interface ReaderPlugin and SeReader. A plugin managing a pool of reader should implement in addition the interface ReaderPoolPlugin.&lt;/p>
-&lt;h4 id="se-presence-check--explicit-selection-transaction">SE presence check &amp;amp; “explicit selection transaction”&lt;/h4>
-&lt;p>A SE reader has the capability to check is a SE is present or not.&lt;/p>
-&lt;blockquote>
-&lt;p>For SE terminal processing for which the presence of a SE in a reader is &amp;ldquo;static' during a transaction, the transaction starts in general with the verification of the SE presence. If the SE is present, the transaction can continue with the selection of the SE. We call this kind of transaction: an &amp;ldquo;explicit selection transaction&amp;rdquo;.&lt;/p>
-&lt;/blockquote>
-&lt;h3 id="plugin--reader-events">Plugin &amp;amp; Reader events&lt;/h3>
-&lt;p>For some SE terminal, the processing is dynamically driven by the insertion/remove of a SE in a reader, or by the plug/unplug of a reader.&lt;/p>
-&lt;p>E.g., in transportation, the ticketing transaction of access control gates is often started when a contactless card is detected in the field of the reader. For that, in Keyple, a SE reader or a plugin has to be observable.&lt;/p>
-&lt;p>&lt;img src="../../img/KeypleCore-3-SE_Proxy-ObserverPattern.png" alt="SE Proxy - Observer Pattern scheme" title="SE Proxy - Observer Pattern">&lt;/p>
-&lt;p>A plugin could be optionally observable (by implementing ObservablePlugin).&lt;/p>
-&lt;ul>
-&lt;li>In this case a terminal application could observe the plugin (by implementing PluginObserver) in order to be notified (PluginEvent) when a new reader is plugged to the plugin, or when a referenced reader is unplugged.&lt;/li>
-&lt;li>To receive the notification of a specific plugin, the plugin observer should first be added to the observer list of the observable plugin.&lt;/li>
-&lt;/ul>
-&lt;p>Depending on the capability of the plugin, a reader could be optionally observable (by implementing ObservableReader).&lt;/p>
-&lt;ul>
-&lt;li>A terminal application could observe the plugin (by implementing ReaderObserver) in order to be notified (ReaderEvent) when a SE is inserted or removed from a specific.&lt;/li>
-&lt;li>The reader observer should be added to the observer list to receive the notifications the observable reader.&lt;/li>
-&lt;/ul>
-&lt;p>By default, an observable reader notifies only the insertion or the remove of a SE.&lt;/p>
-&lt;h4 id="plugin-observability-activation">Plugin observability activation&lt;/h4>
-&lt;p>An observable plugin automatically starts to observe plugin events when at least one plugin observer is registered and stops the listening when the last plugin observer is removed.&lt;/p>
-&lt;h4 id="automatic-selection--default-selection-transaction">Automatic selection &amp;amp; “default selection transaction”&lt;/h4>
-&lt;p>On an observable reader, there is in addition the possibility to define a &amp;ldquo;default selection operation&amp;rdquo;: in this case, when a SE is inserted, the observable reader tries automatically to select the inserted SE using the defined default setting.&lt;/p>
-&lt;ul>
-&lt;li>If the inserted SE is successfully selected, then the observable reader notifies that &amp;ldquo;an inserted SE has matched the default selection&amp;rdquo; and provides the corresponding response.&lt;/li>
-&lt;li>Otherwise if the observable reader failed to select the inserted SE, it could just notify that a SE has been inserted.&lt;/li>
-&lt;/ul>
-&lt;blockquote>
-&lt;p>For SE terminal for which the processing is &amp;ldquo;dynamically&amp;rdquo; driven by the presence of a SE in a reader, the transaction starts in general with the detection of the insertion of a SE and its automatic selection. The reader observer is then notified to analyze the response of the selected SE, and to continue the transaction with the SE. We call this kind of transaction: a &amp;ldquo;default selection transaction&amp;rdquo;.&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;img src="../../img/KeypleCore-4-SE_Proxy-SE_Listening.png" alt="SE Proxy - SE Listening scheme" title="SE Proxy - SE Listening">&lt;/p>
-&lt;h4 id="reader-notification-modes">Reader notification modes&lt;/h4>
-&lt;p>If no default selection is defined, an observable reader notifies its observers for “SE insertion” (whatever the SE detected) or “SE removed” events.
-A default selection could be defined for the “always” or the &amp;ldquo;matched only” notification mode.&lt;/p>
-&lt;ul>
-&lt;li>In the always mode, if the inserted matches the default selection, the observers are notified about a “SE matched” event, otherwise an “SE insertion” event is notified.&lt;/li>
-&lt;li>In case of &amp;ldquo;matched only” mode, the observable reader doesn’t notify SE insertion event. The reader observer will be notified only if a default selection succeed on the observable reader; this configuration allows the reader observer to skip the processing of wrong SE insertions.&lt;/li>
-&lt;/ul>
-&lt;h4 id="reader-observability-activation-polling-mode--se-removal-procedure">Reader observability activation, “polling mode” &amp;amp; “SE removal procedure”&lt;/h4>
-&lt;p>For an observable reader, the listening of reader event requires also the registration of at least one reader observer.&lt;/p>
-&lt;p>An observable reader could switch between four internal states: “Wait for start detection”, “Wait for SE insertion”, “Wait for SE processing”, “Wait for SE removal”.&lt;/p>
-&lt;ul>
-&lt;li>At the wait for start detection, the observable reader doesn’t notify any event.&lt;/li>
-&lt;li>The start of the SE detection by an observable reader need to be explicitly requested by an observer by setting a “polling mode” either through a ‘startSeDetection’ or a ‘setDefaultSelectionRequest’ commands. The SE detection could be started for polling mode defined either in “single shot” or “repeating” mode.
-&lt;ul>
-&lt;li>In single shot mode, the observable reader stops the detection after the SE removal (back to the wait for start detection).&lt;/li>
-&lt;li>In repeating mode, after the SE removal, the observable reader restart to detect another SE (back to the wait for SE insertion).&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Wait for SE insertion, if a SE is inserted or selected, the registered reader observers are notified by the observable reader according to the defined notification mode. The observable reader switches to the wait for SE processing.&lt;/li>
-&lt;li>During the SE processing by the observers, the observable reader waits that an observer acknowledges the end of the SE processing.&lt;/li>
-&lt;li>There are two waits to ends the processing of an observed SE:
-&lt;ul>
-&lt;li>Either an observer directly could stop the listening of the observable reader (‘stopSeDetection’ command). The observable reader switches to the wait for start detection, and the observers are immediately notified about the SE remove.&lt;/li>
-&lt;li>Otherwise, the observers could wait for a clean remove of the SE from the observable reader; it’s the SE removal sequence:
-&lt;ul>
-&lt;li>When the main reader observer has finished the processing of the SE, it could request the observable reader to wait for the remove of the SE (‘notifySeProcessed’ command).&lt;/li>
-&lt;li>Finally, the reader observers could be notified when the SE is effectively removed.&lt;/li>
-&lt;li>If the SE insertion listening started in the &amp;ldquo;repeating polling mode&amp;rdquo;, then when the SE is removed, the observable reader automatically starts again the listening of a new SE insertion; otherwise a new explicit request to start the SE listening is required to restart the listening.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h2 id="secure-element-selection-api">Secure Element Selection API&lt;/h2>
-&lt;h3 id="selection-parameters-communication-protocol-atr-aid">Selection parameters (Communication protocol, ATR, AID)&lt;/h3>
-&lt;p>To select a Secure Element, a SE Selector has to be defined, based on one to three parameters.&lt;/p>
-&lt;ul>
-&lt;li>A SE selection could be defined for a specific communication protocol.&lt;/li>
-&lt;li>A SE could be filtered for an ATR (Answer To Reset) matching a specific regular expression.&lt;/li>
-&lt;li>A specific application of a SE could be selected by setting its AID (Application IDentifier).&lt;/li>
-&lt;/ul>
-&lt;p>&lt;img src="../../img/KeypleCore-5-SE_Proxy-SE_Selector.png" alt="SE Proxy - SE Selector scheme" title="SE Proxy - SE Selector">&lt;/p>
-&lt;h3 id="selection-transaction">Selection transaction&lt;/h3>
-&lt;p>To operate a transaction with a SE, it should be firstly selected. The aim of the SE selection API is to get a SE resource: a set of a reader with a selected SE.&lt;/p>
-&lt;p>A SE Selection is managed in two steps:&lt;/p>
-&lt;ul>
-&lt;li>first the “preparations” of selection request based on SE selector,&lt;/li>
-&lt;li>next the “processing” of the selection requests.&lt;/li>
-&lt;/ul>
-&lt;p>In order to manage multiple kinds of SE, several selection requests could be prepared with different selectors.&lt;/p>
-&lt;p>Depending on the setting of the reader, the processing of the selection could be operated in two different ways:&lt;/p>
-&lt;ul>
-&lt;li>either in a “explicit” way after the checking of the SE presence,&lt;/li>
-&lt;li>or in a ”default” way for an observable reader detecting the insertion of a SE.&lt;/li>
-&lt;/ul>
-&lt;blockquote>
-&lt;p>cf.
-&lt;a href="https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase1_ExplicitSelectionAid/src/main/java/org/eclipse/keyple/example/generic/pc/usecase1/ExplicitSelectionAid_Pcsc.java" target="_blank" rel="noopener">“Generic Use Case 1 / Explicit AID Selection”&lt;/a> example&lt;br>
-cf.
-&lt;a href="https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase2_DefaultSelectionNotification/src/main/java/org/eclipse/keyple/example/generic/pc/usecase2/DefaultSelectionNotification_Pcsc.java" target="_blank" rel="noopener">“Generic Use Case 2 / Default Selection Notification”&lt;/a> example&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;img src="../../img/KeypleCore-6-SE_Proxy-SE_Selection.png" alt="SE Proxy - SE Selection scheme" title="SE Proxy - SE Selection">&lt;/p>
-&lt;p>In case a SE Selection is prepared with a channel control mode defined as “keep open”, then the different prepared selectors are operated with the presented SE, but the processing of the selection stops when a selector matches the SE.&lt;/p>
-&lt;ul>
-&lt;li>The result of the SE selection could be a single ‘matching SE’: this SE is kept as selected in the reader. It’s possible to directly operate command with the SE.&lt;/li>
-&lt;/ul>
-&lt;p>But if a SE selection has been defined with a channel control mode at “close after”, in this case all the prepared SE selectors are operated whatever the matching result.&lt;/p>
-&lt;ul>
-&lt;li>After each selector processing, if a selector has matched, the logical channel with the SE is closed (the SE is no more selected).&lt;/li>
-&lt;li>If several applications of the presented SE have matched the selectors: the result of the processing of SE selections is a list matching SE, but all of them are deselected. To continue the SE processing, the terminal application has to choose one matching SE, and to select it again but in “keep open” channel control mode.&lt;/li>
-&lt;/ul>
-&lt;blockquote>
-&lt;p>cf.
-&lt;a href="https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase3_GroupedMultiSelection/src/main/java/org/eclipse/keyple/example/generic/pc/usecase3/GroupedMultiSelection_Pcsc.java" target="_blank" rel="noopener">“Generic Use Case 3 / Grouped Multi-Selection”&lt;/a> example&lt;/p>
-&lt;/blockquote>
-&lt;p>After the selection of a SE, using a SE resource, the terminal can continue by operating a specific transaction with the corresponding SE.&lt;/p>
-&lt;blockquote>
-&lt;p>cf.
-&lt;a href="https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase4_SequentialMultiSelection/src/main/java/org/eclipse/keyple/example/generic/pc/usecase4/SequentialMultiSelection_Pcsc.java" target="_blank" rel="noopener">“Generic Use Case 4 / Sequential Multi-Selection”&lt;/a> example&lt;/p>
-&lt;/blockquote></description></item><item><title>Keyple Calypso Architecture</title><link>/docs/architecture/keyple-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/architecture/keyple-calypso/</guid><description>&lt;h2 id="packages--features">Packages &amp;amp; features&lt;/h2>
-&lt;p>The &lt;strong>Keyple Calypso User API is an extension of the Keyple Core User API&lt;/strong> to manage Calypso Portable Object securely using Calypso SAM:&lt;/p>
-&lt;ul>
-&lt;li>The generic Secure Element selection is enhanced for the &lt;strong>selection of a Calypso PO&lt;/strong>. The FCI response is automatically analyzed in order to identify the revision and the features supported by the Calypso PO. The invalidation status is also checked.&lt;/li>
-&lt;li>The selected Calypso PO object allows to automatically initialize a &lt;strong>Calypso PO transaction&lt;/strong>: high level functional commands could be prepared and processed in order to &lt;strong>read or write data in the PO file structure&lt;/strong>, outside or securely inside a &lt;strong>Calypso secure session&lt;/strong>.&lt;/li>
-&lt;/ul>
-&lt;table>
-&lt;tr>
-&lt;td colspan="2">&lt;b>Features&lt;/b>&lt;/td>
-&lt;td>&lt;b>Packages&lt;/b>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td rowspan="2" width="15%">Calypso PO operations&lt;/td>
-&lt;td width="50%">Selection of Calypso SE: PO or SAM
-PO transaction:
-&lt;li>Read / update of data&lt;/li>
-&lt;li>PO authentication&lt;/li>&lt;/td>
-&lt;td width="35%">org.eclipse.keyple.calypso.&lt;b>transaction&lt;b>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Calypso PO responses data parsing&lt;/td>
-&lt;td>org.eclipse.keyple.calypso.&lt;b>command.po.parser&lt;b>&lt;/td>
-&lt;/tr>
-&lt;/table>
-&lt;h2 id="calypso-selection">Calypso Selection&lt;/h2>
-&lt;p>The Calypso API to select a Portable object is an extension of the generic Secure Element selection Core API:&lt;/p>
-&lt;ul>
-&lt;li>A PO AID selection could be defined to &lt;strong>accept or reject invalidated PO&lt;/strong>.&lt;/li>
-&lt;li>A request for a SE selection is defined with SE selector containing at least an AID (to operate through a Select Application APDU command) or an ATR filter. A request for a PO selection could be enhanced to operate after the PO selector processing some APDU commands with the PO : &lt;strong>Select File or Read Records commands&lt;/strong>.&lt;/li>
-&lt;li>In case of successful Calypso PO, the matching SE is retuned as a Calypso PO. The Calypso API analyzes the startup information of a Calypso PO in order to identify the kind of product, its revision, the optional features supported, the file structure used. Then for coming PO commands, the setting of the technical parameters automatically managed.&lt;/li>
-&lt;/ul>
-&lt;p>The PO command grouped with the PO selection have to be “prepared” before the processing of a default or explicit SE selection.&lt;/p>
-&lt;blockquote>
-&lt;p>cf.
-&lt;a href="https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase1_ExplicitSelectionAid/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase1/ExplicitSelectionAid_Pcsc.java" target="_blank" rel="noopener">“Calypso Use Case 1 / Explicit AID Selection”&lt;/a> example&lt;br>
-cf.
-&lt;a href="https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase2_DefaultSelectionNotification/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase2/DefaultSelectionNotification_Pcsc.java" target="_blank" rel="noopener">“Calypso Use Case 2 / Default Selection Notification”&lt;/a> example&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;img src="../../img/KeypleCalypso-1-Transaction-PO_Selection.png" alt="Calypso - PO Selection scheme" title="Calypso - PO Selection">
-A ‘PO resource’ is the set of a Calypso PO and the reader on which it is selected.&lt;/p>
-&lt;p>In a same way the Calypso APO provides the tool to select a Calypso security module (a SAM). A SAM selector doesn’t support AID. The corresponding matching SE is a Calypso SAM. A Calypso SAM and the reader used for its selection defines a ‘SAM resource’.&lt;/p>
-&lt;h2 id="calypso-secure-transaction">Calypso secure transaction&lt;/h2>
-&lt;p>A PO transaction could be operated on a Calypso resource. In case a SAM resource is set, a PO transaction could support the Calypso secure session in order to manage a mutual authentication between the terminal and the Calypso PO.&lt;/p>
-&lt;p>Through the PO transaction API, only the APDU commands for the PO are explicitly defined; the APDU commands for the SAM are automatically built by the library. Two kinds of methods are provided by the API: ‘&lt;strong>prepare&lt;/strong>’ methods, and ‘&lt;strong>process&lt;/strong>’ methods.&lt;/p>
-&lt;ul>
-&lt;li>The ‘prepare’ methods allows to define PO file selection and PO data access operations (read or update of records for a specific file, append of record for a cyclic file, increase or decrease of the value of a counter).&lt;/li>
-&lt;li>A ‘process” method sends to the PO at least the previously prepared command.
-&lt;ul>
-&lt;li>The process PO commands method could operated only if no secure session is currently open with the PO. If one or several PO commands have been prepared, a single request is done to the PO reader.&lt;/li>
-&lt;li>The process opening method allows to manage the opening of a secure session.
-&lt;ul>
-&lt;li>First a single request is operated to the SAM reader in order to set the PO serial as the cryptographic diversifier, and to get the terminal challenge for the session.&lt;/li>
-&lt;li>Then another single request is done to the PO reader to play the prepared PO command, and to manage the opening of the PO session.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>A process PO command in session method could be processed only if a secure session is already open with PO.
-&lt;ul>
-&lt;li>A single request Is operated with the PO reader to operate the prepared PO commands.&lt;/li>
-&lt;li>Another single request is sent to the SAM reader to update the update the digest of the MAC session.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>The process closing method is used to manage the closing of the secure session with the PO.
-&lt;ul>
-&lt;li>A first SAM request is operated to update the digest of the last prepared PO commands and to get the terminal session certificate (to save a PO request, the API anticipates the responses of the prepared PO commands).&lt;/li>
-&lt;li>A single PO request is transmitted to run the last prepared PO command, to recover the PO session certificate, and to send the ratification signal if necessary.&lt;/li>
-&lt;li>Finally, a second SAM request allows to authenticate the PO. If the transaction is successful the mutual authentication is valid, and the PO has atomically committed the requested data updates.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>The minimal costs of a Calypso secure session are:&lt;/p>
-&lt;ul>
-&lt;li>3 PO requests (1 for the PO selection + 1 for the PO session opening + 1 for the PO session closing).&lt;/li>
-&lt;li>And 3 SAM requests if the SAM is already selected (1 for the PO session opening + 2 for the PO session closing); otherwise 4 SAM requests if the SAM isn’t already selected.&lt;/li>
-&lt;/ul>
-&lt;p>&lt;img src="../../img/KeypleCalypso-2-Transaction-PO_Session.png" alt="Calypso - PO Transaction scheme" title="Calypso - PO Transaction">&lt;/p>
-&lt;p>By default, the PO transaction manages the Calypso secure session as ‘atomic’: the cumulative amount of PO updates command can’t exceed the size of the PO session buffer.&lt;/p>
-&lt;blockquote>
-&lt;p>cf.
-&lt;a href="https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase4_PoAuthentication/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase4/PoAuthentication_Pcsc.java" target="_blank" rel="noopener">“Calypso Use Case 4 / PO Authentication”&lt;/a> example&lt;/p>
-&lt;/blockquote>
-&lt;p>The PO transaction could also be defined to allow multiple sessions: in this case the transaction is automatically split in several session as necessary.&lt;/p>
-&lt;blockquote>
-&lt;p>cf.
-&lt;a href="https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase5_MultipleSession/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase5/MultipleSession_Pcsc.java" target="_blank" rel="noopener">“Calypso Use Case 5 / PO Multiple Session&amp;quot;&lt;/a> example&lt;/p>
-&lt;/blockquote></description></item></channel></rss>
+&lt;!---
+- prepareManageSession allows to change authenticate or change the encryption mode.
+-->
+&lt;p>The prepareReleaseChannel method allows to the logical channel with the Calypso PO at the end of the processing of the next process method.&lt;/p>
+&lt;figure id="figure-calypso-transaction">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCalypso_Transaction_ClassDiag_PoTransaction_1_0_0.svg" data-caption="Calypso transaction">
+&lt;img src="../../media/architecture/KeypleCalypso_Transaction_ClassDiag_PoTransaction_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Calypso transaction
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="data-model-extension">Data model extension&lt;/h2>
+&lt;figure id="figure-calypso-data-model">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCalypso_Transaction_ClassDiag_SpecificPoTransaction_1_0_0.svg" data-caption="Calypso Data Model">
+&lt;img src="../../media/architecture/KeypleCalypso_Transaction_ClassDiag_SpecificPoTransaction_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Calypso Data Model
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="secure-session-sequence">Secure session sequence&lt;/h2>
+&lt;figure id="figure-calypso-session">
+&lt;a data-fancybox="" href="../../media/architecture/KeypleCalypso_Transaction_SequenceDiag_SecureSessionProcessing_1_0_0.svg" data-caption="Calypso session">
+&lt;img src="../../media/architecture/KeypleCalypso_Transaction_SequenceDiag_SecureSessionProcessing_1_0_0.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Calypso session
+&lt;/figcaption>
+&lt;/figure></description></item></channel></rss>

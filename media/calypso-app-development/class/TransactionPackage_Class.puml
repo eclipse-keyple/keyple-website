@@ -1,0 +1,232 @@
+@startuml
+title
+    Keyple Calypso Extension - Transaction package overview- 1.0.0 (15/12/2020)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+package "org.eclipse.keyple.core.card.selection"{
+    +abstract class AbstractSmartCard {
+    }
+
+    +abstract class AbstractCardSelection {
+    }
+
+    +class CardSelector {
+    }
+
+    +class CardSelectorBuilder {
+    }
+}
+
+package "org.eclipse.keyple.calypso.transaction" as root {
+
+    +class CalypsoPo {
+        +final PoRevision getRevision()
+        +final byte[] getDfNameBytes()
+        +final String getDfName()
+        +final byte[] getApplicationSerialNumberBytes()
+        +final String getApplicationSerialNumber()
+        +final String getStartupInfo()
+        +final boolean isSerialNumberExpiring()
+        +final byte[] getSerialNumberExpirationBytes()
+        +final String getAtr()
+        +final byte getPlatform()
+        +final byte getApplicationType()
+        +final boolean isConfidentialSessionModeSupported()
+        +final boolean isDeselectRatificationSupported()
+        +final boolean isSvFeatureAvailable()
+        +final boolean isPinFeatureAvailable()
+        +final boolean isPublicAuthenticationSupported()
+        +final byte getApplicationSubtype()
+        +final byte getSoftwareIssuer()
+        +final byte getSoftwareVersion()
+        +final byte getSoftwareRevision()
+        +final byte getSessionModification()
+        +final boolean isDfInvalidated()
+        +final boolean isDfRatified()
+        +final int getSvBalance()
+        +final int getSvLastTNum()
+        +final SvLoadLogRecord getSvLoadLogRecord()
+        +final SvDebitLogRecord getSvDebitLogLastRecord()
+        +final List<SvDebitLogRecord> getSvDebitLogAllRecords()
+        +final DirectoryHeader getDirectoryHeader()
+        +final ElementaryFile getFileBySfi(byte sfi)
+        +final ElementaryFile getFileByLid(short lid)
+        +final Map<Byte, ElementaryFile> getAllFiles()
+        +final boolean isPinBlocked()
+        +final int getPinAttemptRemaining()
+    }
+
+    +class CalypsoSam {
+        +final SamRevision getSamRevision()
+        +final byte[] getSerialNumber()
+        +final byte getPlatform()
+        +final byte getApplicationType()
+        +final byte getApplicationSubType()
+        +final byte getSoftwareIssuer()
+        +final byte getSoftwareVersion()
+        +final byte getSoftwareRevision()
+    }
+
+    +class PoSelection {
+        +final void prepareReadRecordFile(byte sfi, int recordNumber)
+        +void prepareSelectFile(byte[] lid)
+        +void prepareSelectFile(short lid)
+        +void prepareSelectFile(SelectFileControl selectControl)
+        #CalypsoPo parse(CardSelectionResponse cardSelectionResponse)
+    }
+
+    +class PoSelector {
+        +{static} PoSelectorBuilder builder()
+    }
+
+    +enum InvalidatedPo {
+        REJECT
+        ACCEPT
+    }
+
+    +class PoSelectorBuilder {
+        +PoSelectorBuilder invalidatedPo(InvalidatedPo invalidatedPo)
+        +PoSelectorBuilder cardProtocol(String cardProtocol)
+        +PoSelectorBuilder atrFilter(AtrFilter atrFilter)
+        +PoSelectorBuilder aidSelector(AidSelector aidSelector)
+        +PoSelector build()
+    }
+
+    +class SamSelection {
+        #CalypsoSam parse(CardSelectionResponse cardSelectionResponse)
+    }
+
+    +class SamSelector {
+        +{static} SamSelectorBuilder builder()
+    }
+
+     +class SamSelectorBuilder {
+        +SamSelectorBuilder samRevision(SamRevision samRevision)
+        +SamSelectorBuilder serialNumber(String serialNumber)
+        +SamSelectorBuilder samIdentifier(SamIdentifier samIdentifier)
+        +SamSelectorBuilder unlockData(byte[] unlockData)
+        +SamSelectorBuilder cardProtocol(String cardProtocol)
+        +SamSelectorBuilder atrFilter(AtrFilter atrFilter)
+        +SamSelector build()
+    }
+
+    +class PoTransaction {
+
+    }
+
+    +enum AccessLevel {
+        SESSION_LVL_PERSO
+        SESSION_LVL_LOAD
+        SESSION_LVL_DEBIT
+    }
+
+    +enum RatificationMode {
+        CLOSE_RATIFIED
+        CLOSE_NOT_RATIFIED
+    }
+
+    +enum SessionState {
+        SESSION_UNINITIALIZED
+        SESSION_OPEN
+        SESSION_CLOSED
+    }
+
+    +enum PinTransmissionMode {
+        PLAIN
+        ENCRYPTED
+    }
+
+    +class SvSettings {
+
+    }
+
+    +enum Operation {
+        RELOAD
+        DEBIT
+    }
+
+    +enum Action {
+        DO
+        UNDO
+    }
+
+    +enum LogRead {
+        SINGLE
+        ALL
+    }
+
+    +enum NegativeBalance {
+        FORBIDDEN
+        AUTHORIZED
+    }
+
+}
+
+' Associations
+AbstractSmartCard <|-- CalypsoPo #C_USE
+AbstractSmartCard <|-- CalypsoSam #C_USE
+AbstractCardSelection <|-- PoSelection #C_USE
+CardSelector <|-- PoSelector #C_USE
+AbstractCardSelection <|-- SamSelection #C_USE
+CardSelector <|-- SamSelector #C_USE
+PoSelector +-- InvalidatedPo #C_GREY6
+PoSelector +-- PoSelectorBuilder #C_GREY6
+SamSelector +-- SamSelectorBuilder #C_GREY6
+CardSelector +- CardSelectorBuilder #C_GREY6
+
+CardSelectorBuilder <|- SamSelectorBuilder #C_USE
+CardSelectorBuilder <|- PoSelectorBuilder #C_USE
+
+PoTransaction +-- AccessLevel #C_GREY6
+PoTransaction +-- RatificationMode #C_GREY6
+PoTransaction +-- SessionState #C_GREY6
+PoTransaction +-- PinTransmissionMode #C_GREY6
+PoTransaction +--- SvSettings #C_GREY6
+
+SvSettings +- Operation #C_GREY6
+SvSettings +-- Action #C_GREY6
+LogRead -+ SvSettings #C_GREY6
+SvSettings +-- NegativeBalance #C_GREY6
+@enduml

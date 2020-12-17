@@ -1,0 +1,32 @@
+@startuml
+!include Keyple_ClassDiag_PlantUmlSetting.iuml
+hide empty description
+
+state "Card observation <b>disabled</b>" as Card_ObservationDisabled {
+  [*] --[#Black]> WaitForObserver
+  WaitForObserver -right[#Blue]-> WaitForStartDetection : \naddObserver(ReaderObserver)
+'  WaitForObserver -right[#Blue]-> WaitForStartDetection [ dir=backward, xlabel= "addObserver(ReaderObserver)"]
+  '1:ne -> 0:se [ dir=backward, xlabel= "  (0, -1)  "];
+  WaitForObserver : number of observer == 0
+  WaitForStartDetection -left[#Blue]-> WaitForObserver : removeObserver(ReaderObserver)\n&& (nb observer == 0)
+  WaitForStartDetection : number of observer > 0
+}
+
+state "Card observation <b>activated</b>" as Card_ObservationActivated {
+  Card_ObservationActivated : number of observer > 0  &&  PollingMode defined
+  WaitForCardInsertion -down[#Red]-> WaitForCardProcessing : notifies 'Card matched'\n|| \n'Card inserted' &&\n(NotificationMode == always)\n\n
+  WaitForCardInsertion -down[#Red]-> WaitForCardRemoval : 'Card inserted' not notified &&\n((NotificationMode == match_only)\n&& selection failed)
+  WaitForCardRemoval -up[#Red]-> WaitForCardInsertion : notifies 'Card removed' &&\n(PollingMode == Repeating)
+  WaitForCardProcessing -up[#Red,dashed]-> WaitForCardInsertion : notifies 'Card removed' &&\n(Observable Reader\nwith the capability\nto detect the removal\nat any time)
+
+  WaitForCardProcessing -right[#Blue]-> WaitForCardRemoval : finalizeCardProcessing()\n|| \n'Card channel release requested'
+}
+
+WaitForStartDetection -down[#Blue]-> WaitForCardInsertion : startCardDetection(PollingMode)
+Card_ObservationActivated -up[#Blue]-> WaitForObserver : removeObserver(ReaderObserver)\n&& (nb observer == 0)
+Card_ObservationActivated -up[#Blue]-> WaitForStartDetection : stopCardDetection()
+
+Card_ObservationActivated -up[#Blue]-> Card_ObservationActivated : removeObserver(ReaderObserver)\n&& (nb observer > 0)
+
+WaitForCardRemoval -left[#Red]-> WaitForStartDetection : notifies 'Card removed' &&\n(PollingMode == SingleShot)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+@enduml

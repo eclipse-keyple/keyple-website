@@ -1,0 +1,70 @@
+@startuml
+footer
+    Keyple Distributed - Concepts - Main Use Case (03/11/2020)
+end footer
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define COLOR_RED E74C3C
+!define COLOR_PURPLE 8E44AD
+!define COLOR_BLUE 3498DB
+!define COLOR_GREEN 27AE60
+!define COLOR_GREY 2C3E50
+skinparam Shadowing false
+skinparam component {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+hide <<red>> stereotype
+hide <<purple>> stereotype
+hide <<blue>> stereotype
+hide <<green>> stereotype
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+[Hardware Reader A\n(PO, SAM, HSM,...)] as readerA <<green>>
+package "Terminal A with 'local' reader" {
+    [Application] as appA
+    [**Local Service**] as localServiceA <<red>>
+    [Local\nPlugin A] as localPluginA <<green>>
+    [Local\nReader A] as localReaderA <<green>>
+}
+package "Terminal B with 'remote' reader" {
+    [Application] as app
+    [**Remote Plugin**] as remotePlugin <<red>>
+    [Remote\nReader A] as remoteReaderA <<green>>
+}
+
+'utilisation
+
+appA -- localPluginA #LightGrey
+appA -- localReaderA #LightGrey
+appA -- localServiceA
+localPluginA -left- localReaderA #COLOR_GREEN
+localServiceA -left- localPluginA #COLOR_GREEN
+localServiceA -left- localReaderA #COLOR_GREEN
+localReaderA -left- readerA #COLOR_GREEN
+
+localServiceA - remotePlugin
+
+app -- remotePlugin
+app -- remoteReaderA #LightGrey
+remotePlugin - remoteReaderA #COLOR_GREEN
+
+@enduml
