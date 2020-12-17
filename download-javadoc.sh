@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export BASE_URL="https://repo1.maven.org/maven2/org/eclipse/keyple"
+
 function select_option {
 
     # little helpers for terminal print control and key input
@@ -62,24 +64,14 @@ function get_javadoc() {
   local VERSION=$2
   local BASE_PATH="$(dirname "$0")"
 
-  # get the lastest published SNAPSHOT timestamp for this version
-  VERSION_TIMESTAMP=$(wget -O - -o /dev/null $BASE_URL/$1/$VERSION/maven-metadata.xml | grep -oPm1 "(?<=<timestamp>)[^<]+")
-
-  # get the lastest published SNAPSHOT buildNumber for this version
-  VERSION_BUILD_NUMBER=$(wget -O - -o /dev/null $BASE_URL/$1/$VERSION/maven-metadata.xml | grep -oPm1 "(?<=<buildNumber>)[^<]+")
-
-  # get the version (remove -SNAPSHOT)
-  VERSION=$(echo $VERSION | sed -e "s/-SNAPSHOT$//")
-
   # get the Javadoc jar
   mkdir -p "${BASE_PATH}/tmp"
-  wget "${BASE_PATH}/tmp/${BASE_URL}/${1}/${VERSION}/${1}-${VERSION}-javadoc.jar"
+  wget -P "${BASE_PATH}/tmp/" "${BASE_URL}/${1}/${VERSION}/${1}-${VERSION}-javadoc.jar"
 
   mkdir -p "${BASE_PATH}/static/docs/api-reference/java-api/${1}/${VERSION}"
   unzip "${BASE_PATH}/tmp/${1}-${VERSION}-javadoc.jar" -d "${BASE_PATH}/static/docs/api-reference/java-api/${1}/${VERSION}"
 }
 
-BASE_URL="https://repo1.maven.org/maven2/org/eclipse/keyple"
 options=($(wget -O - -o /dev/null $BASE_URL/keyple-java-core/maven-metadata.xml | grep -Po '(?<=<version>)([0-9alph\.-]+(-SNAPSHOT)?)' | sort --version-sort -r))
 select_option "${options[@]}"
 VERSION=${options[$?]}
