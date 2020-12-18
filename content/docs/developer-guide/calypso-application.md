@@ -11,8 +11,6 @@ weight: 330
 
 ## Overview
 
-**Work in Progress**
-
 Keyple API was designed to support an extension system. On top of **Keyple Core**, APIs can be developed to extend
 Keyple features. For example, Calypso Network Association provides **Keyple Calypso Extension**. 
 
