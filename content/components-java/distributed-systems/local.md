@@ -1,7 +1,7 @@
 ---
 title: Keyple Distributed Local
 linktitle: Local
-summary: The Keyple Distributed Local Java component is the part of the Keyple Distributed solution which contains all the local services.
+summary: Part of the Keyple Distributed solution which contains all the local services.
 type: book
 weight: 10
 toc: true

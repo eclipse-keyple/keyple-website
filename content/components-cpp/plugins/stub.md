@@ -1,7 +1,7 @@
 ---
 title: Keyple Plugin Stub
 linktitle: Stub
-summary: The Keyple Plugin Stub C++ component is a Keyple plugin used to stub smart card readers.
+summary: Keyple C++ plugin used to stub smart card readers.
 type: book
 weight: 10
 toc: true

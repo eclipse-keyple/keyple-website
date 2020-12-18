@@ -142,6 +142,10 @@ Note that the network layer is deliberately hide in this diagram. Its implementa
 
 ### Reader Server Side
 
+{{% alert warning %}}
+This configuration mode will only be available from version **1.1** onwards.
+{{% /alert %}}
+
 This configuration mode allows a **client** application to control a smart card reader available on a **server** (e.g. SAM reader).
 
 It also allows to observe the plugin events (such as reader connection, etc...) if desired.
@@ -161,17 +165,7 @@ It also allows to observe the plugin events (such as reader connection, etc...) 
 * Client side :
     1. configure the factory by providing the network implementation,
     1. register the **Remote Plugin** to the smart card service using the factory,
-    1. use the **Remote Plugin** and its remote readers as a local plugin with local readers.
-
-#### OPERATING MODE
-
-* Server side :
-    1. configure the factory and start the **Local Service** by providing the network implementation,
-    1. register at least a local plugin to the smart card service.
-* Client side :
-    1. configure the factory by providing the network implementation,
-    1. register the **Remote Plugin** to the smart card service using the factory,
-    1. use the **Remote Plugin** and its remote readers as a local observable plugin with local readers.
+    1. use the **Remote Plugin** and its remote readers as a local plugin (or observable plugin) with local readers.
     
 ### Pool Reader Server Side
 

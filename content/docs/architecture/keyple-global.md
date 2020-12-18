@@ -9,15 +9,15 @@ weight: 110
 ## Overview
 
 The Eclipse Keyple solution provides currently 2 modules:
- - the 'Keyple Core', a universal smart card reader interface to manage the setting of smart card reader, the detection and the communication with smart card, and the selection of card application.
- - the 'Keyple Calypso', a first smart card solution extension built on the Keyple Core, dedicated to manage Calypso processing, Calypso card identification, card command generation, card data recovery, authentication with the secure session.
+ - the **Keyple Core**, a universal smart card reader interface to manage the setting of smart card reader, the detection and the communication with smart card, and the selection of card application.
+ - the **Keyple Calypso**, a first smart card solution extension built on the Keyple Core, dedicated to manage Calypso processing, Calypso card identification, card command generation, card data recovery, authentication with the secure session.
 
 {{< figure library="true" src="architecture/Keyple_Architecture_Global.svg" title="Keyple Architecture Global" >}}
 
 The Keyple Core provides 3 interfaces:
- - the 'Service API', to allow terminal application to handle reader & select card
- - the 'Card API', for APDU command transmission, card data parsing
- - the 'Plugin API', to integrate specific smart card reader solutions.
+ - the **Service API**, to allow terminal application to handle reader & select card
+ - the **Card API**, for APDU command transmission, card data parsing
+ - the **Plugin API**, to integrate specific smart card reader solutions.
 
 The Keyple Calypso extension provides the Calypso API: a high-level interface to manage Calypso card processing.
 
@@ -64,7 +64,7 @@ By default, a terminal application manages the processing of a specific smart ca
 {{< figure library="true" src="architecture/Keyple_Architecture_Local_Plugin.svg" title="Keyple Architecture Local Plugin" >}}
 
 ### distributed
-The 'Distributed' extension of the Keyple Core provides a solution allowing a master terminal application to manage the processing of a smart card localized in a remote driven terminal.
+The **Distributed** extension of the Keyple Core provides a solution allowing a master terminal application to manage the processing of a smart card localized in a remote driven terminal.
 {{< figure library="true" src="architecture/Keyple_Architecture_Remote_Plugin.svg" title="Keyple Architecture Remote Plugin" >}}
 
 ## Smart card transaction
