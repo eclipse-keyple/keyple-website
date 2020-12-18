@@ -1,11 +1,14 @@
 ---
-title: JavaDoc
+title: Java API reference
 linktitle: Java
 summary: The JavaDoc for the Keyple project is available online.
 type: book
 toc: false
 weight: 410
 ---
+
+---
+
 The JavaDoc for the Keyple project is available online. The documentation is split into the following parts:
 
 <div>

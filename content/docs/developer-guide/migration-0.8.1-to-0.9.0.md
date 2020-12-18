@@ -1,10 +1,13 @@
 ---
 title: Migration Guide - Keyple Java 0.8.1 to 0.9.0
 linktitle: Keyple Java 0.8.1 to 0.9.0
+summary: How to migrate from Keyple Java 0.8.1 to 0.9.0
 type: book
 toc: true
 draft: false
 weight: 350
+---
+
 ---
 
 This guide is intended to help a user of version 0.8.1 of Keyple Java to upgrade his application to the 0.9.0 version of the library.
@@ -21,6 +24,7 @@ From a user API point of view, the changes relate to the following topics:
 * [retrieving data read from POs](#retrieving-data-read-from-pos)
 * [error handling](#error-handling)
 
+---
 ## Plugin registration in the SeProxyService
 
 The `registerPlugin` method of the `SeProxyService` class now returns the reference of the registered plugin.
@@ -35,6 +39,7 @@ This makes it possible, for example, to perform a reader setup in an application
    SeReader poReader = pcscPlugin.getReader("ASK LoGO 0");
 ```
 
+---
 ## Preparation of selection cases
 
 The `AidSelector`, `Selector` and `PoSelector` classes now follow the Fluent Builder pattern for better handling of optional parameters.
@@ -86,6 +91,7 @@ public void prepareSelectFile(short lid)
 
 Note that from now the "prepare" methods no longer return indexes, the data will be placed in the CalypsoPo object.
 
+---
 ## Retrieving selection results
 
 The `MatchingSelection` class no longer exists.
@@ -101,6 +107,7 @@ In the class `SelectionsResult` (see `processDefaultSelection/processExplicitSel
 
 * a new `getActiveSelectionIndex` method returns the index of the active selection (the still existing `hasActiveSelection` method must be used before)
 
+---
 ## Definition of the security settings of the transaction
 
 
@@ -124,6 +131,7 @@ poSecuritySettings = new PoSecuritySettings.PoSecuritySettingsBuilder(samResourc
                             .build();
 ```
 
+---
 ## Creation of the PoTransaction object
 
 Since PoSecuritySettings now integrates SamResource, the construction of PoTransaction has evolved slightly.
@@ -134,6 +142,7 @@ Here is an example:
 PoTransaction poTransaction = new PoTransaction(new PoResource(poReader, calypsoPo), poSecuritySettings);
 ```
 
+---
 ## Transaction commands preparation
 
 Just as with the "prepare" commands used for selection, the "prepare" commands used for transactions no longer return indexes.
@@ -154,6 +163,7 @@ public final void prepareIncreaseCounter(byte sfi, int counterNumber, int incVal
 public final void prepareDecreaseCounter(byte sfi, int counterNumber, int decValue)
 ```
 
+---
 ## Transaction commands processing
 
 The "process" commands have also been revised and simplified.
@@ -165,6 +175,7 @@ In case of failure a exception is raised (see below).
 ```java
 public final void processOpening(PoTransaction.SessionSetting.AccessLevel accessLevel)
 ```
+
 The ```ModificationMode``` is no longer required since it is integrated in the ```PoSecuritySettings```.
 
 Parameters previously used to specify that a file is read at login are removed.
@@ -178,6 +189,7 @@ public final void processCancel(ChannelControl channelControl)
 public final void processClosing(ChannelControl channelControl)
 ```
 
+---
 ## Retrieving data read from POs
 
 This is a major evolution of the Keyple API. Previously, data read from Calyspo POs were retrieved by applications using "parser" methods.
@@ -297,6 +309,7 @@ So, for example to extract the contents of contract files present in the PO, the
 [...]
 ```
 
+---
 ## Error handling
 
 Since version 0.9, all Keyple exceptions are of the RuntimeException type.

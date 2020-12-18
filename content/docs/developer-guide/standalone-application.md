@@ -1,11 +1,13 @@
 ---
-
 title: Standalone application
+summary: How to develop an end-user standalone application.
 type: book
 toc: true
 draft: false
 weight: 310
------------
+---
+
+---
 
 ## Overview
 
@@ -20,9 +22,10 @@ validator, a vending machine or a control terminal.
 
 The diagram below illustrates the organization of the local standalone
 components: {{< figure library="true"
-src="local-app/component/Local_Application_Components_Overview.svg"
+src="standalone-application/component/Local_Application_Components_Overview.svg"
 title="" >}}
 
+---
 ## Before you start
 
 1. In pre-requisite, read the [common concepts]({{< relref
@@ -42,6 +45,7 @@ title="" >}}
 7. Don't forget to explore the potential of Keyple card-specific
    extensions such as **Keyple Calypso**.
 
+---
 ## Workflow
 
 **Keyple Core** is built around the concepts described [here]({{< relref
@@ -550,6 +554,7 @@ This is done by unregistering the plugins in the following way:
 smartCardService.unregisterPlugin(plugin.getName());
 ```
 
+---
 ## Keyple Core API
 
 To learn all the details of the **Keyple Core** API, please consult the
@@ -561,19 +566,19 @@ However, here are two diagrams showing the main features of Keyple Core:
 * The diagram below represents the main classes implemented around the
   **Smart Card Service** with in particular the observation mechanisms.
   {{< figure library="true"
-  src="local-app/component/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg"
+  src="architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg"
   title=""
 
 >}}
 
 * The diagram below represents the main classes used for selection
   operations. {{< figure library="true"
-  src="local-app/component/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg"
+  src="architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg"
   title=""
 
 >}}
 
-
+---
 ## Examples
 
 To help in the implementation of the different facilities offered by
@@ -634,6 +639,7 @@ assigned to them.
 
 [see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/pc/Demo_ObservableReaderNotification)
 
+---
 ## Download
 
 The artifact **Keyple Core** and how to integrate it into your

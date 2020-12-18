@@ -1,9 +1,12 @@
 ---
 title: Distributed application
+summary: How to develop an end-user application using network communications.
 type: book
 toc: true
 draft: false
 weight: 320
+---
+
 ---
 
 ## Overview
@@ -16,6 +19,7 @@ The diagram below shows the role of the **Keyple Distributed** components in the
 
 {{< figure library="true" src="distributed-application/component/Distributed_Component_Overview.svg" title="" >}}
 
+---
 ## How to use it ?
 
 1. In pre-requisite, read page [Standalone application]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application.
@@ -26,6 +30,7 @@ The diagram below shows the role of the **Keyple Distributed** components in the
 1. Using chapter [Network configuration](#network-configuration), implement the transport layer adapted to your network configuration.
 1. Implement your ticketing services as specified in the associated use case.
 
+---
 ## Concepts
 
 Here are the main concepts to keep in mind before continuing to read this developer guide :
@@ -58,7 +63,7 @@ The diagram below illustrates the main functional concepts through a standard us
 
 The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.
 
-These could be for example a ticketing reloading service, where the intelligence would be on the terminal with remote readers, with thin clients on A & B terminals communicating locally with the cards.
+These could be for example a ticketing reloading service, where the business logic would be on the terminal with remote readers, with thin clients on A & B terminals communicating locally with the cards.
 
 In this use case, the **Keyple Distributed** solution is use for card communication.
 
@@ -72,6 +77,7 @@ In this use case, the **Keyple Distributed** solution is use for SAM communicati
 
 {{< figure library="true" src="distributed-application/component/Distributed_Component_Concepts_3.svg" title="" >}}
 
+---
 ## Configuration modes
  
 The **Keyple Distributed** solution provides **3** different configuration modes, each one having a specific [API](#apis) designed on a **Client-Server** model :
@@ -187,7 +193,8 @@ This configuration mode allows a **client** application to control a **pool** of
     1. configure the factory by providing the network implementation,
     2. register the **Remote Plugin** to the smart card service using the factory,
     3. use the **Remote Plugin** and its remote readers as a local pool plugin with local readers.
-  
+
+---
 ## Use cases
 
 Here is a summary table of all proposed use cases. Search for the one that corresponds to your need and then look at the associated description :
@@ -310,6 +317,7 @@ This unique mode proposed for this plugin does not allow to observe the local re
 | Methods to be used when initializing the factory | - | - |
 | Possible readers to use | `Reader` | `Reader` |
 
+---
 ## Network configuration
 
 The **Keyple Distributed** solution **does not provide** the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between **Remote Plugin** and **Local Service** components.
@@ -352,6 +360,7 @@ The data exchanged between **Remote Plugin** and **Local Service** components ar
 
 However, it is necessary in some contexts to access certain information such as the `sessionId` in the case of asynchronous communication or the `serverNodeId` in the case of synchronous communication with several server instances.
 
+---
 ## APIs
 
 The class diagrams below shows the different APIs exposed and SPIs required by the **Keyple Distributed** solution.
@@ -386,10 +395,12 @@ The associated **API** documentation is available <a href="../../api-reference/j
 
 {{< figure library="true" src="distributed-application/class/Distributed_Class_Local_API.svg" title="" >}}
 
+---
 ## Examples
 
 * [Java examples](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/distributed)
 
+---
 ## Download
 
 * [Java components]({{< relref "../../../components-java/distributed-systems/" >}})

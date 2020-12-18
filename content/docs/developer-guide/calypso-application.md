@@ -1,14 +1,15 @@
 ---
 title: Calypso application
+summary: How to develop an end-user application based on the Calypso® technology.
 type: book
 toc: true
 draft: false
 weight: 330
 ---
 
-## Overview
+---
 
-**Work in Progress**
+## Overview
 
 Keyple API was designed to support an extension system. On top of **Keyple Core**, APIs can be developed to extend
 Keyple features. For example, Calypso Network Association provides **Keyple Calypso Extension**. 
@@ -20,6 +21,7 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 
 {{< figure library="true" src="calypso-app-development/component/Local_Component_Overview.svg" title="" >}}
 
+---
 ## Before you start
 1. In pre-requisite, have knowledge of the standard Calypso.
 1. Read the [common concepts]({{< relref "common-concepts.md" >}}) page and become familiar with the basic concepts on which **Keyple** is based.
@@ -32,6 +34,7 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 1. Using the [Java components]({{< ref "components-java/extensions/calypso.md" >}}) or [C++ components]({{< ref "components-cpp/extensions/calypso.md" >}}) pages, import **Keyple Calypso Extension** into your project.
 1. Start playing with **Keyple**.
 
+---
 ## Concepts
 Here are the main concepts to keep in mind before continuing to read this developer guide :
 
@@ -216,6 +219,7 @@ This service workflow is composed of two steps:
     ...
 ```
 
+---
 ## API
 * The diagram below represents the main classes implemented around the **Transaction package**.
   {{< figure library="true"
@@ -226,9 +230,10 @@ This service workflow is composed of two steps:
   {{< figure library="true"
   src="calypso-app-development/class/CommandPackage_Class.svg"
   title="" >}}
-  
+
+---
 ## Examples
 Detailed use case examples can be seen here:
 
-* [PC](https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/pc)
-* [Android](https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/android)
+* [PC](https://github.com/eclipse/keyple-java/tree/master/java/example/calypso)
+* [Android](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/android)
