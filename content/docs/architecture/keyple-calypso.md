@@ -26,7 +26,7 @@ The transaction API is defined on a low-level Calypso commands API which contain
     <td width="50%">org.eclipse.keyple.calypso.<b>transaction</b></td>
     <td width="8%">high</td>
     <td>Calypso Portable Object commands and secure transaction management<br/>
-      <ul><li>CalypsoAPI, commands’ settings are limited to functional parameters<br/></li>
+      <ul><li>CalypsoAPI, command’s settings are limited to functional parameters<br/></li>
         <li>Calypso SAM (Secure Module) operations automatically processed<br/></li></ul>
       (only functional parameters)</td>
   </tr>
@@ -79,12 +79,12 @@ To operate a Calypso transaction:
  - At least a Calypso Resource (CardResource&lt;CalypsoPo&gt;) is required.
  - A SAM Resource ((CardResource&lt;CalypsoSam&gt;) is required too if security features are involved (Calypso secure session, Stored value transaction, PIN encryption, etc…).
 
-A Calypso PO image provides public ‘getters’ in order to **recover** the information of the selected PO (startup data, file data, … etc).
+A Calypso PO image provides public **getters** in order to **recover** the information of the selected PO (startup data, file data, … etc).
 
 A transaction with a Calypso PO is fully managed through the PoTransaction object:
 
- - First a set of PO commands could be defined through ‘**prepare**’ commands.
- - Next the prepared PO commands transmitted when operating a ‘**process**’ command.
+ - First a set of PO commands could be defined through **prepare** commands.
+ - Next the prepared PO commands transmitted when operating a **process** command.
  - The responses of the PO are then recovered through the Calypso PO image.
 
 {{< figure library="true" src="architecture/KeypleCalypso_Transaction_ClassDiag_Overview.svg" title="Calypso API Global Architecture" >}}
@@ -95,7 +95,7 @@ When read commands have been exchanged with a Calypso PO, the corresponding data
 {{< figure library="true" src="architecture/KeypleCalypso_Transaction_ClassDiag_CalypsoPo_1_0_0.svg" title="Calypso PO card image" >}}
 
 ### Calypso transaction
-Only the 'process' methods generate communication with the Calypso PO and SAM.
+Only the **process** methods generate communication with the Calypso PO and SAM.
  - processPoCommands is used to transmit a set of prepared PO commands (outside or inside a secure session).
  - processOpening issues an Open Secure Session followed by the prepared PO commands.
  - processClosing issues the last prepared PO commands and transmits a Close Secure Session.
