@@ -984,7 +984,7 @@ Plugin Factorized Processing v1.0.0
 &lt;/figcaption>
 &lt;/figure></description></item><item><title>Keyple Calypso</title><link>https://keyple.org/docs/architecture/keyple-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-calypso/</guid><description>&lt;h2 id="features--packages-and-corresponding-usages">Features / packages and corresponding usages&lt;/h2>
 &lt;p>The Calypso transaction API provides a high-level of abstraction to define functional commands to manage a secure session with a Calypso Portable Object, to update or authenticate its data.&lt;/p>
-&lt;p>The transaction API is defined on a low-level Calypso commands API which contains the builders of PO and SAM APDU commands, and the corresponding parsers of APDU responses.&lt;/p>
+&lt;p>The transaction API is defined on a low-level Calypso commands API which contains the builders of PO and SAM APDU commands, and the corresponding parsers of APDU responses. This internal library is deprecated, and will be refactorized for the version 2.0.0 of Keyple Calypso.&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -995,8 +995,8 @@ Plugin Factorized Processing v1.0.0
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>org.eclipse.keyple.calypso.&lt;b>transaction&lt;/b>&lt;/td>
-&lt;td>high&lt;/td>
+&lt;td width="50%">org.eclipse.keyple.calypso.&lt;b>transaction&lt;/b>&lt;/td>
+&lt;td width="8%">high&lt;/td>
 &lt;td>Calypso Portable Object commands and secure transaction management&lt;br/>
 &lt;ul>&lt;li>CalypsoAPI, commands’ settings are limited to functional parameters&lt;br/>&lt;/li>
 &lt;li>Calypso SAM (Secure Module) operations automatically processed&lt;br/>&lt;/li>&lt;/ul>
@@ -1029,9 +1029,9 @@ org.eclipse.keyple.calypso.&lt;b>command&lt;/b>.sam.parser.session&lt;/td>
 Calypso packages
 &lt;/figcaption>
 &lt;/figure>
-&lt;p>The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages.&lt;/p>
+&lt;!-- The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages. -->
 &lt;h2 id="calypso-portable-object-selection">Calypso Portable Object Selection&lt;/h2>
-&lt;p>Compared to the generic Card Selection API (cf. &lt;a href="https://calypsonet.github.io/keyple/KeypleCoreApi/KeypleCore_ApplicationApi.html#card-selection),">https://calypsonet.github.io/keyple/KeypleCoreApi/KeypleCore_ApplicationApi.html#card-selection),&lt;/a> a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
+&lt;p>Compared to the generic Card Selection API (cf. &lt;a href="https://keyple.org/docs/architecture/keyple-core/#card-selection),">https://keyple.org/docs/architecture/keyple-core/#card-selection),&lt;/a> a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
 &lt;p>In addition, a PO Selection Request provides methods:&lt;/p>
 &lt;ul>
 &lt;li>to prepare Select File command (useful in particular to manage REV1 Calypso PO for which the select of the targeted DF is required).&lt;/li>
@@ -1054,8 +1054,8 @@ Calypso Selection v1.0.0
 &lt;/ul>
 &lt;p>To operate a Calypso transaction:&lt;/p>
 &lt;ul>
-&lt;li>At least a Calypso Resource (CardResource&lt;CalypsoPo>) is required.&lt;/li>
-&lt;li>A SAM Resource ((CardResource&lt;CalypsoSam>) is required too if security features are involved (Calypso secure session, Stored value transaction, PIN encryption, etc…).&lt;/li>
+&lt;li>At least a Calypso Resource (CardResource&amp;lt;CalypsoPo&amp;gt;) is required.&lt;/li>
+&lt;li>A SAM Resource ((CardResource&amp;lt;CalypsoSam&amp;gt;) is required too if security features are involved (Calypso secure session, Stored value transaction, PIN encryption, etc…).&lt;/li>
 &lt;/ul>
 &lt;p>A Calypso PO image provides public ‘getters’ in order to &lt;strong>recover&lt;/strong> the information of the selected PO (startup data, file data, … etc).&lt;/p>
 &lt;p>A transaction with a Calypso PO is fully managed through the PoTransaction object:&lt;/p>
