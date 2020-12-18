@@ -11,7 +11,7 @@ weight: 130
 
 The Calypso transaction API provides a high-level of abstraction to define functional commands to manage a secure session with a Calypso Portable Object, to update or authenticate its data.
 
-The transaction API is defined on a low-level Calypso commands API which contains the builders of PO and SAM APDU commands, and the corresponding parsers of APDU responses.
+The transaction API is defined on a low-level Calypso commands API which contains the builders of PO and SAM APDU commands, and the corresponding parsers of APDU responses. This internal library is deprecated, and will be refactorized for the version 2.0.0 of Keyple Calypso.
 
 <table>
 <thead>
@@ -23,8 +23,8 @@ The transaction API is defined on a low-level Calypso commands API which contain
 </thead>
 <tbody>
   <tr>
-    <td>org.eclipse.keyple.calypso.<b>transaction</b></td>
-    <td>high</td>
+    <td width="50%">org.eclipse.keyple.calypso.<b>transaction</b></td>
+    <td width="8%">high</td>
     <td>Calypso Portable Object commands and secure transaction management<br/>
       <ul><li>CalypsoAPI, commands’ settings are limited to functional parameters<br/></li>
         <li>Calypso SAM (Secure Module) operations automatically processed<br/></li></ul>
@@ -53,11 +53,10 @@ Ticketing terminal applications must import only the high-level Calypso transact
 
 {{< figure library="true" src="architecture/KeypleCalypso_Packages.svg" title="Calypso packages" >}}
 
-The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages.
-
+<!-- The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages. -->
 
 ## Calypso Portable Object Selection
-Compared to the generic Card Selection API (cf. https://calypsonet.github.io/keyple/KeypleCoreApi/KeypleCore_ApplicationApi.html#card-selection), a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn't selected).
+Compared to the generic Card Selection API (cf. https://keyple.org/docs/architecture/keyple-core/#card-selection), a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn't selected).
 
 In addition, a PO Selection Request provides methods:
 
@@ -77,8 +76,8 @@ A Card Resource is a set of a Reader and a **selected** Card application.
 
 To operate a Calypso transaction:
 
- - At least a Calypso Resource (CardResource<CalypsoPo>) is required.
- - A SAM Resource ((CardResource<CalypsoSam>) is required too if security features are involved (Calypso secure session, Stored value transaction, PIN encryption, etc…).
+ - At least a Calypso Resource (CardResource&lt;CalypsoPo&gt;) is required.
+ - A SAM Resource ((CardResource&lt;CalypsoSam&gt;) is required too if security features are involved (Calypso secure session, Stored value transaction, PIN encryption, etc…).
 
 A Calypso PO image provides public ‘getters’ in order to **recover** the information of the selected PO (startup data, file data, … etc).
 
