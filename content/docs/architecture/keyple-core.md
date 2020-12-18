@@ -10,16 +10,10 @@ weight: 120
 
 The Keyple Core is a tool to handle smart card reader and to operate generic processing with smart cards.
 
-The Core is divided in 4 sub-modules:
-- reader : includes the API to access and manage a reader.
-- plugin : provides factorized processing for the implementation of plugin.
-- card : the generic operation for smart cards.
-- service : the common interfaces and the main service of Keyple.
-
-According to the developer’s objective different API must be imported:
-- for the implementation of a smart card terminal application, only the high-level API of the ‘reader’ and ‘card’ modules.
-- to implement a plugin, all the ‘reader’ API and the low-level ‘plugin’ API.
-- to develop a dedicated library supporting the command sets and transaction features of a specific smart card solution, the low-level ‘reader’ and ‘card’ API.
+The Core is divided in 3 sub-modules:
+- Service API : provides the interfaces to access to the smart card readers and to select a smart card.
+- Card API : for the transmission of APDU commands with a smart card.
+- Plugin API : includes the factorized processing for the implementation of plugin.
 
 <table>
 <thead>
@@ -32,9 +26,9 @@ According to the developer’s objective different API must be imported:
 </thead>
 <tbody>
   <tr>
-    <td rowspan="4">Reader</td>
-    <td>org.eclipse.keyple.core.<b>service</b></td>
-    <td>high</td>
+    <td rowspan="4" width="13%">Service</td>
+    <td width="38%">org.eclipse.keyple.core.<b>service</b></td>
+    <td width="8%">high</td>
     <td>Management of the smart card readers<br/>
       <ul><li>Registration of plugins to the smart card Service<br/></li>
         <li>Access to the readers through plugins</li></ul></td>
@@ -48,14 +42,27 @@ According to the developer’s objective different API must be imported:
         <li>For observable reader, setting of default selections, to automatically operate in case of smart card insertion</li></ul></td>
   </tr>
   <tr>
-    <td>org.eclipse.keyple.core.service.util</td>
+    <td>org.eclipse.keyple.core.service.<b>util</b></td>
     <td>high</td>
     <td>Communication protocols setting for contactless/contacts Reader</td>
   </tr>
   <tr>
+    <td>org.eclipse.keyple.card.<b>selection</b></td>
+    <td>high</td>
+    <td>Generic selection of a smart card<br/>
+    <ul><li>preparation of smart card selection requests<br></li>
+        <li>matching selection results as smart card images</li></ul></td>
+    </tr>
+  <tr>
+    <td rowspan="2">Smart card</td>
     <td>org.eclipse.keyple.card.<b>message</b></td>
     <td>low</td>
     <td>Transmission of grouped APDU commands to a Reader</td>
+  </tr>
+  <tr>
+    <td>org.eclipse.keyple.core.card.<b>command</b></td>
+    <td>low</td>
+    <td>Generic API to develop a smart card specific library</td>
   </tr>
   <tr>
     <td>Plugin</td>
@@ -64,32 +71,17 @@ According to the developer’s objective different API must be imported:
     <td>Reader plugins implementation<br/>
       <ul><li>Utility classes providing generic processing for Readers </li></ul></td>
   </tr>
-  <tr>
-    <td rowspan="2">smart card</td>
-    <td>org.eclipse.keyple.card.<b>selection</b></td>
-    <td>high</td>
-    <td>Generic selection of a smart card<br/>
-      <ul><li>preparation of smart card selection requests<br></li>
-        <li>matching selection results as smart card images</li></ul></td>
-  </tr>
-  <tr>
-    <td>org.eclipse.keyple.core.card.<b>command</b></td>
-    <td>low</td>
-    <td>Generic API to develop a smart card specific library</td>
-  </tr>
 </tbody>
 </table>
 
-A terminal application operating smart card must only import the Keyple Core packages: ‘service’ and ‘card’.
+According to the developer’s objective different packages must be imported:
+- for the implementation of a smart card terminal application: the packages 'service', 'event' and 'selection'.
+- to develop a dedicated library supporting the command sets and transaction features of a specific smart card solution: the packages  'message', 'command', and 'selection'.
+- to implement a plugin: the packages 'plugin', 'service', 'event', and 'message'.
 
 {{< figure library="true" src="architecture/KeypleCore_Packages.svg" title="Core packages" >}}
 
-A reader plugin could be implemented by importing the ‘plugin’, ‘card’ and ‘service’ packages.
-
-A smart card specific library could be implemented on top of the ‘card’ package.
-
-
-## 'Service Interface'
+## Service Interface
 for the development of ticketing terminal application
 
 ### Reader Access
@@ -183,7 +175,7 @@ According to the defined 'multi selection processing' mode, the card selection c
 
 The result of a card request selection is a card image of a matching card. For a card selection with multiple requests, several matching card could be provided.
 
-## 'Card Interface'
+## Card Interface
 for the development of smartcard solution library
 
 The Keyple Calypso extension uses the card interface to exchange APDU commands with Calypso cards and SAM.
@@ -191,7 +183,7 @@ The Keyple Calypso extension uses the card interface to exchange APDU commands w
 ### APDU Transmission
 {{< figure library="true" src="architecture/KeypleCore_Card_ClassDiag_CardMessage_1_0_0.svg" title="APDU Transmission v1.0.0" >}}
 
-## 'Plugin API'
+## Plugin API
 for the implementation of smartcard reader plugins
 
 ### Plugin Factorized Processing
