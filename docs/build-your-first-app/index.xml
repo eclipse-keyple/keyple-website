@@ -36,6 +36,7 @@ installed in your machine, you will need to download :&lt;/p>
 &lt;a href="https://www.eclipse.org/ide/" target="_blank" rel="noopener">Eclipse&lt;/a> or
 &lt;a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">Intellij IDEA&lt;/a> to create your new
 Gradle project.&lt;/p>
+&lt;hr>
 &lt;h2 id="create-a-gradle-based-empty-project">Create a Gradle-based empty project&lt;/h2>
 &lt;p>Create a new Java project and add the following statements to your
 &lt;code>build.gradle&lt;/code> file to import the Keyple components into your
@@ -58,6 +59,7 @@ implementation &amp;quot;org.slf4j:slf4j-simple:1.7.25&amp;quot;
 &lt;/code>&lt;/pre>
 &lt;p>If necessary, also create the usual tree in which the Java code of this
 guide will be placed, namely the folders: &lt;code>\src\main\java&lt;/code>&lt;/p>
+&lt;hr>
 &lt;h2 id="lets-code">Let&amp;rsquo;s code&lt;/h2>
 &lt;p>Now let&amp;rsquo;s see step by step how to create in one single class the
 elements that allow a certified reading of data through a Calypso secure
@@ -203,6 +205,7 @@ System.exit(0);
 &lt;/code>&lt;/pre>
 &lt;p>Find the complete code source
 &lt;a href="#full-code">below&lt;/a>.&lt;/p>
+&lt;hr>
 &lt;h2 id="run">Run&lt;/h2>
 &lt;ol>
 &lt;li>Connect two USB PC/SC Readers.&lt;/li>
@@ -217,6 +220,7 @@ components, are downloaded during the first run, which can take some
 time.
 &lt;/div>
 &lt;/div>
+&lt;hr>
 &lt;h2 id="faq">FAQ&lt;/h2>
 &lt;p>&lt;strong>How do I find out the names of the readers?&lt;/strong>&lt;/p>
 &lt;p>To find out the names of the readers connected to your computer, we will
@@ -376,7 +380,8 @@ smartCardService.unregisterPlugin(plugin.getName());
 System.exit(0);
 }
 }
-&lt;/code>&lt;/pre></description></item><item><title>Build your first Android application</title><link>https://keyple.org/docs/build-your-first-app/android-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/build-your-first-app/android-app/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;/code>&lt;/pre></description></item><item><title>Build your first Android application</title><link>https://keyple.org/docs/build-your-first-app/android-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/build-your-first-app/android-app/</guid><description>&lt;hr>
+&lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;h3 id="overview">Overview&lt;/h3>
 &lt;p>&lt;strong>Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy way to implement solution to provide SmartCard communication functionalities in their own mobile application.&lt;/strong>&lt;/p>
 &lt;p>For example, Keyple could be used to facilitate the development of a ticketing application based on the use of conteners on a SIM card and relying on
@@ -396,6 +401,7 @@ Keyple could also be used to develop an application reading SmartCard content th
 &lt;li>Android OS 19+&lt;/li>
 &lt;li>A NFC SmartCard with Calypso PO&lt;/li>
 &lt;/ul>
+&lt;hr>
 &lt;h2 id="integration">Integration&lt;/h2>
 &lt;h3 id="application-setup">Application setup&lt;/h3>
 &lt;p>Like for any other Android NFC Application, we need to declare items in the application manifest.&lt;/p>
@@ -427,6 +433,7 @@ use.&lt;/p>
 &lt;p>To use Keyple Calypso User API simply import the jar within the gradle dependencies of your Android application.&lt;/p>
 &lt;pre>&lt;code class="language-gradle">implementation &amp;quot;org.eclipse.keyple:keyple-java-calypso:$keyple_version&amp;quot;
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="lets-code">Let&amp;rsquo;s code&lt;/h2>
 &lt;h3 id="initializing-the-sdk">Initializing the SDK&lt;/h3>
 &lt;h4 id="register-a-plugin">Register a plugin&lt;/h4>
@@ -737,6 +744,7 @@ Toast.makeText(this, String.format(&amp;quot;Not selected&amp;quot;), Toast.LENG
 }
 }
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="faq">FAQ&lt;/h2>
 &lt;p>&lt;strong>How to fix &amp;ldquo;More than one file was found with OS independent path &amp;lsquo;META-INF/NOTICE.md&amp;rsquo;.&amp;quot;&lt;/strong>&lt;/p>
 &lt;p>Add lines below to your :app build.gradle file&lt;/p>
@@ -748,7 +756,8 @@ exclude 'META-INF/NOTICE.md'
 &lt;/code>&lt;/pre>
 &lt;p>&lt;strong>Where can I see more examples&lt;/strong>&lt;/p>
 &lt;p>Android native plugins are provided with example applications. Check it to see more use cases:
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example" target="_blank" rel="noopener">Examples&lt;/a>&lt;/p></description></item><item><title>Build your first C++ application</title><link>https://keyple.org/docs/build-your-first-app/cpp-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/build-your-first-app/cpp-app/</guid><description>&lt;div class="alert alert-note">
+&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example" target="_blank" rel="noopener">Examples&lt;/a>&lt;/p></description></item><item><title>Build your first C++ application</title><link>https://keyple.org/docs/build-your-first-app/cpp-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/build-your-first-app/cpp-app/</guid><description>&lt;hr>
+&lt;div class="alert alert-note">
 &lt;div>
 Coming soon
 &lt;/div>

@@ -604,7 +604,8 @@ software interfaces including PC/SC, Android NFC reader, and Android OMAPI.&lt;/
 a smart card terminal can be operated remotely, as if it were local to the terminal, and ensures that robust security and
 speed is not sacrificed in a cloud-based system.&lt;/p>
 &lt;p>The Calypso Processing API is also available as a Keyple™ extension. This component carries out the terminal processing
-element of ticketing technology. Access to Calypso’s security features are automatically managed by the Keyple™ extension.&lt;/p></description></item><item><title>Keyple Global Solution</title><link>https://keyple.org/docs/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-global/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+element of ticketing technology. Access to Calypso’s security features are automatically managed by the Keyple™ extension.&lt;/p></description></item><item><title>Keyple Global Solution</title><link>https://keyple.org/docs/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-global/</guid><description>&lt;hr>
+&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The Eclipse Keyple solution provides currently 2 modules:&lt;/p>
 &lt;ul>
 &lt;li>the &lt;strong>Keyple Core&lt;/strong>, a universal smart card reader interface to manage the setting of smart card reader, the detection and the communication with smart card, and the selection of card application.&lt;/li>
@@ -625,6 +626,7 @@ Keyple Architecture Global
 &lt;li>the &lt;strong>Plugin API&lt;/strong>, to integrate specific smart card reader solutions.&lt;/li>
 &lt;/ul>
 &lt;p>The Keyple Calypso extension provides the Calypso API: a high-level interface to manage Calypso card processing.&lt;/p>
+&lt;hr>
 &lt;h2 id="application-integration">Application integration&lt;/h2>
 &lt;p>The Card API is a low-level interface to manage the transmission of APDU commands with a smart card.
 A terminal application operating processing with a specific smart card solution could be implemented directly on top the Card API.&lt;/p>
@@ -638,6 +640,7 @@ Keyple Architecture Application Integration
 &lt;/figure>
 &lt;p>Another way offering a better abstraction on smart card technical settings could be to implement on the Card API a smart card solution library extension providing a high level interface: a specific Solution API.
 This is how the Keyple Calypso extension has be defined, the Calypso API is a high level functional interface, which hides the low-level APDU operations.&lt;/p>
+&lt;hr>
 &lt;h2 id="reader-integration">Reader integration&lt;/h2>
 &lt;h3 id="native-integration">native integration&lt;/h3>
 &lt;p>The smart card readers could be directly integrated with the Keyple Core. By interfacing through the Plugin API, a specific plugin dedicated to a smart card reader solution, the Keyple Core could have the capability to fully manage the smart card readers corresponding to this native plugin.&lt;/p>
@@ -675,6 +678,7 @@ Keyple Architecture Hybrid Plugins
 &lt;/figure>
 &lt;p>In this case a reader manager plugin, also based on the Plugin API, could allow the Keyple Core to operate the processing of a specific smart card, when requested by the Reader Manager.&lt;/p>
 &lt;p>For example, an EMV certified reader manager could call a Keyple application in case of PPSE selection failure.&lt;/p>
+&lt;hr>
 &lt;h2 id="smart-card-processing">Smart card processing&lt;/h2>
 &lt;h3 id="stand-alone">stand-alone&lt;/h3>
 &lt;p>By default, a terminal application manages the processing of a specific smart card in stand-alone with its local readers.&lt;/p>
@@ -697,6 +701,7 @@ Keyple Architecture Remote Plugin
 &lt;/figcaption>
 &lt;/figure>
 &lt;/p>
+&lt;hr>
 &lt;h2 id="smart-card-transaction">Smart card transaction&lt;/h2>
 &lt;p>There are two ways for a terminal application to manage a transaction with a smart card.&lt;/p>
 &lt;ul>
@@ -730,7 +735,8 @@ Keyple Architecture Remote Plugin
 &lt;figcaption>
 [Keyple Transaction Default Selection
 &lt;/figcaption>
-&lt;/figure></description></item><item><title>Keyple Core</title><link>https://keyple.org/docs/architecture/keyple-core/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-core/</guid><description>&lt;h2 id="features--packages-and-corresponding-usages">Features / packages and corresponding usages&lt;/h2>
+&lt;/figure></description></item><item><title>Keyple Core</title><link>https://keyple.org/docs/architecture/keyple-core/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-core/</guid><description>&lt;hr>
+&lt;h2 id="features--packages-and-corresponding-usages">Features / packages and corresponding usages&lt;/h2>
 &lt;p>The Keyple Core is a tool to handle smart card reader and to operate generic processing with smart cards.&lt;/p>
 &lt;p>The Core is divided in 3 sub-modules:&lt;/p>
 &lt;ul>
@@ -810,6 +816,7 @@ Keyple Architecture Remote Plugin
 Core packages
 &lt;/figcaption>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="service-interface">Service Interface&lt;/h2>
 &lt;p>for the development of ticketing terminal application&lt;/p>
 &lt;h3 id="reader-access">Reader Access&lt;/h3>
@@ -944,6 +951,7 @@ Card Selection v1.0.0
 &lt;/figcaption>
 &lt;/figure>
 &lt;p>The result of a card request selection is a card image of a matching card. For a card selection with multiple requests, several matching card could be provided.&lt;/p>
+&lt;hr>
 &lt;h2 id="card-interface">Card Interface&lt;/h2>
 &lt;p>for the development of smartcard solution library&lt;/p>
 &lt;p>The Keyple Calypso extension uses the card interface to exchange APDU commands with Calypso cards and SAM.&lt;/p>
@@ -956,6 +964,7 @@ Card Selection v1.0.0
 APDU Transmission v1.0.0
 &lt;/figcaption>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="plugin-api">Plugin API&lt;/h2>
 &lt;p>for the implementation of smartcard reader plugins&lt;/p>
 &lt;h3 id="plugin-factorized-processing">Plugin Factorized Processing&lt;/h3>
@@ -982,7 +991,8 @@ APDU Transmission v1.0.0
 &lt;figcaption>
 Plugin Factorized Processing v1.0.0
 &lt;/figcaption>
-&lt;/figure></description></item><item><title>Keyple Calypso</title><link>https://keyple.org/docs/architecture/keyple-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-calypso/</guid><description>&lt;h2 id="features--packages-and-corresponding-usages">Features / packages and corresponding usages&lt;/h2>
+&lt;/figure></description></item><item><title>Keyple Calypso</title><link>https://keyple.org/docs/architecture/keyple-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-calypso/</guid><description>&lt;hr>
+&lt;h2 id="features--packages-and-corresponding-usages">Features / packages and corresponding usages&lt;/h2>
 &lt;p>The Calypso transaction API provides a high-level of abstraction to define functional commands to manage a secure session with a Calypso Portable Object, to update or authenticate its data.&lt;/p>
 &lt;p>The transaction API is defined on a low-level Calypso commands API which contains the builders of PO and SAM APDU commands, and the corresponding parsers of APDU responses. This internal library is deprecated, and will be refactorized for the version 2.0.0 of Keyple Calypso.&lt;/p>
 &lt;table>
@@ -1030,6 +1040,7 @@ Calypso packages
 &lt;/figcaption>
 &lt;/figure>
 &lt;!-- The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages. -->
+&lt;hr>
 &lt;h2 id="calypso-portable-object-selection">Calypso Portable Object Selection&lt;/h2>
 &lt;p>Compared to the generic Card Selection API (cf. &lt;a href="https://keyple.org/docs/architecture/keyple-core/#card-selection),">https://keyple.org/docs/architecture/keyple-core/#card-selection),&lt;/a> a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
 &lt;p>In addition, a PO Selection Request provides methods:&lt;/p>
@@ -1046,6 +1057,7 @@ Calypso packages
 Calypso Selection v1.0.0
 &lt;/figcaption>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="calypso-portable-object-transaction">Calypso Portable Object Transaction&lt;/h2>
 &lt;p>A Card Resource is a set of a Reader and a &lt;strong>selected&lt;/strong> Card application.&lt;/p>
 &lt;ul>
@@ -1101,6 +1113,7 @@ Calypso PO card image
 Calypso transaction
 &lt;/figcaption>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="data-model-extension">Data model extension&lt;/h2>
 &lt;figure id="figure-calypso-data-model">
 &lt;a data-fancybox="" href="./media/architecture/KeypleCalypso_Transaction_ClassDiag_SpecificPoTransaction_1_0_0.svg" data-caption="Calypso Data Model">
@@ -1110,6 +1123,7 @@ Calypso transaction
 Calypso Data Model
 &lt;/figcaption>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="secure-session-sequence">Secure session sequence&lt;/h2>
 &lt;figure id="figure-calypso-session">
 &lt;a data-fancybox="" href="./media/architecture/KeypleCalypso_Transaction_SequenceDiag_SecureSessionProcessing_1_0_0.svg" data-caption="Calypso session">
@@ -1156,6 +1170,7 @@ installed in your machine, you will need to download :&lt;/p>
 &lt;a href="https://www.eclipse.org/ide/" target="_blank" rel="noopener">Eclipse&lt;/a> or
 &lt;a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">Intellij IDEA&lt;/a> to create your new
 Gradle project.&lt;/p>
+&lt;hr>
 &lt;h2 id="create-a-gradle-based-empty-project">Create a Gradle-based empty project&lt;/h2>
 &lt;p>Create a new Java project and add the following statements to your
 &lt;code>build.gradle&lt;/code> file to import the Keyple components into your
@@ -1178,6 +1193,7 @@ implementation &amp;quot;org.slf4j:slf4j-simple:1.7.25&amp;quot;
 &lt;/code>&lt;/pre>
 &lt;p>If necessary, also create the usual tree in which the Java code of this
 guide will be placed, namely the folders: &lt;code>\src\main\java&lt;/code>&lt;/p>
+&lt;hr>
 &lt;h2 id="lets-code">Let&amp;rsquo;s code&lt;/h2>
 &lt;p>Now let&amp;rsquo;s see step by step how to create in one single class the
 elements that allow a certified reading of data through a Calypso secure
@@ -1323,6 +1339,7 @@ System.exit(0);
 &lt;/code>&lt;/pre>
 &lt;p>Find the complete code source
 &lt;a href="#full-code">below&lt;/a>.&lt;/p>
+&lt;hr>
 &lt;h2 id="run">Run&lt;/h2>
 &lt;ol>
 &lt;li>Connect two USB PC/SC Readers.&lt;/li>
@@ -1337,6 +1354,7 @@ components, are downloaded during the first run, which can take some
 time.
 &lt;/div>
 &lt;/div>
+&lt;hr>
 &lt;h2 id="faq">FAQ&lt;/h2>
 &lt;p>&lt;strong>How do I find out the names of the readers?&lt;/strong>&lt;/p>
 &lt;p>To find out the names of the readers connected to your computer, we will
@@ -1496,7 +1514,8 @@ smartCardService.unregisterPlugin(plugin.getName());
 System.exit(0);
 }
 }
-&lt;/code>&lt;/pre></description></item><item><title>Build your first Android application</title><link>https://keyple.org/docs/build-your-first-app/android-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/build-your-first-app/android-app/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;/code>&lt;/pre></description></item><item><title>Build your first Android application</title><link>https://keyple.org/docs/build-your-first-app/android-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/build-your-first-app/android-app/</guid><description>&lt;hr>
+&lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;h3 id="overview">Overview&lt;/h3>
 &lt;p>&lt;strong>Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy way to implement solution to provide SmartCard communication functionalities in their own mobile application.&lt;/strong>&lt;/p>
 &lt;p>For example, Keyple could be used to facilitate the development of a ticketing application based on the use of conteners on a SIM card and relying on
@@ -1516,6 +1535,7 @@ Keyple could also be used to develop an application reading SmartCard content th
 &lt;li>Android OS 19+&lt;/li>
 &lt;li>A NFC SmartCard with Calypso PO&lt;/li>
 &lt;/ul>
+&lt;hr>
 &lt;h2 id="integration">Integration&lt;/h2>
 &lt;h3 id="application-setup">Application setup&lt;/h3>
 &lt;p>Like for any other Android NFC Application, we need to declare items in the application manifest.&lt;/p>
@@ -1547,6 +1567,7 @@ use.&lt;/p>
 &lt;p>To use Keyple Calypso User API simply import the jar within the gradle dependencies of your Android application.&lt;/p>
 &lt;pre>&lt;code class="language-gradle">implementation &amp;quot;org.eclipse.keyple:keyple-java-calypso:$keyple_version&amp;quot;
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="lets-code">Let&amp;rsquo;s code&lt;/h2>
 &lt;h3 id="initializing-the-sdk">Initializing the SDK&lt;/h3>
 &lt;h4 id="register-a-plugin">Register a plugin&lt;/h4>
@@ -1857,6 +1878,7 @@ Toast.makeText(this, String.format(&amp;quot;Not selected&amp;quot;), Toast.LENG
 }
 }
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="faq">FAQ&lt;/h2>
 &lt;p>&lt;strong>How to fix &amp;ldquo;More than one file was found with OS independent path &amp;lsquo;META-INF/NOTICE.md&amp;rsquo;.&amp;quot;&lt;/strong>&lt;/p>
 &lt;p>Add lines below to your :app build.gradle file&lt;/p>
@@ -1868,13 +1890,16 @@ exclude 'META-INF/NOTICE.md'
 &lt;/code>&lt;/pre>
 &lt;p>&lt;strong>Where can I see more examples&lt;/strong>&lt;/p>
 &lt;p>Android native plugins are provided with example applications. Check it to see more use cases:
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example" target="_blank" rel="noopener">Examples&lt;/a>&lt;/p></description></item><item><title>Build your first C++ application</title><link>https://keyple.org/docs/build-your-first-app/cpp-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/build-your-first-app/cpp-app/</guid><description>&lt;div class="alert alert-note">
+&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example" target="_blank" rel="noopener">Examples&lt;/a>&lt;/p></description></item><item><title>Build your first C++ application</title><link>https://keyple.org/docs/build-your-first-app/cpp-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/build-your-first-app/cpp-app/</guid><description>&lt;hr>
+&lt;div class="alert alert-note">
 &lt;div>
 Coming soon
 &lt;/div>
-&lt;/div></description></item><item><title>Common concepts</title><link>https://keyple.org/docs/developer-guide/common-concepts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/common-concepts/</guid><description>&lt;p>This page describes the core elements of &lt;strong>Keyple&lt;/strong>, i.e. the concepts and APIs of &lt;strong>Keyple Core&lt;/strong> that are used to build any application implementing &lt;strong>Keyple&lt;/strong>.&lt;/p>
+&lt;/div></description></item><item><title>Common concepts</title><link>https://keyple.org/docs/developer-guide/common-concepts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/common-concepts/</guid><description>&lt;hr>
+&lt;p>This page describes the core elements of &lt;strong>Keyple&lt;/strong>, i.e. the concepts and APIs of &lt;strong>Keyple Core&lt;/strong> that are used to build any application implementing &lt;strong>Keyple&lt;/strong>.&lt;/p>
 &lt;p>It is essential for the future user of &lt;strong>Keyple&lt;/strong> to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on &lt;strong>Keyple Core&lt;/strong>.&lt;/p>
-&lt;h3 id="reader">Reader&lt;/h3>
+&lt;hr>
+&lt;h2 id="reader">Reader&lt;/h2>
 &lt;p>Keyple&amp;rsquo;s primary goal being to interact with smart cards (or smartphones) worn by individuals, it is logical to put the Reader at the top of &lt;strong>Keyple Core&lt;/strong>&amp;rsquo;s concepts.&lt;/p>
 &lt;p>Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via &lt;strong>Keyple Core&lt;/strong> or using an extension (such as &lt;strong>Keyple Calypso&lt;/strong>).&lt;/p>
 &lt;p>These interfaces provide the means to&lt;/p>
@@ -1886,7 +1911,8 @@ Coming soon
 &lt;p>The reader concept also applies to the hardware interfaces used to communicate with security elements such as SAMs (Secure Access Modules), which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.&lt;/p>
 &lt;p>
 &lt;a href="./docs/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
-&lt;h3 id="plugin">Plugin&lt;/h3>
+&lt;hr>
+&lt;h2 id="plugin">Plugin&lt;/h2>
 &lt;p>In Keyple language a plugin is a service that allows the management of readers of a certain type.
 The plugin is responsible for informing the application about the availability of readers.
 The readers of the same plugin are usually hardware linked to the same physical interface.&lt;/p>
@@ -1894,19 +1920,22 @@ The readers of the same plugin are usually hardware linked to the same physical 
 &lt;p>The Plugin interface essentially allows to list and retrieve the available readers.&lt;/p>
 &lt;p>
 &lt;a href="./docs/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
-&lt;h3 id="smart-card-service">Smart card service&lt;/h3>
+&lt;hr>
+&lt;h2 id="smart-card-service">Smart card service&lt;/h2>
 &lt;p>This is the &lt;strong>Keyple Core&lt;/strong> service that concentrates the knowledge of active plugins and readers.&lt;/p>
 &lt;p>At startup, a Keyple application must register the plugins it uses. Conversely, it can also unregister them.&lt;/p>
 &lt;p>The &lt;strong>SmartCardService&lt;/strong> will then make sure that the resources used are properly released.&lt;/p>
 &lt;p>
 &lt;a href="./docs/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
-&lt;h3 id="observation">Observation&lt;/h3>
+&lt;hr>
+&lt;h2 id="observation">Observation&lt;/h2>
 &lt;p>The observation concept applies to readers as well as to plugins; optional, it is used depending on the needs.&lt;/p>
 &lt;p>It consists in monitoring changes such as reader connection/disconnection or card insertion/removal and informing the observing application through a dedicated interface.&lt;/p>
 &lt;p>Not all plugins and readers are observable.&lt;/p>
 &lt;p>
 &lt;a href="./docs/architecture/keyple-core/#reader-notifications">More information&lt;/a>&lt;/p>
-&lt;h3 id="selection">Selection&lt;/h3>
+&lt;hr>
+&lt;h2 id="selection">Selection&lt;/h2>
 &lt;p>In Keyple the concept of selection is derived from the application selection defined by the ISO7816-4 standard.&lt;/p>
 &lt;p>It supplements it by managing cards that do not have the standard command using identification mechanisms based on Answer To Reset and the communication protocol, and also by allowing the execution of commands immediately following application selection or detection.&lt;/p>
 &lt;p>This principle optimizes the processing by allowing the application to elaborate advanced card discovery requests.&lt;/p>
@@ -1914,7 +1943,8 @@ The readers of the same plugin are usually hardware linked to the same physical 
 &lt;p>The &lt;strong>default selection&lt;/strong> principle consists in providing an observable reader with a set of selection cases corresponding to the expected cards and receiving notifications containing not only the card identification but also the result of all additional commands that the application will have attached.&lt;/p>
 &lt;p>
 &lt;a href="./docs/architecture/keyple-core/#card-selection">More information&lt;/a>&lt;/p>
-&lt;h3 id="abstract-smart-card">Abstract smart card&lt;/h3>
+&lt;hr>
+&lt;h2 id="abstract-smart-card">Abstract smart card&lt;/h2>
 &lt;p>The &lt;strong>abstract smart card&lt;/strong> concept is used by specific extensions (e.g. &lt;strong>Keyple Calypso&lt;/strong>) and by the &lt;strong>Keyple Core&lt;/strong> selection mechanism.
 It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.&lt;/p>
 &lt;p>This container will be able to carry all the useful information known about the card.&lt;/p>
@@ -1931,11 +1961,12 @@ validator, a vending machine or a control terminal.&lt;/p>
 &lt;p>The diagram below illustrates the organization of the local standalone
 components:
 &lt;figure >
-&lt;a data-fancybox="" href="./media/local-app/component/Local_Application_Components_Overview.svg" >
-&lt;img src="./media/local-app/component/Local_Application_Components_Overview.svg" alt="" >
+&lt;a data-fancybox="" href="./media/standalone-application/component/Local_Application_Components_Overview.svg" >
+&lt;img src="./media/standalone-application/component/Local_Application_Components_Overview.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;/p>
+&lt;hr>
 &lt;h2 id="before-you-start">Before you start&lt;/h2>
 &lt;ol>
 &lt;li>In pre-requisite, read the
@@ -1959,6 +1990,7 @@ environment.&lt;/li>
 &lt;li>Don&amp;rsquo;t forget to explore the potential of Keyple card-specific
 extensions such as &lt;strong>Keyple Calypso&lt;/strong>.&lt;/li>
 &lt;/ol>
+&lt;hr>
 &lt;h2 id="workflow">Workflow&lt;/h2>
 &lt;p>&lt;strong>Keyple Core&lt;/strong> is built around the concepts described
 &lt;a href="./docs/developer-guide/common-concepts/">here&lt;/a> and sometimes proposes several ways to perform
@@ -2361,6 +2393,7 @@ resources and in particular the shutdown of the observation threads.&lt;/p>
 &lt;p>This is done by unregistering the plugins in the following way:&lt;/p>
 &lt;pre>&lt;code class="language-java">smartCardService.unregisterPlugin(plugin.getName());
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="keyple-core-api">Keyple Core API&lt;/h2>
 &lt;p>To learn all the details of the &lt;strong>Keyple Core&lt;/strong> API, please consult the
 &lt;a href="./docs/api-reference/">Javadoc documentation&lt;/a>.&lt;/p>
@@ -2370,8 +2403,8 @@ resources and in particular the shutdown of the observation threads.&lt;/p>
 &lt;p>The diagram below represents the main classes implemented around the
 &lt;strong>Smart Card Service&lt;/strong> with in particular the observation mechanisms.
 &lt;figure >
-&lt;a data-fancybox="" href="./media/local-app/component/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" >
-&lt;img src="./media/local-app/component/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" alt="" >
+&lt;a data-fancybox="" href="./media/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" >
+&lt;img src="./media/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;/p>
@@ -2380,13 +2413,14 @@ resources and in particular the shutdown of the observation threads.&lt;/p>
 &lt;p>The diagram below represents the main classes used for selection
 operations.
 &lt;figure >
-&lt;a data-fancybox="" href="./media/local-app/component/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" >
-&lt;img src="./media/local-app/component/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" alt="" >
+&lt;a data-fancybox="" href="./media/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" >
+&lt;img src="./media/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;/p>
 &lt;/li>
 &lt;/ul>
+&lt;hr>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;p>To help in the implementation of the different facilities offered by
 Keyple to process smart cards, a set of examples is present in the
@@ -2430,6 +2464,7 @@ and its readers. Readers are dynamically created and an observer is
 assigned to them.&lt;/p>
 &lt;p>
 &lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/pc/Demo_ObservableReaderNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;hr>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;p>The artifact &lt;strong>Keyple Core&lt;/strong> and how to integrate it into your
 application is available here:&lt;/p>
@@ -2438,7 +2473,8 @@ application is available here:&lt;/p>
 &lt;a href="https://keyple.org/components-java/core/">Keyple Core Java component&lt;/a>&lt;/li>
 &lt;li>
 &lt;a href="https://keyple.org/components-cpp/core/">Keyple Core C++ component&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Distributed application</title><link>https://keyple.org/docs/developer-guide/distributed-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/distributed-application/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;/ul></description></item><item><title>Distributed application</title><link>https://keyple.org/docs/developer-guide/distributed-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/distributed-application/</guid><description>&lt;hr>
+&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>&lt;strong>Keyple provides the &amp;ldquo;Keyple Distributed&amp;rdquo; solution which allows a terminal to communicate with a smart card reader available in another terminal&lt;/strong>.&lt;/p>
 &lt;p>In this way, you can manage transactions within a distributed architecture.&lt;/p>
 &lt;p>The diagram below shows the role of the &lt;strong>Keyple Distributed&lt;/strong> components in the software layers used in a distributed architecture :&lt;/p>
@@ -2447,6 +2483,7 @@ application is available here:&lt;/p>
 &lt;img src="./media/distributed-application/component/Distributed_Component_Overview.svg" alt="" >
 &lt;/a>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="how-to-use-it-">How to use it ?&lt;/h2>
 &lt;ol>
 &lt;li>In pre-requisite, read page
@@ -2463,6 +2500,7 @@ application is available here:&lt;/p>
 &lt;a href="#network-configuration">Network configuration&lt;/a>, implement the transport layer adapted to your network configuration.&lt;/li>
 &lt;li>Implement your ticketing services as specified in the associated use case.&lt;/li>
 &lt;/ol>
+&lt;hr>
 &lt;h2 id="concepts">Concepts&lt;/h2>
 &lt;p>Here are the main concepts to keep in mind before continuing to read this developer guide :&lt;/p>
 &lt;div id="concepts-table-1">
@@ -2529,7 +2567,7 @@ width: 130px;
 &lt;/a>
 &lt;/figure>
 &lt;p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.&lt;/p>
-&lt;p>These could be for example a ticketing reloading service, where the intelligence would be on the terminal with remote readers, with thin clients on A &amp;amp; B terminals communicating locally with the cards.&lt;/p>
+&lt;p>These could be for example a ticketing reloading service, where the business logic would be on the terminal with remote readers, with thin clients on A &amp;amp; B terminals communicating locally with the cards.&lt;/p>
 &lt;p>In this use case, the &lt;strong>Keyple Distributed&lt;/strong> solution is use for card communication.&lt;/p>
 &lt;figure >
 &lt;a data-fancybox="" href="./media/distributed-application/component/Distributed_Component_Concepts_2.svg" >
@@ -2544,6 +2582,7 @@ width: 130px;
 &lt;img src="./media/distributed-application/component/Distributed_Component_Concepts_3.svg" alt="" >
 &lt;/a>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="configuration-modes">Configuration modes&lt;/h2>
 &lt;p>The &lt;strong>Keyple Distributed&lt;/strong> solution provides &lt;strong>3&lt;/strong> different configuration modes, each one having a specific
 &lt;a href="#apis">API&lt;/a> designed on a &lt;strong>Client-Server&lt;/strong> model :&lt;/p>
@@ -2759,6 +2798,7 @@ This configuration mode will only be available from version &lt;strong>1.1&lt;/s
 &lt;/ol>
 &lt;/li>
 &lt;/ul>
+&lt;hr>
 &lt;h2 id="use-cases">Use cases&lt;/h2>
 &lt;p>Here is a summary table of all proposed use cases. Search for the one that corresponds to your need and then look at the associated description :&lt;/p>
 &lt;div id="use-cases-table-2">
@@ -3034,6 +3074,7 @@ width: 240px;
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
+&lt;hr>
 &lt;h2 id="network-configuration">Network configuration&lt;/h2>
 &lt;p>The &lt;strong>Keyple Distributed&lt;/strong> solution &lt;strong>does not provide&lt;/strong> the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between &lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> components.&lt;/p>
 &lt;h3 id="synchronous">Synchronous&lt;/h3>
@@ -3118,6 +3159,7 @@ width: 240px;
 &lt;h3 id="exchanged-data">Exchanged data&lt;/h3>
 &lt;p>The data exchanged between &lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> components are contained in the DTO (Data Transfer Object) &lt;code>MessageDto&lt;/code>. It is built and processed by the plugin and &lt;strong>you don&amp;rsquo;t need to modify it&lt;/strong>.&lt;/p>
 &lt;p>However, it is necessary in some contexts to access certain information such as the &lt;code>sessionId&lt;/code> in the case of asynchronous communication or the &lt;code>serverNodeId&lt;/code> in the case of synchronous communication with several server instances.&lt;/p>
+&lt;hr>
 &lt;h2 id="apis">APIs&lt;/h2>
 &lt;p>The class diagrams below shows the different APIs exposed and SPIs required by the &lt;strong>Keyple Distributed&lt;/strong> solution.&lt;/p>
 &lt;p>An &lt;strong>SPI&lt;/strong> (Service Provider Interface) is an interface that must be implemented by the user.&lt;/p>
@@ -3174,17 +3216,19 @@ width: 240px;
 &lt;img src="./media/distributed-application/class/Distributed_Class_Local_API.svg" alt="" >
 &lt;/a>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
 &lt;li>
 &lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/distributed" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
 &lt;/ul>
+&lt;hr>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
 &lt;li>
 &lt;a href="./components-java/distributed-systems/">Java components&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Calypso application</title><link>https://keyple.org/docs/developer-guide/calypso-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/calypso-application/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>&lt;strong>Work in Progress&lt;/strong>&lt;/p>
+&lt;/ul></description></item><item><title>Calypso application</title><link>https://keyple.org/docs/developer-guide/calypso-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/calypso-application/</guid><description>&lt;hr>
+&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>Keyple API was designed to support an extension system. On top of &lt;strong>Keyple Core&lt;/strong>, APIs can be developed to extend
 Keyple features. For example, Calypso Network Association provides &lt;strong>Keyple Calypso Extension&lt;/strong>.&lt;/p>
 &lt;p>The use of &lt;strong>Keyple Calypso Extension&lt;/strong> open the ability to operate commands with a calypso Portable Object and to manage a
@@ -3195,6 +3239,7 @@ secure calypso transaction.&lt;/p>
 &lt;img src="./media/calypso-app-development/component/Local_Component_Overview.svg" alt="" >
 &lt;/a>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="before-you-start">Before you start&lt;/h2>
 &lt;ol>
 &lt;li>In pre-requisite, have knowledge of the standard Calypso.&lt;/li>
@@ -3218,6 +3263,7 @@ secure calypso transaction.&lt;/p>
 &lt;a href="https://keyple.org/components-cpp/extensions/calypso/">C++ components&lt;/a> pages, import &lt;strong>Keyple Calypso Extension&lt;/strong> into your project.&lt;/li>
 &lt;li>Start playing with &lt;strong>Keyple&lt;/strong>.&lt;/li>
 &lt;/ol>
+&lt;hr>
 &lt;h2 id="concepts">Concepts&lt;/h2>
 &lt;p>Here are the main concepts to keep in mind before continuing to read this developer guide :&lt;/p>
 &lt;h3 id="calypso-po">Calypso PO&lt;/h3>
@@ -3369,6 +3415,7 @@ int svBalance = calypsoPo.getSvBalance()
 int svLastTNum = calypsoPo.getSvLastTNum()
 ...
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
 &lt;li>
@@ -3390,14 +3437,16 @@ int svLastTNum = calypsoPo.getSvLastTNum()
 &lt;/p>
 &lt;/li>
 &lt;/ul>
+&lt;hr>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;p>Detailed use case examples can be seen here:&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/pc" target="_blank" rel="noopener">PC&lt;/a>&lt;/li>
+&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/calypso" target="_blank" rel="noopener">PC&lt;/a>&lt;/li>
 &lt;li>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/android" target="_blank" rel="noopener">Android&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Create a plugin</title><link>https://keyple.org/docs/developer-guide/create-plugin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/create-plugin/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/android" target="_blank" rel="noopener">Android&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Create a plugin</title><link>https://keyple.org/docs/developer-guide/create-plugin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/create-plugin/</guid><description>&lt;hr>
+&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In order to provide an easy way to port a Keyple application from a device with a specific card reader to another, a plugin system
 as been developed. When a developer wants to include Keyple features within his project, he has to initialize the SmartCardService by providing a
 plugin Factory available with in the plugin library. The plugin to use depends on the targeted device and running environment.&lt;/p>
@@ -3411,12 +3460,16 @@ SmartCardService.getInstance().registerPlugin(AndroidNfcPluginFactory())
 &lt;p>But users of the Keyple API may need to use it on new hardware not covered with existing plugins. In this case, a new
 one must be developed.&lt;/p>
 &lt;p>The purpose of this guide is to support developers in this process.&lt;/p>
+&lt;hr>
 &lt;h2 id="existing-plugins">Existing plugins&lt;/h2>
-&lt;p>The list of reader plugins is maintained on this pages:&lt;/p>
-&lt;p>
-&lt;a href="https://keyple.org/components-java/plugins/">Java Reader Plugins&lt;/a>&lt;/p>
-&lt;p>
-&lt;a href="https://keyple.org/components-cpp/plugins/">C++ Reader Plugins&lt;/a>&lt;/p>
+&lt;p>The list of reader plugins is maintained on these pages:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;a href="https://keyple.org/components-java/plugins/">Java Reader Plugins&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://keyple.org/components-cpp/plugins/">C++ Reader Plugins&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;hr>
 &lt;h2 id="class-diagram-of-plugin-package">Class diagram of plugin package&lt;/h2>
 &lt;p>For the record, this is a wide view of classes implied in the plugin system. It is designed to natively handle as much
 use cas as possible while being easy to use. It results of several internal classes, however, plugin&amp;rsquo;s developers will
@@ -3426,6 +3479,7 @@ only have to use a few part of these elements.&lt;/p>
 &lt;img src="./media/plugin-development/class/Plugin_Class_Full.svg" alt="" >
 &lt;/a>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="steps">Steps&lt;/h2>
 &lt;p>Plugin&amp;rsquo;s development relies on 3 main steps, each one consists in implementing a few set of abstract classes and interfaces of
 plugin package from Keyple Core API:&lt;/p>
@@ -3435,21 +3489,23 @@ plugin package from Keyple Core API:&lt;/p>
 &lt;li>Implement a Keyple Plugin&lt;/li>
 &lt;li>Implement a Keyple Plugin Factory.&lt;/li>
 &lt;/ol>
+&lt;hr>
 &lt;h2 id="imports">Imports&lt;/h2>
-&lt;p>Your plugin will use be based upon Keyple Core library.&lt;/p>
+&lt;p>Your plugin will be based upon Keyple Core library.&lt;/p>
 &lt;p>Using the
 &lt;a href="https://keyple.org/components-java/core/">Java components&lt;/a> or
 &lt;a href="https://keyple.org/components-cpp/core/">C++ components&lt;/a>
 pages, import &lt;strong>Keyple Core&lt;/strong> into your project.&lt;/p>
+&lt;hr>
 &lt;h2 id="implement-keyple-reader">Implement Keyple Reader&lt;/h2>
 &lt;p>The first step of a Keyple plugin development is the implementation of Keyple Reader Interface (org.eclipse.keyple.core.Reader).
 This implementation should use device&amp;rsquo;s native smartcard reader library (or sdk package) to map interfaces used by Keyple API.&lt;/p>
 &lt;p>This implementation of a local reader must be done through the extension of one of three abstract classes provided within the Keyple API. The choice depends
 on expected behaviour of the reader:&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>&lt;code>AbstractLocalReader&lt;/code>&lt;/strong>: Basic abstract class to use for local reader implementation.&lt;/li>
+&lt;li>&lt;strong>&lt;code>AbstractLocalReader&lt;/code>&lt;/strong>: basic abstract class to use for local reader implementation.&lt;/li>
 &lt;li>&lt;strong>&lt;code>AbstractObservableLocalReader&lt;/code>&lt;/strong>: extends AbstractLocalReader and is used to manage the matter of observing card events in the case of a local reader
-(ie: card insertion, card removal..).&lt;/li>
+(ie: card insertion, card removal).&lt;/li>
 &lt;li>&lt;strong>&lt;code>AbstractObservableLocalAutonomousReader&lt;/code>&lt;/strong>: extends AbstractObservableLocalReader and is used to allow the reader implementation to
 call back the core when card insertion and removal events occurs.&lt;/li>
 &lt;/ul>
@@ -3663,6 +3719,7 @@ width: 350px;
 &lt;/table>
 &lt;p>Example of implementations are provided
 &lt;a href="#abstractobservablelocalautonomousreader">here&lt;/a>.&lt;/p>
+&lt;hr>
 &lt;h2 id="implement-keyple-plugin">Implement Keyple Plugin&lt;/h2>
 &lt;p>The next step of Keyple plugin development is the implementation of Keyple Plugin Interface (org.eclipse.keyple.core.service.Plugin).
 The plugin will provide access to the readers and handle their lifecycle.&lt;/p>
@@ -3757,6 +3814,7 @@ width: 220px;
 &lt;/style>
 &lt;p>Example of implementations are provided
 &lt;a href="#abstractthreadedobservableplugin">here&lt;/a>.&lt;/p>
+&lt;hr>
 &lt;h2 id="examples-of-implementation">Examples of implementation&lt;/h2>
 &lt;h3 id="abstractlocalreader">AbstractLocalReader&lt;/h3>
 &lt;h4 id="checkcardpresence">checkCardPresence()&lt;/h4>
@@ -4293,32 +4351,35 @@ throw new KeyplePluginInstantiationException(&amp;quot;Can not access smartcard.
 }
 }
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="sources">Sources&lt;/h2>
 &lt;h3 id="keyple-android-nfc">Keyple Android NFC&lt;/h3>
 &lt;ul>
 &lt;li>
 &lt;a href="https://github.com/eclipse/keyple-java/tree/master/android/keyple-plugin/android-nfc" target="_blank" rel="noopener">Plugin&lt;/a>&lt;/li>
 &lt;li>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/android/nfc" target="_blank" rel="noopener">Example App&lt;/a>&lt;/li>
+&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/android/nfc" target="_blank" rel="noopener">Example App&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4 id="keyple-android-omapi">Keyple Android OMAPI&lt;/h4>
 &lt;ul>
 &lt;li>
 &lt;a href="https://github.com/eclipse/keyple-java/tree/master/android/keyple-plugin/android-omapi" target="_blank" rel="noopener">Plugin&lt;/a>&lt;/li>
 &lt;li>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/android/omapi" target="_blank" rel="noopener">Example App&lt;/a>&lt;/li>
+&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/android/omapi" target="_blank" rel="noopener">Example App&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4 id="pcsc">PC/SC&lt;/h4>
 &lt;ul>
 &lt;li>
 &lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/pcsc" target="_blank" rel="noopener">Plugin&lt;/a>&lt;/li>
 &lt;li>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/pc" target="_blank" rel="noopener">Example Apps&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Create an extension</title><link>https://keyple.org/docs/developer-guide/create-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/create-extension/</guid><description>&lt;div class="alert alert-note">
+&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/calypso" target="_blank" rel="noopener">Example Apps&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Create an extension</title><link>https://keyple.org/docs/developer-guide/create-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/create-extension/</guid><description>&lt;hr>
+&lt;div class="alert alert-note">
 &lt;div>
 Coming soon
 &lt;/div>
-&lt;/div></description></item><item><title>Migration Guide - Keyple Java 0.8.1 to 0.9.0</title><link>https://keyple.org/docs/developer-guide/migration-0.8.1-to-0.9.0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/migration-0.8.1-to-0.9.0/</guid><description>&lt;p>This guide is intended to help a user of version 0.8.1 of Keyple Java to upgrade his application to the 0.9.0 version of the library.&lt;/p>
+&lt;/div></description></item><item><title>Migration Guide - Keyple Java 0.8.1 to 0.9.0</title><link>https://keyple.org/docs/developer-guide/migration-0.8.1-to-0.9.0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/migration-0.8.1-to-0.9.0/</guid><description>&lt;hr>
+&lt;p>This guide is intended to help a user of version 0.8.1 of Keyple Java to upgrade his application to the 0.9.0 version of the library.&lt;/p>
 &lt;p>From a user API point of view, the changes relate to the following topics:&lt;/p>
 &lt;ul>
 &lt;li>
@@ -4340,6 +4401,7 @@ Coming soon
 &lt;li>
 &lt;a href="#error-handling">error handling&lt;/a>&lt;/li>
 &lt;/ul>
+&lt;hr>
 &lt;h2 id="plugin-registration-in-the-seproxyservice">Plugin registration in the SeProxyService&lt;/h2>
 &lt;p>The &lt;code>registerPlugin&lt;/code> method of the &lt;code>SeProxyService&lt;/code> class now returns the reference of the registered plugin.&lt;/p>
 &lt;p>This makes it possible, for example, to perform a reader setup in an application such as this one:&lt;/p>
@@ -4348,6 +4410,7 @@ ReaderPlugin pcscPlugin = seProxyService.registerPlugin(new PcscPluginFactory())
 // Get the PO reader from the plugin
 SeReader poReader = pcscPlugin.getReader(&amp;quot;ASK LoGO 0&amp;quot;);
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="preparation-of-selection-cases">Preparation of selection cases&lt;/h2>
 &lt;p>The &lt;code>AidSelector&lt;/code>, &lt;code>Selector&lt;/code> and &lt;code>PoSelector&lt;/code> classes now follow the Fluent Builder pattern for better handling of optional parameters.&lt;/p>
 &lt;p>The construction of an &lt;code>AidSelector&lt;/code> is as follows:&lt;/p>
@@ -4386,6 +4449,7 @@ SeReader poReader = pcscPlugin.getReader(&amp;quot;ASK LoGO 0&amp;quot;);
 public void prepareSelectFile(short lid)
 &lt;/code>&lt;/pre>
 &lt;p>Note that from now the &amp;ldquo;prepare&amp;rdquo; methods no longer return indexes, the data will be placed in the CalypsoPo object.&lt;/p>
+&lt;hr>
 &lt;h2 id="retrieving-selection-results">Retrieving selection results&lt;/h2>
 &lt;p>The &lt;code>MatchingSelection&lt;/code> class no longer exists.
 In the class &lt;code>SelectionsResult&lt;/code> (see &lt;code>processDefaultSelection/processExplicitSelection&lt;/code>):&lt;/p>
@@ -4406,6 +4470,7 @@ In the class &lt;code>SelectionsResult&lt;/code> (see &lt;code>processDefaultSel
 &lt;p>a new &lt;code>getActiveSelectionIndex&lt;/code> method returns the index of the active selection (the still existing &lt;code>hasActiveSelection&lt;/code> method must be used before)&lt;/p>
 &lt;/li>
 &lt;/ul>
+&lt;hr>
 &lt;h2 id="definition-of-the-security-settings-of-the-transaction">Definition of the security settings of the transaction&lt;/h2>
 &lt;p>These parameters are defined via the &lt;code>PoSecuritySettings&lt;/code> class, whose construction now follows the Fluent Builder pattern.&lt;/p>
 &lt;p>All parameters are optional except the &lt;code>SamResource&lt;/code>.&lt;/p>
@@ -4422,11 +4487,13 @@ In the class &lt;code>SelectionsResult&lt;/code> (see &lt;code>processDefaultSel
 .sessionAuthorizedKvcList(authKvcs)
 .build();
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="creation-of-the-potransaction-object">Creation of the PoTransaction object&lt;/h2>
 &lt;p>Since PoSecuritySettings now integrates SamResource, the construction of PoTransaction has evolved slightly.&lt;/p>
 &lt;p>Here is an example:&lt;/p>
 &lt;pre>&lt;code class="language-java">PoTransaction poTransaction = new PoTransaction(new PoResource(poReader, calypsoPo), poSecuritySettings);
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="transaction-commands-preparation">Transaction commands preparation&lt;/h2>
 &lt;p>Just as with the &amp;ldquo;prepare&amp;rdquo; commands used for selection, the &amp;ldquo;prepare&amp;rdquo; commands used for transactions no longer return indexes.&lt;/p>
 &lt;p>The available commands in version 0.9 are:&lt;/p>
@@ -4442,6 +4509,7 @@ public final void prepareAppendRecord(byte sfi, byte[] recordData)
 public final void prepareIncreaseCounter(byte sfi, int counterNumber, int incValue)
 public final void prepareDecreaseCounter(byte sfi, int counterNumber, int decValue)
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="transaction-commands-processing">Transaction commands processing&lt;/h2>
 &lt;p>The &amp;ldquo;process&amp;rdquo; commands have also been revised and simplified.&lt;/p>
 &lt;p>They all return &lt;code>void&lt;/code>.&lt;/p>
@@ -4456,6 +4524,7 @@ public final void processPoCommandsInSession()
 public final void processCancel(ChannelControl channelControl)
 public final void processClosing(ChannelControl channelControl)
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="retrieving-data-read-from-pos">Retrieving data read from POs&lt;/h2>
 &lt;p>This is a major evolution of the Keyple API. Previously, data read from Calyspo POs were retrieved by applications using &amp;ldquo;parser&amp;rdquo; methods.&lt;/p>
 &lt;p>With Keyple API 0.9, Calypso PO data is made available in the CalypsoPo object obtained during selection and enriched all along the operations performed with PoTransaction.&lt;/p>
@@ -4542,12 +4611,14 @@ ByteArrayUtil.toHex(entry.getValue()));
 }
 [...]
 &lt;/code>&lt;/pre>
+&lt;hr>
 &lt;h2 id="error-handling">Error handling&lt;/h2>
 &lt;p>Since version 0.9, all Keyple exceptions are of the RuntimeException type.&lt;/p>
 &lt;p>Catching exceptions is therefore now optional.&lt;/p>
 &lt;p>However, it is possible to selectively catch certain exceptions in order to deal with particular cases.&lt;/p>
 &lt;p>The new hierarchy of Keyple exceptions is shown
-&lt;a href="https://keyple.atlassian.net/projects/KEYP/issues/KEYP-154?filter=allissues&amp;amp;orderby=priority%20DESC&amp;amp;keyword=exceptions" target="_blank" rel="noopener">here&lt;/a>&lt;/p></description></item><item><title>JavaDoc</title><link>https://keyple.org/docs/api-reference/java-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/api-reference/java-api/</guid><description>&lt;p>The JavaDoc for the Keyple project is available online. The documentation is split into the following parts:&lt;/p>
+&lt;a href="https://keyple.atlassian.net/projects/KEYP/issues/KEYP-154?filter=allissues&amp;amp;orderby=priority%20DESC&amp;amp;keyword=exceptions" target="_blank" rel="noopener">here&lt;/a>&lt;/p></description></item><item><title>Java API reference</title><link>https://keyple.org/docs/api-reference/java-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/api-reference/java-api/</guid><description>&lt;hr>
+&lt;p>The JavaDoc for the Keyple project is available online. The documentation is split into the following parts:&lt;/p>
 &lt;div>
 &lt;select id="version_selection" style="float: right;" onchange="selectVersion()">
 &lt;option>1.0.0&lt;/option>
@@ -4557,7 +4628,8 @@ ByteArrayUtil.toHex(entry.getValue()));
 &lt;h3>Modules&lt;/h3>
 &lt;/div>
 &lt;ul id="module_list">&lt;/ul>
-&lt;script src="select-api-version.js">&lt;/script></description></item><item><title>C++ Documentation</title><link>https://keyple.org/docs/api-reference/cpp-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/api-reference/cpp-api/</guid><description>&lt;div class="alert alert-note">
+&lt;script src="select-api-version.js">&lt;/script></description></item><item><title>C++ API reference</title><link>https://keyple.org/docs/api-reference/cpp-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/api-reference/cpp-api/</guid><description>&lt;hr>
+&lt;div class="alert alert-note">
 &lt;div>
 Coming soon
 &lt;/div>

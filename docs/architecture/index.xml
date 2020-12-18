@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>https://keyple.org/docs/architecture/</link><atom:link href="https://keyple.org/docs/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Architecture</title><link>https://keyple.org/docs/architecture/</link></image><item><title>Keyple Global Solution</title><link>https://keyple.org/docs/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-global/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>https://keyple.org/docs/architecture/</link><atom:link href="https://keyple.org/docs/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Architecture</title><link>https://keyple.org/docs/architecture/</link></image><item><title>Keyple Global Solution</title><link>https://keyple.org/docs/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-global/</guid><description>&lt;hr>
+&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The Eclipse Keyple solution provides currently 2 modules:&lt;/p>
 &lt;ul>
 &lt;li>the &lt;strong>Keyple Core&lt;/strong>, a universal smart card reader interface to manage the setting of smart card reader, the detection and the communication with smart card, and the selection of card application.&lt;/li>
@@ -19,6 +20,7 @@ Keyple Architecture Global
 &lt;li>the &lt;strong>Plugin API&lt;/strong>, to integrate specific smart card reader solutions.&lt;/li>
 &lt;/ul>
 &lt;p>The Keyple Calypso extension provides the Calypso API: a high-level interface to manage Calypso card processing.&lt;/p>
+&lt;hr>
 &lt;h2 id="application-integration">Application integration&lt;/h2>
 &lt;p>The Card API is a low-level interface to manage the transmission of APDU commands with a smart card.
 A terminal application operating processing with a specific smart card solution could be implemented directly on top the Card API.&lt;/p>
@@ -32,6 +34,7 @@ Keyple Architecture Application Integration
 &lt;/figure>
 &lt;p>Another way offering a better abstraction on smart card technical settings could be to implement on the Card API a smart card solution library extension providing a high level interface: a specific Solution API.
 This is how the Keyple Calypso extension has be defined, the Calypso API is a high level functional interface, which hides the low-level APDU operations.&lt;/p>
+&lt;hr>
 &lt;h2 id="reader-integration">Reader integration&lt;/h2>
 &lt;h3 id="native-integration">native integration&lt;/h3>
 &lt;p>The smart card readers could be directly integrated with the Keyple Core. By interfacing through the Plugin API, a specific plugin dedicated to a smart card reader solution, the Keyple Core could have the capability to fully manage the smart card readers corresponding to this native plugin.&lt;/p>
@@ -69,6 +72,7 @@ Keyple Architecture Hybrid Plugins
 &lt;/figure>
 &lt;p>In this case a reader manager plugin, also based on the Plugin API, could allow the Keyple Core to operate the processing of a specific smart card, when requested by the Reader Manager.&lt;/p>
 &lt;p>For example, an EMV certified reader manager could call a Keyple application in case of PPSE selection failure.&lt;/p>
+&lt;hr>
 &lt;h2 id="smart-card-processing">Smart card processing&lt;/h2>
 &lt;h3 id="stand-alone">stand-alone&lt;/h3>
 &lt;p>By default, a terminal application manages the processing of a specific smart card in stand-alone with its local readers.&lt;/p>
@@ -91,6 +95,7 @@ Keyple Architecture Remote Plugin
 &lt;/figcaption>
 &lt;/figure>
 &lt;/p>
+&lt;hr>
 &lt;h2 id="smart-card-transaction">Smart card transaction&lt;/h2>
 &lt;p>There are two ways for a terminal application to manage a transaction with a smart card.&lt;/p>
 &lt;ul>
@@ -124,7 +129,8 @@ Keyple Architecture Remote Plugin
 &lt;figcaption>
 [Keyple Transaction Default Selection
 &lt;/figcaption>
-&lt;/figure></description></item><item><title>Keyple Core</title><link>https://keyple.org/docs/architecture/keyple-core/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-core/</guid><description>&lt;h2 id="features--packages-and-corresponding-usages">Features / packages and corresponding usages&lt;/h2>
+&lt;/figure></description></item><item><title>Keyple Core</title><link>https://keyple.org/docs/architecture/keyple-core/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-core/</guid><description>&lt;hr>
+&lt;h2 id="features--packages-and-corresponding-usages">Features / packages and corresponding usages&lt;/h2>
 &lt;p>The Keyple Core is a tool to handle smart card reader and to operate generic processing with smart cards.&lt;/p>
 &lt;p>The Core is divided in 3 sub-modules:&lt;/p>
 &lt;ul>
@@ -204,6 +210,7 @@ Keyple Architecture Remote Plugin
 Core packages
 &lt;/figcaption>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="service-interface">Service Interface&lt;/h2>
 &lt;p>for the development of ticketing terminal application&lt;/p>
 &lt;h3 id="reader-access">Reader Access&lt;/h3>
@@ -338,6 +345,7 @@ Card Selection v1.0.0
 &lt;/figcaption>
 &lt;/figure>
 &lt;p>The result of a card request selection is a card image of a matching card. For a card selection with multiple requests, several matching card could be provided.&lt;/p>
+&lt;hr>
 &lt;h2 id="card-interface">Card Interface&lt;/h2>
 &lt;p>for the development of smartcard solution library&lt;/p>
 &lt;p>The Keyple Calypso extension uses the card interface to exchange APDU commands with Calypso cards and SAM.&lt;/p>
@@ -350,6 +358,7 @@ Card Selection v1.0.0
 APDU Transmission v1.0.0
 &lt;/figcaption>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="plugin-api">Plugin API&lt;/h2>
 &lt;p>for the implementation of smartcard reader plugins&lt;/p>
 &lt;h3 id="plugin-factorized-processing">Plugin Factorized Processing&lt;/h3>
@@ -376,7 +385,8 @@ APDU Transmission v1.0.0
 &lt;figcaption>
 Plugin Factorized Processing v1.0.0
 &lt;/figcaption>
-&lt;/figure></description></item><item><title>Keyple Calypso</title><link>https://keyple.org/docs/architecture/keyple-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-calypso/</guid><description>&lt;h2 id="features--packages-and-corresponding-usages">Features / packages and corresponding usages&lt;/h2>
+&lt;/figure></description></item><item><title>Keyple Calypso</title><link>https://keyple.org/docs/architecture/keyple-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-calypso/</guid><description>&lt;hr>
+&lt;h2 id="features--packages-and-corresponding-usages">Features / packages and corresponding usages&lt;/h2>
 &lt;p>The Calypso transaction API provides a high-level of abstraction to define functional commands to manage a secure session with a Calypso Portable Object, to update or authenticate its data.&lt;/p>
 &lt;p>The transaction API is defined on a low-level Calypso commands API which contains the builders of PO and SAM APDU commands, and the corresponding parsers of APDU responses. This internal library is deprecated, and will be refactorized for the version 2.0.0 of Keyple Calypso.&lt;/p>
 &lt;table>
@@ -424,6 +434,7 @@ Calypso packages
 &lt;/figcaption>
 &lt;/figure>
 &lt;!-- The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages. -->
+&lt;hr>
 &lt;h2 id="calypso-portable-object-selection">Calypso Portable Object Selection&lt;/h2>
 &lt;p>Compared to the generic Card Selection API (cf. &lt;a href="https://keyple.org/docs/architecture/keyple-core/#card-selection),">https://keyple.org/docs/architecture/keyple-core/#card-selection),&lt;/a> a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
 &lt;p>In addition, a PO Selection Request provides methods:&lt;/p>
@@ -440,6 +451,7 @@ Calypso packages
 Calypso Selection v1.0.0
 &lt;/figcaption>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="calypso-portable-object-transaction">Calypso Portable Object Transaction&lt;/h2>
 &lt;p>A Card Resource is a set of a Reader and a &lt;strong>selected&lt;/strong> Card application.&lt;/p>
 &lt;ul>
@@ -495,6 +507,7 @@ Calypso PO card image
 Calypso transaction
 &lt;/figcaption>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="data-model-extension">Data model extension&lt;/h2>
 &lt;figure id="figure-calypso-data-model">
 &lt;a data-fancybox="" href="../../media/architecture/KeypleCalypso_Transaction_ClassDiag_SpecificPoTransaction_1_0_0.svg" data-caption="Calypso Data Model">
@@ -504,6 +517,7 @@ Calypso transaction
 Calypso Data Model
 &lt;/figcaption>
 &lt;/figure>
+&lt;hr>
 &lt;h2 id="secure-session-sequence">Secure session sequence&lt;/h2>
 &lt;figure id="figure-calypso-session">
 &lt;a data-fancybox="" href="../../media/architecture/KeypleCalypso_Transaction_SequenceDiag_SecureSessionProcessing_1_0_0.svg" data-caption="Calypso session">
