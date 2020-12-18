@@ -11,9 +11,9 @@ weight: 120
 The Keyple Core is a tool to handle smart card reader and to operate generic processing with smart cards.
 
 The Core is divided in 3 sub-modules:
-- Service API : provides the interfaces to access to the smart card readers and to select a smart card.
-- Card API : for the transmission of APDU commands with a smart card.
-- Plugin API : includes the factorized processing for the implementation of plugin.
+- **Service API** : provides the interfaces to access to the smart card readers and to select a smart card.
+- **Card API** : for the transmission of APDU commands with a smart card.
+- **Plugin API** : includes the factorized processing for the implementation of plugin.
 
 <table>
 <thead>
@@ -75,9 +75,9 @@ The Core is divided in 3 sub-modules:
 </table>
 
 According to the developer’s objective different packages must be imported:
-- for the implementation of a smart card terminal application: the packages 'service', 'event' and 'selection'.
-- to develop a dedicated library supporting the command sets and transaction features of a specific smart card solution: the packages  'message', 'command', and 'selection'.
-- to implement a plugin: the packages 'plugin', 'service', 'event', and 'message'.
+- for the implementation of a smart card terminal application: the packages **service**, **event** and **selection**.
+- to develop a dedicated library supporting the command sets and transaction features of a specific smart card solution: the packages  **message**, **command**, and **selection**.
+- to implement a plugin: the packages **plugin**, **service**, **event**, and **message**.
 
 {{< figure library="true" src="architecture/KeypleCore_Packages.svg" title="Core packages" >}}
 
