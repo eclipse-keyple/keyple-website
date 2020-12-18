@@ -1,9 +1,12 @@
 ---
 title: Create a plugin
+summary: How to develop a specific hardware device Keyple plugin.
 type: book
 toc: true
 draft: false
 weight: 340
+---
+
 ---
 
 ## Overview
@@ -29,15 +32,14 @@ one must be developed.
 
 The purpose of this guide is to support developers in this process.
 
+---
 ## Existing plugins
-The list of reader plugins is maintained on this pages:
+The list of reader plugins is maintained on these pages:
 
-[Java Reader Plugins]({{< ref "components-java/plugins/_index.md" >}})
+* [Java Reader Plugins]({{< ref "components-java/plugins/_index.md" >}})
+* [C++ Reader Plugins]({{< ref "components-cpp/plugins/_index.md" >}})
 
-[C++ Reader Plugins]({{< ref "components-cpp/plugins/_index.md" >}})
-
-
-
+---
 ## Class diagram of plugin package
 
 For the record, this is a wide view of classes implied in the plugin system. It is designed to natively handle as much 
@@ -46,6 +48,7 @@ only have to use a few part of these elements.
 
 {{< figure library="true" src="plugin-development/class/Plugin_Class_Full.svg" title="" >}} 
 
+---
 ## Steps
 Plugin's development relies on 3 main steps, each one consists in implementing a few set of abstract classes and interfaces of
 plugin package from Keyple Core API:
@@ -54,23 +57,23 @@ plugin package from Keyple Core API:
 1. Implement a Keyple Plugin
 1. Implement a Keyple Plugin Factory.
 
-
+---
 ## Imports 
-Your plugin will use be based upon Keyple Core library.
+Your plugin will be based upon Keyple Core library.
 
 Using the [Java components]({{< ref "components-java/core/_index.md" >}}) or [C++ components]({{< ref "components-cpp/core/_index.md" >}})
 pages, import **Keyple Core** into your project.
 
-
+---
 ## Implement Keyple Reader
 The first step of a Keyple plugin development is the implementation of Keyple Reader Interface (org.eclipse.keyple.core.Reader). 
 This implementation should use device's native smartcard reader library (or sdk package) to map interfaces used by Keyple API. 
 
 This implementation of a local reader must be done through the extension of one of three abstract classes provided within the Keyple API. The choice depends
 on expected behaviour of the reader:
-* **`AbstractLocalReader`**: Basic abstract class to use for local reader implementation.
+* **`AbstractLocalReader`**: basic abstract class to use for local reader implementation.
 * **`AbstractObservableLocalReader`**: extends AbstractLocalReader and is used to manage the matter of observing card events in the case of a local reader 
-(ie: card insertion, card removal..).
+(ie: card insertion, card removal).
 * **`AbstractObservableLocalAutonomousReader`**: extends AbstractObservableLocalReader and is used to allow the reader implementation to 
 call back the core when card insertion and removal events occurs.
 
@@ -182,6 +185,7 @@ In addition of AbstractObservableLocalReader's methods and ObservableReaderNotif
 
 Example of implementations are provided [here](#abstractobservablelocalautonomousreader).
 
+---
 ## Implement Keyple Plugin
 The next step of Keyple plugin development is the implementation of Keyple Plugin Interface (org.eclipse.keyple.core.service.Plugin).
 The plugin will provide access to the readers and handle their lifecycle.
@@ -247,6 +251,7 @@ The last step is to implement the Plugin factory which is going to be use by Key
 
 Example of implementations are provided [here](#abstractthreadedobservableplugin).
 
+---
 ## Examples of implementation
 ### AbstractLocalReader
 #### checkCardPresence()
@@ -882,13 +887,14 @@ public PcscPlugin getPlugin() {
 }
 ```
 
+---
 ## Sources
 ### Keyple Android NFC
 * [Plugin](https://github.com/eclipse/keyple-java/tree/master/android/keyple-plugin/android-nfc)
-* [Example App](https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/android/nfc)
+* [Example App](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/android/nfc)
 #### Keyple Android OMAPI 
 * [Plugin](https://github.com/eclipse/keyple-java/tree/master/android/keyple-plugin/android-omapi)
-* [Example App](https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/android/omapi)
+* [Example App](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/android/omapi)
 #### PC/SC
 * [Plugin](https://github.com/eclipse/keyple-java/tree/master/java/component/keyple-plugin/pcsc)
-* [Example Apps](https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/pc)
+* [Example Apps](https://github.com/eclipse/keyple-java/tree/master/java/example/calypso)

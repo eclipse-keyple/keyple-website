@@ -1,5 +1,4 @@
 ---
-
 title: Build your first Java application
 linktitle: Java
 summary: This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers.
@@ -7,7 +6,9 @@ type: book
 toc: true
 draft: false
 weight: 210
------------
+---
+
+---
 
 This quick start describes how to create a ready-to-execute Java
 command-line application that runs a simple transaction based on
@@ -42,6 +43,7 @@ We recommend that you use a Java IDE like
 [Intellij IDEA](https://www.jetbrains.com/idea/) to create your new
 Gradle project.
 
+---
 ## Create a Gradle-based empty project
 
 Create a new Java project and add the following statements to your
@@ -74,6 +76,7 @@ dependencies {
 If necessary, also create the usual tree in which the Java code of this
 guide will be placed, namely the folders: ```\src\main\java```
 
+---
 ## Let's code
 
 Now let's see step by step how to create in one single class the
@@ -286,6 +289,7 @@ System.exit(0);
 
 Find the complete code source [below](#full-code).
 
+---
 ## Run
 
 1) Connect two USB PC/SC Readers.
@@ -298,6 +302,7 @@ components, are downloaded during the first run, which can take some
 time. {{% /alert %}}
 
 
+---
 ## FAQ
 
 **How do I find out the names of the readers?**

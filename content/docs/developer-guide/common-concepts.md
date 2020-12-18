@@ -1,16 +1,20 @@
 ---
 title: Common concepts
+summary: Glossary of the key terms of the Keyple solution.
 type: book
 toc: true
 draft: false
 weight: 300
 ---
 
+---
+
 This page describes the core elements of **Keyple**, i.e. the concepts and APIs of **Keyple Core** that are used to build any application implementing **Keyple**.
  
 It is essential for the future user of **Keyple** to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on **Keyple Core**.
 
-### Reader
+---
+## Reader
 
 Keyple's primary goal being to interact with smart cards (or smartphones) worn by individuals, it is logical to put the Reader at the top of **Keyple Core**'s concepts.
 
@@ -25,7 +29,8 @@ The reader concept also applies to the hardware interfaces used to communicate w
 
 [More information]({{< relref "../architecture/keyple-core.md#reader-access" >}})
 
-### Plugin
+---
+## Plugin
 
 In Keyple language a plugin is a service that allows the management of readers of a certain type.
 The plugin is responsible for informing the application about the availability of readers.
@@ -37,7 +42,8 @@ The Plugin interface essentially allows to list and retrieve the available reade
 
 [More information]({{< relref "../architecture/keyple-core.md#reader-access" >}})
 
-### Smart card service
+---
+## Smart card service
 
 This is the **Keyple Core** service that concentrates the knowledge of active plugins and readers.
 
@@ -47,7 +53,8 @@ The **SmartCardService** will then make sure that the resources used are properl
 
 [More information]({{< relref "../architecture/keyple-core.md#reader-access" >}})
 
-### Observation
+---
+## Observation
 
 The observation concept applies to readers as well as to plugins; optional, it is used depending on the needs.
 
@@ -57,7 +64,8 @@ Not all plugins and readers are observable.
 
 [More information]({{< relref "../architecture/keyple-core.md#reader-notifications" >}})
 
-### Selection
+---
+## Selection
 
 In Keyple the concept of selection is derived from the application selection defined by the ISO7816-4 standard.
 
@@ -71,7 +79,8 @@ The **default selection** principle consists in providing an observable reader w
 
 [More information]({{< relref "../architecture/keyple-core.md#card-selection" >}})
 
-### Abstract smart card
+---
+## Abstract smart card
 
 The **abstract smart card** concept is used by specific extensions (e.g. **Keyple Calypso**) and by the **Keyple Core** selection mechanism.
 It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.

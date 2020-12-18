@@ -8,6 +8,8 @@ draft: false
 weight: 220
 ---
 
+---
+
 ## Introduction 
 ### Overview
 **Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy way to implement solution to provide SmartCard communication functionalities in their own mobile application.**
@@ -27,6 +29,7 @@ This guide will describe how to start a ticketing application using Keyple SDK a
 * Android OS 19+
 * A NFC SmartCard with Calypso PO
 
+---
 ## Integration
 ### Application setup
 
@@ -79,6 +82,7 @@ To use Keyple Calypso User API simply import the jar within the gradle dependenc
 implementation "org.eclipse.keyple:keyple-java-calypso:$keyple_version"
 ```
 
+---
 ## Let's code
 ### Initializing the SDK
 #### Register a plugin
@@ -465,6 +469,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 }
 ```
 
+---
 ## FAQ
 
 **How to fix "More than one file was found with OS independent path 'META-INF/NOTICE.md'."**

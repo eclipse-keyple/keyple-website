@@ -6,6 +6,8 @@ draft: false
 weight: 120
 ---
 
+---
+
 ## Features / packages and corresponding usages
 
 The Keyple Core is a tool to handle smart card reader and to operate generic processing with smart cards.
@@ -81,6 +83,7 @@ According to the developer’s objective different packages must be imported:
 
 {{< figure library="true" src="architecture/KeypleCore_Packages.svg" title="Core packages" >}}
 
+---
 ## Service Interface
 for the development of ticketing terminal application
 
@@ -175,6 +178,7 @@ According to the defined **multi selection processing** mode, the card selection
 
 The result of a card request selection is a card image of a matching card. For a card selection with multiple requests, several matching card could be provided.
 
+---
 ## Card Interface
 for the development of smartcard solution library
 
@@ -183,6 +187,7 @@ The Keyple Calypso extension uses the card interface to exchange APDU commands w
 ### APDU Transmission
 {{< figure library="true" src="architecture/KeypleCore_Card_ClassDiag_CardMessage_1_0_0.svg" title="APDU Transmission v1.0.0" >}}
 
+---
 ## Plugin API
 for the implementation of smartcard reader plugins
 
