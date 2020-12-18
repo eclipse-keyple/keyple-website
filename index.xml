@@ -51,7 +51,7 @@ Keyple project
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>The &lt;strong>Keyple Calypso&lt;/strong> Java component is a Keyple extension for &lt;strong>Calypso®&lt;/strong> technology.&lt;/p>
+&lt;p>The &lt;strong>Keyple Calypso&lt;/strong> Java component is a Keyple reader extension for &lt;strong>Calypso®&lt;/strong> technology.&lt;/p>
 &lt;p>It can be used on &lt;strong>PC&lt;/strong>, &lt;strong>MAC&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
@@ -607,8 +607,8 @@ speed is not sacrificed in a cloud-based system.&lt;/p>
 element of ticketing technology. Access to Calypso’s security features are automatically managed by the Keyple™ extension.&lt;/p></description></item><item><title>Keyple Global Solution</title><link>https://keyple.org/docs/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-global/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The Eclipse Keyple solution provides currently 2 modules:&lt;/p>
 &lt;ul>
-&lt;li>the &amp;lsquo;Keyple Core&amp;rsquo;, a universal smart card reader interface to manage the setting of smart card reader, the detection and the communication with smart card, and the selection of card application.&lt;/li>
-&lt;li>the &amp;lsquo;Keyple Calypso&amp;rsquo;, a first smart card solution extension built on the Keyple Core, dedicated to manage Calypso processing, Calypso card identification, card command generation, card data recovery, authentication with the secure session.&lt;/li>
+&lt;li>the &lt;strong>Keyple Core&lt;/strong>, a universal smart card reader interface to manage the setting of smart card reader, the detection and the communication with smart card, and the selection of card application.&lt;/li>
+&lt;li>the &lt;strong>Keyple Calypso&lt;/strong>, a first smart card solution extension built on the Keyple Core, dedicated to manage Calypso processing, Calypso card identification, card command generation, card data recovery, authentication with the secure session.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-keyple-architecture-global">
 &lt;a data-fancybox="" href="./media/architecture/Keyple_Architecture_Global.svg" data-caption="Keyple Architecture Global">
@@ -620,9 +620,9 @@ Keyple Architecture Global
 &lt;/figure>
 &lt;p>The Keyple Core provides 3 interfaces:&lt;/p>
 &lt;ul>
-&lt;li>the &amp;lsquo;Service API&amp;rsquo;, to allow terminal application to handle reader &amp;amp; select card&lt;/li>
-&lt;li>the &amp;lsquo;Card API&amp;rsquo;, for APDU command transmission, card data parsing&lt;/li>
-&lt;li>the &amp;lsquo;Plugin API&amp;rsquo;, to integrate specific smart card reader solutions.&lt;/li>
+&lt;li>the &lt;strong>Service API&lt;/strong>, to allow terminal application to handle reader &amp;amp; select card&lt;/li>
+&lt;li>the &lt;strong>Card API&lt;/strong>, for APDU command transmission, card data parsing&lt;/li>
+&lt;li>the &lt;strong>Plugin API&lt;/strong>, to integrate specific smart card reader solutions.&lt;/li>
 &lt;/ul>
 &lt;p>The Keyple Calypso extension provides the Calypso API: a high-level interface to manage Calypso card processing.&lt;/p>
 &lt;h2 id="application-integration">Application integration&lt;/h2>
@@ -687,7 +687,7 @@ Keyple Architecture Local Plugin
 &lt;/figcaption>
 &lt;/figure>
 &lt;h3 id="distributed">distributed&lt;/h3>
-&lt;p>The &amp;lsquo;Distributed&amp;rsquo; extension of the Keyple Core provides a solution allowing a master terminal application to manage the processing of a smart card localized in a remote driven terminal.
+&lt;p>The &lt;strong>Distributed&lt;/strong> extension of the Keyple Core provides a solution allowing a master terminal application to manage the processing of a smart card localized in a remote driven terminal.
 &lt;figure id="figure-keyple-architecture-remote-plugin">
 &lt;a data-fancybox="" href="./media/architecture/Keyple_Architecture_Remote_Plugin.svg" data-caption="Keyple Architecture Remote Plugin">
 &lt;img src="./media/architecture/Keyple_Architecture_Remote_Plugin.svg" alt="" >
@@ -734,9 +734,9 @@ Keyple Architecture Remote Plugin
 &lt;p>The Keyple Core is a tool to handle smart card reader and to operate generic processing with smart cards.&lt;/p>
 &lt;p>The Core is divided in 3 sub-modules:&lt;/p>
 &lt;ul>
-&lt;li>Service API : provides the interfaces to access to the smart card readers and to select a smart card.&lt;/li>
-&lt;li>Card API : for the transmission of APDU commands with a smart card.&lt;/li>
-&lt;li>Plugin API : includes the factorized processing for the implementation of plugin.&lt;/li>
+&lt;li>&lt;strong>Service API&lt;/strong> : provides the interfaces to access to the smart card readers and to select a smart card.&lt;/li>
+&lt;li>&lt;strong>Card API&lt;/strong> : for the transmission of APDU commands with a smart card.&lt;/li>
+&lt;li>&lt;strong>Plugin API&lt;/strong> : includes the factorized processing for the implementation of plugin.&lt;/li>
 &lt;/ul>
 &lt;table>
 &lt;thead>
@@ -798,9 +798,9 @@ Keyple Architecture Remote Plugin
 &lt;/table>
 &lt;p>According to the developer’s objective different packages must be imported:&lt;/p>
 &lt;ul>
-&lt;li>for the implementation of a smart card terminal application: the packages &amp;lsquo;service&amp;rsquo;, &amp;lsquo;event&amp;rsquo; and &amp;lsquo;selection&amp;rsquo;.&lt;/li>
-&lt;li>to develop a dedicated library supporting the command sets and transaction features of a specific smart card solution: the packages &amp;lsquo;message&amp;rsquo;, &amp;lsquo;command&amp;rsquo;, and &amp;lsquo;selection&amp;rsquo;.&lt;/li>
-&lt;li>to implement a plugin: the packages &amp;lsquo;plugin&amp;rsquo;, &amp;lsquo;service&amp;rsquo;, &amp;lsquo;event&amp;rsquo;, and &amp;lsquo;message&amp;rsquo;.&lt;/li>
+&lt;li>for the implementation of a smart card terminal application: the packages &lt;strong>service&lt;/strong>, &lt;strong>event&lt;/strong> and &lt;strong>selection&lt;/strong>.&lt;/li>
+&lt;li>to develop a dedicated library supporting the command sets and transaction features of a specific smart card solution: the packages &lt;strong>message&lt;/strong>, &lt;strong>command&lt;/strong>, and &lt;strong>selection&lt;/strong>.&lt;/li>
+&lt;li>to implement a plugin: the packages &lt;strong>plugin&lt;/strong>, &lt;strong>service&lt;/strong>, &lt;strong>event&lt;/strong>, and &lt;strong>message&lt;/strong>.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-core-packages">
 &lt;a data-fancybox="" href="./media/architecture/KeypleCore_Packages.svg" data-caption="Core packages">
@@ -814,16 +814,16 @@ Core packages
 &lt;p>for the development of ticketing terminal application&lt;/p>
 &lt;h3 id="reader-access">Reader Access&lt;/h3>
 &lt;p>On Keyple, the smart card readers are managed through plugins in order to integrate specific reader solutions.
-The &amp;lsquo;&lt;strong>SmartCard Service&lt;/strong>&amp;rsquo; singleton provides the unique name list of registered plugins. There can be three kinds of plugin:&lt;/p>
+The &lt;strong>SmartCard Service&lt;/strong> singleton provides the unique name list of registered plugins. There can be three kinds of plugin:&lt;/p>
 &lt;ul>
-&lt;li>‘&lt;strong>Plugin&lt;/strong>’ is the generic interface to list the readers of a plugin, or to access to a specific reader with its name.&lt;/li>
-&lt;li>The ‘&lt;strong>Observable Plugin&lt;/strong>’ interface extends Plugins which have the capability to be observed: in order to notify registered Plugin Observers about the plug or unplug of readers. Plugin Observers could be added or removed to the Observable Plugin. Useful for systems allowing the hot plug / unplug of Readers.&lt;/li>
-&lt;li>A ‘&lt;strong>Pool Plugin&lt;/strong>’ is a plugin for which a Reader is available only after an explicit allocation. When not more necessary, a Reader must be released. Useful for server solutions managing farms of Readers or interfaced with HSM: unallocated Readers or HSM instances could be shared between several smartcard terminal solutions.&lt;/li>
+&lt;li>&lt;strong>Plugin&lt;/strong> is the generic interface to list the readers of a plugin, or to access to a specific reader with its name.&lt;/li>
+&lt;li>The &lt;strong>Observable Plugin&lt;/strong> interface extends Plugins which have the capability to be observed: in order to notify registered Plugin Observers about the plug or unplug of readers. Plugin Observers could be added or removed to the Observable Plugin. Useful for systems allowing the hot plug / unplug of Readers.&lt;/li>
+&lt;li>A &lt;strong>Pool Plugin&lt;/strong> is a plugin for which a Reader is available only after an explicit allocation. When not more necessary, a Reader must be released. Useful for server solutions managing farms of Readers or interfaced with HSM: unallocated Readers or HSM instances could be shared between several smartcard terminal solutions.&lt;/li>
 &lt;/ul>
 &lt;p>A smartcard Reader is identified through its unique name in a Plugin. There are two kinds of Reader:&lt;/p>
 &lt;ul>
-&lt;li>The ‘&lt;strong>Reader&lt;/strong>’ is the generic interface to handle a smartcard reader. The presence of card in a Reader could be checked.&lt;/li>
-&lt;li>The ‘&lt;strong>Observable Reader&lt;/strong>’ interface extends Readers which have the capability to notify registered Reader Observers about the insertion or remove of a Card in the Reader. Reader Observers could be added or removed to the Observable Reader. Useful for systems automatically starting the processing of a Card at its insertion: like a ticketing validator.
+&lt;li>The &lt;strong>Reader&lt;/strong> is the generic interface to handle a smartcard reader. The presence of card in a Reader could be checked.&lt;/li>
+&lt;li>The &lt;strong>Observable Reader&lt;/strong> interface extends Readers which have the capability to notify registered Reader Observers about the insertion or remove of a Card in the Reader. Reader Observers could be added or removed to the Observable Reader. Useful for systems automatically starting the processing of a Card at its insertion: like a ticketing validator.
 &lt;figure id="figure-reader-access-v100">
 &lt;a data-fancybox="" href="./media/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" data-caption="[Reader Access v1.0.0">
 &lt;img src="./media/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" alt="" >
@@ -847,7 +847,7 @@ Specific Plugin v1.0.0
 &lt;/figure>
 &lt;/p>
 &lt;h4 id="reader-notifications">Reader Notifications&lt;/h4>
-&lt;p>To be notified about &amp;lsquo;&lt;strong>Plugin Event&lt;/strong>&amp;rsquo; or &amp;lsquo;&lt;strong>Reader Event&lt;/strong>&amp;rsquo;, a terminal application must implement the dedicated &amp;lsquo;&lt;strong>Plugin Observer&lt;/strong>&amp;rsquo; or &amp;lsquo;&lt;strong>Reader Observer&lt;/strong>&amp;rsquo; interfaces.&lt;/p>
+&lt;p>To be notified about &lt;strong>Plugin Event&lt;/strong> or &lt;strong>Reader Event&lt;/strong>, a terminal application must implement the dedicated &lt;strong>Plugin Observer&lt;/strong> or &lt;strong>Reader Observer&lt;/strong> interfaces.&lt;/p>
 &lt;figure id="figure-reader-notifications-v100">
 &lt;a data-fancybox="" href="./media/architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" data-caption="Reader Notifications v1.0.0">
 &lt;img src="./media/architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" alt="" >
@@ -857,21 +857,21 @@ Reader Notifications v1.0.0
 &lt;/figcaption>
 &lt;/figure>
 &lt;h5 id="plugin-event">Plugin Event&lt;/h5>
-&lt;p>Several ‘Plugin Observers’ could be registered to an Observable Plugin.
+&lt;p>Several &lt;strong>Plugin Observers&lt;/strong> could be registered to an Observable Plugin.
 In case of reader connection / disconnection, the Observable Plugin notifies sequentially the registered Plugin Observers with the corresponding Plugin Event.
 The Observable Plugin is a blocking API, the thread managing the issuance of the Plugin Event waits the acknowledge of the Plugin Observer currently notified.&lt;/p>
 &lt;h5 id="reader-event">Reader Event&lt;/h5>
-&lt;p>Several ‘Reader Observers’ could be registered to an Observable Reader.
+&lt;p>Several &lt;strong>Reader Observers&lt;/strong> could be registered to an Observable Reader.
 In case of Card insertion / removal or selection match, the Observable Reader notifies sequentially the registered Reader Observers with the corresponding Reader Event. The Observable Reader could be a blocking API, the thread managing the issuance of the Plugin Event could wait the acknowledge of the notified Reader Observers.&lt;/p>
-&lt;p>An Observable Reader has the capability to be set with a ‘Default Selections Request’: in this case when a Card is inserted in the Reader, the Reader will try to operate the configured default selections. If a selection successfully matches with the Card, instead to simply notify about the insertion of a Card, the Observable Reader will notify about a successful selection with a Card application.&lt;/p>
+&lt;p>An Observable Reader has the capability to be set with a &lt;strong>Default Selections Request&lt;/strong>: in this case when a Card is inserted in the Reader, the Reader will try to operate the configured default selections. If a selection successfully matches with the Card, instead to simply notify about the insertion of a Card, the Observable Reader will notify about a successful selection with a Card application.&lt;/p>
 &lt;ul>
-&lt;li>If the notification mode is defined as ‘always’, then in case of Card insertion, the Observable Reader will notify a matched card Reader Event in case of successful selection, or a simple card insertion Reader Event if not.&lt;/li>
-&lt;li>If the notification mode is defined as ‘matched only’, then in case of Card insertion, simple card insertion Reader Events are not notified.&lt;/li>
+&lt;li>If the notification mode is defined as &lt;strong>always&lt;/strong>, then in case of Card insertion, the Observable Reader will notify a matched card Reader Event in case of successful selection, or a simple card insertion Reader Event if not.&lt;/li>
+&lt;li>If the notification mode is defined as &lt;strong>matched only&lt;/strong>, then in case of Card insertion, simple card insertion Reader Events are not notified.&lt;/li>
 &lt;/ul>
 &lt;p>When the processing of an inserted or matched Card is finished, a Reader Observer must release the logical channel with the Card, in order to prepare the Observable Reader to detect the removal of the Card.&lt;/p>
 &lt;h5 id="observable-reader-states">Observable Reader states&lt;/h5>
 &lt;p>An Observable Reader is active only when at least one Reader Observer is registered, and if the start of the detection has been requested.
-When active, an Observable Reader could switch between three internal states: ‘Wait for Card Insertion’, ‘Wait for Card Processing’, &amp;amp; ‘Wait for Card Removal’.&lt;/p>
+When active, an Observable Reader could switch between three internal states: &lt;strong>Wait for Card Insertion&lt;/strong>, &lt;strong>Wait for Card Processing&lt;/strong>, &amp;amp; &lt;strong>Wait for Card Removal&lt;/strong>.&lt;/p>
 &lt;p>In the nominal case, a Reader Observer indicates to the Observable Reader that the processing of the SE is finished by releasing the Card Channel.
 To manage a failure of the Reader Observer process, the Observable Reader interface provides also a method to finalize the Card processing.&lt;/p>
 &lt;figure id="figure-observable-reader-states">
@@ -897,12 +897,12 @@ Observable Reader States
 &lt;/li>
 &lt;li>Or because of an external event (red arrows), the insertion or the remove of a Card.
 &lt;ul>
-&lt;li>the insertion a Card causing the Observable Reader to notify a &amp;lsquo;Card matched&amp;rsquo; Reader Event (in case of successful default selection) or a &amp;lsquo;Card inserted&amp;rsquo; Reader Event (Notification Mode defined as always).&lt;/li>
-&lt;li>the removal of a Card causing the Observable Reader to notify a &amp;lsquo;Card removed&amp;rsquo; Reader Event.&lt;/li>
+&lt;li>the insertion a Card causing the Observable Reader to notify a &lt;strong>Card matched&lt;/strong> Reader Event (in case of successful default selection) or a &lt;strong>Card inserted&lt;/strong> Reader Event (Notification Mode defined as always).&lt;/li>
+&lt;li>the removal of a Card causing the Observable Reader to notify a &lt;strong>Card removed&lt;/strong> Reader Event.&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>If a Card detection is started with the &amp;lsquo;repeating&amp;rsquo; polling mode, then later when the Card is removed, the Reader starts again the detection of a new Card.&lt;/p>
+&lt;p>If a Card detection is started with the &lt;strong>repeating&lt;/strong> polling mode, then later when the Card is removed, the Reader starts again the detection of a new Card.&lt;/p>
 &lt;p>Whatever the Plugin of Observable Reader, when waiting for the Card removal, any Observable Reader shall have the capability to notify the remove of the Card.
 Some Plugin solutions could have the capability to notify a Card removal also during the processing of the Card.&lt;/p>
 &lt;h3 id="card-selection">Card Selection&lt;/h3>
@@ -930,10 +930,10 @@ If a SE Selector is defined without any filter, the selection is always successf
 &lt;/ul>
 &lt;p>Depending on the Keyple Card Solution extension library, a card request could be completed with specific card commands to operate at the selection (for example, a Select File for a specific DF LID, the read of a specific file).&lt;/p>
 &lt;p>For terminal managing several kinds of card applications, a Card Selection could be prepared with several card selection request to operate sequentially with the card.&lt;/p>
-&lt;p>According to the defined &amp;lsquo;multi selection processing&amp;rsquo; mode, the card selection could stop at the first selection request matching card application, otherwise all the prepared card selection request could be operated.&lt;/p>
+&lt;p>According to the defined &lt;strong>multi selection processing&lt;/strong> mode, the card selection could stop at the first selection request matching card application, otherwise all the prepared card selection request could be operated.&lt;/p>
 &lt;ul>
 &lt;li>Before the new processing of card selection request, the logical channel previously opened is closed.&lt;/li>
-&lt;li>The &amp;lsquo;channel control&amp;rsquo; defines if the logical channel should be kept open or close after the last processed card selection request.&lt;/li>
+&lt;li>The &lt;strong>channel control&lt;/strong> defines if the logical channel should be kept open or close after the last processed card selection request.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-card-selection-v100">
 &lt;a data-fancybox="" href="./media/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" data-caption="Card Selection v1.0.0">
@@ -998,7 +998,7 @@ Plugin Factorized Processing v1.0.0
 &lt;td width="50%">org.eclipse.keyple.calypso.&lt;b>transaction&lt;/b>&lt;/td>
 &lt;td width="8%">high&lt;/td>
 &lt;td>Calypso Portable Object commands and secure transaction management&lt;br/>
-&lt;ul>&lt;li>CalypsoAPI, commands’ settings are limited to functional parameters&lt;br/>&lt;/li>
+&lt;ul>&lt;li>CalypsoAPI, command’s settings are limited to functional parameters&lt;br/>&lt;/li>
 &lt;li>Calypso SAM (Secure Module) operations automatically processed&lt;br/>&lt;/li>&lt;/ul>
 (only functional parameters)&lt;/td>
 &lt;/tr>
@@ -1057,11 +1057,11 @@ Calypso Selection v1.0.0
 &lt;li>At least a Calypso Resource (CardResource&amp;lt;CalypsoPo&amp;gt;) is required.&lt;/li>
 &lt;li>A SAM Resource ((CardResource&amp;lt;CalypsoSam&amp;gt;) is required too if security features are involved (Calypso secure session, Stored value transaction, PIN encryption, etc…).&lt;/li>
 &lt;/ul>
-&lt;p>A Calypso PO image provides public ‘getters’ in order to &lt;strong>recover&lt;/strong> the information of the selected PO (startup data, file data, … etc).&lt;/p>
+&lt;p>A Calypso PO image provides public &lt;strong>getters&lt;/strong> in order to &lt;strong>recover&lt;/strong> the information of the selected PO (startup data, file data, … etc).&lt;/p>
 &lt;p>A transaction with a Calypso PO is fully managed through the PoTransaction object:&lt;/p>
 &lt;ul>
-&lt;li>First a set of PO commands could be defined through ‘&lt;strong>prepare&lt;/strong>’ commands.&lt;/li>
-&lt;li>Next the prepared PO commands transmitted when operating a ‘&lt;strong>process&lt;/strong>’ command.&lt;/li>
+&lt;li>First a set of PO commands could be defined through &lt;strong>prepare&lt;/strong> commands.&lt;/li>
+&lt;li>Next the prepared PO commands transmitted when operating a &lt;strong>process&lt;/strong> command.&lt;/li>
 &lt;li>The responses of the PO are then recovered through the Calypso PO image.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-calypso-api-global-architecture">
@@ -1083,7 +1083,7 @@ Calypso PO card image
 &lt;/figcaption>
 &lt;/figure>
 &lt;h3 id="calypso-transaction">Calypso transaction&lt;/h3>
-&lt;p>Only the &amp;lsquo;process&amp;rsquo; methods generate communication with the Calypso PO and SAM.&lt;/p>
+&lt;p>Only the &lt;strong>process&lt;/strong> methods generate communication with the Calypso PO and SAM.&lt;/p>
 &lt;ul>
 &lt;li>processPoCommands is used to transmit a set of prepared PO commands (outside or inside a secure session).&lt;/li>
 &lt;li>processOpening issues an Open Secure Session followed by the prepared PO commands.&lt;/li>
@@ -1508,7 +1508,7 @@ Keyple could also be used to develop an application reading SmartCard content th
 &lt;img src="./media/android-app/component/Android_App_Overview.png" alt="" >
 &lt;/a>
 &lt;/figure>
-&lt;p>As Keyple request low level reader access, the key features of Keyple SDK relies on components called &amp;lsquo;Plugins&amp;rsquo;. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer&amp;rsquo;s own custom SDKs.&lt;/p>
+&lt;p>As Keyple request low level reader access, the key features of Keyple SDK relies on components called &lt;strong>Plugins&lt;/strong>. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer&amp;rsquo;s own custom SDKs.&lt;/p>
 &lt;p>This guide will describe how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso SmartCard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.&lt;/p>
 &lt;h3 id="what-to-we-need-for-this-guide">What to we need for this guide?&lt;/h3>
 &lt;ul>
@@ -1884,31 +1884,43 @@ Coming soon
 &lt;li>detect the presence and communicate with smart cards.&lt;/li>
 &lt;/ul>
 &lt;p>The reader concept also applies to the hardware interfaces used to communicate with security elements such as SAMs (Secure Access Modules), which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.&lt;/p>
-&lt;p>[link to the detailed description of the reader related classes]&lt;/p>
+&lt;p>
+&lt;a href="./docs/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
 &lt;h3 id="plugin">Plugin&lt;/h3>
-&lt;p>In Keyple language a plugin is a service that allows the management of readers of a certain type. The plugin is responsible for informing the application about the availability of readers. The readers of the same plugin are usually hardware linked to the same physical interface.&lt;/p>
+&lt;p>In Keyple language a plugin is a service that allows the management of readers of a certain type.
+The plugin is responsible for informing the application about the availability of readers.
+The readers of the same plugin are usually hardware linked to the same physical interface.&lt;/p>
 &lt;p>Depending on its profile, an application may use different types of plugins to communicate with the different elements it needs (card, SAM).&lt;/p>
 &lt;p>The Plugin interface essentially allows to list and retrieve the available readers.&lt;/p>
-&lt;p>[link to the detailed description of the plugin related classes]&lt;/p>
+&lt;p>
+&lt;a href="./docs/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
 &lt;h3 id="smart-card-service">Smart card service&lt;/h3>
 &lt;p>This is the &lt;strong>Keyple Core&lt;/strong> service that concentrates the knowledge of active plugins and readers.&lt;/p>
 &lt;p>At startup, a Keyple application must register the plugins it uses. Conversely, it can also unregister them.&lt;/p>
 &lt;p>The &lt;strong>SmartCardService&lt;/strong> will then make sure that the resources used are properly released.&lt;/p>
-&lt;p>[link to the detailed description of the reader related classes]&lt;/p>
+&lt;p>
+&lt;a href="./docs/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
 &lt;h3 id="observation">Observation&lt;/h3>
 &lt;p>The observation concept applies to readers as well as to plugins; optional, it is used depending on the needs.&lt;/p>
 &lt;p>It consists in monitoring changes such as reader connection/disconnection or card insertion/removal and informing the observing application through a dedicated interface.&lt;/p>
 &lt;p>Not all plugins and readers are observable.&lt;/p>
+&lt;p>
+&lt;a href="./docs/architecture/keyple-core/#reader-notifications">More information&lt;/a>&lt;/p>
 &lt;h3 id="selection">Selection&lt;/h3>
 &lt;p>In Keyple the concept of selection is derived from the application selection defined by the ISO7816-4 standard.&lt;/p>
 &lt;p>It supplements it by managing cards that do not have the standard command using identification mechanisms based on Answer To Reset and the communication protocol, and also by allowing the execution of commands immediately following application selection or detection.&lt;/p>
 &lt;p>This principle optimizes the processing by allowing the application to elaborate advanced card discovery requests.&lt;/p>
 &lt;p>Several targets can be defined by the application according to the different customer cards expected.&lt;/p>
 &lt;p>The &lt;strong>default selection&lt;/strong> principle consists in providing an observable reader with a set of selection cases corresponding to the expected cards and receiving notifications containing not only the card identification but also the result of all additional commands that the application will have attached.&lt;/p>
+&lt;p>
+&lt;a href="./docs/architecture/keyple-core/#card-selection">More information&lt;/a>&lt;/p>
 &lt;h3 id="abstract-smart-card">Abstract smart card&lt;/h3>
-&lt;p>The &lt;strong>abstract smart card&lt;/strong> concept is used by specific extensions (e.g. &lt;strong>Keyple Calypso&lt;/strong>) and by the &lt;strong>Keyple Core&lt;/strong> selection mechanism. It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.&lt;/p>
+&lt;p>The &lt;strong>abstract smart card&lt;/strong> concept is used by specific extensions (e.g. &lt;strong>Keyple Calypso&lt;/strong>) and by the &lt;strong>Keyple Core&lt;/strong> selection mechanism.
+It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.&lt;/p>
 &lt;p>This container will be able to carry all the useful information known about the card.&lt;/p>
-&lt;p>Note: this concept, mentioned here for understanding, should not appear to the application developer if he uses a card extension.&lt;/p></description></item><item><title>Standalone application</title><link>https://keyple.org/docs/developer-guide/standalone-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/standalone-application/</guid><description>&lt;hr>
+&lt;p>Note: this concept, mentioned here for understanding, should not appear to the application developer if he uses a card extension.&lt;/p>
+&lt;p>
+&lt;a href="./docs/architecture/keyple-core/#card-selection">More information&lt;/a>&lt;/p></description></item><item><title>Standalone application</title><link>https://keyple.org/docs/developer-guide/standalone-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/standalone-application/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>A standalone application is an application that runs in a device in contact
 with the end user.&lt;/p>
@@ -2644,6 +2656,11 @@ width: 190px;
 &lt;/a>
 &lt;/figure>
 &lt;h3 id="reader-server-side">Reader Server Side&lt;/h3>
+&lt;div class="alert alert-warning">
+&lt;div>
+This configuration mode will only be available from version &lt;strong>1.1&lt;/strong> onwards.
+&lt;/div>
+&lt;/div>
 &lt;p>This configuration mode allows a &lt;strong>client&lt;/strong> application to control a smart card reader available on a &lt;strong>server&lt;/strong> (e.g. SAM reader).&lt;/p>
 &lt;p>It also allows to observe the plugin events (such as reader connection, etc&amp;hellip;) if desired.&lt;/p>
 &lt;table>
@@ -2689,23 +2706,7 @@ width: 190px;
 &lt;ol>
 &lt;li>configure the factory by providing the network implementation,&lt;/li>
 &lt;li>register the &lt;strong>Remote Plugin&lt;/strong> to the smart card service using the factory,&lt;/li>
-&lt;li>use the &lt;strong>Remote Plugin&lt;/strong> and its remote readers as a local plugin with local readers.&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;/ul>
-&lt;h4 id="operating-mode-2">OPERATING MODE&lt;/h4>
-&lt;ul>
-&lt;li>Server side :
-&lt;ol>
-&lt;li>configure the factory and start the &lt;strong>Local Service&lt;/strong> by providing the network implementation,&lt;/li>
-&lt;li>register at least a local plugin to the smart card service.&lt;/li>
-&lt;/ol>
-&lt;/li>
-&lt;li>Client side :
-&lt;ol>
-&lt;li>configure the factory by providing the network implementation,&lt;/li>
-&lt;li>register the &lt;strong>Remote Plugin&lt;/strong> to the smart card service using the factory,&lt;/li>
-&lt;li>use the &lt;strong>Remote Plugin&lt;/strong> and its remote readers as a local observable plugin with local readers.&lt;/li>
+&lt;li>use the &lt;strong>Remote Plugin&lt;/strong> and its remote readers as a local plugin (or observable plugin) with local readers.&lt;/li>
 &lt;/ol>
 &lt;/li>
 &lt;/ul>
@@ -2742,7 +2743,7 @@ width: 190px;
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h4 id="operating-mode-3">OPERATING MODE&lt;/h4>
+&lt;h4 id="operating-mode-2">OPERATING MODE&lt;/h4>
 &lt;ul>
 &lt;li>Server
 &lt;ol>
