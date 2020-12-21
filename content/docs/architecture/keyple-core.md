@@ -20,22 +20,19 @@ The Core is divided in 3 sub-modules:
   <tr>
     <th>Module</th>
     <th>Package</th>
-    <th>API<br/>level</th>
     <th>Feature</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td rowspan="4" width="13%">Service</td>
+    <td rowspan="3" width="13%">Service</td>
     <td width="38%">org.eclipse.keyple.core.<b>service</b></td>
-    <td width="8%">high</td>
     <td>Management of the smart card readers<br/>
       <ul><li>Registration of plugins to the smart card Service<br/></li>
         <li>Access to the readers through plugins</li></ul></td>
   </tr>
   <tr>
     <td>org.eclipse.keyple.core.service.<b>event</b></td>
-    <td>high</td>
     <td>Notifications of reader plug/unplug, of smart card insertion/removed<br/>
       <ul><li>Define observers of plugins or readers<br/></li>
         <li>Interface to be implemented by observers to be notified on plugin event or reader event<br/></li>
@@ -43,12 +40,10 @@ The Core is divided in 3 sub-modules:
   </tr>
   <tr>
     <td>org.eclipse.keyple.core.service.<b>util</b></td>
-    <td>high</td>
     <td>Communication protocols setting for contactless/contacts Reader</td>
   </tr>
   <tr>
     <td>org.eclipse.keyple.card.<b>selection</b></td>
-    <td>high</td>
     <td>Generic selection of a smart card<br/>
     <ul><li>preparation of smart card selection requests<br></li>
         <li>matching selection results as smart card images</li></ul></td>
@@ -56,18 +51,15 @@ The Core is divided in 3 sub-modules:
   <tr>
     <td rowspan="2">Smart card</td>
     <td>org.eclipse.keyple.card.<b>message</b></td>
-    <td>low</td>
     <td>Transmission of grouped APDU commands to a Reader</td>
   </tr>
   <tr>
     <td>org.eclipse.keyple.core.card.<b>command</b></td>
-    <td>low</td>
     <td>Generic API to develop a smart card specific library</td>
   </tr>
   <tr>
     <td>Plugin</td>
     <td>org.eclipse.keyple.core.<b>plugin</b><br/>
-    <td>low</td>
     <td>Reader plugins implementation<br/>
       <ul><li>Utility classes providing generic processing for Readers </li></ul></td>
   </tr>
