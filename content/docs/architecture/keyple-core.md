@@ -25,7 +25,7 @@ The Core is divided in 3 sub-modules:
 </thead>
 <tbody>
   <tr>
-    <td rowspan="3" width="13%">Service</td>
+    <td rowspan="4" width="13%">Service</td>
     <td width="38%">org.eclipse.keyple.core.<b>service</b></td>
     <td>Management of the smart card readers<br/>
       <ul><li>Registration of plugins to the smart card Service<br/></li>
