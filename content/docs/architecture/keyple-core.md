@@ -22,7 +22,6 @@ The Core is divided in 3 sub-modules:
   <tr>
     <th>Module</th>
     <th>Package</th>
-    <th>API<br/>level</th>
     <th>Feature</th>
   </tr>
 </thead>
@@ -30,14 +29,12 @@ The Core is divided in 3 sub-modules:
   <tr>
     <td rowspan="4" width="13%">Service</td>
     <td width="38%">org.eclipse.keyple.core.<b>service</b></td>
-    <td width="8%">high</td>
     <td>Management of the smart card readers<br/>
       <ul><li>Registration of plugins to the smart card Service<br/></li>
         <li>Access to the readers through plugins</li></ul></td>
   </tr>
   <tr>
     <td>org.eclipse.keyple.core.service.<b>event</b></td>
-    <td>high</td>
     <td>Notifications of reader plug/unplug, of smart card insertion/removed<br/>
       <ul><li>Define observers of plugins or readers<br/></li>
         <li>Interface to be implemented by observers to be notified on plugin event or reader event<br/></li>
@@ -45,12 +42,10 @@ The Core is divided in 3 sub-modules:
   </tr>
   <tr>
     <td>org.eclipse.keyple.core.service.<b>util</b></td>
-    <td>high</td>
     <td>Communication protocols setting for contactless/contacts Reader</td>
   </tr>
   <tr>
     <td>org.eclipse.keyple.card.<b>selection</b></td>
-    <td>high</td>
     <td>Generic selection of a smart card<br/>
     <ul><li>preparation of smart card selection requests<br></li>
         <li>matching selection results as smart card images</li></ul></td>
@@ -58,18 +53,15 @@ The Core is divided in 3 sub-modules:
   <tr>
     <td rowspan="2">Smart card</td>
     <td>org.eclipse.keyple.card.<b>message</b></td>
-    <td>low</td>
     <td>Transmission of grouped APDU commands to a Reader</td>
   </tr>
   <tr>
     <td>org.eclipse.keyple.core.card.<b>command</b></td>
-    <td>low</td>
     <td>Generic API to develop a smart card specific library</td>
   </tr>
   <tr>
     <td>Plugin</td>
     <td>org.eclipse.keyple.core.<b>plugin</b><br/>
-    <td>low</td>
     <td>Reader plugins implementation<br/>
       <ul><li>Utility classes providing generic processing for Readers </li></ul></td>
   </tr>
@@ -84,10 +76,10 @@ According to the developer’s objective different packages must be imported:
 {{< figure library="true" src="architecture/KeypleCore_Packages.svg" title="Core packages" >}}
 
 ---
-## Service Interface
+## Service Interface - Reader Access
 for the development of ticketing terminal application
 
-### Reader Access
+### Types of plugin & reader
 On Keyple, the smart card readers are managed through plugins in order to integrate specific reader solutions.
 The **SmartCard Service** singleton provides the unique name list of registered plugins. There can be three kinds of plugin:
  - **Plugin** is the generic interface to list the readers of a plugin, or to access to a specific reader with its name.
@@ -101,21 +93,21 @@ A smartcard Reader is identified through its unique name in a Plugin. There are 
 
 (The APDU transmission with a Card is managed at a lower layer, through a Card Solution API.)
 
-#### Specific Plugin integration
+### Specific Plugin integration
 The Plugins are registered to the SmartCard Service through related specific Plugin Factory.
 {{< figure library="true" src="architecture/KeypleCore_Reader_ClassDiag_SpecificPluginFactoryAndProtocol_1_0_0.svg" title="Specific Plugin v1.0.0" >}}
 
-#### Reader Notifications
+### Reader Notifications
 To be notified about **Plugin Event** or **Reader Event**, a terminal application must implement the dedicated **Plugin Observer** or **Reader Observer** interfaces.
 
 {{< figure library="true" src="architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" title="Reader Notifications v1.0.0" >}}
 
-##### Plugin Event
+### Plugin Event
 Several **Plugin Observers** could be registered to an Observable Plugin.
 In case of reader connection / disconnection, the Observable Plugin notifies sequentially the registered Plugin Observers with the corresponding Plugin Event.
 The Observable Plugin is a blocking API, the thread managing the issuance of the Plugin Event waits the acknowledge of the Plugin Observer currently notified.
 
-##### Reader Event
+### Reader Event
 Several **Reader Observers** could be registered to an Observable Reader.
 In case of Card insertion / removal or selection match, the Observable Reader notifies sequentially the registered Reader Observers with the corresponding Reader Event. The Observable Reader could be a blocking API, the thread managing the issuance of the Plugin Event could wait the acknowledge of the notified Reader Observers.
 
@@ -125,7 +117,7 @@ An Observable Reader has the capability to be set with a **Default Selections Re
 
 When the processing of an inserted or matched Card is finished, a Reader Observer must release the logical channel with the Card, in order to prepare the Observable Reader to detect the removal of the Card.
 
-##### Observable Reader states
+### Observable Reader states
 An Observable Reader is active only when at least one Reader Observer is registered, and if the start of the detection has been requested. 
 When active, an Observable Reader could switch between three internal states: **Wait for Card Insertion**, **Wait for Card Processing**, & **Wait for Card Removal**.
 
@@ -149,17 +141,18 @@ If a Card detection is started with the **repeating** polling mode, then later w
 Whatever the Plugin of Observable Reader, when waiting for the Card removal, any Observable Reader shall have the capability to notify the remove of the Card.
 Some Plugin solutions could have the capability to notify a Card removal also during the processing of the Card.
 
+---
+## Service Interface - Card Selection
+for the development of ticketing terminal application
 
-### Card Selection
-
-#### Selection scenarios
+### Selection scenarios
 Depending on the Card transaction use case, or on the Reader capability, there are two ways to manage the Selection of a Card:
  - Either on a simple Reader, a Selection could be operated directly by transmitting the Selection Request. In this case the same entity manages both the Card Selection and the Card processing.
  - Otherwise, on an Observable Reader, a Default Selection could be defined. In this case the Selection is operated automatically at the insertion of the Card. In this case, the Card Selection is next managed by the Observable Reader, but the Card processing is managed by a Reader Observer.
 
 {{< figure library="true" src="architecture/KeypleCore_CardSelection_ActivityDiag_Scenarii.svg" title="Selection v1.0.0" >}}
 
-#### Selection setting and processing
+### Selection setting and processing
 A Card Selection request is defined with a Card Selector. A Card Selector could be defined with tree optional levels of selection filter.
  - The selection could be limited to match a specific card communication protocol.
  - The Card ATR could be filtered to match a regular expression.

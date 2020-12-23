@@ -1,5 +1,5 @@
 ---
-title: Keyple Global Solution
+title: Global Solution
 type: book
 toc: true
 draft: false
