@@ -9,4 +9,13 @@ weight: 420
 
 ---
 
-{{% alert note %}} Coming soon {{% /alert %}} 
+The JavaDoc for the Keyple project is available online. The documentation is split into the following parts:
+
+<div>
+	<select id="version_selection" style="float: right;" onchange="selectVersion()">
+		<option>0.9.0</option>
+	</select>
+	<h3>Modules</h3>
+</div>
+<ul id="module_list"></ul>
+<script src="select-api-version.js"></script>
