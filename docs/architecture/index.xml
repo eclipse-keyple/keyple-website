@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>https://keyple.org/docs/architecture/</link><atom:link href="https://keyple.org/docs/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Architecture</title><link>https://keyple.org/docs/architecture/</link></image><item><title>Keyple Global Solution</title><link>https://keyple.org/docs/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-global/</guid><description>&lt;hr>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>https://keyple.org/docs/architecture/</link><atom:link href="https://keyple.org/docs/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Architecture</title><link>https://keyple.org/docs/architecture/</link></image><item><title>Global Solution</title><link>https://keyple.org/docs/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/architecture/keyple-global/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The Eclipse Keyple solution provides currently 2 modules:&lt;/p>
 &lt;ul>
@@ -143,7 +143,6 @@ Keyple Architecture Remote Plugin
 &lt;tr>
 &lt;th>Module&lt;/th>
 &lt;th>Package&lt;/th>
-&lt;th>API&lt;br/>level&lt;/th>
 &lt;th>Feature&lt;/th>
 &lt;/tr>
 &lt;/thead>
@@ -151,14 +150,12 @@ Keyple Architecture Remote Plugin
 &lt;tr>
 &lt;td rowspan="4" width="13%">Service&lt;/td>
 &lt;td width="38%">org.eclipse.keyple.core.&lt;b>service&lt;/b>&lt;/td>
-&lt;td width="8%">high&lt;/td>
 &lt;td>Management of the smart card readers&lt;br/>
 &lt;ul>&lt;li>Registration of plugins to the smart card Service&lt;br/>&lt;/li>
 &lt;li>Access to the readers through plugins&lt;/li>&lt;/ul>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>org.eclipse.keyple.core.service.&lt;b>event&lt;/b>&lt;/td>
-&lt;td>high&lt;/td>
 &lt;td>Notifications of reader plug/unplug, of smart card insertion/removed&lt;br/>
 &lt;ul>&lt;li>Define observers of plugins or readers&lt;br/>&lt;/li>
 &lt;li>Interface to be implemented by observers to be notified on plugin event or reader event&lt;br/>&lt;/li>
@@ -166,12 +163,10 @@ Keyple Architecture Remote Plugin
 &lt;/tr>
 &lt;tr>
 &lt;td>org.eclipse.keyple.core.service.&lt;b>util&lt;/b>&lt;/td>
-&lt;td>high&lt;/td>
 &lt;td>Communication protocols setting for contactless/contacts Reader&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>org.eclipse.keyple.card.&lt;b>selection&lt;/b>&lt;/td>
-&lt;td>high&lt;/td>
 &lt;td>Generic selection of a smart card&lt;br/>
 &lt;ul>&lt;li>preparation of smart card selection requests&lt;br>&lt;/li>
 &lt;li>matching selection results as smart card images&lt;/li>&lt;/ul>&lt;/td>
@@ -179,18 +174,15 @@ Keyple Architecture Remote Plugin
 &lt;tr>
 &lt;td rowspan="2">Smart card&lt;/td>
 &lt;td>org.eclipse.keyple.card.&lt;b>message&lt;/b>&lt;/td>
-&lt;td>low&lt;/td>
 &lt;td>Transmission of grouped APDU commands to a Reader&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>org.eclipse.keyple.core.card.&lt;b>command&lt;/b>&lt;/td>
-&lt;td>low&lt;/td>
 &lt;td>Generic API to develop a smart card specific library&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>Plugin&lt;/td>
 &lt;td>org.eclipse.keyple.core.&lt;b>plugin&lt;/b>&lt;br/>
-&lt;td>low&lt;/td>
 &lt;td>Reader plugins implementation&lt;br/>
 &lt;ul>&lt;li>Utility classes providing generic processing for Readers &lt;/li>&lt;/ul>&lt;/td>
 &lt;/tr>
@@ -211,9 +203,9 @@ Core packages
 &lt;/figcaption>
 &lt;/figure>
 &lt;hr>
-&lt;h2 id="service-interface">Service Interface&lt;/h2>
+&lt;h2 id="service-interface---reader-access">Service Interface - Reader Access&lt;/h2>
 &lt;p>for the development of ticketing terminal application&lt;/p>
-&lt;h3 id="reader-access">Reader Access&lt;/h3>
+&lt;h3 id="types-of-plugin--reader">Types of plugin &amp;amp; reader&lt;/h3>
 &lt;p>On Keyple, the smart card readers are managed through plugins in order to integrate specific reader solutions.
 The &lt;strong>SmartCard Service&lt;/strong> singleton provides the unique name list of registered plugins. There can be three kinds of plugin:&lt;/p>
 &lt;ul>
@@ -236,7 +228,7 @@ The &lt;strong>SmartCard Service&lt;/strong> singleton provides the unique name 
 &lt;/li>
 &lt;/ul>
 &lt;p>(The APDU transmission with a Card is managed at a lower layer, through a Card Solution API.)&lt;/p>
-&lt;h4 id="specific-plugin-integration">Specific Plugin integration&lt;/h4>
+&lt;h3 id="specific-plugin-integration">Specific Plugin integration&lt;/h3>
 &lt;p>The Plugins are registered to the SmartCard Service through related specific Plugin Factory.
 &lt;figure id="figure-specific-plugin-v100">
 &lt;a data-fancybox="" href="../../media/architecture/KeypleCore_Reader_ClassDiag_SpecificPluginFactoryAndProtocol_1_0_0.svg" data-caption="Specific Plugin v1.0.0">
@@ -247,7 +239,7 @@ Specific Plugin v1.0.0
 &lt;/figcaption>
 &lt;/figure>
 &lt;/p>
-&lt;h4 id="reader-notifications">Reader Notifications&lt;/h4>
+&lt;h3 id="reader-notifications">Reader Notifications&lt;/h3>
 &lt;p>To be notified about &lt;strong>Plugin Event&lt;/strong> or &lt;strong>Reader Event&lt;/strong>, a terminal application must implement the dedicated &lt;strong>Plugin Observer&lt;/strong> or &lt;strong>Reader Observer&lt;/strong> interfaces.&lt;/p>
 &lt;figure id="figure-reader-notifications-v100">
 &lt;a data-fancybox="" href="../../media/architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" data-caption="Reader Notifications v1.0.0">
@@ -257,11 +249,11 @@ Specific Plugin v1.0.0
 Reader Notifications v1.0.0
 &lt;/figcaption>
 &lt;/figure>
-&lt;h5 id="plugin-event">Plugin Event&lt;/h5>
+&lt;h3 id="plugin-event">Plugin Event&lt;/h3>
 &lt;p>Several &lt;strong>Plugin Observers&lt;/strong> could be registered to an Observable Plugin.
 In case of reader connection / disconnection, the Observable Plugin notifies sequentially the registered Plugin Observers with the corresponding Plugin Event.
 The Observable Plugin is a blocking API, the thread managing the issuance of the Plugin Event waits the acknowledge of the Plugin Observer currently notified.&lt;/p>
-&lt;h5 id="reader-event">Reader Event&lt;/h5>
+&lt;h3 id="reader-event">Reader Event&lt;/h3>
 &lt;p>Several &lt;strong>Reader Observers&lt;/strong> could be registered to an Observable Reader.
 In case of Card insertion / removal or selection match, the Observable Reader notifies sequentially the registered Reader Observers with the corresponding Reader Event. The Observable Reader could be a blocking API, the thread managing the issuance of the Plugin Event could wait the acknowledge of the notified Reader Observers.&lt;/p>
 &lt;p>An Observable Reader has the capability to be set with a &lt;strong>Default Selections Request&lt;/strong>: in this case when a Card is inserted in the Reader, the Reader will try to operate the configured default selections. If a selection successfully matches with the Card, instead to simply notify about the insertion of a Card, the Observable Reader will notify about a successful selection with a Card application.&lt;/p>
@@ -270,7 +262,7 @@ In case of Card insertion / removal or selection match, the Observable Reader no
 &lt;li>If the notification mode is defined as &lt;strong>matched only&lt;/strong>, then in case of Card insertion, simple card insertion Reader Events are not notified.&lt;/li>
 &lt;/ul>
 &lt;p>When the processing of an inserted or matched Card is finished, a Reader Observer must release the logical channel with the Card, in order to prepare the Observable Reader to detect the removal of the Card.&lt;/p>
-&lt;h5 id="observable-reader-states">Observable Reader states&lt;/h5>
+&lt;h3 id="observable-reader-states">Observable Reader states&lt;/h3>
 &lt;p>An Observable Reader is active only when at least one Reader Observer is registered, and if the start of the detection has been requested.
 When active, an Observable Reader could switch between three internal states: &lt;strong>Wait for Card Insertion&lt;/strong>, &lt;strong>Wait for Card Processing&lt;/strong>, &amp;amp; &lt;strong>Wait for Card Removal&lt;/strong>.&lt;/p>
 &lt;p>In the nominal case, a Reader Observer indicates to the Observable Reader that the processing of the SE is finished by releasing the Card Channel.
@@ -306,8 +298,10 @@ Observable Reader States
 &lt;p>If a Card detection is started with the &lt;strong>repeating&lt;/strong> polling mode, then later when the Card is removed, the Reader starts again the detection of a new Card.&lt;/p>
 &lt;p>Whatever the Plugin of Observable Reader, when waiting for the Card removal, any Observable Reader shall have the capability to notify the remove of the Card.
 Some Plugin solutions could have the capability to notify a Card removal also during the processing of the Card.&lt;/p>
-&lt;h3 id="card-selection">Card Selection&lt;/h3>
-&lt;h4 id="selection-scenarios">Selection scenarios&lt;/h4>
+&lt;hr>
+&lt;h2 id="service-interface---card-selection">Service Interface - Card Selection&lt;/h2>
+&lt;p>for the development of ticketing terminal application&lt;/p>
+&lt;h3 id="selection-scenarios">Selection scenarios&lt;/h3>
 &lt;p>Depending on the Card transaction use case, or on the Reader capability, there are two ways to manage the Selection of a Card:&lt;/p>
 &lt;ul>
 &lt;li>Either on a simple Reader, a Selection could be operated directly by transmitting the Selection Request. In this case the same entity manages both the Card Selection and the Card processing.&lt;/li>
@@ -321,7 +315,7 @@ Some Plugin solutions could have the capability to notify a Card removal also du
 Selection v1.0.0
 &lt;/figcaption>
 &lt;/figure>
-&lt;h4 id="selection-setting-and-processing">Selection setting and processing&lt;/h4>
+&lt;h3 id="selection-setting-and-processing">Selection setting and processing&lt;/h3>
 &lt;p>A Card Selection request is defined with a Card Selector. A Card Selector could be defined with tree optional levels of selection filter.&lt;/p>
 &lt;ul>
 &lt;li>The selection could be limited to match a specific card communication protocol.&lt;/li>
