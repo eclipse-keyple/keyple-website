@@ -9,7 +9,7 @@ weight: 420
 
 ---
 
-The JavaDoc for the Keyple project is available online. The documentation is split into the following parts:
+The Doxygen document for the Keyple project is available online. The documentation is split into the following parts:
 
 <div>
 	<select id="version_selection" style="float: right;" onchange="selectVersion()">
