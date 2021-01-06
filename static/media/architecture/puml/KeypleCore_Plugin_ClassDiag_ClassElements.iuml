@@ -134,18 +134,20 @@
   #AbstractReader(String pluginName, String name)
   #<b>final</b> String getPluginName()
 '
-  .. implementation of tbe public interface ProxyReader ..
+  .. implementation of tbe public interface Reader ..
   +<b>final</b> String getName()
+'
+  .. implementation of tbe public interface ProxyReader ..
   +<b>final</b> List<CardSelectionResponse> transmitCardSelectionRequests(List<CardSelectionRequest> requests, MultiSelectionProcessing
     selectionMode, ChannelControl channelControl)
   +<b>final</b> CardResponse transmitCardRequest(CardRequest request, ChannelControl channelControl)
-.. no +<b>final</b> releaseChannel() ..
+  .                                                                                                                                                                   <color:red>no final releaseChannel()</color>
 '
   .. protected abstract methods to be implemented by AbstractLocalReader or VirtualReader ..
   #{abstract} List<CardSelectionResponse> processCardSelectionRequests(List<CardSelectionRequest> requests,
     MultiSelectionProcessing selectionMode, ChannelControl channelControl)
   #{abstract} CardResponse processCardRequest(CardRequest request, ChannelControl channelControl)
-..  #{abstract} terminateChannel() ..
+  .                                                                                                                                                                    <color:red>no abstract terminateChannel()</color>
 '
   .. deprecated internal registration - will be removed in v2.0.0 ..
   ~checkStatus()
@@ -164,8 +166,8 @@
   -Map<String, String> protocolAssociations
   --
   #AbstractLocalReader(String pluginName, String name)'
-  .. implementation of the public interface CardReader ..
-  +<b>final</b> boolean isCardPresent()
+  .. implementation of the public interface Reader ..
+  +boolean isCardPresent()                <color:red>must be final</color>
   +<b>final</b> activateProtocol(String readerProtocolName, String applicationProtocolName)
   +<b>final</b> deactivateProtocol(String readerProtocolName)
 
@@ -178,7 +180,7 @@
     ~<b>final</b> CardResponse processCardRequest(CardRequest request, ChannelControl channelControl)
 ..  ~<b>final</b> terminateChannel() ..
 '
-  .. protected abstract methods to be implemented by <color:blue>native</color> CardReader ..
+  .. protected abstract methods to be implemented by <color:blue>native</color> Reader ..
   #{abstract} <color:blue>activateReaderProtocol</color>(String readerProtocolName)
   #{abstract} <color:blue>deactivateReaderProtocol</color>(String readerProtocolName)
   #{abstract} boolean <color:blue>isCurrentProtocol</color>(String readerProtocolName)
@@ -222,8 +224,9 @@
   --
   #AbstractObservableLocalReader(String pluginName, String readerName)
 '
-'  .. implementation of the public interface CardReader ..
-'  +<b>final</b> boolean isCardPresent()                            <color:red>to remove !!</color>
+  .. implementation of the public interface Reader ..
+  +<b>final</b> boolean isCardPresent()                 <color:red>to remove !!</color>
+
   .. implementation of the public interface ObservableReader ..
   +<b>final</b> addObserver(ReaderObserver observer)
   +<b>final</b> removeObserver(ReaderObserver observer)
