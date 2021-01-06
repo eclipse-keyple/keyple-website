@@ -16,16 +16,14 @@
 
 package org.eclipse.keyple.core #FFFFFF {
   package "service" as core_reader #FFFFFF {
-    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_PLUGIN_1_0_0_PLUGIN
-    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_UTIL_1_0_0_PLUGIN
+    !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_PLUGIN_1_0_0
     !include KeypleCore_Reader_ClassDiag_ClassElements.iuml!READER_READER_1_0_0_PLUGIN
   }
 
   package card #FFFFFF {
     !include KeypleCore_Card_ClassDiag_ClassElements.iuml!CARD_PROXYREADER_1_0_0
   }
-  Plugin -right-|> ProxyElement : extends
-  ProxyElement <|-right- Reader : extends
+  Plugin -right[hidden]- Reader
   Reader <|-down- ProxyReader : extends
 
   package plugin #FFFFFF {

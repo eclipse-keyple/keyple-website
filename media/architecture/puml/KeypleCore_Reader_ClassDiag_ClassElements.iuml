@@ -58,7 +58,7 @@
   +String getName()
 
   +boolean isCardPresent()
-  +boolean isContactlessTransmission()
+  +boolean isContactless()
 
   +activateProtocol(String applicationReference, String pluginReference)
   +deactivateProtocol(String applicationReference)
@@ -67,16 +67,13 @@
 
 @startuml(id=READER_READER_1_0_0_PLUGIN)
 +interface Reader {
+  +String getName()
+
   +boolean isCardPresent()
+  +boolean <color:blue>isContactless</color>()
+
   +activateProtocol(String applicationReference, String pluginReference)
   +deactivateProtocol(String applicationReference)
-  +boolean <color:blue>isContactlessTransmission</color>()
-}
-@enduml
-
-@startuml(id=READER_UTIL_1_0_0_PLUGIN)
-~interface ProxyElement {
-  +String getName()
 }
 @enduml
 
