@@ -186,21 +186,47 @@ for the implementation of smartcard reader plugins
 
 ### Plugin Factorized Processing
 
+The Plugin API provides factorized processing for plugin implementation. Only the abstract methods highlighted **in blue** have to be implemented have to be implemented by the specific plugins.
 The implementation of Plugins requires to extend the classes AbstractPlugin  and AbstractLocalReader.
 
- - If the reader solution allows the hot plug/unplug of readers then AbstractThreadedObservablePlugin should be extended.
- - In case the local reader has the capability to detect the insertion or the removal or a card, then AbstractObservableLocalReader should be extended.
-
-For reader solutions managing themselves the allocation of logical channel for communicatio with smart cards, the interface SmartSelectionReader should be implemented (e.g. it is the case for the OMAPI plugin).
-
-Only the abstract methods highlighted **in blue** have to be implemented have to be implemented by the specific plugins.
-
-For plugins with ObservableReader: depending on the capability of the reader solution different interfaces could be implemented:
- - WaitForCardInsertionAutonomous
- - WaitForCardRemovalAutonomous
- - WaitForCardRemovalDuringProcessing or DontWaitForCardRemovalDuringProcessing
- - WaitForCardInsertionBlocking or WaitForCardInsertionNonBlocking
- - WaitForCardRemovalBlocking or WaitForCardRemovalNonBlocking
- - AbstractObservableLocalAutonomousReader
-
 {{< figure library="true" src="architecture/KeypleCore_Plugin_ClassDiag_PluginImplementaion_1_0_0.svg" title="Plugin Factorized Processing v1.0.0" >}}
+
+### Specific Plugin Implementation
+A specific plugin solution has to implement both the plugin features (access to specific readers) and the reader features (operating a specific reader). 
+
+#### plugin features
+By default, any specific plugin should extend AbstractPlugin, and provide an implementation of the method:
+ - Map<String, Reader>initNativeReaders()
+
+If the reader solution allows the hot plug/unplug of readers, in this case the specific plugin should be observable: the class AbstractThreadedObservablePlugin should be extended, and these 3 methods be implemented:
+ - SortedSet<String> fetchNativeReadersNames()
+ - Reader fetchNativeReader(String name)
+ - PluginObservationExceptionHandler getObservationExceptionHandler().
+ (e.g. it is the case for the PC/SC plugin which isn't based on a static configuration)
+
+#### reader features
+By default, any specific plugin should extend AbstractLocalReader, and provides the implementation for the methods 
+ - boolean isContactlessTransmission()
+ - activateReaderProtocol(String readerProtocolName)
+ - deactivateReaderProtocol(String readerProtocolName)
+ - boolean isCurrentProtocol(String readerProtocolName)
+ - boolean checkCardPresence()
+ - openPhysicalChannel()
+ - closePhysicalChannel()
+ - boolean isPhysicalChannelOpen()
+ - byte[] getATR()
+ - byte[] transmitApdu(byte[] apduIn)
+
+For reader solutions managing themselves internally the allocation of logical channel for communication with smart cards, the interface SmartSelectionReader should be implemented, and provides the 2 methods:
+ - ApduResponseopenChannelForAid(byte[] dfName)
+ - closeLogicalChannel()
+(e.g. it is the case for the OMAPI plugin)
+
+If the reader solution has the capability to detect and notify the insertion or the removal of card, then the reader should be observable. In this case the specific plugin should at least extend AbstractObservableLocalReader.
+But depending on how the reader solution manage the card detection and the notification, in addition
+ - the specific plugin could extend AbstractObservableLocalAutonomousReader (for readers that have a fully integrated management of card communications for card insertion detection, e.g. NFC Android),
+ - or implement the interfaces 
+   - WaitForCardInsertionAutonomous & WaitForCardRemovalAutonomous (e.g. NFC Android))
+   - WaitForCardRemovalDuringProcessing (for readers able to detect a card removal during processing, e.g. PC/SC or NFC Android after version 7.0 Nougat) or DontWaitForCardRemovalDuringProcessing
+   - WaitForCardInsertionBlocking (readers that are autonomous in the management of waiting for the insertion of a card and that provide a method to wait for it indefinitely, e.g. PC/SC on Windows or Linux) or WaitForCardInsertionNonBlocking (readers that require an active process to detect the card insertion, e.g. PC/SC on MacOS)
+   - WaitForCardRemovalBlocking (readers able to handle natively the card removal process, e.g. PC/SC or NFC Android after version 7.0 Nougat) or WaitForCardRemovalNonBlocking
