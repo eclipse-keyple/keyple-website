@@ -6,7 +6,7 @@ function selectVersion() {
     var jsonResponse = JSON.parse(req.responseText);
     var html = '';
     for (const [key, value] of Object.entries(jsonResponse)) {
-      html += '<li><a href="' + key + '/' + version + '/index.html" target="_blank">JavaDoc for ' + value + '</a></li>';
+      html += '<li><a href="' + key + '/' + version + '/index.html" target="_blank">Doxygen for ' + value + '</a></li>';
     }
     document.getElementById('module_list').innerHTML = html;
   };
