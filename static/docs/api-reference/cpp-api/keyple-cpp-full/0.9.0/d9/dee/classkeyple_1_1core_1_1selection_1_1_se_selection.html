@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Keyple C++
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    <div id="projectbrief">Keyple, an Open Source SDK for Ticketing</div>
   </td>
@@ -75,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../df/d0d/_se_selection_8h_source.html">SeSelection.h</a>&gt;</code></p>
+<p><code>#include &lt;SeSelection.h&gt;</code></p>
 
 <p>Inherits enable_shared_from_this&lt; SeSelection &gt;.</p>
 <table class="memberdecls">
@@ -109,8 +110,6 @@ Friends</h2></td></tr>
 <div class="textblock"><p>The <a class="el" href="../../d9/dee/classkeyple_1_1core_1_1selection_1_1_se_selection.html">SeSelection</a> class handles the SE selection process. </p>
 <p>It provides a way to do explicit SE selection or to post process a default SE selection. <br  />
  The channel is kept open by default, but can be closed after each selection cases (see PrepareReleaseSeChannel). </p>
-
-<p class="definition">Definition at line <a class="el" href="../../df/d0d/_se_selection_8h_source.html#l00051">51</a> of file <a class="el" href="../../df/d0d/_se_selection_8h_source.html">SeSelection.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8b6735aac0a0e080239b27fc2a867232"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8b6735aac0a0e080239b27fc2a867232">&#9670;&nbsp;</a></span>SeSelection() <span class="overload">[1/2]</span></h2>
@@ -135,8 +134,6 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html#l00040">40</a> of file <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html">SeSelection.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a1687061f68bf98a87472453c817f30f2"></a>
@@ -154,8 +151,6 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Alternate constructor for standard usages. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html#l00043">43</a> of file <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html">SeSelection.cpp</a>.</p>
 
 </div>
 </div>
@@ -177,8 +172,6 @@ Friends</h2></td></tr>
 <p>The SelectionOperation is the <a class="el" href="../../d7/d3f/classkeyple_1_1core_1_1seproxy_1_1event_1_1_abstract_default_selections_request.html">keyple::core::seproxy::event::AbstractDefaultSelectionsRequest</a> to process in ordered to select a SE among others through the selection process. This method is useful to build the prepared selection to be executed by a reader just after a SE insertion.</p>
 <dl class="section return"><dt>Returns</dt><dd>the <a class="el" href="../../d7/d3f/classkeyple_1_1core_1_1seproxy_1_1event_1_1_abstract_default_selections_request.html">keyple::core::seproxy::event::AbstractDefaultSelectionsRequest</a> previously prepared with prepareSelection </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html#l00157">157</a> of file <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html">SeSelection.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a213957d21d20694501bd5c7c0d3ac668"></a>
@@ -198,8 +191,6 @@ Friends</h2></td></tr>
 <p>Prepare to close the SE channel.<br  />
  If this command is called before a "process" selection command then the last transmission to the PO will be associated with the indication CLOSE_AFTER in order to close the SE channel.<br  />
  This makes it possible to chain several selections on the same SE if necessary. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html#l00057">57</a> of file <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html">SeSelection.cpp</a>.</p>
 
 </div>
 </div>
@@ -226,8 +217,6 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the selection index giving the current selection position in the selection request. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html#l00045">45</a> of file <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html">SeSelection.cpp</a>.</p>
 
 </div>
 </div>
@@ -261,8 +250,6 @@ Friends</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html#l00108">108</a> of file <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html">SeSelection.cpp</a>.</p>
 
 </div>
 </div>
@@ -304,8 +291,6 @@ A selection request matches the current SE and the keepChannelOpen flag was true
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html#l00125">125</a> of file <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html">SeSelection.cpp</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
@@ -343,8 +328,6 @@ A selection request matches the current SE and the keepChannelOpen flag was true
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html#l00173">173</a> of file <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html">SeSelection.cpp</a>.</p>
-
 </div>
 </div>
 <a id="ae46cd2cf3fddea18375a9cc7a73088f0"></a>
@@ -380,8 +363,6 @@ A selection request matches the current SE and the keepChannelOpen flag was true
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html#l00184">184</a> of file <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html">SeSelection.cpp</a>.</p>
 
 </div>
 </div>
@@ -419,13 +400,11 @@ A selection request matches the current SE and the keepChannelOpen flag was true
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html#l00195">195</a> of file <a class="el" href="../../df/dc0/_se_selection_8cpp_source.html">SeSelection.cpp</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>component/keyple-core/src/main/selection/<a class="el" href="../../df/d0d/_se_selection_8h_source.html">SeSelection.h</a></li>
-<li>component/keyple-core/src/main/selection/<a class="el" href="../../df/dc0/_se_selection_8cpp_source.html">SeSelection.cpp</a></li>
+<li>component/keyple-core/src/main/selection/<a class="el" href="../../df/d0d/_se_selection_8h.html">SeSelection.h</a></li>
+<li>component/keyple-core/src/main/selection/<a class="el" href="../../df/dc0/_se_selection_8cpp.html">SeSelection.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

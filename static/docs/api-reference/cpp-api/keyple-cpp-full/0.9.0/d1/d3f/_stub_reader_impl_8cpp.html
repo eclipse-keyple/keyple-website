@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Keyple C++
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    <div id="projectbrief">Keyple, an Open Source SDK for Ticketing</div>
   </td>
@@ -72,25 +73,23 @@ $(function() {
 <div class="title">StubReaderImpl.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d3/def/_stub_reader_impl_8h_source.html">StubReaderImpl.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d9/d6a/_byte_array_util_8h_source.html">ByteArrayUtil.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../da/d7f/_keyple_reader_i_o_exception_8h_source.html">KeypleReaderIOException.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d2/d0d/_keyple_reader_exception_8h_source.html">KeypleReaderException.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../da/d62/_observable_reader_state_service_8h_source.html">ObservableReaderStateService.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d7/d6f/_se_protocol_8h_source.html">SeProtocol.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d5/ded/_smart_insertion_monitoring_job_8h_source.html">SmartInsertionMonitoringJob.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../de/da0/_smart_removal_monitoring_job_8h_source.html">SmartRemovalMonitoringJob.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../da/d50/_wait_for_start_detect_8h_source.html">WaitForStartDetect.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d3/dc9/_wait_for_se_insertion_8h_source.html">WaitForSeInsertion.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../df/d24/_wait_for_se_processing_8h_source.html">WaitForSeProcessing.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d5/d47/_wait_for_se_removal_8h_source.html">WaitForSeRemoval.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d9/d4f/_stub_secure_element_8h_source.html">StubSecureElement.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d9/d4b/_illegal_argument_exception_8h_source.html">IllegalArgumentException.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d9/d20/_interrupted_exception_8h_source.html">InterruptedException.h</a>&quot;</code><br />
-</div>
-<p><a href="../../d1/d3f/_stub_reader_impl_8cpp_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d3/def/_stub_reader_impl_8h.html">StubReaderImpl.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d6a/_byte_array_util_8h.html">ByteArrayUtil.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../da/d7f/_keyple_reader_i_o_exception_8h.html">KeypleReaderIOException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/d0d/_keyple_reader_exception_8h.html">KeypleReaderException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../da/d62/_observable_reader_state_service_8h.html">ObservableReaderStateService.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d7/d6f/_se_protocol_8h.html">SeProtocol.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/ded/_smart_insertion_monitoring_job_8h.html">SmartInsertionMonitoringJob.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../de/da0/_smart_removal_monitoring_job_8h.html">SmartRemovalMonitoringJob.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../da/d50/_wait_for_start_detect_8h.html">WaitForStartDetect.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/dc9/_wait_for_se_insertion_8h.html">WaitForSeInsertion.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../df/d24/_wait_for_se_processing_8h.html">WaitForSeProcessing.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/d47/_wait_for_se_removal_8h.html">WaitForSeRemoval.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d4f/_stub_secure_element_8h.html">StubSecureElement.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d8/d48/_thread_8h.html">Thread.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d4b/_illegal_argument_exception_8h.html">IllegalArgumentException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d20/_interrupted_exception_8h.html">InterruptedException.h</a>&quot;</code><br />
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:dd/ddf/namespacekeyple"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/ddf/namespacekeyple.html">keyple</a></td></tr>
