@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Keyple C++
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    <div id="projectbrief">Keyple, an Open Source SDK for Ticketing</div>
   </td>
@@ -74,7 +75,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../da/d86/_matcher_8h_source.html">Matcher.h</a>&gt;</code></p>
+<p><code>#include &lt;Matcher.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -101,10 +102,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8c320824cc79d695058bcda1d940b09a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d94/classkeyple_1_1common_1_1_matcher.html">Matcher</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d94/classkeyple_1_1common_1_1_matcher.html#a8c320824cc79d695058bcda1d940b09a">reset</a> ()</td></tr>
 <tr class="separator:a8c320824cc79d695058bcda1d940b09a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../da/d86/_matcher_8h_source.html#l00027">27</a> of file <a class="el" href="../../da/d86/_matcher_8h_source.html">Matcher.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5351a9de98d844dd27a1c373f902e6da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5351a9de98d844dd27a1c373f902e6da">&#9670;&nbsp;</a></span>Matcher()</h2>
 
@@ -132,8 +130,6 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>All matchers have the state used by <a class="el" href="../../d3/d65/classkeyple_1_1common_1_1_pattern.html">Pattern</a> during a match. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html#l00027">27</a> of file <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -155,8 +151,6 @@ Public Member Functions</h2></td></tr>
 <p>This method starts at the beginning of this matcher's region, o, if a previous invocation of the method was successful and the matcher has not since been reset, at the first character not matched by the previous match.</p>
 <p>If the match succeeds then more information can be obtained viw the start, end, group methods.</p>
 <dl class="section return"><dt>Returns</dt><dd>true if, and only if, a subsequence of the input sequences matches this matcher's patern. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html#l00059">59</a> of file <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a>.</p>
 
 </div>
 </div>
@@ -185,8 +179,6 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html#l00079">79</a> of file <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a6c18f407f77d077bbaf68626b6cb81f7"></a>
@@ -205,8 +197,6 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns the end index of the text.</p>
 <dl class="section return"><dt>Returns</dt><dd>the index after the last charaecter in the text </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html#l00114">114</a> of file <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a>.</p>
 
 </div>
 </div>
@@ -232,8 +222,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html#l00099">99</a> of file <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a>.</p>
 
 </div>
 </div>
@@ -261,8 +249,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html#l00091">91</a> of file <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a>.</p>
 
 </div>
 </div>
@@ -293,8 +279,6 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Initiates a search for an anchored match to a <a class="el" href="../../d3/d65/classkeyple_1_1common_1_1_pattern.html">Pattern</a> within the given bounds. The groups are filled with default values and the match of the root of the state machine is called. The state machine will hold the state of the match as it proceeds in this matcher. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html#l00034">34</a> of file <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a643de977a411d54f58269722cfc8be41"></a>
@@ -314,8 +298,6 @@ Public Member Functions</h2></td></tr>
 <p>Attempts to match the entire region against the pattern.</p>
 <p>If the match succeeds then more information can be obtained via the <code>start</code>, <code>end</code>, and <code>group</code> methods. </p>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if, and only if, the entire region sequence matches this matcher's pattern </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html#l00045">45</a> of file <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a>.</p>
 
 </div>
 </div>
@@ -347,8 +329,6 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The string constructed by replacing each matching subsequence by the replacement string, substituting captured subsequences as needed </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html#l00050">50</a> of file <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a8c320824cc79d695058bcda1d940b09a"></a>
@@ -367,8 +347,6 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Resets this matcher.</p>
 <p>Resetting a matcher discards all of its explicit states information and sets its append position to zero. The matcher's region is set to the default region, which is its entire character sequence. The anchoring and transparency of this matcher's region boundaries are unaffected. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html#l00119">119</a> of file <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a>.</p>
 
 </div>
 </div>
@@ -390,13 +368,11 @@ Public Member Functions</h2></td></tr>
 <p>Initiates a search to find a <a class="el" href="../../d3/d65/classkeyple_1_1common_1_1_pattern.html">Pattern</a> within the given bounds. The groups are filled with defaults values and the match of the root of the state machine is called. The state machine will hold the state of the match as it proceeds in this matcher.</p>
 <p>Matcher.from is not set here, because it is the 'hard' boundary of the start of the search which anchors will set to. The from param is the 'soft' boundary of the start of the search, meaning that the regex tries to match at that index but won't match there. Subsequent calls to the search methods start at a new 'soft' boundary which is the end of the previous match. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html#l00104">104</a> of file <a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>component/keyple-common/src/main/<a class="el" href="../../da/d86/_matcher_8h_source.html">Matcher.h</a></li>
-<li>component/keyple-common/src/main/<a class="el" href="../../dd/d9b/_matcher_8cpp_source.html">Matcher.cpp</a></li>
+<li>component/keyple-common/src/main/<a class="el" href="../../da/d86/_matcher_8h.html">Matcher.h</a></li>
+<li>component/keyple-common/src/main/<a class="el" href="../../dd/d9b/_matcher_8cpp.html">Matcher.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

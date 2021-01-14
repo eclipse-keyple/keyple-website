@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Keyple C++
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    <div id="projectbrief">Keyple, an Open Source SDK for Ticketing</div>
   </td>
@@ -79,7 +80,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../da/d61/_se_selector_8h_source.html">SeSelector.h</a>&gt;</code></p>
+<p><code>#include &lt;SeSelector.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -129,8 +130,6 @@ Friends</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>AID’s bytes of the SE application to select. In case the SE application is currently not selected, a logical channel is established and the corresponding SE application is selected by the SE reader, otherwise keep the current channel. - optional <a class="el" href="../../d7/d06/classkeyple_1_1core_1_1seproxy_1_1_se_selector_1_1_aid_selector_1_1_file_occurrence.html">FileOccurrence</a> and <a class="el" href="../../d7/da8/classkeyple_1_1core_1_1seproxy_1_1_se_selector_1_1_aid_selector_1_1_file_control_information.html">FileControlInformation</a> defines selections modes according to ISO7816-4 - optional successfulSelectionStatusCodes define a list of accepted SW1SW2 codes (in addition to 9000). Allows, for example, to manage the selection of the invalidated cards. - <a class="el" href="../../d3/da4/classkeyple_1_1core_1_1seproxy_1_1_se_selector_1_1_aid_selector.html">AidSelector</a> could be missing in <a class="el" href="../../d6/d73/classkeyple_1_1core_1_1seproxy_1_1_se_selector.html">SeSelector</a> when operating SE which don’t support the Select Application command (as it is the case for SAM). </p>
-
-<p class="definition">Definition at line <a class="el" href="../../da/d61/_se_selector_8h_source.html#l00060">60</a> of file <a class="el" href="../../da/d61/_se_selector_8h_source.html">SeSelector.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3debb117ff5816576a17ca26180bde41"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3debb117ff5816576a17ca26180bde41">&#9670;&nbsp;</a></span>AidSelector()</h2>
@@ -149,8 +148,6 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Private constructor</p>
 <p>C++ vs. Java: Should be private but would forbid usage of make_shared from <a class="el" href="../../d6/d73/classkeyple_1_1core_1_1seproxy_1_1_se_selector.html">SeSelector</a> class. Setting it public for now. Could use an intermediate derived class otherwise if need be. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html#l00130">130</a> of file <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html">SeSelector.cpp</a>.</p>
 
 </div>
 </div>
@@ -177,8 +174,6 @@ Friends</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html#l00157">157</a> of file <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html">SeSelector.cpp</a>.</p>
 
 </div>
 </div>
@@ -207,8 +202,6 @@ Friends</h2></td></tr>
 <p>Gets a new builder.</p>
 <dl class="section return"><dt>Returns</dt><dd>a new builder instance </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html#l00262">262</a> of file <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html">SeSelector.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a75e69f3960804e8366f9b670c4c847a0"></a>
@@ -228,8 +221,6 @@ Friends</h2></td></tr>
 <p>Getter for the AID provided at construction time</p>
 <dl class="section return"><dt>Returns</dt><dd>byte array containing the AID </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html#l00136">136</a> of file <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html">SeSelector.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a92ab5673bc5b42a5c6b0850f58ec0e77"></a>
@@ -247,8 +238,6 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the file control information parameter </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html#l00146">146</a> of file <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html">SeSelector.cpp</a>.</p>
 
 </div>
 </div>
@@ -268,8 +257,6 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the file occurrence parameter </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html#l00141">141</a> of file <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html">SeSelector.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a9e7acbfff933f5588dcbfc0309653899"></a>
@@ -288,8 +275,6 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Gets the list of successful selection status codes</p>
 <dl class="section return"><dt>Returns</dt><dd>the list of status codes </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html#l00151">151</a> of file <a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html">SeSelector.cpp</a>.</p>
 
 </div>
 </div>
@@ -351,8 +336,6 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d61/_se_selector_8h_source.html#l00274">274</a> of file <a class="el" href="../../da/d61/_se_selector_8h_source.html">SeSelector.h</a>.</p>
-
 </div>
 </div>
 <a id="ac0a155749a7581361e7b400c0ca2808f"></a>
@@ -375,8 +358,6 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d61/_se_selector_8h_source.html#l00269">269</a> of file <a class="el" href="../../da/d61/_se_selector_8h_source.html">SeSelector.h</a>.</p>
-
 </div>
 </div>
 <a id="ae8aa57738010e4188f50aca414ca438e"></a>
@@ -391,13 +372,11 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d61/_se_selector_8h_source.html#l00264">264</a> of file <a class="el" href="../../da/d61/_se_selector_8h_source.html">SeSelector.h</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>component/keyple-core/src/main/seproxy/<a class="el" href="../../da/d61/_se_selector_8h_source.html">SeSelector.h</a></li>
-<li>component/keyple-core/src/main/seproxy/<a class="el" href="../../d3/d9e/_se_selector_8cpp_source.html">SeSelector.cpp</a></li>
+<li>component/keyple-core/src/main/seproxy/<a class="el" href="../../da/d61/_se_selector_8h.html">SeSelector.h</a></li>
+<li>component/keyple-core/src/main/seproxy/<a class="el" href="../../d3/d9e/_se_selector_8cpp.html">SeSelector.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

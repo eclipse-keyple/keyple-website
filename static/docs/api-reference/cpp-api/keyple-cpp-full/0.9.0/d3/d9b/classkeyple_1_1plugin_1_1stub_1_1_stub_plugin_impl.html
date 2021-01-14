@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Keyple C++
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    <div id="projectbrief">Keyple, an Open Source SDK for Ticketing</div>
   </td>
@@ -75,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../da/dc7/_stub_plugin_impl_8h_source.html">StubPluginImpl.h</a>&gt;</code></p>
+<p><code>#include &lt;StubPluginImpl.h&gt;</code></p>
 
 <p>Inherits <a class="el" href="../../d4/d69/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_abstract_threaded_observable_plugin.html">keyple::core::seproxy::plugin::AbstractThreadedObservablePlugin</a>, and <a class="el" href="../../dc/d67/classkeyple_1_1plugin_1_1stub_1_1_stub_plugin.html">keyple::plugin::stub::StubPlugin</a>.</p>
 <table class="memberdecls">
@@ -187,8 +188,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This plugin allows to simulate Secure Element communication by creating <a class="el" href="../../d4/dee/namespacekeyple_1_1core_1_1seproxy_1_1protocol.html#a9cd102c20ee2d99612f243f7388bdd3d">keyple::core::seproxy::protocol::TransmissionMode</a> and <a class="el" href="../../d6/dcd/classkeyple_1_1plugin_1_1stub_1_1_stub_secure_element.html">keyple::plugin::stub::StubSecureElement</a>. Plug a new <a class="el" href="../../df/d36/classkeyple_1_1plugin_1_1stub_1_1_stub_reader.html">StubReader</a> with <a class="el" href="../../d3/d9b/classkeyple_1_1plugin_1_1stub_1_1_stub_plugin_impl.html#adc9000e749c19e982c8b6486f7052381">plugStubReader()</a> and insert an implementation of your own of <a class="el" href="../../d6/dcd/classkeyple_1_1plugin_1_1stub_1_1_stub_secure_element.html">keyple::plugin::stub::StubSecureElement</a> to start simulation communication. This class is a singleton, use StubPlugin::getInstance to access it </p>
-
-<p class="definition">Definition at line <a class="el" href="../../da/dc7/_stub_plugin_impl_8h_source.html#l00043">43</a> of file <a class="el" href="../../da/dc7/_stub_plugin_impl_8h_source.html">StubPluginImpl.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afd9265ccec69acb428aa1f4e69bc716f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afd9265ccec69acb428aa1f4e69bc716f">&#9670;&nbsp;</a></span>StubPluginImpl()</h2>
@@ -220,8 +219,6 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html#l00029">29</a> of file <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a>.</p>
 
 </div>
 </div>
@@ -261,8 +258,6 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d4/d69/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_abstract_threaded_observable_plugin.html#ad256041f4997e1e5b68bf24e440ef0e6">keyple::core::seproxy::plugin::AbstractThreadedObservablePlugin</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html#l00179">179</a> of file <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a4106d5609b5eddf556f76256fca0ea5a"></a>
@@ -292,8 +287,6 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d4/d69/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_abstract_threaded_observable_plugin.html#ada2e5a061667fa9c0766ab03dd7cfa25">keyple::core::seproxy::plugin::AbstractThreadedObservablePlugin</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html#l00160">160</a> of file <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a0f84d07bfefc72f4e42762be73dee2e9"></a>
@@ -321,8 +314,6 @@ Additional Inherited Members</h2></td></tr>
 <p>C++ vs. Java: have to override the method here to link ProxyElement interface to actual implementation </p>
 
 <p>Implements <a class="el" href="../../d2/dd8/classkeyple_1_1core_1_1seproxy_1_1_proxy_element.html#a841da0ba3692ec8dbc0d677522ae92c8">keyple::core::seproxy::ProxyElement</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="../../da/dc7/_stub_plugin_impl_8h_source.html#l00114">114</a> of file <a class="el" href="../../da/dc7/_stub_plugin_impl_8h_source.html">StubPluginImpl.h</a>.</p>
 
 </div>
 </div>
@@ -352,8 +343,6 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>single instance of <a class="el" href="../../dc/d67/classkeyple_1_1plugin_1_1stub_1_1_stub_plugin.html">StubPlugin</a> </dd></dl>
 
 <p>Implements <a class="el" href="../../d2/dd8/classkeyple_1_1core_1_1seproxy_1_1_proxy_element.html#aaa8fe4c51f65b421e257f90ec6432b1b">keyple::core::seproxy::ProxyElement</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html#l00041">41</a> of file <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a>.</p>
 
 </div>
 </div>
@@ -389,8 +378,6 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p>Implements <a class="el" href="../../d6/d0a/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_abstract_plugin.html#ac8ada2edfc41439b99d39fba541fafb4">keyple::core::seproxy::plugin::AbstractPlugin</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html#l00171">171</a> of file <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a>.</p>
 
 </div>
 </div>
@@ -437,8 +424,6 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p>Implements <a class="el" href="../../dc/d67/classkeyple_1_1plugin_1_1stub_1_1_stub_plugin.html#ab08dcd5912fca7a43cfc42ddd1eb09a9">keyple::plugin::stub::StubPlugin</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html#l00051">51</a> of file <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a>.</p>
 
 </div>
 </div>
@@ -493,8 +478,6 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../dc/d67/classkeyple_1_1plugin_1_1stub_1_1_stub_plugin.html#aa1e018c0b180d76100e2e9dd29954a6b">keyple::plugin::stub::StubPlugin</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html#l00056">56</a> of file <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a99ee9cfd6b2231738233152654dee6b0"></a>
@@ -540,8 +523,6 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p>Implements <a class="el" href="../../dc/d67/classkeyple_1_1plugin_1_1stub_1_1_stub_plugin.html#a0fbf9f2a6e8891e9e078241298d70adf">keyple::plugin::stub::StubPlugin</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html#l00078">78</a> of file <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a>.</p>
 
 </div>
 </div>
@@ -597,8 +578,6 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../dd/d6e/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_abstract_se_proxy_component.html#ab34ca31d3fc1ec1c7e24942b8b8b50ce">keyple::core::seproxy::plugin::AbstractSeProxyComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html#l00046">46</a> of file <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a>.</p>
-
 </div>
 </div>
 <a id="abed2c5db0522e40ae0e9f896a7fb996b"></a>
@@ -626,8 +605,6 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d0d/_abstract_se_proxy_component_8cpp_source.html#l00058">58</a> of file <a class="el" href="../../dd/d0d/_abstract_se_proxy_component_8cpp_source.html">AbstractSeProxyComponent.cpp</a>.</p>
 
 </div>
 </div>
@@ -686,8 +663,6 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../dc/d67/classkeyple_1_1plugin_1_1stub_1_1_stub_plugin.html#a81cb3a451b2a12759d82674d581a2a87">keyple::plugin::stub::StubPlugin</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html#l00113">113</a> of file <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a87e6163dab7bf690789c58ad7b353652"></a>
@@ -734,13 +709,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../dc/d67/classkeyple_1_1plugin_1_1stub_1_1_stub_plugin.html#a3f8c8ecfc67b69f13995092f4e87db2d">keyple::plugin::stub::StubPlugin</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html#l00134">134</a> of file <a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>component/keyple-plugin/stub/src/main/<a class="el" href="../../da/dc7/_stub_plugin_impl_8h_source.html">StubPluginImpl.h</a></li>
-<li>component/keyple-plugin/stub/src/main/<a class="el" href="../../db/de8/_stub_plugin_impl_8cpp_source.html">StubPluginImpl.cpp</a></li>
+<li>component/keyple-plugin/stub/src/main/<a class="el" href="../../da/dc7/_stub_plugin_impl_8h.html">StubPluginImpl.h</a></li>
+<li>component/keyple-plugin/stub/src/main/<a class="el" href="../../db/de8/_stub_plugin_impl_8cpp.html">StubPluginImpl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

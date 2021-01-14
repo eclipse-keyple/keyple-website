@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Keyple C++
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    <div id="projectbrief">Keyple, an Open Source SDK for Ticketing</div>
   </td>
@@ -76,7 +77,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>&gt;</code></p>
+<p><code>#include &lt;Thread.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -123,10 +124,7 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a2b8d68eaff5504c3bc3dc80883975d7f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d4b/classkeyple_1_1common_1_1_thread.html#a2b8d68eaff5504c3bc3dc80883975d7f">mAlive</a></td></tr>
 <tr class="separator:a2b8d68eaff5504c3bc3dc80883975d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00025">25</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af83c0bc97e417abcd088e2eb0d6ed047"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af83c0bc97e417abcd088e2eb0d6ed047">&#9670;&nbsp;</a></span>Thread() <span class="overload">[1/2]</span></h2>
 
@@ -151,8 +149,6 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructor</p>
 <p>Allocates a new <a class="el" href="../../d8/d4b/classkeyple_1_1common_1_1_thread.html">Thread</a> object. This constructor has the same effect as <a class="el" href="../../d8/d4b/classkeyple_1_1common_1_1_thread.html">Thread</a> (null, null, gname), where gname is a newly generated name. Automatically generated names are of the form "Thread-"+n, where n is an integer. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00035">35</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
 
 </div>
 </div>
@@ -188,8 +184,6 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00047">47</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
-
 </div>
 </div>
 <a id="ae2d1fa0436f3682d8eaa0d12e0425af9"></a>
@@ -215,8 +209,6 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Destructor </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00054">54</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
 
 </div>
 </div>
@@ -244,8 +236,6 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00231">231</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
-
 </div>
 </div>
 <a id="ab1a1fdcdf26f424b7c20faa05fc4d348"></a>
@@ -272,8 +262,6 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>This is a utility method that detaches a thread when the caller doesn’t want to wait for the thread to complete. If the thread is running and not detached, pthread_detach() is called and the thread is flagged as detached if the call is successful. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00124">124</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
-
 </div>
 </div>
 <a id="a4bff5efb1e90a7fcc930e15658d74d4e"></a>
@@ -298,8 +286,6 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00239">239</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
 
 </div>
 </div>
@@ -339,8 +325,6 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00210">210</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
-
 </div>
 </div>
 <a id="ae82f452c764964e016a35954e5b698b4"></a>
@@ -365,8 +349,6 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00218">218</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
 
 </div>
 </div>
@@ -393,8 +375,6 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>By default Pthreads are joinable. meaning you can wait for them to complete with a call to pthread_join(). The <a class="el" href="../../d8/d4b/classkeyple_1_1common_1_1_thread.html">Thread</a> class join method checks to see if the thread is running, then calls this function to wait for the thread to complete. If the call is successful the thread is marked as detached since pthread_join() automatically detatches a thread. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00106">106</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
 
 </div>
 </div>
@@ -448,8 +428,6 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>In the call to pthread_create() the last argument is a void pointer to a data structure which will be passed to the <a class="el" href="../../d8/d4b/classkeyple_1_1common_1_1_thread.html#aa1c304833c9db84621e228b324700712">runThread()</a> function when it is called. Since the input argument to the <a class="el" href="../../d8/d4b/classkeyple_1_1common_1_1_thread.html#aa1c304833c9db84621e228b324700712">runThread()</a> is the <a class="el" href="../../d8/d4b/classkeyple_1_1common_1_1_thread.html">Thread</a> class this pointer, we can cast it to a <a class="el" href="../../d8/d4b/classkeyple_1_1common_1_1_thread.html">Thread</a> pointer then use it to call the <a class="el" href="../../d8/d4b/classkeyple_1_1common_1_1_thread.html#a0ad5373e3fab01fd18f1345f6755b367">Thread::run()</a> method. Due to polymorphism, the <a class="el" href="../../d8/d4b/classkeyple_1_1common_1_1_thread.html">Thread</a> subclass <a class="el" href="../../d8/d4b/classkeyple_1_1common_1_1_thread.html#a0ad5373e3fab01fd18f1345f6755b367">run()</a> method will be called to carry out the thread’s action. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00094">94</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
-
 </div>
 </div>
 <a id="af5cc10fe788af9cf9461cb4718a207ee"></a>
@@ -474,8 +452,6 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00148">148</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
 
 </div>
 </div>
@@ -503,8 +479,6 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>This is another utility method that returns the thread ID for display or logging purposes. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00140">140</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
-
 </div>
 </div>
 <a id="ae3ef0c7787c0cb509683bd3f3dc6105e"></a>
@@ -531,8 +505,6 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00156">156</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
-
 </div>
 </div>
 <a id="ac0c8d4d0c1ec94275dab2d1ca5f71d44"></a>
@@ -558,8 +530,6 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00247">247</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
 
 </div>
 </div>
@@ -601,8 +571,6 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00176">176</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
-
 </div>
 </div>
 <a id="aad60386f8ac8dd2fd2e712c78f761cc5"></a>
@@ -637,8 +605,6 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00073">73</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -654,12 +620,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d48/_thread_8h_source.html#l00255">255</a> of file <a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>component/keyple-common/src/main/<a class="el" href="../../d8/d48/_thread_8h_source.html">Thread.h</a></li>
+<li>component/keyple-common/src/main/<a class="el" href="../../d8/d48/_thread_8h.html">Thread.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
