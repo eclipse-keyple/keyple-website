@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Keyple C++
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    <div id="projectbrief">Keyple, an Open Source SDK for Ticketing</div>
   </td>
@@ -74,7 +75,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../d1/d38/_po_command_manager_8h_source.html">PoCommandManager.h</a>&gt;</code></p>
+<p><code>#include &lt;PoCommandManager.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -97,8 +98,6 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>The PO command manager handles the AbstractPoCommandBuilder list updated by the "prepare" methods of <a class="el" href="../../d2/dcd/classkeyple_1_1calypso_1_1transaction_1_1_po_transaction.html">PoTransaction</a>. It is used to keep builders between the time the commands are created and the time their responses are parsed. </p>
 <p>A flag (preparedCommandsProcessed) is used to manage the reset of the command list. It allows the builders to be kept until the application creates a new list of commands. </p>
 <p>This flag is set by calling the method notifyCommandsProcessed and reset when a new AbstractPoCommandBuilder is added or when a attempt </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d1/d38/_po_command_manager_8h_source.html#l00044">44</a> of file <a class="el" href="../../d1/d38/_po_command_manager_8h_source.html">PoCommandManager.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a495be259814534b24623a73da9614aea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a495be259814534b24623a73da9614aea">&#9670;&nbsp;</a></span>PoCommandManager()</h2>
@@ -116,8 +115,6 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>(package-private)<br  />
  Constructor </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html#l00032">32</a> of file <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html">PoCommandManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -145,8 +142,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html#l00034">34</a> of file <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html">PoCommandManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -195,8 +190,6 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html#l00040">40</a> of file <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html">PoCommandManager.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a74f8526a004b38f44b1d40ce7ac30570"></a>
@@ -217,8 +210,6 @@ Public Member Functions</h2></td></tr>
 </p>
 <dl class="section return"><dt>Returns</dt><dd>the current AbstractPoCommandBuilder list </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html#l00084">84</a> of file <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html">PoCommandManager.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a198efaadec5b8a9a8fc9afcd90327339"></a>
@@ -238,8 +229,6 @@ Public Member Functions</h2></td></tr>
 <p>(package-private)<br  />
 </p>
 <dl class="section return"><dt>Returns</dt><dd>true if the <a class="el" href="../../d8/d9b/classkeyple_1_1calypso_1_1transaction_1_1_po_command_manager.html">keyple::calypso::transaction::PoCommandManager</a> has commands </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html#l00089">89</a> of file <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html">PoCommandManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -262,8 +251,6 @@ Public Member Functions</h2></td></tr>
  This method is dedicated to triggering the signature verification after an SV transaction has been executed. It is a single-use method, as the flag is systematically reset to false after it is called.</p>
 <dl class="section return"><dt>Returns</dt><dd>true if a reload or debit command has been requested </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html#l00094">94</a> of file <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html">PoCommandManager.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a9a0f164e86ffa32ec431f10340336ed9"></a>
@@ -284,13 +271,11 @@ Public Member Functions</h2></td></tr>
  Informs that the commands have been processed. </p>
 <p>Just record the information. The initialization of the list of commands will be done only the next time a command is added, this allows access to the parsers contained in the list.. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html#l00078">78</a> of file <a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html">PoCommandManager.cpp</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>component/keyple-calypso/src/main/transaction/<a class="el" href="../../d1/d38/_po_command_manager_8h_source.html">PoCommandManager.h</a></li>
-<li>component/keyple-calypso/src/main/transaction/<a class="el" href="../../d5/d10/_po_command_manager_8cpp_source.html">PoCommandManager.cpp</a></li>
+<li>component/keyple-calypso/src/main/transaction/<a class="el" href="../../d1/d38/_po_command_manager_8h.html">PoCommandManager.h</a></li>
+<li>component/keyple-calypso/src/main/transaction/<a class="el" href="../../d5/d10/_po_command_manager_8cpp.html">PoCommandManager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

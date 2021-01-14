@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Keyple C++
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    <div id="projectbrief">Keyple, an Open Source SDK for Ticketing</div>
   </td>
@@ -73,27 +74,25 @@ $(function() {
 <div class="title">AbstractOpenSessionRespPars.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../de/d4c/_abstract_open_session_resp_pars_8h_source.html">AbstractOpenSessionRespPars.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../de/d4c/_abstract_open_session_resp_pars_8h.html">AbstractOpenSessionRespPars.h</a>&quot;</code><br />
 <code>#include &lt;typeinfo&gt;</code><br />
-<code>#include &quot;<a class="el" href="../../d8/d28/_abstract_po_response_parser_8h_source.html">AbstractPoResponseParser.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../dd/df7/_abstract_apdu_response_parser_8h_source.html">AbstractApduResponseParser.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d5/dba/_apdu_response_8h_source.html">ApduResponse.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d8/d07/_calypso_po_access_forbidden_exception_8h_source.html">CalypsoPoAccessForbiddenException.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d0/d28/_calypso_po_data_access_exception_8h_source.html">CalypsoPoDataAccessException.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../da/dea/_calypso_po_illegal_parameter_exception_8h_source.html">CalypsoPoIllegalParameterException.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d2/d5e/_calypso_po_security_context_exception_8h_source.html">CalypsoPoSecurityContextException.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d9/d82/_calypso_po_terminated_exception_8h_source.html">CalypsoPoTerminatedException.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d9/d68/_open_session10_resp_pars_8h_source.html">OpenSession10RespPars.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../dd/dec/_open_session24_resp_pars_8h_source.html">OpenSession24RespPars.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d2/d3d/_open_session31_resp_pars_8h_source.html">OpenSession31RespPars.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d4/de2/_open_session32_resp_pars_8h_source.html">OpenSession32RespPars.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d0/db4/_class_not_found_exception_8h_source.html">ClassNotFoundException.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d8/d4d/_illegal_access_exception_8h_source.html">IllegalAccessException.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d0/d46/stringhelper_8h_source.html">stringhelper.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d9/d6a/_byte_array_util_8h_source.html">ByteArrayUtil.h</a>&quot;</code><br />
-</div>
-<p><a href="../../d5/de0/_abstract_open_session_resp_pars_8cpp_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<code>#include &quot;<a class="el" href="../../d8/d28/_abstract_po_response_parser_8h.html">AbstractPoResponseParser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dd/df7/_abstract_apdu_response_parser_8h.html">AbstractApduResponseParser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/dba/_apdu_response_8h.html">ApduResponse.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d8/d07/_calypso_po_access_forbidden_exception_8h.html">CalypsoPoAccessForbiddenException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d0/d28/_calypso_po_data_access_exception_8h.html">CalypsoPoDataAccessException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../da/dea/_calypso_po_illegal_parameter_exception_8h.html">CalypsoPoIllegalParameterException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/d5e/_calypso_po_security_context_exception_8h.html">CalypsoPoSecurityContextException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d82/_calypso_po_terminated_exception_8h.html">CalypsoPoTerminatedException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d68/_open_session10_resp_pars_8h.html">OpenSession10RespPars.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dd/dec/_open_session24_resp_pars_8h.html">OpenSession24RespPars.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/d3d/_open_session31_resp_pars_8h.html">OpenSession31RespPars.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d4/de2/_open_session32_resp_pars_8h.html">OpenSession32RespPars.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d0/db4/_class_not_found_exception_8h.html">ClassNotFoundException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d8/d4d/_illegal_access_exception_8h.html">IllegalAccessException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d0/d46/stringhelper_8h.html">stringhelper.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d6a/_byte_array_util_8h.html">ByteArrayUtil.h</a>&quot;</code><br />
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:dd/ddf/namespacekeyple"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/ddf/namespacekeyple.html">keyple</a></td></tr>
