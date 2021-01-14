@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Keyple C++
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    <div id="projectbrief">Keyple, an Open Source SDK for Ticketing</div>
   </td>
@@ -75,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../d0/de5/_se_proxy_service_8h_source.html">SeProxyService.h</a>&gt;</code></p>
+<p><code>#include &lt;SeProxyService.h&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -99,8 +100,6 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The Class <a class="el" href="../../d1/d09/classkeyple_1_1core_1_1seproxy_1_1_se_proxy_service.html">SeProxyService</a>. This singleton is the entry point of the SE Proxy Service, its instance has to be called by a ticketing application in order to establish a link with a SE’s application. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d0/de5/_se_proxy_service_8h_source.html#l00039">39</a> of file <a class="el" href="../../d0/de5/_se_proxy_service_8h_source.html">SeProxyService.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a58f1c227253503adb3a622943a076af3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a58f1c227253503adb3a622943a076af3">&#9670;&nbsp;</a></span>getInstance()</h2>
@@ -126,8 +125,6 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Gets the single instance of <a class="el" href="../../d1/d09/classkeyple_1_1core_1_1seproxy_1_1_se_proxy_service.html">SeProxyService</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>single instance of <a class="el" href="../../d1/d09/classkeyple_1_1core_1_1seproxy_1_1_se_proxy_service.html">SeProxyService</a> </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d0/de5/_se_proxy_service_8h_source.html#l00046">46</a> of file <a class="el" href="../../d0/de5/_se_proxy_service_8h_source.html">SeProxyService.h</a>.</p>
 
 </div>
 </div>
@@ -161,8 +158,6 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html#l00081">81</a> of file <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html">SeProxyService.cpp</a>.</p>
-
 </div>
 </div>
 <a id="ac61b0a44b3f8ace684e96817d9d376cc"></a>
@@ -182,8 +177,6 @@ Static Public Member Functions</h2></td></tr>
 <p>Gets the plugins.</p>
 <dl class="section return"><dt>Returns</dt><dd>the plugin names and plugin instances map of interfaced reader’s plugins. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html#l00076">76</a> of file <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html">SeProxyService.cpp</a>.</p>
-
 </div>
 </div>
 <a id="a22db76de1ef8daf5fae2491069c53445"></a>
@@ -202,8 +195,6 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Gets the version API, (the version of the sdk).</p>
 <dl class="section return"><dt>Returns</dt><dd>the version </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html#l00094">94</a> of file <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html">SeProxyService.cpp</a>.</p>
 
 </div>
 </div>
@@ -230,8 +221,6 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if a plugin with matching name has been registered </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html#l00069">69</a> of file <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html">SeProxyService.cpp</a>.</p>
 
 </div>
 </div>
@@ -265,8 +254,6 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d5/dab/classkeyple_1_1core_1_1seproxy_1_1_reader_plugin.html">ReaderPlugin</a> : registered reader plugin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html#l00034">34</a> of file <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html">SeProxyService.cpp</a>.</p>
-
 </div>
 </div>
 <a id="ad62b4cad49d8840027001f592c90beb0"></a>
@@ -293,13 +280,11 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the plugin was successfully unregistered </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html">SeProxyService.cpp</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>component/keyple-core/src/main/seproxy/<a class="el" href="../../d0/de5/_se_proxy_service_8h_source.html">SeProxyService.h</a></li>
-<li>component/keyple-core/src/main/seproxy/<a class="el" href="../../db/d47/_se_proxy_service_8cpp_source.html">SeProxyService.cpp</a></li>
+<li>component/keyple-core/src/main/seproxy/<a class="el" href="../../d0/de5/_se_proxy_service_8h.html">SeProxyService.h</a></li>
+<li>component/keyple-core/src/main/seproxy/<a class="el" href="../../db/d47/_se_proxy_service_8cpp.html">SeProxyService.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

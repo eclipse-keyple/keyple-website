@@ -22,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Keyple C++
+   &#160;<span id="projectnumber">0.9.0</span>
    </div>
    <div id="projectbrief">Keyple, an Open Source SDK for Ticketing</div>
   </td>
@@ -75,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html">AbstractMonitoringJob.h</a>&gt;</code></p>
+<p><code>#include &lt;AbstractMonitoringJob.h&gt;</code></p>
 
 <p>Inherited by <a class="el" href="../../d8/d63/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_card_absent_ping_monitoring_job.html">keyple::core::seproxy::plugin::CardAbsentPingMonitoringJob</a>, <a class="el" href="../../d0/d22/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_card_present_monitoring_job.html">keyple::core::seproxy::plugin::CardPresentMonitoringJob</a>, <a class="el" href="../../d6/d7f/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_smart_insertion_monitoring_job.html">keyple::core::seproxy::plugin::SmartInsertionMonitoringJob</a>, and <a class="el" href="../../da/d7d/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_smart_removal_monitoring_job.html">keyple::core::seproxy::plugin::SmartRemovalMonitoringJob</a>.</p>
 <table class="memberdecls">
@@ -102,8 +103,6 @@ Protected Attributes</h2></td></tr>
 <p>Observable readers can instantiate <a class="el" href="../../d8/df0/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_abstract_monitoring_job.html">AbstractMonitoringJob</a> to perform background processing during the different states of the generic state machine. </p>
 <p>Internal events (<a class="el" href="../../dc/daa/namespacekeyple_1_1core_1_1seproxy_1_1plugin.html#aa8d99b3ecbd717bb52f11dee52ec2b7e">keyple::core::seproxy::plugin::InternalEvent</a>) can be fired to change the state of the machine via the <a class="el" href="../../d4/db6/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_abstract_observable_state.html">AbstractObservableState</a> class passed as a constructor's argument. </p>
 <p>Standard <a class="el" href="../../d8/df0/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_abstract_monitoring_job.html">AbstractMonitoringJob</a> are already defined in the local.monitoring package but it is possible to define new ones within a plugin reader if necessary, implementing this abstract class. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html#l00042">42</a> of file <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html">AbstractMonitoringJob.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a33f71bc6edb153eec7ede005710c4e3e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a33f71bc6edb153eec7ede005710c4e3e">&#9670;&nbsp;</a></span>AbstractMonitoringJob()</h2>
@@ -127,8 +126,6 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html#l00047">47</a> of file <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html">AbstractMonitoringJob.h</a>.</p>
 
 </div>
 </div>
@@ -155,8 +152,6 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html#l00052">52</a> of file <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html">AbstractMonitoringJob.h</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -182,8 +177,6 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html#l00073">73</a> of file <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html">AbstractMonitoringJob.h</a>.</p>
 
 </div>
 </div>
@@ -252,8 +245,6 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="../../da/d7d/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_smart_removal_monitoring_job.html#a77f1333e2f77835f7bae9b30822d87c0">keyple::core::seproxy::plugin::SmartRemovalMonitoringJob</a>, <a class="el" href="../../d6/d7f/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_smart_insertion_monitoring_job.html#a10ea056360de20c8d0edbb48ac63ea67">keyple::core::seproxy::plugin::SmartInsertionMonitoringJob</a>, <a class="el" href="../../d0/d22/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_card_present_monitoring_job.html#a00f59ec2d467558d771355722a44a845">keyple::core::seproxy::plugin::CardPresentMonitoringJob</a>, and <a class="el" href="../../d8/d63/classkeyple_1_1core_1_1seproxy_1_1plugin_1_1_card_absent_ping_monitoring_job.html#a42e90c0e0d99737f9c632f40f64bdc54">keyple::core::seproxy::plugin::CardAbsentPingMonitoringJob</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html#l00068">68</a> of file <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html">AbstractMonitoringJob.h</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -278,12 +269,10 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>C++ vs. Java: running flag </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html#l00082">82</a> of file <a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html">AbstractMonitoringJob.h</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>component/keyple-core/src/main/seproxy/plugin/<a class="el" href="../../da/dfe/_abstract_monitoring_job_8h_source.html">AbstractMonitoringJob.h</a></li>
+<li>component/keyple-core/src/main/seproxy/plugin/<a class="el" href="../../da/dfe/_abstract_monitoring_job_8h.html">AbstractMonitoringJob.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
