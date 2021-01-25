@@ -158,23 +158,23 @@ later within the transaction service.
 SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.AUTO).build();
 
 // Perform the SAM selection
-CardSelection samSelection = new CardSelection();
-samSelection.prepareSelection(new SamSelectionRequest(samSelector));
+CardSelectionService samSelection = new CardSelectionService();
+samSelection.prepareSelection(new SamSelection(samSelector));
 
 if (!samReader.isCardPresent()) {
     throw new IllegalStateException("No SAM is present in the reader " + samReader.getName());
 }
 
-SelectionsResult selectionsResult = samSelection.processExplicitSelection(samReader);
+CardSelectionsResult cardSelectionsResult = samSelection.processExplicitSelections(samReader);
 
-if (!selectionsResult.hasActiveSelection()) {
+if (!cardSelectionsResult.hasActiveSelection()) {
     throw new IllegalStateException("SAM matching failed!");
 }
 
-CalypsoSam calypsoSam = (CalypsoSam) selectionsResult.getActiveSmartCard();
+CalypsoSam calypsoSam = (CalypsoSam) cardSelectionsResult.getActiveSmartCard();
 
 // Associate the calypsoSam and the samReader to create a samResource
-CardResource<CalypsoSam> samResource = new CardResource<>(samReader, calypsoSam);
+CardResource<CalypsoSam> samResource = new CardResource<CalypsoSam>(samReader, calypsoSam);
 
 //...
 ```
@@ -191,12 +191,12 @@ from the Calypso PO all along the transaction.
 // Prepare a Calypso PO selection
 final String AID = "315449432E49434131"; /* AID: Keyple test kit profile 1, Application 2 */
 
-CardSelection seSelection = new CardSelection();
+CardSelectionService cardSelectionService = new CardSelectionService();
 
 // Setting up a selection based on the AID of a Calypso Revision 3.1 PO
 //
 // Select the first application matching the selection AID whatever the card communication protocol
-PoSelectionRequest poSelectionRequest = new PoSelectionRequest(
+PoSelection poSelection = new PoSelection(
         PoSelector.builder()
                 .aidSelector(CardSelector.AidSelector.builder().aidToSelect(AID).build()) // the application identifier
                 .invalidatedPo(PoSelector.InvalidatedPo.REJECT) // to indicate if an invalidated PO should be accepted or not
@@ -204,14 +204,14 @@ PoSelectionRequest poSelectionRequest = new PoSelectionRequest(
 
 // Add the selection case to the current selection
 // (we could have added other cases)
-seSelection.prepareSelection(poSelectionRequest);
+cardSelectionService.prepareSelection(poSelection);
 
 if (!poReader.isCardPresent()) {
     throw new IllegalStateException("The selection of the PO has failed.");
 }
 
 // Perform the PO selection and get a CalypoPo container in return
-CalypsoPo calypsoPo = (CalypsoPo) seSelection.processExplicitSelection(poReader).getActiveSmartCard();
+CalypsoPo calypsoPo = (CalypsoPo) cardSelectionService.processExplicitSelections(poReader).getActiveSmartCard();
 //...
 ```
 
@@ -230,7 +230,7 @@ PoSecuritySettings poSecuritySettings = new PoSecuritySettings.PoSecuritySetting
 
 // Create a PoTransaction service to manage the Calypso transaction
 PoTransaction poTransaction = new PoTransaction(
-        new CardResource<>(poReader, calypsoPo),
+        new CardResource<CalypsoPo(poReader, calypsoPo),
         poSecuritySettings);
 
 final byte RECORD_NUMBER_1 = 1;
@@ -430,7 +430,7 @@ public class DemoPoAuthentication  {
         SmartCardService smartCardService = SmartCardService.getInstance();
 
         // Register a PcscPlugin within the SmartCardService to use PC/SC USB Readers
-        Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory());
+        Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, null));
 
         // Get the PO reader
         PcscReader poReader = (PcscReader) plugin.getReader("ASK LoGO 0");
@@ -445,35 +445,35 @@ public class DemoPoAuthentication  {
         SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.AUTO).build();
 
         // Perform the SAM selection
-        CardSelection samSelection = new CardSelection();
-        samSelection.prepareSelection(new SamSelectionRequest(samSelector));
+        CardSelectionsService samSelection = new CardSelectionsService();
+        samSelection.prepareSelection(new SamSelection(samSelector));
 
         if (!samReader.isCardPresent()) {
             throw new IllegalStateException("No SAM is present in the reader " + samReader.getName());
         }
 
-        SelectionsResult selectionsResult = samSelection.processExplicitSelection(samReader);
+        CardSelectionsResult cardSelectionsResult = samSelection.processExplicitSelections(samReader);
 
-        if (!selectionsResult.hasActiveSelection()) {
+        if (!cardSelectionsResult.hasActiveSelection()) {
             throw new IllegalStateException("SAM matching failed!");
         }
 
-        CalypsoSam calypsoSam = (CalypsoSam) selectionsResult.getActiveSmartCard();
+        CalypsoSam calypsoSam = (CalypsoSam) cardSelectionsResult.getActiveSmartCard();
 
         // Associate the calypsoSam and the samReader to create a samResource
-        CardResource<CalypsoSam> samResource = new CardResource<>(samReader, calypsoSam);
+        CardResource<CalypsoSam> samResource = new CardResource<CalypsoSam>(samReader, calypsoSam);
 
         // Prepare a Calypso PO selection
         final String AID = "315449432E49434131"; /* AID: Keyple test kit profile 1, Application 2 */
         final byte RECORD_NUMBER_1 = 1;
         final byte SFI_Environment = (byte) 0x07;
 
-        CardSelection seSelection = new CardSelection();
+        CardSelectionsService cardSelectionService = new CardSelectionsService();
 
         // Setting up a selection based on the AID of a Calypso Revision 3.1 PO
         //
         // Select the first application matching the selection AID whatever the card communication protocol
-        PoSelectionRequest poSelectionRequest = new PoSelectionRequest(
+        PoSelection poSelection = new PoSelection(
                 PoSelector.builder()
                         .aidSelector(CardSelector.AidSelector.builder().aidToSelect(AID).build()) // the application identifier
                         .invalidatedPo(PoSelector.InvalidatedPo.REJECT) // to indicate if an invalidated PO should be accepted or not
@@ -481,21 +481,21 @@ public class DemoPoAuthentication  {
 
         // Add the selection case to the current selection
         // (we could have added other cases)
-        seSelection.prepareSelection(poSelectionRequest);
+        cardSelectionService.prepareSelection(poSelection);
 
         if (!poReader.isCardPresent()) {
             throw new IllegalStateException("The selection of the PO has failed.");
         }
 
         // Perform the PO selection and get a CalypoPo container in return
-        CalypsoPo calypsoPo = (CalypsoPo) seSelection.processExplicitSelection(poReader).getActiveSmartCard();
+        CalypsoPo calypsoPo = (CalypsoPo) cardSelectionService.processExplicitSelections(poReader).getActiveSmartCard();
 
         // Prepare the security settings used during the Calypso transaction
         PoSecuritySettings poSecuritySettings = new PoSecuritySettings.PoSecuritySettingsBuilder(samResource).build();
 
         // Create a PoTransaction service to manage the Calypso transaction
         PoTransaction poTransaction = new PoTransaction(
-                new CardResource<>(poReader, calypsoPo),
+                new CardResource<CalypsoPo>(poReader, calypsoPo),
                 poSecuritySettings);
 
         // Schedule the reading of the Environment file after the secure session is opened
