@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Release | Eclipse Keyple</title><link>https://keyple.org/category/release/</link><atom:link href="https://keyple.org/category/release/index.xml" rel="self" type="application/rss+xml"/><description>Release</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><lastBuildDate>Thu, 17 Dec 2020 17:24:41 +0100</lastBuildDate><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Release</title><link>https://keyple.org/category/release/</link></image><item><title>Release 1.0.0 of Eclipse Keyple Java</title><link>https://keyple.org/post/release-1-0-0-java/</link><pubDate>Thu, 17 Dec 2020 17:24:41 +0100</pubDate><guid>https://keyple.org/post/release-1-0-0-java/</guid><description>&lt;p>The
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Release | Eclipse Keyple</title><link>https://keyple.org/category/release/</link><atom:link href="https://keyple.org/category/release/index.xml" rel="self" type="application/rss+xml"/><description>Release</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</copyright><lastBuildDate>Tue, 26 Jan 2021 14:57:56 +0200</lastBuildDate><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png</url><title>Release</title><link>https://keyple.org/category/release/</link></image><item><title>Release 0.9.0 C++ on the field</title><link>https://keyple.org/post/release-0-9-0-cpp/</link><pubDate>Tue, 26 Jan 2021 14:57:56 +0200</pubDate><guid>https://keyple.org/post/release-0-9-0-cpp/</guid><description>&lt;p>We are pleased to announce that the version 0.9.0 of the C++ implementation of Eclipse Keyple™ was released January 26th, 2021.&lt;/p>
+&lt;p>This 0.9.0 C++ Keyple implementation follows the API design for the 0.9.0 Java Keyple implementation.&lt;/p>
+&lt;ul>
+&lt;li>New simplifications are introduced on the Calypso API. Keyple 0.8 had a high-level API for building map commands, but the map response data needed to be parsed with a low-level API. The Calypso 0.9.0 API provided a high-level API for retrieving map response data from a map image for which the file structure could be browsed.&lt;/li>
+&lt;li>The Core 0.9.0 has also made the reader observation function more reliable in order to be notified in case of card withdrawal.&lt;/li>
+&lt;/ul>
+&lt;p>C++ API reference
+&lt;a href="https://keyple.org/docs/api-reference/cpp-api/">https://keyple.org/docs/api-reference/cpp-api/&lt;/a>&lt;/p>
+&lt;p>Build your first C++ application
+&lt;a href="https://keyple.org/docs/build-your-first-app/cpp-app/">https://keyple.org/docs/build-your-first-app/cpp-app/&lt;/a>&lt;/p>
+&lt;p>The source of Keyple C++ is available on
+&lt;a href="https://github.com/eclipse/keyple-cpp" target="_blank" rel="noopener">https://github.com/eclipse/keyple-cpp&lt;/a>.
+Some dedicated support is provided on keyple.org:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;a href="https://keyple.org/docs/api-reference/cpp-api/" target="_blank" rel="noopener">the documentation of the C++ API&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://keyple.org/docs/build-your-first-app/cpp-app/" target="_blank" rel="noopener">a guide to Build a first C++ application&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Release 1.0.0 of Eclipse Keyple Java</title><link>https://keyple.org/post/release-1-0-0-java/</link><pubDate>Thu, 17 Dec 2020 17:24:41 +0100</pubDate><guid>https://keyple.org/post/release-1-0-0-java/</guid><description>&lt;p>The
 &lt;a href="https://github.com/eclipse/keyple-java/releases/tag/1.0.0" target="_blank" rel="noopener">release 1.0.0 of Eclipse Keyple Java&lt;/a> is available.&lt;/p>
 &lt;p>Most of the improvements concerns the Keyple Core:&lt;/p>
 &lt;ul>
