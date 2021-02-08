@@ -4000,9 +4000,144 @@ Coming soon
 &lt;div>
 Coming soon
 &lt;/div>
-&lt;/div></description></item><item><title>Migration Guide - Keyple Java 0.8.1 to 0.9.0</title><link>https://keyple.org/docs/developer-guide/migration-0.8.1-to-0.9.0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/migration-0.8.1-to-0.9.0/</guid><description>&lt;hr>
-&lt;p>This guide is intended to help a user of version 0.8.1 of Keyple Java to upgrade his application to the 0.9.0 version of the library.&lt;/p>
-&lt;p>From a user API point of view, the changes relate to the following topics:&lt;/p>
+&lt;/div></description></item><item><title>Upgrade from an earlier version of Keyple</title><link>https://keyple.org/docs/developer-guide/upgrade/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs/developer-guide/upgrade/</guid><description>&lt;hr>
+&lt;p>This guide is intended to help a user of a previous version of Keyple Java to upgrade his application to a new version of the library.&lt;/p>
+&lt;p>Upgrade from:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;a href="#upgrade-from-090-to-100">0.9.0 to 1.0.0&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#upgrade-from-081-to-090">0.8.1 to 0.9.0&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Note: here we describe the evolutions in broad outline, for the details of the APIs, the reader is invited to consult
+the
+&lt;a href="https://keyple.org/docs/api-reference/">API reference&lt;/a> section.&lt;/p>
+&lt;hr>
+&lt;h2 id="upgrade-from-090-to-100">Upgrade from 0.9.0 to 1.0.0&lt;/h2>
+&lt;h3 id="whats-changed">What&amp;rsquo;s changed?&lt;/h3>
+&lt;p>Compared to version 0.9, the goal of Keyple 1.0 is mainly to fix bugs,
+add features to make Keyple more robust and rename/reorganize classes to make it easier to learn.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;a href="#class-renaming">Renamings&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#internal-exception-handling">Internal exception handling&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#pcsc-plugin">PC/SC plugin&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#keyple-distributed">Keyple Distributed&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h4 id="class-renaming">Class renaming&lt;/h4>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Module&lt;/th>
+&lt;th>Old name (0.9.0)&lt;/th>
+&lt;th>New name (1.0.0)&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Keyple Core&lt;/td>
+&lt;td>SeProxyService&lt;/td>
+&lt;td>SmartCardService&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Keyple Core&lt;/td>
+&lt;td>ReaderPlugin&lt;/td>
+&lt;td>Plugin&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Keyple Core&lt;/td>
+&lt;td>SeReader&lt;/td>
+&lt;td>Reader&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Keyple Core&lt;/td>
+&lt;td>ReaderPoolPlugin&lt;/td>
+&lt;td>PoolPlugin&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Keyple Core&lt;/td>
+&lt;td>SeSelection&lt;/td>
+&lt;td>CardSelectionService&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Keyple Core&lt;/td>
+&lt;td>SeSelector&lt;/td>
+&lt;td>CardSelector&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Keyple Core&lt;/td>
+&lt;td>AbstractMatchingSe&lt;/td>
+&lt;td>AbstractSmartCard&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Keyple Calypso&lt;/td>
+&lt;td>PoSelectionRequest&lt;/td>
+&lt;td>PoSelection&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Keyple Calypso&lt;/td>
+&lt;td>SamSelectionRequest&lt;/td>
+&lt;td>SamSelection&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="internal-exception-handling">Internal exception handling&lt;/h4>
+&lt;p>New possibilities have been added in the management of observable objects (&lt;em>Plugin&lt;/em> and &lt;em>Reader&lt;/em>).&lt;/p>
+&lt;p>If the Plugin or Reader is observable, it is now necessary to define exception handlers that will be called by the internal layers of Keyple in the case of an exception raised by an observation process.&lt;/p>
+&lt;p>Two new interfaces have been added to the &lt;em>event&lt;/em> package to allow applications via the factories of the concerned plugins to define the method that will be called when needed:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>PluginObservationExceptionHandler&lt;/code>&lt;/li>
+&lt;li>&lt;code>ReaderObservationExceptionHandler&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>These handlers are usually provided by the application via the constructor of the plugin&amp;rsquo;s factory.&lt;/p>
+&lt;h4 id="pcsc-plugin">PC/SC plugin&lt;/h4>
+&lt;p>The generic parameterization interface for plugins and readers has been removed in favor of methods specific to each plugin.&lt;/p>
+&lt;p>In the case of the PC/SC plugin, the following methods have appeared:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>PcscPlugin&lt;/td>
+&lt;td>&lt;code>setReaderNameFilter&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>PcscPlugin&lt;/td>
+&lt;td>&lt;code>setProtocolIdentificationRule&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>PcscReader&lt;/td>
+&lt;td>&lt;code>setSharingMode&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>PcscReader&lt;/td>
+&lt;td>&lt;code>setContactless&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>PcscReader&lt;/td>
+&lt;td>&lt;code>setIsoProtocol&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>PcscReader&lt;/td>
+&lt;td>&lt;code>setDisconnectionMode&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="keyple-distributed">Keyple Distributed&lt;/h4>
+&lt;p>The use of Keyple in a remote context has been extensively reviewed and its description is beyond the scope of this guide. Please refer to the
+&lt;a href="./docs/developer-guide/distributed-application/">distributed application&lt;/a> section.&lt;/p>
+&lt;hr>
+&lt;h2 id="upgrade-from-081-to-090">Upgrade from 0.8.1 to 0.9.0&lt;/h2>
+&lt;h3 id="whats-changed-1">What&amp;rsquo;s changed?&lt;/h3>
+&lt;p>From a user API point of view, the changes relate to the following topics:
+From a user API point of view, the changes relate to the following topics:&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;a href="#plugin-registration-in-the-seproxyservice">plugin registration in the SeProxyService&lt;/a>&lt;/li>
@@ -4023,8 +4158,7 @@ Coming soon
 &lt;li>
 &lt;a href="#error-handling">error handling&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;hr>
-&lt;h2 id="plugin-registration-in-the-seproxyservice">Plugin registration in the SeProxyService&lt;/h2>
+&lt;h3 id="plugin-registration-in-the-seproxyservice">Plugin registration in the SeProxyService&lt;/h3>
 &lt;p>The &lt;code>registerPlugin&lt;/code> method of the &lt;code>SeProxyService&lt;/code> class now returns the reference of the registered plugin.&lt;/p>
 &lt;p>This makes it possible, for example, to perform a reader setup in an application such as this one:&lt;/p>
 &lt;pre>&lt;code class="language-java"> // Create a PcscPlugin and register it into the SeProxyService
@@ -4032,8 +4166,7 @@ ReaderPlugin pcscPlugin = seProxyService.registerPlugin(new PcscPluginFactory())
 // Get the PO reader from the plugin
 SeReader poReader = pcscPlugin.getReader(&amp;quot;ASK LoGO 0&amp;quot;);
 &lt;/code>&lt;/pre>
-&lt;hr>
-&lt;h2 id="preparation-of-selection-cases">Preparation of selection cases&lt;/h2>
+&lt;h3 id="preparation-of-selection-cases">Preparation of selection cases&lt;/h3>
 &lt;p>The &lt;code>AidSelector&lt;/code>, &lt;code>Selector&lt;/code> and &lt;code>PoSelector&lt;/code> classes now follow the Fluent Builder pattern for better handling of optional parameters.&lt;/p>
 &lt;p>The construction of an &lt;code>AidSelector&lt;/code> is as follows:&lt;/p>
 &lt;pre>&lt;code class="language-java">AidSelector appAidSelector = AidSelector.builder()
@@ -4071,8 +4204,7 @@ SeReader poReader = pcscPlugin.getReader(&amp;quot;ASK LoGO 0&amp;quot;);
 public void prepareSelectFile(short lid)
 &lt;/code>&lt;/pre>
 &lt;p>Note that from now the &amp;ldquo;prepare&amp;rdquo; methods no longer return indexes, the data will be placed in the CalypsoPo object.&lt;/p>
-&lt;hr>
-&lt;h2 id="retrieving-selection-results">Retrieving selection results&lt;/h2>
+&lt;h3 id="retrieving-selection-results">Retrieving selection results&lt;/h3>
 &lt;p>The &lt;code>MatchingSelection&lt;/code> class no longer exists.
 In the class &lt;code>SelectionsResult&lt;/code> (see &lt;code>processDefaultSelection/processExplicitSelection&lt;/code>):&lt;/p>
 &lt;ul>
@@ -4092,8 +4224,7 @@ In the class &lt;code>SelectionsResult&lt;/code> (see &lt;code>processDefaultSel
 &lt;p>a new &lt;code>getActiveSelectionIndex&lt;/code> method returns the index of the active selection (the still existing &lt;code>hasActiveSelection&lt;/code> method must be used before)&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;hr>
-&lt;h2 id="definition-of-the-security-settings-of-the-transaction">Definition of the security settings of the transaction&lt;/h2>
+&lt;h3 id="definition-of-the-security-settings-of-the-transaction">Definition of the security settings of the transaction&lt;/h3>
 &lt;p>These parameters are defined via the &lt;code>PoSecuritySettings&lt;/code> class, whose construction now follows the Fluent Builder pattern.&lt;/p>
 &lt;p>All parameters are optional except the &lt;code>SamResource&lt;/code>.&lt;/p>
 &lt;p>Here is an example of a complete &lt;code>PoSecuritySettings&lt;/code> build:&lt;/p>
@@ -4109,14 +4240,12 @@ In the class &lt;code>SelectionsResult&lt;/code> (see &lt;code>processDefaultSel
 .sessionAuthorizedKvcList(authKvcs)
 .build();
 &lt;/code>&lt;/pre>
-&lt;hr>
-&lt;h2 id="creation-of-the-potransaction-object">Creation of the PoTransaction object&lt;/h2>
+&lt;h3 id="creation-of-the-potransaction-object">Creation of the PoTransaction object&lt;/h3>
 &lt;p>Since PoSecuritySettings now integrates SamResource, the construction of PoTransaction has evolved slightly.&lt;/p>
 &lt;p>Here is an example:&lt;/p>
 &lt;pre>&lt;code class="language-java">PoTransaction poTransaction = new PoTransaction(new PoResource(poReader, calypsoPo), poSecuritySettings);
 &lt;/code>&lt;/pre>
-&lt;hr>
-&lt;h2 id="transaction-commands-preparation">Transaction commands preparation&lt;/h2>
+&lt;h3 id="transaction-commands-preparation">Transaction commands preparation&lt;/h3>
 &lt;p>Just as with the &amp;ldquo;prepare&amp;rdquo; commands used for selection, the &amp;ldquo;prepare&amp;rdquo; commands used for transactions no longer return indexes.&lt;/p>
 &lt;p>The available commands in version 0.9 are:&lt;/p>
 &lt;pre>&lt;code class="language-java">public final void prepareSelectFile(SelectFileControl control)
@@ -4131,8 +4260,7 @@ public final void prepareAppendRecord(byte sfi, byte[] recordData)
 public final void prepareIncreaseCounter(byte sfi, int counterNumber, int incValue)
 public final void prepareDecreaseCounter(byte sfi, int counterNumber, int decValue)
 &lt;/code>&lt;/pre>
-&lt;hr>
-&lt;h2 id="transaction-commands-processing">Transaction commands processing&lt;/h2>
+&lt;h3 id="transaction-commands-processing">Transaction commands processing&lt;/h3>
 &lt;p>The &amp;ldquo;process&amp;rdquo; commands have also been revised and simplified.&lt;/p>
 &lt;p>They all return &lt;code>void&lt;/code>.&lt;/p>
 &lt;p>In case of failure a exception is raised (see below).&lt;/p>
@@ -4146,8 +4274,7 @@ public final void processPoCommandsInSession()
 public final void processCancel(ChannelControl channelControl)
 public final void processClosing(ChannelControl channelControl)
 &lt;/code>&lt;/pre>
-&lt;hr>
-&lt;h2 id="retrieving-data-read-from-pos">Retrieving data read from POs&lt;/h2>
+&lt;h3 id="retrieving-data-read-from-pos">Retrieving data read from POs&lt;/h3>
 &lt;p>This is a major evolution of the Keyple API. Previously, data read from Calyspo POs were retrieved by applications using &amp;ldquo;parser&amp;rdquo; methods.&lt;/p>
 &lt;p>With Keyple API 0.9, Calypso PO data is made available in the CalypsoPo object obtained during selection and enriched all along the operations performed with PoTransaction.&lt;/p>
 &lt;p>The public getter methods of CalypsoPo are:&lt;/p>
@@ -4233,7 +4360,6 @@ ByteArrayUtil.toHex(entry.getValue()));
 }
 [...]
 &lt;/code>&lt;/pre>
-&lt;hr>
 &lt;h2 id="error-handling">Error handling&lt;/h2>
 &lt;p>Since version 0.9, all Keyple exceptions are of the RuntimeException type.&lt;/p>
 &lt;p>Catching exceptions is therefore now optional.&lt;/p>
