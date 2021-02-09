@@ -332,5 +332,5 @@ Translated into Keyple Calypso operations, the entire transaction would include 
 ## Examples
 Detailed use case examples can be seen here:
 
-* [PC](https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/pc)
-* [Android](https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/android)
+* [PC](https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/src/main/java/org/eclipse/keyple/example/calypso)
+* [Android](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/android)
