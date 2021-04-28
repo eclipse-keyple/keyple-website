@@ -412,6 +412,7 @@ Keyple could also be used to develop an application reading SmartCard content th
 ...
 &amp;lt;/manifest&amp;gt;
 &lt;/code>&lt;/pre>
+&lt;p>Also make sure your minSdkVersion is at least 19.&lt;/p>
 &lt;h3 id="sdk-integration">SDK Integration&lt;/h3>
 &lt;h4 id="keyple-core">Keyple Core&lt;/h4>
 &lt;p>This high-level API is convenient for developers implementing smart card processing application for terminal interfaced
@@ -425,7 +426,7 @@ Android application.&lt;/p>
 &lt;p>There are many Keyple plugins available, the one to use depends on the device and ticketing tools you are aiming to
 use.&lt;/p>
 &lt;p>To use the NFC plugin simply import it within the gradle dependencies of your Android application.&lt;/p>
-&lt;pre>&lt;code class="language-gradle">implementation &amp;quot;org.eclipse.keyple:keyple-android-nfc:$keyple_version&amp;quot;
+&lt;pre>&lt;code class="language-gradle">implementation &amp;quot;org.eclipse.keyple:keyple-android-plugin-nfc:$keyple_version&amp;quot;
 &lt;/code>&lt;/pre>
 &lt;h4 id="keyple-calypso">Keyple Calypso&lt;/h4>
 &lt;p>The Keyple Calypso User API is an extension of the Keyple Core User API to manage Calypso Portable Objects.&lt;/p>
@@ -548,10 +549,10 @@ reader?.let {
 //check if card is in the NFC field
 if(it.isCardPresent){
 //Instanciate class handling card selection service
-val cardSelectionService = CardSelectionsService()
+val cardSelectionsService = CardSelectionsService()
 //We only want to select the PO so we choose to close communication channel once
 //selection is done
-cardSelectionService.prepareReleaseChannel()
+cardSelectionsService.prepareReleaseChannel()
 //We build a selection request managing specific characteristics of Calypso POs
 val poSelection = PoSelection(
 PoSelector
@@ -569,9 +570,9 @@ CardSelector.AidSelector.builder()
 CardSelector.AidSelector.FileControlInformation.FCI)
 .build()
 ).build())
-cardSelectionService.prepareSelection(poSelection)
+cardSelectionsService.prepareSelection(poSelection)
 //Proceed to selection using the reader
-val selectionResult = cardSelectionService.processExplicitSelections(it)
+val selectionResult = cardSelectionsService.processExplicitSelections(it)
 runOnUiThread {
 //We check the selection result and read the FCI
 if(selectionResult.hasActiveSelection()){
@@ -698,8 +699,8 @@ handlePo()
 private fun handlePo(){
 reader?.let {
 if(it.isCardPresent){
-val cardSelectionService = CardSelectionService()
-cardSelectionService.prepareReleaseChannel()
+val cardSelectionsService = CardSelectionsService()
+cardSelectionsService.prepareReleaseChannel()
 val poSelection = PoSelection(
 PoSelector
 .builder()
@@ -713,13 +714,13 @@ CardSelector.AidSelector.FileOccurrence.FIRST)
 CardSelector.AidSelector.FileControlInformation.FCI)
 .build()
 ).build())
-cardSelectionService.prepareSelection(poSelection)
+cardSelectionsService.prepareSelection(poSelection)
 //Prepare the reading order. We'll read the first record of the EF
 //specified by his SFI. This reading will be done with selection.
 poSelection.prepareReadRecordFile(sfiHoplinkEFEnvironment, 1)
 poSelection.prepareReadRecordFile(sfiHoplinkEFUsage, 1)
 //Selection and file reading will be done here
-val selectionResult = cardSelectionService.processExplicitSelections(it)
+val selectionResult = cardSelectionsService.processExplicitSelections(it)
 runOnUiThread {
 if(selectionResult.hasActiveSelection()){
 val matchedSmartCard = selectionResult.activeSmartCard
