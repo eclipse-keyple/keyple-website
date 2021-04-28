@@ -43,6 +43,7 @@ Like for any other Android NFC Application, we need to declare items in the appl
 </manifest>
 ```
 
+Also make sure your minSdkVersion is at least 19.
 
 ### SDK Integration
 #### Keyple Core 
@@ -67,7 +68,7 @@ use.
 To use the NFC plugin simply import it within the gradle dependencies of your Android application.
 
 ```gradle
-implementation "org.eclipse.keyple:keyple-android-nfc:$keyple_version"
+implementation "org.eclipse.keyple:keyple-android-plugin-nfc:$keyple_version"
 ```
 
 #### Keyple Calypso
@@ -239,10 +240,10 @@ fun handlePo(){
         if(it.isCardPresent){
 
             //Instanciate class handling card selection service 
-            val cardSelectionService = CardSelectionsService()
+            val cardSelectionsService = CardSelectionsService()
             //We only want to select the PO so we choose to close communication channel once 
             //selection is done
-            cardSelectionService.prepareReleaseChannel()
+            cardSelectionsService.prepareReleaseChannel()
 
             //We build a selection request managing specific characteristics of Calypso POs
             val poSelection = PoSelection(
@@ -261,10 +262,10 @@ fun handlePo(){
                                 CardSelector.AidSelector.FileControlInformation.FCI)
                             .build()
                     ).build())
-            cardSelectionService.prepareSelection(poSelection)
+            cardSelectionsService.prepareSelection(poSelection)
 
             //Proceed to selection using the reader
-            val selectionResult = cardSelectionService.processExplicitSelections(it)
+            val selectionResult = cardSelectionsService.processExplicitSelections(it)
 
             runOnUiThread {
                 //We check the selection result and read the FCI
@@ -417,8 +418,8 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
     private fun handlePo(){
         reader?.let {
             if(it.isCardPresent){
-                val cardSelectionService = CardSelectionService()
-                cardSelectionService.prepareReleaseChannel()
+                val cardSelectionsService = CardSelectionsService()
+                cardSelectionsService.prepareReleaseChannel()
                 val poSelection = PoSelection(
                         PoSelector
                                 .builder()
@@ -433,7 +434,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
                                                 .build()
                                 ).build())
 
-                cardSelectionService.prepareSelection(poSelection)
+                cardSelectionsService.prepareSelection(poSelection)
 
                 //Prepare the reading order. We'll read the first record of the EF
                 //specified by his SFI. This reading will be done with selection.
@@ -441,7 +442,7 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
                 poSelection.prepareReadRecordFile(sfiHoplinkEFUsage, 1)
 
                 //Selection and file reading will be done here
-                val selectionResult = cardSelectionService.processExplicitSelections(it)
+                val selectionResult = cardSelectionsService.processExplicitSelections(it)
 
                 runOnUiThread {
                     if(selectionResult.hasActiveSelection()){
