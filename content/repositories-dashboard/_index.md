@@ -1,6 +1,5 @@
 +++
-linktitle = "Java 2.0 repositories status"
-title = "Calypso Terminal Standardized APIs"
+title = "Java 2.0 repositories status"
 weight = 5
 [menu.main]
     parent = "Components"
