@@ -1,0 +1,254 @@
+<div class='container' style='margin: 0; padding: 0'>
+    <div class='table-responsive'>
+        <table id='repos-table' class='table table-striped' data-sort-name='updated' data-sort-order='desc'>
+            <thead>
+            <tr>
+                <th scope='col'>Repository</th>
+                <th scope='col'>CI</th>
+                <th scope='col'>Latest release</th>
+                <th scope='col'>Latest tag</th>
+                <th scope='col' data-field='updated'>Last update</th>
+                <th scope='col'>Issues</th>
+                <th scope='col'>Branches</th>
+                <th scope='col'>PRs</th>
+                <th scope='col'>Forks</th>
+                <th scope='col'>Stars</th>
+            </tr>
+            </thead>
+            <tbody id='repos-table-body'>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type='module'>
+    // https://dev.to/gr2m/github-api-authentication-personal-access-tokens-53kd
+    import {Octokit} from 'https://cdn.pika.dev/@octokit/core';
+
+    const octokit = new Octokit({auth: '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'});
+
+    // define repositories
+    let repos = [
+        'keyple-card-calypso-java-lib',
+        'keyple-card-generic-java-lib',
+        'keyple-common-java-api',
+        'keyple-distributed-local-java-api',
+        'keyple-distributed-local-java-lib',
+        'keyple-distributed-network-java-lib',
+        'keyple-distributed-remote-java-api',
+        'keyple-distributed-remote-java-lib',
+        'keyple-plugin-android-nfc-java-lib',
+        'keyple-plugin-android-omapi-java-lib',
+        'keyple-plugin-java-api',
+        'keyple-plugin-pcsc-java-lib',
+        'keyple-plugin-stub-java-lib',
+        'keyple-service-java-lib',
+        'keyple-service-resource-java-lib',
+        'keyple-util-java-lib'
+    ];
+
+    let owner = 'eclipse';
+
+    // create promises
+    const body = document.getElementById('repos-table-body'); // reposTable.insertRow(-1);
+    let promises = [];
+    for (let i = 0; i < repos.length; i++) {
+        let promise = getReposData((i + 1).toString(), owner, repos[i])
+        promises.push(promise);
+    }
+
+    (async () => {
+        await Promise.all(promises)
+            .finally(function () {
+                $('#repos-table').dataTable({'lengthChange': false, 'pageLength': 50, 'order': [[4, 'desc']]});
+                $('.dataTables_length').addClass('bs-select');
+            });
+    })();
+
+
+    async function getReposData(rowIndex, owner, repos) {
+
+        // create row
+        let newRow = body.insertRow();
+        newRow.id = rowIndex;
+
+        const result = await octokit.request('GET /repos/' + owner + '/' + repos);
+
+        // new row
+        const row = document.getElementById(rowIndex); // reposTable.insertRow(-1);
+
+        // column repos name
+        let cell = row.insertCell(-1);
+        const a = document.createElement('a');
+        const linkText = document.createTextNode(result.data.name);
+        a.appendChild(linkText);
+        a.title = result.data.name;
+        a.href = result.data.html_url;
+        a.target = '_blank';
+        cell.appendChild(a);
+
+        // column repos status
+        cell = row.insertCell(-1);
+        cell.setAttribute('id', 'repos-status-' + rowIndex);
+
+        // column latest release
+        cell = row.insertCell(-1);
+        cell.setAttribute('id', 'latest-release-' + rowIndex);
+        cell.appendChild(document.createTextNode(''));
+
+        // column latest tag
+        cell = row.insertCell(-1);
+        cell.setAttribute('id', 'latest-tag-' + rowIndex);
+        cell.appendChild(document.createTextNode(''));
+
+        // column updated
+        cell = row.insertCell(-1);
+        cell.appendChild(document.createTextNode(formatDate(result.data.pushed_at)));
+
+        // column issues
+        cell = row.insertCell(-1);
+        cell.setAttribute('id', 'issue-' + rowIndex);
+        cell.appendChild(document.createTextNode(''));
+
+        // column branches
+        cell = row.insertCell(-1);
+        cell.setAttribute('id', 'branch-' + rowIndex);
+        cell.appendChild(document.createTextNode(''));
+
+        // column pull requests
+        cell = row.insertCell(-1);
+        cell.setAttribute('id', 'pull-' + rowIndex);
+        cell.appendChild(document.createTextNode(''));
+
+        // column forks
+        cell = row.insertCell(-1);
+        cell.appendChild(document.createTextNode(result.data.forks.toString()));
+
+        // column stars
+        cell = row.insertCell(-1);
+        cell.appendChild(document.createTextNode(result.data.stargazers_count.toString()));
+
+        // get complementary data
+        await getBranches(rowIndex, owner, repos);
+        await getPullData(rowIndex, owner, repos, result.data.open_issues);
+        await getLatestRelease(rowIndex, owner, repos);
+        await getLatestTag(rowIndex, owner, repos);
+        await getStatus(rowIndex, owner, repos);
+
+        // debug
+        console.log(result.data);
+    }
+
+    async function getBranches(rowIndex, owner, repos) {
+        const result = await octokit.request('GET /repos/' + owner + '/' + repos + '/branches');
+        let cell = document.getElementById('branch-' + rowIndex);
+        cell.innerHTML = '' + result.data.length;
+    }
+
+    async function getPullData(rowIndex, owner, repos, issues) {
+        const result = await octokit.request('GET /repos/' + owner + '/' + repos + '/pulls');
+        let cell = document.getElementById('pull-' + rowIndex);
+        if (false) { //result.data.length) {
+            const a = document.createElement('a');
+            const linkText = document.createTextNode(result.data.length);
+            a.appendChild(linkText);
+            a.title = result.data.name;
+            a.href = result.data.html_url + '/pulls';
+            a.target = '_blank';
+            cell.appendChild(a);
+        } else {
+            cell.innerHTML = result.data.length;
+        }
+        cell = document.getElementById('issue-' + rowIndex);
+        cell.innerHTML = '' + (issues - result.data.length);
+    }
+
+    async function getLatestRelease(rowIndex, owner, repos) {
+        let cell = document.getElementById('latest-release-' + rowIndex);
+        try {
+            const result = await octokit.request('GET /repos/' + owner + '/' + repos + '/releases/latest');
+            cell.innerHTML = result.data.tag_name;
+        } catch (err) {
+            cell.innerHTML = '\u2205';
+        }
+    }
+
+    async function getLatestTag(rowIndex, owner, repos) {
+        let cell = document.getElementById('latest-tag-' + rowIndex);
+        try {
+            const result = await octokit.request('GET /repos/' + owner + '/' + repos + '/tags');
+            cell.innerHTML = result.data[0].name;
+        } catch (err) {
+            cell.innerHTML = '\u2205';
+        }
+    }
+
+    async function getStatus(rowIndex, owner, repos) {
+        let cell = document.getElementById('repos-status-' + rowIndex);
+        let result;
+        let branch;
+
+        try {
+            result = await octokit.request('GET /repos/' + owner + '/' + repos + '/commits/main/status');
+            branch = 'main';
+        } catch (err) {
+            try {
+                result = await octokit.request('GET /repos/' + owner + '/' + repos + '/commits/master/status');
+                branch = 'master';
+            } catch (err) {
+                cell.innerHTML = '\u2b58';
+                return;
+            }
+        }
+
+        const a = document.createElement('a');
+        const linkText = document.createTextNode('\u2b24');
+        a.appendChild(linkText);
+        a.title = 'CI status page';
+        a.href = 'https://ci.eclipse.org/keyple/job/Keyple/job/' + repos + '/job/' + branch + '/';
+        a.target = '_blank';
+        //a.style.textDecoration = 'underline';
+
+        switch (result.data.state) {
+            case 'error':
+            case 'failure':
+                a.style.color = 'red';
+                break;
+            case 'pending':
+                a.style.color = 'orange';
+                break;
+            case 'success':
+                a.style.color = 'green';
+                break;
+        }
+
+        cell.appendChild(a);
+    }
+
+    function formatDate(dateString) {
+        let d = new Date(dateString),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear(),
+            hour = '' + d.getHours(),
+            min = '' + d.getMinutes(),
+            sec = '' + d.getSeconds();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+        const date = [year, month, day].join('/');
+
+        if (hour.length < 2)
+            hour = '0' + hour;
+        if (min.length < 2)
+            min = '0' + min;
+        if (sec.length < 2)
+            sec = '0' + sec;
+
+        const time = [hour, min, sec].join(':');
+
+        return date + ' ' + time;
+    }
+</script>

@@ -1,5 +1,5 @@
 +++
-title = "Java"
+title = "Java 1.x modules"
 type = "book"
 weight = 10
 toc = false

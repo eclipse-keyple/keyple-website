@@ -1,5 +1,5 @@
 +++
-title = "C++"
+title = "C++ 1.x modules"
 type = "book"
 weight = 20
 toc = false
