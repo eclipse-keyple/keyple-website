@@ -1,58 +1,315 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Source Themes Academic 4.8.0"><meta name=description content="How to develop an end-user standalone application."><link rel=alternate hreflang=en-us href=https://keyple.org/docs/developer-guide/standalone-application/><link rel=preconnect href=https://fonts.gstatic.com crossorigin><meta name=theme-color content="#1D87BB"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-light><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-dark disabled><script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script><link rel=stylesheet href="https://fonts.googleapis.com/css?family=%7CWork+Sans:ital,wght@0,300;1,500&display=swap"><link rel=stylesheet href=../../../css/academic.css><script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script><link rel=manifest href=../../../index.webmanifest><link rel=icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_2.png><link rel=apple-touch-icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_192x192_fill_lanczos_center_2.png><link rel=canonical href=https://keyple.org/docs/developer-guide/standalone-application/><meta property="twitter:card" content="summary"><meta property="og:site_name" content="Eclipse Keyple"><meta property="og:url" content="https://keyple.org/docs/developer-guide/standalone-application/"><meta property="og:title" content="Standalone application | Eclipse Keyple"><meta property="og:description" content="How to develop an end-user standalone application."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png"><meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png"><meta property="og:locale" content="en-us"><meta property="article:modified_time" content="2020-12-29T09:45:11+01:00"><script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous><script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script><title>Standalone application | Eclipse Keyple</title></head><body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents><script>const isSiteThemeDark=!1</script><script src=../../../js/load-theme.js></script><aside class=search-results id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box><input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container><div class="d-none d-lg-inline-flex"><a class=navbar-brand href=../../../><img src=../../../images/logo_hu673a59176cd62c570f44ed2728665b48_42188_0x70_resize_lanczos_2.png alt="Eclipse Keyple"></a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
-<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href=../../../><img src=../../../images/logo_hu673a59176cd62c570f44ed2728665b48_42188_0x70_resize_lanczos_2.png alt="Eclipse Keyple"></a></div><div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple™</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Source Themes Academic 4.8.0">
+<meta name=description content="How to develop an end-user standalone application.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/docs/developer-guide/standalone-application/>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<meta name=theme-color content="#1D87BB">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-light>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-dark disabled>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=%7CWork+Sans:ital,wght@0,300;1,500&display=swap">
+<link rel=stylesheet href=../../../css/academic.css>
+<script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
+<link rel=manifest href=../../../index.webmanifest>
+<link rel=icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_192x192_fill_lanczos_center_3.png>
+<link rel=canonical href=https://keyple.org/docs/developer-guide/standalone-application/>
+<meta property="twitter:card" content="summary">
+<meta property="og:site_name" content="Eclipse Keyple">
+<meta property="og:url" content="https://keyple.org/docs/developer-guide/standalone-application/">
+<meta property="og:title" content="Standalone application | Eclipse Keyple">
+<meta property="og:description" content="How to develop an end-user standalone application."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
+<meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
+<meta property="article:modified_time" content="2020-12-29T09:45:11+01:00">
+<script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
+<script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
+<title>Standalone application | Eclipse Keyple</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents>
+<script>const isSiteThemeDark=!1</script>
+<script src=../../../js/load-theme.js></script>
+<aside class=search-results id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Search</h1>
+</div>
+<div class="col-6 col-search-close">
+<a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
+</div>
+</aside>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=../../../><img src=../../../images/logo_hu673a59176cd62c570f44ed2728665b48_42188_0x70_resize_lanczos_3.png alt="Eclipse Keyple"></a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=../../../><img src=../../../images/logo_hu673a59176cd62c570f44ed2728665b48_42188_0x70_resize_lanczos_3.png alt="Eclipse Keyple"></a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple™</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple™?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
-<a class=dropdown-item href=../../../what-is-keyple/main-features/><span>Keyple's main features</span></a></div></li><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../repositories-dashboard/><span>Java 2.0 repositories status</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../repositories-dashboard/><span>Java 2.0 repositories status</span></a>
 <a class=dropdown-item href=../../../components-java/><span>Java 1.x modules</span></a>
-<a class=dropdown-item href=../../../components-cpp/><span>C++ 1.x modules</span></a></div></li><li class=nav-item><a class=nav-link href=../../../#news><span>News</span></a></li><li class=nav-item><a class="nav-link active" href=../../../docs/><span>Documentation</span></a></li><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Support & Trainings</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../support-trainings/add-support-trainings/><span>Add your support & trainings</span></a>
-<a class=dropdown-item href=../../../support-trainings/cna/><span>Calypso Networks Association</span></a></div></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"><li class=nav-item><a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a></li></ul></div></nav><div class="container-fluid docs"><div class="row flex-xl-nowrap"><div class="col-12 col-md-3 col-xl-2 docs-sidebar"><form class="docs-search d-flex align-items-center"><button class="btn docs-toggle d-md-none p-0 mr-3" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
-<span><i class="fas fa-bars"></i></span></button>
-<input name=q type=search class=form-control placeholder=Search... autocomplete=off></form><nav class="collapse docs-links" id=docs-nav><ul class="nav docs-sidenav"><li><a href=../../../docs/>Overview</a></li><div class=docs-toc-item><a class=docs-toc-link href=../../../docs/build-your-first-app/><i class="fas fa-rocket pr-1"></i>Build your first app</a><ul class="nav docs-sidenav"><li><a href=../../../docs/build-your-first-app/java-app/>Java</a></li><li><a href=../../../docs/build-your-first-app/android-app/>Android</a></li><li><a href=../../../docs/build-your-first-app/cpp-app/>C++</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../docs/developer-guide/><i class="fas fa-chalkboard-teacher pr-1"></i>Developer guides</a><ul class="nav docs-sidenav"><li><a href=../../../docs/developer-guide/common-concepts/>Common concepts</a></li><li class=active><a href=../../../docs/developer-guide/standalone-application/>Standalone application</a></li><li><a href=../../../docs/developer-guide/distributed-application/>Distributed application</a></li><li><a href=../../../docs/developer-guide/calypso-application/>Calypso application</a></li><li><a href=../../../docs/developer-guide/create-plugin/>Create a plugin</a></li><li><a href=../../../docs/developer-guide/create-extension/>Create an extension</a></li><li><a href=../../../docs/developer-guide/upgrade/>Upgrade Keyple</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../docs/api-reference/><i class="fas fa-plug pr-1"></i>API reference</a><ul class="nav docs-sidenav"><li><a href=../../../docs/api-reference/java-api/>Java</a></li><li><a href=../../../docs/api-reference/cpp-api/>C++</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../docs/architecture/><i class="fas fa-sitemap pr-1"></i>Architecture</a><ul class="nav docs-sidenav"><li><a href=../../../docs/architecture/keyple-global/>Global Solution</a></li><li><a href=../../../docs/architecture/keyple-core/>Keyple Core</a></li><li><a href=../../../docs/architecture/keyple-calypso/>Keyple Calypso</a></li></ul></div></ul></nav></div><div class="d-none d-xl-block col-xl-2 docs-toc"><ul class="nav toc-top"><li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li></ul><nav id=TableOfContents><ul><li><a href=#overview>Overview</a></li><li><a href=#before-you-start>Before you start</a></li><li><a href=#workflow>Workflow</a><ul><li><a href=#creation-of-the-smart-card-service>Creation of the Smart Card Service</a></li><li><a href=#choose-the-plugin>Choose the plugin</a></li><li><a href=#register-the-plugin>Register the plugin</a></li><li><a href=#observation-of-the-plugin>Observation of the plugin</a></li><li><a href=#retrieve-the-reader>Retrieve the reader</a></li><li><a href=#customize-the-reader-settings>Customize the reader settings</a></li><li><a href=#observation-of-the-reader>Observation of the reader</a></li><li><a href=#card-selection>Card selection</a></li><li><a href=#implementation-of-the-application-service>Implementation of the application service</a></li><li><a href=#stopping-the-application>Stopping the application</a></li></ul></li><li><a href=#keyple-core-api>Keyple Core API</a></li><li><a href=#examples>Examples</a><ul><li><a href=#explicit-selection>Explicit Selection</a></li><li><a href=#default-selection>Default Selection</a></li><li><a href=#sequential-multiple-selection>Sequential Multiple Selection</a></li><li><a href=#grouped-multiple-selection>Grouped Multiple Selection</a></li><li><a href=#demo-card-protocol-detection>Demo Card Protocol Detection</a></li><li><a href=#demo-observable-reader-notification>Demo Observable Reader Notification</a></li></ul></li><li><a href=#download>Download</a></li></ul></nav></div><main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main><article class=article><div class=docs-article-container><h1>Standalone application</h1><div class=article-style><hr><h2 id=overview>Overview</h2><p>A standalone application is an application that runs in a device in contact
-with the end user.</p><p>It has at least one local smart card reader and manages itself the
-interaction with the user.</p><p>In the ticketing industry, it is typically the software that runs a
-validator, a vending machine or a control terminal.</p><p>The diagram below illustrates the organization of the local standalone
-components:<figure><a data-fancybox href=../../../media/standalone-application/component/Local_Application_Components_Overview.svg><img src=../../../media/standalone-application/component/Local_Application_Components_Overview.svg alt></a></figure></p><hr><h2 id=before-you-start>Before you start</h2><ol><li>In pre-requisite, read the
+<a class=dropdown-item href=../../../components-cpp/><span>C++ 0.9.x modules</span></a>
+</div>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../../#news><span>News</span></a>
+</li>
+<li class=nav-item>
+<a class="nav-link active" href=../../../docs/><span>Documentation</span></a>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Support & Trainings</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../support-trainings/add-support-trainings/><span>Add your support & trainings</span></a>
+<a class=dropdown-item href=../../../support-trainings/cna/><span>Calypso Networks Association</span></a>
+</div>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+<li class=nav-item>
+<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="container-fluid docs">
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+<form class="docs-search d-flex align-items-center">
+<button class="btn docs-toggle d-md-none p-0 mr-3" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<input name=q type=search class=form-control placeholder=Search... autocomplete=off>
+</form>
+<nav class="collapse docs-links" id=docs-nav>
+<ul class="nav docs-sidenav">
+<li><a href=../../../docs/>Overview</a></li>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../docs/build-your-first-app/><i class="fas fa-rocket pr-1"></i>Build your first app</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../docs/build-your-first-app/java-app/>Java</a></li>
+<li><a href=../../../docs/build-your-first-app/android-app/>Android</a></li>
+<li><a href=../../../docs/build-your-first-app/cpp-app/>C++</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../docs/developer-guide/><i class="fas fa-chalkboard-teacher pr-1"></i>Developer guides</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../docs/developer-guide/common-concepts/>Common concepts</a></li>
+<li class=active><a href=../../../docs/developer-guide/standalone-application/>Standalone application</a></li>
+<li><a href=../../../docs/developer-guide/distributed-application/>Distributed application</a></li>
+<li><a href=../../../docs/developer-guide/calypso-application/>Calypso application</a></li>
+<li><a href=../../../docs/developer-guide/create-plugin/>Create a plugin</a></li>
+<li><a href=../../../docs/developer-guide/create-extension/>Create an extension</a></li>
+<li><a href=../../../docs/developer-guide/upgrade/>Upgrade Keyple</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../docs/api-reference/><i class="fas fa-plug pr-1"></i>API reference</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../docs/api-reference/java-api/>Java</a></li>
+<li><a href=../../../docs/api-reference/cpp-api/>C++</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../docs/architecture/><i class="fas fa-sitemap pr-1"></i>Architecture</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../docs/architecture/keyple-global/>Global Solution</a></li>
+<li><a href=../../../docs/architecture/keyple-core/>Keyple Core</a></li>
+<li><a href=../../../docs/architecture/keyple-calypso/>Keyple Calypso</a></li>
+</ul>
+</div>
+</ul>
+</nav>
+</div>
+<div class="d-none d-xl-block col-xl-2 docs-toc">
+<ul class="nav toc-top">
+<li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
+</ul>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#overview>Overview</a></li>
+<li><a href=#before-you-start>Before you start</a></li>
+<li><a href=#workflow>Workflow</a>
+<ul>
+<li><a href=#creation-of-the-smart-card-service>Creation of the Smart Card Service</a></li>
+<li><a href=#choose-the-plugin>Choose the plugin</a></li>
+<li><a href=#register-the-plugin>Register the plugin</a></li>
+<li><a href=#observation-of-the-plugin>Observation of the plugin</a></li>
+<li><a href=#retrieve-the-reader>Retrieve the reader</a></li>
+<li><a href=#customize-the-reader-settings>Customize the reader settings</a></li>
+<li><a href=#observation-of-the-reader>Observation of the reader</a></li>
+<li><a href=#card-selection>Card selection</a></li>
+<li><a href=#implementation-of-the-application-service>Implementation of the application service</a></li>
+<li><a href=#stopping-the-application>Stopping the application</a></li>
+</ul>
+</li>
+<li><a href=#keyple-core-api>Keyple Core API</a></li>
+<li><a href=#examples>Examples</a>
+<ul>
+<li><a href=#explicit-selection>Explicit Selection</a></li>
+<li><a href=#default-selection>Default Selection</a></li>
+<li><a href=#sequential-multiple-selection>Sequential Multiple Selection</a></li>
+<li><a href=#grouped-multiple-selection>Grouped Multiple Selection</a></li>
+<li><a href=#demo-card-protocol-detection>Demo Card Protocol Detection</a></li>
+<li><a href=#demo-observable-reader-notification>Demo Observable Reader Notification</a></li>
+</ul>
+</li>
+<li><a href=#download>Download</a></li>
+</ul>
+</nav>
+</div>
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
+<article class=article>
+<div class=docs-article-container>
+<h1>Standalone application</h1>
+<div class=article-style>
+<hr>
+<h2 id=overview>Overview</h2>
+<p>A standalone application is an application that runs in a device in contact
+with the end user.</p>
+<p>It has at least one local smart card reader and manages itself the
+interaction with the user.</p>
+<p>In the ticketing industry, it is typically the software that runs a
+validator, a vending machine or a control terminal.</p>
+<p>The diagram below illustrates the organization of the local standalone
+components:
+<figure>
+<a data-fancybox href=../../../media/standalone-application/component/Local_Application_Components_Overview.svg>
+<img src=../../../media/standalone-application/component/Local_Application_Components_Overview.svg alt>
+</a>
+</figure>
+</p>
+<hr>
+<h2 id=before-you-start>Before you start</h2>
+<ol>
+<li>In pre-requisite, read the
 <a href=../../../docs/developer-guide/common-concepts/>common concepts</a> page and become familiar with the basic
-concepts on which <strong>Keyple</strong> is based.</li><li>Any implementation of a Keyple application starts with the
+concepts on which <strong>Keyple</strong> is based.</li>
+<li>Any implementation of a Keyple application starts with the
 implementation of <strong>Keyple Core</strong>, please study the
-<a href=#workflow>workflow</a> proposed in the following chapter.</li><li>Explore the
+<a href=#workflow>workflow</a> proposed in the following chapter.</li>
+<li>Explore the
 <a href=#keyplecoreapi>Keyple Core API</a> to discover all the
-possibilities offered by <strong>Keyple Core</strong>.</li><li>Take inspiration from the
-<a href=#examples>examples</a>.</li><li>Follow the explanations given in the
+possibilities offered by <strong>Keyple Core</strong>.</li>
+<li>Take inspiration from the
+<a href=#examples>examples</a>.</li>
+<li>Follow the explanations given in the
 <a href=../../../docs/build-your-first-app/>Build your first app</a> section to configure your
-environment.</li><li>Using the
+environment.</li>
+<li>Using the
 <a href=https://keyple.org/components-java/>Java components</a> or
 <a href=https://keyple.org/components-cpp/>C++ components</a> pages, import
-<strong>Keyple Core</strong> into your project and start playing with <strong>Keyple</strong>.</li><li>Don&rsquo;t forget to explore the potential of Keyple card-specific
-extensions such as <strong>Keyple Calypso</strong>.</li></ol><hr><h2 id=workflow>Workflow</h2><p><strong>Keyple Core</strong> is built around the concepts described
+<strong>Keyple Core</strong> into your project and start playing with <strong>Keyple</strong>.</li>
+<li>Don&rsquo;t forget to explore the potential of Keyple card-specific
+extensions such as <strong>Keyple Calypso</strong>.</li>
+</ol>
+<hr>
+<h2 id=workflow>Workflow</h2>
+<p><strong>Keyple Core</strong> is built around the concepts described
 <a href=../../../docs/developer-guide/common-concepts/>here</a> and sometimes proposes several ways to perform
 an action or to achieve a result depending on the needs of the
-application.</p><p>The purpose of this section is to guide you in its use.</p><h3 id=creation-of-the-smart-card-service>Creation of the Smart Card Service</h3><p>This is the very first step in the realization of a Keyple application:</p><pre><code class=language-java>/* Get the instance of the SmartCardService */
+application.</p>
+<p>The purpose of this section is to guide you in its use.</p>
+<h3 id=creation-of-the-smart-card-service>Creation of the Smart Card Service</h3>
+<p>This is the very first step in the realization of a Keyple application:</p>
+<pre><code class=language-java>/* Get the instance of the SmartCardService */
 SmartCardService smartCardService = SmartCardService.getInstance();
-</code></pre><p>The Smart Card Service is based on the SmartCardService object, which is
+</code></pre>
+<p>The Smart Card Service is based on the SmartCardService object, which is
 a singleton that must be held by the application all along its
-execution.</p><p>Its main role is to centralize Keyple resources and manage their
-lifecycle.</p><h3 id=choose-the-plugin>Choose the plugin</h3><p>The Keyple application developer will choose the plugins he needs
-according to the equipment on which his Keyple application will run.</p><p>For example, if the environment is PC based, one will probably, but
-without obligation, go for the PC/SC plugin.</p><p>For an Andoid terminal environment, the plugin could be the standard
+execution.</p>
+<p>Its main role is to centralize Keyple resources and manage their
+lifecycle.</p>
+<h3 id=choose-the-plugin>Choose the plugin</h3>
+<p>The Keyple application developer will choose the plugins he needs
+according to the equipment on which his Keyple application will run.</p>
+<p>For example, if the environment is PC based, one will probably, but
+without obligation, go for the PC/SC plugin.</p>
+<p>For an Andoid terminal environment, the plugin could be the standard
 Android NFC plugin or one of the plugins available from the industrial
 partners of the project. For a complete list of available plugins,
 please see the
 <a href=https://keyple.org/components-java/>Java</a> or
-<a href=https://keyple.org/components-cpp/>C++</a> pages.</p><div class="alert alert-note"><div>A new plugin can also be <a href=../../../docs/developer-guide/create-plugin/>created</a> if the envisaged hardware does not yet have its
-plugin.</div></div><h3 id=register-the-plugin>Register the plugin</h3><p>All Keyple plugins implement the <code>Plugin</code> interface.</p><p>The plugin registration consists in submitting its factory to the Smart
-Card Service.</p><pre><code class=language-java>/* Assign the PcscPlugin to the SmartCardService */
+<a href=https://keyple.org/components-cpp/>C++</a> pages.</p>
+<div class="alert alert-note">
+<div>
+A new plugin can also be <a href=../../../docs/developer-guide/create-plugin/>created</a> if the envisaged hardware does not yet have its
+plugin.
+</div>
+</div>
+<h3 id=register-the-plugin>Register the plugin</h3>
+<p>All Keyple plugins implement the <code>Plugin</code> interface.</p>
+<p>The plugin registration consists in submitting its factory to the Smart
+Card Service.</p>
+<pre><code class=language-java>/* Assign the PcscPlugin to the SmartCardService */
 plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, readerExceptionHandlerImpl));
-</code></pre><div class="alert alert-note"><div><p>The plugin factories all implement the interface expected by
-SmartCardService.</p><p>Depending on the case, the constructor of the factory provided by the
-plugin can take parameters as argument.</p><p>For example, in the code above, the PC/SC plugin expects exception
-handlers, but in other cases it could be other parameters.</p></div></div><h3 id=observation-of-the-plugin>Observation of the plugin</h3><div class="alert alert-warning"><div>The notion of plugin observation applies only to
-hardware environments in which the readers are removable.</div></div><p>The observation of reader connections and disconnections is achieved
-through a background task managed by <strong>Keyple Core</strong>.</p><p>It is therefore imperative to provide an exception handler to allow
+</code></pre>
+<div class="alert alert-note">
+<div>
+<p>The plugin factories all implement the interface expected by
+SmartCardService.</p>
+<p>Depending on the case, the constructor of the factory provided by the
+plugin can take parameters as argument.</p>
+<p>For example, in the code above, the PC/SC plugin expects exception
+handlers, but in other cases it could be other parameters.</p>
+</div>
+</div>
+<h3 id=observation-of-the-plugin>Observation of the plugin</h3>
+<div class="alert alert-warning">
+<div>
+The notion of plugin observation applies only to
+hardware environments in which the readers are removable.
+</div>
+</div>
+<p>The observation of reader connections and disconnections is achieved
+through a background task managed by <strong>Keyple Core</strong>.</p>
+<p>It is therefore imperative to provide an exception handler to allow
 <strong>Keyple Core</strong> to warn the application in case of an execution error
-during monitoring or event notification.</p><p>Here is an example of exception handler implementation in a PC/SC plugin
-context:</p><pre><code class=language-java>...
+during monitoring or event notification.</p>
+<p>Here is an example of exception handler implementation in a PC/SC plugin
+context:</p>
+<pre><code class=language-java>...
 private static class PluginExceptionHandlerImpl implements PluginObservationExceptionHandler {
     @Override
     public void onPluginObservationError(String pluginName, Throwable throwable) {
@@ -67,12 +324,16 @@ PluginExceptionHandlerImpl pluginExceptionHandlerImpl = new ExceptionHandlerImpl
 /* Assign the PcscPlugin to the SmartCardService */
 plugin = smartCardService.registerPlugin(new PcscPluginFactory(pluginExceptionHandlerImpl, null));
 ...
-</code></pre><p>For the observation of the plugin itself, the application must provide
+</code></pre>
+<p>For the observation of the plugin itself, the application must provide
 an object implementing the <code>PluginObserver</code> interface to the plugin
-after having casted it in <code>ObservablePlugin</code>.</p><pre><code class=language-java>((ObservablePlugin) plugin).addObserver(new PluginObserver());
-</code></pre><p>The <code>PluginObserver</code> interface requires the implementation of the
+after having casted it in <code>ObservablePlugin</code>.</p>
+<pre><code class=language-java>((ObservablePlugin) plugin).addObserver(new PluginObserver());
+</code></pre>
+<p>The <code>PluginObserver</code> interface requires the implementation of the
 <code>update</code> method that will be called by Keyple Core when notifying
-plugin events.</p><pre><code class=language-java>class PluginObserver implements ObservablePlugin.PluginObserver {
+plugin events.</p>
+<pre><code class=language-java>class PluginObserver implements ObservablePlugin.PluginObserver {
 
   @Override
   public void update(PluginEvent event) {
@@ -91,24 +352,41 @@ plugin events.</p><pre><code class=language-java>class PluginObserver implements
     }
   }
 }
-</code></pre><h3 id=retrieve-the-reader>Retrieve the reader</h3><p>Readers are objects implementing the <code>Reader</code> interface and are
+</code></pre>
+<h3 id=retrieve-the-reader>Retrieve the reader</h3>
+<p>Readers are objects implementing the <code>Reader</code> interface and are
 returned by the plugin&rsquo;s <code>getReader</code> method taking the name of the
-reader as argument.</p><p>The names of the readers available from the plugin are returned as a
-list of strings by the <code>getReaderNames</code> method.</p><p>The <code>getReaders</code> method also allows to retrieve all readers in a Map
+reader as argument.</p>
+<p>The names of the readers available from the plugin are returned as a
+list of strings by the <code>getReaderNames</code> method.</p>
+<p>The <code>getReaders</code> method also allows to retrieve all readers in a Map
 whose key is the name of the reader and the value the <code>Reader</code>
-object.</p><p>Here is an example to get the 1st PC/SC reader:</p><pre><code class=language-java>String readerName = plugin.getReaderNames().get(0);
+object.</p>
+<p>Here is an example to get the 1st PC/SC reader:</p>
+<pre><code class=language-java>String readerName = plugin.getReaderNames().get(0);
 Reader reader = plugin.getReader(readerName);
-</code></pre><div class="alert alert-note"><div>Depending on the type of plugin, the reader names are
+</code></pre>
+<div class="alert alert-note">
+<div>
+Depending on the type of plugin, the reader names are
 more or less dynamic (e.g. a PC/SC based system vs. an embedded
 terminal), it is sometimes necessary to implement an identification
 mechanism in order to assign the right reader to the right place in the
-system (for example by using regular expressions).</div></div><h3 id=customize-the-reader-settings>Customize the reader settings</h3><p>Take a close look at the parameters proposed by the plugin and its
-readers.</p><p>In particular, it is necessary to configure the expected communication
+system (for example by using regular expressions).
+</div>
+</div>
+<h3 id=customize-the-reader-settings>Customize the reader settings</h3>
+<p>Take a close look at the parameters proposed by the plugin and its
+readers.</p>
+<p>In particular, it is necessary to configure the expected communication
 protocols, but it is also possible that other settings exist depending
-on the hardware context.</p><h3 id=observation-of-the-reader>Observation of the reader</h3><p>The observation of inserting and removing cards from readers is similar
+on the hardware context.</p>
+<h3 id=observation-of-the-reader>Observation of the reader</h3>
+<p>The observation of inserting and removing cards from readers is similar
 to the observation of plugins in that it requires the same operations,
 i.e. the use of an exception handler and an object implementing a
-dedicated interface.</p><pre><code class=language-java>...
+dedicated interface.</p>
+<pre><code class=language-java>...
 private static class ReaderExceptionHandlerImpl implements ReaderObservationExceptionHandler {
     @Override
     public void onReaderObservationError(String pluginName, String readerName, Throwable throwable) {
@@ -123,9 +401,13 @@ ReaderExceptionHandlerImpl readerExceptionHandlerImpl = new ExceptionHandlerImpl
 /* Assign the PcscPlugin to the SmartCardService */
 plugin = smartCardService.registerPlugin(new PcscPluginFactory(pluginExceptionHandlerImpl, readerExceptionHandlerImpl));
 ...
-</code></pre><p>The observation of the events of the reader is done in a similar way to
-that of the plugin, by adding an observer:</p><pre><code class=language-java>((ObservableReader) reader).addObserver(new ReaderObserver());
-</code></pre><p>and implementing the ReaderObserver interface:</p><pre><code class=language-java>class ReaderObserver implements ObservableReader.ReaderObserver {
+</code></pre>
+<p>The observation of the events of the reader is done in a similar way to
+that of the plugin, by adding an observer:</p>
+<pre><code class=language-java>((ObservableReader) reader).addObserver(new ReaderObserver());
+</code></pre>
+<p>and implementing the ReaderObserver interface:</p>
+<pre><code class=language-java>class ReaderObserver implements ObservableReader.ReaderObserver {
 
   @Override
   public void update(ReaderEvent event) {
@@ -148,41 +430,71 @@ that of the plugin, by adding an observer:</p><pre><code class=language-java>((O
     }
   }
 }
-</code></pre><div class="alert alert-note"><div>Observation of the readers is optional in Keyple. It
+</code></pre>
+<div class="alert alert-note">
+<div>
+Observation of the readers is optional in Keyple. It
 facilitates an event-driven programming mode, but an application
 developer can choose not to observe a reader, either because this reader
 is not designed to manage card insertions/withdrawals (for example an
 Android OMAPI reader or a SAM reader), or because the application is
 designed to directly manage the presence of a card (refer to the
-<code>Reader</code> interface).</div></div><h3 id=card-selection>Card selection</h3><p>The card selection service offered by <strong>Keyple Core</strong> gives multiple
+<code>Reader</code> interface).
+</div>
+</div>
+<h3 id=card-selection>Card selection</h3>
+<p>The card selection service offered by <strong>Keyple Core</strong> gives multiple
 possibilities to choose the processing according to the type of card
-presented to the reader.</p><p>It is based on a filtering process according to three possible criteria,
-each of which is optional:</p><ul><li>the communication protocol of the card (usually also identifying a
-card technology)</li><li>the answer to reset of the card (ATR)</li><li>the ISO standardized application identifier (AID)</li></ul><p>Each of these criteria can be defined in a <code>CardSelector</code> object.</p><p>When a card is inserted, it is evaluated according to these criteria and
-will be given the status &ldquo;selected&rdquo; or not.</p><p>When a card is not selected, no other operation will be possible with
+presented to the reader.</p>
+<p>It is based on a filtering process according to three possible criteria,
+each of which is optional:</p>
+<ul>
+<li>the communication protocol of the card (usually also identifying a
+card technology)</li>
+<li>the answer to reset of the card (ATR)</li>
+<li>the ISO standardized application identifier (AID)</li>
+</ul>
+<p>Each of these criteria can be defined in a <code>CardSelector</code> object.</p>
+<p>When a card is inserted, it is evaluated according to these criteria and
+will be given the status &ldquo;selected&rdquo; or not.</p>
+<p>When a card is not selected, no other operation will be possible with
 it. Depending on the chosen setting, the result of the selection will or
 will not be made available to the application. It is thus possible to
 directly ignore cards that do not correspond to the defined selection
-criteria.</p><p>When a card is selected, the result is an object that extends the
+criteria.</p>
+<p>When a card is selected, the result is an object that extends the
 AbstractSmartCard and contains all the information known about the card
-at that stage.</p><p>In the case of a ISO standardized card, the application is selected with
+at that stage.</p>
+<p>In the case of a ISO standardized card, the application is selected with
 the provided AID (additional settings are available to specify the
-desired navigation within the card applications list).</p><p>In addition to the selection process itself, specific APDU commands can
+desired navigation within the card applications list).</p>
+<p>In addition to the selection process itself, specific APDU commands can
 be sent to the card if the selection is successful. The output data of
 these commands are available in the instance of the object
-<code>AbstractSmarCard</code>.</p><p>The <code>CardSelector</code> and the additional APDU commands are grouped in a
-<code>CardSelectionRequest</code> object.</p><p>One or more <code>CardSelectionRequest</code> can be set up to perform as many
-selection cases, each targeting a particular card or application.</p><p>The final selection process takes as input a list of
+<code>AbstractSmarCard</code>.</p>
+<p>The <code>CardSelector</code> and the additional APDU commands are grouped in a
+<code>CardSelectionRequest</code> object.</p>
+<p>One or more <code>CardSelectionRequest</code> can be set up to perform as many
+selection cases, each targeting a particular card or application.</p>
+<p>The final selection process takes as input a list of
 <code>CardSelectionRequest</code> and gets in return a list of
-<code>CardSelectionResponse</code>.</p><h4 id=card-selection-steps>Card selection steps</h4><p>In this guide we will not show the addition of supplementary APDU
+<code>CardSelectionResponse</code>.</p>
+<h4 id=card-selection-steps>Card selection steps</h4>
+<p>In this guide we will not show the addition of supplementary APDU
 commands. Please refer to the Calypso guide for an implementation
-example.</p><h5 id=create-the-card-selection-service>Create the card selection service</h5><p>The card selection service will be used all along the card search
-process.</p><pre><code class=language-java>    cardSelectionService = new CardSelectionsService();
-</code></pre><h5 id=create-the-selection-cases>Create the selection cases</h5><p>The application can create as many selection cases as the type of cards
+example.</p>
+<h5 id=create-the-card-selection-service>Create the card selection service</h5>
+<p>The card selection service will be used all along the card search
+process.</p>
+<pre><code class=language-java>    cardSelectionService = new CardSelectionsService();
+</code></pre>
+<h5 id=create-the-selection-cases>Create the selection cases</h5>
+<p>The application can create as many selection cases as the type of cards
 expected. The order in which the selection cases are prepared is
 important because it will favor the latency delay for the processing of
 the cards corresponding to the first case. It is therefore recommended
-to place the most common card profile in the application context first.</p><pre><code class=language-java>/** Create a new class extending AbstractCardSelection */
+to place the most common card profile in the application context first.</p>
+<pre><code class=language-java>/** Create a new class extending AbstractCardSelection */
 public final class GenericCardSelection extends AbstractCardSelection {
     public GenericCardSelection(CardSelector cardSelector) {
         super(cardSelector);
@@ -227,8 +539,11 @@ GenericCardSelection cardSelector2 =
 
 // Add the selection case to the current selection
 cardSelectionsService.prepareSelection(cardSelector2);
-</code></pre><h5 id=proceed-to-the-selection-with-a-non-observable-reader>Proceed to the selection with a non-observable reader</h5><p>The <code>processExplicitSelections</code> method of <code>CardSelectionService</code>
-performs the actual communication with the card.</p><pre><code class=language-java>...
+</code></pre>
+<h5 id=proceed-to-the-selection-with-a-non-observable-reader>Proceed to the selection with a non-observable reader</h5>
+<p>The <code>processExplicitSelections</code> method of <code>CardSelectionService</code>
+performs the actual communication with the card.</p>
+<pre><code class=language-java>...
 // Check if a card is present in the reader
 if (!reader.isCardPresent()) {
     logger.error(&quot;No Po Card is present in the reader.&quot;);
@@ -239,27 +554,36 @@ if (!reader.isCardPresent()) {
 CardSelectionsResult cardSelectionsResult =
     cardSelectionsService.processExplicitSelections(reader);
 ...
-</code></pre><h5 id=proceed-to-the-selection-with-an-observable-reader>Proceed to the selection with an observable reader</h5><p>In the case of an observable reader, the selection request is provided
+</code></pre>
+<h5 id=proceed-to-the-selection-with-an-observable-reader>Proceed to the selection with an observable reader</h5>
+<p>In the case of an observable reader, the selection request is provided
 to the reader (it is then named Default Selection) and will be processed
 automatically as soon as a card is presented. The application is then
 notified of the event with the data resulting from the selection.
 Depending on the selection settings, the application will be notified of
 all card presentations (<code>CARD_INSERTED</code> event) or only those
 presentations that led to a successful selection (<code>CARD_MATCHED</code>
-event).</p><h6 id=add-a-default-selection>Add a default selection</h6><pre><code class=language-java>// Provide the Reader with the selection operation to be processed when a card is inserted.
+event).</p>
+<h6 id=add-a-default-selection>Add a default selection</h6>
+<pre><code class=language-java>// Provide the Reader with the selection operation to be processed when a card is inserted.
 ((ObservableReader) reader)
     .setDefaultSelectionRequest(
         cardSelectionService.getDefaultSelection().getDefaultSelectionsRequest(),
         ObservableReader.NotificationMode.MATCHED_ONLY,
         ObservableReader.PollingMode.REPEATING);
-</code></pre><p>The <code>NotificationMode</code> allows you to specify whether all card
+</code></pre>
+<p>The <code>NotificationMode</code> allows you to specify whether all card
 insertions should be reported to the application or only those that led
-to a successful selection.</p><p><code>PollingMode</code> indicates whether to go back to waiting for the card
+to a successful selection.</p>
+<p><code>PollingMode</code> indicates whether to go back to waiting for the card
 after processing (<code>REPEATING</code>) or let the application decide when to
-restart the search (<code>SINGLESHOT</code>) with <code>startCardDetection</code>.</p><p>Note: when the default selection is set with the <code>PollingMode</code>
+restart the search (<code>SINGLESHOT</code>) with <code>startCardDetection</code>.</p>
+<p>Note: when the default selection is set with the <code>PollingMode</code>
 parameter, the card detection is started automatically. However, it is
 possible to set a default selection without automatic start and by
-starting the detection independently with <code>startCardDetection</code>.</p><h6 id=receive-the-result-as-an-event>Receive the result as an event</h6><pre><code class=language-java>...
+starting the detection independently with <code>startCardDetection</code>.</p>
+<h6 id=receive-the-result-as-an-event>Receive the result as an event</h6>
+<pre><code class=language-java>...
   @Override
   public void update(ReaderEvent event) {
     switch (event.getEventType()) {
@@ -303,8 +627,11 @@ starting the detection independently with <code>startCardDetection</code>.</p><h
     }
   }
 ...
-</code></pre><h5 id=get-the-selection-result>Get the selection result</h5><p>The result of the selection is available in the <code>AbstractSmartCard</code>
-object.</p><pre><code class=language-java>...
+</code></pre>
+<h5 id=get-the-selection-result>Get the selection result</h5>
+<p>The result of the selection is available in the <code>AbstractSmartCard</code>
+object.</p>
+<pre><code class=language-java>...
 if (!cardSelectionsResult.hasActiveSelection()) {
   logger.warn(&quot;The selection of the application &quot; + cardAid + &quot; failed.&quot;);
 }
@@ -320,35 +647,192 @@ if (smartCard.hasAtr()) {
   logger.info(&quot;Card ATR = {}&quot;, atr);
 }
 ...
-</code></pre><h3 id=implementation-of-the-application-service>Implementation of the application service</h3><p>The applicative processing of the card that follows the selection of the
+</code></pre>
+<h3 id=implementation-of-the-application-service>Implementation of the application service</h3>
+<p>The applicative processing of the card that follows the selection of the
 card is to be inserted in the processing of the <code>CARD_INSERTED</code> or
-<code>CARD_MATCHED</code> event.</p><p>It can be processed in the thread provided by the monitoring task or
+<code>CARD_MATCHED</code> event.</p>
+<p>It can be processed in the thread provided by the monitoring task or
 detached in a separate thread. The application developer must pay
 attention to the handling of exceptions in this part of the application.
 Indeed, in case of a runtime exception, the information will be given to
-the application via the exception handler configured beforehand.</p><h3 id=stopping-the-application>Stopping the application</h3><p>The clean shutdown of a Keyple application requires the release of
-resources and in particular the shutdown of the observation threads.</p><p>This is done by unregistering the plugins in the following way:</p><pre><code class=language-java>smartCardService.unregisterPlugin(plugin.getName());
-</code></pre><hr><h2 id=keyple-core-api>Keyple Core API</h2><p>To learn all the details of the <strong>Keyple Core</strong> API, please consult the
-<a href=../../../docs/api-reference/>Javadoc documentation</a>.</p><p>However, here are two diagrams showing the main features of Keyple Core:</p><ul><li><p>The diagram below represents the main classes implemented around the
-<strong>Smart Card Service</strong> with in particular the observation mechanisms.<figure><a data-fancybox href=../../../media/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg><img src=../../../media/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg alt></a></figure></p></li><li><p>The diagram below represents the main classes used for selection
-operations.<figure><a data-fancybox href=../../../media/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg><img src=../../../media/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg alt></a></figure></p></li></ul><hr><h2 id=examples>Examples</h2><p>To help in the implementation of the different facilities offered by
+the application via the exception handler configured beforehand.</p>
+<h3 id=stopping-the-application>Stopping the application</h3>
+<p>The clean shutdown of a Keyple application requires the release of
+resources and in particular the shutdown of the observation threads.</p>
+<p>This is done by unregistering the plugins in the following way:</p>
+<pre><code class=language-java>smartCardService.unregisterPlugin(plugin.getName());
+</code></pre>
+<hr>
+<h2 id=keyple-core-api>Keyple Core API</h2>
+<p>To learn all the details of the <strong>Keyple Core</strong> API, please consult the
+<a href=../../../docs/api-reference/>Javadoc documentation</a>.</p>
+<p>However, here are two diagrams showing the main features of Keyple Core:</p>
+<ul>
+<li>
+<p>The diagram below represents the main classes implemented around the
+<strong>Smart Card Service</strong> with in particular the observation mechanisms.
+<figure>
+<a data-fancybox href=../../../media/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg>
+<img src=../../../media/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg alt>
+</a>
+</figure>
+</p>
+</li>
+<li>
+<p>The diagram below represents the main classes used for selection
+operations.
+<figure>
+<a data-fancybox href=../../../media/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg>
+<img src=../../../media/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg alt>
+</a>
+</figure>
+</p>
+</li>
+</ul>
+<hr>
+<h2 id=examples>Examples</h2>
+<p>To help in the implementation of the different facilities offered by
 Keyple to process smart cards, a set of examples is present in the
 project repository
-<a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone target=_blank rel=noopener><i class="fab fa-github pr-1 fa-fw"></i> examples</a></p><p>Nevertheless, you will find below a brief description of them:</p><h3 id=explicit-selection>Explicit Selection</h3><p>Shows the use of Keyple to make a card selection without observing the
-reader, based on testing the presence of the card by the application.</p><p><a href=https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid target=_blank rel=noopener>see the code</a></p><h3 id=default-selection>Default Selection</h3><p>Shows the use of Keyple to make a card selection with observation of the
+<a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone target=_blank rel=noopener>
+<i class="fab fa-github pr-1 fa-fw"></i> examples</a></p>
+<p>Nevertheless, you will find below a brief description of them:</p>
+<h3 id=explicit-selection>Explicit Selection</h3>
+<p>Shows the use of Keyple to make a card selection without observing the
+reader, based on testing the presence of the card by the application.</p>
+<p>
+<a href=https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid target=_blank rel=noopener>see the code</a></p>
+<h3 id=default-selection>Default Selection</h3>
+<p>Shows the use of Keyple to make a card selection with observation of the
 reader. A default selection is prepared, the presentation of a card
-triggers the notification of a reader event to the application.</p><p><a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification target=_blank rel=noopener>see the code</a></p><h3 id=sequential-multiple-selection>Sequential Multiple Selection</h3><p>Executes successively several independent selection operations with the
-use of the ISO &lsquo;NEXT&rsquo; navigation flag.</p><p><a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection target=_blank rel=noopener>see the code</a></p><p>Illustrates the case of a card exploration with maintenance of the physical channel open.</p><h3 id=grouped-multiple-selection>Grouped Multiple Selection</h3><p>Executes a multiple selection with logical channel closure between each
-selection.</p><p>Allows the exploration of the applications of a card in a single
-operation but without selection at the end.</p><p><a href=https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection target=_blank rel=noopener>see the code</a></p><h3 id=demo-card-protocol-detection>Demo Card Protocol Detection</h3><p>Demonstrates the use of Keyple in a context where several card
-technologies are likely to be processed by the application.</p><p><a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection target=_blank rel=noopener>see the code</a></p><h3 id=demo-observable-reader-notification>Demo Observable Reader Notification</h3><p>Demonstrates the use of Keyple to implement the observation of a plugin
+triggers the notification of a reader event to the application.</p>
+<p>
+<a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification target=_blank rel=noopener>see the code</a></p>
+<h3 id=sequential-multiple-selection>Sequential Multiple Selection</h3>
+<p>Executes successively several independent selection operations with the
+use of the ISO &lsquo;NEXT&rsquo; navigation flag.</p>
+<p>
+<a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection target=_blank rel=noopener>see the code</a></p>
+<p>Illustrates the case of a card exploration with maintenance of the physical channel open.</p>
+<h3 id=grouped-multiple-selection>Grouped Multiple Selection</h3>
+<p>Executes a multiple selection with logical channel closure between each
+selection.</p>
+<p>Allows the exploration of the applications of a card in a single
+operation but without selection at the end.</p>
+<p>
+<a href=https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection target=_blank rel=noopener>see the code</a></p>
+<h3 id=demo-card-protocol-detection>Demo Card Protocol Detection</h3>
+<p>Demonstrates the use of Keyple in a context where several card
+technologies are likely to be processed by the application.</p>
+<p>
+<a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection target=_blank rel=noopener>see the code</a></p>
+<h3 id=demo-observable-reader-notification>Demo Observable Reader Notification</h3>
+<p>Demonstrates the use of Keyple to implement the observation of a plugin
 and its readers. Readers are dynamically created and an observer is
-assigned to them.</p><p><a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification target=_blank rel=noopener>see the code</a></p><hr><h2 id=download>Download</h2><p>The artifact <strong>Keyple Core</strong> and how to integrate it into your
-application is available here:</p><ul><li><a href=https://keyple.org/components-java/core/>Keyple Core Java component</a></li><li><a href=https://keyple.org/components-cpp/core/>Keyple Core C++ component</a></li></ul></div><div class=article-widget><div class=post-nav><div class=post-nav-item><div class=meta-nav>Previous</div><a href=../../../docs/developer-guide/common-concepts/ rel=next>Common concepts</a></div><div class=post-nav-item><div class=meta-nav>Next</div><a href=../../../docs/developer-guide/distributed-application/ rel=prev>Distributed application</a></div></div></div></div><div class=body-footer><p>Last updated on Tue, Dec 29, 2020</p></div></article><footer class=site-footer><div class=container><div class="row featurette"><div class="col-12 col-sm-4"><h4>More</h4><ul><li><a href=https://github.com/eclipse/keyple title="View Source Code on GitHub"><i class="fab fa-github"></i> GitHub Repository</a></li><li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing list</a></li><li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Keyple's project page</a></li></ul></div><div class="col-12 col-sm-4"><h4>Eclipse Foundation</h4><ul><li><a href=https://www.eclipse.org/org/>About Eclipse Foundation</a></li><li><a href=https://www.eclipse.org/org/foundation/contact.php>Contact Eclipse Foundation</a></li><li><a href=https://www.eclipse.org/donate>Donate</a></li><li><a href=https://www.eclipse.org/membership>Members</a></li><li><a href=https://www.eclipse.org/org/documents/>Governance</a></li><li><a href=https://www.eclipse.org/org/documents/Community_Code_of_Conduct.php>Code of Conduct</a></li><li><a href=https://www.eclipse.org/artwork/>Logo and Artwork</a></li><li><a href=https://www.eclipse.org/org/foundation/directors.php></a></li></ul></div><div class="col-12 col-sm-4"><h4>Legal</h4><ul><li><a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a></li><li><a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a></li><li><a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a></li><li><a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a></li><li><a href=https://www.eclipse.org/legal/>Legal Resources</a></li><li><a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a></li></ul></section></div></div><p class=powered-by>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</p><p class=powered-by>Powered by the
+assigned to them.</p>
+<p>
+<a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification target=_blank rel=noopener>see the code</a></p>
+<hr>
+<h2 id=download>Download</h2>
+<p>The artifact <strong>Keyple Core</strong> and how to integrate it into your
+application is available here:</p>
+<ul>
+<li>
+<a href=https://keyple.org/components-java/core/>Keyple Core Java component</a></li>
+<li>
+<a href=https://keyple.org/components-cpp/core/>Keyple Core C++ component</a></li>
+</ul>
+</div>
+<div class=article-widget>
+<div class=post-nav>
+<div class=post-nav-item>
+<div class=meta-nav>Previous</div>
+<a href=../../../docs/developer-guide/common-concepts/ rel=next>Common concepts</a>
+</div>
+<div class=post-nav-item>
+<div class=meta-nav>Next</div>
+<a href=../../../docs/developer-guide/distributed-application/ rel=prev>Distributed application</a>
+</div>
+</div>
+</div>
+</div>
+<div class=body-footer>
+<p>Last updated on Tue, Dec 29, 2020</p>
+</div>
+</article>
+<footer class=site-footer>
+<div class=container>
+<div class="row featurette">
+<div class="col-12 col-sm-4">
+<h4>More</h4>
+<ul>
+<li><a href=https://github.com/eclipse/keyple title="View Source Code on GitHub"><i class="fab fa-github"></i> GitHub Repository</a></li>
+<li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing list</a></li>
+<li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Keyple's project page</a></li>
+</ul>
+</div>
+<div class="col-12 col-sm-4">
+<h4>Eclipse Foundation</h4>
+<ul>
+<li><a href=https://www.eclipse.org/org/>About Eclipse Foundation</a></li>
+<li><a href=https://www.eclipse.org/org/foundation/contact.php>Contact Eclipse Foundation</a></li>
+<li><a href=https://www.eclipse.org/donate>Donate</a></li>
+<li><a href=https://www.eclipse.org/membership>Members</a></li>
+<li><a href=https://www.eclipse.org/org/documents/>Governance</a></li>
+<li><a href=https://www.eclipse.org/org/documents/Community_Code_of_Conduct.php>Code of Conduct</a></li>
+<li><a href=https://www.eclipse.org/artwork/>Logo and Artwork</a></li>
+<li><a href=https://www.eclipse.org/org/foundation/directors.php></a></li>
+</ul>
+</div>
+<div class="col-12 col-sm-4">
+<h4>Legal</h4>
+<ul>
+<li><a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a></li>
+<li><a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a></li>
+<li><a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a></li>
+<li><a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a></li>
+<li><a href=https://www.eclipse.org/legal/>Legal Resources </a></li>
+<li><a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability </a></li>
+</ul>
+</section>
+</div>
+</div>
+<p class=powered-by>
+Copyright © Eclipse Foundation, Inc. All Rights Reserved.
+</p>
+<p class=powered-by>
+Powered by the
 <a href=https://wowchemy.com/ target=_blank rel=noopener>Wowchemy theme</a>
 for
 <a href=https://gohugo.io target=_blank rel=noopener>Hugo</a>.
-<span class=float-right aria-hidden=true><a href=# class=back-to-top><span class=button_icon><i class="fas fa-chevron-up fa-2x"></i></span></a></span></p></footer></main></div></div><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/java.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/kotlin.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/cpp.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/gradle.min.js></script><script>const code_highlighting=!0</script><script>const search_config={indexURI:"/index.json",minLength:1,threshold:.3},i18n={no_results:"No results found",placeholder:"Search...",results:"results found"},content_type={post:"Posts",project:"Projects",publication:"Publications",talk:"Talks",slides:"Slides"}</script><script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin=anonymous></script><script>anchors.add()</script><script id=search-hit-fuse-template type=text/x-template>
+<span class=float-right aria-hidden=true>
+<a href=# class=back-to-top>
+<span class=button_icon>
+<i class="fas fa-chevron-up fa-2x"></i>
+</span>
+</a>
+</span>
+</p>
+</footer>
+</main>
+</div>
+</div>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/java.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/kotlin.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/cpp.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/gradle.min.js></script>
+<script>const code_highlighting=!0</script>
+<script>const search_config={indexURI:"/index.json",minLength:1,threshold:.3},i18n={no_results:"No results found",placeholder:"Search...",results:"results found"},content_type={post:"Posts",project:"Projects",publication:"Publications",talk:"Talks",slides:"Slides"}</script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin=anonymous></script>
+<script>anchors.add()</script>
+<script id=search-hit-fuse-template type=text/x-template>
       <div class="search-hit" id="summary-{{key}}">
       <div class="search-hit-content">
         <div class="search-hit-name">
@@ -358,6 +842,36 @@ for
         </div>
       </div>
       </div>
-    </script><script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script><script src=../../../js/academic.min.19912f59e37190f8d23e7f331b162e03.js></script><link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css><script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script><script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script><div id=modal class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><h5 class=modal-title>Cite</h5><button type=button class=close data-dismiss=modal aria-label=Close>
-<span aria-hidden=true>&#215;</span></button></div><div class=modal-body><pre><code class="tex hljs"></code></pre></div><div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank><i class="fas fa-copy"></i> Copy</a>
-<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank><i class="fas fa-download"></i> Download</a><div id=modal-error></div></div></div></div></div></body></html>
+    </script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+<script src=../../../js/academic.min.f6ecf7692215f2bc4850b72c8176bfa2.js></script>
+<link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
+<script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
+<script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Cite</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Copy
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Download
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

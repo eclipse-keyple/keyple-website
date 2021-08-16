@@ -1,34 +1,1045 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Source Themes Academic 4.8.0"><meta name=description content="How to develop an end-user application using network communications."><link rel=alternate hreflang=en-us href=https://keyple.org/docs/developer-guide/distributed-application/><link rel=preconnect href=https://fonts.gstatic.com crossorigin><meta name=theme-color content="#1D87BB"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-light><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-dark disabled><script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script><link rel=stylesheet href="https://fonts.googleapis.com/css?family=%7CWork+Sans:ital,wght@0,300;1,500&display=swap"><link rel=stylesheet href=../../../css/academic.css><script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script><link rel=manifest href=../../../index.webmanifest><link rel=icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_2.png><link rel=apple-touch-icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_192x192_fill_lanczos_center_2.png><link rel=canonical href=https://keyple.org/docs/developer-guide/distributed-application/><meta property="twitter:card" content="summary"><meta property="og:site_name" content="Eclipse Keyple"><meta property="og:url" content="https://keyple.org/docs/developer-guide/distributed-application/"><meta property="og:title" content="Distributed application | Eclipse Keyple"><meta property="og:description" content="How to develop an end-user application using network communications."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png"><meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_2.png"><meta property="og:locale" content="en-us"><meta property="article:modified_time" content="2020-12-18T16:41:40+01:00"><script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous><script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script><title>Distributed application | Eclipse Keyple</title></head><body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents><script>const isSiteThemeDark=!1</script><script src=../../../js/load-theme.js></script><aside class=search-results id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box><input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container><div class="d-none d-lg-inline-flex"><a class=navbar-brand href=../../../><img src=../../../images/logo_hu673a59176cd62c570f44ed2728665b48_42188_0x70_resize_lanczos_2.png alt="Eclipse Keyple"></a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
-<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href=../../../><img src=../../../images/logo_hu673a59176cd62c570f44ed2728665b48_42188_0x70_resize_lanczos_2.png alt="Eclipse Keyple"></a></div><div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple™</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Source Themes Academic 4.8.0">
+<meta name=description content="How to develop an end-user application using network communications.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/docs/developer-guide/distributed-application/>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<meta name=theme-color content="#1D87BB">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-light>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-dark disabled>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=%7CWork+Sans:ital,wght@0,300;1,500&display=swap">
+<link rel=stylesheet href=../../../css/academic.css>
+<script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
+<link rel=manifest href=../../../index.webmanifest>
+<link rel=icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_192x192_fill_lanczos_center_3.png>
+<link rel=canonical href=https://keyple.org/docs/developer-guide/distributed-application/>
+<meta property="twitter:card" content="summary">
+<meta property="og:site_name" content="Eclipse Keyple">
+<meta property="og:url" content="https://keyple.org/docs/developer-guide/distributed-application/">
+<meta property="og:title" content="Distributed application | Eclipse Keyple">
+<meta property="og:description" content="How to develop an end-user application using network communications."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
+<meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
+<meta property="article:modified_time" content="2020-12-18T16:41:40+01:00">
+<script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
+<script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
+<title>Distributed application | Eclipse Keyple</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents>
+<script>const isSiteThemeDark=!1</script>
+<script src=../../../js/load-theme.js></script>
+<aside class=search-results id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Search</h1>
+</div>
+<div class="col-6 col-search-close">
+<a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
+</div>
+</aside>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=../../../><img src=../../../images/logo_hu673a59176cd62c570f44ed2728665b48_42188_0x70_resize_lanczos_3.png alt="Eclipse Keyple"></a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=../../../><img src=../../../images/logo_hu673a59176cd62c570f44ed2728665b48_42188_0x70_resize_lanczos_3.png alt="Eclipse Keyple"></a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple™</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple™?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
-<a class=dropdown-item href=../../../what-is-keyple/main-features/><span>Keyple's main features</span></a></div></li><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../repositories-dashboard/><span>Java 2.0 repositories status</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../repositories-dashboard/><span>Java 2.0 repositories status</span></a>
 <a class=dropdown-item href=../../../components-java/><span>Java 1.x modules</span></a>
-<a class=dropdown-item href=../../../components-cpp/><span>C++ 1.x modules</span></a></div></li><li class=nav-item><a class=nav-link href=../../../#news><span>News</span></a></li><li class=nav-item><a class="nav-link active" href=../../../docs/><span>Documentation</span></a></li><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Support & Trainings</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../support-trainings/add-support-trainings/><span>Add your support & trainings</span></a>
-<a class=dropdown-item href=../../../support-trainings/cna/><span>Calypso Networks Association</span></a></div></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"><li class=nav-item><a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a></li></ul></div></nav><div class="container-fluid docs"><div class="row flex-xl-nowrap"><div class="col-12 col-md-3 col-xl-2 docs-sidebar"><form class="docs-search d-flex align-items-center"><button class="btn docs-toggle d-md-none p-0 mr-3" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
-<span><i class="fas fa-bars"></i></span></button>
-<input name=q type=search class=form-control placeholder=Search... autocomplete=off></form><nav class="collapse docs-links" id=docs-nav><ul class="nav docs-sidenav"><li><a href=../../../docs/>Overview</a></li><div class=docs-toc-item><a class=docs-toc-link href=../../../docs/build-your-first-app/><i class="fas fa-rocket pr-1"></i>Build your first app</a><ul class="nav docs-sidenav"><li><a href=../../../docs/build-your-first-app/java-app/>Java</a></li><li><a href=../../../docs/build-your-first-app/android-app/>Android</a></li><li><a href=../../../docs/build-your-first-app/cpp-app/>C++</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../docs/developer-guide/><i class="fas fa-chalkboard-teacher pr-1"></i>Developer guides</a><ul class="nav docs-sidenav"><li><a href=../../../docs/developer-guide/common-concepts/>Common concepts</a></li><li><a href=../../../docs/developer-guide/standalone-application/>Standalone application</a></li><li class=active><a href=../../../docs/developer-guide/distributed-application/>Distributed application</a></li><li><a href=../../../docs/developer-guide/calypso-application/>Calypso application</a></li><li><a href=../../../docs/developer-guide/create-plugin/>Create a plugin</a></li><li><a href=../../../docs/developer-guide/create-extension/>Create an extension</a></li><li><a href=../../../docs/developer-guide/upgrade/>Upgrade Keyple</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../docs/api-reference/><i class="fas fa-plug pr-1"></i>API reference</a><ul class="nav docs-sidenav"><li><a href=../../../docs/api-reference/java-api/>Java</a></li><li><a href=../../../docs/api-reference/cpp-api/>C++</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../docs/architecture/><i class="fas fa-sitemap pr-1"></i>Architecture</a><ul class="nav docs-sidenav"><li><a href=../../../docs/architecture/keyple-global/>Global Solution</a></li><li><a href=../../../docs/architecture/keyple-core/>Keyple Core</a></li><li><a href=../../../docs/architecture/keyple-calypso/>Keyple Calypso</a></li></ul></div></ul></nav></div><div class="d-none d-xl-block col-xl-2 docs-toc"><ul class="nav toc-top"><li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li></ul><nav id=TableOfContents><ul><li><a href=#overview>Overview</a></li><li><a href=#how-to-use-it->How to use it ?</a></li><li><a href=#concepts>Concepts</a></li><li><a href=#configuration-modes>Configuration modes</a><ul><li><a href=#reader-client-side>Reader Client Side</a></li><li><a href=#reader-server-side>Reader Server Side</a></li><li><a href=#pool-reader-server-side>Pool Reader Server Side</a></li></ul></li><li><a href=#use-cases>Use cases</a><ul><li></li></ul></li><li><a href=#network-configuration>Network configuration</a><ul><li><a href=#synchronous>Synchronous</a></li><li><a href=#asynchronous>Asynchronous</a></li><li><a href=#exchanged-data>Exchanged data</a></li></ul></li><li><a href=#apis>APIs</a><ul><li><a href=#network-api>Network API</a></li><li><a href=#remote-api>Remote API</a></li><li><a href=#local-api>Local API</a></li></ul></li><li><a href=#examples>Examples</a></li><li><a href=#download>Download</a></li></ul></nav></div><main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main><article class=article><div class=docs-article-container><h1>Distributed application</h1><div class=article-style><hr><h2 id=overview>Overview</h2><p><strong>Keyple provides the &ldquo;Keyple Distributed&rdquo; solution which allows a terminal to communicate with a smart card reader available in another terminal</strong>.</p><p>In this way, you can manage transactions within a distributed architecture.</p><p>The diagram below shows the role of the <strong>Keyple Distributed</strong> components in the software layers used in a distributed architecture :</p><figure><a data-fancybox href=../../../media/distributed-application/component/Distributed_Component_Overview.svg><img src=../../../media/distributed-application/component/Distributed_Component_Overview.svg alt></a></figure><hr><h2 id=how-to-use-it->How to use it ?</h2><ol><li>In pre-requisite, read page
-<a href=../../../docs/developer-guide/standalone-application/>Standalone application</a> to understand the main concepts of Keyple in a standalone application.</li><li>Read chapter
-<a href=#concepts>Concepts</a> to understand the main terms and concepts of the <strong>Keyple Distributed</strong> solution.</li><li>Read the introduction of chapter
-<a href=#configuration-modes>Configuration modes</a> to be informed about the different features and APIs proposed by the solution.</li><li>Using chapter
-<a href=#use-cases>Use cases</a>, find your use case. This will help you to determine exactly which library and API to use.</li><li>Using chapter
-<a href=#download>Download</a>, import into your project the libraries specified by your use case.</li><li>Using chapter
-<a href=#network-configuration>Network configuration</a>, implement the transport layer adapted to your network configuration.</li><li>Implement your ticketing services as specified in the associated use case.</li></ol><hr><h2 id=concepts>Concepts</h2><p>Here are the main concepts to keep in mind before continuing to read this developer guide :</p><div id=concepts-table-1><table><thead><tr><th>Concept</th><th>Description</th></tr></thead><tbody><tr><td><strong>Remote Lib</strong></td><td>This is the library <code>keyple-java-distributed-remote</code>.<br>It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely.</td></tr><tr><td><strong>Local Lib</strong></td><td>This is the library <code>keyple-java-distributed-local</code>.<br>It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.</td></tr><tr><td><strong>Network Lib</strong></td><td>This is the library <code>keyple-java-distributed-network</code>.<br>This library is <strong>implicitly</strong> imported by <strong>Remote Lib</strong> and <strong>Local Lib</strong> because it contains common network elements.</td></tr><tr><td><strong>Remote Plugin</strong></td><td>Part of the <strong>Remote Lib</strong>, this is a Keyple plugin which provides only <strong>Remote Readers</strong> to the application. It manages data exchanges with the <strong>Local Service</strong>. This plugin must be registered to the smart card service like any Keyple plugin.</td></tr><tr><td><strong>Remote Reader</strong></td><td>Part of the <strong>Remote Plugin</strong>, this is a Keyple reader which has some specificities :<br>- each remote reader is connected to a local reader ;<br>- any command sent by the application to a remote reader will be forwarded to the associated local reader ;<br>- any event occurs on a local reader or plugin will be forwarded to the associated remote reader or plugin.</td></tr><tr><td><strong>Local Service</strong></td><td>Part of the <strong>Local Lib</strong>, this service ensures data exchange between the <strong>Remote Plugin</strong> and local plugins and readers. It must be initialized and started by the host application.</td></tr><tr><td><strong>Factory</strong></td><td><strong>Remote Plugin</strong> and <strong>Local Service</strong> each have a specific factory class to initialize them.</td></tr><tr><td><strong>Utility</strong></td><td><strong>Remote Plugin</strong> and <strong>Local Service</strong> each have a specific utility class to access them everywhere in the code.</td></tr><tr><td><strong>Node</strong></td><td><strong>Remote Plugin</strong> and <strong>Local Service</strong> each are bind to a specific internal node which is responsible for the interfacing with the <strong>Network Endpoint</strong>.</td></tr><tr><td><strong>Network Endpoint</strong></td><td>At the user&rsquo;s charge, this component ensures the network exchanges between the <strong>Remote Plugin</strong> and <strong>Local Service</strong> nodes.</td></tr></tbody></table></div><style>#concepts-table-1 table th:first-of-type{width:130px}</style><p>The diagram below illustrates the main functional concepts through a standard use case :</p><figure><a data-fancybox href=../../../media/distributed-application/component/Distributed_Component_Concepts_1.svg><img src=../../../media/distributed-application/component/Distributed_Component_Concepts_1.svg alt></a></figure><p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.</p><p>These could be for example a ticketing reloading service, where the business logic would be on the terminal with remote readers, with thin clients on A & B terminals communicating locally with the cards.</p><p>In this use case, the <strong>Keyple Distributed</strong> solution is use for card communication.</p><figure><a data-fancybox href=../../../media/distributed-application/component/Distributed_Component_Concepts_2.svg><img src=../../../media/distributed-application/component/Distributed_Component_Concepts_2.svg alt></a></figure><p>Here is another example, but this time it illustrates several <strong>Remote Plugin</strong> components connected to the same <strong>Local Service</strong>.</p><p>These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.</p><p>In this use case, the <strong>Keyple Distributed</strong> solution is use for SAM communication.</p><figure><a data-fancybox href=../../../media/distributed-application/component/Distributed_Component_Concepts_3.svg><img src=../../../media/distributed-application/component/Distributed_Component_Concepts_3.svg alt></a></figure><hr><h2 id=configuration-modes>Configuration modes</h2><p>The <strong>Keyple Distributed</strong> solution provides <strong>3</strong> different configuration modes, each one having a specific
-<a href=#apis>API</a> designed on a <strong>Client-Server</strong> model :</p><div id=plugins-table-1><table><thead><tr><th>Configuration mode</th><th>Description</th></tr></thead><tbody><tr><td><a href=#reader-client-side>Reader Client Side</a></td><td>Allows a <strong>server</strong> application to control a smart card reader available on a <strong>client</strong> (e.g. PO reader).</td></tr><tr><td><a href=#reader-server-side>Reader Server Side</a></td><td>Allows a <strong>client</strong> application to control a smart card reader available on a <strong>server</strong> (e.g. SAM reader).</td></tr><tr><td><a href=#pool-reader-server-side>Pool Reader Server Side</a></td><td>Allows a <strong>client</strong> application to control a <strong>pool</strong> of smart cards readers available on a <strong>server</strong> (e.g. HSM readers).</td></tr></tbody></table></div><style>#plugins-table-1 table th:first-of-type{width:190px}</style><p>Each mode provides a different <strong>Remote Plugin</strong> and <strong>Local Service</strong> components and their associated factories and utility classes.</p><p>Each <strong>Remote Plugin</strong> and <strong>Local Service</strong> has a default name, but it&rsquo;s possible to specify a custom name during the initialization phase.</p><p>In an application, it is thus possible to use simultaneously several configuration modes and as many instances of a configuration mode as you want, as long as the components are initialized with different names.</p><h3 id=reader-client-side>Reader Client Side</h3><p>This configuration mode allows a <strong>server</strong> application to control a smart card reader available on a <strong>client</strong> (e.g. PO reader).</p><table><thead><tr><th>API</th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td><strong>Library</strong></td><td>Local Lib</td><td>Remote Lib</td></tr><tr><td><strong>Remote Plugin</strong> / <strong>Local Service</strong></td><td><code>LocalServiceClient</code></td><td><code>RemotePluginServer</code></td></tr><tr><td><strong>Factory</strong></td><td><code>LocalServiceClientFactory</code></td><td><code>RemotePluginServerFactory</code></td></tr><tr><td><strong>Utility</strong></td><td><code>LocalServiceClientUtils</code></td><td><code>RemotePluginServerUtils</code></td></tr></tbody></table><h4 id=operating-mode>OPERATING MODE</h4><ul><li>Server side :<ol><li>configure the factory by providing the network and plugin observer implementation. Please note that <strong>this plugin is observable only to trigger ticketing services</strong> on the server side, but does not allow observation on the local plugin (reader insertion, etc&mldr;),</li><li>register the <strong>Remote Plugin</strong> to the smart card service using the factory,</li><li>await for events of type <code>PluginEvent.READER_CONNECTED</code>,</li><li>when an event occurs, get the specified remote reader from the <strong>Remote Plugin</strong>,</li><li>use information inside the remote reader to identify the ticketing service to execute,</li><li>execute the specified ticketing service using the remote reader and all of its others information,</li><li>terminate the remote ticketing service using the <strong>Remote Plugin</strong> API by transmitting if needed personal information to the client.</li></ol></li><li>Client side :<ol><li>configure the factory and start the <strong>Local Service</strong> by providing the network implementation,</li><li>register at least a local plugin to the smart card service and get the local reader to connect to the server,</li><li>execute the remote service using the <strong>Local Service</strong> API by indicating the ticketing service id to execute and transmitting to the server if needed personal information or smart card content previously read.</li></ol></li></ul><h4 id=illustration>ILLUSTRATION</h4><p>The following sequence diagram shows the capabilities of the plugin through an arbitrary example that illustrates :</p><ul><li>the initialization phase of the local and remote components ;</li><li>the registration of the local plugin and observable reader ;</li><li>the selection phase of an observable reader carried out directly by the client ;</li><li>the sending of the selection result and additional information to the server to remotely perform a specific ticketing service (materialization, validation, etc&mldr;) ;</li><li>the reception by the server of the transmitted data ;</li><li>the execution of the remote ticketing service ;</li><li>the server subscription to observable reader events ;</li><li>the sending of information to the client at the end of processing.</li></ul><p>Note that the network layer is deliberately hide in this diagram. Its implementation is described in the
-<a href=#network-configuration>Network configuration</a> chapter.</p><figure><a data-fancybox href=../../../media/distributed-application/sequence/Distributed_Sequence_ReaderClientSide_API.svg><img src=../../../media/distributed-application/sequence/Distributed_Sequence_ReaderClientSide_API.svg alt></a></figure><h3 id=reader-server-side>Reader Server Side</h3><div class="alert alert-warning"><div>This configuration mode will only be available from version <strong>1.1</strong> onwards.</div></div><p>This configuration mode allows a <strong>client</strong> application to control a smart card reader available on a <strong>server</strong> (e.g. SAM reader).</p><p>It also allows to observe the plugin events (such as reader connection, etc&mldr;) if desired.</p><table><thead><tr><th>API</th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td><strong>Library</strong></td><td>Remote Lib</td><td>Local Lib</td></tr><tr><td><strong>Remote Plugin</strong> / <strong>Local Service</strong></td><td><code>RemotePluginClient</code> or<br><code>ObservableRemotePluginClient</code></td><td><code>LocalServiceServer</code></td></tr><tr><td><strong>Factory</strong></td><td><code>RemotePluginClientFactory</code></td><td><code>LocalServiceServerFactory</code></td></tr><tr><td><strong>Utility</strong></td><td><code>RemotePluginClientUtils</code></td><td><code>LocalServiceServerUtils</code></td></tr></tbody></table><h4 id=operating-mode-1>OPERATING MODE</h4><ul><li>Server side :<ol><li>configure the factory and start the <strong>Local Service</strong> by providing the network implementation,</li><li>register at least a local plugin to the smart card service.</li></ol></li><li>Client side :<ol><li>configure the factory by providing the network implementation,</li><li>register the <strong>Remote Plugin</strong> to the smart card service using the factory,</li><li>use the <strong>Remote Plugin</strong> and its remote readers as a local plugin (or observable plugin) with local readers.</li></ol></li></ul><h3 id=pool-reader-server-side>Pool Reader Server Side</h3><p>This configuration mode allows a <strong>client</strong> application to control a <strong>pool</strong> of smart cards readers available on a <strong>server</strong> (e.g. HSM readers).</p><table><thead><tr><th>API</th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td><strong>Library</strong></td><td>Remote Lib</td><td>Local Lib</td></tr><tr><td><strong>Remote Plugin</strong> / <strong>Local Service</strong></td><td><code>PoolRemotePluginClient</code></td><td><code>PoolLocalServiceServer</code></td></tr><tr><td><strong>Factory</strong></td><td><code>PoolRemotePluginClientFactory</code></td><td><code>PoolLocalServiceServerFactory</code></td></tr><tr><td><strong>Utility</strong></td><td><code>PoolRemotePluginClientUtils</code></td><td><code>PoolLocalServiceServerUtils</code></td></tr></tbody></table><h4 id=operating-mode-2>OPERATING MODE</h4><ul><li>Server<ol><li>configure the factory and start the <strong>Local Service</strong> by providing the network implementation,</li><li>register at least a local pool plugin to the smart card service.</li></ol></li><li>Client<ol><li>configure the factory by providing the network implementation,</li><li>register the <strong>Remote Plugin</strong> to the smart card service using the factory,</li><li>use the <strong>Remote Plugin</strong> and its remote readers as a local pool plugin with local readers.</li></ol></li></ul><hr><h2 id=use-cases>Use cases</h2><p>Here is a summary table of all proposed use cases. Search for the one that corresponds to your need and then look at the associated description :</p><div id=use-cases-table-2><table><thead><tr><th style=text-align:center>Use Case</th><th style=text-align:center>Reader type</th><th style=text-align:center>Reader endpoint</th><th style=text-align:center>Reader observation</th><th style=text-align:center>Plugin observation</th></tr></thead><tbody><tr><td style=text-align:center><a href=#uc-1>UC 1</a></td><td style=text-align:center>Simple</td><td style=text-align:center>Client</td><td style=text-align:center></td><td style=text-align:center></td></tr><tr><td style=text-align:center><a href=#uc-2>UC 2</a></td><td style=text-align:center>Simple</td><td style=text-align:center>Client</td><td style=text-align:center>✔️</td><td style=text-align:center></td></tr><tr><td style=text-align:center><a href=#uc-3>UC 3</a></td><td style=text-align:center>Simple</td><td style=text-align:center>Server</td><td style=text-align:center></td><td style=text-align:center></td></tr><tr><td style=text-align:center><a href=#uc-4>UC 4</a></td><td style=text-align:center>Simple</td><td style=text-align:center>Server</td><td style=text-align:center>✔️</td><td style=text-align:center></td></tr><tr><td style=text-align:center><a href=#uc-5>UC 5</a></td><td style=text-align:center>Simple</td><td style=text-align:center>Server</td><td style=text-align:center></td><td style=text-align:center>✔️</td></tr><tr><td style=text-align:center><a href=#uc-6>UC 6</a></td><td style=text-align:center>Simple</td><td style=text-align:center>Server</td><td style=text-align:center>✔️</td><td style=text-align:center>✔️</td></tr><tr><td style=text-align:center><a href=#uc-7>UC 7</a></td><td style=text-align:center>Pool</td><td style=text-align:center>Server</td><td style=text-align:center></td><td style=text-align:center></td></tr></tbody></table></div><style>#use-cases-table-2 table th:nth-of-type(6){width:240px}</style><h4 id=uc-1>UC 1</h4><p>This use case requires to use the
-<a href=#reader-client-side>Reader Client Side</a> configuration mode.</p><p>Use this mode if you don&rsquo;t plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p><p>Please note that it is still possible to observe locally the reader on the client side if needed.</p><table><thead><tr><th></th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td>Methods to be used when initializing the factory</td><td><code>withoutReaderObservation()</code></td><td>-</td></tr><tr><td>Possible readers to use</td><td><code>Reader</code> or <code>ObservableReader</code></td><td><code>RemoteReaderServer</code></td></tr></tbody></table><h4 id=uc-2>UC 2</h4><p>This use case requires to use the
-<a href=#reader-client-side>Reader Client Side</a> configuration mode.</p><p>Use this mode if you plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p><p>Please note that this mode is only possible if the local reader is observable.</p><table><thead><tr><th></th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td>Methods to be used when initializing the factory</td><td><code>withReaderObservation(...)</code></td><td>-</td></tr><tr><td>Possible readers to use</td><td><code>ObservableReader</code></td><td><code>ObservableRemoteReaderServer</code></td></tr></tbody></table><p>To observe &ldquo;remotely&rdquo; the reader events, you must :</p><ul><li>Server<ol><li>register at least one observer to the remote reader created during the first client call and await for reader events,</li><li>retrieve the remote reader from the <strong>Remote Plugin</strong> <strong>imperatively</strong> using the reader name contained in the received event,</li><li>execute the ticketing service associated to the event using the remote reader and all of its others information,</li><li>terminate the remote ticketing service associated to the event using the <strong>Remote Plugin</strong> API by transmitting if needed personal information to the client.</li></ol></li><li>Client<ol><li>execute a remote service first in order to connect a remote reader to the local reader and to allow the remote application to subscribe to the events of the remote reader.</li></ol></li></ul><h4 id=uc-3>UC 3</h4><p>This use case requires to use the
-<a href=#reader-server-side>Reader Server Side</a> configuration mode with the <code>RemotePluginClient</code> plugin.</p><p>Use this mode if you don&rsquo;t plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p><p>Please note that it is still possible to observe locally the reader on the server side if needed.</p><table><thead><tr><th></th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td>Methods to be used when initializing the factory</td><td><code>withoutPluginObservation()</code><br><code>withoutReaderObservation()</code></td><td>-</td></tr><tr><td>Possible readers to use</td><td><code>Reader</code></td><td><code>Reader</code> or <code>ObservableReader</code></td></tr></tbody></table><h4 id=uc-4>UC 4</h4><p>This use case requires to use the
-<a href=#reader-server-side>Reader Server Side</a> configuration mode with the <code>RemotePluginClient</code> plugin.</p><p>Use this mode if you plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p><p>Please note that this mode is only possible if the local reader is observable.</p><table><thead><tr><th></th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td>Methods to be used when initializing the factory</td><td><code>withoutPluginObservation()</code><br><code>withReaderObservation()</code></td><td>-</td></tr><tr><td>Possible readers to use</td><td><code>ObservableReader</code></td><td><code>ObservableReader</code></td></tr></tbody></table><h4 id=uc-5>UC 5</h4><p>This use case requires to use the
-<a href=#reader-server-side>Reader Server Side</a> configuration mode with the <code>ObservableRemotePluginClient</code> plugin.</p><p>Use this mode if you don&rsquo;t plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p><p>Please note that it is still possible to observe locally the reader on the server side if needed.</p><table><thead><tr><th></th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td>Methods to be used when initializing the factory</td><td><code>withPluginObservation()</code><br><code>withoutReaderObservation()</code></td><td>-</td></tr><tr><td>Possible readers to use</td><td><code>Reader</code></td><td><code>Reader</code> or <code>ObservableReader</code></td></tr></tbody></table><h4 id=uc-6>UC 6</h4><p>This use case requires to use the
-<a href=#reader-server-side>Reader Server Side</a> configuration mode with the <code>ObservableRemotePluginClient</code> plugin.</p><p>Use this mode if you plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p><p>Please note that this mode is only possible if the local reader is observable.</p><table><thead><tr><th></th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td>Methods to be used when initializing the factory</td><td><code>withPluginObservation()</code><br><code>withReaderObservation()</code></td><td>-</td></tr><tr><td>Possible readers to use</td><td><code>ObservableReader</code></td><td><code>ObservableReader</code></td></tr></tbody></table><h4 id=uc-7>UC 7</h4><p>This use case requires to use the
-<a href=#pool-reader-server-side>Pool Reader Server Side</a> configuration mode.</p><p>This unique mode proposed for this plugin does not allow to observe the local reader.</p><table><thead><tr><th></th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td>Methods to be used when initializing the factory</td><td>-</td><td>-</td></tr><tr><td>Possible readers to use</td><td><code>Reader</code></td><td><code>Reader</code></td></tr></tbody></table><hr><h2 id=network-configuration>Network configuration</h2><p>The <strong>Keyple Distributed</strong> solution <strong>does not provide</strong> the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between <strong>Remote Plugin</strong> and <strong>Local Service</strong> components.</p><h3 id=synchronous>Synchronous</h3><p>Choose this mode if you want to implement a Client-Server <strong>Synchronous</strong> communication protocol, such as standard HTTP for example.</p><table><thead><tr><th></th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td>SPI to be implemented</td><td><code>SyncEndpointClient</code></td><td>-</td></tr><tr><td>Node API</td><td><code>SyncNodeClient</code></td><td><code>SyncNodeServer</code></td></tr><tr><td>Methods to be used when initializing the factory</td><td><code>withSyncNode(...)</code></td><td><code>withSyncNode()</code></td></tr><tr><td>Utility method to use to access the node</td><td>-</td><td><code>getSyncNode()</code> or<br><code>getSyncNode(...)</code></td></tr></tbody></table><p>Here is the minimal algorithm to implement in a context with a <strong>single server instance</strong> :</p><figure><a data-fancybox href=../../../media/distributed-application/sequence/Distributed_Sequence_SyncNode_API.svg><img src=../../../media/distributed-application/sequence/Distributed_Sequence_SyncNode_API.svg alt></a></figure><p>In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a <code>serverNodeId</code> are routed to the server associated with a <code>SyncNodeServer</code> node having the <code>serverNodeId</code>.</p><h3 id=asynchronous>Asynchronous</h3><p>Choose this mode if you want to implement a Full-Duplex <strong>Asynchronous</strong> communication protocol, such as Web Sockets for example.</p><table><thead><tr><th></th><th>Client</th><th>Server</th></tr></thead><tbody><tr><td>SPI to be implemented</td><td><code>AsyncEndpointClient</code></td><td><code>AsyncEndpointServer</code></td></tr><tr><td>Node API</td><td><code>AsyncNodeClient</code></td><td><code>AsyncNodeServer</code></td></tr><tr><td>Methods to be used when initializing the factory</td><td><code>withAsyncNode(...)</code></td><td><code>withAsyncNode(...)</code></td></tr><tr><td>Utility method to use to access the node</td><td><code>getAsyncNode()</code> or<br><code>getAsyncNode(...)</code></td><td><code>getAsyncNode()</code> or<br><code>getAsyncNode(...)</code></td></tr></tbody></table><p>Here is the minimal algorithm to implement :</p><figure><a data-fancybox href=../../../media/distributed-application/sequence/Distributed_Sequence_AsyncNode_API.svg><img src=../../../media/distributed-application/sequence/Distributed_Sequence_AsyncNode_API.svg alt></a></figure><h3 id=exchanged-data>Exchanged data</h3><p>The data exchanged between <strong>Remote Plugin</strong> and <strong>Local Service</strong> components are contained in the DTO (Data Transfer Object) <code>MessageDto</code>. It is built and processed by the plugin and <strong>you don&rsquo;t need to modify it</strong>.</p><p>However, it is necessary in some contexts to access certain information such as the <code>sessionId</code> in the case of asynchronous communication or the <code>serverNodeId</code> in the case of synchronous communication with several server instances.</p><hr><h2 id=apis>APIs</h2><p>The class diagrams below shows the different APIs exposed and SPIs required by the <strong>Keyple Distributed</strong> solution.</p><p>An <strong>SPI</strong> (Service Provider Interface) is an interface that must be implemented by the user.</p><p>Here are the available APIs depending on the library imported by your project :</p><table><thead><tr><th></th><th style=text-align:center>Remote Lib</th><th style=text-align:center>Local Lib</th></tr></thead><tbody><tr><td><a href=#network-api>Network API</a></td><td style=text-align:center>✔️</td><td style=text-align:center>✔️</td></tr><tr><td><a href=#remote-api>Remote API</a></td><td style=text-align:center>✔️</td><td style=text-align:center></td></tr><tr><td><a href=#local-api>Local API</a></td><td style=text-align:center></td><td style=text-align:center>✔️</td></tr></tbody></table><p>The associated <strong>API</strong> documentations are accessible from the page
-<a href=../../../docs/api-reference/>API Reference</a>.</p><h3 id=network-api>Network API</h3><p>The associated <strong>API</strong> documentation is available <a href=../../api-reference/java-api/keyple-java-distributed-network/1.0.0/index.html>here</a>.</p><figure><a data-fancybox href=../../../media/distributed-application/class/Distributed_Class_Network_API.svg><img src=../../../media/distributed-application/class/Distributed_Class_Network_API.svg alt></a></figure><h3 id=remote-api>Remote API</h3><p>The associated <strong>API</strong> documentation is available <a href=../../api-reference/java-api/keyple-java-distributed-remote/1.0.0/index.html>here</a>.</p><figure><a data-fancybox href=../../../media/distributed-application/class/Distributed_Class_Remote_API.svg><img src=../../../media/distributed-application/class/Distributed_Class_Remote_API.svg alt></a></figure><h3 id=local-api>Local API</h3><p>The associated <strong>API</strong> documentation is available <a href=../../api-reference/java-api/keyple-java-distributed-local/1.0.0/index.html>here</a>.</p><figure><a data-fancybox href=../../../media/distributed-application/class/Distributed_Class_Local_API.svg><img src=../../../media/distributed-application/class/Distributed_Class_Local_API.svg alt></a></figure><hr><h2 id=examples>Examples</h2><ul><li><a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/distributed target=_blank rel=noopener>Java examples</a></li></ul><hr><h2 id=download>Download</h2><ul><li><a href=../../../components-java/distributed-systems/>Java components</a></li></ul></div><div class=article-widget><div class=post-nav><div class=post-nav-item><div class=meta-nav>Previous</div><a href=../../../docs/developer-guide/standalone-application/ rel=next>Standalone application</a></div><div class=post-nav-item><div class=meta-nav>Next</div><a href=../../../docs/developer-guide/calypso-application/ rel=prev>Calypso application</a></div></div></div></div><div class=body-footer><p>Last updated on Fri, Dec 18, 2020</p></div></article><footer class=site-footer><div class=container><div class="row featurette"><div class="col-12 col-sm-4"><h4>More</h4><ul><li><a href=https://github.com/eclipse/keyple title="View Source Code on GitHub"><i class="fab fa-github"></i> GitHub Repository</a></li><li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing list</a></li><li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Keyple's project page</a></li></ul></div><div class="col-12 col-sm-4"><h4>Eclipse Foundation</h4><ul><li><a href=https://www.eclipse.org/org/>About Eclipse Foundation</a></li><li><a href=https://www.eclipse.org/org/foundation/contact.php>Contact Eclipse Foundation</a></li><li><a href=https://www.eclipse.org/donate>Donate</a></li><li><a href=https://www.eclipse.org/membership>Members</a></li><li><a href=https://www.eclipse.org/org/documents/>Governance</a></li><li><a href=https://www.eclipse.org/org/documents/Community_Code_of_Conduct.php>Code of Conduct</a></li><li><a href=https://www.eclipse.org/artwork/>Logo and Artwork</a></li><li><a href=https://www.eclipse.org/org/foundation/directors.php></a></li></ul></div><div class="col-12 col-sm-4"><h4>Legal</h4><ul><li><a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a></li><li><a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a></li><li><a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a></li><li><a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a></li><li><a href=https://www.eclipse.org/legal/>Legal Resources</a></li><li><a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a></li></ul></section></div></div><p class=powered-by>Copyright © Eclipse Foundation, Inc. All Rights Reserved.</p><p class=powered-by>Powered by the
+<a class=dropdown-item href=../../../components-cpp/><span>C++ 0.9.x modules</span></a>
+</div>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../../#news><span>News</span></a>
+</li>
+<li class=nav-item>
+<a class="nav-link active" href=../../../docs/><span>Documentation</span></a>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Support & Trainings</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../support-trainings/add-support-trainings/><span>Add your support & trainings</span></a>
+<a class=dropdown-item href=../../../support-trainings/cna/><span>Calypso Networks Association</span></a>
+</div>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+<li class=nav-item>
+<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="container-fluid docs">
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+<form class="docs-search d-flex align-items-center">
+<button class="btn docs-toggle d-md-none p-0 mr-3" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<input name=q type=search class=form-control placeholder=Search... autocomplete=off>
+</form>
+<nav class="collapse docs-links" id=docs-nav>
+<ul class="nav docs-sidenav">
+<li><a href=../../../docs/>Overview</a></li>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../docs/build-your-first-app/><i class="fas fa-rocket pr-1"></i>Build your first app</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../docs/build-your-first-app/java-app/>Java</a></li>
+<li><a href=../../../docs/build-your-first-app/android-app/>Android</a></li>
+<li><a href=../../../docs/build-your-first-app/cpp-app/>C++</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../docs/developer-guide/><i class="fas fa-chalkboard-teacher pr-1"></i>Developer guides</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../docs/developer-guide/common-concepts/>Common concepts</a></li>
+<li><a href=../../../docs/developer-guide/standalone-application/>Standalone application</a></li>
+<li class=active><a href=../../../docs/developer-guide/distributed-application/>Distributed application</a></li>
+<li><a href=../../../docs/developer-guide/calypso-application/>Calypso application</a></li>
+<li><a href=../../../docs/developer-guide/create-plugin/>Create a plugin</a></li>
+<li><a href=../../../docs/developer-guide/create-extension/>Create an extension</a></li>
+<li><a href=../../../docs/developer-guide/upgrade/>Upgrade Keyple</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../docs/api-reference/><i class="fas fa-plug pr-1"></i>API reference</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../docs/api-reference/java-api/>Java</a></li>
+<li><a href=../../../docs/api-reference/cpp-api/>C++</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../docs/architecture/><i class="fas fa-sitemap pr-1"></i>Architecture</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../docs/architecture/keyple-global/>Global Solution</a></li>
+<li><a href=../../../docs/architecture/keyple-core/>Keyple Core</a></li>
+<li><a href=../../../docs/architecture/keyple-calypso/>Keyple Calypso</a></li>
+</ul>
+</div>
+</ul>
+</nav>
+</div>
+<div class="d-none d-xl-block col-xl-2 docs-toc">
+<ul class="nav toc-top">
+<li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
+</ul>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#overview>Overview</a></li>
+<li><a href=#how-to-use-it->How to use it ?</a></li>
+<li><a href=#concepts>Concepts</a></li>
+<li><a href=#configuration-modes>Configuration modes</a>
+<ul>
+<li><a href=#reader-client-side>Reader Client Side</a></li>
+<li><a href=#reader-server-side>Reader Server Side</a></li>
+<li><a href=#pool-reader-server-side>Pool Reader Server Side</a></li>
+</ul>
+</li>
+<li><a href=#use-cases>Use cases</a>
+<ul>
+<li></li>
+</ul>
+</li>
+<li><a href=#network-configuration>Network configuration</a>
+<ul>
+<li><a href=#synchronous>Synchronous</a></li>
+<li><a href=#asynchronous>Asynchronous</a></li>
+<li><a href=#exchanged-data>Exchanged data</a></li>
+</ul>
+</li>
+<li><a href=#apis>APIs</a>
+<ul>
+<li><a href=#network-api>Network API</a></li>
+<li><a href=#remote-api>Remote API</a></li>
+<li><a href=#local-api>Local API</a></li>
+</ul>
+</li>
+<li><a href=#examples>Examples</a></li>
+<li><a href=#download>Download</a></li>
+</ul>
+</nav>
+</div>
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
+<article class=article>
+<div class=docs-article-container>
+<h1>Distributed application</h1>
+<div class=article-style>
+<hr>
+<h2 id=overview>Overview</h2>
+<p><strong>Keyple provides the &ldquo;Keyple Distributed&rdquo; solution which allows a terminal to communicate with a smart card reader available in another terminal</strong>.</p>
+<p>In this way, you can manage transactions within a distributed architecture.</p>
+<p>The diagram below shows the role of the <strong>Keyple Distributed</strong> components in the software layers used in a distributed architecture :</p>
+<figure>
+<a data-fancybox href=../../../media/distributed-application/component/Distributed_Component_Overview.svg>
+<img src=../../../media/distributed-application/component/Distributed_Component_Overview.svg alt>
+</a>
+</figure>
+<hr>
+<h2 id=how-to-use-it->How to use it ?</h2>
+<ol>
+<li>In pre-requisite, read page
+<a href=../../../docs/developer-guide/standalone-application/>Standalone application</a> to understand the main concepts of Keyple in a standalone application.</li>
+<li>Read chapter
+<a href=#concepts>Concepts</a> to understand the main terms and concepts of the <strong>Keyple Distributed</strong> solution.</li>
+<li>Read the introduction of chapter
+<a href=#configuration-modes>Configuration modes</a> to be informed about the different features and APIs proposed by the solution.</li>
+<li>Using chapter
+<a href=#use-cases>Use cases</a>, find your use case. This will help you to determine exactly which library and API to use.</li>
+<li>Using chapter
+<a href=#download>Download</a>, import into your project the libraries specified by your use case.</li>
+<li>Using chapter
+<a href=#network-configuration>Network configuration</a>, implement the transport layer adapted to your network configuration.</li>
+<li>Implement your ticketing services as specified in the associated use case.</li>
+</ol>
+<hr>
+<h2 id=concepts>Concepts</h2>
+<p>Here are the main concepts to keep in mind before continuing to read this developer guide :</p>
+<div id=concepts-table-1>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Remote Lib</strong></td>
+<td>This is the library <code>keyple-java-distributed-remote</code>.<br>It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely.</td>
+</tr>
+<tr>
+<td><strong>Local Lib</strong></td>
+<td>This is the library <code>keyple-java-distributed-local</code>.<br>It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.</td>
+</tr>
+<tr>
+<td><strong>Network Lib</strong></td>
+<td>This is the library <code>keyple-java-distributed-network</code>.<br>This library is <strong>implicitly</strong> imported by <strong>Remote Lib</strong> and <strong>Local Lib</strong> because it contains common network elements.</td>
+</tr>
+<tr>
+<td><strong>Remote Plugin</strong></td>
+<td>Part of the <strong>Remote Lib</strong>, this is a Keyple plugin which provides only <strong>Remote Readers</strong> to the application. It manages data exchanges with the <strong>Local Service</strong>. This plugin must be registered to the smart card service like any Keyple plugin.</td>
+</tr>
+<tr>
+<td><strong>Remote Reader</strong></td>
+<td>Part of the <strong>Remote Plugin</strong>, this is a Keyple reader which has some specificities :<br>- each remote reader is connected to a local reader ;<br>- any command sent by the application to a remote reader will be forwarded to the associated local reader ;<br>- any event occurs on a local reader or plugin will be forwarded to the associated remote reader or plugin.</td>
+</tr>
+<tr>
+<td><strong>Local Service</strong></td>
+<td>Part of the <strong>Local Lib</strong>, this service ensures data exchange between the <strong>Remote Plugin</strong> and local plugins and readers. It must be initialized and started by the host application.</td>
+</tr>
+<tr>
+<td><strong>Factory</strong></td>
+<td><strong>Remote Plugin</strong> and <strong>Local Service</strong> each have a specific factory class to initialize them.</td>
+</tr>
+<tr>
+<td><strong>Utility</strong></td>
+<td><strong>Remote Plugin</strong> and <strong>Local Service</strong> each have a specific utility class to access them everywhere in the code.</td>
+</tr>
+<tr>
+<td><strong>Node</strong></td>
+<td><strong>Remote Plugin</strong> and <strong>Local Service</strong> each are bind to a specific internal node which is responsible for the interfacing with the <strong>Network Endpoint</strong>.</td>
+</tr>
+<tr>
+<td><strong>Network Endpoint</strong></td>
+<td>At the user&rsquo;s charge, this component ensures the network exchanges between the <strong>Remote Plugin</strong> and <strong>Local Service</strong> nodes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>#concepts-table-1 table th:first-of-type{width:130px}</style>
+<p>The diagram below illustrates the main functional concepts through a standard use case :</p>
+<figure>
+<a data-fancybox href=../../../media/distributed-application/component/Distributed_Component_Concepts_1.svg>
+<img src=../../../media/distributed-application/component/Distributed_Component_Concepts_1.svg alt>
+</a>
+</figure>
+<p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.</p>
+<p>These could be for example a ticketing reloading service, where the business logic would be on the terminal with remote readers, with thin clients on A & B terminals communicating locally with the cards.</p>
+<p>In this use case, the <strong>Keyple Distributed</strong> solution is use for card communication.</p>
+<figure>
+<a data-fancybox href=../../../media/distributed-application/component/Distributed_Component_Concepts_2.svg>
+<img src=../../../media/distributed-application/component/Distributed_Component_Concepts_2.svg alt>
+</a>
+</figure>
+<p>Here is another example, but this time it illustrates several <strong>Remote Plugin</strong> components connected to the same <strong>Local Service</strong>.</p>
+<p>These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.</p>
+<p>In this use case, the <strong>Keyple Distributed</strong> solution is use for SAM communication.</p>
+<figure>
+<a data-fancybox href=../../../media/distributed-application/component/Distributed_Component_Concepts_3.svg>
+<img src=../../../media/distributed-application/component/Distributed_Component_Concepts_3.svg alt>
+</a>
+</figure>
+<hr>
+<h2 id=configuration-modes>Configuration modes</h2>
+<p>The <strong>Keyple Distributed</strong> solution provides <strong>3</strong> different configuration modes, each one having a specific
+<a href=#apis>API</a> designed on a <strong>Client-Server</strong> model :</p>
+<div id=plugins-table-1>
+<table>
+<thead>
+<tr>
+<th>Configuration mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href=#reader-client-side>Reader Client Side</a></td>
+<td>Allows a <strong>server</strong> application to control a smart card reader available on a <strong>client</strong> (e.g. PO reader).</td>
+</tr>
+<tr>
+<td>
+<a href=#reader-server-side>Reader Server Side</a></td>
+<td>Allows a <strong>client</strong> application to control a smart card reader available on a <strong>server</strong> (e.g. SAM reader).</td>
+</tr>
+<tr>
+<td>
+<a href=#pool-reader-server-side>Pool Reader Server Side</a></td>
+<td>Allows a <strong>client</strong> application to control a <strong>pool</strong> of smart cards readers available on a <strong>server</strong> (e.g. HSM readers).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>#plugins-table-1 table th:first-of-type{width:190px}</style>
+<p>Each mode provides a different <strong>Remote Plugin</strong> and <strong>Local Service</strong> components and their associated factories and utility classes.</p>
+<p>Each <strong>Remote Plugin</strong> and <strong>Local Service</strong> has a default name, but it&rsquo;s possible to specify a custom name during the initialization phase.</p>
+<p>In an application, it is thus possible to use simultaneously several configuration modes and as many instances of a configuration mode as you want, as long as the components are initialized with different names.</p>
+<h3 id=reader-client-side>Reader Client Side</h3>
+<p>This configuration mode allows a <strong>server</strong> application to control a smart card reader available on a <strong>client</strong> (e.g. PO reader).</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Library</strong></td>
+<td>Local Lib</td>
+<td>Remote Lib</td>
+</tr>
+<tr>
+<td><strong>Remote Plugin</strong> / <strong>Local Service</strong></td>
+<td><code>LocalServiceClient</code></td>
+<td><code>RemotePluginServer</code></td>
+</tr>
+<tr>
+<td><strong>Factory</strong></td>
+<td><code>LocalServiceClientFactory</code></td>
+<td><code>RemotePluginServerFactory</code></td>
+</tr>
+<tr>
+<td><strong>Utility</strong></td>
+<td><code>LocalServiceClientUtils</code></td>
+<td><code>RemotePluginServerUtils</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id=operating-mode>OPERATING MODE</h4>
+<ul>
+<li>Server side :
+<ol>
+<li>configure the factory by providing the network and plugin observer implementation. Please note that <strong>this plugin is observable only to trigger ticketing services</strong> on the server side, but does not allow observation on the local plugin (reader insertion, etc&mldr;),</li>
+<li>register the <strong>Remote Plugin</strong> to the smart card service using the factory,</li>
+<li>await for events of type <code>PluginEvent.READER_CONNECTED</code>,</li>
+<li>when an event occurs, get the specified remote reader from the <strong>Remote Plugin</strong>,</li>
+<li>use information inside the remote reader to identify the ticketing service to execute,</li>
+<li>execute the specified ticketing service using the remote reader and all of its others information,</li>
+<li>terminate the remote ticketing service using the <strong>Remote Plugin</strong> API by transmitting if needed personal information to the client.</li>
+</ol>
+</li>
+<li>Client side :
+<ol>
+<li>configure the factory and start the <strong>Local Service</strong> by providing the network implementation,</li>
+<li>register at least a local plugin to the smart card service and get the local reader to connect to the server,</li>
+<li>execute the remote service using the <strong>Local Service</strong> API by indicating the ticketing service id to execute and transmitting to the server if needed personal information or smart card content previously read.</li>
+</ol>
+</li>
+</ul>
+<h4 id=illustration>ILLUSTRATION</h4>
+<p>The following sequence diagram shows the capabilities of the plugin through an arbitrary example that illustrates :</p>
+<ul>
+<li>the initialization phase of the local and remote components ;</li>
+<li>the registration of the local plugin and observable reader ;</li>
+<li>the selection phase of an observable reader carried out directly by the client ;</li>
+<li>the sending of the selection result and additional information to the server to remotely perform a specific ticketing service (materialization, validation, etc&mldr;) ;</li>
+<li>the reception by the server of the transmitted data ;</li>
+<li>the execution of the remote ticketing service ;</li>
+<li>the server subscription to observable reader events ;</li>
+<li>the sending of information to the client at the end of processing.</li>
+</ul>
+<p>Note that the network layer is deliberately hide in this diagram. Its implementation is described in the
+<a href=#network-configuration>Network configuration</a> chapter.</p>
+<figure>
+<a data-fancybox href=../../../media/distributed-application/sequence/Distributed_Sequence_ReaderClientSide_API.svg>
+<img src=../../../media/distributed-application/sequence/Distributed_Sequence_ReaderClientSide_API.svg alt>
+</a>
+</figure>
+<h3 id=reader-server-side>Reader Server Side</h3>
+<div class="alert alert-warning">
+<div>
+This configuration mode will only be available from version <strong>1.1</strong> onwards.
+</div>
+</div>
+<p>This configuration mode allows a <strong>client</strong> application to control a smart card reader available on a <strong>server</strong> (e.g. SAM reader).</p>
+<p>It also allows to observe the plugin events (such as reader connection, etc&mldr;) if desired.</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Library</strong></td>
+<td>Remote Lib</td>
+<td>Local Lib</td>
+</tr>
+<tr>
+<td><strong>Remote Plugin</strong> / <strong>Local Service</strong></td>
+<td><code>RemotePluginClient</code> or<br><code>ObservableRemotePluginClient</code></td>
+<td><code>LocalServiceServer</code></td>
+</tr>
+<tr>
+<td><strong>Factory</strong></td>
+<td><code>RemotePluginClientFactory</code></td>
+<td><code>LocalServiceServerFactory</code></td>
+</tr>
+<tr>
+<td><strong>Utility</strong></td>
+<td><code>RemotePluginClientUtils</code></td>
+<td><code>LocalServiceServerUtils</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id=operating-mode-1>OPERATING MODE</h4>
+<ul>
+<li>Server side :
+<ol>
+<li>configure the factory and start the <strong>Local Service</strong> by providing the network implementation,</li>
+<li>register at least a local plugin to the smart card service.</li>
+</ol>
+</li>
+<li>Client side :
+<ol>
+<li>configure the factory by providing the network implementation,</li>
+<li>register the <strong>Remote Plugin</strong> to the smart card service using the factory,</li>
+<li>use the <strong>Remote Plugin</strong> and its remote readers as a local plugin (or observable plugin) with local readers.</li>
+</ol>
+</li>
+</ul>
+<h3 id=pool-reader-server-side>Pool Reader Server Side</h3>
+<p>This configuration mode allows a <strong>client</strong> application to control a <strong>pool</strong> of smart cards readers available on a <strong>server</strong> (e.g. HSM readers).</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Library</strong></td>
+<td>Remote Lib</td>
+<td>Local Lib</td>
+</tr>
+<tr>
+<td><strong>Remote Plugin</strong> / <strong>Local Service</strong></td>
+<td><code>PoolRemotePluginClient</code></td>
+<td><code>PoolLocalServiceServer</code></td>
+</tr>
+<tr>
+<td><strong>Factory</strong></td>
+<td><code>PoolRemotePluginClientFactory</code></td>
+<td><code>PoolLocalServiceServerFactory</code></td>
+</tr>
+<tr>
+<td><strong>Utility</strong></td>
+<td><code>PoolRemotePluginClientUtils</code></td>
+<td><code>PoolLocalServiceServerUtils</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id=operating-mode-2>OPERATING MODE</h4>
+<ul>
+<li>Server
+<ol>
+<li>configure the factory and start the <strong>Local Service</strong> by providing the network implementation,</li>
+<li>register at least a local pool plugin to the smart card service.</li>
+</ol>
+</li>
+<li>Client
+<ol>
+<li>configure the factory by providing the network implementation,</li>
+<li>register the <strong>Remote Plugin</strong> to the smart card service using the factory,</li>
+<li>use the <strong>Remote Plugin</strong> and its remote readers as a local pool plugin with local readers.</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id=use-cases>Use cases</h2>
+<p>Here is a summary table of all proposed use cases. Search for the one that corresponds to your need and then look at the associated description :</p>
+<div id=use-cases-table-2>
+<table>
+<thead>
+<tr>
+<th style=text-align:center>Use Case</th>
+<th style=text-align:center>Reader type</th>
+<th style=text-align:center>Reader endpoint</th>
+<th style=text-align:center>Reader observation</th>
+<th style=text-align:center>Plugin observation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:center>
+<a href=#uc-1>UC 1</a></td>
+<td style=text-align:center>Simple</td>
+<td style=text-align:center>Client</td>
+<td style=text-align:center></td>
+<td style=text-align:center></td>
+</tr>
+<tr>
+<td style=text-align:center>
+<a href=#uc-2>UC 2</a></td>
+<td style=text-align:center>Simple</td>
+<td style=text-align:center>Client</td>
+<td style=text-align:center>✔️</td>
+<td style=text-align:center></td>
+</tr>
+<tr>
+<td style=text-align:center>
+<a href=#uc-3>UC 3</a></td>
+<td style=text-align:center>Simple</td>
+<td style=text-align:center>Server</td>
+<td style=text-align:center></td>
+<td style=text-align:center></td>
+</tr>
+<tr>
+<td style=text-align:center>
+<a href=#uc-4>UC 4</a></td>
+<td style=text-align:center>Simple</td>
+<td style=text-align:center>Server</td>
+<td style=text-align:center>✔️</td>
+<td style=text-align:center></td>
+</tr>
+<tr>
+<td style=text-align:center>
+<a href=#uc-5>UC 5</a></td>
+<td style=text-align:center>Simple</td>
+<td style=text-align:center>Server</td>
+<td style=text-align:center></td>
+<td style=text-align:center>✔️</td>
+</tr>
+<tr>
+<td style=text-align:center>
+<a href=#uc-6>UC 6</a></td>
+<td style=text-align:center>Simple</td>
+<td style=text-align:center>Server</td>
+<td style=text-align:center>✔️</td>
+<td style=text-align:center>✔️</td>
+</tr>
+<tr>
+<td style=text-align:center>
+<a href=#uc-7>UC 7</a></td>
+<td style=text-align:center>Pool</td>
+<td style=text-align:center>Server</td>
+<td style=text-align:center></td>
+<td style=text-align:center></td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>#use-cases-table-2 table th:nth-of-type(6){width:240px}</style>
+<h4 id=uc-1>UC 1</h4>
+<p>This use case requires to use the
+<a href=#reader-client-side>Reader Client Side</a> configuration mode.</p>
+<p>Use this mode if you don&rsquo;t plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p>
+<p>Please note that it is still possible to observe locally the reader on the client side if needed.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Methods to be used when initializing the factory</td>
+<td><code>withoutReaderObservation()</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Possible readers to use</td>
+<td><code>Reader</code> or <code>ObservableReader</code></td>
+<td><code>RemoteReaderServer</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id=uc-2>UC 2</h4>
+<p>This use case requires to use the
+<a href=#reader-client-side>Reader Client Side</a> configuration mode.</p>
+<p>Use this mode if you plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p>
+<p>Please note that this mode is only possible if the local reader is observable.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Methods to be used when initializing the factory</td>
+<td><code>withReaderObservation(...)</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Possible readers to use</td>
+<td><code>ObservableReader</code></td>
+<td><code>ObservableRemoteReaderServer</code></td>
+</tr>
+</tbody>
+</table>
+<p>To observe &ldquo;remotely&rdquo; the reader events, you must :</p>
+<ul>
+<li>Server
+<ol>
+<li>register at least one observer to the remote reader created during the first client call and await for reader events,</li>
+<li>retrieve the remote reader from the <strong>Remote Plugin</strong> <strong>imperatively</strong> using the reader name contained in the received event,</li>
+<li>execute the ticketing service associated to the event using the remote reader and all of its others information,</li>
+<li>terminate the remote ticketing service associated to the event using the <strong>Remote Plugin</strong> API by transmitting if needed personal information to the client.</li>
+</ol>
+</li>
+<li>Client
+<ol>
+<li>execute a remote service first in order to connect a remote reader to the local reader and to allow the remote application to subscribe to the events of the remote reader.</li>
+</ol>
+</li>
+</ul>
+<h4 id=uc-3>UC 3</h4>
+<p>This use case requires to use the
+<a href=#reader-server-side>Reader Server Side</a> configuration mode with the <code>RemotePluginClient</code> plugin.</p>
+<p>Use this mode if you don&rsquo;t plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p>
+<p>Please note that it is still possible to observe locally the reader on the server side if needed.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Methods to be used when initializing the factory</td>
+<td><code>withoutPluginObservation()</code><br><code>withoutReaderObservation()</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Possible readers to use</td>
+<td><code>Reader</code></td>
+<td><code>Reader</code> or <code>ObservableReader</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id=uc-4>UC 4</h4>
+<p>This use case requires to use the
+<a href=#reader-server-side>Reader Server Side</a> configuration mode with the <code>RemotePluginClient</code> plugin.</p>
+<p>Use this mode if you plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p>
+<p>Please note that this mode is only possible if the local reader is observable.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Methods to be used when initializing the factory</td>
+<td><code>withoutPluginObservation()</code><br><code>withReaderObservation()</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Possible readers to use</td>
+<td><code>ObservableReader</code></td>
+<td><code>ObservableReader</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id=uc-5>UC 5</h4>
+<p>This use case requires to use the
+<a href=#reader-server-side>Reader Server Side</a> configuration mode with the <code>ObservableRemotePluginClient</code> plugin.</p>
+<p>Use this mode if you don&rsquo;t plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p>
+<p>Please note that it is still possible to observe locally the reader on the server side if needed.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Methods to be used when initializing the factory</td>
+<td><code>withPluginObservation()</code><br><code>withoutReaderObservation()</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Possible readers to use</td>
+<td><code>Reader</code></td>
+<td><code>Reader</code> or <code>ObservableReader</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id=uc-6>UC 6</h4>
+<p>This use case requires to use the
+<a href=#reader-server-side>Reader Server Side</a> configuration mode with the <code>ObservableRemotePluginClient</code> plugin.</p>
+<p>Use this mode if you plan to observe &ldquo;remotely&rdquo; the events related to the local reader (smart card insertion, removal, etc&mldr;).</p>
+<p>Please note that this mode is only possible if the local reader is observable.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Methods to be used when initializing the factory</td>
+<td><code>withPluginObservation()</code><br><code>withReaderObservation()</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Possible readers to use</td>
+<td><code>ObservableReader</code></td>
+<td><code>ObservableReader</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id=uc-7>UC 7</h4>
+<p>This use case requires to use the
+<a href=#pool-reader-server-side>Pool Reader Server Side</a> configuration mode.</p>
+<p>This unique mode proposed for this plugin does not allow to observe the local reader.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Methods to be used when initializing the factory</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Possible readers to use</td>
+<td><code>Reader</code></td>
+<td><code>Reader</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id=network-configuration>Network configuration</h2>
+<p>The <strong>Keyple Distributed</strong> solution <strong>does not provide</strong> the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between <strong>Remote Plugin</strong> and <strong>Local Service</strong> components.</p>
+<h3 id=synchronous>Synchronous</h3>
+<p>Choose this mode if you want to implement a Client-Server <strong>Synchronous</strong> communication protocol, such as standard HTTP for example.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPI to be implemented</td>
+<td><code>SyncEndpointClient</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Node API</td>
+<td><code>SyncNodeClient</code></td>
+<td><code>SyncNodeServer</code></td>
+</tr>
+<tr>
+<td>Methods to be used when initializing the factory</td>
+<td><code>withSyncNode(...)</code></td>
+<td><code>withSyncNode()</code></td>
+</tr>
+<tr>
+<td>Utility method to use to access the node</td>
+<td>-</td>
+<td><code>getSyncNode()</code> or<br> <code>getSyncNode(...)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Here is the minimal algorithm to implement in a context with a <strong>single server instance</strong> :</p>
+<figure>
+<a data-fancybox href=../../../media/distributed-application/sequence/Distributed_Sequence_SyncNode_API.svg>
+<img src=../../../media/distributed-application/sequence/Distributed_Sequence_SyncNode_API.svg alt>
+</a>
+</figure>
+<p>In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a <code>serverNodeId</code> are routed to the server associated with a <code>SyncNodeServer</code> node having the <code>serverNodeId</code>.</p>
+<h3 id=asynchronous>Asynchronous</h3>
+<p>Choose this mode if you want to implement a Full-Duplex <strong>Asynchronous</strong> communication protocol, such as Web Sockets for example.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Client</th>
+<th>Server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPI to be implemented</td>
+<td><code>AsyncEndpointClient</code></td>
+<td><code>AsyncEndpointServer</code></td>
+</tr>
+<tr>
+<td>Node API</td>
+<td><code>AsyncNodeClient</code></td>
+<td><code>AsyncNodeServer</code></td>
+</tr>
+<tr>
+<td>Methods to be used when initializing the factory</td>
+<td><code>withAsyncNode(...)</code></td>
+<td><code>withAsyncNode(...)</code></td>
+</tr>
+<tr>
+<td>Utility method to use to access the node</td>
+<td><code>getAsyncNode()</code> or<br> <code>getAsyncNode(...)</code></td>
+<td><code>getAsyncNode()</code> or<br> <code>getAsyncNode(...)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Here is the minimal algorithm to implement :</p>
+<figure>
+<a data-fancybox href=../../../media/distributed-application/sequence/Distributed_Sequence_AsyncNode_API.svg>
+<img src=../../../media/distributed-application/sequence/Distributed_Sequence_AsyncNode_API.svg alt>
+</a>
+</figure>
+<h3 id=exchanged-data>Exchanged data</h3>
+<p>The data exchanged between <strong>Remote Plugin</strong> and <strong>Local Service</strong> components are contained in the DTO (Data Transfer Object) <code>MessageDto</code>. It is built and processed by the plugin and <strong>you don&rsquo;t need to modify it</strong>.</p>
+<p>However, it is necessary in some contexts to access certain information such as the <code>sessionId</code> in the case of asynchronous communication or the <code>serverNodeId</code> in the case of synchronous communication with several server instances.</p>
+<hr>
+<h2 id=apis>APIs</h2>
+<p>The class diagrams below shows the different APIs exposed and SPIs required by the <strong>Keyple Distributed</strong> solution.</p>
+<p>An <strong>SPI</strong> (Service Provider Interface) is an interface that must be implemented by the user.</p>
+<p>Here are the available APIs depending on the library imported by your project :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style=text-align:center>Remote Lib</th>
+<th style=text-align:center>Local Lib</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href=#network-api>Network API</a></td>
+<td style=text-align:center>✔️</td>
+<td style=text-align:center>✔️</td>
+</tr>
+<tr>
+<td>
+<a href=#remote-api>Remote API</a></td>
+<td style=text-align:center>✔️</td>
+<td style=text-align:center></td>
+</tr>
+<tr>
+<td>
+<a href=#local-api>Local API</a></td>
+<td style=text-align:center></td>
+<td style=text-align:center>✔️</td>
+</tr>
+</tbody>
+</table>
+<p>The associated <strong>API</strong> documentations are accessible from the page
+<a href=../../../docs/api-reference/>API Reference</a>.</p>
+<h3 id=network-api>Network API</h3>
+<p>The associated <strong>API</strong> documentation is available <a href=../../api-reference/java-api/keyple-java-distributed-network/1.0.0/index.html>here</a>.</p>
+<figure>
+<a data-fancybox href=../../../media/distributed-application/class/Distributed_Class_Network_API.svg>
+<img src=../../../media/distributed-application/class/Distributed_Class_Network_API.svg alt>
+</a>
+</figure>
+<h3 id=remote-api>Remote API</h3>
+<p>The associated <strong>API</strong> documentation is available <a href=../../api-reference/java-api/keyple-java-distributed-remote/1.0.0/index.html>here</a>.</p>
+<figure>
+<a data-fancybox href=../../../media/distributed-application/class/Distributed_Class_Remote_API.svg>
+<img src=../../../media/distributed-application/class/Distributed_Class_Remote_API.svg alt>
+</a>
+</figure>
+<h3 id=local-api>Local API</h3>
+<p>The associated <strong>API</strong> documentation is available <a href=../../api-reference/java-api/keyple-java-distributed-local/1.0.0/index.html>here</a>.</p>
+<figure>
+<a data-fancybox href=../../../media/distributed-application/class/Distributed_Class_Local_API.svg>
+<img src=../../../media/distributed-application/class/Distributed_Class_Local_API.svg alt>
+</a>
+</figure>
+<hr>
+<h2 id=examples>Examples</h2>
+<ul>
+<li>
+<a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/distributed target=_blank rel=noopener>Java examples</a></li>
+</ul>
+<hr>
+<h2 id=download>Download</h2>
+<ul>
+<li>
+<a href=../../../components-java/distributed-systems/>Java components</a></li>
+</ul>
+</div>
+<div class=article-widget>
+<div class=post-nav>
+<div class=post-nav-item>
+<div class=meta-nav>Previous</div>
+<a href=../../../docs/developer-guide/standalone-application/ rel=next>Standalone application</a>
+</div>
+<div class=post-nav-item>
+<div class=meta-nav>Next</div>
+<a href=../../../docs/developer-guide/calypso-application/ rel=prev>Calypso application</a>
+</div>
+</div>
+</div>
+</div>
+<div class=body-footer>
+<p>Last updated on Fri, Dec 18, 2020</p>
+</div>
+</article>
+<footer class=site-footer>
+<div class=container>
+<div class="row featurette">
+<div class="col-12 col-sm-4">
+<h4>More</h4>
+<ul>
+<li><a href=https://github.com/eclipse/keyple title="View Source Code on GitHub"><i class="fab fa-github"></i> GitHub Repository</a></li>
+<li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing list</a></li>
+<li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Keyple's project page</a></li>
+</ul>
+</div>
+<div class="col-12 col-sm-4">
+<h4>Eclipse Foundation</h4>
+<ul>
+<li><a href=https://www.eclipse.org/org/>About Eclipse Foundation</a></li>
+<li><a href=https://www.eclipse.org/org/foundation/contact.php>Contact Eclipse Foundation</a></li>
+<li><a href=https://www.eclipse.org/donate>Donate</a></li>
+<li><a href=https://www.eclipse.org/membership>Members</a></li>
+<li><a href=https://www.eclipse.org/org/documents/>Governance</a></li>
+<li><a href=https://www.eclipse.org/org/documents/Community_Code_of_Conduct.php>Code of Conduct</a></li>
+<li><a href=https://www.eclipse.org/artwork/>Logo and Artwork</a></li>
+<li><a href=https://www.eclipse.org/org/foundation/directors.php></a></li>
+</ul>
+</div>
+<div class="col-12 col-sm-4">
+<h4>Legal</h4>
+<ul>
+<li><a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a></li>
+<li><a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a></li>
+<li><a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a></li>
+<li><a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a></li>
+<li><a href=https://www.eclipse.org/legal/>Legal Resources </a></li>
+<li><a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability </a></li>
+</ul>
+</section>
+</div>
+</div>
+<p class=powered-by>
+Copyright © Eclipse Foundation, Inc. All Rights Reserved.
+</p>
+<p class=powered-by>
+Powered by the
 <a href=https://wowchemy.com/ target=_blank rel=noopener>Wowchemy theme</a>
 for
 <a href=https://gohugo.io target=_blank rel=noopener>Hugo</a>.
-<span class=float-right aria-hidden=true><a href=# class=back-to-top><span class=button_icon><i class="fas fa-chevron-up fa-2x"></i></span></a></span></p></footer></main></div></div><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/java.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/kotlin.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/cpp.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/gradle.min.js></script><script>const code_highlighting=!0</script><script>const search_config={indexURI:"/index.json",minLength:1,threshold:.3},i18n={no_results:"No results found",placeholder:"Search...",results:"results found"},content_type={post:"Posts",project:"Projects",publication:"Publications",talk:"Talks",slides:"Slides"}</script><script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin=anonymous></script><script>anchors.add()</script><script id=search-hit-fuse-template type=text/x-template>
+<span class=float-right aria-hidden=true>
+<a href=# class=back-to-top>
+<span class=button_icon>
+<i class="fas fa-chevron-up fa-2x"></i>
+</span>
+</a>
+</span>
+</p>
+</footer>
+</main>
+</div>
+</div>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/java.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/kotlin.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/cpp.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/gradle.min.js></script>
+<script>const code_highlighting=!0</script>
+<script>const search_config={indexURI:"/index.json",minLength:1,threshold:.3},i18n={no_results:"No results found",placeholder:"Search...",results:"results found"},content_type={post:"Posts",project:"Projects",publication:"Publications",talk:"Talks",slides:"Slides"}</script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin=anonymous></script>
+<script>anchors.add()</script>
+<script id=search-hit-fuse-template type=text/x-template>
       <div class="search-hit" id="summary-{{key}}">
       <div class="search-hit-content">
         <div class="search-hit-name">
@@ -38,6 +1049,36 @@ for
         </div>
       </div>
       </div>
-    </script><script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script><script src=../../../js/academic.min.19912f59e37190f8d23e7f331b162e03.js></script><link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css><script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script><script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script><div id=modal class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><h5 class=modal-title>Cite</h5><button type=button class=close data-dismiss=modal aria-label=Close>
-<span aria-hidden=true>&#215;</span></button></div><div class=modal-body><pre><code class="tex hljs"></code></pre></div><div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank><i class="fas fa-copy"></i> Copy</a>
-<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank><i class="fas fa-download"></i> Download</a><div id=modal-error></div></div></div></div></div></body></html>
+    </script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+<script src=../../../js/academic.min.f6ecf7692215f2bc4850b72c8176bfa2.js></script>
+<link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
+<script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
+<script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Cite</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Copy
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Download
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
