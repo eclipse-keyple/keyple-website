@@ -33,27 +33,6 @@ In this guide [Gradle](https://gradle.org/) is used as build automation
 tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.
 
-{{< tabpane langEqualsHeader=true >}}
-{{< tab header="Groovy" >}}
-#include <stdio.h>
-#include <stdlib.h>
-
-int main(void)
-{
-puts("Hello World!");
-return EXIT_SUCCESS;
-}
-{{< /tab >}}
-{{< tab header="Kotlin" >}}
-#include <iostream>
-
-int main()
-{
-std::cout << "Hello World!" << std::endl;
-}
-{{< /tab >}}
-{{< /tabpane >}}
-
 The example can run on any machine: Linux, Windows and macOS. If not
 installed in your machine, you will need to download :
 
