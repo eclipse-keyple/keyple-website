@@ -1,5 +1,6 @@
 +++
 title = "Java Components Overview"
+linktitle = "Overview"
 type = "book"
 weight = 1
 toc = false
