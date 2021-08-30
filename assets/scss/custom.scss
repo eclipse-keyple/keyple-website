@@ -98,6 +98,10 @@ div.eclipsefdn-adopters {
   background-color: white;
 }
 
+a, h3.article-title a:hover {
+  transition-property: none !important;
+}
+
 // Increase wrapper max width for standard pages
 .universal-wrapper {
   width: 1200px;
@@ -112,12 +116,23 @@ div.eclipsefdn-adopters {
 // decrease font size
 .docs-sidebar .nav > li > a {
   padding: 0.10rem 1.5rem 0.10rem 2.3rem;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+}
+
+// color of left and right TOCs links
+.docs-sidebar .nav > li > a:hover, a.docs-toc-link:hover {
+  color:#1D87BB;
+}
+
+// all links
+a:hover {
+  text-decoration: none;
+  font-weight: bold;
 }
 
 // decrease font size for left side menu titles
 .docs-toc-link {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 // increase left side menu max width
