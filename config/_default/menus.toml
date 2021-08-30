@@ -15,7 +15,7 @@
 
 [[main]]
   name = "Learn"
-  url = "docs/"
+  url = "docs/overview"
   weight = 30
 
 [[main]]
@@ -24,6 +24,19 @@
   weight = 40
 
 [[main]]
+  parent = "Components"
+  name = 'Java Language'
+  url = '/components-java/overview/'
+  weight = 10
+
+[[main]]
+  parent = "Components"
+  name = 'C++ Language'
+  url = '/components-cpp/overview/'
+  weight = 20
+
+[[main]]
   name = "Support & Trainings"
   url = "support-trainings/"
   weight = 50
+

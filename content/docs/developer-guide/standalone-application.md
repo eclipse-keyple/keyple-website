@@ -38,7 +38,7 @@ title="" >}}
    possibilities offered by **Keyple Core**.
 4. Take inspiration from the [examples](#examples).
 5. Follow the explanations given in the [Build your first app]({{<
-   relref "build-your-first-app" >}}) section to configure your
+   ref "docs/build-your-first-app" >}}) section to configure your
    environment.
 6. Using the [Java components]({{< ref "components-java/_index.md" >}}) or [C++ components]({{< ref "components-cpp/_index.md" >}}) pages, import
    **Keyple Core** into your project and start playing with **Keyple**.
@@ -558,8 +558,7 @@ smartCardService.unregisterPlugin(plugin.getName());
 ## Keyple Core API
 
 To learn all the details of the **Keyple Core** API, please consult the
-[Javadoc documentation]({{< relref
-"api-reference" >}}).
+[Javadoc documentation]({{< ref "docs/api-reference" >}}).
 
 However, here are two diagrams showing the main features of Keyple Core:
 
