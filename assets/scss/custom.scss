@@ -134,7 +134,18 @@ a:hover {
   font-size: 0.8rem;
 }
 
+// color of right TOC
+#TableOfContents li a, .toc-top li a {
+  color: rgba(0,0,0,.65);
+}
+
 // increase left side menu max width
 .docs-sidebar {
   flex: 0 1 400px;
+}
+
+// Increase code font size and style
+pre code {
+  font-size: .9rem;
+  font-family: monospace;
 }
