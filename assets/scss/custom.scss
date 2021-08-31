@@ -115,12 +115,13 @@ a, h3.article-title a:hover {
 // increase left padding for left side menu
 // decrease font size
 .docs-sidebar .nav > li > a {
-  padding: 0.10rem 1.5rem 0.10rem 2.3rem;
+  padding: 0 1.5rem 0 2.3rem;
   font-size: 0.8rem;
 }
 
 // color of left and right TOCs links
-.docs-sidebar .nav > li > a:hover, a.docs-toc-link:hover {  color:#1D87BB;
+.docs-sidebar .nav > li > a:hover, a.docs-toc-link:hover {
+  color:#1D87BB;
 }
 
 // all links
@@ -132,11 +133,13 @@ a:hover {
 // decrease font size for left side menu titles
 .docs-toc-link {
   font-size: 0.8rem;
+  padding: 0 1.5rem;
 }
 
-// color of right TOC
+// color of right TOC and padding
 #TableOfContents li a, .toc-top li a {
   color: rgba(0,0,0,.65);
+  padding: 0 1.5rem;
 }
 
 // increase left side menu max width
