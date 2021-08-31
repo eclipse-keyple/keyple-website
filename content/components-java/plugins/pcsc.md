@@ -1,5 +1,5 @@
 ---
-title: Keyple Plugin PC/SC
+title: Keyple Plugin PC/SC Java Library
 linktitle: PC/SC
 summary: Keyple Java plugin for PC/SC smart card readers.
 type: book

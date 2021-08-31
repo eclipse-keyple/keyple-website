@@ -1,5 +1,5 @@
 ---
-title: Keyple Calypso
+title: Keyple Card Calypso Java Library
 linktitle: Calypso
 summary: Keyple Java reader extension for Calypso® technology.
 type: book

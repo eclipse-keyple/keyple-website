@@ -1,5 +1,5 @@
 ---
-title: Keyple Distributed Local
+title: Keyple Distributed Local Java Library
 linktitle: Local
 summary: Part of the Keyple Distributed solution which contains all the local services.
 type: book

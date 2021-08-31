@@ -1,5 +1,5 @@
 ---
-title: Keyple Distributed Remote
+title: Keyple Distributed Remote Java Library
 linktitle: Remote
 summary: Part of the Keyple Distributed solution which contains all the remote plugins.
 type: book

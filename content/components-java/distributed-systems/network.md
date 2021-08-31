@@ -1,5 +1,5 @@
 ---
-title: Keyple Distributed Network
+title: Keyple Distributed Network Java Library
 linktitle: Network
 summary: Part of the Keyple Distributed solution which contains the common network elements used by Local and Remote components.
 type: book

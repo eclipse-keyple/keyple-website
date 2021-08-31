@@ -1,6 +1,6 @@
 ---
-title: Keyple Core
-linktitle: Core
+title: Java - Core Libraries
+linktitle: Core Libraries
 type: book
 weight: 10
 toc: true

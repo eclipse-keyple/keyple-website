@@ -1,5 +1,5 @@
 ---
-title: Keyple Plugin NFC
+title: Keyple Plugin NFC Java Library
 linktitle: NFC
 summary: Keyple Java plugin for Android devices having NFC capabilities.
 type: book

@@ -1,5 +1,6 @@
 ---
-title: Reader plugins
+title: Java - Plugins
+linktitle: Plugins
 type: book
 weight: 40
 toc: false

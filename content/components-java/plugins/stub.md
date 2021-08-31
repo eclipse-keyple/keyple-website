@@ -1,5 +1,5 @@
 ---
-title: Keyple Plugin Stub
+title: Keyple Plugin Stub Java Library
 linktitle: Stub
 summary: Keyple Java plugin used to stub smart card readers.
 type: book

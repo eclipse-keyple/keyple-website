@@ -1,5 +1,5 @@
 ---
-title: Keyple Plugin OMAPI
+title: Keyple Plugin OMAPI Java Library
 linktitle: OMAPI
 summary: Keyple Java plugin for Android devices using OMAPI technology.
 type: book

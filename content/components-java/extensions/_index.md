@@ -1,5 +1,6 @@
 ---
-title: Extensions
+title: Java - Cards
+linktitle: Cards
 type: book
 weight: 30
 toc: false
