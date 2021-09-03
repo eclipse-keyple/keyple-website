@@ -23,9 +23,9 @@ communication) and a Calypo Secure Access Module (SAM). {{% /alert %}}
 We will use three main components of Keyple:
 * [Keyple Core]({{< ref "/components-java/core/" >}})
   which is the base component to which all the others refer,
-* [Keyple PC/SC plugin]({{< ref "/components-java/plugins/pcsc" >}}) 
+* [Keyple PC/SC plugin]({{< ref "/components-java/plugins/keyple-plugin-pcsc-java-lib" >}}) 
   to provide the ability to manage PC/SC readers,
-* [Keyple Calypso extension]({{< ref "/components-java/extensions/calypso" >}}) 
+* [Keyple Calypso extension]({{< ref "/components-java/cards/keyple-card-calypso-java-lib" >}}) 
   to handle the commands sent to the Calypso PO and the Calypso SAM.
 
 In this guide [Gradle](https://gradle.org/) is used as build automation

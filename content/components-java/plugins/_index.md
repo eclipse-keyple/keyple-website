@@ -1,11 +1,9 @@
 ---
-title: Java - Plugins
-linktitle: Plugins
+title: Java - Reader plugins components
+linktitle: Reader plugins
 type: book
-weight: 40
+weight: 50
 toc: false
 ---
-
-{{% alert note %}} To add a plugin made a [Pull request](https://github.com/eclipse/keyple-website/pulls) contributions on GitHub. {{% /alert %}} 
 
 {{< list_children >}}

@@ -8,14 +8,10 @@ toc: true
 
 {{% alert note %}}
 **`{{% keyple-cpp-version %}}`**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="users-cog" pack="fas" >}}
-Keyple project
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="download" pack="fas" >}}
-[Download](#download)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="github" pack="fab" >}}
-[GitHub](https://github.com/eclipse/keyple-cpp/tree/master/component/keyple-core)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="exchange-alt" pack="fas" >}}
-[Changelogs](https://github.com/eclipse/keyple-cpp/releases/)
+<span class="component-metadata">{{< icon name="users-cog" pack="fas" >}} Keyple project</span>
+<span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse/keyple-cpp/tree/master/component/keyple-core)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelogs](https://github.com/eclipse/keyple-cpp/releases/)</span>
 {{% /alert %}}
 
 ## Overview

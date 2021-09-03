@@ -1,9 +1,9 @@
 ---
-title: Java - Distributed systems
+title: Java - Distributed systems components
 linktitle: Distributed systems
 type: book
-weight: 20
-toc: true
+weight: 30
+toc: false
 ---
 
 {{< list_children >}}

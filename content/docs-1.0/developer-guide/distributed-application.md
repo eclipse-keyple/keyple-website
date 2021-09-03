@@ -404,4 +404,4 @@ The associated **API** documentation is available <a href="../../api-reference/j
 ---
 ## Download
 
-* [Java components]({{< relref "../../../components-java/distributed-systems/" >}})
+* [Java components]({{< relref "../../../components-java/distributed/" >}})
