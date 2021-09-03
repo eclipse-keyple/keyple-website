@@ -115,7 +115,7 @@ a, h3.article-title a:hover {
 // increase left padding for left side menu
 // decrease font size
 .docs-sidebar .nav > li > a {
-  padding: 0 1.5rem 0 2.3rem;
+  padding: 0 1rem 0 2.3rem;
   font-size: 0.8rem;
 }
 
@@ -133,7 +133,7 @@ a:hover {
 // decrease font size for left side menu titles
 .docs-toc-link {
   font-size: 0.8rem;
-  padding: 0 1.5rem;
+  padding: 0 1rem 0 1.5rem;
 }
 
 // color of right TOC and padding
@@ -148,7 +148,17 @@ a:hover {
 }
 
 // Increase code font size and style
-pre code {
+pre, code {
   font-size: .9rem;
   font-family: monospace;
+}
+
+// Color of tabpane headers
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: inherit;
+}
+
+// Component Metadata positioning
+.component-metadata {
+  padding-left: 2rem;
 }
