@@ -8,7 +8,6 @@ toc: true
 
 {{% alert note %}}
 **`{{% keyple-plugin-stub-java-lib-version %}}`**
-<span class="component-metadata">{{< icon name="users-cog" pack="fas" >}} Keyple project</span>
 <span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
 <span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse/keyple-plugin-stub-java-lib/)</span>
 <span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelogs](https://github.com/eclipse/keyple-plugin-stub-java-lib/releases/)</span>

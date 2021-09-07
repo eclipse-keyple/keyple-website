@@ -375,7 +375,7 @@ Here are the available APIs depending on the library imported by your project :
 | [Remote API](#remote-api) | :heavy_check_mark: | |
 | [Local API](#local-api) | | :heavy_check_mark: |
 
-The associated **API** documentations are accessible from the page [API Reference]({{< ref "docs/api-reference" >}}).
+The associated **API** documentations are accessible from the page TODO.
 
 ### Network API
 

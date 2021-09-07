@@ -557,10 +557,7 @@ smartCardService.unregisterPlugin(plugin.getName());
 ---
 ## Keyple Core API
 
-To learn all the details of the **Keyple Core** API, please consult the
-[Javadoc documentation]({{< ref "docs/api-reference" >}}).
-
-However, here are two diagrams showing the main features of Keyple Core:
+Here are two diagrams showing the main features of Keyple Core:
 
 * The diagram below represents the main classes implemented around the
   **Smart Card Service** with in particular the observation mechanisms.
