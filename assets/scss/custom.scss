@@ -167,3 +167,16 @@ pre, code {
 .article-widget {
   display: none;
 }
+
+// Container of button "Copy to clipboard"
+.bd-clipboard {
+  display: block;
+  position: relative;
+  float: right;
+}
+.btn-clipboard {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  width: 4rem;
+}

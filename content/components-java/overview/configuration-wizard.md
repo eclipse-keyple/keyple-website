@@ -18,94 +18,91 @@ Please find below the configuration to use when developing an application that u
 ---
 **Which card extension do you want to use?**
 <div>
-  <input type="checkbox" id="cardGeneric" onclick="javascript:updateDependencies(this);">
+  <input type="checkbox" id="cardGeneric" onclick="javascript:updateAppDependencies(1, this);">
   <label for="cardGeneric">Generic (with low level API)</label>
 </div>
 <div>
-  <input type="checkbox" id="cardCalypso" onclick="javascript:updateDependencies(this);">
+  <input type="checkbox" id="cardCalypso" onclick="javascript:updateAppDependencies(1, this);">
   <label for="cardCalypso">Calypso</label>
 </div>
 
 ---
 **Which reader plugin do you want to use?**
 <div>
-  <input type="checkbox" id="pluginAndroidNfc" onclick="javascript:updateDependencies(this);">
+  <input type="checkbox" id="pluginAndroidNfc" onclick="javascript:updateAppDependencies(1, this);">
   <label for="pluginAndroidNfc">Android NFC</label>
 </div>
 <div>
-  <input type="checkbox" id="pluginAndroidOmapi" onclick="javascript:updateDependencies(this);">
+  <input type="checkbox" id="pluginAndroidOmapi" onclick="javascript:updateAppDependencies(1, this);">
   <label for="pluginAndroidOmapi">Android OMAPI</label>
 </div>
 <div>
-  <input type="checkbox" id="pluginPcsc" onclick="javascript:updateDependencies(this);">
+  <input type="checkbox" id="pluginPcsc" onclick="javascript:updateAppDependencies(1, this);">
   <label for="pluginPcsc">PC/SC</label>
 </div>
 <div>
-  <input type="checkbox" id="pluginStub" onclick="javascript:updateDependencies(this);">
+  <input type="checkbox" id="pluginStub" onclick="javascript:updateAppDependencies(1, this);">
   <label for="pluginStub">Stub (simulated reader)</label>
 </div>
 
 ---
 **In case of a distributed system, on which side is your application located?**
 <div>
-  <input type="checkbox" id="distributedLocal" onclick="javascript:updateDependencies(this);">
+  <input type="checkbox" id="distributedLocal" onclick="javascript:updateAppDependencies(1, this);">
   <label for="distributedLocal">On the device <strong>having</strong> local access to the smart card reader</label>
 </div>
 <div>
-  <input type="checkbox" id="distributedRemote" onclick="javascript:updateDependencies(this);">
+  <input type="checkbox" id="distributedRemote" onclick="javascript:updateAppDependencies(1, this);">
   <label for="distributedRemote">On the device <strong>not having</strong> local access to the smart card reader</label>
 </div>
 
 ---
 **Do you need additional services?**
 <div>
-  <input type="checkbox" id="serviceResource" onclick="javascript:updateDependencies(this);">
-  <label for="serviceResource">Service resource component for dynamic reader allocation</label>
+  <input type="checkbox" id="serviceResource" onclick="javascript:updateAppDependencies(1, this);">
+  <label for="serviceResource">Service for dynamic card resource allocation (e.g. for HSM or pool of readers)</label>
 </div>
 
 ---
-<!-- Tabpane template -->
-<ul class="nav nav-tabs" id="tabs-1" role="tablist">
-    <li class="nav-item"><a class="nav-link tab-Gradle-Groovy active" id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&quot;Gradle-Groovy&quot;);" aria-controls="tabs-1-0" aria-selected="true">Gradle Groovy</a></li>
-    <li class="nav-item"><a class="nav-link tab-Gradle-Kotlin" id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&quot;Gradle-Kotlin&quot;);" aria-controls="tabs-1-1" aria-selected="false">Gradle Kotlin</a></li>
-    <li class="nav-item"><a class="nav-link tab-Maven" id="tabs-1-2-tab" data-toggle="tab" href="#tabs-1-2" role="tab" onclick="handleClick(&quot;Maven&quot;);" aria-controls="tabs-1-2" aria-selected="false">Maven</a></li>
-</ul>
-<div class="tab-content" id="tabs-1-content">
-    <div class="tab-pane fade show active" id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab">
-        <pre><code id="groovy-dependencies" class="language-gradle hljs"></code></pre>
-    </div>
-    <div class="tab-pane fade" id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab">
-        <pre><code id="kotlin-dependencies" class="language-kotlin hljs"></code></pre>
-    </div>
-    <div class="tab-pane fade" id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
-        <pre><code id="maven-dependencies" class="language-xml hljs"></code></pre>
-    </div>
-</div>
+{{< tabpane ref="1" >}}
+{{< tab header="Gradle Groovy" lang="gradle" >}}{{< /tab >}}
+{{< tab header="Gradle Kotlin" lang="kotlin" >}}{{< /tab >}}
+{{< tab header="Maven" lang="xml" >}}{{< /tab >}}
+{{< /tabpane >}}
 {{< /spoiler >}}
 
 {{< spoiler text="Custom Keyple card extension" >}}
 Please find below the configuration to use when developing a specific Keyple card extension not already available:
+
+---
+**Do you need additional services?**
+<div>
+  <input type="checkbox" id="cardServiceResource" onclick="javascript:updateCardDependencies(2, this);">
+  <label for="cardServiceResource">Service for dynamic card resource allocation (e.g. HSM or pool of readers)</label>
+</div>
+
+---
+{{< tabpane ref="2" >}}
+{{< tab header="Gradle Groovy" lang="gradle" >}}{{< /tab >}}
+{{< tab header="Gradle Kotlin" lang="kotlin" >}}{{< /tab >}}
+{{< tab header="Maven" lang="xml" >}}{{< /tab >}}
+{{< /tabpane >}}
 {{< /spoiler >}}
 
 {{< spoiler text="Custom Keyple reader plugin" >}}
 Please find below the configuration to use when developing a specific Keyple reader plugin not already available:
-{{< tabpane position="3" >}}
+{{< tabpane ref="3" >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}
-implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}'
 implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}'
 implementation 'org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-dynamic-gradle-version %}}'
+implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}'
 {{< /tab >}}
 {{< tab header="Gradle Kotlin" lang="kotlin" >}}
-implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}")
 implementation("org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}")
 implementation("org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-dynamic-gradle-version %}}")
+implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}")
 {{< /tab >}}
 {{< tab header="Maven" lang="xml" >}}
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-util-java-lib</artifactId>
-  <version>{{% keyple-util-java-lib-dynamic-maven-version %}}</version>
-</dependency>
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-common-java-api</artifactId>
@@ -116,31 +113,32 @@ implementation("org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java
   <artifactId>keyple-plugin-java-api</artifactId>
   <version>{{% keyple-plugin-java-api-dynamic-maven-version %}}</version>
 </dependency>
+<dependency>
+  <groupId>org.eclipse.keyple</groupId>
+  <artifactId>keyple-util-java-lib</artifactId>
+  <version>{{% keyple-util-java-lib-dynamic-maven-version %}}</version>
+</dependency>
 {{< /tab >}}
 {{< /tabpane >}}
 {{< /spoiler >}}
 
 {{< spoiler text="Custom Keyple distributed solution" >}}
 Please find below the configuration to use when developing an alternate Keyple distributed solution:
-{{< tabpane position="2" >}}
+
+---
+For the **Local Service** component:
+{{< tabpane ref="4" >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}
-implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}'
 implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}'
 implementation 'org.eclipse.keyple:keyple-distributed-local-java-api:{{% keyple-distributed-local-java-api-dynamic-gradle-version %}}'
-implementation 'org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-dynamic-gradle-version %}}'
+implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}'
 {{< /tab >}}
 {{< tab header="Gradle Kotlin" lang="kotlin" >}}
-implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}")
 implementation("org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}")
 implementation("org.eclipse.keyple:keyple-distributed-local-java-api:{{% keyple-distributed-local-java-api-dynamic-gradle-version %}}")
-implementation("org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-dynamic-gradle-version %}}")
+implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}")
 {{< /tab >}}
 {{< tab header="Maven" lang="xml" >}}
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-util-java-lib</artifactId>
-  <version>{{% keyple-util-java-lib-dynamic-maven-version %}}</version>
-</dependency>
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-common-java-api</artifactId>
@@ -153,8 +151,40 @@ implementation("org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple
 </dependency>
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
+  <artifactId>keyple-util-java-lib</artifactId>
+  <version>{{% keyple-util-java-lib-dynamic-maven-version %}}</version>
+</dependency>
+{{< /tab >}}
+{{< /tabpane >}}
+
+---
+For the **Remote Plugin** component:
+{{< tabpane ref="5" >}}
+{{< tab header="Gradle Groovy" lang="gradle" >}}
+implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}'
+implementation 'org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-dynamic-gradle-version %}}'
+implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}'
+{{< /tab >}}
+{{< tab header="Gradle Kotlin" lang="kotlin" >}}
+implementation("org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}")
+implementation("org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-dynamic-gradle-version %}}")
+implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}")
+{{< /tab >}}
+{{< tab header="Maven" lang="xml" >}}
+<dependency>
+  <groupId>org.eclipse.keyple</groupId>
+  <artifactId>keyple-common-java-api</artifactId>
+  <version>{{% keyple-common-java-api-dynamic-maven-version %}}</version>
+</dependency>
+<dependency>
+  <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-distributed-remote-java-api</artifactId>
   <version>{{% keyple-distributed-remote-java-api-dynamic-maven-version %}}</version>
+</dependency>
+<dependency>
+  <groupId>org.eclipse.keyple</groupId>
+  <artifactId>keyple-util-java-lib</artifactId>
+  <version>{{% keyple-util-java-lib-dynamic-maven-version %}}</version>
 </dependency>
 {{< /tab >}}
 {{< /tabpane >}}
@@ -304,3 +334,9 @@ implementation("org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple
   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% calypsonet-terminal-calypso-java-api-dynamic-maven-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
 </code>
+<script type="text/javascript">
+document.body.onload = function() {
+    updateAppDependencies(1, null);
+    updateCardDependencies(2, null);
+};
+</script>

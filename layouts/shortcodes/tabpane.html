@@ -1,17 +1,17 @@
 <!-- Scratchpad gets populated through call to .Inner -->  
 {{- .Inner -}}
 
-{{ $position := $.Ordinal }}
-{{ with $.Get "position" }}
-  {{ $position = $.Get "position" }}
+{{ $ref := $.Ordinal }}
+{{ with $.Get "ref" }}
+  {{ $ref = $.Get "ref" }}
 {{ end }}
 
-<ul class="nav nav-tabs" id="tabs-{{- $position -}}" role="tablist">
+<ul class="nav nav-tabs" id="tabs-{{- $ref -}}" role="tablist">
   {{- range $index, $element := $.Scratch.Get "tabs" -}}
     <li class="nav-item">
       <!-- Generate the IDs for the <a> and the <div> elements -->
-      {{- $tabid := printf "tabs-%v-%v-tab" $position $index | anchorize -}}
-      {{- $entryid := printf "tabs-%v-%v" $position $index | anchorize -}}
+      {{- $tabid := printf "tabs-%v-%v-tab" $ref $index | anchorize -}}
+      {{- $entryid := printf "tabs-%v-%v" $ref $index | anchorize -}}
       <!-- Replace space and + from tabname to set class -->
       {{- $tabname := replaceRE "(\\s)" "-" $element.header -}}
       {{- $tabname := replaceRE "(\\+)" "-" $tabname -}}
@@ -25,10 +25,11 @@
 </ul>
 
 <!-- Inner content -->
-<div class="tab-content" id="tabs-{{- $position -}}-content">
+<div class="bd-clipboard"><button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-{{- $ref -}}', this);">Copy</button></div>
+<div class="tab-content" id="tabs-{{- $ref -}}-content">
   {{- range $index, $element := $.Scratch.Get "tabs" -}}
-    {{- $tabid := printf "tabs-%v-%v-tab" $position $index | anchorize -}}
-    {{- $entryid := printf "tabs-%v-%v" $position $index | anchorize -}}
+    {{- $tabid := printf "tabs-%v-%v-tab" $ref $index | anchorize -}}
+    {{- $entryid := printf "tabs-%v-%v" $ref $index | anchorize -}}
     <div class="tab-pane fade{{ if eq $index "0" }} show active{{ end }}"
         id="{{ $entryid }}" role="tabpanel" aria-labelled-by="{{ $tabid }}">
       <pre><code class="language-{{ $element.language }}">{{ replaceRE "&#43;" "+" $element.content }}</code></pre>
