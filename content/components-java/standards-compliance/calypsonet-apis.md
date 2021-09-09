@@ -12,6 +12,7 @@ toc: true
 **Keyple** is compliant with the terminal APIs provided by the [Calypso Networks Association](https://calypsonet.org) that standardize how to manage cards, readers, reader events and card selection.
 
 This compliance allows **Keyple** to obtain certifications from the **Calypso Networks Association**.
+It is a guarantee of reliability and reproducibility of the processes implemented on a variety of devices.
 
 ## Reader & Card APIs
 

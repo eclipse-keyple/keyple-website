@@ -3,11 +3,7 @@ title = "Overview"
 subtitle = ""
 summary = ""
 date = ""
-
 weight = 10
-
-[menu.main]
-    parent = "What is Eclipse Keyple™"
 +++
 
 Coming from a rather closed technical environment, ticketing for transport is essentially based on proprietary solutions provided by manufacturers. 

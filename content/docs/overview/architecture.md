@@ -1,25 +1,43 @@
 ---
-title: Global Solution
+title: Architecture
+summary: Overall presentation of the Keyple architecture.
 type: book
 toc: true
 draft: false
-weight: 110
+weight: 300
 ---
 
 ---
+Keyple is designed to operate exchanges with secure data media such as smart cards, tags or smartphones.
 
-## Overview
+Keyple is as much as possible agnostic towards the secured media as towards the hardware allowing to communicate with them.
+
+In order to achieve these objectives Keyple consists of a central core to which can be attached add-ons providing solutions to the specific needs of the targeted application.
+The core provides the basic services for registering add-ons and also provides generic interfaces independent of card and reader technologies. 
+
+Add-ons are organized into four categories:
+- Card extensions, offering high-level interfaces for managing exchanges between a client application and a particular card technology.
+- Reader plugins, which interface with the hardware through unified APIs.
+- Distributed libraries to manage readers remotely.
+- Additional services such as the dynamic allocation of card resources.
+
+**The figure below illustrates the scope of the technical possibilities of the Keyple ecosystem.**
+
+{{< figure library="true" src="docs-overview//Keyple-components.svg" title="Global Architecture of Keyple" >}}
+
+---
+## To be updated
 
 The Eclipse Keyple solution provides currently 2 modules:
- - the **Keyple Core**, a universal smart card reader interface to manage the setting of smart card reader, the detection and the communication with smart card, and the selection of card application.
- - the **Keyple Calypso**, a first smart card solution extension built on the Keyple Core, dedicated to manage Calypso processing, Calypso card identification, card command generation, card data recovery, authentication with the secure session.
+- the **Keyple Core**, a universal smart card reader interface to manage the setting of smart card reader, the detection and the communication with smart card, and the selection of card application.
+- the **Keyple Calypso**, a first smart card solution extension built on the Keyple Core, dedicated to manage Calypso processing, Calypso card identification, card command generation, card data recovery, authentication with the secure session.
 
 {{< figure library="true" src="architecture/Keyple_Architecture_Global.svg" title="Keyple Architecture Global" >}}
 
 The Keyple Core provides 3 interfaces:
- - the **Service API**, to allow terminal application to handle reader & select card
- - the **Card API**, for APDU command transmission, card data parsing
- - the **Plugin API**, to integrate specific smart card reader solutions.
+- the **Service API**, to allow terminal application to handle reader & select card
+- the **Card API**, for APDU command transmission, card data parsing
+- the **Plugin API**, to integrate specific smart card reader solutions.
 
 The Keyple Calypso extension provides the Calypso API: a high-level interface to manage Calypso card processing.
 
@@ -47,9 +65,9 @@ The Eclipse Keyple project provides the plugin for the main standard smart card 
 
 {{< figure library="true" src="architecture/Keyple_Architecture_Native_Plugins.svg" title="Keyple Architecture Native Plugins" >}}
 
- - The PC/SC plugin is available for both the Java and the C++ implementation of Eclipse Keyple, it allows to interface PC/SC reader on Windows, Linux and Mac OS.
- - For Android devices the NFC plugin allows to operate the standard NFC interface to handle external contactless smart card. And the OMAPI plugin provides the integration of internal eSE (embedded Secure Element) or UICC (SIM card). Both plugins support Keyple Java.
- - The Remote plugin (part of the Core distributed extension) allows to operate remote smart card readers.
+- The PC/SC plugin is available for both the Java and the C++ implementation of Eclipse Keyple, it allows to interface PC/SC reader on Windows, Linux and Mac OS.
+- For Android devices the NFC plugin allows to operate the standard NFC interface to handle external contactless smart card. And the OMAPI plugin provides the integration of internal eSE (embedded Secure Element) or UICC (SIM card). Both plugins support Keyple Java.
+- The Remote plugin (part of the Core distributed extension) allows to operate remote smart card readers.
 
 ### hybrid integration
 
@@ -75,19 +93,20 @@ The **Distributed** extension of the Keyple Core provides a solution allowing a 
 ---
 ## Smart card transaction
 There are two ways for a terminal application to manage a transaction with a smart card.
- - Either the smart card processing could be directly started by the terminal application.
- - Otherwise, the smart card processing could be launched when a smart card is inserted in a reader of the terminal.
- 
+- Either the smart card processing could be directly started by the terminal application.
+- Otherwise, the smart card processing could be launched when a smart card is inserted in a reader of the terminal.
+
 ### explicit selection
 For a classic transaction,
- - the presence of a card is firtsly checked on a reader,
- - then the car is selected and identified,
- - finally, a transaction is processed with the card application.
+- the presence of a card is firtsly checked on a reader,
+- then the car is selected and identified,
+- finally, a transaction is processed with the card application.
 
 {{< figure library="true" src="architecture/Keyple_CardTransaction_ActivityDiag_ExplicitSelection.svg" title="[Keyple Transaction Explicit Selection" >}}
- 
+
 ### default selection
- - For automatons (e.g. a ticketing validator), the ticketing transaction is often driven by the insertion of a card.
- - Keyple Core allows to define a default selection on Observable Reader, and in return to be notified of successful selections.
+- For automatons (e.g. a ticketing validator), the ticketing transaction is often driven by the insertion of a card.
+- Keyple Core allows to define a default selection on Observable Reader, and in return to be notified of successful selections.
 
 {{< figure library="true" src="architecture/Keyple_CardTransaction_ActivityDiag_DefaultSelection.svg" title="[Keyple Transaction Default Selection" >}}
+

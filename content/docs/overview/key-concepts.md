@@ -1,14 +1,15 @@
 ---
-title: Common concepts
-summary: Glossary of the key terms of the Keyple solution.
+title: The Keyple key concepts
+linkTitle: Key concepts
+summary: A glossary of key terms encountered in the context of the Keyple solution.
 type: book
 toc: true
 draft: false
-weight: 300
+weight: 200
 ---
 
 ---
-
+## Overview
 This page describes the core elements of **Keyple**, i.e. the concepts and APIs of **Keyple Core** that are used to build any application implementing **Keyple**.
  
 It is essential for the future user of **Keyple** to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on **Keyple Core**.
@@ -27,7 +28,7 @@ These interfaces provide the means to
 
 The reader concept also applies to the hardware interfaces used to communicate with security elements such as SAMs (Secure Access Modules), which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.
 
-[More information]({{< relref "../architecture/keyple-core.md#reader-access" >}})
+[More information](keyple-core.md#reader-access)
 
 ---
 ## Plugin
@@ -40,7 +41,7 @@ Depending on its profile, an application may use different types of plugins to c
 
 The Plugin interface essentially allows to list and retrieve the available readers.
 
-[More information]({{< relref "../architecture/keyple-core.md#reader-access" >}})
+[More information](keyple-core.md#reader-access)
 
 ---
 ## Smart card service
@@ -51,7 +52,7 @@ At startup, a Keyple application must register the plugins it uses. Conversely, 
 
 The **SmartCardService** will then make sure that the resources used are properly released.
 
-[More information]({{< relref "../architecture/keyple-core.md#reader-access" >}})
+[More information](keyple-core.md#reader-access)
 
 ---
 ## Observation
@@ -62,7 +63,7 @@ It consists in monitoring changes such as reader connection/disconnection or car
 
 Not all plugins and readers are observable.
 
-[More information]({{< relref "../architecture/keyple-core.md#reader-notifications" >}})
+[More information](keyple-core.md#reader-notifications)
 
 ---
 ## Selection
@@ -77,7 +78,7 @@ Several targets can be defined by the application according to the different cus
 
 The **default selection** principle consists in providing an observable reader with a set of selection cases corresponding to the expected cards and receiving notifications containing not only the card identification but also the result of all additional commands that the application will have attached.
 
-[More information]({{< relref "../architecture/keyple-core.md#card-selection" >}})
+[More information](architecture/keyple-core.md#card-selection)
 
 ---
 ## Abstract smart card
@@ -89,4 +90,4 @@ This container will be able to carry all the useful information known about the 
 
 Note: this concept, mentioned here for understanding, should not appear to the application developer if he uses a card extension.
 
-[More information]({{< relref "../architecture/keyple-core.md#card-selection" >}})
+[More information](keyple-core.md#card-selection)

@@ -11,9 +11,6 @@ icon_pack = "fas"
 icon = "globe"
 name = "Discover more about Calypso® here"
 url = "https://calypsonet.org/solutions-overview/"
-
-[menu.main]
-    parent = "What is Eclipse Keyple™"
 +++
 
 Calypso® is a set of specifications describing a fast and secure off-line contactless transaction, between a portable object and a terminal. 

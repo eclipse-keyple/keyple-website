@@ -1,7 +1,7 @@
 ---
 title: Keyple Plugin PC/SC Java Library
 linktitle: PC/SC
-summary: Addon to manage PC/SC readers.
+summary: Add-on to manage PC/SC readers.
 type: book
 toc: true
 ---
@@ -15,7 +15,7 @@ toc: true
 
 ## Overview
 
-The **Keyple Plugin PC/SC Java Library** is an addon to manage **PC/SC** readers.
+The **Keyple Plugin PC/SC Java Library** is an add-on to manage **PC/SC** readers.
 
 Therefore, it should be used only by application developers.
 

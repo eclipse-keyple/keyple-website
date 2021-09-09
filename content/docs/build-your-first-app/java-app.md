@@ -12,21 +12,20 @@ weight: 210
 
 This quick start describes how to create a ready-to-execute Java
 command-line application that runs a simple transaction based on
-a Calypso portable object (PO) involving two smart card readers.
+a Calypso Card involving two smart card readers.
 
 {{% alert note %}}  
 The demonstration application created for this quick start requires a
-Calypo PO (contactless smart card, mobile phone with contactless 
-communication) and a Calypo Secure Access Module (SAM). {{% /alert %}}
+Calypo Card (contactless smart card, NFC mobile phone with a Calypso applet or application) and a Calypo Secure Access Module (SAM). {{% /alert %}}
 
 
 We will use three main components of Keyple:
-* [Keyple Core]({{< ref "/components-java/core/" >}})
+* [Keyple Service Java Library]({{< ref "/components-java/core/" >}})
   which is the base component to which all the others refer,
-* [Keyple PC/SC plugin]({{< ref "/components-java/plugins/keyple-plugin-pcsc-java-lib" >}}) 
-  to provide the ability to manage PC/SC readers,
-* [Keyple Calypso extension]({{< ref "/components-java/card-extensions/keyple-card-calypso-java-lib" >}}) 
-  to handle the commands sent to the Calypso PO and the Calypso SAM.
+* [Keyple Plugin PC/SC]({{< ref "/components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib" >}}) 
+  add-on to provide the ability to manage PC/SC readers,
+* [Keyple Card Calypso]({{< ref "/components-java/card-extensions/keyple-card-calypso-java-lib" >}}) 
+  add-on to handle the commands sent to the Calypso PO and the Calypso SAM.
 
 In this guide [Gradle](https://gradle.org/) is used as build automation
 tool, but it is easy to transpose these explanations to another tool
@@ -36,7 +35,7 @@ The example can run on any machine: Linux, Windows and macOS. If not
 installed in your machine, you will need to download :
 
 - Java 1.6 or newer
-- [Gradle (any version)](https://gradle.org/install/)
+- [Gradle (6.8.+)](https://gradle.org/install/)
 
 We recommend that you use a Java IDE like
 [Eclipse](https://www.eclipse.org/ide/) or
@@ -50,7 +49,9 @@ Create a new Java project and add the following statements to your
 ```build.gradle``` file to import the Keyple components into your
 project:
 
-```gradle
+{{< tabpane >}}
+{{< tab header="Gradle Groovy" lang="gradle" >}}
+gradle
 apply plugin: 'java'
 
 repositories {
@@ -71,7 +72,64 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:1.7.25'
     implementation "org.slf4j:slf4j-simple:1.7.25"
 }
-```
+{{< /tab >}}
+{{< tab header="Gradle Kotlin" lang="gradle">}}
+gradle
+apply plugin: 'java'
+
+repositories {
+mavenCentral()
+}
+
+dependencies {
+//Keyple core is a mandatory library for using Keyple, in this case import the last version of keyple-java-core
+implementation 'org.eclipse.keyple:keyple-java-core:1.0.0'
+
+    //Import Calypso library to support Calypso Portable Object, in this case import the last version of keyple-java-calypso
+    implementation 'org.eclipse.keyple:keyple-java-calypso:1.0.0'
+
+    //Import PC/SC library to use a Pcsc reader, in this case import the last version of keyple-java-plugin-pcsc
+    implementation 'org.eclipse.keyple:keyple-java-plugin-pcsc:1.0.0'
+
+    //Import logger lib
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    implementation "org.slf4j:slf4j-simple:1.7.25"
+}
+{{< /tab >}}
+{{< tab header="Maven" lang="xml" >}}
+ADD
+CCCC
+BGB
+
+{{< /tab >}}
+{{< tab header="Java" lang="java" >}}
+//...
+
+// Prepare a SamSelector that identifies the Calypso SAM
+SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.AUTO).build();
+
+// Perform the SAM selection
+CardSelectionService samSelection = new CardSelectionService();
+samSelection.prepareSelection(new SamSelection(samSelector));
+
+if (!samReader.isCardPresent()) {
+throw new IllegalStateException("No SAM is present in the reader " + samReader.getName());
+}
+
+CardSelectionsResult cardSelectionsResult = samSelection.processExplicitSelections(samReader);
+
+if (!cardSelectionsResult.hasActiveSelection()) {
+throw new IllegalStateException("SAM matching failed!");
+}
+
+CalypsoSam calypsoSam = (CalypsoSam) cardSelectionsResult.getActiveSmartCard();
+
+// Associate the calypsoSam and the samReader to create a samResource
+CardResource<CalypsoSam> samResource = new CardResource<CalypsoSam>(samReader, calypsoSam);
+
+//...
+{{< /tab >}}
+{{< /tabpane >}}
 
 If necessary, also create the usual tree in which the Java code of this
 guide will be placed, namely the folders: ```\src\main\java```

@@ -1,7 +1,7 @@
 ---
 title: Keyple Plugin Android OMAPI Java Library
 linktitle: Android OMAPI
-summary: Addon to manage Android OMAPI readers.
+summary: Add-on to manage Android OMAPI readers.
 type: book
 toc: true
 ---
@@ -15,7 +15,7 @@ toc: true
 
 ## Overview
 
-The **Keyple Plugin Android OMAPI Java Library** is an addon to manage **Android OMAPI** readers.
+The **Keyple Plugin Android OMAPI Java Library** is an add-on to manage **Android OMAPI** readers.
 
 Therefore, it should be used only by application developers.
 

@@ -1,7 +1,7 @@
 ---
 title: Keyple Card Calypso Java Library
 linktitle: Calypso
-summary: Addon to manage Calypso® cards.
+summary: Add-on to manage Calypso® cards.
 type: book
 toc: true
 ---
@@ -15,7 +15,7 @@ toc: true
 
 ## Overview
 
-The **Keyple Card Calypso Java Library** is an addon to manage **Calypso®** cards.
+The **Keyple Card Calypso Java Library** is an add-on to manage **Calypso®** cards.
 
 Therefore, it should be used only by application developers.
 

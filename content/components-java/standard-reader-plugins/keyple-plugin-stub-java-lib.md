@@ -1,7 +1,7 @@
 ---
 title: Keyple Plugin Stub Java Library
 linktitle: Stub
-summary: Addon to manage virtual readers and cards.
+summary: Add-on to manage virtual readers and cards.
 type: book
 toc: true
 ---
@@ -15,7 +15,7 @@ toc: true
 
 ## Overview
 
-The **Keyple Plugin Stub Java Library** is an addon to manage **virtual** readers and cards.
+The **Keyple Plugin Stub Java Library** is an add-on to manage **virtual** readers and cards.
 
 Therefore, it should be used only by application developers.
 

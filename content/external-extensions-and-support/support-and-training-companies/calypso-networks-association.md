@@ -1,26 +1,14 @@
-+++
-title = "Calypso Networks Association"
-subtitle = ""
-summary = "Calypso Networks Association offers comprehensive technical support and documentation to ensure all users can get the most out of Calypso® technology and Eclipse Keyple™. "
-date = ""
+---
+title: Calypso Networks Association
+summary: Find out what support offers the Calypso Networks Association team.
+type: book
+toc: false
+weight: 10
+---
 
-weight = 20
-
-[[links]]
-icon_pack = "fas"
-icon = "globe"
-name = "Discover more about CNA here"
-url = "https://calypsonet.org"
-
-[[links]]
-icon_pack = "fas"
-icon = "envelope"
-name = "Get in touch with the CNA team for more information"
-url = "https://calypsonet.org/contact-us/"
-
-[menu.main]
-    parent = "Support & Trainings"
-+++
+> {{< icon name="globe" pack="fas" >}} [Discover more about CNA here](https://calypsonet.org)
+>
+> {{< icon name="envelope" pack="fas" >}} [Get in touch with the CNA team for more information](https://calypsonet.org/contact-us/)
 
 Calypso Networks Association (CNA) is a non-profit organization dedicated to improve contactless 
 electronic ticketing for transportation and access control standards since 2003. 
