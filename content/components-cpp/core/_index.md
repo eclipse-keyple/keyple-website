@@ -23,7 +23,7 @@ It is compatible with **PC** and **MAC** platforms.
 ## Documentation
 
 <ul>
-    <li><a href="../../../docs/developer-guide/standalone-application">Developer guide</a></li>
+    <li><a href="../../../learn/developer-guide/standalone-application">Developer guide</a></li>
 </ul>
 
 ## Download

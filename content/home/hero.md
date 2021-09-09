@@ -16,7 +16,7 @@ hero_media = "hero-image.jpg"
   #text_color_light = true
 
 [cta]
-  url = "docs/build-your-first-app/"
+  url = "learn/build-your-first-app/"
   label = "Get Started"
   icon_pack = "fas"
   icon = "rocket"

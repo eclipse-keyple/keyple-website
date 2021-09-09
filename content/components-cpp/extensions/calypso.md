@@ -23,7 +23,7 @@ It can be used on **PC** and **MAC** platforms.
 
 ## Documentation
 
-* [Developer guide]({{< relref "../../../docs/developer-guide/calypso-application.md" >}})
+* [Developer guide]({{< relref "../../../learn/developer-guide/calypso-application.md" >}})
 
 ## Download
 

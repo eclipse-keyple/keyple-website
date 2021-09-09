@@ -38,7 +38,7 @@ title="" >}}
    possibilities offered by **Keyple Core**.
 4. Take inspiration from the [examples](#examples).
 5. Follow the explanations given in the [Build your first app]({{<
-   ref "docs/build-your-first-app" >}}) section to configure your
+   ref "learn/build-your-first-app" >}}) section to configure your
    environment.
 6. Using the [Java components]({{< ref "components-java/_index.md" >}}) or [C++ components]({{< ref "components-cpp/_index.md" >}}) pages, import
    **Keyple Core** into your project and start playing with **Keyple**.

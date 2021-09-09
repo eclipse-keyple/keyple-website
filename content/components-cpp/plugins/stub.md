@@ -23,7 +23,7 @@ It is compatible with **PC** and **MAC** platforms.
 
 ## Documentation
 
-* [Developer guide]({{< relref "../../../docs/developer-guide/standalone-application.md" >}})
+* [Developer guide]({{< relref "../../../learn/developer-guide/standalone-application.md" >}})
 
 ## Download
 
