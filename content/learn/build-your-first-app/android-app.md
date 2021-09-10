@@ -17,7 +17,7 @@ weight: 220
 For example, Keyple could be used to facilitate the development of a ticketing application based on the use of conteners on a SIM card and relying on [Android SE OMAPI](https://developer.android.com/reference/android/se/omapi/package-summary). 
 Keyple could also be used to develop an application reading SmartCard content through NFC using [Android NFC](https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc).
 
-{{< figure library="true" src="android-app/component/Android_App_Overview.png" title="" >}} 
+{{< figure library="true" src="archive-1.0/android-app/component/Android_App_Overview.png" title="" >}} 
  
 As Keyple request low level reader access, the key features of Keyple SDK relies on components called **Plugins**. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer's own custom SDKs. 
 

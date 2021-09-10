@@ -74,7 +74,7 @@ According to the developer’s objective different packages must be imported:
 - to develop a dedicated library supporting the command sets and transaction features of a specific smart card solution: the packages  **message**, **command**, and **selection**.
 - to implement a plugin: the packages **plugin**, **service**, **event**, and **message**.
 
-{{< figure library="true" src="architecture/KeypleCore_Packages.svg" title="Core packages" >}}
+{{< figure library="true" src="archive-1.0/architecture/KeypleCore_Packages.svg" title="Core packages" >}}
 
 ---
 ## Service Interface - Reader Access
@@ -90,18 +90,18 @@ The **SmartCard Service** singleton provides the unique name list of registered 
 A smartcard Reader is identified through its unique name in a Plugin. There are two kinds of Reader:
  - The **Reader** is the generic interface to handle a smartcard reader. The presence of card in a Reader could be checked.
  - The **Observable Reader** interface extends Readers which have the capability to notify registered Reader Observers about the insertion or remove of a Card in the Reader. Reader Observers could be added or removed to the Observable Reader. Useful for systems automatically starting the processing of a Card at its insertion: like a ticketing validator.
-{{< figure library="true" src="architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" title="[Reader Access v1.0.0" >}}
+{{< figure library="true" src="archive-1.0/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" title="[Reader Access v1.0.0" >}}
 
 (The APDU transmission with a Card is managed at a lower layer, through a Card Solution API.)
 
 ### Specific Plugin integration
 The Plugins are registered to the SmartCard Service through related specific Plugin Factory.
-{{< figure library="true" src="architecture/KeypleCore_Reader_ClassDiag_SpecificPluginFactoryAndProtocol_1_0_0.svg" title="Specific Plugin v1.0.0" >}}
+{{< figure library="true" src="archive-1.0/architecture/KeypleCore_Reader_ClassDiag_SpecificPluginFactoryAndProtocol_1_0_0.svg" title="Specific Plugin v1.0.0" >}}
 
 ### Reader Notifications
 To be notified about **Plugin Event** or **Reader Event**, a terminal application must implement the dedicated **Plugin Observer** or **Reader Observer** interfaces.
 
-{{< figure library="true" src="architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" title="Reader Notifications v1.0.0" >}}
+{{< figure library="true" src="archive-1.0/architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" title="Reader Notifications v1.0.0" >}}
 
 ### Plugin Event
 Several **Plugin Observers** could be registered to an Observable Plugin.
@@ -125,7 +125,7 @@ When active, an Observable Reader could switch between three internal states: **
 In the nominal case, a Reader Observer indicates to the Observable Reader that the processing of the SE is finished by releasing the Card Channel.
 To manage a failure of the Reader Observer process, the Observable Reader interface provides also a method to finalize the Card processing.
 
-{{< figure library="true" src="architecture/KeypleCore_Reader_StateDiag_ObservableReaderStates_1_0_0.svg" title="Observable Reader States" >}}
+{{< figure library="true" src="archive-1.0/architecture/KeypleCore_Reader_StateDiag_ObservableReaderStates_1_0_0.svg" title="Observable Reader States" >}}
 
 The states could be switched:
  - due to an explicit API request (blue arrows):
@@ -151,7 +151,7 @@ Depending on the Card transaction use case, or on the Reader capability, there a
  - Either on a simple Reader, a Selection could be operated directly by transmitting the Selection Request. In this case the same entity manages both the Card Selection and the Card processing.
  - Otherwise, on an Observable Reader, a Default Selection could be defined. In this case the Selection is operated automatically at the insertion of the Card. In this case, the Card Selection is next managed by the Observable Reader, but the Card processing is managed by a Reader Observer.
 
-{{< figure library="true" src="architecture/KeypleCore_CardSelection_ActivityDiag_Scenarii.svg" title="Selection v1.0.0" >}}
+{{< figure library="true" src="archive-1.0/architecture/KeypleCore_CardSelection_ActivityDiag_Scenarii.svg" title="Selection v1.0.0" >}}
 
 ### Selection setting and processing
 A Card Selection request is defined with a Card Selector. A Card Selector could be defined with tree optional levels of selection filter.
@@ -168,7 +168,7 @@ According to the defined **multi selection processing** mode, the card selection
  - Before the new processing of card selection request, the logical channel previously opened is closed.
  - The **channel control** defines if the logical channel should be kept open or close after the last processed card selection request.
 
-{{< figure library="true" src="architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" title="Card Selection v1.0.0" >}}
+{{< figure library="true" src="archive-1.0/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" title="Card Selection v1.0.0" >}}
 
 The result of a card request selection is a card image of a matching card. For a card selection with multiple requests, several matching card could be provided.
 
@@ -179,7 +179,7 @@ for the development of smartcard solution library
 The Keyple Calypso extension uses the card interface to exchange APDU commands with Calypso cards and SAM.
 
 ### APDU Transmission
-{{< figure library="true" src="architecture/KeypleCore_Card_ClassDiag_CardMessage_1_0_0.svg" title="APDU Transmission v1.0.0" >}}
+{{< figure library="true" src="archive-1.0/architecture/KeypleCore_Card_ClassDiag_CardMessage_1_0_0.svg" title="APDU Transmission v1.0.0" >}}
 
 ---
 ## Plugin API
@@ -204,4 +204,4 @@ For plugins with ObservableReader: depending on the capability of the reader sol
  - WaitForCardRemovalBlocking or WaitForCardRemovalNonBlocking
  - AbstractObservableLocalAutonomousReader
 
-{{< figure library="true" src="architecture/KeypleCore_Plugin_ClassDiag_PluginImplementaion_1_0_0.svg" title="Plugin Factorized Processing v1.0.0" >}}
+{{< figure library="true" src="archive-1.0/architecture/KeypleCore_Plugin_ClassDiag_PluginImplementaion_1_0_0.svg" title="Plugin Factorized Processing v1.0.0" >}}

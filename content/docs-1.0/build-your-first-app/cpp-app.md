@@ -21,11 +21,11 @@ Calypo PO (contactless smart card, mobile phone with contactless
 communication) and a Calypo Secure Access Module (SAM). {{% /alert %}}
 
 We will use three main components of Keyple:
-* [Keyple Core]({{< ref "/components-cpp/core/" >}})
+* [Keyple Core]({{< ref "/components-cpp-0.9/core/" >}})
   which is the base component to which all the others refer,
-* [Keyple PC/SC plugin]({{< ref "/components-cpp/plugins/pcsc" >}})
+* [Keyple PC/SC plugin]({{< ref "/components-cpp-0.9/plugins/pcsc" >}})
   to provide the ability to manage PC/SC readers,
-* [Keyple Calypso extension]({{< ref "/components-cpp/extensions/calypso" >}})
+* [Keyple Calypso extension]({{< ref "/components-cpp-0.9/extensions/calypso" >}})
   to handle the commands sent to the Calypso PO and the Calypso SAM.
 
 In this guide CMake is used as build automation tool.

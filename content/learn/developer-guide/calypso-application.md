@@ -16,7 +16,7 @@ secure Calypso transaction seamlessly. It completely hides the details of the AP
 
 The diagram below shows the role of the **Keyple Calypso Extension** components in the software layers for a standalone application :
 
-{{< figure library="true" src="calypso-app-development/component/Local_Component_Overview.svg" title="" >}}
+{{< figure library="true" src="archive-1.0/calypso-app-development/component/Local_Component_Overview.svg" title="" >}}
 
 ## Before you start
 1. In pre-requisite, have knowledge of the standard Calypso.
@@ -26,8 +26,8 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 1. Explore the [Keyple Calypso API](#keyplecalypsoapi) to discover all the possibilities offered by **Keyple Calypso Extension**.
 1. Take inspiration from the [examples](#examples).
 1. Follow the explanations given in the [Build your first app]({{< ref "learn/build-your-first-app" >}}) section to configure your environment.
-1. Using the [Java components]({{< ref "components-java/core/_index.md" >}}) or [C++ components]({{< ref "components-cpp/core/_index.md" >}}) pages, import **Keyple Core** into your project.
-1. Using the [Java components]({{< ref "components-java/card-extensions/keyple-card-calypso-java-lib.md" >}}) or [C++ components]({{< ref "components-cpp/extensions/calypso.md" >}}) pages, import **Keyple Calypso Extension** into your project.
+1. Using the [Java components]({{< ref "components-java/core/_index.md" >}}) or C++ components (TOTO link) pages, import **Keyple Core** into your project.
+1. Using the [Java components]({{< ref "components-java/card-extensions/keyple-card-calypso-java-lib.md" >}}) or C++ components(TODO link) pages, import **Keyple Calypso Extension** into your project.
 1. Start playing with **Keyple**.
 
 ## Concepts

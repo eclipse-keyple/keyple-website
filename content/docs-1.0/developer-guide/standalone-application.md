@@ -23,7 +23,7 @@ validator, a vending machine or a control terminal.
 
 The diagram below illustrates the organization of the local standalone
 components: {{< figure library="true"
-src="standalone-application/component/Local_Application_Components_Overview.svg"
+src="archive-1.0/standalone-application/component/Local_Application_Components_Overview.svg"
 title="" >}}
 
 ---
@@ -41,7 +41,7 @@ title="" >}}
 5. Follow the explanations given in the [Build your first app]({{<
    ref "docs-1.0/build-your-first-app" >}}) section to configure your
    environment.
-6. Using the [Java components]({{< ref "components-java/_index.md" >}}) or [C++ components]({{< ref "components-cpp/_index.md" >}}) pages, import
+6. Using the [Java components]({{< ref "components-java-1.0/_index.md" >}}) or [C++ components]({{< ref "components-cpp-0.9/_index.md" >}}) pages, import
    **Keyple Core** into your project and start playing with **Keyple**.
 7. Don't forget to explore the potential of Keyple card-specific
    extensions such as **Keyple Calypso**.
@@ -84,7 +84,7 @@ without obligation, go for the PC/SC plugin.
 For an Andoid terminal environment, the plugin could be the standard
 Android NFC plugin or one of the plugins available from the industrial
 partners of the project. For a complete list of available plugins,
-please see the [Java]({{< ref "components-java/_index.md" >}}) or [C++]({{< ref "components-cpp/_index.md" >}}) pages.
+please see the [Java]({{< ref "components-java-1.0/_index.md" >}}) or [C++]({{< ref "components-cpp-0.9/_index.md" >}}) pages.
 
 {{% alert note %}} A new plugin can also be [created]({{< relref
 "create-plugin" >}}) if the envisaged hardware does not yet have its
@@ -566,14 +566,14 @@ However, here are two diagrams showing the main features of Keyple Core:
 * The diagram below represents the main classes implemented around the
   **Smart Card Service** with in particular the observation mechanisms.
   {{< figure library="true"
-  src="architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg"
+  src="archive-1.0/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg"
   title=""
 
 >}}
 
 * The diagram below represents the main classes used for selection
   operations. {{< figure library="true"
-  src="architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg"
+  src="archive-1.0/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg"
   title=""
 
 >}}
@@ -643,5 +643,5 @@ assigned to them.
 The artifact **Keyple Core** and how to integrate it into your
 application is available here:
 
-* [Keyple Core Java component]({{< ref "/components-java/core" >}})
-* [Keyple Core C++ component]({{< ref "/components-cpp/core" >}})
+* [Keyple Core Java component]({{< ref "/components-java-1.0/core" >}})
+* [Keyple Core C++ component]({{< ref "/components-cpp-0.9/core" >}})

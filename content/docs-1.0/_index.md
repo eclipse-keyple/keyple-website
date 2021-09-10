@@ -15,7 +15,7 @@ This documentation is constantly evolving according to the feedback from its rea
 
 ## Global Architecture
 
-{{< figure library="true" src="docs-overview//Keyple-components.svg" title="Global Architecture of Eclipse Keyple™" >}}
+{{< figure library="true" src="archive-1.0/docs-overview/Keyple-components.svg" title="Global Architecture of Eclipse Keyple™" >}}
 
 Eclipse Keyple™ is currently divided in two major layers:
 - The ‘Keyple Core' : a smart card API which allows managing smart card readers in a generic way, whaterver the reader driver or environment, and for standalone or distributed solution.

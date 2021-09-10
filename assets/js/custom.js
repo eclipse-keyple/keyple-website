@@ -1,3 +1,4 @@
+// Copy to clipboard
 function updateClipboard(newClip, button) {
     navigator.permissions.query({name: "clipboard-write"}).then(result => {
         if (result.state == "granted" || result.state == "prompt") {
@@ -10,7 +11,7 @@ function updateClipboard(newClip, button) {
                 }, 2000);
             }, function() {
                 /* clipboard write failed */
-                alert("Error during the copy to clipboard!");
+                alert("Error during the copy to clipboard process!");
             });
         } else {
             alert("Unable to copy to clipboard because your browser does not have the permissions to use the \"clipboard-write\" API!");
