@@ -7,7 +7,7 @@ weight: 100
 ---
 
 {{% alert note %}}
-The documentation of the version **1.0** of Keyple (deprecated) is accessible [here]({{< ref "docs-1.0" >}}).
+The documentation of the version **1.0** of Keyple (deprecated) is accessible [here]({{< relref "docs-1.0" >}}).
 {{% /alert %}}
 
 ## About this documentation
