@@ -17,8 +17,8 @@ a Calypso portable object (PO) involving two smart card readers.
 
 {{% alert note %}}  
 The demonstration application created for this quick start requires a
-Calypo PO (contactless smart card, mobile phone with contactless 
-communication) and a Calypo Secure Access Module (SAM). {{% /alert %}}
+Calypso PO (contactless smart card, mobile phone with contactless 
+communication) and a Calypso Secure Access Module (SAM). {{% /alert %}}
 
 
 We will use three main components of Keyple:
@@ -211,7 +211,7 @@ if (!poReader.isCardPresent()) {
     throw new IllegalStateException("The selection of the PO has failed.");
 }
 
-// Perform the PO selection and get a CalypoPo container in return
+// Perform the PO selection and get a CalypsoPo container in return
 CalypsoPo calypsoPo = (CalypsoPo) cardSelectionService.processExplicitSelections(poReader).getActiveSmartCard();
 //...
 ```
@@ -488,7 +488,7 @@ public class DemoPoAuthentication  {
             throw new IllegalStateException("The selection of the PO has failed.");
         }
 
-        // Perform the PO selection and get a CalypoPo container in return
+        // Perform the PO selection and get a CalypsoPo container in return
         CalypsoPo calypsoPo = (CalypsoPo) cardSelectionService.processExplicitSelections(poReader).getActiveSmartCard();
 
         // Prepare the security settings used during the Calypso transaction
