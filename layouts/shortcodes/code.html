@@ -1,0 +1,11 @@
+{{ $ref := $.Ordinal }}
+{{ with $.Get "ref" }}
+    {{ $ref = $.Get "ref" }}
+{{ end }}
+{{ $lang := "ini" }}
+{{ with $.Get "lang" }}
+    {{ $lang = $.Get "lang" }}
+{{ end }}
+<!-- Inner content -->
+<div class="bd-clipboard"><button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('{{- $ref -}}', this);">Copy</button></div>
+<pre><code class="language-{{- $lang -}}" id="code-{{- $ref -}}">{{ replaceRE "&#43;" "+" (trim $.Inner "\n\r") }}</code></pre>

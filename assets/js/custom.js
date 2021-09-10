@@ -22,6 +22,10 @@ function copyTabContentToClipboard(tabpaneId, button) {
     let content = $("#"+tabId+" code")[0].innerText;
     updateClipboard(content, button);
 }
+function copyCodeContentToClipboard(codeId, button) {
+    let content = $("#code-"+codeId)[0].innerText;
+    updateClipboard(content, button);
+}
 
 // Dynamic dependencies for "client application" profile of "configuration wizard" java page
 const appDependencies = new Set();
