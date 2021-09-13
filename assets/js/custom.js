@@ -111,3 +111,33 @@ function updateCardDependencies(tabRef, checkbox) {
     $(tabContentId+" .language-kotlin")[0].innerHTML = computeCardContent("kotlin");
     $(tabContentId+" .language-xml")[0].innerHTML = computeCardContent("maven");
 }
+
+// Data table of dependency check tool
+function initDatatableDependencyCheck() {
+    $('#datatable-dependency-check').DataTable( {
+        ordering: false,
+        paging: false,
+        initComplete: function () {
+            // Remove the search input text & the footer information showing the number of results
+            $("#datatable-dependency-check_wrapper div.row:nth-child(3)").remove();
+            $("#datatable-dependency-check_wrapper div.row:nth-child(1)").remove();
+            // Add the select button to the header of each column
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+                column.data().unique().sort().reverse().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
+    } );
+}

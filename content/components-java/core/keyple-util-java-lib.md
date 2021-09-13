@@ -42,7 +42,7 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 {{< /tab >}}
 {{< /tabpane >}}
 
-{{% alert note %}}
+{{% alert warning %}}
 Since this library is used by all Keyple libraries, it is recommended to explicitly perform a **dynamic import** of the library for a given major version.
 This ensures compatibility with all the used libraries.
 {{% /alert %}}

@@ -185,3 +185,50 @@ pre, code {
   right: .25rem;
   width: 4rem;
 }
+
+// Text rotation for dependency check tool
+.rotate {
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: vertical-rl;
+  text-align: right;
+}
+.rotate-180 {
+  display: inline-block;
+  transform: rotate(190deg);
+  /* Legacy vendor prefixes that you probably don't need... */
+  /* Safari */
+  -webkit-transform: rotate(190deg);
+  /* Firefox */
+  -moz-transform: rotate(190deg);
+  /* IE */
+  -ms-transform: rotate(190deg);
+  /* Opera */
+  -o-transform: rotate(190deg);
+  /* Internet Explorer */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+.rotate select {
+  margin-top: .5rem;
+}
+.c-yellow {
+  background: #FEFECE;
+}
+.c-red {
+  background: #FDEDEC;
+}
+.c-purple {
+  background: #F4ECF7;
+}
+.c-blue {
+  background: #EBF5FB;
+}
+.c-green {
+  background: #E9F7EF;
+}
+.c-orange {
+  background: #FDF2E9;
+}
+.c-grey {
+  background: #EAECEE;
+}

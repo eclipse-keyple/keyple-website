@@ -1,0 +1,163 @@
+@startuml
+title
+    Keyple 2.0 - Specific Card Extension - 2.0.0 (04/06/2021)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+legend top
+    __Colors legend__ :
+    * <back:yellow>Public API for end users</back>
+    * <back:lightBlue>Private API for internal use only</back>
+end legend
+
+package "org.eclipse.keyple.core.common" as commonApi {
+    +interface KeypleCardExtension {
+        ...
+    }
+}
+package "org.calypsonet.terminal.reader.selection.spi" as readerSelectionSpi {
+    +interface CardSelection {
+    }
+    +interface SmartCard {
+        ...
+    }
+}
+package "org.calypsonet.terminal.card.spi" as cardSpi {
+    +interface CardSelectionSpi {
+        ...
+    }
+    +interface SmartCardSpi {
+    }
+    +interface CardSelectorSpi {
+        ...
+    }
+    +interface CardSelectionRequestSpi {
+        ...
+    }
+    +interface CardRequestSpi {
+        ...
+    }
+    +interface ApduRequestSpi {
+        ...
+    }
+}
+
+package "org.eclipse.keyple.card.xxx (specific extension)" as specificExtension {
+    +class "**final** xxxCardExtension" as xxxCardExtension implements KeypleCardExtension {
+        --
+        +{static} xxxCardExtension getInstance ()
+        ..
+        +xxxCardSelection createXxxCardSelection ()
+        ...
+    }
+    +interface xxxCardSelection extends CardSelection {
+        ...
+    }
+    +interface xxxSmartCard extends SmartCard {
+        ...
+    }
+    ' Adapters
+    together {
+        ~class "**final** CardSelectionAdapter" as CardSelectionAdapter implements xxxCardSelection, CardSelectionSpi {
+            ...
+        }
+        ~class "**final** SmartCardAdapter" as SmartCardAdapter implements xxxSmartCard, SmartCardSpi {
+            ...
+        }
+    }
+    together {
+        ~class "**final** CardSelectorAdapter" as CardSelectorAdapter implements CardSelectorSpi {
+            ...
+        }
+        ~class "**final** CardSelectionRequestAdapter" as CardSelectionRequestAdapter implements CardSelectionRequestSpi {
+            ...
+        }
+        ~class "**final** CardRequestAdapter" as CardRequestAdapter implements CardRequestSpi {
+            ...
+        }
+        ~class "**final** ApduRequestAdapter" as ApduRequestAdapter implements ApduRequestSpi {
+            ...
+        }
+    }
+}
+
+' Associations
+
+xxxCardExtension .right.> xxxCardSelection #C_LINK : provide >
+
+' == LAYOUT ==
+
+CardSelectionAdapter -[hidden]- CardSelectionSpi
+SmartCardAdapter -[hidden]- SmartCardSpi
+CardSelectorAdapter -[hidden]- CardSelectorSpi
+CardSelectionRequestAdapter -[hidden]- CardSelectionRequestSpi
+CardRequestAdapter -[hidden]- CardRequestSpi
+ApduRequestAdapter -[hidden]- ApduRequestSpi
+
+xxxCardSelection -[hidden]- CardSelectionAdapter
+
+SmartCardAdapter -[hidden]right- CardSelectorAdapter
+
+
+' == STYLE ==
+
+package commonApi #C_GREY1 {}
+package specificExtension #C_GREY1 {}
+package cardSpi #C_GREY1 {}
+package readerSelectionSpi #C_GREY1 {}
+
+class CardSelectionAdapter <<blue>>
+class CardSelectorAdapter <<blue>>
+class SmartCardAdapter <<blue>>
+class CardSelectionRequestAdapter <<blue>>
+class CardRequestAdapter <<blue>>
+class ApduRequestAdapter <<blue>>
+interface CardSelectionSpi <<blue>>
+interface CardSelectorSpi <<blue>>
+interface SmartCardSpi <<blue>>
+interface CardSelectionRequestSpi <<blue>>
+interface CardRequestSpi <<blue>>
+interface ApduRequestSpi <<blue>>
+
+@enduml

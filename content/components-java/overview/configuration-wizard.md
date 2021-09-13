@@ -1,11 +1,11 @@
-+++
-title = "Java - Configuration wizard"
-linktitle = "Configuration wizard"
-summary = "Online tool to generate the dependencies section of Gradle or Maven configuration files."
-type = "book"
-weight = 20
-toc = false
-+++
+---
+title: Java - Configuration wizard
+linktitle: Configuration wizard
+summary: Online tool to generate the dependencies section of Gradle or Maven configuration files.
+type: book
+weight: 20
+toc: false
+---
 
 ---
 This online tool generates for you the `dependencies` section of Gradle or Maven configuration files.

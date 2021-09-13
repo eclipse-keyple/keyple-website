@@ -1,0 +1,111 @@
+@startuml
+title
+    Keyple 2.0 - Specific Distributed Local Service - 2.0.0 (08/03/2021)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+legend top
+    __Colors legend__ :
+    * <back:yellow>Public API for end users</back>
+    * <back:lightBlue>Private API for internal use only</back>
+end legend
+
+package "org.eclipse.keyple.core.common" as commonApi {
+    +interface KeypleDistributedLocalServiceExtensionFactory {
+    }
+    +interface KeypleDistributedLocalServiceExtension {
+    }
+}
+
+package "org.eclipse.keyple.core.distributed.local.spi" as distributedLocalSpi {
+    +interface LocalServiceFactorySpi {
+        ...
+    }
+    +interface LocalServiceSpi {
+        ...
+    }
+}
+
+package "org.eclipse.keyple.distributed.local.xxx (specific distributed local service)" as specificDistributedLocalApi {
+    +class "**final** xxxDistributedLocalServiceFactoryProvider" as xxxDistributedLocalServiceFactoryProvider {
+        +{static} xxxDistributedLocalServiceFactory getFactory ()
+    }
+    +interface xxxDistributedLocalServiceFactory extends KeypleDistributedLocalServiceExtensionFactory {
+        ...
+    }
+    +interface xxxDistributedLocalService extends KeypleDistributedLocalServiceExtension {
+        ...
+    }
+    ' Adapters
+    ~class "**final** xxxDistributedLocalServiceFactoryAdapter" as xxxDistributedLocalServiceFactoryAdapter implements xxxDistributedLocalServiceFactory, LocalServiceFactorySpi {
+        ...
+    }
+    ~class "**final** xxxDistributedLocalAdapter" as xxxDistributedLocalAdapter implements xxxDistributedLocalService, LocalServiceSpi {
+        ...
+    }
+}
+
+' Associations
+
+xxxDistributedLocalServiceFactoryProvider .right.> xxxDistributedLocalServiceFactory #C_LINK : provide >
+xxxDistributedLocalServiceFactoryAdapter *- "1" xxxDistributedLocalAdapter #C_LINK
+
+' == LAYOUT ==
+
+commonApi -[hidden]- specificDistributedLocalApi
+xxxDistributedLocalAdapter -[hidden]- LocalServiceSpi
+xxxDistributedLocalServiceFactoryAdapter -[hidden]- LocalServiceSpi
+
+' == STYLE ==
+
+package commonApi #C_GREY1 {}
+package distributedLocalSpi #C_GREY1 {}
+package specificDistributedLocalApi #C_GREY1 {}
+
+class xxxDistributedLocalAdapter <<blue>>
+class xxxDistributedLocalServiceFactoryAdapter <<blue>>
+interface LocalServiceFactorySpi <<blue>>
+interface LocalServiceSpi <<blue>>
+
+@enduml

@@ -1,0 +1,132 @@
+@startuml
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define COLOR_YELLOW D4AC0D
+!define COLOR_RED E74C3C
+!define COLOR_PURPLE 8E44AD
+!define COLOR_BLUE 3498DB
+!define COLOR_GREEN 27AE60
+!define COLOR_ORANGE E67E22
+!define COLOR_GREY 2C3E50
+skinparam Shadowing false
+skinparam component {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Orange
+    BackgroundColor<<orange>> #FDF2E9
+    BorderColor<<orange>> #E67E22
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+skinparam interface {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Orange
+    BackgroundColor<<orange>> #FDF2E9
+    BorderColor<<orange>> #E67E22
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+hide <<red>> stereotype
+hide <<purple>> stereotype
+hide <<blue>> stereotype
+hide <<green>> stereotype
+hide <<orange>> stereotype
+hide <<grey>> stereotype
+
+' == COMPONENTS ==
+
+[Client Application] as application <<blue>>
+
+package "Calypso Networks Association public APIs" as packCalypsonetPublic #C_GREY1 {
+    [**calypsonet-terminal-reader-java-api**] as readerApi <<orange>>
+    [**calypsonet-terminal-calypso-java-api**] as calypsoApi <<orange>>
+}
+package "Calypso Networks Association internal APIs  (hidden for the client application)" as packCalypsonetPrivate #C_GREY4 {
+    [**calypsonet-terminal-card-java-api**] as cardApi <<orange>>
+}
+package "Keyple public components (APIs & libraries)" as packMain #C_GREY1 {
+    together {
+        [Specific Card Extension (Calypso, etc...)\nuse <back:yellow>**keyple-util-java-lib**</back>\nuse <back:cyan>**keyple-common-java-api**</back>] as extension <<green>>
+        [**keyple-service-java-lib**\nuse <back:yellow>**keyple-util-java-lib**</back>\nuse <back:cyan>**keyple-common-java-api**</back>] as service
+        [**keyple-service-resource-java-lib**\nuse <back:yellow>**keyple-util-java-lib**</back>] as serviceResource <<grey>>
+    }
+    [Specific Plugin (PCSC, etc...)\nuse <back:yellow>**keyple-util-java-lib**</back>\nuse <back:cyan>**keyple-common-java-api**</back>] as plugin <<red>>
+    together {
+        [**keyple-distributed-network-java-lib**\nuse <back:yellow>**keyple-util-java-lib**</back>] as network <<purple>>
+        [**keyple-distributed-local-java-lib**\nuse <back:yellow>**keyple-util-java-lib**</back>\nuse <back:cyan>**keyple-common-java-api**</back>] as local <<purple>>
+        [**keyple-distributed-remote-java-lib**\nuse <back:yellow>**keyple-util-java-lib**</back>\nuse <back:cyan>**keyple-common-java-api**</back>] as remote <<purple>>
+    }
+}
+package "Keyple internal APIs (hidden for the client application)" as packApi #C_GREY4 {
+    [**keyple-plugin-java-api**] as pluginApi
+    [**keyple-distributed-local-java-api**] as distributedLocalApi
+    [**keyple-distributed-remote-java-api**] as distributedRemoteApi
+}
+
+' == ASSOCIATIONS ==
+
+application -right-> packCalypsonetPublic #COLOR_BLUE
+application --> packMain #COLOR_BLUE
+
+calypsoApi -right-> readerApi #COLOR_ORANGE
+
+extension --> cardApi #COLOR_GREEN
+extension -up-> readerApi #COLOR_GREEN
+extension .up.> calypsoApi #COLOR_GREEN
+extension .up.> serviceResource #COLOR_GREEN
+
+plugin --> pluginApi #COLOR_RED
+
+service -up-> readerApi #COLOR_YELLOW
+service --> pluginApi #COLOR_YELLOW
+service --> cardApi #COLOR_YELLOW
+service --> distributedRemoteApi #COLOR_YELLOW
+service --> distributedLocalApi #COLOR_YELLOW
+
+serviceResource -up-> readerApi #COLOR_GREY
+serviceResource --> service #COLOR_GREY
+
+local -up-> network #COLOR_PURPLE
+local --> distributedLocalApi #COLOR_PURPLE
+
+remote -up-> network #COLOR_PURPLE
+remote --> distributedRemoteApi #COLOR_PURPLE
+
+' == LAYOUT ==
+
+'local -[hidden]-> cardApi
+'local -[hidden]-> pluginApi
+'packMain --> packApi
+
+@enduml
