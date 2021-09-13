@@ -34,25 +34,25 @@ Select the targeted versions of the APIs to show the associated compliant librar
             <th colspan="4" class="text-center c-red">Standard reader plugins libraries</th>
         </tr>
         <tr>
-            <th class="rotate c-orange"><div class="rotate-180">calypsonet-terminal-reader-java-api</div></th>
-            <th class="rotate c-orange"><div class="rotate-180">calypsonet-terminal-card-java-api</div></th>
-            <th class="rotate c-orange"><div class="rotate-180">calypsonet-terminal-calypso-java-api</div></th>
-            <th class="rotate c-yellow"><div class="rotate-180">keyple-common-java-api</div></th>
-            <th class="rotate c-yellow"><div class="rotate-180">keyple-distributed-local-java-api</div></th>
-            <th class="rotate c-yellow"><div class="rotate-180">keyple-distributed-remote-java-api</div></th>
-            <th class="rotate c-yellow"><div class="rotate-180">keyple-plugin-java-api</div></th>
-            <th class="rotate"><div class="rotate-180">keyple-util-java-lib</div></th>
-            <th class="rotate"><div class="rotate-180">keyple-service-java-lib</div></th>
-            <th class="rotate"><div class="rotate-180">keyple-service-resource-java-lib</div></th>
-            <th class="rotate c-purple"><div class="rotate-180">keyple-distributed-local-java-lib</div></th>
-            <th class="rotate c-purple"><div class="rotate-180">keyple-distributed-network-java-lib</div></th>
-            <th class="rotate c-purple"><div class="rotate-180">keyple-distributed-remote-java-lib</div></th>
-            <th class="rotate c-green"><div class="rotate-180">keyple-card-calypso-java-lib</div></th>
-            <th class="rotate c-green"><div class="rotate-180">keyple-card-generic-java-lib</div></th>
-            <th class="rotate c-red"><div class="rotate-180">keyple-plugin-android-nfc-java-lib</div></th>
-            <th class="rotate c-red"><div class="rotate-180">keyple-plugin-android-omapi-java-lib</div></th>
-            <th class="rotate c-red"><div class="rotate-180">keyple-plugin-pcsc-java-lib</div></th>
-            <th class="rotate c-red"><div class="rotate-180">keyple-plugin-stub-java-lib</div></th>
+            <th class="rotate c-orange"><div class="rotate-190">calypsonet-terminal-reader-java-api</div></th>
+            <th class="rotate c-orange"><div class="rotate-190">calypsonet-terminal-card-java-api</div></th>
+            <th class="rotate c-orange"><div class="rotate-190">calypsonet-terminal-calypso-java-api</div></th>
+            <th class="rotate c-yellow"><div class="rotate-190">keyple-common-java-api</div></th>
+            <th class="rotate c-yellow"><div class="rotate-190">keyple-distributed-local-java-api</div></th>
+            <th class="rotate c-yellow"><div class="rotate-190">keyple-distributed-remote-java-api</div></th>
+            <th class="rotate c-yellow"><div class="rotate-190">keyple-plugin-java-api</div></th>
+            <th class="rotate"><div class="rotate-190">keyple-util-java-lib</div></th>
+            <th class="rotate"><div class="rotate-190">keyple-service-java-lib</div></th>
+            <th class="rotate"><div class="rotate-190">keyple-service-resource-java-lib</div></th>
+            <th class="rotate c-purple"><div class="rotate-190">keyple-distributed-local-java-lib</div></th>
+            <th class="rotate c-purple"><div class="rotate-190">keyple-distributed-network-java-lib</div></th>
+            <th class="rotate c-purple"><div class="rotate-190">keyple-distributed-remote-java-lib</div></th>
+            <th class="rotate c-green"><div class="rotate-190">keyple-card-calypso-java-lib</div></th>
+            <th class="rotate c-green"><div class="rotate-190">keyple-card-generic-java-lib</div></th>
+            <th class="rotate c-red"><div class="rotate-190">keyple-plugin-android-nfc-java-lib</div></th>
+            <th class="rotate c-red"><div class="rotate-190">keyple-plugin-android-omapi-java-lib</div></th>
+            <th class="rotate c-red"><div class="rotate-190">keyple-plugin-pcsc-java-lib</div></th>
+            <th class="rotate c-red"><div class="rotate-190">keyple-plugin-stub-java-lib</div></th>
         </tr>
     </thead>
     <tbody>
