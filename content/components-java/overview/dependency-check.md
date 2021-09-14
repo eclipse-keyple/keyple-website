@@ -28,7 +28,7 @@ Select the targeted versions of the APIs to show the associated compliant librar
         <tr>
             <th colspan="3" class="text-center c-orange">Calypso Networks Association APIs</th>
             <th colspan="4" class="text-center c-yellow">Core APIs</th>
-            <th colspan="3" class="text-center">Core libraries</th>
+            <th colspan="3" class="text-center c-blue">Core libraries</th>
             <th colspan="3" class="text-center c-purple">Distributed systems libraries</th>
             <th colspan="2" class="text-center c-green">Card extensions libraries</th>
             <th colspan="4" class="text-center c-red">Standard reader plugins libraries</th>
@@ -41,9 +41,9 @@ Select the targeted versions of the APIs to show the associated compliant librar
             <th class="rotate c-yellow"><div class="rotate-190">keyple-distributed-local-java-api</div></th>
             <th class="rotate c-yellow"><div class="rotate-190">keyple-distributed-remote-java-api</div></th>
             <th class="rotate c-yellow"><div class="rotate-190">keyple-plugin-java-api</div></th>
-            <th class="rotate"><div class="rotate-190">keyple-util-java-lib</div></th>
-            <th class="rotate"><div class="rotate-190">keyple-service-java-lib</div></th>
-            <th class="rotate"><div class="rotate-190">keyple-service-resource-java-lib</div></th>
+            <th class="rotate c-blue"><div class="rotate-190">keyple-util-java-lib</div></th>
+            <th class="rotate c-blue"><div class="rotate-190">keyple-service-java-lib</div></th>
+            <th class="rotate c-blue"><div class="rotate-190">keyple-service-resource-java-lib</div></th>
             <th class="rotate c-purple"><div class="rotate-190">keyple-distributed-local-java-lib</div></th>
             <th class="rotate c-purple"><div class="rotate-190">keyple-distributed-network-java-lib</div></th>
             <th class="rotate c-purple"><div class="rotate-190">keyple-distributed-remote-java-lib</div></th>
