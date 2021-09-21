@@ -5,25 +5,97 @@
 
 [[main]]
   name = "What is Eclipse Keyple™"
-  url = "what-is-keyple/"
+  url = "/what-is-keyple/"
   weight = 10
 
 [[main]]
-  name = "Components"
-  url = "components/"
+  parent = "What is Eclipse Keyple™"
+  name = "Overview"
+  url = "/what-is-keyple/overview/"
+  weight = 10
+
+[[main]]
+  parent = "What is Eclipse Keyple™"
+  name = "Why trust Eclipse Keyple™?"
+  url = "/what-is-keyple/why-trust/"
   weight = 20
 
 [[main]]
-  name = "News"
-  url = "#news"
+  parent = "What is Eclipse Keyple™"
+  name = "Who is it for?"
+  url = "/what-is-keyple/who-is-it-for/"
   weight = 30
 
 [[main]]
-  name = "Documentation"
-  url = "docs/"
+  parent = "What is Eclipse Keyple™"
+  name = "Who is using Eclipse Keyple™?"
+  url = "#adopters"
   weight = 40
 
 [[main]]
-  name = "Support & Trainings"
-  url = "support-trainings/"
+  parent = "What is Eclipse Keyple™"
+  name = "What is Calypso®?"
+  url = "/what-is-keyple/what-is-calypso/"
+  weight = 50
+
+[[main]]
+  parent = "What is Eclipse Keyple™"
+  name = "Keyple's main features"
+  url = "/what-is-keyple/main-features/"
+  weight = 60
+
+[[main]]
+  parent = "What is Eclipse Keyple™"
+  name = "News"
+  url = "#news"
+  weight = 70
+
+[[main]]
+  name = "Roadmap"
+  url = "/roadmap/"
+  weight = 20
+
+[[main]]
+  name = "Learn"
+  url = "/learn/overview"
+  weight = 30
+
+[[main]]
+  name = "Components"
+  url = "/components/"
+  weight = 40
+
+[[main]]
+  parent = "Components"
+  name = 'Java implementation v2+'
+  url = '/components-java/overview/'
+  weight = 10
+
+[[main]]
+  parent = "Components"
+  name = 'C++ implementation v2+'
+  url = '/components-cpp/overview/'
+  weight = 20
+
+[[main]]
+  parent = "Components"
+  name = ' '
+  url = ''
+  weight = 25
+
+[[main]]
+  parent = "Components"
+  name = 'Java implementation v1.0 (deprecated)'
+  url = '/components-java-1.0/'
+  weight = 30
+
+[[main]]
+  parent = "Components"
+  name = 'C++ implementation v0.9 (deprecated)'
+  url = '/components-cpp-0.9/'
+  weight = 40
+
+[[main]]
+  name = "External extensions & support"
+  url = "/external-extensions-and-support/"
   weight = 50

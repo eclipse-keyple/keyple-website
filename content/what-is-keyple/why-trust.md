@@ -5,9 +5,6 @@ summary = ""
 date = ""
 
 weight = 20
-
-[menu.main]
-    parent = "What is Eclipse Keyple™"
 +++
 
 Eclipse Keyple™ is an Eclipse open source project currently leaded by Calypso Networks Association, which has been the leader in contactless 

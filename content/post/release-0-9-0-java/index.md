@@ -18,7 +18,7 @@ Currently all the components of Eclipse Keyple™ Java are following the same ve
 
 From the version 1.0.0 scheduled for November 2020, the components will be defined with their own versioning in order to stabilize as possible the different APIs.
 
-[Documentation]({{< ref "/docs/" >}}) currently available:
+[Documentation]({{< ref "/docs-1.0/" >}}) currently available:
 * the project plan,
 * the guides of the different public API,
 * and a guide to manage the migration between the release 0.8.1 & 0.9.0.

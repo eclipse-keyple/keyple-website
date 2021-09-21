@@ -5,9 +5,6 @@ summary = ""
 date = ""
 
 weight = 30
-
-[menu.main]
-    parent = "What is Eclipse Keyple™"
 +++
 
 Whether you are a transport authority or operator, a mobility provider, a system integrator, an event manager, a mobility aggregator 

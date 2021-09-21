@@ -1,31 +1,38 @@
 footer {
-    background-color: #1D87BB;
+  background-color: #1D87BB;
 }
+
 footer a {
-    color: #FFF;
+  color: #FFF;
 }
+
 footer a:hover {
-    color: #FFF;
+  color: #FFF;
 }
+
 footer ul {
-    padding-left: 0;
+  padding-left: 0;
 }
+
 footer li {
-    line-height: 1.42857143;
-    position: relative;
-    display: block;
-    color: #FFF;
+  line-height: 1.42857143;
+  position: relative;
+  display: block;
+  color: #FFF;
 }
 
 .project-tab {
 }
+
 .project-tab #tabs {
   background: #007b5e;
   color: #eee;
 }
+
 .project-tab #tabs h6.section-title {
   color: #eee;
 }
+
 .project-tab #tabs .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
   color: #0062cc;
@@ -35,6 +42,7 @@ footer li {
   font-size: 1em;
   font-weight: bold;
 }
+
 .project-tab .nav-link {
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
@@ -43,47 +51,20 @@ footer li {
   font-size: 1em;
   font-weight: 600;
 }
+
 .project-tab .nav-link:hover {
   border: none;
 }
+
 .project-tab thead {
   background: #f3f3f3;
   color: #333;
 }
+
 .project-tab a {
   text-decoration: none;
   color: #333;
   font-weight: 600;
-}
-.copy-code-button {
-  color: #e7edf0;
-  background-color: rgb(63, 81, 181);
-  border-color: #fff;
-  /* right-align */
-  display: block;
-  margin-left: auto;
-  margin-right: 0;
-
-  margin-bottom: -2px;
-  padding: 0px 8px;
-  font-size: 0.8em;
-}
-
-.copy-code-button:hover {
-  cursor: pointer;
-  background-color: rgb(63, 81, 181);
-}
-
-.copy-code-button:focus {
-  /* Avoid an ugly focus outline on click in Chrome,
-       but darken the button for accessibility.
-       See https://stackoverflow.com/a/25298082/1481479 */
-  background-color: #e6e6e6;
-  outline: 0;
-}
-
-.copy-code-button:active {
-  background-color: #d9d9d9;
 }
 
 .highlight pre {
@@ -94,31 +75,160 @@ footer li {
 #parser-commands {
   background-color: white;
 }
+
 .parser-po-row {
   background-color: lavender !important;
 }
 
-.keyple-adopters>li {
-    display: inline-block;
-    padding-right: 5px;
-    padding-left: 5px;
-    vertical-align: middle;
-}
-.keyple-adopters>li img {
-    max-height: 95px;
-    padding: 10px;
-    min-width: 170px;
-    max-width: 170px;
-}
-div.eclipsefdn-adopters {
-    background-color: white;
-}
-// Increase article max width
-.docs-article-container {
-  max-width: 960px;
+.keyple-adopters > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+  vertical-align: middle;
 }
 
-// Increase wrapper max width
+.keyple-adopters > li img {
+  max-height: 95px;
+  padding: 10px;
+  min-width: 170px;
+  max-width: 170px;
+}
+
+div.eclipsefdn-adopters {
+  background-color: white;
+}
+
+a, h3.article-title a:hover {
+  transition-property: none !important;
+}
+
+// Increase wrapper max width for standard pages
 .universal-wrapper {
   width: 1200px;
+}
+
+// Increase article container width (all not book pages)
+.article-container {
+  max-width: 1200px;
+}
+
+// Increase docs article max width
+.docs-article-container {
+  max-width: 100%;
+}
+
+// increase left padding for left side menu
+// decrease font size
+.docs-sidebar .nav > li > a {
+  padding: 0 1rem 0 1.8rem;
+  font-size: 0.8rem;
+}
+
+// color of left and right TOCs links
+.docs-sidebar .nav > li > a:hover, a.docs-toc-link:hover {
+  color:#1D87BB;
+}
+
+// all links
+a:hover {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+// decrease font size for left side menu titles
+.docs-toc-link {
+  font-size: 0.8rem;
+  padding: 0 1rem;
+}
+
+// color of right TOC and padding
+#TableOfContents li a, .toc-top li a {
+  color: rgba(0,0,0,.65);
+  padding: 0 1rem;
+}
+
+// increase left side menu max width
+.docs-sidebar {
+  flex: 0 1 400px;
+}
+
+// Increase code font size and style
+pre, code {
+  font-size: .9rem;
+  font-family: monospace;
+}
+
+// Color of tabpane headers
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: inherit;
+}
+
+// Component Metadata positioning
+.component-metadata {
+  padding-left: 2rem;
+}
+
+// Hide the next/previous links on articles
+.article-widget {
+  display: none;
+}
+
+// Container of button "Copy to clipboard"
+.bd-clipboard {
+  display: block;
+  position: relative;
+  float: right;
+}
+.btn-clipboard {
+  position: absolute;
+  top: .25rem;
+  right: .25rem;
+  width: 4rem;
+}
+
+// Text rotation for dependency check tool
+.rotate {
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: vertical-rl;
+  text-align: right;
+}
+.rotate-190 {
+  display: inline-block;
+  transform: rotate(190deg);
+  /* Legacy vendor prefixes that you probably don't need... */
+  /* Safari */
+  -webkit-transform: rotate(190deg);
+  /* Firefox */
+  -moz-transform: rotate(190deg);
+  /* IE */
+  -ms-transform: rotate(190deg);
+  /* Opera */
+  -o-transform: rotate(190deg);
+  /* Internet Explorer */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
+.rotate select {
+  margin-top: .5rem;
+}
+.c-yellow {
+  background: #FEFECE;
+}
+.c-red {
+  background: #FDEDEC;
+}
+.c-purple {
+  background: #F4ECF7;
+}
+.c-blue {
+  background: #EBF5FB;
+}
+.c-green {
+  background: #E9F7EF;
+}
+.c-orange {
+  background: #FDF2E9;
+}
+.c-grey {
+  background: #EAECEE;
 }

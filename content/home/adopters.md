@@ -4,8 +4,7 @@ headless = true
 active = true 
 weight = 40 
 
-title = "Who uses Eclipse Keyple™?"
-subtitle = "Add your logo as [adopter/user](https://iot.eclipse.org/adopters/) of Eclipse Keyple™ to this list."
+title = "They are using Eclipse Keyple™"
 
 [design]
   columns = "1"
@@ -35,3 +34,5 @@ subtitle = "Add your logo as [adopter/user](https://iot.eclipse.org/adopters/) o
 </script>
 
 <div class="eclipsefdn-adopters"></div>
+
+[Follow this link to discover how to be listed as an adopter of Eclipse Keyple™](https://iot.eclipse.org/adopters/)

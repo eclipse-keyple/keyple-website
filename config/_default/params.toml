@@ -57,7 +57,7 @@ description = "Keyple™ accelerates the integration and development of ticketin
 # Enable source code highlighting? true/false
 # Documentation: https://sourcethemes.com/academic/docs/writing-markdown-latex/#highlighting-options
 highlight = true
-highlight_languages = ["java", "kotlin", "cpp", "gradle"]  # Add support for highlighting additional languages
+highlight_languages = ["java", "groovy", "xml", "kotlin", "cpp", "gradle", "ini"]  # Add support for highlighting additional languages
 # highlight_style = "github"  # For supported styles, see https://cdnjs.com/libraries/highlight.js/
 highlight_style = "darcula"
 
@@ -225,5 +225,56 @@ plugins_js = ["custom"]
 ## Keyple components versions
 ############################
 [keyple_version]
+  calypsonet_terminal_reader_java_api_dynamic_gradle = "1.0.+"
+  calypsonet_terminal_reader_java_api_dynamic_maven = "[1.0.0,1.1.0)"
+
+  calypsonet_terminal_card_java_api_dynamic_gradle = "1.0.+"
+  calypsonet_terminal_card_java_api_dynamic_maven = "[1.0.0,1.1.0)"
+
+  calypsonet_terminal_calypso_java_api_dynamic_gradle = "1.0.+"
+  calypsonet_terminal_calypso_java_api_dynamic_maven = "[1.0.0,1.1.0)"
+
+  keyple_card_calypso_java_lib = "2.0.0"
+
+  keyple_card_generic_java_lib = "2.0.0"
+
+  keyple_common_java_api = "2.0.0"
+  keyple_common_java_api_dynamic_gradle = "2.0.+"
+  keyple_common_java_api_dynamic_maven = "[2.0.0,2.1.0)"
+
+  keyple_distributed_local_java_api = "2.0.0"
+  keyple_distributed_local_java_api_dynamic_gradle = "2.0.+"
+  keyple_distributed_local_java_api_dynamic_maven = "[2.0.0,2.1.0)"
+
+  keyple_distributed_local_java_lib = "2.0.0"
+
+  keyple_distributed_network_java_lib = "2.0.0"
+
+  keyple_distributed_remote_java_api = "2.0.0"
+  keyple_distributed_remote_java_api_dynamic_gradle = "2.0.+"
+  keyple_distributed_remote_java_api_dynamic_maven = "[2.0.0,2.1.0)"
+
+  keyple_distributed_remote_java_lib = "2.0.0"
+
+  keyple_plugin_android_nfc_java_lib = "2.0.0"
+
+  keyple_plugin_android_omapi_java_lib = "2.0.0"
+
+  keyple_plugin_java_api = "2.0.0"
+  keyple_plugin_java_api_dynamic_gradle = "2.0.+"
+  keyple_plugin_java_api_dynamic_maven = "[2.0.0,2.1.0)"
+
+  keyple_plugin_pcsc_java_lib = "2.0.0"
+
+  keyple_plugin_stub_java_lib = "2.0.0"
+
+  keyple_service_java_lib = "2.0.0"
+
+  keyple_service_resource_java_lib = "2.0.0"
+
+  keyple_util_java_lib = "2.0.0"
+  keyple_util_java_lib_dynamic_gradle = "2.+"
+  keyple_util_java_lib_dynamic_maven = "[2.0.0,3.0.0)"
+
   keyple_java = "1.0.0"
   keyple_cpp = "0.9.0"

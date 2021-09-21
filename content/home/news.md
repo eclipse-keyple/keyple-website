@@ -10,8 +10,7 @@ headless = true
 active = true 
 weight = 30 
 
-title = "What's new ?"
-subtitle = "To add a news made a [Pull request](https://github.com/eclipse/keyple-website/pulls) contributions on GitHub."
+title = "What's new?"
 
 [content]
   page_type = "post"

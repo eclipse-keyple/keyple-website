@@ -5,9 +5,6 @@ summary = "Keyple makes contactless ticketing accessible."
 date = ""
 
 weight = 50
-
-[menu.main]
-    parent = "What is Eclipse Keyple™"
 +++
 
 The goal of Eclipse Keyple™ is to allow developers to easily implement fast and secure off-line contactless transactions 
