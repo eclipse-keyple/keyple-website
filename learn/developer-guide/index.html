@@ -1,0 +1,304 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Source Themes Academic 4.8.0">
+<meta name=description content="Keyple™ accelerates the integration and development of ticketing and access control applications by enabling all to implement systems based on a common, open and modular platform, while benefiting from Calypso®'s key features of reliability, security and interoperability.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/learn/developer-guide/>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<meta name=theme-color content="#1D87BB">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-light>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-dark disabled>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:wght@300&display=swap">
+<link rel=stylesheet href=../../css/academic.css>
+<script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
+<link rel=alternate href=../../learn/developer-guide/index.xml type=application/rss+xml title="Eclipse Keyple">
+<link rel=manifest href=../../index.webmanifest>
+<link rel=icon type=image/png href=../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_192x192_fill_lanczos_center_3.png>
+<link rel=canonical href=https://keyple.org/learn/developer-guide/>
+<meta property="twitter:card" content="summary">
+<meta property="og:site_name" content="Eclipse Keyple">
+<meta property="og:url" content="https://keyple.org/learn/developer-guide/">
+<meta property="og:title" content="Developer guides | Eclipse Keyple">
+<meta property="og:description" content="Keyple™ accelerates the integration and development of ticketing and access control applications by enabling all to implement systems based on a common, open and modular platform, while benefiting from Calypso®'s key features of reliability, security and interoperability."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
+<meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
+<script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
+<script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
+<title>Developer guides | Eclipse Keyple</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents>
+<script>const isSiteThemeDark=!1</script>
+<script src=../../js/load-theme.js></script>
+<aside class=search-results id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Search</h1>
+</div>
+<div class="col-6 col-search-close">
+<a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
+</div>
+</aside>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=../../><img src=../../images/logo_hu673a59176cd62c570f44ed2728665b48_42188_0x70_resize_lanczos_3.png alt="Eclipse Keyple"></a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=../../><img src=../../images/logo_hu673a59176cd62c570f44ed2728665b48_42188_0x70_resize_lanczos_3.png alt="Eclipse Keyple"></a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple™</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../what-is-keyple/overview/><span>Overview</span></a>
+<a class=dropdown-item href=../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple™?</span></a>
+<a class=dropdown-item href=../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
+<a class=dropdown-item href=../../#adopters><span>Who is using Eclipse Keyple™?</span></a>
+<a class=dropdown-item href=../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
+<a class=dropdown-item href=../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
+<a class=dropdown-item href=../../#news><span>News</span></a>
+</div>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../roadmap/><span>Roadmap</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../learn/overview><span>Learn</span></a>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../components-java/overview/><span>Java implementation v2+</span></a>
+<a class=dropdown-item href=../../components-cpp/overview/><span>C++ implementation v2+</span></a>
+<a class=dropdown-item href=../../><span> </span></a>
+<a class=dropdown-item href=../../components-java-1.0/><span>Java implementation v1.0 (deprecated)</span></a>
+<a class=dropdown-item href=../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
+</div>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../external-extensions-and-support/><span>External extensions & support</span></a>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+<li class=nav-item>
+<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="container-fluid docs">
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+<form class="docs-search d-flex align-items-center">
+<button class="btn docs-toggle d-md-none p-0 mr-3" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<input name=q type=search class=form-control placeholder=Search... autocomplete=off>
+</form>
+<nav class="collapse docs-links" id=docs-nav>
+<ul class="nav docs-sidenav">
+<li><a href=../../learn/></a></li>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../learn/overview/>Overview</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../learn/overview/key-concepts/>Key concepts</a></li>
+<li><a href=../../learn/overview/architecture/>Architecture</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../learn/build-your-first-app/>Build your first app</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../learn/build-your-first-app/java-app/>Java</a></li>
+<li><a href=../../learn/build-your-first-app/android-app/>Android</a></li>
+<li><a href=../../learn/build-your-first-app/cpp-app/>C++</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class="docs-toc-link active" href=../../learn/developer-guide/>Developer guides</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../learn/developer-guide/standalone-application/>Standalone application</a></li>
+<li><a href=../../learn/developer-guide/distributed-application/>Distributed application</a></li>
+<li><a href=../../learn/developer-guide/calypso-application/>Calypso application</a></li>
+<li><a href=../../learn/developer-guide/create-plugin/>Create a plugin</a></li>
+<li><a href=../../learn/developer-guide/create-extension/>Create an extension</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../learn/keyple-in-depth/>Keyple in depth</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../learn/keyple-in-depth/core-services/>Core services</a></li>
+<li><a href=../../learn/keyple-in-depth/calypso-card/>Calypso card extension</a></li>
+<li><a href=../../learn/keyple-in-depth/build-ci-process/>Build & CI</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../learn/contribute/>Contribute to Keyple</a>
+</div>
+</ul>
+</nav>
+</div>
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
+<article class=article>
+<div class=docs-article-container>
+<h1>Developer guides</h1>
+<div class=article-style>
+<hr>
+<ul class=list-unstyled>
+<li><h5><a href=../../learn/developer-guide/standalone-application/>Standalone application</a></h5> <p>How to develop an end-user standalone application.</p></li>
+<li><h5><a href=../../learn/developer-guide/distributed-application/>Distributed application</a></h5> <p>How to develop an end-user application using network communications.</p></li>
+<li><h5><a href=../../learn/developer-guide/calypso-application/>Calypso application</a></h5> </li>
+<li><h5><a href=../../learn/developer-guide/create-plugin/>Create a plugin</a></h5> <p>How to develop a specific hardware device Keyple plugin.</p></li>
+<li><h5><a href=../../learn/developer-guide/create-extension/>Create an extension</a></h5> <p>How to develop a card specific Keyple extension.</p></li>
+</ul>
+</div>
+<div class=article-widget>
+<div class=post-nav>
+</div>
+</div>
+</div>
+<div class=body-footer>
+<p>Last updated on Tue, Sep 21, 2021</p>
+</div>
+</article>
+<footer class=site-footer>
+<div class=container>
+<div class="row featurette">
+<div class="col-12 col-sm-4">
+<h4>More</h4>
+<ul>
+<li><a href=https://github.com/eclipse/keyple title="View Source Code on GitHub"><i class="fab fa-github"></i> GitHub Repository</a></li>
+<li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing list</a></li>
+<li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Keyple's project page</a></li>
+</ul>
+</div>
+<div class="col-12 col-sm-4">
+<h4>Eclipse Foundation</h4>
+<ul>
+<li><a href=https://www.eclipse.org/org/>About Eclipse Foundation</a></li>
+<li><a href=https://www.eclipse.org/org/foundation/contact.php>Contact Eclipse Foundation</a></li>
+<li><a href=https://www.eclipse.org/donate>Donate</a></li>
+<li><a href=https://www.eclipse.org/membership>Members</a></li>
+<li><a href=https://www.eclipse.org/org/documents/>Governance</a></li>
+<li><a href=https://www.eclipse.org/org/documents/Community_Code_of_Conduct.php>Code of Conduct</a></li>
+<li><a href=https://www.eclipse.org/artwork/>Logo and Artwork</a></li>
+<li><a href=https://www.eclipse.org/org/foundation/directors.php></a></li>
+</ul>
+</div>
+<div class="col-12 col-sm-4">
+<h4>Legal</h4>
+<ul>
+<li><a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a></li>
+<li><a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a></li>
+<li><a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a></li>
+<li><a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a></li>
+<li><a href=https://www.eclipse.org/legal/>Legal Resources </a></li>
+<li><a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability </a></li>
+</ul>
+</section>
+</div>
+</div>
+<p class=powered-by>
+Copyright © Eclipse Foundation, Inc. All Rights Reserved.
+</p>
+<p class=powered-by>
+Powered by the
+<a href=https://wowchemy.com/ target=_blank rel=noopener>Wowchemy theme</a>
+for
+<a href=https://gohugo.io target=_blank rel=noopener>Hugo</a>.
+<span class=float-right aria-hidden=true>
+<a href=# class=back-to-top>
+<span class=button_icon>
+<i class="fas fa-chevron-up fa-2x"></i>
+</span>
+</a>
+</span>
+</p>
+</footer>
+</main>
+</div>
+</div>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/java.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/groovy.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/xml.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/kotlin.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/cpp.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/gradle.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/ini.min.js></script>
+<script>const code_highlighting=!0</script>
+<script>const search_config={indexURI:"/index.json",minLength:1,threshold:.3},i18n={no_results:"No results found",placeholder:"Search...",results:"results found"},content_type={post:"Posts",project:"Projects",publication:"Publications",talk:"Talks",slides:"Slides"}</script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin=anonymous></script>
+<script>anchors.add()</script>
+<script id=search-hit-fuse-template type=text/x-template>
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+<script src=../../js/academic.min.b53776f33e8073247831b676ef46c015.js></script>
+<link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
+<script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
+<script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Cite</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Copy
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Download
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

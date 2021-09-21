@@ -1,0 +1,153 @@
+@startuml
+title
+    Keyple 2.0 - Distributed APIs dependencies - 10/06/2021
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define COLOR_YELLOW D4AC0D
+!define COLOR_RED E74C3C
+!define COLOR_PURPLE 8E44AD
+!define COLOR_BLUE 3498DB
+!define COLOR_GREEN 27AE60
+!define COLOR_GREY 2C3E50
+
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam component {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+skinparam interface {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+hide <<red>> stereotype
+hide <<purple>> stereotype
+hide <<blue>> stereotype
+hide <<green>> stereotype
+hide <<grey>> stereotype
+
+' == COMPONENTS ==
+
+[Specific Application] as application <<blue>>
+package "keyple-service-java-lib" as packService {
+    interface "Service API" as serviceApi
+    interface "Service SPI" as serviceSpi <<blue>>
+    [Adapter] as service
+}
+package "keyple-distributed-local-java-lib" as packDistributedLocal {
+    interface "Local API" as localApi <<purple>>
+    [Adapter] as distributedLocal <<purple>>
+}
+package "keyple-distributed-network-java-lib" as packDistributedNetwork {
+    interface "Network API" as networkApi <<purple>>
+    interface "Network SPI" as networkSpi <<blue>>
+    [Adapter] as distributedNetwork <<purple>>
+}
+package "keyple-distributed-remote-java-lib" as packDistributedRemote {
+    interface "Remote API" as remoteApi <<purple>>
+    [Adapter] as distributedRemote <<purple>>
+}
+package "keyple-distributed-remote-java-api" as packDistributedRemoteApi {
+    interface "Remote Plugin SPI" as distributedRemoteSpi <<purple>>
+    interface "Remote Plugin API" as distributedRemoteApi
+}
+package "keyple-distributed-local-java-api" as packDistributedLocalApi {
+    interface "Local Service SPI" as distributedLocalSpi <<purple>>
+    interface "Local Service API" as distributedLocalApi
+}
+
+' == ASSOCIATIONS ==
+
+application -- serviceSpi #COLOR_BLUE
+application -- networkSpi #COLOR_BLUE
+
+service -up- serviceApi #COLOR_YELLOW
+service -- distributedLocalApi #COLOR_YELLOW
+service -- distributedRemoteApi #COLOR_YELLOW
+
+distributedLocal -up- localApi #COLOR_PURPLE
+distributedLocal -- distributedLocalSpi #COLOR_PURPLE
+
+distributedNetwork -up- networkApi #COLOR_PURPLE
+
+distributedRemote -up- remoteApi #COLOR_PURPLE
+distributedRemote -- distributedRemoteSpi #COLOR_PURPLE
+
+' USE
+
+application ..> serviceApi : use
+application ..> localApi : use
+application ..> networkApi : use
+application ..> remoteApi : use
+
+service .up.> serviceSpi : use
+service ..> distributedLocalSpi : use
+service ..> distributedRemoteSpi : use
+
+distributedLocal ..> distributedLocalApi : use
+distributedLocal .up.> networkApi : use
+
+localApi ..> networkApi : ref
+
+distributedNetwork .up.> networkSpi : use
+
+distributedRemote .up.> networkApi : use
+distributedRemote ..> distributedRemoteApi : use
+
+remoteApi ..> networkApi : ref
+
+' == STYLE ==
+
+package packDistributedLocal #C_GREY1 {
+}
+package packDistributedNetwork #C_GREY1 {
+}
+package packDistributedRemote #C_GREY1 {
+}
+package packService #C_GREY1 {
+}
+package packDistributedRemoteApi #C_GREY1 {
+}
+package packDistributedLocalApi #C_GREY1 {
+}
+
+@enduml

@@ -13,7 +13,7 @@
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-light>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/darcula.min.css crossorigin=anonymous title=hl-dark disabled>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script>
-<link rel=stylesheet href="https://fonts.googleapis.com/css?family=%7CWork+Sans:ital,wght@0,300;1,500&display=swap">
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:wght@300&display=swap">
 <link rel=stylesheet href=../../css/academic.css>
 <script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
 <link rel=manifest href=../../index.webmanifest>
@@ -27,8 +27,8 @@
 <meta property="og:description" content="Version 0.9.0 of the Java implementation of Eclipse Keyple™ was released January 26, 2021."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
 <meta property="article:published_time" content="2021-01-26T14:57:56+02:00">
-<meta property="article:modified_time" content="2021-02-01T17:09:57+04:00">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://keyple.org/post/release-0-9-0-cpp/"},"headline":"Release 0.9.0 C++ on the field","datePublished":"2021-01-26T14:57:56+02:00","dateModified":"2021-02-01T17:09:57+04:00","author":{"@type":"Person","name":"Calypso Networks Association"},"publisher":{"@type":"Organization","name":"Eclipse","logo":{"@type":"ImageObject","url":"https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_192x192_fit_lanczos_3.png"}},"description":"Version 0.9.0 of the Java implementation of Eclipse Keyple™ was released January 26, 2021."}</script>
+<meta property="article:modified_time" content="2021-09-21T15:53:16+02:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://keyple.org/post/release-0-9-0-cpp/"},"headline":"Release 0.9.0 C++ on the field","datePublished":"2021-01-26T14:57:56+02:00","dateModified":"2021-09-21T15:53:16+02:00","author":{"@type":"Person","name":"Calypso Networks Association"},"publisher":{"@type":"Organization","name":"Eclipse","logo":{"@type":"ImageObject","url":"https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_192x192_fit_lanczos_3.png"}},"description":"Version 0.9.0 of the Java implementation of Eclipse Keyple™ was released January 26, 2021."}</script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -78,32 +78,31 @@
 <a class=dropdown-item href=../../what-is-keyple/overview/><span>Overview</span></a>
 <a class=dropdown-item href=../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple™?</span></a>
 <a class=dropdown-item href=../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
+<a class=dropdown-item href=../../#adopters><span>Who is using Eclipse Keyple™?</span></a>
 <a class=dropdown-item href=../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
 <a class=dropdown-item href=../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
+<a class=dropdown-item href=../../#news><span>News</span></a>
 </div>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../roadmap/><span>Roadmap</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../learn/overview><span>Learn</span></a>
 </li>
 <li class="nav-item dropdown">
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span>
 </a>
 <div class=dropdown-menu>
-<a class=dropdown-item href=../../repositories-dashboard/><span>Java 2.0 repositories status</span></a>
-<a class=dropdown-item href=../../components-java/><span>Java 1.x modules</span></a>
-<a class=dropdown-item href=../../components-cpp/><span>C++ 0.9.x modules</span></a>
+<a class=dropdown-item href=../../components-java/overview/><span>Java implementation v2+</span></a>
+<a class=dropdown-item href=../../components-cpp/overview/><span>C++ implementation v2+</span></a>
+<a class=dropdown-item href=../../><span> </span></a>
+<a class=dropdown-item href=../../components-java-1.0/><span>Java implementation v1.0 (deprecated)</span></a>
+<a class=dropdown-item href=../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
 </div>
 </li>
 <li class=nav-item>
-<a class=nav-link href=../../#news><span>News</span></a>
-</li>
-<li class=nav-item>
-<a class=nav-link href=../../docs/><span>Documentation</span></a>
-</li>
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Support & Trainings</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../support-trainings/add-support-trainings/><span>Add your support & trainings</span></a>
-<a class=dropdown-item href=../../support-trainings/cna/><span>Calypso Networks Association</span></a>
-</div>
+<a class=nav-link href=../../external-extensions-and-support/><span>External extensions & support</span></a>
 </li>
 </ul>
 </div>
@@ -123,7 +122,7 @@
 </div>
 <span class=article-date>
 Last updated on
-Mon, Feb 1, 2021
+Tue, Sep 21, 2021
 </span>
 <span class=middot-divider></span>
 <span class=article-reading-time>
@@ -142,18 +141,18 @@ Mon, Feb 1, 2021
 <li>New simplifications are introduced on the Calypso API. Keyple 0.8 had a high-level API for building map commands, but the map response data needed to be parsed with a low-level API. The Calypso 0.9.0 API provided a high-level API for retrieving map response data from a map image for which the file structure could be browsed.</li>
 <li>The Core 0.9.0 has also made the reader observation function more reliable in order to be notified in case of card withdrawal.</li>
 </ul>
-<p>C++ API reference
-<a href=https://keyple.org/docs/api-reference/cpp-api/ target=_blank rel=noopener>https://keyple.org/docs/api-reference/cpp-api/</a></p>
-<p>Build your first C++ application
-<a href=https://keyple.org/docs/build-your-first-app/cpp-app/ target=_blank rel=noopener>https://keyple.org/docs/build-your-first-app/cpp-app/</a></p>
+<p>
+<a href=https://keyple.org/docs-1.0/api-reference/cpp-api/>C++ API reference</a></p>
+<p>
+<a href=https://keyple.org/docs-1.0/build-your-first-app/cpp-app/>Build your first C++ application</a></p>
 <p>The source of Keyple C++ is available on
 <a href=https://github.com/eclipse/keyple-cpp target=_blank rel=noopener>https://github.com/eclipse/keyple-cpp</a>.
 Some dedicated support is provided on keyple.org:</p>
 <ul>
 <li>
-<a href=https://keyple.org/docs/api-reference/cpp-api/ target=_blank rel=noopener>the documentation of the C++ API</a></li>
+<a href=https://keyple.org/docs-1.0/api-reference/cpp-api/>the documentation of the C++ API</a></li>
 <li>
-<a href=https://keyple.org/docs/build-your-first-app/cpp-app/ target=_blank rel=noopener>a guide to Build a first C++ application</a></li>
+<a href=https://keyple.org/docs-1.0/build-your-first-app/cpp-app/>a guide to Build a first C++ application</a></li>
 </ul>
 </div>
 <p class=edit-page>
@@ -210,7 +209,7 @@ Some dedicated support is provided on keyple.org:</p>
 <div class="article-widget content-widget-hr">
 <h3>Related</h3>
 <ul>
-<li><a href=../../post/release-1-0-0-java/>Release 1.0.0 of Eclipse Keyple Java</a></li>
+<li><a href=../../post/release-1-0-0-java/>Release 1.0.0 of Eclipse Keyple™ Java</a></li>
 <li><a href=../../post/release-0-9-0-java/>Release 0.9.0 Java on the field</a></li>
 <li><a href=../../post/webinar-eclipse-keyple-developers-oct15-2020/>Webinar Eclipse Keyple™ for Developers, Thursday, October 15, 2020 </a></li>
 <li><a href=../../post/first-meetup-eclipse-keyple/>First Meet Up Eclipse Keyple™</a></li>
@@ -225,9 +224,12 @@ Some dedicated support is provided on keyple.org:</p>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/java.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/groovy.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/xml.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/kotlin.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/cpp.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/gradle.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/ini.min.js></script>
 <script>const code_highlighting=!0</script>
 <script>const search_config={indexURI:"/index.json",minLength:1,threshold:.3},i18n={no_results:"No results found",placeholder:"Search...",results:"results found"},content_type={post:"Posts",project:"Projects",publication:"Publications",talk:"Talks",slides:"Slides"}</script>
 <script id=search-hit-fuse-template type=text/x-template>
@@ -243,7 +245,7 @@ Some dedicated support is provided on keyple.org:</p>
     </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../js/academic.min.f6ecf7692215f2bc4850b72c8176bfa2.js></script>
+<script src=../../js/academic.min.b53776f33e8073247831b676ef46c015.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
