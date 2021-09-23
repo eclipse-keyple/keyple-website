@@ -115,11 +115,91 @@
 <h1>Roadmap</h1>
 </div>
 <div class=universal-wrapper>
-<div class=article-style><div class="alert alert-note">
-<div>
-Coming soon
-</div>
-</div>
+<div class=article-style><h1 id=current-work>Current work</h1>
+<h2 id=dependency-removal>Dependency removal:</h2>
+<ul>
+<li>Until the version 1.0.0, the source code of all the Keyple Java components was hosted in a single repository:
+<a href=https://github.com/eclipse/keyple-java target=_blank rel=noopener>https://github.com/eclipse/keyple-java</a>. It was the same for Keyple C++ components hosted in
+<a href=https://github.com/eclipse/keyple-cpp target=_blank rel=noopener>https://github.com/eclipse/keyple-cpp</a>. For the version 1.0.0 and below, there were strong dependencies between the Keyple components which had all to be released in the same version number.</li>
+<li>To facilitate the evolution and the maintenance, the version 2.0.0 proposes a full reorganization of the code. All the components are split in different repositories in order to allow them to evolve independently. The public interfaces are also separated to the specific implementations: the repositories are dedicated to host API or library implementation.
+<ul>
+<li>The Keyple Java components are managed through 16 repositories.</li>
+</ul>
+</li>
+</ul>
+<h2 id=calypso-terminal-compliance>Calypso terminal compliance:</h2>
+<ul>
+<li>The &lsquo;Keyple Service&rsquo; component in version 2.0.0 follows the &lsquo;Reader API 1.0&rsquo; and &lsquo;Card API 1.0&rsquo; standardized for the reader layer of Calypso terminals.</li>
+<li>The &lsquo;Calypso extension&rsquo; component in version 2.0.0 is also compliant with the &lsquo;Calypso API 1.0&rsquo; standardized for the Calypso layer of Calypso terminals.</li>
+</ul>
+<h2 id=plugin-support>Plugin support:</h2>
+<ul>
+<li>Thanks to the code reorganization, internal processing is more hidden. The version 2.0.0 defines a &lsquo;Plugin SPI&rsquo; which is significantly reduced. The plugins could now be implemented without having to know how the Keyple Service works.</li>
+</ul>
+<h2 id=availability>Availability</h2>
+<ul>
+<li>The Keyple Java components will be released in version 2.0.0 beginning of October 2021.</li>
+<li>The Keyple C++ 2.0.0 implementation is planned for November 2021 for the components: Service, Calypso, PC/SC plugin, the network client part of the distributed module.</li>
+</ul>
+<h1 id=future-developments>Future developments</h1>
+<p>Extension of the Calypso module features:</p>
+<ul>
+<li>pre-personalization transaction (Change Key)</li>
+<li>signature of data fields (SAM PSO commands)</li>
+<li>confidential secure session (REV3.2 AES mode)</li>
+<li>asymmetric authentication (REV3.3 PKI mode)</li>
+<li>REV1/REV2 product specific supports</li>
+<li>Hoplink high-level API</li>
+<li>SAM Transaction API (for SAM management)</li>
+</ul>
+<p>Standard plugins:</p>
+<ul>
+<li>For Keyple C++, support of the NFC reader on iOS</li>
+</ul>
+<h1 id=version-history>Version history</h1>
+<p>Until the version 2.0.0, all the different Keyple components (Core, Calypso extension, plugins) have to share the same version number. The components were released all together at a specific date for Java or C++.</p>
+<table>
+<thead>
+<tr>
+<th>Release</th>
+<th>Java</th>
+<th>C++</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.0.0</td>
+<td>2021/10<br>review in progress</td>
+<td>planned for 2021/11</td>
+<td><ul><li>Compliance with the Calypso terminal API</li><li>Removal of dependencies between components (Core, Calypso extension, and specific plugins): each component is released with its own version and a separate life cycle.</li></ul></td>
+</tr>
+<tr>
+<td>1.0.0</td>
+<td>2020/12</td>
+<td>not planned</td>
+<td><ul><li>Core - simplifications of the low-level Plugin API dedicated for plugin developers.</li><li>Remote Plugin - new stable & simpler version</li></ul>Main unsolved issue: the versioning of the different components (Core, Calypso extension, and specific plugins) is still linked: to manage transitive importation the artifact are built with the same version reference.</td>
+</tr>
+<tr>
+<td>0.9.0</td>
+<td>2020/09</td>
+<td>2021/01</td>
+<td><ul><li>Android plugins - NFC & OMAPI plugins optimized for all Android versions</li><li>Calypso<ul><li>simplified high level API to parse the Portable Object APDU responses, & recover the data through a card image.</li><li>addition of the support of the PO PIN feature, PO Stored Value transaction, & the SAM lock</li></ul></li></ul></td>
+</tr>
+<tr>
+<td>0.8.1</td>
+<td>2020/01</td>
+<td>2020/05</td>
+<td><ul><li>Core - Observable Reader interface evolution to improve the support of smart card reader solutions.</li><li>Calypso - simplified high level API to build the Portable Object APDU commands (PO data still recovered through a lower API managing APDI response parser)</li></ul></td>
+</tr>
+<tr>
+<td>0.7.0</td>
+<td>2019/07</td>
+<td>-</td>
+<td>initial public java implementation<ul><li>Calypso - low level API to manage the common Calypso features (secure session for authentication, read and write commands of EF records)</li></ul></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
