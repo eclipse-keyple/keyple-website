@@ -5,7 +5,7 @@ title: Roadmap
 # Current work
 ## Dependency removal:
 
- - Until the version 1.0.0, the source code of all the Keyple Java components was hosted in in a single repository: [https://github.com/eclipse/keyple-java](https://github.com/eclipse/keyple-java). It was the same for Keyple C++ components hosted in [https://github.com/eclipse/keyple-cpp](https://github.com/eclipse/keyple-cpp). For the version 1.0.0 and below, there were strong dependencies between the Keyple components which had all to be released in the same version number.
+ - Until the version 1.0.0, the source code of all the Keyple Java components was hosted in a single repository: [https://github.com/eclipse/keyple-java](https://github.com/eclipse/keyple-java). It was the same for Keyple C++ components hosted in [https://github.com/eclipse/keyple-cpp](https://github.com/eclipse/keyple-cpp). For the version 1.0.0 and below, there were strong dependencies between the Keyple components which had all to be released in the same version number.
  - To facilitate the evolution and the maintenance, the version 2.0.0 proposes a full reorganization of the code. All the components are split in different repositories in order to allow them to evolve independently. The public interfaces are also separated to the specific implementations: the repositories are dedicated to host API or library implementation.
    - The Keyple Java components are managed through 16 repositories. 
 
@@ -39,7 +39,7 @@ Standard plugins:
  - For Keyple C++, support of the NFC reader on iOS
 
 # Version history
-Until the version 2.0.0, all the different Keyple components (Core, Calypso extension, plugins) have to share the same version number. The components were released all together at a specific date for Jaa or C++.
+Until the version 2.0.0, all the different Keyple components (Core, Calypso extension, plugins) have to share the same version number. The components were released all together at a specific date for Java or C++.
 
 <table>
 <thead>
