@@ -1,6 +1,6 @@
 ---
 title: Standalone Application Developer Guide
-linktitle: Standalone Application
+linktitle: Standalone application
 summary: How to develop an end-user standalone application.
 type: book
 toc: true
