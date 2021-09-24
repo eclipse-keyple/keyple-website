@@ -1,5 +1,5 @@
 ---
-title: Create a plugin
+title: Create a reader plugin
 summary: How to develop a specific hardware device Keyple plugin.
 type: book
 toc: true

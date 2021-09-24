@@ -1,5 +1,5 @@
 ---
-title: Create an extension
+title: Create a card extension
 summary: How to develop a card specific Keyple extension.
 type: book
 toc: true

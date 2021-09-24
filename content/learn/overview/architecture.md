@@ -1,6 +1,6 @@
 ---
 title: Architecture
-summary: Overall presentation of the Keyple architecture.
+summary: Overall presentation of the Eclipse Keyple architecture.
 type: book
 toc: true
 draft: false
