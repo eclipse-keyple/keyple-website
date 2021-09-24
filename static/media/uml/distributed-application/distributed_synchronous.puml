@@ -1,0 +1,38 @@
+@startuml
+
+' == THEME ==
+
+skinparam Shadowing false
+skinparam RoundCorner 10
+
+' == CONTENT ==
+
+participant "nodeClient:\n**SyncNodeClient**" as nodeClient #LightBlue
+actor "userSenderClient:\n**<back:LightBlue>SyncEndpointClientSpi**" as userSenderClient
+
+actor "userControllerServer" as userControllerServer
+participant "nodeServer:\n**SyncNodeServer**" as nodeServer #LightBlue
+
+activate nodeClient #LightBlue
+nodeClient -> userSenderClient : sendRequest (<color:red>dtoA</color>)
+activate userSenderClient #Pink
+userSenderClient -> userControllerServer : send synchronous request (<color:red>dtoA</color>)
+
+activate userControllerServer #Pink
+userControllerServer -> userControllerServer : [...]Server.getSyncNode ()
+note right
+    The node accessor method
+    is provided by the extension of
+    the remote plugin or local service,
+    depends on your case:
+    * **RemotePlugin**Server
+    * **LocalService**Server
+end note
+userControllerServer -> nodeServer : onRequest (<color:red>dtoA</color>)
+activate nodeServer #LightBlue
+return <color:blue>[dtoB]</color>
+return <color:blue>[dtoB]</color>
+return <color:blue>[dtoB]</color>
+
+
+@enduml

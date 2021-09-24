@@ -1,0 +1,101 @@
+@startuml
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define COLOR_RED E74C3C
+!define COLOR_PURPLE 8E44AD
+!define COLOR_BLUE 3498DB
+!define COLOR_GREEN 27AE60
+!define COLOR_GREY 2C3E50
+skinparam Shadowing false
+skinparam component {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+hide <<red>> stereotype
+hide <<purple>> stereotype
+hide <<blue>> stereotype
+hide <<green>> stereotype
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+[Hardware Reader A\n(Card)] as readerA <<green>>
+[Hardware Reader B\n(Card)] as readerB <<blue>>
+[Hardware Reader C\n(Card)] as readerC <<purple>>
+package "Terminal A with local reader" #C_GREY1 {
+    [Application] as appA
+    [**Local Service**] as localServiceA <<red>>
+    [Local\nPlugin A] as localPluginA <<green>>
+    [Local\nReader A] as localReaderA <<green>>
+}
+package "Terminal without local reader" #C_GREY1 {
+    [Application] as app
+    [**Remote Plugin**] as remotePlugin <<red>>
+    [Remote\nReader A] as remoteReaderA <<green>>
+    [Remote\nReader B] as remoteReaderB <<blue>>
+    [Remote\nReader C] as remoteReaderC <<purple>>
+}
+package "Terminal B with local reader" #C_GREY1 {
+    [Application] as appB
+    [**Local Service**] as localServiceB <<red>>
+    [Local\nPlugin B] as localPluginB <<blue>>
+    [Local\nReader B] as localReaderB <<blue>>
+    [Local\nPlugin C] as localPluginC <<purple>>
+    [Local\nReader C] as localReaderC <<purple>>
+}
+
+'utilisation
+
+appA -- localPluginA #LightGrey
+appA -- localReaderA #LightGrey
+appA -- localServiceA
+localPluginA -- localReaderA #COLOR_GREEN
+localServiceA -- localPluginA #COLOR_GREEN
+localServiceA -- localReaderA #COLOR_GREEN
+localReaderA -- readerA #COLOR_GREEN
+
+localServiceA - remotePlugin
+
+app -- remotePlugin
+app -- remoteReaderA #LightGrey
+app -- remoteReaderB #LightGrey
+app -- remoteReaderC #LightGrey
+remotePlugin -- remoteReaderA #COLOR_GREEN
+remotePlugin -- remoteReaderB #COLOR_BLUE
+remotePlugin -- remoteReaderC #COLOR_PURPLE
+
+remotePlugin - localServiceB
+
+appB -- localPluginB #LightGrey
+appB -- localReaderB #LightGrey
+appB -- localServiceB
+localPluginB -- localReaderB #COLOR_BLUE
+localServiceB -- localPluginB #COLOR_BLUE
+localServiceB -- localReaderB #COLOR_BLUE
+localReaderB -- readerB #COLOR_BLUE
+
+appB -- localPluginC #LightGrey
+appB -- localReaderC #LightGrey
+localServiceB -- localPluginC #COLOR_PURPLE
+localServiceB -- localReaderC #COLOR_PURPLE
+localPluginC -- localReaderC #COLOR_PURPLE
+localReaderC -- readerC #COLOR_PURPLE
+
+@enduml

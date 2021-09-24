@@ -1,0 +1,103 @@
+@startuml
+
+' == THEME ==
+
+skinparam Shadowing false
+skinparam RoundCorner 10
+
+' == CONTENT ==
+
+participant "nodeClient:\n**AsyncNodeClient**" as nodeClient #LightBlue
+actor "userEndpointClient:\n**<back:LightBlue>AsyncEndpointClientSpi**" as userEndpointClient
+
+actor "userEndpointServer:\n**<back:LightBlue>AsyncEndpointServerSpi**" as userEndpointServer
+participant "nodeServer:\n**AsyncNodeServer**" as nodeServer #LightBlue
+
+activate nodeClient #LightBlue
+nodeClient -> userEndpointClient : openSession (<color:green>sessionId</color>)
+activate userEndpointClient #Pink
+userEndpointClient ->> userEndpointServer : send asynchronous handshake
+return
+deactivate nodeClient
+
+activate userEndpointServer #Pink
+userEndpointServer --> userEndpointClient : Session
+deactivate userEndpointServer
+activate userEndpointClient #Pink
+userEndpointClient -> userEndpointClient : registerSession (<color:green>sessionId</color>, Session)
+userEndpointClient -> userEndpointClient : [...]Client.getAsyncNode ()
+note over userEndpointClient
+    The node accessor method
+    is provided by the extension of
+    the remote plugin or local service,
+    depends on your case:
+    * **LocalService**Client
+    * **RemotePlugin**Client
+end note
+userEndpointClient -> nodeClient : onOpen (<color:green>sessionId</color>)
+activate nodeClient #LightBlue
+nodeClient -> userEndpointClient : sendMessage (<color:red>dtoA</color>)
+activate userEndpointClient #LightYellow
+userEndpointClient -> userEndpointClient : findSesssion (<color:red>dtoA</color><color:green>.getSessionId()</color>)
+userEndpointClient ->> userEndpointServer : send asynchronous message (<color:red>dtoA</color>)
+return
+return
+deactivate userEndpointClient
+
+activate userEndpointServer #Pink
+userEndpointServer -> userEndpointServer : registerSession (<color:red>dtoA</color><color:green>.getSessionId()</color>)
+note over userEndpointServer
+    It is necessary to identify the client
+    via the "<color:green>sessionId</color>" field in the DTO
+    in order to be able to reply a new message
+    at a later date.
+end note
+userEndpointServer -> userEndpointServer : [...]Server.getAsyncNode ()
+note over userEndpointServer
+    The node accessor method
+    is provided by the extension of
+    the remote plugin or local service,
+    depends on your case:
+    * **RemotePlugin**Server
+    * **LocalService**Server
+end note
+userEndpointServer -> nodeServer : onMessage (<color:red>dtoA</color>)
+activate nodeServer #LightBlue
+nodeServer -> userEndpointServer : sendMessage (<color:blue>dtoB</color>)
+activate userEndpointServer #LightYellow
+userEndpointServer -> userEndpointServer : findSession (<color:blue>dtoB</color><color:green>.getSessionId()</color>)
+userEndpointServer ->> userEndpointClient : send asynchronous message (<color:blue>dtoB</color>)
+return
+return
+deactivate userEndpointServer
+
+activate userEndpointClient #Pink
+userEndpointClient -> userEndpointClient : [...]Client.getAsyncNode ()
+userEndpointClient -> nodeClient : onMessage (<color:blue>dtoB</color>)
+activate nodeClient #LightBlue
+return
+deactivate userEndpointClient
+
+nodeClient -> nodeClient
+activate nodeClient #LightBlue
+
+nodeClient -> userEndpointClient : closeSession (<color:green>sessionId</color>)
+activate userEndpointClient #Pink
+userEndpointClient ->> userEndpointServer : send asynchronous closeSession
+return
+deactivate nodeClient
+
+activate userEndpointServer #Pink
+userEndpointServer -> nodeServer : onClose (<color:green>sessionId</color>)
+activate nodeServer #LightBlue
+return
+userEndpointServer --> userEndpointClient : ok
+deactivate userEndpointServer
+activate userEndpointClient #Pink
+userEndpointClient -> userEndpointClient : unregisterSession (Session)
+userEndpointClient -> userEndpointClient : [...]Client.getAsyncNode ()
+userEndpointClient -> nodeClient : onClose (<color:green>sessionId</color>)
+deactivate userEndpointClient
+activate nodeClient #LightBlue
+
+@enduml
