@@ -1,13 +1,14 @@
 ---
-title: Standalone Application Developer's Guide
+title: Standalone Application Developer Guide
 linktitle: Standalone Application
 summary: How to develop an end-user standalone application.
 type: book
 toc: true
 draft: false
-weight: 310
+weight: 10
 ---
 
+---
 ## Overview
 
 A standalone application is an application that runs in a device in contact
@@ -15,9 +16,6 @@ with the end user.
 
 It has at least one local smart card reader and manages itself the
 interaction with the user.
-
-In the ticketing industry, it is typically the software that runs a
-validator, a vending machine, or a control terminal.
 
 The diagram below illustrates the organization of a standalone application based on Keyple: {{< figure library="true"
 src="uml/standalone-application/component/Local_Application_Components_Overview.svg"
@@ -51,13 +49,13 @@ application.
 
 The purpose of this section is to guide you in its use.
 
-### Creation of the Smart Card Service
+### Start of the smart card service
 
 This is the very first step in the realization of a Keyple application:
 
 {{< code lang="java" >}}
-    // Get the instance of the SmartCardService (singleton pattern)
-    SmartCardService smartCardService = SmartCardServiceProvider.getService();
+// Get the instance of the SmartCardService (singleton pattern)
+SmartCardService smartCardService = SmartCardServiceProvider.getService();
 {{< /code >}}
 
 The smart card service is based on the `SmartCardService` interface, of which
@@ -95,8 +93,8 @@ Card Service.
 Here is for example the registration of the PC/SC plugin:
 
 {{< code lang="java" >}}
-    // Register the PcscPlugin to the `SmartCardService` */
-    Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
+// Register the PcscPlugin to the `SmartCardService` */
+Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
 {{< /code >}}
 
 {{% alert note %}}
@@ -125,7 +123,7 @@ The plugin observer must implement the `PluginObserverSpi` interface, the plugin
 
 These two interfaces are available in the _spi_ package of the **Keyple Service** component.
 
-Here is an example of q plugin observer class including an exception handler:
+Here is an example of a plugin observer class including an exception handler:
 
 {{< code lang="java" >}}
 class PluginObserver implements PluginObserverSpi, PluginObservationExceptionHandlerSpi {
@@ -161,9 +159,9 @@ Since adding an observer will cause the **Keyple Service** to check for the pres
 the definition of the exception handler must be done first.
 
 {{< code lang="java" >}}
-    PluginObserver pluginObserver = new PluginObserver();
-    ((ObservablePlugin) plugin).setPluginObservationExceptionHandler(pluginObserver);
-    ((ObservablePlugin) plugin).addObserver(pluginObserver);
+PluginObserver pluginObserver = new PluginObserver();
+((ObservablePlugin) plugin).setPluginObservationExceptionHandler(pluginObserver);
+((ObservablePlugin) plugin).addObserver(pluginObserver);
 {{< /code >}}
 
 ### Retrieve the reader
