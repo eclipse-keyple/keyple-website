@@ -1,11 +1,11 @@
 ---
 title: The Keyple key concepts
 linkTitle: Key concepts
-summary: Understand the concepts behind Eclipse Keyple.
+summary: Understand the concepts behind Eclipse Keyple™.
 type: book
 toc: true
 draft: false
-weight: 200
+weight: 1
 ---
 
 ---
