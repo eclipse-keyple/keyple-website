@@ -1,13 +1,10 @@
 ---
-title: Support & training companies
-summary: Find here the list of companies offering Keyple support and training.
-type: book
-toc: false
-weight: 30
+title: External Keyple add-ons
+summary: Find here a list of add-ons compliant with Keyple.
 ---
 
 {{% alert note %}}
-To add your company please make a [Pull request](https://github.com/eclipse/keyple-website/pulls) contribution on GitHub.
+To reference your add-on please make a [Pull request](https://github.com/eclipse/keyple-website/pulls) contribution on GitHub.
 
 In order for your contribution to be accepted you must comply with one of the conditions below:
 

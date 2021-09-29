@@ -51,51 +51,82 @@
   weight = 70
 
 [[main]]
-  name = "Roadmap"
-  url = "/roadmap/"
-  weight = 20
-
-[[main]]
   name = "Learn"
   url = "/learn/overview"
-  weight = 30
+  weight = 20
 
 [[main]]
   name = "Components"
   url = "/components/"
-  weight = 40
-
-[[main]]
-  parent = "Components"
-  name = 'Java implementation v2+'
-  url = '/components-java/overview/'
-  weight = 10
-
-[[main]]
-  parent = "Components"
-  name = 'C++ implementation v2+'
-  url = '/components-cpp/overview/'
-  weight = 20
-
-[[main]]
-  parent = "Components"
-  name = ' '
-  url = ''
-  weight = 25
-
-[[main]]
-  parent = "Components"
-  name = 'Java implementation v1.0 (deprecated)'
-  url = '/components-java-1.0/'
   weight = 30
 
 [[main]]
   parent = "Components"
-  name = 'C++ implementation v0.9 (deprecated)'
-  url = '/components-cpp-0.9/'
+  name = "Java implementation v2+"
+  url = "/components-java/overview/"
+  weight = 10
+
+[[main]]
+  parent = "Components"
+  name = "C++ implementation v2+"
+  url = "/components-cpp/overview/"
+  weight = 20
+
+[[main]]
+  parent = "Components"
+  name = " "
+  url = ""
+  weight = 25
+
+[[main]]
+  parent = "Components"
+  name = "Java implementation v1.0 (deprecated)"
+  url = "/components-java-1.0/"
+  weight = 30
+
+[[main]]
+  parent = "Components"
+  name = "C++ implementation v0.9 (deprecated)"
+  url = "/components-cpp-0.9/"
   weight = 40
 
 [[main]]
-  name = "External extensions & support"
-  url = "/external-extensions-and-support/"
+  name = "Community"
+  url = "/community/"
+  weight = 40
+  
+[[main]]
+  parent = "Community"
+  name = "Contributing"
+  url = "/community/contributing/"
+  weight = 10
+    
+[[main]]
+  parent = "Community"
+  name = "Roadmap"
+  url = "/community/roadmap/"
+  weight = 20
+
+[[main]]
+  parent = "Community"
+  name = "Roadmap"
+  url = "/community/roadmap/"
+  weight = 20
+
+[[main]]
+  parent = "Community"
+  name = "External add-ons"
+  url = "/community/external-add-ons/"
+  weight = 30
+
+[[main]]
+  parent = "Community"
+  name = "Compliant terminals"
+  url = "/community/compliant-terminals/"
+  weight = 40
+
+[[main]]
+  parent = "Community"
+  name = "Support & training companies"
+  url = "/community/support-and-training-companies/"
   weight = 50

@@ -40,7 +40,7 @@ title="" >}}
    extensions such as [**Keyple Calypso**]({{< ref "components-java/card-extensions/keyple-card-calypso-java-lib.md" >}}).
 
 ---
-## Workflow
+## Operating mode
 
 **Keyple Service** is built around the concepts described [here]({{< relref
 "key-concepts.md" >}}) and sometimes proposes several ways to perform
@@ -49,24 +49,19 @@ application.
 
 The purpose of this section is to guide you in its use.
 
-### Start of the smart card service
+## Access to the smart card service
 
-This is the very first step in the realization of a Keyple application:
-
-{{< code lang="java" >}}
-// Get the instance of the SmartCardService (singleton pattern)
-SmartCardService smartCardService = SmartCardServiceProvider.getService();
-{{< /code >}}
-
-The smart card service is based on the `SmartCardService` interface, of which
-a singleton instance is provided by the `SmartCardServiceProvider` class.
+Invoke the `SmartCardServiceProvider.getService()` static method to access the service.
 
 Its main role is to centralize the Keyple add-on resources and to manage their
 life cycle.
 
+{{< code lang="java" >}}
+SmartCardService smartCardService = SmartCardServiceProvider.getService();
+{{< /code >}}
 
-### Reader Plugin selection
-
+---
+## Set up a plugin
 The Keyple application developer will choose the reader plugins he needs
 according to the equipment on which the Keyple application will run.
 
@@ -75,87 +70,98 @@ For an Andoid terminal environment, the plugin could be the standard
 Android NFC plugin or one of the plugins available from the industrial
 partners of the project.
 
-For a complete list of available plugins, please see 
-the [standard reader plugins]({{< ref "components-java/standard-reader-plugins/_index.md" >}}), 
-the [specific reader plugins]({{< ref "components-java/specific-reader-plugins/_index.md" >}}) 
-or one of our [partners reader plugins]({{< ref "external-extensions-and-support/proprietary-add-ons/_index.md" >}}).
+For a complete list of available plugins, please see
+the [standard reader plugins]({{< ref "components-java/standard-reader-plugins/_index.md" >}}),
+the [specific reader plugins]({{< ref "components-java/specific-reader-plugins/_index.md" >}})
+or one of our [partners reader plugins]({{< ref "community/external-add-ons/_index.md" >}}).
 
-{{% alert note %}} A new plugin can also be [created]({{< relref
-"create-a-reader-plugin" >}}) if there is no plugin for the intended hardware.{{% /alert %}}
+{{% alert note %}}
+A new plugin can also be [created]({{< relref "create-a-reader-plugin" >}}) if there is no plugin for the intended hardware.
+{{% /alert %}}
 
-### Register the plugin
+### Access to a plugin
+To access a plugin at the application level, it must first be registered with the smart card service via the `registerPlugin(...)` method.
+It will be necessary to provide an implementation of the `KeyplePluginExtensionFactory` interface.
+This factory is provided by the API of the used plugin.
 
-All Keyple plugins implement the ````Plugin```` interface.
+Depending on the capabilities of the hardware, the plugin factory may or may not offer specific configuration options.
+Please refer to the API of the plugin component you are considering to see what is appropriate for your application.
 
-The plugin registration consists in submitting its factory to the Smart
-Card Service.
-
-Here is for example the registration of the PC/SC plugin:
+The registration provides in return an implementation of one of the `Plugin`, `ObservablePlugin` or `PoolPlugin` interfaces depending on the type of target plugin.
 
 {{< code lang="java" >}}
-// Register the PcscPlugin to the `SmartCardService` */
+// Here is for example the registration of the PC/SC plugin
 Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
 {{< /code >}}
 
-{{% alert note %}}
+### Configure a plugin
+Some plugin types may offer specific options.
 
-The plugin factories all implement the interface expected by
-SmartCardService.
+Static options are usually directly exposed by the plugin factory API while dynamic options are exposed by the plugin extension API.
 
-However, depending on the capabilities of the hardware, the plugin factory may or may not offer configuration options using a builder.
+To access the plugin extension it is necessary to invoke the `getExtension(...)` method on the registered `Plugin` by specifying the expected class of the extension.
+After that, the dedicated methods are available from the resulting object.
 
-Please refer to the API of the plugin you are considering to see what is appropriate for your application.
+{{< code lang="java" >}}
+// Here is a snippet showing the usage of the extension of the Stub plugin (the procedure would be similar for another plugin/reader)
+plugin
+    .getExtension(StubPlugin.class)
+    .unplugReader("READER_1");
+{{< /code >}}
 
+### Monitor a plugin
+{{% alert warning %}} The plugin monitoring only applies to hardware environments in which the readers are removable.
+Moreover, only plugins of type `ObservablePlugin` can be monitored.
 {{% /alert %}}
 
-### Observation of the plugin
 
-{{% alert warning %}} The notion of plugin observation applies only to
-hardware environments in which the readers are removable. {{% /alert %}}
 
 The observation of reader connections and disconnections is achieved
 through a background task managed by **Keyple Service**.
 
-To implement these observation mechanisms, it is imperative to provide a plugin observer and an exception handler
-to allow **Keyple Service** to notify the application of plugin events and runtime errors (that may occur during the monitoring or notification of events).
+To enable these observation mechanisms, it is imperative to provide:
+- a plugin observer implementing the `PluginObserverSpi` interface to be notified of plugin events,
+- an exception handler implementing the `PluginObservationExceptionHandlerSpi` interface to be notified of errors that may occur during the monitoring or events notifications.
 
-The plugin observer must implement the `PluginObserverSpi` interface, the plugin exception handler must implement the `PluginObservationExceptionHandlerSpi` interface.
-
-These two interfaces are available in the _spi_ package of the **Keyple Service** component.
+These two interfaces are available in the `org.eclipse.keyple.core.service.spi` package of the **Keyple Service** component.
 
 Here is an example of a plugin observer class including an exception handler:
 
 {{< code lang="java" >}}
+// ...
+import org.eclipse.keyple.core.service.spi.PluginObserverSpi;
+import org.eclipse.keyple.core.service.spi.PluginObservationExceptionHandlerSpi;
+// ...
+
 class PluginObserver implements PluginObserverSpi, PluginObservationExceptionHandlerSpi {
 
-  @Override
-  public void onPluginEvent(PluginEvent event) {
-    switch (event.getEventType()) {
-        case READER_CONNECTED:
-            // here the processing to be done when a reader is connected
-            ...
-            break;
-        case READER_DISCONNECTED:
-            // here the processing to be done when a reader is disconnected
-            ...
-            break;
-        default:
-            break;
+    @Override
+    public void onPluginEvent(PluginEvent event) {
+        switch (event.getEventType()) {
+            case READER_CONNECTED:
+                // here the processing to be done when a reader is connected
+                ...
+                break;
+            case READER_DISCONNECTED:
+                // here the processing to be done when a reader is disconnected
+                ...
+                break;
+            default:
+                break;
+        }
     }
-  }
-
-  @Override
-  public void onPluginObservationError(String pluginName, Throwable e) {
-    //
-    // handle here the plugin exceptions raised while observing the readers
-    //
-  }
+    
+    @Override
+    public void onPluginObservationError(String pluginName, Throwable e) {
+        // handle here the plugin exceptions raised while observing the readers
+        ...
+    }
 }
 {{< /code >}}
 
-In order to access the dedicated setters, the plugin has to be casted as an ```ObservablePlugin```.
+In order to access the dedicated setters, the plugin has to be casted as an `ObservablePlugin`.
 
-Since adding an observer will cause the **Keyple Service** to check for the presence of an exception handler, 
+Since adding an observer will cause the **Keyple Service** to check for the presence of an exception handler,
 the definition of the exception handler must be done first.
 
 {{< code lang="java" >}}
@@ -164,173 +170,269 @@ PluginObserver pluginObserver = new PluginObserver();
 ((ObservablePlugin) plugin).addObserver(pluginObserver);
 {{< /code >}}
 
-### Retrieve the reader
+{{% alert note %}}
+Note that the monitoring thread only works if there is at least one observer registered, and the notification process is sequential and synchronous.
+{{% /alert %}}
 
-Readers are objects implementing the ```Reader``` interface and are
-returned by the plugin's ```getReader``` method taking the name of the
+---
+## Set up a reader
+### Access to a reader
+### Configure a reader
+### Monitor a reader
+
+---
+## Select a card
+### Prepare a selection scenario
+### Process a selection scenario
+### Schedule a selection scenario
+
+---
+## Perform a transaction
+
+---
+## Unregister a plugin
+
+---
+## API
+
+---
+## Examples
+
+---
+## Download
+
+
+
+## Observation of the plugin
+
+
+## Readers retrieval
+
+Readers are objects implementing the `Reader` interface and are
+returned by the plugin's `getReader` method taking the name of the
 reader as argument.
 
 The names of the readers available from the plugin are returned as a
-list of strings by the ```getReaderNames``` method.
+Set of strings by the `getReaderNames` method.
 
-The ```getReaders``` method also allows to retrieve all readers in a Map
-whose key is the name of the reader and the value the ```Reader```
-object.
+The `getReaders` method also allows you to get all the readers at once as a Set of `Reader` objects.
 
 Here is an example to get the 1st PC/SC reader:
 
-```java
+{{< code lang="java" >}}
 String readerName = plugin.getReaderNames().get(0);
-        Reader reader = plugin.getReader(readerName);
-```
+Reader reader = plugin.getReader(readerName);
+{{< /code >}}
 
-{{% alert note %}} Depending on the type of plugin, the reader names are
+{{% alert note %}}
+Depending on the type of plugin, the reader names are
 more or less dynamic (e.g. a PC/SC based system vs. an embedded
 terminal), it is sometimes necessary to implement an identification
 mechanism in order to assign the right reader to the right place in the
-system (for example by using regular expressions). {{% /alert %}}
+system (for example by using regular expressions).
+{{% /alert %}}
 
-### Customize the reader settings
+## Reader specific settings
 
-Take a close look at the parameters proposed by the plugin and its
-readers.
+Take a close look at the parameters proposed by the plugin and its readers.
 
-In particular, it is necessary to configure the expected communication
-protocols, but it is also possible that other settings exist depending
-on the hardware context.
+Depending on the characteristics of the reader, it may be necessary to set some parameters in order to meet the application needs.
 
-### Observation of the reader
+To access the reader's settings it is necessary to obtain its **specific extension** (this differs from one type of equipment to another).
 
-The observation of inserting and removing cards from readers is similar
-to the observation of plugins in that it requires the same operations,
-i.e. the use of an exception handler and an object implementing a
-dedicated interface.
+To do this, we need to invoke the `getExtension` method by passing it the specific class in parameter.
+After that, the dedicated methods are available from the resulting object.
 
-```java
-...
-private static class ReaderExceptionHandlerImpl implements ReaderObservationExceptionHandler {
+Here is a snippet showing the procedure for a PC/SC reader (the procedure would be similar for another plugin/reader):
+{{< code lang="java" >}}
+Reader reader = plugin.getReader(readerName);
+// Configure the reader with parameters suitable for contactless operations.
+reader
+    .getExtension(PcscReader.class)
+    .setContactless(true)
+    .setIsoProtocol(PcscReader.IsoProtocol.T1);
+{{< /code >}}
+
+{{% alert note %}}
+Similarly, the plugin itself may or may not have parameters.<br>
+When they exist, they are usually defined by a builder in its factory.<br>
+Please refer to the documentation of the plugin you are using for more details on this topic.
+{{% /alert %}}
+
+## Protocol activation/deactivation
+
+The `activateProtocol` and `deactivateProtocol` methods of the `ConfigurableReader` interface meet two needs:
+
+- the use or not of a particular protocol at the lowest level of the RF layer of the reader.
+  In other words, these methods define which protocols the reader will use to search for cards.
+
+  This may be significant in terms of detection performance (latency) because when multiple protocols are implemented,
+  the readers search for cards for each protocol sequentially, for example by alternating ISO14443-A and ISO14443-B RF requests.
+
+  Note that some readers do not allow to select the types of protocols used, for example NFC smartphones. 
+  It is nevertheless possible to invoke these methods for their second purpose described below.
+- the naming of a reader protocol for the application.
+  The idea is to associate a protocol name that will be referenced by the application independently of the reader type.
+  This name can be used as parameter of the selection process in order to target a particular product.
+
+Please refer to the API of these methods to learn more about them.
+
+{{% alert note %}}
+Use of these methods may be optional if the reader's protocols are not configurable
+or if the application does not intend to target products by this criterion.
+{{% /alert %}}
+
+## Observation of the reader
+
+{{% alert note %}}
+Observation of the readers is optional in Keyple. It
+facilitates an event-driven programming mode, but an application
+developer can choose not to observe a reader, either because this reader
+is not designed to manage card insertions/withdrawals (for example an
+Android OMAPI reader or a SAM reader), or because the application is
+designed to directly manage the presence of a card (see to `isCardPresent` method of the
+`Reader` interface).
+{{% /alert %}}
+
+The observation of inserting and removing cards from readers is similar to the observation of plugins.
+
+The observation of card insertion and removal is achieved through a background task managed by **Keyple Service**.
+
+The reader observer must implement the `CardReaderObserverSpi` interface, 
+the reader exception handler must implement the `CardReaderObservationExceptionHandlerSpi` interface.
+
+These two interfaces are available in the spi package of the 
+[**Calypsonet Terminal Reader Java API**]({{< relref "calypsonet-apis" >}}) 
+to which **Keyple Service** conforms to perform these functions.
+
+Here is an example of a reader observer class including an exception handler:
+{{< code lang="java" >}}
+// ...
+import org.calypsonet.terminal.reader.spi.CardReaderObserverSpi;
+import org.calypsonet.terminal.reader.spi.CardReaderObservationExceptionHandlerSpi;
+// ...
+
+class ReaderObserver implements CardReaderObserverSpi, CardReaderObservationExceptionHandlerSpi {
+
     @Override
-    public void onReaderObservationError(String pluginName, String readerName, Throwable throwable) {
-        logger.error("An unexpected reader error occurred: {}:{}", pluginName, readerName, throwable);
-    }
-}
-}
-
-        /* Create an exception handler for reader observation */
-        ReaderExceptionHandlerImpl readerExceptionHandlerImpl = new ExceptionHandlerImpl();
-
-        /* Assign the PcscPlugin to the SmartCardService */
-        plugin = smartCardService.registerPlugin(new PcscPluginFactory(pluginExceptionHandlerImpl, readerExceptionHandlerImpl));
-        ...
-```
-
-
-The observation of the events of the reader is done in a similar way to
-that of the plugin, by adding an observer:
-
-```java
-((ObservableReader) reader).addObserver(new ReaderObserver());
-```
-
-and implementing the ReaderObserver interface:
-
-```java
-class ReaderObserver implements ObservableReader.ReaderObserver {
-
-    @Override
-    public void update(ReaderEvent event) {
-        switch (event.getEventType()) {
-            case CARD_INSERTED:
+    public void onReaderEvent(CardReaderEvent event) {
+        switch (event.getType()) {
+            case CardReaderEvent.Type.CARD_INSERTED:
                 // here the processing to be done when a card is inserted
-          ...
+                ...
                 break;
-            case CARD_MATCHED:
-                // here the processing to be done when a card matched the selection
-          ...
-                break;
-            case CARD_REMOVED:
+            case CardReaderEvent.Type.CARD_REMOVED:
                 // here the processing to be done when a card is removed
-          ...
+                ...
                 break;
             default:
                 break;
         }
     }
+    
+    @Override
+    public void onReaderObservationError(String pluginName, String readerName, Throwable e) {
+        //
+        // handle here the reader exceptions raised while observing the cards
+        //
+    }
 }
-}
-```
+{{< /code >}}
 
-{{% alert note %}} Observation of the readers is optional in Keyple. It
-facilitates an event-driven programming mode, but an application
-developer can choose not to observe a reader, either because this reader
-is not designed to manage card insertions/withdrawals (for example an
-Android OMAPI reader or a SAM reader), or because the application is
-designed to directly manage the presence of a card (refer to the
-```Reader``` interface). {{% /alert %}}
+The observation of the events of the reader is done in a similar way to
+that of the plugin, by adding an observer:
+{{< code lang="java" >}}
+ReaderObserver readerObserver = new ReaderObserver();
+((ObservableReader) reader).setReaderObservationExceptionHandler(readerObserver);
+((ObservableReader) reader).addObserver(readerObserver);
+{{< /code >}}
 
-### Card selection
+## Card selection
 
-The card selection service offered by **Keyple Core** gives multiple
-possibilities to choose the processing according to the type of card
-presented to the reader.
+The Keyple card selection process is generic, allowing the management of cards of different types 
+or technologies within the same application. 
+
+It is based on the universal selection interface defined by the
+[**Calypsonet Terminal Reader Java API**]({{< relref "calypsonet-apis" >}}).
+
+A `CardSelectionManager` is obtained from the Keyple `SmartCardService`
+using the `createCardSelectionManager` method.
+
+It allows the addition of "selection cases" corresponding to an expected target card.
+
+These selection cases are represented by objects implementing the **Calypsonet Terminal Reader Java API** 
+interface `CardSelection`; these objects should be provided by a Keyple Card Extension add-on.
+
+Providing one or more selection cases to the `CardSelectionManager` constitutes a _selection scenario_.
+The scenario is run by **Keyple Service** when a card is detected, the different cases being evaluated 
+sequentially as long as the card does not match the criteria of the defined cases.
+
+The selection process for a case offers several options for selecting a processing based on the type of card presented to the reader.
 
 It is based on a filtering process according to three possible criteria,
 each of which is optional:
 * the communication protocol of the card (usually also identifying a
   card technology)
-* the answer to reset of the card (ATR)
-* the ISO standardized application identifier (AID)
-
-Each of these criteria can be defined in a ```CardSelector``` object.
+* the power-on data collected by the reader when the card is detected (e.g. the Answer To Reset)
+* the ISO standard application identifier (AID) used to perform a Select Application command.
 
 When a card is inserted, it is evaluated according to these criteria and
 will be given the status "selected" or not.
 
-When a card is not selected, no other operation will be possible with
-it. Depending on the chosen setting, the result of the selection will or
-will not be made available to the application. It is thus possible to
-directly ignore cards that do not correspond to the defined selection
-criteria.
+When a card is not selected, no other operation will be possible with it.
 
-When a card is selected, the result is an object that extends the
-AbstractSmartCard and contains all the information known about the card
-at that stage.
+Depending on the chosen setting (see `setMultipleSelectionMode`), the result of the selection will or will not 
+be made available to the application. 
+It is thus possible to directly ignore cards that do not correspond to the defined selection criteria.
 
-In the case of a ISO standardized card, the application is selected with
-the provided AID (additional settings are available to specify the
-desired navigation within the card applications list).
+When a card is selected, the `CardSelectionManager` will make available the result 
+as a `SmartCard` object containing all the information known about the card at that stage.
 
-In addition to the selection process itself, specific APDU commands can
-be sent to the card if the selection is successful. The output data of
-these commands are available in the instance of the object
-```AbstractSmarCard```.
+Depending on the card extension that is used, this `SmartCard` object can be casted into a more 
+comprehensive object with specific features defined by the extension.
 
-The ```CardSelector``` and the additional APDU commands are grouped in a
-```CardSelectionRequest``` object.
+In addition to the selection process itself, specific APDU commands may be sent to the card if the selection is successful. 
+The output of these commands is available in the instance of the `SmartCard` object or its derivative.
 
-One or more ```CardSelectionRequest``` can be set up to perform as many
-selection cases, each targeting a particular card or application.
+## Card selection and reader observation
 
-The final selection process takes as input a list of
-```CardSelectionRequest``` and gets in return a list of
-```CardSelectionResponse```.
+The `CardSelectionManager` performs card selection in two steps:
+- a first step of preparing the selection scenario,
+- a second step of running the prepared scenario.
 
-#### Card selection steps
+The first step is done by invoking the `prepareSelection` method with a `CardSelection` object defining
+a selection profile as argument. This is to be repeated as many times as there are selection cases.
 
-In this guide we will not show the addition of supplementary APDU
-commands. Please refer to the Calypso guide for an implementation
-example.
+The second step, the scenario execution, can be done in two ways:
+- by directly executing the scenario with `processCardSelectionScenario` when the presence of the card is managed 
+by the application, 
+- by feeding the observation mechanism with the scenario by invoking the `scheduleCardSelectionScenario` when 
+the reader is observed.
 
-##### Create the card selection service
+In the first case, the result obtained directly in `CardSelectionResult` in return of 
+`processCardSelectionScenario`. 
 
-The card selection service will be used all along the card search
-process.
+In the latter case, the result is passed to the application in the `ScheduledCardSelectionsResponse` field of 
+`ReaderEvent` and is to be retrieved using `parseScheduledCardSelectionsResponse`. 
 
-```java
-    cardSelectionService = new CardSelectionsService();
-```
+Note that the scheduling of the execution of a scenario includes two options:
+- the `DetectionMode` defining the expected behavior regarding the card detection allowing to automatically restart it or not.
+- the `NotificationMode` allowing to choose if only the cards matching the selection (successfully selected) should trigger an event.
 
-##### Create the selection cases
+## Card selection in practice
+
+In this chapter we will show step by step how to use the selection service with the generic card extension.
+
+### Create the card selection manager
+
+The card selection manager will be used all along the card selection process.
+
+{{< code lang="java" >}}
+// Get the core card selection manager.
+CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();```
+{{< /code >}}
+
+### Prepare and add the selection cases
 
 The application can create as many selection cases as the type of cards
 expected. The order in which the selection cases are prepared is
@@ -338,76 +440,40 @@ important because it will favor the latency delay for the processing of
 the cards corresponding to the first case. It is therefore recommended
 to place the most common card profile in the application context first.
 
-```java
-/** Create a new class extending AbstractCardSelection */
-public final class GenericCardSelection extends AbstractCardSelection {
-    public GenericCardSelection(CardSelector cardSelector) {
-        super(cardSelector);
-    }
+{{< code lang="java" >}}
+// prepare a selection for application 1
+cardSelectionManager.prepareSelection(
+    GenericExtensionService.getInstance()
+        .createCardSelection()
+        .filterByDfName(AID1));
 
-    @Override
-    protected AbstractSmartCard parse(CardSelectionResponse cardSelectionResponse) {
-        class GenericSmartCard extends AbstractSmartCard {
-            public GenericSmartCard(CardSelectionResponse cardSelectionResponse) {
-                super(cardSelectionResponse);
-            }
+// prepare a selection for application 2
+cardSelectionManager.prepareSelection(
+    GenericExtensionService.getInstance()
+        .createCardSelection()
+        .filterByDfName(AID2));
+{{< /code >}}
 
-            public String toJson() {
-                return "{}";
-            }
-        }
-        return new GenericSmartCard(cardSelectionResponse);
-    }
+#### Proceed to the selection with a non-observable reader
+
+The `processCardSelectionScenario` method of `CardSelectionManager` performs the actual
+communication with the card.
+{{< code lang="java" >}}
+// Actual card communication: run the selection scenario.
+CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);
+
+// Check the selection result.
+if (selectionResult.getActiveSmartCard() == null) {
+  throw new IllegalStateException("The selection of the card failed.");
 }
 
-    final String aid1 = "AABBCCDDEE";
-    final String aid2 = "EEDDCCBBAA";
+// Get the SmartCard resulting of the selection.
+SmartCard smartCard = selectionResult.getActiveSmartCard();
+{{< /code >}}
 
-    // first selection case targeting cards with AID1
-    GenericCardSelection cardSelector1 =
-            new GenericCardSelection(
-                    CardSelector.builder()
-                            .cardProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name())
-                            .aidSelector(CardSelector.AidSelector.builder().aidToSelect(aid1).build())
-                            .build());
+#### Proceed to the selection with an observable reader
 
-// Add the selection case to the current selection
-cardSelectionsService.prepareSelection(cardSelector1);
-
-// first selection case targeting cards with AID1
-        GenericCardSelection cardSelector2 =
-        new GenericCardSelection(
-        CardSelector.builder()
-        .cardProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name())
-        .aidSelector(CardSelector.AidSelector.builder().aidToSelect(aid2).build())
-        .build());
-
-// Add the selection case to the current selection
-        cardSelectionsService.prepareSelection(cardSelector2);
-```
-
-##### Proceed to the selection with a non-observable reader
-
-The ```processExplicitSelections``` method of ```CardSelectionService```
-performs the actual communication with the card.
-
-```java
-...
-// Check if a card is present in the reader
-        if (!reader.isCardPresent()) {
-        logger.error("No Po Card is present in the reader.");
-        return;
-        }
-
-// Actual card communication: operate through a single request the card selection
-        CardSelectionsResult cardSelectionsResult =
-        cardSelectionsService.processExplicitSelections(reader);
-        ...
-```
-
-##### Proceed to the selection with an observable reader
-
-In the case of an observable reader, the selection request is provided
+In the case of an observable reader, the prepared request is provided
 to the reader (it is then named Default Selection) and will be processed
 automatically as soon as a card is presented. The application is then
 notified of the event with the data resulting from the selection.
@@ -416,7 +482,7 @@ all card presentations (```CARD_INSERTED``` event) or only those
 presentations that led to a successful selection (```CARD_MATCHED```
 event).
 
-###### Add a default selection
+##### Add a default selection
 
 ```java
 // Provide the Reader with the selection operation to be processed when a card is inserted.
@@ -427,20 +493,20 @@ event).
         ObservableReader.PollingMode.REPEATING);
 ```
 
-The ```NotificationMode``` allows you to specify whether all card
+The `NotificationMode` allows you to specify whether all card
 insertions should be reported to the application or only those that led
 to a successful selection.
 
-```PollingMode``` indicates whether to go back to waiting for the card
-after processing (```REPEATING```) or let the application decide when to
-restart the search (```SINGLESHOT```) with ```startCardDetection```.
+`PollingMode` indicates whether to go back to waiting for the card
+after processing (`REPEATING`) or let the application decide when to
+restart the search (`SINGLESHOT`) with `startCardDetection`.
 
-Note: when the default selection is set with the ```PollingMode```
+Note: when the default selection is set with the `PollingMode`
 parameter, the card detection is started automatically. However, it is
 possible to set a default selection without automatic start and by
-starting the detection independently with ```startCardDetection```.
+starting the detection independently with `startCardDetection`.
 
-###### Receive the result as an event
+##### Receive the result as an event
 
 ```java
 ...
@@ -489,9 +555,9 @@ default:
         ...
 ```
 
-##### Get the selection result
+#### Get the selection result
 
-The result of the selection is available in the ```AbstractSmartCard```
+The result of the selection is available in the `AbstractSmartCard`
 object.
 
 ```java
@@ -513,7 +579,7 @@ object.
         ...
 ```
 
-### Implementation of the application service
+## Implementation of the application service
 
 The applicative processing of the card that follows the selection of the
 card is to be inserted in the processing of the ```CARD_INSERTED``` or
@@ -525,7 +591,7 @@ attention to the handling of exceptions in this part of the application.
 Indeed, in case of a runtime exception, the information will be given to
 the application via the exception handler configured beforehand.
 
-### Stopping the application
+## Stopping the application
 
 The clean shutdown of a Keyple application requires the release of
 resources and in particular the shutdown of the observation threads.
@@ -537,12 +603,12 @@ smartCardService.unregisterPlugin(plugin.getName());
 ```
 
 ---
-## Keyple Core API
+## Keyple Service API
 
-To learn all the details of the **Keyple Core** API, please consult the
+To learn all the details of the **Keyple Service** API, please consult the
 [Javadoc documentation]({{< ref "docs-1.0/api-reference" >}}).
 
-However, here are two diagrams showing the main features of Keyple Core:
+However, here are two diagrams showing the main features of **Keyple Service**:
 
 * The diagram below represents the main classes implemented around the
   **Smart Card Service** with in particular the observation mechanisms.
@@ -569,14 +635,14 @@ project repository
 
 Nevertheless, you will find below a brief description of them:
 
-### Explicit Selection
+## Explicit Selection
 
 Shows the use of Keyple to make a card selection without observing the
 reader, based on testing the presence of the card by the application.
 
 [see the code](https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid)
 
-### Default Selection
+## Default Selection
 
 Shows the use of Keyple to make a card selection with observation of the
 reader. A default selection is prepared, the presentation of a card
@@ -584,7 +650,7 @@ triggers the notification of a reader event to the application.
 
 [see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification)
 
-### Sequential Multiple Selection
+## Sequential Multiple Selection
 
 Executes successively several independent selection operations with the
 use of the ISO 'NEXT' navigation flag.
@@ -593,7 +659,7 @@ use of the ISO 'NEXT' navigation flag.
 
 Illustrates the case of a card exploration with maintenance of the physical channel open.
 
-### Grouped Multiple Selection
+## Grouped Multiple Selection
 
 Executes a multiple selection with logical channel closure between each
 selection.
@@ -603,14 +669,14 @@ operation but without selection at the end.
 
 [see the code](https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection)
 
-### Demo Card Protocol Detection
+## Demo Card Protocol Detection
 
 Demonstrates the use of Keyple in a context where several card
 technologies are likely to be processed by the application.
 
 [see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection)
 
-### Demo Observable Reader Notification
+## Demo Observable Reader Notification
 
 Demonstrates the use of Keyple to implement the observation of a plugin
 and its readers. Readers are dynamically created and an observer is
@@ -620,9 +686,3 @@ assigned to them.
 
 ---
 ## Download
-
-The artifact **Keyple Core** and how to integrate it into your
-application is available here:
-
-* [Keyple Core Java component]({{< ref "/components-java-1.0/core" >}})
-* [Keyple Core C++ component]({{< ref "/components-cpp-0.9/core" >}})
