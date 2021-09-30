@@ -102,6 +102,9 @@ The **default selection** principle consists in providing an observable reader w
 
 [More information](architecture/keyple-core.md#card-selection)
 
+The Keyple card selection process is generic, allowing the management of cards of different types
+or technologies within the same application.
+
 ---
 ## Abstract smart card
 

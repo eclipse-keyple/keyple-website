@@ -42,12 +42,11 @@ title="" >}}
 ---
 ## Operating mode
 
-**Keyple Service** is built around the concepts described [here]({{< relref
-"key-concepts.md" >}}) and sometimes proposes several ways to perform
-an action or to achieve a result depending on the needs of the
-application.
-
-The purpose of this section is to guide you in its use.
+1. Access to the [smart card service](#smart-card-service)
+2. [Set up a plugin](#set-up-a-plugin)
+3. [Set up a reader](#set-up-a-reader)
+4. [Select a card](#select-a-card)
+5. [Perform a transaction](#perform-a-transaction)
 
 ## Smart card service
 
@@ -286,23 +285,22 @@ Moreover, the notification process is sequential and synchronous.
 The starting point of any processing done with a card in the Keyple enrivonment, is to reference this card in the system. 
 It is the role of the selection step to obtain this reference.
 
-You have first to prepare a selection scenario defining the eligible cards for a transaction, then to execute the scenario when a card is presented.
+You have first to prepare a selection scenario defining the eligible cards for a transaction, then to execute the scenario when a card is present.
 
-The Keyple card selection process is generic, allowing the management of cards of different types
-or technologies within the same application.
+### Prepare a selection scenario
 
-It is based on the universal selection interface defined by the
-[**Calypsonet Terminal Reader Java API**]({{< relref "calypsonet-apis" >}}).
+To prepare a scenario, you have to get a new instance of `CardSelectionManager` from the smart card service using the `createCardSelectionManager()` method,
+then configure it with scenario cases using dedicated methods provided by one or more card extensions.
 
-A `CardSelectionManager` is obtained from the Keyple `SmartCardService`
-using the `createCardSelectionManager` method.
+{{< code lang="java" >}}
+CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();```
+{{< /code >}}
 
-It allows the addition of "selection cases" corresponding to an expected target card.
+The `prepareSelection(...)` method allows to add a selection case to the scenario by providing an implementation of the `CardSelection` interface and return the index of the added case in order to be able to identify later the case that matched.
 
-These selection cases are represented by objects implementing the **Calypsonet Terminal Reader Java API**
-interface `CardSelection`; these objects should be provided by a Keyple Card Extension add-on.
+Please note that the order of addition is important because it will impact the selection cycle and favor the performance of the first added cases. 
 
-Providing one or more selection cases to the `CardSelectionManager` constitutes a _selection scenario_.
+Providing one or more selection cases to the `CardSelectionManager` constitutes a selection scenario.
 The scenario is run by **Keyple Service** when a card is detected, the different cases being evaluated
 sequentially as long as the card does not match the criteria of the defined cases.
 
@@ -320,9 +318,10 @@ will be given the status "selected" or not.
 
 When a card is not selected, no other operation will be possible with it.
 
-Depending on the chosen setting (see `setMultipleSelectionMode`), the result of the selection will or will not
-be made available to the application.
-It is thus possible to directly ignore cards that do not correspond to the defined selection criteria.
+The same card could correspond to several cases of the same scenario, especially when filtering by AID.
+By default, the selection process will stop at the first case that matches.
+It is however possible to choose another strategy using the `setMultipleSelectionMode()` method.
+In this case, the process will continue to the last selection case in the scenario and return all results, but only the last matching application will be selected.
 
 When a card is selected, the `CardSelectionManager` will make available the result
 as a `SmartCard` object containing all the information known about the card at that stage.
@@ -331,93 +330,28 @@ Depending on the card extension that is used, this `SmartCard` object can be cas
 comprehensive object with specific features defined by the extension.
 
 In addition to the selection process itself, specific APDU commands may be sent to the card if the selection is successful.
-The output of these commands is available in the instance of the `SmartCard` object or its derivative.
+The output of these commands is available in the instance of the `SmartCard` object.
 
-### Prepare a selection scenario
-### Process a selection scenario
-### Schedule a selection scenario
-
----
-## Perform a transaction
-
----
-## Unregister a plugin
-
----
-## API
-
----
-## Examples
-
----
-## Download
-
-## Card selection
-
-## Card selection and reader observation
-
-The `CardSelectionManager` performs card selection in two steps:
-- a first step of preparing the selection scenario,
-- a second step of running the prepared scenario.
-
-The first step is done by invoking the `prepareSelection` method with a `CardSelection` object defining
-a selection profile as argument. This is to be repeated as many times as there are selection cases.
-
-The second step, the scenario execution, can be done in two ways:
-- by directly executing the scenario with `processCardSelectionScenario` when the presence of the card is managed 
-by the application, 
-- by feeding the observation mechanism with the scenario by invoking the `scheduleCardSelectionScenario` when 
-the reader is observed.
-
-In the first case, the result obtained directly in `CardSelectionResult` in return of 
-`processCardSelectionScenario`. 
-
-In the latter case, the result is passed to the application in the `ScheduledCardSelectionsResponse` field of 
-`ReaderEvent` and is to be retrieved using `parseScheduledCardSelectionsResponse`. 
-
-Note that the scheduling of the execution of a scenario includes two options:
-- the `DetectionMode` defining the expected behavior regarding the card detection allowing to automatically restart it or not.
-- the `NotificationMode` allowing to choose if only the cards matching the selection (successfully selected) should trigger an event.
-
-## Card selection in practice
-
-In this chapter we will show step by step how to use the selection service with the generic card extension.
-
-### Create the card selection manager
-
-The card selection manager will be used all along the card selection process.
-
-{{< code lang="java" >}}
-// Get the core card selection manager.
-CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();```
-{{< /code >}}
-
-### Prepare and add the selection cases
-
-The application can create as many selection cases as the type of cards
-expected. The order in which the selection cases are prepared is
-important because it will favor the latency delay for the processing of
-the cards corresponding to the first case. It is therefore recommended
-to place the most common card profile in the application context first.
-
+The following snippet shows the preparation of two selection cases using the generic card extension:
 {{< code lang="java" >}}
 // prepare a selection for application 1
-cardSelectionManager.prepareSelection(
+int firstCaseIndex = cardSelectionManager.prepareSelection(
     GenericExtensionService.getInstance()
         .createCardSelection()
         .filterByDfName(AID1));
 
 // prepare a selection for application 2
-cardSelectionManager.prepareSelection(
+int secondCaseIndex = cardSelectionManager.prepareSelection(
     GenericExtensionService.getInstance()
         .createCardSelection()
         .filterByDfName(AID2));
 {{< /code >}}
 
-#### Proceed to the selection with a non-observable reader
+### Run a selection scenario
 
-The `processCardSelectionScenario` method of `CardSelectionManager` performs the actual
-communication with the card.
+If we know that the card is in the reader it is possible to run a selection scenario by invoking the `processCardSelectionScenario(...)` method on the corresponding reader.
+The result of the selection is then directly returned.
+
 {{< code lang="java" >}}
 // Actual card communication: run the selection scenario.
 CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);
@@ -431,218 +365,83 @@ if (selectionResult.getActiveSmartCard() == null) {
 SmartCard smartCard = selectionResult.getActiveSmartCard();
 {{< /code >}}
 
-#### Proceed to the selection with an observable reader
+### Schedule a selection scenario
 
-In the case of an observable reader, the prepared request is provided
-to the reader (it is then named Default Selection) and will be processed
-automatically as soon as a card is presented. The application is then
-notified of the event with the data resulting from the selection.
-Depending on the selection settings, the application will be notified of
-all card presentations (```CARD_INSERTED``` event) or only those
-presentations that led to a successful selection (```CARD_MATCHED```
-event).
+If the reader is of type `ObservableReader` then it is possible to schedule in advance the execution of a selection scenario as soon as a card is presented.
 
-##### Add a default selection
+Invoke the `scheduleCardSelectionScenario(...)` to register the previously prepared scenario in the observable reader.
 
-```java
-// Provide the Reader with the selection operation to be processed when a card is inserted.
-((ObservableReader) reader)
-        .setDefaultSelectionRequest(
-        cardSelectionService.getDefaultSelection().getDefaultSelectionsRequest(),
-        ObservableReader.NotificationMode.MATCHED_ONLY,
-        ObservableReader.PollingMode.REPEATING);
-```
+In this case, it is necessary to register a reader observer and to have started the card detection in order to be able to retrieve the result of the selection which will be contained in a `ReaderEvent`.
 
-The `NotificationMode` allows you to specify whether all card
-insertions should be reported to the application or only those that led
-to a successful selection.
+Use the `parseScheduledCardSelectionsResponse(...)` method to extract the selection result from the event.
 
-`PollingMode` indicates whether to go back to waiting for the card
-after processing (`REPEATING`) or let the application decide when to
-restart the search (`SINGLESHOT`) with `startCardDetection`.
+Note that the scheduling of the execution of a scenario includes two options:
+* the `DetectionMode` defining the expected behavior regarding the card detection allowing to automatically restart it or not.
+* the `NotificationMode` allowing to choose if only the cards matching the selection (successfully selected) should trigger an event.
 
-Note: when the default selection is set with the `PollingMode`
-parameter, the card detection is started automatically. However, it is
-possible to set a default selection without automatic start and by
-starting the detection independently with `startCardDetection`.
-
-##### Receive the result as an event
-
-```java
+{{< code lang="java" >}}
 ...
 @Override
-public void update(ReaderEvent event) {
-        switch (event.getEventType()) {
-        case CARD_MATCHED:
-        AbstractSmartCard selectedCard = null;
-        try {
-        selectedCard =
-        getDefaultSelection()
-        .processDefaultSelectionsResponse(event.getDefaultSelectionsResponse())
-        .getActiveSmartCard();
-        } catch (KeypleException e) {
-        logger.error("Exception: {}", e.getMessage());
-        ((ObservableReader) (event.getReader())).finalizeCardProcessing();
-        }
-
-        if (selectedCard != null) {
-        logger.info("Observer notification: the selection of the card has succeeded.");
-        // insert the processing of the card here
-        ...
-        logger.info("= #### End of the card processing.");
-        } else {
-        logger.error(
-        "The selection of the card has failed. Should not have occurred due to the MATCHED_ONLY selection mode.");
-        }
-        break;
-        case CARD_INSERTED:
-        logger.error(
-        "CARD_INSERTED event: should not have occurred due to the MATCHED_ONLY selection mode.");
-        break;
-        case CARD_REMOVED:
-        logger.trace("There is no PO inserted anymore. Return to the waiting state...");
-        break;
-default:
-        break;
-        }
-        if (event.getEventType() == ReaderEvent.EventType.CARD_INSERTED
-        || event.getEventType() == ReaderEvent.EventType.CARD_MATCHED) {
-        // Informs the underlying layer of the end of the card processing, in order to manage the
-        // removal sequence.
-        ((ObservableReader) (event.getReader())).finalizeCardProcessing();
-        }
-        }
-        ...
-```
-
-#### Get the selection result
-
-The result of the selection is available in the `AbstractSmartCard`
-object.
-
-```java
+public void onReaderEvent(CardReaderEvent event) {
+    switch (event.getType()) {
+        case CardReaderEvent.Type.CARD_MATCHED:
+            // Retrieve the selected smart card
+            SmartCard smartCard =
+                cardSelectionManager
+                    .parseScheduledCardSelectionsResponse(event.getScheduledCardSelectionsResponse())
+                    .getActiveSmartCard();
+            // Perform the transaction
+            ...
+            break;
+        default:
+            break;
+    }
+    if (event.getType() == CardReaderEvent.Type.CARD_INSERTED
+        || event.getType() == CardReaderEvent.Type.CARD_MATCHED) {
+      // Ensures that the communication channel is closed, regardless of the processing with the card.
+      ((ObservableReader) (reader)).finalizeCardProcessing();
+    }
+}
 ...
-        if (!cardSelectionsResult.hasActiveSelection()) {
-        logger.warn("The selection of the application " + cardAid + " failed.");
-        }
-        AbstractSmartCard smartCard = cardSelectionsResult.getActiveSmartCard();
-        logger.info("The selection of the card has succeeded.");
+{{< /code >}}
 
-        if (smartCard.hasFci()) {
-        String fci = ByteArrayUtil.toHex(smartCard.getFciBytes());
-        logger.info("Application FCI = {}", fci);
-        }
-        if (smartCard.hasAtr()) {
-        String atr = ByteArrayUtil.toHex(smartCard.getAtrBytes());
-        logger.info("Card ATR = {}", atr);
-        }
-        ...
-```
+{{% alert note %}}
+The `finalizeCardProcessing()` method must be invoked at the end of the transaction to ensure that the communication channel is closed.
+This switches the underlying monitoring thread into a state of waiting for the card to be removed.
 
-## Implementation of the application service
+Not doing this can lead to blocking states of the card insertion/removal monitoring mechanism.
+{{% /alert %}}
 
-The applicative processing of the card that follows the selection of the
-card is to be inserted in the processing of the ```CARD_INSERTED``` or
-```CARD_MATCHED``` event.
+---
+## Perform a transaction
 
-It can be processed in the thread provided by the monitoring task or
-detached in a separate thread. The application developer must pay
-attention to the handling of exceptions in this part of the application.
-Indeed, in case of a runtime exception, the information will be given to
-the application via the exception handler configured beforehand.
+Once the smart card is referenced in the system it is possible to perform the desired transaction using the appropriate card extension.
 
-## Stopping the application
+When the transaction is completed, if the reader is observed, it is imperative to invoke the `finalizeCardProcessing()` method on the observable reader (see the above note).
 
-The clean shutdown of a Keyple application requires the release of
-resources and in particular the shutdown of the observation threads.
+---
+## Unregister a plugin
+To shut down a Keyple application properly, it is necessary to free the resources and in particular to stop the observation threads.
 
 This is done by unregistering the plugins in the following way:
 
-```java
+{{< code lang="java" >}}
 smartCardService.unregisterPlugin(plugin.getName());
-```
+{{< /code >}}
 
 ---
-## Keyple Service API
+## API
 
-To learn all the details of the **Keyple Service** API, please consult the
-[Javadoc documentation]({{< ref "docs-1.0/api-reference" >}}).
-
-However, here are two diagrams showing the main features of **Keyple Service**:
-
-* The diagram below represents the main classes implemented around the
-  **Smart Card Service** with in particular the observation mechanisms.
-  {{< figure library="true"
-  src="archive-1.0/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg"
-  title=""
-
->}}
-
-* The diagram below represents the main classes used for selection
-  operations. {{< figure library="true"
-  src="archive-1.0/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg"
-  title=""
-
->}}
+* [Calypsonet Terminal Reader API](https://calypsonet.github.io/calypsonet-terminal-reader-java-api)
+* [Keyple Common API](https://eclipse.github.io/keyple-common-java-api)
+* [Keyple Service API](https://eclipse.github.io/keyple-service-java-lib)
 
 ---
 ## Examples
 
-To help in the implementation of the different facilities offered by
-Keyple to process smart cards, a set of examples is present in the
-project repository
-[{{< icon name="github" pack="fab" >}} examples](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone)
-
-Nevertheless, you will find below a brief description of them:
-
-## Explicit Selection
-
-Shows the use of Keyple to make a card selection without observing the
-reader, based on testing the presence of the card by the application.
-
-[see the code](https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid)
-
-## Default Selection
-
-Shows the use of Keyple to make a card selection with observation of the
-reader. A default selection is prepared, the presentation of a card
-triggers the notification of a reader event to the application.
-
-[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification)
-
-## Sequential Multiple Selection
-
-Executes successively several independent selection operations with the
-use of the ISO 'NEXT' navigation flag.
-
-[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection)
-
-Illustrates the case of a card exploration with maintenance of the physical channel open.
-
-## Grouped Multiple Selection
-
-Executes a multiple selection with logical channel closure between each
-selection.
-
-Allows the exploration of the applications of a card in a single
-operation but without selection at the end.
-
-[see the code](https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection)
-
-## Demo Card Protocol Detection
-
-Demonstrates the use of Keyple in a context where several card
-technologies are likely to be processed by the application.
-
-[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection)
-
-## Demo Observable Reader Notification
-
-Demonstrates the use of Keyple to implement the observation of a plugin
-and its readers. Readers are dynamically created and an observer is
-assigned to them.
-
-[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification)
+* [Java examples](https://github.com/eclipse/keyple-java-example)
 
 ---
 ## Download
+
+* [Java components]({{< ref "components-java/overview/configuration-wizard" >}})
