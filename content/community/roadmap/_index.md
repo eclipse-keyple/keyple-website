@@ -1,29 +1,35 @@
 ---
-title: Roadmap
+title: Eclipse Keyple™ Project roadmap
+linktitle: Roadmap
+summary: Overview of past and future Keyple Releases.
+type: book
+toc: true
+weight: 2
 ---
 
-# Current work
-## Dependency removal:
+---
+## Current work
+### Dependency removal:
 
  - Until the version 1.0.0, the source code of all the Keyple Java components was hosted in a single repository: [https://github.com/eclipse/keyple-java](https://github.com/eclipse/keyple-java). It was the same for Keyple C++ components hosted in [https://github.com/eclipse/keyple-cpp](https://github.com/eclipse/keyple-cpp). For the version 1.0.0 and below, there were strong dependencies between the Keyple components which had all to be released in the same version number.
  - To facilitate the evolution and the maintenance, the version 2.0.0 proposes a full reorganization of the code. All the components are split in different repositories in order to allow them to evolve independently. The public interfaces are also separated to the specific implementations: the repositories are dedicated to host API or library implementation.
    - The Keyple Java components are managed through 16 repositories. 
 
-## Calypso terminal compliance:
+### Calypso terminal compliance:
 
  - The 'Keyple Service' component in version 2.0.0 follows the 'Reader API 1.0' and 'Card API 1.0' standardized for the reader layer of Calypso terminals.
  - The 'Calypso extension' component in version 2.0.0 is also compliant with the 'Calypso API 1.0' standardized for the Calypso layer of Calypso terminals.
 
-## Plugin support:
+### Plugin support:
 
  - Thanks to the code reorganization, internal processing is more hidden. The version 2.0.0 defines a 'Plugin SPI' which is significantly reduced. The plugins could now be implemented without having to know how the Keyple Service works.
 
-## Availability
+### Availability
 
  - The Keyple Java components will be released in version 2.0.0 beginning of October 2021.
  - The Keyple C++ 2.0.0 implementation is planned for November 2021 for the components: Service, Calypso, PC/SC plugin, the network client part of the distributed module.
 
-# Future developments
+## Future developments
 Extension of the Calypso module features:
 
  - pre-personalization transaction (Change Key)
@@ -38,7 +44,7 @@ Standard plugins:
 
  - For Keyple C++, support of the NFC reader on iOS
 
-# Version history
+## Version history
 Until the version 2.0.0, all the different Keyple components (Core, Calypso extension, plugins) have to share the same version number. The components were released all together at a specific date for Java or C++.
 
 <table>
