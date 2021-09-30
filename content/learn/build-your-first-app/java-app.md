@@ -22,10 +22,10 @@ Calypso Card (contactless smart card, NFC mobile phone with a Calypso applet or 
 We will use three main components of Keyple:
 * [Keyple Service Java Library]({{< relref "/components-java/core/" >}})
   which is the base component to which all the others refer,
-* [Keyple Plugin PC/SC]({{< relref "/components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib" >}}) 
-  add-on to provide the ability to manage PC/SC readers,
 * [Keyple Card Calypso]({{< relref "/components-java/card-extensions/keyple-card-calypso-java-lib" >}}) 
-  add-on to handle the commands sent to the Calypso card and the Calypso SAM.
+  add-on to handle the commands sent to the Calypso card and the Calypso SAM,
+* [Keyple Plugin PC/SC]({{< relref "/components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib" >}})
+  add-on to provide the ability to manage PC/SC readers.
 
 In this guide [Gradle](https://gradle.org/) is used as build automation
 tool, but it is easy to transpose these explanations to another tool
@@ -165,7 +165,7 @@ If you don't know the names of the readers, read how to find them in the [FAQ](#
 
 ### Retrieve and check the Calypso card extension service
 The Calypso card extension service will provide means to handle cards, SAMs and to manage card transactions.
-{{< code >}}
+{{< code lang="java" >}}
     // Get the Calypso card extension service
     CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();
     

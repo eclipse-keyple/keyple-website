@@ -151,7 +151,7 @@ plugin = smartCardService.registerPlugin(new PcscPluginFactory(pluginExceptionHa
 
 For the observation of the plugin itself, the application must provide
 an object implementing the ```PluginObserver``` interface to the plugin
-after having casted it in ```ObservablePlugin```.
+after having cast it in ```ObservablePlugin```.
 
 ```java
 ((ObservablePlugin) plugin).addObserver(new PluginObserver());

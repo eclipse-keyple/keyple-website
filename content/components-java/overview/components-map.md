@@ -10,7 +10,7 @@ toc: false
 ---
 The dependencies between the Keyple components are shown in the diagram below:
 
-{{< figure library="true" src="uml/component-dependencies/component_dependencies_overview.svg" caption="" numbered="" >}}
+{{< figure library="true" src="learn/developer-guide/component-dependencies/component_dependencies_overview.svg" caption="" numbered="" >}}
 
 Here are the most important things to remember:
 * Each component has its **own life cycle**.

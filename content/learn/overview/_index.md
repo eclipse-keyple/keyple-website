@@ -3,7 +3,7 @@ title: Overview
 subtitle: "Global Architecture of Keyple"
 type: book
 toc: false
-weight: 100
+weight: 1
 ---
 
 {{% alert note %}}

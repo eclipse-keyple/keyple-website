@@ -51,51 +51,93 @@
   weight = 70
 
 [[main]]
-  name = "Roadmap"
-  url = "/roadmap/"
-  weight = 20
-
-[[main]]
   name = "Learn"
   url = "/learn/overview"
-  weight = 30
+  weight = 20
 
 [[main]]
   name = "Components"
   url = "/components/"
-  weight = 40
-
-[[main]]
-  parent = "Components"
-  name = 'Java implementation v2+'
-  url = '/components-java/overview/'
-  weight = 10
-
-[[main]]
-  parent = "Components"
-  name = 'C++ implementation v2+'
-  url = '/components-cpp/overview/'
-  weight = 20
-
-[[main]]
-  parent = "Components"
-  name = ' '
-  url = ''
-  weight = 25
-
-[[main]]
-  parent = "Components"
-  name = 'Java implementation v1.0 (deprecated)'
-  url = '/components-java-1.0/'
   weight = 30
 
 [[main]]
   parent = "Components"
-  name = 'C++ implementation v0.9 (deprecated)'
-  url = '/components-cpp-0.9/'
+  name = "Java implementation v2+"
+  url = "/components-java/overview/"
+  weight = 10
+
+[[main]]
+  parent = "Components"
+  name = "C++ implementation v2+"
+  url = "/components-cpp/overview/"
+  weight = 20
+
+[[main]]
+  parent = "Components"
+  name = " "
+  url = ""
+  weight = 25
+
+[[main]]
+  parent = "Components"
+  name = "Java implementation v1.0 (deprecated)"
+  url = "/components-java-1.0/"
+  weight = 30
+
+[[main]]
+  parent = "Components"
+  name = "C++ implementation v0.9 (deprecated)"
+  url = "/components-cpp-0.9/"
   weight = 40
 
 [[main]]
-  name = "External extensions & support"
-  url = "/external-extensions-and-support/"
+  name = "Community"
+  url = "/community/"
+  weight = 40
+  
+[[main]]
+  parent = "Community"
+  name = "Contributing"
+  url = "/community/contributing/"
+  weight = 10
+    
+[[main]]
+  parent = "Community"
+  name = "Roadmap"
+  url = "/community/roadmap/"
+  weight = 20
+
+[[main]]
+  parent = "Community"
+  name = "Eclipse Foundation Keyple page"
+  url = "https://projects.eclipse.org/projects/iot.keyple/"
+  weight = 30
+
+[[main]]
+  parent = "Community"
+  name = "Continuous integration dashboard"
+  url = "https://ci.eclipse.org/keyple/job/Keyple/"
+  weight = 40
+
+[[main]]
+  name = "External resources"
+  url = "/external-resources/"
   weight = 50
+
+[[main]]
+  parent = "External resources"
+  name = "External add-ons"
+  url = "/external-resources/external-add-ons/"
+  weight = 10
+
+[[main]]
+  parent = "External resources"
+  name = "Compliant terminals"
+  url = "/external-resources/compliant-terminals/"
+  weight = 20
+
+[[main]]
+  parent = "External resources"
+  name = "Support & training companies"
+  url = "/external-resources/support-and-training-companies/"
+  weight = 30
