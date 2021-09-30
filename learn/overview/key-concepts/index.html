@@ -4,7 +4,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=generator content="Source Themes Academic 4.8.0">
-<meta name=description content="A glossary of key terms encountered in the context of the Keyple solution.">
+<meta name=description content="Understand the concepts behind Eclipse Keyple™.">
 <link rel=alternate hreflang=en-us href=https://keyple.org/learn/overview/key-concepts/>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <meta name=theme-color content="#1D87BB">
@@ -24,9 +24,9 @@
 <meta property="og:site_name" content="Eclipse Keyple">
 <meta property="og:url" content="https://keyple.org/learn/overview/key-concepts/">
 <meta property="og:title" content="The Keyple key concepts | Eclipse Keyple">
-<meta property="og:description" content="A glossary of key terms encountered in the context of the Keyple solution."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
+<meta property="og:description" content="Understand the concepts behind Eclipse Keyple™."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-09-21T15:53:16+02:00">
+<meta property="article:modified_time" content="2021-09-30T15:13:35+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -83,9 +83,6 @@
 </div>
 </li>
 <li class=nav-item>
-<a class=nav-link href=../../../roadmap/><span>Roadmap</span></a>
-</li>
-<li class=nav-item>
 <a class="nav-link active" href=../../../learn/overview><span>Learn</span></a>
 </li>
 <li class="nav-item dropdown">
@@ -99,8 +96,24 @@
 <a class=dropdown-item href=../../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
 </div>
 </li>
-<li class=nav-item>
-<a class=nav-link href=../../../external-extensions-and-support/><span>External extensions & support</span></a>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../../community/roadmap/><span>Roadmap</span></a>
+<a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
+<a class=dropdown-item href=https://ci.eclipse.org/keyple/job/Keyple/><span>Continuous integration dashboard</span></a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
+<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
+</div>
 </li>
 </ul>
 </div>
@@ -144,8 +157,9 @@
 <li><a href=../../../learn/developer-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/developer-guide/distributed-application/>Distributed application</a></li>
 <li><a href=../../../learn/developer-guide/calypso-application/>Calypso application</a></li>
-<li><a href=../../../learn/developer-guide/create-plugin/>Create a plugin</a></li>
-<li><a href=../../../learn/developer-guide/create-extension/>Create an extension</a></li>
+<li><a href=../../../learn/developer-guide/card-resource-service/>Card resource service</a></li>
+<li><a href=../../../learn/developer-guide/create-a-reader-plugin/>Create a reader plugin</a></li>
+<li><a href=../../../learn/developer-guide/create-a-card-extension/>Create a card extension</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -155,9 +169,6 @@
 <li><a href=../../../learn/keyple-in-depth/calypso-card/>Calypso card extension</a></li>
 <li><a href=../../../learn/keyple-in-depth/build-ci-process/>Build & CI</a></li>
 </ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/contribute/>Contribute to Keyple</a>
 </div>
 </ul>
 </nav>
@@ -171,6 +182,7 @@
 <li><a href=#overview>Overview</a></li>
 <li><a href=#reader>Reader</a></li>
 <li><a href=#plugin>Plugin</a></li>
+<li><a href=#card-extension>Card extension</a></li>
 <li><a href=#smart-card-service>Smart card service</a></li>
 <li><a href=#observation>Observation</a></li>
 <li><a href=#selection>Selection</a></li>
@@ -190,7 +202,7 @@
 <hr>
 <h2 id=reader>Reader</h2>
 <p>Keyple&rsquo;s primary goal being to interact with smart cards (or smartphones) worn by individuals, it is logical to put the Reader at the top of <strong>Keyple Core</strong>&rsquo;s concepts.</p>
-<p>Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via <strong>Keyple Core</strong> or using an extension (such as <strong>Keyple Calypso</strong>).</p>
+<p>Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via the <strong>Keyple Service</strong> or using a card extension (such as <strong>Keyple Calypso Card Extension</strong>).</p>
 <p>These interfaces provide the means to</p>
 <ul>
 <li>identify the underlying physical reader,</li>
@@ -198,21 +210,40 @@
 <li>detect the presence and communicate with smart cards.</li>
 </ul>
 <p>The reader concept also applies to the hardware interfaces used to communicate with security elements such as SAMs (Secure Access Modules), which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.</p>
+<p>To define the interface between an application and a player, Keyple relies on the
+<a href=https://calypsonet.github.io/calypsonet-terminal-reader-java-api/ target=_blank rel=noopener>standard Terminal Reader API</a> proposed by Calypso Networks Association and thus inherits an existing modeling effort.</p>
+<p>Another benefit of using this terminal API is the ability to certify the functioning of a Keyple terminal via the associated certification process.</p>
+<p>This certification provides a guarantee that the terminal will function as expected.</p>
 <p>
 <a href=keyple-core.md#reader-access>More information</a></p>
 <hr>
 <h2 id=plugin>Plugin</h2>
-<p>In Keyple language a plugin is a service that allows the management of readers of a certain type.
+<p>In Keyple language a plugin is an add-on service that allows the management of readers of a certain type.
 The plugin is responsible for informing the application about the availability of readers.
 The readers of the same plugin are usually hardware linked to the same physical interface.</p>
+<p>In order to be as independent as possible from the type of hardware used, Keyple proposes a plugin API.</p>
+<p>The plugin API models the behavior of a smart card reader using a set of objects and methods that allow Keyple to work in the same way with different types of hardware.</p>
+<p>Plugins covering standard interfaces are proposed directly (PC/SC, Andrdoid NFC/OMAPI) but it is also possible to develop a plugin to address the particularities of a specific hardware (see
+<a href=../../../learn/developer-guide/create-a-reader-plugin/>Develop a plugin</a> and
+<a href=../../../external-resources/external-add-ons/>External add-ons</a>)</p>
 <p>Depending on its profile, an application may use different types of plugins to communicate with the different elements it needs (card, SAM).</p>
-<p>The Plugin interface essentially allows to list and retrieve the available readers.</p>
 <p>
 <a href=keyple-core.md#reader-access>More information</a></p>
 <hr>
+<h2 id=card-extension>Card extension</h2>
+<p>A card extension is an add-on that provides high-level access to the features of a particular card technology.</p>
+<p>The interface between the main Keyple service and a card extension is based on another API, the
+<a href=https://calypsonet.github.io/calypsonet-terminal-card-java-api/ target=_blank rel=noopener>standard Terminal Card API</a>, also proposed by the Calypso Networks Association.</p>
+<p>This API models the operations that can be performed with a smart card through a reader. It also provides facilities for certifying the behavior of a system with respect to a card.</p>
+<p>Two card extensions are provided natively by the Eclipse Keyple project:</p>
+<ul>
+<li>A generic card extension providing basic means to communicate with a card</li>
+<li>A Calypso card extension providing high level access to Calypso card features. It includes a Secure Session based transaction manager involving Calypso cards and SAMs.</li>
+</ul>
+<hr>
 <h2 id=smart-card-service>Smart card service</h2>
 <p>This is the <strong>Keyple Core</strong> service that concentrates the knowledge of active plugins and readers.</p>
-<p>At startup, a Keyple application must register the plugins it uses. Conversely, it can also unregister them.</p>
+<p>At startup, a Keyple application must register the add-ons (plugins and card extensions) it uses. Conversely, it can also unregister them.</p>
 <p>The <strong>SmartCardService</strong> will then make sure that the resources used are properly released.</p>
 <p>
 <a href=keyple-core.md#reader-access>More information</a></p>
@@ -232,6 +263,8 @@ The readers of the same plugin are usually hardware linked to the same physical 
 <p>The <strong>default selection</strong> principle consists in providing an observable reader with a set of selection cases corresponding to the expected cards and receiving notifications containing not only the card identification but also the result of all additional commands that the application will have attached.</p>
 <p>
 <a href=architecture/keyple-core.md#card-selection>More information</a></p>
+<p>The Keyple card selection process is generic, allowing the management of cards of different types
+or technologies within the same application.</p>
 <hr>
 <h2 id=abstract-smart-card>Abstract smart card</h2>
 <p>The <strong>abstract smart card</strong> concept is used by specific extensions (e.g. <strong>Keyple Calypso</strong>) and by the <strong>Keyple Core</strong> selection mechanism.
@@ -251,7 +284,7 @@ It corresponds to an abstract container model implemented by the extension speci
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Tue, Sep 21, 2021</p>
+<p>Last updated on Thu, Sep 30, 2021</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -261,8 +294,8 @@ It corresponds to an abstract container model implemented by the extension speci
 <h4>More</h4>
 <ul>
 <li><a href=https://github.com/eclipse/keyple title="View Source Code on GitHub"><i class="fab fa-github"></i> GitHub Repository</a></li>
-<li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing list</a></li>
-<li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Keyple's project page</a></li>
+<li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing List</a></li>
+<li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Eclipse Foundation Keyple page</a></li>
 </ul>
 </div>
 <div class="col-12 col-sm-4">

@@ -182,7 +182,7 @@ plugin = smartCardService.registerPlugin(new PcscPluginFactory(pluginExceptionHa
 &lt;/code>&lt;/pre>
 &lt;p>For the observation of the plugin itself, the application must provide
 an object implementing the &lt;code>PluginObserver&lt;/code> interface to the plugin
-after having casted it in &lt;code>ObservablePlugin&lt;/code>.&lt;/p>
+after having cast it in &lt;code>ObservablePlugin&lt;/code>.&lt;/p>
 &lt;pre>&lt;code class="language-java">((ObservablePlugin) plugin).addObserver(new PluginObserver());
 &lt;/code>&lt;/pre>
 &lt;p>The &lt;code>PluginObserver&lt;/code> interface requires the implementation of the

@@ -26,7 +26,7 @@
 <meta property="og:title" content="Distributed Application Developer Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user application using network communications."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-09-24T16:45:31+02:00">
+<meta property="article:modified_time" content="2021-09-29T17:02:37+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -83,9 +83,6 @@
 </div>
 </li>
 <li class=nav-item>
-<a class=nav-link href=../../../roadmap/><span>Roadmap</span></a>
-</li>
-<li class=nav-item>
 <a class=nav-link href=../../../learn/overview><span>Learn</span></a>
 </li>
 <li class="nav-item dropdown">
@@ -99,8 +96,24 @@
 <a class=dropdown-item href=../../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
 </div>
 </li>
-<li class=nav-item>
-<a class=nav-link href=../../../external-extensions-and-support/><span>External extensions & support</span></a>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../../community/roadmap/><span>Roadmap</span></a>
+<a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
+<a class=dropdown-item href=https://ci.eclipse.org/keyple/job/Keyple/><span>Continuous integration dashboard</span></a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
+<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
+</div>
 </li>
 </ul>
 </div>
@@ -144,8 +157,9 @@
 <li><a href=../../../learn/developer-guide/standalone-application/>Standalone application</a></li>
 <li class=active><a href=../../../learn/developer-guide/distributed-application/>Distributed application</a></li>
 <li><a href=../../../learn/developer-guide/calypso-application/>Calypso application</a></li>
-<li><a href=../../../learn/developer-guide/create-plugin/>Create a plugin</a></li>
-<li><a href=../../../learn/developer-guide/create-extension/>Create an extension</a></li>
+<li><a href=../../../learn/developer-guide/card-resource-service/>Card resource service</a></li>
+<li><a href=../../../learn/developer-guide/create-a-reader-plugin/>Create a reader plugin</a></li>
+<li><a href=../../../learn/developer-guide/create-a-card-extension/>Create a card extension</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -155,9 +169,6 @@
 <li><a href=../../../learn/keyple-in-depth/calypso-card/>Calypso card extension</a></li>
 <li><a href=../../../learn/keyple-in-depth/build-ci-process/>Build & CI</a></li>
 </ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/contribute/>Contribute to Keyple</a>
 </div>
 </ul>
 </nav>
@@ -201,8 +212,8 @@
 <p>In this way, you can manage transactions within a distributed architecture.</p>
 <p>The diagram below shows the location of the <strong>Keyple Distributed</strong> components in the software layers used in a distributed architecture:</p>
 <figure id=figure-keyple-distributed---solution-layers-overview>
-<a data-fancybox href=../../../media/uml/distributed-application/distributed_solution_layers_overview.svg data-caption="Keyple Distributed - Solution layers overview">
-<img src=../../../media/uml/distributed-application/distributed_solution_layers_overview.svg alt>
+<a data-fancybox href=../../../media/learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg data-caption="Keyple Distributed - Solution layers overview">
+<img src=../../../media/learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg alt>
 </a>
 <figcaption data-pre="Figure " data-post=: class=numbered>
 Keyple Distributed - Solution layers overview
@@ -277,8 +288,8 @@ Keyple Distributed - Solution layers overview
 <style>#concepts-table-1 table th:first-of-type{width:130px}</style>
 <p>The diagram below illustrates the main functional concepts through a standard use case:</p>
 <figure id=figure-keyple-distributed---concepts---main-use-case>
-<a data-fancybox href=../../../media/uml/distributed-application/distributed_concepts_1.svg data-caption="Keyple Distributed - Concepts - Main use case">
-<img src=../../../media/uml/distributed-application/distributed_concepts_1.svg alt>
+<a data-fancybox href=../../../media/learn/developer-guide/distributed-application/distributed_concepts_1.svg data-caption="Keyple Distributed - Concepts - Main use case">
+<img src=../../../media/learn/developer-guide/distributed-application/distributed_concepts_1.svg alt>
 </a>
 <figcaption data-pre="Figure " data-post=: class=numbered>
 Keyple Distributed - Concepts - Main use case
@@ -288,8 +299,8 @@ Keyple Distributed - Concepts - Main use case
 <p>These could be for example a ticketing reloading service, where the business logic would be on the terminal without local readers, with thin clients on A & B terminals communicating locally with the cards.</p>
 <p>In this use case, the <strong>Keyple Distributed</strong> solution is use for card communication.</p>
 <figure id=figure-keyple-distributed---concepts---one-remote-plugin-connected-to-many-local-services>
-<a data-fancybox href=../../../media/uml/distributed-application/distributed_concepts_2.svg data-caption="Keyple Distributed - Concepts - One remote plugin connected to many local services">
-<img src=../../../media/uml/distributed-application/distributed_concepts_2.svg alt>
+<a data-fancybox href=../../../media/learn/developer-guide/distributed-application/distributed_concepts_2.svg data-caption="Keyple Distributed - Concepts - One remote plugin connected to many local services">
+<img src=../../../media/learn/developer-guide/distributed-application/distributed_concepts_2.svg alt>
 </a>
 <figcaption data-pre="Figure " data-post=: class=numbered>
 Keyple Distributed - Concepts - One remote plugin connected to many local services
@@ -299,8 +310,8 @@ Keyple Distributed - Concepts - One remote plugin connected to many local servic
 <p>These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.</p>
 <p>In this use case, the <strong>Keyple Distributed</strong> solution is use for SAM communication.</p>
 <figure id=figure-keyple-distributed---concepts---many-remote-plugins-connected-to-one-local-service>
-<a data-fancybox href=../../../media/uml/distributed-application/distributed_concepts_3.svg data-caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service">
-<img src=../../../media/uml/distributed-application/distributed_concepts_3.svg alt>
+<a data-fancybox href=../../../media/learn/developer-guide/distributed-application/distributed_concepts_3.svg data-caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service">
+<img src=../../../media/learn/developer-guide/distributed-application/distributed_concepts_3.svg alt>
 </a>
 <figcaption data-pre="Figure " data-post=: class=numbered>
 Keyple Distributed - Concepts - Many remote plugins connected to one local service
@@ -584,8 +595,8 @@ Whatever the type of plugin, it is the responsibility of the server application 
 </table>
 <p>Here is the minimal algorithm to implement in a context with a <strong>single server instance</strong>:</p>
 <figure id=figure-keyple-distributed---synchronous-network-implementation>
-<a data-fancybox href=../../../media/uml/distributed-application/distributed_synchronous.svg data-caption="Keyple Distributed - Synchronous network implementation">
-<img src=../../../media/uml/distributed-application/distributed_synchronous.svg alt>
+<a data-fancybox href=../../../media/learn/developer-guide/distributed-application/distributed_synchronous.svg data-caption="Keyple Distributed - Synchronous network implementation">
+<img src=../../../media/learn/developer-guide/distributed-application/distributed_synchronous.svg alt>
 </a>
 <figcaption data-pre="Figure " data-post=: class=numbered>
 Keyple Distributed - Synchronous network implementation
@@ -627,8 +638,8 @@ Keyple Distributed - Synchronous network implementation
 </table>
 <p>Here is the minimal algorithm to implement:</p>
 <figure id=figure-keyple-distributed---asynchronous-network-implementation>
-<a data-fancybox href=../../../media/uml/distributed-application/distributed_asynchronous.svg data-caption="Keyple Distributed - Asynchronous network implementation">
-<img src=../../../media/uml/distributed-application/distributed_asynchronous.svg alt>
+<a data-fancybox href=../../../media/learn/developer-guide/distributed-application/distributed_asynchronous.svg data-caption="Keyple Distributed - Asynchronous network implementation">
+<img src=../../../media/learn/developer-guide/distributed-application/distributed_asynchronous.svg alt>
 </a>
 <figcaption data-pre="Figure " data-post=: class=numbered>
 Keyple Distributed - Asynchronous network implementation
@@ -664,7 +675,7 @@ Keyple Distributed - Asynchronous network implementation
 <div class=post-nav>
 <div class=post-nav-item>
 <div class=meta-nav>Previous</div>
-<a href=../../../learn/developer-guide/standalone-application/ rel=next>Standalone application</a>
+<a href=../../../learn/developer-guide/standalone-application/ rel=next>Standalone Application Developer Guide</a>
 </div>
 <div class=post-nav-item>
 <div class=meta-nav>Next</div>
@@ -674,7 +685,7 @@ Keyple Distributed - Asynchronous network implementation
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Fri, Sep 24, 2021</p>
+<p>Last updated on Wed, Sep 29, 2021</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -684,8 +695,8 @@ Keyple Distributed - Asynchronous network implementation
 <h4>More</h4>
 <ul>
 <li><a href=https://github.com/eclipse/keyple title="View Source Code on GitHub"><i class="fab fa-github"></i> GitHub Repository</a></li>
-<li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing list</a></li>
-<li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Keyple's project page</a></li>
+<li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing List</a></li>
+<li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Eclipse Foundation Keyple page</a></li>
 </ul>
 </div>
 <div class="col-12 col-sm-4">

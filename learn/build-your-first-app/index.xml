@@ -14,11 +14,11 @@ Calypso Card (contactless smart card, NFC mobile phone with a Calypso applet or 
 &lt;a href="../../components-java/core/">Keyple Service Java Library&lt;/a>
 which is the base component to which all the others refer,&lt;/li>
 &lt;li>
-&lt;a href="../../components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib/">Keyple Plugin PC/SC&lt;/a>
-add-on to provide the ability to manage PC/SC readers,&lt;/li>
-&lt;li>
 &lt;a href="../../components-java/card-extensions/keyple-card-calypso-java-lib/">Keyple Card Calypso&lt;/a>
-add-on to handle the commands sent to the Calypso card and the Calypso SAM.&lt;/li>
+add-on to handle the commands sent to the Calypso card and the Calypso SAM,&lt;/li>
+&lt;li>
+&lt;a href="../../components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib/">Keyple Plugin PC/SC&lt;/a>
+add-on to provide the ability to manage PC/SC readers.&lt;/li>
 &lt;/ul>
 &lt;p>In this guide
 &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation
@@ -129,7 +129,7 @@ cardReader.getExtension(PcscReader.class).setContactless(true);&lt;/code>&lt;/pr
 &lt;h3 id="retrieve-and-check-the-calypso-card-extension-service">Retrieve and check the Calypso card extension service&lt;/h3>
 &lt;p>The Calypso card extension service will provide means to handle cards, SAMs and to manage card transactions.
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('8', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-ini" id="code-8"> // Get the Calypso card extension service
+&lt;pre>&lt;code class="language-java" id="code-8"> // Get the Calypso card extension service
 CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();
 // Verify that the extension&amp;#39;s API level is consistent with the current service.
 smartCardService.checkCardExtension(calypsoExtensionService);&lt;/code>&lt;/pre>&lt;/p>

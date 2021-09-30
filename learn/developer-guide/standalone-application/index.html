@@ -23,14 +23,14 @@
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
 <meta property="og:url" content="https://keyple.org/learn/developer-guide/standalone-application/">
-<meta property="og:title" content="Standalone application | Eclipse Keyple">
+<meta property="og:title" content="Standalone Application Developer Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user standalone application."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-09-21T15:53:16+02:00">
+<meta property="article:modified_time" content="2021-09-30T15:32:32+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
-<title>Standalone application | Eclipse Keyple</title>
+<title>Standalone Application Developer Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents>
 <script>const isSiteThemeDark=!1</script>
@@ -83,9 +83,6 @@
 </div>
 </li>
 <li class=nav-item>
-<a class=nav-link href=../../../roadmap/><span>Roadmap</span></a>
-</li>
-<li class=nav-item>
 <a class=nav-link href=../../../learn/overview><span>Learn</span></a>
 </li>
 <li class="nav-item dropdown">
@@ -99,8 +96,24 @@
 <a class=dropdown-item href=../../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
 </div>
 </li>
-<li class=nav-item>
-<a class=nav-link href=../../../external-extensions-and-support/><span>External extensions & support</span></a>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../../community/roadmap/><span>Roadmap</span></a>
+<a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
+<a class=dropdown-item href=https://ci.eclipse.org/keyple/job/Keyple/><span>Continuous integration dashboard</span></a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
+<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
+</div>
 </li>
 </ul>
 </div>
@@ -144,8 +157,9 @@
 <li class=active><a href=../../../learn/developer-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/developer-guide/distributed-application/>Distributed application</a></li>
 <li><a href=../../../learn/developer-guide/calypso-application/>Calypso application</a></li>
-<li><a href=../../../learn/developer-guide/create-plugin/>Create a plugin</a></li>
-<li><a href=../../../learn/developer-guide/create-extension/>Create an extension</a></li>
+<li><a href=../../../learn/developer-guide/card-resource-service/>Card resource service</a></li>
+<li><a href=../../../learn/developer-guide/create-a-reader-plugin/>Create a reader plugin</a></li>
+<li><a href=../../../learn/developer-guide/create-a-card-extension/>Create a card extension</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -156,9 +170,6 @@
 <li><a href=../../../learn/keyple-in-depth/build-ci-process/>Build & CI</a></li>
 </ul>
 </div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/contribute/>Contribute to Keyple</a>
-</div>
 </ul>
 </nav>
 </div>
@@ -166,19 +177,440 @@
 <ul class="nav toc-top">
 <li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
 </ul>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#overview>Overview</a></li>
+<li><a href=#before-you-start>Before you start</a></li>
+<li><a href=#operating-mode>Operating mode</a></li>
+<li><a href=#the-smart-card-service>The smart card service</a></li>
+<li><a href=#set-up-a-plugin>Set up a plugin</a>
+<ul>
+<li><a href=#access-to-a-plugin>Access to a plugin</a></li>
+<li><a href=#configure-a-plugin>Configure a plugin</a></li>
+<li><a href=#monitor-a-plugin>Monitor a plugin</a></li>
+</ul>
+</li>
+<li><a href=#set-up-a-reader>Set up a reader</a>
+<ul>
+<li><a href=#access-to-a-reader>Access to a reader</a></li>
+<li><a href=#configure-a-reader>Configure a reader</a></li>
+<li><a href=#monitor-a-reader>Monitor a reader</a></li>
+</ul>
+</li>
+<li><a href=#select-a-card>Select a card</a>
+<ul>
+<li><a href=#prepare-a-scenario>Prepare a scenario</a></li>
+<li><a href=#run-a-scenario>Run a scenario</a></li>
+<li><a href=#schedule-a-scenario>Schedule a scenario</a></li>
+</ul>
+</li>
+<li><a href=#perform-a-transaction>Perform a transaction</a></li>
+<li><a href=#unregister-a-plugin>Unregister a plugin</a></li>
+<li><a href=#api>API</a></li>
+<li><a href=#examples>Examples</a></li>
+<li><a href=#download>Download</a></li>
+</ul>
+</nav>
 </div>
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
 <div class=docs-article-container>
-<h1>Standalone application</h1>
+<h1>Standalone Application Developer Guide</h1>
 <div class=article-style>
 <hr>
+<h2 id=overview>Overview</h2>
+<p>A standalone application is an application that runs in a device in contact
+with the end user.</p>
+<p>It has at least one local smart card reader and manages itself the
+interaction with the user.</p>
+<p>The diagram below illustrates the organization of a standalone application based on Keyple:
+<figure>
+<a data-fancybox href=../../../media/learn/developer-guide/standalone-application/Local_Application_Components_Overview.svg>
+<img src=../../../media/learn/developer-guide/standalone-application/Local_Application_Components_Overview.svg alt>
+</a>
+</figure>
+</p>
+<hr>
+<h2 id=before-you-start>Before you start</h2>
+<ol>
+<li>If you are new to Keyple, read the
+<a href=../../../learn/overview/key-concepts/>key concepts</a> page and familiarize yourself with the fundamentals behind Keyple.</li>
+<li>Any implementation of a Keyple application starts with the
+setting up of <strong>Keyple Service</strong>, please study the
+<a href=#workflow>workflow</a> proposed in the following chapter.</li>
+<li>Explore the
+<a href=https://keyple.org/components-java/core/keyple-service-java-lib/>Keyple Service component page</a> to discover the features and the
+possibilities offered by its API.</li>
+<li>Take inspiration from the
+<a href=#examples>examples</a>.</li>
+<li>Follow the explanations given in the
+<a href=https://keyple.org/learn/build-your-first-app/java-app/>Build your first app</a> section to configure your environment (Gradle / Maven).</li>
+<li>Using the
+<a href=https://keyple.org/components-java/>Java components</a> pages, import
+<strong>Keyple Service</strong> and the optional add-ons into your project and start playing with <strong>Keyple</strong>.</li>
+<li>Don&rsquo;t forget to explore the potential of Keyple card-specific
+extensions such as
+<a href=https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/><strong>Keyple Calypso</strong></a>.</li>
+</ol>
+<hr>
+<h2 id=operating-mode>Operating mode</h2>
+<ol>
+<li>Access to the
+<a href=#the-smart-card-service>smart card service</a></li>
+<li>
+<a href=#set-up-a-plugin>Set up a plugin</a></li>
+<li>
+<a href=#set-up-a-reader>Set up a reader</a></li>
+<li>
+<a href=#select-a-card>Select a card</a></li>
+<li>
+<a href=#perform-a-transaction>Perform a transaction</a></li>
+</ol>
+<h2 id=the-smart-card-service>The smart card service</h2>
+<p>As part of <strong>Keyple Service</strong> component, the smart card service is the main service of Keyple. Its role is to centralize the add-on resources and to manage their
+life cycle.</p>
+<p>The service is accessible by invoking the <code>SmartCardServiceProvider.getService()</code> static method.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
+<pre><code class=language-java id=code-6>SmartCardService smartCardService = SmartCardServiceProvider.getService();</code></pre>
+<hr>
+<h2 id=set-up-a-plugin>Set up a plugin</h2>
+<p>The Keyple application developer will choose the reader plugins he needs
+according to the equipment on which the Keyple application will run.</p>
+<p>For example, if the environment is PC-based, the PC/SC plugin will probably, but not necessarily, be chosen.
+For an Andoid terminal environment, the plugin could be the standard
+Android NFC plugin or one of the plugins available from the industrial
+partners of the project.</p>
+<p>For a complete list of available plugins, please see
+the
+<a href=https://keyple.org/components-java/standard-reader-plugins/>standard reader plugins</a>,
+the
+<a href=https://keyple.org/components-java/specific-reader-plugins/>specific reader plugins</a>
+or one of our
+<a href=https://keyple.org/external-resources/external-add-ons/>partners reader plugins</a>.</p>
 <div class="alert alert-note">
 <div>
-Coming soon
+A new plugin can also be <a href=../../../learn/developer-guide/create-a-reader-plugin/>created</a> if there is no plugin for the intended hardware.
 </div>
 </div>
+<h3 id=access-to-a-plugin>Access to a plugin</h3>
+<p>To access a plugin at the application level, it must first be registered with the smart card service via the <code>registerPlugin(...)</code> method.
+It will be necessary to provide an implementation of the <code>KeyplePluginExtensionFactory</code> interface.
+This factory is provided by the API of the used plugin.</p>
+<p>Depending on the capabilities of the hardware, the plugin factory may or may not offer specific configuration options.
+Please refer to the API of the plugin component you are considering to see what is appropriate for your application.</p>
+<p>The registration provides in return an implementation of one of the <code>Plugin</code>, <code>ObservablePlugin</code> or <code>PoolPlugin</code> interfaces depending on the type of target plugin.</p>
+<div class="alert alert-note">
+<div>
+A plugin is identified by a unique name in the system so that it can be retrieved at any time from the smart card service.
+</div>
+</div>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('12',this)">Copy</button></div>
+<pre><code class=language-java id=code-12>// Here is for example the registration of the PC/SC plugin
+Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());</code></pre>
+<h3 id=configure-a-plugin>Configure a plugin</h3>
+<p>Some plugin types may offer specific options.</p>
+<p>Static options are usually directly exposed by the plugin factory API while dynamic options are exposed by the plugin extension API.</p>
+<p>To access the plugin extension it is necessary to invoke the <code>getExtension(...)</code> method on the registered <code>Plugin</code> by specifying the expected class of the extension which must extends the <code>KeyplePluginExtension</code> interface.
+After that, the dedicated methods are available from the resulting object.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('13',this)">Copy</button></div>
+<pre><code class=language-java id=code-13>// Here is a snippet showing the usage of the extension of the Stub plugin
+plugin
+    .getExtension(StubPlugin.class)
+    .unplugReader(&#34;READER_1&#34;);</code></pre>
+<h3 id=monitor-a-plugin>Monitor a plugin</h3>
+<div class="alert alert-warning">
+<div>
+The plugin monitoring only applies to hardware environments in which the readers are removable.
+Moreover, only plugins of type <code>ObservablePlugin</code> can be monitored.
+</div>
+</div>
+<p>The observation of reader connections and disconnections is achieved
+through a background task managed by <strong>Keyple Service</strong>.</p>
+<p>To enable these observation mechanisms, it is imperative to provide:</p>
+<ul>
+<li>a plugin observer implementing the <code>PluginObserverSpi</code> interface to be notified of plugin events,</li>
+<li>an exception handler implementing the <code>PluginObservationExceptionHandlerSpi</code> interface to be notified of errors that may occur during the monitoring or events notifications.</li>
+</ul>
+<p>These two interfaces are available in the <code>org.eclipse.keyple.core.service.spi</code> package of the <strong>Keyple Service</strong> component.</p>
+<p>Here is an example of a plugin observer class including an exception handler:</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('15',this)">Copy</button></div>
+<pre><code class=language-java id=code-15>class PluginObserver implements PluginObserverSpi, PluginObservationExceptionHandlerSpi {
+
+    @Override
+    public void onPluginEvent(PluginEvent event) {
+        switch (event.getEventType()) {
+            case READER_CONNECTED:
+                // here the processing to be done when a reader is connected
+                ...
+                break;
+            case READER_DISCONNECTED:
+                // here the processing to be done when a reader is disconnected
+                ...
+                break;
+            default:
+                break;
+        }
+    }
+    
+    @Override
+    public void onPluginObservationError(String pluginName, Throwable e) {
+        // handle here the plugin exceptions raised while observing the readers
+        ...
+    }
+}</code></pre>
+<p>In order to access the dedicated setters, the plugin has to be cast to <code>ObservablePlugin</code>.</p>
+<p>Since adding an observer will cause the <strong>Keyple Service</strong> to check for the presence of an exception handler,
+the definition of the exception handler must be done first.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('16',this)">Copy</button></div>
+<pre><code class=language-java id=code-16>PluginObserver pluginObserver = new PluginObserver();
+((ObservablePlugin) plugin).setPluginObservationExceptionHandler(pluginObserver);
+((ObservablePlugin) plugin).addObserver(pluginObserver);</code></pre>
+<div class="alert alert-note">
+<div>
+Note that the monitoring thread only works if there is at least one observer registered, and the notification process is sequential and synchronous.
+</div>
+</div>
+<hr>
+<h2 id=set-up-a-reader>Set up a reader</h2>
+<p>The readers are provided by the plugins, that&rsquo;s why you have to
+<a href=#set-up-a-plugin>set up the plugin</a> first.</p>
+<h3 id=access-to-a-reader>Access to a reader</h3>
+<p>The hardware readers already connected are referenced in the system during the registration of the plugin.
+For observable plugins, the references of the connected readers are updated in real time.</p>
+<p>Readers are accessible directly from the associated <code>Plugin</code> instance.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('18',this)">Copy</button></div>
+<pre><code class=language-java id=code-18>// Here is an example to get the 1st available reader
+String readerName = plugin.getReaderNames().get(0);
+Reader reader = plugin.getReader(readerName);</code></pre>
+<div class="alert alert-note">
+<div>
+Depending on the type of plugin, the reader names are
+more or less dynamic (e.g. a PC/SC based system vs. an embedded
+terminal), it is sometimes necessary to implement an identification
+mechanism in order to assign the right reader to the right place in the
+system (for example by using regular expressions).
+</div>
+</div>
+<h3 id=configure-a-reader>Configure a reader</h3>
+<p>There are two types of configuration. Their availability depends on the characteristics of the reader:</p>
+<ul>
+<li>
+<p>The reader is an instance of <code>ConfigurableReader</code>:<br>
+It is then possible to activate or deactivate the protocols supported by the reader.</p>
+<div class="alert alert-note"><div>Use of these methods may be optional if the application does not intend to target products by protocol filtering.</div></div>
+</li>
+<li>
+<p>The reader&rsquo;s extension API exposes specific options:<br>
+To access the reader extension it is necessary to invoke the <code>getExtension(...)</code> method on the <code>Reader</code> instance by specifying the expected class of the extension which must extends the <code>KeypleReaderExtension</code> interface.
+After that, the dedicated methods, if any, are available from the resulting object.
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
+<pre><code class=language-java id=code-20>// Here is a snippet showing the usage of the extension of the Stub reader
+reader
+    .getExtension(StubReader.class)
+    .removeCard();</code></pre></p>
+</li>
+</ul>
+<h3 id=monitor-a-reader>Monitor a reader</h3>
+<div class="alert alert-warning">
+<div>
+The reader monitoring only applies to hardware environments in which the smart cards are removable.
+Moreover, only readers of type <code>ObservableReader</code> can be monitored.
+</div>
+</div>
+<div class="alert alert-note">
+<div>
+Observation of the readers is optional in Keyple. It facilitates an event-driven programming mode, but an application
+developer can choose not to observe a reader, either because this reader is not designed to manage card insertions/withdrawals (for example an
+Android OMAPI reader or a SAM reader), or because the application is designed to directly manage the presence of a card (see to <code>isCardPresent</code> method of the
+<code>Reader</code> interface).
+</div>
+</div>
+<p>The observation of card insertions and removals is achieved
+through a background task managed by <strong>Keyple Service</strong>.</p>
+<p>To enable these observation mechanisms, it is imperative to provide:</p>
+<ul>
+<li>a reader observer implementing the <code>CardReaderObserverSpi</code> interface to be notified of reader events,</li>
+<li>an exception handler implementing the <code>CardReaderObservationExceptionHandlerSpi</code> interface to be notified of errors that may occur during the monitoring or events notifications.</li>
+</ul>
+<p>These two interfaces are available in the <code>org.calypsonet.terminal.reader.spi</code> package of the <strong>Calypsonet Terminal Reader API</strong> component.</p>
+<p>Here is an example of a reader observer class including an exception handler:</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('23',this)">Copy</button></div>
+<pre><code class=language-java id=code-23>class ReaderObserver implements CardReaderObserverSpi, CardReaderObservationExceptionHandlerSpi {
+
+    @Override
+    public void onReaderEvent(CardReaderEvent event) {
+        switch (event.getType()) {
+            case CardReaderEvent.Type.CARD_INSERTED:
+                // here the processing to be done when a card is inserted
+                ...
+                break;
+            case CardReaderEvent.Type.CARD_REMOVED:
+                // here the processing to be done when a card is removed
+                ...
+                break;
+            default:
+                break;
+        }
+    }
+    
+    @Override
+    public void onReaderObservationError(String pluginName, String readerName, Throwable e) {
+        // handle here the reader exceptions raised while observing the cards
+        ...
+    }
+}</code></pre>
+<p>In order to access the dedicated setters, the reader has to be cast to <code>ObservableReader</code>.</p>
+<p>Since adding an observer will cause the <strong>Keyple Service</strong> to check for the presence of an exception handler,
+the definition of the exception handler must be done first.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('24',this)">Copy</button></div>
+<pre><code class=language-java id=code-24>ReaderObserver readerObserver = new ReaderObserver();
+((ObservableReader) reader).setReaderObservationExceptionHandler(readerObserver);
+((ObservableReader) reader).addObserver(readerObserver);
+((ObservableReader) reader).startCardDetection(ObservableCardReader.DetectionMode.REPEATING);</code></pre>
+<div class="alert alert-note">
+<div>
+Note that the <code>startCardDetection(...)</code> and <code>stopCardDetection()</code> methods start and stop the monitoring thread.
+The API offers different options to manage the needs around card detection.<br>
+Moreover, the notification process is sequential and synchronous.
+</div>
+</div>
+<hr>
+<h2 id=select-a-card>Select a card</h2>
+<p>The starting point of any processing done with a card in the Keyple enrivonment, is to reference this card in the system.
+It is the role of the selection step to obtain this reference.</p>
+<p>You have first to prepare a selection scenario defining the eligible cards for a transaction, then to execute the scenario when a card is present.</p>
+<h3 id=prepare-a-scenario>Prepare a scenario</h3>
+<p>To prepare a scenario, you have to get a new instance of <code>CardSelectionManager</code> from the smart card service using the <code>createCardSelectionManager()</code> method,
+then configure it with scenario cases using dedicated methods provided by one or more card extensions.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('26',this)">Copy</button></div>
+<pre><code class=language-java id=code-26>CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();```</code></pre>
+<p>The <code>prepareSelection(...)</code> method allows to add a selection case to the scenario by providing an implementation of the <code>CardSelection</code> interface and return the index of the added case in order to be able to identify later the case that matched.</p>
+<p>Please note that the order of addition is important because it will impact the selection cycle and favor the performance of the first added cases.</p>
+<p>Providing one or more selection cases to the <code>CardSelectionManager</code> constitutes a selection scenario.
+The scenario is run by <strong>Keyple Service</strong> when a card is detected, the different cases being evaluated
+sequentially as long as the card does not match the criteria of the defined cases.</p>
+<p>The selection process for a case offers several options for selecting a processing based on the type of card presented to the reader.</p>
+<p>It is based on a filtering process according to three possible criteria,
+each of which is optional:</p>
+<ul>
+<li>the communication protocol of the card (usually also identifying a
+card technology)</li>
+<li>the power-on data collected by the reader when the card is detected (e.g. the Answer To Reset)</li>
+<li>the ISO standard application identifier (AID) used to perform a Select Application command.</li>
+</ul>
+<p>When a card is inserted, it is evaluated according to these criteria and
+will be given the status &ldquo;selected&rdquo; or not.</p>
+<p>When a card is not selected, no other operation will be possible with it.</p>
+<p>The same card could correspond to several cases of the same scenario, especially when filtering by AID.
+By default, the selection process will stop at the first case that matches.
+It is however possible to choose another strategy using the <code>setMultipleSelectionMode()</code> method.
+In this case, the process will continue to the last selection case in the scenario and return all results, but only the last matching application will be selected.</p>
+<p>When a card is selected, the <code>CardSelectionManager</code> will make available the result
+as a <code>SmartCard</code> object containing all the information known about the card at that stage.</p>
+<p>Depending on the card extension that is used, this <code>SmartCard</code> object can be cast to a more
+comprehensive object with specific features defined by the extension.</p>
+<p>In addition to the selection process itself, specific APDU commands may be sent to the card if the selection is successful.
+The output of these commands is available in the instance of the <code>SmartCard</code> object.</p>
+<p>The following snippet shows the preparation of two selection cases using the generic card extension:
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('27',this)">Copy</button></div>
+<pre><code class=language-java id=code-27>// prepare a selection for application 1
+int firstCaseIndex = cardSelectionManager.prepareSelection(
+    GenericExtensionService.getInstance()
+        .createCardSelection()
+        .filterByDfName(AID1));
+
+// prepare a selection for application 2
+int secondCaseIndex = cardSelectionManager.prepareSelection(
+    GenericExtensionService.getInstance()
+        .createCardSelection()
+        .filterByDfName(AID2));</code></pre></p>
+<h3 id=run-a-scenario>Run a scenario</h3>
+<p>If we know that the card is in the reader it is possible to run a selection scenario by invoking the <code>processCardSelectionScenario(...)</code> method on the corresponding reader.
+The result of the selection is then directly returned.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('28',this)">Copy</button></div>
+<pre><code class=language-java id=code-28>// Actual card communication: run the selection scenario.
+CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);
+
+// Check the selection result.
+if (selectionResult.getActiveSmartCard() == null) {
+  throw new IllegalStateException(&#34;The selection of the card failed.&#34;);
+}
+
+// Get the SmartCard resulting of the selection.
+SmartCard smartCard = selectionResult.getActiveSmartCard();</code></pre>
+<h3 id=schedule-a-scenario>Schedule a scenario</h3>
+<p>If the reader is of type <code>ObservableReader</code> then it is possible to schedule in advance the execution of a selection scenario as soon as a card is presented.</p>
+<p>Invoke the <code>scheduleCardSelectionScenario(...)</code> to register the previously prepared scenario in the observable reader.</p>
+<p>In this case, it is necessary to register a reader observer and to have started the card detection in order to be able to retrieve the result of the selection which will be contained in a <code>ReaderEvent</code>.</p>
+<p>Use the <code>parseScheduledCardSelectionsResponse(...)</code> method to extract the selection result from the event.</p>
+<p>Note that the scheduling of the execution of a scenario includes two options:</p>
+<ul>
+<li>the <code>DetectionMode</code> defining the expected behavior regarding the card detection allowing to automatically restart it or not.</li>
+<li>the <code>NotificationMode</code> allowing to choose if only the cards matching the selection (successfully selected) should trigger an event.</li>
+</ul>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('29',this)">Copy</button></div>
+<pre><code class=language-java id=code-29>...
+@Override
+public void onReaderEvent(CardReaderEvent event) {
+    switch (event.getType()) {
+        case CardReaderEvent.Type.CARD_MATCHED:
+            // Retrieve the selected smart card
+            SmartCard smartCard =
+                cardSelectionManager
+                    .parseScheduledCardSelectionsResponse(event.getScheduledCardSelectionsResponse())
+                    .getActiveSmartCard();
+            // Perform the transaction
+            ...
+            break;
+        default:
+            break;
+    }
+    if (event.getType() == CardReaderEvent.Type.CARD_INSERTED
+        || event.getType() == CardReaderEvent.Type.CARD_MATCHED) {
+      // Ensures that the communication channel is closed, regardless of the processing with the card.
+      ((ObservableReader) (reader)).finalizeCardProcessing();
+    }
+}
+...</code></pre>
+<div class="alert alert-note">
+<div>
+<p>The <code>finalizeCardProcessing()</code> method must be invoked at the end of the transaction to ensure that the communication channel is closed.
+This switches the underlying monitoring thread into a state of waiting for the card to be removed.</p>
+<p>Not doing this can lead to blocking states of the card insertion/removal monitoring mechanism.</p>
+</div>
+</div>
+<hr>
+<h2 id=perform-a-transaction>Perform a transaction</h2>
+<p>Once the smart card is referenced in the system it is possible to perform the desired transaction using the appropriate card extension.</p>
+<p>When the transaction is completed, if the reader is observed, it is imperative to invoke the <code>finalizeCardProcessing()</code> method on the observable reader (see the above note).</p>
+<hr>
+<h2 id=unregister-a-plugin>Unregister a plugin</h2>
+<p>To shut down a Keyple application properly, it is necessary to free the resources and in particular to stop the observation threads.</p>
+<p>This is done by unregistering the plugins in the following way:</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('31',this)">Copy</button></div>
+<pre><code class=language-java id=code-31>smartCardService.unregisterPlugin(plugin.getName());</code></pre>
+<hr>
+<h2 id=api>API</h2>
+<ul>
+<li>
+<a href=https://calypsonet.github.io/calypsonet-terminal-reader-java-api target=_blank rel=noopener>Calypsonet Terminal Reader API</a></li>
+<li>
+<a href=https://eclipse.github.io/keyple-common-java-api target=_blank rel=noopener>Keyple Common API</a></li>
+<li>
+<a href=https://eclipse.github.io/keyple-service-java-lib target=_blank rel=noopener>Keyple Service API</a></li>
+</ul>
+<hr>
+<h2 id=examples>Examples</h2>
+<ul>
+<li>
+<a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>Java examples</a></li>
+</ul>
+<hr>
+<h2 id=download>Download</h2>
+<ul>
+<li>
+<a href=https://keyple.org/components-java/overview/configuration-wizard/>Java components</a></li>
+</ul>
 </div>
 <div class=article-widget>
 <div class=post-nav>
@@ -190,7 +622,7 @@ Coming soon
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Tue, Sep 21, 2021</p>
+<p>Last updated on Thu, Sep 30, 2021</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -200,8 +632,8 @@ Coming soon
 <h4>More</h4>
 <ul>
 <li><a href=https://github.com/eclipse/keyple title="View Source Code on GitHub"><i class="fab fa-github"></i> GitHub Repository</a></li>
-<li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing list</a></li>
-<li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Keyple's project page</a></li>
+<li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing List</a></li>
+<li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Eclipse Foundation Keyple page</a></li>
 </ul>
 </div>
 <div class="col-12 col-sm-4">
