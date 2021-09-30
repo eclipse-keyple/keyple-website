@@ -17,9 +17,8 @@ with the end user.
 It has at least one local smart card reader and manages itself the
 interaction with the user.
 
-The diagram below illustrates the organization of a standalone application based on Keyple: {{< figure library="true"
-src="learn/developer-guide/standalone-application/Local_Application_Components_Overview.svg"
-title="" >}}
+The diagram below illustrates the organization of a standalone application based on Keyple: 
+{{< figure library="true" src="learn/developer-guide/standalone-application/Local_Application_Components_Overview.svg" caption="" >}}
 
 ---
 ## Before you start
@@ -42,13 +41,13 @@ title="" >}}
 ---
 ## Operating mode
 
-1. Access to the [smart card service](#smart-card-service)
+1. Access to the [smart card service](#the-smart-card-service)
 2. [Set up a plugin](#set-up-a-plugin)
 3. [Set up a reader](#set-up-a-reader)
 4. [Select a card](#select-a-card)
 5. [Perform a transaction](#perform-a-transaction)
 
-## Smart card service
+## The smart card service
 
 As part of **Keyple Service** component, the smart card service is the main service of Keyple. Its role is to centralize the add-on resources and to manage their
 life cycle.
@@ -287,7 +286,7 @@ It is the role of the selection step to obtain this reference.
 
 You have first to prepare a selection scenario defining the eligible cards for a transaction, then to execute the scenario when a card is present.
 
-### Prepare a selection scenario
+### Prepare a scenario
 
 To prepare a scenario, you have to get a new instance of `CardSelectionManager` from the smart card service using the `createCardSelectionManager()` method,
 then configure it with scenario cases using dedicated methods provided by one or more card extensions.
@@ -347,7 +346,7 @@ int secondCaseIndex = cardSelectionManager.prepareSelection(
         .filterByDfName(AID2));
 {{< /code >}}
 
-### Run a selection scenario
+### Run a scenario
 
 If we know that the card is in the reader it is possible to run a selection scenario by invoking the `processCardSelectionScenario(...)` method on the corresponding reader.
 The result of the selection is then directly returned.
@@ -365,7 +364,7 @@ if (selectionResult.getActiveSmartCard() == null) {
 SmartCard smartCard = selectionResult.getActiveSmartCard();
 {{< /code >}}
 
-### Schedule a selection scenario
+### Schedule a scenario
 
 If the reader is of type `ObservableReader` then it is possible to schedule in advance the execution of a selection scenario as soon as a card is presented.
 

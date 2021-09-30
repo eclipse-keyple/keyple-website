@@ -29,20 +29,11 @@ hide <<grey>> stereotype
 
 ' == CONTENT ==
 
-[Hardware Reader(s)] as reader <<red>>
-' [Smart card] as smartcard <<green>>
-
-package "Terminal with 'local' readers" {
-    [Application] as appA
-    package "Keyple" as localKeyple {
-        [Keyple Service and add-ons] as localKeypleLibs <<purple>>
-    }
-}
-
-
+[Hardware reader(s)] as reader <<red>>
+[Application] as appA
+[Keyple Service & add-ons] as localKeypleLibs <<purple>>
 
 appA - localKeypleLibs
 localKeypleLibs - reader
-
 
 @enduml
