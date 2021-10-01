@@ -26,7 +26,7 @@
 <meta property="og:title" content="Keyple's main features | Eclipse Keyple">
 <meta property="og:description" content="Keyple makes contactless ticketing accessible."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-09-21T15:53:16+02:00">
+<meta property="article:modified_time" content="2021-10-01T15:12:02+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -70,13 +70,13 @@
 <div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
 <ul class="navbar-nav d-md-inline-flex">
 <li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple™</span><span class=caret></span>
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span>
 </a>
 <div class=dropdown-menu>
 <a class=dropdown-item href=../../what-is-keyple/overview/><span>Overview</span></a>
-<a class=dropdown-item href=../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple™?</span></a>
+<a class=dropdown-item href=../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
 <a class=dropdown-item href=../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
-<a class=dropdown-item href=../../#adopters><span>Who is using Eclipse Keyple™?</span></a>
+<a class=dropdown-item href=../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
 <a class=dropdown-item href=../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
 <a class=dropdown-item href=../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
 <a class=dropdown-item href=../../#news><span>News</span></a>
@@ -102,8 +102,10 @@
 <div class=dropdown-menu>
 <a class=dropdown-item href=../../community/contributing/><span>Contributing</span></a>
 <a class=dropdown-item href=../../community/roadmap/><span>Roadmap</span></a>
-<a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
 <a class=dropdown-item href=https://ci.eclipse.org/keyple/job/Keyple/><span>Continuous integration dashboard</span></a>
+<a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
+<a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
+<a class=dropdown-item href=https://github.com/eclipse/keyple/><span>GitHub home repository</span></a>
 </div>
 </li>
 <li class="nav-item dropdown">
@@ -130,18 +132,18 @@
 <div class=article-metadata>
 <span class=article-date>
 Last updated on
-Tue, Sep 21, 2021
+Fri, Oct 1, 2021
 </span>
 </div>
 </div>
 <div class=article-container>
 <div class=article-style>
-<p>The goal of Eclipse Keyple™ is to allow developers to easily implement fast and secure off-line contactless transactions
-(using NFC cards, mobile phones, …) based on ticket processing integrating technologies other than Calypso®the Calypso standard.</p>
-<p>More specifically, Keyple™ is a set of open source libraries that will initially be available in Java and C++,
+<p>The goal of <strong>Eclipse Keyple®</strong> is to allow developers to easily implement fast and secure off-line contactless transactions
+(using NFC cards, mobile phones, …) based on ticket processing integrating technologies other than <strong>Calypso®</strong> the Calypso standard.</p>
+<p>More specifically, Keyple is a set of open source libraries that will initially be available in Java and C++,
 designed on the same mutual Object-Oriented Model compatible with any terminal architecture: mobile, embedded
 or server and Interoperable with any smart card reader solution: standard or proprietary, local or remote.</p>
-<p>To fully understand how Keyple™ works, it is important to discern two main components of contactless ticketing technology:</p>
+<p>To fully understand how Keyple works, it is important to discern two main components of contactless ticketing technology:</p>
 <ul>
 <li><strong>Smart Card Readers</strong>: Readers are situated at the entrance and exit of events, venues and transport sites.
 For example, a smart card reader could be a terminal, a portable scanning laser gun, or a swipe tablet area that is embedded
@@ -153,20 +155,20 @@ and, in milliseconds real-time, analyze the balance of the ticket, confirm the p
 on the ticket (for example, to confirm that the ticket holder can enter the gate or vehicle, and then to deduct the cost
 of the journey and calculate the new balance).</li>
 </ul>
-<p><strong>According to this scheme, Keyple™ defines two layers:</strong></p>
+<p><strong>According to this scheme, Keyple defines two layers:</strong></p>
 <ul>
 <li><strong>Smart Card readers</strong> are integrated through plugins implementing the SE Proxy API which manages the communications with
 a smart card through any type of contactless or contact reader (local, remote, standard, proprietary…)</li>
-<li><strong>Ticketing applications</strong> relies on a high-level Calypso® processing API to manage Calypso® commands & security features.
+<li><strong>Ticketing applications</strong> relies on a high-level <strong>Calypso®</strong> processing API to manage <strong>Calypso®</strong> commands & security features.
 This API uses the SE Proxy API to communicate with the reader</li>
 </ul>
-<p>Keyple™ comes with dedicated plugins that integrate directly with smart card readers that have been built on standard
+<p>Keyple comes with dedicated plugins that integrate directly with smart card readers that have been built on standard
 software interfaces including PC/SC, Android NFC reader, and Android OMAPI.</p>
-<p>In cases where there is a distributed architecture design, Keyple™ includes a Remote API plugin so that
+<p>In cases where there is a distributed architecture design, Keyple includes a Remote API plugin so that
 a smart card terminal can be operated remotely, as if it were local to the terminal, and ensures that robust security and
 speed is not sacrificed in a cloud-based system.</p>
-<p>The Calypso Processing API is also available as a Keyple™ extension. This component carries out the terminal processing
-element of ticketing technology. Access to Calypso’s security features are automatically managed by the Keyple™ extension.</p>
+<p>The Calypso Processing API is also available as a Keyple extension. This component carries out the terminal processing
+element of ticketing technology. Access to Calypso’s security features are automatically managed by the Keyple extension.</p>
 </div>
 <div class=share-box aria-hidden=true>
 <ul class=share>
@@ -241,43 +243,30 @@ element of ticketing technology. Access to Calypso’s security features are aut
 <div class=container>
 <div class="row featurette">
 <div class="col-12 col-sm-4">
-<h4>More</h4>
-<ul>
-<li><a href=https://github.com/eclipse/keyple title="View Source Code on GitHub"><i class="fab fa-github"></i> GitHub Repository</a></li>
-<li><a href=https://accounts.eclipse.org/mailing-list/keyple-dev title="Keyple information and discussions"><i class="fas fa-envelope"></i> Mailing List</a></li>
-<li><a href=https://projects.eclipse.org/projects/iot.keyple title=https://projects.eclipse.org/projects/iot.keyple><i class="fas fa-globe"></i> Eclipse Foundation Keyple page</a></li>
-</ul>
+<p style=color:#fff><b>ECLIPSE LEGAL</b></p>
+<a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a><br>
+<a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a><br>
+<a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a><br>
+<a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a><br>
+<a href=https://www.eclipse.org/legal/>Legal Resources </a><br>
+<a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability </a><br>
 </div>
 <div class="col-12 col-sm-4">
-<h4>Eclipse Foundation</h4>
-<ul>
-<li><a href=https://www.eclipse.org/org/>About Eclipse Foundation</a></li>
-<li><a href=https://www.eclipse.org/org/foundation/contact.php>Contact Eclipse Foundation</a></li>
-<li><a href=https://www.eclipse.org/donate>Donate</a></li>
-<li><a href=https://www.eclipse.org/membership>Members</a></li>
-<li><a href=https://www.eclipse.org/org/documents/>Governance</a></li>
-<li><a href=https://www.eclipse.org/org/documents/Community_Code_of_Conduct.php>Code of Conduct</a></li>
-<li><a href=https://www.eclipse.org/artwork/>Logo and Artwork</a></li>
-<li><a href=https://www.eclipse.org/org/foundation/directors.php></a></li>
-</ul>
+<a href=https://www.eclipse.org target=_blank>
+<img src=../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
+</a>
 </div>
 <div class="col-12 col-sm-4">
-<h4>Legal</h4>
-<ul>
-<li><a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a></li>
-<li><a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a></li>
-<li><a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a></li>
-<li><a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a></li>
-<li><a href=https://www.eclipse.org/legal/>Legal Resources </a></li>
-<li><a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability </a></li>
-</ul>
-</section>
+<a href=https://iot.eclipse.org target=_blank>
+<img src=../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
+</a>
+</div>
 </div>
 </div>
 <p class=powered-by>
-Copyright © Eclipse Foundation, Inc. All Rights Reserved.
+© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.
 </p>
-<p class=powered-by>
+<p class=powered-by id=template-info>
 Powered by the
 <a href=https://wowchemy.com/ target=_blank rel=noopener>Wowchemy theme</a>
 for

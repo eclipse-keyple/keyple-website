@@ -1,0 +1,61 @@
+@startuml
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+skinparam Shadowing false
+skinparam component {
+    BorderColor #D4AC0D
+    ' Red
+    BackgroundColor<<red>> #FDEDEC
+    BorderColor<<red>> #E74C3C
+    ' Purple
+    BackgroundColor<<purple>> #F4ECF7
+    BorderColor<<purple>> #8E44AD
+    ' blue
+    BackgroundColor<<blue>> #EBF5FB
+    BorderColor<<blue>> #3498DB
+    ' Green
+    BackgroundColor<<green>> #E9F7EF
+    BorderColor<<green>> #27AE60
+    ' Grey
+    BackgroundColor<<grey>> #EAECEE
+    BorderColor<<grey>> #2C3E50
+}
+hide <<red>> stereotype
+hide <<purple>> stereotype
+hide <<blue>> stereotype
+hide <<green>> stereotype
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+[Application] as app
+node "Card technologies add-ons" as cards {
+    [Card 1 add-on] as card
+    [Card 2 add-on] as card2
+}
+[Keyple core] as core
+node "Reader hardware add-ons" as plugins {
+    [Reader hardware adapter 1] as plugin
+    [Reader hardware adapter 2] as plugin2
+}
+node "Hardware readers" as hardwares {
+    [Hardware reader 1] as hardware
+    [Hardware reader 2] as hardware2
+}
+
+app -- cards
+app -- core
+app -- plugins
+
+cards -- core
+
+core -- plugins
+
+plugins -- hardwares
+
+card -[hidden]- card2
+plugin -[hidden]- plugin2
+hardware -[hidden]- hardware2
+
+@enduml
