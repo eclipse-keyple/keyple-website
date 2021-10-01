@@ -1,6 +1,6 @@
 ---
 title: Architecture
-summary: Overall presentation of the Eclipse Keyple™ architecture.
+summary: Overall presentation of the Keyple architecture.
 type: book
 toc: true
 draft: false
@@ -8,8 +8,6 @@ weight: 2
 ---
 
 ---
-## Overview
-
 Keyple is designed to operate exchanges with secure data media such as smart cards, tags or smartphones.
 
 Keyple is as much as possible agnostic towards the secured media as towards the hardware allowing to communicate with them.
@@ -23,6 +21,6 @@ Add-ons are organized into four categories:
 - Distributed libraries to manage readers remotely.
 - Additional services such as the dynamic allocation of card resources.
 
-**The figure below illustrates the scope of the technical possibilities of the Keyple ecosystem:**
+The figure below illustrates the scope of the technical possibilities of the Keyple ecosystem:
 
-{{< figure library="true" src="learn/overview/architecture/Keyple_Components_Overview.svg" caption="Global Architecture of Keyple" numbered="true" >}}
+{{< figure library="true" src="learn/overview/architecture/Keyple_Components_Overview.svg" caption="Global Architecture of Keyple" >}}

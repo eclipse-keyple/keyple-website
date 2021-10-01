@@ -25,6 +25,6 @@ subtitle = ""
 
 {{< figure library="true" src="keyple-schema.png" >}}
 
-[List of available Eclipse Keyple™ Java Components]({{< ref "/components-java" >}})
+[List of available Eclipse Keyple® Java Components]({{< ref "/components-java" >}})
 
-[List of available Eclipse Keyple™ C++ Components]({{< ref "/components-cpp" >}})
+[List of available Eclipse Keyple® C++ Components]({{< ref "/components-cpp" >}})

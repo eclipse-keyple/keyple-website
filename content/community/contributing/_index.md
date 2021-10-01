@@ -1,5 +1,5 @@
 ---
-title: How to contribute to Eclipse Keyple™ project
+title: How to contribute to Eclipse Keyple® project
 linktitle: Contributing
 summary: Find out how to contribute to the Keyple project and how it can benefit your organization.
 type: book
@@ -10,13 +10,13 @@ weight: 1
 ---
 ## Types of contributions
 
-Thanks for your interest in the Eclipse Keyple™ project.
+Thanks for your interest in the **Eclipse Keyple®** project.
 
 There are several ways to contribute to the project:
 * **Propose a fix** for a problem that is already known or that you have identified.
   In this case you will have to notify the issue in the repository where the problem appeared and reference the issue in all the other repositories affected by the fix.
 * **Propose the creation of a new component**.
-  In this case you will first have to create an issue in the repository https://github.com/eclipse/keyple to justify the need and request the creation of a new repository, wait for the issue to be resolved by the decision of the commiters, and then create an issue in the new repository signifying the start of development of the new component.
+  In this case you will first have to create an issue in the repository https://github.com/eclipse/keyple to justify the need and request the creation of a new repository, wait for the issue to be resolved by the decision of the committers, and then create an issue in the new repository signifying the start of development of the new component.
 
 ---
 ## Eclipse Contributor Agreement

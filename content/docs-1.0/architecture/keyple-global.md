@@ -11,7 +11,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 
 ## Overview
 
-The Eclipse Keyple™ solution provides currently 2 modules:
+The **Keyple** solution provides currently 2 modules:
  - the **Keyple Core**, a universal smart card reader interface to manage the setting of smart card reader, the detection and the communication with smart card, and the selection of card application.
  - the **Keyple Calypso**, a first smart card solution extension built on the Keyple Core, dedicated to manage Calypso processing, Calypso card identification, card command generation, card data recovery, authentication with the secure session.
 
@@ -44,11 +44,11 @@ The smart card readers could be directly integrated with the Keyple Core. By int
 
 {{< figure library="true" src="archive-1.0/architecture/Keyple_Architecture_Reader_Integration_native.svg" title="Keyple Architecture Reader Integration Native" >}}
 
-The Eclipse Keyple™ project provides the plugin for the main standard smart card reader solutions.
+The **Eclipse Keyple®** project provides the plugin for the main standard smart card reader solutions.
 
 {{< figure library="true" src="archive-1.0/architecture/Keyple_Architecture_Native_Plugins.svg" title="Keyple Architecture Native Plugins" >}}
 
- - The PC/SC plugin is available for both the Java and the C++ implementation of Eclipse Keyple™, it allows to interface PC/SC reader on Windows, Linux and Mac OS.
+ - The PC/SC plugin is available for both the Java and the C++ implementation of **Keyple**, it allows to interface PC/SC reader on Windows, Linux and Mac OS.
  - For Android devices the NFC plugin allows to operate the standard NFC interface to handle external contactless smart card. And the OMAPI plugin provides the integration of internal eSE (embedded Secure Element) or UICC (SIM card). Both plugins support Keyple Java.
  - The Remote plugin (part of the Core distributed extension) allows to operate remote smart card readers.
 
