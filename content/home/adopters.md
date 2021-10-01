@@ -4,7 +4,7 @@ headless = true
 active = true 
 weight = 40 
 
-title = "They are using Eclipse Keyple™"
+title = "They are using Eclipse Keyple®"
 
 [design]
   columns = "1"
@@ -35,4 +35,4 @@ title = "They are using Eclipse Keyple™"
 
 <div class="eclipsefdn-adopters"></div>
 
-[Follow this link to discover how to be listed as an adopter of Eclipse Keyple™](https://iot.eclipse.org/adopters/)
+[Follow this link to discover how to be listed as an adopter of Eclipse Keyple®](https://iot.eclipse.org/adopters/)

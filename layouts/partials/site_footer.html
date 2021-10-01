@@ -2,37 +2,24 @@
     <div class="container">
         <div class="row featurette">
             <div class="col-12 col-sm-4">
-                <h4>{{ i18n "footer-more-section-text" }}</h4>
-                <ul>
-                    <li><a href="https://github.com/eclipse/keyple" title="View Source Code on GitHub"><i class='fab fa-github'></i> {{ i18n "footer-more-github-repository-text" }}</a></li>
-                    <li><a href="https://accounts.eclipse.org/mailing-list/keyple-dev" title="Keyple information and discussions"><i class='fas fa-envelope'></i> {{ i18n "footer-more-mailing-list-text" }}</a></li>
-                    <li><a href="https://projects.eclipse.org/projects/iot.keyple" title="https://projects.eclipse.org/projects/iot.keyple"><i class='fas fa-globe'></i> {{ i18n "footer-more-keyple-project-page-text" }}</a></li>
-                </ul>
+                <p style="color: #fff"><b>{{ i18n "footer-legal-section-text" }}</b></p>
+                <a href="https://www.eclipse.org/legal/privacy.php">{{ i18n "footer-legal-privacy-policy-text" }}</a><br>
+                <a href="https://www.eclipse.org/legal/termsofuse.php">{{ i18n "footer-legal-terms-use-text" }}</a><br>
+                <a href="https://www.eclipse.org/legal/copyright.php">{{ i18n "footer-legal-copyright-agent-text" }}</a><br>
+                <a href="https://www.eclipse.org/legal/epl-2.0/">{{ i18n "footer-legal-epl-text" }}</a><br>
+                <a href="https://www.eclipse.org/legal/">{{ i18n "footer-legal-resources-text" }} </a><br>
+                <a href="https://eclipse.org/security/" target="_blank">{{ i18n "footer-legal-report-a-vulnerability-text" }} </a><br>
             </div>
             <div class="col-12 col-sm-4">
-                <h4>{{ i18n "footer-eclipse-foundation-section-text" }}</h4>
-                <ul>
-                    <li><a href="https://www.eclipse.org/org/">{{ i18n "footer-eclipse-foundation-about-us-text" }}</a></li>
-                    <li><a href="https://www.eclipse.org/org/foundation/contact.php">{{ i18n "footer-eclipse-foundation-contact-us-text" }}</a></li>
-                    <li><a href="https://www.eclipse.org/donate">{{ i18n "footer-eclipse-foundation-donate-text" }}</a></li>
-                    <li><a href="https://www.eclipse.org/membership">{{ i18n "footer-eclipse-foundation-members-text" }}</a></li>
-                    <li><a href="https://www.eclipse.org/org/documents/">{{ i18n "footer-eclipse-foundation-governance-text" }}</a></li>
-                    <li><a href="https://www.eclipse.org/org/documents/Community_Code_of_Conduct.php">{{ i18n "footer-eclipse-foundation-code-of-conduct-text" }}</a></li>
-                    <li><a href="https://www.eclipse.org/artwork/">{{ i18n "footer-eclipse-foundation-logo-artwork-text" }}</a></li>
-                    <li><a href="https://www.eclipse.org/org/foundation/directors.php">{{ i18n "footer-eclipse-foundation-board-of-directors-text" }}</a></li>
-                </ul>
+                <a href="https://www.eclipse.org" target="_blank">
+                    <img src="/media/eclipse_foundation_logo.svg" id="logo-eclipse-foundation">
+                </a>
             </div>
             <div class="col-12 col-sm-4">
-                <h4>{{ i18n "footer-legal-section-text" }}</h4>
-                <ul>
-                    <li><a href="https://www.eclipse.org/legal/privacy.php">{{ i18n "footer-legal-privacy-policy-text" }}</a></li>
-                    <li><a href="https://www.eclipse.org/legal/termsofuse.php">{{ i18n "footer-legal-terms-use-text" }}</a></li>
-                    <li><a href="https://www.eclipse.org/legal/copyright.php">{{ i18n "footer-legal-copyright-agent-text" }}</a></li>
-                    <li><a href="https://www.eclipse.org/legal/epl-2.0/">{{ i18n "footer-legal-epl-text" }}</a></li>
-                    <li><a href="https://www.eclipse.org/legal/">{{ i18n "footer-legal-resources-text" }} </a></li>
-                    <li><a href="https://eclipse.org/security/" target="_blank">{{ i18n "footer-legal-report-a-vulnerability-text" }} </a></li>
-                </ul>
-            </section>
+                <a href="https://iot.eclipse.org" target="_blank">
+                    <img src="/media/eclipse_iot_logo.svg" id="logo-eclipse-iot">
+                </a>
+            </div>
         </div>
     </div>
     {{ if or (site.GetPage "terms.md") (site.GetPage "privacy.md") }}
@@ -54,7 +41,7 @@
     {{/* Display copyright license. */}}
     {{ partial "site_footer_license" . }}
 
-    <p class="powered-by">
+    <p class="powered-by" id="template-info">
         Powered by the
         <a href="https://wowchemy.com/" target="_blank" rel="noopener">Wowchemy theme</a>
         for
@@ -62,12 +49,12 @@
 
         {{ if not (in (slice "docs" "updates") .Type) }}
         <span class="float-right" aria-hidden="true">
-      <a href="#" class="back-to-top">
-        <span class="button_icon">
-          <i class="fas fa-chevron-up fa-2x"></i>
+          <a href="#" class="back-to-top">
+            <span class="button_icon">
+              <i class="fas fa-chevron-up fa-2x"></i>
+            </span>
+          </a>
         </span>
-      </a>
-    </span>
         {{ end }}
     </p>
 </footer>
