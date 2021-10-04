@@ -225,4 +225,4 @@ cardResourceService.stop();
 ---
 ## Download
 
-* [Java component]({{< ref "components-java/core/keyple-service-resource-java-lib" >}})
+* [Java components]({{< ref "components-java/overview/configuration-wizard" >}})

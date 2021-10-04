@@ -66,38 +66,19 @@ hide <<grey>> stereotype
 
 ' == CONTENT ==
 
-[Hardware Reader\n(Card, SAM, HSM,...)] as reader <<red>>
-
-package "Terminal with local reader" #C_GREY1 {
-    [Application] as appA
-    package "Keyple" as localKeyple #C_GREY2 {
-        [Keyple Core Services\n + Card Extension\n + Reader Plugin] as localKeypleLibs <<purple>>
-        [**Keyple Distributed**\n(**local** components)] as localLib <<blue>>
-    }
-    [Network Endpoint] as endpointA <<green>>
+[Application] as appA
+package "Keyple" as localKeyple #C_GREY1 {
+    [**Calypso** Card Extension] as calypso <<blue>>
+    [Core Services\n + Reader Plugins] as core <<purple>>
 }
+[**Calypso Card**\n(local or remote)] as cardReader <<red>>
+[**Calypso SAM**\n(local or remote)] as samReader <<red>>
 
-package "Terminal without local reader" #C_GREY1 {
-    [Application] as appB
-    package "Keyple" as remoteKeyple #C_GREY2 {
-        [Keyple Core Services\n + Card Extension] as remoteKeypleLibs <<purple>>
-        [**Keyple Distributed**\n(**remote** components)] as remoteLib <<blue>>
-    }
-    [Network Endpoint] as endpointB <<green>>
-}
+appA -- calypso
+appA -- core
+calypso - core
 
-reader - localKeypleLibs
-
-appA -- localKeypleLibs
-appA -- localLib
-localKeypleLibs - localLib
-localLib -- endpointA
-
-endpointA - endpointB
-
-appB -- remoteKeypleLibs
-appB -- remoteLib
-remoteKeypleLibs -left- remoteLib
-remoteLib -- endpointB
+core -- cardReader
+core .. samReader
 
 @enduml

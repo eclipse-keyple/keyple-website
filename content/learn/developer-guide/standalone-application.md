@@ -18,28 +18,13 @@ It has at least one local smart card reader and manages itself the
 interaction with the user.
 
 The diagram below illustrates the organization of a standalone application based on Keyple: 
-{{< figure library="true" src="learn/developer-guide/standalone-application/Local_Application_Components_Overview.svg" caption="" >}}
-
----
-## Before you start
-
-1. If you are new to Keyple, read the [key concepts]({{< relref
-   "key-concepts.md" >}}) page and familiarize yourself with the fundamentals behind Keyple.
-2. Any implementation of a Keyple application starts with the
-   setting up of **Keyple Service**, please study the
-   [workflow](#workflow) proposed in the following chapter.
-3. Explore the [Keyple Service component page]({{< ref "components-java/core/keyple-service-java-lib.md" >}}) to discover the features and the
-   possibilities offered by its API.
-4. Take inspiration from the [examples](#examples).
-5. Follow the explanations given in the [Build your first app]({{<
-   ref "learn/build-your-first-app/java-app.md" >}}) section to configure your environment (Gradle / Maven).
-6. Using the [Java components]({{< ref "components-java/_index.md" >}}) pages, import
-   **Keyple Service** and the optional add-ons into your project and start playing with **Keyple**.
-7. Don't forget to explore the potential of Keyple card-specific
-   extensions such as [**Keyple Calypso**]({{< ref "components-java/card-extensions/keyple-card-calypso-java-lib.md" >}}).
+{{< figure library="true" src="learn/developer-guide/standalone-application/standalone_application_overview.svg" caption="" >}}
 
 ---
 ## Operating mode
+{{% alert warning %}}
+If you are new to Keyple, read the [key concepts]({{< relref "key-concepts.md" >}}) page and familiarize yourself with the fundamentals behind Keyple.
+{{% /alert %}}
 
 1. Access to the [smart card service](#the-smart-card-service)
 2. [Set up a plugin](#set-up-a-plugin)

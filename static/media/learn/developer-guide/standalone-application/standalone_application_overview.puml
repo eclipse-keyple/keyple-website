@@ -29,33 +29,11 @@ hide <<grey>> stereotype
 
 ' == CONTENT ==
 
-[Application] as app
-node "Card technologies add-ons" as cards {
-    [Card 1 add-on] as card
-    [Card 2 add-on] as card2
-}
-[Keyple core] as core
-node "Reader hardware add-ons" as plugins {
-    [Reader hardware adapter 1] as plugin
-    [Reader hardware adapter 2] as plugin2
-}
-node "Hardware readers" as hardwares {
-    [Hardware reader 1] as hardware
-    [Hardware reader 2] as hardware2
-}
+[Hardware reader(s)] as reader <<red>>
+[Application] as appA
+[Keyple Core Services & add-ons] as localKeypleLibs <<purple>>
 
-app -- cards
-app -- core
-app -- plugins
-
-cards -- core
-
-core -- plugins
-
-plugins -- hardwares
-
-card -[hidden]- card2
-plugin -[hidden]- plugin2
-hardware -[hidden]- hardware2
+appA - localKeypleLibs
+localKeypleLibs - reader
 
 @enduml
