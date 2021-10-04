@@ -2,7 +2,7 @@
 title: Architecture
 summary: Overall presentation of the Keyple architecture.
 type: book
-toc: true
+toc: false
 draft: false
 weight: 2
 ---
@@ -21,6 +21,6 @@ Add-ons are organized into four categories:
 - Distributed libraries to manage readers remotely.
 - Additional services such as the dynamic allocation of card resources.
 
-The figure below illustrates the scope of the technical possibilities of the Keyple ecosystem:
+The diagram below shows an overview of the Keyple layers:
 
-{{< figure library="true" src="learn/overview/architecture/Keyple_Components_Overview.svg" caption="Global Architecture of Keyple" >}}
+{{< figure library="true" src="learn/overview/keyple_layers_overview.svg" caption="Keyple architecture layers overview" >}}

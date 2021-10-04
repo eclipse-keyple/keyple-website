@@ -22,7 +22,8 @@ Therefore, it must be used by all developers.
 ## Documentation
 
 * [API documentation](https://eclipse.github.io/keyple-common-java-api)
-
+* [Developer guide]({{< relref "/learn/developer-guide/standalone-application" >}})
+ 
 ## Download
 
 All deliverables are available directly from the [Maven Central Repository](https://search.maven.org/search?q=a:keyple-common-java-api) or by using one of the project resource managers below:
