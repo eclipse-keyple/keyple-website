@@ -6,35 +6,18 @@ with the end user.&lt;/p>
 interaction with the user.&lt;/p>
 &lt;p>The diagram below illustrates the organization of a standalone application based on Keyple:
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/standalone-application/Local_Application_Components_Overview.svg" >
-&lt;img src="../../media/learn/developer-guide/standalone-application/Local_Application_Components_Overview.svg" alt="" >
+&lt;a data-fancybox="" href="../../media/learn/developer-guide/standalone-application/standalone_application_overview.svg" >
+&lt;img src="../../media/learn/developer-guide/standalone-application/standalone_application_overview.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;/p>
 &lt;hr>
-&lt;h2 id="before-you-start">Before you start&lt;/h2>
-&lt;ol>
-&lt;li>If you are new to Keyple, read the
-&lt;a href="../../learn/overview/key-concepts/">key concepts&lt;/a> page and familiarize yourself with the fundamentals behind Keyple.&lt;/li>
-&lt;li>Any implementation of a Keyple application starts with the
-setting up of &lt;strong>Keyple Service&lt;/strong>, please study the
-&lt;a href="#workflow">workflow&lt;/a> proposed in the following chapter.&lt;/li>
-&lt;li>Explore the
-&lt;a href="https://keyple.org/components-java/core/keyple-service-java-lib/">Keyple Service component page&lt;/a> to discover the features and the
-possibilities offered by its API.&lt;/li>
-&lt;li>Take inspiration from the
-&lt;a href="#examples">examples&lt;/a>.&lt;/li>
-&lt;li>Follow the explanations given in the
-&lt;a href="https://keyple.org/learn/build-your-first-app/java-app/">Build your first app&lt;/a> section to configure your environment (Gradle / Maven).&lt;/li>
-&lt;li>Using the
-&lt;a href="https://keyple.org/components-java/">Java components&lt;/a> pages, import
-&lt;strong>Keyple Service&lt;/strong> and the optional add-ons into your project and start playing with &lt;strong>Keyple&lt;/strong>.&lt;/li>
-&lt;li>Don&amp;rsquo;t forget to explore the potential of Keyple card-specific
-extensions such as
-&lt;a href="https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/">&lt;strong>Keyple Calypso&lt;/strong>&lt;/a>.&lt;/li>
-&lt;/ol>
-&lt;hr>
 &lt;h2 id="operating-mode">Operating mode&lt;/h2>
+&lt;div class="alert alert-warning">
+&lt;div>
+If you are new to Keyple, read the &lt;a href="../../learn/overview/key-concepts/">key concepts&lt;/a> page and familiarize yourself with the fundamentals behind Keyple.
+&lt;/div>
+&lt;/div>
 &lt;ol>
 &lt;li>Access to the
 &lt;a href="#the-smart-card-service">smart card service&lt;/a>&lt;/li>
@@ -51,8 +34,8 @@ extensions such as
 &lt;p>As part of &lt;strong>Keyple Service&lt;/strong> component, the smart card service is the main service of Keyple. Its role is to centralize the add-on resources and to manage their
 life cycle.&lt;/p>
 &lt;p>The service is accessible by invoking the &lt;code>SmartCardServiceProvider.getService()&lt;/code> static method.&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('6', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-6">SmartCardService smartCardService = SmartCardServiceProvider.getService();&lt;/code>&lt;/pre>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('2', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-2">SmartCardService smartCardService = SmartCardServiceProvider.getService();&lt;/code>&lt;/pre>
 &lt;hr>
 &lt;h2 id="set-up-a-plugin">Set up a plugin&lt;/h2>
 &lt;p>The Keyple application developer will choose the reader plugins he needs
@@ -85,16 +68,16 @@ Please refer to the API of the plugin component you are considering to see what 
 A plugin is identified by a unique name in the system so that it can be retrieved at any time from the smart card service.
 &lt;/div>
 &lt;/div>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('12', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-12">// Here is for example the registration of the PC/SC plugin
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('8', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-8">// Here is for example the registration of the PC/SC plugin
 Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());&lt;/code>&lt;/pre>
 &lt;h3 id="configure-a-plugin">Configure a plugin&lt;/h3>
 &lt;p>Some plugin types may offer specific options.&lt;/p>
 &lt;p>Static options are usually directly exposed by the plugin factory API while dynamic options are exposed by the plugin extension API.&lt;/p>
 &lt;p>To access the plugin extension it is necessary to invoke the &lt;code>getExtension(...)&lt;/code> method on the registered &lt;code>Plugin&lt;/code> by specifying the expected class of the extension which must extends the &lt;code>KeyplePluginExtension&lt;/code> interface.
 After that, the dedicated methods are available from the resulting object.&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('13', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-13">// Here is a snippet showing the usage of the extension of the Stub plugin
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('9', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-9">// Here is a snippet showing the usage of the extension of the Stub plugin
 plugin
 .getExtension(StubPlugin.class)
 .unplugReader(&amp;#34;READER_1&amp;#34;);&lt;/code>&lt;/pre>
@@ -114,8 +97,8 @@ through a background task managed by &lt;strong>Keyple Service&lt;/strong>.&lt;/
 &lt;/ul>
 &lt;p>These two interfaces are available in the &lt;code>org.eclipse.keyple.core.service.spi&lt;/code> package of the &lt;strong>Keyple Service&lt;/strong> component.&lt;/p>
 &lt;p>Here is an example of a plugin observer class including an exception handler:&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('15', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-15">class PluginObserver implements PluginObserverSpi, PluginObservationExceptionHandlerSpi {
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('11', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-11">class PluginObserver implements PluginObserverSpi, PluginObservationExceptionHandlerSpi {
 @Override
 public void onPluginEvent(PluginEvent event) {
 switch (event.getEventType()) {
@@ -140,8 +123,8 @@ public void onPluginObservationError(String pluginName, Throwable e) {
 &lt;p>In order to access the dedicated setters, the plugin has to be cast to &lt;code>ObservablePlugin&lt;/code>.&lt;/p>
 &lt;p>Since adding an observer will cause the &lt;strong>Keyple Service&lt;/strong> to check for the presence of an exception handler,
 the definition of the exception handler must be done first.&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('16', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-16">PluginObserver pluginObserver = new PluginObserver();
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('12', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-12">PluginObserver pluginObserver = new PluginObserver();
 ((ObservablePlugin) plugin).setPluginObservationExceptionHandler(pluginObserver);
 ((ObservablePlugin) plugin).addObserver(pluginObserver);&lt;/code>&lt;/pre>
 &lt;div class="alert alert-note">
@@ -157,8 +140,8 @@ Note that the monitoring thread only works if there is at least one observer reg
 &lt;p>The hardware readers already connected are referenced in the system during the registration of the plugin.
 For observable plugins, the references of the connected readers are updated in real time.&lt;/p>
 &lt;p>Readers are accessible directly from the associated &lt;code>Plugin&lt;/code> instance.&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('18', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-18">// Here is an example to get the 1st available reader
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('14', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-14">// Here is an example to get the 1st available reader
 String readerName = plugin.getReaderNames().get(0);
 Reader reader = plugin.getReader(readerName);&lt;/code>&lt;/pre>
 &lt;div class="alert alert-note">
@@ -182,8 +165,8 @@ It is then possible to activate or deactivate the protocols supported by the rea
 &lt;p>The reader&amp;rsquo;s extension API exposes specific options:&lt;br>
 To access the reader extension it is necessary to invoke the &lt;code>getExtension(...)&lt;/code> method on the &lt;code>Reader&lt;/code> instance by specifying the expected class of the extension which must extends the &lt;code>KeypleReaderExtension&lt;/code> interface.
 After that, the dedicated methods, if any, are available from the resulting object.
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('20', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-20">// Here is a snippet showing the usage of the extension of the Stub reader
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('16', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-16">// Here is a snippet showing the usage of the extension of the Stub reader
 reader
 .getExtension(StubReader.class)
 .removeCard();&lt;/code>&lt;/pre>&lt;/p>
@@ -213,8 +196,8 @@ through a background task managed by &lt;strong>Keyple Service&lt;/strong>.&lt;/
 &lt;/ul>
 &lt;p>These two interfaces are available in the &lt;code>org.calypsonet.terminal.reader.spi&lt;/code> package of the &lt;strong>Calypsonet Terminal Reader API&lt;/strong> component.&lt;/p>
 &lt;p>Here is an example of a reader observer class including an exception handler:&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('23', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-23">class ReaderObserver implements CardReaderObserverSpi, CardReaderObservationExceptionHandlerSpi {
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('19', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-19">class ReaderObserver implements CardReaderObserverSpi, CardReaderObservationExceptionHandlerSpi {
 @Override
 public void onReaderEvent(CardReaderEvent event) {
 switch (event.getType()) {
@@ -239,8 +222,8 @@ public void onReaderObservationError(String pluginName, String readerName, Throw
 &lt;p>In order to access the dedicated setters, the reader has to be cast to &lt;code>ObservableReader&lt;/code>.&lt;/p>
 &lt;p>Since adding an observer will cause the &lt;strong>Keyple Service&lt;/strong> to check for the presence of an exception handler,
 the definition of the exception handler must be done first.&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('24', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-24">ReaderObserver readerObserver = new ReaderObserver();
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('20', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-20">ReaderObserver readerObserver = new ReaderObserver();
 ((ObservableReader) reader).setReaderObservationExceptionHandler(readerObserver);
 ((ObservableReader) reader).addObserver(readerObserver);
 ((ObservableReader) reader).startCardDetection(ObservableCardReader.DetectionMode.REPEATING);&lt;/code>&lt;/pre>
@@ -259,8 +242,8 @@ It is the role of the selection step to obtain this reference.&lt;/p>
 &lt;h3 id="prepare-a-scenario">Prepare a scenario&lt;/h3>
 &lt;p>To prepare a scenario, you have to get a new instance of &lt;code>CardSelectionManager&lt;/code> from the smart card service using the &lt;code>createCardSelectionManager()&lt;/code> method,
 then configure it with scenario cases using dedicated methods provided by one or more card extensions.&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('26', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-26">CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();```&lt;/code>&lt;/pre>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('22', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-22">CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();```&lt;/code>&lt;/pre>
 &lt;p>The &lt;code>prepareSelection(...)&lt;/code> method allows to add a selection case to the scenario by providing an implementation of the &lt;code>CardSelection&lt;/code> interface and return the index of the added case in order to be able to identify later the case that matched.&lt;/p>
 &lt;p>Please note that the order of addition is important because it will impact the selection cycle and favor the performance of the first added cases.&lt;/p>
 &lt;p>Providing one or more selection cases to the &lt;code>CardSelectionManager&lt;/code> constitutes a selection scenario.
@@ -289,8 +272,8 @@ comprehensive object with specific features defined by the extension.&lt;/p>
 &lt;p>In addition to the selection process itself, specific APDU commands may be sent to the card if the selection is successful.
 The output of these commands is available in the instance of the &lt;code>SmartCard&lt;/code> object.&lt;/p>
 &lt;p>The following snippet shows the preparation of two selection cases using the generic card extension:
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('27', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-27">// prepare a selection for application 1
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('23', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-23">// prepare a selection for application 1
 int firstCaseIndex = cardSelectionManager.prepareSelection(
 GenericExtensionService.getInstance()
 .createCardSelection()
@@ -303,8 +286,8 @@ GenericExtensionService.getInstance()
 &lt;h3 id="run-a-scenario">Run a scenario&lt;/h3>
 &lt;p>If we know that the card is in the reader it is possible to run a selection scenario by invoking the &lt;code>processCardSelectionScenario(...)&lt;/code> method on the corresponding reader.
 The result of the selection is then directly returned.&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('28', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-28">// Actual card communication: run the selection scenario.
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('24', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-24">// Actual card communication: run the selection scenario.
 CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);
 // Check the selection result.
 if (selectionResult.getActiveSmartCard() == null) {
@@ -322,8 +305,8 @@ SmartCard smartCard = selectionResult.getActiveSmartCard();&lt;/code>&lt;/pre>
 &lt;li>the &lt;code>DetectionMode&lt;/code> defining the expected behavior regarding the card detection allowing to automatically restart it or not.&lt;/li>
 &lt;li>the &lt;code>NotificationMode&lt;/code> allowing to choose if only the cards matching the selection (successfully selected) should trigger an event.&lt;/li>
 &lt;/ul>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('29', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-29">...
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('25', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-25">...
 @Override
 public void onReaderEvent(CardReaderEvent event) {
 switch (event.getType()) {
@@ -361,8 +344,8 @@ This switches the underlying monitoring thread into a state of waiting for the c
 &lt;h2 id="unregister-a-plugin">Unregister a plugin&lt;/h2>
 &lt;p>To shut down a Keyple application properly, it is necessary to free the resources and in particular to stop the observation threads.&lt;/p>
 &lt;p>This is done by unregistering the plugins in the following way:&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('31', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-31">smartCardService.unregisterPlugin(plugin.getName());&lt;/code>&lt;/pre>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('27', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-27">smartCardService.unregisterPlugin(plugin.getName());&lt;/code>&lt;/pre>
 &lt;hr>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
@@ -398,18 +381,18 @@ Keyple Distributed - Solution layers overview
 &lt;/figcaption>
 &lt;/figure>
 &lt;hr>
-&lt;h2 id="how-to-use-it-">How to use it ?&lt;/h2>
+&lt;h2 id="how-to-use-it">How to use it&lt;/h2>
 &lt;ol>
 &lt;li>In pre-requisite, read
 &lt;a href="../../learn/developer-guide/standalone-application/">Standalone Application Developer Guide&lt;/a> to understand the main concepts of Keyple in a standalone application.&lt;/li>
-&lt;li>Read chapter
-&lt;a href="#concepts">Concepts&lt;/a> to understand the main terms and concepts of the &lt;strong>Keyple Distributed&lt;/strong> solution.&lt;/li>
-&lt;li>Using chapter
-&lt;a href="#usage-modes">Usage modes&lt;/a>, find your usage mode. This will help you to determine exactly which library and API to use.&lt;/li>
-&lt;li>Using chapter
-&lt;a href="#download">Download&lt;/a>, import into your project the libraries specified by your usage mode.&lt;/li>
-&lt;li>Using chapter
-&lt;a href="#network-configuration">Network configuration&lt;/a>, implement the transport layer adapted to your network configuration.&lt;/li>
+&lt;li>Learn
+&lt;a href="#concepts">main terms and concepts&lt;/a> of the &lt;strong>Keyple Distributed&lt;/strong> solution.&lt;/li>
+&lt;li>Find your
+&lt;a href="#usage-modes">usage mode&lt;/a>. This will help you to determine exactly which library and API to use.&lt;/li>
+&lt;li>
+&lt;a href="#download">Import&lt;/a> into your project the libraries specified by your usage mode.&lt;/li>
+&lt;li>Implement the transport layer adapted to your
+&lt;a href="#network-configuration">network configuration&lt;/a>.&lt;/li>
 &lt;li>Implement your ticketing services as specified in the associated usage mode.&lt;/li>
 &lt;/ol>
 &lt;hr>
@@ -854,13 +837,187 @@ Keyple Distributed - Asynchronous network implementation
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
 &lt;li>
-&lt;a href="https://keyple.org/components-java/distributed/">Java components&lt;/a>&lt;/li>
+&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Calypso application</title><link>https://keyple.org/learn/developer-guide/calypso-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/calypso-application/</guid><description>&lt;hr>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>&lt;strong>Keyple provides a card extension add-on dedicated to the Calypso® card technology.&lt;/strong>&lt;/p>
+&lt;p>This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way.
+It completely hides the details of APDU orders that are sent to Calypso cards and SAMs, which are usually tedious operations.&lt;/p>
+&lt;p>The main features are:&lt;/p>
+&lt;ul>
+&lt;li>support for different card revisions;&lt;/li>
+&lt;li>object mapping of card data structures;&lt;/li>
+&lt;li>complete management of the secure session with SAMs;&lt;/li>
+&lt;li>PIN code management;&lt;/li>
+&lt;li>Stored Value operations management;&lt;/li>
+&lt;li>card invalidation / rehabilitation.&lt;/li>
+&lt;/ul>
+&lt;p>The diagram below illustrates the organization of a Calypso application based on Keyple:
+&lt;figure >
+&lt;a data-fancybox="" href="../../media/learn/developer-guide/calypso-application/calypso_application_overview.svg" >
+&lt;img src="../../media/learn/developer-guide/calypso-application/calypso_application_overview.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;/p>
+&lt;hr>
+&lt;h2 id="operating-mode">Operating mode&lt;/h2>
+&lt;div class="alert alert-warning">
+&lt;div>
+&lt;p>Pre-requisites:&lt;/p>
+&lt;ul>
+&lt;li>Have a global view of Calypso product concepts (cards, SAM, security principles)&lt;/li>
+&lt;li>Have read the &lt;a href="../../learn/developer-guide/standalone-application/">Standalone Application Developer Guide&lt;/a> to understand the main concepts of Keyple in a standalone application&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;/div>
+&lt;ol>
+&lt;li>Access to the
+&lt;a href="#the-calypso-extension-service">Calypso card extension service&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#select-a-card">Select a card&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#set-up-security-settings">Set up the security settings&lt;/a> (optional)&lt;/li>
+&lt;li>
+&lt;a href="#operate-a-card-transaction">Operate a card transaction&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="the-calypso-extension-service">The Calypso extension service&lt;/h2>
+&lt;p>As part of the &lt;strong>Calypso&lt;/strong> card extension add-on, the &lt;strong>Calypso extension service&lt;/strong> is the provider of the API implementations.&lt;/p>
+&lt;p>The service is accessible by invoking the &lt;code>CalypsoExtensionService.getInstance()&lt;/code> static method.&lt;/p>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('2', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-2">CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();&lt;/code>&lt;/pre>
+&lt;p>During initialization, it is recommended to check the extension with the smart card service to ensure the compatibility of the different libraries involved.&lt;/p>
+&lt;p>In case of incompatibility a warning will be produced in the log file.&lt;/p>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('3', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-3">smartCardService.checkCardExtension(calypsoExtensionService);&lt;/code>&lt;/pre>
+&lt;hr>
+&lt;h2 id="select-a-card">Select a card&lt;/h2>
+&lt;p>In order to perform a transaction it is necessary to have selected the card first.&lt;/p>
+&lt;p>To do this, you must create a selection case for a selection scenario by invoking the &lt;code>createCardSelection()&lt;/code> method.&lt;/p>
+&lt;p>In addition to the filtering capabilities offered by Keyple Service, the Calypso Selection API allows you to add commands that will be sent to the card after a successful selection (the details of these features are described in the API documentation).&lt;/p>
+&lt;p>The resulting &lt;code>SmartCard&lt;/code> can be cast to a &lt;code>CalypsoCard&lt;/code> object which concentrate all known information about the card being processed.
+Its content is dynamically updated during the transaction.
+The client application will use it to get the data necessary for its business logic.&lt;/p>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('4', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-4">// Create a card selection manager.
+CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();
+// Create a card selection using the Calypso card extension.
+cardSelectionManager.prepareSelection(
+calypsoExtensionService
+.createCardSelection()
+.filterByDfName(AID));
+// Actual card communication: process the card selection.
+CardSelectionResult cardSelectionResult =
+cardSelectionManager.processCardSelectionScenario(cardReader);
+// Check the selection result.
+if (cardSelectionResult.getActiveSmartCard() == null) {
+throw new IllegalStateException(
+&amp;#34;The card selection failed.&amp;#34;);
+}
+// Get the SmartCard resulting of the selection.
+CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();&lt;/code>&lt;/pre>
+&lt;hr>
+&lt;h2 id="set-up-security-settings">Set up security settings&lt;/h2>
 &lt;div class="alert alert-note">
 &lt;div>
-Coming soon
+The security settings must be initialized only for secure transactions.
 &lt;/div>
-&lt;/div></description></item><item><title>Card Resource Service Developer Guide</title><link>https://keyple.org/learn/developer-guide/card-resource-service/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/card-resource-service/</guid><description>&lt;hr>
+&lt;/div>
+&lt;p>The API offers several types of settings such as choosing the SAM to use, enabling various modes, specifying keys for legacy cards, etc&amp;hellip; (see the API documentation for more information).&lt;/p>
+&lt;p>When using a SAM, it is necessary to select it on a relevant reader.
+This selection can be done with the &lt;code>createSamSelection()&lt;/code> method and its direct processing by a reader or with the Card Resource Service.&lt;/p>
+&lt;p>In the case of the Card Resource Service, you have to create a profile extension using the &lt;code>createSamResourceProfileExtension(...)&lt;/code> method, specifying the previously built selection case, and then associate it to a dedicated profile in the service (see the
+&lt;a href="../../learn/developer-guide/card-resource-service/">Card Resource Service developer guide&lt;/a>).&lt;/p>
+&lt;p>The following snippet shows the initialization of the card resource service with a SAM profile:
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('7', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-7">// Create a SAM selection case
+CalypsoSamSelection samSelection = CalypsoExtensionService.getInstance().createSamSelection();
+// Create a SAM resource profile extension
+CardResourceProfileExtension samCardResourceExtension =
+CalypsoExtensionService.getInstance().createSamResourceProfileExtension(samSelection);
+// Get the card resource service
+CardResourceService cardResourceService = CardResourceServiceProvider.getService();
+// Create a minimalist configuration (no plugin/reader observation)
+cardResourceService
+.getConfigurator()
+.withPlugins(
+PluginsConfigurator.builder().addPlugin(plugin, new ReaderConfigurator()).build())
+.withCardResourceProfiles(
+CardResourceProfileConfigurator.builder(SAM_PROFILE_NAME, samCardResourceExtension)
+.withReaderNameRegex(readerNameRegex)
+.build())
+.configure();
+// Start the card resource service
+cardResourceService.start();
+// Verify the resource availability
+CardResource cardResource = cardResourceService.getCardResource(SAM_PROFILE_NAME);
+if (cardResource == null) {
+throw new IllegalStateException(
+String.format(
+&amp;#34;Unable to retrieve a SAM card resource for profile &amp;#39;%s&amp;#39; from reader &amp;#39;%s&amp;#39; in plugin &amp;#39;%s&amp;#39;&amp;#34;,
+SAM_PROFILE_NAME, readerNameRegex, plugin.getName()));
+}
+// Release the resource
+cardResourceService.releaseCardResource(cardResource);&lt;/code>&lt;/pre>&lt;/p>
+&lt;p>Here is the creation of the security settings using a SAM resource obtained from the card resource service:
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('8', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-8">// Create security settings that reference the same SAM profile requested from the card resource service.
+CardResource samResource = CardResourceServiceProvider.getService().getCardResource(SAM_PROFILE_NAME);
+CardSecuritySetting cardSecuritySetting =
+CalypsoExtensionService.getInstance()
+.createCardSecuritySetting()
+.setSamResource(samResource.getReader(), (CalypsoSam) samResource.getSmartCard());&lt;/code>&lt;/pre>&lt;/p>
+&lt;hr>
+&lt;h2 id="operate-a-card-transaction">Operate a card transaction&lt;/h2>
+&lt;p>It is possible to perform secure or non-secure transactions depending on the need.
+A transaction is managed by a dedicated &lt;code>CardTransactionManager&lt;/code> which is provided by the Calypso extension service.&lt;/p>
+&lt;p>The transaction manager provides high-level API to manage transactions with a Calypso card.
+The provided &lt;code>CalypsoCard&lt;/code> object is kept and updated dynamically all along the transaction process.&lt;/p>
+&lt;p>The transaction takes place in several repeatable steps:&lt;/p>
+&lt;ul>
+&lt;li>Preparation of the commands to be sent to the card. Several command preparations can be stacked (no communication neither with the card nor with the SAM).&lt;/li>
+&lt;li>Processing of the prepared commands. Performs all necessary communications with the card and/or the SAM to carry out the previously prepared operations.&lt;/li>
+&lt;/ul>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('9', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-java" id="code-9">try {
+// Performs file reads using the card transaction manager in secure mode.
+cardExtension
+.createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
+.prepareReadRecordFile(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
+.processOpening(WriteAccessLevel.DEBIT)
+.prepareReleaseCardChannel()
+.processClosing();
+} finally {
+try {
+CardResourceServiceProvider.getService().releaseCardResource(samResource);
+} catch (RuntimeException e) {
+logger.error(&amp;#34;Error during the card resource release: {}&amp;#34;, e.getMessage(), e);
+}
+}&lt;/code>&lt;/pre>
+&lt;hr>
+&lt;h2 id="api">API&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;a href="https://calypsonet.github.io/calypsonet-terminal-reader-java-api" target="_blank" rel="noopener">Calypsonet Terminal Reader API&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://calypsonet.github.io/calypsonet-terminal-calypso-java-api" target="_blank" rel="noopener">Calypsonet Terminal Calypso API&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://eclipse.github.io/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://eclipse.github.io/keyple-card-calypso-java-lib" target="_blank" rel="noopener">Keyple Card Calypso API&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="examples">Examples&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="download">Download&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Card Resource Service Developer Guide</title><link>https://keyple.org/learn/developer-guide/card-resource-service/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/card-resource-service/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>An application that performs secure transactions on smart cards may need to dynamically allocate a card resource dedicated to the current transaction to manage the security of the transaction (e.g. SAM or HSM).&lt;/p>
 &lt;p>To meet this need, Keyple proposes the &lt;strong>Service Resource&lt;/strong> component which provides a service that supports dynamic card resource allocation, using a profile-based filtering mechanism.&lt;/p>
@@ -1026,7 +1183,7 @@ You just have to provide the card resource to remove.&lt;/p>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
 &lt;li>
-&lt;a href="https://keyple.org/components-java/core/keyple-service-resource-java-lib/">Java component&lt;/a>&lt;/li>
+&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Create a reader plugin</title><link>https://keyple.org/learn/developer-guide/create-a-reader-plugin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/create-a-reader-plugin/</guid><description>&lt;hr>
 &lt;div class="alert alert-note">
 &lt;div>
