@@ -255,4 +255,4 @@ However, it is necessary in some contexts to access certain information such as 
 ---
 ## Download
 
-* [Java components]({{< ref "components-java/distributed/" >}})
+* [Java components]({{< ref "components-java/overview/configuration-wizard" >}})
