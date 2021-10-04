@@ -20,13 +20,13 @@ The diagram below shows the location of the **Keyple Distributed** components in
 {{< figure library="true" src="learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg" caption="Keyple Distributed - Solution layers overview" numbered="true" >}}
 
 ---
-## How to use it ?
+## How to use it
 
 1. In pre-requisite, read [Standalone Application Developer Guide]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application.
-2. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the **Keyple Distributed** solution.
-3. Using chapter [Usage modes](#usage-modes), find your usage mode. This will help you to determine exactly which library and API to use.
-4. Using chapter [Download](#download), import into your project the libraries specified by your usage mode.
-5. Using chapter [Network configuration](#network-configuration), implement the transport layer adapted to your network configuration.
+2. Learn [main terms and concepts](#concepts) of the **Keyple Distributed** solution.
+3. Find your [usage mode](#usage-modes). This will help you to determine exactly which library and API to use.
+4. [Import](#download) into your project the libraries specified by your usage mode.
+5. Implement the transport layer adapted to your [network configuration](#network-configuration).
 6. Implement your ticketing services as specified in the associated usage mode.
 
 ---

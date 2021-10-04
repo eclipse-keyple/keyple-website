@@ -22,6 +22,9 @@ The main features are:
 * Stored Value operations management;
 * card invalidation / rehabilitation.
 
+The diagram below illustrates the organization of a Calypso application based on Keyple:
+{{< figure library="true" src="learn/developer-guide/calypso-application/calypso_application_overview.svg" caption="" >}}
+
 ---
 ## Operating mode
 {{% alert warning %}}
