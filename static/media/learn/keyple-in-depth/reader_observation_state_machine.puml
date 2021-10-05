@@ -1,0 +1,66 @@
+@startuml
+
+'skinparam ClassBorderColor #F1C40F
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+skinparam shadowing false
+
+skinparam StateBorderColor #D4AC0D
+skinparam ActivityBorderColor #D4AC0D
+
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #EAFAF1
+skinparam ClassBorderColor<<green>> #2ECC71
+hide <<green>> stereotype
+
+' Orange
+skinparam ClassBackgroundColor<<orange>> #FDF2E9
+skinparam ClassBorderColor<<orange>> #E67E22
+hide <<orange>> stereotype
+
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+hide empty description
+
+state "Card observation <b>disabled</b>" as Card_ObservationDisabled {
+  [*] -[#Black]-> WaitForObserver
+  WaitForObserver -right[#Blue]-> WaitForStartDetection : addObserver(ReaderObserver)
+  WaitForObserver : number of observer == 0
+  WaitForStartDetection -left[#Blue]-> WaitForObserver : removeObserver(ReaderObserver)\n&& (nb observer == 0)
+  WaitForStartDetection : number of observer > 0
+}
+
+state "Card observation <b>activated</b>" as Card_ObservationActivated {
+  Card_ObservationActivated : number of observer > 0
+  WaitForCardInsertion -down[#Red]-> WaitForCardProcessing : notifies CARD_MATCHED\n|| \nCARD_INSERTED\n&& (NotificationMode == ALWAYS)\n
+  WaitForCardInsertion -down[#Red]-> WaitForCardRemoval : CARD_INSERTED not notified\n&& ((NotificationMode == MATCHED_ONLY)\n&& selection failed)
+  WaitForCardRemoval -up[#Red]-> WaitForCardInsertion : notifies CARD_REMOVED\n&& (DetectionMode == REPEATING)
+  WaitForCardProcessing -up[#Red,dashed]-> WaitForCardInsertion : notifies CARD_REMOVED\n&& (Observable Reader with the capability\nto detect the removal at any time)
+  WaitForCardProcessing -right[#Blue]-> WaitForCardRemoval : finalizeCardProcessing()\n || \nCard channel release requested
+}
+
+WaitForStartDetection -[#Blue]-> WaitForCardInsertion : startCardDetection(DetectionMode)
+Card_ObservationActivated -up[#Blue]-> WaitForObserver : removeObserver(ReaderObserver)\n&& (nb observer == 0)
+Card_ObservationActivated -up[#Blue]-> WaitForStartDetection : stopCardDetection()
+Card_ObservationActivated -[#Blue]-> Card_ObservationActivated : removeObserver(ReaderObserver)\n&& (nb observer > 0)
+WaitForCardRemoval -up[#Red]-> WaitForStartDetection : notifies CARD_REMOVED\n&& (DetectionMode == SINGLESHOT)\n\n\n\n\n\n\n\n\n\n\n\n\n
+
+@enduml
