@@ -7,4 +7,7 @@ weight: 400
 ---
 
 ---
+This section contains information for those who wish to understand the internal mechanics of Keyple components.
+
+---
 {{< list_children >}}

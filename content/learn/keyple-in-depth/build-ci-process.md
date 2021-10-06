@@ -4,7 +4,6 @@ linktitle: Build & CI
 summary: Learn how the Keyple components are built, tested and published.
 type: book
 toc: true
-draft: false
 weight: 30
 ---
 
