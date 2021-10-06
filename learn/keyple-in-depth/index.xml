@@ -1,14 +1,88 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keyple in depth | Eclipse Keyple</title><link>https://keyple.org/learn/keyple-in-depth/</link><atom:link href="https://keyple.org/learn/keyple-in-depth/index.xml" rel="self" type="application/rss+xml"/><description>Keyple in depth</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png</url><title>Keyple in depth</title><link>https://keyple.org/learn/keyple-in-depth/</link></image><item><title>Core services</title><link>https://keyple.org/learn/keyple-in-depth/core-services/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/core-services/</guid><description>&lt;hr>
-&lt;div class="alert alert-note">
-&lt;div>
-Coming soon
-&lt;/div>
-&lt;/div></description></item><item><title>Calypso card extension</title><link>https://keyple.org/learn/keyple-in-depth/calypso-card/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/calypso-card/</guid><description>&lt;hr>
-&lt;div class="alert alert-note">
-&lt;div>
-Coming soon
-&lt;/div>
-&lt;/div></description></item><item><title>Build process and continuous integration</title><link>https://keyple.org/learn/keyple-in-depth/build-ci-process/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/build-ci-process/</guid><description>&lt;hr>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>You can find here some in-depth technical information about Keyple core services.&lt;/p>
+&lt;hr>
+&lt;h2 id="observable-reader-states">Observable reader states&lt;/h2>
+&lt;p>An observable reader is active only when at least one reader observer is registered, and if the start of the detection has been requested.
+When active, an observable reader could switch between three internal states:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Wait for card insertion&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>Wait for card processing&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>Wait for card removal&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;p>In the nominal case, a reader observer indicates to the observable reader that the processing of the card is finished by releasing the card channel.
+To manage a failure of the reader observer process, the observable reader interface provides also a method to finalize the card processing.&lt;/p>
+&lt;figure id="figure-observable-reader-states">
+&lt;a data-fancybox="" href="../../media/learn/keyple-in-depth/reader_observation_state_machine.svg" data-caption="Observable reader states">
+&lt;img src="../../media/learn/keyple-in-depth/reader_observation_state_machine.svg" alt="" >
+&lt;/a>
+&lt;figcaption data-pre="Figure " data-post=":" class="numbered">
+Observable reader states
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>The states could be switched:&lt;/p>
+&lt;ul>
+&lt;li>due to an explicit API request (blue arrows):
+&lt;ul>
+&lt;li>the release of the card channel,&lt;/li>
+&lt;li>the call of an observable reader method:
+&lt;ul>
+&lt;li>the addition or the remove of an observable reader,&lt;/li>
+&lt;li>a request to start or stop the detection, to finalize the card processing.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Or because of an external event (red arrows), the insertion or the remove of a card.
+&lt;ul>
+&lt;li>the insertion of a card causing the observable reader to notify a &lt;code>CARD_MATCHED&lt;/code> reader event (in case of successful scheduled selection) or a &lt;code>CARD_INSERTED&lt;/code> reader event (notification mode defined as &lt;code>ALWAYS&lt;/code>).&lt;/li>
+&lt;li>the removal of a card causing the observable reader to notify a &lt;code>CARD_REMOVED&lt;/code> reader event.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>If a card detection is started with the &lt;code>REPEATING&lt;/code> detection mode, then later when the card is removed, the reader starts again the detection of a new card.&lt;/p>
+&lt;p>Notification of card removal during the card removal wait state is a feature of any observable reader.
+However, some observable readers may additionally have the ability to notify removal during the card processing state.&lt;/p>
+&lt;hr>
+&lt;h2 id="card-selection-modes">Card selection modes&lt;/h2>
+&lt;p>Depending on the card transaction use case, or on the reader capability, there are two ways to manage the selection of a card:&lt;/p>
+&lt;ul>
+&lt;li>Either on a simple reader, a selection could be operated directly by transmitting the card selection scenario. In this case the same entity manages both the card selection and the card processing.&lt;/li>
+&lt;li>Otherwise, on an observable reader, a scheduled card selection could be defined. In this case the card selection is operated automatically at the insertion of the card. In this case, the card selection is next managed by the observable reader, but the card processing is managed by a reader observer.&lt;/li>
+&lt;/ul>
+&lt;figure id="figure-card-selection-modes">
+&lt;a data-fancybox="" href="../../media/learn/keyple-in-depth/card_selection_modes_activity_diagram.svg" data-caption="Card selection modes">
+&lt;img src="../../media/learn/keyple-in-depth/card_selection_modes_activity_diagram.svg" alt="" width="50%" >
+&lt;/a>
+&lt;figcaption data-pre="Figure " data-post=":" class="numbered">
+Card selection modes
+&lt;/figcaption>
+&lt;/figure>
+&lt;hr>
+&lt;h2 id="internal-adapters-release">Internal adapters (release)&lt;/h2>
+&lt;h3 id="service">Service&lt;/h3>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p>
+&lt;h3 id="card-resource-service">Card resource service&lt;/h3>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-resource-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p>
+&lt;h3 id="distributed">Distributed&lt;/h3>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p>
+&lt;hr>
+&lt;h2 id="internal-adapters-snapshot">Internal adapters (snapshot)&lt;/h2>
+&lt;h3 id="service-1">Service&lt;/h3>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/main/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p>
+&lt;h3 id="card-resource-service-1">Card resource service&lt;/h3>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-resource-java-lib/main/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p>
+&lt;h3 id="distributed-1">Distributed&lt;/h3>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/main/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p></description></item><item><title>Calypso card extension</title><link>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</guid><description>&lt;hr>
+&lt;p>The diagram below illustrates the sequence of exchanges and the grouping of APDU commands during a secure Calypso transaction:&lt;/p>
+&lt;figure id="figure-calypso-secure-transaction">
+&lt;a data-fancybox="" href="../../media/learn/keyple-in-depth/calypso_secure_transaction_sequence_diagram.svg" data-caption="Calypso secure transaction">
+&lt;img src="../../media/learn/keyple-in-depth/calypso_secure_transaction_sequence_diagram.svg" alt="" >
+&lt;/a>
+&lt;figcaption>
+Calypso secure transaction
+&lt;/figcaption>
+&lt;/figure></description></item><item><title>Build process and continuous integration</title><link>https://keyple.org/learn/keyple-in-depth/build-ci-process/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/build-ci-process/</guid><description>&lt;hr>
 &lt;div class="alert alert-note">
 &lt;div>
 Coming soon

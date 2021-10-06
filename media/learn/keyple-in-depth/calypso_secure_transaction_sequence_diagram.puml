@@ -1,0 +1,186 @@
+@startuml
+
+'skinparam ClassBorderColor #F1C40F
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+skinparam shadowing false
+
+skinparam StateBorderColor #D4AC0D
+skinparam ActivityBorderColor #D4AC0D
+
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #EAFAF1
+skinparam ClassBorderColor<<green>> #2ECC71
+hide <<green>> stereotype
+
+' Orange
+skinparam ClassBackgroundColor<<orange>> #FDF2E9
+skinparam ClassBorderColor<<orange>> #E67E22
+hide <<orange>> stereotype
+
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+actor "Ticketing Application" as app #gold
+participant "Keyple Core Services\nCalypso Card Extension" as core #pink
+participant "Keyple Card Reader" as cardReader #lightBlue
+boundary "**Card**" as card #lightBlue
+participant "Keyple SAM Reader" as samReader #lightGreen
+boundary "**SAM**" as sam #lightGreen
+
+activate app #gold
+activate sam #lightGreen
+
+== Card selection & identification ==
+
+app->core: **prepare** card selection scenario:\n\t- filter by specific AID\n\t- read environment file\n\t- read contracts list file
+activate core  #pink
+core-->app
+deactivate core
+
+app->core: **process** explicit card selection scenario
+activate core  #pink
+core-[#0000FF]>cardReader: **process** card selection scenario:\n\t- aid\n\t- read record (environment)\n\t- read record (contract list)
+activate cardReader #lightBlue
+
+cardReader->card: open card channel
+activate card #lightBlue
+card-->cardReader
+cardReader->card: select application (aid)
+card-->cardReader: [card FCI]
+cardReader->cardReader: checks invalidation status
+
+group Card APDU commands outside secure session
+    cardReader->card: read record (environment)
+    card-->cardReader: [environment data]
+    cardReader->card: read record (contract list)
+    card-->cardReader: [contract list data]
+end
+
+cardReader--[#0000FF]>core: [card FCI,\n environment data,\n contract list data]
+deactivate cardReader
+
+core-->app: [Calypso card image:\n\t- support identification data\n\t- environment data\n\t- contract list data]
+deactivate core
+
+== SAM allocation ==
+
+note over cardReader
+    The allocation of a SAM is done in the same way as for a card, but it can be static (e.g. embedded SAM) or dynamic (e.g. HSM).
+end note
+
+== Card secure transaction ==
+
+app->core: **prepare** secured card transaction:\n\t- Calypso card resource\n\t- Calypso SAM resource\n\t- read environment file\n\t- read contract #1\n\t- reader counter #1
+activate core  #pink
+core-->app
+deactivate core
+
+app->core: **process** opening (DEBIT access level)
+activate core  #pink
+
+core-[#00FF00]>samReader: **process** card request:\n\t- select diversifier (card serial)\n\t- get challenge
+activate samReader #lightGreen
+samReader->sam: select diversifier (card serial)
+sam-->samReader
+samReader->sam: get challenge
+sam-->samReader: [SAM challenge]
+samReader-[#00FF00]->core: [SAM challenge]
+deactivate samReader
+
+core-[#0000FF]>cardReader: **process** card request:\n\t- open secure session (card debit key,\n\t\tSAM challenge,\n\t\tSFI environment to read)\n\t- read record (contract #1)\n\t- reader record (counter #1)
+activate cardReader #lightBlue
+
+group Card APDU commands inside session
+    cardReader->card: open secure session (card debit key,\n\tSAM challenge,\n\tSFI environment to read)
+    card-->cardReader: [card challenge & environment data]
+    cardReader->card: read record (contract #1)
+    card-->cardReader: [contract #1 data]
+    cardReader->card: read record (counter #1)
+    card-->cardReader: [counter #1 data]
+end
+
+cardReader--[#0000FF]>core: [card challenge & environment data,\n contract #1 data,\n counter #1 data]
+deactivate cardReader
+
+core-->app: [Calypso card image:\n\t- support identification data\n\t- environment data (updated)\n\t- contract list data\n\t- contract #1 data\n\t- counter #1 data]
+deactivate core
+
+app->core: **prepare**:\n\t- update event record (data)\n\t- decrease counter #1 (value)\n\t- release channel
+activate core  #pink
+core-->app
+deactivate core
+
+app->core: **process** closing (not ratified)
+activate core  #pink
+core->core: Anticipate the future card responses
+
+core-[#00FF00]>samReader: **process** card request:\n\t- digest init (card challenge & environment data)\n\t- digest update (read contract #1)\n\t- digest update (read counter #1)\n\t- digest update (update event record (data))\n\t- digest update (decrease counter (value))\n\t- digest close
+activate samReader #lightGreen
+
+samReader->sam: digest init (opening data)
+sam-->samReader
+samReader->sam: digest update (read contract)
+sam-->samReader
+samReader->sam: digest update (read counter)
+sam-->samReader
+samReader->sam: digest update (update event record)
+sam-->samReader
+samReader->sam: digest update (decrease counter)
+sam-->samReader
+samReader->sam: digest close
+sam-->samReader: [SAM certificate]
+
+samReader-[#00FF00]->core: [digest init status,\n digest update**s** status,\n digest close response with SAM certificate]
+deactivate samReader
+
+
+core-[#0000FF]>cardReader: **process** card request:\n\t- update record (event, data)\n\t- decrease counter (counter #1, value)\n\t- close secure session (SAM certificate)\n\t- ratification command
+activate cardReader #lightBlue
+
+group Card APDU commands inside session
+    cardReader->card: update record (event, data)
+    card-->cardReader
+    cardReader->card: decrease counter (counter #1, value)
+    card-->cardReader: [new counter value]
+end
+
+cardReader->card: close secure session (SAM certificate)
+card-->cardReader: [card certificate]
+cardReader->card: ratification command
+card-->cardReader
+cardReader->card: close card channel
+card-->cardReader
+deactivate card
+
+cardReader-[#0000FF]->core: [update record status,\n new counter #1 value,\n card certificate,\n ratification status]
+deactivate cardReader
+
+core-[#00FF00]>samReader: **process** card request:\n\t- digest authenticate (card certificate)
+activate samReader #lightGreen
+samReader->sam: digest authenticate (card certificate)
+sam-->samReader: [authentication status]
+
+samReader-[#00FF00]->core: [authentification status]
+deactivate samReader
+
+core-->app: [Calypso card image:\n\t- support identification data\n\t- environment data\n\t- contract list data\n\t- contract #1 data\n\t- counter #1 data (updated)\n\t- event #1]
+deactivate core
+@enduml

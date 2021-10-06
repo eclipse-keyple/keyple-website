@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1832.5px" preserveAspectRatio="none" style="width:4005px;height:1832px;background:#FFFFFF;" version="1.1" viewBox="0 0 4005 1832" width="4005px" zoomAndPan="magnify"><defs/><g><!--MD5=[b8b7790327a380c4faa5cd25668669ec]
+cluster Card_ObservationDisabled--><rect fill="#FEFECE" height="465" rx="31.25" ry="31.25" style="stroke:#D4AC0D;stroke-width:3.75;" width="1437.5" x="17.5" y="17.5"/><rect fill="#FFFFFF" height="380.9766" rx="31.25" ry="31.25" style="stroke:#FFFFFF;stroke-width:2.5;" width="1422.5" x="25" y="94.0234"/><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="17.5" x2="1455" y1="86.5234" y2="86.5234"/><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" textLength="272.5" x="520" y="63.833">Card observation</text><text fill="#000000" font-family="sans-serif" font-size="35" font-weight="bold" lengthAdjust="spacing" textLength="150" x="802.5" y="63.833">disabled</text><!--MD5=[8456f124aeb6af6ca8d167c7691237d0]
+cluster Card_ObservationActivated--><rect fill="#FEFECE" height="1036.25" rx="31.25" ry="31.25" style="stroke:#D4AC0D;stroke-width:3.75;" width="3410" x="20" y="781.25"/><rect fill="#FFFFFF" height="901.9922" rx="31.25" ry="31.25" style="stroke:#FFFFFF;stroke-width:2.5;" width="3395" x="27.5" y="908.0078"/><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="20" x2="3430" y1="900.5078" y2="900.5078"/><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="20" x2="3430" y1="850.2734" y2="850.2734"/><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" textLength="272.5" x="1502.5" y="827.583">Card observation</text><text fill="#000000" font-family="sans-serif" font-size="35" font-weight="bold" lengthAdjust="spacing" textLength="162.5" x="1785" y="827.583">activated</text><text fill="#000000" font-family="sans-serif" font-size="30" lengthAdjust="spacing" textLength="317.5" x="32.5" y="887.666">number of observer &gt; 0</text><ellipse cx="250" cy="132.5" fill="#000000" rx="25" ry="25" style="stroke:none;stroke-width:2.5;"/><g id="Card_ObservationDisabled.WaitForObserver"><rect fill="#FEFECE" height="131.7578" rx="31.25" ry="31.25" style="stroke:#D4AC0D;stroke-width:3.75;" width="385" x="57.5" y="310"/><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="57.5" x2="442.5" y1="379.0234" y2="379.0234"/><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" textLength="272.5" x="113.75" y="358.833">WaitForObserver</text><text fill="#000000" font-family="sans-serif" font-size="30" lengthAdjust="spacing" textLength="335" x="70" y="422.666">number of observer == 0</text></g><g id="Card_ObservationDisabled.WaitForStartDetection"><rect fill="#FEFECE" height="131.7578" rx="31.25" ry="31.25" style="stroke:#D4AC0D;stroke-width:3.75;" width="400" x="1015" y="310"/><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="1015" x2="1415" y1="379.0234" y2="379.0234"/><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" textLength="350" x="1040" y="358.833">WaitForStartDetection</text><text fill="#000000" font-family="sans-serif" font-size="30" lengthAdjust="spacing" textLength="317.5" x="1027.5" y="422.666">number of observer &gt; 0</text></g><rect fill="#FEFECE" height="100" rx="31.25" ry="31.25" style="stroke:#D4AC0D;stroke-width:3.75;" width="362.5" x="1181.25" y="941.25"/><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" textLength="337.5" x="1193.75" y="1005.5713">WaitForCardInsertion</text><rect fill="#FEFECE" height="100" rx="31.25" ry="31.25" style="stroke:#D4AC0D;stroke-width:3.75;" width="402.5" x="1161.25" y="1657.5"/><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" textLength="377.5" x="1173.75" y="1721.8213">WaitForCardProcessing</text><rect fill="#FEFECE" height="100" rx="31.25" ry="31.25" style="stroke:#D4AC0D;stroke-width:3.75;" width="365" x="2377.5" y="1657.5"/><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" textLength="340" x="2390" y="1721.8213">WaitForCardRemoval</text><!--MD5=[251642f9527861ea62369ff8744e4a70]
+link *start*Card_ObservationDisabled to WaitForObserver--><path d="M250,157.8925 C250,189.47 250,247.9525 250,296.0875 " fill="none" id="*start*Card_ObservationDisabled-to-WaitForObserver" style="stroke:#000000;stroke-width:2.5;"/><polygon fill="#000000" points="250,309.3575,260,286.8575,250,296.8575,240,286.8575,250,309.3575" style="stroke:#000000;stroke-width:2.5;"/><!--MD5=[136a2b1d08fde5b6a9585a9cd3ff408d]
+link WaitForObserver to WaitForStartDetection--><path d="M442.6675,419.4325 C465.6775,423.265 488.9225,426.53 511.25,428.75 C703.6325,447.89 753.815,447.37 946.25,428.75 C964.32,427.0025 982.98,424.6075 1001.65,421.7975 " fill="none" id="WaitForObserver-to-WaitForStartDetection" style="stroke:#0000FF;stroke-width:2.5;"/><polygon fill="#0000FF" points="1014.57,419.7875,990.8004,413.3643,1002.2185,421.7086,993.8742,433.1267,1014.57,419.7875" style="stroke:#0000FF;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="430" x="513.75" y="419.9878">addObserver(ReaderObserver)</text><!--MD5=[e9e30b41fcb02c2ebe81f14a1b3c6b24]
+reverse link WaitForObserver to WaitForStartDetection--><path d="M455.7325,376.25 C620.8475,376.25 851.2975,376.25 1014.9025,376.25 " fill="none" id="WaitForObserver-backto-WaitForStartDetection" style="stroke:#0000FF;stroke-width:2.5;"/><polygon fill="#0000FF" points="442.9625,376.25,465.4625,386.25,455.4625,376.25,465.4625,366.25,442.9625,376.25" style="stroke:#0000FF;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="480" x="488.75" y="319.9878">removeObserver(ReaderObserver)</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="317.5" x="570" y="360.8667">&amp;&amp; (nb observer == 0)</text><!--MD5=[72d9897ee434831df1bd0380d840bb20]
+link WaitForCardInsertion to WaitForCardProcessing--><path d="M1346.5075,1042.065 C1320.9325,1111.2425 1263.9175,1237.0925 1170,1300 C1007.0025,1409.18 861.39,1224.9525 735,1375 C675.5875,1445.5325 676.3675,1511.315 735,1582.5 C787.0975,1645.7525 987.845,1676.792 1148.4375,1691.7358 " fill="none" id="WaitForCardInsertion-to-WaitForCardProcessing" style="stroke:#FF0000;stroke-width:2.5;"/><polygon fill="#FF0000" points="1160.905,1692.871,1139.4032,1680.8742,1148.4564,1691.7389,1137.5918,1700.792,1160.905,1692.871" style="stroke:#FF0000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="377.5" x="806.25" y="1411.2378">notifies CARD_MATCHED</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="15" x="982.5" y="1452.1167">||</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="267.5" x="861.25" y="1492.9956">CARD_INSERTED</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="515" x="737.5" y="1533.8745">&amp;&amp; (NotificationMode == ALWAYS)</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="1000" y="1574.7534"/><!--MD5=[ec20ecb91c2c7b942d83ce11be446b02]
+reverse link WaitForCardInsertion to WaitForCardProcessing--><path d="M1359.9775,1054.89 C1355.955,1161.87 1349.1125,1389.9625 1355,1582.5 C1355.755,1607.205 1357.3675,1634.6728 1358.9025,1657.3275 " fill="none" id="WaitForCardInsertion-backto-WaitForCardProcessing" style="stroke:#FF0000;stroke-width:2.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#FF0000" points="1360.4775,1041.8425,1349.6235,1063.9432,1359.999,1054.3333,1369.6089,1064.7088,1360.4775,1041.8425" style="stroke:#FF0000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="385" x="1468.75" y="1451.2378">notifies CARD_REMOVED</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="607.5" x="1357.5" y="1492.1167">&amp;&amp; (Observable Reader with the capability</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="485" x="1418.75" y="1532.9956">to detect the removal at any time)</text><!--MD5=[8a15fc4152604b3ab4b941e4673595f8]
+link WaitForCardInsertion to WaitForCardRemoval--><path d="M1481.64,1041.3175 C1617.785,1101.0175 1839.525,1215.3025 1977.5,1375 C2043.22,1451.065 1990.7875,1517.5375 2067.5,1582.5 C2149.545,1651.98 2265.2675,1683.056 2363.925,1696.5533 " fill="none" id="WaitForCardInsertion-to-WaitForCardRemoval" style="stroke:#FF0000;stroke-width:2.5;"/><polygon fill="#FF0000" points="2377.1075,1698.267,2356.0837,1685.4511,2364.7117,1696.6563,2353.5065,1705.2843,2377.1075,1698.267" style="stroke:#FF0000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="435" x="2176.25" y="1451.2378">CARD_INSERTED not notified</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="647.5" x="2070" y="1492.1167">&amp;&amp; ((NotificationMode == MATCHED_ONLY)</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="280" x="2253.75" y="1532.9956">&amp;&amp; selection failed)</text><!--MD5=[cd704dfb895b79468f1536ce51b7bd41]
+reverse link WaitForCardInsertion to WaitForCardRemoval--><path d="M1557.105,1019.095 C1899.745,1068.1475 2588,1187.985 2730,1375 C2785.775,1448.4475 2772.025,1500.4125 2730,1582.5 C2714.25,1613.2625 2686.775,1638.062 2658.45,1657.0893 " fill="none" id="WaitForCardInsertion-backto-WaitForCardRemoval" style="stroke:#FF0000;stroke-width:2.5;"/><polygon fill="#FF0000" points="1544.06,1017.2375,1564.927,1030.3072,1556.4354,1018.9983,1567.7443,1010.5066,1544.06,1017.2375" style="stroke:#FF0000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="385" x="2843.75" y="1472.4878">notifies CARD_REMOVED</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="537.5" x="2767.5" y="1513.3667">&amp;&amp; (DetectionMode == REPEATING)</text><!--MD5=[c922a1dab0bb901a2bd0a63ec4241006]
+link WaitForCardProcessing to WaitForCardRemoval--><path d="M1564.285,1707.5 C1787.1425,1707.5 2143.5375,1707.5 2364.035,1707.5 " fill="none" id="WaitForCardProcessing-to-WaitForCardRemoval" style="stroke:#0000FF;stroke-width:2.5;"/><polygon fill="#0000FF" points="2377.05,1707.5,2354.55,1697.5,2364.55,1707.5,2354.55,1717.5,2377.05,1707.5" style="stroke:#0000FF;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="350" x="1795.625" y="1608.7378">finalizeCardProcessing()</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="15" x="1963.125" y="1649.6167">||</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="457.5" x="1741.875" y="1690.4956">Card channel release requested</text><!--MD5=[aa0ddcd38f31791635bd0749845c00f3]
+link WaitForStartDetection to WaitForCardInsertion--><path d="M1230.5075,442.8775 C1259.1375,561.2825 1319.92,812.655 1347.875,928.27 " fill="none" id="WaitForStartDetection-to-WaitForCardInsertion" style="stroke:#0000FF;stroke-width:2.5;"/><polygon fill="#0000FF" points="1350.9575,941.015,1355.3866,916.7945,1348.0183,928.8655,1335.9474,921.4972,1350.9575,941.015" style="stroke:#0000FF;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="507.5" x="1270" y="578.7378">startCardDetection(DetectionMode)</text><!--MD5=[d14760a25c7bf860bac7cf82bf22f065]
+reverse link WaitForObserver to Card_ObservationActivated--><path d="M223.7325,455.0475 C196.0135,535.5663 151.0966,666.04 112.6134,777.8247 C112.3128,778.698 112.0125,779.5702 111.7127,780.4412 " fill="none" id="WaitForObserver-backto-Card_ObservationActivated" style="stroke:#0000FF;stroke-width:2.5;"/><polygon fill="#0000FF" points="227.9225,442.8775,211.1439,460.8977,223.8541,454.6969,230.0549,467.4071,227.9225,442.8775" style="stroke:#0000FF;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="480" x="202.5" y="558.7378">removeObserver(ReaderObserver)</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="317.5" x="283.75" y="599.6167">&amp;&amp; (nb observer == 0)</text><!--MD5=[df0a4659600a89e6e75f539eac73013e]
+reverse link WaitForStartDetection to Card_ObservationActivated--><path d="M1075.4225,448.3825 C953.55,509.43 772.0875,600.915 615,682.5 C583.3825,698.9209 550.8401,715.9376 518.079,733.1547 C501.6985,741.7633 485.2633,750.4219 468.8618,759.0813 C460.661,763.411 452.4686,767.7409 444.2957,772.0648 C440.2093,774.2268 436.1277,776.3872 432.0523,778.5454 C431.0335,779.0849 430.015,779.6243 428.997,780.1636 " fill="none" id="WaitForStartDetection-backto-Card_ObservationActivated" style="stroke:#0000FF;stroke-width:2.5;"/><polygon fill="#0000FF" points="1087.0275,442.5725,1062.4313,443.7031,1075.85,448.1684,1071.3847,461.5871,1087.0275,442.5725" style="stroke:#0000FF;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="287.5" x="930" y="578.7378">stopCardDetection()</text><!--MD5=[f92accc6d04d8ff43c6a26eee2fa3ce0]
+link Card_ObservationActivated to Card_ObservationActivated--><path d="M3390,990.01 C3419.5795,885.0025 3478.0533,885.415 3478.0533,991.25 C3478.0533,1097.085 3419.5795,1097.4975 3390,992.49 " fill="none" id="Card_ObservationActivated-to-Card_ObservationActivated" style="stroke:#0000FF;stroke-width:2.5;"/><polygon fill="#0000FF" points="3390,992.49,3386.4752,1016.8585,3393.3892,1004.5218,3405.726,1011.4358,3390,992.49" style="stroke:#0000FF;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="480" x="3493.0533" y="984.9878">removeObserver(ReaderObserver)</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="297.5" x="3584.3033" y="1025.8667">&amp;&amp; (nb observer &gt; 0)</text><!--MD5=[b24a11d88e3143c63fed438c0348fc0e]
+reverse link WaitForStartDetection to WaitForCardRemoval--><path d="M1427.59,402.235 C1878.08,464.9925 2920.725,682.1275 3327.5,1375 C3374.2,1454.53 3387.35,1512.3375 3327.5,1582.5 C3253.825,1668.8595 2945.475,1694.617 2742.75,1702.1283 " fill="none" id="WaitForStartDetection-backto-WaitForCardRemoval" style="stroke:#FF0000;stroke-width:2.5;"/><polygon fill="#FF0000" points="1415.0925,400.5125,1436.0164,413.491,1427.4754,402.2193,1438.7472,393.6783,1415.0925,400.5125" style="stroke:#FF0000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="385" x="3358.75" y="718.7378">notifies CARD_REMOVED</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="557.5" x="3272.5" y="759.6167">&amp;&amp; (DetectionMode == SINGLESHOT)</text><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="800.4956"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="841.3745"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="882.2534"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="923.1323"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="964.0112"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="1004.8901"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="1045.769"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="1086.6479"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="1127.5269"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="1168.4058"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="1209.2847"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="1250.1636"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="0" x="3556.25" y="1291.0425"/><!--MD5=[8fb82225c098bc9d5bcfe27fd06bb88f]
+@startuml
+
+'skinparam ClassBorderColor #F1C40F
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+skinparam shadowing false
+
+skinparam StateBorderColor #D4AC0D
+skinparam ActivityBorderColor #D4AC0D
+
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #EAFAF1
+skinparam ClassBorderColor<<green>> #2ECC71
+hide <<green>> stereotype
+
+' Orange
+skinparam ClassBackgroundColor<<orange>> #FDF2E9
+skinparam ClassBorderColor<<orange>> #E67E22
+hide <<orange>> stereotype
+
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+hide empty description
+
+state "Card observation <b>disabled</b>" as Card_ObservationDisabled {
+  [*] -[#Black]-> WaitForObserver
+  WaitForObserver -right[#Blue]-> WaitForStartDetection : addObserver(ReaderObserver)
+  WaitForObserver : number of observer == 0
+  WaitForStartDetection -left[#Blue]-> WaitForObserver : removeObserver(ReaderObserver)\n&& (nb observer == 0)
+  WaitForStartDetection : number of observer > 0
+}
+
+state "Card observation <b>activated</b>" as Card_ObservationActivated {
+  Card_ObservationActivated : number of observer > 0
+  WaitForCardInsertion -down[#Red]-> WaitForCardProcessing : notifies CARD_MATCHED\n|| \nCARD_INSERTED\n&& (NotificationMode == ALWAYS)\n
+  WaitForCardInsertion -down[#Red]-> WaitForCardRemoval : CARD_INSERTED not notified\n&& ((NotificationMode == MATCHED_ONLY)\n&& selection failed)
+  WaitForCardRemoval -up[#Red]-> WaitForCardInsertion : notifies CARD_REMOVED\n&& (DetectionMode == REPEATING)
+  WaitForCardProcessing -up[#Red,dashed]-> WaitForCardInsertion : notifies CARD_REMOVED\n&& (Observable Reader with the capability\nto detect the removal at any time)
+  WaitForCardProcessing -right[#Blue]-> WaitForCardRemoval : finalizeCardProcessing()\n || \nCard channel release requested
+}
+
+WaitForStartDetection -[#Blue]-> WaitForCardInsertion : startCardDetection(DetectionMode)
+Card_ObservationActivated -up[#Blue]-> WaitForObserver : removeObserver(ReaderObserver)\n&& (nb observer == 0)
+Card_ObservationActivated -up[#Blue]-> WaitForStartDetection : stopCardDetection()
+Card_ObservationActivated -[#Blue]-> Card_ObservationActivated : removeObserver(ReaderObserver)\n&& (nb observer > 0)
+WaitForCardRemoval -up[#Red]-> WaitForStartDetection : notifies CARD_REMOVED\n&& (DetectionMode == SINGLESHOT)\n\n\n\n\n\n\n\n\n\n\n\n\n
+
+@enduml
+
+@startuml
+
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+skinparam shadowing false
+
+skinparam StateBorderColor #D4AC0D
+skinparam ActivityBorderColor #D4AC0D
+
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+skinparam ClassBackgroundColor<<green>> #EAFAF1
+skinparam ClassBorderColor<<green>> #2ECC71
+hide <<green>> stereotype
+
+skinparam ClassBackgroundColor<<orange>> #FDF2E9
+skinparam ClassBorderColor<<orange>> #E67E22
+hide <<orange>> stereotype
+
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+hide empty description
+
+state "Card observation <b>disabled</b>" as Card_ObservationDisabled {
+  [*] -[#Black]-> WaitForObserver
+  WaitForObserver -right[#Blue]-> WaitForStartDetection : addObserver(ReaderObserver)
+  WaitForObserver : number of observer == 0
+  WaitForStartDetection -left[#Blue]-> WaitForObserver : removeObserver(ReaderObserver)\n&& (nb observer == 0)
+  WaitForStartDetection : number of observer > 0
+}
+
+state "Card observation <b>activated</b>" as Card_ObservationActivated {
+  Card_ObservationActivated : number of observer > 0
+  WaitForCardInsertion -down[#Red]-> WaitForCardProcessing : notifies CARD_MATCHED\n|| \nCARD_INSERTED\n&& (NotificationMode == ALWAYS)\n
+  WaitForCardInsertion -down[#Red]-> WaitForCardRemoval : CARD_INSERTED not notified\n&& ((NotificationMode == MATCHED_ONLY)\n&& selection failed)
+  WaitForCardRemoval -up[#Red]-> WaitForCardInsertion : notifies CARD_REMOVED\n&& (DetectionMode == REPEATING)
+  WaitForCardProcessing -up[#Red,dashed]-> WaitForCardInsertion : notifies CARD_REMOVED\n&& (Observable Reader with the capability\nto detect the removal at any time)
+  WaitForCardProcessing -right[#Blue]-> WaitForCardRemoval : finalizeCardProcessing()\n || \nCard channel release requested
+}
+
+WaitForStartDetection -[#Blue]-> WaitForCardInsertion : startCardDetection(DetectionMode)
+Card_ObservationActivated -up[#Blue]-> WaitForObserver : removeObserver(ReaderObserver)\n&& (nb observer == 0)
+Card_ObservationActivated -up[#Blue]-> WaitForStartDetection : stopCardDetection()
+Card_ObservationActivated -[#Blue]-> Card_ObservationActivated : removeObserver(ReaderObserver)\n&& (nb observer > 0)
+WaitForCardRemoval -up[#Red]-> WaitForStartDetection : notifies CARD_REMOVED\n&& (DetectionMode == SINGLESHOT)\n\n\n\n\n\n\n\n\n\n\n\n\n
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 14:40:07 CEST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: fr
+Country: FR
+--></g></svg>

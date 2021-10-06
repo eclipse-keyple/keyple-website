@@ -4,7 +4,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=generator content="Source Themes Academic 4.8.0">
-<meta name=description content="  Coming soon   ">
+<meta name=description content="In-depth technical information about Keyple core services.">
 <link rel=alternate hreflang=en-us href=https://keyple.org/learn/keyple-in-depth/core-services/>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <meta name=theme-color content="#1D87BB">
@@ -24,9 +24,9 @@
 <meta property="og:site_name" content="Eclipse Keyple">
 <meta property="og:url" content="https://keyple.org/learn/keyple-in-depth/core-services/">
 <meta property="og:title" content="Core services | Eclipse Keyple">
-<meta property="og:description" content="  Coming soon   "><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
+<meta property="og:description" content="In-depth technical information about Keyple core services."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-09-21T15:53:16+02:00">
+<meta property="article:modified_time" content="2021-10-05T18:15:32+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -168,7 +168,7 @@
 <a class=docs-toc-link href=../../../learn/keyple-in-depth/>Keyple in depth</a>
 <ul class="nav docs-sidenav">
 <li class=active><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
-<li><a href=../../../learn/keyple-in-depth/calypso-card/>Calypso card extension</a></li>
+<li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
 <li><a href=../../../learn/keyple-in-depth/build-ci-process/>Build & CI</a></li>
 </ul>
 </div>
@@ -179,7 +179,27 @@
 <ul class="nav toc-top">
 <li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
 </ul>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#overview>Overview</a></li>
+<li><a href=#observable-reader-states>Observable reader states</a></li>
+<li><a href=#card-selection-modes>Card selection modes</a></li>
+<li><a href=#internal-adapters-release>Internal adapters (release)</a>
+<ul>
+<li><a href=#service>Service</a></li>
+<li><a href=#card-resource-service>Card resource service</a></li>
+<li><a href=#distributed>Distributed</a></li>
+</ul>
+</li>
+<li><a href=#internal-adapters-snapshot>Internal adapters (snapshot)</a>
+<ul>
+<li><a href=#service-1>Service</a></li>
+<li><a href=#card-resource-service-1>Card resource service</a></li>
+<li><a href=#distributed-1>Distributed</a></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
@@ -187,23 +207,93 @@
 <h1>Core services</h1>
 <div class=article-style>
 <hr>
-<div class="alert alert-note">
-<div>
-Coming soon
-</div>
-</div>
+<h2 id=overview>Overview</h2>
+<p>You can find here some in-depth technical information about Keyple core services.</p>
+<hr>
+<h2 id=observable-reader-states>Observable reader states</h2>
+<p>An observable reader is active only when at least one reader observer is registered, and if the start of the detection has been requested.
+When active, an observable reader could switch between three internal states:</p>
+<ul>
+<li><strong>Wait for card insertion</strong></li>
+<li><strong>Wait for card processing</strong></li>
+<li><strong>Wait for card removal</strong></li>
+</ul>
+<p>In the nominal case, a reader observer indicates to the observable reader that the processing of the card is finished by releasing the card channel.
+To manage a failure of the reader observer process, the observable reader interface provides also a method to finalize the card processing.</p>
+<figure id=figure-observable-reader-states>
+<a data-fancybox href=../../../media/learn/keyple-in-depth/reader_observation_state_machine.svg data-caption="Observable reader states">
+<img src=../../../media/learn/keyple-in-depth/reader_observation_state_machine.svg alt>
+</a>
+<figcaption data-pre="Figure " data-post=: class=numbered>
+Observable reader states
+</figcaption>
+</figure>
+<p>The states could be switched:</p>
+<ul>
+<li>due to an explicit API request (blue arrows):
+<ul>
+<li>the release of the card channel,</li>
+<li>the call of an observable reader method:
+<ul>
+<li>the addition or the remove of an observable reader,</li>
+<li>a request to start or stop the detection, to finalize the card processing.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Or because of an external event (red arrows), the insertion or the remove of a card.
+<ul>
+<li>the insertion of a card causing the observable reader to notify a <code>CARD_MATCHED</code> reader event (in case of successful scheduled selection) or a <code>CARD_INSERTED</code> reader event (notification mode defined as <code>ALWAYS</code>).</li>
+<li>the removal of a card causing the observable reader to notify a <code>CARD_REMOVED</code> reader event.</li>
+</ul>
+</li>
+</ul>
+<p>If a card detection is started with the <code>REPEATING</code> detection mode, then later when the card is removed, the reader starts again the detection of a new card.</p>
+<p>Notification of card removal during the card removal wait state is a feature of any observable reader.
+However, some observable readers may additionally have the ability to notify removal during the card processing state.</p>
+<hr>
+<h2 id=card-selection-modes>Card selection modes</h2>
+<p>Depending on the card transaction use case, or on the reader capability, there are two ways to manage the selection of a card:</p>
+<ul>
+<li>Either on a simple reader, a selection could be operated directly by transmitting the card selection scenario. In this case the same entity manages both the card selection and the card processing.</li>
+<li>Otherwise, on an observable reader, a scheduled card selection could be defined. In this case the card selection is operated automatically at the insertion of the card. In this case, the card selection is next managed by the observable reader, but the card processing is managed by a reader observer.</li>
+</ul>
+<figure id=figure-card-selection-modes>
+<a data-fancybox href=../../../media/learn/keyple-in-depth/card_selection_modes_activity_diagram.svg data-caption="Card selection modes">
+<img src=../../../media/learn/keyple-in-depth/card_selection_modes_activity_diagram.svg alt width=50%>
+</a>
+<figcaption data-pre="Figure " data-post=: class=numbered>
+Card selection modes
+</figcaption>
+</figure>
+<hr>
+<h2 id=internal-adapters-release>Internal adapters (release)</h2>
+<h3 id=service>Service</h3>
+<p><img src=https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg alt="coming soon!"></p>
+<h3 id=card-resource-service>Card resource service</h3>
+<p><img src=https://raw.githubusercontent.com/eclipse/keyple-service-resource-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg alt="coming soon!"></p>
+<h3 id=distributed>Distributed</h3>
+<p><img src=https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg alt="coming soon!"></p>
+<hr>
+<h2 id=internal-adapters-snapshot>Internal adapters (snapshot)</h2>
+<h3 id=service-1>Service</h3>
+<p><img src=https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/main/src/main/uml/adapter_class_diagram.svg alt="coming soon!"></p>
+<h3 id=card-resource-service-1>Card resource service</h3>
+<p><img src=https://raw.githubusercontent.com/eclipse/keyple-service-resource-java-lib/main/src/main/uml/adapter_class_diagram.svg alt="coming soon!"></p>
+<h3 id=distributed-1>Distributed</h3>
+<p><img src=https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/main/src/main/uml/adapter_class_diagram.svg alt="coming soon!"></p>
 </div>
 <div class=article-widget>
 <div class=post-nav>
 <div class=post-nav-item>
 <div class=meta-nav>Next</div>
-<a href=../../../learn/keyple-in-depth/calypso-card/ rel=prev>Calypso card extension</a>
+<a href=../../../learn/keyple-in-depth/calypso-card-extension/ rel=prev>Calypso card extension</a>
 </div>
 </div>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Tue, Sep 21, 2021</p>
+<p>Last updated on Tue, Oct 5, 2021</p>
 </div>
 </article>
 <footer class=site-footer>
