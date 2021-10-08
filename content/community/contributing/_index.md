@@ -36,6 +36,37 @@ For more information, please see the Eclipse Committer Handbook:
 https://www.eclipse.org/projects/handbook/#contributing
 
 ---
+## Commits message conventions
+
+In order to ensure good readability of the commit history, it is necessary to have consistency in the structure of the commit messages.
+
+Therefore, all contributors to the project are asked to respect the structure of the commits messages as described in the guide [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/):
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+<footer(s)>
+```
+
+Furthermore, it is requested to indicate in the `footer` section the associated issue(s) that will be closed (`Closes #xxx, closes #yyy, etc...`).
+This will automatically close the associated issue(s) when the pull request is validated (see [GitHub Docs](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) for more details).
+
+It is also required to indicate possible references to other associated issues (`Refs: #aaa, #bbbb, repository_owner/other_repository_name#ccc, etc...`).
+
+Here is fictive example:
+
+```ini
+feat(observation): allow asynchronous notification of reader events
+
+Add a public method in the observable reader to enable asynchronous notifications.
+
+Closes #34, closes #38
+Refs: #12, eclipse/keyple#54
+```
+
+---
 ## Contributing via fork
 
 1. Check if there is already a GitHub issue for what you want to work on or create one.
@@ -48,8 +79,7 @@ To improve the chances for your contribution to be accepted, you'll want to wait
 7. Run `./gradlew spotlessApply` to format the code and add licence headers to the files.
 8. Run `./gradlew build` (to check code formatting and run tests)
 9. Commit your changes using the `-s` flag in order to add a **Signed-off-by** footer as mentioned above and use the same email address you are using for your GitHub account.<br>
-   Use descriptive and meaningful commit messages.
-   In particular, start the first line of the commit message with the number of the issue that the commit addresses, e.g. `#XXX [description of changes]`.
+   Use commits messages that respect the [commits message conventions](#commits-message-conventions).
 10. Push your changes to your forked repository.
 11. Submit a [pull request](https://help.github.com/articles/using-pull-requests/) referencing the related issue(s).
 12. After submitting, do not use your branch for any other development, otherwise further changes that you make will be visible in the PR.
@@ -65,8 +95,7 @@ To improve the chances for your contribution to be accepted, you'll want to wait
 1. Run `./gradlew spotlessApply` to format the code and add licence headers to the files.
 1. Run `./gradlew build` (to check code formatting and run tests)
 9. Commit your changes.
-   Use descriptive and meaningful commit messages.
-   In particular, start the first line of the commit message with the number of the issue that the commit addresses, e.g. `#XXX [description of changes]`.
+   Use commits messages that respect the [commits message conventions](#commits-message-conventions).
 1. Push the branch into the repository.
 1. Submit a [pull request](https://help.github.com/articles/using-pull-requests/) and ask somebody who is familiar with the code you modified to review it.
 1. If the reviewer approves and all checks are OK, merge using **squash & commit** method.
