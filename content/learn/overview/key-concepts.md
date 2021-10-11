@@ -20,7 +20,7 @@ It is essential for the future user of Keyple to be familiar with what is said i
 
 Keyple's primary goal being to interact with smart cards (or smartphones) held by individuals, it is logical to put the Reader at the top of Keyple's concepts.
 
-Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via the **Keyple Service** or using a card extension (such as **Keyple Calypso Card Extension** for example).
+Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via the Keyple Service or using a card extension (such as Keyple Calypso card extension add-on for example).
 
 These interfaces provide the means to
 * identify the underlying physical reader,
@@ -31,7 +31,7 @@ The reader concept also applies to the hardware interfaces used to communicate w
 which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.
 
 To define the interface between an application and a reader,
-Keyple relies on the [standard Terminal Reader API](https://calypsonet.github.io/calypsonet-terminal-reader-java-api/) proposed by **Calypso Networks Association** and thus inherits an existing modeling effort.
+Keyple relies on the [standard Terminal Reader API](https://calypsonet.github.io/calypsonet-terminal-reader-java-api/) proposed by Calypso Networks Association and thus inherits an existing modeling effort.
 
 Another benefit of using this terminal API is the ability to certify the functioning of a Keyple terminal via the associated certification process.
 
@@ -92,4 +92,4 @@ The Keyple card selection process is generic, allowing the management of cards o
 
 The Keyple **smart card** is an object representation of the physical card.
 
-It is built by the specific card extension used (e.g. **Keyple Calypso**) and is provided to the user by the card selection service.
+It is built by the specific card extension used (e.g. Keyple Calypso) and is provided to the user by the card selection service.

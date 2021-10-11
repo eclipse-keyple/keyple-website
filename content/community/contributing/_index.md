@@ -10,7 +10,7 @@ weight: 1
 ---
 ## Types of contributions
 
-Thanks for your interest in the **Eclipse Keyple®** project.
+Thanks for your interest in the Eclipse Keyple® project.
 
 There are several ways to contribute to the project:
 * **Propose a fix** for a problem that is already known or that you have identified.

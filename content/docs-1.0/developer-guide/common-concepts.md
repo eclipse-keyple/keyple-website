@@ -10,9 +10,9 @@ weight: 300
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 {{% /alert %}}
 
-This page describes the core elements of **Keyple**, i.e. the concepts and APIs of **Keyple Core** that are used to build any application implementing **Keyple**.
+This page describes the core elements of Keyple, i.e. the concepts and APIs of **Keyple Core** that are used to build any application implementing Keyple.
  
-It is essential for the future user of **Keyple** to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on **Keyple Core**.
+It is essential for the future user of Keyple to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on **Keyple Core**.
 
 ---
 ## Reader

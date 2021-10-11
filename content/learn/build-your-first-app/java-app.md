@@ -331,7 +331,7 @@ time. {{% /alert %}}
 ---
 ## FAQ
 
-**How do I find out the names of the readers?**
+#### How do I find out the names of the readers?
 
 To find out the names of the readers connected to your computer, we will
 use Keyple with the following class which prints in the console the
@@ -375,7 +375,7 @@ Identify which reader will be the card (contactless) reader and the SAM
 (contact) reader and replace ```CARD_READER_NAME``` and
 ```SAM_READER_NAME``` with their values.
 
-**How to activate the Keyple's logs?**
+#### How to activate the Keyple's logs?
 
 As soon as the `slf4j` library is imported into the project, Keyple
 modules are able to produce logs.
@@ -430,8 +430,8 @@ org.slf4j.simpleLogger.showShortLogName=true
 org.slf4j.simpleLogger.levelInBrackets=true
 {{< /code >}}
 
-**Why do I see a warning in the console about illegal reflexive access
-when running the application?**
+#### Why do I see a warning in the console about illegal reflexive access
+when running the application?
 
 A known problem on Windows 8/10 platforms causes the smartcard service
 to stop when the last reader is removed. This problem prevents a

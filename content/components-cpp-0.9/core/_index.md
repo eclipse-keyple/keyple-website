@@ -23,7 +23,7 @@ Keyple project
 
 ## Overview
 
-The **Keyple Core** C++ component contains all the fundamental requires components of the **Keyple** solution.
+The **Keyple Core** C++ component contains all the fundamental requires components of the Keyple solution.
 
 It is compatible with **PC** and **MAC** platforms.
 

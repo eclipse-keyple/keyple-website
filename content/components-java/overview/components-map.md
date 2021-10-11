@@ -15,7 +15,7 @@ The dependencies between the Keyple components are shown in the diagram below:
 Here are the most important things to remember:
 * Each component has its **own life cycle**.
 * There are two types of Keyple components: **APIs** and **libraries**.
-* Some APIs are provided by **Calypso Networks Association**.
+* Some APIs are provided by Calypso Networks Association.
 * APIs contain **only interfaces**.
 * Libraries contain **interfaces and their implementation**.
 * Some APIs are **public** while others are **internal**.

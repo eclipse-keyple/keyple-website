@@ -24,7 +24,7 @@ Keyple project
 
 ## Overview
 
-The **Keyple Calypso** Java component is a Keyple reader extension for **Calypso®** technology.
+The **Keyple Calypso** Java component is a Keyple reader extension for Calypso® technology.
 
 It can be used on **PC**, **MAC** and **Android** platforms.
 

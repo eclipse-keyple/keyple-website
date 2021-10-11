@@ -9,9 +9,9 @@ toc: true
 
 ---
 
-**Keyple** is compliant with the terminal APIs provided by the [Calypso Networks Association](https://calypsonet.org) that standardize how to manage cards, readers, reader events and card selection.
+Keyple is compliant with the terminal APIs provided by the [Calypso Networks Association](https://calypsonet.org) that standardize how to manage cards, readers, reader events and card selection.
 
-This compliance allows **Keyple** to obtain certifications from the **Calypso Networks Association**.
+This compliance allows Keyple to obtain certifications from the Calypso Networks Association.
 It is a guarantee of reliability and reproducibility of the processes implemented on a variety of devices.
 
 ## Reader & Card APIs
@@ -26,8 +26,8 @@ The **Reader API** must be used by developers of applications and card extension
 
 ## Calypso API
 
-This high level API standardizes the way to interact with a **Calypso®** product (card, NFC smartphone applet/application, SAM, etc...).
+This high level API standardizes the way to interact with a Calypso® product (card, NFC smartphone applet/application, SAM, etc...).
 
-This API should be used by developers of **Calypso** applications.
+This API should be used by developers of Calypso applications.
 
 * [{{< icon name="github" pack="fab" >}} Calypsonet Terminal Calypso Java API](https://github.com/calypsonet/calypsonet-terminal-calypso-java-api)

@@ -1,6 +1,6 @@
 ---
 title: Calypso application
-summary: How to develop an end-user application using the Calypso Card Extension.
+summary: How to develop an end-user application using the Calypso card extension add-on.
 type: book
 toc: true
 draft: false
@@ -9,7 +9,8 @@ weight: 30
 
 ---
 ## Overview
-**Keyple provides a card extension add-on dedicated to the Calypso® card technology.**
+
+Keyple provides a card extension add-on dedicated to the Calypso® card technology.
 
 This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way. 
 It completely hides the details of APDU orders that are sent to Calypso cards and SAMs, which are usually tedious operations.
@@ -41,7 +42,7 @@ Pre-requisites:
 ---
 ## The Calypso extension service
 
-As part of the **Calypso** card extension add-on, the **Calypso extension service** is the provider of the API implementations.
+As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.
 
 The service is accessible by invoking the `CalypsoExtensionService.getInstance()` static method.
 

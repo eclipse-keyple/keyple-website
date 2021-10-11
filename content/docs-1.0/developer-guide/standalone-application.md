@@ -31,7 +31,7 @@ title="" >}}
 
 1. In pre-requisite, read the [common concepts]({{< relref
    "common-concepts.md" >}}) page and become familiar with the basic
-   concepts on which **Keyple** is based.
+   concepts on which Keyple is based.
 2. Any implementation of a Keyple application starts with the
    implementation of **Keyple Core**, please study the
    [workflow](#workflow) proposed in the following chapter.
@@ -42,7 +42,7 @@ title="" >}}
    ref "docs-1.0/build-your-first-app" >}}) section to configure your
    environment.
 6. Using the [Java components]({{< ref "components-java-1.0/_index.md" >}}) or [C++ components]({{< ref "components-cpp-0.9/_index.md" >}}) pages, import
-   **Keyple Core** into your project and start playing with **Keyple**.
+   **Keyple Core** into your project and start playing with Keyple.
 7. Don't forget to explore the potential of Keyple card-specific
    extensions such as **Keyple Calypso**.
 

@@ -24,7 +24,7 @@ Keyple project
 
 ## Overview
 
-The **Keyple Calypso** C++ component is a Keyple reader extension for **Calypso®** technology.
+The **Keyple Calypso** C++ component is a Keyple reader extension for Calypso® technology.
 
 It can be used on **PC** and **MAC** platforms.
 
