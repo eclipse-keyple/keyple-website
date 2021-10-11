@@ -4,7 +4,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=generator content="Source Themes Academic 4.8.0">
-<meta name=description content="How to develop an end-user application using the Calypso Card Extension.">
+<meta name=description content="How to develop an end-user application using the Calypso card extension add-on.">
 <link rel=alternate hreflang=en-us href=https://keyple.org/learn/developer-guide/calypso-application/>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <meta name=theme-color content="#1D87BB">
@@ -24,9 +24,9 @@
 <meta property="og:site_name" content="Eclipse Keyple">
 <meta property="og:url" content="https://keyple.org/learn/developer-guide/calypso-application/">
 <meta property="og:title" content="Calypso application | Eclipse Keyple">
-<meta property="og:description" content="How to develop an end-user application using the Calypso Card Extension."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
+<meta property="og:description" content="How to develop an end-user application using the Calypso card extension add-on."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-04T18:17:26+02:00">
+<meta property="article:modified_time" content="2021-10-11T10:47:18+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -169,7 +169,7 @@
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
 <li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
-<li><a href=../../../learn/keyple-in-depth/build-ci-process/>Build & CI</a></li>
+<li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
 </ul>
 </div>
 </ul>
@@ -200,7 +200,7 @@
 <div class=article-style>
 <hr>
 <h2 id=overview>Overview</h2>
-<p><strong>Keyple provides a card extension add-on dedicated to the Calypso® card technology.</strong></p>
+<p>Keyple provides a card extension add-on dedicated to the Calypso® card technology.</p>
 <p>This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way.
 It completely hides the details of APDU orders that are sent to Calypso cards and SAMs, which are usually tedious operations.</p>
 <p>The main features are:</p>
@@ -242,7 +242,7 @@ It completely hides the details of APDU orders that are sent to Calypso cards an
 </ol>
 <hr>
 <h2 id=the-calypso-extension-service>The Calypso extension service</h2>
-<p>As part of the <strong>Calypso</strong> card extension add-on, the <strong>Calypso extension service</strong> is the provider of the API implementations.</p>
+<p>As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.</p>
 <p>The service is accessible by invoking the <code>CalypsoExtensionService.getInstance()</code> static method.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('2',this)">Copy</button></div>
 <pre><code class=language-java id=code-2>CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();</code></pre>
@@ -405,7 +405,7 @@ The provided <code>CalypsoCard</code> object is kept and updated dynamically all
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Mon, Oct 4, 2021</p>
+<p>Last updated on Mon, Oct 11, 2021</p>
 </div>
 </article>
 <footer class=site-footer>

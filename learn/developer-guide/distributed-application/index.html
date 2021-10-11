@@ -26,7 +26,7 @@
 <meta property="og:title" content="Distributed Application Developer Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user application using network communications."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-04T18:17:26+02:00">
+<meta property="article:modified_time" content="2021-10-11T10:47:18+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -169,7 +169,7 @@
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
 <li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
-<li><a href=../../../learn/keyple-in-depth/build-ci-process/>Build & CI</a></li>
+<li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
 </ul>
 </div>
 </ul>
@@ -210,9 +210,9 @@
 <div class=article-style>
 <hr>
 <h2 id=overview>Overview</h2>
-<p><strong>Keyple provides the &ldquo;Keyple Distributed&rdquo; solution which allows a terminal to communicate with a smart card reader available in another terminal</strong>.</p>
+<p>Keyple provides the &ldquo;Keyple Distributed&rdquo; solution which allows a terminal to communicate with a smart card reader available in another terminal.</p>
 <p>In this way, you can manage transactions within a distributed architecture.</p>
-<p>The diagram below shows the location of the <strong>Keyple Distributed</strong> components in the software layers used in a distributed architecture:</p>
+<p>The diagram below shows the location of the Keyple Distributed components in the software layers used in a distributed architecture:</p>
 <figure id=figure-keyple-distributed---solution-layers-overview>
 <a data-fancybox href=../../../media/learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg data-caption="Keyple Distributed - Solution layers overview">
 <img src=../../../media/learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg alt>
@@ -227,7 +227,7 @@ Keyple Distributed - Solution layers overview
 <li>In pre-requisite, read
 <a href=../../../learn/developer-guide/standalone-application/>Standalone Application Developer Guide</a> to understand the main concepts of Keyple in a standalone application.</li>
 <li>Learn
-<a href=#concepts>main terms and concepts</a> of the <strong>Keyple Distributed</strong> solution.</li>
+<a href=#concepts>main terms and concepts</a> of the Keyple Distributed solution.</li>
 <li>Find your
 <a href=#usage-modes>usage mode</a>. This will help you to determine exactly which library and API to use.</li>
 <li>
@@ -299,7 +299,7 @@ Keyple Distributed - Concepts - Main use case
 </figure>
 <p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.</p>
 <p>These could be for example a ticketing reloading service, where the business logic would be on the terminal without local readers, with thin clients on A & B terminals communicating locally with the cards.</p>
-<p>In this use case, the <strong>Keyple Distributed</strong> solution is use for card communication.</p>
+<p>In this use case, the Keyple Distributed solution is use for card communication.</p>
 <figure id=figure-keyple-distributed---concepts---one-remote-plugin-connected-to-many-local-services>
 <a data-fancybox href=../../../media/learn/developer-guide/distributed-application/distributed_concepts_2.svg data-caption="Keyple Distributed - Concepts - One remote plugin connected to many local services">
 <img src=../../../media/learn/developer-guide/distributed-application/distributed_concepts_2.svg alt>
@@ -310,7 +310,7 @@ Keyple Distributed - Concepts - One remote plugin connected to many local servic
 </figure>
 <p>Here is another example, but this time it illustrates several remote plugins connected to the same local service.</p>
 <p>These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.</p>
-<p>In this use case, the <strong>Keyple Distributed</strong> solution is use for SAM communication.</p>
+<p>In this use case, the Keyple Distributed solution is use for SAM communication.</p>
 <figure id=figure-keyple-distributed---concepts---many-remote-plugins-connected-to-one-local-service>
 <a data-fancybox href=../../../media/learn/developer-guide/distributed-application/distributed_concepts_3.svg data-caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service">
 <img src=../../../media/learn/developer-guide/distributed-application/distributed_concepts_3.svg alt>
@@ -321,7 +321,7 @@ Keyple Distributed - Concepts - Many remote plugins connected to one local servi
 </figure>
 <hr>
 <h2 id=usage-modes>Usage modes</h2>
-<p>The <strong>Keyple Distributed</strong> solution offers two different usage modes, each one having a specific API designed on a <strong>Client-Server</strong> model:</p>
+<p>The Keyple Distributed solution offers two different usage modes, each one having a specific API designed on a <strong>Client-Server</strong> model:</p>
 <div id=plugins-table-1>
 <table>
 <thead>
@@ -429,7 +429,7 @@ It is the responsibility of the client application to observe and configure the 
 </ul>
 <h3 id=reader-server-side>Reader Server Side</h3>
 <p>This usage mode allows a <strong>client</strong> application to control a smart card reader or a pool of smart card readers available on a <strong>server</strong> (e.g. SAM reader, HSM).</p>
-<p>The <strong>Keyple Distributed</strong> solution offers for this usage mode a remote control of all types of plugins (<code>Plugin</code>, <code>ObservablePlugin</code>, <code>PoolPlugin</code>):</p>
+<p>The Keyple Distributed solution offers for this usage mode a remote control of all types of plugins (<code>Plugin</code>, <code>ObservablePlugin</code>, <code>PoolPlugin</code>):</p>
 <ul>
 <li><strong>Regular plugin</strong> (<code>Plugin</code> or <code>ObservablePlugin</code>)</li>
 </ul>
@@ -561,9 +561,9 @@ Whatever the type of plugin, it is the responsibility of the server application 
 </ul>
 <hr>
 <h2 id=network-configuration>Network configuration</h2>
-<p>The <strong>Keyple Distributed</strong> solution <strong>does not provide</strong> the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between <strong>Remote Plugin</strong> and <strong>Local Service</strong> components.</p>
+<p>The Keyple Distributed solution <strong>does not provide</strong> the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between <strong>Remote Plugin</strong> and <strong>Local Service</strong> components.</p>
 <h3 id=synchronous>Synchronous</h3>
-<p>Choose this mode if you want to implement a Client-Server <strong>Synchronous</strong> communication protocol, such as standard HTTP for example.</p>
+<p>Choose this mode if you want to implement a Client-Server <strong>synchronous</strong> communication protocol, such as standard HTTP for example.</p>
 <table>
 <thead>
 <tr>
@@ -606,7 +606,7 @@ Keyple Distributed - Synchronous network implementation
 </figure>
 <p>In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a <code>serverNodeId</code> are routed to the server associated with a <code>SyncNodeServer</code> node having the <code>serverNodeId</code>.</p>
 <h3 id=asynchronous>Asynchronous</h3>
-<p>Choose this mode if you want to implement a Full-Duplex <strong>Asynchronous</strong> communication protocol, such as Web Sockets for example.</p>
+<p>Choose this mode if you want to implement a Full-Duplex <strong>asynchronous</strong> communication protocol, such as Web Sockets for example.</p>
 <table>
 <thead>
 <tr>
@@ -687,7 +687,7 @@ Keyple Distributed - Asynchronous network implementation
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Mon, Oct 4, 2021</p>
+<p>Last updated on Mon, Oct 11, 2021</p>
 </div>
 </article>
 <footer class=site-footer>

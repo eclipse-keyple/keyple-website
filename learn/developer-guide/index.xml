@@ -31,7 +31,7 @@ If you are new to Keyple, read the &lt;a href="../../learn/overview/key-concepts
 &lt;a href="#perform-a-transaction">Perform a transaction&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;h2 id="the-smart-card-service">The smart card service&lt;/h2>
-&lt;p>As part of &lt;strong>Keyple Service&lt;/strong> component, the smart card service is the main service of Keyple. Its role is to centralize the add-on resources and to manage their
+&lt;p>As part of Keyple Service component, the smart card service is the main service of Keyple. Its role is to centralize the add-on resources and to manage their
 life cycle.&lt;/p>
 &lt;p>The service is accessible by invoking the &lt;code>SmartCardServiceProvider.getService()&lt;/code> static method.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('2', this);">Copy&lt;/button>&lt;/div>
@@ -89,13 +89,13 @@ Moreover, only plugins of type &lt;code>ObservablePlugin&lt;/code> can be monito
 &lt;/div>
 &lt;/div>
 &lt;p>The observation of reader connections and disconnections is achieved
-through a background task managed by &lt;strong>Keyple Service&lt;/strong>.&lt;/p>
+through a background task managed by Keyple Service.&lt;/p>
 &lt;p>To enable these observation mechanisms, it is imperative to provide:&lt;/p>
 &lt;ul>
 &lt;li>a plugin observer implementing the &lt;code>PluginObserverSpi&lt;/code> interface to be notified of plugin events,&lt;/li>
 &lt;li>an exception handler implementing the &lt;code>PluginObservationExceptionHandlerSpi&lt;/code> interface to be notified of errors that may occur during the monitoring or events notifications.&lt;/li>
 &lt;/ul>
-&lt;p>These two interfaces are available in the &lt;code>org.eclipse.keyple.core.service.spi&lt;/code> package of the &lt;strong>Keyple Service&lt;/strong> component.&lt;/p>
+&lt;p>These two interfaces are available in the &lt;code>org.eclipse.keyple.core.service.spi&lt;/code> package of the Keyple Service component.&lt;/p>
 &lt;p>Here is an example of a plugin observer class including an exception handler:&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('11', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-11">class PluginObserver implements PluginObserverSpi, PluginObservationExceptionHandlerSpi {
@@ -121,7 +121,7 @@ public void onPluginObservationError(String pluginName, Throwable e) {
 }
 }&lt;/code>&lt;/pre>
 &lt;p>In order to access the dedicated setters, the plugin has to be cast to &lt;code>ObservablePlugin&lt;/code>.&lt;/p>
-&lt;p>Since adding an observer will cause the &lt;strong>Keyple Service&lt;/strong> to check for the presence of an exception handler,
+&lt;p>Since adding an observer will cause the Keyple Service to check for the presence of an exception handler,
 the definition of the exception handler must be done first.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('12', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-12">PluginObserver pluginObserver = new PluginObserver();
@@ -188,7 +188,7 @@ Android OMAPI reader or a SAM reader), or because the application is designed to
 &lt;/div>
 &lt;/div>
 &lt;p>The observation of card insertions and removals is achieved
-through a background task managed by &lt;strong>Keyple Service&lt;/strong>.&lt;/p>
+through a background task managed by Keyple Service.&lt;/p>
 &lt;p>To enable these observation mechanisms, it is imperative to provide:&lt;/p>
 &lt;ul>
 &lt;li>a reader observer implementing the &lt;code>CardReaderObserverSpi&lt;/code> interface to be notified of reader events,&lt;/li>
@@ -220,7 +220,7 @@ public void onReaderObservationError(String pluginName, String readerName, Throw
 }
 }&lt;/code>&lt;/pre>
 &lt;p>In order to access the dedicated setters, the reader has to be cast to &lt;code>ObservableReader&lt;/code>.&lt;/p>
-&lt;p>Since adding an observer will cause the &lt;strong>Keyple Service&lt;/strong> to check for the presence of an exception handler,
+&lt;p>Since adding an observer will cause the Keyple Service to check for the presence of an exception handler,
 the definition of the exception handler must be done first.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('20', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-20">ReaderObserver readerObserver = new ReaderObserver();
@@ -247,7 +247,7 @@ then configure it with scenario cases using dedicated methods provided by one or
 &lt;p>The &lt;code>prepareSelection(...)&lt;/code> method allows to add a selection case to the scenario by providing an implementation of the &lt;code>CardSelection&lt;/code> interface and return the index of the added case in order to be able to identify later the case that matched.&lt;/p>
 &lt;p>Please note that the order of addition is important because it will impact the selection cycle and favor the performance of the first added cases.&lt;/p>
 &lt;p>Providing one or more selection cases to the &lt;code>CardSelectionManager&lt;/code> constitutes a selection scenario.
-The scenario is run by &lt;strong>Keyple Service&lt;/strong> when a card is detected, the different cases being evaluated
+The scenario is run by Keyple Service when a card is detected, the different cases being evaluated
 sequentially as long as the card does not match the criteria of the defined cases.&lt;/p>
 &lt;p>The selection process for a case offers several options for selecting a processing based on the type of card presented to the reader.&lt;/p>
 &lt;p>It is based on a filtering process according to three possible criteria,
@@ -369,9 +369,9 @@ This switches the underlying monitoring thread into a state of waiting for the c
 &lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Distributed Application Developer Guide</title><link>https://keyple.org/learn/developer-guide/distributed-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/distributed-application/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>&lt;strong>Keyple provides the &amp;ldquo;Keyple Distributed&amp;rdquo; solution which allows a terminal to communicate with a smart card reader available in another terminal&lt;/strong>.&lt;/p>
+&lt;p>Keyple provides the &amp;ldquo;Keyple Distributed&amp;rdquo; solution which allows a terminal to communicate with a smart card reader available in another terminal.&lt;/p>
 &lt;p>In this way, you can manage transactions within a distributed architecture.&lt;/p>
-&lt;p>The diagram below shows the location of the &lt;strong>Keyple Distributed&lt;/strong> components in the software layers used in a distributed architecture:&lt;/p>
+&lt;p>The diagram below shows the location of the Keyple Distributed components in the software layers used in a distributed architecture:&lt;/p>
 &lt;figure id="figure-keyple-distributed---solution-layers-overview">
 &lt;a data-fancybox="" href="../../media/learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg" data-caption="Keyple Distributed - Solution layers overview">
 &lt;img src="../../media/learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg" alt="" >
@@ -386,7 +386,7 @@ Keyple Distributed - Solution layers overview
 &lt;li>In pre-requisite, read
 &lt;a href="../../learn/developer-guide/standalone-application/">Standalone Application Developer Guide&lt;/a> to understand the main concepts of Keyple in a standalone application.&lt;/li>
 &lt;li>Learn
-&lt;a href="#concepts">main terms and concepts&lt;/a> of the &lt;strong>Keyple Distributed&lt;/strong> solution.&lt;/li>
+&lt;a href="#concepts">main terms and concepts&lt;/a> of the Keyple Distributed solution.&lt;/li>
 &lt;li>Find your
 &lt;a href="#usage-modes">usage mode&lt;/a>. This will help you to determine exactly which library and API to use.&lt;/li>
 &lt;li>
@@ -462,7 +462,7 @@ Keyple Distributed - Concepts - Main use case
 &lt;/figure>
 &lt;p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.&lt;/p>
 &lt;p>These could be for example a ticketing reloading service, where the business logic would be on the terminal without local readers, with thin clients on A &amp;amp; B terminals communicating locally with the cards.&lt;/p>
-&lt;p>In this use case, the &lt;strong>Keyple Distributed&lt;/strong> solution is use for card communication.&lt;/p>
+&lt;p>In this use case, the Keyple Distributed solution is use for card communication.&lt;/p>
 &lt;figure id="figure-keyple-distributed---concepts---one-remote-plugin-connected-to-many-local-services">
 &lt;a data-fancybox="" href="../../media/learn/developer-guide/distributed-application/distributed_concepts_2.svg" data-caption="Keyple Distributed - Concepts - One remote plugin connected to many local services">
 &lt;img src="../../media/learn/developer-guide/distributed-application/distributed_concepts_2.svg" alt="" >
@@ -473,7 +473,7 @@ Keyple Distributed - Concepts - One remote plugin connected to many local servic
 &lt;/figure>
 &lt;p>Here is another example, but this time it illustrates several remote plugins connected to the same local service.&lt;/p>
 &lt;p>These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.&lt;/p>
-&lt;p>In this use case, the &lt;strong>Keyple Distributed&lt;/strong> solution is use for SAM communication.&lt;/p>
+&lt;p>In this use case, the Keyple Distributed solution is use for SAM communication.&lt;/p>
 &lt;figure id="figure-keyple-distributed---concepts---many-remote-plugins-connected-to-one-local-service">
 &lt;a data-fancybox="" href="../../media/learn/developer-guide/distributed-application/distributed_concepts_3.svg" data-caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service">
 &lt;img src="../../media/learn/developer-guide/distributed-application/distributed_concepts_3.svg" alt="" >
@@ -484,7 +484,7 @@ Keyple Distributed - Concepts - Many remote plugins connected to one local servi
 &lt;/figure>
 &lt;hr>
 &lt;h2 id="usage-modes">Usage modes&lt;/h2>
-&lt;p>The &lt;strong>Keyple Distributed&lt;/strong> solution offers two different usage modes, each one having a specific API designed on a &lt;strong>Client-Server&lt;/strong> model:&lt;/p>
+&lt;p>The Keyple Distributed solution offers two different usage modes, each one having a specific API designed on a &lt;strong>Client-Server&lt;/strong> model:&lt;/p>
 &lt;div id="plugins-table-1">
 &lt;table>
 &lt;thead>
@@ -596,7 +596,7 @@ It is the responsibility of the client application to observe and configure the 
 &lt;/ul>
 &lt;h3 id="reader-server-side">Reader Server Side&lt;/h3>
 &lt;p>This usage mode allows a &lt;strong>client&lt;/strong> application to control a smart card reader or a pool of smart card readers available on a &lt;strong>server&lt;/strong> (e.g. SAM reader, HSM).&lt;/p>
-&lt;p>The &lt;strong>Keyple Distributed&lt;/strong> solution offers for this usage mode a remote control of all types of plugins (&lt;code>Plugin&lt;/code>, &lt;code>ObservablePlugin&lt;/code>, &lt;code>PoolPlugin&lt;/code>):&lt;/p>
+&lt;p>The Keyple Distributed solution offers for this usage mode a remote control of all types of plugins (&lt;code>Plugin&lt;/code>, &lt;code>ObservablePlugin&lt;/code>, &lt;code>PoolPlugin&lt;/code>):&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>Regular plugin&lt;/strong> (&lt;code>Plugin&lt;/code> or &lt;code>ObservablePlugin&lt;/code>)&lt;/li>
 &lt;/ul>
@@ -728,9 +728,9 @@ Whatever the type of plugin, it is the responsibility of the server application 
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="network-configuration">Network configuration&lt;/h2>
-&lt;p>The &lt;strong>Keyple Distributed&lt;/strong> solution &lt;strong>does not provide&lt;/strong> the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between &lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> components.&lt;/p>
+&lt;p>The Keyple Distributed solution &lt;strong>does not provide&lt;/strong> the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between &lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> components.&lt;/p>
 &lt;h3 id="synchronous">Synchronous&lt;/h3>
-&lt;p>Choose this mode if you want to implement a Client-Server &lt;strong>Synchronous&lt;/strong> communication protocol, such as standard HTTP for example.&lt;/p>
+&lt;p>Choose this mode if you want to implement a Client-Server &lt;strong>synchronous&lt;/strong> communication protocol, such as standard HTTP for example.&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -773,7 +773,7 @@ Keyple Distributed - Synchronous network implementation
 &lt;/figure>
 &lt;p>In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a &lt;code>serverNodeId&lt;/code> are routed to the server associated with a &lt;code>SyncNodeServer&lt;/code> node having the &lt;code>serverNodeId&lt;/code>.&lt;/p>
 &lt;h3 id="asynchronous">Asynchronous&lt;/h3>
-&lt;p>Choose this mode if you want to implement a Full-Duplex &lt;strong>Asynchronous&lt;/strong> communication protocol, such as Web Sockets for example.&lt;/p>
+&lt;p>Choose this mode if you want to implement a Full-Duplex &lt;strong>asynchronous&lt;/strong> communication protocol, such as Web Sockets for example.&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -840,7 +840,7 @@ Keyple Distributed - Asynchronous network implementation
 &lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Calypso application</title><link>https://keyple.org/learn/developer-guide/calypso-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/calypso-application/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>&lt;strong>Keyple provides a card extension add-on dedicated to the Calypso® card technology.&lt;/strong>&lt;/p>
+&lt;p>Keyple provides a card extension add-on dedicated to the Calypso® card technology.&lt;/p>
 &lt;p>This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way.
 It completely hides the details of APDU orders that are sent to Calypso cards and SAMs, which are usually tedious operations.&lt;/p>
 &lt;p>The main features are:&lt;/p>
@@ -882,7 +882,7 @@ It completely hides the details of APDU orders that are sent to Calypso cards an
 &lt;/ol>
 &lt;hr>
 &lt;h2 id="the-calypso-extension-service">The Calypso extension service&lt;/h2>
-&lt;p>As part of the &lt;strong>Calypso&lt;/strong> card extension add-on, the &lt;strong>Calypso extension service&lt;/strong> is the provider of the API implementations.&lt;/p>
+&lt;p>As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.&lt;/p>
 &lt;p>The service is accessible by invoking the &lt;code>CalypsoExtensionService.getInstance()&lt;/code> static method.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('2', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-2">CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();&lt;/code>&lt;/pre>
@@ -1020,7 +1020,7 @@ logger.error(&amp;#34;Error during the card resource release: {}&amp;#34;, e.get
 &lt;/ul></description></item><item><title>Card Resource Service Developer Guide</title><link>https://keyple.org/learn/developer-guide/card-resource-service/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/card-resource-service/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>An application that performs secure transactions on smart cards may need to dynamically allocate a card resource dedicated to the current transaction to manage the security of the transaction (e.g. SAM or HSM).&lt;/p>
-&lt;p>To meet this need, Keyple proposes the &lt;strong>Service Resource&lt;/strong> component which provides a service that supports dynamic card resource allocation, using a profile-based filtering mechanism.&lt;/p>
+&lt;p>To meet this need, Keyple proposes the Service Resource component which provides a service that supports dynamic card resource allocation, using a profile-based filtering mechanism.&lt;/p>
 &lt;hr>
 &lt;h2 id="features">Features&lt;/h2>
 &lt;ul>

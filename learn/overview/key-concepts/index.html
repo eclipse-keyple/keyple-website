@@ -26,7 +26,7 @@
 <meta property="og:title" content="The Keyple key concepts | Eclipse Keyple">
 <meta property="og:description" content="Understand the concepts behind Keyple."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-01T15:12:02+02:00">
+<meta property="article:modified_time" content="2021-10-11T10:47:18+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -169,7 +169,7 @@
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
 <li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
-<li><a href=../../../learn/keyple-in-depth/build-ci-process/>Build & CI</a></li>
+<li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
 </ul>
 </div>
 </ul>
@@ -204,7 +204,7 @@
 <hr>
 <h2 id=reader>Reader</h2>
 <p>Keyple&rsquo;s primary goal being to interact with smart cards (or smartphones) held by individuals, it is logical to put the Reader at the top of Keyple&rsquo;s concepts.</p>
-<p>Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via the <strong>Keyple Service</strong> or using a card extension (such as <strong>Keyple Calypso Card Extension</strong> for example).</p>
+<p>Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via the Keyple Service or using a card extension (such as Keyple Calypso card extension add-on for example).</p>
 <p>These interfaces provide the means to</p>
 <ul>
 <li>identify the underlying physical reader,</li>
@@ -215,7 +215,7 @@
 which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.</p>
 <p>To define the interface between an application and a reader,
 Keyple relies on the
-<a href=https://calypsonet.github.io/calypsonet-terminal-reader-java-api/ target=_blank rel=noopener>standard Terminal Reader API</a> proposed by <strong>Calypso Networks Association</strong> and thus inherits an existing modeling effort.</p>
+<a href=https://calypsonet.github.io/calypsonet-terminal-reader-java-api/ target=_blank rel=noopener>standard Terminal Reader API</a> proposed by Calypso Networks Association and thus inherits an existing modeling effort.</p>
 <p>Another benefit of using this terminal API is the ability to certify the functioning of a Keyple terminal via the associated certification process.</p>
 <p>This certification provides a guarantee that the terminal will function as expected.</p>
 <hr>
@@ -253,7 +253,7 @@ and also by allowing the execution of commands immediately following application
 <hr>
 <h2 id=smart-card>Smart card</h2>
 <p>The Keyple <strong>smart card</strong> is an object representation of the physical card.</p>
-<p>It is built by the specific card extension used (e.g. <strong>Keyple Calypso</strong>) and is provided to the user by the card selection service.</p>
+<p>It is built by the specific card extension used (e.g. Keyple Calypso) and is provided to the user by the card selection service.</p>
 </div>
 <div class=article-widget>
 <div class=post-nav>
@@ -265,7 +265,7 @@ and also by allowing the execution of commands immediately following application
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Fri, Oct 1, 2021</p>
+<p>Last updated on Mon, Oct 11, 2021</p>
 </div>
 </article>
 <footer class=site-footer>

@@ -26,7 +26,7 @@
 <meta property="og:title" content="Build your first Java application | Eclipse Keyple">
 <meta property="og:description" content="This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-09-24T16:51:54+02:00">
+<meta property="article:modified_time" content="2021-10-11T10:47:18+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -169,7 +169,7 @@
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
 <li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
-<li><a href=../../../learn/keyple-in-depth/build-ci-process/>Build & CI</a></li>
+<li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
 </ul>
 </div>
 </ul>
@@ -487,7 +487,7 @@ time.
 </div>
 <hr>
 <h2 id=faq>FAQ</h2>
-<p><strong>How do I find out the names of the readers?</strong></p>
+<h4 id=how-do-i-find-out-the-names-of-the-readers>How do I find out the names of the readers?</h4>
 <p>To find out the names of the readers connected to your computer, we will
 use Keyple with the following class which prints in the console the
 number and names of the readers present:</p>
@@ -523,7 +523,7 @@ public class ReaderDiscovery {
 <p>Identify which reader will be the card (contactless) reader and the SAM
 (contact) reader and replace <code>CARD_READER_NAME</code> and
 <code>SAM_READER_NAME</code> with their values.</p>
-<p><strong>How to activate the Keyple&rsquo;s logs?</strong></p>
+<h4 id=how-to-activate-the-keyples-logs>How to activate the Keyple&rsquo;s logs?</h4>
 <p>As soon as the <code>slf4j</code> library is imported into the project, Keyple
 modules are able to produce logs.
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('16',this)">Copy</button></div>
@@ -571,8 +571,8 @@ org.slf4j.simpleLogger.showLogName=false
 org.slf4j.simpleLogger.showShortLogName=true
 
 org.slf4j.simpleLogger.levelInBrackets=true</code></pre>
-<p><strong>Why do I see a warning in the console about illegal reflexive access
-when running the application?</strong></p>
+<h4 id=why-do-i-see-a-warning-in-the-console-about-illegal-reflexive-access>Why do I see a warning in the console about illegal reflexive access</h4>
+<p>when running the application?</p>
 <p>A known problem on Windows 8/10 platforms causes the smartcard service
 to stop when the last reader is removed. This problem prevents a
 &ldquo;classic&rdquo; monitoring of connections and disconnections of readers with
@@ -735,7 +735,7 @@ public class DemoCardAuthentication {
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Fri, Sep 24, 2021</p>
+<p>Last updated on Mon, Oct 11, 2021</p>
 </div>
 </article>
 <footer class=site-footer>

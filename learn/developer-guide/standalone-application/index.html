@@ -26,7 +26,7 @@
 <meta property="og:title" content="Standalone Application Developer Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user standalone application."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-04T18:17:26+02:00">
+<meta property="article:modified_time" content="2021-10-11T10:47:18+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -169,7 +169,7 @@
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
 <li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
-<li><a href=../../../learn/keyple-in-depth/build-ci-process/>Build & CI</a></li>
+<li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
 </ul>
 </div>
 </ul>
@@ -251,7 +251,7 @@ If you are new to Keyple, read the <a href=../../../learn/overview/key-concepts/
 <a href=#perform-a-transaction>Perform a transaction</a></li>
 </ol>
 <h2 id=the-smart-card-service>The smart card service</h2>
-<p>As part of <strong>Keyple Service</strong> component, the smart card service is the main service of Keyple. Its role is to centralize the add-on resources and to manage their
+<p>As part of Keyple Service component, the smart card service is the main service of Keyple. Its role is to centralize the add-on resources and to manage their
 life cycle.</p>
 <p>The service is accessible by invoking the <code>SmartCardServiceProvider.getService()</code> static method.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('2',this)">Copy</button></div>
@@ -309,13 +309,13 @@ Moreover, only plugins of type <code>ObservablePlugin</code> can be monitored.
 </div>
 </div>
 <p>The observation of reader connections and disconnections is achieved
-through a background task managed by <strong>Keyple Service</strong>.</p>
+through a background task managed by Keyple Service.</p>
 <p>To enable these observation mechanisms, it is imperative to provide:</p>
 <ul>
 <li>a plugin observer implementing the <code>PluginObserverSpi</code> interface to be notified of plugin events,</li>
 <li>an exception handler implementing the <code>PluginObservationExceptionHandlerSpi</code> interface to be notified of errors that may occur during the monitoring or events notifications.</li>
 </ul>
-<p>These two interfaces are available in the <code>org.eclipse.keyple.core.service.spi</code> package of the <strong>Keyple Service</strong> component.</p>
+<p>These two interfaces are available in the <code>org.eclipse.keyple.core.service.spi</code> package of the Keyple Service component.</p>
 <p>Here is an example of a plugin observer class including an exception handler:</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
 <pre><code class=language-java id=code-11>class PluginObserver implements PluginObserverSpi, PluginObservationExceptionHandlerSpi {
@@ -343,7 +343,7 @@ through a background task managed by <strong>Keyple Service</strong>.</p>
     }
 }</code></pre>
 <p>In order to access the dedicated setters, the plugin has to be cast to <code>ObservablePlugin</code>.</p>
-<p>Since adding an observer will cause the <strong>Keyple Service</strong> to check for the presence of an exception handler,
+<p>Since adding an observer will cause the Keyple Service to check for the presence of an exception handler,
 the definition of the exception handler must be done first.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('12',this)">Copy</button></div>
 <pre><code class=language-java id=code-12>PluginObserver pluginObserver = new PluginObserver();
@@ -410,7 +410,7 @@ Android OMAPI reader or a SAM reader), or because the application is designed to
 </div>
 </div>
 <p>The observation of card insertions and removals is achieved
-through a background task managed by <strong>Keyple Service</strong>.</p>
+through a background task managed by Keyple Service.</p>
 <p>To enable these observation mechanisms, it is imperative to provide:</p>
 <ul>
 <li>a reader observer implementing the <code>CardReaderObserverSpi</code> interface to be notified of reader events,</li>
@@ -444,7 +444,7 @@ through a background task managed by <strong>Keyple Service</strong>.</p>
     }
 }</code></pre>
 <p>In order to access the dedicated setters, the reader has to be cast to <code>ObservableReader</code>.</p>
-<p>Since adding an observer will cause the <strong>Keyple Service</strong> to check for the presence of an exception handler,
+<p>Since adding an observer will cause the Keyple Service to check for the presence of an exception handler,
 the definition of the exception handler must be done first.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
 <pre><code class=language-java id=code-20>ReaderObserver readerObserver = new ReaderObserver();
@@ -471,7 +471,7 @@ then configure it with scenario cases using dedicated methods provided by one or
 <p>The <code>prepareSelection(...)</code> method allows to add a selection case to the scenario by providing an implementation of the <code>CardSelection</code> interface and return the index of the added case in order to be able to identify later the case that matched.</p>
 <p>Please note that the order of addition is important because it will impact the selection cycle and favor the performance of the first added cases.</p>
 <p>Providing one or more selection cases to the <code>CardSelectionManager</code> constitutes a selection scenario.
-The scenario is run by <strong>Keyple Service</strong> when a card is detected, the different cases being evaluated
+The scenario is run by Keyple Service when a card is detected, the different cases being evaluated
 sequentially as long as the card does not match the criteria of the defined cases.</p>
 <p>The selection process for a case offers several options for selecting a processing based on the type of card presented to the reader.</p>
 <p>It is based on a filtering process according to three possible criteria,
@@ -606,7 +606,7 @@ This switches the underlying monitoring thread into a state of waiting for the c
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Mon, Oct 4, 2021</p>
+<p>Last updated on Mon, Oct 11, 2021</p>
 </div>
 </article>
 <footer class=site-footer>
