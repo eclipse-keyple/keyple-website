@@ -23,7 +23,7 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 
 ## Before you start
 1. In pre-requisite, have knowledge of the standard Calypso.
-1. Read the [common concepts]({{< relref "common-concepts.md" >}}) page and become familiar with the basic concepts on which **Keyple** is based.
+1. Read the [common concepts]({{< relref "common-concepts.md" >}}) page and become familiar with the basic concepts on which Keyple is based.
 1. Any implementation of a Keyple application starts with the implementation of **Keyple Core**, please study the [workflow]({{< relref "standalone-application.md" >}}) proposed in Standalone application guide.
 1. Read chapter [Concepts](#concepts) to understand the main terms and concepts of the  **Keyple Calypso Extension** API.
 1. Explore the [Keyple Calypso API](#keyplecalypsoapi) to discover all the possibilities offered by **Keyple Calypso Extension**.
@@ -31,7 +31,7 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 1. Follow the explanations given in the [Build your first app]({{< ref "docs-1.0/build-your-first-app" >}}) section to configure your environment.
 1. Using the [Java components]({{< ref "components-java-1.0/core/_index.md" >}}) or [C++ components]({{< ref "components-cpp-0.9/core/_index.md" >}}) pages, import **Keyple Core** into your project.
 1. Using the [Java components]({{< ref "components-java-1.0/extensions/calypso.md" >}}) or [C++ components]({{< ref "components-cpp-0.9/extensions/calypso.md" >}}) pages, import **Keyple Calypso Extension** into your project.
-1. Start playing with **Keyple**.
+1. Start playing with Keyple.
 
 ## Concepts
 

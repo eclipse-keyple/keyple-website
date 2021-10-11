@@ -16,9 +16,9 @@ You can find here some in-depth technical information about Keyple core services
 
 An observable reader is active only when at least one reader observer is registered, and if the start of the detection has been requested.
 When active, an observable reader could switch between three internal states:
-* **Wait for card insertion**
-* **Wait for card processing**
-* **Wait for card removal**
+* Wait for card insertion
+* Wait for card processing
+* Wait for card removal
 
 In the nominal case, a reader observer indicates to the observable reader that the processing of the card is finished by releasing the card channel.
 To manage a failure of the reader observer process, the observable reader interface provides also a method to finalize the card processing.

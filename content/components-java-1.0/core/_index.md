@@ -23,7 +23,7 @@ Keyple project
 
 ## Overview
 
-The **Keyple Core** Java component contains all the fundamental requires components of the **Keyple** solution.
+The **Keyple Core** Java component contains all the fundamental requires components of the Keyple solution.
 
 It is compatible with **PC**, **MAC** and **Android** platforms.
 

@@ -11,11 +11,11 @@ weight: 20
 ---
 ## Overview
 
-**Keyple provides the "Keyple Distributed" solution which allows a terminal to communicate with a smart card reader available in another terminal**.
+Keyple provides the "Keyple Distributed" solution which allows a terminal to communicate with a smart card reader available in another terminal.
 
 In this way, you can manage transactions within a distributed architecture.
 
-The diagram below shows the location of the **Keyple Distributed** components in the software layers used in a distributed architecture:
+The diagram below shows the location of the Keyple Distributed components in the software layers used in a distributed architecture:
 
 {{< figure library="true" src="learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg" caption="Keyple Distributed - Solution layers overview" numbered="true" >}}
 
@@ -23,7 +23,7 @@ The diagram below shows the location of the **Keyple Distributed** components in
 ## How to use it
 
 1. In pre-requisite, read [Standalone Application Developer Guide]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application.
-2. Learn [main terms and concepts](#concepts) of the **Keyple Distributed** solution.
+2. Learn [main terms and concepts](#concepts) of the Keyple Distributed solution.
 3. Find your [usage mode](#usage-modes). This will help you to determine exactly which library and API to use.
 4. [Import](#download) into your project the libraries specified by your usage mode.
 5. Implement the transport layer adapted to your [network configuration](#network-configuration).
@@ -63,7 +63,7 @@ The second diagram below illustrates an arbitrary more complex possible use case
 
 These could be for example a ticketing reloading service, where the business logic would be on the terminal without local readers, with thin clients on A & B terminals communicating locally with the cards.
 
-In this use case, the **Keyple Distributed** solution is use for card communication.
+In this use case, the Keyple Distributed solution is use for card communication.
 
 {{< figure library="true" src="learn/developer-guide/distributed-application/distributed_concepts_2.svg" caption="Keyple Distributed - Concepts - One remote plugin connected to many local services" numbered="true" >}}
 
@@ -71,14 +71,14 @@ Here is another example, but this time it illustrates several remote plugins con
 
 These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.
 
-In this use case, the **Keyple Distributed** solution is use for SAM communication.
+In this use case, the Keyple Distributed solution is use for SAM communication.
 
 {{< figure library="true" src="learn/developer-guide/distributed-application/distributed_concepts_3.svg" caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service" numbered="true" >}}
 
 ---
 ## Usage modes
 
-The **Keyple Distributed** solution offers two different usage modes, each one having a specific API designed on a **Client-Server** model:
+The Keyple Distributed solution offers two different usage modes, each one having a specific API designed on a **Client-Server** model:
 
 <div id="plugins-table-1">
 
@@ -142,7 +142,7 @@ Interfaces marked with an asterisk "*" come from the **Keyple Service API**:
 
 This usage mode allows a **client** application to control a smart card reader or a pool of smart card readers available on a **server** (e.g. SAM reader, HSM).
 
-The **Keyple Distributed** solution offers for this usage mode a remote control of all types of plugins (`Plugin`, `ObservablePlugin`, `PoolPlugin`):
+The Keyple Distributed solution offers for this usage mode a remote control of all types of plugins (`Plugin`, `ObservablePlugin`, `PoolPlugin`):
 
 * **Regular plugin** (`Plugin` or `ObservablePlugin`)
 
@@ -200,11 +200,11 @@ Interfaces marked with an asterisk "*" come from the **Keyple Service API**:
 ---
 ## Network configuration
 
-The **Keyple Distributed** solution **does not provide** the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between **Remote Plugin** and **Local Service** components.
+The Keyple Distributed solution **does not provide** the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between **Remote Plugin** and **Local Service** components.
 
 ### Synchronous
 
-Choose this mode if you want to implement a Client-Server **Synchronous** communication protocol, such as standard HTTP for example.
+Choose this mode if you want to implement a Client-Server **synchronous** communication protocol, such as standard HTTP for example.
 
 | | Client | Server |
 |---|---|---|
@@ -221,7 +221,7 @@ In a context with several server instances, a mechanism must be implemented to e
 
 ### Asynchronous
 
-Choose this mode if you want to implement a Full-Duplex **Asynchronous** communication protocol, such as Web Sockets for example.
+Choose this mode if you want to implement a Full-Duplex **asynchronous** communication protocol, such as Web Sockets for example.
 
 |     | Client | Server |
 |---|---|---|

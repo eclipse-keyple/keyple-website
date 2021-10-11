@@ -13,7 +13,7 @@ weight: 40
 
 An application that performs secure transactions on smart cards may need to dynamically allocate a card resource dedicated to the current transaction to manage the security of the transaction (e.g. SAM or HSM).
 
-To meet this need, Keyple proposes the **Service Resource** component which provides a service that supports dynamic card resource allocation, using a profile-based filtering mechanism.
+To meet this need, Keyple proposes the Service Resource component which provides a service that supports dynamic card resource allocation, using a profile-based filtering mechanism.
 
 ---
 ## Features

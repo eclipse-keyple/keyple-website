@@ -17,12 +17,12 @@ links:
 ---
 ## Are you a mobility aggregator, a system integrator, an event manager, a developer or a multi-mobility startup?
 
-Do you want to have easy access to a highly secure and interoperable standard, **Calypso®**, to reduce your costs and 
+Do you want to have easy access to a highly secure and interoperable standard, Calypso®, to reduce your costs and 
 accelerate your developments, to move from a black box to an open and modular solution with access to multiple 
 hardware platforms, to enable partnerships with multimodal transport, building facilities including parking, 
-tourism and events… or just discover what **Eclipse Keyple®** is and how it works?
+tourism and events… or just discover what Eclipse Keyple® is and how it works?
 
-On October 15, 2020, we organized a webinar **Eclipse Keyple®** for Developers! 
+On October 15, 2020, we organized a webinar Eclipse Keyple® for Developers! 
  
 See the whole event on video:
 {{< youtube v6EKq6ZwJUc >}}

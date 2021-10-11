@@ -34,7 +34,7 @@ If you are new to Keyple, read the [key concepts]({{< relref "key-concepts.md" >
 
 ## The smart card service
 
-As part of **Keyple Service** component, the smart card service is the main service of Keyple. Its role is to centralize the add-on resources and to manage their
+As part of Keyple Service component, the smart card service is the main service of Keyple. Its role is to centralize the add-on resources and to manage their
 life cycle.
 
 The service is accessible by invoking the `SmartCardServiceProvider.getService()` static method.
@@ -102,13 +102,13 @@ Moreover, only plugins of type `ObservablePlugin` can be monitored.
 {{% /alert %}}
 
 The observation of reader connections and disconnections is achieved
-through a background task managed by **Keyple Service**.
+through a background task managed by Keyple Service.
 
 To enable these observation mechanisms, it is imperative to provide:
 - a plugin observer implementing the `PluginObserverSpi` interface to be notified of plugin events,
 - an exception handler implementing the `PluginObservationExceptionHandlerSpi` interface to be notified of errors that may occur during the monitoring or events notifications.
 
-These two interfaces are available in the `org.eclipse.keyple.core.service.spi` package of the **Keyple Service** component.
+These two interfaces are available in the `org.eclipse.keyple.core.service.spi` package of the Keyple Service component.
 
 Here is an example of a plugin observer class including an exception handler:
 
@@ -141,7 +141,7 @@ class PluginObserver implements PluginObserverSpi, PluginObservationExceptionHan
 
 In order to access the dedicated setters, the plugin has to be cast to `ObservablePlugin`.
 
-Since adding an observer will cause the **Keyple Service** to check for the presence of an exception handler,
+Since adding an observer will cause the Keyple Service to check for the presence of an exception handler,
 the definition of the exception handler must be done first.
 
 {{< code lang="java" >}}
@@ -208,7 +208,7 @@ Android OMAPI reader or a SAM reader), or because the application is designed to
 {{% /alert %}}
 
 The observation of card insertions and removals is achieved
-through a background task managed by **Keyple Service**.
+through a background task managed by Keyple Service.
 
 To enable these observation mechanisms, it is imperative to provide:
 - a reader observer implementing the `CardReaderObserverSpi` interface to be notified of reader events,
@@ -247,7 +247,7 @@ class ReaderObserver implements CardReaderObserverSpi, CardReaderObservationExce
 
 In order to access the dedicated setters, the reader has to be cast to `ObservableReader`.
 
-Since adding an observer will cause the **Keyple Service** to check for the presence of an exception handler,
+Since adding an observer will cause the Keyple Service to check for the presence of an exception handler,
 the definition of the exception handler must be done first.
 
 {{< code lang="java" >}}
@@ -285,7 +285,7 @@ The `prepareSelection(...)` method allows to add a selection case to the scenari
 Please note that the order of addition is important because it will impact the selection cycle and favor the performance of the first added cases. 
 
 Providing one or more selection cases to the `CardSelectionManager` constitutes a selection scenario.
-The scenario is run by **Keyple Service** when a card is detected, the different cases being evaluated
+The scenario is run by Keyple Service when a card is detected, the different cases being evaluated
 sequentially as long as the card does not match the criteria of the defined cases.
 
 The selection process for a case offers several options for selecting a processing based on the type of card presented to the reader.

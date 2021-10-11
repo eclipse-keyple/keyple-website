@@ -10,7 +10,7 @@ featured: false
 draft: false
 ---
 
-We are pleased to announce that the version 0.9.0 of the C++ implementation of **Eclipse Keyple®** was released January 26th, 2021.
+We are pleased to announce that the version 0.9.0 of the C++ implementation of Eclipse Keyple® was released January 26th, 2021.
 
 This 0.9.0 C++ Keyple implementation follows the API design for the 0.9.0 Java Keyple implementation.
  - New simplifications are introduced on the Calypso API. Keyple 0.8 had a high-level API for building map commands, but the map response data needed to be parsed with a low-level API. The Calypso 0.9.0 API provided a high-level API for retrieving map response data from a map image for which the file structure could be browsed.

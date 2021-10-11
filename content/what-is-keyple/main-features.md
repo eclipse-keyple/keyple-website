@@ -7,8 +7,8 @@ date = ""
 weight = 50
 +++
 
-The goal of **Eclipse Keyple®** is to allow developers to easily implement fast and secure off-line contactless transactions 
-(using NFC cards, mobile phones, …) based on ticket processing integrating technologies other than **Calypso®** the Calypso standard.
+The goal of Eclipse Keyple® is to allow developers to easily implement fast and secure off-line contactless transactions 
+(using NFC cards, mobile phones, …) based on ticket processing integrating technologies other than Calypso® the Calypso standard.
 
 More specifically, Keyple is a set of open source libraries that will initially be available in Java and C++, 
 designed on the same mutual Object-Oriented Model compatible with any terminal architecture: mobile, embedded 
@@ -28,7 +28,7 @@ of the journey and calculate the new balance).
 **According to this scheme, Keyple defines two layers:**
 - **Smart Card readers** are integrated through plugins implementing the SE Proxy API which manages the communications with 
 a smart card through any type of contactless or contact reader (local, remote, standard, proprietary…)
-- **Ticketing applications** relies on a high-level **Calypso®** processing API to manage **Calypso®** commands & security features. 
+- **Ticketing applications** relies on a high-level Calypso® processing API to manage Calypso® commands & security features. 
 This API uses the SE Proxy API to communicate with the reader
 
 
