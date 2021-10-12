@@ -26,7 +26,7 @@
 <meta property="og:title" content="Create a reader plugin | Eclipse Keyple">
 <meta property="og:description" content="How to develop an add-on to handle a specific hardware device."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-09-24T18:04:44+02:00">
+<meta property="article:modified_time" content="2021-10-12T16:57:14+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -179,7 +179,18 @@
 <ul class="nav toc-top">
 <li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
 </ul>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#overview>Overview</a></li>
+<li><a href=#operating-mode>Operating mode</a></li>
+<li><a href=#plugin-architecture>Plugin architecture</a></li>
+<li><a href=#select-predefined-features>Select predefined features</a></li>
+<li><a href=#define-specific-features>Define specific features</a></li>
+<li><a href=#implement-the-solution>Implement the solution</a></li>
+<li><a href=#api>API</a></li>
+<li><a href=#download>Download</a></li>
+</ul>
+</nav>
 </div>
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
@@ -187,11 +198,97 @@
 <h1>Create a reader plugin</h1>
 <div class=article-style>
 <hr>
-<div class="alert alert-note">
+<h2 id=overview>Overview</h2>
+<p>This page is intended for developers who want to create a Keyple plugin for a specific device.
+It presents step by step the necessary steps depending on the characteristics of the reader.</p>
+<hr>
+<h2 id=operating-mode>Operating mode</h2>
+<ol>
+<li>Learn the
+<a href=#plugin-architecture>plugin architecture</a></li>
+<li>
+<a href=#select-predefined-features>Select the predefined features</a> that meet your need</li>
+<li>
+<a href=#define-specific-features>Define specific features</a> (optional)</li>
+<li>
+<a href=#implement-the-solution>Implement the solution</a></li>
+</ol>
+<hr>
+<h2 id=plugin-architecture>Plugin architecture</h2>
+<p>A Keyple reader plugin consists of three objects that meet the following two interface specifications:</p>
+<ul>
+<li><strong>Common API</strong>: public contract containing only generic types common to all plugins.</li>
+<li><strong>Plugin API</strong>: private contract based on two types of interfaces:
+<ul>
+<li><strong>API</strong> (Application Programming Interface): interface implemented by Keyple Service directly usable by the plugin code.</li>
+<li><strong>SPI</strong> (Service Provider Interface): interface to be implemented by the plugin and directly used by Keyple Service.</li>
+</ul>
+</li>
+</ul>
+<p>The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the client application:
+<figure>
+<a data-fancybox href=../../../media/learn/developer-guide/component-dependencies/plugin_api.svg>
+<img src=../../../media/learn/developer-guide/component-dependencies/plugin_api.svg alt>
+</a>
+</figure>
+</p>
+<hr>
+<h2 id=select-predefined-features>Select predefined features</h2>
+<p>The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
+<figure>
+<a data-fancybox href=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_activity_diagram.svg>
+<img src=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_activity_diagram.svg alt>
+</a>
+</figure>
+</p>
+<div class="alert alert-warning">
 <div>
-Coming soon
+The <code>XxxPluginFactory</code>, <code>XxxPlugin</code> and <code>XxxReader</code> interfaces must be created.
+They are specific to the plugin <code>Xxx</code> to be created but can remain empty if there is no specific feature.
 </div>
 </div>
+<hr>
+<h2 id=define-specific-features>Define specific features</h2>
+<p>Depending on the characteristics of the reader, it may be necessary to add in the specific APIs configuration methods appropriate to the technical context.</p>
+<p>These features can be exposed at three levels:</p>
+<ul>
+<li>In the <strong>plugin factory</strong>, for the initial configuration of the plugin (e.g. set custom plugin name).</li>
+<li>In the <strong>plugin</strong>, for dynamic configurations that can be applied to all the readers (e.g. put the readers in sleep mode).<br>
+The API will then be directly accessible from the client application through the <code>getExtension(...)</code> method of the plugin registered with Keyple Service.</li>
+<li>In the <strong>reader</strong>, for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).<br>
+The API will then be directly accessible from the client application through the <code>getExtension(...)</code> method of the reader provided by the plugin registered with Keyple Service.</li>
+</ul>
+<hr>
+<h2 id=implement-the-solution>Implement the solution</h2>
+<div class="alert alert-warning">
+<div>
+It is important to hide the internal Keyple interfaces of the <strong>Plugin API</strong> from the client application.
+</div>
+</div>
+<p>For this, it is suggested to respect the following programming pattern based on the use of private components (package visibility):
+<figure>
+<a data-fancybox href=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_class_diagram.svg>
+<img src=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_class_diagram.svg alt>
+</a>
+</figure>
+</p>
+<p>Please note that it is possible to use other alternatives to the factory provider depending on the need.
+For example, if the plugin factory needs to expose specific configuration methods, it is recommended to use the builder pattern instead of the provider pattern in order to get a properly initialized factory.
+Thus, the factory does not expose any method.</p>
+<hr>
+<h2 id=api>API</h2>
+<ul>
+<li>
+<a href=https://eclipse.github.io/keyple-common-java-api target=_blank rel=noopener>Keyple Common API</a></li>
+<li>
+<a href=https://eclipse.github.io/keyple-plugin-java-api target=_blank rel=noopener>Keyple Plugin API</a></li>
+</ul>
+<hr>
+<h2 id=download>Download</h2>
+<ul>
+<li>
+<a href=https://keyple.org/components-java/overview/configuration-wizard/>Java components</a></li>
+</ul>
 </div>
 <div class=article-widget>
 <div class=post-nav>
@@ -207,7 +304,7 @@ Coming soon
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Fri, Sep 24, 2021</p>
+<p>Last updated on Tue, Oct 12, 2021</p>
 </div>
 </article>
 <footer class=site-footer>

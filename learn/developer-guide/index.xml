@@ -1185,11 +1185,97 @@ You just have to provide the card resource to remove.&lt;/p>
 &lt;li>
 &lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Create a reader plugin</title><link>https://keyple.org/learn/developer-guide/create-a-reader-plugin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/create-a-reader-plugin/</guid><description>&lt;hr>
-&lt;div class="alert alert-note">
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This page is intended for developers who want to create a Keyple plugin for a specific device.
+It presents step by step the necessary steps depending on the characteristics of the reader.&lt;/p>
+&lt;hr>
+&lt;h2 id="operating-mode">Operating mode&lt;/h2>
+&lt;ol>
+&lt;li>Learn the
+&lt;a href="#plugin-architecture">plugin architecture&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#select-predefined-features">Select the predefined features&lt;/a> that meet your need&lt;/li>
+&lt;li>
+&lt;a href="#define-specific-features">Define specific features&lt;/a> (optional)&lt;/li>
+&lt;li>
+&lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="plugin-architecture">Plugin architecture&lt;/h2>
+&lt;p>A Keyple reader plugin consists of three objects that meet the following two interface specifications:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Common API&lt;/strong>: public contract containing only generic types common to all plugins.&lt;/li>
+&lt;li>&lt;strong>Plugin API&lt;/strong>: private contract based on two types of interfaces:
+&lt;ul>
+&lt;li>&lt;strong>API&lt;/strong> (Application Programming Interface): interface implemented by Keyple Service directly usable by the plugin code.&lt;/li>
+&lt;li>&lt;strong>SPI&lt;/strong> (Service Provider Interface): interface to be implemented by the plugin and directly used by Keyple Service.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the client application:
+&lt;figure >
+&lt;a data-fancybox="" href="../../media/learn/developer-guide/component-dependencies/plugin_api.svg" >
+&lt;img src="../../media/learn/developer-guide/component-dependencies/plugin_api.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;/p>
+&lt;hr>
+&lt;h2 id="select-predefined-features">Select predefined features&lt;/h2>
+&lt;p>The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
+&lt;figure >
+&lt;a data-fancybox="" href="../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_activity_diagram.svg" >
+&lt;img src="../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_activity_diagram.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;/p>
+&lt;div class="alert alert-warning">
 &lt;div>
-Coming soon
+The &lt;code>XxxPluginFactory&lt;/code>, &lt;code>XxxPlugin&lt;/code> and &lt;code>XxxReader&lt;/code> interfaces must be created.
+They are specific to the plugin &lt;code>Xxx&lt;/code> to be created but can remain empty if there is no specific feature.
 &lt;/div>
-&lt;/div></description></item><item><title>Create a card extension</title><link>https://keyple.org/learn/developer-guide/create-a-card-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/create-a-card-extension/</guid><description>&lt;hr>
+&lt;/div>
+&lt;hr>
+&lt;h2 id="define-specific-features">Define specific features&lt;/h2>
+&lt;p>Depending on the characteristics of the reader, it may be necessary to add in the specific APIs configuration methods appropriate to the technical context.&lt;/p>
+&lt;p>These features can be exposed at three levels:&lt;/p>
+&lt;ul>
+&lt;li>In the &lt;strong>plugin factory&lt;/strong>, for the initial configuration of the plugin (e.g. set custom plugin name).&lt;/li>
+&lt;li>In the &lt;strong>plugin&lt;/strong>, for dynamic configurations that can be applied to all the readers (e.g. put the readers in sleep mode).&lt;br>
+The API will then be directly accessible from the client application through the &lt;code>getExtension(...)&lt;/code> method of the plugin registered with Keyple Service.&lt;/li>
+&lt;li>In the &lt;strong>reader&lt;/strong>, for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).&lt;br>
+The API will then be directly accessible from the client application through the &lt;code>getExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
+&lt;div class="alert alert-warning">
+&lt;div>
+It is important to hide the internal Keyple interfaces of the &lt;strong>Plugin API&lt;/strong> from the client application.
+&lt;/div>
+&lt;/div>
+&lt;p>For this, it is suggested to respect the following programming pattern based on the use of private components (package visibility):
+&lt;figure >
+&lt;a data-fancybox="" href="../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_class_diagram.svg" >
+&lt;img src="../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_class_diagram.svg" alt="" >
+&lt;/a>
+&lt;/figure>
+&lt;/p>
+&lt;p>Please note that it is possible to use other alternatives to the factory provider depending on the need.
+For example, if the plugin factory needs to expose specific configuration methods, it is recommended to use the builder pattern instead of the provider pattern in order to get a properly initialized factory.
+Thus, the factory does not expose any method.&lt;/p>
+&lt;hr>
+&lt;h2 id="api">API&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;a href="https://eclipse.github.io/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://eclipse.github.io/keyple-plugin-java-api" target="_blank" rel="noopener">Keyple Plugin API&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="download">Download&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Create a card extension</title><link>https://keyple.org/learn/developer-guide/create-a-card-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/create-a-card-extension/</guid><description>&lt;hr>
 &lt;div class="alert alert-note">
 &lt;div>
 Coming soon
