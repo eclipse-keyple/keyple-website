@@ -1,7 +1,4 @@
 @startuml
-title
-    Keyple 2.0 - Specific Plugin - 2.0.0 (19/02/2021)
-end title
 
 ' == THEME ==
 
@@ -47,11 +44,12 @@ hide <<grey>> stereotype
 
 legend top
     __Colors legend__ :
-    * <back:yellow>Public API for end users</back>
-    * <back:lightBlue>Private API for internal use only</back>
+    * <back:#fefece>Public API (for client application)</back>
+    * <back:lightBlue>Private adapters</back>
+    * <back:plum>Keyple internal API</back>
 end legend
 
-package "org.eclipse.keyple.core.common" as commonApi {
+package "Common API\norg.eclipse.keyple.core.common" as commonApi {
     +interface KeyplePluginExtensionFactory {
     }
     +interface KeyplePluginExtension {
@@ -60,55 +58,66 @@ package "org.eclipse.keyple.core.common" as commonApi {
     }
 }
 
-package "org.eclipse.keyple.core.plugin.spi" as pluginSpi {
+package "Plugin API\norg.eclipse.keyple.core.plugin.spi" as pluginSpi {
     +interface ReaderSpi {
+        --
         ...
     }
     +interface PluginSpi {
+        --
         ...
     }
     +interface PluginFactorySpi {
+        --
         ...
     }
 }
 
-package "org.eclipse.keyple.plugin.xxx (specific plugin)" as specificPluginApi {
+package "Plugin xxx\norg.eclipse.keyple.plugin.xxx" as specificPluginApi {
     +class "**final** xxxPluginFactoryProvider" as xxxPluginFactoryProvider {
         +{static} xxxPluginFactory getFactory ()
     }
-    +interface xxxPluginFactory extends KeyplePluginExtensionFactory {
-        ...
-    }
-    +interface xxxPlugin extends KeyplePluginExtension {
-        ...
-    }
-    +interface xxxReader extends KeypleReaderExtension {
-        ...
-    }
-    ' Adapters
-    ~class "**final** xxxPluginFactoryAdapter" as xxxPluginFactoryAdapter implements xxxPluginFactory, PluginFactorySpi {
-        ...
-    }
-    ~class "**final** xxxPluginAdapter" as xxxPluginAdapter implements xxxPlugin, PluginSpi {
-        ...
-    }
-    ~class "**final** xxxReaderAdapter" as xxxReaderAdapter implements xxxReader, ReaderSpi {
-        ...
+    together {
+        +interface xxxPluginFactory extends KeyplePluginExtensionFactory {
+            --
+            custom settings... (optional)
+        }
+        +interface xxxPlugin extends KeyplePluginExtension {
+            --
+            custom settings... (optional)
+        }
+        +interface xxxReader extends KeypleReaderExtension {
+            --
+            custom settings... (optional)
+        }
+        ' Adapters
+        ~class "**final** xxxPluginFactoryAdapter" as xxxPluginFactoryAdapter implements xxxPluginFactory, PluginFactorySpi {
+            --
+            ...
+        }
+        ~class "**final** xxxPluginAdapter" as xxxPluginAdapter implements xxxPlugin, PluginSpi {
+            --
+            ...
+        }
+        ~class "**final** xxxReaderAdapter" as xxxReaderAdapter implements xxxReader, ReaderSpi {
+            --
+            ...
+        }
     }
 }
 
 ' Associations
 
-xxxPluginFactoryProvider ..> xxxPluginFactory #C_LINK : provide >
-xxxPluginFactoryAdapter *- "1" xxxPluginAdapter #C_LINK
-xxxPluginAdapter *- "0..N" xxxReaderAdapter #C_LINK
+xxxPluginFactoryProvider ..> xxxPluginFactoryAdapter #C_LINK : provide >
+xxxPluginFactoryAdapter .> xxxPluginAdapter #C_LINK : provide >
+xxxPluginAdapter .> xxxReaderAdapter #C_LINK : provide >
 
 ' == LAYOUT ==
 
 commonApi -[hidden]- specificPluginApi
+xxxPluginFactoryAdapter -[hidden]- PluginFactorySpi
 xxxReaderAdapter -[hidden]- ReaderSpi
 xxxPluginAdapter -[hidden]- PluginSpi
-xxxPluginFactoryAdapter -[hidden]- PluginFactorySpi
 
 ' == STYLE ==
 
@@ -119,8 +128,8 @@ package specificPluginApi #C_GREY1 {}
 class xxxReaderAdapter <<blue>>
 class xxxPluginAdapter <<blue>>
 class xxxPluginFactoryAdapter <<blue>>
-interface ReaderSpi <<blue>>
-interface PluginSpi <<blue>>
-interface PluginFactorySpi <<blue>>
+interface ReaderSpi <<purple>>
+interface PluginSpi <<purple>>
+interface PluginFactorySpi <<purple>>
 
 @enduml

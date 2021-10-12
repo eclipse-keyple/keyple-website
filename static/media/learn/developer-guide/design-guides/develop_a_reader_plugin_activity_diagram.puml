@@ -1,0 +1,112 @@
+@startuml
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_YELLOW FEFECE
+!define C_PURPLE F4ECF7
+!define C_BLUE EBF5FB
+!define C_GREEN E9F7EF
+<style>
+activityDiagram {
+    diamond {
+        BackgroundColor C_BLUE
+        FontSize 12
+    }
+    arrow {
+        FontSize 12
+    }
+    partition {
+        BackgroundColor C_GREY1
+        RoundCorner 6
+    }
+}
+</style>
+skinparam Shadowing false
+
+legend top
+    __Colors legend__ :
+    * <back:C_GREEN>Common API</back>
+    * <back:C_PURPLE>Plugin Xxx API</back>
+    * <back:C_YELLOW>Plugin API</back>
+end legend
+
+start
+
+if (\nDoes the plugin have to provide\na reader allocation mechanism?\n) then (yes)
+    partition "  Plugin factory object  " {
+        #C_GREEN:**KeyplePluginExtensionFactory**;
+        #C_PURPLE:specific **XxxPluginFactory**;
+        :**PoolPluginFactorySpi**;
+    }
+    partition "  Plugin object  " {
+        #C_GREEN:**KeyplePluginExtension**;
+        #C_PURPLE:specific **XxxPlugin**;
+        :**PoolPluginSpi**;
+    }
+else (no)
+    partition "  Plugin factory object  " {
+        #C_GREEN:**KeyplePluginExtensionFactory**;
+        #C_PURPLE:specific **XxxPluginFactory**;
+        :**PluginFactorySpi**;
+    }
+    partition "  Plugin object  " {
+        #C_GREEN:**KeyplePluginExtension**;
+        #C_PURPLE:specific **XxxPlugin**;
+        if (Is the reader removable?) then (yes)
+            if (\nDoes the plugin work\nautonomously to detect reader\nconnections and disconnections?\n) then (yes)
+                :**AutonomousObservablePluginSpi**;
+            else (no)
+                :**ObservablePluginSpi**;
+            endif
+        else (no)
+            :**PluginSpi**;
+        endif
+    }
+endif
+
+partition "  Reader object  " {
+    #C_GREEN:**KeypleReaderExtension**;
+    #C_PURPLE:specific **XxxReader**;
+
+    if (Can the reader handle multiple protocols?) then (yes)
+        :**ConfigurableReaderSpi**;
+    else (no)
+    endif
+
+    if (Is the reader autonomous to open a logical channel with the card?) then (yes)
+        :**AutonomousSelectionReaderSpi**;
+    else (no)
+    endif
+
+    if (Is the card removable?) then (yes)
+        :**ObservableReaderSpi**;
+        if (\nDoes the reader work autonomously\nto detect card insertions?\n) then (yes)
+            if (\nDoes the reader have\na built-in card presence\nnotification mechanism?\n) then (yes)
+                :**WaitForCardInsertionAutonomousSpi**;
+            else (no)
+                :**WaitForCardInsertionBlockingSpi**;
+            endif
+        else (no)
+            :**WaitForCardInsertionNonBlockingSpi**;
+        endif
+        if (\nIs the reader able to detect a card removal\nbetween two APDU transfers?\n) then (yes)
+            :**WaitForCardRemovalBlockingDuringProcessingSpi**;
+        else (no)
+            :**DontWaitForCardRemovalDuringProcessingSpi**;
+        endif
+        if (\nDoes the reader work autonomously\nto detect card removals?\n) then (yes)
+            if (\nDoes the reader have\na built-in missing card\nnotification mechanism?\n) then (yes)
+                :**WaitForCardRemovalAutonomousSpi**;
+            else (no)
+                :**WaitForCardRemovalBlockingSpi**;
+            endif
+        else (no)
+            :**WaitForCardRemovalNonBlockingSpi**;
+        endif
+    else (no)
+        :**ReaderSpi**;
+    endif
+}
+
+stop
+@enduml
