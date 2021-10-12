@@ -1,7 +1,4 @@
 @startuml
-title
-    Keyple 2.0 - Plugin APIs dependencies - 10/06/2021
-end title
 
 ' == THEME ==
 
@@ -67,25 +64,26 @@ hide <<grey>> stereotype
 
 ' == COMPONENTS ==
 
-[Specific Application] as application <<blue>>
-package "keyple-service-java-lib" as packService {
+[Client application] as application <<blue>>
+package "Common API" as packCommonApi {
+    interface "Common API" as commonApi <<red>>
+}
+package "Keyple Service" as packService {
     interface "Service API" as serviceApi
-    interface "Service SPI" as serviceSpi <<blue>>
     [Adapter] as service
 }
-package "Specific Plugin (PCSC...)" as packPlugin {
-    interface "Specific Plugin API" as specificPluginApi <<red>>
+package "Plugin Xxx" as packPlugin {
+    interface "Plugin Xxx API" as specificPluginApi <<red>>
     [Adapter] as plugin <<red>>
 }
-package "keyple-plugin-java-api" as packPluginApi {
+package "Plugin API" as packPluginApi {
     interface "Plugin SPI" as pluginSpi <<red>>
     interface "Plugin API" as pluginApi
 }
 
 ' == ASSOCIATIONS ==
 
-application -- serviceSpi #COLOR_BLUE
-
+specificPluginApi -up- commonApi #COLOR_RED
 plugin -up- specificPluginApi #COLOR_RED
 plugin -- pluginSpi #COLOR_RED
 
@@ -94,10 +92,11 @@ service -- pluginApi #COLOR_YELLOW
 
 ' USE
 
+application ..> commonApi : use
 application ..> specificPluginApi : use
 application ..> serviceApi : use
 
-service .up.> serviceSpi : use
+serviceApi .up.> commonApi : use
 service ..> pluginSpi : use
 
 plugin ..> pluginApi : use
@@ -107,6 +106,8 @@ plugin ..> pluginApi : use
 package packPlugin #C_GREY1 {
 }
 package packService #C_GREY1 {
+}
+package packCommonApi #C_GREY1 {
 }
 package packPluginApi #C_GREY1 {
 }

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="802px" preserveAspectRatio="none" style="width:1090px;height:802px;background:#FFFFFF;" version="1.1" viewBox="0 0 1090 802" width="1090px" zoomAndPan="magnify"><defs><filter height="1" id="b1m3risxm9y4rp0" width="1" x="0" y="0"><feFlood flood-color="#FEFECE" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter><filter height="1" id="b1m3risxm9y4rp1" width="1" x="0" y="0"><feFlood flood-color="#ADD8E6" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter><filter height="1" id="b1m3risxm9y4rp2" width="1" x="0" y="0"><feFlood flood-color="#DDA0DD" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter></defs><g><rect fill="#DDDDDD" height="80.4375" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="228" x="424" y="8"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="88" x="430" y="27.5332">Colors legend</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="522" y="27.5332">:</text><ellipse cx="435.5" cy="40.7188" fill="#000000" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:0.0;"/><text fill="#000000" filter="url(#b1m3risxm9y4rp0)" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="203" x="443" y="45.1426">Public API (for client application)</text><ellipse cx="435.5" cy="58.3281" fill="#000000" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:0.0;"/><text fill="#000000" filter="url(#b1m3risxm9y4rp1)" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="443" y="62.752">Private adapters</text><ellipse cx="435.5" cy="75.9375" fill="#000000" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:0.0;"/><text fill="#000000" filter="url(#b1m3risxm9y4rp2)" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="119" x="443" y="80.3613">Keyple internal API</text><!--MD5=[5e9f90057dc6411d2856ad2f5cede32e]
+cluster commonApi--><polygon fill="#F8F9F9" points="280,103.4375,514,103.4375,521,144.6563,973,144.6563,973,237.4375,280,237.4375,280,103.4375" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="280" x2="521" y1="144.6563" y2="144.6563"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="87" x="354.5" y="119.9707">Common API</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="228" x="284" y="137.5801">org.eclipse.keyple.core.common</text><!--MD5=[6cb19e7d8351e03571d64db4601c3623]
+cluster pluginSpi--><polygon fill="#F8F9F9" points="428,663.4375,672,663.4375,679,704.6563,864,704.6563,864,795.4375,428,795.4375,428,663.4375" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="428" x2="679" y1="704.6563" y2="704.6563"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="70" x="516" y="679.9707">Plugin API</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="238" x="432" y="697.5801">org.eclipse.keyple.core.plugin.spi</text><!--MD5=[f4079738657ebf8f47a9de3e76e08740]
+cluster specificPluginApi--><polygon fill="#F8F9F9" points="16,286.4375,227,286.4375,234,327.6563,1073,327.6563,1073,622.4375,16,622.4375,16,286.4375" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="234" y1="327.6563" y2="327.6563"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="72" x="86.5" y="302.9707">Plugin xxx</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="205" x="20" y="320.5801">org.eclipse.keyple.plugin.xxx</text><!--MD5=[c9fcbc22b46e6fe8dd529abbe4ed4a83]
+class KeyplePluginExtensionFactory--><rect codeLine="52" fill="#FEFECE" height="48" id="KeyplePluginExtensionFactory" style="stroke:#D4AC0D;stroke-width:1.5;" width="210" x="323" y="165.4375"/><ellipse cx="338" cy="181.4375" fill="#B4A7E5" rx="11" ry="11" style="stroke:#B4A7E5;stroke-width:1.0;"/><path d="M339,178.4375 L339,184.4375 L341,184.4375 L341.4844,184.4375 L342,185.0625 L342,185.4375 L342,185.8125 L341.4844,186.4375 L341,186.4375 L335,186.4375 L334.5156,186.4375 L334,185.8125 L334,185.4375 L334,185.0625 L334.5156,184.4375 L335,184.4375 L337,184.4375 L337,178.4375 L335,178.4375 L334.5156,178.4375 L334,177.8125 L334,177.4375 L334,177.0625 L334.5156,176.4375 L335,176.4375 L341,176.4375 L341.4844,176.4375 L342,177.0625 L342,177.4375 L342,177.8125 L341.4844,178.4375 L341,178.4375 L339,178.4375 Z " fill="#000000"/><ellipse cx="357" cy="180.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="167" x="363" y="186.3477">KeyplePluginExtensionFactory</text><line style="stroke:#D4AC0D;stroke-width:1.5;" x1="324" x2="532" y1="197.4375" y2="197.4375"/><line style="stroke:#D4AC0D;stroke-width:1.5;" x1="324" x2="532" y1="205.4375" y2="205.4375"/><!--MD5=[afffbc881b1d922900a05d5f1575661b]
+class KeyplePluginExtension--><rect codeLine="54" fill="#FEFECE" height="48" id="KeyplePluginExtension" style="stroke:#D4AC0D;stroke-width:1.5;" width="170" x="568" y="165.4375"/><ellipse cx="583" cy="181.4375" fill="#B4A7E5" rx="11" ry="11" style="stroke:#B4A7E5;stroke-width:1.0;"/><path d="M584,178.4375 L584,184.4375 L586,184.4375 L586.4844,184.4375 L587,185.0625 L587,185.4375 L587,185.8125 L586.4844,186.4375 L586,186.4375 L580,186.4375 L579.5156,186.4375 L579,185.8125 L579,185.4375 L579,185.0625 L579.5156,184.4375 L580,184.4375 L582,184.4375 L582,178.4375 L580,178.4375 L579.5156,178.4375 L579,177.8125 L579,177.4375 L579,177.0625 L579.5156,176.4375 L580,176.4375 L586,176.4375 L586.4844,176.4375 L587,177.0625 L587,177.4375 L587,177.8125 L586.4844,178.4375 L586,178.4375 L584,178.4375 Z " fill="#000000"/><ellipse cx="602" cy="180.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="127" x="608" y="186.3477">KeyplePluginExtension</text><line style="stroke:#D4AC0D;stroke-width:1.5;" x1="569" x2="737" y1="197.4375" y2="197.4375"/><line style="stroke:#D4AC0D;stroke-width:1.5;" x1="569" x2="737" y1="205.4375" y2="205.4375"/><!--MD5=[d0367e54e30269e1f6406d1a6d3c359c]
+class KeypleReaderExtension--><rect codeLine="56" fill="#FEFECE" height="48" id="KeypleReaderExtension" style="stroke:#D4AC0D;stroke-width:1.5;" width="176" x="773" y="165.4375"/><ellipse cx="788" cy="181.4375" fill="#B4A7E5" rx="11" ry="11" style="stroke:#B4A7E5;stroke-width:1.0;"/><path d="M789,178.4375 L789,184.4375 L791,184.4375 L791.4844,184.4375 L792,185.0625 L792,185.4375 L792,185.8125 L791.4844,186.4375 L791,186.4375 L785,186.4375 L784.5156,186.4375 L784,185.8125 L784,185.4375 L784,185.0625 L784.5156,184.4375 L785,184.4375 L787,184.4375 L787,178.4375 L785,178.4375 L784.5156,178.4375 L784,177.8125 L784,177.4375 L784,177.0625 L784.5156,176.4375 L785,176.4375 L791,176.4375 L791.4844,176.4375 L792,177.0625 L792,177.4375 L792,177.8125 L791.4844,178.4375 L791,178.4375 L789,178.4375 Z " fill="#000000"/><ellipse cx="807" cy="180.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="133" x="813" y="186.3477">KeypleReaderExtension</text><line style="stroke:#D4AC0D;stroke-width:1.5;" x1="774" x2="948" y1="197.4375" y2="197.4375"/><line style="stroke:#D4AC0D;stroke-width:1.5;" x1="774" x2="948" y1="205.4375" y2="205.4375"/><!--MD5=[b139ab9773e4f9d5f3343a17f6c03cd6]
+class ReaderSpi--><rect codeLine="130" fill="#F4ECF7" height="61.8359" id="ReaderSpi" style="stroke:#8E44AD;stroke-width:1.5;" width="102" x="746" y="717.4375"/><ellipse cx="761" cy="733.4375" fill="#B4A7E5" rx="11" ry="11" style="stroke:#B4A7E5;stroke-width:1.0;"/><path d="M762,730.4375 L762,736.4375 L764,736.4375 L764.4844,736.4375 L765,737.0625 L765,737.4375 L765,737.8125 L764.4844,738.4375 L764,738.4375 L758,738.4375 L757.5156,738.4375 L757,737.8125 L757,737.4375 L757,737.0625 L757.5156,736.4375 L758,736.4375 L760,736.4375 L760,730.4375 L758,730.4375 L757.5156,730.4375 L757,729.8125 L757,729.4375 L757,729.0625 L757.5156,728.4375 L758,728.4375 L764,728.4375 L764.4844,728.4375 L765,729.0625 L765,729.4375 L765,729.8125 L764.4844,730.4375 L764,730.4375 L762,730.4375 Z " fill="#000000"/><ellipse cx="780" cy="732.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="59" x="786" y="738.3477">ReaderSpi</text><line style="stroke:#8E44AD;stroke-width:1.5;" x1="747" x2="847" y1="749.4375" y2="749.4375"/><line style="stroke:#8E44AD;stroke-width:1.0;" x1="747" x2="847" y1="757.4375" y2="757.4375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="9" x="752" y="772.8564">...</text><!--MD5=[b7f0fd29174c4bdbe9801878c5229577]
+class PluginSpi--><rect codeLine="131" fill="#F4ECF7" height="61.8359" id="PluginSpi" style="stroke:#8E44AD;stroke-width:1.5;" width="96" x="615" y="717.4375"/><ellipse cx="630" cy="733.4375" fill="#B4A7E5" rx="11" ry="11" style="stroke:#B4A7E5;stroke-width:1.0;"/><path d="M631,730.4375 L631,736.4375 L633,736.4375 L633.4844,736.4375 L634,737.0625 L634,737.4375 L634,737.8125 L633.4844,738.4375 L633,738.4375 L627,738.4375 L626.5156,738.4375 L626,737.8125 L626,737.4375 L626,737.0625 L626.5156,736.4375 L627,736.4375 L629,736.4375 L629,730.4375 L627,730.4375 L626.5156,730.4375 L626,729.8125 L626,729.4375 L626,729.0625 L626.5156,728.4375 L627,728.4375 L633,728.4375 L633.4844,728.4375 L634,729.0625 L634,729.4375 L634,729.8125 L633.4844,730.4375 L633,730.4375 L631,730.4375 Z " fill="#000000"/><ellipse cx="649" cy="732.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="53" x="655" y="738.3477">PluginSpi</text><line style="stroke:#8E44AD;stroke-width:1.5;" x1="616" x2="710" y1="749.4375" y2="749.4375"/><line style="stroke:#8E44AD;stroke-width:1.0;" x1="616" x2="710" y1="757.4375" y2="757.4375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="9" x="621" y="772.8564">...</text><!--MD5=[1dbdc6fbf367d908234c3412457bed60]
+class PluginFactorySpi--><rect codeLine="132" fill="#F4ECF7" height="61.8359" id="PluginFactorySpi" style="stroke:#8E44AD;stroke-width:1.5;" width="136" x="444" y="717.4375"/><ellipse cx="459" cy="733.4375" fill="#B4A7E5" rx="11" ry="11" style="stroke:#B4A7E5;stroke-width:1.0;"/><path d="M460,730.4375 L460,736.4375 L462,736.4375 L462.4844,736.4375 L463,737.0625 L463,737.4375 L463,737.8125 L462.4844,738.4375 L462,738.4375 L456,738.4375 L455.5156,738.4375 L455,737.8125 L455,737.4375 L455,737.0625 L455.5156,736.4375 L456,736.4375 L458,736.4375 L458,730.4375 L456,730.4375 L455.5156,730.4375 L455,729.8125 L455,729.4375 L455,729.0625 L455.5156,728.4375 L456,728.4375 L462,728.4375 L462.4844,728.4375 L463,729.0625 L463,729.4375 L463,729.8125 L462.4844,730.4375 L462,730.4375 L460,730.4375 Z " fill="#000000"/><ellipse cx="478" cy="732.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="93" x="484" y="738.3477">PluginFactorySpi</text><line style="stroke:#8E44AD;stroke-width:1.5;" x1="445" x2="579" y1="749.4375" y2="749.4375"/><line style="stroke:#8E44AD;stroke-width:1.0;" x1="445" x2="579" y1="757.4375" y2="757.4375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="9" x="450" y="772.8564">...</text><!--MD5=[77bc4349ea6438e8a74c230e5fcea155]
+class xxxPluginFactoryProvider--><rect codeLine="76" fill="#FEFECE" height="61.8359" id="xxxPluginFactoryProvider" style="stroke:#D4AC0D;stroke-width:1.5;" width="209" x="59.5" y="372.4375"/><ellipse cx="74.5" cy="388.4375" fill="#ADD1B2" rx="11" ry="11" style="stroke:#ADD1B2;stroke-width:1.0;"/><path d="M76.5,384.9375 Q76.7031,384.4375 76.9375,384.1875 Q77.1719,383.9375 77.4375,383.9375 Q77.9063,383.9375 78.2031,384.2188 Q78.5,384.5 78.5,385.1563 L78.5,386.7188 Q78.5,387.375 78.2188,387.6563 Q77.9375,387.9375 77.5,387.9375 Q77.1094,387.9375 76.8594,387.7656 Q76.6094,387.5938 76.5,387.1406 Q76.4531,386.8281 76.2813,386.6563 Q75.9688,386.3281 75.4063,386.1406 Q74.8438,385.9375 74.2813,385.9375 Q73.5781,385.9375 72.9844,386.2188 Q72.4063,386.5 71.9531,387.125 Q71.5,387.75 71.5,388.6094 L71.5,389.5313 Q71.5,390.5625 72.3438,391.25 Q73.1875,391.9375 74.6875,391.9375 Q75.5781,391.9375 76.2031,391.7344 Q76.5625,391.625 76.9688,391.2656 Q77.2344,391.0625 77.375,391 Q77.5156,390.9375 77.6875,390.9375 Q78.0156,390.9375 78.25,391.2031 Q78.5,391.4531 78.5,391.8125 Q78.5,392.1563 78.1563,392.5625 Q77.6563,393.1563 76.8594,393.4844 Q75.8125,393.9375 74.5313,393.9375 Q73.0313,393.9375 71.8281,393.3438 Q70.8594,392.875 70.1719,391.8594 Q69.5,390.8438 69.5,389.6406 L69.5,388.5469 Q69.5,387.2969 70.0938,386.2031 Q70.7031,385.1094 71.75,384.5313 Q72.8125,383.9375 74,383.9375 Q74.7188,383.9375 75.3438,384.1875 Q75.9688,384.4375 76.5,384.9375 Z " fill="#000000"/><ellipse cx="93.5" cy="387.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="24" x="99.5" y="393.3477">final</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="139" x="126.5" y="393.3477">xxxPluginFactoryProvider</text><line style="stroke:#D4AC0D;stroke-width:1.5;" x1="60.5" x2="267.5" y1="404.4375" y2="404.4375"/><line style="stroke:#D4AC0D;stroke-width:1.5;" x1="60.5" x2="267.5" y1="412.4375" y2="412.4375"/><ellipse cx="70.5" cy="423.4375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" text-decoration="underline" textLength="149" x="79.5" y="427.8564">xxxPluginFactory getFactory ()</text><!--MD5=[fed7f4caaf0512ced7ad550cc1121374]
+class xxxPluginFactory--><rect codeLine="80" fill="#FEFECE" height="61.8359" id="xxxPluginFactory" style="stroke:#D4AC0D;stroke-width:1.5;" width="145" x="345.5" y="372.4375"/><ellipse cx="364.55" cy="388.4375" fill="#B4A7E5" rx="11" ry="11" style="stroke:#B4A7E5;stroke-width:1.0;"/><path d="M365.55,385.4375 L365.55,391.4375 L367.55,391.4375 L368.0344,391.4375 L368.55,392.0625 L368.55,392.4375 L368.55,392.8125 L368.0344,393.4375 L367.55,393.4375 L361.55,393.4375 L361.0656,393.4375 L360.55,392.8125 L360.55,392.4375 L360.55,392.0625 L361.0656,391.4375 L361.55,391.4375 L363.55,391.4375 L363.55,385.4375 L361.55,385.4375 L361.0656,385.4375 L360.55,384.8125 L360.55,384.4375 L360.55,384.0625 L361.0656,383.4375 L361.55,383.4375 L367.55,383.4375 L368.0344,383.4375 L368.55,384.0625 L368.55,384.4375 L368.55,384.8125 L368.0344,385.4375 L367.55,385.4375 L365.55,385.4375 Z " fill="#000000"/><ellipse cx="384.45" cy="387.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="93" x="390.45" y="393.3477">xxxPluginFactory</text><line style="stroke:#D4AC0D;stroke-width:1.5;" x1="346.5" x2="489.5" y1="404.4375" y2="404.4375"/><line style="stroke:#D4AC0D;stroke-width:1.0;" x1="346.5" x2="489.5" y1="412.4375" y2="412.4375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="133" x="351.5" y="427.8564">custom settings... (optional)</text><!--MD5=[b6595d9ff200fd5ee11228c478636e60]
+class xxxPlugin--><rect codeLine="84" fill="#FEFECE" height="61.8359" id="xxxPlugin" style="stroke:#D4AC0D;stroke-width:1.5;" width="145" x="599.5" y="372.4375"/><ellipse cx="636.55" cy="388.4375" fill="#B4A7E5" rx="11" ry="11" style="stroke:#B4A7E5;stroke-width:1.0;"/><path d="M637.55,385.4375 L637.55,391.4375 L639.55,391.4375 L640.0344,391.4375 L640.55,392.0625 L640.55,392.4375 L640.55,392.8125 L640.0344,393.4375 L639.55,393.4375 L633.55,393.4375 L633.0656,393.4375 L632.55,392.8125 L632.55,392.4375 L632.55,392.0625 L633.0656,391.4375 L633.55,391.4375 L635.55,391.4375 L635.55,385.4375 L633.55,385.4375 L633.0656,385.4375 L632.55,384.8125 L632.55,384.4375 L632.55,384.0625 L633.0656,383.4375 L633.55,383.4375 L639.55,383.4375 L640.0344,383.4375 L640.55,384.0625 L640.55,384.4375 L640.55,384.8125 L640.0344,385.4375 L639.55,385.4375 L637.55,385.4375 Z " fill="#000000"/><ellipse cx="660.45" cy="387.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="53" x="666.45" y="393.3477">xxxPlugin</text><line style="stroke:#D4AC0D;stroke-width:1.5;" x1="600.5" x2="743.5" y1="404.4375" y2="404.4375"/><line style="stroke:#D4AC0D;stroke-width:1.0;" x1="600.5" x2="743.5" y1="412.4375" y2="412.4375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="133" x="605.5" y="427.8564">custom settings... (optional)</text><!--MD5=[03f21e7ee5cc95940abd9e7870696a6e]
+class xxxReader--><rect codeLine="88" fill="#FEFECE" height="61.8359" id="xxxReader" style="stroke:#D4AC0D;stroke-width:1.5;" width="145" x="793.5" y="372.4375"/><ellipse cx="827.85" cy="388.4375" fill="#B4A7E5" rx="11" ry="11" style="stroke:#B4A7E5;stroke-width:1.0;"/><path d="M828.85,385.4375 L828.85,391.4375 L830.85,391.4375 L831.3344,391.4375 L831.85,392.0625 L831.85,392.4375 L831.85,392.8125 L831.3344,393.4375 L830.85,393.4375 L824.85,393.4375 L824.3656,393.4375 L823.85,392.8125 L823.85,392.4375 L823.85,392.0625 L824.3656,391.4375 L824.85,391.4375 L826.85,391.4375 L826.85,385.4375 L824.85,385.4375 L824.3656,385.4375 L823.85,384.8125 L823.85,384.4375 L823.85,384.0625 L824.3656,383.4375 L824.85,383.4375 L830.85,383.4375 L831.3344,383.4375 L831.85,384.0625 L831.85,384.4375 L831.85,384.8125 L831.3344,385.4375 L830.85,385.4375 L828.85,385.4375 Z " fill="#000000"/><ellipse cx="851.15" cy="387.9375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="59" x="857.15" y="393.3477">xxxReader</text><line style="stroke:#D4AC0D;stroke-width:1.5;" x1="794.5" x2="937.5" y1="404.4375" y2="404.4375"/><line style="stroke:#D4AC0D;stroke-width:1.0;" x1="794.5" x2="937.5" y1="412.4375" y2="412.4375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="133" x="799.5" y="427.8564">custom settings... (optional)</text><!--MD5=[d53123d7850983a38423ef8749767f29]
+class xxxPluginFactoryAdapter--><rect codeLine="129" fill="#EBF5FB" height="61.8359" id="xxxPluginFactoryAdapter" style="stroke:#3498DB;stroke-width:1.5;" width="206" x="301" y="512.4375"/><ellipse cx="316" cy="528.4375" fill="#ADD1B2" rx="11" ry="11" style="stroke:#ADD1B2;stroke-width:1.0;"/><path d="M318,524.9375 Q318.2031,524.4375 318.4375,524.1875 Q318.6719,523.9375 318.9375,523.9375 Q319.4063,523.9375 319.7031,524.2188 Q320,524.5 320,525.1563 L320,526.7188 Q320,527.375 319.7188,527.6563 Q319.4375,527.9375 319,527.9375 Q318.6094,527.9375 318.3594,527.7656 Q318.1094,527.5938 318,527.1406 Q317.9531,526.8281 317.7813,526.6563 Q317.4688,526.3281 316.9063,526.1406 Q316.3438,525.9375 315.7813,525.9375 Q315.0781,525.9375 314.4844,526.2188 Q313.9063,526.5 313.4531,527.125 Q313,527.75 313,528.6094 L313,529.5313 Q313,530.5625 313.8438,531.25 Q314.6875,531.9375 316.1875,531.9375 Q317.0781,531.9375 317.7031,531.7344 Q318.0625,531.625 318.4688,531.2656 Q318.7344,531.0625 318.875,531 Q319.0156,530.9375 319.1875,530.9375 Q319.5156,530.9375 319.75,531.2031 Q320,531.4531 320,531.8125 Q320,532.1563 319.6563,532.5625 Q319.1563,533.1563 318.3594,533.4844 Q317.3125,533.9375 316.0313,533.9375 Q314.5313,533.9375 313.3281,533.3438 Q312.3594,532.875 311.6719,531.8594 Q311,530.8438 311,529.6406 L311,528.5469 Q311,527.2969 311.5938,526.2031 Q312.2031,525.1094 313.25,524.5313 Q314.3125,523.9375 315.5,523.9375 Q316.2188,523.9375 316.8438,524.1875 Q317.4688,524.4375 318,524.9375 Z " fill="#000000"/><polygon fill="#4177AF" points="335,523.9375,331,529.9375,339,529.9375" style="stroke:#1963A0;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="24" x="341" y="533.3477">final</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="136" x="368" y="533.3477">xxxPluginFactoryAdapter</text><line style="stroke:#3498DB;stroke-width:1.5;" x1="302" x2="506" y1="544.4375" y2="544.4375"/><line style="stroke:#3498DB;stroke-width:1.0;" x1="302" x2="506" y1="552.4375" y2="552.4375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="9" x="307" y="567.8564">...</text><!--MD5=[8ece71be35db894bbdb7ce101967af56]
+class xxxPluginAdapter--><rect codeLine="128" fill="#EBF5FB" height="61.8359" id="xxxPluginAdapter" style="stroke:#3498DB;stroke-width:1.5;" width="166" x="597" y="512.4375"/><ellipse cx="612" cy="528.4375" fill="#ADD1B2" rx="11" ry="11" style="stroke:#ADD1B2;stroke-width:1.0;"/><path d="M614,524.9375 Q614.2031,524.4375 614.4375,524.1875 Q614.6719,523.9375 614.9375,523.9375 Q615.4063,523.9375 615.7031,524.2188 Q616,524.5 616,525.1563 L616,526.7188 Q616,527.375 615.7188,527.6563 Q615.4375,527.9375 615,527.9375 Q614.6094,527.9375 614.3594,527.7656 Q614.1094,527.5938 614,527.1406 Q613.9531,526.8281 613.7813,526.6563 Q613.4688,526.3281 612.9063,526.1406 Q612.3438,525.9375 611.7813,525.9375 Q611.0781,525.9375 610.4844,526.2188 Q609.9063,526.5 609.4531,527.125 Q609,527.75 609,528.6094 L609,529.5313 Q609,530.5625 609.8438,531.25 Q610.6875,531.9375 612.1875,531.9375 Q613.0781,531.9375 613.7031,531.7344 Q614.0625,531.625 614.4688,531.2656 Q614.7344,531.0625 614.875,531 Q615.0156,530.9375 615.1875,530.9375 Q615.5156,530.9375 615.75,531.2031 Q616,531.4531 616,531.8125 Q616,532.1563 615.6563,532.5625 Q615.1563,533.1563 614.3594,533.4844 Q613.3125,533.9375 612.0313,533.9375 Q610.5313,533.9375 609.3281,533.3438 Q608.3594,532.875 607.6719,531.8594 Q607,530.8438 607,529.6406 L607,528.5469 Q607,527.2969 607.5938,526.2031 Q608.2031,525.1094 609.25,524.5313 Q610.3125,523.9375 611.5,523.9375 Q612.2188,523.9375 612.8438,524.1875 Q613.4688,524.4375 614,524.9375 Z " fill="#000000"/><polygon fill="#4177AF" points="631,523.9375,627,529.9375,635,529.9375" style="stroke:#1963A0;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="24" x="637" y="533.3477">final</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="96" x="664" y="533.3477">xxxPluginAdapter</text><line style="stroke:#3498DB;stroke-width:1.5;" x1="598" x2="762" y1="544.4375" y2="544.4375"/><line style="stroke:#3498DB;stroke-width:1.0;" x1="598" x2="762" y1="552.4375" y2="552.4375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="9" x="603" y="567.8564">...</text><!--MD5=[07c06fae09c9cf5c6584283f7934f2e9]
+class xxxReaderAdapter--><rect codeLine="127" fill="#EBF5FB" height="61.8359" id="xxxReaderAdapter" style="stroke:#3498DB;stroke-width:1.5;" width="172" x="853" y="512.4375"/><ellipse cx="868" cy="528.4375" fill="#ADD1B2" rx="11" ry="11" style="stroke:#ADD1B2;stroke-width:1.0;"/><path d="M870,524.9375 Q870.2031,524.4375 870.4375,524.1875 Q870.6719,523.9375 870.9375,523.9375 Q871.4063,523.9375 871.7031,524.2188 Q872,524.5 872,525.1563 L872,526.7188 Q872,527.375 871.7188,527.6563 Q871.4375,527.9375 871,527.9375 Q870.6094,527.9375 870.3594,527.7656 Q870.1094,527.5938 870,527.1406 Q869.9531,526.8281 869.7813,526.6563 Q869.4688,526.3281 868.9063,526.1406 Q868.3438,525.9375 867.7813,525.9375 Q867.0781,525.9375 866.4844,526.2188 Q865.9063,526.5 865.4531,527.125 Q865,527.75 865,528.6094 L865,529.5313 Q865,530.5625 865.8438,531.25 Q866.6875,531.9375 868.1875,531.9375 Q869.0781,531.9375 869.7031,531.7344 Q870.0625,531.625 870.4688,531.2656 Q870.7344,531.0625 870.875,531 Q871.0156,530.9375 871.1875,530.9375 Q871.5156,530.9375 871.75,531.2031 Q872,531.4531 872,531.8125 Q872,532.1563 871.6563,532.5625 Q871.1563,533.1563 870.3594,533.4844 Q869.3125,533.9375 868.0313,533.9375 Q866.5313,533.9375 865.3281,533.3438 Q864.3594,532.875 863.6719,531.8594 Q863,530.8438 863,529.6406 L863,528.5469 Q863,527.2969 863.5938,526.2031 Q864.2031,525.1094 865.25,524.5313 Q866.3125,523.9375 867.5,523.9375 Q868.2188,523.9375 868.8438,524.1875 Q869.4688,524.4375 870,524.9375 Z " fill="#000000"/><polygon fill="#4177AF" points="887,523.9375,883,529.9375,891,529.9375" style="stroke:#1963A0;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="24" x="893" y="533.3477">final</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="102" x="920" y="533.3477">xxxReaderAdapter</text><line style="stroke:#3498DB;stroke-width:1.5;" x1="854" x2="1024" y1="544.4375" y2="544.4375"/><line style="stroke:#3498DB;stroke-width:1.0;" x1="854" x2="1024" y1="552.4375" y2="552.4375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="9" x="859" y="567.8564">...</text><!--MD5=[a197c206781717b4a594300115978dc2]
+reverse link KeyplePluginExtensionFactory to xxxPluginFactory--><path d="M425.965,233.5815 C424.019,274.8275 421.136,335.9505 419.425,372.2325 " fill="none" id="KeyplePluginExtensionFactory-backto-xxxPluginFactory" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="418.976,233.1765,426.911,213.5285,432.961,233.8365,418.976,233.1765" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[1feb98c6a67c5603dfb07d8bcca8af5c]
+reverse link KeyplePluginExtension to xxxPlugin--><path d="M656.867,233.5815 C660.563,274.8275 666.041,335.9505 669.293,372.2325 " fill="none" id="KeyplePluginExtension-backto-xxxPlugin" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="649.883,234.0735,655.07,213.5285,663.827,232.8245,649.883,234.0735" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0ab2d561ae8ab1eb55d58fc9385da973]
+reverse link KeypleReaderExtension to xxxReader--><path d="M862.018,233.5815 C862.99,274.8275 864.432,335.9505 865.288,372.2325 " fill="none" id="KeypleReaderExtension-backto-xxxReader" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="855.018,233.6885,861.545,213.5285,869.014,233.3585,855.018,233.6885" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a6f494627ac1f6d160b993f842e395ad]
+reverse link xxxPluginFactory to xxxPluginFactoryAdapter--><path d="M412.886,454.8445 C410.933,474.0935 408.769,495.4285 407.065,512.2235 " fill="none" id="xxxPluginFactory-backto-xxxPluginFactoryAdapter" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="405.945,453.9135,414.928,434.7225,419.873,455.3265,405.945,453.9135" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d093d989c17d5030eb0af60f2f7e8d01]
+reverse link PluginFactorySpi to xxxPluginFactoryAdapter--><path d="M489.348,698.9305 C481.289,682.1695 471.982,663.3555 463,646.4375 C449.954,621.8635 434.118,594.6125 422.138,574.4635 " fill="none" id="PluginFactorySpi-backto-xxxPluginFactoryAdapter" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="495.72,696.0295,497.987,717.0977,483.076,702.0415,495.72,696.0295" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3c91dbfb9fee07978691f71bc8cd5e2b]
+link xxxPluginFactoryAdapter to PluginFactorySpi--><!--MD5=[271deee5782a9355c6bea53129dbee95]
+reverse link xxxPlugin to xxxPluginAdapter--><path d="M674.922,454.8445 C676.038,474.0935 677.275,495.4285 678.248,512.2235 " fill="none" id="xxxPlugin-backto-xxxPluginAdapter" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="667.925,455.0935,673.756,434.7225,681.901,454.2835,667.925,455.0935" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ae7d2a44faa546b30b2b33127fda7395]
+reverse link PluginSpi to xxxPluginAdapter--><path d="M669.025,697.3005 C670.802,681.3755 672.634,663.6825 674,647.4375 C676.056,622.9835 677.63,595.2045 678.649,574.6635 " fill="none" id="PluginSpi-backto-xxxPluginAdapter" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="675.966,698.2135,666.725,717.2823,662.058,696.6135,675.966,698.2135" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[75858b59b3be0c77ecba62d772b2e4da]
+link xxxPluginAdapter to PluginSpi--><!--MD5=[bc8081b56b498a2c8419014c1c2cae76]
+reverse link xxxReader to xxxReaderAdapter--><path d="M891.526,452.6925 C901.999,472.4905 913.801,494.8005 923.017,512.2235 " fill="none" id="xxxReader-backto-xxxReaderAdapter" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="885.184,455.6745,882.02,434.7225,897.56,449.1275,885.184,455.6745" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0a19e51effe33bcc6cb4dabf8e9f653f]
+reverse link ReaderSpi to xxxReaderAdapter--><path d="M829.774,700.5845 C856.838,661.8945 894.46,608.1115 917.741,574.8285 " fill="none" id="ReaderSpi-backto-xxxReaderAdapter" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="835.372,704.7945,818.172,717.1706,823.9,696.7695,835.372,704.7945" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3e9a5859282d1b950c3a91ee90840c6f]
+link xxxReaderAdapter to ReaderSpi--><!--MD5=[0c9c7136cf09ad7b22696ecfe874bcb5]
+link xxxPluginFactoryProvider to xxxPluginFactoryAdapter--><path codeLine="110" d="M216.372,434.5515 C254.941,456.7285 307.347,486.8625 346.972,509.6465 " fill="none" id="xxxPluginFactoryProvider-to-xxxPluginFactoryAdapter" style="stroke:#3498DB;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#3498DB" points="351.739,512.3875,345.9316,504.433,347.4047,509.8947,341.9431,511.3678,351.739,512.3875" style="stroke:#3498DB;stroke-width:1.0;"/><polygon fill="#000000" points="308.3345,476.1056,301.9583,469.0491,299.0283,474.1447,308.3345,476.1056" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="40" x="313" y="478.9326">provide</text><!--MD5=[ff1c6757311d3eaf01cab22fda02e9d4]
+link xxxPluginFactoryAdapter to xxxPluginAdapter--><path codeLine="111" d="M507.165,543.4375 C534.869,543.4375 564.577,543.4375 591.412,543.4375 " fill="none" id="xxxPluginFactoryAdapter-to-xxxPluginAdapter" style="stroke:#3498DB;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#3498DB" points="596.74,543.4375,587.74,539.4375,591.74,543.4375,587.74,547.4375,596.74,543.4375" style="stroke:#3498DB;stroke-width:1.0;"/><polygon fill="#000000" points="534.5,531.6133,525.4549,528.6744,525.4549,534.5522,534.5,531.6133" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="40" x="538.5" y="536.9326">provide</text><!--MD5=[6a83d079acc58b5df72d5bc659010ed0]
+link xxxPluginAdapter to xxxReaderAdapter--><path codeLine="112" d="M763.018,543.4375 C790.041,543.4375 820.177,543.4375 847.767,543.4375 " fill="none" id="xxxPluginAdapter-to-xxxReaderAdapter" style="stroke:#3498DB;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#3498DB" points="852.887,543.4375,843.887,539.4375,847.887,543.4375,843.887,547.4375,852.887,543.4375" style="stroke:#3498DB;stroke-width:1.0;"/><polygon fill="#000000" points="790.5,531.6133,781.4549,528.6744,781.4549,534.5522,790.5,531.6133" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="40" x="794.5" y="536.9326">provide</text><!--MD5=[506555e07322f0d0508c5c27794c4ca4]
+link commonApi to specificPluginApi--><!--MD5=[c19e42e3ed5b3d95e8ce88891385e3bc]
+@startuml
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+legend top
+    __Colors legend__ :
+    * <back:#fefece>Public API (for client application)</back>
+    * <back:lightBlue>Private adapters</back>
+    * <back:plum>Keyple internal API</back>
+end legend
+
+package "Common API\norg.eclipse.keyple.core.common" as commonApi {
+    +interface KeyplePluginExtensionFactory {
+    }
+    +interface KeyplePluginExtension {
+    }
+    +interface KeypleReaderExtension {
+    }
+}
+
+package "Plugin API\norg.eclipse.keyple.core.plugin.spi" as pluginSpi {
+    +interface ReaderSpi {
+        - -
+        ...
+    }
+    +interface PluginSpi {
+        - -
+        ...
+    }
+    +interface PluginFactorySpi {
+        - -
+        ...
+    }
+}
+
+package "Plugin xxx\norg.eclipse.keyple.plugin.xxx" as specificPluginApi {
+    +class "**final** xxxPluginFactoryProvider" as xxxPluginFactoryProvider {
+        +{static} xxxPluginFactory getFactory ()
+    }
+    together {
+        +interface xxxPluginFactory extends KeyplePluginExtensionFactory {
+            - -
+            custom settings... (optional)
+        }
+        +interface xxxPlugin extends KeyplePluginExtension {
+            - -
+            custom settings... (optional)
+        }
+        +interface xxxReader extends KeypleReaderExtension {
+            - -
+            custom settings... (optional)
+        }
+        ' Adapters
+        ~class "**final** xxxPluginFactoryAdapter" as xxxPluginFactoryAdapter implements xxxPluginFactory, PluginFactorySpi {
+            - -
+            ...
+        }
+        ~class "**final** xxxPluginAdapter" as xxxPluginAdapter implements xxxPlugin, PluginSpi {
+            - -
+            ...
+        }
+        ~class "**final** xxxReaderAdapter" as xxxReaderAdapter implements xxxReader, ReaderSpi {
+            - -
+            ...
+        }
+    }
+}
+
+' Associations
+
+xxxPluginFactoryProvider ..> xxxPluginFactoryAdapter #C_LINK : provide >
+xxxPluginFactoryAdapter .> xxxPluginAdapter #C_LINK : provide >
+xxxPluginAdapter .> xxxReaderAdapter #C_LINK : provide >
+
+' == LAYOUT ==
+
+commonApi -[hidden]- specificPluginApi
+xxxPluginFactoryAdapter -[hidden]- PluginFactorySpi
+xxxReaderAdapter -[hidden]- ReaderSpi
+xxxPluginAdapter -[hidden]- PluginSpi
+
+' == STYLE ==
+
+package commonApi #C_GREY1 {}
+package pluginSpi #C_GREY1 {}
+package specificPluginApi #C_GREY1 {}
+
+class xxxReaderAdapter <<blue>>
+class xxxPluginAdapter <<blue>>
+class xxxPluginFactoryAdapter <<blue>>
+interface ReaderSpi <<purple>>
+interface PluginSpi <<purple>>
+interface PluginFactorySpi <<purple>>
+
+@enduml
+
+@startuml
+
+
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+
+legend top
+    __Colors legend__ :
+    * <back:#fefece>Public API (for client application)</back>
+    * <back:lightBlue>Private adapters</back>
+    * <back:plum>Keyple internal API</back>
+end legend
+
+package "Common API\norg.eclipse.keyple.core.common" as commonApi {
+    +interface KeyplePluginExtensionFactory {
+    }
+    +interface KeyplePluginExtension {
+    }
+    +interface KeypleReaderExtension {
+    }
+}
+
+package "Plugin API\norg.eclipse.keyple.core.plugin.spi" as pluginSpi {
+    +interface ReaderSpi {
+        - -
+        ...
+    }
+    +interface PluginSpi {
+        - -
+        ...
+    }
+    +interface PluginFactorySpi {
+        - -
+        ...
+    }
+}
+
+package "Plugin xxx\norg.eclipse.keyple.plugin.xxx" as specificPluginApi {
+    +class "**final** xxxPluginFactoryProvider" as xxxPluginFactoryProvider {
+        +{static} xxxPluginFactory getFactory ()
+    }
+    together {
+        +interface xxxPluginFactory extends KeyplePluginExtensionFactory {
+            - -
+            custom settings... (optional)
+        }
+        +interface xxxPlugin extends KeyplePluginExtension {
+            - -
+            custom settings... (optional)
+        }
+        +interface xxxReader extends KeypleReaderExtension {
+            - -
+            custom settings... (optional)
+        }
+        ~class "**final** xxxPluginFactoryAdapter" as xxxPluginFactoryAdapter implements xxxPluginFactory, PluginFactorySpi {
+            - -
+            ...
+        }
+        ~class "**final** xxxPluginAdapter" as xxxPluginAdapter implements xxxPlugin, PluginSpi {
+            - -
+            ...
+        }
+        ~class "**final** xxxReaderAdapter" as xxxReaderAdapter implements xxxReader, ReaderSpi {
+            - -
+            ...
+        }
+    }
+}
+
+
+xxxPluginFactoryProvider ..> xxxPluginFactoryAdapter #3498DB : provide >
+xxxPluginFactoryAdapter .> xxxPluginAdapter #3498DB : provide >
+xxxPluginAdapter .> xxxReaderAdapter #3498DB : provide >
+
+
+commonApi -[hidden]- specificPluginApi
+xxxPluginFactoryAdapter -[hidden]- PluginFactorySpi
+xxxReaderAdapter -[hidden]- ReaderSpi
+xxxPluginAdapter -[hidden]- PluginSpi
+
+
+package commonApi #F8F9F9 {}
+package pluginSpi #F8F9F9 {}
+package specificPluginApi #F8F9F9 {}
+
+class xxxReaderAdapter <<blue>>
+class xxxPluginAdapter <<blue>>
+class xxxPluginFactoryAdapter <<blue>>
+interface ReaderSpi <<purple>>
+interface PluginSpi <<purple>>
+interface PluginFactorySpi <<purple>>
+
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 15:26:11 CEST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: fr
+Country: FR
+--></g></svg>
