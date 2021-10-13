@@ -1,5 +1,5 @@
 ---
-title: Standalone Application Developer Guide
+title: Standalone Application User Guide
 linktitle: Standalone application
 summary: How to develop an end-user standalone application.
 type: book
@@ -59,7 +59,7 @@ the [specific reader plugins]({{< ref "components-java/specific-reader-plugins/_
 or one of our [partners reader plugins]({{< ref "external-resources/external-add-ons/" >}}).
 
 {{% alert note %}}
-A new plugin can also be [created]({{< relref "create-a-reader-plugin" >}}) if there is no plugin for the intended hardware.
+A new plugin can also be [created]({{< relref "reader-plugin-add-on" >}}) if there is no plugin for the intended hardware.
 {{% /alert %}}
 
 ### Access to a plugin

@@ -1,8 +1,8 @@
 ---
-title: Build your first app
+title: User guides
 type: book
 toc: false
-weight: 2
+weight: 3
 ---
 
 ---

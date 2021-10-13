@@ -22,6 +22,7 @@ Therefore, it must be used only by developers of custom reader plugins.
 ## Documentation
 
 * [API documentation](https://eclipse.github.io/keyple-plugin-java-api)
+* [Developer guide]({{< relref "/learn/developer-guide/reader-plugin-add-on" >}})
 
 ## Download
 

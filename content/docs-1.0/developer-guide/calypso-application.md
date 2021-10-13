@@ -35,7 +35,7 @@ The diagram below shows the role of the **Keyple Calypso Extension** components 
 
 ## Concepts
 
-Here are the main concepts to keep in mind before continuing to read this developer guide :
+Here are the main concepts to keep in mind before continuing to read this user guide :
 
 ### Calypso PO
 Concentrates all known information about the Personal Object being processed. Accessible information are

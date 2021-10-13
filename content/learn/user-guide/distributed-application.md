@@ -1,5 +1,5 @@
 ---
-title: Distributed Application Developer Guide
+title: Distributed Application User Guide
 linktitle: Distributed application
 summary: How to develop an end-user application using network communications.
 type: book
@@ -22,7 +22,7 @@ The diagram below shows the location of the Keyple Distributed components in the
 ---
 ## How to use it
 
-1. In pre-requisite, read [Standalone Application Developer Guide]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application.
+1. In pre-requisite, read [Standalone Application User Guide]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application.
 2. Learn [main terms and concepts](#concepts) of the Keyple Distributed solution.
 3. Find your [usage mode](#usage-modes). This will help you to determine exactly which library and API to use.
 4. [Import](#download) into your project the libraries specified by your usage mode.
@@ -32,7 +32,7 @@ The diagram below shows the location of the Keyple Distributed components in the
 ---
 ## Concepts
 
-Here are the main concepts to keep in mind before continuing to read this developer guide:
+Here are the main concepts to keep in mind before continuing to read this user guide:
 
 <div id="concepts-table-1">
 
