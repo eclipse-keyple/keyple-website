@@ -22,7 +22,7 @@ Therefore, it must be used by all developers.
 ## Documentation
 
 * [API documentation](https://eclipse.github.io/keyple-common-java-api)
-* [Developer guide]({{< relref "/learn/developer-guide/standalone-application" >}})
+* [User guide]({{< relref "/learn/user-guide/standalone-application" >}})
  
 ## Download
 

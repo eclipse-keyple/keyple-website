@@ -24,7 +24,7 @@ It can be used on **PC**, **MAC** and **Android** platforms.
 ## Documentation
 
 * [API documentation](https://eclipse.github.io/keyple-card-calypso-java-lib)
-* [Developer guide]({{< relref "/learn/developer-guide/calypso-application" >}})
+* [User guide]({{< relref "/learn/user-guide/calypso-application" >}})
 
 ## Download
 

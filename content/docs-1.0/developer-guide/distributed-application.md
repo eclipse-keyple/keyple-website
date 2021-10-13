@@ -34,7 +34,7 @@ The diagram below shows the role of the **Keyple Distributed** components in the
 ---
 ## Concepts
 
-Here are the main concepts to keep in mind before continuing to read this developer guide :
+Here are the main concepts to keep in mind before continuing to read this user guide :
 
 <div id="concepts-table-1">
 

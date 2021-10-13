@@ -1,5 +1,6 @@
 ---
-title: Calypso application
+title: Calypso Application User Guide
+linktitle: Calypso application
 summary: How to develop an end-user application using the Calypso card extension add-on.
 type: book
 toc: true
@@ -31,7 +32,7 @@ The diagram below illustrates the organization of a Calypso application based on
 {{% alert warning %}}
 Pre-requisites:
 * Have a global view of Calypso product concepts (cards, SAM, security principles)
-* Have read the [Standalone Application Developer Guide]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application
+* Have read the [Standalone Application User Guide]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application
 {{% /alert %}}
 
 1. Access to the [Calypso card extension service](#the-calypso-extension-service)
@@ -105,7 +106,7 @@ The API offers several types of settings such as choosing the SAM to use, enabli
 When using a SAM, it is necessary to select it on a relevant reader.
 This selection can be done with the `createSamSelection()` method and its direct processing by a reader or with the Card Resource Service.
 
-In the case of the Card Resource Service, you have to create a profile extension using the `createSamResourceProfileExtension(...)` method, specifying the previously built selection case, and then associate it to a dedicated profile in the service (see the [Card Resource Service developer guide]({{< relref "card-resource-service.md" >}})).
+In the case of the Card Resource Service, you have to create a profile extension using the `createSamResourceProfileExtension(...)` method, specifying the previously built selection case, and then associate it to a dedicated profile in the service (see the [Card Resource Service User Guide]({{< relref "card-resource-service.md" >}})).
 
 The following snippet shows the initialization of the card resource service with a SAM profile: 
 {{< code lang="java" >}}
