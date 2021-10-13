@@ -4,8 +4,8 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=generator content="Source Themes Academic 4.8.0">
-<meta name=description content="How to develop an end-user application using the Card Resource Service.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/learn/developer-guide/card-resource-service/>
+<meta name=description content="How to develop an add-on to manage a specific type of card.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/learn/developer-guide/card-extension-add-on/>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <meta name=theme-color content="#1D87BB">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous>
@@ -19,18 +19,18 @@
 <link rel=manifest href=../../../index.webmanifest>
 <link rel=icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
 <link rel=apple-touch-icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_192x192_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/learn/developer-guide/card-resource-service/>
+<link rel=canonical href=https://keyple.org/learn/developer-guide/card-extension-add-on/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/learn/developer-guide/card-resource-service/">
-<meta property="og:title" content="Card Resource Service Developer Guide | Eclipse Keyple">
-<meta property="og:description" content="How to develop an end-user application using the Card Resource Service."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
+<meta property="og:url" content="https://keyple.org/learn/developer-guide/card-extension-add-on/">
+<meta property="og:title" content="Card Extension Add-on Developer Guide | Eclipse Keyple">
+<meta property="og:description" content="How to develop an add-on to manage a specific type of card."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-11T10:47:18+02:00">
+<meta property="article:modified_time" content="2021-10-13T10:25:25+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
-<title>Card Resource Service Developer Guide | Eclipse Keyple</title>
+<title>Card Extension Add-on Developer Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents>
 <script>const isSiteThemeDark=!1</script>
@@ -154,14 +154,19 @@
 </ul>
 </div>
 <div class=docs-toc-item>
+<a class=docs-toc-link href=../../../learn/user-guide/>User guides</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
+<li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
+<li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
+<li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
 <a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a>
 <ul class="nav docs-sidenav">
-<li><a href=../../../learn/developer-guide/standalone-application/>Standalone application</a></li>
-<li><a href=../../../learn/developer-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/developer-guide/calypso-application/>Calypso application</a></li>
-<li class=active><a href=../../../learn/developer-guide/card-resource-service/>Card resource service</a></li>
-<li><a href=../../../learn/developer-guide/create-a-reader-plugin/>Create a reader plugin</a></li>
-<li><a href=../../../learn/developer-guide/create-a-card-extension/>Create a card extension</a></li>
+<li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li>
+<li class=active><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -179,226 +184,31 @@
 <ul class="nav toc-top">
 <li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
 </ul>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#overview>Overview</a></li>
-<li><a href=#features>Features</a></li>
-<li><a href=#operating-mode>Operating mode</a></li>
-<li><a href=#access-to-the-service>Access to the service</a></li>
-<li><a href=#configure-the-service>Configure the service</a>
-<ul>
-<li><a href=#access-to-the-configurator>Access to the configurator</a></li>
-<li><a href=#register-plugins>Register plugins</a></li>
-<li><a href=#register-pool-plugins>Register pool plugins</a></li>
-<li><a href=#define-profiles>Define profiles</a></li>
-<li><a href=#set-allocation-mode>Set allocation mode</a></li>
-<li><a href=#apply-the-configuration>Apply the configuration</a></li>
-</ul>
-</li>
-<li><a href=#use-the-service>Use the service</a>
-<ul>
-<li><a href=#start-the-service>Start the service</a></li>
-<li><a href=#allocate-a-resource>Allocate a resource</a></li>
-<li><a href=#release-a-resource>Release a resource</a></li>
-<li><a href=#delete-a-resource>Delete a resource</a></li>
-<li><a href=#stop-the-service>Stop the service</a></li>
-</ul>
-</li>
-<li><a href=#api>API</a></li>
-<li><a href=#example>Example</a></li>
-<li><a href=#download>Download</a></li>
-</ul>
-</nav>
+<nav id=TableOfContents></nav>
 </div>
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
 <div class=docs-article-container>
-<h1>Card Resource Service Developer Guide</h1>
+<h1>Card Extension Add-on Developer Guide</h1>
 <div class=article-style>
 <hr>
-<h2 id=overview>Overview</h2>
-<p>An application that performs secure transactions on smart cards may need to dynamically allocate a card resource dedicated to the current transaction to manage the security of the transaction (e.g. SAM or HSM).</p>
-<p>To meet this need, Keyple proposes the Service Resource component which provides a service that supports dynamic card resource allocation, using a profile-based filtering mechanism.</p>
-<hr>
-<h2 id=features>Features</h2>
-<ul>
-<li>card resource locking during use;</li>
-<li>automatic monitoring of observable plugins and readers;</li>
-<li>customizable profile-based filtering mechanism (specific plugins list, reader name using regular expression, reader group name for pool plugins, specific card selection);</li>
-<li>specific reader configuration capability;</li>
-<li>allocation priority management;</li>
-<li>two allocation modes (blocking, non-blocking);</li>
-<li>multiple allocation strategies (first available card resource, cyclic, random);</li>
-<li>configurable allocation timeout;</li>
-<li>failure management.</li>
-</ul>
-<hr>
-<h2 id=operating-mode>Operating mode</h2>
-<ol>
-<li>
-<a href=#access-to-the-service>Access to the service</a></li>
-<li>
-<a href=#access-to-the-configurator>Access to the configurator</a></li>
-<li>Register
-<a href=#register-plugins>plugins</a> and/or
-<a href=#register-pool-plugins>pool plugins</a> to be used</li>
-<li>
-<a href=#define-profiles>Define profiles</a> for card resource filtering</li>
-<li>
-<a href=#set-allocation-mode>Set the allocation mode</a> (optional)</li>
-<li>
-<a href=#apply-the-configuration>Apply the configuration</a></li>
-<li>
-<a href=#start-the-service>Start the service</a></li>
-<li>
-<a href=#allocate-a-resource>Allocate a resource</a></li>
-<li>Use the resource</li>
-<li>
-<a href=#release-a-resource>Release the used resource</a></li>
-</ol>
-<hr>
-<h2 id=access-to-the-service>Access to the service</h2>
-<p>Invoke the <code>CardResourceServiceProvider.getService()</code> static method to access the service.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('0',this)">Copy</button></div>
-<pre><code class=language-java id=code-0>CardResourceService cardResourceService = CardResourceServiceProvider.getService();</code></pre>
-<hr>
-<h2 id=configure-the-service>Configure the service</h2>
-<h3 id=access-to-the-configurator>Access to the configurator</h3>
-<p>Invoke the <code>getConfigurator()</code> method on the service to get a new instance of the service configurator.
-It is built on the fluent pattern, and it guides you through the various steps to be specified during the configuration process.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('1',this)">Copy</button></div>
-<pre><code class=language-java id=code-1>cardResourceService.getConfigurator()...</code></pre>
-<h3 id=register-plugins>Register plugins</h3>
-<p>If you plan to use plugins of type <code>Plugin</code> or <code>ObservablePlugin</code> in the card resource service, you must specify the global ordered list of plugins to be used when searching for a card resource.</p>
-<p>This is the default list that will be applied for profiles that have not explicitly specified another list.</p>
-<p>Please note that the order in which plugins are added is important.</p>
-<p>To add one or more plugins, you need to create a new instance of the <code>PluginsConfigurator</code> class and provide it to the configurator using the <code>withPlugins(...)</code> method.</p>
-<p>It is possible to configure the following:</p>
-<ul>
-<li>specify the global allocation strategy to all added plugins;</li>
-<li>specify the global usage timeout of a resource;</li>
-<li>activate independently plugin by plugin the monitoring of the plugin and/or its readers in order to allow the service to automatically update the list of resources. In this case you will have to provide a handler to be informed in case of error or crash of the observation thread.</li>
-</ul>
-<p>For each plugin added, you will need to provide an implementation of the <code>ReaderConfiguratorSpi</code> interface to automatically configure new readers or those already connected.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('2',this)">Copy</button></div>
-<pre><code class=language-java id=code-2>.withPlugins(
-    PluginsConfigurator.builder()
-        .withAllocationStrategy(...)
-        .withUsageTimeout(...)
-        .addPluginWithMonitoring(...)
-        .addPlugin(...)
-        .addPluginWithMonitoring(...)
-        .build())</code></pre>
-<h3 id=register-pool-plugins>Register pool plugins</h3>
-<p>If you plan to use plugins of type <code>PoolPlugin</code> in the card resource service, you must specify the global ordered list of pool plugins to be used when searching for a card resource.</p>
-<p>This is the default list that will be applied for profiles that have not explicitly specified another list.</p>
-<p>Please note that the order in which plugins are added is important.
-If you use both plugins and pool plugins in your configuration, it is possible to specify if pool plugins should be taken into account first or not during the resource allocation process.</p>
-<p>To add one or more pool plugins, you need to create a new instance of the <code>PoolPluginsConfigurator</code> class and provide it to the configurator using the <code>withPoolPlugins(...)</code> method.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('3',this)">Copy</button></div>
-<pre><code class=language-java id=code-3>.withPoolPlugins(
-    PoolPluginsConfigurator.builder()
-        .usePoolFirst()
-        .addPoolPlugin(...)
-        .addPoolPlugin(...)
-        .build())</code></pre>
-<h3 id=define-profiles>Define profiles</h3>
-<p>A profile defines a set of filters which will be used when enumerating the available resources. The profile identifiers will be used when allocating a resource.</p>
-<p>To add profiles, you must create a new instance of the <code>CardResourceProfileConfigurator</code> class for each profile and provide them to the configurator using the <code>withCardResourceProfiles(...)</code> method.</p>
-<p>It is possible to configure the following:</p>
-<ul>
-<li>override the global plugin list to use;</li>
-<li>set reader name filter using a regex value;</li>
-<li>set reader group reference filter in case of pool plugins.</li>
-</ul>
-<p>You also need to provide an implementation of the <code>CardResourceProfileExtension</code> interface in order to be able to customize the filtering if needed and to return to the service an implementation of the <code>SmartCard</code> interface when a compatible card is found.
-The <code>SmartCard</code> found will be returned to the user by the allocation process.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('4',this)">Copy</button></div>
-<pre><code class=language-java id=code-4>.withCardResourceProfiles(
-    CardResourceProfileConfigurator.builder(RESOURCE_A, yourCardResourceProfileExtensionA)
-        .withReaderNameRegex(READER_NAME_REGEX_A)
-        .build(),
-    CardResourceProfileConfigurator.builder(RESOURCE_B, yourCardResourceProfileExtensionB)
-        .withReaderNameRegex(READER_NAME_REGEX_B)
-        .build(),
-    CardResourceProfileConfigurator.builder(RESOURCE_C, yourCardResourceProfileExtensionC)
-        .withReaderGroupReference(READER_GROUP_REFERENCE_C)
-        .build())</code></pre>
-<h3 id=set-allocation-mode>Set allocation mode</h3>
-<p>By default, the card resource service is configured with a <strong>non-blocking</strong> allocation mode.
-This means that if no resources are available at the time of the request for an allocation, then the service returns the hand directly.</p>
-<p>The <code>withBlockingAllocationMode(...)</code> method configure the service to perform allocations in <strong>blocking</strong> mode so that it only hands over when a resource becomes available.</p>
-<p>You will then have to specify the duration between two search cycles and the maximum waiting time so that the service can always return after a certain time if it has still not found anything.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('5',this)">Copy</button></div>
-<pre><code class=language-java id=code-5>.withBlockingAllocationMode(100, 10000) // e.g. search each 100 ms during 10 seconds maximum</code></pre>
-<h3 id=apply-the-configuration>Apply the configuration</h3>
-<p>Invoke the <code>configure()</code> method on the configurator to finalise and apply the configuration.</p>
-<p>Once finalized, the new configuration replaces the previous one but does not change the state of the service.
-If the service was already started at that moment, then it stops, applies the new configuration, and restarts.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
-<pre><code class=language-java id=code-6>.configure();</code></pre>
-<hr>
-<h2 id=use-the-service>Use the service</h2>
-<h3 id=start-the-service>Start the service</h3>
-<p>Invoke the <code>start()</code> method on the service to start the service using the current configuration.
-The service will initialize the list of available resources for each profile and start the monitoring processes if requested.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
-<pre><code class=language-java id=code-7>cardResourceService.start();</code></pre>
-<h3 id=allocate-a-resource>Allocate a resource</h3>
-<p>Invoke the <code>getCardResource(...)</code> method on the service to retrieve and lock a card resource.
-You just have to specify the name of the profile to use.</p>
-<p>If the allocation mode is blocking, then the method will wait a while for a resource to become available.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('8',this)">Copy</button></div>
-<pre><code class=language-java id=code-8>CardResource cardResource = cardResourceService.getCardResource(RESOURCE_A);</code></pre>
-<h3 id=release-a-resource>Release a resource</h3>
-<p>Invoke the <code>releaseCardResource(...)</code> method on the service to unlock a card resource.
-You just have to provide the card resource to release.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('9',this)">Copy</button></div>
-<pre><code class=language-java id=code-9>cardResourceService.releaseCardResource(cardResource);</code></pre>
-<h3 id=delete-a-resource>Delete a resource</h3>
-<p>Invoke the <code>removeCardResource(...)</code> method on the service to remove a card resource from the available card resource list.
-This can be useful in some cases if the card or reader has failed.
-You just have to provide the card resource to remove.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('10',this)">Copy</button></div>
-<pre><code class=language-java id=code-10>cardResourceService.removeCardResource(cardResource);</code></pre>
-<h3 id=stop-the-service>Stop the service</h3>
-<p>Invoke the <code>stop()</code> method on the service to stop the service if needed. Any monitoring is then stopped and no more resources are accessible.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
-<pre><code class=language-java id=code-11>cardResourceService.stop();</code></pre>
-<hr>
-<h2 id=api>API</h2>
-<ul>
-<li>
-<a href=https://eclipse.github.io/keyple-service-resource-java-lib target=_blank rel=noopener>API documentation & class diagram</a></li>
-</ul>
-<hr>
-<h2 id=example>Example</h2>
-<ul>
-<li>
-<a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>Java example</a></li>
-</ul>
-<hr>
-<h2 id=download>Download</h2>
-<ul>
-<li>
-<a href=https://keyple.org/components-java/overview/configuration-wizard/>Java components</a></li>
-</ul>
+<div class="alert alert-note">
+<div>
+Coming soon
+</div>
+</div>
 </div>
 <div class=article-widget>
 <div class=post-nav>
 <div class=post-nav-item>
 <div class=meta-nav>Previous</div>
-<a href=../../../learn/developer-guide/calypso-application/ rel=next>Calypso application</a>
-</div>
-<div class=post-nav-item>
-<div class=meta-nav>Next</div>
-<a href=../../../learn/developer-guide/create-a-reader-plugin/ rel=prev>Create a reader plugin</a>
+<a href=../../../learn/developer-guide/reader-plugin-add-on/ rel=next>Reader Plugin Add-on Developer Guide</a>
 </div>
 </div>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Mon, Oct 11, 2021</p>
+<p>Last updated on Wed, Oct 13, 2021</p>
 </div>
 </article>
 <footer class=site-footer>

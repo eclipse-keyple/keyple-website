@@ -73,33 +73,33 @@ package "Plugin API\norg.eclipse.keyple.core.plugin.spi" as pluginSpi {
     }
 }
 
-package "Plugin xxx\norg.eclipse.keyple.plugin.xxx" as specificPluginApi {
-    +class "**final** xxxPluginFactoryProvider" as xxxPluginFactoryProvider {
-        +{static} xxxPluginFactory getFactory ()
+package "Plugin Xxx\norg.eclipse.keyple.plugin.xxx" as specificPluginApi {
+    +class "**final** XxxPluginFactoryProvider" as XxxPluginFactoryProvider {
+        +{static} XxxPluginFactory getFactory ()
     }
     together {
-        +interface xxxPluginFactory extends KeyplePluginExtensionFactory {
+        +interface XxxPluginFactory extends KeyplePluginExtensionFactory {
             --
             custom settings... (optional)
         }
-        +interface xxxPlugin extends KeyplePluginExtension {
+        +interface XxxPlugin extends KeyplePluginExtension {
             --
             custom settings... (optional)
         }
-        +interface xxxReader extends KeypleReaderExtension {
+        +interface XxxReader extends KeypleReaderExtension {
             --
             custom settings... (optional)
         }
         ' Adapters
-        ~class "**final** xxxPluginFactoryAdapter" as xxxPluginFactoryAdapter implements xxxPluginFactory, PluginFactorySpi {
+        ~class "**final** XxxPluginFactoryAdapter" as XxxPluginFactoryAdapter implements XxxPluginFactory, PluginFactorySpi {
             --
             ...
         }
-        ~class "**final** xxxPluginAdapter" as xxxPluginAdapter implements xxxPlugin, PluginSpi {
+        ~class "**final** XxxPluginAdapter" as XxxPluginAdapter implements XxxPlugin, PluginSpi {
             --
             ...
         }
-        ~class "**final** xxxReaderAdapter" as xxxReaderAdapter implements xxxReader, ReaderSpi {
+        ~class "**final** XxxReaderAdapter" as XxxReaderAdapter implements XxxReader, ReaderSpi {
             --
             ...
         }
@@ -108,16 +108,16 @@ package "Plugin xxx\norg.eclipse.keyple.plugin.xxx" as specificPluginApi {
 
 ' Associations
 
-xxxPluginFactoryProvider ..> xxxPluginFactoryAdapter #C_LINK : provide >
-xxxPluginFactoryAdapter .> xxxPluginAdapter #C_LINK : provide >
-xxxPluginAdapter .> xxxReaderAdapter #C_LINK : provide >
+XxxPluginFactoryProvider ..> XxxPluginFactoryAdapter #C_LINK : provide >
+XxxPluginFactoryAdapter .> XxxPluginAdapter #C_LINK : provide >
+XxxPluginAdapter .> XxxReaderAdapter #C_LINK : provide >
 
 ' == LAYOUT ==
 
 commonApi -[hidden]- specificPluginApi
-xxxPluginFactoryAdapter -[hidden]- PluginFactorySpi
-xxxReaderAdapter -[hidden]- ReaderSpi
-xxxPluginAdapter -[hidden]- PluginSpi
+XxxPluginFactoryAdapter -[hidden]- PluginFactorySpi
+XxxReaderAdapter -[hidden]- ReaderSpi
+XxxPluginAdapter -[hidden]- PluginSpi
 
 ' == STYLE ==
 
@@ -125,9 +125,9 @@ package commonApi #C_GREY1 {}
 package pluginSpi #C_GREY1 {}
 package specificPluginApi #C_GREY1 {}
 
-class xxxReaderAdapter <<blue>>
-class xxxPluginAdapter <<blue>>
-class xxxPluginFactoryAdapter <<blue>>
+class XxxReaderAdapter <<blue>>
+class XxxPluginAdapter <<blue>>
+class XxxPluginFactoryAdapter <<blue>>
 interface ReaderSpi <<purple>>
 interface PluginSpi <<purple>>
 interface PluginFactorySpi <<purple>>

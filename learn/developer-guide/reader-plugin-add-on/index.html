@@ -4,8 +4,8 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=generator content="Source Themes Academic 4.8.0">
-<meta name=description content="In-depth technical information about Keyple Calypso card extension add-on.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/learn/keyple-in-depth/calypso-card-extension/>
+<meta name=description content="How to develop an add-on to handle a specific hardware device.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/learn/developer-guide/reader-plugin-add-on/>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <meta name=theme-color content="#1D87BB">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous>
@@ -19,18 +19,18 @@
 <link rel=manifest href=../../../index.webmanifest>
 <link rel=icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
 <link rel=apple-touch-icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_192x192_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/learn/keyple-in-depth/calypso-card-extension/>
+<link rel=canonical href=https://keyple.org/learn/developer-guide/reader-plugin-add-on/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/learn/keyple-in-depth/calypso-card-extension/">
-<meta property="og:title" content="Calypso card extension | Eclipse Keyple">
-<meta property="og:description" content="In-depth technical information about Keyple Calypso card extension add-on."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
+<meta property="og:url" content="https://keyple.org/learn/developer-guide/reader-plugin-add-on/">
+<meta property="og:title" content="Reader Plugin Add-on Developer Guide | Eclipse Keyple">
+<meta property="og:description" content="How to develop an add-on to handle a specific hardware device."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-05T18:15:32+02:00">
+<meta property="article:modified_time" content="2021-10-13T10:25:25+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
-<title>Calypso card extension | Eclipse Keyple</title>
+<title>Reader Plugin Add-on Developer Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents>
 <script>const isSiteThemeDark=!1</script>
@@ -165,7 +165,7 @@
 <div class=docs-toc-item>
 <a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a>
 <ul class="nav docs-sidenav">
-<li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li>
+<li class=active><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li>
 <li><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li>
 </ul>
 </div>
@@ -173,44 +173,147 @@
 <a class=docs-toc-link href=../../../learn/keyple-in-depth/>Keyple in depth</a>
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
-<li class=active><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
+<li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
 <li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
 </ul>
 </div>
 </ul>
 </nav>
 </div>
+<div class="d-none d-xl-block col-xl-2 docs-toc">
+<ul class="nav toc-top">
+<li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
+</ul>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#overview>Overview</a></li>
+<li><a href=#operating-mode>Operating mode</a></li>
+<li><a href=#plugin-architecture>Plugin architecture</a></li>
+<li><a href=#select-predefined-features>Select predefined features</a></li>
+<li><a href=#define-specific-features>Define specific features</a></li>
+<li><a href=#implement-the-solution>Implement the solution</a></li>
+<li><a href=#api>API</a></li>
+<li><a href=#download>Download</a></li>
+</ul>
+</nav>
+</div>
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
 <div class=docs-article-container>
-<h1>Calypso card extension</h1>
+<h1>Reader Plugin Add-on Developer Guide</h1>
 <div class=article-style>
 <hr>
-<p>The diagram below illustrates the sequence of exchanges and the grouping of APDU commands during a secure Calypso transaction:</p>
-<figure id=figure-calypso-secure-transaction>
-<a data-fancybox href=../../../media/learn/keyple-in-depth/calypso_secure_transaction_sequence_diagram.svg data-caption="Calypso secure transaction">
-<img src=../../../media/learn/keyple-in-depth/calypso_secure_transaction_sequence_diagram.svg alt>
+<h2 id=overview>Overview</h2>
+<p>This page is intended for developers who want to create a Keyple plugin for a specific device.
+It presents step by step the necessary steps depending on the characteristics of the reader.</p>
+<hr>
+<h2 id=operating-mode>Operating mode</h2>
+<ol>
+<li>Learn the
+<a href=#plugin-architecture>plugin architecture</a> concepts</li>
+<li>
+<a href=#select-predefined-features>Select the predefined features</a> that meet your need</li>
+<li>
+<a href=#define-specific-features>Define specific features</a> (optional)</li>
+<li>
+<a href=#implement-the-solution>Implement the solution</a></li>
+</ol>
+<hr>
+<h2 id=plugin-architecture>Plugin architecture</h2>
+<p>A Keyple reader plugin consists of three objects, a <strong>plugin factory</strong>, a <strong>plugin</strong> and a <strong>reader</strong>, which meet the following two interface specifications:</p>
+<ul>
+<li><strong>Common API</strong>: public contract containing only generic types common to all plugins.</li>
+<li><strong>Plugin API</strong>: private contract based on two types of interfaces:
+<ul>
+<li><strong>API</strong> (Application Programming Interface): interface implemented by Keyple Service directly usable by the plugin code.</li>
+<li><strong>SPI</strong> (Service Provider Interface): interface to be implemented by the plugin and directly used by Keyple Service.</li>
+</ul>
+</li>
+</ul>
+<p>The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the client application:
+<figure>
+<a data-fancybox href=../../../media/learn/developer-guide/component-dependencies/plugin_api.svg>
+<img src=../../../media/learn/developer-guide/component-dependencies/plugin_api.svg alt>
 </a>
-<figcaption>
-Calypso secure transaction
-</figcaption>
 </figure>
+</p>
+<hr>
+<h2 id=select-predefined-features>Select predefined features</h2>
+<p>The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
+<figure>
+<a data-fancybox href=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_activity_diagram.svg>
+<img src=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_activity_diagram.svg alt>
+</a>
+</figure>
+</p>
+<div class="alert alert-warning">
+<div>
+The <code>XxxPluginFactory</code>, <code>XxxPlugin</code> and <code>XxxReader</code> interfaces must be created.
+They are specific to the plugin <code>Xxx</code> to be created but can remain empty if there is no specific feature.
+</div>
+</div>
+<hr>
+<h2 id=define-specific-features>Define specific features</h2>
+<p>Depending on the characteristics of the reader, it may be necessary to add in the specific APIs configuration methods appropriate to the technical context.</p>
+<p>These features can be exposed at three levels:</p>
+<ul>
+<li>In the <strong>plugin factory</strong> (<code>XxxPluginFactory</code> interface), for the initial configuration of the plugin (e.g. set custom plugin name).</li>
+<li>In the <strong>plugin</strong> (<code>XxxPlugin</code> interface), for dynamic configurations that can be applied to all the readers (e.g. put the readers in sleep mode).<br>
+The API will then be directly accessible from the client application through the <code>getExtension(...)</code> method of the plugin registered with Keyple Service.</li>
+<li>In the <strong>reader</strong> (<code>XxxReader</code> interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).<br>
+The API will then be directly accessible from the client application through the <code>getExtension(...)</code> method of the reader provided by the plugin registered with Keyple Service.</li>
+</ul>
+<hr>
+<h2 id=implement-the-solution>Implement the solution</h2>
+<div class="alert alert-warning">
+<div>
+It is important to hide the internal Keyple interfaces of the <strong>Plugin API</strong> from the client application.
+</div>
+</div>
+<p>For this purpose, it is suggested to respect the following programming pattern based on the use of:</p>
+<ul>
+<li>public interfaces,</li>
+<li>private interfaces adapters (package visibility) accessible from a public provider/builder.
+<figure>
+<a data-fancybox href=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_class_diagram.svg>
+<img src=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_class_diagram.svg alt>
+</a>
+</figure>
+</li>
+</ul>
+<div class="alert alert-note">
+<div>
+It is possible to use other alternatives to the factory provider depending on the need.
+For example, if the plugin factory needs to expose specific configuration methods, it is recommended to use the builder pattern instead of the provider pattern in order to get a properly initialized factory.
+Thus, the factory does not expose any method.
+</div>
+</div>
+<hr>
+<h2 id=api>API</h2>
+<ul>
+<li>
+<a href=https://eclipse.github.io/keyple-common-java-api target=_blank rel=noopener>Keyple Common API</a></li>
+<li>
+<a href=https://eclipse.github.io/keyple-plugin-java-api target=_blank rel=noopener>Keyple Plugin API</a></li>
+</ul>
+<hr>
+<h2 id=download>Download</h2>
+<ul>
+<li>
+<a href=https://keyple.org/components-java/overview/configuration-wizard/>Java components</a></li>
+</ul>
 </div>
 <div class=article-widget>
 <div class=post-nav>
 <div class=post-nav-item>
-<div class=meta-nav>Previous</div>
-<a href=../../../learn/keyple-in-depth/core-services/ rel=next>Core services</a>
-</div>
-<div class=post-nav-item>
 <div class=meta-nav>Next</div>
-<a href=../../../learn/keyple-in-depth/build-and-ci/ rel=prev>Build process and continuous integration</a>
+<a href=../../../learn/developer-guide/card-extension-add-on/ rel=prev>Card Extension Add-on Developer Guide</a>
 </div>
 </div>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Tue, Oct 5, 2021</p>
+<p>Last updated on Wed, Oct 13, 2021</p>
 </div>
 </article>
 <footer class=site-footer>

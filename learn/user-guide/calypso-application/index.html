@@ -4,8 +4,8 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=generator content="Source Themes Academic 4.8.0">
-<meta name=description content="How to develop an add-on to handle a specific hardware device.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/learn/developer-guide/create-a-reader-plugin/>
+<meta name=description content="How to develop an end-user application using the Calypso card extension add-on.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/learn/user-guide/calypso-application/>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <meta name=theme-color content="#1D87BB">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous>
@@ -19,18 +19,18 @@
 <link rel=manifest href=../../../index.webmanifest>
 <link rel=icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
 <link rel=apple-touch-icon type=image/png href=../../../images/icon_hu16db34b3636b127457de39ca2fab620f_9845_192x192_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/learn/developer-guide/create-a-reader-plugin/>
+<link rel=canonical href=https://keyple.org/learn/user-guide/calypso-application/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/learn/developer-guide/create-a-reader-plugin/">
-<meta property="og:title" content="Create a reader plugin | Eclipse Keyple">
-<meta property="og:description" content="How to develop an add-on to handle a specific hardware device."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
+<meta property="og:url" content="https://keyple.org/learn/user-guide/calypso-application/">
+<meta property="og:title" content="Calypso Application User Guide | Eclipse Keyple">
+<meta property="og:description" content="How to develop an end-user application using the Calypso card extension add-on."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-12T16:57:14+02:00">
+<meta property="article:modified_time" content="2021-10-13T10:25:25+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
-<title>Create a reader plugin | Eclipse Keyple</title>
+<title>Calypso Application User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents>
 <script>const isSiteThemeDark=!1</script>
@@ -154,14 +154,19 @@
 </ul>
 </div>
 <div class=docs-toc-item>
+<a class=docs-toc-link href=../../../learn/user-guide/>User guides</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
+<li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
+<li class=active><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
+<li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
 <a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a>
 <ul class="nav docs-sidenav">
-<li><a href=../../../learn/developer-guide/standalone-application/>Standalone application</a></li>
-<li><a href=../../../learn/developer-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/developer-guide/calypso-application/>Calypso application</a></li>
-<li><a href=../../../learn/developer-guide/card-resource-service/>Card resource service</a></li>
-<li class=active><a href=../../../learn/developer-guide/create-a-reader-plugin/>Create a reader plugin</a></li>
-<li><a href=../../../learn/developer-guide/create-a-card-extension/>Create a card extension</a></li>
+<li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li>
+<li><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -183,11 +188,12 @@
 <ul>
 <li><a href=#overview>Overview</a></li>
 <li><a href=#operating-mode>Operating mode</a></li>
-<li><a href=#plugin-architecture>Plugin architecture</a></li>
-<li><a href=#select-predefined-features>Select predefined features</a></li>
-<li><a href=#define-specific-features>Define specific features</a></li>
-<li><a href=#implement-the-solution>Implement the solution</a></li>
+<li><a href=#the-calypso-extension-service>The Calypso extension service</a></li>
+<li><a href=#select-a-card>Select a card</a></li>
+<li><a href=#set-up-security-settings>Set up security settings</a></li>
+<li><a href=#operate-a-card-transaction>Operate a card transaction</a></li>
 <li><a href=#api>API</a></li>
+<li><a href=#examples>Examples</a></li>
 <li><a href=#download>Download</a></li>
 </ul>
 </nav>
@@ -195,93 +201,193 @@
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
 <div class=docs-article-container>
-<h1>Create a reader plugin</h1>
+<h1>Calypso Application User Guide</h1>
 <div class=article-style>
 <hr>
 <h2 id=overview>Overview</h2>
-<p>This page is intended for developers who want to create a Keyple plugin for a specific device.
-It presents step by step the necessary steps depending on the characteristics of the reader.</p>
+<p>Keyple provides a card extension add-on dedicated to the Calypso® card technology.</p>
+<p>This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way.
+It completely hides the details of APDU orders that are sent to Calypso cards and SAMs, which are usually tedious operations.</p>
+<p>The main features are:</p>
+<ul>
+<li>support for different card revisions;</li>
+<li>object mapping of card data structures;</li>
+<li>complete management of the secure session with SAMs;</li>
+<li>PIN code management;</li>
+<li>Stored Value operations management;</li>
+<li>card invalidation / rehabilitation.</li>
+</ul>
+<p>The diagram below illustrates the organization of a Calypso application based on Keyple:
+<figure>
+<a data-fancybox href=../../../media/learn/developer-guide/calypso-application/calypso_application_overview.svg>
+<img src=../../../media/learn/developer-guide/calypso-application/calypso_application_overview.svg alt>
+</a>
+</figure>
+</p>
 <hr>
 <h2 id=operating-mode>Operating mode</h2>
+<div class="alert alert-warning">
+<div>
+<p>Pre-requisites:</p>
+<ul>
+<li>Have a global view of Calypso product concepts (cards, SAM, security principles)</li>
+<li>Have read the <a href=../../../learn/user-guide/standalone-application/>Standalone Application User Guide</a> to understand the main concepts of Keyple in a standalone application</li>
+</ul>
+</div>
+</div>
 <ol>
-<li>Learn the
-<a href=#plugin-architecture>plugin architecture</a></li>
+<li>Access to the
+<a href=#the-calypso-extension-service>Calypso card extension service</a></li>
 <li>
-<a href=#select-predefined-features>Select the predefined features</a> that meet your need</li>
+<a href=#select-a-card>Select a card</a></li>
 <li>
-<a href=#define-specific-features>Define specific features</a> (optional)</li>
+<a href=#set-up-security-settings>Set up the security settings</a> (optional)</li>
 <li>
-<a href=#implement-the-solution>Implement the solution</a></li>
+<a href=#operate-a-card-transaction>Operate a card transaction</a></li>
 </ol>
 <hr>
-<h2 id=plugin-architecture>Plugin architecture</h2>
-<p>A Keyple reader plugin consists of three objects that meet the following two interface specifications:</p>
-<ul>
-<li><strong>Common API</strong>: public contract containing only generic types common to all plugins.</li>
-<li><strong>Plugin API</strong>: private contract based on two types of interfaces:
-<ul>
-<li><strong>API</strong> (Application Programming Interface): interface implemented by Keyple Service directly usable by the plugin code.</li>
-<li><strong>SPI</strong> (Service Provider Interface): interface to be implemented by the plugin and directly used by Keyple Service.</li>
-</ul>
-</li>
-</ul>
-<p>The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the client application:
-<figure>
-<a data-fancybox href=../../../media/learn/developer-guide/component-dependencies/plugin_api.svg>
-<img src=../../../media/learn/developer-guide/component-dependencies/plugin_api.svg alt>
-</a>
-</figure>
-</p>
+<h2 id=the-calypso-extension-service>The Calypso extension service</h2>
+<p>As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.</p>
+<p>The service is accessible by invoking the <code>CalypsoExtensionService.getInstance()</code> static method.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('2',this)">Copy</button></div>
+<pre><code class=language-java id=code-2>CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();</code></pre>
+<p>During initialization, it is recommended to check the extension with the smart card service to ensure the compatibility of the different libraries involved.</p>
+<p>In case of incompatibility a warning will be produced in the log file.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('3',this)">Copy</button></div>
+<pre><code class=language-java id=code-3>smartCardService.checkCardExtension(calypsoExtensionService);</code></pre>
 <hr>
-<h2 id=select-predefined-features>Select predefined features</h2>
-<p>The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
-<figure>
-<a data-fancybox href=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_activity_diagram.svg>
-<img src=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_activity_diagram.svg alt>
-</a>
-</figure>
-</p>
-<div class="alert alert-warning">
+<h2 id=select-a-card>Select a card</h2>
+<p>In order to perform a transaction it is necessary to have selected the card first.</p>
+<p>To do this, you must create a selection case for a selection scenario by invoking the <code>createCardSelection()</code> method.</p>
+<p>In addition to the filtering capabilities offered by Keyple Service, the Calypso Selection API allows you to add commands that will be sent to the card after a successful selection (the details of these features are described in the API documentation).</p>
+<p>The resulting <code>SmartCard</code> can be cast to a <code>CalypsoCard</code> object which concentrate all known information about the card being processed.
+Its content is dynamically updated during the transaction.
+The client application will use it to get the data necessary for its business logic.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('4',this)">Copy</button></div>
+<pre><code class=language-java id=code-4>// Create a card selection manager.
+CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();
+
+// Create a card selection using the Calypso card extension.
+cardSelectionManager.prepareSelection(
+        calypsoExtensionService
+                .createCardSelection()
+                .filterByDfName(AID));
+
+// Actual card communication: process the card selection.
+CardSelectionResult cardSelectionResult =
+        cardSelectionManager.processCardSelectionScenario(cardReader);
+
+// Check the selection result.
+if (cardSelectionResult.getActiveSmartCard() == null) {
+    throw new IllegalStateException(
+            &#34;The card selection failed.&#34;);
+}
+
+// Get the SmartCard resulting of the selection.
+CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();</code></pre>
+<hr>
+<h2 id=set-up-security-settings>Set up security settings</h2>
+<div class="alert alert-note">
 <div>
-The <code>XxxPluginFactory</code>, <code>XxxPlugin</code> and <code>XxxReader</code> interfaces must be created.
-They are specific to the plugin <code>Xxx</code> to be created but can remain empty if there is no specific feature.
+The security settings must be initialized only for secure transactions.
 </div>
 </div>
+<p>The API offers several types of settings such as choosing the SAM to use, enabling various modes, specifying keys for legacy cards, etc&mldr; (see the API documentation for more information).</p>
+<p>When using a SAM, it is necessary to select it on a relevant reader.
+This selection can be done with the <code>createSamSelection()</code> method and its direct processing by a reader or with the Card Resource Service.</p>
+<p>In the case of the Card Resource Service, you have to create a profile extension using the <code>createSamResourceProfileExtension(...)</code> method, specifying the previously built selection case, and then associate it to a dedicated profile in the service (see the
+<a href=../../../learn/user-guide/card-resource-service/>Card Resource Service User Guide</a>).</p>
+<p>The following snippet shows the initialization of the card resource service with a SAM profile:
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
+<pre><code class=language-java id=code-7>// Create a SAM selection case
+CalypsoSamSelection samSelection = CalypsoExtensionService.getInstance().createSamSelection();
+
+// Create a SAM resource profile extension
+CardResourceProfileExtension samCardResourceExtension =
+    CalypsoExtensionService.getInstance().createSamResourceProfileExtension(samSelection);
+
+// Get the card resource service
+CardResourceService cardResourceService = CardResourceServiceProvider.getService();
+
+// Create a minimalist configuration (no plugin/reader observation)
+cardResourceService
+    .getConfigurator()
+    .withPlugins(
+        PluginsConfigurator.builder().addPlugin(plugin, new ReaderConfigurator()).build())
+    .withCardResourceProfiles(
+        CardResourceProfileConfigurator.builder(SAM_PROFILE_NAME, samCardResourceExtension)
+            .withReaderNameRegex(readerNameRegex)
+            .build())
+    .configure();
+
+// Start the card resource service
+cardResourceService.start();
+
+// Verify the resource availability
+CardResource cardResource = cardResourceService.getCardResource(SAM_PROFILE_NAME);
+
+if (cardResource == null) {
+  throw new IllegalStateException(
+      String.format(
+          &#34;Unable to retrieve a SAM card resource for profile &#39;%s&#39; from reader &#39;%s&#39; in plugin &#39;%s&#39;&#34;,
+            SAM_PROFILE_NAME, readerNameRegex, plugin.getName()));
+}
+
+// Release the resource
+cardResourceService.releaseCardResource(cardResource);</code></pre></p>
+<p>Here is the creation of the security settings using a SAM resource obtained from the card resource service:
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('8',this)">Copy</button></div>
+<pre><code class=language-java id=code-8>// Create security settings that reference the same SAM profile requested from the card resource service.
+CardResource samResource = CardResourceServiceProvider.getService().getCardResource(SAM_PROFILE_NAME);
+
+CardSecuritySetting cardSecuritySetting =
+    CalypsoExtensionService.getInstance()
+        .createCardSecuritySetting()
+        .setSamResource(samResource.getReader(), (CalypsoSam) samResource.getSmartCard());</code></pre></p>
 <hr>
-<h2 id=define-specific-features>Define specific features</h2>
-<p>Depending on the characteristics of the reader, it may be necessary to add in the specific APIs configuration methods appropriate to the technical context.</p>
-<p>These features can be exposed at three levels:</p>
+<h2 id=operate-a-card-transaction>Operate a card transaction</h2>
+<p>It is possible to perform secure or non-secure transactions depending on the need.
+A transaction is managed by a dedicated <code>CardTransactionManager</code> which is provided by the Calypso extension service.</p>
+<p>The transaction manager provides high-level API to manage transactions with a Calypso card.
+The provided <code>CalypsoCard</code> object is kept and updated dynamically all along the transaction process.</p>
+<p>The transaction takes place in several repeatable steps:</p>
 <ul>
-<li>In the <strong>plugin factory</strong>, for the initial configuration of the plugin (e.g. set custom plugin name).</li>
-<li>In the <strong>plugin</strong>, for dynamic configurations that can be applied to all the readers (e.g. put the readers in sleep mode).<br>
-The API will then be directly accessible from the client application through the <code>getExtension(...)</code> method of the plugin registered with Keyple Service.</li>
-<li>In the <strong>reader</strong>, for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).<br>
-The API will then be directly accessible from the client application through the <code>getExtension(...)</code> method of the reader provided by the plugin registered with Keyple Service.</li>
+<li>Preparation of the commands to be sent to the card. Several command preparations can be stacked (no communication neither with the card nor with the SAM).</li>
+<li>Processing of the prepared commands. Performs all necessary communications with the card and/or the SAM to carry out the previously prepared operations.</li>
 </ul>
-<hr>
-<h2 id=implement-the-solution>Implement the solution</h2>
-<div class="alert alert-warning">
-<div>
-It is important to hide the internal Keyple interfaces of the <strong>Plugin API</strong> from the client application.
-</div>
-</div>
-<p>For this, it is suggested to respect the following programming pattern based on the use of private components (package visibility):
-<figure>
-<a data-fancybox href=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_class_diagram.svg>
-<img src=../../../media/learn/developer-guide/design-guides/develop_a_reader_plugin_class_diagram.svg alt>
-</a>
-</figure>
-</p>
-<p>Please note that it is possible to use other alternatives to the factory provider depending on the need.
-For example, if the plugin factory needs to expose specific configuration methods, it is recommended to use the builder pattern instead of the provider pattern in order to get a properly initialized factory.
-Thus, the factory does not expose any method.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('9',this)">Copy</button></div>
+<pre><code class=language-java id=code-9>try {
+  // Performs file reads using the card transaction manager in secure mode.
+  cardExtension
+      .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
+      .prepareReadRecordFile(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
+      .processOpening(WriteAccessLevel.DEBIT)
+      .prepareReleaseCardChannel()
+      .processClosing();
+} finally {
+  try {
+    CardResourceServiceProvider.getService().releaseCardResource(samResource);
+  } catch (RuntimeException e) {
+    logger.error(&#34;Error during the card resource release: {}&#34;, e.getMessage(), e);
+  }
+}</code></pre>
 <hr>
 <h2 id=api>API</h2>
 <ul>
 <li>
+<a href=https://calypsonet.github.io/calypsonet-terminal-reader-java-api target=_blank rel=noopener>Calypsonet Terminal Reader API</a></li>
+<li>
+<a href=https://calypsonet.github.io/calypsonet-terminal-calypso-java-api target=_blank rel=noopener>Calypsonet Terminal Calypso API</a></li>
+<li>
 <a href=https://eclipse.github.io/keyple-common-java-api target=_blank rel=noopener>Keyple Common API</a></li>
 <li>
-<a href=https://eclipse.github.io/keyple-plugin-java-api target=_blank rel=noopener>Keyple Plugin API</a></li>
+<a href=https://eclipse.github.io/keyple-card-calypso-java-lib target=_blank rel=noopener>Keyple Card Calypso API</a></li>
+</ul>
+<hr>
+<h2 id=examples>Examples</h2>
+<ul>
+<li>
+<a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>Java examples</a></li>
 </ul>
 <hr>
 <h2 id=download>Download</h2>
@@ -294,17 +400,17 @@ Thus, the factory does not expose any method.</p>
 <div class=post-nav>
 <div class=post-nav-item>
 <div class=meta-nav>Previous</div>
-<a href=../../../learn/developer-guide/card-resource-service/ rel=next>Card Resource Service Developer Guide</a>
+<a href=../../../learn/user-guide/distributed-application/ rel=next>Distributed Application User Guide</a>
 </div>
 <div class=post-nav-item>
 <div class=meta-nav>Next</div>
-<a href=../../../learn/developer-guide/create-a-card-extension/ rel=prev>Create a card extension</a>
+<a href=../../../learn/user-guide/card-resource-service/ rel=prev>Card Resource Service User Guide</a>
 </div>
 </div>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Tue, Oct 12, 2021</p>
+<p>Last updated on Wed, Oct 13, 2021</p>
 </div>
 </article>
 <footer class=site-footer>
