@@ -4,15 +4,13 @@ linktitle: Reader plugin add-on
 summary: How to develop an add-on to handle a specific hardware device.
 type: book
 toc: true
-draft: false
-weight: 50
+weight: 1
 ---
 
 ---
 ## Overview
 
-This page is intended for developers who want to create a Keyple plugin for a specific device.
-It presents step by step the necessary steps depending on the characteristics of the reader.
+This guide is intended to help developers who want to create a Keyple reader plugin add-on for a specific device.
 
 ---
 ## Operating mode
@@ -28,7 +26,7 @@ It presents step by step the necessary steps depending on the characteristics of
 A Keyple reader plugin consists of three objects, a **plugin factory**, a **plugin** and a **reader**, which meet the following two interface specifications:
 * **Common API**: public contract containing only generic types common to all plugins.
 * **Plugin API**: private contract based on two types of interfaces:
-  * **API** (Application Programming Interface): interface implemented by Keyple Service directly usable by the plugin code.
+  * **API** (Application Programming Interface): interface implemented by Keyple Service and directly usable by the plugin code.
   * **SPI** (Service Provider Interface): interface to be implemented by the plugin and directly used by Keyple Service.
 
 The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the client application:
@@ -38,7 +36,7 @@ The component diagram below illustrates the internal API/SPI links between the p
 ## Select predefined features
 
 The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
-{{< figure library="true" src="learn/developer-guide/design-guides/develop_a_reader_plugin_activity_diagram.svg" caption="" numbered="true" >}}
+{{< figure library="true" src="learn/developer-guide/design-guides/reader_plugin_activity_diagram.svg" caption="" numbered="true" >}}
 
 {{% alert warning %}}
 The `XxxPluginFactory`, `XxxPlugin` and `XxxReader` interfaces must be created.
@@ -67,7 +65,7 @@ It is important to hide the internal Keyple interfaces of the **Plugin API** fro
 For this purpose, it is suggested to respect the following programming pattern based on the use of:
 * public interfaces,
 * private interfaces adapters (package visibility) accessible from a public provider/builder.
-{{< figure library="true" src="learn/developer-guide/design-guides/develop_a_reader_plugin_class_diagram.svg" caption="" numbered="true" >}}
+{{< figure library="true" src="learn/developer-guide/design-guides/reader_plugin_class_diagram.svg" caption="" numbered="true" >}}
 
 {{% alert note %}}
 It is possible to use other alternatives to the factory provider depending on the need.
