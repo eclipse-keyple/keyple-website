@@ -11,6 +11,7 @@
 !define C_GREY6 BDC3C7
 !define C_LINK 3498DB
 !define C_USE 27AE60
+!define C_YELLOW FEFECE
 
 skinparam Shadowing false
 skinparam ClassFontStyle italic
@@ -44,7 +45,7 @@ hide <<grey>> stereotype
 
 legend top
     __Colors legend__ :
-    * <back:#fefece>Public API (for client application)</back>
+    * <back:C_YELLOW>Public API (for client application)</back>
     * <back:lightBlue>Private adapters</back>
     * <back:plum>Keyple internal API</back>
 end legend

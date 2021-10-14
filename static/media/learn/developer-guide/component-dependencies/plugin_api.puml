@@ -64,28 +64,28 @@ hide <<grey>> stereotype
 
 ' == COMPONENTS ==
 
-[Client application] as application <<blue>>
+[Client Application] as application <<blue>>
+package "Plugin Xxx" as packPlugin {
+    interface " " as specificPluginApi <<green>>
+    [Adapter] as plugin <<green>>
+}
 package "Common API" as packCommonApi {
-    interface "Common API" as commonApi <<red>>
+    interface " " as commonApi <<green>>
 }
 package "Keyple Service" as packService {
-    interface "Service API" as serviceApi
+    interface " " as serviceApi
     [Adapter] as service
 }
-package "Plugin Xxx" as packPlugin {
-    interface "Plugin Xxx API" as specificPluginApi <<red>>
-    [Adapter] as plugin <<red>>
-}
 package "Plugin API" as packPluginApi {
-    interface "Plugin SPI" as pluginSpi <<red>>
-    interface "Plugin API" as pluginApi
+    interface "API" as pluginApi
+    interface "SPI" as pluginSpi <<green>>
 }
 
 ' == ASSOCIATIONS ==
 
-specificPluginApi -up- commonApi #COLOR_RED
-plugin -up- specificPluginApi #COLOR_RED
-plugin -- pluginSpi #COLOR_RED
+plugin -up- commonApi #COLOR_GREEN
+plugin -up- specificPluginApi #COLOR_GREEN
+plugin -- pluginSpi #COLOR_GREEN
 
 service -up- serviceApi #COLOR_YELLOW
 service -- pluginApi #COLOR_YELLOW
@@ -96,10 +96,14 @@ application ..> commonApi : use
 application ..> specificPluginApi : use
 application ..> serviceApi : use
 
-serviceApi .up.> commonApi : use
+serviceApi .right.> commonApi : "  use          "
 service ..> pluginSpi : use
 
 plugin ..> pluginApi : use
+
+' == LAYOUT ==
+
+service .[hidden]up.> commonApi
 
 ' == STYLE ==
 
