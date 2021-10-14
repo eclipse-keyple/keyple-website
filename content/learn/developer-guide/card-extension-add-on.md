@@ -18,7 +18,8 @@ This guide is intended to help developers who want to create a Keyple card exten
 1. Learn the [card extension architecture](#card-extension-architecture) concepts
 2. Take note of the [minimal requirements](#minimal-requirements)
 3. [Define the card commands](#define-the-card-commands)
-4. [Implement the solution](#implement-the-solution)
+4. [Set up the development environment](#set-up-dev-environment)
+5. [Implement the solution](#implement-the-solution)
 
 ---
 ## Card extension architecture
@@ -63,9 +64,32 @@ The card extension takes part in the communication with the card in two ways:
 * **explicitly**, when the card has been selected, on request of the client application, by direct use of the APIs exposed by the Card API.
 
 For explicit communication, the card extension must require the client application to provide a reference to a `CardReader` of the Reader API.
-This can then be casted internally to a `ProxyReaderApi` of the Card API through which it will be possible to transmit card commands.
+This can then be cast internally to a `ProxyReaderApi` of the Card API through which it will be possible to transmit card commands.
 
 Each card extension is free to define the APIs it considers relevant to perform card transactions.
+
+---
+## Set up dev environment
+
+{{% alert warning %}}
+For Java and Android projects, the code should be compliant with **Java 1.6** in order to address a wide range of applications.
+{{% /alert %}}
+
+If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project template:
+* {{% staticref "media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" "newtab" %}}Java template{{% /staticref %}}: adapt fields `[CARD_EXTENSION_NAME]`, `Xxx`, `xxx`, `TODO`
+
+{{% alert warning %}}
+Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:
+{{< code lang="ini" >}}
+git update-index --chmod=+x "gradlew"
+git update-index --chmod=+x "scripts/check_version.sh"
+git update-index --chmod=+x "scripts/prepare_javadoc.sh"
+{{< /code >}}
+{{% /alert %}}
+
+If examples are proposed, they should be placed in the [keyple-java-example](https://github.com/eclipse/keyple-java-example) repository.
+
+The contribution procedure is described [here]({{< relref "contributing.md" >}}).
 
 ---
 ## Implement the solution

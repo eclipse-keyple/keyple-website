@@ -18,7 +18,8 @@ This guide is intended to help developers who want to create a Keyple reader plu
 1. Learn the [plugin architecture](#plugin-architecture) concepts
 2. [Select the predefined features](#select-predefined-features) that meet your need
 3. [Define specific features](#define-specific-features) (optional)
-4. [Implement the solution](#implement-the-solution)
+4. [Set up the development environment](#set-up-dev-environment)
+5. [Implement the solution](#implement-the-solution)
 
 ---
 ## Plugin architecture
@@ -54,6 +55,30 @@ These features can be exposed at three levels:
   The API will then be directly accessible from the client application through the `getExtension(...)` method of the plugin registered with Keyple Service.
 * In the **reader** (`XxxReader` interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).<br>
   The API will then be directly accessible from the client application through the `getExtension(...)` method of the reader provided by the plugin registered with Keyple Service.
+
+---
+## Set up dev environment
+
+{{% alert warning %}}
+For Java and Android projects, the code should be compliant with **Java 1.6** in order to address a wide range of applications.
+{{% /alert %}}
+
+If the reader plugin add-on is to be integrated into the Eclipse Keyple® project, it must use one of the following project templates:
+* {{% staticref "media/project-templates/java/keyple-plugin-[READER_PLUGIN_NAME]-java-lib.zip" "newtab" %}}Java template{{% /staticref %}}: adapt fields `[READER_PLUGIN_NAME]`, `Xxx`, `xxx`, `TODO`
+* {{% staticref "media/project-templates/android/keyple-plugin-[ANDROID_READER_PLUGIN_NAME]-java-lib.zip" "newtab" %}}Android template{{% /staticref %}}: adapt fields `[ANDROID_READER_PLUGIN_NAME]`, `Xxx`, `xxx`, `TODO`
+
+{{% alert warning %}}
+Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:
+{{< code lang="ini" >}}
+git update-index --chmod=+x "gradlew"
+git update-index --chmod=+x "scripts/check_version.sh"
+git update-index --chmod=+x "scripts/prepare_javadoc.sh"
+{{< /code >}}
+{{% /alert %}}
+
+If examples are proposed, they should be placed in the [keyple-java-example](https://github.com/eclipse/keyple-java-example) repository.
+
+The contribution procedure is described [here]({{< relref "contributing.md" >}}).
 
 ---
 ## Implement the solution

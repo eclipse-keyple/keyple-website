@@ -18,7 +18,7 @@ It has at least one local smart card reader and manages itself the
 interaction with the user.
 
 The diagram below illustrates the organization of a standalone application based on Keyple: 
-{{< figure library="true" src="learn/developer-guide/standalone-application/standalone_application_overview.svg" caption="" >}}
+{{< figure library="true" src="learn/user-guide/standalone-application/standalone_application_overview.svg" caption="" >}}
 
 ---
 ## Operating mode
