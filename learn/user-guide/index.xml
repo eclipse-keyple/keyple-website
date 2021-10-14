@@ -6,8 +6,8 @@ with the end user.&lt;/p>
 interaction with the user.&lt;/p>
 &lt;p>The diagram below illustrates the organization of a standalone application based on Keyple:
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/standalone-application/standalone_application_overview.svg" >
-&lt;img src="../../media/learn/developer-guide/standalone-application/standalone_application_overview.svg" alt="" >
+&lt;a data-fancybox="" href="../../media/learn/user-guide/standalone-application/standalone_application_overview.svg" >
+&lt;img src="../../media/learn/user-guide/standalone-application/standalone_application_overview.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;/p>
@@ -373,8 +373,8 @@ This switches the underlying monitoring thread into a state of waiting for the c
 &lt;p>In this way, you can manage transactions within a distributed architecture.&lt;/p>
 &lt;p>The diagram below shows the location of the Keyple Distributed components in the software layers used in a distributed architecture:&lt;/p>
 &lt;figure id="figure-keyple-distributed---solution-layers-overview">
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg" data-caption="Keyple Distributed - Solution layers overview">
-&lt;img src="../../media/learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg" alt="" >
+&lt;a data-fancybox="" href="../../media/learn/user-guide/distributed-application/distributed_solution_layers_overview.svg" data-caption="Keyple Distributed - Solution layers overview">
+&lt;img src="../../media/learn/user-guide/distributed-application/distributed_solution_layers_overview.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Solution layers overview
@@ -453,8 +453,8 @@ width: 130px;
 &lt;/style>
 &lt;p>The diagram below illustrates the main functional concepts through a standard use case:&lt;/p>
 &lt;figure id="figure-keyple-distributed---concepts---main-use-case">
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/distributed-application/distributed_concepts_1.svg" data-caption="Keyple Distributed - Concepts - Main use case">
-&lt;img src="../../media/learn/developer-guide/distributed-application/distributed_concepts_1.svg" alt="" >
+&lt;a data-fancybox="" href="../../media/learn/user-guide/distributed-application/distributed_concepts_1.svg" data-caption="Keyple Distributed - Concepts - Main use case">
+&lt;img src="../../media/learn/user-guide/distributed-application/distributed_concepts_1.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Concepts - Main use case
@@ -464,8 +464,8 @@ Keyple Distributed - Concepts - Main use case
 &lt;p>These could be for example a ticketing reloading service, where the business logic would be on the terminal without local readers, with thin clients on A &amp;amp; B terminals communicating locally with the cards.&lt;/p>
 &lt;p>In this use case, the Keyple Distributed solution is use for card communication.&lt;/p>
 &lt;figure id="figure-keyple-distributed---concepts---one-remote-plugin-connected-to-many-local-services">
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/distributed-application/distributed_concepts_2.svg" data-caption="Keyple Distributed - Concepts - One remote plugin connected to many local services">
-&lt;img src="../../media/learn/developer-guide/distributed-application/distributed_concepts_2.svg" alt="" >
+&lt;a data-fancybox="" href="../../media/learn/user-guide/distributed-application/distributed_concepts_2.svg" data-caption="Keyple Distributed - Concepts - One remote plugin connected to many local services">
+&lt;img src="../../media/learn/user-guide/distributed-application/distributed_concepts_2.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Concepts - One remote plugin connected to many local services
@@ -475,8 +475,8 @@ Keyple Distributed - Concepts - One remote plugin connected to many local servic
 &lt;p>These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.&lt;/p>
 &lt;p>In this use case, the Keyple Distributed solution is use for SAM communication.&lt;/p>
 &lt;figure id="figure-keyple-distributed---concepts---many-remote-plugins-connected-to-one-local-service">
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/distributed-application/distributed_concepts_3.svg" data-caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service">
-&lt;img src="../../media/learn/developer-guide/distributed-application/distributed_concepts_3.svg" alt="" >
+&lt;a data-fancybox="" href="../../media/learn/user-guide/distributed-application/distributed_concepts_3.svg" data-caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service">
+&lt;img src="../../media/learn/user-guide/distributed-application/distributed_concepts_3.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Concepts - Many remote plugins connected to one local service
@@ -764,8 +764,8 @@ Whatever the type of plugin, it is the responsibility of the server application 
 &lt;/table>
 &lt;p>Here is the minimal algorithm to implement in a context with a &lt;strong>single server instance&lt;/strong>:&lt;/p>
 &lt;figure id="figure-keyple-distributed---synchronous-network-implementation">
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/distributed-application/distributed_synchronous.svg" data-caption="Keyple Distributed - Synchronous network implementation">
-&lt;img src="../../media/learn/developer-guide/distributed-application/distributed_synchronous.svg" alt="" >
+&lt;a data-fancybox="" href="../../media/learn/user-guide/distributed-application/distributed_synchronous.svg" data-caption="Keyple Distributed - Synchronous network implementation">
+&lt;img src="../../media/learn/user-guide/distributed-application/distributed_synchronous.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Synchronous network implementation
@@ -807,8 +807,8 @@ Keyple Distributed - Synchronous network implementation
 &lt;/table>
 &lt;p>Here is the minimal algorithm to implement:&lt;/p>
 &lt;figure id="figure-keyple-distributed---asynchronous-network-implementation">
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/distributed-application/distributed_asynchronous.svg" data-caption="Keyple Distributed - Asynchronous network implementation">
-&lt;img src="../../media/learn/developer-guide/distributed-application/distributed_asynchronous.svg" alt="" >
+&lt;a data-fancybox="" href="../../media/learn/user-guide/distributed-application/distributed_asynchronous.svg" data-caption="Keyple Distributed - Asynchronous network implementation">
+&lt;img src="../../media/learn/user-guide/distributed-application/distributed_asynchronous.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Asynchronous network implementation
@@ -854,8 +854,8 @@ It completely hides the details of APDU orders that are sent to Calypso cards an
 &lt;/ul>
 &lt;p>The diagram below illustrates the organization of a Calypso application based on Keyple:
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/calypso-application/calypso_application_overview.svg" >
-&lt;img src="../../media/learn/developer-guide/calypso-application/calypso_application_overview.svg" alt="" >
+&lt;a data-fancybox="" href="../../media/learn/user-guide/calypso-application/calypso_application_overview.svg" >
+&lt;img src="../../media/learn/user-guide/calypso-application/calypso_application_overview.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;/p>

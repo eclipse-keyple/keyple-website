@@ -11,6 +11,8 @@
 &lt;li>
 &lt;a href="#define-specific-features">Define specific features&lt;/a> (optional)&lt;/li>
 &lt;li>
+&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
+&lt;li>
 &lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;hr>
@@ -58,6 +60,31 @@ The API will then be directly accessible from the client application through the
 &lt;li>In the &lt;strong>reader&lt;/strong> (&lt;code>XxxReader&lt;/code> interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).&lt;br>
 The API will then be directly accessible from the client application through the &lt;code>getExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
 &lt;/ul>
+&lt;hr>
+&lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
+&lt;div class="alert alert-warning">
+&lt;div>
+For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of applications.
+&lt;/div>
+&lt;/div>
+&lt;p>If the reader plugin add-on is to be integrated into the Eclipse Keyple® project, it must use one of the following project templates:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="../../media/project-templates/java/keyple-plugin-[READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>: adapt fields &lt;code>[READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/li>
+&lt;li>&lt;a href="../../media/project-templates/android/keyple-plugin-[ANDROID_READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Android template&lt;/a>: adapt fields &lt;code>[ANDROID_READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="alert alert-warning">
+&lt;div>
+&lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:&lt;/p>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('0', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-ini" id="code-0">git update-index --chmod=&amp;#43;x &amp;#34;gradlew&amp;#34;
+git update-index --chmod=&amp;#43;x &amp;#34;scripts/check_version.sh&amp;#34;
+git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/code>&lt;/pre>
+&lt;/div>
+&lt;/div>
+&lt;p>If examples are proposed, they should be placed in the
+&lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
+&lt;p>The contribution procedure is described
+&lt;a href="../../community/contributing/">here&lt;/a>.&lt;/p>
 &lt;hr>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
@@ -108,6 +135,8 @@ Thus, the factory does not expose any method.
 &lt;a href="#minimal-requirements">minimal requirements&lt;/a>&lt;/li>
 &lt;li>
 &lt;a href="#define-the-card-commands">Define the card commands&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
 &lt;li>
 &lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
@@ -203,8 +232,32 @@ it will then be necessary to define for each of them and recursively a JSON dese
 &lt;li>&lt;strong>explicitly&lt;/strong>, when the card has been selected, on request of the client application, by direct use of the APIs exposed by the Card API.&lt;/li>
 &lt;/ul>
 &lt;p>For explicit communication, the card extension must require the client application to provide a reference to a &lt;code>CardReader&lt;/code> of the Reader API.
-This can then be casted internally to a &lt;code>ProxyReaderApi&lt;/code> of the Card API through which it will be possible to transmit card commands.&lt;/p>
+This can then be cast internally to a &lt;code>ProxyReaderApi&lt;/code> of the Card API through which it will be possible to transmit card commands.&lt;/p>
 &lt;p>Each card extension is free to define the APIs it considers relevant to perform card transactions.&lt;/p>
+&lt;hr>
+&lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
+&lt;div class="alert alert-warning">
+&lt;div>
+For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of applications.
+&lt;/div>
+&lt;/div>
+&lt;p>If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project template:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="../../media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>: adapt fields &lt;code>[CARD_EXTENSION_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="alert alert-warning">
+&lt;div>
+&lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:&lt;/p>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('0', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-ini" id="code-0">git update-index --chmod=&amp;#43;x &amp;#34;gradlew&amp;#34;
+git update-index --chmod=&amp;#43;x &amp;#34;scripts/check_version.sh&amp;#34;
+git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/code>&lt;/pre>
+&lt;/div>
+&lt;/div>
+&lt;p>If examples are proposed, they should be placed in the
+&lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
+&lt;p>The contribution procedure is described
+&lt;a href="../../community/contributing/">here&lt;/a>.&lt;/p>
 &lt;hr>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">

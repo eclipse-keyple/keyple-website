@@ -110,7 +110,7 @@ application ..> serviceApi : use
 
 service ..> cardSpi : use
 
-serviceApi .left.> commonApi : use
+serviceApi .left.> commonApi : "      use"
 
 extension ..> cardApi : use
 

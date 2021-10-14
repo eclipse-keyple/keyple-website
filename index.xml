@@ -87,6 +87,8 @@ and also by allowing the execution of commands immediately following application
 &lt;li>
 &lt;a href="#define-specific-features">Define specific features&lt;/a> (optional)&lt;/li>
 &lt;li>
+&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
+&lt;li>
 &lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;hr>
@@ -135,6 +137,31 @@ The API will then be directly accessible from the client application through the
 The API will then be directly accessible from the client application through the &lt;code>getExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
 &lt;/ul>
 &lt;hr>
+&lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
+&lt;div class="alert alert-warning">
+&lt;div>
+For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of applications.
+&lt;/div>
+&lt;/div>
+&lt;p>If the reader plugin add-on is to be integrated into the Eclipse Keyple® project, it must use one of the following project templates:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="./media/project-templates/java/keyple-plugin-[READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>: adapt fields &lt;code>[READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/li>
+&lt;li>&lt;a href="./media/project-templates/android/keyple-plugin-[ANDROID_READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Android template&lt;/a>: adapt fields &lt;code>[ANDROID_READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="alert alert-warning">
+&lt;div>
+&lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:&lt;/p>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('0', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-ini" id="code-0">git update-index --chmod=&amp;#43;x &amp;#34;gradlew&amp;#34;
+git update-index --chmod=&amp;#43;x &amp;#34;scripts/check_version.sh&amp;#34;
+git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/code>&lt;/pre>
+&lt;/div>
+&lt;/div>
+&lt;p>If examples are proposed, they should be placed in the
+&lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
+&lt;p>The contribution procedure is described
+&lt;a href="./community/contributing/">here&lt;/a>.&lt;/p>
+&lt;hr>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
@@ -180,8 +207,8 @@ with the end user.&lt;/p>
 interaction with the user.&lt;/p>
 &lt;p>The diagram below illustrates the organization of a standalone application based on Keyple:
 &lt;figure >
-&lt;a data-fancybox="" href="./media/learn/developer-guide/standalone-application/standalone_application_overview.svg" >
-&lt;img src="./media/learn/developer-guide/standalone-application/standalone_application_overview.svg" alt="" >
+&lt;a data-fancybox="" href="./media/learn/user-guide/standalone-application/standalone_application_overview.svg" >
+&lt;img src="./media/learn/user-guide/standalone-application/standalone_application_overview.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;/p>
@@ -574,6 +601,8 @@ Keyple architecture layers overview
 &lt;li>
 &lt;a href="#define-the-card-commands">Define the card commands&lt;/a>&lt;/li>
 &lt;li>
+&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
+&lt;li>
 &lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;hr>
@@ -668,8 +697,32 @@ it will then be necessary to define for each of them and recursively a JSON dese
 &lt;li>&lt;strong>explicitly&lt;/strong>, when the card has been selected, on request of the client application, by direct use of the APIs exposed by the Card API.&lt;/li>
 &lt;/ul>
 &lt;p>For explicit communication, the card extension must require the client application to provide a reference to a &lt;code>CardReader&lt;/code> of the Reader API.
-This can then be casted internally to a &lt;code>ProxyReaderApi&lt;/code> of the Card API through which it will be possible to transmit card commands.&lt;/p>
+This can then be cast internally to a &lt;code>ProxyReaderApi&lt;/code> of the Card API through which it will be possible to transmit card commands.&lt;/p>
 &lt;p>Each card extension is free to define the APIs it considers relevant to perform card transactions.&lt;/p>
+&lt;hr>
+&lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
+&lt;div class="alert alert-warning">
+&lt;div>
+For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of applications.
+&lt;/div>
+&lt;/div>
+&lt;p>If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project template:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="./media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>: adapt fields &lt;code>[CARD_EXTENSION_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="alert alert-warning">
+&lt;div>
+&lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:&lt;/p>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('0', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-ini" id="code-0">git update-index --chmod=&amp;#43;x &amp;#34;gradlew&amp;#34;
+git update-index --chmod=&amp;#43;x &amp;#34;scripts/check_version.sh&amp;#34;
+git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/code>&lt;/pre>
+&lt;/div>
+&lt;/div>
+&lt;p>If examples are proposed, they should be placed in the
+&lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
+&lt;p>The contribution procedure is described
+&lt;a href="./community/contributing/">here&lt;/a>.&lt;/p>
 &lt;hr>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
@@ -709,8 +762,8 @@ It is important to hide the internal Calypsonet interfaces of the &lt;strong>Cal
 &lt;p>In this way, you can manage transactions within a distributed architecture.&lt;/p>
 &lt;p>The diagram below shows the location of the Keyple Distributed components in the software layers used in a distributed architecture:&lt;/p>
 &lt;figure id="figure-keyple-distributed---solution-layers-overview">
-&lt;a data-fancybox="" href="./media/learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg" data-caption="Keyple Distributed - Solution layers overview">
-&lt;img src="./media/learn/developer-guide/distributed-application/distributed_solution_layers_overview.svg" alt="" >
+&lt;a data-fancybox="" href="./media/learn/user-guide/distributed-application/distributed_solution_layers_overview.svg" data-caption="Keyple Distributed - Solution layers overview">
+&lt;img src="./media/learn/user-guide/distributed-application/distributed_solution_layers_overview.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Solution layers overview
@@ -789,8 +842,8 @@ width: 130px;
 &lt;/style>
 &lt;p>The diagram below illustrates the main functional concepts through a standard use case:&lt;/p>
 &lt;figure id="figure-keyple-distributed---concepts---main-use-case">
-&lt;a data-fancybox="" href="./media/learn/developer-guide/distributed-application/distributed_concepts_1.svg" data-caption="Keyple Distributed - Concepts - Main use case">
-&lt;img src="./media/learn/developer-guide/distributed-application/distributed_concepts_1.svg" alt="" >
+&lt;a data-fancybox="" href="./media/learn/user-guide/distributed-application/distributed_concepts_1.svg" data-caption="Keyple Distributed - Concepts - Main use case">
+&lt;img src="./media/learn/user-guide/distributed-application/distributed_concepts_1.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Concepts - Main use case
@@ -800,8 +853,8 @@ Keyple Distributed - Concepts - Main use case
 &lt;p>These could be for example a ticketing reloading service, where the business logic would be on the terminal without local readers, with thin clients on A &amp;amp; B terminals communicating locally with the cards.&lt;/p>
 &lt;p>In this use case, the Keyple Distributed solution is use for card communication.&lt;/p>
 &lt;figure id="figure-keyple-distributed---concepts---one-remote-plugin-connected-to-many-local-services">
-&lt;a data-fancybox="" href="./media/learn/developer-guide/distributed-application/distributed_concepts_2.svg" data-caption="Keyple Distributed - Concepts - One remote plugin connected to many local services">
-&lt;img src="./media/learn/developer-guide/distributed-application/distributed_concepts_2.svg" alt="" >
+&lt;a data-fancybox="" href="./media/learn/user-guide/distributed-application/distributed_concepts_2.svg" data-caption="Keyple Distributed - Concepts - One remote plugin connected to many local services">
+&lt;img src="./media/learn/user-guide/distributed-application/distributed_concepts_2.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Concepts - One remote plugin connected to many local services
@@ -811,8 +864,8 @@ Keyple Distributed - Concepts - One remote plugin connected to many local servic
 &lt;p>These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.&lt;/p>
 &lt;p>In this use case, the Keyple Distributed solution is use for SAM communication.&lt;/p>
 &lt;figure id="figure-keyple-distributed---concepts---many-remote-plugins-connected-to-one-local-service">
-&lt;a data-fancybox="" href="./media/learn/developer-guide/distributed-application/distributed_concepts_3.svg" data-caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service">
-&lt;img src="./media/learn/developer-guide/distributed-application/distributed_concepts_3.svg" alt="" >
+&lt;a data-fancybox="" href="./media/learn/user-guide/distributed-application/distributed_concepts_3.svg" data-caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service">
+&lt;img src="./media/learn/user-guide/distributed-application/distributed_concepts_3.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Concepts - Many remote plugins connected to one local service
@@ -1100,8 +1153,8 @@ Whatever the type of plugin, it is the responsibility of the server application 
 &lt;/table>
 &lt;p>Here is the minimal algorithm to implement in a context with a &lt;strong>single server instance&lt;/strong>:&lt;/p>
 &lt;figure id="figure-keyple-distributed---synchronous-network-implementation">
-&lt;a data-fancybox="" href="./media/learn/developer-guide/distributed-application/distributed_synchronous.svg" data-caption="Keyple Distributed - Synchronous network implementation">
-&lt;img src="./media/learn/developer-guide/distributed-application/distributed_synchronous.svg" alt="" >
+&lt;a data-fancybox="" href="./media/learn/user-guide/distributed-application/distributed_synchronous.svg" data-caption="Keyple Distributed - Synchronous network implementation">
+&lt;img src="./media/learn/user-guide/distributed-application/distributed_synchronous.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Synchronous network implementation
@@ -1143,8 +1196,8 @@ Keyple Distributed - Synchronous network implementation
 &lt;/table>
 &lt;p>Here is the minimal algorithm to implement:&lt;/p>
 &lt;figure id="figure-keyple-distributed---asynchronous-network-implementation">
-&lt;a data-fancybox="" href="./media/learn/developer-guide/distributed-application/distributed_asynchronous.svg" data-caption="Keyple Distributed - Asynchronous network implementation">
-&lt;img src="./media/learn/developer-guide/distributed-application/distributed_asynchronous.svg" alt="" >
+&lt;a data-fancybox="" href="./media/learn/user-guide/distributed-application/distributed_asynchronous.svg" data-caption="Keyple Distributed - Asynchronous network implementation">
+&lt;img src="./media/learn/user-guide/distributed-application/distributed_asynchronous.svg" alt="" >
 &lt;/a>
 &lt;figcaption data-pre="Figure " data-post=":" class="numbered">
 Keyple Distributed - Asynchronous network implementation
@@ -1190,8 +1243,8 @@ It completely hides the details of APDU orders that are sent to Calypso cards an
 &lt;/ul>
 &lt;p>The diagram below illustrates the organization of a Calypso application based on Keyple:
 &lt;figure >
-&lt;a data-fancybox="" href="./media/learn/developer-guide/calypso-application/calypso_application_overview.svg" >
-&lt;img src="./media/learn/developer-guide/calypso-application/calypso_application_overview.svg" alt="" >
+&lt;a data-fancybox="" href="./media/learn/user-guide/calypso-application/calypso_application_overview.svg" >
+&lt;img src="./media/learn/user-guide/calypso-application/calypso_application_overview.svg" alt="" >
 &lt;/a>
 &lt;/figure>
 &lt;/p>
