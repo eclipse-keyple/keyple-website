@@ -1,7 +1,4 @@
 @startuml
-title
-    Keyple 2.0 - Card APIs dependencies - 10/06/2021
-end title
 
 ' == THEME ==
 
@@ -67,60 +64,64 @@ hide <<grey>> stereotype
 
 ' == COMPONENTS ==
 
-[Specific Application] as application <<blue>>
-package "Specific Card Extension\n(Calypso...)" as packExtension {
-    interface "Specific\nCard\nExtension\nAPI" as specificCardExtensionApi <<green>>
+[Client Application] as application <<blue>>
+package "Common API" as packCommonApi {
+    interface " " as commonApi <<green>>
+}
+package "Card Extension Xxx" as packExtension {
+    interface " " as specificCardExtensionApi <<green>>
     [Adapter] as extension <<green>>
 }
-package "calypsonet-terminal-reader-java-api" as packReaderApi {
-    interface "Reader API" as readerApi
-    interface "Reader SPI" as readerSpi <<blue>>
-    interface "Selection API" as selectionApi
-    interface "Selection SPI" as selectionSpi <<green>>
+package "Calypsonet Terminal Reader API" as packReaderApi {
+    interface "\nReader API" as readerApi
+    interface "\nSelection API" as selectionApi
+    interface "\nSelection SPI" as selectionSpi <<green>>
 }
-package "keyple-service-java-lib" as packService {
-    interface "Service API" as serviceApi
-    interface "Service SPI" as serviceSpi <<blue>>
+package "Keyple Service" as packService {
+    interface " " as serviceApi
     [Adapter] as service
 }
-package "calypsonet-terminal-card-java-api" as packCardApi {
-    interface "Card SPI" as cardSpi <<green>>
-    interface "Card API" as cardApi
+package "Calypsonet Terminal Card API" as packCardApi {
+    interface "SPI" as cardSpi <<green>>
+    interface "API" as cardApi
 }
 
 ' == ASSOCIATIONS ==
 
-application -- readerSpi #COLOR_BLUE
-application -- serviceSpi #COLOR_BLUE
+extension -up- commonApi #COLOR_GREEN
+extension -up- selectionSpi #COLOR_GREEN
 
 extension -up- specificCardExtensionApi #COLOR_GREEN
-extension -up- selectionSpi #COLOR_GREEN
 extension -- cardSpi #COLOR_GREEN
 
+service -up- serviceApi #COLOR_YELLOW
 service -up- readerApi #COLOR_YELLOW
 service -up- selectionApi #COLOR_YELLOW
-service -up- serviceApi #COLOR_YELLOW
 service -- cardApi #COLOR_YELLOW
 
 ' USE
 
+application ..> commonApi : use
 application ..> specificCardExtensionApi : use
 application ..> readerApi : use
 application ..> selectionApi : use
+application ..> selectionSpi : use
 application ..> serviceApi : use
 
-'service .up.> serviceSpi : use
-'service .left.> selectionSpi : use
 service ..> cardSpi : use
 
-extension ..> cardApi : use
-'extension .up.> readerApi : use
+serviceApi .left.> commonApi : use
 
-'specificCardExtensionApi .right.> readerApi : ref
+extension ..> cardApi : use
+
+selectionApi .right.> readerApi : "   use   "
+selectionApi .left.> selectionSpi : "   use   "
 
 ' == STYLE ==
 
 package packExtension #C_GREY1 {
+}
+package packCommonApi #C_GREY1 {
 }
 package packReaderApi #C_GREY1 {
 }

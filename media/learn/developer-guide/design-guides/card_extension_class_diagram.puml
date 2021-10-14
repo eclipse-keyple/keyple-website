@@ -1,7 +1,4 @@
 @startuml
-title
-    Keyple 2.0 - Specific Card Extension - 2.0.0 (04/06/2021)
-end title
 
 ' == THEME ==
 
@@ -14,6 +11,7 @@ end title
 !define C_GREY6 BDC3C7
 !define C_LINK 3498DB
 !define C_USE 27AE60
+!define C_YELLOW FEFECE
 
 skinparam Shadowing false
 skinparam ClassFontStyle italic
@@ -47,76 +45,92 @@ hide <<grey>> stereotype
 
 legend top
     __Colors legend__ :
-    * <back:yellow>Public API for end users</back>
-    * <back:lightBlue>Private API for internal use only</back>
+    * <back:C_YELLOW>Public API (for client application)</back>
+    * <back:lightBlue>Private adapters</back>
+    * <back:plum>Calypsonet internal API</back>
 end legend
 
-package "org.eclipse.keyple.core.common" as commonApi {
+package "Common API\norg.eclipse.keyple.core.common" as commonApi {
     +interface KeypleCardExtension {
+        --
         ...
     }
 }
-package "org.calypsonet.terminal.reader.selection.spi" as readerSelectionSpi {
+package "Calypsonet Terminal Reader API\norg.calypsonet.terminal.reader.selection.spi" as readerSelectionSpi {
     +interface CardSelection {
     }
     +interface SmartCard {
+        --
         ...
     }
 }
-package "org.calypsonet.terminal.card.spi" as cardSpi {
+package "Calypsonet Terminal Card API\norg.calypsonet.terminal.card.spi" as cardSpi {
     +interface CardSelectionSpi {
+        --
         ...
     }
     +interface SmartCardSpi {
     }
     +interface CardSelectorSpi {
+        --
         ...
     }
     +interface CardSelectionRequestSpi {
+        --
         ...
     }
     +interface CardRequestSpi {
+        --
         ...
     }
     +interface ApduRequestSpi {
+        --
         ...
     }
 }
 
-package "org.eclipse.keyple.card.xxx (specific extension)" as specificExtension {
-    +class "**final** xxxCardExtension" as xxxCardExtension implements KeypleCardExtension {
+package "Card extension Xxx\norg.eclipse.keyple.card.xxx" as specificExtension {
+    +class "**final** XxxCardExtensionService" as XxxCardExtensionService implements KeypleCardExtension {
         --
-        +{static} xxxCardExtension getInstance ()
+        +{static} XxxCardExtensionService getInstance ()
         ..
-        +xxxCardSelection createXxxCardSelection ()
-        ...
-    }
-    +interface xxxCardSelection extends CardSelection {
-        ...
-    }
-    +interface xxxSmartCard extends SmartCard {
+        +XxxCardSelection createXxxCardSelection ()
         ...
     }
     ' Adapters
     together {
-        ~class "**final** CardSelectionAdapter" as CardSelectionAdapter implements xxxCardSelection, CardSelectionSpi {
+        +interface XxxCardSelection extends CardSelection {
+            --
+            custom settings... (optional)
+        }
+        +interface XxxSmartCard extends SmartCard {
+            --
+            custom settings... (optional)
+        }
+        ~class "**final** XxxCardSelectionAdapter" as CardSelectionAdapter implements XxxCardSelection, CardSelectionSpi {
+            --
             ...
         }
-        ~class "**final** SmartCardAdapter" as SmartCardAdapter implements xxxSmartCard, SmartCardSpi {
+        ~class "**final** XxxSmartCardAdapter" as SmartCardAdapter implements XxxSmartCard, SmartCardSpi {
+            --
             ...
         }
     }
     together {
         ~class "**final** CardSelectorAdapter" as CardSelectorAdapter implements CardSelectorSpi {
+            --
             ...
         }
         ~class "**final** CardSelectionRequestAdapter" as CardSelectionRequestAdapter implements CardSelectionRequestSpi {
+            --
             ...
         }
         ~class "**final** CardRequestAdapter" as CardRequestAdapter implements CardRequestSpi {
+            --
             ...
         }
         ~class "**final** ApduRequestAdapter" as ApduRequestAdapter implements ApduRequestSpi {
+            --
             ...
         }
     }
@@ -124,7 +138,15 @@ package "org.eclipse.keyple.card.xxx (specific extension)" as specificExtension 
 
 ' Associations
 
-xxxCardExtension .right.> xxxCardSelection #C_LINK : provide >
+XxxCardExtensionService ..> CardSelectionAdapter #C_LINK : provide >
+
+CardSelectionAdapter .> SmartCardAdapter #C_LINK : provide >
+CardSelectionAdapter .> CardSelectionRequestAdapter #C_LINK : provide >
+
+CardSelectionRequestAdapter .left> CardSelectorAdapter #C_LINK : provide >
+CardSelectionRequestAdapter .> CardRequestAdapter #C_LINK : provide >
+
+CardRequestAdapter .> ApduRequestAdapter #C_LINK : provide >
 
 ' == LAYOUT ==
 
@@ -135,7 +157,7 @@ CardSelectionRequestAdapter -[hidden]- CardSelectionRequestSpi
 CardRequestAdapter -[hidden]- CardRequestSpi
 ApduRequestAdapter -[hidden]- ApduRequestSpi
 
-xxxCardSelection -[hidden]- CardSelectionAdapter
+XxxCardSelection -[hidden]- CardSelectionAdapter
 
 SmartCardAdapter -[hidden]right- CardSelectorAdapter
 
@@ -153,11 +175,11 @@ class SmartCardAdapter <<blue>>
 class CardSelectionRequestAdapter <<blue>>
 class CardRequestAdapter <<blue>>
 class ApduRequestAdapter <<blue>>
-interface CardSelectionSpi <<blue>>
-interface CardSelectorSpi <<blue>>
-interface SmartCardSpi <<blue>>
-interface CardSelectionRequestSpi <<blue>>
-interface CardRequestSpi <<blue>>
-interface ApduRequestSpi <<blue>>
+interface CardSelectionSpi <<purple>>
+interface CardSelectorSpi <<purple>>
+interface SmartCardSpi <<purple>>
+interface CardSelectionRequestSpi <<purple>>
+interface CardRequestSpi <<purple>>
+interface ApduRequestSpi <<purple>>
 
 @enduml
