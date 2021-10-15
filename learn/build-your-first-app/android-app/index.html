@@ -4,7 +4,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=generator content="Source Themes Academic 4.8.0">
-<meta name=description content="This guide describes how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso Portable Object.">
+<meta name=description content="This guide describes how to start a ticketing application using Keyple and Android NFC plugin to read the content of a Calypso card.">
 <link rel=alternate hreflang=en-us href=https://keyple.org/learn/build-your-first-app/android-app/>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <meta name=theme-color content="#1D87BB">
@@ -24,9 +24,9 @@
 <meta property="og:site_name" content="Eclipse Keyple">
 <meta property="og:url" content="https://keyple.org/learn/build-your-first-app/android-app/">
 <meta property="og:title" content="Build your first Android application | Eclipse Keyple">
-<meta property="og:description" content="This guide describes how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso Portable Object."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
+<meta property="og:description" content="This guide describes how to start a ticketing application using Keyple and Android NFC plugin to read the content of a Calypso card."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-09-21T15:53:16+02:00">
+<meta property="article:modified_time" content="2021-10-15T11:07:38+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -184,7 +184,18 @@
 <ul class="nav toc-top">
 <li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
 </ul>
-<nav id=TableOfContents></nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#overview>Overview</a></li>
+<li><a href=#project-setup>Project setup</a></li>
+<li><a href=#focus-on-keyple-specific-code>Focus on Keyple specific code</a></li>
+<li><a href=#faq>FAQ</a>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
@@ -192,11 +203,208 @@
 <h1>Build your first Android application</h1>
 <div class=article-style>
 <hr>
-<div class="alert alert-note">
+<h2 id=overview>Overview</h2>
+<p>The development of an Android application based on Keyple follows the same principles as those exposed in the Java part.</p>
+<p>However, this guide points out the specificities of this environment based on the <strong>Android NFC application</strong> example provided in the
+<a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>keyple-java-example</a> repository.</p>
+<p>We recommend that Android application developers clone this example to better understand how Keyple works on Android.</p>
+<div class="alert alert-warning">
 <div>
-Coming soon
+<p>The application available in the example repository requires:</p>
+<ul>
+<li>a retail Device with NFC powered by android.nfc library (integrated into standard Android SDK),</li>
+<li>Android OS 19+,</li>
+<li>a Calypso card (contactless smart card, NFC mobile phone with a Calypso applet or application).</li>
+</ul>
 </div>
 </div>
+<p>It uses three main components of Keyple:</p>
+<ul>
+<li>
+<a href=../../../components-java/core/>Keyple Service Java Library</a>
+which is the base component to which all the others refer,</li>
+<li>
+<a href=../../../components-java/card-extensions/keyple-card-generic-java-lib/>Keyple Card Generic</a>
+add-on to handle the commands sent to the Calypso card,</li>
+<li>
+<a href=../../../components-java/standard-reader-plugins/keyple-plugin-android-nfc-java-lib/>Keyple Plugin Android NFC</a>
+add-on to provide the ability to drive the NFC reader.</li>
+</ul>
+<p>
+<a href=https://gradle.org/ target=_blank rel=noopener>Gradle</a> is used as build automation tool, but it is easy to transpose these explanations to another tool
+such as Maven for example.</p>
+<hr>
+<h2 id=project-setup>Project setup</h2>
+<p>The dependencies to be imported into the project are accessible with the
+<a href=../../../components-java/overview/configuration-wizard/>configuration wizard</a>.</p>
+<p>Depending on the nature of the hardware resources required, it is necessary to declare certain permissions in the project manifest file.
+In the case of the Android NFC example, access to NFC functions is declared as follows:
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('5',this)">Copy</button></div>
+<pre><code class=language-xml id=code-5>&lt;manifest xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34;&gt;
+    ...
+    &lt;uses-permission android:name=&#34;android.permission.NFC&#34; /&gt;
+    &lt;uses-feature android:name=&#34;android.hardware.nfc&#34; android:required=&#34;true&#34; /&gt;
+    ...
+    &lt;application ...&gt;
+        ...
+        &lt;activity ... &gt;
+            ...
+            &lt;intent-filter&gt;
+                &lt;action android:name=&#34;android.nfc.action.TECH_DISCOVERED&#34; /&gt;
+            &lt;/intent-filter&gt;
+            &lt;meta-data
+                    android:name=&#34;android.nfc.action.TECH_DISCOVERED&#34;
+                    android:resource=&#34;@xml/tech_list&#34; /&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;</code></pre></p>
+<p>You will have to adapt this section according to the reader plugin used.</p>
+<hr>
+<h2 id=focus-on-keyple-specific-code>Focus on Keyple specific code</h2>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
+<pre><code class=language-kotlin id=code-6>...
+abstract class AbstractExampleActivity : ..., CardReaderObserverSpi, CardReaderObservationExceptionHandlerSpi {
+    ...
+}</code></pre>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
+<pre><code class=language-kotlin id=code-7>...
+class CoreExamplesActivity : AbstractExampleActivity() {
+
+    private lateinit var reader: Reader
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        ...
+        /**
+         * Register AndroidNfc plugin Factory
+         */
+        val plugin = SmartCardServiceProvider.getService().registerPlugin(AndroidNfcPluginFactoryProvider(this).getFactory())
+
+        /**
+         * Configure Nfc Reader
+         */
+        with(plugin.getReader(AndroidNfcReader.READER_NAME) as ObservableReader) {
+            setReaderObservationExceptionHandler(this@CoreExamplesActivity)
+            addObserver(this@CoreExamplesActivity)
+
+            // with this protocol settings we activate the nfc for ISO1443_4 protocol
+            (this as ConfigurableReader).activateProtocol(ContactlessCardCommonProtocol.ISO_14443_4.name, ContactlessCardCommonProtocol.ISO_14443_4.name)
+            reader = this
+        }
+    }
+
+    override fun onDestroy() {
+        SmartCardServiceProvider.getService().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
+        ...
+    }
+
+    override fun onResume() {
+        ...
+        try {
+            checkNfcAvailability()
+            if (intent.action != null &amp;&amp; intent.action == NfcAdapter.ACTION_TECH_DISCOVERED) run {
+
+                ...
+                // notify reader that card detection has been launched
+                (reader as ObservableReader).startCardDetection(ObservableCardReader.DetectionMode.SINGLESHOT)
+                ...
+                reader.getExtension(AndroidNfcReader.class).processIntent(intent)
+                configureUseCase1ExplicitSelectionAid()
+            } else {
+                ...
+                // enable detection
+                (reader as ObservableReader).startCardDetection(ObservableCardReader.DetectionMode.SINGLESHOT)
+            }
+        } catch (e: IOException) {
+            ...
+        }
+    }
+
+    ...
+
+    private fun configureUseCase1ExplicitSelectionAid() {
+        ...
+
+        with(reader as ObservableReader) {
+            ...
+
+            if (isCardPresent) {
+
+                val smartCardService = SmartCardServiceProvider.getService()
+
+                /**
+                 * Get the generic card extension service
+                 */
+                val cardExtension = GenericExtensionService.getInstance()
+
+                /**
+                 * Verify that the extension API level is consistent with the current service.
+                 */
+                smartCardService.checkCardExtension(cardExtension)
+
+                /**
+                 * Setting of an AID based selection (in this example a Calypso REV3 PO)
+                 *
+                 * Select the first application matching the selection AID whatever the card communication
+                 * protocol keep the logical channel open after the selection
+                 */
+                val aid = CalypsoClassicInfo.AID_CD_LIGHT_GTML
+
+                /**
+                 * Generic selection: configures a CardSelector with all the desired attributes to make
+                 * the selection and read additional information afterwards
+                 */
+                val cardSelection = cardExtension.createCardSelection()
+                    .filterByCardProtocol(AndroidNfcSupportedProtocols.ISO_14443_4.name)
+                    .filterByDfName(aid)
+
+                /**
+                 * Create a card selection using the generic card extension.
+                 */
+                cardSelectionManager.prepareSelection(cardSelection)
+
+                /**
+                 * Provide the Reader with the selection operation to be processed when a card is inserted.
+                 */
+                cardSelectionManager.scheduleCardSelectionScenario(reader as ObservableReader, ObservableCardReader.DetectionMode.SINGLESHOT, ObservableCardReader.NotificationMode.MATCHED_ONLY)
+
+                ...
+
+                try {
+                    val cardSelectionsResult = cardSelectionManager.processCardSelectionScenario(this)
+
+                    if (cardSelectionsResult.activeSmartCard != null) {
+                        val matchedCard = cardSelectionsResult.activeSmartCard
+                        ...
+                    } else {
+                        // selection failed
+                        ...
+                    }
+                    (reader as ObservableReader).finalizeCardProcessing()
+                } catch (e: CardCommunicationException) {
+                    ...
+                } catch (e: ReaderCommunicationException) {
+                    ...
+                }
+            } else {
+                // No cards were detected
+                ...
+            }
+            ...
+        }
+    }
+
+    ...
+}</code></pre>
+<hr>
+<h2 id=faq>FAQ</h2>
+<h4 id=how-to-fix-_more-than-one-file-was-found-with-os-independent-path-meta-infnoticemd_>How to fix &ldquo;<em>More than one file was found with OS independent path &lsquo;META-INF/NOTICE.md&rsquo;</em>&rdquo;.</h4>
+<p>Add lines below to your :app build.gradle file</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('8',this)">Copy</button></div>
+<pre><code class=language-kotlin id=code-8>android {
+    packagingOptions {
+        exclude &#39;META-INF/NOTICE.md&#39;
+    }
+}</code></pre>
 </div>
 <div class=article-widget>
 <div class=post-nav>
@@ -212,7 +420,7 @@ Coming soon
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Tue, Sep 21, 2021</p>
+<p>Last updated on Fri, Oct 15, 2021</p>
 </div>
 </article>
 <footer class=site-footer>

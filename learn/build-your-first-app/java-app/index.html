@@ -26,7 +26,7 @@
 <meta property="og:title" content="Build your first Java application | Eclipse Keyple">
 <meta property="og:description" content="This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-11T10:47:18+02:00">
+<meta property="article:modified_time" content="2021-10-15T11:07:38+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -186,12 +186,13 @@
 </ul>
 <nav id=TableOfContents>
 <ul>
+<li><a href=#overview>Overview</a></li>
 <li><a href=#create-a-gradle-based-empty-project>Create a Gradle-based empty project</a></li>
 <li><a href=#lets-code>Let&rsquo;s code</a>
 <ul>
 <li><a href=#create-the-class-skeleton>Create the class skeleton</a></li>
-<li><a href=#set-up-of-the-pcsc-plugin-retrieval-of-the-two-readers>Set up of the PC/SC plugin, retrieval of the two readers.</a></li>
-<li><a href=#retrieve-and-check-the-calypso-card-extension-service>Retrieve and check the Calypso card extension service</a></li>
+<li><a href=#set-up-the-pcsc-plugin>Set up the PC/SC plugin</a></li>
+<li><a href=#set-up-the-calypso-card-extension>Set up the Calypso card extension</a></li>
 <li><a href=#select-the-calypso-sam>Select the Calypso SAM</a></li>
 <li><a href=#select-the-calypso-card>Select the Calypso card</a></li>
 <li><a href=#open-the-calypso-secure-session>Open the Calypso secure session</a></li>
@@ -214,13 +215,16 @@
 <h1>Build your first Java application</h1>
 <div class=article-style>
 <hr>
-<p>This quick start describes how to create a ready-to-execute Java
-command-line application that runs a simple transaction based on
+<h2 id=overview>Overview</h2>
+<p>This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on
 a Calypso Card involving two smart card readers.</p>
-<div class="alert alert-note">
+<div class="alert alert-warning">
 <div>
-The demonstration application created for this quick start requires a
-Calypso Card (contactless smart card, NFC mobile phone with a Calypso applet or application) and a Calypso Secure Access Module (SAM).
+<p>The demonstration application created for this quick start requires:</p>
+<ul>
+<li>a Calypso Card (contactless smart card, NFC mobile phone with a Calypso applet or application),</li>
+<li>a Calypso SAM (Secure Access Module).</li>
+</ul>
 </div>
 </div>
 <p>We will use three main components of Keyple:</p>
@@ -244,9 +248,9 @@ such as Maven for example.</p>
 <p>The example can run on any machine: Linux, Windows and macOS. If not
 installed in your machine, you will need to download :</p>
 <ul>
-<li>Java 1.6 or newer</li>
+<li>Java 1.6+</li>
 <li>
-<a href=https://gradle.org/install/ target=_blank rel=noopener>Gradle (6.8.+)</a></li>
+<a href=https://gradle.org/install/ target=_blank rel=noopener>Gradle</a></li>
 </ul>
 <p>We recommend that you use a Java IDE like
 <a href=https://www.eclipse.org/ide/ target=_blank rel=noopener>Eclipse</a> or
@@ -318,7 +322,7 @@ public class DemoCardAuthentication {
         // ...
     }
 }</code></pre>
-<h3 id=set-up-of-the-pcsc-plugin-retrieval-of-the-two-readers>Set up of the PC/SC plugin, retrieval of the two readers.</h3>
+<h3 id=set-up-the-pcsc-plugin>Set up the PC/SC plugin</h3>
 <p>The first step to use Keyple is to initialize the plugin and smart card readers.</p>
 <p>In this snippet the PC/SC plugin is registered to the SmartCardService.</p>
 <p>Two readers needs to be connected to the local machine. Change
@@ -352,7 +356,7 @@ public class DemoCardAuthentication {
 
     // Provide the card reader type (for ratification management purpose)
     cardReader.getExtension(PcscReader.class).setContactless(true);</code></pre>
-<h3 id=retrieve-and-check-the-calypso-card-extension-service>Retrieve and check the Calypso card extension service</h3>
+<h3 id=set-up-the-calypso-card-extension>Set up the Calypso card extension</h3>
 <p>The Calypso card extension service will provide means to handle cards, SAMs and to manage card transactions.
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('8',this)">Copy</button></div>
 <pre><code class=language-java id=code-8>    // Get the Calypso card extension service
@@ -740,7 +744,7 @@ public class DemoCardAuthentication {
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Mon, Oct 11, 2021</p>
+<p>Last updated on Fri, Oct 15, 2021</p>
 </div>
 </article>
 <footer class=site-footer>
