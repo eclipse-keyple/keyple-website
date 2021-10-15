@@ -5,18 +5,20 @@ summary: This quick start describes how to create a ready-to-execute Java comman
 type: book
 toc: true
 draft: false
-weight: 210
+weight: 1
 ---
 
 ---
+## Overview
 
-This quick start describes how to create a ready-to-execute Java
-command-line application that runs a simple transaction based on
+This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on
 a Calypso Card involving two smart card readers.
 
-{{% alert note %}}  
-The demonstration application created for this quick start requires a
-Calypso Card (contactless smart card, NFC mobile phone with a Calypso applet or application) and a Calypso Secure Access Module (SAM). {{% /alert %}}
+{{% alert warning %}}  
+The demonstration application created for this quick start requires:
+* a Calypso Card (contactless smart card, NFC mobile phone with a Calypso applet or application),
+* a Calypso SAM (Secure Access Module).
+{{% /alert %}}
 
 
 We will use three main components of Keyple:
@@ -36,8 +38,8 @@ See [here]({{< relref "/components-java/overview/configuration-wizard" >}}) for 
 The example can run on any machine: Linux, Windows and macOS. If not
 installed in your machine, you will need to download :
 
-- Java 1.6 or newer
-- [Gradle (6.8.+)](https://gradle.org/install/)
+- Java 1.6+
+- [Gradle](https://gradle.org/install/)
 
 We recommend that you use a Java IDE like
 [Eclipse](https://www.eclipse.org/ide/) or
@@ -123,7 +125,7 @@ public class DemoCardAuthentication {
 }
 {{< /code >}}
 
-### Set up of the PC/SC plugin, retrieval of the two readers.
+### Set up the PC/SC plugin
 
 The first step to use Keyple is to initialize the plugin and smart card readers.
 
@@ -163,7 +165,7 @@ If you don't know the names of the readers, read how to find them in the [FAQ](#
     cardReader.getExtension(PcscReader.class).setContactless(true);
 {{< /code >}}
 
-### Retrieve and check the Calypso card extension service
+### Set up the Calypso card extension
 The Calypso card extension service will provide means to handle cards, SAMs and to manage card transactions.
 {{< code lang="java" >}}
     // Get the Calypso card extension service
