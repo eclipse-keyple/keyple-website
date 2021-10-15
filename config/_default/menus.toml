@@ -109,27 +109,33 @@
 
 [[main]]
   parent = "Community"
-  name = "Continuous integration dashboard"
-  url = "https://ci.eclipse.org/keyple/job/Keyple/"
+  name = "Projects dashboard"
+  url = "/projects-dashboard/"
   weight = 30
+
+[[main]]
+  parent = "Community"
+  name = "Code quality dashboard"
+  url = "https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date"
+  weight = 40
 
 [[main]]
   parent = "Community"
   name = "Eclipse Foundation Keyple page"
   url = "https://projects.eclipse.org/projects/iot.keyple/"
-  weight = 40
+  weight = 50
 
 [[main]]
   parent = "Community"
   name = "Mailing list"
   url = "https://accounts.eclipse.org/mailing-list/keyple-dev/"
-  weight = 50
+  weight = 60
 
 [[main]]
   parent = "Community"
   name = "GitHub home repository"
   url = "https://github.com/eclipse/keyple/"
-  weight = 60
+  weight = 70
 
 [[main]]
   name = "External resources"

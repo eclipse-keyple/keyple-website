@@ -1,0 +1,33 @@
+name: Update projects dashboard
+
+on:
+  schedule:
+    - cron: '0 */1 * * *'
+  workflow_run:
+    workflows: [ "Publish site" ]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Update permissions
+        working-directory: .
+        run: chmod +x ./.github/scripts/*.sh
+
+      - name: Update projects dashboard data
+        working-directory: .
+        run: ./.github/scripts/update_ci_dashboard_data_all.sh ${{ github.repository_owner }} ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./keyple-website
+          enable_jekyll: true

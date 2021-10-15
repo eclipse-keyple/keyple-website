@@ -141,3 +141,255 @@ function initDatatableDependencyCheck() {
         }
     } );
 }
+
+// Load the projects dashboard table content
+async function loadProjectsDashboard() {
+
+    let rootUrl = window.location.href + "../";
+
+    if (rootUrl.includes("localhost")) {
+        rootUrl = "https://keyple.org/";
+    }
+
+    async function getJson(fileName) {
+        let response = await fetch(rootUrl + 'dashboard/' + fileName + '.json?date='+Date.now());
+        return await response.json();
+    }
+
+    async function getJsonRepositoryData(repository_name, resource) {
+        let response = await fetch(rootUrl + 'dashboard/' + repository_name + resource + '.json?date='+Date.now());
+        return await response.json();
+    }
+
+    async function getReposData(rowIndex, owner, project) {
+
+        // create row
+        let newRow = body.insertRow();
+        newRow.id = rowIndex;
+
+        const json = await getJsonRepositoryData(project[0], "_");
+
+        // new row
+        const row = document.getElementById(rowIndex);
+
+        // column repos name
+        let cell = row.insertCell(-1);
+        let a = document.createElement('a');
+        let linkText = document.createTextNode(json.name);
+        a.appendChild(linkText);
+        a.title = json.name;
+        a.href = json.html_url;
+        a.target = "_blank";
+        cell.appendChild(a);
+
+        // column doc
+        cell = row.insertCell(-1);
+        if (project[1] === true) {
+            let space = document.createTextNode("  ");
+            cell.appendChild(space);
+            a = document.createElement('a');
+            linkText = document.createTextNode("🕮");
+            cell.appendChild(space);
+            a.appendChild(linkText);
+            a.title = "Documentation for " + json.name;
+            a.href = "https://eclipse.github.io/" + json.name;
+            a.target = "_blank";
+            cell.appendChild(a);
+        }
+
+        // column repos status
+        cell = row.insertCell(-1);
+        cell.setAttribute("id", "repos-status-" + rowIndex);
+
+        // column latest release
+        cell = row.insertCell(-1);
+        cell.setAttribute("id", "latest-release-" + rowIndex);
+        cell.appendChild(document.createTextNode(""));
+
+        // column latest tag
+        cell = row.insertCell(-1);
+        cell.setAttribute("id", "latest-tag-" + rowIndex);
+        cell.appendChild(document.createTextNode(""));
+
+        // column updated
+        cell = row.insertCell(-1);
+        cell.appendChild(document.createTextNode(formatDate(json.pushed_at)));
+
+        // column issues
+        cell = row.insertCell(-1);
+        cell.setAttribute("id", "issue-" + rowIndex);
+        cell.appendChild(document.createTextNode(""));
+
+        // column branches
+        cell = row.insertCell(-1);
+        cell.setAttribute("id", "branch-" + rowIndex);
+        cell.appendChild(document.createTextNode(""));
+
+        // column pull requests
+        cell = row.insertCell(-1);
+        cell.setAttribute("id", "pull-" + rowIndex);
+        cell.appendChild(document.createTextNode(""));
+
+        // column forks
+        cell = row.insertCell(-1);
+        cell.appendChild(document.createTextNode(json.forks.toString()));
+
+        // column stars
+        cell = row.insertCell(-1);
+        cell.appendChild(document.createTextNode(json.stargazers_count.toString()));
+
+        // column created
+        cell = row.insertCell(-1);
+        cell.appendChild(document.createTextNode(formatDate(json.created_at)));
+
+        // get complementary data
+        await getBranches(rowIndex, owner, project[0]);
+        await getPullData(rowIndex, owner, project[0]);
+        await getLatestRelease(rowIndex, owner, project[0]);
+        await getLatestTag(rowIndex, owner, project[0]);
+        if (project[2] === true) {
+            await getStatus(rowIndex, owner, project[0]);
+        }
+
+        // debug
+        console.log(json.data);
+    }
+
+    async function getBranches(rowIndex, owner, repos) {
+        const json = await getJsonRepositoryData(repos, "_branches");
+        let cell = document.getElementById("branch-" + rowIndex);
+        cell.innerHTML = '' + json.length;
+        if (json.length > 2) {
+            cell.style.backgroundColor = "#FFE0F0";
+        }
+    }
+
+    async function getPullData(rowIndex, owner, repos) {
+        const json = await getJsonRepositoryData(repos, "_pulls");
+        let cell = document.getElementById("pull-" + rowIndex);
+        if (json.length > 0) {
+            cell.style.backgroundColor = "orange";
+        }
+        cell.innerHTML = json.length;
+        cell = document.getElementById("issue-" + rowIndex);
+        if (json.length > 0) {
+            cell.style.backgroundColor = "orange";
+        }
+        cell.innerHTML = json.length;
+    }
+
+    async function getLatestRelease(rowIndex, owner, repos) {
+        let cell = document.getElementById("latest-release-" + rowIndex);
+        try {
+            const json = await getJsonRepositoryData(repos, "_releases_latest");
+            if (json.tag_name !== undefined) {
+                cell.innerHTML = json.tag_name;
+            } else {
+                cell.innerHTML = "\u2205";
+            }
+        } catch (err) {
+            cell.innerHTML = "\u2205";
+        }
+    }
+
+    async function getLatestTag(rowIndex, owner, repos) {
+        let cell = document.getElementById("latest-tag-" + rowIndex);
+        try {
+            const json = await getJsonRepositoryData(repos, "_tags");
+            cell.innerHTML = json[0].name;
+        } catch (err) {
+            cell.innerHTML = "\u2205";
+        }
+    }
+
+    async function getStatus(rowIndex, owner, repos) {
+
+        let cell = document.getElementById("repos-status-" + rowIndex);
+        let json;
+        let branch;
+
+        try {
+            json = await getJsonRepositoryData(repos, "_commits_status");
+            branch = "main";
+        } catch (err) {
+        }
+
+        const a = document.createElement('a');
+        const linkText = document.createTextNode("\u2b24");
+        a.appendChild(linkText);
+        a.title = "CI status page";
+        a.href = "https://ci.eclipse.org/keyple/job/Keyple/job/" + repos + "/job/" + branch + "/";
+        a.target = "_blank";
+
+        switch (json.state) {
+            case "error":
+            case "failure":
+                a.style.color = "red";
+                break;
+            case "pending":
+                a.style.color = "orange";
+                break;
+            case "success":
+                a.style.color = "green";
+                break;
+        }
+
+        cell.appendChild(a);
+    }
+
+    function formatDate(dateString) {
+        let d = new Date(dateString),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear(),
+            hour = '' + d.getHours(),
+            min = '' + d.getMinutes(),
+            sec = '' + d.getSeconds();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+        const date = [year, month, day].join('/');
+
+        if (hour.length < 2)
+            hour = '0' + hour;
+        if (min.length < 2)
+            min = '0' + min;
+        if (sec.length < 2)
+            sec = '0' + sec;
+
+        const time = [hour, min, sec].join(':');
+
+        return date + ' ' + time;
+    }
+
+    let owner = "eclipse";
+
+    let lastUpdate = await getJson('datetime');
+    $("#projects-dashboard-datetime")[0].innerHTML = lastUpdate.datetime;
+
+    let projects = await getJson('repository_list');
+
+    // create promises
+    const body = document.getElementById("projects-dashboard-content");
+    let promises = [];
+    for (let i = 0; i < projects.length; i++) {
+        let promise = getReposData((i + 1).toString(), owner, projects[i])
+        promises.push(promise);
+    }
+
+    await (async () => {
+        await Promise.all(promises)
+            .finally(function () {
+                $('#projects-dashboard-table').DataTable({
+                    "lengthMenu": [25, 50, 75, 100],
+                    "order": [[5, 'desc']],
+                    "oLanguage": {"sSearch": "Filter:"}
+                });
+                $('.dataTables_length').addClass('bs-select');
+                // update the container's width with the real table size
+                $('.universal-wrapper').width($('#projects-dashboard-table')[0].scrollWidth);
+            });
+    })();
+}
