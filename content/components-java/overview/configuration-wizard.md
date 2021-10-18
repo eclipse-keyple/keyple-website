@@ -93,30 +93,30 @@ Please find below the configuration to use when developing a specific Keyple car
 Please find below the configuration to use when developing a specific Keyple reader plugin not already available:
 {{< tabpane ref="3" >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}
-implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}'
-implementation 'org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-dynamic-gradle-version %}}'
-implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}'
+implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}'
+implementation 'org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}'
+implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}'
 {{< /tab >}}
 {{< tab header="Gradle Kotlin" lang="kotlin" >}}
-implementation("org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}")
-implementation("org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-dynamic-gradle-version %}}")
-implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}")
+implementation("org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}")
+implementation("org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}")
+implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}")
 {{< /tab >}}
 {{< tab header="Maven" lang="xml" >}}
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-common-java-api</artifactId>
-  <version>{{% keyple-common-java-api-dynamic-maven-version %}}</version>
+  <version>{{% keyple-common-java-api-version %}}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-plugin-java-api</artifactId>
-  <version>{{% keyple-plugin-java-api-dynamic-maven-version %}}</version>
+  <version>{{% keyple-plugin-java-api-version %}}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-util-java-lib</artifactId>
-  <version>{{% keyple-util-java-lib-dynamic-maven-version %}}</version>
+  <version>{{% keyple-util-java-lib-version %}}</version>
 </dependency>
 {{< /tab >}}
 {{< /tabpane >}}
@@ -129,30 +129,30 @@ Please find below the configuration to use when developing an alternate Keyple d
 For the **Local Service** component:
 {{< tabpane ref="4" >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}
-implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}'
-implementation 'org.eclipse.keyple:keyple-distributed-local-java-api:{{% keyple-distributed-local-java-api-dynamic-gradle-version %}}'
-implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}'
+implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}'
+implementation 'org.eclipse.keyple:keyple-distributed-local-java-api:{{% keyple-distributed-local-java-api-version %}}'
+implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}'
 {{< /tab >}}
 {{< tab header="Gradle Kotlin" lang="kotlin" >}}
-implementation("org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}")
-implementation("org.eclipse.keyple:keyple-distributed-local-java-api:{{% keyple-distributed-local-java-api-dynamic-gradle-version %}}")
-implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}")
+implementation("org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}")
+implementation("org.eclipse.keyple:keyple-distributed-local-java-api:{{% keyple-distributed-local-java-api-version %}}")
+implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}")
 {{< /tab >}}
 {{< tab header="Maven" lang="xml" >}}
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-common-java-api</artifactId>
-  <version>{{% keyple-common-java-api-dynamic-maven-version %}}</version>
+  <version>{{% keyple-common-java-api-version %}}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-distributed-local-java-api</artifactId>
-  <version>{{% keyple-distributed-local-java-api-dynamic-maven-version %}}</version>
+  <version>{{% keyple-distributed-local-java-api-version %}}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-util-java-lib</artifactId>
-  <version>{{% keyple-util-java-lib-dynamic-maven-version %}}</version>
+  <version>{{% keyple-util-java-lib-version %}}</version>
 </dependency>
 {{< /tab >}}
 {{< /tabpane >}}
@@ -161,30 +161,30 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 For the **Remote Plugin** component:
 {{< tabpane ref="5" >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}
-implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}'
-implementation 'org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-dynamic-gradle-version %}}'
-implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}'
+implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}'
+implementation 'org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-version %}}'
+implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}'
 {{< /tab >}}
 {{< tab header="Gradle Kotlin" lang="kotlin" >}}
-implementation("org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}")
-implementation("org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-dynamic-gradle-version %}}")
-implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}")
+implementation("org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}")
+implementation("org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-version %}}")
+implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}")
 {{< /tab >}}
 {{< tab header="Maven" lang="xml" >}}
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-common-java-api</artifactId>
-  <version>{{% keyple-common-java-api-dynamic-maven-version %}}</version>
+  <version>{{% keyple-common-java-api-version %}}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-distributed-remote-java-api</artifactId>
-  <version>{{% keyple-distributed-remote-java-api-dynamic-maven-version %}}</version>
+  <version>{{% keyple-distributed-remote-java-api-version %}}</version>
 </dependency>
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-util-java-lib</artifactId>
-  <version>{{% keyple-util-java-lib-dynamic-maven-version %}}</version>
+  <version>{{% keyple-util-java-lib-version %}}</version>
 </dependency>
 {{< /tab >}}
 {{< /tabpane >}}
@@ -192,13 +192,12 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 
 <!-- All groovy dependencies -->
 <code id="all-groovy-dependencies" style="display:none">
-<span id="keyple-common-java-api">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}'</span></span>
-<span id="keyple-distributed-local-java-api">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-distributed-local-java-api:{{% keyple-distributed-local-java-api-dynamic-gradle-version %}}'</span></span>
-<span id="keyple-distributed-remote-java-api">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-dynamic-gradle-version %}}'</span></span>
-<span id="keyple-plugin-java-api">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-dynamic-gradle-version %}}'</span></span>
+<span id="keyple-common-java-api">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}'</span></span>
+<span id="keyple-common-java-api-dynamic">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}'</span></span>
 <span id="keyple-service-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-service-java-lib:{{% keyple-service-java-lib-version %}}'</span></span>
 <span id="keyple-service-resource-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-service-resource-java-lib-version %}}'</span></span>
-<span id="keyple-util-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}'</span></span>
+<span id="keyple-util-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}'</span></span>
+<span id="keyple-util-java-lib-dynamic">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}'</span></span>
 <span id="keyple-card-calypso-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-java-lib:{{% keyple-card-calypso-java-lib-version %}}'</span></span>
 <span id="keyple-card-generic-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-card-generic-java-lib:{{% keyple-card-generic-java-lib-version %}}'</span></span>
 <span id="keyple-distributed-local-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-distributed-local-java-lib:{{% keyple-distributed-local-java-lib-version %}}'</span></span>
@@ -208,20 +207,21 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <span id="keyple-plugin-android-omapi-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:{{% keyple-plugin-android-omapi-java-lib-version %}}'</span></span>
 <span id="keyple-plugin-pcsc-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin-pcsc-java-lib-version %}}'</span></span>
 <span id="keyple-plugin-stub-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-plugin-stub-java-lib:{{% keyple-plugin-stub-java-lib-version %}}'</span></span>
-<span id="calypsonet-terminal-reader-java-api">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:{{% calypsonet-terminal-reader-java-api-dynamic-gradle-version %}}'</span></span>
-<span id="calypsonet-terminal-card-java-api">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-card-java-api:{{% calypsonet-terminal-card-java-api-dynamic-gradle-version %}}'</span></span>
-<span id="calypsonet-terminal-calypso-java-api">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:{{% calypsonet-terminal-calypso-java-api-dynamic-gradle-version %}}'</span></span>
+<span id="calypsonet-terminal-reader-java-api">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:{{% calypsonet-terminal-reader-java-api-version %}}'</span></span>
+<span id="calypsonet-terminal-reader-java-api-dynamic">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:{{% calypsonet-terminal-reader-java-api-dynamic-gradle-version %}}'</span></span>
+<span id="calypsonet-terminal-card-java-api">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-card-java-api:{{% calypsonet-terminal-card-java-api-version %}}'</span></span>
+<span id="calypsonet-terminal-card-java-api-dynamic">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-card-java-api:{{% calypsonet-terminal-card-java-api-dynamic-gradle-version %}}'</span></span>
+<span id="calypsonet-terminal-calypso-java-api-dynamic">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:{{% calypsonet-terminal-calypso-java-api-dynamic-gradle-version %}}'</span></span>
 </code>
 
 <!-- All kotlin dependencies -->
 <code id="all-kotlin-dependencies" style="display:none">
-<span id="keyple-common-java-api">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}"</span>)</span>
-<span id="keyple-distributed-local-java-api">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-distributed-local-java-api:{{% keyple-distributed-local-java-api-dynamic-gradle-version %}}"</span>)</span>
-<span id="keyple-distributed-remote-java-api">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-dynamic-gradle-version %}}"</span>)</span>
-<span id="keyple-plugin-java-api">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-dynamic-gradle-version %}}"</span>)</span>
+<span id="keyple-common-java-api">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}"</span>)</span>
+<span id="keyple-common-java-api-dynamic">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-dynamic-gradle-version %}}"</span>)</span>
 <span id="keyple-service-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-service-java-lib:{{% keyple-service-java-lib-version %}}"</span>)</span>
 <span id="keyple-service-resource-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-service-resource-java-lib-version %}}"</span>)</span>
-<span id="keyple-util-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}"</span>)</span>
+<span id="keyple-util-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}"</span>)</span>
+<span id="keyple-util-java-lib-dynamic">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}"</span>)</span>
 <span id="keyple-card-calypso-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-java-lib:{{% keyple-card-calypso-java-lib-version %}}"</span>)</span>
 <span id="keyple-card-generic-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-card-generic-java-lib:{{% keyple-card-generic-java-lib-version %}}"</span>)</span>
 <span id="keyple-distributed-local-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-distributed-local-java-lib:{{% keyple-distributed-local-java-lib-version %}}"</span>)</span>
@@ -231,9 +231,11 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <span id="keyple-plugin-android-omapi-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:{{% keyple-plugin-android-omapi-java-lib-version %}}"</span>)</span>
 <span id="keyple-plugin-pcsc-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin-pcsc-java-lib-version %}}"</span>)</span>
 <span id="keyple-plugin-stub-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-plugin-stub-java-lib:{{% keyple-plugin-stub-java-lib-version %}}"</span>)</span>
-<span id="calypsonet-terminal-reader-java-api">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-reader-java-api:{{% calypsonet-terminal-reader-java-api-dynamic-gradle-version %}}"</span>)</span>
-<span id="calypsonet-terminal-card-java-api">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-card-java-api:{{% calypsonet-terminal-card-java-api-dynamic-gradle-version %}}"</span>)</span>
-<span id="calypsonet-terminal-calypso-java-api">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:{{% calypsonet-terminal-calypso-java-api-dynamic-gradle-version %}}"</span>)</span>
+<span id="calypsonet-terminal-reader-java-api">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-reader-java-api:{{% calypsonet-terminal-reader-java-api-version %}}"</span>)</span>
+<span id="calypsonet-terminal-reader-java-api-dynamic">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-reader-java-api:{{% calypsonet-terminal-reader-java-api-dynamic-gradle-version %}}"</span>)</span>
+<span id="calypsonet-terminal-card-java-api">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-card-java-api:{{% calypsonet-terminal-card-java-api-version %}}"</span>)</span>
+<span id="calypsonet-terminal-card-java-api-dynamic">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-card-java-api:{{% calypsonet-terminal-card-java-api-dynamic-gradle-version %}}"</span>)</span>
+<span id="calypsonet-terminal-calypso-java-api-dynamic">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:{{% calypsonet-terminal-calypso-java-api-dynamic-gradle-version %}}"</span>)</span>
 </code>
 
 <!-- All maven dependencies -->
@@ -241,22 +243,12 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <span id="keyple-common-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keyple-common-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keyple-common-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
+<span id="keyple-common-java-api-dynamic"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keyple-common-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keyple-common-java-api-dynamic-maven-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
-<span id="keyple-distributed-local-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keyple-distributed-local-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keyple-distributed-local-java-api-dynamic-maven-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
-<span id="keyple-distributed-remote-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keyple-distributed-remote-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keyple-distributed-remote-java-api-dynamic-maven-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
-<span id="keyple-plugin-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keyple-plugin-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keyple-plugin-java-api-dynamic-maven-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
 <span id="keyple-service-java-lib"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
@@ -269,6 +261,11 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keyple-service-resource-java-lib-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
 <span id="keyple-util-java-lib"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keyple-util-java-lib<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keyple-util-java-lib-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
+<span id="keyple-util-java-lib-dynamic"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keyple-util-java-lib<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keyple-util-java-lib-dynamic-maven-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
@@ -321,14 +318,24 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <span id="calypsonet-terminal-reader-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.calypsonet.terminal<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>calypsonet-terminal-reader-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% calypsonet-terminal-reader-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
+<span id="calypsonet-terminal-reader-java-api-dynamic"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.calypsonet.terminal<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>calypsonet-terminal-reader-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% calypsonet-terminal-reader-java-api-dynamic-maven-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
 <span id="calypsonet-terminal-card-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.calypsonet.terminal<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>calypsonet-terminal-card-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% calypsonet-terminal-card-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
+<span id="calypsonet-terminal-card-java-api-dynamic"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.calypsonet.terminal<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>calypsonet-terminal-card-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% calypsonet-terminal-card-java-api-dynamic-maven-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
-<span id="calypsonet-terminal-calypso-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+<span id="calypsonet-terminal-calypso-java-api-dynamic"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.calypsonet.terminal<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>calypsonet-terminal-calypso-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% calypsonet-terminal-calypso-java-api-dynamic-maven-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
