@@ -32,12 +32,12 @@ function copyCodeContentToClipboard(codeId, button) {
 const appDependencies = new Set();
 function computeAppContent(language) {
     let tagPrefix = 'code#all-'+language+'-dependencies span#';
-    let contentHtml = $(tagPrefix+'calypsonet-terminal-reader-java-api').html();
+    let contentHtml = $(tagPrefix+'calypsonet-terminal-reader-java-api-dynamic').html();
     if (appDependencies.has("cardCalypso")) {
-        contentHtml += "\n" + $(tagPrefix+'calypsonet-terminal-calypso-java-api').html();
+        contentHtml += "\n" + $(tagPrefix+'calypsonet-terminal-calypso-java-api-dynamic').html();
     }
-    contentHtml += "\n" + $(tagPrefix+'keyple-common-java-api').html()
-        + "\n" + $(tagPrefix+'keyple-util-java-lib').html()
+    contentHtml += "\n" + $(tagPrefix+'keyple-common-java-api-dynamic').html()
+        + "\n" + $(tagPrefix+'keyple-util-java-lib-dynamic').html()
         + "\n" + $(tagPrefix+'keyple-service-java-lib').html();
     if (appDependencies.has("serviceResource")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-service-resource-java-lib').html();
