@@ -26,7 +26,7 @@
 <meta property="og:title" content="Java - Configuration wizard | Eclipse Keyple">
 <meta property="og:description" content="Online tool to generate the dependencies section of Gradle or Maven configuration files."><meta property="og:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png">
 <meta property="twitter:image" content="https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-09-21T15:53:16+02:00">
+<meta property="article:modified_time" content="2021-10-18T16:41:56+02:00">
 <script src=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous>
 <script>window.addEventListener("load",function(){window.cookieconsent.initialise({palette:{popup:{background:"#1D87BB",text:"#FFFFFF"},button:{background:"#FFFFFF",text:"#1D87BB"}},theme:"classic",type:"opt-in",content:{header:'Cookiessss used on the website!',message:"Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy ",allow:"Allow cookies",deny:"Decline",dismiss:"Got it!",link:"click here",href:'https://www.eclipse.org/legal/privacy.php'}})})</script>
@@ -102,7 +102,8 @@
 <div class=dropdown-menu>
 <a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
 <a class=dropdown-item href=../../../community/roadmap/><span>Roadmap</span></a>
-<a class=dropdown-item href=https://ci.eclipse.org/keyple/job/Keyple/><span>Continuous integration dashboard</span></a>
+<a class=dropdown-item href=../../../projects-dashboard/><span>Projects dashboard</span></a>
+<a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date"><span>Code quality dashboard</span></a>
 <a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
 <a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
 <a class=dropdown-item href=https://github.com/eclipse/keyple/><span>GitHub home repository</span></a>
@@ -350,30 +351,30 @@ Maven
 </li></ul>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyTabContentToClipboard('tabs-3',this)">Copy</button></div>
 <div class=tab-content id=tabs-3-content><div class="tab-pane fade show active" id=tabs-3-0 role=tabpanel aria-labelled-by=tabs-3-0-tab>
-<pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.&#43;&#39;
-implementation &#39;org.eclipse.keyple:keyple-plugin-java-api:2.0.&#43;&#39;
-implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#39;</code></pre>
+<pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-plugin-java-api:2.0.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.0.0&#39;</code></pre>
 </div>
 <div class="tab-pane fade" id=tabs-3-1 role=tabpanel aria-labelled-by=tabs-3-1-tab>
-<pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-common-java-api:2.0.&#43;&#34;)
-implementation(&#34;org.eclipse.keyple:keyple-plugin-java-api:2.0.&#43;&#34;)
-implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#34;)</code></pre>
+<pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-common-java-api:2.0.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-plugin-java-api:2.0.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.0.0&#34;)</code></pre>
 </div>
 <div class="tab-pane fade" id=tabs-3-2 role=tabpanel aria-labelled-by=tabs-3-2-tab>
 <pre><code class=language-xml>&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
   &lt;artifactId&gt;keyple-common-java-api&lt;/artifactId&gt;
-  &lt;version&gt;[2.0.0,2.1.0)&lt;/version&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
   &lt;artifactId&gt;keyple-plugin-java-api&lt;/artifactId&gt;
-  &lt;version&gt;[2.0.0,2.1.0)&lt;/version&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
   &lt;artifactId&gt;keyple-util-java-lib&lt;/artifactId&gt;
-  &lt;version&gt;[2.0.0,3.0.0)&lt;/version&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -406,30 +407,30 @@ Maven
 </li></ul>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyTabContentToClipboard('tabs-4',this)">Copy</button></div>
 <div class=tab-content id=tabs-4-content><div class="tab-pane fade show active" id=tabs-4-0 role=tabpanel aria-labelled-by=tabs-4-0-tab>
-<pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.&#43;&#39;
-implementation &#39;org.eclipse.keyple:keyple-distributed-local-java-api:2.0.&#43;&#39;
-implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#39;</code></pre>
+<pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-distributed-local-java-api:2.0.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.0.0&#39;</code></pre>
 </div>
 <div class="tab-pane fade" id=tabs-4-1 role=tabpanel aria-labelled-by=tabs-4-1-tab>
-<pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-common-java-api:2.0.&#43;&#34;)
-implementation(&#34;org.eclipse.keyple:keyple-distributed-local-java-api:2.0.&#43;&#34;)
-implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#34;)</code></pre>
+<pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-common-java-api:2.0.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-distributed-local-java-api:2.0.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.0.0&#34;)</code></pre>
 </div>
 <div class="tab-pane fade" id=tabs-4-2 role=tabpanel aria-labelled-by=tabs-4-2-tab>
 <pre><code class=language-xml>&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
   &lt;artifactId&gt;keyple-common-java-api&lt;/artifactId&gt;
-  &lt;version&gt;[2.0.0,2.1.0)&lt;/version&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
   &lt;artifactId&gt;keyple-distributed-local-java-api&lt;/artifactId&gt;
-  &lt;version&gt;[2.0.0,2.1.0)&lt;/version&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
   &lt;artifactId&gt;keyple-util-java-lib&lt;/artifactId&gt;
-  &lt;version&gt;[2.0.0,3.0.0)&lt;/version&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -450,30 +451,30 @@ Maven
 </li></ul>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyTabContentToClipboard('tabs-5',this)">Copy</button></div>
 <div class=tab-content id=tabs-5-content><div class="tab-pane fade show active" id=tabs-5-0 role=tabpanel aria-labelled-by=tabs-5-0-tab>
-<pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.&#43;&#39;
-implementation &#39;org.eclipse.keyple:keyple-distributed-remote-java-api:2.0.&#43;&#39;
-implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#39;</code></pre>
+<pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-distributed-remote-java-api:2.0.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.0.0&#39;</code></pre>
 </div>
 <div class="tab-pane fade" id=tabs-5-1 role=tabpanel aria-labelled-by=tabs-5-1-tab>
-<pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-common-java-api:2.0.&#43;&#34;)
-implementation(&#34;org.eclipse.keyple:keyple-distributed-remote-java-api:2.0.&#43;&#34;)
-implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#34;)</code></pre>
+<pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-common-java-api:2.0.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-distributed-remote-java-api:2.0.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.0.0&#34;)</code></pre>
 </div>
 <div class="tab-pane fade" id=tabs-5-2 role=tabpanel aria-labelled-by=tabs-5-2-tab>
 <pre><code class=language-xml>&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
   &lt;artifactId&gt;keyple-common-java-api&lt;/artifactId&gt;
-  &lt;version&gt;[2.0.0,2.1.0)&lt;/version&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
   &lt;artifactId&gt;keyple-distributed-remote-java-api&lt;/artifactId&gt;
-  &lt;version&gt;[2.0.0,2.1.0)&lt;/version&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
   &lt;artifactId&gt;keyple-util-java-lib&lt;/artifactId&gt;
-  &lt;version&gt;[2.0.0,3.0.0)&lt;/version&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -481,13 +482,12 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#34;)</code>
 </div>
 </div>
 <code id=all-groovy-dependencies style=display:none>
-<span id=keyple-common-java-api>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-common-java-api:2.0.+'</span></span>
-<span id=keyple-distributed-local-java-api>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-distributed-local-java-api:2.0.+'</span></span>
-<span id=keyple-distributed-remote-java-api>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-distributed-remote-java-api:2.0.+'</span></span>
-<span id=keyple-plugin-java-api>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-plugin-java-api:2.0.+'</span></span>
+<span id=keyple-common-java-api>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-common-java-api:2.0.0'</span></span>
+<span id=keyple-common-java-api-dynamic>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-common-java-api:2.0.+'</span></span>
 <span id=keyple-service-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-service-java-lib:2.0.0'</span></span>
 <span id=keyple-service-resource-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-service-resource-java-lib:2.0.0'</span></span>
-<span id=keyple-util-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-util-java-lib:2.+'</span></span>
+<span id=keyple-util-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-util-java-lib:2.0.0'</span></span>
+<span id=keyple-util-java-lib-dynamic>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-util-java-lib:2.+'</span></span>
 <span id=keyple-card-calypso-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-card-calypso-java-lib:2.0.0'</span></span>
 <span id=keyple-card-generic-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-card-generic-java-lib:2.0.0'</span></span>
 <span id=keyple-distributed-local-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-distributed-local-java-lib:2.0.0'</span></span>
@@ -497,18 +497,19 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#34;)</code>
 <span id=keyple-plugin-android-omapi-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.0.0'</span></span>
 <span id=keyple-plugin-pcsc-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0'</span></span>
 <span id=keyple-plugin-stub-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-plugin-stub-java-lib:2.0.0'</span></span>
-<span id=calypsonet-terminal-reader-java-api>implementation <span class=hljs-string>'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.+'</span></span>
-<span id=calypsonet-terminal-card-java-api>implementation <span class=hljs-string>'org.calypsonet.terminal:calypsonet-terminal-card-java-api:1.0.+'</span></span>
-<span id=calypsonet-terminal-calypso-java-api>implementation <span class=hljs-string>'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.0.+'</span></span>
+<span id=calypsonet-terminal-reader-java-api>implementation <span class=hljs-string>'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.0'</span></span>
+<span id=calypsonet-terminal-reader-java-api-dynamic>implementation <span class=hljs-string>'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.+'</span></span>
+<span id=calypsonet-terminal-card-java-api>implementation <span class=hljs-string>'org.calypsonet.terminal:calypsonet-terminal-card-java-api:1.0.0'</span></span>
+<span id=calypsonet-terminal-card-java-api-dynamic>implementation <span class=hljs-string>'org.calypsonet.terminal:calypsonet-terminal-card-java-api:1.0.+'</span></span>
+<span id=calypsonet-terminal-calypso-java-api-dynamic>implementation <span class=hljs-string>'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.0.+'</span></span>
 </code>
 <code id=all-kotlin-dependencies style=display:none>
-<span id=keyple-common-java-api>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-common-java-api:2.0.+"</span>)</span>
-<span id=keyple-distributed-local-java-api>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-distributed-local-java-api:2.0.+"</span>)</span>
-<span id=keyple-distributed-remote-java-api>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-distributed-remote-java-api:2.0.+"</span>)</span>
-<span id=keyple-plugin-java-api>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-plugin-java-api:2.0.+"</span>)</span>
+<span id=keyple-common-java-api>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-common-java-api:2.0.0"</span>)</span>
+<span id=keyple-common-java-api-dynamic>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-common-java-api:2.0.+"</span>)</span>
 <span id=keyple-service-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-service-java-lib:2.0.0"</span>)</span>
 <span id=keyple-service-resource-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-service-resource-java-lib:2.0.0"</span>)</span>
-<span id=keyple-util-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-util-java-lib:2.+"</span>)</span>
+<span id=keyple-util-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-util-java-lib:2.0.0"</span>)</span>
+<span id=keyple-util-java-lib-dynamic>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-util-java-lib:2.+"</span>)</span>
 <span id=keyple-card-calypso-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-card-calypso-java-lib:2.0.0"</span>)</span>
 <span id=keyple-card-generic-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-card-generic-java-lib:2.0.0"</span>)</span>
 <span id=keyple-distributed-local-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-distributed-local-java-lib:2.0.0"</span>)</span>
@@ -518,29 +519,21 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#34;)</code>
 <span id=keyple-plugin-android-omapi-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.0.0"</span>)</span>
 <span id=keyple-plugin-pcsc-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0"</span>)</span>
 <span id=keyple-plugin-stub-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-plugin-stub-java-lib:2.0.0"</span>)</span>
-<span id=calypsonet-terminal-reader-java-api>implementation(<span class=hljs-string>"org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.+"</span>)</span>
-<span id=calypsonet-terminal-card-java-api>implementation(<span class=hljs-string>"org.calypsonet.terminal:calypsonet-terminal-card-java-api:1.0.+"</span>)</span>
-<span id=calypsonet-terminal-calypso-java-api>implementation(<span class=hljs-string>"org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.0.+"</span>)</span>
+<span id=calypsonet-terminal-reader-java-api>implementation(<span class=hljs-string>"org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.0"</span>)</span>
+<span id=calypsonet-terminal-reader-java-api-dynamic>implementation(<span class=hljs-string>"org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.+"</span>)</span>
+<span id=calypsonet-terminal-card-java-api>implementation(<span class=hljs-string>"org.calypsonet.terminal:calypsonet-terminal-card-java-api:1.0.0"</span>)</span>
+<span id=calypsonet-terminal-card-java-api-dynamic>implementation(<span class=hljs-string>"org.calypsonet.terminal:calypsonet-terminal-card-java-api:1.0.+"</span>)</span>
+<span id=calypsonet-terminal-calypso-java-api-dynamic>implementation(<span class=hljs-string>"org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.0.+"</span>)</span>
 </code>
 <code id=all-maven-dependencies style=display:none>
 <span id=keyple-common-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-common-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
-<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>[2.0.0,2.1.0)<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
 <span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
-<span id=keyple-distributed-local-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+<span id=keyple-common-java-api-dynamic><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
-<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-distributed-local-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
-<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>[2.0.0,2.1.0)<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
-<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
-<span id=keyple-distributed-remote-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
-<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
-<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-distributed-remote-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
-<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>[2.0.0,2.1.0)<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
-<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
-<span id=keyple-plugin-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
-<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
-<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-plugin-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-common-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>[2.0.0,2.1.0)<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
 <span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
 <span id=keyple-service-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
@@ -554,6 +547,11 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#34;)</code>
 <span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
 <span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
 <span id=keyple-util-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-util-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-util-java-lib-dynamic><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-util-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>[2.0.0,3.0.0)<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
@@ -606,14 +604,24 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#34;)</code>
 <span id=calypsonet-terminal-reader-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.calypsonet.terminal<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>calypsonet-terminal-reader-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>1.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=calypsonet-terminal-reader-java-api-dynamic><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.calypsonet.terminal<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>calypsonet-terminal-reader-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>[1.0.0,1.1.0)<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
 <span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
 <span id=calypsonet-terminal-card-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.calypsonet.terminal<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>calypsonet-terminal-card-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>1.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=calypsonet-terminal-card-java-api-dynamic><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.calypsonet.terminal<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>calypsonet-terminal-card-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>[1.0.0,1.1.0)<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
 <span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
-<span id=calypsonet-terminal-calypso-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+<span id=calypsonet-terminal-calypso-java-api-dynamic><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.calypsonet.terminal<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>calypsonet-terminal-calypso-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
 <span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>[1.0.0,1.1.0)<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
@@ -635,7 +643,7 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#34;)</code>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on Tue, Sep 21, 2021</p>
+<p>Last updated on Mon, Oct 18, 2021</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -712,7 +720,7 @@ for
     </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../js/academic.min.b53776f33e8073247831b676ef46c015.js></script>
+<script src=../../../js/academic.min.7dd2702ed3444d5ca495e8ac741f6e69.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
