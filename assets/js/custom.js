@@ -191,7 +191,7 @@ async function loadProjectsDashboard() {
             linkText = document.createTextNode("🕮");
             cell.appendChild(space);
             a.appendChild(linkText);
-            a.title = "Documentation for " + json.name;
+            a.title = "API documentation for " + json.name;
             a.href = "https://eclipse.github.io/" + json.name;
             a.target = "_blank";
             cell.appendChild(a);
@@ -284,11 +284,8 @@ async function loadProjectsDashboard() {
             const json = await getJsonRepositoryData(repos, "_releases_latest");
             if (json.tag_name !== undefined) {
                 cell.innerHTML = json.tag_name;
-            } else {
-                cell.innerHTML = "\u2205";
             }
         } catch (err) {
-            cell.innerHTML = "\u2205";
         }
     }
 
@@ -298,7 +295,6 @@ async function loadProjectsDashboard() {
             const json = await getJsonRepositoryData(repos, "_tags");
             cell.innerHTML = json[0].name;
         } catch (err) {
-            cell.innerHTML = "\u2205";
         }
     }
 
@@ -315,7 +311,7 @@ async function loadProjectsDashboard() {
         }
 
         const a = document.createElement('a');
-        const linkText = document.createTextNode("\u2b24");
+        const linkText = document.createTextNode("⬤");
         a.appendChild(linkText);
         a.title = "CI status page";
         a.href = "https://ci.eclipse.org/keyple/job/Keyple/job/" + repos + "/job/" + branch + "/";
@@ -325,12 +321,15 @@ async function loadProjectsDashboard() {
             case "error":
             case "failure":
                 a.style.color = "red";
+                a.title += ": failure";
                 break;
             case "pending":
                 a.style.color = "orange";
+                a.title += ": pending";
                 break;
             case "success":
                 a.style.color = "green";
+                a.title += ": success";
                 break;
         }
 
