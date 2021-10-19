@@ -30,7 +30,7 @@ rm -rf dashboard/
 echo "Create dashboard data directory..."
 mkdir dashboard/
 
-echo "{ \"datetime\":\"`date --utc`\"}" > dashboard/datetime.json
+echo "{ \"datetime\":\"`date --utc --iso-8601=seconds`\"}" > dashboard/datetime.json
 
 echo "[" >> dashboard/repository_list.json
 ../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple master false false
