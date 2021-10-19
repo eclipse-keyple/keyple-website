@@ -22,9 +22,8 @@ hero_media = "hero-image.jpg"
   icon = "rocket"
 +++
 
-# The first open source API for contactless ticketing and access control
+**The first open source framework dedicated to contactless ticketing and access control applications.**
 
-Eclipse Keyple® accelerates the integration and development of ticketing and access control 
-applications by enabling all to implement systems based on a common, open and modular platform.
+Eclipse Keyple® accelerates the development through a universal, open and modular platform that provides high-level APIs and ensures application reliability and compliance.
 
-The first available extension allows you to benefit from Calypso®'s key features of reliability, security and interoperability.
+The first available card extension allows you to benefit from Calypso®'s key features of reliability, security and interoperability.
