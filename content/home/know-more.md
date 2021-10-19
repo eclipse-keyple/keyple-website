@@ -19,8 +19,8 @@ subtitle = ""
 [[feature]]
   icon = "lightbulb"
   icon_pack = "fas"
-  name = "First Open Source project for ticketing & access control!"
-  description = "The very first Open Source SDK & API for contactless ticketing and access control is now available as an Eclipse Project! Please follow this space for updates!"
+  name = "First open source initiative for ticketing applications!"
+  description = "The very first open source framework dedicated to contactless ticketing and access control applications is now available as an Eclipse Project! Please follow this space for updates!"
   
 [[feature]]
   icon = "github"
