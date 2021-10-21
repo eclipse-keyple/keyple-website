@@ -5,7 +5,7 @@ active = true
 weight = 20
 
 title = "Solutions"
-subtitle = ""
+subtitle = "Eclipse Keyple® addresses a wide range of domains, hardware readers and media"
 
 [design]
   columns = "1"
@@ -23,8 +23,4 @@ subtitle = ""
   padding = ["20px", "0", "20px", "0"]
 +++
 
-{{< figure library="true" src="keyple-schema.png" >}}
-
-[List of available Eclipse Keyple® Java Components]({{< ref "/components-java" >}})
-
-[List of available Eclipse Keyple® C++ Components]({{< ref "/components-cpp" >}})
+{{< figure library="true" src="keyple-schema.webp" >}}
