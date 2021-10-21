@@ -10,7 +10,7 @@ toc: true
 **`{{% keyple-distributed-remote-java-api-version %}}`**
 <span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
 <span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse/keyple-distributed-remote-java-api/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelogs](https://github.com/eclipse/keyple-distributed-remote-java-api/releases/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse/keyple-distributed-remote-java-api/blob/main/CHANGELOG.md)</span>
 {{% /alert %}}
 
 ## Overview
