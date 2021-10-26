@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Build your first app | Eclipse Keyple</title><link>https://keyple.org/learn/build-your-first-app/</link><atom:link href="https://keyple.org/learn/build-your-first-app/index.xml" rel="self" type="application/rss+xml"/><description>Build your first app</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png</url><title>Build your first app</title><link>https://keyple.org/learn/build-your-first-app/</link></image><item><title>Build your first Java application</title><link>https://keyple.org/learn/build-your-first-app/java-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/java-app/</guid><description>&lt;hr>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Build your first app | Eclipse Keyple</title><link>https://keyple.org/learn/build-your-first-app/</link><atom:link href="https://keyple.org/learn/build-your-first-app/index.xml" rel="self" type="application/rss+xml"/><description>Build your first app</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Build your first app</title><link>https://keyple.org/learn/build-your-first-app/</link></image><item><title>Build your first Java application</title><link>https://keyple.org/learn/build-your-first-app/java-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/java-app/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on
 a Calypso Card involving two smart card readers.&lt;/p>
@@ -13,28 +13,22 @@ a Calypso Card involving two smart card readers.&lt;/p>
 &lt;/div>
 &lt;p>We will use three main components of Keyple:&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;a href="../../components-java/core/">Keyple Service Java Library&lt;/a>
+&lt;li>&lt;a href="../../components-java/core/">Keyple Service Java Library&lt;/a>
 which is the base component to which all the others refer,&lt;/li>
-&lt;li>
-&lt;a href="../../components-java/card-extensions/keyple-card-calypso-java-lib/">Keyple Card Calypso&lt;/a>
+&lt;li>&lt;a href="../../components-java/card-extensions/keyple-card-calypso-java-lib/">Keyple Card Calypso&lt;/a>
 add-on to handle the commands sent to the Calypso card and the Calypso SAM,&lt;/li>
-&lt;li>
-&lt;a href="../../components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib/">Keyple Plugin PC/SC&lt;/a>
+&lt;li>&lt;a href="../../components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib/">Keyple Plugin PC/SC&lt;/a>
 add-on to provide the ability to manage PC/SC readers.&lt;/li>
 &lt;/ul>
-&lt;p>In this guide
-&lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation
+&lt;p>In this guide &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation
 tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.&lt;/p>
-&lt;p>See
-&lt;a href="../../components-java/overview/configuration-wizard/">here&lt;/a> for the configuration of the dependencies.&lt;/p>
+&lt;p>See &lt;a href="../../components-java/overview/configuration-wizard/">here&lt;/a> for the configuration of the dependencies.&lt;/p>
 &lt;p>The example can run on any machine: Linux, Windows and macOS. If not
 installed in your machine, you will need to download :&lt;/p>
 &lt;ul>
 &lt;li>Java 1.6+&lt;/li>
-&lt;li>
-&lt;a href="https://gradle.org/install/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://gradle.org/install/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>We recommend that you use a Java IDE like
 &lt;a href="https://www.eclipse.org/ide/" target="_blank" rel="noopener">Eclipse&lt;/a> or
@@ -107,8 +101,7 @@ public static void main(String[] args) {
 &lt;p>In this snippet the PC/SC plugin is registered to the SmartCardService.&lt;/p>
 &lt;p>Two readers needs to be connected to the local machine. Change
 &amp;ldquo;CARD_READER_NAME&amp;rdquo; and &amp;ldquo;SAM_READER_NAME&amp;rdquo; with the name of your USB readers.&lt;/p>
-&lt;p>If you don&amp;rsquo;t know the names of the readers, read how to find them in the
-&lt;a href="#faq">FAQ&lt;/a>.&lt;/p>
+&lt;p>If you don&amp;rsquo;t know the names of the readers, read how to find them in the &lt;a href="#faq">FAQ&lt;/a>.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('7', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-7"> // Get the instance of the SmartCardService (singleton pattern)
 SmartCardService smartCardService = SmartCardServiceProvider.getService();
@@ -232,8 +225,7 @@ System.out.println(&amp;#34;= #### End of the Calypso card processing.&amp;#34;)
 &lt;pre>&lt;code class="language-java" id="code-13"> // Unregister the plugin before leaving the application
 smartCardService.unregisterPlugin(plugin.getName());
 System.exit(0);&lt;/code>&lt;/pre>
-&lt;p>Find the complete code source
-&lt;a href="#full-code">below&lt;/a>.&lt;/p>
+&lt;p>Find the complete code source &lt;a href="#full-code">below&lt;/a>.&lt;/p>
 &lt;hr>
 &lt;h2 id="run">Run&lt;/h2>
 &lt;ol>
@@ -441,8 +433,7 @@ System.exit(0);
 }&lt;/code>&lt;/pre></description></item><item><title>Build your first Android application</title><link>https://keyple.org/learn/build-your-first-app/android-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/android-app/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The development of an Android application based on Keyple follows the same principles as those exposed in the Java part.&lt;/p>
-&lt;p>However, this guide points out the specificities of this environment based on the &lt;strong>Android NFC application&lt;/strong> example provided in the
-&lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
+&lt;p>However, this guide points out the specificities of this environment based on the &lt;strong>Android NFC application&lt;/strong> example provided in the &lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
 &lt;p>We recommend that Android application developers clone this example to better understand how Keyple works on Android.&lt;/p>
 &lt;div class="alert alert-warning">
 &lt;div>
@@ -456,23 +447,18 @@ System.exit(0);
 &lt;/div>
 &lt;p>It uses three main components of Keyple:&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;a href="../../components-java/core/">Keyple Service Java Library&lt;/a>
+&lt;li>&lt;a href="../../components-java/core/">Keyple Service Java Library&lt;/a>
 which is the base component to which all the others refer,&lt;/li>
-&lt;li>
-&lt;a href="../../components-java/card-extensions/keyple-card-generic-java-lib/">Keyple Card Generic&lt;/a>
+&lt;li>&lt;a href="../../components-java/card-extensions/keyple-card-generic-java-lib/">Keyple Card Generic&lt;/a>
 add-on to handle the commands sent to the Calypso card,&lt;/li>
-&lt;li>
-&lt;a href="../../components-java/standard-reader-plugins/keyple-plugin-android-nfc-java-lib/">Keyple Plugin Android NFC&lt;/a>
+&lt;li>&lt;a href="../../components-java/standard-reader-plugins/keyple-plugin-android-nfc-java-lib/">Keyple Plugin Android NFC&lt;/a>
 add-on to provide the ability to drive the NFC reader.&lt;/li>
 &lt;/ul>
-&lt;p>
-&lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation tool, but it is easy to transpose these explanations to another tool
+&lt;p>&lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.&lt;/p>
 &lt;hr>
 &lt;h2 id="project-setup">Project setup&lt;/h2>
-&lt;p>The dependencies to be imported into the project are accessible with the
-&lt;a href="../../components-java/overview/configuration-wizard/">configuration wizard&lt;/a>.&lt;/p>
+&lt;p>The dependencies to be imported into the project are accessible with the &lt;a href="../../components-java/overview/configuration-wizard/">configuration wizard&lt;/a>.&lt;/p>
 &lt;p>Depending on the nature of the hardware resources required, it is necessary to declare certain permissions in the project manifest file.
 In the case of the Android NFC example, access to NFC functions is declared as follows:
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('5', this);">Copy&lt;/button>&lt;/div>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Build your first app | Eclipse Keyple</title><link>https://keyple.org/docs-1.0/build-your-first-app/</link><atom:link href="https://keyple.org/docs-1.0/build-your-first-app/index.xml" rel="self" type="application/rss+xml"/><description>Build your first app</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png</url><title>Build your first app</title><link>https://keyple.org/docs-1.0/build-your-first-app/</link></image><item><title>Build your first Java application</title><link>https://keyple.org/docs-1.0/build-your-first-app/java-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/build-your-first-app/java-app/</guid><description>&lt;div class="alert alert-warning">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Build your first app | Eclipse Keyple</title><link>https://keyple.org/docs-1.0/build-your-first-app/</link><atom:link href="https://keyple.org/docs-1.0/build-your-first-app/index.xml" rel="self" type="application/rss+xml"/><description>Build your first app</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Build your first app</title><link>https://keyple.org/docs-1.0/build-your-first-app/</link></image><item><title>Build your first Java application</title><link>https://keyple.org/docs-1.0/build-your-first-app/java-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/build-your-first-app/java-app/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -15,26 +15,21 @@ communication) and a Calypso Secure Access Module (SAM).
 &lt;/div>
 &lt;p>We will use three main components of Keyple:&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;a href="https://keyple.org/components-java-1.0/core/">Keyple Core&lt;/a>
+&lt;li>&lt;a href="https://keyple.org/components-java-1.0/core/">Keyple Core&lt;/a>
 which is the base component to which all the others refer,&lt;/li>
-&lt;li>
-&lt;a href="https://keyple.org/components-java-1.0/plugins/pcsc/">Keyple PC/SC plugin&lt;/a>
+&lt;li>&lt;a href="https://keyple.org/components-java-1.0/plugins/pcsc/">Keyple PC/SC plugin&lt;/a>
 to provide the ability to manage PC/SC readers,&lt;/li>
-&lt;li>
-&lt;a href="https://keyple.org/components-java-1.0/extensions/calypso/">Keyple Calypso extension&lt;/a>
+&lt;li>&lt;a href="https://keyple.org/components-java-1.0/extensions/calypso/">Keyple Calypso extension&lt;/a>
 to handle the commands sent to the Calypso PO and the Calypso SAM.&lt;/li>
 &lt;/ul>
-&lt;p>In this guide
-&lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation
+&lt;p>In this guide &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation
 tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.&lt;/p>
 &lt;p>The example can run on any machine: Linux, Windows and macOS. If not
 installed in your machine, you will need to download :&lt;/p>
 &lt;ul>
 &lt;li>Java 1.6 or newer&lt;/li>
-&lt;li>
-&lt;a href="https://gradle.org/install/" target="_blank" rel="noopener">Gradle (any version)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://gradle.org/install/" target="_blank" rel="noopener">Gradle (any version)&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>We recommend that you use a Java IDE like
 &lt;a href="https://www.eclipse.org/ide/" target="_blank" rel="noopener">Eclipse&lt;/a> or
@@ -95,8 +90,7 @@ public static void main(String[] args) {
 &lt;p>In this snippet the PC/SC plugin is registered to the SmartCardService.&lt;/p>
 &lt;p>Two readers needs to be connected to the local machine. Replace
 &amp;ldquo;PO_READER_NAME&amp;rdquo; and &amp;ldquo;SAM_READER_NAME&amp;rdquo; with the name of the USB readers.&lt;/p>
-&lt;p>If you don&amp;rsquo;t know the names of the readers, read how to find them in the
-&lt;a href="#faq">FAQ&lt;/a>.&lt;/p>
+&lt;p>If you don&amp;rsquo;t know the names of the readers, read how to find them in the &lt;a href="#faq">FAQ&lt;/a>.&lt;/p>
 &lt;pre>&lt;code class="language-java">//...
 // Get the instance of the SmartCardService : main service of Keyple SDK
 SmartCardService smartCardService = SmartCardService.getInstance();
@@ -207,8 +201,7 @@ System.out.println(&amp;quot;The data read in session have been certified by the
 smartCardService.unregisterPlugin(plugin.getName());
 System.exit(0);
 &lt;/code>&lt;/pre>
-&lt;p>Find the complete code source
-&lt;a href="#full-code">below&lt;/a>.&lt;/p>
+&lt;p>Find the complete code source &lt;a href="#full-code">below&lt;/a>.&lt;/p>
 &lt;hr>
 &lt;h2 id="run">Run&lt;/h2>
 &lt;ol>
@@ -392,15 +385,12 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;h3 id="overview">Overview&lt;/h3>
 &lt;p>&lt;strong>Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy way to implement solution to provide SmartCard communication functionalities in their own mobile application.&lt;/strong>&lt;/p>
-&lt;p>For example, Keyple could be used to facilitate the development of a ticketing application based on the use of conteners on a SIM card and relying on
-&lt;a href="https://developer.android.com/reference/android/se/omapi/package-summary" target="_blank" rel="noopener">Android SE OMAPI&lt;/a>.
-Keyple could also be used to develop an application reading SmartCard content through NFC using
-&lt;a href="https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc" target="_blank" rel="noopener">Android NFC&lt;/a>.&lt;/p>
+&lt;p>For example, Keyple could be used to facilitate the development of a ticketing application based on the use of conteners on a SIM card and relying on &lt;a href="https://developer.android.com/reference/android/se/omapi/package-summary" target="_blank" rel="noopener">Android SE OMAPI&lt;/a>.
+Keyple could also be used to develop an application reading SmartCard content through NFC using &lt;a href="https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc" target="_blank" rel="noopener">Android NFC&lt;/a>.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/android-app/component/Android_App_Overview.png" >
-&lt;img src="../../media/archive-1.0/android-app/component/Android_App_Overview.png" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/android-app/component/Android_App_Overview.png" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;p>As Keyple request low level reader access, the key features of Keyple SDK relies on components called &lt;strong>Plugins&lt;/strong>. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer&amp;rsquo;s own custom SDKs.&lt;/p>
 &lt;p>This guide will describe how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso SmartCard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.&lt;/p>
 &lt;h3 id="what-to-we-need-for-this-guide">What to we need for this guide?&lt;/h3>
@@ -764,8 +754,7 @@ exclude 'META-INF/NOTICE.md'
 }
 &lt;/code>&lt;/pre>
 &lt;p>&lt;strong>Where can I see more examples&lt;/strong>&lt;/p>
-&lt;p>Android native plugins are provided with example applications. Check it to see more use cases:
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example" target="_blank" rel="noopener">Examples&lt;/a>&lt;/p></description></item><item><title>Build your first C++ application</title><link>https://keyple.org/docs-1.0/build-your-first-app/cpp-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/build-your-first-app/cpp-app/</guid><description>&lt;div class="alert alert-warning">
+&lt;p>Android native plugins are provided with example applications. Check it to see more use cases: &lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example" target="_blank" rel="noopener">Examples&lt;/a>&lt;/p></description></item><item><title>Build your first C++ application</title><link>https://keyple.org/docs-1.0/build-your-first-app/cpp-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/build-your-first-app/cpp-app/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -782,22 +771,18 @@ communication) and a Calypso Secure Access Module (SAM).
 &lt;/div>
 &lt;p>We will use three main components of Keyple:&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;a href="https://keyple.org/components-cpp-0.9/core/">Keyple Core&lt;/a>
+&lt;li>&lt;a href="https://keyple.org/components-cpp-0.9/core/">Keyple Core&lt;/a>
 which is the base component to which all the others refer,&lt;/li>
-&lt;li>
-&lt;a href="https://keyple.org/components-cpp-0.9/plugins/pcsc/">Keyple PC/SC plugin&lt;/a>
+&lt;li>&lt;a href="https://keyple.org/components-cpp-0.9/plugins/pcsc/">Keyple PC/SC plugin&lt;/a>
 to provide the ability to manage PC/SC readers,&lt;/li>
-&lt;li>
-&lt;a href="https://keyple.org/components-cpp-0.9/extensions/calypso/">Keyple Calypso extension&lt;/a>
+&lt;li>&lt;a href="https://keyple.org/components-cpp-0.9/extensions/calypso/">Keyple Calypso extension&lt;/a>
 to handle the commands sent to the Calypso PO and the Calypso SAM.&lt;/li>
 &lt;/ul>
 &lt;p>In this guide CMake is used as build automation tool.&lt;/p>
 &lt;p>The example can run on any machine: Linux, Windows and macOS. If not installed in your machine, you
 will need to download :&lt;/p>
 &lt;ul>
-&lt;li>CMake 2.8 or newer
-&lt;a href="https://cmake.org/install/" target="_blank" rel="noopener">(download)&lt;/a>&lt;/li>
+&lt;li>CMake 2.8 or newer &lt;a href="https://cmake.org/install/" target="_blank" rel="noopener">(download)&lt;/a>&lt;/li>
 &lt;li>GCC / CLang / MSVC compiler&lt;/li>
 &lt;/ul>
 &lt;hr>
@@ -866,8 +851,7 @@ return 0;
 &lt;p>In this snippet the PC/SC plugin is registered to the SmartCardService.&lt;/p>
 &lt;p>Two readers needs to be connected to the local machine. Replace
 &amp;ldquo;PO_READER_NAME&amp;rdquo; and &amp;ldquo;SAM_READER_NAME&amp;rdquo; with the name of the USB readers.&lt;/p>
-&lt;p>If you don&amp;rsquo;t know the names of the readers, read how to find them in the
-&lt;a href="#faq">FAQ&lt;/a>.&lt;/p>
+&lt;p>If you don&amp;rsquo;t know the names of the readers, read how to find them in the &lt;a href="#faq">FAQ&lt;/a>.&lt;/p>
 &lt;pre>&lt;code class="language-cpp">/* ... */
 /* PO Reader name */
 const std::string PO_READER_NAME = &amp;quot;XXX&amp;quot;;
@@ -1025,8 +1009,7 @@ poTransaction-&amp;gt;prepareReleasePoChannel();
 poTransaction-&amp;gt;processClosing();
 /* ... */
 &lt;/code>&lt;/pre>
-&lt;p>Find the complete code source
-&lt;a href="#full-code">below&lt;/a>.&lt;/p>
+&lt;p>Find the complete code source &lt;a href="#full-code">below&lt;/a>.&lt;/p>
 &lt;hr>
 &lt;h2 id="cmake-build">CMake build&lt;/h2>
 &lt;p>Create a CMakeLists.txt file as follows:&lt;/p>

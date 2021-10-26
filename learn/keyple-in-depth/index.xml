@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keyple in depth | Eclipse Keyple</title><link>https://keyple.org/learn/keyple-in-depth/</link><atom:link href="https://keyple.org/learn/keyple-in-depth/index.xml" rel="self" type="application/rss+xml"/><description>Keyple in depth</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png</url><title>Keyple in depth</title><link>https://keyple.org/learn/keyple-in-depth/</link></image><item><title>Core services</title><link>https://keyple.org/learn/keyple-in-depth/core-services/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/core-services/</guid><description>&lt;hr>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keyple in depth | Eclipse Keyple</title><link>https://keyple.org/learn/keyple-in-depth/</link><atom:link href="https://keyple.org/learn/keyple-in-depth/index.xml" rel="self" type="application/rss+xml"/><description>Keyple in depth</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Keyple in depth</title><link>https://keyple.org/learn/keyple-in-depth/</link></image><item><title>Core services</title><link>https://keyple.org/learn/keyple-in-depth/core-services/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/core-services/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>You can find here some in-depth technical information about Keyple core services.&lt;/p>
 &lt;hr>
@@ -13,13 +13,11 @@ When active, an observable reader could switch between three internal states:&lt
 &lt;p>In the nominal case, a reader observer indicates to the observable reader that the processing of the card is finished by releasing the card channel.
 To manage a failure of the reader observer process, the observable reader interface provides also a method to finalize the card processing.&lt;/p>
 &lt;figure id="figure-observable-reader-states">
-&lt;a data-fancybox="" href="../../media/learn/keyple-in-depth/reader_observation_state_machine.svg" data-caption="Observable reader states">
-&lt;img src="../../media/learn/keyple-in-depth/reader_observation_state_machine.svg" alt="" >
-&lt;/a>
-&lt;figcaption data-pre="Figure " data-post=":" class="numbered">
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/learn/keyple-in-depth/reader_observation_state_machine.svg" alt="Observable reader states" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
 Observable reader states
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;p>The states could be switched:&lt;/p>
 &lt;ul>
 &lt;li>due to an explicit API request (blue arrows):
@@ -51,44 +49,69 @@ However, some observable readers may additionally have the ability to notify rem
 &lt;li>Otherwise, on an observable reader, a scheduled card selection could be defined. In this case the card selection is operated automatically at the insertion of the card. In this case, the card selection is next managed by the observable reader, but the card processing is managed by a reader observer.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-card-selection-modes">
-&lt;a data-fancybox="" href="../../media/learn/keyple-in-depth/card_selection_modes_activity_diagram.svg" data-caption="Card selection modes">
-&lt;img src="../../media/learn/keyple-in-depth/card_selection_modes_activity_diagram.svg" alt="" width="50%" >
-&lt;/a>
-&lt;figcaption data-pre="Figure " data-post=":" class="numbered">
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/learn/keyple-in-depth/card_selection_modes_activity_diagram.svg" alt="Card selection modes" loading="lazy" data-zoomable width="50%" />&lt;/div>
+&lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
 Card selection modes
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;hr>
 &lt;h2 id="internal-adapters-release">Internal adapters (release)&lt;/h2>
 &lt;h3 id="service">Service&lt;/h3>
-&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
 &lt;h3 id="card-resource-service">Card resource service&lt;/h3>
-&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-resource-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-resource-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
 &lt;h3 id="distributed">Distributed&lt;/h3>
-&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/2.0.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
 &lt;hr>
 &lt;h2 id="internal-adapters-snapshot">Internal adapters (snapshot)&lt;/h2>
 &lt;h3 id="service-1">Service&lt;/h3>
-&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/main/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/main/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
 &lt;h3 id="card-resource-service-1">Card resource service&lt;/h3>
-&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-resource-java-lib/main/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-resource-java-lib/main/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
 &lt;h3 id="distributed-1">Distributed&lt;/h3>
-&lt;p>&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/main/src/main/uml/adapter_class_diagram.svg" alt="coming soon!">&lt;/p></description></item><item><title>Calypso card extension</title><link>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</guid><description>&lt;hr>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/main/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p></description></item><item><title>Calypso card extension</title><link>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</guid><description>&lt;hr>
 &lt;p>The diagram below illustrates the sequence of exchanges and the grouping of APDU commands during a secure Calypso transaction:&lt;/p>
 &lt;figure id="figure-calypso-secure-transaction">
-&lt;a data-fancybox="" href="../../media/learn/keyple-in-depth/calypso_secure_transaction_sequence_diagram.svg" data-caption="Calypso secure transaction">
-&lt;img src="../../media/learn/keyple-in-depth/calypso_secure_transaction_sequence_diagram.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/learn/keyple-in-depth/calypso_secure_transaction_sequence_diagram.svg" alt="Calypso secure transaction" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Calypso secure transaction
-&lt;/figcaption>
-&lt;/figure></description></item><item><title>Build process and continuous integration</title><link>https://keyple.org/learn/keyple-in-depth/build-and-ci/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/build-and-ci/</guid><description>&lt;hr>
+&lt;/figcaption>&lt;/figure></description></item><item><title>Build process and continuous integration</title><link>https://keyple.org/learn/keyple-in-depth/build-and-ci/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/build-and-ci/</guid><description>&lt;hr>
 &lt;h2 id="build-automation-tool">Build automation tool&lt;/h2>
 &lt;p>Keyple uses Gradle.&lt;/p>
 &lt;hr>
 &lt;h2 id="versioning-rules">Versioning rules&lt;/h2>
-&lt;p>Keyple components are versioned according to
-&lt;a href="https://semver.org" target="_blank" rel="noopener">Semantic Versioning 2.0.0&lt;/a> which is based on the three numbers &lt;code>X.Y.Z&lt;/code>&lt;/p>
+&lt;p>Keyple components are versioned according to &lt;a href="https://semver.org" target="_blank" rel="noopener">Semantic Versioning 2.0.0&lt;/a> which is based on the three numbers &lt;code>X.Y.Z&lt;/code>&lt;/p>
 &lt;div class="alert alert-note">
 &lt;div>
 For API components (i.e. artifacts suffixed with &lt;code>-api&lt;/code>), the incrementation of &lt;code>Z&lt;/code> indicates only a documentation update.
@@ -96,27 +119,21 @@ For API components (i.e. artifacts suffixed with &lt;code>-api&lt;/code>), the i
 &lt;/div>
 &lt;hr>
 &lt;h2 id="continuous-integration">Continuous integration&lt;/h2>
-&lt;p>Keyple continuous integration works with the
-&lt;a href="https://ci.eclipse.org/keyple/job/Keyple/" target="_blank" rel="noopener">Jenkins server&lt;/a> of the Eclipse Foundation.&lt;/p>
-&lt;p>The build process uses the home-made gradle plugin &lt;strong>Keyple Gradle&lt;/strong> available directly from the
-&lt;a href="https://search.maven.org/search?q=a:keyple-gradle" target="_blank" rel="noopener">Maven Central Repository&lt;/a> and whose sources are available on
-&lt;a href="https://github.com/eclipse/keyple-ops" target="_blank" rel="noopener">GitHub&lt;/a>.&lt;/p>
+&lt;p>Keyple continuous integration works with the &lt;a href="https://ci.eclipse.org/keyple/job/Keyple/" target="_blank" rel="noopener">Jenkins server&lt;/a> of the Eclipse Foundation.&lt;/p>
+&lt;p>The build process uses the home-made gradle plugin &lt;strong>Keyple Gradle&lt;/strong> available directly from the &lt;a href="https://search.maven.org/search?q=a:keyple-gradle" target="_blank" rel="noopener">Maven Central Repository&lt;/a> and whose sources are available on &lt;a href="https://github.com/eclipse/keyple-ops" target="_blank" rel="noopener">GitHub&lt;/a>.&lt;/p>
 &lt;p>The CI automates the following tasks (defined in the &lt;code>Jenkinsfile&lt;/code> file):&lt;/p>
 &lt;ul>
 &lt;li>verify the validity of the version;&lt;/li>
-&lt;li>verify the code formatting using
-&lt;a href="https://github.com/diffplug/spotless" target="_blank" rel="noopener">Spotless&lt;/a>;&lt;/li>
+&lt;li>verify the code formatting using &lt;a href="https://github.com/diffplug/spotless" target="_blank" rel="noopener">Spotless&lt;/a>;&lt;/li>
 &lt;li>build the code;&lt;/li>
 &lt;li>execute unit tests;&lt;/li>
 &lt;li>sign and publish artifacts to Maven Central Repository;&lt;/li>
 &lt;li>publish the javadoc to the corresponding GitHub Pages;&lt;/li>
-&lt;li>publish the code quality report to
-&lt;a href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&amp;amp;sort=-analysis_date" target="_blank" rel="noopener">SonarCloud&lt;/a>.&lt;/li>
+&lt;li>publish the code quality report to &lt;a href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&amp;amp;sort=-analysis_date" target="_blank" rel="noopener">SonarCloud&lt;/a>.&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="snapshot-publication">Snapshot publication&lt;/h2>
-&lt;p>A snapshot artifact (suffixed with &lt;code>-SNAPSHOT&lt;/code>) is automatically published after each commit on the &lt;code>main&lt;/code> branch, except in the case of a release (see
-&lt;a href="#release-publication">Release publication&lt;/a>).&lt;/p>
+&lt;p>A snapshot artifact (suffixed with &lt;code>-SNAPSHOT&lt;/code>) is automatically published after each commit on the &lt;code>main&lt;/code> branch, except in the case of a release (see &lt;a href="#release-publication">Release publication&lt;/a>).&lt;/p>
 &lt;div class="alert alert-warning">
 &lt;div>
 The artifact version defined in the &lt;code>gradle.properties&lt;/code> file must not have a &lt;code>-SNAPSHOT&lt;/code> suffix because the suffix is automatically added by the Keyple Gradle plugin.
@@ -136,5 +153,4 @@ The artifact version defined in the &lt;code>gradle.properties&lt;/code> file mu
 &lt;/div>
 &lt;hr>
 &lt;h2 id="integration-tests">Integration tests&lt;/h2>
-&lt;p>Integration tests are defined in an independent GitHub repository:
-&lt;a href="https://github.com/eclipse/keyple-integration-java-test" target="_blank" rel="noopener">keyple-integration-java-test&lt;/a>&lt;/p></description></item></channel></rss>
+&lt;p>Integration tests are defined in an independent GitHub repository: &lt;a href="https://github.com/eclipse/keyple-integration-java-test" target="_blank" rel="noopener">keyple-integration-java-test&lt;/a>&lt;/p></description></item></channel></rss>

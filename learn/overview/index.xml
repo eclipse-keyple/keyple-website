@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Overview | Eclipse Keyple</title><link>https://keyple.org/learn/overview/</link><atom:link href="https://keyple.org/learn/overview/index.xml" rel="self" type="application/rss+xml"/><description>Overview</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png</url><title>Overview</title><link>https://keyple.org/learn/overview/</link></image><item><title>The Keyple key concepts</title><link>https://keyple.org/learn/overview/key-concepts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/overview/key-concepts/</guid><description>&lt;hr>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Overview | Eclipse Keyple</title><link>https://keyple.org/learn/overview/</link><atom:link href="https://keyple.org/learn/overview/index.xml" rel="self" type="application/rss+xml"/><description>Overview</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Overview</title><link>https://keyple.org/learn/overview/</link></image><item><title>The Keyple key concepts</title><link>https://keyple.org/learn/overview/key-concepts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/overview/key-concepts/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This page describes the core elements of Keyple, i.e. the concepts and APIs that are used to build any application implementing Keyple.&lt;/p>
 &lt;p>It is essential for the future user of Keyple to be familiar with what is said in this chapter.&lt;/p>
@@ -15,8 +15,7 @@
 &lt;p>The reader concept also applies to the hardware interfaces used to communicate with security elements such as SAMs (Secure Access Modules),
 which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.&lt;/p>
 &lt;p>To define the interface between an application and a reader,
-Keyple relies on the
-&lt;a href="https://calypsonet.github.io/calypsonet-terminal-reader-java-api/" target="_blank" rel="noopener">standard Terminal Reader API&lt;/a> proposed by Calypso Networks Association and thus inherits an existing modeling effort.&lt;/p>
+Keyple relies on the &lt;a href="https://calypsonet.github.io/calypsonet-terminal-reader-java-api/" target="_blank" rel="noopener">standard Terminal Reader API&lt;/a> proposed by Calypso Networks Association and thus inherits an existing modeling effort.&lt;/p>
 &lt;p>Another benefit of using this terminal API is the ability to certify the functioning of a Keyple terminal via the associated certification process.&lt;/p>
 &lt;p>This certification provides a guarantee that the terminal will function as expected.&lt;/p>
 &lt;hr>
@@ -68,10 +67,8 @@ The core provides the basic services for registering add-ons and also provides g
 &lt;/ul>
 &lt;p>The diagram below shows an overview of the Keyple layers:&lt;/p>
 &lt;figure id="figure-keyple-architecture-layers-overview">
-&lt;a data-fancybox="" href="../../media/learn/overview/architecture/keyple_layers_overview.svg" data-caption="Keyple architecture layers overview">
-&lt;img src="../../media/learn/overview/architecture/keyple_layers_overview.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/learn/overview/architecture/keyple_layers_overview.svg" alt="Keyple architecture layers overview" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Keyple architecture layers overview
-&lt;/figcaption>
-&lt;/figure></description></item></channel></rss>
+&lt;/figcaption>&lt;/figure></description></item></channel></rss>

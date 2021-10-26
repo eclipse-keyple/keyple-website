@@ -1,19 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Developer guides | Eclipse Keyple</title><link>https://keyple.org/learn/developer-guide/</link><atom:link href="https://keyple.org/learn/developer-guide/index.xml" rel="self" type="application/rss+xml"/><description>Developer guides</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png</url><title>Developer guides</title><link>https://keyple.org/learn/developer-guide/</link></image><item><title>Reader Plugin Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</guid><description>&lt;hr>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Developer guides | Eclipse Keyple</title><link>https://keyple.org/learn/developer-guide/</link><atom:link href="https://keyple.org/learn/developer-guide/index.xml" rel="self" type="application/rss+xml"/><description>Developer guides</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Developer guides</title><link>https://keyple.org/learn/developer-guide/</link></image><item><title>Reader Plugin Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This guide is intended to help developers who want to create a Keyple reader plugin add-on for a specific device.&lt;/p>
 &lt;hr>
 &lt;h2 id="operating-mode">Operating mode&lt;/h2>
 &lt;ol>
-&lt;li>Learn the
-&lt;a href="#plugin-architecture">plugin architecture&lt;/a> concepts&lt;/li>
-&lt;li>
-&lt;a href="#select-predefined-features">Select the predefined features&lt;/a> that meet your need&lt;/li>
-&lt;li>
-&lt;a href="#define-specific-features">Define specific features&lt;/a> (optional)&lt;/li>
-&lt;li>
-&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
+&lt;li>Learn the &lt;a href="#plugin-architecture">plugin architecture&lt;/a> concepts&lt;/li>
+&lt;li>&lt;a href="#select-predefined-features">Select the predefined features&lt;/a> that meet your need&lt;/li>
+&lt;li>&lt;a href="#define-specific-features">Define specific features&lt;/a> (optional)&lt;/li>
+&lt;li>&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;hr>
 &lt;h2 id="plugin-architecture">Plugin architecture&lt;/h2>
@@ -29,20 +24,16 @@
 &lt;/ul>
 &lt;p>The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the client application:
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/component-dependencies/plugin_api.svg" >
-&lt;img src="../../media/learn/developer-guide/component-dependencies/plugin_api.svg" alt="" >
-&lt;/a>
-&lt;/figure>
-&lt;/p>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/plugin_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>&lt;/p>
 &lt;hr>
 &lt;h2 id="select-predefined-features">Select predefined features&lt;/h2>
 &lt;p>The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/design-guides/reader_plugin_activity_diagram.svg" >
-&lt;img src="../../media/learn/developer-guide/design-guides/reader_plugin_activity_diagram.svg" alt="" >
-&lt;/a>
-&lt;/figure>
-&lt;/p>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/design-guides/reader_plugin_activity_diagram.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>&lt;/p>
 &lt;div class="alert alert-warning">
 &lt;div>
 The &lt;code>XxxPluginFactory&lt;/code>, &lt;code>XxxPlugin&lt;/code> and &lt;code>XxxReader&lt;/code> interfaces must be created.
@@ -81,10 +72,8 @@ git update-index --chmod=&amp;#43;x &amp;#34;scripts/check_version.sh&amp;#34;
 git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;/div>
-&lt;p>If examples are proposed, they should be placed in the
-&lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
-&lt;p>The contribution procedure is described
-&lt;a href="../../community/contributing/">here&lt;/a>.&lt;/p>
+&lt;p>If examples are proposed, they should be placed in the &lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
+&lt;p>The contribution procedure is described &lt;a href="../../community/contributing/">here&lt;/a>.&lt;/p>
 &lt;hr>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
@@ -97,11 +86,9 @@ It is important to hide the internal Keyple interfaces of the &lt;strong>Plugin 
 &lt;li>public interfaces,&lt;/li>
 &lt;li>private interfaces adapters (package visibility) accessible from a public provider/builder.
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/design-guides/reader_plugin_class_diagram.svg" >
-&lt;img src="../../media/learn/developer-guide/design-guides/reader_plugin_class_diagram.svg" alt="" >
-&lt;/a>
-&lt;/figure>
-&lt;/li>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/design-guides/reader_plugin_class_diagram.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>&lt;/li>
 &lt;/ul>
 &lt;div class="alert alert-note">
 &lt;div>
@@ -113,32 +100,24 @@ Thus, the factory does not expose any method.
 &lt;hr>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>
-&lt;a href="https://eclipse.github.io/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://eclipse.github.io/keyple-plugin-java-api" target="_blank" rel="noopener">Keyple Plugin API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://eclipse.github.io/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://eclipse.github.io/keyple-plugin-java-api" target="_blank" rel="noopener">Keyple Plugin API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
-&lt;li>
-&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Card Extension Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/card-extension-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/card-extension-add-on/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This guide is intended to help developers who want to create a Keyple card extension add-on for a specific card technology.&lt;/p>
 &lt;hr>
 &lt;h2 id="operating-mode">Operating mode&lt;/h2>
 &lt;ol>
-&lt;li>Learn the
-&lt;a href="#card-extension-architecture">card extension architecture&lt;/a> concepts&lt;/li>
-&lt;li>Take note of the
-&lt;a href="#minimal-requirements">minimal requirements&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#define-the-card-commands">Define the card commands&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
+&lt;li>Learn the &lt;a href="#card-extension-architecture">card extension architecture&lt;/a> concepts&lt;/li>
+&lt;li>Take note of the &lt;a href="#minimal-requirements">minimal requirements&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#define-the-card-commands">Define the card commands&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;hr>
 &lt;h2 id="card-extension-architecture">Card extension architecture&lt;/h2>
@@ -155,11 +134,9 @@ Thus, the factory does not expose any method.
 &lt;/ul>
 &lt;p>The component diagram below illustrates the internal API/SPI links between the card extension and Keyple Service, as well as the public APIs exposed to the client application:
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/component-dependencies/card_api.svg" >
-&lt;img src="../../media/learn/developer-guide/component-dependencies/card_api.svg" alt="" >
-&lt;/a>
-&lt;/figure>
-&lt;/p>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/card_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>&lt;/p>
 &lt;hr>
 &lt;h2 id="minimal-requirements">Minimal requirements&lt;/h2>
 &lt;p>The table below lists the objects that must be created and indicates the interfaces to be implemented for each of them:&lt;/p>
@@ -254,10 +231,8 @@ git update-index --chmod=&amp;#43;x &amp;#34;scripts/check_version.sh&amp;#34;
 git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;/div>
-&lt;p>If examples are proposed, they should be placed in the
-&lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
-&lt;p>The contribution procedure is described
-&lt;a href="../../community/contributing/">here&lt;/a>.&lt;/p>
+&lt;p>If examples are proposed, they should be placed in the &lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
+&lt;p>The contribution procedure is described &lt;a href="../../community/contributing/">here&lt;/a>.&lt;/p>
 &lt;hr>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
@@ -270,25 +245,19 @@ It is important to hide the internal Calypsonet interfaces of the &lt;strong>Cal
 &lt;li>public interfaces,&lt;/li>
 &lt;li>private interfaces adapters (package visibility) accessible from a public service.
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/learn/developer-guide/design-guides/card_extension_class_diagram.svg" >
-&lt;img src="../../media/learn/developer-guide/design-guides/card_extension_class_diagram.svg" alt="" >
-&lt;/a>
-&lt;/figure>
-&lt;/li>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/design-guides/card_extension_class_diagram.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>
-&lt;a href="https://eclipse.github.io/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://calypsonet.github.io/calypsonet-terminal-reader-java-api" target="_blank" rel="noopener">Calypsonet Terminal Reader API&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://calypsonet.github.io/calypsonet-terminal-card-java-api" target="_blank" rel="noopener">Calypsonet Terminal Card API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://eclipse.github.io/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://calypsonet.github.io/calypsonet-terminal-reader-java-api" target="_blank" rel="noopener">Calypsonet Terminal Reader API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://calypsonet.github.io/calypsonet-terminal-card-java-api" target="_blank" rel="noopener">Calypsonet Terminal Card API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
-&lt;li>
-&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item></channel></rss>

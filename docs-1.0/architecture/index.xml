@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>https://keyple.org/docs-1.0/architecture/</link><atom:link href="https://keyple.org/docs-1.0/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png</url><title>Architecture</title><link>https://keyple.org/docs-1.0/architecture/</link></image><item><title>Global Solution</title><link>https://keyple.org/docs-1.0/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/architecture/keyple-global/</guid><description>&lt;div class="alert alert-warning">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>https://keyple.org/docs-1.0/architecture/</link><atom:link href="https://keyple.org/docs-1.0/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Architecture</title><link>https://keyple.org/docs-1.0/architecture/</link></image><item><title>Global Solution</title><link>https://keyple.org/docs-1.0/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/architecture/keyple-global/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -10,13 +10,11 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;li>the &lt;strong>Keyple Calypso&lt;/strong>, a first smart card solution extension built on the Keyple Core, dedicated to manage Calypso processing, Calypso card identification, card command generation, card data recovery, authentication with the secure session.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-keyple-architecture-global">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/Keyple_Architecture_Global.svg" data-caption="Keyple Architecture Global">
-&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Global.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Global.svg" alt="Keyple Architecture Global" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Keyple Architecture Global
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;p>The Keyple Core provides 3 interfaces:&lt;/p>
 &lt;ul>
 &lt;li>the &lt;strong>Service API&lt;/strong>, to allow terminal application to handle reader &amp;amp; select card&lt;/li>
@@ -29,13 +27,11 @@ Keyple Architecture Global
 &lt;p>The Card API is a low-level interface to manage the transmission of APDU commands with a smart card.
 A terminal application operating processing with a specific smart card solution could be implemented directly on top the Card API.&lt;/p>
 &lt;figure id="figure-keyple-architecture-application-integration">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/Keyple_Architecture_Application_Integration.svg" data-caption="Keyple Architecture Application Integration">
-&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Application_Integration.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Application_Integration.svg" alt="Keyple Architecture Application Integration" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Keyple Architecture Application Integration
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;p>Another way offering a better abstraction on smart card technical settings could be to implement on the Card API a smart card solution library extension providing a high level interface: a specific Solution API.
 This is how the Keyple Calypso extension has be defined, the Calypso API is a high level functional interface, which hides the low-level APDU operations.&lt;/p>
 &lt;hr>
@@ -43,22 +39,18 @@ This is how the Keyple Calypso extension has be defined, the Calypso API is a hi
 &lt;h3 id="native-integration">native integration&lt;/h3>
 &lt;p>The smart card readers could be directly integrated with the Keyple Core. By interfacing through the Plugin API, a specific plugin dedicated to a smart card reader solution, the Keyple Core could have the capability to fully manage the smart card readers corresponding to this native plugin.&lt;/p>
 &lt;figure id="figure-keyple-architecture-reader-integration-native">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/Keyple_Architecture_Reader_Integration_native.svg" data-caption="Keyple Architecture Reader Integration Native">
-&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Reader_Integration_native.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Reader_Integration_native.svg" alt="Keyple Architecture Reader Integration Native" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Keyple Architecture Reader Integration Native
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;p>The Eclipse Keyple® project provides the plugin for the main standard smart card reader solutions.&lt;/p>
 &lt;figure id="figure-keyple-architecture-native-plugins">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/Keyple_Architecture_Native_Plugins.svg" data-caption="Keyple Architecture Native Plugins">
-&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Native_Plugins.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Native_Plugins.svg" alt="Keyple Architecture Native Plugins" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Keyple Architecture Native Plugins
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;ul>
 &lt;li>The PC/SC plugin is available for both the Java and the C++ implementation of Keyple, it allows to interface PC/SC reader on Windows, Linux and Mac OS.&lt;/li>
 &lt;li>For Android devices the NFC plugin allows to operate the standard NFC interface to handle external contactless smart card. And the OMAPI plugin provides the integration of internal eSE (embedded Secure Element) or UICC (SIM card). Both plugins support Keyple Java.&lt;/li>
@@ -67,13 +59,11 @@ Keyple Architecture Native Plugins
 &lt;h3 id="hybrid-integration">hybrid integration&lt;/h3>
 &lt;p>It&amp;rsquo;s also possible to integrate Keyple in a terminal solution already embedding not Keyple based terminal applications operating smart card solutions. In those kinds of terminal, a Reader Manager has already the direct control on a smart card reader and manage the smart card detection: depending on the type of smart card identified on the reader, a specific terminal application is requested to operated the processing of the smart card.&lt;/p>
 &lt;figure id="figure-keyple-architecture-hybrid-plugins">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/Keyple_Architecture_Reader_Integration_hybrid.svg" data-caption="Keyple Architecture Hybrid Plugins">
-&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Reader_Integration_hybrid.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Reader_Integration_hybrid.svg" alt="Keyple Architecture Hybrid Plugins" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Keyple Architecture Hybrid Plugins
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;p>In this case a reader manager plugin, also based on the Plugin API, could allow the Keyple Core to operate the processing of a specific smart card, when requested by the Reader Manager.&lt;/p>
 &lt;p>For example, an EMV certified reader manager could call a Keyple application in case of PPSE selection failure.&lt;/p>
 &lt;hr>
@@ -81,24 +71,19 @@ Keyple Architecture Hybrid Plugins
 &lt;h3 id="stand-alone">stand-alone&lt;/h3>
 &lt;p>By default, a terminal application manages the processing of a specific smart card in stand-alone with its local readers.&lt;/p>
 &lt;figure id="figure-keyple-architecture-local-plugin">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/Keyple_Architecture_Local_Plugin.svg" data-caption="Keyple Architecture Local Plugin">
-&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Local_Plugin.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Local_Plugin.svg" alt="Keyple Architecture Local Plugin" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Keyple Architecture Local Plugin
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;h3 id="distributed">distributed&lt;/h3>
 &lt;p>The &lt;strong>Distributed&lt;/strong> extension of the Keyple Core provides a solution allowing a master terminal application to manage the processing of a smart card localized in a remote driven terminal.
 &lt;figure id="figure-keyple-architecture-remote-plugin">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/Keyple_Architecture_Remote_Plugin.svg" data-caption="Keyple Architecture Remote Plugin">
-&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Remote_Plugin.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/Keyple_Architecture_Remote_Plugin.svg" alt="Keyple Architecture Remote Plugin" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Keyple Architecture Remote Plugin
-&lt;/figcaption>
-&lt;/figure>
-&lt;/p>
+&lt;/figcaption>&lt;/figure>&lt;/p>
 &lt;hr>
 &lt;h2 id="smart-card-transaction">Smart card transaction&lt;/h2>
 &lt;p>There are two ways for a terminal application to manage a transaction with a smart card.&lt;/p>
@@ -114,26 +99,22 @@ Keyple Architecture Remote Plugin
 &lt;li>finally, a transaction is processed with the card application.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-keyple-transaction-explicit-selection">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/Keyple_CardTransaction_ActivityDiag_ExplicitSelection.svg" data-caption="[Keyple Transaction Explicit Selection">
-&lt;img src="../../media/archive-1.0/architecture/Keyple_CardTransaction_ActivityDiag_ExplicitSelection.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/Keyple_CardTransaction_ActivityDiag_ExplicitSelection.svg" alt="[Keyple Transaction Explicit Selection" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 [Keyple Transaction Explicit Selection
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;h3 id="default-selection">default selection&lt;/h3>
 &lt;ul>
 &lt;li>For automatons (e.g. a ticketing validator), the ticketing transaction is often driven by the insertion of a card.&lt;/li>
 &lt;li>Keyple Core allows to define a default selection on Observable Reader, and in return to be notified of successful selections.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-keyple-transaction-default-selection">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/Keyple_CardTransaction_ActivityDiag_DefaultSelection.svg" data-caption="[Keyple Transaction Default Selection">
-&lt;img src="../../media/archive-1.0/architecture/Keyple_CardTransaction_ActivityDiag_DefaultSelection.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/Keyple_CardTransaction_ActivityDiag_DefaultSelection.svg" alt="[Keyple Transaction Default Selection" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 [Keyple Transaction Default Selection
-&lt;/figcaption>
-&lt;/figure></description></item><item><title>Keyple Core</title><link>https://keyple.org/docs-1.0/architecture/keyple-core/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/architecture/keyple-core/</guid><description>&lt;div class="alert alert-warning">
+&lt;/figcaption>&lt;/figure></description></item><item><title>Keyple Core</title><link>https://keyple.org/docs-1.0/architecture/keyple-core/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/architecture/keyple-core/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -203,13 +184,11 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;li>to implement a plugin: the packages &lt;strong>plugin&lt;/strong>, &lt;strong>service&lt;/strong>, &lt;strong>event&lt;/strong>, and &lt;strong>message&lt;/strong>.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-core-packages">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCore_Packages.svg" data-caption="Core packages">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Packages.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Packages.svg" alt="Core packages" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Core packages
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;hr>
 &lt;h2 id="service-interface---reader-access">Service Interface - Reader Access&lt;/h2>
 &lt;p>for the development of ticketing terminal application&lt;/p>
@@ -226,37 +205,29 @@ The &lt;strong>SmartCard Service&lt;/strong> singleton provides the unique name 
 &lt;li>The &lt;strong>Reader&lt;/strong> is the generic interface to handle a smartcard reader. The presence of card in a Reader could be checked.&lt;/li>
 &lt;li>The &lt;strong>Observable Reader&lt;/strong> interface extends Readers which have the capability to notify registered Reader Observers about the insertion or remove of a Card in the Reader. Reader Observers could be added or removed to the Observable Reader. Useful for systems automatically starting the processing of a Card at its insertion: like a ticketing validator.
 &lt;figure id="figure-reader-access-v100">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" data-caption="[Reader Access v1.0.0">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" alt="[Reader Access v1.0.0" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 [Reader Access v1.0.0
-&lt;/figcaption>
-&lt;/figure>
-&lt;/li>
+&lt;/figcaption>&lt;/figure>&lt;/li>
 &lt;/ul>
 &lt;p>(The APDU transmission with a Card is managed at a lower layer, through a Card Solution API.)&lt;/p>
 &lt;h3 id="specific-plugin-integration">Specific Plugin integration&lt;/h3>
 &lt;p>The Plugins are registered to the SmartCard Service through related specific Plugin Factory.
 &lt;figure id="figure-specific-plugin-v100">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_SpecificPluginFactoryAndProtocol_1_0_0.svg" data-caption="Specific Plugin v1.0.0">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_SpecificPluginFactoryAndProtocol_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_SpecificPluginFactoryAndProtocol_1_0_0.svg" alt="Specific Plugin v1.0.0" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Specific Plugin v1.0.0
-&lt;/figcaption>
-&lt;/figure>
-&lt;/p>
+&lt;/figcaption>&lt;/figure>&lt;/p>
 &lt;h3 id="reader-notifications">Reader Notifications&lt;/h3>
 &lt;p>To be notified about &lt;strong>Plugin Event&lt;/strong> or &lt;strong>Reader Event&lt;/strong>, a terminal application must implement the dedicated &lt;strong>Plugin Observer&lt;/strong> or &lt;strong>Reader Observer&lt;/strong> interfaces.&lt;/p>
 &lt;figure id="figure-reader-notifications-v100">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" data-caption="Reader Notifications v1.0.0">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_ObservablePluginAndReaderEvents_1_0_0.svg" alt="Reader Notifications v1.0.0" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Reader Notifications v1.0.0
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;h3 id="plugin-event">Plugin Event&lt;/h3>
 &lt;p>Several &lt;strong>Plugin Observers&lt;/strong> could be registered to an Observable Plugin.
 In case of reader connection / disconnection, the Observable Plugin notifies sequentially the registered Plugin Observers with the corresponding Plugin Event.
@@ -276,13 +247,11 @@ When active, an Observable Reader could switch between three internal states: &l
 &lt;p>In the nominal case, a Reader Observer indicates to the Observable Reader that the processing of the SE is finished by releasing the Card Channel.
 To manage a failure of the Reader Observer process, the Observable Reader interface provides also a method to finalize the Card processing.&lt;/p>
 &lt;figure id="figure-observable-reader-states">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCore_Reader_StateDiag_ObservableReaderStates_1_0_0.svg" data-caption="Observable Reader States">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Reader_StateDiag_ObservableReaderStates_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Reader_StateDiag_ObservableReaderStates_1_0_0.svg" alt="Observable Reader States" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Observable Reader States
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;p>The states could be switched:&lt;/p>
 &lt;ul>
 &lt;li>due to an explicit API request (blue arrows):
@@ -316,13 +285,11 @@ Some Plugin solutions could have the capability to notify a Card removal also du
 &lt;li>Otherwise, on an Observable Reader, a Default Selection could be defined. In this case the Selection is operated automatically at the insertion of the Card. In this case, the Card Selection is next managed by the Observable Reader, but the Card processing is managed by a Reader Observer.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-selection-v100">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCore_CardSelection_ActivityDiag_Scenarii.svg" data-caption="Selection v1.0.0">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCore_CardSelection_ActivityDiag_Scenarii.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCore_CardSelection_ActivityDiag_Scenarii.svg" alt="Selection v1.0.0" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Selection v1.0.0
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;h3 id="selection-setting-and-processing">Selection setting and processing&lt;/h3>
 &lt;p>A Card Selection request is defined with a Card Selector. A Card Selector could be defined with tree optional levels of selection filter.&lt;/p>
 &lt;ul>
@@ -339,13 +306,11 @@ If a SE Selector is defined without any filter, the selection is always successf
 &lt;li>The &lt;strong>channel control&lt;/strong> defines if the logical channel should be kept open or close after the last processed card selection request.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-card-selection-v100">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" data-caption="Card Selection v1.0.0">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" alt="Card Selection v1.0.0" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Card Selection v1.0.0
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;p>The result of a card request selection is a card image of a matching card. For a card selection with multiple requests, several matching card could be provided.&lt;/p>
 &lt;hr>
 &lt;h2 id="card-interface">Card Interface&lt;/h2>
@@ -353,13 +318,11 @@ Card Selection v1.0.0
 &lt;p>The Keyple Calypso extension uses the card interface to exchange APDU commands with Calypso cards and SAM.&lt;/p>
 &lt;h3 id="apdu-transmission">APDU Transmission&lt;/h3>
 &lt;figure id="figure-apdu-transmission-v100">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCore_Card_ClassDiag_CardMessage_1_0_0.svg" data-caption="APDU Transmission v1.0.0">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Card_ClassDiag_CardMessage_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Card_ClassDiag_CardMessage_1_0_0.svg" alt="APDU Transmission v1.0.0" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 APDU Transmission v1.0.0
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;hr>
 &lt;h2 id="plugin-api">Plugin API&lt;/h2>
 &lt;p>for the implementation of smartcard reader plugins&lt;/p>
@@ -381,13 +344,11 @@ APDU Transmission v1.0.0
 &lt;li>AbstractObservableLocalAutonomousReader&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-plugin-factorized-processing-v100">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCore_Plugin_ClassDiag_PluginImplementaion_1_0_0.svg" data-caption="Plugin Factorized Processing v1.0.0">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Plugin_ClassDiag_PluginImplementaion_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Plugin_ClassDiag_PluginImplementaion_1_0_0.svg" alt="Plugin Factorized Processing v1.0.0" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Plugin Factorized Processing v1.0.0
-&lt;/figcaption>
-&lt;/figure></description></item><item><title>Keyple Calypso</title><link>https://keyple.org/docs-1.0/architecture/keyple-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/architecture/keyple-calypso/</guid><description>&lt;div class="alert alert-warning">
+&lt;/figcaption>&lt;/figure></description></item><item><title>Keyple Calypso</title><link>https://keyple.org/docs-1.0/architecture/keyple-calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/architecture/keyple-calypso/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -432,18 +393,15 @@ org.eclipse.keyple.calypso.&lt;b>command&lt;/b>.sam.parser.session&lt;/td>
 &lt;/table>
 &lt;p>Ticketing terminal applications must import only the high-level Calypso transaction package.&lt;/p>
 &lt;figure id="figure-calypso-packages">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCalypso_Packages.svg" data-caption="Calypso packages">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Packages.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Packages.svg" alt="Calypso packages" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Calypso packages
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;!-- The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages. -->
 &lt;hr>
 &lt;h2 id="calypso-portable-object-selection">Calypso Portable Object Selection&lt;/h2>
-&lt;p>Compared to the generic Card Selection API (cf.
-&lt;a href="https://keyple.org/learn/architecture/keyple-core/#card-selection%29," target="_blank" rel="noopener">https://keyple.org/learn/architecture/keyple-core/#card-selection),&lt;/a> a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
+&lt;p>Compared to the generic Card Selection API (cf. &lt;a href="https://keyple.org/learn/architecture/keyple-core/#card-selection%29," target="_blank" rel="noopener">https://keyple.org/learn/architecture/keyple-core/#card-selection),&lt;/a> a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
 &lt;p>In addition, a PO Selection Request provides methods:&lt;/p>
 &lt;ul>
 &lt;li>to prepare Select File command (useful in particular to manage REV1 Calypso PO for which the select of the targeted DF is required).&lt;/li>
@@ -451,13 +409,11 @@ Calypso packages
 &lt;/ul>
 &lt;p>The matching SmartCard resulting from a PO Selection Request is a Calypso PO. In case file records have been read during the selection: the corresponding data could be recovered in the Calypso PO card image.&lt;/p>
 &lt;figure id="figure-calypso-selection-v100">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PO_Selection_1_0_0.svg" data-caption="Calypso Selection v1.0.0">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PO_Selection_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PO_Selection_1_0_0.svg" alt="Calypso Selection v1.0.0" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Calypso Selection v1.0.0
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;hr>
 &lt;h2 id="calypso-portable-object-transaction">Calypso Portable Object Transaction&lt;/h2>
 &lt;p>A Card Resource is a set of a Reader and a &lt;strong>selected&lt;/strong> Card application.&lt;/p>
@@ -478,23 +434,19 @@ Calypso Selection v1.0.0
 &lt;li>The responses of the PO are then recovered through the Calypso PO image.&lt;/li>
 &lt;/ul>
 &lt;figure id="figure-calypso-api-global-architecture">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_Overview.svg" data-caption="Calypso API Global Architecture">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_Overview.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_Overview.svg" alt="Calypso API Global Architecture" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Calypso API Global Architecture
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;h3 id="calypso-card-image">Calypso card image&lt;/h3>
 &lt;p>When read commands have been exchanged with a Calypso PO, the corresponding data could be recovered by parsing the file structure of the PO card image.&lt;/p>
 &lt;figure id="figure-calypso-po-card-image">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_CalypsoPo_1_0_0.svg" data-caption="Calypso PO card image">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_CalypsoPo_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_CalypsoPo_1_0_0.svg" alt="Calypso PO card image" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Calypso PO card image
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;h3 id="calypso-transaction">Calypso transaction&lt;/h3>
 &lt;p>Only the &lt;strong>process&lt;/strong> methods generate communication with the Calypso PO and SAM.&lt;/p>
 &lt;ul>
@@ -507,30 +459,24 @@ Calypso PO card image
 -->
 &lt;p>The prepareReleaseChannel method allows to the logical channel with the Calypso PO at the end of the processing of the next process method.&lt;/p>
 &lt;figure id="figure-calypso-transaction">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PoTransaction_1_0_0.svg" data-caption="Calypso transaction">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PoTransaction_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PoTransaction_1_0_0.svg" alt="Calypso transaction" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Calypso transaction
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;hr>
 &lt;h2 id="data-model-extension">Data model extension&lt;/h2>
 &lt;figure id="figure-calypso-data-model">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_SpecificPoTransaction_1_0_0.svg" data-caption="Calypso Data Model">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_SpecificPoTransaction_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_SpecificPoTransaction_1_0_0.svg" alt="Calypso Data Model" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Calypso Data Model
-&lt;/figcaption>
-&lt;/figure>
+&lt;/figcaption>&lt;/figure>
 &lt;hr>
 &lt;h2 id="secure-session-sequence">Secure session sequence&lt;/h2>
 &lt;figure id="figure-calypso-session">
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_SequenceDiag_SecureSessionProcessing_1_0_0.svg" data-caption="Calypso session">
-&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_SequenceDiag_SecureSessionProcessing_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;figcaption>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/architecture/KeypleCalypso_Transaction_SequenceDiag_SecureSessionProcessing_1_0_0.svg" alt="Calypso session" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
 Calypso session
-&lt;/figcaption>
-&lt;/figure></description></item></channel></rss>
+&lt;/figcaption>&lt;/figure></description></item></channel></rss>

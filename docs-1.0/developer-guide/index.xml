@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Developer guides | Eclipse Keyple</title><link>https://keyple.org/docs-1.0/developer-guide/</link><atom:link href="https://keyple.org/docs-1.0/developer-guide/index.xml" rel="self" type="application/rss+xml"/><description>Developer guides</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/images/logo_hu673a59176cd62c570f44ed2728665b48_42188_300x300_fit_lanczos_3.png</url><title>Developer guides</title><link>https://keyple.org/docs-1.0/developer-guide/</link></image><item><title>Common concepts</title><link>https://keyple.org/docs-1.0/developer-guide/common-concepts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/developer-guide/common-concepts/</guid><description>&lt;div class="alert alert-warning">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Developer guides | Eclipse Keyple</title><link>https://keyple.org/docs-1.0/developer-guide/</link><atom:link href="https://keyple.org/docs-1.0/developer-guide/index.xml" rel="self" type="application/rss+xml"/><description>Developer guides</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Developer guides</title><link>https://keyple.org/docs-1.0/developer-guide/</link></image><item><title>Common concepts</title><link>https://keyple.org/docs-1.0/developer-guide/common-concepts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/developer-guide/common-concepts/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -16,8 +16,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;li>detect the presence and communicate with smart cards.&lt;/li>
 &lt;/ul>
 &lt;p>The reader concept also applies to the hardware interfaces used to communicate with security elements such as SAMs (Secure Access Modules), which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.&lt;/p>
-&lt;p>
-&lt;a href="../../docs-1.0/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
+&lt;p>&lt;a href="../../docs-1.0/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h2 id="plugin">Plugin&lt;/h2>
 &lt;p>In Keyple language a plugin is a service that allows the management of readers of a certain type.
@@ -25,22 +24,19 @@ The plugin is responsible for informing the application about the availability o
 The readers of the same plugin are usually hardware linked to the same physical interface.&lt;/p>
 &lt;p>Depending on its profile, an application may use different types of plugins to communicate with the different elements it needs (card, SAM).&lt;/p>
 &lt;p>The Plugin interface essentially allows to list and retrieve the available readers.&lt;/p>
-&lt;p>
-&lt;a href="../../docs-1.0/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
+&lt;p>&lt;a href="../../docs-1.0/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h2 id="smart-card-service">Smart card service&lt;/h2>
 &lt;p>This is the &lt;strong>Keyple Core&lt;/strong> service that concentrates the knowledge of active plugins and readers.&lt;/p>
 &lt;p>At startup, a Keyple application must register the plugins it uses. Conversely, it can also unregister them.&lt;/p>
 &lt;p>The &lt;strong>SmartCardService&lt;/strong> will then make sure that the resources used are properly released.&lt;/p>
-&lt;p>
-&lt;a href="../../docs-1.0/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
+&lt;p>&lt;a href="../../docs-1.0/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h2 id="observation">Observation&lt;/h2>
 &lt;p>The observation concept applies to readers as well as to plugins; optional, it is used depending on the needs.&lt;/p>
 &lt;p>It consists in monitoring changes such as reader connection/disconnection or card insertion/removal and informing the observing application through a dedicated interface.&lt;/p>
 &lt;p>Not all plugins and readers are observable.&lt;/p>
-&lt;p>
-&lt;a href="../../docs-1.0/architecture/keyple-core/#reader-notifications">More information&lt;/a>&lt;/p>
+&lt;p>&lt;a href="../../docs-1.0/architecture/keyple-core/#reader-notifications">More information&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h2 id="selection">Selection&lt;/h2>
 &lt;p>In Keyple the concept of selection is derived from the application selection defined by the ISO7816-4 standard.&lt;/p>
@@ -48,16 +44,14 @@ The readers of the same plugin are usually hardware linked to the same physical 
 &lt;p>This principle optimizes the processing by allowing the application to elaborate advanced card discovery requests.&lt;/p>
 &lt;p>Several targets can be defined by the application according to the different customer cards expected.&lt;/p>
 &lt;p>The &lt;strong>default selection&lt;/strong> principle consists in providing an observable reader with a set of selection cases corresponding to the expected cards and receiving notifications containing not only the card identification but also the result of all additional commands that the application will have attached.&lt;/p>
-&lt;p>
-&lt;a href="../../docs-1.0/architecture/keyple-core/#card-selection">More information&lt;/a>&lt;/p>
+&lt;p>&lt;a href="../../docs-1.0/architecture/keyple-core/#card-selection">More information&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h2 id="abstract-smart-card">Abstract smart card&lt;/h2>
 &lt;p>The &lt;strong>abstract smart card&lt;/strong> concept is used by specific extensions (e.g. &lt;strong>Keyple Calypso&lt;/strong>) and by the &lt;strong>Keyple Core&lt;/strong> selection mechanism.
 It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.&lt;/p>
 &lt;p>This container will be able to carry all the useful information known about the card.&lt;/p>
 &lt;p>Note: this concept, mentioned here for understanding, should not appear to the application developer if he uses a card extension.&lt;/p>
-&lt;p>
-&lt;a href="../../docs-1.0/architecture/keyple-core/#card-selection">More information&lt;/a>&lt;/p></description></item><item><title>Standalone application</title><link>https://keyple.org/docs-1.0/developer-guide/standalone-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/developer-guide/standalone-application/</guid><description>&lt;div class="alert alert-warning">
+&lt;p>&lt;a href="../../docs-1.0/architecture/keyple-core/#card-selection">More information&lt;/a>&lt;/p></description></item><item><title>Standalone application</title><link>https://keyple.org/docs-1.0/developer-guide/standalone-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/developer-guide/standalone-application/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -72,39 +66,30 @@ validator, a vending machine or a control terminal.&lt;/p>
 &lt;p>The diagram below illustrates the organization of the local standalone
 components:
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/standalone-application/component/Local_Application_Components_Overview.svg" >
-&lt;img src="../../media/archive-1.0/standalone-application/component/Local_Application_Components_Overview.svg" alt="" >
-&lt;/a>
-&lt;/figure>
-&lt;/p>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="archive-1.0/standalone-application/component/Local_Application_Components_Overview.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>&lt;/p>
 &lt;hr>
 &lt;h2 id="before-you-start">Before you start&lt;/h2>
 &lt;ol>
-&lt;li>In pre-requisite, read the
-&lt;a href="../../docs-1.0/developer-guide/common-concepts/">common concepts&lt;/a> page and become familiar with the basic
+&lt;li>In pre-requisite, read the &lt;a href="../../docs-1.0/developer-guide/common-concepts/">common concepts&lt;/a> page and become familiar with the basic
 concepts on which Keyple is based.&lt;/li>
 &lt;li>Any implementation of a Keyple application starts with the
 implementation of &lt;strong>Keyple Core&lt;/strong>, please study the
 &lt;a href="#workflow">workflow&lt;/a> proposed in the following chapter.&lt;/li>
-&lt;li>Explore the
-&lt;a href="#keyplecoreapi">Keyple Core API&lt;/a> to discover all the
+&lt;li>Explore the &lt;a href="#keyplecoreapi">Keyple Core API&lt;/a> to discover all the
 possibilities offered by &lt;strong>Keyple Core&lt;/strong>.&lt;/li>
-&lt;li>Take inspiration from the
-&lt;a href="#examples">examples&lt;/a>.&lt;/li>
-&lt;li>Follow the explanations given in the
-&lt;a href="https://keyple.org/docs-1.0/build-your-first-app/">Build your first app&lt;/a> section to configure your
+&lt;li>Take inspiration from the &lt;a href="#examples">examples&lt;/a>.&lt;/li>
+&lt;li>Follow the explanations given in the &lt;a href="https://keyple.org/docs-1.0/build-your-first-app/">Build your first app&lt;/a> section to configure your
 environment.&lt;/li>
-&lt;li>Using the
-&lt;a href="https://keyple.org/components-java-1.0/">Java components&lt;/a> or
-&lt;a href="https://keyple.org/components-cpp-0.9/">C++ components&lt;/a> pages, import
+&lt;li>Using the &lt;a href="https://keyple.org/components-java-1.0/">Java components&lt;/a> or &lt;a href="https://keyple.org/components-cpp-0.9/">C++ components&lt;/a> pages, import
 &lt;strong>Keyple Core&lt;/strong> into your project and start playing with Keyple.&lt;/li>
 &lt;li>Don&amp;rsquo;t forget to explore the potential of Keyple card-specific
 extensions such as &lt;strong>Keyple Calypso&lt;/strong>.&lt;/li>
 &lt;/ol>
 &lt;hr>
 &lt;h2 id="workflow">Workflow&lt;/h2>
-&lt;p>&lt;strong>Keyple Core&lt;/strong> is built around the concepts described
-&lt;a href="../../docs-1.0/developer-guide/common-concepts/">here&lt;/a> and sometimes proposes several ways to perform
+&lt;p>&lt;strong>Keyple Core&lt;/strong> is built around the concepts described &lt;a href="../../docs-1.0/developer-guide/common-concepts/">here&lt;/a> and sometimes proposes several ways to perform
 an action or to achieve a result depending on the needs of the
 application.&lt;/p>
 &lt;p>The purpose of this section is to guide you in its use.&lt;/p>
@@ -126,9 +111,7 @@ without obligation, go for the PC/SC plugin.&lt;/p>
 &lt;p>For an Andoid terminal environment, the plugin could be the standard
 Android NFC plugin or one of the plugins available from the industrial
 partners of the project. For a complete list of available plugins,
-please see the
-&lt;a href="https://keyple.org/components-java-1.0/">Java&lt;/a> or
-&lt;a href="https://keyple.org/components-cpp-0.9/">C++&lt;/a> pages.&lt;/p>
+please see the &lt;a href="https://keyple.org/components-java-1.0/">Java&lt;/a> or &lt;a href="https://keyple.org/components-cpp-0.9/">C++&lt;/a> pages.&lt;/p>
 &lt;div class="alert alert-note">
 &lt;div>
 A new plugin can also be &lt;a href="../../docs-1.0/developer-guide/create-plugin/">created&lt;/a> if the envisaged hardware does not yet have its
@@ -514,21 +497,17 @@ resources and in particular the shutdown of the observation threads.&lt;/p>
 &lt;p>The diagram below represents the main classes implemented around the
 &lt;strong>Smart Card Service&lt;/strong> with in particular the observation mechanisms.
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" >
-&lt;img src="../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;/figure>
-&lt;/p>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="archive-1.0/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>The diagram below represents the main classes used for selection
 operations.
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" >
-&lt;img src="../../media/archive-1.0/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" alt="" >
-&lt;/a>
-&lt;/figure>
-&lt;/p>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="archive-1.0/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;hr>
@@ -542,47 +521,39 @@ project repository
 &lt;h3 id="explicit-selection">Explicit Selection&lt;/h3>
 &lt;p>Shows the use of Keyple to make a card selection without observing the
 reader, based on testing the presence of the card by the application.&lt;/p>
-&lt;p>
-&lt;a href="https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;h3 id="default-selection">Default Selection&lt;/h3>
 &lt;p>Shows the use of Keyple to make a card selection with observation of the
 reader. A default selection is prepared, the presentation of a card
 triggers the notification of a reader event to the application.&lt;/p>
-&lt;p>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;h3 id="sequential-multiple-selection">Sequential Multiple Selection&lt;/h3>
 &lt;p>Executes successively several independent selection operations with the
 use of the ISO &amp;lsquo;NEXT&amp;rsquo; navigation flag.&lt;/p>
-&lt;p>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;p>Illustrates the case of a card exploration with maintenance of the physical channel open.&lt;/p>
 &lt;h3 id="grouped-multiple-selection">Grouped Multiple Selection&lt;/h3>
 &lt;p>Executes a multiple selection with logical channel closure between each
 selection.&lt;/p>
 &lt;p>Allows the exploration of the applications of a card in a single
 operation but without selection at the end.&lt;/p>
-&lt;p>
-&lt;a href="https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;h3 id="demo-card-protocol-detection">Demo Card Protocol Detection&lt;/h3>
 &lt;p>Demonstrates the use of Keyple in a context where several card
 technologies are likely to be processed by the application.&lt;/p>
-&lt;p>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;h3 id="demo-observable-reader-notification">Demo Observable Reader Notification&lt;/h3>
 &lt;p>Demonstrates the use of Keyple to implement the observation of a plugin
 and its readers. Readers are dynamically created and an observer is
 assigned to them.&lt;/p>
-&lt;p>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;p>The artifact &lt;strong>Keyple Core&lt;/strong> and how to integrate it into your
 application is available here:&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;a href="https://keyple.org/components-java-1.0/core/">Keyple Core Java component&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://keyple.org/components-cpp-0.9/core/">Keyple Core C++ component&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components-java-1.0/core/">Keyple Core Java component&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components-cpp-0.9/core/">Keyple Core C++ component&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Distributed application</title><link>https://keyple.org/docs-1.0/developer-guide/distributed-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/developer-guide/distributed-application/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
@@ -593,25 +564,18 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;p>In this way, you can manage transactions within a distributed architecture.&lt;/p>
 &lt;p>The diagram below shows the role of the &lt;strong>Keyple Distributed&lt;/strong> components in the software layers used in a distributed architecture :&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/distributed-application/component/Distributed_Component_Overview.svg" >
-&lt;img src="../../media/archive-1.0/distributed-application/component/Distributed_Component_Overview.svg" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/distributed-application/component/Distributed_Component_Overview.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;hr>
 &lt;h2 id="how-to-use-it-">How to use it ?&lt;/h2>
 &lt;ol>
-&lt;li>In pre-requisite, read page
-&lt;a href="../../docs-1.0/developer-guide/standalone-application/">Standalone application&lt;/a> to understand the main concepts of Keyple in a standalone application.&lt;/li>
-&lt;li>Read chapter
-&lt;a href="#concepts">Concepts&lt;/a> to understand the main terms and concepts of the &lt;strong>Keyple Distributed&lt;/strong> solution.&lt;/li>
-&lt;li>Read the introduction of chapter
-&lt;a href="#configuration-modes">Configuration modes&lt;/a> to be informed about the different features and APIs proposed by the solution.&lt;/li>
-&lt;li>Using chapter
-&lt;a href="#use-cases">Use cases&lt;/a>, find your use case. This will help you to determine exactly which library and API to use.&lt;/li>
-&lt;li>Using chapter
-&lt;a href="#download">Download&lt;/a>, import into your project the libraries specified by your use case.&lt;/li>
-&lt;li>Using chapter
-&lt;a href="#network-configuration">Network configuration&lt;/a>, implement the transport layer adapted to your network configuration.&lt;/li>
+&lt;li>In pre-requisite, read page &lt;a href="../../docs-1.0/developer-guide/standalone-application/">Standalone application&lt;/a> to understand the main concepts of Keyple in a standalone application.&lt;/li>
+&lt;li>Read chapter &lt;a href="#concepts">Concepts&lt;/a> to understand the main terms and concepts of the &lt;strong>Keyple Distributed&lt;/strong> solution.&lt;/li>
+&lt;li>Read the introduction of chapter &lt;a href="#configuration-modes">Configuration modes&lt;/a> to be informed about the different features and APIs proposed by the solution.&lt;/li>
+&lt;li>Using chapter &lt;a href="#use-cases">Use cases&lt;/a>, find your use case. This will help you to determine exactly which library and API to use.&lt;/li>
+&lt;li>Using chapter &lt;a href="#download">Download&lt;/a>, import into your project the libraries specified by your use case.&lt;/li>
+&lt;li>Using chapter &lt;a href="#network-configuration">Network configuration&lt;/a>, implement the transport layer adapted to your network configuration.&lt;/li>
 &lt;li>Implement your ticketing services as specified in the associated use case.&lt;/li>
 &lt;/ol>
 &lt;hr>
@@ -676,30 +640,26 @@ width: 130px;
 &lt;/style>
 &lt;p>The diagram below illustrates the main functional concepts through a standard use case :&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_1.svg" >
-&lt;img src="../../media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_1.svg" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_1.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.&lt;/p>
 &lt;p>These could be for example a ticketing reloading service, where the business logic would be on the terminal with remote readers, with thin clients on A &amp;amp; B terminals communicating locally with the cards.&lt;/p>
 &lt;p>In this use case, the &lt;strong>Keyple Distributed&lt;/strong> solution is use for card communication.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_2.svg" >
-&lt;img src="../../media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_2.svg" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_2.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;p>Here is another example, but this time it illustrates several &lt;strong>Remote Plugin&lt;/strong> components connected to the same &lt;strong>Local Service&lt;/strong>.&lt;/p>
 &lt;p>These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.&lt;/p>
 &lt;p>In this use case, the &lt;strong>Keyple Distributed&lt;/strong> solution is use for SAM communication.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_3.svg" >
-&lt;img src="../../media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_3.svg" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_3.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;hr>
 &lt;h2 id="configuration-modes">Configuration modes&lt;/h2>
-&lt;p>The &lt;strong>Keyple Distributed&lt;/strong> solution provides &lt;strong>3&lt;/strong> different configuration modes, each one having a specific
-&lt;a href="#apis">API&lt;/a> designed on a &lt;strong>Client-Server&lt;/strong> model :&lt;/p>
+&lt;p>The &lt;strong>Keyple Distributed&lt;/strong> solution provides &lt;strong>3&lt;/strong> different configuration modes, each one having a specific &lt;a href="#apis">API&lt;/a> designed on a &lt;strong>Client-Server&lt;/strong> model :&lt;/p>
 &lt;div id="plugins-table-1">
 &lt;table>
 &lt;thead>
@@ -710,18 +670,15 @@ width: 130px;
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>
-&lt;a href="#reader-client-side">Reader Client Side&lt;/a>&lt;/td>
+&lt;td>&lt;a href="#reader-client-side">Reader Client Side&lt;/a>&lt;/td>
 &lt;td>Allows a &lt;strong>server&lt;/strong> application to control a smart card reader available on a &lt;strong>client&lt;/strong> (e.g. PO reader).&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>
-&lt;a href="#reader-server-side">Reader Server Side&lt;/a>&lt;/td>
+&lt;td>&lt;a href="#reader-server-side">Reader Server Side&lt;/a>&lt;/td>
 &lt;td>Allows a &lt;strong>client&lt;/strong> application to control a smart card reader available on a &lt;strong>server&lt;/strong> (e.g. SAM reader).&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>
-&lt;a href="#pool-reader-server-side">Pool Reader Server Side&lt;/a>&lt;/td>
+&lt;td>&lt;a href="#pool-reader-server-side">Pool Reader Server Side&lt;/a>&lt;/td>
 &lt;td>Allows a &lt;strong>client&lt;/strong> application to control a &lt;strong>pool&lt;/strong> of smart cards readers available on a &lt;strong>server&lt;/strong> (e.g. HSM readers).&lt;/td>
 &lt;/tr>
 &lt;/tbody>
@@ -801,13 +758,11 @@ width: 190px;
 &lt;li>the server subscription to observable reader events ;&lt;/li>
 &lt;li>the sending of information to the client at the end of processing.&lt;/li>
 &lt;/ul>
-&lt;p>Note that the network layer is deliberately hide in this diagram. Its implementation is described in the
-&lt;a href="#network-configuration">Network configuration&lt;/a> chapter.&lt;/p>
+&lt;p>Note that the network layer is deliberately hide in this diagram. Its implementation is described in the &lt;a href="#network-configuration">Network configuration&lt;/a> chapter.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/distributed-application/sequence/Distributed_Sequence_ReaderClientSide_API.svg" >
-&lt;img src="../../media/archive-1.0/distributed-application/sequence/Distributed_Sequence_ReaderClientSide_API.svg" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/distributed-application/sequence/Distributed_Sequence_ReaderClientSide_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;h3 id="reader-server-side">Reader Server Side&lt;/h3>
 &lt;div class="alert alert-warning">
 &lt;div>
@@ -928,56 +883,49 @@ This configuration mode will only be available from version &lt;strong>1.1&lt;/s
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td style="text-align:center">
-&lt;a href="#uc-1">UC 1&lt;/a>&lt;/td>
+&lt;td style="text-align:center">&lt;a href="#uc-1">UC 1&lt;/a>&lt;/td>
 &lt;td style="text-align:center">Simple&lt;/td>
 &lt;td style="text-align:center">Client&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:center">
-&lt;a href="#uc-2">UC 2&lt;/a>&lt;/td>
+&lt;td style="text-align:center">&lt;a href="#uc-2">UC 2&lt;/a>&lt;/td>
 &lt;td style="text-align:center">Simple&lt;/td>
 &lt;td style="text-align:center">Client&lt;/td>
 &lt;td style="text-align:center">✔️&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:center">
-&lt;a href="#uc-3">UC 3&lt;/a>&lt;/td>
+&lt;td style="text-align:center">&lt;a href="#uc-3">UC 3&lt;/a>&lt;/td>
 &lt;td style="text-align:center">Simple&lt;/td>
 &lt;td style="text-align:center">Server&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:center">
-&lt;a href="#uc-4">UC 4&lt;/a>&lt;/td>
+&lt;td style="text-align:center">&lt;a href="#uc-4">UC 4&lt;/a>&lt;/td>
 &lt;td style="text-align:center">Simple&lt;/td>
 &lt;td style="text-align:center">Server&lt;/td>
 &lt;td style="text-align:center">✔️&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:center">
-&lt;a href="#uc-5">UC 5&lt;/a>&lt;/td>
+&lt;td style="text-align:center">&lt;a href="#uc-5">UC 5&lt;/a>&lt;/td>
 &lt;td style="text-align:center">Simple&lt;/td>
 &lt;td style="text-align:center">Server&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;td style="text-align:center">✔️&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:center">
-&lt;a href="#uc-6">UC 6&lt;/a>&lt;/td>
+&lt;td style="text-align:center">&lt;a href="#uc-6">UC 6&lt;/a>&lt;/td>
 &lt;td style="text-align:center">Simple&lt;/td>
 &lt;td style="text-align:center">Server&lt;/td>
 &lt;td style="text-align:center">✔️&lt;/td>
 &lt;td style="text-align:center">✔️&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:center">
-&lt;a href="#uc-7">UC 7&lt;/a>&lt;/td>
+&lt;td style="text-align:center">&lt;a href="#uc-7">UC 7&lt;/a>&lt;/td>
 &lt;td style="text-align:center">Pool&lt;/td>
 &lt;td style="text-align:center">Server&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
@@ -992,8 +940,7 @@ width: 240px;
 }
 &lt;/style>
 &lt;h4 id="uc-1">UC 1&lt;/h4>
-&lt;p>This use case requires to use the
-&lt;a href="#reader-client-side">Reader Client Side&lt;/a> configuration mode.&lt;/p>
+&lt;p>This use case requires to use the &lt;a href="#reader-client-side">Reader Client Side&lt;/a> configuration mode.&lt;/p>
 &lt;p>Use this mode if you don&amp;rsquo;t plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
 &lt;p>Please note that it is still possible to observe locally the reader on the client side if needed.&lt;/p>
 &lt;table>
@@ -1018,8 +965,7 @@ width: 240px;
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="uc-2">UC 2&lt;/h4>
-&lt;p>This use case requires to use the
-&lt;a href="#reader-client-side">Reader Client Side&lt;/a> configuration mode.&lt;/p>
+&lt;p>This use case requires to use the &lt;a href="#reader-client-side">Reader Client Side&lt;/a> configuration mode.&lt;/p>
 &lt;p>Use this mode if you plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
 &lt;p>Please note that this mode is only possible if the local reader is observable.&lt;/p>
 &lt;table>
@@ -1060,8 +1006,7 @@ width: 240px;
 &lt;/li>
 &lt;/ul>
 &lt;h4 id="uc-3">UC 3&lt;/h4>
-&lt;p>This use case requires to use the
-&lt;a href="#reader-server-side">Reader Server Side&lt;/a> configuration mode with the &lt;code>RemotePluginClient&lt;/code> plugin.&lt;/p>
+&lt;p>This use case requires to use the &lt;a href="#reader-server-side">Reader Server Side&lt;/a> configuration mode with the &lt;code>RemotePluginClient&lt;/code> plugin.&lt;/p>
 &lt;p>Use this mode if you don&amp;rsquo;t plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
 &lt;p>Please note that it is still possible to observe locally the reader on the server side if needed.&lt;/p>
 &lt;table>
@@ -1086,8 +1031,7 @@ width: 240px;
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="uc-4">UC 4&lt;/h4>
-&lt;p>This use case requires to use the
-&lt;a href="#reader-server-side">Reader Server Side&lt;/a> configuration mode with the &lt;code>RemotePluginClient&lt;/code> plugin.&lt;/p>
+&lt;p>This use case requires to use the &lt;a href="#reader-server-side">Reader Server Side&lt;/a> configuration mode with the &lt;code>RemotePluginClient&lt;/code> plugin.&lt;/p>
 &lt;p>Use this mode if you plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
 &lt;p>Please note that this mode is only possible if the local reader is observable.&lt;/p>
 &lt;table>
@@ -1112,8 +1056,7 @@ width: 240px;
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="uc-5">UC 5&lt;/h4>
-&lt;p>This use case requires to use the
-&lt;a href="#reader-server-side">Reader Server Side&lt;/a> configuration mode with the &lt;code>ObservableRemotePluginClient&lt;/code> plugin.&lt;/p>
+&lt;p>This use case requires to use the &lt;a href="#reader-server-side">Reader Server Side&lt;/a> configuration mode with the &lt;code>ObservableRemotePluginClient&lt;/code> plugin.&lt;/p>
 &lt;p>Use this mode if you don&amp;rsquo;t plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
 &lt;p>Please note that it is still possible to observe locally the reader on the server side if needed.&lt;/p>
 &lt;table>
@@ -1138,8 +1081,7 @@ width: 240px;
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="uc-6">UC 6&lt;/h4>
-&lt;p>This use case requires to use the
-&lt;a href="#reader-server-side">Reader Server Side&lt;/a> configuration mode with the &lt;code>ObservableRemotePluginClient&lt;/code> plugin.&lt;/p>
+&lt;p>This use case requires to use the &lt;a href="#reader-server-side">Reader Server Side&lt;/a> configuration mode with the &lt;code>ObservableRemotePluginClient&lt;/code> plugin.&lt;/p>
 &lt;p>Use this mode if you plan to observe &amp;ldquo;remotely&amp;rdquo; the events related to the local reader (smart card insertion, removal, etc&amp;hellip;).&lt;/p>
 &lt;p>Please note that this mode is only possible if the local reader is observable.&lt;/p>
 &lt;table>
@@ -1164,8 +1106,7 @@ width: 240px;
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="uc-7">UC 7&lt;/h4>
-&lt;p>This use case requires to use the
-&lt;a href="#pool-reader-server-side">Pool Reader Server Side&lt;/a> configuration mode.&lt;/p>
+&lt;p>This use case requires to use the &lt;a href="#pool-reader-server-side">Pool Reader Server Side&lt;/a> configuration mode.&lt;/p>
 &lt;p>This unique mode proposed for this plugin does not allow to observe the local reader.&lt;/p>
 &lt;table>
 &lt;thead>
@@ -1226,10 +1167,9 @@ width: 240px;
 &lt;/table>
 &lt;p>Here is the minimal algorithm to implement in a context with a &lt;strong>single server instance&lt;/strong> :&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/distributed-application/sequence/Distributed_Sequence_SyncNode_API.svg" >
-&lt;img src="../../media/archive-1.0/distributed-application/sequence/Distributed_Sequence_SyncNode_API.svg" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/distributed-application/sequence/Distributed_Sequence_SyncNode_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;p>In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a &lt;code>serverNodeId&lt;/code> are routed to the server associated with a &lt;code>SyncNodeServer&lt;/code> node having the &lt;code>serverNodeId&lt;/code>.&lt;/p>
 &lt;h3 id="asynchronous">Asynchronous&lt;/h3>
 &lt;p>Choose this mode if you want to implement a Full-Duplex &lt;strong>Asynchronous&lt;/strong> communication protocol, such as Web Sockets for example.&lt;/p>
@@ -1266,10 +1206,9 @@ width: 240px;
 &lt;/table>
 &lt;p>Here is the minimal algorithm to implement :&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/distributed-application/sequence/Distributed_Sequence_AsyncNode_API.svg" >
-&lt;img src="../../media/archive-1.0/distributed-application/sequence/Distributed_Sequence_AsyncNode_API.svg" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/distributed-application/sequence/Distributed_Sequence_AsyncNode_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;h3 id="exchanged-data">Exchanged data&lt;/h3>
 &lt;p>The data exchanged between &lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> components are contained in the DTO (Data Transfer Object) &lt;code>MessageDto&lt;/code>. It is built and processed by the plugin and &lt;strong>you don&amp;rsquo;t need to modify it&lt;/strong>.&lt;/p>
 &lt;p>However, it is necessary in some contexts to access certain information such as the &lt;code>sessionId&lt;/code> in the case of asynchronous communication or the &lt;code>serverNodeId&lt;/code> in the case of synchronous communication with several server instances.&lt;/p>
@@ -1288,59 +1227,50 @@ width: 240px;
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>
-&lt;a href="#network-api">Network API&lt;/a>&lt;/td>
+&lt;td>&lt;a href="#network-api">Network API&lt;/a>&lt;/td>
 &lt;td style="text-align:center">✔️&lt;/td>
 &lt;td style="text-align:center">✔️&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>
-&lt;a href="#remote-api">Remote API&lt;/a>&lt;/td>
+&lt;td>&lt;a href="#remote-api">Remote API&lt;/a>&lt;/td>
 &lt;td style="text-align:center">✔️&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>
-&lt;a href="#local-api">Local API&lt;/a>&lt;/td>
+&lt;td>&lt;a href="#local-api">Local API&lt;/a>&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;td style="text-align:center">✔️&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>The associated &lt;strong>API&lt;/strong> documentations are accessible from the page
-&lt;a href="https://keyple.org/docs-1.0/api-reference/">API Reference&lt;/a>.&lt;/p>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentations are accessible from the page &lt;a href="https://keyple.org/docs-1.0/api-reference/">API Reference&lt;/a>.&lt;/p>
 &lt;h3 id="network-api">Network API&lt;/h3>
 &lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../api-reference/java-api/keyple-java-distributed-network/1.0.0/index.html">here&lt;/a>.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/distributed-application/class/Distributed_Class_Network_API.svg" >
-&lt;img src="../../media/archive-1.0/distributed-application/class/Distributed_Class_Network_API.svg" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/distributed-application/class/Distributed_Class_Network_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;h3 id="remote-api">Remote API&lt;/h3>
 &lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../api-reference/java-api/keyple-java-distributed-remote/1.0.0/index.html">here&lt;/a>.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/distributed-application/class/Distributed_Class_Remote_API.svg" >
-&lt;img src="../../media/archive-1.0/distributed-application/class/Distributed_Class_Remote_API.svg" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/distributed-application/class/Distributed_Class_Remote_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;h3 id="local-api">Local API&lt;/h3>
 &lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../api-reference/java-api/keyple-java-distributed-local/1.0.0/index.html">here&lt;/a>.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/distributed-application/class/Distributed_Class_Local_API.svg" >
-&lt;img src="../../media/archive-1.0/distributed-application/class/Distributed_Class_Local_API.svg" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/distributed-application/class/Distributed_Class_Local_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;hr>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
-&lt;li>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/distributed" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/distributed" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
-&lt;li>
-&lt;a href="https://keyple.org/components-java-1.0/distributed-systems/">Java components&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components-java-1.0/distributed-systems/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Calypso application</title><link>https://keyple.org/docs-1.0/developer-guide/calypso-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/developer-guide/calypso-application/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
@@ -1353,31 +1283,20 @@ Keyple features. For example, Calypso Network Association provides &lt;strong>Ke
 secure Calypso transaction seamlessly. It completely hides the details of the APDU commands that are sent to POs and SAMs, which are usually tedious operations.&lt;/p>
 &lt;p>The diagram below shows the role of the &lt;strong>Keyple Calypso Extension&lt;/strong> components in the software layers for a standalone application :&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="../../media/archive-1.0/calypso-app-development/component/Local_Component_Overview.svg" >
-&lt;img src="../../media/archive-1.0/calypso-app-development/component/Local_Component_Overview.svg" alt="" >
-&lt;/a>
-&lt;/figure>
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../media/archive-1.0/calypso-app-development/component/Local_Component_Overview.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
 &lt;h2 id="before-you-start">Before you start&lt;/h2>
 &lt;ol>
 &lt;li>In pre-requisite, have knowledge of the standard Calypso.&lt;/li>
-&lt;li>Read the
-&lt;a href="../../docs-1.0/developer-guide/common-concepts/">common concepts&lt;/a> page and become familiar with the basic concepts on which Keyple is based.&lt;/li>
-&lt;li>Any implementation of a Keyple application starts with the implementation of &lt;strong>Keyple Core&lt;/strong>, please study the
-&lt;a href="../../docs-1.0/developer-guide/standalone-application/">workflow&lt;/a> proposed in Standalone application guide.&lt;/li>
-&lt;li>Read chapter
-&lt;a href="#concepts">Concepts&lt;/a> to understand the main terms and concepts of the &lt;strong>Keyple Calypso Extension&lt;/strong> API.&lt;/li>
-&lt;li>Explore the
-&lt;a href="#keyplecalypsoapi">Keyple Calypso API&lt;/a> to discover all the possibilities offered by &lt;strong>Keyple Calypso Extension&lt;/strong>.&lt;/li>
-&lt;li>Take inspiration from the
-&lt;a href="#examples">examples&lt;/a>.&lt;/li>
-&lt;li>Follow the explanations given in the
-&lt;a href="https://keyple.org/docs-1.0/build-your-first-app/">Build your first app&lt;/a> section to configure your environment.&lt;/li>
-&lt;li>Using the
-&lt;a href="https://keyple.org/components-java-1.0/core/">Java components&lt;/a> or
-&lt;a href="https://keyple.org/components-cpp-0.9/core/">C++ components&lt;/a> pages, import &lt;strong>Keyple Core&lt;/strong> into your project.&lt;/li>
-&lt;li>Using the
-&lt;a href="https://keyple.org/components-java-1.0/extensions/calypso/">Java components&lt;/a> or
-&lt;a href="https://keyple.org/components-cpp-0.9/extensions/calypso/">C++ components&lt;/a> pages, import &lt;strong>Keyple Calypso Extension&lt;/strong> into your project.&lt;/li>
+&lt;li>Read the &lt;a href="../../docs-1.0/developer-guide/common-concepts/">common concepts&lt;/a> page and become familiar with the basic concepts on which Keyple is based.&lt;/li>
+&lt;li>Any implementation of a Keyple application starts with the implementation of &lt;strong>Keyple Core&lt;/strong>, please study the &lt;a href="../../docs-1.0/developer-guide/standalone-application/">workflow&lt;/a> proposed in Standalone application guide.&lt;/li>
+&lt;li>Read chapter &lt;a href="#concepts">Concepts&lt;/a> to understand the main terms and concepts of the &lt;strong>Keyple Calypso Extension&lt;/strong> API.&lt;/li>
+&lt;li>Explore the &lt;a href="#keyplecalypsoapi">Keyple Calypso API&lt;/a> to discover all the possibilities offered by &lt;strong>Keyple Calypso Extension&lt;/strong>.&lt;/li>
+&lt;li>Take inspiration from the &lt;a href="#examples">examples&lt;/a>.&lt;/li>
+&lt;li>Follow the explanations given in the &lt;a href="https://keyple.org/docs-1.0/build-your-first-app/">Build your first app&lt;/a> section to configure your environment.&lt;/li>
+&lt;li>Using the &lt;a href="https://keyple.org/components-java-1.0/core/">Java components&lt;/a> or &lt;a href="https://keyple.org/components-cpp-0.9/core/">C++ components&lt;/a> pages, import &lt;strong>Keyple Core&lt;/strong> into your project.&lt;/li>
+&lt;li>Using the &lt;a href="https://keyple.org/components-java-1.0/extensions/calypso/">Java components&lt;/a> or &lt;a href="https://keyple.org/components-cpp-0.9/extensions/calypso/">C++ components&lt;/a> pages, import &lt;strong>Keyple Calypso Extension&lt;/strong> into your project.&lt;/li>
 &lt;li>Start playing with Keyple.&lt;/li>
 &lt;/ol>
 &lt;h2 id="concepts">Concepts&lt;/h2>
@@ -1692,8 +1611,7 @@ all in detail but here is an example from which other variants can be obtained.&
 &lt;ul>
 &lt;li>&lt;code>poSelection = new PoSelection(CARD_IAD)&lt;/code>&lt;/li>
 &lt;li>&lt;code>poSelection.prepareReadRecordFile(ENVIRONMENT_SFI)&lt;/code>&lt;/li>
-&lt;li>process the poSelection (either explicitly or by default, see the
-&lt;a href="../../docs-1.0/developer-guide/standalone-application/">standalone application&lt;/a>) guide&lt;/li>
+&lt;li>process the poSelection (either explicitly or by default, see the &lt;a href="../../docs-1.0/developer-guide/standalone-application/">standalone application&lt;/a>) guide&lt;/li>
 &lt;li>retrieve CalypsoPo, check its content (environment data)&lt;/li>
 &lt;li>&lt;code>poTransaction = new PoTransaction(calypsoPo)&lt;/code>&lt;/li>
 &lt;li>&lt;code>poTransaction.prepareReadRecordFile(CONTRACT_LIST_SFI)&lt;/code>&lt;/li>
@@ -1711,10 +1629,8 @@ all in detail but here is an example from which other variants can be obtained.&
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;p>Detailed use case examples can be seen here:&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/src/main/java/org/eclipse/keyple/example/calypso" target="_blank" rel="noopener">PC&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/android" target="_blank" rel="noopener">Android&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/src/main/java/org/eclipse/keyple/example/calypso" target="_blank" rel="noopener">PC&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/android" target="_blank" rel="noopener">Android&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Create a plugin</title><link>https://keyple.org/docs-1.0/developer-guide/create-plugin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/docs-1.0/developer-guide/create-plugin/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
@@ -1741,28 +1657,21 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;p>This guide is intended to help a user of a previous version of Keyple Java to upgrade his application to a new version of the library.&lt;/p>
 &lt;p>Upgrade from:&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;a href="#upgrade-from-090-to-100">0.9.0 to 1.0.0&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#upgrade-from-081-to-090">0.8.1 to 0.9.0&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#upgrade-from-090-to-100">0.9.0 to 1.0.0&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#upgrade-from-081-to-090">0.8.1 to 0.9.0&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>Note: here we describe the evolutions in broad outline, for the details of the APIs, the reader is invited to consult
-the
-&lt;a href="https://keyple.org/docs-1.0/api-reference/">API reference&lt;/a> section.&lt;/p>
+the &lt;a href="https://keyple.org/docs-1.0/api-reference/">API reference&lt;/a> section.&lt;/p>
 &lt;hr>
 &lt;h2 id="upgrade-from-090-to-100">Upgrade from 0.9.0 to 1.0.0&lt;/h2>
 &lt;h3 id="whats-changed">What&amp;rsquo;s changed?&lt;/h3>
 &lt;p>Compared to version 0.9, the goal of Keyple 1.0 is mainly to fix bugs,
 add features to make Keyple more robust and rename/reorganize classes to make it easier to learn.&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;a href="#class-renaming">Renamings&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#internal-exception-handling">Internal exception handling&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#pcsc-plugin">PC/SC plugin&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#keyple-distributed">Keyple Distributed&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#class-renaming">Renamings&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#internal-exception-handling">Internal exception handling&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#pcsc-plugin">PC/SC plugin&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#keyple-distributed">Keyple Distributed&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4 id="class-renaming">Class renaming&lt;/h4>
 &lt;table>
@@ -1868,32 +1777,22 @@ add features to make Keyple more robust and rename/reorganize classes to make it
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="keyple-distributed">Keyple Distributed&lt;/h4>
-&lt;p>The use of Keyple in a remote context has been extensively reviewed and its description is beyond the scope of this guide. Please refer to the
-&lt;a href="../../docs-1.0/developer-guide/distributed-application/">distributed application&lt;/a> section.&lt;/p>
+&lt;p>The use of Keyple in a remote context has been extensively reviewed and its description is beyond the scope of this guide. Please refer to the &lt;a href="../../docs-1.0/developer-guide/distributed-application/">distributed application&lt;/a> section.&lt;/p>
 &lt;hr>
 &lt;h2 id="upgrade-from-081-to-090">Upgrade from 0.8.1 to 0.9.0&lt;/h2>
 &lt;h3 id="whats-changed-1">What&amp;rsquo;s changed?&lt;/h3>
 &lt;p>From a user API point of view, the changes relate to the following topics:
 From a user API point of view, the changes relate to the following topics:&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;a href="#plugin-registration-in-the-seproxyservice">plugin registration in the SeProxyService&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#preparation-of-selection-cases">preparation of selection cases&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#retrieving-selection-results">retrieving selection results&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#definition-of-the-security-settings-of-the-transaction">definition of the security settings of the transaction&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#creation-of-the-potransaction-object">creation of the PoTransaction object&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#transaction-commands-preparation">transaction commands preparation&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#transaction-commands-processing">transaction commands processing&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#retrieving-data-read-from-pos">retrieving data read from POs&lt;/a>&lt;/li>
-&lt;li>
-&lt;a href="#error-handling">error handling&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#plugin-registration-in-the-seproxyservice">plugin registration in the SeProxyService&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#preparation-of-selection-cases">preparation of selection cases&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#retrieving-selection-results">retrieving selection results&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#definition-of-the-security-settings-of-the-transaction">definition of the security settings of the transaction&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#creation-of-the-potransaction-object">creation of the PoTransaction object&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#transaction-commands-preparation">transaction commands preparation&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#transaction-commands-processing">transaction commands processing&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#retrieving-data-read-from-pos">retrieving data read from POs&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#error-handling">error handling&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h3 id="plugin-registration-in-the-seproxyservice">Plugin registration in the SeProxyService&lt;/h3>
 &lt;p>The &lt;code>registerPlugin&lt;/code> method of the &lt;code>SeProxyService&lt;/code> class now returns the reference of the registered plugin.&lt;/p>
@@ -2101,5 +2000,4 @@ ByteArrayUtil.toHex(entry.getValue()));
 &lt;p>Since version 0.9, all Keyple exceptions are of the RuntimeException type.&lt;/p>
 &lt;p>Catching exceptions is therefore now optional.&lt;/p>
 &lt;p>However, it is possible to selectively catch certain exceptions in order to deal with particular cases.&lt;/p>
-&lt;p>The new hierarchy of Keyple exceptions is shown
-&lt;a href="https://keyple.atlassian.net/projects/KEYP/issues/KEYP-154?filter=allissues&amp;amp;orderby=priority%20DESC&amp;amp;keyword=exceptions" target="_blank" rel="noopener">here&lt;/a>&lt;/p></description></item></channel></rss>
+&lt;p>The new hierarchy of Keyple exceptions is shown &lt;a href="https://keyple.atlassian.net/projects/KEYP/issues/KEYP-154?filter=allissues&amp;amp;orderby=priority%20DESC&amp;amp;keyword=exceptions" target="_blank" rel="noopener">here&lt;/a>&lt;/p></description></item></channel></rss>
