@@ -6,8 +6,8 @@ weight: 40
 toc: false
 ---
 
-{{% alert note %}}
+{{% callout note %}}
 You can create a new card extension add-on for a not yet supported card technology by following the dedicated [developer guide]({{< relref "card-extension-add-on" >}}).
-{{% /alert %}}
+{{% /callout %}}
 
 {{< list_children >}}

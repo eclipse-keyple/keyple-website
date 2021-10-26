@@ -23,4 +23,4 @@ subtitle = "Eclipse Keyple® addresses a wide range of domains, hardware readers
   padding = ["20px", "0", "20px", "0"]
 +++
 
-{{< figure library="true" src="keyple-schema.webp" >}}
+{{< figure src="media/keyple-schema.webp" >}}

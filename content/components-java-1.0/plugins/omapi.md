@@ -6,11 +6,11 @@ type: book
 weight: 10
 toc: true
 ---
-{{% alert warning %}}
+{{% callout warning %}}
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert note %}}
+{{% callout note %}}
 **`{{% keyple-java-version %}}`**
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="users-cog" pack="fas" >}}
 Keyple project
@@ -20,7 +20,7 @@ Keyple project
 [GitHub](https://github.com/eclipse/keyple-java/tree/master/android/keyple-plugin/android-omapi)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="exchange-alt" pack="fas" >}}
 [Changelogs](https://github.com/eclipse/keyple-java/releases/)
-{{% /alert %}}
+{{% /callout %}}
 
 ## Overview
 

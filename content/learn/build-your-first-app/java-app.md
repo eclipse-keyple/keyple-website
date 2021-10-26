@@ -14,11 +14,11 @@ weight: 1
 This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on
 a Calypso Card involving two smart card readers.
 
-{{% alert warning %}}  
+{{% callout warning %}}  
 The demonstration application created for this quick start requires:
 * a Calypso Card (contactless smart card, NFC mobile phone with a Calypso applet or application),
 * a Calypso SAM (Secure Access Module).
-{{% /alert %}}
+{{% /callout %}}
 
 
 We will use three main components of Keyple:
@@ -325,9 +325,9 @@ Find the complete code source [below](#full-code).
 3) Insert the Calypso card in the card reader.
 4) Run the application.
 
-{{% alert note %}} All project dependencies, including Keyple
+{{% callout note %}} All project dependencies, including Keyple
 components, are downloaded during the first run, which can take some
-time. {{% /alert %}}
+time. {{% /callout %}}
 
 
 ---

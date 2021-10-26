@@ -1,0 +1,225 @@
+# SITE SETUP
+# Guide: https://wowchemy.com/docs/getting-started/
+# Documentation: https://wowchemy.com/docs/
+# This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
+
+# Appearance
+
+theme: keyple-theme
+day_night: false
+font: 'keyple-font'
+font_size: M
+
+# SEO
+
+site_type: Project
+local_business_type: ''
+org_name: 'Eclipse'
+description: 'Eclipse Keyple® accelerates the development through a universal, open and modular platform that provides high-level APIs and ensures application reliability and compliance.'
+twitter: ''
+
+# Contact (edit or remove options as required)
+
+email: test@example.org
+phone: 888 888 88 88
+address:
+  street: 450 Serra Mall
+  city: Stanford
+  region: CA
+  postcode: '94305'
+  country: United States
+  country_code: US
+coordinates:
+  latitude: '37.4275'
+  longitude: '-122.1697'
+directions: Enter Building 1 and take the stairs to Office 200 on Floor 2
+office_hours:
+  - 'Monday 10:00 to 13:00'
+  - 'Wednesday 09:00 to 10:00'
+appointment_url: 'https://calendly.com'
+contact_links:
+  - icon: twitter
+    icon_pack: fab
+    name: DM Me
+    link: 'https://twitter.com/Twitter'
+  - icon: skype
+    icon_pack: fab
+    name: Skype Me
+    link: 'skype:echo123?call'
+  - icon: keybase
+    icon_pack: fab
+    name: Chat on Keybase
+    link: 'https://keybase.io/'
+  - icon: comments
+    icon_pack: fas
+    name: Discuss on Forum
+    link: 'https://discourse.gohugo.io'
+
+# Site header
+
+main_menu:
+  enable: true
+  align: c
+  show_logo: true
+  show_language: false
+  show_day_night: true
+  show_search: true
+  highlight_active_link: true
+
+# Localization
+
+date_format: '2006-01-02'
+time_format: '15:04'
+address_format: en-us
+
+# Site features
+
+highlight: true
+highlight_languages:
+  - java
+  - groovy
+  - xml
+  - kotlin
+  - cpp
+  - gradle
+  - ini
+highlight_style: darcula
+
+math: false
+diagram: false
+privacy_pack: false
+edit_page:
+  repo_url: ''
+  content_dir: ''
+  repo_branch: main
+  editable:
+    page: false
+    post: false
+    book: false
+show_related:
+  book: true
+  page: false
+  post: true
+  project: true
+  publication: true
+  event: true
+reading_time: true
+section_pager: false
+docs_section_pager: true
+sharing: true
+copyright_license:
+  enable: false
+  allow_derivatives: false
+  share_alike: true
+  allow_commercial: false
+  notice: 'This work is licensed under {license}'
+abstract_length: 135
+plugins_js: ['custom']
+avatar:
+  gravatar: false
+  shape: circle
+publications:
+  date_format: '2006-01-02'
+  citation_style: apa
+projects:
+  post_view: 2
+  publication_view: 2
+  talk_view: 2
+breadcrumb:
+  page_types:
+    book: false
+comments:
+  provider: ''
+  commentable:
+    post: true
+    book: true
+    project: true
+    publication: true
+    event: true
+  disqus:
+    shortname: ''
+    show_count: true
+  commento:
+    url: ''
+search:
+  provider: wowchemy
+  algolia:
+    app_id: ''
+    api_key: ''
+    index_name: ''
+    show_logo: false
+map:
+  provider: ''
+  api_key: ''
+  zoom: 15
+marketing:
+  google_analytics: ''
+  google_tag_manager: 'GTM-5WLCZXC'
+  google_site_verification: ''
+  baidu_site_verification: ''
+  baidu_tongji: ''
+cms:
+  branch: master
+  local_backend: false
+icon:
+  pack:
+    ai: true
+
+# custom variables
+keyple_version:
+  calypsonet_terminal_reader_java_api: '1.0.0'
+  calypsonet_terminal_reader_java_api_dynamic_gradle: '1.0.+'
+  calypsonet_terminal_reader_java_api_dynamic_maven: '[1.0.0,1.1.0)'
+
+  calypsonet_terminal_card_java_api: '1.0.0'
+  calypsonet_terminal_card_java_api_dynamic_gradle: '1.0.+'
+  calypsonet_terminal_card_java_api_dynamic_maven: '[1.0.0,1.1.0)'
+
+  calypsonet_terminal_calypso_java_api: '1.0.0'
+  calypsonet_terminal_calypso_java_api_dynamic_gradle: '1.0.+'
+  calypsonet_terminal_calypso_java_api_dynamic_maven: '[1.0.0,1.1.0)'
+
+  keyple_card_calypso_java_lib: '2.0.0'
+
+  keyple_card_generic_java_lib: '2.0.0'
+
+  keyple_common_java_api: '2.0.0'
+  keyple_common_java_api_dynamic_gradle: '2.0.+'
+  keyple_common_java_api_dynamic_maven: '[2.0.0,2.1.0)'
+
+  keyple_distributed_local_java_api: '2.0.0'
+  keyple_distributed_local_java_api_dynamic_gradle: '2.0.+'
+  keyple_distributed_local_java_api_dynamic_maven: '[2.0.0,2.1.0)'
+
+  keyple_distributed_local_java_lib: '2.0.0'
+
+  keyple_distributed_network_java_lib: '2.0.0'
+
+  keyple_distributed_remote_java_api: '2.0.0'
+  keyple_distributed_remote_java_api_dynamic_gradle: '2.0.+'
+  keyple_distributed_remote_java_api_dynamic_maven: '[2.0.0,2.1.0)'
+
+  keyple_distributed_remote_java_lib: '2.0.0'
+
+  keyple_plugin_android_nfc_java_lib: '2.0.0'
+
+  keyple_plugin_android_omapi_java_lib: '2.0.0'
+
+  keyple_plugin_java_api: '2.0.0'
+  keyple_plugin_java_api_dynamic_gradle: '2.0.+'
+  keyple_plugin_java_api_dynamic_maven: '[2.0.0,2.1.0)'
+
+  keyple_plugin_pcsc_java_lib: '2.0.0'
+
+  keyple_plugin_stub_java_lib: '2.0.0'
+
+  keyple_service_java_lib: '2.0.0'
+
+  keyple_service_resource_java_lib: '2.0.0'
+
+  keyple_util_java_lib: '2.0.0'
+  keyple_util_java_lib_dynamic_gradle: '2.+'
+  keyple_util_java_lib_dynamic_maven: '[2.0.0,3.0.0)'
+
+  keyple_java: '1.0.0'
+  keyple_cpp: '0.9.0'

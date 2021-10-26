@@ -6,9 +6,9 @@ toc: true
 draft: false
 weight: 350
 ---
-{{% alert warning %}}
+{{% callout warning %}}
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
-{{% /alert %}}
+{{% /callout %}}
 
 This guide is intended to help a user of a previous version of Keyple Java to upgrade his application to a new version of the library.
 

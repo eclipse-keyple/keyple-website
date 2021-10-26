@@ -5,9 +5,9 @@ toc: true
 draft: false
 weight: 130
 ---
-{{% alert warning %}}
+{{% callout warning %}}
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Features / packages and corresponding usages
 
@@ -53,7 +53,7 @@ The transaction API is defined on a low-level Calypso commands API which contain
 
 Ticketing terminal applications must import only the high-level Calypso transaction package.
 
-{{< figure library="true" src="archive-1.0/architecture/KeypleCalypso_Packages.svg" title="Calypso packages" >}}
+{{< figure src="/media/archive-1.0/architecture/KeypleCalypso_Packages.svg" title="Calypso packages" >}}
 
 <!-- The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages. -->
 
@@ -68,7 +68,7 @@ In addition, a PO Selection Request provides methods:
 
 The matching SmartCard resulting from a PO Selection Request is a Calypso PO. In case file records have been read during the selection: the corresponding data could be recovered in the Calypso PO card image.
 
-{{< figure library="true" src="archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PO_Selection_1_0_0.svg" title="Calypso Selection v1.0.0" >}}
+{{< figure src="/media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PO_Selection_1_0_0.svg" title="Calypso Selection v1.0.0" >}}
 
 ---
 ## Calypso Portable Object Transaction
@@ -91,12 +91,12 @@ A transaction with a Calypso PO is fully managed through the PoTransaction objec
  - Next the prepared PO commands transmitted when operating a **process** command.
  - The responses of the PO are then recovered through the Calypso PO image.
 
-{{< figure library="true" src="archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_Overview.svg" title="Calypso API Global Architecture" >}}
+{{< figure src="/media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_Overview.svg" title="Calypso API Global Architecture" >}}
 
 ### Calypso card image
 When read commands have been exchanged with a Calypso PO, the corresponding data could be recovered by parsing the file structure of the PO card image.
 
-{{< figure library="true" src="archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_CalypsoPo_1_0_0.svg" title="Calypso PO card image" >}}
+{{< figure src="/media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_CalypsoPo_1_0_0.svg" title="Calypso PO card image" >}}
 
 ### Calypso transaction
 Only the **process** methods generate communication with the Calypso PO and SAM.
@@ -109,14 +109,14 @@ Only the **process** methods generate communication with the Calypso PO and SAM.
 
 The prepareReleaseChannel method allows to the logical channel with the Calypso PO at the end of the processing of the next process method.
 
-{{< figure library="true" src="archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PoTransaction_1_0_0.svg" title="Calypso transaction" >}}
+{{< figure src="/media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PoTransaction_1_0_0.svg" title="Calypso transaction" >}}
 
 ---
 ## Data model extension
 
-{{< figure library="true" src="archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_SpecificPoTransaction_1_0_0.svg" title="Calypso Data Model" >}}
+{{< figure src="/media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_SpecificPoTransaction_1_0_0.svg" title="Calypso Data Model" >}}
 
 ---
 ## Secure session sequence
 
-{{< figure library="true" src="archive-1.0/architecture/KeypleCalypso_Transaction_SequenceDiag_SecureSessionProcessing_1_0_0.svg" title="Calypso session" >}}
+{{< figure src="/media/archive-1.0/architecture/KeypleCalypso_Transaction_SequenceDiag_SecureSessionProcessing_1_0_0.svg" title="Calypso session" >}}

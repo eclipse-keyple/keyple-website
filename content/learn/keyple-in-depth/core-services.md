@@ -23,7 +23,7 @@ When active, an observable reader could switch between three internal states:
 In the nominal case, a reader observer indicates to the observable reader that the processing of the card is finished by releasing the card channel.
 To manage a failure of the reader observer process, the observable reader interface provides also a method to finalize the card processing.
 
-{{< figure library="true" src="learn/keyple-in-depth/reader_observation_state_machine.svg" caption="Observable reader states" numbered="true" >}}
+{{< figure src="/media/learn/keyple-in-depth/reader_observation_state_machine.svg" caption="Observable reader states" numbered="true" >}}
 
 The states could be switched:
 - due to an explicit API request (blue arrows):
@@ -47,7 +47,7 @@ Depending on the card transaction use case, or on the reader capability, there a
 - Either on a simple reader, a selection could be operated directly by transmitting the card selection scenario. In this case the same entity manages both the card selection and the card processing.
 - Otherwise, on an observable reader, a scheduled card selection could be defined. In this case the card selection is operated automatically at the insertion of the card. In this case, the card selection is next managed by the observable reader, but the card processing is managed by a reader observer.
 
-{{< figure library="true" src="learn/keyple-in-depth/card_selection_modes_activity_diagram.svg" caption="Card selection modes" numbered="true" width="50%" >}}
+{{< figure src="/media/learn/keyple-in-depth/card_selection_modes_activity_diagram.svg" caption="Card selection modes" numbered="true" width="50%" >}}
 
 ---
 ## Internal adapters (release)

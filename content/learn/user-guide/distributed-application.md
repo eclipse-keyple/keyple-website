@@ -17,7 +17,7 @@ In this way, you can manage transactions within a distributed architecture.
 
 The diagram below shows the location of the Keyple Distributed components in the software layers used in a distributed architecture:
 
-{{< figure library="true" src="learn/user-guide/distributed-application/distributed_solution_layers_overview.svg" caption="Keyple Distributed - Solution layers overview" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_solution_layers_overview.svg" caption="Keyple Distributed - Solution layers overview" numbered="true" >}}
 
 ---
 ## How to use it
@@ -57,7 +57,7 @@ Here are the main concepts to keep in mind before continuing to read this user g
 
 The diagram below illustrates the main functional concepts through a standard use case:
 
-{{< figure library="true" src="learn/user-guide/distributed-application/distributed_concepts_1.svg" caption="Keyple Distributed - Concepts - Main use case" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_concepts_1.svg" caption="Keyple Distributed - Concepts - Main use case" numbered="true" >}}
 
 The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.
 
@@ -65,7 +65,7 @@ These could be for example a ticketing reloading service, where the business log
 
 In this use case, the Keyple Distributed solution is use for card communication.
 
-{{< figure library="true" src="learn/user-guide/distributed-application/distributed_concepts_2.svg" caption="Keyple Distributed - Concepts - One remote plugin connected to many local services" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_concepts_2.svg" caption="Keyple Distributed - Concepts - One remote plugin connected to many local services" numbered="true" >}}
 
 Here is another example, but this time it illustrates several remote plugins connected to the same local service.
 
@@ -73,7 +73,7 @@ These could be for example ticketing terminals with transaction logic, which com
 
 In this use case, the Keyple Distributed solution is use for SAM communication.
 
-{{< figure library="true" src="learn/user-guide/distributed-application/distributed_concepts_3.svg" caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_concepts_3.svg" caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service" numbered="true" >}}
 
 ---
 ## Usage modes
@@ -119,7 +119,7 @@ Interfaces marked with an asterisk "*" come from the **Keyple Service API**:
 | **Reader** | Any kind of reader | `Reader` * |
 | **Reader extension** | Device specific | `RemoteReaderServer` |
 
-{{% alert warning %}} It is the responsibility of the client application to observe and configure the local plugins and readers. {{% /alert %}}
+{{% callout warning %}} It is the responsibility of the client application to observe and configure the local plugins and readers. {{% /callout %}}
 
 #### OPERATING MODE
 
@@ -184,7 +184,7 @@ Interfaces marked with an asterisk "*" come from the **Keyple Service API**:
 | **Reader** | `Reader` * | Any kind of reader |
 | **Reader extension** | `RemoteReaderClient` | Device specific |
 
-{{% alert warning %}} Whatever the type of plugin, it is the responsibility of the server application to configure the local plugins and readers. {{% /alert %}}
+{{% callout warning %}} Whatever the type of plugin, it is the responsibility of the server application to configure the local plugins and readers. {{% /callout %}}
 
 #### OPERATING MODE
 
@@ -215,7 +215,7 @@ Choose this mode if you want to implement a Client-Server **synchronous** commun
 
 Here is the minimal algorithm to implement in a context with a **single server instance**:
 
-{{< figure library="true" src="learn/user-guide/distributed-application/distributed_synchronous.svg" caption="Keyple Distributed - Synchronous network implementation" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_synchronous.svg" caption="Keyple Distributed - Synchronous network implementation" numbered="true" >}}
 
 In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a `serverNodeId` are routed to the server associated with a `SyncNodeServer` node having the `serverNodeId`.
 
@@ -232,7 +232,7 @@ Choose this mode if you want to implement a Full-Duplex **asynchronous** communi
 
 Here is the minimal algorithm to implement:
 
-{{< figure library="true" src="learn/user-guide/distributed-application/distributed_asynchronous.svg" caption="Keyple Distributed - Asynchronous network implementation" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_asynchronous.svg" caption="Keyple Distributed - Asynchronous network implementation" numbered="true" >}}
 
 ### Exchanged data
 

@@ -5,9 +5,9 @@ toc: true
 draft: false
 weight: 330
 ---
-{{% alert warning %}}
+{{% callout warning %}}
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Overview
 
@@ -19,7 +19,7 @@ secure Calypso transaction seamlessly. It completely hides the details of the AP
 
 The diagram below shows the role of the **Keyple Calypso Extension** components in the software layers for a standalone application :
 
-{{< figure library="true" src="archive-1.0/calypso-app-development/component/Local_Component_Overview.svg" title="" >}}
+{{< figure src="/media/archive-1.0/calypso-app-development/component/Local_Component_Overview.svg" title="" >}}
 
 ## Before you start
 1. In pre-requisite, have knowledge of the standard Calypso.

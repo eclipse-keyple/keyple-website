@@ -6,9 +6,9 @@ toc: true
 draft: false
 weight: 320
 ---
-{{% alert warning %}}
+{{% callout warning %}}
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Overview
 
@@ -18,7 +18,7 @@ In this way, you can manage transactions within a distributed architecture.
 
 The diagram below shows the role of the **Keyple Distributed** components in the software layers used in a distributed architecture :
 
-{{< figure library="true" src="archive-1.0/distributed-application/component/Distributed_Component_Overview.svg" title="" >}}
+{{< figure src="/media/archive-1.0/distributed-application/component/Distributed_Component_Overview.svg" title="" >}}
 
 ---
 ## How to use it ?
@@ -60,7 +60,7 @@ Here are the main concepts to keep in mind before continuing to read this user g
 
 The diagram below illustrates the main functional concepts through a standard use case :
 
-{{< figure library="true" src="archive-1.0/distributed-application/component/Distributed_Component_Concepts_1.svg" title="" >}}
+{{< figure src="/media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_1.svg" title="" >}}
 
 The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.
 
@@ -68,7 +68,7 @@ These could be for example a ticketing reloading service, where the business log
 
 In this use case, the **Keyple Distributed** solution is use for card communication.
 
-{{< figure library="true" src="archive-1.0/distributed-application/component/Distributed_Component_Concepts_2.svg" title="" >}}
+{{< figure src="/media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_2.svg" title="" >}}
 
 Here is another example, but this time it illustrates several **Remote Plugin** components connected to the same **Local Service**.
 
@@ -76,7 +76,7 @@ These could be for example ticketing terminals with transaction logic, which com
 
 In this use case, the **Keyple Distributed** solution is use for SAM communication.
 
-{{< figure library="true" src="archive-1.0/distributed-application/component/Distributed_Component_Concepts_3.svg" title="" >}}
+{{< figure src="/media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_3.svg" title="" >}}
 
 ---
 ## Configuration modes
@@ -145,13 +145,13 @@ The following sequence diagram shows the capabilities of the plugin through an a
 
 Note that the network layer is deliberately hide in this diagram. Its implementation is described in the [Network configuration](#network-configuration) chapter.
 
-{{< figure library="true" src="archive-1.0/distributed-application/sequence/Distributed_Sequence_ReaderClientSide_API.svg" title="" >}}
+{{< figure src="/media/archive-1.0/distributed-application/sequence/Distributed_Sequence_ReaderClientSide_API.svg" title="" >}}
 
 ### Reader Server Side
 
-{{% alert warning %}}
+{{% callout warning %}}
 This configuration mode will only be available from version **1.1** onwards.
-{{% /alert %}}
+{{% /callout %}}
 
 This configuration mode allows a **client** application to control a smart card reader available on a **server** (e.g. SAM reader).
 
@@ -336,7 +336,7 @@ Choose this mode if you want to implement a Client-Server **Synchronous** commun
 
 Here is the minimal algorithm to implement in a context with a **single server instance** :
 
-{{< figure library="true" src="archive-1.0/distributed-application/sequence/Distributed_Sequence_SyncNode_API.svg" title="" >}}
+{{< figure src="/media/archive-1.0/distributed-application/sequence/Distributed_Sequence_SyncNode_API.svg" title="" >}}
 
 In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a `serverNodeId` are routed to the server associated with a `SyncNodeServer` node having the `serverNodeId`.
 
@@ -353,7 +353,7 @@ Choose this mode if you want to implement a Full-Duplex **Asynchronous** communi
 
 Here is the minimal algorithm to implement :
 
-{{< figure library="true" src="archive-1.0/distributed-application/sequence/Distributed_Sequence_AsyncNode_API.svg" title="" >}}
+{{< figure src="/media/archive-1.0/distributed-application/sequence/Distributed_Sequence_AsyncNode_API.svg" title="" >}}
 
 ### Exchanged data
 
@@ -382,19 +382,19 @@ The associated **API** documentations are accessible from the page [API Referenc
 
 The associated **API** documentation is available <a href="../../api-reference/java-api/keyple-java-distributed-network/1.0.0/index.html">here</a>.
 
-{{< figure library="true" src="archive-1.0/distributed-application/class/Distributed_Class_Network_API.svg" title="" >}}
+{{< figure src="/media/archive-1.0/distributed-application/class/Distributed_Class_Network_API.svg" title="" >}}
 
 ### Remote API
 
 The associated **API** documentation is available <a href="../../api-reference/java-api/keyple-java-distributed-remote/1.0.0/index.html">here</a>.
 
-{{< figure library="true" src="archive-1.0/distributed-application/class/Distributed_Class_Remote_API.svg" title="" >}}
+{{< figure src="/media/archive-1.0/distributed-application/class/Distributed_Class_Remote_API.svg" title="" >}}
 
 ### Local API
 
 The associated **API** documentation is available <a href="../../api-reference/java-api/keyple-java-distributed-local/1.0.0/index.html">here</a>.
 
-{{< figure library="true" src="archive-1.0/distributed-application/class/Distributed_Class_Local_API.svg" title="" >}}
+{{< figure src="/media/archive-1.0/distributed-application/class/Distributed_Class_Local_API.svg" title="" >}}
 
 ---
 ## Examples

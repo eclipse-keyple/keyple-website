@@ -18,13 +18,13 @@ It has at least one local smart card reader and manages itself the
 interaction with the user.
 
 The diagram below illustrates the organization of a standalone application based on Keyple: 
-{{< figure library="true" src="learn/user-guide/standalone-application/standalone_application_overview.svg" caption="" >}}
+{{< figure src="/media/learn/user-guide/standalone-application/standalone_application_overview.svg" caption="" >}}
 
 ---
 ## Operating mode
-{{% alert warning %}}
+{{% callout warning %}}
 If you are new to Keyple, read the [key concepts]({{< relref "key-concepts.md" >}}) page and familiarize yourself with the fundamentals behind Keyple.
-{{% /alert %}}
+{{% /callout %}}
 
 1. Access to the [smart card service](#the-smart-card-service)
 2. [Set up a plugin](#set-up-a-plugin)
@@ -58,9 +58,9 @@ the [standard reader plugins]({{< ref "components-java/standard-reader-plugins/_
 the [specific reader plugins]({{< ref "components-java/specific-reader-plugins/_index.md" >}})
 or one of our [partners reader plugins]({{< ref "external-resources/external-add-ons/" >}}).
 
-{{% alert note %}}
+{{% callout note %}}
 A new plugin can also be [created]({{< relref "reader-plugin-add-on" >}}) if there is no plugin for the intended hardware.
-{{% /alert %}}
+{{% /callout %}}
 
 ### Access to a plugin
 To access a plugin at the application level, it must first be registered with the smart card service via the `registerPlugin(...)` method.
@@ -72,9 +72,9 @@ Please refer to the API of the plugin component you are considering to see what 
 
 The registration provides in return an implementation of one of the `Plugin`, `ObservablePlugin` or `PoolPlugin` interfaces depending on the type of target plugin.
 
-{{% alert note %}}
+{{% callout note %}}
 A plugin is identified by a unique name in the system so that it can be retrieved at any time from the smart card service.
-{{% /alert %}}
+{{% /callout %}}
 
 {{< code lang="java" >}}
 // Here is for example the registration of the PC/SC plugin
@@ -97,9 +97,9 @@ plugin
 {{< /code >}}
 
 ### Monitor a plugin
-{{% alert warning %}} The plugin monitoring only applies to hardware environments in which the readers are removable.
+{{% callout warning %}} The plugin monitoring only applies to hardware environments in which the readers are removable.
 Moreover, only plugins of type `ObservablePlugin` can be monitored.
-{{% /alert %}}
+{{% /callout %}}
 
 The observation of reader connections and disconnections is achieved
 through a background task managed by Keyple Service.
@@ -150,9 +150,9 @@ PluginObserver pluginObserver = new PluginObserver();
 ((ObservablePlugin) plugin).addObserver(pluginObserver);
 {{< /code >}}
 
-{{% alert note %}}
+{{% callout note %}}
 Note that the monitoring thread only works if there is at least one observer registered, and the notification process is sequential and synchronous.
-{{% /alert %}}
+{{% /callout %}}
 
 ---
 ## Set up a reader
@@ -170,13 +170,13 @@ String readerName = plugin.getReaderNames().get(0);
 Reader reader = plugin.getReader(readerName);
 {{< /code >}}
 
-{{% alert note %}}
+{{% callout note %}}
 Depending on the type of plugin, the reader names are
 more or less dynamic (e.g. a PC/SC based system vs. an embedded
 terminal), it is sometimes necessary to implement an identification
 mechanism in order to assign the right reader to the right place in the
 system (for example by using regular expressions).
-{{% /alert %}}
+{{% /callout %}}
 
 ### Configure a reader
 There are two types of configuration. Their availability depends on the characteristics of the reader:
@@ -196,16 +196,16 @@ reader
 {{< /code >}}
 
 ### Monitor a reader
-{{% alert warning %}} The reader monitoring only applies to hardware environments in which the smart cards are removable.
+{{% callout warning %}} The reader monitoring only applies to hardware environments in which the smart cards are removable.
 Moreover, only readers of type `ObservableReader` can be monitored.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert note %}}
+{{% callout note %}}
 Observation of the readers is optional in Keyple. It facilitates an event-driven programming mode, but an application
 developer can choose not to observe a reader, either because this reader is not designed to manage card insertions/withdrawals (for example an
 Android OMAPI reader or a SAM reader), or because the application is designed to directly manage the presence of a card (see to `isCardPresent` method of the
 `Reader` interface).
-{{% /alert %}}
+{{% /callout %}}
 
 The observation of card insertions and removals is achieved
 through a background task managed by Keyple Service.
@@ -257,11 +257,11 @@ ReaderObserver readerObserver = new ReaderObserver();
 ((ObservableReader) reader).startCardDetection(ObservableCardReader.DetectionMode.REPEATING);
 {{< /code >}}
 
-{{% alert note %}}
+{{% callout note %}}
 Note that the `startCardDetection(...)` and `stopCardDetection()` methods start and stop the monitoring thread.
 The API offers different options to manage the needs around card detection.<br>
 Moreover, the notification process is sequential and synchronous.
-{{% /alert %}}
+{{% /callout %}}
 
 ---
 ## Select a card
@@ -389,12 +389,12 @@ public void onReaderEvent(CardReaderEvent event) {
 ...
 {{< /code >}}
 
-{{% alert note %}}
+{{% callout note %}}
 The `finalizeCardProcessing()` method must be invoked at the end of the transaction to ensure that the communication channel is closed.
 This switches the underlying monitoring thread into a state of waiting for the card to be removed.
 
 Not doing this can lead to blocking states of the card insertion/removal monitoring mechanism.
-{{% /alert %}}
+{{% /callout %}}
 
 ---
 ## Perform a transaction

@@ -5,9 +5,9 @@ type: book
 toc: false
 weight: 100
 ---
-{{% alert warning %}}
+{{% callout warning %}}
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
-{{% /alert %}}
+{{% /callout %}}
 
 ## About this documentation
 
@@ -15,7 +15,7 @@ This documentation is constantly evolving according to the feedback from its rea
 
 ## Global Architecture
 
-{{< figure library="true" src="archive-1.0/docs-overview/Keyple-components.svg" title="Global Architecture of Keyple" >}}
+{{< figure src="/media/archive-1.0/docs-overview/Keyple-components.svg" title="Global Architecture of Keyple" >}}
 
 Keyple is currently divided in two major layers:
 - The ‘Keyple Core' : a smart card API which allows managing smart card readers in a generic way, whaterver the reader driver or environment, and for standalone or distributed solution.

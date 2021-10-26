@@ -6,9 +6,9 @@ toc: false
 weight: 1
 ---
 
-{{% alert note %}}
+{{% callout note %}}
 The documentation of the version **1.0** of Keyple (deprecated) is accessible [here]({{< relref "docs-1.0" >}}).
-{{% /alert %}}
+{{% /callout %}}
 
 ## About this documentation
 

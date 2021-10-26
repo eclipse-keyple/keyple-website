@@ -16,12 +16,12 @@ However, this guide points out the specificities of this environment based on th
 
 We recommend that Android application developers clone this example to better understand how Keyple works on Android.
 
-{{% alert warning %}}  
+{{% callout warning %}}  
 The application available in the example repository requires: 
 * a retail Device with NFC powered by android.nfc library (integrated into standard Android SDK),
 * Android OS 19+,
 * a Calypso card (contactless smart card, NFC mobile phone with a Calypso applet or application).
-{{% /alert %}}
+{{% /callout %}}
 
 It uses three main components of Keyple:
 * [Keyple Service Java Library]({{< relref "/components-java/core/" >}})
