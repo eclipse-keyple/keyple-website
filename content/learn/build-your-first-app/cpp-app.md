@@ -9,4 +9,4 @@ weight: 3
 ---
 
 ---
-{{% alert note %}} Coming soon {{% /alert %}} 
+{{% callout note %}} Coming soon {{% /callout %}} 

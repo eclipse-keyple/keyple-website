@@ -7,18 +7,18 @@ toc: true
 draft: false
 weight: 230
 ---
-{{% alert warning %}}
+{{% callout warning %}}
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
-{{% /alert %}}
+{{% /callout %}}
 
 This quick start describes how to create a ready-to-execute C++
 command-line application that runs a simple transaction based on
 a Calypso portable object (PO) involving two smart card readers.
 
-{{% alert note %}}
+{{% callout note %}}
 The demonstration application created for this quick start requires a
 Calypso PO (contactless smart card, mobile phone with contactless
-communication) and a Calypso Secure Access Module (SAM). {{% /alert %}}
+communication) and a Calypso Secure Access Module (SAM). {{% /callout %}}
 
 We will use three main components of Keyple:
 * [Keyple Core]({{< ref "/components-cpp-0.9/core/" >}})

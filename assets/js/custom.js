@@ -1,5 +1,12 @@
+// make the footer full width
+let pageFooterContainer = $(".page-footer>.container");
+pageFooterContainer.addClass("container-fluid");
+pageFooterContainer.removeClass("container");
+pageFooterContainer.css("padding-left", "0");
+pageFooterContainer.css("padding-right", "0");
+
 // Copy to clipboard
-function updateClipboard(newClip, button) {
+updateClipboard = function(newClip, button) {
     navigator.permissions.query({name: "clipboard-write"}).then(result => {
         if (result.state == "granted" || result.state == "prompt") {
             /* write to the clipboard now */
@@ -18,19 +25,19 @@ function updateClipboard(newClip, button) {
         }
     });
 }
-function copyTabContentToClipboard(tabpaneId, button) {
+copyTabContentToClipboard = function(tabpaneId, button) {
     let tabId = $("#"+tabpaneId+" a.active")[0].getAttribute("aria-controls");
     let content = $("#"+tabId+" code")[0].innerText;
     updateClipboard(content, button);
 }
-function copyCodeContentToClipboard(codeId, button) {
+copyCodeContentToClipboard = function(codeId, button) {
     let content = $("#code-"+codeId)[0].innerText;
     updateClipboard(content, button);
 }
 
 // Dynamic dependencies for "client application" profile of "configuration wizard" java page
 const appDependencies = new Set();
-function computeAppContent(language) {
+computeAppContent = function(language) {
     let tagPrefix = 'code#all-'+language+'-dependencies span#';
     let contentHtml = $(tagPrefix+'calypsonet-terminal-reader-java-api-dynamic').html();
     if (appDependencies.has("cardCalypso")) {
@@ -71,7 +78,7 @@ function computeAppContent(language) {
     }
     return contentHtml;
 }
-function updateAppDependencies(tabRef, checkbox) {
+updateAppDependencies = function(tabRef, checkbox) {
     if (checkbox != null) {
         if (checkbox.checked == true) {
             appDependencies.add(checkbox.id);
@@ -87,7 +94,7 @@ function updateAppDependencies(tabRef, checkbox) {
 
 // Dynamic dependencies for "custom Keyple card extension" profile of "configuration wizard" java page
 const cardDependencies = new Set();
-function computeCardContent(language) {
+computeCardContent = function(language) {
     let tagPrefix = 'code#all-'+language+'-dependencies span#';
     let contentHtml = $(tagPrefix+'calypsonet-terminal-reader-java-api').html()
         + "\n" + $(tagPrefix+'calypsonet-terminal-card-java-api').html()
@@ -98,7 +105,7 @@ function computeCardContent(language) {
     }
     return contentHtml;
 }
-function updateCardDependencies(tabRef, checkbox) {
+updateCardDependencies = function(tabRef, checkbox) {
     if (checkbox != null) {
         if (checkbox.checked == true) {
             cardDependencies.add(checkbox.id);
@@ -113,7 +120,7 @@ function updateCardDependencies(tabRef, checkbox) {
 }
 
 // Data table of dependency check tool
-function initDatatableDependencyCheck() {
+initDatatableDependencyCheck = function() {
     $('#datatable-dependency-check').DataTable( {
         ordering: false,
         paging: false,
@@ -143,7 +150,7 @@ function initDatatableDependencyCheck() {
 }
 
 // Load the projects dashboard table content
-async function loadProjectsDashboard() {
+loadProjectsDashboard = async function() {
 
     let rootUrl = window.location.href + "../";
 

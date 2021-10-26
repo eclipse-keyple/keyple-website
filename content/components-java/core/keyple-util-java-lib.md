@@ -6,12 +6,12 @@ type: book
 toc: true
 ---
 
-{{% alert note %}}
+{{% callout note %}}
 **`{{% keyple-util-java-lib-version %}}`**
 <span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
 <span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse/keyple-util-java-lib/)</span>
 <span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse/keyple-util-java-lib/blob/main/CHANGELOG.md)</span>
-{{% /alert %}}
+{{% /callout %}}
 
 ## Overview
 
@@ -42,7 +42,7 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 {{< /tab >}}
 {{< /tabpane >}}
 
-{{% alert warning %}}
+{{% callout warning %}}
 Since this library is used by all Keyple libraries, it is recommended to explicitly perform a **dynamic import** of the library for a given major version.
 This ensures compatibility with all the used libraries.
-{{% /alert %}}
+{{% /callout %}}

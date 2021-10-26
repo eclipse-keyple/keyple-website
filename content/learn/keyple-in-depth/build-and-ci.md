@@ -17,9 +17,9 @@ Keyple uses Gradle.
 
 Keyple components are versioned according to [Semantic Versioning 2.0.0](https://semver.org) which is based on the three numbers `X.Y.Z`
 
-{{% alert note %}}
+{{% callout note %}}
 For API components (i.e. artifacts suffixed with `-api`), the incrementation of `Z` indicates only a documentation update.
-{{% /alert %}}
+{{% /callout %}}
 
 ---
 ## Continuous integration
@@ -42,9 +42,9 @@ The CI automates the following tasks (defined in the `Jenkinsfile` file):
 
 A snapshot artifact (suffixed with `-SNAPSHOT`) is automatically published after each commit on the `main` branch, except in the case of a release (see [Release publication](#release-publication)).
 
-{{% alert warning %}}
+{{% callout warning %}}
 The artifact version defined in the `gradle.properties` file must not have a `-SNAPSHOT` suffix because the suffix is automatically added by the Keyple Gradle plugin.
-{{% /alert %}}
+{{% /callout %}}
 
 ---
 ## Release publication
@@ -53,9 +53,9 @@ A release artifact is automatically published if and only if the following two c
 * The commit is done on the `main` branch or on a `release-X.Y.Z` branch.
 * The commit message starts with `Release X.Y.Z`.
 
-{{% alert warning %}}
+{{% callout warning %}}
 `X.Y.Z` must be the version defined in the `gradle.properties` file.
-{{% /alert %}}
+{{% /callout %}}
 
 ---
 ## Integration tests

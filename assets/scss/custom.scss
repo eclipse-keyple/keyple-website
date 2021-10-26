@@ -1,5 +1,6 @@
 footer {
   background-color: #1D87BB;
+  padding: 1rem 0;
 }
 
 footer a {
@@ -141,10 +142,15 @@ a:hover {
   padding: 0 1rem;
 }
 
-// color of right TOC and padding
+// color of right TOC, padding and margin
 #TableOfContents li a, .toc-top li a {
   color: rgba(0,0,0,.65);
   padding: 0 1rem;
+  font-size: .7rem;
+  line-height: inherit;
+}
+#TableOfContents li {
+  margin-bottom: 0;
 }
 
 // increase left side menu max width
@@ -246,6 +252,10 @@ pre, code {
 }
 
 // Powered by on footer section
+.site-footer #copyright {
+  font-weight: bold;
+}
+
 .site-footer #template-info {
   font-size: 0.5rem;
 }
@@ -253,4 +263,10 @@ pre, code {
 // Projects dashboard
 #projects-dashboard-table {
   white-space: nowrap;
+}
+
+// Center figures
+.margin-auto, figure img {
+  margin-left: auto;
+  margin-right: auto;
 }

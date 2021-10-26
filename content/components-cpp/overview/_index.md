@@ -7,7 +7,7 @@ toc = false
 +++
 
 ---
-{{% alert note %}} Coming soon {{% /alert %}}
+{{% callout note %}} Coming soon {{% /callout %}}
 
 ---
 {{< list_children >}}

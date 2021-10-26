@@ -9,5 +9,5 @@ toc: false
 ---
 This section lists the components that can be used to develop C++ applications.
 
-{{% alert note %}} Coming soon {{% /alert %}}
+{{% callout note %}} Coming soon {{% /callout %}}
 

@@ -6,9 +6,9 @@ toc: true
 draft: false
 weight: 310
 ---
-{{% alert warning %}}
+{{% callout warning %}}
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Overview
 
@@ -86,9 +86,9 @@ Android NFC plugin or one of the plugins available from the industrial
 partners of the project. For a complete list of available plugins,
 please see the [Java]({{< ref "components-java-1.0/_index.md" >}}) or [C++]({{< ref "components-cpp-0.9/_index.md" >}}) pages.
 
-{{% alert note %}} A new plugin can also be [created]({{< relref
+{{% callout note %}} A new plugin can also be [created]({{< relref
 "create-plugin" >}}) if the envisaged hardware does not yet have its
-plugin. {{% /alert %}}
+plugin. {{% /callout %}}
 
 ### Register the plugin
 
@@ -103,7 +103,7 @@ Card Service.
 plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, readerExceptionHandlerImpl));
 ```
 
-{{% alert note %}}
+{{% callout note %}}
 
 The plugin factories all implement the interface expected by
 SmartCardService.
@@ -114,12 +114,12 @@ plugin can take parameters as argument.
 For example, in the code above, the PC/SC plugin expects exception
 handlers, but in other cases it could be other parameters.
 
-{{% /alert %}}
+{{% /callout %}}
 
 ### Observation of the plugin
 
-{{% alert warning %}} The notion of plugin observation applies only to
-hardware environments in which the readers are removable. {{% /alert %}}
+{{% callout warning %}} The notion of plugin observation applies only to
+hardware environments in which the readers are removable. {{% /callout %}}
 
 The observation of reader connections and disconnections is achieved
 through a background task managed by **Keyple Core**.
@@ -203,11 +203,11 @@ String readerName = plugin.getReaderNames().get(0);
 Reader reader = plugin.getReader(readerName);
 ```
 
-{{% alert note %}} Depending on the type of plugin, the reader names are
+{{% callout note %}} Depending on the type of plugin, the reader names are
 more or less dynamic (e.g. a PC/SC based system vs. an embedded
 terminal), it is sometimes necessary to implement an identification
 mechanism in order to assign the right reader to the right place in the
-system (for example by using regular expressions). {{% /alert %}}
+system (for example by using regular expressions). {{% /callout %}}
 
 ### Customize the reader settings
 
@@ -279,13 +279,13 @@ class ReaderObserver implements ObservableReader.ReaderObserver {
 }
 ```
 
-{{% alert note %}} Observation of the readers is optional in Keyple. It
+{{% callout note %}} Observation of the readers is optional in Keyple. It
 facilitates an event-driven programming mode, but an application
 developer can choose not to observe a reader, either because this reader
 is not designed to manage card insertions/withdrawals (for example an
 Android OMAPI reader or a SAM reader), or because the application is
 designed to directly manage the presence of a card (refer to the
-```Reader``` interface). {{% /alert %}}
+```Reader``` interface). {{% /callout %}}
 
 ### Card selection
 

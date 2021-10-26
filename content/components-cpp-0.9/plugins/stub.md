@@ -6,11 +6,11 @@ type: book
 weight: 10
 toc: true
 ---
-{{% alert warning %}}
+{{% callout warning %}}
 Version 0.9 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert note %}}
+{{% callout note %}}
 **`{{% keyple-cpp-version %}}`**
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="users-cog" pack="fas" >}}
 Keyple project
@@ -20,7 +20,7 @@ Keyple project
 [GitHub](https://github.com/eclipse/keyple-cpp/tree/master/component/keyple-plugin/stub)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="exchange-alt" pack="fas" >}}
 [Changelogs](https://github.com/eclipse/keyple-cpp/releases/)
-{{% /alert %}}
+{{% /callout %}}
 
 ## Overview
 

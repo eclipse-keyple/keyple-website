@@ -25,15 +25,15 @@ The main features are:
 * card invalidation / rehabilitation.
 
 The diagram below illustrates the organization of a Calypso application based on Keyple:
-{{< figure library="true" src="learn/user-guide/calypso-application/calypso_application_overview.svg" caption="" >}}
+{{< figure src="/media/learn/user-guide/calypso-application/calypso_application_overview.svg" caption="" >}}
 
 ---
 ## Operating mode
-{{% alert warning %}}
+{{% callout warning %}}
 Pre-requisites:
 * Have a global view of Calypso product concepts (cards, SAM, security principles)
 * Have read the [Standalone Application User Guide]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application
-{{% /alert %}}
+{{% /callout %}}
 
 1. Access to the [Calypso card extension service](#the-calypso-extension-service)
 2. [Select a card](#select-a-card)
@@ -97,9 +97,9 @@ CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard()
 
 ---
 ## Set up security settings
-{{% alert note %}}
+{{% callout note %}}
 The security settings must be initialized only for secure transactions.
-{{% /alert %}}
+{{% /callout %}}
 
 The API offers several types of settings such as choosing the SAM to use, enabling various modes, specifying keys for legacy cards, etc... (see the API documentation for more information).
 

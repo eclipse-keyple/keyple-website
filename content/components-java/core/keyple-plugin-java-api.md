@@ -6,12 +6,12 @@ type: book
 toc: true
 ---
 
-{{% alert note %}}
+{{% callout note %}}
 **`{{% keyple-plugin-java-api-version %}}`**
 <span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
 <span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse/keyple-plugin-java-api/)</span>
 <span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse/keyple-plugin-java-api/blob/main/CHANGELOG.md)</span>
-{{% /alert %}}
+{{% /callout %}}
 
 ## Overview
 
@@ -43,7 +43,7 @@ implementation("org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java
 {{< /tab >}}
 {{< /tabpane >}}
 
-{{% alert note %}}
+{{% callout note %}}
 The third version number (x.y.**z**) only concerns updates of the javadoc because this component does not contain any implementation, but only an API.
 Therefore, it is recommended to always perform a **dynamic import** as described above in order to have the most up-to-date documentation.
-{{% /alert %}}
+{{% /callout %}}

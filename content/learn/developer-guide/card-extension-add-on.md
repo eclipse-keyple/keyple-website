@@ -32,7 +32,7 @@ A Keyple card extension contains a set of objects which meet the following three
   * **SPI** (Service Provider Interface): interface to be implemented by the card extension and directly used by Keyple Service.
 
 The component diagram below illustrates the internal API/SPI links between the card extension and Keyple Service, as well as the public APIs exposed to the client application:
-{{< figure library="true" src="learn/developer-guide/component-dependencies/card_api.svg" caption="" numbered="true" >}}
+{{< figure src="/media/learn/developer-guide/component-dependencies/card_api.svg" caption="" numbered="true" >}}
 
 ---
 ## Minimal requirements
@@ -49,12 +49,12 @@ The table below lists the objects that must be created and indicates the interfa
 | Card request DTO | | | `CardRequestSpi` |
 | APDU request DTO | | | `ApduRequestSpi` |
 
-{{% alert warning %}}
+{{% callout warning %}}
 In the case where the smart card object has fields of type `interface`,
 it will then be necessary to define for each of them and recursively a JSON deserializer and register it during the service initialization with the method `JsonUtil.registerTypeAdapter(...)` provided by the [Keyple Util]({{< ref "components-java/core/keyple-util-java-lib" >}}) library.
 
 This will allow the transport of this object through the network when using the Keyple Distributed solution.
-{{% /alert %}}
+{{% /callout %}}
 
 ---
 ## Define the card commands
@@ -71,21 +71,21 @@ Each card extension is free to define the APIs it considers relevant to perform 
 ---
 ## Set up dev environment
 
-{{% alert warning %}}
+{{% callout warning %}}
 For Java and Android projects, the code should be compliant with **Java 1.6** in order to address a wide range of applications.
-{{% /alert %}}
+{{% /callout %}}
 
 If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project template:
 * {{% staticref "media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" "newtab" %}}Java template{{% /staticref %}}: adapt fields `[CARD_EXTENSION_NAME]`, `Xxx`, `xxx`, `TODO`
 
-{{% alert warning %}}
+{{% callout warning %}}
 Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:
 {{< code lang="ini" >}}
 git update-index --chmod=+x "gradlew"
 git update-index --chmod=+x "scripts/check_version.sh"
 git update-index --chmod=+x "scripts/prepare_javadoc.sh"
 {{< /code >}}
-{{% /alert %}}
+{{% /callout %}}
 
 If examples are proposed, they should be placed in the [keyple-java-example](https://github.com/eclipse/keyple-java-example) repository.
 
@@ -94,14 +94,14 @@ The contribution procedure is described [here]({{< relref "contributing.md" >}})
 ---
 ## Implement the solution
 
-{{% alert warning %}}
+{{% callout warning %}}
 It is important to hide the internal Calypsonet interfaces of the **Calypsonet Terminal Card API** from the client application.
-{{% /alert %}}
+{{% /callout %}}
 
 For this purpose, it is suggested to respect the following programming pattern based on the use of:
 * public interfaces,
 * private interfaces adapters (package visibility) accessible from a public service.
-{{< figure library="true" src="learn/developer-guide/design-guides/card_extension_class_diagram.svg" caption="" numbered="true" >}}
+{{< figure src="/media/learn/developer-guide/design-guides/card_extension_class_diagram.svg" caption="" numbered="true" >}}
 
 ---
 ## API
