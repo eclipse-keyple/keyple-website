@@ -9,56 +9,61 @@ toc: true
 
 ---
 This online tool generates for you the `dependencies` section of Gradle or Maven configuration files.
-
 Choose your project profile and copy/paste the generated result into your project dependency manager.
+
+What do you want to develop?
+- [An application that uses existing Keyple components.](#client-application)
+- [A specific Keyple reader plugin add-on not already available.](#reader-plugin-add-on)
+- [A specific Keyple card extension add-on not already available.](#card-extension-add-on)
+- [An alternate Keyple distributed solution add-on.](#distributed-solution-add-on)
 
 ---
 ## Client application
 Please find below the configuration to use when developing an application that uses existing Keyple components:
 
-- **Which card extension do you want to use?**
-  <div>
-    <input type="checkbox" id="cardGeneric" onclick="javascript:updateAppDependencies(1, this);">
-    <label for="cardGeneric">Generic (with low level API)</label>
-  </div>
-  <div>
-    <input type="checkbox" id="cardCalypso" onclick="javascript:updateAppDependencies(1, this);">
-    <label for="cardCalypso">Calypso</label>
-  </div>
+- Which card extension do you want to use?
+  >  <div>
+  >    <input type="checkbox" id="cardGeneric" onclick="javascript:updateAppDependencies(1, this);">
+  >    <label for="cardGeneric">Generic (with low-level API)</label>
+  >  </div>
+  >  <div>
+  >    <input type="checkbox" id="cardCalypso" onclick="javascript:updateAppDependencies(1, this);">
+  >    <label for="cardCalypso">Calypso</label>
+  >  </div>
 
-- **Which reader plugin do you want to use?**
-  <div>
-    <input type="checkbox" id="pluginAndroidNfc" onclick="javascript:updateAppDependencies(1, this);">
-    <label for="pluginAndroidNfc">Android NFC</label>
-  </div>
-  <div>
-    <input type="checkbox" id="pluginAndroidOmapi" onclick="javascript:updateAppDependencies(1, this);">
-    <label for="pluginAndroidOmapi">Android OMAPI</label>
-  </div>
-  <div>
-    <input type="checkbox" id="pluginPcsc" onclick="javascript:updateAppDependencies(1, this);">
-    <label for="pluginPcsc">PC/SC</label>
-  </div>
-  <div>
-    <input type="checkbox" id="pluginStub" onclick="javascript:updateAppDependencies(1, this);">
-    <label for="pluginStub">Stub (simulated reader)</label>
-  </div>
+- Which reader plugin do you want to use?
+  >  <div>
+  >    <input type="checkbox" id="pluginAndroidNfc" onclick="javascript:updateAppDependencies(1, this);">
+  >    <label for="pluginAndroidNfc">Android NFC</label>
+  >  </div>
+  >  <div>
+  >    <input type="checkbox" id="pluginAndroidOmapi" onclick="javascript:updateAppDependencies(1, this);">
+  >    <label for="pluginAndroidOmapi">Android OMAPI</label>
+  >  </div>
+  >  <div>
+  >    <input type="checkbox" id="pluginPcsc" onclick="javascript:updateAppDependencies(1, this);">
+  >    <label for="pluginPcsc">PC/SC</label>
+  >  </div>
+  >  <div>
+  >    <input type="checkbox" id="pluginStub" onclick="javascript:updateAppDependencies(1, this);">
+  >    <label for="pluginStub">Stub (simulated reader)</label>
+  >  </div>
 
-- **In case of a distributed system, on which side is your application located?**
-  <div>
-    <input type="checkbox" id="distributedLocal" onclick="javascript:updateAppDependencies(1, this);">
-    <label for="distributedLocal">On the device <strong>having</strong> local access to the smart card reader</label>
-  </div>
-  <div>
-    <input type="checkbox" id="distributedRemote" onclick="javascript:updateAppDependencies(1, this);">
-    <label for="distributedRemote">On the device <strong>not having</strong> local access to the smart card reader</label>
-  </div>
+- In case of a distributed system, on which side is your application located?
+  >  <div>
+  >    <input type="checkbox" id="distributedLocal" onclick="javascript:updateAppDependencies(1, this);">
+  >    <label for="distributedLocal">On the device <strong>having</strong> local access to the smart card reader</label>
+  >  </div>
+  >  <div>
+  >    <input type="checkbox" id="distributedRemote" onclick="javascript:updateAppDependencies(1, this);">
+  >    <label for="distributedRemote">On the device <strong>not having</strong> local access to the smart card reader</label>
+  >  </div>
 
-- **Do you need additional services?**
-  <div>
-    <input type="checkbox" id="serviceResource" onclick="javascript:updateAppDependencies(1, this);">
-    <label for="serviceResource">Service for dynamic card resource allocation (e.g. for HSM or pool of readers)</label>
-  </div>
+- Do you need additional services?
+  >  <div>
+  >    <input type="checkbox" id="serviceResource" onclick="javascript:updateAppDependencies(1, this);">
+  >    <label for="serviceResource">Service for dynamic card resource allocation (e.g. for HSM or pool of readers)</label>
+  >  </div>
 
 {{< tabpane ref="1" >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}{{< /tab >}}
@@ -67,25 +72,9 @@ Please find below the configuration to use when developing an application that u
 {{< /tabpane >}}
 
 ---
-## Card extension add-on
-Please find below the configuration to use when developing a specific Keyple card extension not already available:
-
-- **Do you need additional services?**
-  <div>
-    <input type="checkbox" id="cardServiceResource" onclick="javascript:updateCardDependencies(2, this);">
-    <label for="cardServiceResource">Service for dynamic card resource allocation (e.g. HSM or pool of readers)</label>
-  </div>
-
-{{< tabpane ref="2" >}}
-{{< tab header="Gradle Groovy" lang="gradle" >}}{{< /tab >}}
-{{< tab header="Gradle Kotlin" lang="kotlin" >}}{{< /tab >}}
-{{< tab header="Maven" lang="xml" >}}{{< /tab >}}
-{{< /tabpane >}}
-
----
 ## Reader plugin add-on
-Please find below the configuration to use when developing a specific Keyple reader plugin not already available:
-{{< tabpane ref="3" >}}
+Please find below the configuration to use when developing a specific Keyple reader plugin add-on not already available:
+{{< tabpane ref="2" >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}
 implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}'
 implementation 'org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}'
@@ -116,8 +105,24 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 {{< /tabpane >}}
 
 ---
+## Card extension add-on
+Please find below the configuration to use when developing a specific Keyple card extension add-on not already available:
+
+- Do you need additional services?
+  >  <div>
+  >    <input type="checkbox" id="cardServiceResource" onclick="javascript:updateCardDependencies(3, this);">
+  >    <label for="cardServiceResource">Service for dynamic card resource allocation (e.g. HSM or pool of readers)</label>
+  >  </div>
+
+{{< tabpane ref="3" >}}
+{{< tab header="Gradle Groovy" lang="gradle" >}}{{< /tab >}}
+{{< tab header="Gradle Kotlin" lang="kotlin" >}}{{< /tab >}}
+{{< tab header="Maven" lang="xml" >}}{{< /tab >}}
+{{< /tabpane >}}
+
+---
 ## Distributed solution add-on
-Please find below the configuration to use when developing an alternate Keyple distributed solution:
+Please find below the configuration to use when developing an alternate Keyple distributed solution add-on:
 
 - **For the "Local Service" component:**
 {{< tabpane ref="4" >}}
@@ -335,6 +340,6 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <script type="text/javascript">
 document.body.onload = function() {
     updateAppDependencies(1, null);
-    updateCardDependencies(2, null);
+    updateCardDependencies(3, null);
 };
 </script>

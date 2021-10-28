@@ -73,19 +73,19 @@ Until the version 2.0.0, all the different Keyple components (Core, Calypso exte
     <td>0.9.0</td>
     <td>2020/09</td>
     <td>2021/01</td>
-    <td><ul><li>Android plugins - NFC &amp; OMAPI plugins optimized for all Android versions</li><li>Calypso<ul><li>simplified high level API to parse the Portable Object APDU responses, &amp; recover the data through a card image.</li><li>addition of the support of the PO PIN feature, PO Stored Value transaction, &amp; the SAM lock</li></ul></li></ul></td>
+    <td><ul><li>Android plugins - NFC &amp; OMAPI plugins optimized for all Android versions</li><li>Calypso<ul><li>simplified high-level API to parse the Portable Object APDU responses, &amp; recover the data through a card image.</li><li>addition of the support of the PO PIN feature, PO Stored Value transaction, &amp; the SAM lock</li></ul></li></ul></td>
   </tr>
   <tr>
     <td>0.8.1</td>
     <td>2020/01</td>
     <td>2020/05</td>
-    <td><ul><li>Core - Observable Reader interface evolution to improve the support of smart card reader solutions.</li><li>Calypso - simplified high level API to build the Portable Object APDU commands (PO data still recovered through a lower API managing APDI response parser)</li></ul></td>
+    <td><ul><li>Core - Observable Reader interface evolution to improve the support of smart card reader solutions.</li><li>Calypso - simplified high-level API to build the Portable Object APDU commands (PO data still recovered through a lower API managing APDI response parser)</li></ul></td>
   </tr>
   <tr>
     <td>0.7.0</td>
     <td>2019/07</td>
     <td>-</td>
-    <td>initial public java implementation<ul><li>Calypso - low level API to manage the common Calypso features (secure session for authentication, read and write commands of EF records)</li></ul></td>
+    <td>initial public java implementation<ul><li>Calypso - low-level API to manage the common Calypso features (secure session for authentication, read and write commands of EF records)</li></ul></td>
   </tr>
 </tbody>
 </table>

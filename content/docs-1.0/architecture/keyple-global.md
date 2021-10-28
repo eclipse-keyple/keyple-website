@@ -32,8 +32,8 @@ A terminal application operating processing with a specific smart card solution 
 
 {{< figure src="/media/archive-1.0/architecture/Keyple_Architecture_Application_Integration.svg" title="Keyple Architecture Application Integration" >}}
 
-Another way offering a better abstraction on smart card technical settings could be to implement on the Card API a smart card solution library extension providing a high level interface: a specific Solution API.
-This is how the Keyple Calypso extension has be defined, the Calypso API is a high level functional interface, which hides the low-level APDU operations.
+Another way offering a better abstraction on smart card technical settings could be to implement on the Card API a smart card solution library extension providing a high-level interface: a specific Solution API.
+This is how the Keyple Calypso extension has be defined, the Calypso API is a high-level functional interface, which hides the low-level APDU operations.
 
 ---
 ## Reader integration
