@@ -16,25 +16,35 @@
 &lt;li>All &lt;strong>libraries&lt;/strong> and &lt;strong>public APIs&lt;/strong> can be used by the developer of the client application.&lt;/li>
 &lt;li>The &lt;strong>internal APIs&lt;/strong> are intended for the developer of Keyple add-ons only (e.g. custom reader plugin, custom card extension or custom distributed solution).&lt;/li>
 &lt;/ul></description></item><item><title>Java - Configuration wizard</title><link>https://keyple.org/components-java/overview/configuration-wizard/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java/overview/configuration-wizard/</guid><description>&lt;hr>
-&lt;p>This online tool generates for you the &lt;code>dependencies&lt;/code> section of Gradle or Maven configuration files.&lt;/p>
-&lt;p>Choose your project profile and copy/paste the generated result into your project dependency manager.&lt;/p>
+&lt;p>This online tool generates for you the &lt;code>dependencies&lt;/code> section of Gradle or Maven configuration files.
+Choose your project profile and copy/paste the generated result into your project dependency manager.&lt;/p>
+&lt;p>What do you want to develop?&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="#client-application">An application that uses existing Keyple components.&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#reader-plugin-add-on">A specific Keyple reader plugin add-on not already available.&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#card-extension-add-on">A specific Keyple card extension add-on not already available.&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#distributed-solution-add-on">An alternate Keyple distributed solution add-on.&lt;/a>&lt;/li>
+&lt;/ul>
 &lt;hr>
 &lt;h2 id="client-application">Client application&lt;/h2>
 &lt;p>Please find below the configuration to use when developing an application that uses existing Keyple components:&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;p>&lt;strong>Which card extension do you want to use?&lt;/strong>&lt;/p>
+&lt;p>Which card extension do you want to use?&lt;/p>
+&lt;blockquote>
 &lt;div>
 &lt;input type="checkbox" id="cardGeneric" onclick="javascript:updateAppDependencies(1, this);">
-&lt;label for="cardGeneric">Generic (with low level API)&lt;/label>
+&lt;label for="cardGeneric">Generic (with low-level API)&lt;/label>
 &lt;/div>
 &lt;div>
 &lt;input type="checkbox" id="cardCalypso" onclick="javascript:updateAppDependencies(1, this);">
 &lt;label for="cardCalypso">Calypso&lt;/label>
 &lt;/div>
+&lt;/blockquote>
 &lt;/li>
 &lt;li>
-&lt;p>&lt;strong>Which reader plugin do you want to use?&lt;/strong>&lt;/p>
+&lt;p>Which reader plugin do you want to use?&lt;/p>
+&lt;blockquote>
 &lt;div>
 &lt;input type="checkbox" id="pluginAndroidNfc" onclick="javascript:updateAppDependencies(1, this);">
 &lt;label for="pluginAndroidNfc">Android NFC&lt;/label>
@@ -51,9 +61,11 @@
 &lt;input type="checkbox" id="pluginStub" onclick="javascript:updateAppDependencies(1, this);">
 &lt;label for="pluginStub">Stub (simulated reader)&lt;/label>
 &lt;/div>
+&lt;/blockquote>
 &lt;/li>
 &lt;li>
-&lt;p>&lt;strong>In case of a distributed system, on which side is your application located?&lt;/strong>&lt;/p>
+&lt;p>In case of a distributed system, on which side is your application located?&lt;/p>
+&lt;blockquote>
 &lt;div>
 &lt;input type="checkbox" id="distributedLocal" onclick="javascript:updateAppDependencies(1, this);">
 &lt;label for="distributedLocal">On the device &lt;strong>having&lt;/strong> local access to the smart card reader&lt;/label>
@@ -62,13 +74,16 @@
 &lt;input type="checkbox" id="distributedRemote" onclick="javascript:updateAppDependencies(1, this);">
 &lt;label for="distributedRemote">On the device &lt;strong>not having&lt;/strong> local access to the smart card reader&lt;/label>
 &lt;/div>
+&lt;/blockquote>
 &lt;/li>
 &lt;li>
-&lt;p>&lt;strong>Do you need additional services?&lt;/strong>&lt;/p>
+&lt;p>Do you need additional services?&lt;/p>
+&lt;blockquote>
 &lt;div>
 &lt;input type="checkbox" id="serviceResource" onclick="javascript:updateAppDependencies(1, this);">
 &lt;label for="serviceResource">Service for dynamic card resource allocation (e.g. for HSM or pool of readers)&lt;/label>
 &lt;/div>
+&lt;/blockquote>
 &lt;/li>
 &lt;/ul>
 &lt;ul class="nav nav-tabs" id="tabs-1" role="tablist">&lt;li class="nav-item">
@@ -105,16 +120,8 @@ id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
 &lt;/div>
 &lt;/div>
 &lt;hr>
-&lt;h2 id="card-extension-add-on">Card extension add-on&lt;/h2>
-&lt;p>Please find below the configuration to use when developing a specific Keyple card extension not already available:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Do you need additional services?&lt;/strong>
-&lt;div>
-&lt;input type="checkbox" id="cardServiceResource" onclick="javascript:updateCardDependencies(2, this);">
-&lt;label for="cardServiceResource">Service for dynamic card resource allocation (e.g. HSM or pool of readers)&lt;/label>
-&lt;/div>
-&lt;/li>
-&lt;/ul>
+&lt;h2 id="reader-plugin-add-on">Reader plugin add-on&lt;/h2>
+&lt;p>Please find below the configuration to use when developing a specific Keyple reader plugin add-on not already available:
 &lt;ul class="nav nav-tabs" id="tabs-2" role="tablist">&lt;li class="nav-item">
 &lt;a class="nav-link active tab-Gradle-Groovy"
 id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
@@ -137,20 +144,49 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
 id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
-&lt;pre>&lt;code class="language-gradle">&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&amp;#39;
+implementation &amp;#39;org.eclipse.keyple:keyple-plugin-java-api:2.0.0&amp;#39;
+implementation &amp;#39;org.eclipse.keyple:keyple-util-java-lib:2.0.0&amp;#39;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
-&lt;pre>&lt;code class="language-kotlin">&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-common-java-api:2.0.0&amp;#34;)
+implementation(&amp;#34;org.eclipse.keyple:keyple-plugin-java-api:2.0.0&amp;#34;)
+implementation(&amp;#34;org.eclipse.keyple:keyple-util-java-lib:2.0.0&amp;#34;)&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
-&lt;pre>&lt;code class="language-xml">&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;keyple-common-java-api&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;2.0.0&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;keyple-plugin-java-api&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;2.0.0&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;keyple-util-java-lib&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;2.0.0&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;/div>
+&lt;/p>
 &lt;hr>
-&lt;h2 id="reader-plugin-add-on">Reader plugin add-on&lt;/h2>
-&lt;p>Please find below the configuration to use when developing a specific Keyple reader plugin not already available:
+&lt;h2 id="card-extension-add-on">Card extension add-on&lt;/h2>
+&lt;p>Please find below the configuration to use when developing a specific Keyple card extension add-on not already available:&lt;/p>
+&lt;ul>
+&lt;li>Do you need additional services?
+&lt;blockquote>
+&lt;div>
+&lt;input type="checkbox" id="cardServiceResource" onclick="javascript:updateCardDependencies(3, this);">
+&lt;label for="cardServiceResource">Service for dynamic card resource allocation (e.g. HSM or pool of readers)&lt;/label>
+&lt;/div>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
 &lt;ul class="nav nav-tabs" id="tabs-3" role="tablist">&lt;li class="nav-item">
 &lt;a class="nav-link active tab-Gradle-Groovy"
 id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
@@ -173,39 +209,20 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-3', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-3-content">&lt;div class="tab-pane fade show active"
 id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
-&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&amp;#39;
-implementation &amp;#39;org.eclipse.keyple:keyple-plugin-java-api:2.0.0&amp;#39;
-implementation &amp;#39;org.eclipse.keyple:keyple-util-java-lib:2.0.0&amp;#39;&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-gradle">&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab">
-&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-common-java-api:2.0.0&amp;#34;)
-implementation(&amp;#34;org.eclipse.keyple:keyple-plugin-java-api:2.0.0&amp;#34;)
-implementation(&amp;#34;org.eclipse.keyple:keyple-util-java-lib:2.0.0&amp;#34;)&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-kotlin">&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-3-2" role="tabpanel" aria-labelled-by="tabs-3-2-tab">
-&lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;keyple-common-java-api&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.0.0&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;keyple-plugin-java-api&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.0.0&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;keyple-util-java-lib&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.0.0&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-xml">&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;/div>
-&lt;/p>
 &lt;hr>
 &lt;h2 id="distributed-solution-add-on">Distributed solution add-on&lt;/h2>
-&lt;p>Please find below the configuration to use when developing an alternate Keyple distributed solution:&lt;/p>
+&lt;p>Please find below the configuration to use when developing an alternate Keyple distributed solution add-on:&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>&lt;strong>For the &amp;ldquo;Local Service&amp;rdquo; component:&lt;/strong>
@@ -470,7 +487,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;script type="text/javascript">
 document.body.onload = function() {
 updateAppDependencies(1, null);
-updateCardDependencies(2, null);
+updateCardDependencies(3, null);
 };
 &lt;/script></description></item><item><title>Java - Dependency check</title><link>https://keyple.org/components-java/overview/dependency-check/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java/overview/dependency-check/</guid><description>&lt;hr>
 &lt;p>This online tool helps you to check the compatibility of Keyple components according to their API versions.&lt;/p>
