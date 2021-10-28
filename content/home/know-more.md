@@ -8,12 +8,7 @@ title = "Want to know more?"
 subtitle = "" 
 
 [design.background]
-  image = "homepage-background.png" 
-  image_darken = 0 
-  image_size = "cover" 
-  image_position = "center" 
-  image_parallax = false 
-
+  color = "#eff7fe"
   text_color_light = false 
 
 [[feature]]
@@ -34,3 +29,5 @@ subtitle = ""
   name = "Follow us!"
   description = "Subscribe to the [mailing list](https://accounts.eclipse.org/mailing-list/keyple-dev) for Keyple progress information and discussions."
 +++
+
+<br>

@@ -18,9 +18,6 @@ title = "They are using Eclipse Keyple®"
   image_parallax = false 
 
   text_color_light = false
-
-[design.spacing]
-  padding = ["20px", "0", "20px", "0"]
 +++
 
 <script src="//iot.eclipse.org/assets/js/eclipsefdn.adopters.js"></script>
@@ -34,6 +31,8 @@ title = "They are using Eclipse Keyple®"
   });
 </script>
 
+<br>
 <div class="eclipsefdn-adopters"></div>
+<br>
 
 [Follow this link to discover how to be listed as an adopter of Eclipse Keyple®](https://iot.eclipse.org/adopters/)
