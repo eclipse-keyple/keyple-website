@@ -1,7 +1,7 @@
 ---
 title: Keyple Card Generic Java Library
 linktitle: Generic
-summary: Add-on to manage cards with low level API.
+summary: Add-on to manage cards with low-level API.
 type: book
 toc: true
 ---
@@ -15,7 +15,7 @@ toc: true
 
 ## Overview
 
-The **Keyple Card Generic Java Library** is an add-on to manage cards with low level API.
+The **Keyple Card Generic Java Library** is an add-on to manage cards with low-level API.
 
 Therefore, it should be used only by application developers.
 
