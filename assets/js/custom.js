@@ -373,8 +373,9 @@ loadProjectsDashboard = async function() {
     let owner = "eclipse";
 
     let lastUpdate = await getJson('datetime');
-    let dateOptions = {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit', timeZoneName:'short'};
-    $("#projects-dashboard-datetime")[0].innerHTML = new Date(lastUpdate.datetime).toLocaleDateString('en-EN', dateOptions);
+    let date = new Date(lastUpdate.datetime);
+    let dateOptions = {hour: '2-digit', minute:'2-digit', hour12: false, timeZoneName: 'short'};
+    $("#projects-dashboard-datetime")[0].innerHTML = date.toISOString().substring(0, 10) + ", " + date.toLocaleTimeString('en-EN', dateOptions);
 
     let projects = await getJson('repository_list');
 
