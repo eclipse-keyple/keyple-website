@@ -11,7 +11,7 @@ subtitle = "Eclipse Keyple® addresses a wide range of domains, hardware readers
   columns = "1"
 
 [design.background]
-  image = "homepage-background.png" 
+  image = "homepage-background.webp" 
   image_darken = 0 
   image_size = "cover" 
   image_position = "center" 
@@ -20,4 +20,5 @@ subtitle = "Eclipse Keyple® addresses a wide range of domains, hardware readers
   text_color_light = false
 +++
 
-{{< figure src="media/keyple-schema.webp" >}}
+<br><br>
+{{< figure src="media/keyple-schema.svg" width="800px" >}}
