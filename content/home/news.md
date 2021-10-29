@@ -22,7 +22,7 @@ title = "What's new?"
   view = 2
   
 [design.background]
-  image = "homepage-background.png" 
+  image = "homepage-background.webp" 
   image_darken = 0  
   image_size = "cover" 
   image_position = "center"  
