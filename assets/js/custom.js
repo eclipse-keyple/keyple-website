@@ -225,7 +225,10 @@ loadProjectsDashboard = async function() {
         // column issues
         cell = row.insertCell(-1);
         cell.setAttribute("id", "issue-" + rowIndex);
-        cell.appendChild(document.createTextNode(""));
+        cell.appendChild(document.createTextNode(json.open_issues_count.toString()));
+        if (json.open_issues_count > 0) {
+            cell.style.backgroundColor = "orange";
+        }
 
         // column branches
         cell = row.insertCell(-1);
@@ -274,11 +277,6 @@ loadProjectsDashboard = async function() {
     async function getPullData(rowIndex, owner, repos) {
         const json = await getJsonRepositoryData(repos, "_pulls");
         let cell = document.getElementById("pull-" + rowIndex);
-        if (json.length > 0) {
-            cell.style.backgroundColor = "orange";
-        }
-        cell.innerHTML = json.length;
-        cell = document.getElementById("issue-" + rowIndex);
         if (json.length > 0) {
             cell.style.backgroundColor = "orange";
         }
