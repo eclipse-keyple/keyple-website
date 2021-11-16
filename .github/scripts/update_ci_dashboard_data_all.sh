@@ -7,7 +7,7 @@ repository_name="keyple-website"
 token=$2
 
 echo "Check if the dashboard needs to be updated..."
-../.github/scripts/update_ci_dashboard_data_check_all_repos_status.sh $token
+./.github/scripts/update_ci_dashboard_data_check_all_repos_status.sh $token
 if [[ $? -eq 1 ]]; then
   echo "No update is needed"
   exit 1
