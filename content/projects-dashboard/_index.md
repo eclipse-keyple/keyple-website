@@ -5,7 +5,9 @@ summary:
 ---
 
 {{% callout note %}}
-Last project status update: **<span id="projects-dashboard-datetime"></span>**
+The status of the projects is checked every hour, but the dashboard is only refreshed if the status of at least one of the projects has changed.
+
+Last dashboard refresh date: **<span id="projects-dashboard-datetime"></span>**
 
 When displayed, icons in columns **Doc** and **Status** are clickable and lead respectively to the **API documentation** and the **Jenkins CI status page**.
 {{% /callout %}}
