@@ -22,8 +22,10 @@ jobs:
         run: chmod +x ./.github/scripts/*.sh
 
       - name: Update projects dashboard data
+        id: update
         working-directory: .
         run: ./.github/scripts/update_ci_dashboard_data_all.sh ${{ github.repository_owner }} ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
 
       - name: Update gh-pages
         uses: peaceiris/actions-gh-pages@v3
@@ -31,3 +33,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./keyple-website
           enable_jekyll: true
+        if: steps.update.outcome == 'success'

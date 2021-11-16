@@ -6,6 +6,15 @@ repository_owner=$1
 repository_name="keyple-website"
 token=$2
 
+echo "Check if the dashboard needs to be updated..."
+../.github/scripts/update_ci_dashboard_data_check_all_repos_status.sh $token
+if [[ $? -eq 1 ]]; then
+  echo "No update is needed"
+  exit 1
+else
+  echo "The dashboard needs to be updated because at least one repository has been updated"
+fi
+
 echo "Clone $repository_name..."
 git clone https://github.com/$repository_owner/$repository_name.git
 
