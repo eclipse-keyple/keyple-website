@@ -8,19 +8,19 @@ repository_name=$2
 
 echo "Checking repository "$repository_name"..."
 
-last_update_date=`curl --request GET \
+github_hash=`curl --request GET \
           --url https://api.github.com/repos/eclipse/$repository_name \
           --header "authorization: Bearer $token" \
-          --header "content-type: application/json" | grep updated_at`
+          --header "content-type: application/json" | grep -v "pushed_at" | md5sum | cut -d ' ' -f 1`
 
-current_update_date=`curl --request GET \
+dashboard_hash=`curl --request GET \
           --url https://keyple.org/dashboard/$repository_name"_.json" \
-          --header "content-type: application/json" | grep updated_at`
+          --header "content-type: application/json" | grep -v "pushed_at" | md5sum | cut -d ' ' -f 1`
 
-echo "last_update_date="$last_update_date
-echo "current_update_date="$current_update_date
+echo "github_hash="$github_hash
+echo "dashboard_hash="$dashboard_hash
 
-if [ "$last_update_date" = "$current_update_date" ]; then
+if [ "$github_hash" = "$dashboard_hash" ]; then
   echo "No update required"
   exit 1
 else
