@@ -30,12 +30,5 @@ if [ "$github_hash" = "$dashboard_hash" ]; then
   exit 1
 else
   echo "Update required"
-  echo "github value="`curl --request GET \
-          --url https://api.github.com/repos/eclipse/$repository_name \
-          --header "authorization: Bearer $token" \
-          --header "content-type: application/json"`
-  echo "dashboard value="`curl --request GET \
-          --url https://keyple.org/dashboard/$repository_name"_.json" \
-          --header "content-type: application/json"`
   exit 0
 fi
