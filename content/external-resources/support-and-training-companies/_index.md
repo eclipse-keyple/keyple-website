@@ -8,13 +8,7 @@ weight: 3
 ---
 
 {{% callout note %}}
-To add your company please make a [Pull request](https://github.com/eclipse/keyple-website/pulls) contribution on GitHub.
-
-In order for your contribution to be accepted you must comply with one of the conditions below:
-
-- Be a committer of Eclipse Keyple® project
-- Having contributed to one of the components of Eclipse Keyple® project
-- Be a [adopter/user](https://iot.eclipse.org/adopters/) of Eclipse Keyple®
+To add your company please [create an issue](https://github.com/eclipse/keyple-website/issues) on GitHub **and/or** directly contribute to this website using the [contribution guide]({{< relref "community/contributing/" >}}).
 {{% /callout %}}
 
 {{< list_children >}}
