@@ -65,7 +65,7 @@ Select the targeted versions of the APIs to show the associated compliant librar
             <td>2.0.+</td><!-- keyple-distributed-remote-java-api -->
             <td>2.0.+</td><!-- keyple-plugin-java-api -->
             <td>2.0.0</td><!-- keyple-util-java-lib -->
-            <td>2.0.0</td><!-- keyple-service-java-lib -->
+            <td>2.0.0...2.0.1</td><!-- keyple-service-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-service-resource-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-local-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-network-java-lib -->
