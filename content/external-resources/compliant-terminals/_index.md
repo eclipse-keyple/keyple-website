@@ -3,7 +3,7 @@ title: Keyple compliant terminals
 linktitle: Compliant terminals
 summary: Find here a list of terminals compliant with Keyple.
 type: book
-toc: true
+toc: false
 weight: 2
 ---
 
