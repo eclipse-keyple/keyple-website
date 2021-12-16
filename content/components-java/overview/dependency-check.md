@@ -70,7 +70,7 @@ Select the targeted versions of the APIs to show the associated compliant librar
             <td>2.0.0</td><!-- keyple-distributed-local-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-remote-java-lib -->
-            <td>2.0.0...2.0.1</td><!-- keyple-card-calypso-java-lib -->
+            <td>2.0.0...2.0.2</td><!-- keyple-card-calypso-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0</td><!-- keyple-plugin-android-omapi-java-lib -->

@@ -3,7 +3,7 @@ title: External Keyple add-ons
 linktitle: External add-ons
 summary: Find here a list of add-ons compliant with Keyple.
 type: book
-toc: true
+toc: false
 weight: 1
 ---
 
