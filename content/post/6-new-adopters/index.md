@@ -1,7 +1,7 @@
 ---
 title: "6 new adopters of Eclipse Keyple®"
 subtitle: ""
-summary: "Welcome to 6 new adopters of Eclipse Keyple®"
+summary: "Welcome to 6 new adopters of Eclipse Keyple®!"
 authors: [Calypso Networks Association]
 tags: ["Eclipse", "Keyple", "adopters"]
 categories: [News]
@@ -17,8 +17,7 @@ Eclipse Keyple is pleased to welcome 6 new adopters: Bluebird, Coppernic, Flowbi
 
 You are interested in being listed as an adopter of Eclipse Keyple? Follow this link: https://iot.eclipse.org/adopters/
 
-You would like to get in touch with other Keyple friends, or to be informed of the latest news about Keyple?
-
+You would like to get in touch with other Keyple friends, or to be informed of the latest news about Keyple?\
 If you are a Keyple contributor: first subscribe to the keyple-dev mailing list, then post a message to keyple-dev@eclipse.org\
 If you are a Keyple user: first subscribe to the keyple-user mailing list, then post a message to keyple-user@eclipse.org.
 

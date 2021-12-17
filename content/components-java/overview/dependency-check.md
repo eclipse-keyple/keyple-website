@@ -20,7 +20,7 @@ Select the targeted versions of the APIs to show the associated compliant librar
 - Insert a row each time an API has been updated (major or minor version) then update all impacted components.
 
 - If the update does not concern the APIs, but only the libraries, then update only the version range of the concerned libraries
-(ex: if keyple-service-java-api goes from "2.0.0" to "2.0.1", then put "2.0.0-2.0.1" in the table)
+(ex: if keyple-service-java-api goes from "2.0.0" to "2.0.3", then put "2.0.0...2.0.3" in the table)
 -->
 
 <table id="datatable-dependency-check" class="display compact" style="width:100%">
@@ -70,8 +70,8 @@ Select the targeted versions of the APIs to show the associated compliant librar
             <td>2.0.0</td><!-- keyple-distributed-local-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-remote-java-lib -->
-            <td>2.0.0...2.0.2</td><!-- keyple-card-calypso-java-lib -->
-            <td>2.0.0...2.0.1</td><!-- keyple-card-generic-java-lib -->
+            <td>2.0.0...2.0.3</td><!-- keyple-card-calypso-java-lib -->
+            <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0</td><!-- keyple-plugin-android-omapi-java-lib -->
             <td>2.0.0</td><!-- keyple-plugin-pcsc-java-lib -->
