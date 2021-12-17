@@ -153,4 +153,56 @@ The artifact version defined in the &lt;code>gradle.properties&lt;/code> file mu
 &lt;/div>
 &lt;hr>
 &lt;h2 id="integration-tests">Integration tests&lt;/h2>
-&lt;p>Integration tests are defined in an independent GitHub repository: &lt;a href="https://github.com/eclipse/keyple-integration-java-test" target="_blank" rel="noopener">keyple-integration-java-test&lt;/a>&lt;/p></description></item></channel></rss>
+&lt;p>Integration tests are defined in an independent GitHub repository: &lt;a href="https://github.com/eclipse/keyple-integration-java-test" target="_blank" rel="noopener">keyple-integration-java-test&lt;/a>&lt;/p>
+&lt;h2 id="release-procedure">Release procedure&lt;/h2>
+&lt;ol>
+&lt;li>Create a branch dedicated to the current release.&lt;/li>
+&lt;li>Check &lt;code>gradle.properties&lt;/code> file:
+&lt;ul>
+&lt;li>Check the consistency of the version.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Check &lt;code>build.gradle.kts&lt;/code> file:
+&lt;ul>
+&lt;li>Use only released dependencies.&lt;/li>
+&lt;li>Upgrade Keyple dependencies to their latest released versions.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Update &lt;code>CHANGELOG.md&lt;/code> file:
+&lt;ul>
+&lt;li>Verify the consistency of the &lt;code>Unreleased&lt;/code> section.&lt;/li>
+&lt;li>Move content of &lt;code>Unreleased&lt;/code> section to a new &amp;ldquo;release&amp;rdquo; section.&lt;/li>
+&lt;li>Update bottom links.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Build and test the component.&lt;/li>
+&lt;li>Commit the modified files using the commit message &lt;code>Release x.y.z&lt;/code>.&lt;/li>
+&lt;li>Push and create a pull request to merge the branch into &lt;code>main&lt;/code>.&lt;/li>
+&lt;li>Await the success of the build by the CI.&lt;/li>
+&lt;li>Squash and merge the pull request.&lt;/li>
+&lt;li>Await the success of the build by the CI.&lt;/li>
+&lt;li>Connect to &lt;a href="https://oss.sonatype.org/#welcome" target="_blank" rel="noopener">Nexus Repository Manager&lt;/a> of Eclipse Keyple and go to &amp;ldquo;Staging Repositories&amp;rdquo; page:
+&lt;ul>
+&lt;li>Select the correct folder to Close &amp;amp; Release. It must contain the manifests, the JAR and all the others elements (sources, javadoc).&lt;/li>
+&lt;li>Close the folder.&lt;/li>
+&lt;li>Release the folder.&lt;/li>
+&lt;li>The other unwanted folders could be dropped.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Check the availability of the release on the &lt;a href="https://repo.maven.apache.org/maven2/org/eclipse/keyple/" target="_blank" rel="noopener">Maven Repository&lt;/a>. This step may take from 10 minutes to 2 hours.&lt;/li>
+&lt;li>Create a release on GitHub:
+&lt;ul>
+&lt;li>Set tag &lt;code>x.y.z&lt;/code>&lt;/li>
+&lt;li>Set release name &lt;code>x.y.z&lt;/code>&lt;/li>
+&lt;li>Set the content by copying/pasting the content of the current release description in the &lt;code>CHANGELOG.md&lt;/code> file without the bottom links.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Update this website:
+&lt;ul>
+&lt;li>Update version in &lt;code>params.yaml&lt;/code> file.&lt;/li>
+&lt;li>Update table content of &lt;code>dependency-check.md&lt;/code> file.&lt;/li>
+&lt;li>Update others elements if needed (user guides, developer guides, etc&amp;hellip;).&lt;/li>
+&lt;li>Commit and push the modifications.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol></description></item></channel></rss>
