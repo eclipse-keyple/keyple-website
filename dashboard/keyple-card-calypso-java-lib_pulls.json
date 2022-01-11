@@ -1,67 +1,48 @@
 [
   {
-    "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/47",
-    "id": 818624048,
-    "node_id": "PR_kwDODMWfVs4wyzYw",
-    "html_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/pull/47",
-    "diff_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/pull/47.diff",
-    "patch_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/pull/47.patch",
-    "issue_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/47",
-    "number": 47,
+    "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/48",
+    "id": 818794377,
+    "node_id": "PR_kwDODMWfVs4wzc-J",
+    "html_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/pull/48",
+    "diff_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/pull/48.diff",
+    "patch_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/pull/48.patch",
+    "issue_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/48",
+    "number": 48,
     "state": "open",
     "locked": false,
-    "title": "feat: Add \"prepareUpdateBinary\" and \"prepareWriteBinary\" methods",
+    "title": "feat: add \"EF_LIST\" and \"TRACEABILITY_INFORMATION\" tags to \"GET DATA\" command.",
     "user": {
-      "login": "andrei-cristea",
-      "id": 26622621,
-      "node_id": "MDQ6VXNlcjI2NjIyNjIx",
-      "avatar_url": "https://avatars.githubusercontent.com/u/26622621?v=4",
+      "login": "jeanpierrefortune",
+      "id": 1011563,
+      "node_id": "MDQ6VXNlcjEwMTE1NjM=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1011563?v=4",
       "gravatar_id": "",
-      "url": "https://api.github.com/users/andrei-cristea",
-      "html_url": "https://github.com/andrei-cristea",
-      "followers_url": "https://api.github.com/users/andrei-cristea/followers",
-      "following_url": "https://api.github.com/users/andrei-cristea/following{/other_user}",
-      "gists_url": "https://api.github.com/users/andrei-cristea/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/andrei-cristea/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/andrei-cristea/subscriptions",
-      "organizations_url": "https://api.github.com/users/andrei-cristea/orgs",
-      "repos_url": "https://api.github.com/users/andrei-cristea/repos",
-      "events_url": "https://api.github.com/users/andrei-cristea/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/andrei-cristea/received_events",
+      "url": "https://api.github.com/users/jeanpierrefortune",
+      "html_url": "https://github.com/jeanpierrefortune",
+      "followers_url": "https://api.github.com/users/jeanpierrefortune/followers",
+      "following_url": "https://api.github.com/users/jeanpierrefortune/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jeanpierrefortune/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jeanpierrefortune/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jeanpierrefortune/subscriptions",
+      "organizations_url": "https://api.github.com/users/jeanpierrefortune/orgs",
+      "repos_url": "https://api.github.com/users/jeanpierrefortune/repos",
+      "events_url": "https://api.github.com/users/jeanpierrefortune/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jeanpierrefortune/received_events",
       "type": "User",
       "site_admin": false
     },
-    "body": "Closes #34",
-    "created_at": "2022-01-11T12:03:51Z",
-    "updated_at": "2022-01-11T12:03:56Z",
+    "body": "Closes #33",
+    "created_at": "2022-01-11T14:59:55Z",
+    "updated_at": "2022-01-11T14:59:55Z",
     "closed_at": null,
     "merged_at": null,
-    "merge_commit_sha": "d8eb8dd8278f214608f61327c58a21a82f114cf4",
+    "merge_commit_sha": "b08923c7e54ee70f7ba9c0d7ddd21a2f8919e197",
     "assignee": null,
     "assignees": [
 
     ],
     "requested_reviewers": [
-      {
-        "login": "jeanpierrefortune",
-        "id": 1011563,
-        "node_id": "MDQ6VXNlcjEwMTE1NjM=",
-        "avatar_url": "https://avatars.githubusercontent.com/u/1011563?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/jeanpierrefortune",
-        "html_url": "https://github.com/jeanpierrefortune",
-        "followers_url": "https://api.github.com/users/jeanpierrefortune/followers",
-        "following_url": "https://api.github.com/users/jeanpierrefortune/following{/other_user}",
-        "gists_url": "https://api.github.com/users/jeanpierrefortune/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/jeanpierrefortune/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/jeanpierrefortune/subscriptions",
-        "organizations_url": "https://api.github.com/users/jeanpierrefortune/orgs",
-        "repos_url": "https://api.github.com/users/jeanpierrefortune/repos",
-        "events_url": "https://api.github.com/users/jeanpierrefortune/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/jeanpierrefortune/received_events",
-        "type": "User",
-        "site_admin": false
-      }
+
     ],
     "requested_teams": [
 
@@ -71,15 +52,15 @@
     ],
     "milestone": null,
     "draft": false,
-    "commits_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/47/commits",
-    "review_comments_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/47/comments",
+    "commits_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/48/commits",
+    "review_comments_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/48/comments",
     "review_comment_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/comments{/number}",
-    "comments_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/47/comments",
-    "statuses_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/statuses/43ba2da2fb446adb751eaee45caf181ea1019b16",
+    "comments_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/48/comments",
+    "statuses_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/statuses/08ab3cf7970167017895ef9a8ee22883386f5f5c",
     "head": {
-      "label": "eclipse:#34_update_write_binary",
-      "ref": "#34_update_write_binary",
-      "sha": "43ba2da2fb446adb751eaee45caf181ea1019b16",
+      "label": "eclipse:#33_improve_get_data",
+      "ref": "#33_improve_get_data",
+      "sha": "08ab3cf7970167017895ef9a8ee22883386f5f5c",
       "user": {
         "login": "eclipse",
         "id": 56974,
@@ -168,13 +149,13 @@
         "deployments_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/deployments",
         "created_at": "2019-10-10T20:20:00Z",
         "updated_at": "2022-01-10T16:17:32Z",
-        "pushed_at": "2022-01-11T12:03:51Z",
+        "pushed_at": "2022-01-11T14:59:55Z",
         "git_url": "git://github.com/eclipse/keyple-card-calypso-java-lib.git",
         "ssh_url": "git@github.com:eclipse/keyple-card-calypso-java-lib.git",
         "clone_url": "https://github.com/eclipse/keyple-card-calypso-java-lib.git",
         "svn_url": "https://github.com/eclipse/keyple-card-calypso-java-lib",
         "homepage": "https://keyple.org/",
-        "size": 1590,
+        "size": 1636,
         "stargazers_count": 5,
         "watchers_count": 5,
         "language": "Java",
@@ -187,7 +168,7 @@
         "mirror_url": null,
         "archived": false,
         "disabled": false,
-        "open_issues_count": 13,
+        "open_issues_count": 12,
         "license": {
           "key": "epl-2.0",
           "name": "Eclipse Public License 2.0",
@@ -202,7 +183,7 @@
         ],
         "visibility": "public",
         "forks": 6,
-        "open_issues": 13,
+        "open_issues": 12,
         "watchers": 5,
         "default_branch": "main"
       }
@@ -210,7 +191,7 @@
     "base": {
       "label": "eclipse:main",
       "ref": "main",
-      "sha": "49c7135d6a220ddef7a5469905abe7cb579ef0b6",
+      "sha": "3bdd4ba77dd08803e987d30db912b5496a547229",
       "user": {
         "login": "eclipse",
         "id": 56974,
@@ -299,13 +280,13 @@
         "deployments_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/deployments",
         "created_at": "2019-10-10T20:20:00Z",
         "updated_at": "2022-01-10T16:17:32Z",
-        "pushed_at": "2022-01-11T12:03:51Z",
+        "pushed_at": "2022-01-11T14:59:55Z",
         "git_url": "git://github.com/eclipse/keyple-card-calypso-java-lib.git",
         "ssh_url": "git@github.com:eclipse/keyple-card-calypso-java-lib.git",
         "clone_url": "https://github.com/eclipse/keyple-card-calypso-java-lib.git",
         "svn_url": "https://github.com/eclipse/keyple-card-calypso-java-lib",
         "homepage": "https://keyple.org/",
-        "size": 1590,
+        "size": 1636,
         "stargazers_count": 5,
         "watchers_count": 5,
         "language": "Java",
@@ -318,7 +299,7 @@
         "mirror_url": null,
         "archived": false,
         "disabled": false,
-        "open_issues_count": 13,
+        "open_issues_count": 12,
         "license": {
           "key": "epl-2.0",
           "name": "Eclipse Public License 2.0",
@@ -333,35 +314,35 @@
         ],
         "visibility": "public",
         "forks": 6,
-        "open_issues": 13,
+        "open_issues": 12,
         "watchers": 5,
         "default_branch": "main"
       }
     },
     "_links": {
       "self": {
-        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/47"
+        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/48"
       },
       "html": {
-        "href": "https://github.com/eclipse/keyple-card-calypso-java-lib/pull/47"
+        "href": "https://github.com/eclipse/keyple-card-calypso-java-lib/pull/48"
       },
       "issue": {
-        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/47"
+        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/48"
       },
       "comments": {
-        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/47/comments"
+        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/48/comments"
       },
       "review_comments": {
-        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/47/comments"
+        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/48/comments"
       },
       "review_comment": {
         "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/comments{/number}"
       },
       "commits": {
-        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/47/commits"
+        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/pulls/48/commits"
       },
       "statuses": {
-        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/statuses/43ba2da2fb446adb751eaee45caf181ea1019b16"
+        "href": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/statuses/08ab3cf7970167017895ef9a8ee22883386f5f5c"
       }
     },
     "author_association": "CONTRIBUTOR",
