@@ -19,7 +19,7 @@ The **Keyple Distributed Local Java Library** is the part of the **Keyple Distri
 
 Therefore, it should be used only by developers of applications installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.
 
-It is compatible with **PC**, **MAC** and **Android** platforms.
+It is compatible with **Windows**, **Linux**, **macOS** and **Android** platforms.
 
 ## Documentation
 

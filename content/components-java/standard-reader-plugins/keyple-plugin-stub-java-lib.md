@@ -19,7 +19,7 @@ The **Keyple Plugin Stub Java Library** is an add-on to manage **virtual** reade
 
 Therefore, it should be used only by application developers.
 
-It is compatible with **PC**, **MAC** and **Android** platforms.
+It is compatible with **Windows**, **Linux**, **macOS** and **Android** platforms.
 
 ## Documentation
 

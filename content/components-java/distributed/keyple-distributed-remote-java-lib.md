@@ -19,7 +19,7 @@ The **Keyple Distributed Remote Java Library** is the part of the **Keyple Distr
 
 Therefore, it should be used only by developers of applications installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely.
 
-It is compatible with **PC**, **MAC** and **Android** platforms.
+It is compatible with **Windows**, **Linux**, **macOS** and **Android** platforms.
 
 ## Documentation
 

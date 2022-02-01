@@ -19,7 +19,7 @@ The **Keyple Card Calypso Java Library** is an add-on to manage Calypso® cards.
 
 Therefore, it should be used only by application developers.
 
-It can be used on **PC**, **MAC** and **Android** platforms.
+It can be used on **Windows**, **Linux**, **macOS** and **Android** platforms.
 
 ## Documentation
 
