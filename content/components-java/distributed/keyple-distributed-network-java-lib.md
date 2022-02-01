@@ -19,7 +19,7 @@ The **Keyple Distributed Network Java Library** is the part of the **Keyple Dist
 
 Therefore, it should be used only by developers of distributed applications.
 
-It is compatible with **PC**, **MAC** and **Android** platforms.
+It is compatible with **Windows**, **Linux**, **macOS** and **Android** platforms.
 
 ## Documentation
 

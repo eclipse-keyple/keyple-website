@@ -65,12 +65,12 @@ repositories {
 dependencies {
     // Import CNA APIs
     implementation 'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.+'
-    implementation 'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.0.+'
+    implementation 'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.1.+'
     // Import Keyple components
     implementation 'org.eclipse.keyple:keyple-common-java-api:2.0.+'
     implementation 'org.eclipse.keyple:keyple-util-java-lib:2.+'
     implementation 'org.eclipse.keyple:keyple-service-java-lib:2.0.1'
-    implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:2.0.1'
+    implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:2.1.0'
     implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0'
 }
 {{< /code >}}
@@ -274,8 +274,8 @@ The mutual authentication process between Calypso card and Calypso SAM is initia
     // Performs file reads using the card transaction manager in a secure session.
     CardTransactionManager cardTransactionManager = calypsoExtensionService
             .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-            .prepareReadRecordFile(
-                    SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
+            .prepareReadRecords(
+                    SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
             .processOpening(WriteAccessLevel.DEBIT);
 {{< /code >}}
 
@@ -569,8 +569,8 @@ public class DemoCardAuthentication {
         // Performs file reads using the card transaction manager in a secure session.
         CardTransactionManager cardTransactionManager = calypsoExtensionService
                 .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-                .prepareReadRecordFile(
-                        SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
+                .prepareReadRecords(
+                        SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
                 .processOpening(WriteAccessLevel.DEBIT);
 
         // Close the secure session, free the communication channel at the same time
