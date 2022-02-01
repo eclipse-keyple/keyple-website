@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eclipse Keyple</title><link>https://keyple.org/</link><atom:link href="https://keyple.org/index.xml" rel="self" type="application/rss+xml"/><description>Eclipse Keyple</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><lastBuildDate>Thu, 09 Dec 2021 12:00:00 +0100</lastBuildDate><image><url>https://keyple.org/media/logo.svg</url><title>Eclipse Keyple</title><link>https://keyple.org/</link></image><item><title>Calypso Networks Association</title><link>https://keyple.org/external-resources/support-and-training-companies/calypso-networks-association/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/external-resources/support-and-training-companies/calypso-networks-association/</guid><description>&lt;blockquote>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eclipse Keyple</title><link>https://keyple.org/</link><atom:link href="https://keyple.org/index.xml" rel="self" type="application/rss+xml"/><description>Eclipse Keyple</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2022 The Eclipse Keyple® project. All Rights Reserved.</copyright><lastBuildDate>Thu, 09 Dec 2021 12:00:00 +0100</lastBuildDate><image><url>https://keyple.org/media/logo.svg</url><title>Eclipse Keyple</title><link>https://keyple.org/</link></image><item><title>Calypso Networks Association</title><link>https://keyple.org/external-resources/support-and-training-companies/calypso-networks-association/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/external-resources/support-and-training-companies/calypso-networks-association/</guid><description>&lt;blockquote>
 &lt;p>
 &lt;i class="fas fa-globe pr-1 fa-fw">&lt;/i> &lt;a href="https://calypsonet.org" target="_blank" rel="noopener">Discover more about CNA here&lt;/a>&lt;/p>
 &lt;p>
@@ -65,12 +65,12 @@ mavenCentral()
 dependencies {
 // Import CNA APIs
 implementation &amp;#39;org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.&amp;#43;&amp;#39;
-implementation &amp;#39;org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.0.&amp;#43;&amp;#39;
+implementation &amp;#39;org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.1.&amp;#43;&amp;#39;
 // Import Keyple components
 implementation &amp;#39;org.eclipse.keyple:keyple-common-java-api:2.0.&amp;#43;&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-util-java-lib:2.&amp;#43;&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-service-java-lib:2.0.1&amp;#39;
-implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.0.1&amp;#39;
+implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.1.0&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0&amp;#39;
 }&lt;/code>&lt;/pre>
 &lt;p>If necessary, also create the usual tree in which the Java code of this
@@ -216,8 +216,8 @@ final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
 // Performs file reads using the card transaction manager in a secure session.
 CardTransactionManager cardTransactionManager = calypsoExtensionService
 .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-.prepareReadRecordFile(
-SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
+.prepareReadRecords(
+SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
 .processOpening(WriteAccessLevel.DEBIT);&lt;/code>&lt;/pre>
 &lt;h3 id="close-the-calypso-secure-session">Close the Calypso secure session&lt;/h3>
 &lt;p>3rd card exchange:&lt;/p>
@@ -432,8 +432,8 @@ final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
 // Performs file reads using the card transaction manager in a secure session.
 CardTransactionManager cardTransactionManager = calypsoExtensionService
 .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-.prepareReadRecordFile(
-SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
+.prepareReadRecords(
+SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
 .processOpening(WriteAccessLevel.DEBIT);
 // Close the secure session, free the communication channel at the same time
 cardTransactionManager.prepareReleaseCardChannel()
@@ -1923,7 +1923,7 @@ The provided &lt;code>CalypsoCard&lt;/code> object is kept and updated dynamical
 // Performs file reads using the card transaction manager in secure mode.
 cardExtension
 .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-.prepareReadRecordFile(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
+.prepareReadRecords(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
 .processOpening(WriteAccessLevel.DEBIT)
 .prepareReleaseCardChannel()
 .processClosing();
@@ -3352,7 +3352,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-service-resource-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-service-resource-java-lib:2.0.1'&lt;/span>&lt;/span>
 &lt;span id="keyple-util-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-util-java-lib:2.0.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-util-java-lib-dynamic">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-util-java-lib:2.&amp;#43;'&lt;/span>&lt;/span>
-&lt;span id="keyple-card-calypso-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-java-lib:2.0.3'&lt;/span>&lt;/span>
+&lt;span id="keyple-card-calypso-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-java-lib:2.1.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-generic-java-lib:2.0.2'&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-local-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-distributed-local-java-lib:2.0.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-network-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-distributed-network-java-lib:2.0.0'&lt;/span>&lt;/span>
@@ -3365,7 +3365,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="calypsonet-terminal-reader-java-api-dynamic">implementation &lt;span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.&amp;#43;'&lt;/span>&lt;/span>
 &lt;span id="calypsonet-terminal-card-java-api">implementation &lt;span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-card-java-api:1.0.0'&lt;/span>&lt;/span>
 &lt;span id="calypsonet-terminal-card-java-api-dynamic">implementation &lt;span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-card-java-api:1.0.&amp;#43;'&lt;/span>&lt;/span>
-&lt;span id="calypsonet-terminal-calypso-java-api-dynamic">implementation &lt;span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.0.&amp;#43;'&lt;/span>&lt;/span>
+&lt;span id="calypsonet-terminal-calypso-java-api-dynamic">implementation &lt;span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.1.&amp;#43;'&lt;/span>&lt;/span>
 &lt;/code>
 &lt;!-- All kotlin dependencies -->
 &lt;code id="all-kotlin-dependencies" style="display:none">
@@ -3375,7 +3375,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-service-resource-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-service-resource-java-lib:2.0.1"&lt;/span>)&lt;/span>
 &lt;span id="keyple-util-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-util-java-lib:2.0.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-util-java-lib-dynamic">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-util-java-lib:2.&amp;#43;"&lt;/span>)&lt;/span>
-&lt;span id="keyple-card-calypso-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-java-lib:2.0.3"&lt;/span>)&lt;/span>
+&lt;span id="keyple-card-calypso-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-java-lib:2.1.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-generic-java-lib:2.0.2"&lt;/span>)&lt;/span>
 &lt;span id="keyple-distributed-local-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-distributed-local-java-lib:2.0.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-distributed-network-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-distributed-network-java-lib:2.0.0"&lt;/span>)&lt;/span>
@@ -3388,7 +3388,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="calypsonet-terminal-reader-java-api-dynamic">implementation(&lt;span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.&amp;#43;"&lt;/span>)&lt;/span>
 &lt;span id="calypsonet-terminal-card-java-api">implementation(&lt;span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-card-java-api:1.0.0"&lt;/span>)&lt;/span>
 &lt;span id="calypsonet-terminal-card-java-api-dynamic">implementation(&lt;span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-card-java-api:1.0.&amp;#43;"&lt;/span>)&lt;/span>
-&lt;span id="calypsonet-terminal-calypso-java-api-dynamic">implementation(&lt;span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.0.&amp;#43;"&lt;/span>)&lt;/span>
+&lt;span id="calypsonet-terminal-calypso-java-api-dynamic">implementation(&lt;span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.1.&amp;#43;"&lt;/span>)&lt;/span>
 &lt;/code>
 &lt;!-- All maven dependencies -->
 &lt;code id="all-maven-dependencies" style="display:none">
@@ -3425,7 +3425,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-card-calypso-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>keyple-card-calypso-java-lib&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>
-&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.0.3&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
+&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.1.0&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
@@ -3490,7 +3490,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="calypsonet-terminal-calypso-java-api-dynamic">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.calypsonet.terminal&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>calypsonet-terminal-calypso-java-api&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>
-&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>[1.0.0,1.1.0)&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
+&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>[1.1.0,1.2.0)&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>&lt;/span>
 &lt;/code>
 &lt;script type="text/javascript">
@@ -3681,6 +3681,27 @@ The artifact version defined in the &lt;code>gradle.properties&lt;/code> file mu
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
+&lt;tr>
+&lt;td>1.0.+&lt;/td>&lt;!-- calypsonet-terminal-reader-java-api -->
+&lt;td>1.0.+&lt;/td>&lt;!-- calypsonet-terminal-card-java-api -->
+&lt;td>1.1.+&lt;/td>&lt;!-- calypsonet-terminal-calypso-java-api -->
+&lt;td>2.0.+&lt;/td>&lt;!-- keyple-common-java-api -->
+&lt;td>2.0.+&lt;/td>&lt;!-- keyple-distributed-local-java-api -->
+&lt;td>2.0.+&lt;/td>&lt;!-- keyple-distributed-remote-java-api -->
+&lt;td>2.0.+&lt;/td>&lt;!-- keyple-plugin-java-api -->
+&lt;td>2.0.0&lt;/td>&lt;!-- keyple-util-java-lib -->
+&lt;td>2.0.0...2.0.1&lt;/td>&lt;!-- keyple-service-java-lib -->
+&lt;td>2.0.0...2.0.1&lt;/td>&lt;!-- keyple-service-resource-java-lib -->
+&lt;td>2.0.0&lt;/td>&lt;!-- keyple-distributed-local-java-lib -->
+&lt;td>2.0.0&lt;/td>&lt;!-- keyple-distributed-network-java-lib -->
+&lt;td>2.0.0&lt;/td>&lt;!-- keyple-distributed-remote-java-lib -->
+&lt;td>2.1.0&lt;/td>&lt;!-- keyple-card-calypso-java-lib -->
+&lt;td>2.0.0...2.0.2&lt;/td>&lt;!-- keyple-card-generic-java-lib -->
+&lt;td>2.0.0&lt;/td>&lt;!-- keyple-plugin-android-nfc-java-lib -->
+&lt;td>2.0.0&lt;/td>&lt;!-- keyple-plugin-android-omapi-java-lib -->
+&lt;td>2.0.0&lt;/td>&lt;!-- keyple-plugin-pcsc-java-lib -->
+&lt;td>2.0.0&lt;/td>&lt;!-- keyple-plugin-stub-java-lib -->
+&lt;/tr>
 &lt;tr>
 &lt;td>1.0.+&lt;/td>&lt;!-- calypsonet-terminal-reader-java-api -->
 &lt;td>1.0.+&lt;/td>&lt;!-- calypsonet-terminal-card-java-api -->
@@ -7993,7 +8014,7 @@ id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Card Calypso Java Library</title><link>https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/</guid><description>&lt;div class="alert alert-note">
 &lt;div>
-&lt;strong>&lt;code>2.0.3&lt;/code>&lt;/strong>
+&lt;strong>&lt;code>2.1.0&lt;/code>&lt;/strong>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
@@ -8005,7 +8026,7 @@ id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The &lt;strong>Keyple Card Calypso Java Library&lt;/strong> is an add-on to manage Calypso® cards.&lt;/p>
 &lt;p>Therefore, it should be used only by application developers.&lt;/p>
-&lt;p>It can be used on &lt;strong>PC&lt;/strong>, &lt;strong>MAC&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
+&lt;p>It can be used on &lt;strong>Windows&lt;/strong>, &lt;strong>Linux&lt;/strong>, &lt;strong>macOS&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://eclipse.github.io/keyple-card-calypso-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
@@ -8035,18 +8056,18 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
 id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
-&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.0.3&amp;#39;&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.1.0&amp;#39;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
-&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-card-calypso-java-lib:2.0.3&amp;#34;)&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-card-calypso-java-lib:2.1.0&amp;#34;)&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
 &amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
 &amp;lt;artifactId&amp;gt;keyple-card-calypso-java-lib&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.0.3&amp;lt;/version&amp;gt;
+&amp;lt;version&amp;gt;2.1.0&amp;lt;/version&amp;gt;
 &amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Common Java API</title><link>https://keyple.org/components-java/core/keyple-common-java-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java/core/keyple-common-java-api/</guid><description>&lt;div class="alert alert-note">
@@ -8250,7 +8271,7 @@ Therefore, it is recommended to always perform a &lt;strong>dynamic import&lt;/s
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The &lt;strong>Keyple Card Generic Java Library&lt;/strong> is an add-on to manage cards with low-level API.&lt;/p>
 &lt;p>Therefore, it should be used only by application developers.&lt;/p>
-&lt;p>It can be used on &lt;strong>PC&lt;/strong>, &lt;strong>MAC&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
+&lt;p>It can be used on &lt;strong>Windows&lt;/strong>, &lt;strong>Linux&lt;/strong>, &lt;strong>macOS&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://eclipse.github.io/keyple-card-generic-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
@@ -8307,7 +8328,7 @@ id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The &lt;strong>Keyple Distributed Local Java Library&lt;/strong> is the part of the &lt;strong>Keyple Distributed&lt;/strong> solution which contains all the &lt;strong>local&lt;/strong> services.&lt;/p>
 &lt;p>Therefore, it should be used only by developers of applications installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.&lt;/p>
-&lt;p>It is compatible with &lt;strong>PC&lt;/strong>, &lt;strong>MAC&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
+&lt;p>It is compatible with &lt;strong>Windows&lt;/strong>, &lt;strong>Linux&lt;/strong>, &lt;strong>macOS&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://eclipse.github.io/keyple-distributed-local-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
@@ -8365,7 +8386,7 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The &lt;strong>Keyple Distributed Network Java Library&lt;/strong> is the part of the &lt;strong>Keyple Distributed&lt;/strong> solution which contains the common network elements used by &lt;strong>Local&lt;/strong> and &lt;strong>Remote&lt;/strong> components.&lt;/p>
 &lt;p>Therefore, it should be used only by developers of distributed applications.&lt;/p>
-&lt;p>It is compatible with &lt;strong>PC&lt;/strong>, &lt;strong>MAC&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
+&lt;p>It is compatible with &lt;strong>Windows&lt;/strong>, &lt;strong>Linux&lt;/strong>, &lt;strong>macOS&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://eclipse.github.io/keyple-distributed-network-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
@@ -8543,7 +8564,7 @@ Therefore, it is recommended to always perform a &lt;strong>dynamic import&lt;/s
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The &lt;strong>Keyple Distributed Remote Java Library&lt;/strong> is the part of the &lt;strong>Keyple Distributed&lt;/strong> solution which contains all the &lt;strong>remote&lt;/strong> plugins.&lt;/p>
 &lt;p>Therefore, it should be used only by developers of applications installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely.&lt;/p>
-&lt;p>It is compatible with &lt;strong>PC&lt;/strong>, &lt;strong>MAC&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
+&lt;p>It is compatible with &lt;strong>Windows&lt;/strong>, &lt;strong>Linux&lt;/strong>, &lt;strong>macOS&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://eclipse.github.io/keyple-distributed-remote-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
@@ -8715,7 +8736,7 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The &lt;strong>Keyple Plugin Stub Java Library&lt;/strong> is an add-on to manage &lt;strong>virtual&lt;/strong> readers and cards.&lt;/p>
 &lt;p>Therefore, it should be used only by application developers.&lt;/p>
-&lt;p>It is compatible with &lt;strong>PC&lt;/strong>, &lt;strong>MAC&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
+&lt;p>It is compatible with &lt;strong>Windows&lt;/strong>, &lt;strong>Linux&lt;/strong>, &lt;strong>macOS&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://eclipse.github.io/keyple-plugin-stub-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>

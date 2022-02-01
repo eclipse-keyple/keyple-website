@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Build your first app | Eclipse Keyple</title><link>https://keyple.org/learn/build-your-first-app/</link><atom:link href="https://keyple.org/learn/build-your-first-app/index.xml" rel="self" type="application/rss+xml"/><description>Build your first app</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2021 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Build your first app</title><link>https://keyple.org/learn/build-your-first-app/</link></image><item><title>Build your first Java application</title><link>https://keyple.org/learn/build-your-first-app/java-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/java-app/</guid><description>&lt;hr>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Build your first app | Eclipse Keyple</title><link>https://keyple.org/learn/build-your-first-app/</link><atom:link href="https://keyple.org/learn/build-your-first-app/index.xml" rel="self" type="application/rss+xml"/><description>Build your first app</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2022 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Build your first app</title><link>https://keyple.org/learn/build-your-first-app/</link></image><item><title>Build your first Java application</title><link>https://keyple.org/learn/build-your-first-app/java-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/java-app/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on
 a Calypso Card involving two smart card readers.&lt;/p>
@@ -49,12 +49,12 @@ mavenCentral()
 dependencies {
 // Import CNA APIs
 implementation &amp;#39;org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.&amp;#43;&amp;#39;
-implementation &amp;#39;org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.0.&amp;#43;&amp;#39;
+implementation &amp;#39;org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.1.&amp;#43;&amp;#39;
 // Import Keyple components
 implementation &amp;#39;org.eclipse.keyple:keyple-common-java-api:2.0.&amp;#43;&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-util-java-lib:2.&amp;#43;&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-service-java-lib:2.0.1&amp;#39;
-implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.0.1&amp;#39;
+implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.1.0&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0&amp;#39;
 }&lt;/code>&lt;/pre>
 &lt;p>If necessary, also create the usual tree in which the Java code of this
@@ -200,8 +200,8 @@ final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
 // Performs file reads using the card transaction manager in a secure session.
 CardTransactionManager cardTransactionManager = calypsoExtensionService
 .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-.prepareReadRecordFile(
-SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
+.prepareReadRecords(
+SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
 .processOpening(WriteAccessLevel.DEBIT);&lt;/code>&lt;/pre>
 &lt;h3 id="close-the-calypso-secure-session">Close the Calypso secure session&lt;/h3>
 &lt;p>3rd card exchange:&lt;/p>
@@ -416,8 +416,8 @@ final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
 // Performs file reads using the card transaction manager in a secure session.
 CardTransactionManager cardTransactionManager = calypsoExtensionService
 .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-.prepareReadRecordFile(
-SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
+.prepareReadRecords(
+SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
 .processOpening(WriteAccessLevel.DEBIT);
 // Close the secure session, free the communication channel at the same time
 cardTransactionManager.prepareReleaseCardChannel()
