@@ -47,7 +47,7 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
     </ul></li></td>
   </tr>
   <tr>
-    <td><mark>planned for 2022/02</mark></td>
+    <td><mark>planned for 2022/03</mark></td>
     <td>Calypso lib</td>
     <td>2.2</td>
     <td><ul><li><b>SAM operation improvements</b>
