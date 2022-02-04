@@ -23,6 +23,61 @@ weight: 2
 A Hoplink extension will be proposed (based on a high-level API on top of the Calypso API).
 
 ## Version history
+### Evolutions of the Keyple components after the version 2.0.0 of the framework
+
+<table>
+<thead>
+  <tr>
+    <th>Date</th>
+    <th>Component</th>
+    <th>Version</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>2022/02</td>
+    <td>Calypso lib</td>
+    <td>2.1</td>
+    <td><ul><li><b>Support of the full card command set of Calypso Prime Regular</b>
+    <ul><li>For the Get Data command, addition of the mode 'EF list' & 'traceability',</li>
+    <li>Binary files' access for read, write, & update,</li>
+    <li>Read Record Multiple, Search Record Multiple, Increase Multiple & Decrease Multiple</li>
+    <li>Possiblity to personalized keyset with Change Key</li></ul>
+    </ul></li></td>
+  </tr>
+  <tr>
+    <td><mark>planned for 2022/02</mark></td>
+    <td>Calypso lib</td>
+    <td>2.2</td>
+    <td><ul><li><b>SAM operation improvements</b>
+    <ul><li>Defintion of an API to operate standalone SAM transaction</li>
+    <li>Support of the PSO data signature feature: signature generation & verification. Possibility to operate a signature operation through the Card Transaction or a SAM Transaction.</li></ul></li></ul></td>
+  </tr>
+  <tr>
+    <td><mark>planned for 2022/04</mark></td>
+    <td>Calypso lib</td>
+    <td>2.3</td>
+    <td><ul><li><b>Support of Calypso Prime PKI</b>
+    <ul><li>Asymetric authentication of a Calypso card without involving a SAM</li>
+    </ul></li></ul></td>
+  </tr>
+  <tr>
+    <td><mark>planned for 2022/05</mark></td>
+    <td>Calypso lib</td>
+    <td>2.4</td>
+    <td><ul><li><b>Support of Calypso Prime Extended</b>
+    <ul><li>Capability to operate a Calypso secure session in confidential mode</li>
+    </ul></li></ul></td>
+  </tr>
+</tbody>
+</table>
+
+
+### Global evolutions to the Keyple framework until version 2.0.0
+Until the version 2.0.0 of Keyple, the components of Keyple Java or Keyple C++ were released at the same time with the same version number.
+The porting in C++ of Keyple Java is based on the same Object-Oriented Model. The Keyple C++ implemntation provides the same core & Calypso feature, but the support of the distributed module isn't part of the scope, and for reader integration, only the PC/SC reader is provided.
+
 <table>
 <thead>
   <tr>
@@ -36,10 +91,10 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
   <tr>
     <td>2.0.0</td>
     <td>2021/10</td>
-    <td>planned for 2021/12</td>
+    <td>planned for 2022/03</td>
    <td><ul><li><b>Calypso terminal compliance</b>
    <ul><li>The <a href="https://keyple.org/components-java/core/keyple-service-java-lib/">Keyple Service</a> component implements the <a href="https://terminal-api.calypsonet.org/">Reader API 1.0</a> and <a href="https://terminal-api.calypsonet.org/">Card API 1.0</a> standardized for the reader layer of Calypso terminals. The implementation is compliant with the <a href="https://calypsonet.org/calypso-for-terminals/">reader layer requirements</a> for Calypso terminals</li>
-   <li>The <a href="https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/">Calypso card extension</a> library in version 2.0.0 follows also the <a href="https://calypsonet.org/calypso-for-terminals/">Calypso layer requirements</a> defined for Calypso terminals, it implements the <a href="https://terminal-api.calypsonet.org/">Calypso API 1.0</a>.</ul></li>
+   <li>The <a href="https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/">Calypso card extension</a> library in version 2.0.0 follows also the <a href="https://calypsonet.org/calypso-for-terminals/">Calypso layer requirements</a> defined for Calypso terminals, it implements the <a href="https://terminal-api.calypsonet.org/">Calypso API 1.0</a>.</li></ul>
     <li><b>Removal of dependencies</b> between Keyple components (Core, Calypso extension, and specific plugins): all components are released with their own version number and could evolve separately.
      <ul><li>Until the version 1.0.0, the source code of all the Keyple Java components was hosted in a single repository: <a href="https://github.com/eclipse/keyple-java">https://github.com/eclipse/keyple-java</a>. It was the same for Keyple C++ components hosted in <a href="https://github.com/eclipse/keyple-cpp">https://github.com/eclipse/keyple-cpp</a>. For the version 1.0.0 and below, there were strong dependencies between the Keyple components which had all to be released in the same version number.</li>
 <li>To facilitate the evolution and the maintenance, the version 2.0.0 proposes a full reorganization of the code. All the components are split in different repositories in order to allow them to evolve independently. The public interfaces are also separated to the specific implementations: the repositories are dedicated to host API or library implementation.</li>
@@ -50,7 +105,7 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
   <tr>
     <td>1.0.0</td>
     <td>2020/12</td>
-    <td>not planned</td>
+    <td>dropped</td>
     <td><ul><li>Core - simplifications of the low-level Plugin API dedicated for plugin developers.</li><li>Remote Plugin - new stable &amp; simpler version</li></ul>Main unsolved issue: the versioning of the different components (Core, Calypso extension, and specific plugins) is still linked: to manage transitive importation the artifact are built with the same version reference.</td>
   </tr>
   <tr>
