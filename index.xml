@@ -963,7 +963,21 @@ This switches the underlying monitoring thread into a state of waiting for the c
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Terminal plugins by the Calypso Networks Association</title><link>https://keyple.org/external-resources/external-add-ons/terminal-plugins-by-cna/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/external-resources/external-add-ons/terminal-plugins-by-cna/</guid><description>&lt;hr>
+&lt;/ul></description></item><item><title>Android PC/SC plugin by SpringCard</title><link>https://keyple.org/external-resources/external-add-ons/terminal-plugin-by-springcard/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/external-resources/external-add-ons/terminal-plugin-by-springcard/</guid><description>&lt;hr>
+&lt;p>SpringCard is happy to contribute to the Keyple project by providing a plugin that makes it possible to use SpringCard PC/SC couplers from a stock Android tablet or mobile phone.&lt;/p>
+&lt;p>The plugin works&lt;/p>
+&lt;ul>
+&lt;li>with all SpringCard PC/SC over USB devices.&lt;/li>
+&lt;/ul>
+&lt;p>This includes all the SpringCard Puck family (for instance SpringCard Puck One, featuring contactless+SAM: &lt;a href="https://www.springcard.com/en/products/puck-one%29," target="_blank" rel="noopener">https://www.springcard.com/en/products/puck-one),&lt;/a> SpringCard Prox&amp;rsquo;N&amp;rsquo;Roll (&lt;a href="https://www.springcard.com/en/products/proxnroll-pcsc-hsp" target="_blank" rel="noopener">https://www.springcard.com/en/products/proxnroll-pcsc-hsp&lt;/a>) and virtually all PC/SC over USB (CCID) devices.&lt;/p>
+&lt;p>The Android host must be a complete USB host (&lt;a href="https://developer.android.com/guide/topics/connectivity/usb/host%29" target="_blank" rel="noopener">https://developer.android.com/guide/topics/connectivity/usb/host)&lt;/a>. USB on-the-go (OTG) is not enough!
+Pay attention that the Android host must also be able to provide enough power to the reader (more than 250mA), which is not the case for many tablets and mobile phones. Using a USB 3 hub with power delivery is generally the solution.&lt;/p>
+&lt;ul>
+&lt;li>with SpringCard PC/SC over BLE (Bluetooth Low Energy) devices.&lt;/li>
+&lt;/ul>
+&lt;p>First BLE PC/SC reader in SpringCard&amp;rsquo;s portfolio is SpringCard Puck Blue (&lt;a href="https://www.springcard.com/en/products/puck-blue%29" target="_blank" rel="noopener">https://www.springcard.com/en/products/puck-blue)&lt;/a>. Other devices will be introduced in the future. The Android host must support BLE (&lt;a href="https://developer.android.com/guide/topics/connectivity/bluetooth/ble-overview%29" target="_blank" rel="noopener">https://developer.android.com/guide/topics/connectivity/bluetooth/ble-overview)&lt;/a>.&lt;/p>
+&lt;p>The plugin is hosted on GitHub: &lt;a href="https://github.com/springcard/android-keyple" target="_blank" rel="noopener">https://github.com/springcard/android-keyple&lt;/a>&lt;/p>
+&lt;p>It is based on SpringCard&amp;rsquo;s PC/SC-Like for Android libraries (&lt;a href="https://github.com/springcard/android-pcsclike" target="_blank" rel="noopener">https://github.com/springcard/android-pcsclike&lt;/a>) that connects to the reader in BLE or USB using only &amp;lsquo;user-land&amp;rsquo; methods.&lt;/p></description></item><item><title>Terminal plugins by the Calypso Networks Association</title><link>https://keyple.org/external-resources/external-add-ons/terminal-plugins-by-cna/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/external-resources/external-add-ons/terminal-plugins-by-cna/</guid><description>&lt;hr>
 &lt;p>The Calypso Networks Association has implemented several plugins to integrate Keyple Java on different ticketing terminals.&lt;/p>
 &lt;p>Some are fully provide as open source:&lt;/p>
 &lt;ul>
