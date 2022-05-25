@@ -26,7 +26,7 @@
 <meta property="og:title" content="Core services | Eclipse Keyple">
 <meta property="og:description" content="In-depth technical information about Keyple core services."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-26T18:09:46+02:00">
+<meta property="article:modified_time" content="2022-05-25T14:09:17+04:00">
 <title>Core services | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=1edfec56e9f96cf03cac91e0ce7dac73>
@@ -153,6 +153,7 @@ Keyple in depth
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li>
 <li><a href=../../../learn/overview/architecture/>Architecture</a></li>
+<li><a href=../../../learn/overview/terminalapis/>Calypso Terminal APIs</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -188,6 +189,13 @@ Keyple in depth
 <li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
 </ul>
 </div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../learn/example-code/>Example Code</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../learn/example-code/java-example/>Java examples</a></li>
+<li><a href=../../../learn/example-code/cpp-example/>C++ examples</a></li>
+</ul>
+</div>
 </ul>
 </nav>
 </div>
@@ -197,9 +205,6 @@ Keyple in depth
 </ul>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#overview>Overview</a></li>
-<li><a href=#observable-reader-states>Observable reader states</a></li>
-<li><a href=#card-selection-modes>Card selection modes</a></li>
 <li><a href=#internal-adapters-release>Internal adapters (release)</a>
 <ul>
 <li><a href=#service>Service</a></li>
@@ -222,62 +227,6 @@ Keyple in depth
 <div class=docs-article-container>
 <h1>Core services</h1>
 <div class=article-style>
-<hr>
-<h2 id=overview>Overview</h2>
-<p>You can find here some in-depth technical information about Keyple core services.</p>
-<hr>
-<h2 id=observable-reader-states>Observable reader states</h2>
-<p>An observable reader is active only when at least one reader observer is registered, and if the start of the detection has been requested.
-When active, an observable reader could switch between three internal states:</p>
-<ul>
-<li>Wait for card insertion</li>
-<li>Wait for card processing</li>
-<li>Wait for card removal</li>
-</ul>
-<p>In the nominal case, a reader observer indicates to the observable reader that the processing of the card is finished by releasing the card channel.
-To manage a failure of the reader observer process, the observable reader interface provides also a method to finalize the card processing.</p>
-<figure id=figure-observable-reader-states>
-<div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/keyple-in-depth/reader_observation_state_machine.svg alt="Observable reader states" loading=lazy data-zoomable></div>
-</div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Observable reader states
-</figcaption></figure>
-<p>The states could be switched:</p>
-<ul>
-<li>due to an explicit API request (blue arrows):
-<ul>
-<li>the release of the card channel,</li>
-<li>the call of an observable reader method:
-<ul>
-<li>the addition or the remove of an observable reader,</li>
-<li>a request to start or stop the detection, to finalize the card processing.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Or because of an external event (red arrows), the insertion or the remove of a card.
-<ul>
-<li>the insertion of a card causing the observable reader to notify a <code>CARD_MATCHED</code> reader event (in case of successful scheduled selection) or a <code>CARD_INSERTED</code> reader event (notification mode defined as <code>ALWAYS</code>).</li>
-<li>the removal of a card causing the observable reader to notify a <code>CARD_REMOVED</code> reader event.</li>
-</ul>
-</li>
-</ul>
-<p>If a card detection is started with the <code>REPEATING</code> detection mode, then later when the card is removed, the reader starts again the detection of a new card.</p>
-<p>Notification of card removal during the card removal wait state is a feature of any observable reader.
-However, some observable readers may additionally have the ability to notify removal during the card processing state.</p>
-<hr>
-<h2 id=card-selection-modes>Card selection modes</h2>
-<p>Depending on the card transaction use case, or on the reader capability, there are two ways to manage the selection of a card:</p>
-<ul>
-<li>Either on a simple reader, a selection could be operated directly by transmitting the card selection scenario. In this case the same entity manages both the card selection and the card processing.</li>
-<li>Otherwise, on an observable reader, a scheduled card selection could be defined. In this case the card selection is operated automatically at the insertion of the card. In this case, the card selection is next managed by the observable reader, but the card processing is managed by a reader observer.</li>
-</ul>
-<figure id=figure-card-selection-modes>
-<div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/keyple-in-depth/card_selection_modes_activity_diagram.svg alt="Card selection modes" loading=lazy data-zoomable width=50%></div>
-</div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Card selection modes
-</figcaption></figure>
 <hr>
 <h2 id=internal-adapters-release>Internal adapters (release)</h2>
 <h3 id=service>Service</h3>
@@ -335,7 +284,7 @@ Card selection modes
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2021-10-26</p>
+<p>Last updated on 2022-05-25</p>
 </div>
 </article>
 <footer class=site-footer>

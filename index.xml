@@ -1965,7 +1965,12 @@ logger.error(&amp;#34;Error during the card resource release: {}&amp;#34;, e.get
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Card Resource Service User Guide</title><link>https://keyple.org/learn/user-guide/card-resource-service/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/card-resource-service/</guid><description>&lt;hr>
+&lt;/ul></description></item><item><title>Calypso Terminal APIs</title><link>https://keyple.org/learn/overview/terminalapis/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/overview/terminalapis/</guid><description>&lt;hr>
+&lt;p>Keyple implements the 3 terminal APIs defined by the Calypso Networks Association. The corresponding documentation is hosted on &lt;a href="https://terminal-api.calypsonet.org/" target="_blank" rel="noopener">https://terminal-api.calypsonet.org/&lt;/a> .&lt;/p>
+&lt;ul>
+&lt;li>The Reader API &amp;amp; the Calypso API are public interfaces used by the ticketing applications based on Keyple to manage smartcard readers and to operate Calypso secure processing.&lt;/li>
+&lt;/ul>
+&lt;p>Keyple also defines additional public interface for plugin integration, remote reader management, etc&amp;hellip;&lt;/p></description></item><item><title>Card Resource Service User Guide</title><link>https://keyple.org/learn/user-guide/card-resource-service/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/card-resource-service/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>An application that performs secure transactions on smart cards may need to dynamically allocate a card resource dedicated to the current transaction to manage the security of the transaction (e.g. SAM or HSM).&lt;/p>
 &lt;p>To meet this need, Keyple proposes the Service Resource component which provides a service that supports dynamic card resource allocation, using a profile-based filtering mechanism.&lt;/p>
@@ -2515,62 +2520,6 @@ They are generic and apply to all card and reader technologies.&lt;/p>
 &lt;li>All &lt;strong>libraries&lt;/strong> and &lt;strong>public APIs&lt;/strong> can be used by the developer of the client application.&lt;/li>
 &lt;li>The &lt;strong>internal APIs&lt;/strong> are intended for the developer of Keyple add-ons only (e.g. custom reader plugin, custom card extension or custom distributed solution).&lt;/li>
 &lt;/ul></description></item><item><title>Core services</title><link>https://keyple.org/learn/keyple-in-depth/core-services/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/core-services/</guid><description>&lt;hr>
-&lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>You can find here some in-depth technical information about Keyple core services.&lt;/p>
-&lt;hr>
-&lt;h2 id="observable-reader-states">Observable reader states&lt;/h2>
-&lt;p>An observable reader is active only when at least one reader observer is registered, and if the start of the detection has been requested.
-When active, an observable reader could switch between three internal states:&lt;/p>
-&lt;ul>
-&lt;li>Wait for card insertion&lt;/li>
-&lt;li>Wait for card processing&lt;/li>
-&lt;li>Wait for card removal&lt;/li>
-&lt;/ul>
-&lt;p>In the nominal case, a reader observer indicates to the observable reader that the processing of the card is finished by releasing the card channel.
-To manage a failure of the reader observer process, the observable reader interface provides also a method to finalize the card processing.&lt;/p>
-&lt;figure id="figure-observable-reader-states">
-&lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./media/learn/keyple-in-depth/reader_observation_state_machine.svg" alt="Observable reader states" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
-Observable reader states
-&lt;/figcaption>&lt;/figure>
-&lt;p>The states could be switched:&lt;/p>
-&lt;ul>
-&lt;li>due to an explicit API request (blue arrows):
-&lt;ul>
-&lt;li>the release of the card channel,&lt;/li>
-&lt;li>the call of an observable reader method:
-&lt;ul>
-&lt;li>the addition or the remove of an observable reader,&lt;/li>
-&lt;li>a request to start or stop the detection, to finalize the card processing.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Or because of an external event (red arrows), the insertion or the remove of a card.
-&lt;ul>
-&lt;li>the insertion of a card causing the observable reader to notify a &lt;code>CARD_MATCHED&lt;/code> reader event (in case of successful scheduled selection) or a &lt;code>CARD_INSERTED&lt;/code> reader event (notification mode defined as &lt;code>ALWAYS&lt;/code>).&lt;/li>
-&lt;li>the removal of a card causing the observable reader to notify a &lt;code>CARD_REMOVED&lt;/code> reader event.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>If a card detection is started with the &lt;code>REPEATING&lt;/code> detection mode, then later when the card is removed, the reader starts again the detection of a new card.&lt;/p>
-&lt;p>Notification of card removal during the card removal wait state is a feature of any observable reader.
-However, some observable readers may additionally have the ability to notify removal during the card processing state.&lt;/p>
-&lt;hr>
-&lt;h2 id="card-selection-modes">Card selection modes&lt;/h2>
-&lt;p>Depending on the card transaction use case, or on the reader capability, there are two ways to manage the selection of a card:&lt;/p>
-&lt;ul>
-&lt;li>Either on a simple reader, a selection could be operated directly by transmitting the card selection scenario. In this case the same entity manages both the card selection and the card processing.&lt;/li>
-&lt;li>Otherwise, on an observable reader, a scheduled card selection could be defined. In this case the card selection is operated automatically at the insertion of the card. In this case, the card selection is next managed by the observable reader, but the card processing is managed by a reader observer.&lt;/li>
-&lt;/ul>
-&lt;figure id="figure-card-selection-modes">
-&lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./media/learn/keyple-in-depth/card_selection_modes_activity_diagram.svg" alt="Card selection modes" loading="lazy" data-zoomable width="50%" />&lt;/div>
-&lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
-Card selection modes
-&lt;/figcaption>&lt;/figure>
-&lt;hr>
 &lt;h2 id="internal-adapters-release">Internal adapters (release)&lt;/h2>
 &lt;h3 id="service">Service&lt;/h3>
 &lt;p>
@@ -2615,7 +2564,8 @@ Card selection modes
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/main/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;/p></description></item><item><title>Keyple Distributed Local</title><link>https://keyple.org/components-java-1.0/distributed-systems/local/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java-1.0/distributed-systems/local/</guid><description>&lt;div class="alert alert-warning">
+&lt;/p></description></item><item><title>Java examples</title><link>https://keyple.org/learn/example-code/java-example/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/example-code/java-example/</guid><description>&lt;hr>
+&lt;p>&lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">https://github.com/eclipse/keyple-java-example&lt;/a>&lt;/p></description></item><item><title>Keyple Distributed Local</title><link>https://keyple.org/components-java-1.0/distributed-systems/local/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java-1.0/distributed-systems/local/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -3031,7 +2981,8 @@ Keyple project
 &lt;/code>&lt;/pre>
 &lt;ul>
 &lt;li>Direct &lt;a href="https://search.maven.org/search?q=a:keyple-java-plugin-stub" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Calypso card extension</title><link>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</guid><description>&lt;hr>
+&lt;/ul></description></item><item><title>C++ examples</title><link>https://keyple.org/learn/example-code/cpp-example/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/example-code/cpp-example/</guid><description>&lt;hr>
+&lt;p>&lt;a href="https://github.com/eclipse/keyple-cpp-example" target="_blank" rel="noopener">https://github.com/eclipse/keyple-cpp-example&lt;/a>&lt;/p></description></item><item><title>Calypso card extension</title><link>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</guid><description>&lt;hr>
 &lt;p>The diagram below illustrates the sequence of exchanges and the grouping of APDU commands during a secure Calypso transaction:&lt;/p>
 &lt;figure id="figure-calypso-secure-transaction">
 &lt;div class="d-flex justify-content-center">

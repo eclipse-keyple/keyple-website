@@ -7,30 +7,30 @@
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
 <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
-<meta name=description content="Eclipse Keyple® accelerates the development through a universal, open and modular platform that provides high-level APIs and ensures application reliability and compliance.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/learn/build-your-first-app/>
+<meta name=description content="Code  example involving the Keyple Java implementation.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/learn/example-code/java-example/>
 <meta name=theme-color content="#1D87BB">
-<link rel=stylesheet href=../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
+<link rel=stylesheet href=../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
-<link rel=stylesheet href=../../css/wowchemy.17c9be48a5d4415ce96a90ae1a222279.css>
+<link rel=stylesheet href=../../../css/wowchemy.17c9be48a5d4415ce96a90ae1a222279.css>
 <script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
-<link rel=alternate href=../../learn/build-your-first-app/index.xml type=application/rss+xml title="Eclipse Keyple">
-<link rel=manifest href=../../manifest.webmanifest>
-<link rel=icon type=image/png href=../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
-<link rel=apple-touch-icon type=image/png href=../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/learn/build-your-first-app/>
+<link rel=manifest href=../../../manifest.webmanifest>
+<link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
+<link rel=canonical href=https://keyple.org/learn/example-code/java-example/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/learn/build-your-first-app/">
-<meta property="og:title" content="Build your first app | Eclipse Keyple">
-<meta property="og:description" content="Eclipse Keyple® accelerates the development through a universal, open and modular platform that provides high-level APIs and ensures application reliability and compliance."><meta property="og:image" content="https://keyple.org/media/logo.svg">
+<meta property="og:url" content="https://keyple.org/learn/example-code/java-example/">
+<meta property="og:title" content="Java examples | Eclipse Keyple">
+<meta property="og:description" content="Code  example involving the Keyple Java implementation."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<title>Build your first app | Eclipse Keyple</title>
+<meta property="article:modified_time" content="2022-05-25T14:09:17+04:00">
+<title>Java examples | Eclipse Keyple</title>
 </head>
-<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=b9987730d48c11973f6b3d2d4115f434>
-<script src=../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=298a77239f1f296ea75f5ad79e7188ff>
+<script src=../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
 <aside class=search-modal id=search>
 <div class=container>
 <section class=search-header>
@@ -56,13 +56,13 @@
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
 <div class=container-xl>
 <div class="d-none d-lg-inline-flex">
-<a class=navbar-brand href=../../><img src=../../media/logo.svg alt="Eclipse Keyple"></a>
+<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
 </div>
 <button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
 <span><i class="fas fa-bars"></i></span>
 </button>
 <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
-<a class=navbar-brand href=../../><img src=../../media/logo.svg alt="Eclipse Keyple"></a>
+<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
 </div>
 <div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
 <ul class="navbar-nav d-md-inline-flex">
@@ -70,37 +70,37 @@
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span>
 </a>
 <div class=dropdown-menu>
-<a class=dropdown-item href=../../what-is-keyple/overview/><span>Overview</span></a>
-<a class=dropdown-item href=../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
-<a class=dropdown-item href=../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
-<a class=dropdown-item href=../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
-<a class=dropdown-item href=../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
-<a class=dropdown-item href=../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
-<a class=dropdown-item href=../../#news><span>News</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
+<a class=dropdown-item href=../../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
+<a class=dropdown-item href=../../../#news><span>News</span></a>
 </div>
 </li>
 <li class=nav-item>
-<a class=nav-link href=../../learn/overview><span>Learn</span></a>
+<a class=nav-link href=../../../learn/overview><span>Learn</span></a>
 </li>
 <li class="nav-item dropdown">
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span>
 </a>
 <div class=dropdown-menu>
-<a class=dropdown-item href=../../components-java/overview/><span>Java implementation v2+</span></a>
-<a class=dropdown-item href=../../components-cpp/overview/><span>C++ implementation v2+</span></a>
-<a class=dropdown-item href=../../><span> </span></a>
-<a class=dropdown-item href=../../learn/user-guide/migrate-to-2-0><span>Guide to migrate from v1.0 to v2+</span></a>
-<a class=dropdown-item href=../../components-java-1.0/><span>Java implementation v1.0 (deprecated)</span></a>
-<a class=dropdown-item href=../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
+<a class=dropdown-item href=../../../components-java/overview/><span>Java implementation v2+</span></a>
+<a class=dropdown-item href=../../../components-cpp/overview/><span>C++ implementation v2+</span></a>
+<a class=dropdown-item href=../../../><span> </span></a>
+<a class=dropdown-item href=../../../learn/user-guide/migrate-to-2-0><span>Guide to migrate from v1.0 to v2+</span></a>
+<a class=dropdown-item href=../../../components-java-1.0/><span>Java implementation v1.0 (deprecated)</span></a>
+<a class=dropdown-item href=../../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
 </div>
 </li>
 <li class="nav-item dropdown">
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
 </a>
 <div class=dropdown-menu>
-<a class=dropdown-item href=../../community/contributing/><span>Contributing</span></a>
-<a class=dropdown-item href=../../community/roadmap/><span>Roadmap</span></a>
-<a class=dropdown-item href=../../projects-dashboard/><span>Projects dashboard</span></a>
+<a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../../community/roadmap/><span>Roadmap</span></a>
+<a class=dropdown-item href=../../../projects-dashboard/><span>Projects dashboard</span></a>
 <a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date"><span>Code quality dashboard</span></a>
 <a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
 <a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
@@ -111,9 +111,9 @@
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
 </a>
 <div class=dropdown-menu>
-<a class=dropdown-item href=../../external-resources/external-add-ons/><span>External add-ons</span></a>
-<a class=dropdown-item href=../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
-<a class=dropdown-item href=../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
+<a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
+<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
 </div>
 </li>
 </ul>
@@ -134,6 +134,7 @@
 <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
 <div class=d-flex>
 <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+Example Code
 </span>
 <span><i class="fas fa-chevron-down"></i></span>
 </div>
@@ -146,86 +147,83 @@
 </form>
 <nav class="collapse docs-links" id=docs-nav>
 <ul class="nav docs-sidenav">
-<li><a href=../../learn/></a></li>
+<li><a href=../../../learn/></a></li>
 <div class=docs-toc-item>
-<a class=docs-toc-link href=../../learn/overview/>Overview</a>
+<a class=docs-toc-link href=../../../learn/overview/>Overview</a>
 <ul class="nav docs-sidenav">
-<li><a href=../../learn/overview/key-concepts/>Key concepts</a></li>
-<li><a href=../../learn/overview/architecture/>Architecture</a></li>
-<li><a href=../../learn/overview/terminalapis/>Calypso Terminal APIs</a></li>
+<li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li>
+<li><a href=../../../learn/overview/architecture/>Architecture</a></li>
+<li><a href=../../../learn/overview/terminalapis/>Calypso Terminal APIs</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
-<a class="docs-toc-link active" href=../../learn/build-your-first-app/>Build your first app</a>
+<a class=docs-toc-link href=../../../learn/build-your-first-app/>Build your first app</a>
 <ul class="nav docs-sidenav">
-<li><a href=../../learn/build-your-first-app/java-app/>Java</a></li>
-<li><a href=../../learn/build-your-first-app/android-app/>Android</a></li>
-<li><a href=../../learn/build-your-first-app/cpp-app/>C++</a></li>
+<li><a href=../../../learn/build-your-first-app/java-app/>Java</a></li>
+<li><a href=../../../learn/build-your-first-app/android-app/>Android</a></li>
+<li><a href=../../../learn/build-your-first-app/cpp-app/>C++</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
-<a class=docs-toc-link href=../../learn/user-guide/>User guides</a>
+<a class=docs-toc-link href=../../../learn/user-guide/>User guides</a>
 <ul class="nav docs-sidenav">
-<li><a href=../../learn/user-guide/standalone-application/>Standalone application</a></li>
-<li><a href=../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../learn/user-guide/calypso-application/>Calypso application</a></li>
-<li><a href=../../learn/user-guide/card-resource-service/>Card resource service</a></li>
-<li><a href=../../learn/user-guide/migrate-to-2-0/>Upgrade Keyple</a></li>
+<li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
+<li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
+<li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
+<li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
+<li><a href=../../../learn/user-guide/migrate-to-2-0/>Upgrade Keyple</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
-<a class=docs-toc-link href=../../learn/developer-guide/>Developer guides</a>
+<a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a>
 <ul class="nav docs-sidenav">
-<li><a href=../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li>
-<li><a href=../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li>
+<li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li>
+<li><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
-<a class=docs-toc-link href=../../learn/keyple-in-depth/>Keyple in depth</a>
+<a class=docs-toc-link href=../../../learn/keyple-in-depth/>Keyple in depth</a>
 <ul class="nav docs-sidenav">
-<li><a href=../../learn/keyple-in-depth/core-services/>Core services</a></li>
-<li><a href=../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
-<li><a href=../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
+<li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
+<li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
+<li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
-<a class=docs-toc-link href=../../learn/example-code/>Example Code</a>
+<a class=docs-toc-link href=../../../learn/example-code/>Example Code</a>
 <ul class="nav docs-sidenav">
-<li><a href=../../learn/example-code/java-example/>Java examples</a></li>
-<li><a href=../../learn/example-code/cpp-example/>C++ examples</a></li>
+<li class=active><a href=../../../learn/example-code/java-example/>Java examples</a></li>
+<li><a href=../../../learn/example-code/cpp-example/>C++ examples</a></li>
 </ul>
 </div>
 </ul>
 </nav>
 </div>
+<div class="d-none d-xl-block col-xl-2 docs-toc">
+<ul class="nav toc-top">
+<li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
+</ul>
+<nav id=TableOfContents></nav>
+</div>
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
 <div class=docs-article-container>
-<h1>Build your first app</h1>
+<h1>Java examples</h1>
 <div class=article-style>
 <hr>
-<ul class=list-unstyled>
-<li>
-<h5><a href=../../learn/build-your-first-app/java-app/>Java</a></h5>
-<p>This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers.</p>
-</li>
-<li>
-<h5><a href=../../learn/build-your-first-app/android-app/>Android</a></h5>
-<p>This guide describes how to start a ticketing application using Keyple and Android NFC plugin to read the content of a Calypso card.</p>
-</li>
-<li>
-<h5><a href=../../learn/build-your-first-app/cpp-app/>C++</a></h5>
-<p>This quick start describes how to create a ready-to-execute C++ command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers.</p>
-</li>
-</ul>
+<p><a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>https://github.com/eclipse/keyple-java-example</a></p>
 </div>
 <div class=article-widget>
 <div class=post-nav>
+<div class=post-nav-item>
+<div class=meta-nav>Next</div>
+<a href=../../../learn/example-code/cpp-example/ rel=prev>C++ examples</a>
+</div>
 </div>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2021-10-13</p>
+<p>Last updated on 2022-05-25</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -242,12 +240,12 @@
 </div>
 <div class="col-12 col-sm-4">
 <a href=https://www.eclipse.org target=_blank>
-<img src=../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
+<img src=../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
 </a>
 </div>
 <div class="col-12 col-sm-4">
 <a href=https://iot.eclipse.org target=_blank>
-<img src=../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
+<img src=../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
 </a>
 </div>
 </div>
@@ -289,7 +287,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
 </div>
 </div>
 </div>
-<script src=../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
+<script src=../../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin=anonymous></script>
@@ -315,7 +313,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../en/js/wowchemy.min.d69dff19c7a16f07cc3080011a985690.js></script>
+<script src=../../../en/js/wowchemy.min.d69dff19c7a16f07cc3080011a985690.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
