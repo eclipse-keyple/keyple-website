@@ -156,7 +156,7 @@ CardResource samResource = CardResourceServiceProvider.getService().getCardResou
 CardSecuritySetting cardSecuritySetting =
     CalypsoExtensionService.getInstance()
         .createCardSecuritySetting()
-        .setSamResource(samResource.getReader(), (CalypsoSam) samResource.getSmartCard());
+        .setControlSamResource(samResource.getReader(), (CalypsoSam) samResource.getSmartCard());
 {{< /code >}}
 
 ---
