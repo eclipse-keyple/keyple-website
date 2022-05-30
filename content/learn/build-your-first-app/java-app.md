@@ -65,12 +65,12 @@ repositories {
 dependencies {
     // Import CNA APIs
     implementation 'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.+'
-    implementation 'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.1.+'
+    implementation 'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.2.+'
     // Import Keyple components
     implementation 'org.eclipse.keyple:keyple-common-java-api:2.0.+'
     implementation 'org.eclipse.keyple:keyple-util-java-lib:2.+'
     implementation 'org.eclipse.keyple:keyple-service-java-lib:2.0.1'
-    implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:2.1.0'
+    implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.0'
     implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0'
 }
 {{< /code >}}
@@ -266,7 +266,7 @@ The mutual authentication process between Calypso card and Calypso SAM is initia
     CardSecuritySetting cardSecuritySetting =
             calypsoExtensionService
                     .createCardSecuritySetting()
-                    .setSamResource(samReader, calypsoSam);
+                    .setControlSamResource(samReader, calypsoSam);
 
     final byte RECORD_NUMBER_1 = 1;
     final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
@@ -561,7 +561,7 @@ public class DemoCardAuthentication {
         CardSecuritySetting cardSecuritySetting =
                 calypsoExtensionService
                         .createCardSecuritySetting()
-                        .setSamResource(samReader, calypsoSam);
+                        .setControlSamResource(samReader, calypsoSam);
 
         final byte RECORD_NUMBER_1 = 1;
         final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
