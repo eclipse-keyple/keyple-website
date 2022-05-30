@@ -1,3 +1,66 @@
 [
+  {
+    "url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/issues/10",
+    "repository_url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib",
+    "labels_url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/issues/10/labels{/name}",
+    "comments_url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/issues/10/comments",
+    "events_url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/issues/10/events",
+    "html_url": "https://github.com/eclipse/keyple-plugin-stub-java-lib/issues/10",
+    "id": 1252866208,
+    "node_id": "I_kwDODMWgos5KrTig",
+    "number": 10,
+    "title": "New way of mocking APDU responses for a StubSmartCard",
+    "user": {
+      "login": "boxnfc",
+      "id": 82872292,
+      "node_id": "MDQ6VXNlcjgyODcyMjky",
+      "avatar_url": "https://avatars.githubusercontent.com/u/82872292?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/boxnfc",
+      "html_url": "https://github.com/boxnfc",
+      "followers_url": "https://api.github.com/users/boxnfc/followers",
+      "following_url": "https://api.github.com/users/boxnfc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/boxnfc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/boxnfc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/boxnfc/subscriptions",
+      "organizations_url": "https://api.github.com/users/boxnfc/orgs",
+      "repos_url": "https://api.github.com/users/boxnfc/repos",
+      "events_url": "https://api.github.com/users/boxnfc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/boxnfc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
 
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2022-05-30T15:09:30Z",
+    "updated_at": "2022-05-30T15:11:58Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "active_lock_reason": null,
+    "body": "In the current version of the lib, a StubSmartCard can only respond to APDU request provided in a Map of <ApduRequest,ApduResponse>. This the basic way of mocking a smartCard.\r\n\r\nWe could delegate the mocking to the user  of this lib, and so the mocking could be more advanced depending of the use case.\r\n\r\nWe keep the actual constructor unchanged:\r\n```java\r\nprivate StubSmartCard(byte[] powerOnData, String cardProtocol, Map<String, String> hexCommands)\r\n```\r\n\r\nAnd we could integrate to this lib a new interface :\r\n```kotlin\r\ninterface ApduResponseProvider {\r\n   //Return a response APDU for a given request APDU\r\n    fun getResponseFromRequest(apduRequest: String): String?\r\n}\r\n```\r\n\r\nAnd the current StubSmartCard.Builder will allow to create either a StubSmartCard mocking APDU response using the Map or an implementation of this interface.\r\n\r\nFor example: The response APDUs could be provided from files.\r\n\r\n\r\n",
+    "reactions": {
+      "url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/issues/10/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/issues/10/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null
+  }
 ]
