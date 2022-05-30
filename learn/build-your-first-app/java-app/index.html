@@ -26,7 +26,7 @@
 <meta property="og:title" content="Build your first Java application | Eclipse Keyple">
 <meta property="og:description" content="This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2022-02-01T16:42:36+01:00">
+<meta property="article:modified_time" content="2022-05-30T15:49:30+02:00">
 <title>Build your first Java application | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=c1ed76ce001dc59ac73c503c92f61022>
@@ -286,12 +286,12 @@ repositories {
 dependencies {
     // Import CNA APIs
     implementation &#39;org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.&#43;&#39;
-    implementation &#39;org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.1.&#43;&#39;
+    implementation &#39;org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.2.&#43;&#39;
     // Import Keyple components
     implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.&#43;&#39;
     implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.&#43;&#39;
     implementation &#39;org.eclipse.keyple:keyple-service-java-lib:2.0.1&#39;
-    implementation &#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.1.0&#39;
+    implementation &#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.0&#39;
     implementation &#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0&#39;
 }</code></pre>
 <p>If necessary, also create the usual tree in which the Java code of this
@@ -453,7 +453,7 @@ combined with the reading of the environment file (SFI=07h).</p>
     CardSecuritySetting cardSecuritySetting =
             calypsoExtensionService
                     .createCardSecuritySetting()
-                    .setSamResource(samReader, calypsoSam);
+                    .setControlSamResource(samReader, calypsoSam);
 
     final byte RECORD_NUMBER_1 = 1;
     final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
@@ -716,7 +716,7 @@ public class DemoCardAuthentication {
         CardSecuritySetting cardSecuritySetting =
                 calypsoExtensionService
                         .createCardSecuritySetting()
-                        .setSamResource(samReader, calypsoSam);
+                        .setControlSamResource(samReader, calypsoSam);
 
         final byte RECORD_NUMBER_1 = 1;
         final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
@@ -755,7 +755,7 @@ public class DemoCardAuthentication {
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2022-02-01</p>
+<p>Last updated on 2022-05-30</p>
 </div>
 </article>
 <footer class=site-footer>

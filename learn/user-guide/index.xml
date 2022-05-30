@@ -919,7 +919,7 @@ CardResource samResource = CardResourceServiceProvider.getService().getCardResou
 CardSecuritySetting cardSecuritySetting =
 CalypsoExtensionService.getInstance()
 .createCardSecuritySetting()
-.setSamResource(samResource.getReader(), (CalypsoSam) samResource.getSmartCard());&lt;/code>&lt;/pre>&lt;/p>
+.setControlSamResource(samResource.getReader(), (CalypsoSam) samResource.getSmartCard());&lt;/code>&lt;/pre>&lt;/p>
 &lt;hr>
 &lt;h2 id="operate-a-card-transaction">Operate a card transaction&lt;/h2>
 &lt;p>It is possible to perform secure or non-secure transactions depending on the need.

@@ -49,12 +49,12 @@ mavenCentral()
 dependencies {
 // Import CNA APIs
 implementation &amp;#39;org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.&amp;#43;&amp;#39;
-implementation &amp;#39;org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.1.&amp;#43;&amp;#39;
+implementation &amp;#39;org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.2.&amp;#43;&amp;#39;
 // Import Keyple components
 implementation &amp;#39;org.eclipse.keyple:keyple-common-java-api:2.0.&amp;#43;&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-util-java-lib:2.&amp;#43;&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-service-java-lib:2.0.1&amp;#39;
-implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.1.0&amp;#39;
+implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.0&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0&amp;#39;
 }&lt;/code>&lt;/pre>
 &lt;p>If necessary, also create the usual tree in which the Java code of this
@@ -194,7 +194,7 @@ combined with the reading of the environment file (SFI=07h).&lt;/p>
 CardSecuritySetting cardSecuritySetting =
 calypsoExtensionService
 .createCardSecuritySetting()
-.setSamResource(samReader, calypsoSam);
+.setControlSamResource(samReader, calypsoSam);
 final byte RECORD_NUMBER_1 = 1;
 final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
 // Performs file reads using the card transaction manager in a secure session.
@@ -410,7 +410,7 @@ CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard()
 CardSecuritySetting cardSecuritySetting =
 calypsoExtensionService
 .createCardSecuritySetting()
-.setSamResource(samReader, calypsoSam);
+.setControlSamResource(samReader, calypsoSam);
 final byte RECORD_NUMBER_1 = 1;
 final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
 // Performs file reads using the card transaction manager in a secure session.
