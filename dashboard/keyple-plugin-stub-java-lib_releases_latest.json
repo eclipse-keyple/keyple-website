@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/releases/50886545",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/releases/50886545/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-plugin-stub-java-lib/releases/50886545/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-plugin-stub-java-lib/releases/tag/2.0.0",
-  "id": 50886545,
+  "url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/releases/68531678",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/releases/68531678/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-plugin-stub-java-lib/releases/68531678/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-plugin-stub-java-lib/releases/tag/2.1.0",
+  "id": 68531678,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWgos4DCHeR",
-  "tag_name": "2.0.0",
+  "node_id": "RE_kwDODMWgos4EFbXe",
+  "tag_name": "2.1.0",
   "target_commitish": "main",
-  "name": "2.0.0",
+  "name": "2.1.0",
   "draft": false,
   "prerelease": false,
-  "created_at": "2021-10-06T12:17:51Z",
-  "published_at": "2021-10-06T12:38:25Z",
+  "created_at": "2022-06-03T08:13:33Z",
+  "published_at": "2022-06-03T09:51:32Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/tarball/2.0.0",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/zipball/2.0.0",
-  "body": "This is the initial release of the **Keyple Plugin Stub Java Library**.\r\nIt follows the extraction of Keyple 1.0 components contained in the `eclipse/keyple-java` repository to dedicated repositories.\r\nIt also brings many major API changes."
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/tarball/2.1.0",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-plugin-stub-java-lib/zipball/2.1.0",
+  "body": "### Added\r\n- \"CHANGELOG.md\" file (issue [eclipse/keyple#6]).\r\n- CI: Forbid the publication of a version already released (issue [#7]).\r\n- New way of mocking APDU responses for a `StubSmartCard` using a provider (issue [#10]).\r\n### Upgraded\r\n- \"Keyple Util Library\" to version `2.1.0` by removing the use of deprecated methods."
 }
