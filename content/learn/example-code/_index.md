@@ -1,8 +1,8 @@
 ---
-title: Example Code
+title: Example code
 type: book
 toc: false
-weight: 6
+weight: 5
 ---
 
 ---

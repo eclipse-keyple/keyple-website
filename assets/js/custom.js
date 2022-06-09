@@ -195,9 +195,8 @@ loadProjectsDashboard = async function() {
             let space = document.createTextNode("  ");
             cell.appendChild(space);
             a = document.createElement('a');
-            linkText = document.createTextNode("🕮");
             cell.appendChild(space);
-            a.appendChild(linkText);
+            a.innerHTML = "<i class=\"fas fa-book\"></i>";
             a.title = "API documentation for " + json.name;
             a.href = "https://eclipse.github.io/" + json.name;
             a.target = "_blank";
