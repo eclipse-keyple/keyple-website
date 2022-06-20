@@ -23,7 +23,7 @@ weight: 2
 A Hoplink extension will be proposed (based on a high-level API on top of the Calypso API).
 
 ## Version history
-### Evolutions of the Keyple components after the version 2.0.0 of the framework
+### Evolutions of the Keyple components after the version 2.0.0 of the SDK
 
 <table>
 <thead>
@@ -74,7 +74,7 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
 </table>
 
 
-### Global evolutions to the Keyple framework until version 2.0.0
+### Global evolutions to the Keyple SDK until version 2.0.0
 Until the version 2.0.0 of Keyple, the components of Keyple Java or Keyple C++ were released at the same time with the same version number.
 The porting in C++ of Keyple Java is based on the same Object-Oriented Model. The Keyple C++ implemntation provides the same core & Calypso feature, but the support of the distributed module isn't part of the scope, and for reader integration, only the PC/SC reader is provided.
 

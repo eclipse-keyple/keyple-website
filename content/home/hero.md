@@ -22,7 +22,7 @@ hero_media = "hero-image.jpg"
   icon = "rocket"
 +++
 
-**_"The first open source framework dedicated to contactless ticketing and access control applications"_**
+**_"The first open source SDK dedicated to contactless ticketing and access control applications"_**
 
 Eclipse Keyple® accelerates the development through a universal, open and modular platform that provides high-level APIs and ensures application reliability and compliance.
 
