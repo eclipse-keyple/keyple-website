@@ -82,25 +82,25 @@ echo "," >> dashboard/repository_list.json
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-website master false false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-common-cpp-api true false
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-common-cpp-api master true false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-util-cpp-lib true false
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-util-cpp-lib master true false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-service-cpp-lib true false
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-service-cpp-lib master true false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-service-resource-cpp-lib true false
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-service-resource-cpp-lib master true false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-plugin-cpp-api true false
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-plugin-cpp-api master true false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-plugin-stub-cpp-lib true false
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-plugin-stub-cpp-lib master true false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-plugin-pcsc-cpp-lib true false
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-plugin-pcsc-cpp-lib master true false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-card-generic-cpp-lib true false
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-card-generic-cpp-lib master true false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-card-calypso-cpp-lib true false
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-card-calypso-cpp-lib master true false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-cpp-example true false
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-cpp-example master true false
 echo "" >> dashboard/repository_list.json
 echo "]" >> dashboard/repository_list.json
 
