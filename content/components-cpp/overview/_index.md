@@ -13,7 +13,7 @@ In the meantime, you can check the list of repositories concerned here: [project
 
 Don't worry about the number of repositories, the [keyple-cpp-meta](https://github.com/eclipse/keyple-cpp-meta) repository allows you to create a ready-to-use environment very easily by automatically retrieving all the repositories.
 
-Pour ce qui est de la documentation, elle arrive également mais en attendant les guides et tutoriels Java sont applicables tels quels au langage près. 
+As for the documentation, it is also coming but in the meantime the Java guides and tutorials are applicable as they are except for the programming language aspects. 
 
 {{% /callout %}}
 
