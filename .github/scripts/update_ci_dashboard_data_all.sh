@@ -101,6 +101,8 @@ echo "," >> dashboard/repository_list.json
 ../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-card-calypso-cpp-lib master true false
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-cpp-example master true false
+echo "," >> dashboard/repository_list.json
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-cpp-meta master true false
 echo "" >> dashboard/repository_list.json
 echo "]" >> dashboard/repository_list.json
 
