@@ -9,15 +9,12 @@ weight: 2
 
 ---
 ## Current work
- - The porting of Keyple 2.0.0 in C++ is in progress.
+ - The porting of Keyple 2.0.0 in C++ is finished since end of May 2022. A full review by the Eclipse foundation will be requested. The official release 2.0 of Keyple C++ is planned for July. 
  - New enhancements are planned for the Calypso library
-   - pre-personalization transaction (Change Key)
-   - signature of data fields (SAM PSO commands)
-   - confidential secure session (REV3.2 AES mode)
-   - asymmetric authentication (REV3.3 PKI mode)
+   - confidential secure session (REV3.2 Prime Extended based on AES)
+   - asymmetric authentication (REV3.3 Prime PKI based on ECC)
    - REV1/REV2 product specific supports
-   - SAM Transaction API (for SAM management)
- - Looking to provide a NFC reader plugin for iOS sytems.
+ - Looking to migrate the Java implementation in Kotlin Multiplatform in order to handle iOS & some native target for ticketing application based on a generic code compliant with Java environment.
 
 ## Future developments
 A Hoplink extension will be proposed (based on a high-level API on top of the Calypso API).
@@ -28,7 +25,7 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
 <table>
 <thead>
   <tr>
-    <th>Date</th>
+    <th>Date<br/>Java availability</th>
     <th>Component</th>
     <th>Version</th>
     <th>Description</th>
@@ -43,11 +40,11 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
     <ul><li>For the Get Data command, addition of the mode 'EF list' & 'traceability',</li>
     <li>Binary files' access for read, write, & update,</li>
     <li>Read Record Multiple, Search Record Multiple, Increase Multiple & Decrease Multiple</li>
-    <li>Possiblity to personalized keyset with Change Key</li></ul>
+    <li>Pre-personalization : possibility to personalized keyset with Change Key</li></ul>
     </ul></li></td>
   </tr>
   <tr>
-    <td><mark>planned for 2022/03</mark></td>
+    <td>2022/06</td>
     <td>Calypso lib</td>
     <td>2.2</td>
     <td><ul><li><b>SAM operation improvements</b>
@@ -55,7 +52,7 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
     <li>Support of the PSO data signature feature: signature generation & verification. Possibility to operate a signature operation through the Card Transaction or a SAM Transaction.</li></ul></li></ul></td>
   </tr>
   <tr>
-    <td><mark>planned for 2022/04</mark></td>
+    <td><mark>planned for 2022/09</mark></td>
     <td>Calypso lib</td>
     <td>2.3</td>
     <td><ul><li><b>Support of Calypso Prime PKI</b>
@@ -63,7 +60,7 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
     </ul></li></ul></td>
   </tr>
   <tr>
-    <td><mark>planned for 2022/05</mark></td>
+    <td><mark>planned for 2022/10</mark></td>
     <td>Calypso lib</td>
     <td>2.4</td>
     <td><ul><li><b>Support of Calypso Prime Extended</b>
@@ -74,7 +71,7 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
 </table>
 
 
-### Global evolutions to the Keyple SDK until version 2.0.0
+### Global evolutions to the Keyple SDK until version 2.0.0 <mark>(obsolete)</mark>
 Until the version 2.0.0 of Keyple, the components of Keyple Java or Keyple C++ were released at the same time with the same version number.
 The porting in C++ of Keyple Java is based on the same Object-Oriented Model. The Keyple C++ implemntation provides the same core & Calypso feature, but the support of the distributed module isn't part of the scope, and for reader integration, only the PC/SC reader is provided.
 
