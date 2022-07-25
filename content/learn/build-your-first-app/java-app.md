@@ -455,138 +455,133 @@ import org.calypsonet.terminal.calypso.card.CalypsoCard;
 import org.calypsonet.terminal.calypso.sam.CalypsoSam;
 import org.calypsonet.terminal.calypso.transaction.CardSecuritySetting;
 import org.calypsonet.terminal.calypso.transaction.CardTransactionManager;
+import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.CardSelectionManager;
 import org.calypsonet.terminal.reader.selection.CardSelectionResult;
 import org.eclipse.keyple.card.calypso.CalypsoExtensionService;
 import org.eclipse.keyple.core.service.Plugin;
-import org.eclipse.keyple.core.service.Reader;
 import org.eclipse.keyple.core.service.SmartCardService;
 import org.eclipse.keyple.core.service.SmartCardServiceProvider;
 import org.eclipse.keyple.plugin.pcsc.PcscPluginFactoryBuilder;
 import org.eclipse.keyple.plugin.pcsc.PcscReader;
 
 public class DemoCardAuthentication {
+  // The names of the readers must be adapted to the actual configuration.
+  static final String CARD_READER_NAME = "ASK LoGO 0";
+  static final String SAM_READER_NAME = "SpringCard Puck SAM 0";
 
-    public static void main(String[] args) {
-        // Get the instance of the SmartCardService (singleton pattern)
-        SmartCardService smartCardService = SmartCardServiceProvider.getService();
+  public static void main(String[] args) {
+    // Get the instance of the SmartCardService (singleton pattern)
+    SmartCardService smartCardService = SmartCardServiceProvider.getService();
 
-        // Register the PcscPlugin with the SmartCardService, get a generic plugin instance in return.
-        Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
+    // Register the PcscPlugin with the SmartCardService, get a generic plugin instance in return.
+    Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
 
-        // The names of the drives must be adapted to the actual configuration.
-        String CARD_READER_NAME = "ASK LoGO 0";
-        String SAM_READER_NAME = "Identive CLOUD 2700 R Smart Card Reader 0";
+    // Get and set up the card reader
+    CardReader cardReader = plugin.getReader(CARD_READER_NAME);
 
-        // Get and set up the card reader
-        Reader cardReader = plugin.getReader(CARD_READER_NAME);
-
-        if (cardReader == null) {
-            throw new IllegalStateException("Card reader " + CARD_READER_NAME + " not found.");
-        }
-
-        // Get and set up the SAM reader
-        Reader samReader = plugin.getReader(SAM_READER_NAME);
-
-        if (samReader == null) {
-            throw new IllegalStateException("SAM reader " + SAM_READER_NAME + " not found.");
-        }
-
-        // Check the SAM presence
-        if (!samReader.isCardPresent()) {
-            throw new IllegalStateException("No SAM is present in the reader " + samReader.getName());
-        }
-
-        // Provide the card reader type (for ratification management purpose)
-        cardReader.getExtension(PcscReader.class).setContactless(true);
-
-        // Get the Calypso card extension service
-        CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();
-
-        // Verify that the extension's API level is consistent with the current service.
-        smartCardService.checkCardExtension(calypsoExtensionService);
-
-        // Create a SAM selection manager.
-        CardSelectionManager samSelectionManager = smartCardService.createCardSelectionManager();
-
-        // Create a SAM selection using the Calypso card extension.
-        samSelectionManager.prepareSelection(
-                        calypsoExtensionService.createSamSelection());
-
-        // Actual card communication: process the SAM selection.
-        CardSelectionResult samSelectionResult =
-                samSelectionManager.processCardSelectionScenario(samReader);
-
-        // Check the selection result.
-        if (samSelectionResult.getActiveSmartCard() == null) {
-            throw new IllegalStateException(
-                    "The SAM selection failed.");
-        }
-
-        // Get the SmartCard resulting of the selection.
-        CalypsoSam calypsoSam = (CalypsoSam) samSelectionResult.getActiveSmartCard();
-
-        // Check the card presence
-        if (!cardReader.isCardPresent()) {
-            throw new IllegalStateException("No card is present in the reader " + cardReader.getName());
-        }
-
-        // Prepare a Calypso card selection
-        final String AID = "315449432E49434131"; /* AID: Keyple test kit profile 1, Application 2 */
-
-
-        // Create a card selection manager.
-        CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();
-
-        // Create a card selection using the Calypso card extension.
-        cardSelectionManager.prepareSelection(
-                calypsoExtensionService
-                        .createCardSelection()
-                        .filterByDfName(AID));
-
-        // Actual card communication: process the card selection.
-        CardSelectionResult cardSelectionResult =
-                cardSelectionManager.processCardSelectionScenario(cardReader);
-
-        // Check the selection result.
-        if (cardSelectionResult.getActiveSmartCard() == null) {
-            throw new IllegalStateException(
-                    "The card selection failed.");
-        }
-
-        // Get the SmartCard resulting of the selection.
-        CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();
-
-        // Prepare the security settings used during the Calypso transaction
-        CardSecuritySetting cardSecuritySetting =
-                calypsoExtensionService
-                        .createCardSecuritySetting()
-                        .setControlSamResource(samReader, calypsoSam);
-
-        final byte RECORD_NUMBER_1 = 1;
-        final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
-
-        // Performs file reads using the card transaction manager in a secure session.
-        CardTransactionManager cardTransactionManager = calypsoExtensionService
-                .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-                .prepareReadRecords(
-                        SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
-                .processOpening(WriteAccessLevel.DEBIT);
-
-        // Close the secure session, free the communication channel at the same time
-        cardTransactionManager.prepareReleaseCardChannel()
-                .processClosing();
-
-        System.out.println(
-                "= #### The Secure Session ended successfully, the card is authenticated and the data read are certified.");
-        System.out.println("= #### FILE CONTENT = " + calypsoCard.getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER).toString());
-
-        System.out.println("= #### End of the Calypso card processing.");
-
-        // Unregister the plugin before leaving the application
-        smartCardService.unregisterPlugin(plugin.getName());
-
-        System.exit(0);
+    if (cardReader == null) {
+      throw new IllegalStateException("Card reader " + CARD_READER_NAME + " not found.");
     }
+
+    // Get and set up the SAM reader
+    CardReader samReader = plugin.getReader(SAM_READER_NAME);
+
+    if (samReader == null) {
+      throw new IllegalStateException("SAM reader " + SAM_READER_NAME + " not found.");
+    }
+
+    // Check the SAM presence
+    if (!samReader.isCardPresent()) {
+      throw new IllegalStateException("No SAM is present in the reader " + samReader.getName());
+    }
+
+    // Provide the card reader type (for ratification management purpose)
+    plugin.getReaderExtension(PcscReader.class, CARD_READER_NAME).setContactless(true);
+
+    // Get the Calypso card extension service
+    CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();
+
+    // Verify that the extension's API level is consistent with the current service.
+    smartCardService.checkCardExtension(calypsoExtensionService);
+
+    // Create a SAM selection manager.
+    CardSelectionManager samSelectionManager = smartCardService.createCardSelectionManager();
+
+    // Create a SAM selection using the Calypso card extension.
+    samSelectionManager.prepareSelection(calypsoExtensionService.createSamSelection());
+
+    // Actual card communication: process the SAM selection.
+    CardSelectionResult samSelectionResult =
+        samSelectionManager.processCardSelectionScenario(samReader);
+
+    // Check the selection result.
+    if (samSelectionResult.getActiveSmartCard() == null) {
+      throw new IllegalStateException("The SAM selection failed.");
+    }
+
+    // Get the SmartCard resulting of the selection.
+    CalypsoSam calypsoSam = (CalypsoSam) samSelectionResult.getActiveSmartCard();
+
+    // Check the card presence
+    if (!cardReader.isCardPresent()) {
+      throw new IllegalStateException("No card is present in the reader " + cardReader.getName());
+    }
+
+    // Prepare a Calypso card selection
+    final String AID = "315449432E49434131"; /* AID: Keyple test kit profile 1, Application 2 */
+
+    // Create a card selection manager.
+    CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();
+
+    // Create a card selection using the Calypso card extension.
+    cardSelectionManager.prepareSelection(
+        calypsoExtensionService.createCardSelection().filterByDfName(AID));
+
+    // Actual card communication: process the card selection.
+    CardSelectionResult cardSelectionResult =
+        cardSelectionManager.processCardSelectionScenario(cardReader);
+
+    // Check the selection result.
+    if (cardSelectionResult.getActiveSmartCard() == null) {
+      throw new IllegalStateException("The card selection failed.");
+    }
+
+    // Get the SmartCard resulting of the selection.
+    CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();
+
+    // Prepare the security settings used during the Calypso transaction
+    CardSecuritySetting cardSecuritySetting =
+        calypsoExtensionService
+            .createCardSecuritySetting()
+            .setControlSamResource(samReader, calypsoSam);
+
+    final int RECORD_NUMBER_1 = 1;
+    final int RECORD_SIZE = 29;
+    final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
+
+    // Performs file reads using the card transaction manager in a secure session.
+    CardTransactionManager cardTransactionManager =
+        calypsoExtensionService
+            .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
+            .prepareReadRecords(
+                SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
+            .processOpening(WriteAccessLevel.DEBIT);
+
+    // Close the secure session, free the communication channel at the same time
+    cardTransactionManager.prepareReleaseCardChannel().processClosing();
+
+    System.out.println(
+        "= #### The Secure Session ended successfully, the card is authenticated and the data read are certified.");
+    System.out.println(
+        "= #### FILE CONTENT = " + calypsoCard.getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER).toString());
+
+    System.out.println("= #### End of the Calypso card processing.");
+
+    // Unregister the plugin before leaving the application
+    smartCardService.unregisterPlugin(plugin.getName());
+
+    System.exit(0);
+  }
 }
 {{< /code >}}
