@@ -54,7 +54,7 @@ These features can be exposed at three levels:
 * In the **plugin** (`XxxPlugin` interface), for dynamic configurations that can be applied to all the readers (e.g. put the readers in sleep mode).<br>
   The API will then be directly accessible from the client application through the `getExtension(...)` method of the plugin registered with Keyple Service.
 * In the **reader** (`XxxReader` interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).<br>
-  The API will then be directly accessible from the client application through the `getExtension(...)` method of the reader provided by the plugin registered with Keyple Service.
+  The API will then be directly accessible from the client application through the `getReaderExtension(...)` method of the reader provided by the plugin registered with Keyple Service.
 
 ---
 ## Set up dev environment

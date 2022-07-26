@@ -80,16 +80,17 @@ Integration tests are defined in an independent GitHub repository: [keyple-integ
 8. Await the success of the build by the CI.
 9. Squash and merge the pull request.
 10. Await the success of the build by the CI.
-13. Connect to [Nexus Repository Manager](https://oss.sonatype.org/#welcome) of Eclipse Keyple and go to "Staging Repositories" page:
+11. Connect to [Nexus Repository Manager](https://oss.sonatype.org/#welcome) of Eclipse Keyple and go to "Staging Repositories" page:
     - Select the correct folder to Close & Release. It must contain the manifests, the JAR and all the others elements (sources, javadoc).
     - Close the folder.
     - Release the folder.
     - The other unwanted folders could be dropped.
-14. Check the availability of the release on the [Maven Repository](https://repo.maven.apache.org/maven2/org/eclipse/keyple/). This step may take from 10 minutes to 2 hours.
-11. Create a release on GitHub:
+12. Check the availability of the release on the [Maven Repository](https://repo.maven.apache.org/maven2/org/eclipse/keyple/). This step may take from 10 minutes to 2 hours.
+13. Create a release on GitHub:
     - Set tag `x.y.z`
     - Set release name `x.y.z`
     - Set the content by copying/pasting the content of the current release description in the `CHANGELOG.md` file without the bottom links.
+14. Increment the version in the `gradle.properties` file and commit it to prepare the code for the next release (e.g. `2.0.0 -> 2.0.1`).
 15. Update this website:
     - Update version in `params.yaml` file.
     - Update table content of `dependency-check.md` file.
