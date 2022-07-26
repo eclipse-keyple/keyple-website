@@ -49,7 +49,7 @@ They are specific to the plugin &lt;code>Xxx&lt;/code> to be created but can rem
 &lt;li>In the &lt;strong>plugin&lt;/strong> (&lt;code>XxxPlugin&lt;/code> interface), for dynamic configurations that can be applied to all the readers (e.g. put the readers in sleep mode).&lt;br>
 The API will then be directly accessible from the client application through the &lt;code>getExtension(...)&lt;/code> method of the plugin registered with Keyple Service.&lt;/li>
 &lt;li>In the &lt;strong>reader&lt;/strong> (&lt;code>XxxReader&lt;/code> interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).&lt;br>
-The API will then be directly accessible from the client application through the &lt;code>getExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
+The API will then be directly accessible from the client application through the &lt;code>getReaderExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>

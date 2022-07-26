@@ -26,7 +26,7 @@
 <meta property="og:title" content="Upgrade from an earlier version of Keyple | Eclipse Keyple">
 <meta property="og:description" content="How to upgrade an existing Keyple application using an earlier version."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-11-15T18:29:37+01:00">
+<meta property="article:modified_time" content="2022-07-26T16:25:33+02:00">
 <title>Upgrade from an earlier version of Keyple | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=335f2d8f16f4b12139105b69d66d7aab>
@@ -259,8 +259,8 @@ User guides
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('4',this)">Copy</button></div>
 <pre><code class=language-java id=code-4>Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
 ...
-((ObservableReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
-((ObservableReader) reader).addObserver(new CardReaderObserver());</code></pre>
+((ObservableCardReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
+((ObservableCardReader) reader).addObserver(new CardReaderObserver());</code></pre>
 <div class="alert alert-note">
 <div>
 Exception handlers are no longer required when registering the plugin but only when starting the observation.
@@ -278,9 +278,9 @@ Exception handlers are no longer required when registering the plugin but only w
 <li>2.0.0</li>
 </ul>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
-<pre><code class=language-java id=code-7>((ConfigurableReader) reader).activateProtocol(
+<pre><code class=language-java id=code-7>((ConfigurableCardReader) reader).activateProtocol(
     PcscSupportedContactlessProtocols.ISO_14443_4.name(), 
-    ContactlessCardCommonProtocols.ISO_14443_4.name());</code></pre>
+    CARD_ISO_14443_4);</code></pre>
 <h4 id=use-of-plugin-and-reader-extensions-for-specific-configurations>Use of plugin and reader extensions for specific configurations</h4>
 <div class="alert alert-note">
 <div>
@@ -298,7 +298,7 @@ The examples below show the evolutions for the configuration of a PC/SC reader b
 <li>2.0.0</li>
 </ul>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('10',this)">Copy</button></div>
-<pre><code class=language-java id=code-10>reader.getExtension(PcscReader.class)
+<pre><code class=language-java id=code-10>plugin.getReaderExtension(PcscReader.class, reader.getName())
     .setContactless(true)
     .setIsoProtocol(PcscReader.IsoProtocol.T1);</code></pre>
 <h3 id=card-selection>Card selection</h3>
@@ -376,11 +376,11 @@ Note the removal of the &ldquo;s&rdquo; in <code>CardSelectionResult</code>.
 </ul>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('21',this)">Copy</button></div>
 <pre><code class=language-java id=code-21>cardSelectionManager.scheduleCardSelectionScenario(
-    (ObservableReader) reader,
-    ObservableReader.DetectionMode.REPEATING,
-    ObservableReader.NotificationMode.MATCHED_ONLY);
-((ObservableReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
-((ObservableReader) reader).addObserver(new CardReaderObserver());</code></pre>
+    (ObservableCardReader) reader,
+    ObservableCardReader.DetectionMode.REPEATING,
+    ObservableCardReader.NotificationMode.MATCHED_ONLY);
+((ObservableCardReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
+((ObservableCardReader) reader).addObserver(new CardReaderObserver());</code></pre>
 <div class="alert alert-note">
 <div>
 The selection data is no longer provided to the observable reader but to the selection manager.
@@ -518,7 +518,7 @@ SmartCardServiceProvider.getService().registerDistributedLocalService(factory);<
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2021-11-15</p>
+<p>Last updated on 2022-07-26</p>
 </div>
 </article>
 <footer class=site-footer>

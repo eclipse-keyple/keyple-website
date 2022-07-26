@@ -69,9 +69,9 @@ implementation &amp;#39;org.calypsonet.terminal:calypsonet-terminal-calypso-java
 // Import Keyple components
 implementation &amp;#39;org.eclipse.keyple:keyple-common-java-api:2.0.&amp;#43;&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-util-java-lib:2.&amp;#43;&amp;#39;
-implementation &amp;#39;org.eclipse.keyple:keyple-service-java-lib:2.0.1&amp;#39;
-implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.0&amp;#39;
-implementation &amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0&amp;#39;
+implementation &amp;#39;org.eclipse.keyple:keyple-service-java-lib:2.1.0&amp;#39;
+implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.1&amp;#39;
+implementation &amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.0&amp;#39;
 }&lt;/code>&lt;/pre>
 &lt;p>If necessary, also create the usual tree in which the Java code of this
 guide will be placed, namely the folders: &lt;code>\src\main\java&lt;/code>&lt;/p>
@@ -96,18 +96,22 @@ import org.calypsonet.terminal.calypso.card.CalypsoCard;
 import org.calypsonet.terminal.calypso.sam.CalypsoSam;
 import org.calypsonet.terminal.calypso.transaction.CardSecuritySetting;
 import org.calypsonet.terminal.calypso.transaction.CardTransactionManager;
+import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.CardSelectionManager;
 import org.calypsonet.terminal.reader.selection.CardSelectionResult;
 import org.eclipse.keyple.card.calypso.CalypsoExtensionService;
 import org.eclipse.keyple.core.service.Plugin;
-import org.eclipse.keyple.core.service.Reader;
 import org.eclipse.keyple.core.service.SmartCardService;
 import org.eclipse.keyple.core.service.SmartCardServiceProvider;
 import org.eclipse.keyple.plugin.pcsc.PcscPluginFactoryBuilder;
 import org.eclipse.keyple.plugin.pcsc.PcscReader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 public class DemoCardAuthentication {
+// The names of the readers must be adapted to the actual configuration.
+private static final String CARD_READER_NAME = &amp;#34;ASK LoGO 0&amp;#34;;
+private static final String SAM_READER_NAME = &amp;#34;Identive CLOUD 2700 R Smart Card Reader 0&amp;#34;;
+private static final String AID = &amp;#34;315449432E49434131&amp;#34;; // Keyple test kit profile 1, Application 2
+private static final int RECORD_NUMBER_1 = 1;
+private static final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
 public static void main(String[] args) {
 // ...
 }
@@ -119,25 +123,28 @@ public static void main(String[] args) {
 &amp;ldquo;CARD_READER_NAME&amp;rdquo; and &amp;ldquo;SAM_READER_NAME&amp;rdquo; with the name of your USB readers.&lt;/p>
 &lt;p>If you don&amp;rsquo;t know the names of the readers, read how to find them in the &lt;a href="#faq">FAQ&lt;/a>.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('7', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-7"> // Get the instance of the SmartCardService (singleton pattern)
+&lt;pre>&lt;code class="language-java" id="code-7"> // Get the instance of the SmartCardService
 SmartCardService smartCardService = SmartCardServiceProvider.getService();
-// Register the PcscPlugin with the SmartCardService, get a generic plugin instance in return.
+// Register the PcscPlugin with the SmartCardService, get a generic plugin instance in return
 Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
-// The names of the drives must be adapted to the actual configuration.
-String CARD_READER_NAME = &amp;#34;ASK LoGO 0&amp;#34;;
-String SAM_READER_NAME = &amp;#34;Identive CLOUD 2700 R Smart Card Reader 0&amp;#34;;
 // Get and set up the card reader
-Reader cardReader = plugin.getReader(CARD_READER_NAME);
+CardReader cardReader = plugin.getReader(CARD_READER_NAME);
 if (cardReader == null) {
 throw new IllegalStateException(&amp;#34;Card reader &amp;#34; &amp;#43; CARD_READER_NAME &amp;#43; &amp;#34; not found.&amp;#34;);
 }
+// Set the card reader type (for ratification management purpose)
+plugin.getReaderExtension(PcscReader.class, CARD_READER_NAME).setContactless(true);
+if (!cardReader.isCardPresent()) {
+throw new IllegalStateException(&amp;#34;No card is present in the reader &amp;#34; &amp;#43; cardReader.getName());
+}
 // Get and set up the SAM reader
-Reader samReader = plugin.getReader(SAM_READER_NAME);
+CardReader samReader = plugin.getReader(SAM_READER_NAME);
 if (samReader == null) {
 throw new IllegalStateException(&amp;#34;SAM reader &amp;#34; &amp;#43; SAM_READER_NAME &amp;#43; &amp;#34; not found.&amp;#34;);
 }
-// Provide the card reader type (for ratification management purpose)
-cardReader.getExtension(PcscReader.class).setContactless(true);&lt;/code>&lt;/pre>
+if (!samReader.isCardPresent()) {
+throw new IllegalStateException(&amp;#34;No SAM is present in the reader &amp;#34; &amp;#43; samReader.getName());
+}&lt;/code>&lt;/pre>
 &lt;h3 id="set-up-the-calypso-card-extension">Set up the Calypso card extension&lt;/h3>
 &lt;p>The Calypso card extension service will provide means to handle cards, SAMs and to manage card transactions.
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('8', this);">Copy&lt;/button>&lt;/div>
@@ -152,54 +159,31 @@ CalypsoSam object.&lt;/p>
 &lt;p>It is then combined with the SAM reader to form the SAM resource needed
 later within the transaction service.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('9', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-9"> // Check the SAM presence
-if (!samReader.isCardPresent()) {
-throw new IllegalStateException(&amp;#34;No SAM is present in the reader &amp;#34; &amp;#43; samReader.getName());
-}
-// Create a SAM selection manager.
+&lt;pre>&lt;code class="language-java" id="code-9"> // Select the SAM
 CardSelectionManager samSelectionManager = smartCardService.createCardSelectionManager();
-// Create a SAM selection using the Calypso card extension.
-samSelectionManager.prepareSelection(
-calypsoExtensionService.createSamSelection());
-// Actual card communication: process the SAM selection.
+samSelectionManager.prepareSelection(calypsoExtensionService.createSamSelection());
 CardSelectionResult samSelectionResult =
 samSelectionManager.processCardSelectionScenario(samReader);
-// Check the selection result.
-if (samSelectionResult.getActiveSmartCard() == null) {
-throw new IllegalStateException(
-&amp;#34;The SAM selection failed.&amp;#34;);
-}
-// Get the SmartCard resulting of the selection.
-CalypsoSam calypsoSam = (CalypsoSam) samSelectionResult.getActiveSmartCard();&lt;/code>&lt;/pre>
+CalypsoSam calypsoSam = (CalypsoSam) samSelectionResult.getActiveSmartCard();
+if (calypsoSam == null) {
+throw new IllegalStateException(&amp;#34;The SAM selection failed.&amp;#34;);
+}&lt;/code>&lt;/pre>
 &lt;h3 id="select-the-calypso-card">Select the Calypso card&lt;/h3>
 &lt;p>1st card exchange:&lt;/p>
 &lt;p>The Calypso card selection is made using the card application&amp;rsquo;s AID
 and results in a CalypsoCard object that will contain all the information extracted
 from the Calypso card all along the transaction.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('10', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-10"> // Check the card presence
-if (!cardReader.isCardPresent()) {
-throw new IllegalStateException(&amp;#34;No card is present in the reader &amp;#34; &amp;#43; cardReader.getName());
-}
-// Prepare a Calypso card selection
-final String AID = &amp;#34;315449432E49434131&amp;#34;; /* AID: Keyple test kit profile 1, Application 2 */
-// Create a card selection manager.
+&lt;pre>&lt;code class="language-java" id="code-10"> // Select the card
 CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();
-// Create a card selection using the Calypso card extension.
 cardSelectionManager.prepareSelection(
-calypsoExtensionService
-.createCardSelection()
-.filterByDfName(AID));
-// Actual card communication: process the card selection.
+calypsoExtensionService.createCardSelection().filterByDfName(AID));
 CardSelectionResult cardSelectionResult =
 cardSelectionManager.processCardSelectionScenario(cardReader);
-// Check the selection result.
-if (cardSelectionResult.getActiveSmartCard() == null) {
-throw new IllegalStateException(
-&amp;#34;The card selection failed.&amp;#34;);
-}
-// Get the SmartCard resulting of the selection.
-CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();&lt;/code>&lt;/pre>
+CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();
+if (calypsoCard == null) {
+throw new IllegalStateException(&amp;#34;The card selection failed.&amp;#34;);
+}&lt;/code>&lt;/pre>
 &lt;h3 id="open-the-calypso-secure-session">Open the Calypso secure session&lt;/h3>
 &lt;p>2nd card exchange :&lt;/p>
 &lt;p>The secure session opening operated by the CardTransaction service is
@@ -211,13 +195,11 @@ CardSecuritySetting cardSecuritySetting =
 calypsoExtensionService
 .createCardSecuritySetting()
 .setControlSamResource(samReader, calypsoSam);
-final byte RECORD_NUMBER_1 = 1;
-final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
 // Performs file reads using the card transaction manager in a secure session.
-CardTransactionManager cardTransactionManager = calypsoExtensionService
+CardTransactionManager cardTransactionManager =
+calypsoExtensionService
 .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-.prepareReadRecords(
-SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
+.prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
 .processOpening(WriteAccessLevel.DEBIT);&lt;/code>&lt;/pre>
 &lt;h3 id="close-the-calypso-secure-session">Close the Calypso secure session&lt;/h3>
 &lt;p>3rd card exchange:&lt;/p>
@@ -229,11 +211,11 @@ would be signalled by an exception and would interrupt the thread of
 execution.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('12', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-12"> // Close the secure session, free the communication channel at the same time
-cardTransactionManager.prepareReleaseCardChannel()
-.processClosing();
+cardTransactionManager.prepareReleaseCardChannel().processClosing();
 System.out.println(
 &amp;#34;= #### The Secure Session ended successfully, the card is authenticated and the data read are certified.&amp;#34;);
-System.out.println(&amp;#34;= #### FILE CONTENT = &amp;#34; &amp;#43; calypsoCard.getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER).toString());
+System.out.println(
+&amp;#34;= #### FILE CONTENT = &amp;#34; &amp;#43; calypsoCard.getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER).toString());
 System.out.println(&amp;#34;= #### End of the Calypso card processing.&amp;#34;);&lt;/code>&lt;/pre>
 &lt;h3 id="unregister-the-plugin">Unregister the plugin&lt;/h3>
 &lt;p>Finally unregister the plugin before shutting down the application&lt;/p>
@@ -346,101 +328,85 @@ import org.calypsonet.terminal.calypso.card.CalypsoCard;
 import org.calypsonet.terminal.calypso.sam.CalypsoSam;
 import org.calypsonet.terminal.calypso.transaction.CardSecuritySetting;
 import org.calypsonet.terminal.calypso.transaction.CardTransactionManager;
+import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.CardSelectionManager;
 import org.calypsonet.terminal.reader.selection.CardSelectionResult;
 import org.eclipse.keyple.card.calypso.CalypsoExtensionService;
 import org.eclipse.keyple.core.service.Plugin;
-import org.eclipse.keyple.core.service.Reader;
 import org.eclipse.keyple.core.service.SmartCardService;
 import org.eclipse.keyple.core.service.SmartCardServiceProvider;
 import org.eclipse.keyple.plugin.pcsc.PcscPluginFactoryBuilder;
 import org.eclipse.keyple.plugin.pcsc.PcscReader;
 public class DemoCardAuthentication {
+// The names of the readers must be adapted to the actual configuration.
+private static final String CARD_READER_NAME = &amp;#34;ASK LoGO 0&amp;#34;;
+private static final String SAM_READER_NAME = &amp;#34;Identive CLOUD 2700 R Smart Card Reader 0&amp;#34;;
+private static final String AID = &amp;#34;315449432E49434131&amp;#34;; // Keyple test kit profile 1, Application 2
+private static final int RECORD_NUMBER_1 = 1;
+private static final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
 public static void main(String[] args) {
-// Get the instance of the SmartCardService (singleton pattern)
+// Get the instance of the SmartCardService
 SmartCardService smartCardService = SmartCardServiceProvider.getService();
-// Register the PcscPlugin with the SmartCardService, get a generic plugin instance in return.
+// Register the PcscPlugin with the SmartCardService, get a generic plugin instance in return
 Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
-// The names of the drives must be adapted to the actual configuration.
-String CARD_READER_NAME = &amp;#34;ASK LoGO 0&amp;#34;;
-String SAM_READER_NAME = &amp;#34;Identive CLOUD 2700 R Smart Card Reader 0&amp;#34;;
 // Get and set up the card reader
-Reader cardReader = plugin.getReader(CARD_READER_NAME);
+CardReader cardReader = plugin.getReader(CARD_READER_NAME);
 if (cardReader == null) {
 throw new IllegalStateException(&amp;#34;Card reader &amp;#34; &amp;#43; CARD_READER_NAME &amp;#43; &amp;#34; not found.&amp;#34;);
 }
+// Set the card reader type (for ratification management purpose)
+plugin.getReaderExtension(PcscReader.class, CARD_READER_NAME).setContactless(true);
+if (!cardReader.isCardPresent()) {
+throw new IllegalStateException(&amp;#34;No card is present in the reader &amp;#34; &amp;#43; cardReader.getName());
+}
 // Get and set up the SAM reader
-Reader samReader = plugin.getReader(SAM_READER_NAME);
+CardReader samReader = plugin.getReader(SAM_READER_NAME);
 if (samReader == null) {
 throw new IllegalStateException(&amp;#34;SAM reader &amp;#34; &amp;#43; SAM_READER_NAME &amp;#43; &amp;#34; not found.&amp;#34;);
 }
-// Check the SAM presence
 if (!samReader.isCardPresent()) {
 throw new IllegalStateException(&amp;#34;No SAM is present in the reader &amp;#34; &amp;#43; samReader.getName());
 }
-// Provide the card reader type (for ratification management purpose)
-cardReader.getExtension(PcscReader.class).setContactless(true);
 // Get the Calypso card extension service
 CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();
 // Verify that the extension&amp;#39;s API level is consistent with the current service.
 smartCardService.checkCardExtension(calypsoExtensionService);
-// Create a SAM selection manager.
+// Select the SAM
 CardSelectionManager samSelectionManager = smartCardService.createCardSelectionManager();
-// Create a SAM selection using the Calypso card extension.
-samSelectionManager.prepareSelection(
-calypsoExtensionService.createSamSelection());
-// Actual card communication: process the SAM selection.
+samSelectionManager.prepareSelection(calypsoExtensionService.createSamSelection());
 CardSelectionResult samSelectionResult =
 samSelectionManager.processCardSelectionScenario(samReader);
-// Check the selection result.
-if (samSelectionResult.getActiveSmartCard() == null) {
-throw new IllegalStateException(
-&amp;#34;The SAM selection failed.&amp;#34;);
-}
-// Get the SmartCard resulting of the selection.
 CalypsoSam calypsoSam = (CalypsoSam) samSelectionResult.getActiveSmartCard();
-// Check the card presence
-if (!cardReader.isCardPresent()) {
-throw new IllegalStateException(&amp;#34;No card is present in the reader &amp;#34; &amp;#43; cardReader.getName());
+if (calypsoSam == null) {
+throw new IllegalStateException(&amp;#34;The SAM selection failed.&amp;#34;);
 }
-// Prepare a Calypso card selection
-final String AID = &amp;#34;315449432E49434131&amp;#34;; /* AID: Keyple test kit profile 1, Application 2 */
-// Create a card selection manager.
+// Select the card
 CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();
-// Create a card selection using the Calypso card extension.
 cardSelectionManager.prepareSelection(
-calypsoExtensionService
-.createCardSelection()
-.filterByDfName(AID));
-// Actual card communication: process the card selection.
+calypsoExtensionService.createCardSelection().filterByDfName(AID));
 CardSelectionResult cardSelectionResult =
 cardSelectionManager.processCardSelectionScenario(cardReader);
-// Check the selection result.
-if (cardSelectionResult.getActiveSmartCard() == null) {
-throw new IllegalStateException(
-&amp;#34;The card selection failed.&amp;#34;);
-}
-// Get the SmartCard resulting of the selection.
 CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();
+if (calypsoCard == null) {
+throw new IllegalStateException(&amp;#34;The card selection failed.&amp;#34;);
+}
 // Prepare the security settings used during the Calypso transaction
 CardSecuritySetting cardSecuritySetting =
 calypsoExtensionService
 .createCardSecuritySetting()
 .setControlSamResource(samReader, calypsoSam);
-final byte RECORD_NUMBER_1 = 1;
-final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
 // Performs file reads using the card transaction manager in a secure session.
-CardTransactionManager cardTransactionManager = calypsoExtensionService
+CardTransactionManager cardTransactionManager =
+calypsoExtensionService
 .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-.prepareReadRecords(
-SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
+.prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
 .processOpening(WriteAccessLevel.DEBIT);
 // Close the secure session, free the communication channel at the same time
-cardTransactionManager.prepareReleaseCardChannel()
-.processClosing();
+cardTransactionManager.prepareReleaseCardChannel().processClosing();
 System.out.println(
 &amp;#34;= #### The Secure Session ended successfully, the card is authenticated and the data read are certified.&amp;#34;);
-System.out.println(&amp;#34;= #### FILE CONTENT = &amp;#34; &amp;#43; calypsoCard.getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER).toString());
+System.out.println(
+&amp;#34;= #### FILE CONTENT = &amp;#34; &amp;#43; calypsoCard.getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER).toString());
 System.out.println(&amp;#34;= #### End of the Calypso card processing.&amp;#34;);
 // Unregister the plugin before leaving the application
 smartCardService.unregisterPlugin(plugin.getName());
@@ -501,7 +467,12 @@ and also by allowing the execution of commands immediately following application
 &lt;hr>
 &lt;h2 id="smart-card">Smart card&lt;/h2>
 &lt;p>The Keyple &lt;strong>smart card&lt;/strong> is an object representation of the physical card.&lt;/p>
-&lt;p>It is built by the specific card extension used (e.g. Keyple Calypso) and is provided to the user by the card selection service.&lt;/p></description></item><item><title>Reader Plugin Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</guid><description>&lt;hr>
+&lt;p>It is built by the specific card extension used (e.g. Keyple Calypso) and is provided to the user by the card selection service.&lt;/p>
+&lt;hr>
+&lt;h2 id="protocol">Protocol&lt;/h2>
+&lt;p>At the time of selection, Keyple offers the possibility to distinguish cards by their communication &lt;strong>protocol&lt;/strong>.&lt;/p>
+&lt;p>In order to associate a type of &lt;strong>protocol&lt;/strong> (or card technology), Keyple proposes the concept of configurable reader with a method allowing to associate a &lt;strong>protocol&lt;/strong> identifier known by the reader (name of the physical &lt;strong>protocol&lt;/strong>) and another one known by the application (name of the logical &lt;strong>protocol&lt;/strong>).&lt;/p>
+&lt;p>A configurable reader plugin is responsible for providing a means of identifying the &lt;strong>protocol&lt;/strong> and names each &lt;strong>protocol&lt;/strong> it supports.&lt;/p></description></item><item><title>Reader Plugin Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This guide is intended to help developers who want to create a Keyple reader plugin add-on for a specific device.&lt;/p>
 &lt;hr>
@@ -552,7 +523,7 @@ They are specific to the plugin &lt;code>Xxx&lt;/code> to be created but can rem
 &lt;li>In the &lt;strong>plugin&lt;/strong> (&lt;code>XxxPlugin&lt;/code> interface), for dynamic configurations that can be applied to all the readers (e.g. put the readers in sleep mode).&lt;br>
 The API will then be directly accessible from the client application through the &lt;code>getExtension(...)&lt;/code> method of the plugin registered with Keyple Service.&lt;/li>
 &lt;li>In the &lt;strong>reader&lt;/strong> (&lt;code>XxxReader&lt;/code> interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).&lt;br>
-The API will then be directly accessible from the client application through the &lt;code>getExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
+The API will then be directly accessible from the client application through the &lt;code>getReaderExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
@@ -744,7 +715,7 @@ For observable plugins, the references of the connected readers are updated in r
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('14', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-14">// Here is an example to get the 1st available reader
 String readerName = plugin.getReaderNames().get(0);
-Reader reader = plugin.getReader(readerName);&lt;/code>&lt;/pre>
+CardReader reader = plugin.getReader(readerName);&lt;/code>&lt;/pre>
 &lt;div class="alert alert-note">
 &lt;div>
 Depending on the type of plugin, the reader names are
@@ -758,18 +729,18 @@ system (for example by using regular expressions).
 &lt;p>There are two types of configuration. Their availability depends on the characteristics of the reader:&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;p>The reader is an instance of &lt;code>ConfigurableReader&lt;/code>:&lt;br>
+&lt;p>The reader is an instance of &lt;code>ConfigurableCardReader&lt;/code>:&lt;br>
 It is then possible to activate or deactivate the protocols supported by the reader.&lt;/p>
 &lt;div class="alert alert-note">&lt;div>Use of these methods may be optional if the application does not intend to target products by protocol filtering.&lt;/div>&lt;/div>
 &lt;/li>
 &lt;li>
 &lt;p>The reader&amp;rsquo;s extension API exposes specific options:&lt;br>
-To access the reader extension it is necessary to invoke the &lt;code>getExtension(...)&lt;/code> method on the &lt;code>Reader&lt;/code> instance by specifying the expected class of the extension which must extends the &lt;code>KeypleReaderExtension&lt;/code> interface.
+To access the reader extension it is necessary to invoke the &lt;code>getReaderExtension(...)&lt;/code> method on the &lt;code>Plugin&lt;/code> instance by specifying the expected class of the extension (which must extends the &lt;code>KeypleReaderExtension&lt;/code> interface) and the reader&amp;rsquo;s name.
 After that, the dedicated methods, if any, are available from the resulting object.
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('16', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-16">// Here is a snippet showing the usage of the extension of the Stub reader
-reader
-.getExtension(StubReader.class)
+&lt;pre>&lt;code class="language-java" id="code-16">// Here is a snippet showing how to get and use the extension of the Stub reader
+plugin
+.getReaderExtension(StubReader.class, readerName)
 .removeCard();&lt;/code>&lt;/pre>&lt;/p>
 &lt;/li>
 &lt;/ul>
@@ -777,7 +748,7 @@ reader
 &lt;div class="alert alert-warning">
 &lt;div>
 The reader monitoring only applies to hardware environments in which the smart cards are removable.
-Moreover, only readers of type &lt;code>ObservableReader&lt;/code> can be monitored.
+Moreover, only readers of type &lt;code>ObservableCardReader&lt;/code> can be monitored.
 &lt;/div>
 &lt;/div>
 &lt;div class="alert alert-note">
@@ -785,7 +756,7 @@ Moreover, only readers of type &lt;code>ObservableReader&lt;/code> can be monito
 Observation of the readers is optional in Keyple. It facilitates an event-driven programming mode, but an application
 developer can choose not to observe a reader, either because this reader is not designed to manage card insertions/withdrawals (for example an
 Android OMAPI reader or a SAM reader), or because the application is designed to directly manage the presence of a card (see to &lt;code>isCardPresent&lt;/code> method of the
-&lt;code>Reader&lt;/code> interface).
+&lt;code>CardReader&lt;/code> interface).
 &lt;/div>
 &lt;/div>
 &lt;p>The observation of card insertions and removals is achieved
@@ -820,14 +791,14 @@ public void onReaderObservationError(String pluginName, String readerName, Throw
 ...
 }
 }&lt;/code>&lt;/pre>
-&lt;p>In order to access the dedicated setters, the reader has to be cast to &lt;code>ObservableReader&lt;/code>.&lt;/p>
+&lt;p>In order to access the dedicated setters, the reader has to be cast to &lt;code>ObservableCardReader&lt;/code>.&lt;/p>
 &lt;p>Since adding an observer will cause the Keyple Service to check for the presence of an exception handler,
 the definition of the exception handler must be done first.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('20', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-20">ReaderObserver readerObserver = new ReaderObserver();
-((ObservableReader) reader).setReaderObservationExceptionHandler(readerObserver);
-((ObservableReader) reader).addObserver(readerObserver);
-((ObservableReader) reader).startCardDetection(ObservableCardReader.DetectionMode.REPEATING);&lt;/code>&lt;/pre>
+((ObservableCardReader) reader).setReaderObservationExceptionHandler(readerObserver);
+((ObservableCardReader) reader).addObserver(readerObserver);
+((ObservableCardReader) reader).startCardDetection(ObservableCardReader.DetectionMode.REPEATING);&lt;/code>&lt;/pre>
 &lt;div class="alert alert-note">
 &lt;div>
 Note that the &lt;code>startCardDetection(...)&lt;/code> and &lt;code>stopCardDetection()&lt;/code> methods start and stop the monitoring thread.
@@ -890,16 +861,16 @@ The result of the selection is then directly returned.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('24', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-24">// Actual card communication: run the selection scenario.
 CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);
-// Check the selection result.
-if (selectionResult.getActiveSmartCard() == null) {
-throw new IllegalStateException(&amp;#34;The selection of the card failed.&amp;#34;);
-}
 // Get the SmartCard resulting of the selection.
-SmartCard smartCard = selectionResult.getActiveSmartCard();&lt;/code>&lt;/pre>
+SmartCard smartCard = selectionResult.getActiveSmartCard();
+// Check the selection result.
+if (smartCard == null) {
+throw new IllegalStateException(&amp;#34;The selection of the card failed.&amp;#34;);
+}&lt;/code>&lt;/pre>
 &lt;h3 id="schedule-a-scenario">Schedule a scenario&lt;/h3>
-&lt;p>If the reader is of type &lt;code>ObservableReader&lt;/code> then it is possible to schedule in advance the execution of a selection scenario as soon as a card is presented.&lt;/p>
+&lt;p>If the reader is of type &lt;code>ObservableCardReader&lt;/code> then it is possible to schedule in advance the execution of a selection scenario as soon as a card is presented.&lt;/p>
 &lt;p>Invoke the &lt;code>scheduleCardSelectionScenario(...)&lt;/code> to register the previously prepared scenario in the observable reader.&lt;/p>
-&lt;p>In this case, it is necessary to register a reader observer and to have started the card detection in order to be able to retrieve the result of the selection which will be contained in a &lt;code>ReaderEvent&lt;/code>.&lt;/p>
+&lt;p>In this case, it is necessary to register a reader observer and to have started the card detection in order to be able to retrieve the result of the selection which will be contained in a &lt;code>CardReaderEvent&lt;/code>.&lt;/p>
 &lt;p>Use the &lt;code>parseScheduledCardSelectionsResponse(...)&lt;/code> method to extract the selection result from the event.&lt;/p>
 &lt;p>Note that the scheduling of the execution of a scenario includes two options:&lt;/p>
 &lt;ul>
@@ -910,6 +881,7 @@ SmartCard smartCard = selectionResult.getActiveSmartCard();&lt;/code>&lt;/pre>
 &lt;pre>&lt;code class="language-java" id="code-25">...
 @Override
 public void onReaderEvent(CardReaderEvent event) {
+try {
 switch (event.getType()) {
 case CardReaderEvent.Type.CARD_MATCHED:
 // Retrieve the selected smart card
@@ -923,10 +895,9 @@ break;
 default:
 break;
 }
-if (event.getType() == CardReaderEvent.Type.CARD_INSERTED
-|| event.getType() == CardReaderEvent.Type.CARD_MATCHED) {
+} finally {
 // Ensures that the communication channel is closed, regardless of the processing with the card.
-((ObservableReader) (reader)).finalizeCardProcessing();
+((ObservableCardReader) (reader)).finalizeCardProcessing();
 }
 }
 ...&lt;/code>&lt;/pre>
@@ -943,7 +914,7 @@ This switches the underlying monitoring thread into a state of waiting for the c
 &lt;p>When the transaction is completed, if the reader is observed, it is imperative to invoke the &lt;code>finalizeCardProcessing()&lt;/code> method on the observable reader (see the above note).&lt;/p>
 &lt;hr>
 &lt;h2 id="unregister-a-plugin">Unregister a plugin&lt;/h2>
-&lt;p>To shut down a Keyple application properly, it is necessary to free the resources and in particular to stop the observation threads.&lt;/p>
+&lt;p>To shut down a Keyple application properly, it is necessary to free the resources and in particular to close opened card physical channels and stop the observation threads.&lt;/p>
 &lt;p>This is done by unregistering the plugins in the following way:&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('27', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-27">smartCardService.unregisterPlugin(plugin.getName());&lt;/code>&lt;/pre>
@@ -1050,21 +1021,21 @@ abstract class AbstractExampleActivity : ..., CardReaderObserverSpi, CardReaderO
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('7', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-kotlin" id="code-7">...
 class CoreExamplesActivity : AbstractExampleActivity() {
-private lateinit var reader: Reader
+private val CARD_ISO_14443_4 = &amp;#34;ISO_14443_4_CARD&amp;#34;
+private lateinit var plugin: Plugin
+private lateinit var reader: CardReader
 override fun onCreate(savedInstanceState: Bundle?) {
 ...
-/**
-* Register AndroidNfc plugin Factory
-*/
-val plugin = SmartCardServiceProvider.getService().registerPlugin(AndroidNfcPluginFactoryProvider(this).getFactory())
-/**
-* Configure Nfc Reader
-*/
-with(plugin.getReader(AndroidNfcReader.READER_NAME) as ObservableReader) {
+// Register AndroidNfc plugin Factory
+plugin = SmartCardServiceProvider.getService()
+.registerPlugin(AndroidNfcPluginFactoryProvider(this).getFactory())
+// Configure Nfc Reader
+with(plugin.getReader(AndroidNfcReader.READER_NAME) as ObservableCardReader) {
 setReaderObservationExceptionHandler(this@CoreExamplesActivity)
 addObserver(this@CoreExamplesActivity)
 // with this protocol settings we activate the nfc for ISO1443_4 protocol
-(this as ConfigurableReader).activateProtocol(ContactlessCardCommonProtocol.ISO_14443_4.name, ContactlessCardCommonProtocol.ISO_14443_4.name)
+(this as ConfigurableCardReader).activateProtocol(
+AndroidNfcSupportedProtocols.ISO_14443_4.name, CARD_ISO_14443_4)
 reader = this
 }
 }
@@ -1079,14 +1050,16 @@ checkNfcAvailability()
 if (intent.action != null &amp;amp;&amp;amp; intent.action == NfcAdapter.ACTION_TECH_DISCOVERED) run {
 ...
 // notify reader that card detection has been launched
-(reader as ObservableReader).startCardDetection(ObservableCardReader.DetectionMode.SINGLESHOT)
+(reader as ObservableCardReader).startCardDetection(
+ObservableCardReader.DetectionMode.SINGLESHOT)
 ...
-reader.getExtension(AndroidNfcReader.class).processIntent(intent)
+plugin.getReaderExtension(AndroidNfcReader.class, reader.name).processIntent(intent)
 configureUseCase1ExplicitSelectionAid()
 } else {
 ...
 // enable detection
-(reader as ObservableReader).startCardDetection(ObservableCardReader.DetectionMode.SINGLESHOT)
+(reader as ObservableCardReader).startCardDetection(
+ObservableCardReader.DetectionMode.SINGLESHOT)
 }
 } catch (e: IOException) {
 ...
@@ -1095,40 +1068,35 @@ configureUseCase1ExplicitSelectionAid()
 ...
 private fun configureUseCase1ExplicitSelectionAid() {
 ...
-with(reader as ObservableReader) {
+with(reader as ObservableCardReader) {
 ...
 if (isCardPresent) {
 val smartCardService = SmartCardServiceProvider.getService()
-/**
-* Get the generic card extension service
-*/
+// Get the generic card extension service
 val cardExtension = GenericExtensionService.getInstance()
-/**
-* Verify that the extension API level is consistent with the current service.
-*/
+// Verify that the extension API level is consistent with the current service.
 smartCardService.checkCardExtension(cardExtension)
-/**
+/*
 * Setting of an AID based selection (in this example a Calypso REV3 PO)
 *
 * Select the first application matching the selection AID whatever the card communication
 * protocol keep the logical channel open after the selection
 */
 val aid = CalypsoClassicInfo.AID_CD_LIGHT_GTML
-/**
+/*
 * Generic selection: configures a CardSelector with all the desired attributes to make
 * the selection and read additional information afterwards
 */
 val cardSelection = cardExtension.createCardSelection()
-.filterByCardProtocol(AndroidNfcSupportedProtocols.ISO_14443_4.name)
+.filterByCardProtocol(CARD_ISO_14443_4)
 .filterByDfName(aid)
-/**
-* Create a card selection using the generic card extension.
-*/
+// Create a card selection using the generic card extension.
 cardSelectionManager.prepareSelection(cardSelection)
-/**
-* Provide the Reader with the selection operation to be processed when a card is inserted.
-*/
-cardSelectionManager.scheduleCardSelectionScenario(reader as ObservableReader, ObservableCardReader.DetectionMode.SINGLESHOT, ObservableCardReader.NotificationMode.MATCHED_ONLY)
+// Provide the Reader with the selection operation to be processed when a card is inserted.
+cardSelectionManager.scheduleCardSelectionScenario(
+reader as ObservableCardReader,
+ObservableCardReader.DetectionMode.SINGLESHOT,
+ObservableCardReader.NotificationMode.MATCHED_ONLY)
 ...
 try {
 val cardSelectionsResult = cardSelectionManager.processCardSelectionScenario(this)
@@ -1139,7 +1107,7 @@ val matchedCard = cardSelectionsResult.activeSmartCard
 // selection failed
 ...
 }
-(reader as ObservableReader).finalizeCardProcessing()
+(reader as ObservableCardReader).finalizeCardProcessing()
 } catch (e: CardCommunicationException) {
 ...
 } catch (e: ReaderCommunicationException) {
@@ -1471,7 +1439,8 @@ width: 190px;
 &lt;p>In this mode, the client is the initiator of the application processing following the local plugin or reader events (reader connection/disconnection or card insertion/removal).&lt;/p>
 &lt;p>He can hand over to the server whenever he wants to perform a remote ticketing service on a card present in one of his local readers.&lt;/p>
 &lt;p>The table below shows the classes and interfaces available for this usage mode.&lt;br>
-Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;strong>Keyple Service API&lt;/strong>:&lt;/p>
+Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;strong>Calypsonet Terminal Reader API&lt;/strong>.&lt;br>
+Interfaces marked with an asterisk &amp;ldquo;**&amp;rdquo; come from the &lt;strong>Keyple Service API&lt;/strong>:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -1498,8 +1467,8 @@ Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;str
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;strong>Local Service / Remote Plugin&lt;/strong>&lt;/td>
-&lt;td>&lt;code>DistributedLocalService&lt;/code> *&lt;/td>
-&lt;td>&lt;code>ObservablePlugin&lt;/code> *&lt;/td>
+&lt;td>&lt;code>DistributedLocalService&lt;/code> **&lt;/td>
+&lt;td>&lt;code>ObservablePlugin&lt;/code> **&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;strong>Local Service / Remote Plugin extension&lt;/strong>&lt;/td>
@@ -1509,7 +1478,7 @@ Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;str
 &lt;tr>
 &lt;td>&lt;strong>Reader&lt;/strong>&lt;/td>
 &lt;td>Any kind of reader&lt;/td>
-&lt;td>&lt;code>Reader&lt;/code> *&lt;/td>
+&lt;td>&lt;code>CardReader&lt;/code> *&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;strong>Reader extension&lt;/strong>&lt;/td>
@@ -1531,7 +1500,7 @@ It is the responsibility of the client application to observe and configure the 
 &lt;li>Register the &lt;strong>Remote Plugin&lt;/strong> to the smart card service by providing the previously built factory.&lt;/li>
 &lt;li>Cast the registered plugin into an &lt;code>ObservablePlugin&lt;/code> and add an event observer to it.&lt;br>&lt;div class="alert alert-note">&lt;div>Please note that this remote plugin is observable only to trigger ticketing services on the server side, but does not allow observation on the local plugin such as reader connection or disconnection.&lt;/div>&lt;/div>&lt;/li>
 &lt;li>Await for events of type &lt;code>PluginEvent.Type.READER_CONNECTED&lt;/code>.&lt;br>&lt;div class="alert alert-note">&lt;div>This type of event indicates to the server that a client asks it to perform a specific ticketing service using the connected remote reader.&lt;/div>&lt;/div>&lt;/li>
-&lt;li>When an event occurs, you must retrieve the connected remote reader from the registered plugin using the name of the reader contained in the event.&lt;br>&lt;div class="alert alert-note">&lt;div>Please note that the remote reader is strictly an instance of &lt;code>Reader&lt;/code>, even if the local reader is an &lt;code>ObservableReader&lt;/code>.&lt;br>This usage mode does not allow to observe reader events such as card insertion or removal from the server.&lt;br>It is the responsibility of the client to observe the local reader if needed, then to ask the server to execute a specific remote service depending on the case.&lt;/div>&lt;/div>&lt;/li>
+&lt;li>When an event occurs, you must retrieve the connected remote reader from the registered plugin using the name of the reader contained in the event.&lt;br>&lt;div class="alert alert-note">&lt;div>Please note that the remote reader is strictly an instance of &lt;code>CardReader&lt;/code>, even if the local reader is an &lt;code>ObservableCardReader&lt;/code>.&lt;br>This usage mode does not allow to observe reader events such as card insertion or removal from the server.&lt;br>It is the responsibility of the client to observe the local reader if needed, then to ask the server to execute a specific remote service depending on the case.&lt;/div>&lt;/div>&lt;/li>
 &lt;li>Use information inside the &lt;code>RemoteReaderServer&lt;/code> extension of the remote reader to identify the ticketing service to execute.&lt;/li>
 &lt;li>Execute the specified ticketing service using the remote reader and all of its other information.&lt;/li>
 &lt;li>End the remote ticketing service by invoking the associated method provided by the &lt;code>RemotePluginServer&lt;/code> extension of the remote plugin.&lt;br>It is then possible to send additional information to the client if necessary.&lt;/li>
@@ -1556,7 +1525,8 @@ It is the responsibility of the client application to observe and configure the 
 &lt;p>If the factory has been properly configured, then the remote plugin and reader behave like the local plugins and readers.&lt;/p>
 &lt;p>It is then possible to observe directly from the client the plugin and/or reader events (reader connection/disconnection or card insertion/removal) if desired.&lt;/p>
 &lt;p>The table below shows the classes and interfaces available for this usage mode in the case of a &lt;strong>regular plugin&lt;/strong>.&lt;br>
-Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;strong>Keyple Service API&lt;/strong>:&lt;/p>
+Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;strong>Calypsonet Terminal Reader API&lt;/strong>.&lt;br>
+Interfaces marked with an asterisk &amp;ldquo;**&amp;rdquo; come from the &lt;strong>Keyple Service API&lt;/strong>:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -1583,8 +1553,8 @@ Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;str
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;strong>Remote Plugin / Local Service&lt;/strong>&lt;/td>
-&lt;td>&lt;code>Plugin&lt;/code> * or&lt;br>&lt;code>ObservablePlugin&lt;/code> *&lt;/td>
-&lt;td>&lt;code>DistributedLocalService&lt;/code> *&lt;/td>
+&lt;td>&lt;code>Plugin&lt;/code> ** or&lt;br>&lt;code>ObservablePlugin&lt;/code> **&lt;/td>
+&lt;td>&lt;code>DistributedLocalService&lt;/code> **&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;strong>Remote Plugin / Local Service extension&lt;/strong>&lt;/td>
@@ -1593,7 +1563,7 @@ Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;str
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;strong>Reader&lt;/strong>&lt;/td>
-&lt;td>&lt;code>Reader&lt;/code> * or&lt;br>&lt;code>ObservableReader&lt;/code>&lt;/td>
+&lt;td>&lt;code>CardReader&lt;/code> * or&lt;br>&lt;code>ObservableCardReader&lt;/code> *&lt;/td>
 &lt;td>Any kind of reader&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -1609,7 +1579,8 @@ Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;str
 &lt;p>The dynamic reader allocation process will search for the first available reader among all or a subset of the pool plugins registered on the server.&lt;/p>
 &lt;p>It is possible to define during the configuration phase of the local service factory a filter on the names of the pool plugins to use.&lt;/p>
 &lt;p>The table below shows the classes and interfaces available for this usage mode in the case of a &lt;strong>pool plugin&lt;/strong>.&lt;br>
-Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;strong>Keyple Service API&lt;/strong>:&lt;/p>
+Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;strong>Calypsonet Terminal Reader API&lt;/strong>.&lt;br>
+Interfaces marked with an asterisk &amp;ldquo;**&amp;rdquo; come from the &lt;strong>Keyple Service API&lt;/strong>:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -1636,8 +1607,8 @@ Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;str
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;strong>Remote Plugin / Local Service&lt;/strong>&lt;/td>
-&lt;td>&lt;code>PoolPlugin&lt;/code> *&lt;/td>
-&lt;td>&lt;code>DistributedLocalService&lt;/code> *&lt;/td>
+&lt;td>&lt;code>PoolPlugin&lt;/code> **&lt;/td>
+&lt;td>&lt;code>DistributedLocalService&lt;/code> **&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;strong>Remote Plugin / Local Service extension&lt;/strong>&lt;/td>
@@ -1646,7 +1617,7 @@ Interfaces marked with an asterisk &amp;ldquo;*&amp;rdquo; come from the &lt;str
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;strong>Reader&lt;/strong>&lt;/td>
-&lt;td>&lt;code>Reader&lt;/code> *&lt;/td>
+&lt;td>&lt;code>CardReader&lt;/code> *&lt;/td>
 &lt;td>Any kind of reader&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -1864,13 +1835,12 @@ calypsoExtensionService
 // Actual card communication: process the card selection.
 CardSelectionResult cardSelectionResult =
 cardSelectionManager.processCardSelectionScenario(cardReader);
-// Check the selection result.
-if (cardSelectionResult.getActiveSmartCard() == null) {
-throw new IllegalStateException(
-&amp;#34;The card selection failed.&amp;#34;);
-}
 // Get the SmartCard resulting of the selection.
-CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();&lt;/code>&lt;/pre>
+CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();
+// Check the selection result.
+if (calypsoCard == null) {
+throw new IllegalStateException(&amp;#34;The card selection failed.&amp;#34;);
+}&lt;/code>&lt;/pre>
 &lt;hr>
 &lt;h2 id="set-up-security-settings">Set up security settings&lt;/h2>
 &lt;div class="alert alert-note">
@@ -1937,7 +1907,7 @@ The provided &lt;code>CalypsoCard&lt;/code> object is kept and updated dynamical
 // Performs file reads using the card transaction manager in secure mode.
 cardExtension
 .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-.prepareReadRecords(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
+.prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
 .processOpening(WriteAccessLevel.DEBIT)
 .prepareReleaseCardChannel()
 .processClosing();
@@ -1966,7 +1936,7 @@ logger.error(&amp;#34;Error during the card resource release: {}&amp;#34;, e.get
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Calypso Terminal APIs</title><link>https://keyple.org/learn/overview/terminalapis/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/overview/terminalapis/</guid><description>&lt;hr>
-&lt;p>Keyple implements the 3 terminal APIs defined by the Calypso Networks Association. The corresponding documentation is hosted on &lt;a href="https://terminal-api.calypsonet.org/" target="_blank" rel="noopener">https://terminal-api.calypsonet.org/&lt;/a> .&lt;/p>
+&lt;p>Keyple implements the 3 terminal APIs defined by the &lt;a href="https://calypsonet.org/" target="_blank" rel="noopener">Calypso Networks Association&lt;/a>. The corresponding documentation is hosted on &lt;a href="https://terminal-api.calypsonet.org/" target="_blank" rel="noopener">https://terminal-api.calypsonet.org/&lt;/a> .&lt;/p>
 &lt;ul>
 &lt;li>The Reader API &amp;amp; the Calypso API are public interfaces used by the ticketing applications based on Keyple to manage smartcard readers and to operate Calypso secure processing.&lt;/li>
 &lt;/ul>
@@ -2161,8 +2131,8 @@ You just have to provide the card resource to remove.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('4', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-4">Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
 ...
-((ObservableReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
-((ObservableReader) reader).addObserver(new CardReaderObserver());&lt;/code>&lt;/pre>
+((ObservableCardReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
+((ObservableCardReader) reader).addObserver(new CardReaderObserver());&lt;/code>&lt;/pre>
 &lt;div class="alert alert-note">
 &lt;div>
 Exception handlers are no longer required when registering the plugin but only when starting the observation.
@@ -2180,9 +2150,9 @@ ContactlessCardCommonProtocols.ISO_14443_4.name());&lt;/code>&lt;/pre>
 &lt;li>2.0.0&lt;/li>
 &lt;/ul>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('7', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-7">((ConfigurableReader) reader).activateProtocol(
+&lt;pre>&lt;code class="language-java" id="code-7">((ConfigurableCardReader) reader).activateProtocol(
 PcscSupportedContactlessProtocols.ISO_14443_4.name(),
-ContactlessCardCommonProtocols.ISO_14443_4.name());&lt;/code>&lt;/pre>
+CARD_ISO_14443_4);&lt;/code>&lt;/pre>
 &lt;h4 id="use-of-plugin-and-reader-extensions-for-specific-configurations">Use of plugin and reader extensions for specific configurations&lt;/h4>
 &lt;div class="alert alert-note">
 &lt;div>
@@ -2200,7 +2170,7 @@ The examples below show the evolutions for the configuration of a PC/SC reader b
 &lt;li>2.0.0&lt;/li>
 &lt;/ul>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('10', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-java" id="code-10">reader.getExtension(PcscReader.class)
+&lt;pre>&lt;code class="language-java" id="code-10">plugin.getReaderExtension(PcscReader.class, reader.getName())
 .setContactless(true)
 .setIsoProtocol(PcscReader.IsoProtocol.T1);&lt;/code>&lt;/pre>
 &lt;h3 id="card-selection">Card selection&lt;/h3>
@@ -2278,11 +2248,11 @@ ObservableReader.PollingMode.REPEATING);
 &lt;/ul>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('21', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-java" id="code-21">cardSelectionManager.scheduleCardSelectionScenario(
-(ObservableReader) reader,
-ObservableReader.DetectionMode.REPEATING,
-ObservableReader.NotificationMode.MATCHED_ONLY);
-((ObservableReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
-((ObservableReader) reader).addObserver(new CardReaderObserver());&lt;/code>&lt;/pre>
+(ObservableCardReader) reader,
+ObservableCardReader.DetectionMode.REPEATING,
+ObservableCardReader.NotificationMode.MATCHED_ONLY);
+((ObservableCardReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
+((ObservableCardReader) reader).addObserver(new CardReaderObserver());&lt;/code>&lt;/pre>
 &lt;div class="alert alert-note">
 &lt;div>
 The selection data is no longer provided to the observable reader but to the selection manager.
@@ -2525,14 +2495,14 @@ They are generic and apply to all card and reader technologies.&lt;/p>
 &lt;p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/2.0.1/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/2.1.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/p>
 &lt;h3 id="card-resource-service">Card resource service&lt;/h3>
 &lt;p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-resource-java-lib/2.0.1/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-resource-java-lib/2.0.2/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/p>
 &lt;h3 id="distributed">Distributed&lt;/h3>
@@ -3313,18 +3283,18 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;code id="all-groovy-dependencies" style="display:none">
 &lt;span id="keyple-common-java-api">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-common-java-api:2.0.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-common-java-api-dynamic">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-common-java-api:2.0.&amp;#43;'&lt;/span>&lt;/span>
-&lt;span id="keyple-service-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-service-java-lib:2.0.1'&lt;/span>&lt;/span>
-&lt;span id="keyple-service-resource-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-service-resource-java-lib:2.0.1'&lt;/span>&lt;/span>
+&lt;span id="keyple-service-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-service-java-lib:2.1.0'&lt;/span>&lt;/span>
+&lt;span id="keyple-service-resource-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-service-resource-java-lib:2.0.2'&lt;/span>&lt;/span>
 &lt;span id="keyple-util-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-util-java-lib:2.1.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-util-java-lib-dynamic">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-util-java-lib:2.&amp;#43;'&lt;/span>&lt;/span>
-&lt;span id="keyple-card-calypso-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.0'&lt;/span>&lt;/span>
+&lt;span id="keyple-card-calypso-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.1'&lt;/span>&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-generic-java-lib:2.0.2'&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-local-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-distributed-local-java-lib:2.0.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-network-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-distributed-network-java-lib:2.0.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-remote-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-distributed-remote-java-lib:2.0.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-nfc-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.0.1'&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-omapi-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.0.1'&lt;/span>&lt;/span>
-&lt;span id="keyple-plugin-pcsc-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0'&lt;/span>&lt;/span>
+&lt;span id="keyple-plugin-pcsc-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-stub-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-plugin-stub-java-lib:2.1.0'&lt;/span>&lt;/span>
 &lt;span id="calypsonet-terminal-reader-java-api">implementation &lt;span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.0'&lt;/span>&lt;/span>
 &lt;span id="calypsonet-terminal-reader-java-api-dynamic">implementation &lt;span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.&amp;#43;'&lt;/span>&lt;/span>
@@ -3336,18 +3306,18 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;code id="all-kotlin-dependencies" style="display:none">
 &lt;span id="keyple-common-java-api">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-common-java-api:2.0.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-common-java-api-dynamic">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-common-java-api:2.0.&amp;#43;"&lt;/span>)&lt;/span>
-&lt;span id="keyple-service-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-service-java-lib:2.0.1"&lt;/span>)&lt;/span>
-&lt;span id="keyple-service-resource-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-service-resource-java-lib:2.0.1"&lt;/span>)&lt;/span>
+&lt;span id="keyple-service-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-service-java-lib:2.1.0"&lt;/span>)&lt;/span>
+&lt;span id="keyple-service-resource-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-service-resource-java-lib:2.0.2"&lt;/span>)&lt;/span>
 &lt;span id="keyple-util-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-util-java-lib:2.1.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-util-java-lib-dynamic">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-util-java-lib:2.&amp;#43;"&lt;/span>)&lt;/span>
-&lt;span id="keyple-card-calypso-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.0"&lt;/span>)&lt;/span>
+&lt;span id="keyple-card-calypso-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.1"&lt;/span>)&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-generic-java-lib:2.0.2"&lt;/span>)&lt;/span>
 &lt;span id="keyple-distributed-local-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-distributed-local-java-lib:2.0.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-distributed-network-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-distributed-network-java-lib:2.0.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-distributed-remote-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-distributed-remote-java-lib:2.0.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-plugin-android-nfc-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.0.1"&lt;/span>)&lt;/span>
 &lt;span id="keyple-plugin-android-omapi-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.0.1"&lt;/span>)&lt;/span>
-&lt;span id="keyple-plugin-pcsc-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0"&lt;/span>)&lt;/span>
+&lt;span id="keyple-plugin-pcsc-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-plugin-stub-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-plugin-stub-java-lib:2.1.0"&lt;/span>)&lt;/span>
 &lt;span id="calypsonet-terminal-reader-java-api">implementation(&lt;span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.0"&lt;/span>)&lt;/span>
 &lt;span id="calypsonet-terminal-reader-java-api-dynamic">implementation(&lt;span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.&amp;#43;"&lt;/span>)&lt;/span>
@@ -3370,12 +3340,12 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-service-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>keyple-service-java-lib&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>
-&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.0.1&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
+&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.1.0&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>&lt;/span>
 &lt;span id="keyple-service-resource-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>keyple-service-resource-java-lib&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>
-&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.0.1&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
+&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.0.2&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>&lt;/span>
 &lt;span id="keyple-util-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
@@ -3390,7 +3360,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-card-calypso-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>keyple-card-calypso-java-lib&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>
-&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.2.0&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
+&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.2.1&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
@@ -3425,7 +3395,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-plugin-pcsc-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>keyple-plugin-pcsc-java-lib&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>
-&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.0.0&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
+&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.1.0&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-stub-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
@@ -3594,6 +3564,7 @@ The artifact version defined in the &lt;code>gradle.properties&lt;/code> file mu
 &lt;li>Set the content by copying/pasting the content of the current release description in the &lt;code>CHANGELOG.md&lt;/code> file without the bottom links.&lt;/li>
 &lt;/ul>
 &lt;/li>
+&lt;li>Increment the version in the &lt;code>gradle.properties&lt;/code> file and commit it to prepare the code for the next release (e.g. &lt;code>2.0.0 -&amp;gt; 2.0.1&lt;/code>).&lt;/li>
 &lt;li>Update this website:
 &lt;ul>
 &lt;li>Update version in &lt;code>params.yaml&lt;/code> file.&lt;/li>
@@ -3612,6 +3583,13 @@ The artifact version defined in the &lt;code>gradle.properties&lt;/code> file mu
 - Insert a row each time an API has been updated (major or minor version) then update all impacted components.
 - If the update does not concern the APIs, but only the libraries, then update only the version range of the concerned libraries
 (ex: if keyple-service-java-api goes from "2.0.0" to "2.0.3", then put "2.0.0...2.0.3" in the table)
+Warning:
+- If "keyple-util-java-lib" changes minor or major version,
+it is imperative to add a new line if at least one of the other libraries uses one of the new features.
+- If "keyple-service-java-lib" changes of minor or major version,
+it is imperative to add a new line if "keyple-service-resource-java-lib" uses one of the new functionalities.
+- If "keyple-service-resource-java-lib" changes of minor or major version,
+it is imperative to add a new line if "keyple-card-calypso-java-lib" or "keyple-card-generic-java-lib" uses one of the new features.
 -->
 &lt;table id="datatable-dependency-check" class="display compact" style="width:100%">
 &lt;thead>
@@ -3655,16 +3633,16 @@ The artifact version defined in the &lt;code>gradle.properties&lt;/code> file mu
 &lt;td>2.0.+&lt;/td>&lt;!-- keyple-distributed-remote-java-api -->
 &lt;td>2.0.+&lt;/td>&lt;!-- keyple-plugin-java-api -->
 &lt;td>2.1.0&lt;/td>&lt;!-- keyple-util-java-lib -->
-&lt;td>2.0.0...2.0.1&lt;/td>&lt;!-- keyple-service-java-lib -->
-&lt;td>2.0.0...2.0.1&lt;/td>&lt;!-- keyple-service-resource-java-lib -->
+&lt;td>2.0.0...2.1.0&lt;/td>&lt;!-- keyple-service-java-lib -->
+&lt;td>2.0.0...2.0.2&lt;/td>&lt;!-- keyple-service-resource-java-lib -->
 &lt;td>2.0.0&lt;/td>&lt;!-- keyple-distributed-local-java-lib -->
 &lt;td>2.0.0&lt;/td>&lt;!-- keyple-distributed-network-java-lib -->
 &lt;td>2.0.0&lt;/td>&lt;!-- keyple-distributed-remote-java-lib -->
-&lt;td>2.2.0&lt;/td>&lt;!-- keyple-card-calypso-java-lib -->
+&lt;td>2.2.0...2.2.1&lt;/td>&lt;!-- keyple-card-calypso-java-lib -->
 &lt;td>2.0.0...2.0.2&lt;/td>&lt;!-- keyple-card-generic-java-lib -->
 &lt;td>2.0.0...2.0.1&lt;/td>&lt;!-- keyple-plugin-android-nfc-java-lib -->
 &lt;td>2.0.0...2.0.1&lt;/td>&lt;!-- keyple-plugin-android-omapi-java-lib -->
-&lt;td>2.0.0&lt;/td>&lt;!-- keyple-plugin-pcsc-java-lib -->
+&lt;td>2.0.0...2.1.0&lt;/td>&lt;!-- keyple-plugin-pcsc-java-lib -->
 &lt;td>2.0.0...2.1.0&lt;/td>&lt;!-- keyple-plugin-stub-java-lib -->
 &lt;/tr>
 &lt;tr>
@@ -8022,7 +8000,7 @@ id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Card Calypso Java Library</title><link>https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/</guid><description>&lt;div class="alert alert-note">
 &lt;div>
-&lt;strong>&lt;code>2.2.0&lt;/code>&lt;/strong>
+&lt;strong>&lt;code>2.2.1&lt;/code>&lt;/strong>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
@@ -8064,18 +8042,18 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
 id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
-&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.0&amp;#39;&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.1&amp;#39;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
-&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.0&amp;#34;)&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-card-calypso-java-lib:2.2.1&amp;#34;)&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
 &amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
 &amp;lt;artifactId&amp;gt;keyple-card-calypso-java-lib&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.2.0&amp;lt;/version&amp;gt;
+&amp;lt;version&amp;gt;2.2.1&amp;lt;/version&amp;gt;
 &amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Common Java API</title><link>https://keyple.org/components-java/core/keyple-common-java-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java/core/keyple-common-java-api/</guid><description>&lt;div class="alert alert-note">
@@ -8440,7 +8418,7 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Plugin PC/SC Java Library</title><link>https://keyple.org/components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib/</guid><description>&lt;div class="alert alert-note">
 &lt;div>
-&lt;strong>&lt;code>2.0.0&lt;/code>&lt;/strong>
+&lt;strong>&lt;code>2.1.0&lt;/code>&lt;/strong>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
@@ -8481,18 +8459,18 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-1', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-1-content">&lt;div class="tab-pane fade show active"
 id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab">
-&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0&amp;#39;&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.0&amp;#39;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab">
-&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.0.0&amp;#34;)&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.0&amp;#34;)&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
 &lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
 &amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
 &amp;lt;artifactId&amp;gt;keyple-plugin-pcsc-java-lib&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.0.0&amp;lt;/version&amp;gt;
+&amp;lt;version&amp;gt;2.1.0&amp;lt;/version&amp;gt;
 &amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Plugin Java API</title><link>https://keyple.org/components-java/core/keyple-plugin-java-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java/core/keyple-plugin-java-api/</guid><description>&lt;div class="alert alert-note">
@@ -8618,7 +8596,7 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Service Java Library</title><link>https://keyple.org/components-java/core/keyple-service-java-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java/core/keyple-service-java-lib/</guid><description>&lt;div class="alert alert-note">
 &lt;div>
-&lt;strong>&lt;code>2.0.1&lt;/code>&lt;/strong>
+&lt;strong>&lt;code>2.1.0&lt;/code>&lt;/strong>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
@@ -8659,23 +8637,23 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
 id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
-&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-service-java-lib:2.0.1&amp;#39;&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-service-java-lib:2.1.0&amp;#39;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
-&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-service-java-lib:2.0.1&amp;#34;)&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-service-java-lib:2.1.0&amp;#34;)&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
 &amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
 &amp;lt;artifactId&amp;gt;keyple-service-java-lib&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.0.1&amp;lt;/version&amp;gt;
+&amp;lt;version&amp;gt;2.1.0&amp;lt;/version&amp;gt;
 &amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Service Resource Java Library</title><link>https://keyple.org/components-java/core/keyple-service-resource-java-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java/core/keyple-service-resource-java-lib/</guid><description>&lt;div class="alert alert-note">
 &lt;div>
-&lt;strong>&lt;code>2.0.1&lt;/code>&lt;/strong>
+&lt;strong>&lt;code>2.0.2&lt;/code>&lt;/strong>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
@@ -8716,18 +8694,18 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
 id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
-&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-service-resource-java-lib:2.0.1&amp;#39;&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-service-resource-java-lib:2.0.2&amp;#39;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
-&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-service-resource-java-lib:2.0.1&amp;#34;)&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-service-resource-java-lib:2.0.2&amp;#34;)&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
 &amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
 &amp;lt;artifactId&amp;gt;keyple-service-resource-java-lib&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.0.1&amp;lt;/version&amp;gt;
+&amp;lt;version&amp;gt;2.0.2&amp;lt;/version&amp;gt;
 &amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Plugin Stub Java Library</title><link>https://keyple.org/components-java/standard-reader-plugins/keyple-plugin-stub-java-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components-java/standard-reader-plugins/keyple-plugin-stub-java-lib/</guid><description>&lt;div class="alert alert-note">

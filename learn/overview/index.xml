@@ -53,7 +53,12 @@ and also by allowing the execution of commands immediately following application
 &lt;hr>
 &lt;h2 id="smart-card">Smart card&lt;/h2>
 &lt;p>The Keyple &lt;strong>smart card&lt;/strong> is an object representation of the physical card.&lt;/p>
-&lt;p>It is built by the specific card extension used (e.g. Keyple Calypso) and is provided to the user by the card selection service.&lt;/p></description></item><item><title>Architecture</title><link>https://keyple.org/learn/overview/architecture/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/overview/architecture/</guid><description>&lt;hr>
+&lt;p>It is built by the specific card extension used (e.g. Keyple Calypso) and is provided to the user by the card selection service.&lt;/p>
+&lt;hr>
+&lt;h2 id="protocol">Protocol&lt;/h2>
+&lt;p>At the time of selection, Keyple offers the possibility to distinguish cards by their communication &lt;strong>protocol&lt;/strong>.&lt;/p>
+&lt;p>In order to associate a type of &lt;strong>protocol&lt;/strong> (or card technology), Keyple proposes the concept of configurable reader with a method allowing to associate a &lt;strong>protocol&lt;/strong> identifier known by the reader (name of the physical &lt;strong>protocol&lt;/strong>) and another one known by the application (name of the logical &lt;strong>protocol&lt;/strong>).&lt;/p>
+&lt;p>A configurable reader plugin is responsible for providing a means of identifying the &lt;strong>protocol&lt;/strong> and names each &lt;strong>protocol&lt;/strong> it supports.&lt;/p></description></item><item><title>Architecture</title><link>https://keyple.org/learn/overview/architecture/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/overview/architecture/</guid><description>&lt;hr>
 &lt;p>Keyple is designed to operate exchanges with secure data media such as smart cards, tags or smartphones.&lt;/p>
 &lt;p>Keyple is as much as possible agnostic towards the secured media as towards the hardware allowing to communicate with them.&lt;/p>
 &lt;p>In order to achieve these objectives Keyple consists of a central core to which can be attached add-ons providing solutions to the specific needs of the targeted application.
@@ -72,7 +77,7 @@ The core provides the basic services for registering add-ons and also provides g
 &lt;/div>&lt;figcaption>
 Keyple architecture layers overview
 &lt;/figcaption>&lt;/figure></description></item><item><title>Calypso Terminal APIs</title><link>https://keyple.org/learn/overview/terminalapis/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/overview/terminalapis/</guid><description>&lt;hr>
-&lt;p>Keyple implements the 3 terminal APIs defined by the Calypso Networks Association. The corresponding documentation is hosted on &lt;a href="https://terminal-api.calypsonet.org/" target="_blank" rel="noopener">https://terminal-api.calypsonet.org/&lt;/a> .&lt;/p>
+&lt;p>Keyple implements the 3 terminal APIs defined by the &lt;a href="https://calypsonet.org/" target="_blank" rel="noopener">Calypso Networks Association&lt;/a>. The corresponding documentation is hosted on &lt;a href="https://terminal-api.calypsonet.org/" target="_blank" rel="noopener">https://terminal-api.calypsonet.org/&lt;/a> .&lt;/p>
 &lt;ul>
 &lt;li>The Reader API &amp;amp; the Calypso API are public interfaces used by the ticketing applications based on Keyple to manage smartcard readers and to operate Calypso secure processing.&lt;/li>
 &lt;/ul>

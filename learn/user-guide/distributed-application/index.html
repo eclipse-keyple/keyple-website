@@ -26,7 +26,7 @@
 <meta property="og:title" content="Distributed Application User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user application using network communications."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-26T18:09:46+02:00">
+<meta property="article:modified_time" content="2022-07-26T16:25:33+02:00">
 <title>Distributed Application User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=8a904b9f9936e7ea56be3cfe5bc9e243>
@@ -361,7 +361,8 @@ Keyple Distributed - Concepts - Many remote plugins connected to one local servi
 <p>In this mode, the client is the initiator of the application processing following the local plugin or reader events (reader connection/disconnection or card insertion/removal).</p>
 <p>He can hand over to the server whenever he wants to perform a remote ticketing service on a card present in one of his local readers.</p>
 <p>The table below shows the classes and interfaces available for this usage mode.<br>
-Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Keyple Service API</strong>:</p>
+Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Calypsonet Terminal Reader API</strong>.<br>
+Interfaces marked with an asterisk &ldquo;**&rdquo; come from the <strong>Keyple Service API</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -388,8 +389,8 @@ Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Keyple 
 </tr>
 <tr>
 <td><strong>Local Service / Remote Plugin</strong></td>
-<td><code>DistributedLocalService</code> *</td>
-<td><code>ObservablePlugin</code> *</td>
+<td><code>DistributedLocalService</code> **</td>
+<td><code>ObservablePlugin</code> **</td>
 </tr>
 <tr>
 <td><strong>Local Service / Remote Plugin extension</strong></td>
@@ -399,7 +400,7 @@ Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Keyple 
 <tr>
 <td><strong>Reader</strong></td>
 <td>Any kind of reader</td>
-<td><code>Reader</code> *</td>
+<td><code>CardReader</code> *</td>
 </tr>
 <tr>
 <td><strong>Reader extension</strong></td>
@@ -421,7 +422,7 @@ It is the responsibility of the client application to observe and configure the 
 <li>Register the <strong>Remote Plugin</strong> to the smart card service by providing the previously built factory.</li>
 <li>Cast the registered plugin into an <code>ObservablePlugin</code> and add an event observer to it.<br><div class="alert alert-note"><div>Please note that this remote plugin is observable only to trigger ticketing services on the server side, but does not allow observation on the local plugin such as reader connection or disconnection.</div></div></li>
 <li>Await for events of type <code>PluginEvent.Type.READER_CONNECTED</code>.<br><div class="alert alert-note"><div>This type of event indicates to the server that a client asks it to perform a specific ticketing service using the connected remote reader.</div></div></li>
-<li>When an event occurs, you must retrieve the connected remote reader from the registered plugin using the name of the reader contained in the event.<br><div class="alert alert-note"><div>Please note that the remote reader is strictly an instance of <code>Reader</code>, even if the local reader is an <code>ObservableReader</code>.<br>This usage mode does not allow to observe reader events such as card insertion or removal from the server.<br>It is the responsibility of the client to observe the local reader if needed, then to ask the server to execute a specific remote service depending on the case.</div></div></li>
+<li>When an event occurs, you must retrieve the connected remote reader from the registered plugin using the name of the reader contained in the event.<br><div class="alert alert-note"><div>Please note that the remote reader is strictly an instance of <code>CardReader</code>, even if the local reader is an <code>ObservableCardReader</code>.<br>This usage mode does not allow to observe reader events such as card insertion or removal from the server.<br>It is the responsibility of the client to observe the local reader if needed, then to ask the server to execute a specific remote service depending on the case.</div></div></li>
 <li>Use information inside the <code>RemoteReaderServer</code> extension of the remote reader to identify the ticketing service to execute.</li>
 <li>Execute the specified ticketing service using the remote reader and all of its other information.</li>
 <li>End the remote ticketing service by invoking the associated method provided by the <code>RemotePluginServer</code> extension of the remote plugin.<br>It is then possible to send additional information to the client if necessary.</li>
@@ -446,7 +447,8 @@ It is the responsibility of the client application to observe and configure the 
 <p>If the factory has been properly configured, then the remote plugin and reader behave like the local plugins and readers.</p>
 <p>It is then possible to observe directly from the client the plugin and/or reader events (reader connection/disconnection or card insertion/removal) if desired.</p>
 <p>The table below shows the classes and interfaces available for this usage mode in the case of a <strong>regular plugin</strong>.<br>
-Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Keyple Service API</strong>:</p>
+Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Calypsonet Terminal Reader API</strong>.<br>
+Interfaces marked with an asterisk &ldquo;**&rdquo; come from the <strong>Keyple Service API</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -473,8 +475,8 @@ Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Keyple 
 </tr>
 <tr>
 <td><strong>Remote Plugin / Local Service</strong></td>
-<td><code>Plugin</code> * or<br><code>ObservablePlugin</code> *</td>
-<td><code>DistributedLocalService</code> *</td>
+<td><code>Plugin</code> ** or<br><code>ObservablePlugin</code> **</td>
+<td><code>DistributedLocalService</code> **</td>
 </tr>
 <tr>
 <td><strong>Remote Plugin / Local Service extension</strong></td>
@@ -483,7 +485,7 @@ Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Keyple 
 </tr>
 <tr>
 <td><strong>Reader</strong></td>
-<td><code>Reader</code> * or<br><code>ObservableReader</code></td>
+<td><code>CardReader</code> * or<br><code>ObservableCardReader</code> *</td>
 <td>Any kind of reader</td>
 </tr>
 <tr>
@@ -499,7 +501,8 @@ Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Keyple 
 <p>The dynamic reader allocation process will search for the first available reader among all or a subset of the pool plugins registered on the server.</p>
 <p>It is possible to define during the configuration phase of the local service factory a filter on the names of the pool plugins to use.</p>
 <p>The table below shows the classes and interfaces available for this usage mode in the case of a <strong>pool plugin</strong>.<br>
-Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Keyple Service API</strong>:</p>
+Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Calypsonet Terminal Reader API</strong>.<br>
+Interfaces marked with an asterisk &ldquo;**&rdquo; come from the <strong>Keyple Service API</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -526,8 +529,8 @@ Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Keyple 
 </tr>
 <tr>
 <td><strong>Remote Plugin / Local Service</strong></td>
-<td><code>PoolPlugin</code> *</td>
-<td><code>DistributedLocalService</code> *</td>
+<td><code>PoolPlugin</code> **</td>
+<td><code>DistributedLocalService</code> **</td>
 </tr>
 <tr>
 <td><strong>Remote Plugin / Local Service extension</strong></td>
@@ -536,7 +539,7 @@ Interfaces marked with an asterisk &ldquo;*&rdquo; come from the <strong>Keyple 
 </tr>
 <tr>
 <td><strong>Reader</strong></td>
-<td><code>Reader</code> *</td>
+<td><code>CardReader</code> *</td>
 <td>Any kind of reader</td>
 </tr>
 <tr>
@@ -687,7 +690,7 @@ Keyple Distributed - Asynchronous network implementation
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2021-10-26</p>
+<p>Last updated on 2022-07-26</p>
 </div>
 </article>
 <footer class=site-footer>

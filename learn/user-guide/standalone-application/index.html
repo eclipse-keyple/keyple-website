@@ -26,7 +26,7 @@
 <meta property="og:title" content="Standalone Application User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user standalone application."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-26T18:09:46+02:00">
+<meta property="article:modified_time" content="2022-07-26T16:25:33+02:00">
 <title>Standalone Application User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=e77ca063ee6572d6bf15d5656980094d>
@@ -378,7 +378,7 @@ For observable plugins, the references of the connected readers are updated in r
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('14',this)">Copy</button></div>
 <pre><code class=language-java id=code-14>// Here is an example to get the 1st available reader
 String readerName = plugin.getReaderNames().get(0);
-Reader reader = plugin.getReader(readerName);</code></pre>
+CardReader reader = plugin.getReader(readerName);</code></pre>
 <div class="alert alert-note">
 <div>
 Depending on the type of plugin, the reader names are
@@ -392,18 +392,18 @@ system (for example by using regular expressions).
 <p>There are two types of configuration. Their availability depends on the characteristics of the reader:</p>
 <ul>
 <li>
-<p>The reader is an instance of <code>ConfigurableReader</code>:<br>
+<p>The reader is an instance of <code>ConfigurableCardReader</code>:<br>
 It is then possible to activate or deactivate the protocols supported by the reader.</p>
 <div class="alert alert-note"><div>Use of these methods may be optional if the application does not intend to target products by protocol filtering.</div></div>
 </li>
 <li>
 <p>The reader&rsquo;s extension API exposes specific options:<br>
-To access the reader extension it is necessary to invoke the <code>getExtension(...)</code> method on the <code>Reader</code> instance by specifying the expected class of the extension which must extends the <code>KeypleReaderExtension</code> interface.
+To access the reader extension it is necessary to invoke the <code>getReaderExtension(...)</code> method on the <code>Plugin</code> instance by specifying the expected class of the extension (which must extends the <code>KeypleReaderExtension</code> interface) and the reader&rsquo;s name.
 After that, the dedicated methods, if any, are available from the resulting object.
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('16',this)">Copy</button></div>
-<pre><code class=language-java id=code-16>// Here is a snippet showing the usage of the extension of the Stub reader
-reader
-    .getExtension(StubReader.class)
+<pre><code class=language-java id=code-16>// Here is a snippet showing how to get and use the extension of the Stub reader
+plugin
+    .getReaderExtension(StubReader.class, readerName)
     .removeCard();</code></pre></p>
 </li>
 </ul>
@@ -411,7 +411,7 @@ reader
 <div class="alert alert-warning">
 <div>
 The reader monitoring only applies to hardware environments in which the smart cards are removable.
-Moreover, only readers of type <code>ObservableReader</code> can be monitored.
+Moreover, only readers of type <code>ObservableCardReader</code> can be monitored.
 </div>
 </div>
 <div class="alert alert-note">
@@ -419,7 +419,7 @@ Moreover, only readers of type <code>ObservableReader</code> can be monitored.
 Observation of the readers is optional in Keyple. It facilitates an event-driven programming mode, but an application
 developer can choose not to observe a reader, either because this reader is not designed to manage card insertions/withdrawals (for example an
 Android OMAPI reader or a SAM reader), or because the application is designed to directly manage the presence of a card (see to <code>isCardPresent</code> method of the
-<code>Reader</code> interface).
+<code>CardReader</code> interface).
 </div>
 </div>
 <p>The observation of card insertions and removals is achieved
@@ -456,14 +456,14 @@ through a background task managed by Keyple Service.</p>
         ...
     }
 }</code></pre>
-<p>In order to access the dedicated setters, the reader has to be cast to <code>ObservableReader</code>.</p>
+<p>In order to access the dedicated setters, the reader has to be cast to <code>ObservableCardReader</code>.</p>
 <p>Since adding an observer will cause the Keyple Service to check for the presence of an exception handler,
 the definition of the exception handler must be done first.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
 <pre><code class=language-java id=code-20>ReaderObserver readerObserver = new ReaderObserver();
-((ObservableReader) reader).setReaderObservationExceptionHandler(readerObserver);
-((ObservableReader) reader).addObserver(readerObserver);
-((ObservableReader) reader).startCardDetection(ObservableCardReader.DetectionMode.REPEATING);</code></pre>
+((ObservableCardReader) reader).setReaderObservationExceptionHandler(readerObserver);
+((ObservableCardReader) reader).addObserver(readerObserver);
+((ObservableCardReader) reader).startCardDetection(ObservableCardReader.DetectionMode.REPEATING);</code></pre>
 <div class="alert alert-note">
 <div>
 Note that the <code>startCardDetection(...)</code> and <code>stopCardDetection()</code> methods start and stop the monitoring thread.
@@ -528,17 +528,17 @@ The result of the selection is then directly returned.</p>
 <pre><code class=language-java id=code-24>// Actual card communication: run the selection scenario.
 CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);
 
-// Check the selection result.
-if (selectionResult.getActiveSmartCard() == null) {
-  throw new IllegalStateException(&#34;The selection of the card failed.&#34;);
-}
-
 // Get the SmartCard resulting of the selection.
-SmartCard smartCard = selectionResult.getActiveSmartCard();</code></pre>
+SmartCard smartCard = selectionResult.getActiveSmartCard();
+
+// Check the selection result.
+if (smartCard == null) {
+  throw new IllegalStateException(&#34;The selection of the card failed.&#34;);
+}</code></pre>
 <h3 id=schedule-a-scenario>Schedule a scenario</h3>
-<p>If the reader is of type <code>ObservableReader</code> then it is possible to schedule in advance the execution of a selection scenario as soon as a card is presented.</p>
+<p>If the reader is of type <code>ObservableCardReader</code> then it is possible to schedule in advance the execution of a selection scenario as soon as a card is presented.</p>
 <p>Invoke the <code>scheduleCardSelectionScenario(...)</code> to register the previously prepared scenario in the observable reader.</p>
-<p>In this case, it is necessary to register a reader observer and to have started the card detection in order to be able to retrieve the result of the selection which will be contained in a <code>ReaderEvent</code>.</p>
+<p>In this case, it is necessary to register a reader observer and to have started the card detection in order to be able to retrieve the result of the selection which will be contained in a <code>CardReaderEvent</code>.</p>
 <p>Use the <code>parseScheduledCardSelectionsResponse(...)</code> method to extract the selection result from the event.</p>
 <p>Note that the scheduling of the execution of a scenario includes two options:</p>
 <ul>
@@ -549,24 +549,24 @@ SmartCard smartCard = selectionResult.getActiveSmartCard();</code></pre>
 <pre><code class=language-java id=code-25>...
 @Override
 public void onReaderEvent(CardReaderEvent event) {
+  try {
     switch (event.getType()) {
-        case CardReaderEvent.Type.CARD_MATCHED:
-            // Retrieve the selected smart card
-            SmartCard smartCard =
-                cardSelectionManager
-                    .parseScheduledCardSelectionsResponse(event.getScheduledCardSelectionsResponse())
-                    .getActiveSmartCard();
-            // Perform the transaction
-            ...
-            break;
-        default:
-            break;
+      case CardReaderEvent.Type.CARD_MATCHED:
+        // Retrieve the selected smart card
+        SmartCard smartCard =
+            cardSelectionManager
+                .parseScheduledCardSelectionsResponse(event.getScheduledCardSelectionsResponse())
+                .getActiveSmartCard();
+        // Perform the transaction
+        ...
+        break;
+      default:
+        break;
     }
-    if (event.getType() == CardReaderEvent.Type.CARD_INSERTED
-        || event.getType() == CardReaderEvent.Type.CARD_MATCHED) {
-      // Ensures that the communication channel is closed, regardless of the processing with the card.
-      ((ObservableReader) (reader)).finalizeCardProcessing();
-    }
+  } finally {
+    // Ensures that the communication channel is closed, regardless of the processing with the card.
+    ((ObservableCardReader) (reader)).finalizeCardProcessing();
+  }
 }
 ...</code></pre>
 <div class="alert alert-note">
@@ -582,7 +582,7 @@ This switches the underlying monitoring thread into a state of waiting for the c
 <p>When the transaction is completed, if the reader is observed, it is imperative to invoke the <code>finalizeCardProcessing()</code> method on the observable reader (see the above note).</p>
 <hr>
 <h2 id=unregister-a-plugin>Unregister a plugin</h2>
-<p>To shut down a Keyple application properly, it is necessary to free the resources and in particular to stop the observation threads.</p>
+<p>To shut down a Keyple application properly, it is necessary to free the resources and in particular to close opened card physical channels and stop the observation threads.</p>
 <p>This is done by unregistering the plugins in the following way:</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('27',this)">Copy</button></div>
 <pre><code class=language-java id=code-27>smartCardService.unregisterPlugin(plugin.getName());</code></pre>
@@ -614,7 +614,7 @@ This switches the underlying monitoring thread into a state of waiting for the c
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2021-10-26</p>
+<p>Last updated on 2022-07-26</p>
 </div>
 </article>
 <footer class=site-footer>

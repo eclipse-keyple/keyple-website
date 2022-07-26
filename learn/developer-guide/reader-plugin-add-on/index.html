@@ -26,7 +26,7 @@
 <meta property="og:title" content="Reader Plugin Add-on Developer Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an add-on to handle a specific hardware device."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-26T18:09:46+02:00">
+<meta property="article:modified_time" content="2022-07-26T16:25:33+02:00">
 <title>Reader Plugin Add-on Developer Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=25e4a51c408d2c72488dc9bce481ce98>
@@ -273,7 +273,7 @@ They are specific to the plugin <code>Xxx</code> to be created but can remain em
 <li>In the <strong>plugin</strong> (<code>XxxPlugin</code> interface), for dynamic configurations that can be applied to all the readers (e.g. put the readers in sleep mode).<br>
 The API will then be directly accessible from the client application through the <code>getExtension(...)</code> method of the plugin registered with Keyple Service.</li>
 <li>In the <strong>reader</strong> (<code>XxxReader</code> interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).<br>
-The API will then be directly accessible from the client application through the <code>getExtension(...)</code> method of the reader provided by the plugin registered with Keyple Service.</li>
+The API will then be directly accessible from the client application through the <code>getReaderExtension(...)</code> method of the reader provided by the plugin registered with Keyple Service.</li>
 </ul>
 <hr>
 <h2 id=set-up-dev-environment>Set up dev environment</h2>
@@ -343,7 +343,7 @@ Thus, the factory does not expose any method.
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2021-10-26</p>
+<p>Last updated on 2022-07-26</p>
 </div>
 </article>
 <footer class=site-footer>

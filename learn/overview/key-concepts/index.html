@@ -26,7 +26,7 @@
 <meta property="og:title" content="The Keyple key concepts | Eclipse Keyple">
 <meta property="og:description" content="Understand the concepts behind Keyple."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2021-10-11T10:47:18+02:00">
+<meta property="article:modified_time" content="2022-07-26T16:25:33+02:00">
 <title>The Keyple key concepts | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=f15b055c274c840753dd4baf098df1cd>
@@ -213,6 +213,7 @@ Overview
 <li><a href=#observation>Observation</a></li>
 <li><a href=#selection>Selection</a></li>
 <li><a href=#smart-card>Smart card</a></li>
+<li><a href=#protocol>Protocol</a></li>
 </ul>
 </nav>
 </div>
@@ -277,6 +278,11 @@ and also by allowing the execution of commands immediately following application
 <h2 id=smart-card>Smart card</h2>
 <p>The Keyple <strong>smart card</strong> is an object representation of the physical card.</p>
 <p>It is built by the specific card extension used (e.g. Keyple Calypso) and is provided to the user by the card selection service.</p>
+<hr>
+<h2 id=protocol>Protocol</h2>
+<p>At the time of selection, Keyple offers the possibility to distinguish cards by their communication <strong>protocol</strong>.</p>
+<p>In order to associate a type of <strong>protocol</strong> (or card technology), Keyple proposes the concept of configurable reader with a method allowing to associate a <strong>protocol</strong> identifier known by the reader (name of the physical <strong>protocol</strong>) and another one known by the application (name of the logical <strong>protocol</strong>).</p>
+<p>A configurable reader plugin is responsible for providing a means of identifying the <strong>protocol</strong> and names each <strong>protocol</strong> it supports.</p>
 </div>
 <div class=article-widget>
 <div class=post-nav>
@@ -288,7 +294,7 @@ and also by allowing the execution of commands immediately following application
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2021-10-11</p>
+<p>Last updated on 2022-07-26</p>
 </div>
 </article>
 <footer class=site-footer>
