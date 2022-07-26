@@ -405,7 +405,7 @@ When the transaction is completed, if the reader is observed, it is imperative t
 
 ---
 ## Unregister a plugin
-To shut down a Keyple application properly, it is necessary to free the resources and in particular to stop the observation threads.
+To shut down a Keyple application properly, it is necessary to free the resources and in particular to close opened card physical channels and stop the observation threads.
 
 This is done by unregistering the plugins in the following way:
 
