@@ -189,9 +189,9 @@ It is then possible to activate or deactivate the protocols supported by the rea
 To access the reader extension it is necessary to invoke the `getExtension(...)` method on the `Reader` instance by specifying the expected class of the extension which must extends the `KeypleReaderExtension` interface.
 After that, the dedicated methods, if any, are available from the resulting object.
 {{< code lang="java" >}}
-// Here is a snippet showing the usage of the extension of the Stub reader
-reader
-    .getExtension(StubReader.class)
+// Here is a snippet showing how to get and use the extension of the Stub reader
+plugin
+    .getReaderExtension(StubReader.class, readerName)
     .removeCard();
 {{< /code >}}
 
