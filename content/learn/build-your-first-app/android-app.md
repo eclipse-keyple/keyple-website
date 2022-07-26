@@ -80,6 +80,7 @@ abstract class AbstractExampleActivity : ..., CardReaderObserverSpi, CardReaderO
 class CoreExamplesActivity : AbstractExampleActivity() {
 
     private lateinit var reader: Reader
+    private val CARD_ISO_14443_4 = "ISO_14443_4_CARD"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ...
@@ -96,7 +97,7 @@ class CoreExamplesActivity : AbstractExampleActivity() {
             addObserver(this@CoreExamplesActivity)
 
             // with this protocol settings we activate the nfc for ISO1443_4 protocol
-            (this as ConfigurableReader).activateProtocol(ContactlessCardCommonProtocol.ISO_14443_4.name, ContactlessCardCommonProtocol.ISO_14443_4.name)
+            (this as ConfigurableReader).activateProtocol(ContactlessCardCommonProtocol.ISO_14443_4.name, CARD_ISO_14443_4)
             reader = this
         }
     }
@@ -163,7 +164,7 @@ class CoreExamplesActivity : AbstractExampleActivity() {
                  * the selection and read additional information afterwards
                  */
                 val cardSelection = cardExtension.createCardSelection()
-                    .filterByCardProtocol(AndroidNfcSupportedProtocols.ISO_14443_4.name)
+                    .filterByCardProtocol(CARD_ISO_14443_4)
                     .filterByDfName(aid)
 
                 /**
