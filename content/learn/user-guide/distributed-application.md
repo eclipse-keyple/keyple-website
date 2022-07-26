@@ -107,17 +107,18 @@ In this mode, the client is the initiator of the application processing followin
 He can hand over to the server whenever he wants to perform a remote ticketing service on a card present in one of his local readers.
 
 The table below shows the classes and interfaces available for this usage mode.<br>
-Interfaces marked with an asterisk "*" come from the **Keyple Service API**:
+Interfaces marked with an asterisk "*" come from the **Calypsonet Terminal Reader API**.<br>
+Interfaces marked with an asterisk "**" come from the **Keyple Service API**:
 
-| API | Client | Server |
-| --- | ------ | ------ |
-| **Library to use** | Local Lib | Remote Lib |
+| API | Client                             | Server                             |
+| --- |------------------------------------|------------------------------------|
+| **Library to use** | Local Lib                          | Remote Lib                         |
 | **Factory builder to be used** | `LocalServiceClientFactoryBuilder` | `RemotePluginServerFactoryBuilder` |
-| **Factory to be registered** | `LocalServiceClientFactory` | `RemotePluginServerFactory` |
-| **Local Service / Remote Plugin** | `DistributedLocalService` * | `ObservablePlugin` * |
-| **Local Service / Remote Plugin extension** | `LocalServiceClient` | `RemotePluginServer` |
-| **Reader** | Any kind of reader | `Reader` * |
-| **Reader extension** | Device specific | `RemoteReaderServer` |
+| **Factory to be registered** | `LocalServiceClientFactory`        | `RemotePluginServerFactory`        |
+| **Local Service / Remote Plugin** | `DistributedLocalService` **       | `ObservablePlugin` **              |
+| **Local Service / Remote Plugin extension** | `LocalServiceClient`               | `RemotePluginServer`               |
+| **Reader** | Any kind of reader                 | `CardReader` *                     |
+| **Reader extension** | Device specific                    | `RemoteReaderServer`               |
 
 {{% callout warning %}} It is the responsibility of the client application to observe and configure the local plugins and readers. {{% /callout %}}
 
@@ -128,7 +129,7 @@ Interfaces marked with an asterisk "*" come from the **Keyple Service API**:
     2. Register the **Remote Plugin** to the smart card service by providing the previously built factory.
     3. Cast the registered plugin into an `ObservablePlugin` and add an event observer to it.<br><div class="alert alert-note"><div>Please note that this remote plugin is observable only to trigger ticketing services on the server side, but does not allow observation on the local plugin such as reader connection or disconnection.</div></div>
     4. Await for events of type `PluginEvent.Type.READER_CONNECTED`.<br><div class="alert alert-note"><div>This type of event indicates to the server that a client asks it to perform a specific ticketing service using the connected remote reader.</div></div>
-    5. When an event occurs, you must retrieve the connected remote reader from the registered plugin using the name of the reader contained in the event.<br><div class="alert alert-note"><div>Please note that the remote reader is strictly an instance of `Reader`, even if the local reader is an `ObservableReader`.<br>This usage mode does not allow to observe reader events such as card insertion or removal from the server.<br>It is the responsibility of the client to observe the local reader if needed, then to ask the server to execute a specific remote service depending on the case.</div></div>
+    5. When an event occurs, you must retrieve the connected remote reader from the registered plugin using the name of the reader contained in the event.<br><div class="alert alert-note"><div>Please note that the remote reader is strictly an instance of `CardReader`, even if the local reader is an `ObservableCardReader`.<br>This usage mode does not allow to observe reader events such as card insertion or removal from the server.<br>It is the responsibility of the client to observe the local reader if needed, then to ask the server to execute a specific remote service depending on the case.</div></div>
     6. Use information inside the `RemoteReaderServer` extension of the remote reader to identify the ticketing service to execute.
     7. Execute the specified ticketing service using the remote reader and all of its other information.
     8. End the remote ticketing service by invoking the associated method provided by the `RemotePluginServer` extension of the remote plugin.<br>It is then possible to send additional information to the client if necessary.
@@ -153,17 +154,18 @@ If the factory has been properly configured, then the remote plugin and reader b
 It is then possible to observe directly from the client the plugin and/or reader events (reader connection/disconnection or card insertion/removal) if desired.
 
 The table below shows the classes and interfaces available for this usage mode in the case of a **regular plugin**.<br>
-Interfaces marked with an asterisk "*" come from the **Keyple Service API**:
+Interfaces marked with an asterisk "*" come from the **Calypsonet Terminal Reader API**.<br>
+Interfaces marked with an asterisk "**" come from the **Keyple Service API**:
 
-| API | Client | Server |
-| --- | ------ | ------ |
-| **Library to use** | Remote Lib | Local Lib |
-| **Factory builder to be used** | `RemotePluginClientFactoryBuilder` | `LocalServiceServerFactoryBuilder` |
-| **Factory to be registered** | `RemotePluginClientFactory` | `LocalServiceServerFactory` |
-| **Remote Plugin / Local Service** | `Plugin` * or<br>`ObservablePlugin` * | `DistributedLocalService` * |
-| **Remote Plugin / Local Service extension** | `RemotePluginClient` | `LocalServiceServer` |
-| **Reader** | `Reader` * or<br>`ObservableReader` | Any kind of reader |
-| **Reader extension** | `RemoteReaderClient` | Device specific |
+| API | Client                                        | Server                             |
+| --- |-----------------------------------------------|------------------------------------|
+| **Library to use** | Remote Lib                                    | Local Lib                          |
+| **Factory builder to be used** | `RemotePluginClientFactoryBuilder`            | `LocalServiceServerFactoryBuilder` |
+| **Factory to be registered** | `RemotePluginClientFactory`                   | `LocalServiceServerFactory`        |
+| **Remote Plugin / Local Service** | `Plugin` ** or<br>`ObservablePlugin` **       | `DistributedLocalService` **       |
+| **Remote Plugin / Local Service extension** | `RemotePluginClient`                          | `LocalServiceServer`               |
+| **Reader** | `CardReader` * or<br>`ObservableCardReader` * | Any kind of reader                 |
+| **Reader extension** | `RemoteReaderClient`                          | Device specific                    |
 
 * **Pool plugin** (`PoolPlugin`)
 
@@ -172,17 +174,18 @@ The dynamic reader allocation process will search for the first available reader
 It is possible to define during the configuration phase of the local service factory a filter on the names of the pool plugins to use.
 
 The table below shows the classes and interfaces available for this usage mode in the case of a **pool plugin**.<br>
-Interfaces marked with an asterisk "*" come from the **Keyple Service API**:
+Interfaces marked with an asterisk "*" come from the **Calypsonet Terminal Reader API**.<br>
+Interfaces marked with an asterisk "**" come from the **Keyple Service API**:
 
-| API | Client | Server |
-| --- | ------ | ------ |
-| **Library to use** | Remote Lib | Local Lib |
+| API | Client                                 | Server                             |
+| --- |----------------------------------------|------------------------------------|
+| **Library to use** | Remote Lib                             | Local Lib                          |
 | **Factory builder to be used** | `RemotePoolPluginClientFactoryBuilder` | `LocalServiceServerFactoryBuilder` |
-| **Factory to be registered** | `RemotePluginClientFactory` | `LocalServiceServerFactory` |
-| **Remote Plugin / Local Service** | `PoolPlugin` * | `DistributedLocalService` * |
-| **Remote Plugin / Local Service extension** | `RemotePluginClient` | `LocalServiceServer` |
-| **Reader** | `Reader` * | Any kind of reader |
-| **Reader extension** | `RemoteReaderClient` | Device specific |
+| **Factory to be registered** | `RemotePluginClientFactory`            | `LocalServiceServerFactory`        |
+| **Remote Plugin / Local Service** | `PoolPlugin` **                        | `DistributedLocalService` **       |
+| **Remote Plugin / Local Service extension** | `RemotePluginClient`                   | `LocalServiceServer`               |
+| **Reader** | `CardReader` *                         | Any kind of reader                 |
+| **Reader extension** | `RemoteReaderClient`                   | Device specific                    |
 
 {{% callout warning %}} Whatever the type of plugin, it is the responsibility of the server application to configure the local plugins and readers. {{% /callout %}}
 

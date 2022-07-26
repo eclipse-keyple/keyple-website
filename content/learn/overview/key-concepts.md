@@ -93,3 +93,14 @@ The Keyple card selection process is generic, allowing the management of cards o
 The Keyple **smart card** is an object representation of the physical card.
 
 It is built by the specific card extension used (e.g. Keyple Calypso) and is provided to the user by the card selection service.
+
+---
+## Protocol
+
+At the time of selection, Keyple offers the possibility to distinguish cards by their communication **protocol**.
+
+In order to associate a type of **protocol** (or card technology), Keyple proposes the concept of configurable reader with a method allowing to associate a **protocol** identifier known by the reader (name of the physical **protocol**) and another one known by the application (name of the logical **protocol**).
+
+A configurable reader plugin is responsible for providing a means of identifying the **protocol** and names each **protocol** it supports.
+
+

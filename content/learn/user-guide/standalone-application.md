@@ -167,7 +167,7 @@ Readers are accessible directly from the associated `Plugin` instance.
 {{< code lang="java" >}}
 // Here is an example to get the 1st available reader
 String readerName = plugin.getReaderNames().get(0);
-Reader reader = plugin.getReader(readerName);
+CardReader reader = plugin.getReader(readerName);
 {{< /code >}}
 
 {{% callout note %}}
@@ -181,30 +181,30 @@ system (for example by using regular expressions).
 ### Configure a reader
 There are two types of configuration. Their availability depends on the characteristics of the reader:
 
-* The reader is an instance of `ConfigurableReader`:<br>
+* The reader is an instance of `ConfigurableCardReader`:<br>
 It is then possible to activate or deactivate the protocols supported by the reader.
   <div class="alert alert-note"><div>Use of these methods may be optional if the application does not intend to target products by protocol filtering.</div></div>
 
 * The reader's extension API exposes specific options:<br>
-To access the reader extension it is necessary to invoke the `getExtension(...)` method on the `Reader` instance by specifying the expected class of the extension which must extends the `KeypleReaderExtension` interface.
+To access the reader extension it is necessary to invoke the `getReaderExtension(...)` method on the `Plugin` instance by specifying the expected class of the extension (which must extends the `KeypleReaderExtension` interface) and the reader's name.
 After that, the dedicated methods, if any, are available from the resulting object.
 {{< code lang="java" >}}
-// Here is a snippet showing the usage of the extension of the Stub reader
-reader
-    .getExtension(StubReader.class)
+// Here is a snippet showing how to get and use the extension of the Stub reader
+plugin
+    .getReaderExtension(StubReader.class, readerName)
     .removeCard();
 {{< /code >}}
 
 ### Monitor a reader
 {{% callout warning %}} The reader monitoring only applies to hardware environments in which the smart cards are removable.
-Moreover, only readers of type `ObservableReader` can be monitored.
+Moreover, only readers of type `ObservableCardReader` can be monitored.
 {{% /callout %}}
 
 {{% callout note %}}
 Observation of the readers is optional in Keyple. It facilitates an event-driven programming mode, but an application
 developer can choose not to observe a reader, either because this reader is not designed to manage card insertions/withdrawals (for example an
 Android OMAPI reader or a SAM reader), or because the application is designed to directly manage the presence of a card (see to `isCardPresent` method of the
-`Reader` interface).
+`CardReader` interface).
 {{% /callout %}}
 
 The observation of card insertions and removals is achieved
@@ -245,16 +245,16 @@ class ReaderObserver implements CardReaderObserverSpi, CardReaderObservationExce
 }
 {{< /code >}}
 
-In order to access the dedicated setters, the reader has to be cast to `ObservableReader`.
+In order to access the dedicated setters, the reader has to be cast to `ObservableCardReader`.
 
 Since adding an observer will cause the Keyple Service to check for the presence of an exception handler,
 the definition of the exception handler must be done first.
 
 {{< code lang="java" >}}
 ReaderObserver readerObserver = new ReaderObserver();
-((ObservableReader) reader).setReaderObservationExceptionHandler(readerObserver);
-((ObservableReader) reader).addObserver(readerObserver);
-((ObservableReader) reader).startCardDetection(ObservableCardReader.DetectionMode.REPEATING);
+((ObservableCardReader) reader).setReaderObservationExceptionHandler(readerObserver);
+((ObservableCardReader) reader).addObserver(readerObserver);
+((ObservableCardReader) reader).startCardDetection(ObservableCardReader.DetectionMode.REPEATING);
 {{< /code >}}
 
 {{% callout note %}}
@@ -340,22 +340,22 @@ The result of the selection is then directly returned.
 // Actual card communication: run the selection scenario.
 CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);
 
-// Check the selection result.
-if (selectionResult.getActiveSmartCard() == null) {
-  throw new IllegalStateException("The selection of the card failed.");
-}
-
 // Get the SmartCard resulting of the selection.
 SmartCard smartCard = selectionResult.getActiveSmartCard();
+
+// Check the selection result.
+if (smartCard == null) {
+  throw new IllegalStateException("The selection of the card failed.");
+}
 {{< /code >}}
 
 ### Schedule a scenario
 
-If the reader is of type `ObservableReader` then it is possible to schedule in advance the execution of a selection scenario as soon as a card is presented.
+If the reader is of type `ObservableCardReader` then it is possible to schedule in advance the execution of a selection scenario as soon as a card is presented.
 
 Invoke the `scheduleCardSelectionScenario(...)` to register the previously prepared scenario in the observable reader.
 
-In this case, it is necessary to register a reader observer and to have started the card detection in order to be able to retrieve the result of the selection which will be contained in a `ReaderEvent`.
+In this case, it is necessary to register a reader observer and to have started the card detection in order to be able to retrieve the result of the selection which will be contained in a `CardReaderEvent`.
 
 Use the `parseScheduledCardSelectionsResponse(...)` method to extract the selection result from the event.
 
@@ -367,24 +367,24 @@ Note that the scheduling of the execution of a scenario includes two options:
 ...
 @Override
 public void onReaderEvent(CardReaderEvent event) {
+  try {
     switch (event.getType()) {
-        case CardReaderEvent.Type.CARD_MATCHED:
-            // Retrieve the selected smart card
-            SmartCard smartCard =
-                cardSelectionManager
-                    .parseScheduledCardSelectionsResponse(event.getScheduledCardSelectionsResponse())
-                    .getActiveSmartCard();
-            // Perform the transaction
-            ...
-            break;
-        default:
-            break;
+      case CardReaderEvent.Type.CARD_MATCHED:
+        // Retrieve the selected smart card
+        SmartCard smartCard =
+            cardSelectionManager
+                .parseScheduledCardSelectionsResponse(event.getScheduledCardSelectionsResponse())
+                .getActiveSmartCard();
+        // Perform the transaction
+        ...
+        break;
+      default:
+        break;
     }
-    if (event.getType() == CardReaderEvent.Type.CARD_INSERTED
-        || event.getType() == CardReaderEvent.Type.CARD_MATCHED) {
-      // Ensures that the communication channel is closed, regardless of the processing with the card.
-      ((ObservableReader) (reader)).finalizeCardProcessing();
-    }
+  } finally {
+    // Ensures that the communication channel is closed, regardless of the processing with the card.
+    ((ObservableCardReader) (reader)).finalizeCardProcessing();
+  }
 }
 ...
 {{< /code >}}
@@ -405,7 +405,7 @@ When the transaction is completed, if the reader is observed, it is imperative t
 
 ---
 ## Unregister a plugin
-To shut down a Keyple application properly, it is necessary to free the resources and in particular to stop the observation threads.
+To shut down a Keyple application properly, it is necessary to free the resources and in particular to close opened card physical channels and stop the observation threads.
 
 This is done by unregistering the plugins in the following way:
 

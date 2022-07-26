@@ -85,14 +85,13 @@ cardSelectionManager.prepareSelection(
 CardSelectionResult cardSelectionResult =
         cardSelectionManager.processCardSelectionScenario(cardReader);
 
-// Check the selection result.
-if (cardSelectionResult.getActiveSmartCard() == null) {
-    throw new IllegalStateException(
-            "The card selection failed.");
-}
-
 // Get the SmartCard resulting of the selection.
 CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();
+
+// Check the selection result.
+if (calypsoCard == null) {
+    throw new IllegalStateException("The card selection failed.");
+}
 {{< /code >}}
 
 ---
@@ -176,7 +175,7 @@ try {
   // Performs file reads using the card transaction manager in secure mode.
   cardExtension
       .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-      .prepareReadRecords(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1, RECORD_NUMBER_1, RECORD_SIZE)
+      .prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
       .processOpening(WriteAccessLevel.DEBIT)
       .prepareReleaseCardChannel()
       .processClosing();

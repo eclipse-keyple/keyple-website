@@ -53,8 +53,8 @@ Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, new 
 {{< code lang="java" >}}
 Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
 ...
-((ObservableReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
-((ObservableReader) reader).addObserver(new CardReaderObserver());
+((ObservableCardReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
+((ObservableCardReader) reader).addObserver(new CardReaderObserver());
 {{< /code >}}
 
 {{% callout note %}}
@@ -74,9 +74,9 @@ reader.activateProtocol(
 - 2.0.0
 
 {{< code lang="java" >}}
-((ConfigurableReader) reader).activateProtocol(
+((ConfigurableCardReader) reader).activateProtocol(
     PcscSupportedContactlessProtocols.ISO_14443_4.name(), 
-    ContactlessCardCommonProtocols.ISO_14443_4.name());
+    CARD_ISO_14443_4);
 {{< /code >}}
 
 #### Use of plugin and reader extensions for specific configurations
@@ -96,7 +96,7 @@ reader
 - 2.0.0
 
 {{< code lang="java" >}}
-reader.getExtension(PcscReader.class)
+plugin.getReaderExtension(PcscReader.class, reader.getName())
     .setContactless(true)
     .setIsoProtocol(PcscReader.IsoProtocol.T1);
 {{< /code >}}
@@ -182,11 +182,11 @@ Note the removal of the "s" in `CardSelectionResult`.
 
 {{< code lang="java" >}}
 cardSelectionManager.scheduleCardSelectionScenario(
-    (ObservableReader) reader,
-    ObservableReader.DetectionMode.REPEATING,
-    ObservableReader.NotificationMode.MATCHED_ONLY);
-((ObservableReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
-((ObservableReader) reader).addObserver(new CardReaderObserver());
+    (ObservableCardReader) reader,
+    ObservableCardReader.DetectionMode.REPEATING,
+    ObservableCardReader.NotificationMode.MATCHED_ONLY);
+((ObservableCardReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
+((ObservableCardReader) reader).addObserver(new CardReaderObserver());
 {{< /code >}}
 
 {{% callout note %}}

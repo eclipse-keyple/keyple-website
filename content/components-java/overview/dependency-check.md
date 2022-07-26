@@ -21,6 +21,17 @@ Select the targeted versions of the APIs to show the associated compliant librar
 
 - If the update does not concern the APIs, but only the libraries, then update only the version range of the concerned libraries
 (ex: if keyple-service-java-api goes from "2.0.0" to "2.0.3", then put "2.0.0...2.0.3" in the table)
+
+Warning:
+
+- If "keyple-util-java-lib" changes minor or major version,
+  it is imperative to add a new line if at least one of the other libraries uses one of the new features.
+
+- If "keyple-service-java-lib" changes of minor or major version,
+  it is imperative to add a new line if "keyple-service-resource-java-lib" uses one of the new functionalities.
+
+- If "keyple-service-resource-java-lib" changes of minor or major version,
+  it is imperative to add a new line if "keyple-card-calypso-java-lib" or "keyple-card-generic-java-lib" uses one of the new features.
 -->
 
 <table id="datatable-dependency-check" class="display compact" style="width:100%">
@@ -65,16 +76,16 @@ Select the targeted versions of the APIs to show the associated compliant librar
             <td>2.0.+</td><!-- keyple-distributed-remote-java-api -->
             <td>2.0.+</td><!-- keyple-plugin-java-api -->
             <td>2.1.0</td><!-- keyple-util-java-lib -->
-            <td>2.0.0...2.0.1</td><!-- keyple-service-java-lib -->
-            <td>2.0.0...2.0.1</td><!-- keyple-service-resource-java-lib -->
+            <td>2.0.0...2.1.0</td><!-- keyple-service-java-lib -->
+            <td>2.0.0...2.0.2</td><!-- keyple-service-resource-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-local-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-remote-java-lib -->
-            <td>2.2.0</td><!-- keyple-card-calypso-java-lib -->
+            <td>2.2.0...2.2.1</td><!-- keyple-card-calypso-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.0</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>

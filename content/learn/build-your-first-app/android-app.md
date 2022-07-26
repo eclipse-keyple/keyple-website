@@ -79,24 +79,24 @@ abstract class AbstractExampleActivity : ..., CardReaderObserverSpi, CardReaderO
 ...
 class CoreExamplesActivity : AbstractExampleActivity() {
 
-    private lateinit var reader: Reader
+    private val CARD_ISO_14443_4 = "ISO_14443_4_CARD"
+
+    private lateinit var plugin: Plugin
+    private lateinit var reader: CardReader
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ...
-        /**
-         * Register AndroidNfc plugin Factory
-         */
-        val plugin = SmartCardServiceProvider.getService().registerPlugin(AndroidNfcPluginFactoryProvider(this).getFactory())
+        // Register AndroidNfc plugin Factory
+        plugin = SmartCardServiceProvider.getService()
+            .registerPlugin(AndroidNfcPluginFactoryProvider(this).getFactory())
 
-        /**
-         * Configure Nfc Reader
-         */
-        with(plugin.getReader(AndroidNfcReader.READER_NAME) as ObservableReader) {
+        // Configure Nfc Reader
+        with(plugin.getReader(AndroidNfcReader.READER_NAME) as ObservableCardReader) {
             setReaderObservationExceptionHandler(this@CoreExamplesActivity)
             addObserver(this@CoreExamplesActivity)
-
             // with this protocol settings we activate the nfc for ISO1443_4 protocol
-            (this as ConfigurableReader).activateProtocol(ContactlessCardCommonProtocol.ISO_14443_4.name, ContactlessCardCommonProtocol.ISO_14443_4.name)
+            (this as ConfigurableCardReader).activateProtocol(
+                AndroidNfcSupportedProtocols.ISO_14443_4.name, CARD_ISO_14443_4)
             reader = this
         }
     }
@@ -111,46 +111,38 @@ class CoreExamplesActivity : AbstractExampleActivity() {
         try {
             checkNfcAvailability()
             if (intent.action != null && intent.action == NfcAdapter.ACTION_TECH_DISCOVERED) run {
-
                 ...
                 // notify reader that card detection has been launched
-                (reader as ObservableReader).startCardDetection(ObservableCardReader.DetectionMode.SINGLESHOT)
+                (reader as ObservableCardReader).startCardDetection(
+                    ObservableCardReader.DetectionMode.SINGLESHOT)
                 ...
-                reader.getExtension(AndroidNfcReader.class).processIntent(intent)
+                plugin.getReaderExtension(AndroidNfcReader.class, reader.name).processIntent(intent)
                 configureUseCase1ExplicitSelectionAid()
             } else {
                 ...
                 // enable detection
-                (reader as ObservableReader).startCardDetection(ObservableCardReader.DetectionMode.SINGLESHOT)
+                (reader as ObservableCardReader).startCardDetection(
+                    ObservableCardReader.DetectionMode.SINGLESHOT)
             }
         } catch (e: IOException) {
             ...
         }
     }
-
     ...
-
     private fun configureUseCase1ExplicitSelectionAid() {
         ...
-
-        with(reader as ObservableReader) {
+        with(reader as ObservableCardReader) {
             ...
-
             if (isCardPresent) {
-
                 val smartCardService = SmartCardServiceProvider.getService()
 
-                /**
-                 * Get the generic card extension service
-                 */
+                // Get the generic card extension service
                 val cardExtension = GenericExtensionService.getInstance()
 
-                /**
-                 * Verify that the extension API level is consistent with the current service.
-                 */
+                // Verify that the extension API level is consistent with the current service.
                 smartCardService.checkCardExtension(cardExtension)
 
-                /**
+                /*
                  * Setting of an AID based selection (in this example a Calypso REV3 PO)
                  *
                  * Select the first application matching the selection AID whatever the card communication
@@ -158,29 +150,25 @@ class CoreExamplesActivity : AbstractExampleActivity() {
                  */
                 val aid = CalypsoClassicInfo.AID_CD_LIGHT_GTML
 
-                /**
+                /*
                  * Generic selection: configures a CardSelector with all the desired attributes to make
                  * the selection and read additional information afterwards
                  */
                 val cardSelection = cardExtension.createCardSelection()
-                    .filterByCardProtocol(AndroidNfcSupportedProtocols.ISO_14443_4.name)
+                    .filterByCardProtocol(CARD_ISO_14443_4)
                     .filterByDfName(aid)
 
-                /**
-                 * Create a card selection using the generic card extension.
-                 */
+                // Create a card selection using the generic card extension.
                 cardSelectionManager.prepareSelection(cardSelection)
 
-                /**
-                 * Provide the Reader with the selection operation to be processed when a card is inserted.
-                 */
-                cardSelectionManager.scheduleCardSelectionScenario(reader as ObservableReader, ObservableCardReader.DetectionMode.SINGLESHOT, ObservableCardReader.NotificationMode.MATCHED_ONLY)
-
+                // Provide the Reader with the selection operation to be processed when a card is inserted.
+                cardSelectionManager.scheduleCardSelectionScenario(
+                    reader as ObservableCardReader,
+                    ObservableCardReader.DetectionMode.SINGLESHOT,
+                    ObservableCardReader.NotificationMode.MATCHED_ONLY)
                 ...
-
                 try {
                     val cardSelectionsResult = cardSelectionManager.processCardSelectionScenario(this)
-
                     if (cardSelectionsResult.activeSmartCard != null) {
                         val matchedCard = cardSelectionsResult.activeSmartCard
                         ...
@@ -188,7 +176,7 @@ class CoreExamplesActivity : AbstractExampleActivity() {
                         // selection failed
                         ...
                     }
-                    (reader as ObservableReader).finalizeCardProcessing()
+                    (reader as ObservableCardReader).finalizeCardProcessing()
                 } catch (e: CardCommunicationException) {
                     ...
                 } catch (e: ReaderCommunicationException) {
@@ -201,7 +189,6 @@ class CoreExamplesActivity : AbstractExampleActivity() {
             ...
         }
     }
-
     ...
 }
 {{< /code >}}
