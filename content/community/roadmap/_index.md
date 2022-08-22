@@ -9,7 +9,7 @@ weight: 2
 
 ---
 ## Current work
- - The porting of Keyple 2.0.0 in C++ is finished since end of May 2022. A full review by the Eclipse foundation will be requested. The official release 2.0 of Keyple C++ is planned for July. 
+ - The porting of Keyple 2.0.0 in C++ is finished since end of May 2022. A full review by the Eclipse foundation will be requested. The official release 2.0 of Keyple C++ is planned for the 7 of September. 
  - New enhancements are planned for the Calypso library
    - confidential secure session (REV3.2 Prime Extended based on AES)
    - asymmetric authentication (REV3.3 Prime PKI based on ECC)
@@ -52,19 +52,19 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
     <li>Support of the PSO data signature feature: signature generation & verification. Possibility to operate a signature operation through the Card Transaction or a SAM Transaction.</li></ul></li></ul></td>
   </tr>
   <tr>
-    <td><mark>planned for 2022/09</mark></td>
-    <td>Calypso lib</td>
-    <td>2.3</td>
-    <td><ul><li><b>Support of Calypso Prime PKI</b>
-    <ul><li>Asymetric authentication of a Calypso card without involving a SAM</li>
-    </ul></li></ul></td>
-  </tr>
-  <tr>
     <td><mark>planned for 2022/10</mark></td>
     <td>Calypso lib</td>
     <td>2.4</td>
     <td><ul><li><b>Support of Calypso Prime Extended</b>
     <ul><li>Capability to operate a Calypso secure session in confidential mode</li>
+    </ul></li></ul></td>
+  </tr>
+  <tr>
+    <td><mark>planned for 2022/11</mark></td>
+    <td>Calypso lib</td>
+    <td>2.3</td>
+    <td><ul><li><b>Support of Calypso Prime PKI</b>
+    <ul><li>Asymetric authentication of a Calypso card without involving a SAM</li>
     </ul></li></ul></td>
   </tr>
 </tbody>
