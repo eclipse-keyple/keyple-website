@@ -596,12 +596,12 @@ add-on to provide the ability to manage PC/SC readers.&lt;/li>
 &lt;/ul>
 &lt;div class="alert alert-info">
 &lt;div>
-&lt;p>Prerequisites
-Here are the prerequisites to build the keyple components (dynamic libraries):&lt;/p>
+&lt;p>Prerequisites&lt;/p>
+&lt;p>Here are the prerequisites to build the keyple components (dynamic libraries):&lt;/p>
 &lt;ul>
 &lt;li>G++ 6 and higher, MSVC++ 14 (other compilers untested)&lt;/li>
 &lt;li>&lt;a href="https://cmake.org/">CMake&lt;/a>&lt;/li>
-&lt;li>libpcsclite1 package installed (Linux) to build the PC/SC plugin&lt;/li>
+&lt;li>libpcsclite1 and libpcsclite-dev packages installed (Linux) to build the PC/SC plugin&lt;/li>
 &lt;/ul>
 &lt;/div>
 &lt;/div>
@@ -853,17 +853,38 @@ time.
 use Keyple with the following class which prints in the console the
 number and names of the readers present:&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('17', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-cpp" id="code-17">// TO BE COMPLETED (see Java)&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-cpp" id="code-17">#include &amp;#34;SmartCardService.h&amp;#34;
+#include &amp;#34;SmartCardServiceProvider.h&amp;#34;
+#include &amp;#34;PcscPlugin.h&amp;#34;
+#include &amp;#34;PcscPluginFactory.h&amp;#34;
+#include &amp;#34;PcscPluginFactoryBuilder.h&amp;#34;
+#include &amp;#34;PcscReader.h&amp;#34;
+using namespace keyple::core::service;
+using namespace keyple::plugin::pcsc;
+class ReaderDiscovery {};
+int main()
+{
+std::shared_ptr&amp;lt;SmartCardService&amp;gt; smartCardService = SmartCardServiceProvider::getService();
+std::shared_ptr&amp;lt;Plugin&amp;gt; plugin = smartCardService-&amp;gt;registerPlugin(PcscPluginFactoryBuilder::builder()-&amp;gt;build());
+std::cout &amp;lt;&amp;lt; plugin-&amp;gt;getReaderNames().size() &amp;lt;&amp;lt; &amp;#34; reader(s) found.&amp;#34; &amp;lt;&amp;lt; std::endl;
+for (const auto&amp;amp; readerName : plugin-&amp;gt;getReaderNames()) {
+std::cout &amp;lt;&amp;lt; &amp;#34;\&amp;#34;&amp;#34; &amp;lt;&amp;lt; readerName &amp;lt;&amp;lt; &amp;#34;\&amp;#34;&amp;#34; &amp;lt;&amp;lt; std::endl;
+}
+}&lt;/code>&lt;/pre>
 &lt;p>The console output should look something like:&lt;/p>
-&lt;pre>&lt;code>2 readers found.
+&lt;pre>&lt;code>2 reader(s) found.
 &amp;quot;ASK LoGO 0&amp;quot;
 &amp;quot;Identive CLOUD 2700 R Smart Card Reader 0&amp;quot;
 &lt;/code>&lt;/pre>
 &lt;p>Identify which reader will be the card (contactless) reader and the SAM
 (contact) reader and replace &lt;code>CARD_READER_NAME&lt;/code> and
 &lt;code>SAM_READER_NAME&lt;/code> with their values.&lt;/p>
-&lt;h4 id="how-to-activate-the-keyples-logs">How to activate the Keyple&amp;rsquo;s logs?&lt;/h4>
-&lt;p>TDB&lt;/p>
+&lt;h4 id="the-program-is-terminated-with-the-samcard-selection-failed">The program is terminated with &amp;lsquo;The SAM/card selection failed&amp;rsquo;&lt;/h4>
+&lt;p>Check the presence of the SAM and/or the card. The expected SAM is a Calypso S1 SAM and the expected card must have an
+application identifier (DFNAME) corresponding to the AID used.&lt;/p>
+&lt;h4 id="the-program-is-terminated-with-an-exception">The program is terminated with an exception&lt;/h4>
+&lt;p>The cause is probably an error in the name of one of the two readers or the absence of a card on the contactless reader.&lt;/p>
+&lt;p>To better identify the origin of the problem, it is always possible to surround the code with try/catch and display the cause.&lt;/p>
 &lt;h4 id="full-code">Full code&lt;/h4>
 &lt;p>Here is the complete code of this quick start in one single block.&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('18', this);">Copy&lt;/button>&lt;/div>

@@ -26,7 +26,7 @@
 <meta property="og:title" content="Build your first C++ application | Eclipse Keyple">
 <meta property="og:description" content="This quick start describes how to create a ready-to-execute C++ command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2022-08-25T11:50:55+02:00">
+<meta property="article:modified_time" content="2022-09-05T14:16:06+02:00">
 <title>Build your first C++ application | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=8c80269a49e13a1d6fb880d95fc68e9b>
@@ -264,12 +264,12 @@ add-on to provide the ability to manage PC/SC readers.</li>
 </ul>
 <div class="alert alert-info">
 <div>
-<p>Prerequisites
-Here are the prerequisites to build the keyple components (dynamic libraries):</p>
+<p>Prerequisites</p>
+<p>Here are the prerequisites to build the keyple components (dynamic libraries):</p>
 <ul>
 <li>G++ 6 and higher, MSVC++ 14 (other compilers untested)</li>
 <li><a href=https://cmake.org/>CMake</a></li>
-<li>libpcsclite1 package installed (Linux) to build the PC/SC plugin</li>
+<li>libpcsclite1 and libpcsclite-dev packages installed (Linux) to build the PC/SC plugin</li>
 </ul>
 </div>
 </div>
@@ -552,17 +552,42 @@ time.
 use Keyple with the following class which prints in the console the
 number and names of the readers present:</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('17',this)">Copy</button></div>
-<pre><code class=language-cpp id=code-17>// TO BE COMPLETED (see Java)</code></pre>
+<pre><code class=language-cpp id=code-17>#include &#34;SmartCardService.h&#34;
+#include &#34;SmartCardServiceProvider.h&#34;
+
+#include &#34;PcscPlugin.h&#34;
+#include &#34;PcscPluginFactory.h&#34;
+#include &#34;PcscPluginFactoryBuilder.h&#34;
+#include &#34;PcscReader.h&#34;
+
+using namespace keyple::core::service;
+using namespace keyple::plugin::pcsc;
+
+class ReaderDiscovery {};
+
+int main()
+{
+    std::shared_ptr&lt;SmartCardService&gt; smartCardService = SmartCardServiceProvider::getService();
+    std::shared_ptr&lt;Plugin&gt; plugin = smartCardService-&gt;registerPlugin(PcscPluginFactoryBuilder::builder()-&gt;build());
+    std::cout &lt;&lt; plugin-&gt;getReaderNames().size() &lt;&lt; &#34; reader(s) found.&#34; &lt;&lt; std::endl;
+    for (const auto&amp; readerName : plugin-&gt;getReaderNames()) {
+        std::cout &lt;&lt; &#34;\&#34;&#34; &lt;&lt; readerName &lt;&lt; &#34;\&#34;&#34; &lt;&lt; std::endl;
+    }
+}</code></pre>
 <p>The console output should look something like:</p>
-<pre><code>2 readers found.
+<pre><code>2 reader(s) found.
 &quot;ASK LoGO 0&quot;
 &quot;Identive CLOUD 2700 R Smart Card Reader 0&quot;
 </code></pre>
 <p>Identify which reader will be the card (contactless) reader and the SAM
 (contact) reader and replace <code>CARD_READER_NAME</code> and
 <code>SAM_READER_NAME</code> with their values.</p>
-<h4 id=how-to-activate-the-keyples-logs>How to activate the Keyple&rsquo;s logs?</h4>
-<p>TDB</p>
+<h4 id=the-program-is-terminated-with-the-samcard-selection-failed>The program is terminated with &lsquo;The SAM/card selection failed&rsquo;</h4>
+<p>Check the presence of the SAM and/or the card. The expected SAM is a Calypso S1 SAM and the expected card must have an
+application identifier (DFNAME) corresponding to the AID used.</p>
+<h4 id=the-program-is-terminated-with-an-exception>The program is terminated with an exception</h4>
+<p>The cause is probably an error in the name of one of the two readers or the absence of a card on the contactless reader.</p>
+<p>To better identify the origin of the problem, it is always possible to surround the code with try/catch and display the cause.</p>
 <h4 id=full-code>Full code</h4>
 <p>Here is the complete code of this quick start in one single block.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('18',this)">Copy</button></div>
@@ -670,7 +695,7 @@ int main()
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2022-08-25</p>
+<p>Last updated on 2022-09-05</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -761,7 +786,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.023c75ad1e0e5e4b65d451da95dc5d4b.js></script>
+<script src=../../../en/js/wowchemy.min.a69301ba49a3347c2c69487646e18068.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
