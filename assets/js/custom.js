@@ -393,6 +393,7 @@ loadProjectsDashboard = async function() {
             .finally(function () {
                 $('#projects-dashboard-table').DataTable({
                     "lengthMenu": [25, 50, 75, 100],
+                    "pageLength": 50,
                     "order": [[5, 'desc']],
                     "oLanguage": {"sSearch": "Filter:"}
                 });

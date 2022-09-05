@@ -34,10 +34,11 @@ We will use three main components of Keyple:
 
 {{% callout info %}}  
 Prerequisites
+
 Here are the prerequisites to build the keyple components (dynamic libraries):
 * G++ 6 and higher, MSVC++ 14 (other compilers untested)
 * [CMake](https://cmake.org/)
-* libpcsclite1 package installed (Linux) to build the PC/SC plugin
+* libpcsclite1 and libpcsclite-dev packages installed (Linux) to build the PC/SC plugin
 {{% /callout %}}
 
 In this guide, the Keyple components and application are build under Linux using CMake as build automation tool.
@@ -377,13 +378,34 @@ use Keyple with the following class which prints in the console the
 number and names of the readers present:
 
 {{< code lang="cpp" >}}
-// TO BE COMPLETED (see Java)
+#include "SmartCardService.h"
+#include "SmartCardServiceProvider.h"
+
+#include "PcscPlugin.h"
+#include "PcscPluginFactory.h"
+#include "PcscPluginFactoryBuilder.h"
+#include "PcscReader.h"
+
+using namespace keyple::core::service;
+using namespace keyple::plugin::pcsc;
+
+class ReaderDiscovery {};
+
+int main()
+{
+    std::shared_ptr<SmartCardService> smartCardService = SmartCardServiceProvider::getService();
+    std::shared_ptr<Plugin> plugin = smartCardService->registerPlugin(PcscPluginFactoryBuilder::builder()->build());
+    std::cout << plugin->getReaderNames().size() << " reader(s) found." << std::endl;
+    for (const auto& readerName : plugin->getReaderNames()) {
+        std::cout << "\"" << readerName << "\"" << std::endl;
+    }
+}
 {{< /code >}}
 
 The console output should look something like:
 
 ```
-2 readers found.
+2 reader(s) found.
 "ASK LoGO 0"
 "Identive CLOUD 2700 R Smart Card Reader 0"
 ```
@@ -392,9 +414,16 @@ Identify which reader will be the card (contactless) reader and the SAM
 (contact) reader and replace ```CARD_READER_NAME``` and
 ```SAM_READER_NAME``` with their values.
 
-#### How to activate the Keyple's logs?
+#### The program is terminated with 'The SAM/card selection failed'
 
-TDB
+Check the presence of the SAM and/or the card. The expected SAM is a Calypso S1 SAM and the expected card must have an 
+application identifier (DFNAME) corresponding to the AID used.
+
+#### The program is terminated with an exception
+
+The cause is probably an error in the name of one of the two readers or the absence of a card on the contactless reader.
+
+To better identify the origin of the problem, it is always possible to surround the code with try/catch and display the cause.
 
 #### Full code
 
