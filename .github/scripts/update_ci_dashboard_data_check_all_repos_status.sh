@@ -81,6 +81,50 @@ fi
 if [ $? -eq 0 ]; then
   exit 0
 fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-common-cpp-api
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-util-cpp-lib
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-service-cpp-lib
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-service-resource-cpp-lib
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-plugin-cpp-api
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-plugin-stub-cpp-lib
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-plugin-pcsc-cpp-lib
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-card-generic-cpp-lib
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-card-calypso-cpp-lib
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-cpp-example
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-cpp-meta
+if [ $? -eq 0 ]; then
+  exit 0
+fi
 ./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-website
 if [ $? -eq 0 ]; then
   exit 0
