@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-util-java-lib/releases/68132733",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-util-java-lib/releases/68132733/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-util-java-lib/releases/68132733/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-util-java-lib/releases/tag/2.1.0",
-  "id": 68132733,
+  "url": "https://api.github.com/repos/eclipse/keyple-util-java-lib/releases/78820763",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-util-java-lib/releases/78820763/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-util-java-lib/releases/78820763/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-util-java-lib/releases/tag/2.2.0",
+  "id": 78820763,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDOEgs-3c4ED599",
-  "tag_name": "2.1.0",
+  "node_id": "RE_kwDOEgs-3c4EsrWb",
+  "tag_name": "2.2.0",
   "target_commitish": "main",
-  "name": "2.1.0",
+  "name": "2.2.0",
   "draft": false,
   "prerelease": false,
-  "created_at": "2022-05-30T08:59:15Z",
-  "published_at": "2022-05-30T10:01:39Z",
+  "created_at": "2022-10-03T07:53:56Z",
+  "published_at": "2022-10-03T08:18:09Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-util-java-lib/tarball/2.1.0",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-util-java-lib/zipball/2.1.0",
-  "body": "### Added\r\n- \"CHANGELOG.md\" file (issue [eclipse/keyple#6]).\r\n- CI: Forbid the publication of a version already released (issue [#14]).\r\n- JSON serializer/deserializer for `short` and `long` data types (issue [#17]).\r\n- `Assert.isHexString` method.\r\n- `HexUtil.isValid` method.\r\n- `HexUtil.toByteArray` method.\r\n- `HexUtil.toByte` method.\r\n- `HexUtil.toShort` method.\r\n- `HexUtil.toInt` method.\r\n- `HexUtil.toLong` method.\r\n- `HexUtil.toHex` methods for `byte[]`, `byte`, `short`, `int` and `long` data types.\r\n- `ByteArrayUtil.extractBytes` method.\r\n- `ByteArrayUtil.extractInt` method.\r\n- `BerTlvUtil.parse` method to parse TLV data structure having several identical TAGs (issue [#19]).\r\n### Changed\r\n- Optimizations of hexadecimal data conversions.\r\n### Deprecated\r\n- `ByteArrayUtil.isValidHexString` method replaced by `HexUtil.isValid` method.\r\n- `ByteArrayUtil.normalizeHexString` method.\r\n- `ByteArrayUtil.fromHex` method replaced by `HexUtil.toByteArray` method.\r\n- `ByteArrayUtil.toHex` method replaced by `HexUtil.toHex` method.\r\n- `ByteArrayUtil.twoBytesToInt` method replaced by `ByteArrayUtil.extractInt` method.\r\n- `ByteArrayUtil.twoBytesSignedToInt` method replaced by `ByteArrayUtil.extractInt` method.\r\n- `ByteArrayUtil.threeBytesToInt` method replaced by `ByteArrayUtil.extractInt` method.\r\n- `ByteArrayUtil.threeBytesSignedToInt` method replaced by `ByteArrayUtil.extractInt` method.\r\n- `ByteArrayUtil.fourBytesToInt` method replaced by `ByteArrayUtil.extractInt` method.\r\n- `ContactCardCommonProtocol` class.\r\n- `ContactlessCardCommonProtocol` class."
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-util-java-lib/tarball/2.2.0",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-util-java-lib/zipball/2.2.0",
+  "body": "### Added\r\n- Class `CalendarJsonAdapter` for serialization of `Calendar` objects in ISO 8601 format.\r\n- Class `DateJsonSerializer` for serialization of `Date` objects in ISO 8601 format."
 }
