@@ -75,7 +75,7 @@ Warning:
             <td>2.0.+</td><!-- keyple-distributed-local-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-remote-java-api -->
             <td>2.0.+</td><!-- keyple-plugin-java-api -->
-            <td>2.1.0</td><!-- keyple-util-java-lib -->
+            <td>2.1.0...2.2.0</td><!-- keyple-util-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-service-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-service-resource-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-local-java-lib -->
