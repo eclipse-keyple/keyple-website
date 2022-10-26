@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/72754489",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/72754489/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-service-java-lib/releases/72754489/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-service-java-lib/releases/tag/2.1.0",
-  "id": 72754489,
+  "url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/81067417",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/81067417/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-service-java-lib/releases/81067417/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-service-java-lib/releases/tag/2.1.1",
+  "id": 81067417,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWeus4EViU5",
-  "tag_name": "2.1.0",
+  "node_id": "RE_kwDODMWeus4E1P2Z",
+  "tag_name": "2.1.1",
   "target_commitish": "main",
-  "name": "2.1.0",
+  "name": "2.1.1",
   "draft": false,
   "prerelease": false,
-  "created_at": "2022-07-25T12:35:24Z",
-  "published_at": "2022-07-25T13:11:27Z",
+  "created_at": "2022-10-26T15:39:06Z",
+  "published_at": "2022-10-26T15:53:08Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/tarball/2.1.0",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/zipball/2.1.0",
-  "body": "### Added\r\n- `SmartCardService.getPlugin` from a `CardReader` reference. \r\n- `SmartCardService.getReader` from a `CardReader` name.\r\n- `Plugin.getReaderExtension` to access the reader's extension class.\r\n### Deprecated\r\n- `Reader` in favor of `CardReader` from the \"Calypsonet Terminal Reader API\".\r\n- `ObservableReader` in favor of `ObservableCardReader` from the \"Calypsonet Terminal Reader API\".\r\n- `ConfigurableReader` in favor of `ConfigurableCardReader` from the \"Calypsonet Terminal Reader API\".\r\n- `ReaderEvent` in favor of `CardReaderEvent` from the \"Calypsonet Terminal Reader API\".\r\n### Fixed\r\n- Auto management of 61XX and 6CXX status words and case 4 commands (Calypsonet Terminal Requirements: `RL-SW-61XX.1`, `RL-SW-6CXX.1`, `RL-SW-ANALYSIS.1` and `RL-SW-CASE4.1`) (issue [#37]).\r\n- Returned value of `getActiveSmartCard` method when there is no active smart card (issue [#40]).\r\n- JSON serialization for interfaces in objects trees (issue [#43]).\r\n- No longer clear the selection requests after processing the card selection.\r\n- Closing the physical channel when unregistering a reader.\r\n### Upgraded\r\n- \"Keyple Util Library\" to version `2.1.0` by removing the use of deprecated methods."
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/tarball/2.1.1",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/zipball/2.1.1",
+  "body": "### Fixed\r\n- Logging format for distributed service.\r\n### Upgraded\r\n- \"Calypsonet Terminal Reader API\" to version `1.1.0`.\r\n- \"Keyple Util Library\" to version `2.2.0`."
 }
