@@ -6,10 +6,10 @@
 token=$1
 repository_name=$2
 
-filter_keyple_website=""
+filter_website_repository=""
 
 if [ "$repository_name" = "keyple-website" ]; then
-  filter_keyple_website=" -e \"pushed_at\""
+  filter_website_repository=" -e \"pushed_at\""
 fi
 
 echo "Checking repository "$repository_name"..."
@@ -21,11 +21,11 @@ echo "Checking repository "$repository_name"..."
 github_hash=`curl --request GET \
           --url https://api.github.com/repos/eclipse/$repository_name \
           --header "authorization: Bearer $token" \
-          --header "content-type: application/json" | grep -v -e "size"$filter_keyple_website | md5sum | cut -d ' ' -f 1`
+          --header "content-type: application/json" | grep -v -e "size"$filter_website_repository | md5sum | cut -d ' ' -f 1`
 
 dashboard_hash=`curl --request GET \
           --url https://keyple.org/dashboard/$repository_name"_.json" \
-          --header "content-type: application/json" | grep -v -e "size"$filter_keyple_website | md5sum | cut -d ' ' -f 1`
+          --header "content-type: application/json" | grep -v -e "size"$filter_website_repository | md5sum | cut -d ' ' -f 1`
 
 echo "github_hash="$github_hash
 echo "dashboard_hash="$dashboard_hash
