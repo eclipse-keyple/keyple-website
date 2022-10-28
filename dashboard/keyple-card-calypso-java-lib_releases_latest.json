@@ -1,0 +1,41 @@
+{
+  "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/81164866",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/81164866/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/81164866/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/releases/tag/2.2.3",
+  "id": 81164866,
+  "author": {
+    "login": "andrei-cristea",
+    "id": 26622621,
+    "node_id": "MDQ6VXNlcjI2NjIyNjIx",
+    "avatar_url": "https://avatars.githubusercontent.com/u/26622621?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/andrei-cristea",
+    "html_url": "https://github.com/andrei-cristea",
+    "followers_url": "https://api.github.com/users/andrei-cristea/followers",
+    "following_url": "https://api.github.com/users/andrei-cristea/following{/other_user}",
+    "gists_url": "https://api.github.com/users/andrei-cristea/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/andrei-cristea/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/andrei-cristea/subscriptions",
+    "organizations_url": "https://api.github.com/users/andrei-cristea/orgs",
+    "repos_url": "https://api.github.com/users/andrei-cristea/repos",
+    "events_url": "https://api.github.com/users/andrei-cristea/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/andrei-cristea/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "node_id": "RE_kwDODMWfVs4E1npC",
+  "tag_name": "2.2.3",
+  "target_commitish": "main",
+  "name": "2.2.3",
+  "draft": false,
+  "prerelease": false,
+  "created_at": "2022-10-27T08:14:43Z",
+  "published_at": "2022-10-27T08:20:39Z",
+  "assets": [
+
+  ],
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/tarball/2.2.3",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/zipball/2.2.3",
+  "body": "### Added\r\n- JSON serializers for the new import/export feature of the card selection manager.\r\n### Changed\r\n- Merge of internal `setApduResponse` and `checkStatus` methods to `parseApduResponse` method.\r\n- Improvement of the card command parsing process.\r\n- Internal identification of the currently selected file.\r\n### Fixed\r\n- Management of \"Read Records\" card command for cards not supporting multiple record reads.\r\n### Upgraded\r\n- \"Calypsonet Terminal Reader API\" to version `1.1.0`.\r\n- \"Calypsonet Terminal Calypso API\" to version `1.4.0` (issues [#40], [#41], [#42])."
+}
