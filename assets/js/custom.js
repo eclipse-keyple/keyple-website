@@ -192,6 +192,7 @@ loadProjectsDashboard = async function() {
         // column doc
         cell = row.insertCell(-1);
         if (project[1] === true) {
+            cell.setAttribute("class", "text-center");
             let space = document.createTextNode("  ");
             cell.appendChild(space);
             a = document.createElement('a');
@@ -206,24 +207,30 @@ loadProjectsDashboard = async function() {
         // column repos status
         cell = row.insertCell(-1);
         cell.setAttribute("id", "repos-status-" + rowIndex);
+        cell.setAttribute("class", "text-center");
 
         // column latest release
         cell = row.insertCell(-1);
         cell.setAttribute("id", "latest-release-" + rowIndex);
+        cell.setAttribute("class", "text-center");
+        cell.appendChild(document.createTextNode(""));
+
+        // column release date
+        cell = row.insertCell(-1);
+        cell.setAttribute("id", "release-date-" + rowIndex);
+        cell.setAttribute("class", "text-center");
         cell.appendChild(document.createTextNode(""));
 
         // column latest tag
         cell = row.insertCell(-1);
         cell.setAttribute("id", "latest-tag-" + rowIndex);
+        cell.setAttribute("class", "text-center");
         cell.appendChild(document.createTextNode(""));
-
-        // column updated
-        cell = row.insertCell(-1);
-        cell.appendChild(document.createTextNode(formatDate(json.pushed_at)));
 
         // column issues
         cell = row.insertCell(-1);
         cell.setAttribute("id", "issue-" + rowIndex);
+        cell.setAttribute("class", "text-center");
         cell.appendChild(document.createTextNode(json.open_issues_count.toString()));
         if (json.open_issues_count > 0) {
             cell.style.backgroundColor = "orange";
@@ -232,29 +239,40 @@ loadProjectsDashboard = async function() {
         // column branches
         cell = row.insertCell(-1);
         cell.setAttribute("id", "branch-" + rowIndex);
+        cell.setAttribute("class", "text-center");
         cell.appendChild(document.createTextNode(""));
 
         // column pull requests
         cell = row.insertCell(-1);
         cell.setAttribute("id", "pull-" + rowIndex);
+        cell.setAttribute("class", "text-center");
         cell.appendChild(document.createTextNode(""));
 
         // column forks
         cell = row.insertCell(-1);
+        cell.setAttribute("class", "text-center");
         cell.appendChild(document.createTextNode(json.forks.toString()));
 
         // column stars
         cell = row.insertCell(-1);
+        cell.setAttribute("class", "text-center");
         cell.appendChild(document.createTextNode(json.stargazers_count.toString()));
+
+        // column updated
+        cell = row.insertCell(-1);
+        cell.setAttribute("class", "text-center");
+        cell.innerHTML = formatDate(json.pushed_at);
 
         // column created
         cell = row.insertCell(-1);
-        cell.appendChild(document.createTextNode(formatDate(json.created_at)));
+        cell.setAttribute("class", "text-center");
+        cell.innerHTML = formatDate(json.created_at);
 
         // get complementary data
         await getBranches(rowIndex, owner, project[0]);
         await getPullData(rowIndex, owner, project[0]);
         await getLatestRelease(rowIndex, owner, project[0]);
+        await getReleaseDate(rowIndex, owner, project[0]);
         await getLatestTag(rowIndex, owner, project[0]);
         if (project[2] === true) {
             await getStatus(rowIndex, owner, project[0]);
@@ -293,6 +311,17 @@ loadProjectsDashboard = async function() {
         }
     }
 
+    async function getReleaseDate(rowIndex, owner, repos) {
+        let cell = document.getElementById("release-date-" + rowIndex);
+        try {
+            const json = await getJsonRepositoryData(repos, "_releases_latest");
+            if (json.tag_name !== undefined) {
+                cell.innerHTML = formatDate(json.published_at);
+            }
+        } catch (err) {
+        }
+    }
+
     async function getLatestTag(rowIndex, owner, repos) {
         let cell = document.getElementById("latest-tag-" + rowIndex);
         try {
@@ -315,7 +344,7 @@ loadProjectsDashboard = async function() {
         }
 
         const a = document.createElement('a');
-        const linkText = document.createTextNode("⬤");
+        const linkText = document.createTextNode("\u2b24");
         a.appendChild(linkText);
         a.title = "CI status page";
         a.href = "https://ci.eclipse.org/keyple/job/Keyple/job/" + repos + "/job/" + branch + "/";
@@ -336,7 +365,6 @@ loadProjectsDashboard = async function() {
                 a.title += ": success";
                 break;
         }
-
         cell.appendChild(a);
     }
 
@@ -353,7 +381,7 @@ loadProjectsDashboard = async function() {
             month = '0' + month;
         if (day.length < 2)
             day = '0' + day;
-        const date = [year, month, day].join('/');
+        const date = [year, month, day].join('-');
 
         if (hour.length < 2)
             hour = '0' + hour;
@@ -364,7 +392,7 @@ loadProjectsDashboard = async function() {
 
         const time = [hour, min, sec].join(':');
 
-        return date + ' ' + time;
+        return '<span data-toggle="tooltip" title="' + date + ' ' + time + '">' + date + '</span>';
     }
 
     let owner = "eclipse";
@@ -394,7 +422,7 @@ loadProjectsDashboard = async function() {
                 $('#projects-dashboard-table').DataTable({
                     "lengthMenu": [25, 50, 75, 100],
                     "pageLength": 50,
-                    "order": [[5, 'desc']],
+                    "order": [[11, 'desc']],
                     "oLanguage": {"sSearch": "Filter:"}
                 });
                 $('.dataTables_length').addClass('bs-select');
