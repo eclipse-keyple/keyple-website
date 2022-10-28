@@ -107,8 +107,8 @@ For this purpose, it is suggested to respect the following programming pattern b
 ## API
 
 * [Keyple Common API](https://eclipse.github.io/keyple-common-java-api)
-* [Calypsonet Terminal Reader API](https://calypsonet.github.io/calypsonet-terminal-reader-java-api)
-* [Calypsonet Terminal Card API](https://calypsonet.github.io/calypsonet-terminal-card-java-api)
+* [Calypsonet Terminal Reader API](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/)
+* [Calypsonet Terminal Card API](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/)
 
 ---
 ## Download

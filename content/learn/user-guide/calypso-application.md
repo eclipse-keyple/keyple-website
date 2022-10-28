@@ -191,8 +191,8 @@ try {
 ---
 ## API
 
-* [Calypsonet Terminal Reader API](https://calypsonet.github.io/calypsonet-terminal-reader-java-api)
-* [Calypsonet Terminal Calypso API](https://calypsonet.github.io/calypsonet-terminal-calypso-java-api)
+* [Calypsonet Terminal Reader API](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/)
+* [Calypsonet Terminal Calypso API](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-api/)
 * [Keyple Common API](https://eclipse.github.io/keyple-common-java-api)
 * [Keyple Card Calypso API](https://eclipse.github.io/keyple-card-calypso-java-lib)
 

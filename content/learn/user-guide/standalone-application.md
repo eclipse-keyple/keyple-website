@@ -416,7 +416,7 @@ smartCardService.unregisterPlugin(plugin.getName());
 ---
 ## API
 
-* [Calypsonet Terminal Reader API](https://calypsonet.github.io/calypsonet-terminal-reader-java-api)
+* [Calypsonet Terminal Reader API](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/)
 * [Keyple Common API](https://eclipse.github.io/keyple-common-java-api)
 * [Keyple Service API](https://eclipse.github.io/keyple-service-java-lib)
 
