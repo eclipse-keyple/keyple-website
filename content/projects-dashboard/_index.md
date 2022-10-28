@@ -16,17 +16,18 @@ When displayed, icons in columns **Doc** and **Status** are clickable and lead r
     <thead>
     <tr>
         <th scope="col">Repository</th>
-        <th scope="col">Doc</th>
-        <th scope="col">Status</th>
-        <th scope="col">Latest release</th>
-        <th scope="col">Latest tag</th>
-        <th scope="col" data-field="updated">Last update</th>
-        <th scope="col">Issues</th>
-        <th scope="col">Branches</th>
-        <th scope="col">Pull requests</th>
-        <th scope="col">Forks</th>
-        <th scope="col">Stars</th>
-        <th scope="col">Created</th>
+        <th scope="col" class="text-center">Doc</th>
+        <th scope="col" class="text-center">Status</th>
+        <th scope="col" class="text-center">Latest release</th>
+        <th scope="col" class="text-center">Date</th>
+        <th scope="col" class="text-center">Latest tag</th>
+        <th scope="col" class="text-center">Issues</th>
+        <th scope="col" class="text-center">Branches</th>
+        <th scope="col" class="text-center">PRs</th>
+        <th scope="col" class="text-center">Forks</th>
+        <th scope="col" class="text-center">Stars</th>
+        <th scope="col" class="text-center" data-field="updated">Last update</th>
+        <th scope="col" class="text-center">Created</th>
     </tr>
     </thead>
     <tbody id="projects-dashboard-content">
