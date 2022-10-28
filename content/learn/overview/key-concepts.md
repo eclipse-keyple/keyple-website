@@ -31,7 +31,7 @@ The reader concept also applies to the hardware interfaces used to communicate w
 which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.
 
 To define the interface between an application and a reader,
-Keyple relies on the [standard Terminal Reader API](https://calypsonet.github.io/calypsonet-terminal-reader-java-api/) proposed by Calypso Networks Association and thus inherits an existing modeling effort.
+Keyple relies on the [standard Terminal Reader API](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/) proposed by Calypso Networks Association and thus inherits an existing modeling effort.
 
 Another benefit of using this terminal API is the ability to certify the functioning of a Keyple terminal via the associated certification process.
 
