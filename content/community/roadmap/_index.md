@@ -8,13 +8,13 @@ weight: 2
 ---
 
 ---
-## Current work
- - The porting of Keyple 2.0.0 in C++ is finished since end of May 2022. A full review by the Eclipse foundation will be requested. The official release 2.0 of Keyple C++ is planned for the 7 of September. 
+## Current work 
  - New enhancements are planned for the Calypso library
    - confidential secure session (REV3.2 Prime Extended based on AES)
    - asymmetric authentication (REV3.3 Prime PKI based on ECC)
    - REV1/REV2 product specific supports
  - Looking to migrate the Java implementation in Kotlin Multiplatform in order to handle iOS & some native target for ticketing application based on a generic code compliant with Java environment.
+ - Refactoring of the Calypso API to support extensions of different kind of Calypso SAM solutions (current legacy SAM-C1, coming Open-SAM).
 
 ## Future developments
 A Hoplink extension will be proposed (based on a high-level API on top of the Calypso API).
@@ -25,17 +25,22 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
 <table>
 <thead>
   <tr>
-    <th>Date<br/>Java availability</th>
-    <th>Component</th>
-    <th>Version</th>
-    <th>Description</th>
+    <th rowspan="2">Component</th>
+    <th rowspan="2">Version</th>
+    <th colspan="2">Availability Date</th>   
+    <th rowspan="2">Description</th>
+  </tr>
+  <tr>
+    <th>Java</th>
+    <th>C++</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td>2022/02</td>
     <td>Calypso lib</td>
     <td>2.1</td>
+    <td>2022/02</td>
+    <td>2022/08</td>
     <td><ul><li><b>Support of the full card command set of Calypso Prime Regular</b>
     <ul><li>For the Get Data command, addition of the mode 'EF list' & 'traceability',</li>
     <li>Binary files' access for read, write, & update,</li>
@@ -44,27 +49,40 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
     </ul></li></td>
   </tr>
   <tr>
-    <td>2022/06</td>
     <td>Calypso lib</td>
     <td>2.2</td>
+    <td>2022/06</td>
+    <td><mark>planned for 2022/11</mark></td>
     <td><ul><li><b>SAM operation improvements</b>
     <ul><li>Defintion of an API to operate standalone SAM transaction</li>
     <li>Support of the PSO data signature feature: signature generation & verification. Possibility to operate a signature operation through the Card Transaction or a SAM Transaction.</li></ul></li></ul></td>
   </tr>
   <tr>
-    <td><mark>planned for 2022/10</mark></td>
+    <td>Calypso lib</td>
+    <td>2.3</td>
+    <td><mark>planned for 2022/12</mark></td>
+    <td>-</td>
+   <td><ul><li><b>Support of Calypso Prime PKI</b>
+    <ul><li>Asymetric authentication of a Calypso card without involving a SAM</li>
+    </ul></li></ul></td>
+  </tr>
+  <tr>
     <td>Calypso lib</td>
     <td>2.4</td>
+    <td><mark>planned for 2023/Q1</mark></td>
+    <td></td>
     <td><ul><li><b>Support of Calypso Prime Extended</b>
     <ul><li>Capability to operate a Calypso secure session in confidential mode</li>
     </ul></li></ul></td>
   </tr>
-  <tr>
-    <td><mark>planned for 2022/11</mark></td>
+    <tr>
     <td>Calypso lib</td>
-    <td>2.3</td>
-    <td><ul><li><b>Support of Calypso Prime PKI</b>
-    <ul><li>Asymetric authentication of a Calypso card without involving a SAM</li>
+    <td>3.0</td>
+    <td><mark>planned for 2023/Q1</mark></td>
+    <td></td>
+    <td><ul><li><b>Extended API to interface Calypso SAM solutions</b>
+    <ul><li>Full management of the legacy SAM-C1 (Control SAM to target SAM transactions)</li>
+    <li>Preparation to support the new Calypso Open SAM</li>
     </ul></li></ul></td>
   </tr>
 </tbody>
