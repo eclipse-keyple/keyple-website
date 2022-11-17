@@ -1,18 +1,21 @@
 ---
-title: Overall projects dashboard
+title: Overall project dashboard
 subtitle: 
-summary: 
+summary:
+aliases: ["/projects-dashboard/"]
 ---
 
 {{% callout note %}}
-The status of the projects is checked every hour, but the dashboard is only refreshed if the status of at least one of the projects has changed.
+The status of the projects is checked every hour, but the dashboard is only refreshed if the status of at least one of 
+the projects has changed.
 
-Last dashboard refresh date: **<span id="projects-dashboard-datetime"></span>**
+Last dashboard refresh date: **<span id="project-dashboard-datetime"></span>**
 
-When displayed, icons in columns **Doc** and **Status** are clickable and lead respectively to the **API documentation** and the **Jenkins CI status page**.
+When displayed, icons in columns **Doc** and **Status** are clickable and lead respectively to the **API documentation**
+and the **Jenkins CI status page**.
 {{% /callout %}}
 
-<table id="projects-dashboard-table" class="table table-striped" data-sort-name="updated" data-sort-order="desc">
+<table id="project-dashboard-table" class="table table-striped" data-sort-name="updated" data-sort-order="desc">
     <thead>
     <tr>
         <th scope="col">Repository</th>
@@ -30,11 +33,11 @@ When displayed, icons in columns **Doc** and **Status** are clickable and lead r
         <th scope="col" class="text-center">Created</th>
     </tr>
     </thead>
-    <tbody id="projects-dashboard-content">
+    <tbody id="project-dashboard-content">
     </tbody>
 </table>
 <script type="text/javascript">
 document.body.onload = function() {
-    loadProjectsDashboard();
+    loadProjectDashboard();
 };
 </script>
