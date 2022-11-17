@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/81164866",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/81164866/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/81164866/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/releases/tag/2.2.3",
-  "id": 81164866,
+  "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/83366075",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/83366075/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/83366075/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/releases/tag/2.2.4",
+  "id": 83366075,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWfVs4E1npC",
-  "tag_name": "2.2.3",
+  "node_id": "RE_kwDODMWfVs4E-BC7",
+  "tag_name": "2.2.4",
   "target_commitish": "main",
-  "name": "2.2.3",
+  "name": "2.2.4",
   "draft": false,
   "prerelease": false,
-  "created_at": "2022-10-27T08:14:43Z",
-  "published_at": "2022-10-27T08:20:39Z",
+  "created_at": "2022-11-17T09:10:50Z",
+  "published_at": "2022-11-17T09:29:37Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/tarball/2.2.3",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/zipball/2.2.3",
-  "body": "### Added\r\n- JSON serializers for the new import/export feature of the card selection manager.\r\n### Changed\r\n- Merge of internal `setApduResponse` and `checkStatus` methods to `parseApduResponse` method.\r\n- Improvement of the card command parsing process.\r\n- Internal identification of the currently selected file.\r\n### Fixed\r\n- Management of \"Read Records\" card command for cards not supporting multiple record reads.\r\n### Upgraded\r\n- \"Calypsonet Terminal Reader API\" to version `1.1.0`.\r\n- \"Calypsonet Terminal Calypso API\" to version `1.4.0` (issues [#40], [#41], [#42])."
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/tarball/2.2.4",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/zipball/2.2.4",
+  "body": "### Fixed\r\n- Take card revision into account when parsing the FCP structure (issue [#83]).\r\n- Generate multiple increase/decrease counter commands when the card does not support Increase/DecreaseMultiple\r\n  commands (issue [#84]).\r\n- Expected length issue in \"Read Binary\" card command.\r\n- Set payload capacity to 235 for cards revision 3 having the following startup information pattern: `xx 3C xx xx xx 10 xx`\r\n- Set payload capacity to 128 for cards revision 1 & 2.\r\n- Fix postponed data issue for increase/decrease counter commands for cards revision 1 & 2 having the following startup \r\n  information pattern:\r\n  - `06 xx 01 03 xx xx xx`\r\n  - `06 0A 01 02 xx xx xx`\r\n  - `xx xx 0x xx 15 xx xx`\r\n  - `xx xx 1x xx 15 xx xx`\r\n### Changed\r\n- Enable binary commands with `PRIME_REVISION_2` cards.\r\n### Upgraded\r\n- \"Calypsonet Terminal Calypso API\" to version `1.4.1`.\r\n- \"Keyple Util Library\" to version `2.3.0`."
 }
