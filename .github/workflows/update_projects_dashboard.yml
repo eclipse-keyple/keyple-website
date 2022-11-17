@@ -1,4 +1,4 @@
-name: Update projects dashboard
+name: Update project dashboard
 
 on:
   schedule:
@@ -21,7 +21,7 @@ jobs:
         working-directory: .
         run: chmod +x ./.github/scripts/*.sh
 
-      - name: Update projects dashboard data
+      - name: Update project dashboard data
         id: update
         working-directory: .
         run: ./.github/scripts/update_ci_dashboard_data_all.sh ${{ github.repository_owner }} ${{ secrets.GITHUB_TOKEN }}

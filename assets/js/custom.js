@@ -149,8 +149,8 @@ initDatatableDependencyCheck = function() {
     } );
 }
 
-// Load the projects dashboard table content
-loadProjectsDashboard = async function() {
+// Load the project dashboard table content
+loadProjectDashboard = async function() {
 
     let rootUrl = window.location.href + "../";
 
@@ -404,12 +404,12 @@ loadProjectsDashboard = async function() {
     const isoLocalDate = new Date(date.getTime() - (offset*60*1000));
 
     const dateOptions = {hour: '2-digit', minute:'2-digit', hour12: false, timeZoneName: 'short'};
-    $("#projects-dashboard-datetime")[0].innerHTML = isoLocalDate.toISOString().split('T')[0] + ", " + date.toLocaleTimeString('en-EN', dateOptions);
+    $("#project-dashboard-datetime")[0].innerHTML = isoLocalDate.toISOString().split('T')[0] + ", " + date.toLocaleTimeString('en-EN', dateOptions);
 
     let projects = await getJson('repository_list');
 
     // create promises
-    const body = document.getElementById("projects-dashboard-content");
+    const body = document.getElementById("project-dashboard-content");
     let promises = [];
     for (let i = 0; i < projects.length; i++) {
         let promise = getReposData((i + 1).toString(), owner, projects[i])
@@ -419,7 +419,7 @@ loadProjectsDashboard = async function() {
     await (async () => {
         await Promise.all(promises)
             .finally(function () {
-                $('#projects-dashboard-table').DataTable({
+                $('#project-dashboard-table').DataTable({
                     "lengthMenu": [25, 50, 75, 100],
                     "pageLength": 50,
                     "order": [[11, 'desc']],
@@ -427,7 +427,7 @@ loadProjectsDashboard = async function() {
                 });
                 $('.dataTables_length').addClass('bs-select');
                 // update the container's width with the real table size
-                $('.universal-wrapper').width($('#projects-dashboard-table')[0].scrollWidth);
+                $('.universal-wrapper').width($('#project-dashboard-table')[0].scrollWidth);
             });
     })();
 }

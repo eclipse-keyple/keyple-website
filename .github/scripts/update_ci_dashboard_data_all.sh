@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Update the projects dashboard content..."
+echo "Update the project dashboard content..."
 
 repository_owner=$1
 repository_name="keyple-website"
