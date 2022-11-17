@@ -16,3 +16,5 @@ The following components have been released on November 17, 2022:
 - [keyple-card-calypso-java-lib]({{< ref "components-java/card-extensions/keyple-card-calypso-java-lib" >}}): 2.2.5
 
 The details of the evolutions are available in the corresponding changelog files.
+
+The dependencies referenced by the [examples](https://github.com/eclipse/keyple-java-example) have been updated accordingly.
