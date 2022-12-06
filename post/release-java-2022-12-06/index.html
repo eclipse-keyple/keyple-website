@@ -7,8 +7,8 @@
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
 <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
-<meta name=description content="Version 0.9.0 of the Java implementation of Eclipse Keyple® was released September 11, 2020.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/post/release-0-9-0-java/>
+<meta name=description content="One Keyple® Java component have been released on December 06, 2022">
+<link rel=alternate hreflang=en-us href=https://keyple.org/post/release-java-2022-12-06/>
 <meta name=theme-color content="#1D87BB">
 <link rel=stylesheet href=../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
@@ -19,19 +19,19 @@
 <link rel=manifest href=../../manifest.webmanifest>
 <link rel=icon type=image/png href=../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
 <link rel=apple-touch-icon type=image/png href=../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/post/release-0-9-0-java/>
+<link rel=canonical href=https://keyple.org/post/release-java-2022-12-06/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/post/release-0-9-0-java/">
-<meta property="og:title" content="Release 0.9.0 Java on the field | Eclipse Keyple">
-<meta property="og:description" content="Version 0.9.0 of the Java implementation of Eclipse Keyple® was released September 11, 2020."><meta property="og:image" content="https://keyple.org/media/logo.svg">
+<meta property="og:url" content="https://keyple.org/post/release-java-2022-12-06/">
+<meta property="og:title" content="Java components update | Eclipse Keyple">
+<meta property="og:description" content="One Keyple® Java component have been released on December 06, 2022"><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:published_time" content="2020-09-18T14:57:56+02:00">
-<meta property="article:modified_time" content="2021-10-11T10:47:18+02:00">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://keyple.org/post/release-0-9-0-java/"},"headline":"Release 0.9.0 Java on the field","datePublished":"2020-09-18T14:57:56+02:00","dateModified":"2021-10-11T10:47:18+02:00","author":{"@type":"Person","name":"Calypso Networks Association"},"publisher":{"@type":"Organization","name":"Eclipse","logo":{"@type":"ImageObject","url":"https://keyple.org/media/logo.svg"}},"description":"Version 0.9.0 of the Java implementation of Eclipse Keyple® was released September 11, 2020."}</script>
-<title>Release 0.9.0 Java on the field | Eclipse Keyple</title>
+<meta property="article:published_time" content="2022-12-06T12:00:00+01:00">
+<meta property="article:modified_time" content="2022-12-06T15:37:17+01:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://keyple.org/post/release-java-2022-12-06/"},"headline":"Java components update","datePublished":"2022-12-06T12:00:00+01:00","dateModified":"2022-12-06T15:37:17+01:00","author":{"@type":"Person","name":"Calypso Networks Association"},"publisher":{"@type":"Organization","name":"Eclipse","logo":{"@type":"ImageObject","url":"https://keyple.org/media/logo.svg"}},"description":"One Keyple® Java component have been released on December 06, 2022"}</script>
+<title>Java components update | Eclipse Keyple</title>
 </head>
-<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=b73458a3048ddd5b999490db1ff58736>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=dcd08eb7a73eb9a295eb4926ce2221b2>
 <script src=../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
 <aside class=search-modal id=search>
 <div class=container>
@@ -131,7 +131,7 @@
 <div class=page-body>
 <article class=article>
 <div class="article-container pt-3">
-<h1>Release 0.9.0 Java on the field</h1>
+<h1>Java components update</h1>
 <div class=article-metadata>
 <div>
 <span>
@@ -139,7 +139,7 @@
 </div>
 <span class=article-date>
 Last updated on
-2021-10-11
+2022-12-06
 </span>
 <span class=middot-divider></span>
 <span class=article-reading-time>
@@ -152,17 +152,12 @@ Last updated on
 </div>
 <div class=article-container>
 <div class=article-style>
-<p>We are pleased to announce that the version 0.9.0 of the Java implementation of Eclipse Keyple® was released September 11th, 2020.</p>
-<p>The main improvement on the Calypso® extension is the addition of high-level API to manage the portable object response.
-Now the APDU responses of the Calypso® cards are automatically parsed to fill card images.
-Currently all the components of Eclipse Keyple® Java are following the same versioning.</p>
-<p>From the version 1.0.0 scheduled for November 2020, the components will be defined with their own versioning in order to stabilize as possible the different APIs.</p>
-<p><a href=https://keyple.org/docs-1.0/>Documentation</a> currently available:</p>
+<p>The following component have been released on December 06, 2022:</p>
 <ul>
-<li>the project plan,</li>
-<li>the guides of the different public API,</li>
-<li>and a guide to manage the migration between the release 0.8.1 & 0.9.0.</li>
+<li><a href=https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/>keyple-card-calypso-java-lib</a>: 2.3.0</li>
 </ul>
+<p>The details of the evolutions are available in the corresponding changelog files.</p>
+<p>The dependencies referenced by the <a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>examples</a> have been updated accordingly.</p>
 </div>
 <div class=article-tags>
 <a class="badge badge-light" href=../../tag/eclipse/>Eclipse</a>
@@ -171,40 +166,38 @@ Currently all the components of Eclipse Keyple® Java are following the same ver
 <a class="badge badge-light" href=../../tag/opensource/>OpenSource</a>
 <a class="badge badge-light" href=../../tag/sdk/>SDK</a>
 <a class="badge badge-light" href=../../tag/api/>API</a>
-<a class="badge badge-light" href=../../tag/opensolutions/>OpenSolutions</a>
 <a class="badge badge-light" href=../../tag/ticketing/>Ticketing</a>
-<a class="badge badge-light" href=../../tag/maas/>MaaS</a>
-<a class="badge badge-light" href=../../tag/cna/>CNA</a>
+<a class="badge badge-light" href=../../tag/calypso/>Calypso</a>
 </div>
 <div class=share-box>
 <ul class=share>
 <li>
-<a href="https://twitter.com/intent/tweet?url=https://keyple.org/post/release-0-9-0-java/&text=Release%200.9.0%20Java%20on%20the%20field" target=_blank rel=noopener class=share-btn-twitter aria-label=twitter>
+<a href="https://twitter.com/intent/tweet?url=https://keyple.org/post/release-java-2022-12-06/&text=Java%20components%20update" target=_blank rel=noopener class=share-btn-twitter aria-label=twitter>
 <i class="fab fa-twitter"></i>
 </a>
 </li>
 <li>
-<a href="https://www.facebook.com/sharer.php?u=https://keyple.org/post/release-0-9-0-java/&t=Release%200.9.0%20Java%20on%20the%20field" target=_blank rel=noopener class=share-btn-facebook aria-label=facebook>
+<a href="https://www.facebook.com/sharer.php?u=https://keyple.org/post/release-java-2022-12-06/&t=Java%20components%20update" target=_blank rel=noopener class=share-btn-facebook aria-label=facebook>
 <i class="fab fa-facebook"></i>
 </a>
 </li>
 <li>
-<a href="mailto:?subject=Release%200.9.0%20Java%20on%20the%20field&body=https://keyple.org/post/release-0-9-0-java/" target=_blank rel=noopener class=share-btn-email aria-label=envelope>
+<a href="mailto:?subject=Java%20components%20update&body=https://keyple.org/post/release-java-2022-12-06/" target=_blank rel=noopener class=share-btn-email aria-label=envelope>
 <i class="fas fa-envelope"></i>
 </a>
 </li>
 <li>
-<a href="https://www.linkedin.com/shareArticle?url=https://keyple.org/post/release-0-9-0-java/&title=Release%200.9.0%20Java%20on%20the%20field" target=_blank rel=noopener class=share-btn-linkedin aria-label=linkedin-in>
+<a href="https://www.linkedin.com/shareArticle?url=https://keyple.org/post/release-java-2022-12-06/&title=Java%20components%20update" target=_blank rel=noopener class=share-btn-linkedin aria-label=linkedin-in>
 <i class="fab fa-linkedin-in"></i>
 </a>
 </li>
 <li>
-<a href="whatsapp://send?text=Release%200.9.0%20Java%20on%20the%20field%20https://keyple.org/post/release-0-9-0-java/" target=_blank rel=noopener class=share-btn-whatsapp aria-label=whatsapp>
+<a href="whatsapp://send?text=Java%20components%20update%20https://keyple.org/post/release-java-2022-12-06/" target=_blank rel=noopener class=share-btn-whatsapp aria-label=whatsapp>
 <i class="fab fa-whatsapp"></i>
 </a>
 </li>
 <li>
-<a href="https://service.weibo.com/share/share.php?url=https://keyple.org/post/release-0-9-0-java/&title=Release%200.9.0%20Java%20on%20the%20field" target=_blank rel=noopener class=share-btn-weibo aria-label=weibo>
+<a href="https://service.weibo.com/share/share.php?url=https://keyple.org/post/release-java-2022-12-06/&title=Java%20components%20update" target=_blank rel=noopener class=share-btn-weibo aria-label=weibo>
 <i class="fab fa-weibo"></i>
 </a>
 </li>
@@ -213,11 +206,11 @@ Currently all the components of Eclipse Keyple® Java are following the same ver
 <div class="article-widget content-widget-hr">
 <h3>Related</h3>
 <ul>
+<li><a href=../../post/release-java-2022-11-17/>Java components update</a></li>
+<li><a href=../../post/release-2-0-0-java/>Release 2.0.0 of Eclipse Keyple® Java</a></li>
 <li><a href=../../post/release-0-9-0-cpp/>Release 0.9.0 C++ on the field</a></li>
 <li><a href=../../post/release-1-0-0-java/>Release 1.0.0 of Eclipse Keyple® Java</a></li>
-<li><a href=../../post/webinar-eclipse-keyple-developers-oct15-2020/>Webinar Eclipse Keyple® for Developers, Thursday, October 15, 2020 </a></li>
-<li><a href=../../post/first-meetup-eclipse-keyple/>First Meet Up Eclipse Keyple®</a></li>
-<li><a href=../../post/release-java-2022-12-06/>Java components update</a></li>
+<li><a href=../../post/release-0-9-0-java/>Release 0.9.0 Java on the field</a></li>
 </ul>
 </div>
 </div>
