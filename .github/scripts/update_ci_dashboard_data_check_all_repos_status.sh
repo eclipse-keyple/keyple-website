@@ -13,6 +13,10 @@ fi
 if [ $? -eq 0 ]; then
   exit 0
 fi
+./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-card-calypso-crypto-legacysam-java-lib
+if [ $? -eq 0 ]; then
+  exit 0
+fi
 ./.github/scripts/update_ci_dashboard_data_check_repos_status.sh $token keyple-card-generic-java-lib
 if [ $? -eq 0 ]; then
   exit 0

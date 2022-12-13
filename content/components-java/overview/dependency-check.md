@@ -37,17 +37,18 @@ Warning:
 <table id="datatable-dependency-check" class="display compact" style="width:100%">
     <thead>
         <tr>
-            <th colspan="3" class="text-center c-orange">Calypso Networks Association APIs</th>
+            <th colspan="4" class="text-center c-orange">Calypso Networks Association APIs</th>
             <th colspan="4" class="text-center c-yellow">Core APIs</th>
             <th colspan="3" class="text-center c-blue">Core libraries</th>
             <th colspan="3" class="text-center c-purple">Distributed systems libraries</th>
-            <th colspan="2" class="text-center c-green">Card extensions libraries</th>
+            <th colspan="3" class="text-center c-green">Card extensions libraries</th>
             <th colspan="4" class="text-center c-red">Standard reader plugins libraries</th>
         </tr>
         <tr>
             <th class="rotate c-orange"><div class="rotate-190">calypsonet-terminal-reader-java-api</div></th>
             <th class="rotate c-orange"><div class="rotate-190">calypsonet-terminal-card-java-api</div></th>
             <th class="rotate c-orange"><div class="rotate-190">calypsonet-terminal-calypso-java-api</div></th>
+            <th class="rotate c-orange"><div class="rotate-190">calypsonet-terminal-calypso-crypto-legacysam-java-api</div></th>
             <th class="rotate c-yellow"><div class="rotate-190">keyple-common-java-api</div></th>
             <th class="rotate c-yellow"><div class="rotate-190">keyple-distributed-local-java-api</div></th>
             <th class="rotate c-yellow"><div class="rotate-190">keyple-distributed-remote-java-api</div></th>
@@ -59,6 +60,7 @@ Warning:
             <th class="rotate c-purple"><div class="rotate-190">keyple-distributed-network-java-lib</div></th>
             <th class="rotate c-purple"><div class="rotate-190">keyple-distributed-remote-java-lib</div></th>
             <th class="rotate c-green"><div class="rotate-190">keyple-card-calypso-java-lib</div></th>
+            <th class="rotate c-green"><div class="rotate-190">keyple-card-calypso-crypto-legacysam-java-lib</div></th>
             <th class="rotate c-green"><div class="rotate-190">keyple-card-generic-java-lib</div></th>
             <th class="rotate c-red"><div class="rotate-190">keyple-plugin-android-nfc-java-lib</div></th>
             <th class="rotate c-red"><div class="rotate-190">keyple-plugin-android-omapi-java-lib</div></th>
@@ -71,6 +73,7 @@ Warning:
             <td>1.1.+</td><!-- calypsonet-terminal-reader-java-api -->
             <td>1.0.+</td><!-- calypsonet-terminal-card-java-api -->
             <td>1.4.+</td><!-- calypsonet-terminal-calypso-java-api -->
+            <td>0.1.+</td><!-- calypsonet-terminal-calypso-crypto-legacysam-java-api -->
             <td>2.0.+</td><!-- keyple-common-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-local-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-remote-java-api -->
@@ -82,6 +85,7 @@ Warning:
             <td>2.0.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-remote-java-lib -->
             <td>2.2.4...2.3.0</td><!-- keyple-card-calypso-java-lib -->
+            <td>0.1.0...0.2.0</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
@@ -92,6 +96,7 @@ Warning:
             <td>1.1.+</td><!-- calypsonet-terminal-reader-java-api -->
             <td>1.0.+</td><!-- calypsonet-terminal-card-java-api -->
             <td>1.4.+</td><!-- calypsonet-terminal-calypso-java-api -->
+            <td>0.1.+</td><!-- calypsonet-terminal-calypso-crypto-legacysam-java-api -->
             <td>2.0.+</td><!-- keyple-common-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-local-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-remote-java-api -->
@@ -103,6 +108,7 @@ Warning:
             <td>2.0.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-remote-java-lib -->
             <td>2.2.3</td><!-- keyple-card-calypso-java-lib -->
+            <td>-</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
@@ -113,6 +119,7 @@ Warning:
             <td>1.0.+</td><!-- calypsonet-terminal-reader-java-api -->
             <td>1.0.+</td><!-- calypsonet-terminal-card-java-api -->
             <td>1.3.+</td><!-- calypsonet-terminal-calypso-java-api -->
+            <td>0.1.+</td><!-- calypsonet-terminal-calypso-crypto-legacysam-java-api -->
             <td>2.0.+</td><!-- keyple-common-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-local-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-remote-java-api -->
@@ -124,6 +131,7 @@ Warning:
             <td>2.0.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-remote-java-lib -->
             <td>2.2.0...2.2.2</td><!-- keyple-card-calypso-java-lib -->
+            <td>-</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
@@ -134,6 +142,7 @@ Warning:
             <td>1.0.+</td><!-- calypsonet-terminal-reader-java-api -->
             <td>1.0.+</td><!-- calypsonet-terminal-card-java-api -->
             <td>1.2.+</td><!-- calypsonet-terminal-calypso-java-api -->
+            <td>0.1.+</td><!-- calypsonet-terminal-calypso-crypto-legacysam-java-api -->
             <td>2.0.+</td><!-- keyple-common-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-local-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-remote-java-api -->
@@ -145,6 +154,7 @@ Warning:
             <td>2.0.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-remote-java-lib -->
             <td>2.2.0...2.2.1</td><!-- keyple-card-calypso-java-lib -->
+            <td>-</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
@@ -155,6 +165,7 @@ Warning:
             <td>1.0.+</td><!-- calypsonet-terminal-reader-java-api -->
             <td>1.0.+</td><!-- calypsonet-terminal-card-java-api -->
             <td>1.1.+</td><!-- calypsonet-terminal-calypso-java-api -->
+            <td>0.1.+</td><!-- calypsonet-terminal-calypso-crypto-legacysam-java-api -->
             <td>2.0.+</td><!-- keyple-common-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-local-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-remote-java-api -->
@@ -166,6 +177,7 @@ Warning:
             <td>2.0.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-remote-java-lib -->
             <td>2.1.0</td><!-- keyple-card-calypso-java-lib -->
+            <td>-</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0</td><!-- keyple-plugin-android-omapi-java-lib -->
@@ -176,6 +188,7 @@ Warning:
             <td>1.0.+</td><!-- calypsonet-terminal-reader-java-api -->
             <td>1.0.+</td><!-- calypsonet-terminal-card-java-api -->
             <td>1.0.+</td><!-- calypsonet-terminal-calypso-java-api -->
+            <td>0.1.+</td><!-- calypsonet-terminal-calypso-crypto-legacysam-java-api -->
             <td>2.0.+</td><!-- keyple-common-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-local-java-api -->
             <td>2.0.+</td><!-- keyple-distributed-remote-java-api -->
@@ -187,6 +200,7 @@ Warning:
             <td>2.0.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-remote-java-lib -->
             <td>2.0.0...2.0.3</td><!-- keyple-card-calypso-java-lib -->
+            <td>-</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0</td><!-- keyple-plugin-android-omapi-java-lib -->

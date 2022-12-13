@@ -43,6 +43,9 @@ computeAppContent = function(language) {
     if (appDependencies.has("cardCalypso")) {
         contentHtml += "\n" + $(tagPrefix+'calypsonet-terminal-calypso-java-api-dynamic').html();
     }
+    if (appDependencies.has("cardCalypsoLegacySam")) {
+        contentHtml += "\n" + $(tagPrefix+'calypsonet-terminal-calypso-crypto-legacysam-java-api-dynamic').html();
+    }
     contentHtml += "\n" + $(tagPrefix+'keyple-common-java-api-dynamic').html()
         + "\n" + $(tagPrefix+'keyple-util-java-lib-dynamic').html()
         + "\n" + $(tagPrefix+'keyple-service-java-lib').html();
@@ -63,6 +66,9 @@ computeAppContent = function(language) {
     }
     if (appDependencies.has("cardCalypso")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-card-calypso-java-lib').html();
+    }
+    if (appDependencies.has("cardCalypsoLegacySam")) {
+        contentHtml += "\n" + $(tagPrefix+'keyple-card-calypso-crypto-legacysam-java-lib').html();
     }
     if (appDependencies.has("pluginAndroidNfc")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-plugin-android-nfc-java-lib').html();

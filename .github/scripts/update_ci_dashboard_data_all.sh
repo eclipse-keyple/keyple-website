@@ -46,6 +46,8 @@ echo "[" >> dashboard/repository_list.json
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-card-calypso-java-lib main true true
 echo "," >> dashboard/repository_list.json
+../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-card-calypso-crypto-legacysam-java-lib main true true
+echo "," >> dashboard/repository_list.json
 ../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-card-generic-java-lib main true true
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/update_ci_dashboard_data_repository.sh $token keyple-common-java-api main true true
