@@ -14,8 +14,20 @@
 !define COLOR_GREEN 27AE60
 !define COLOR_ORANGE E67E22
 !define COLOR_GREY 2C3E50
-skinparam Shadowing false
+
+' -- Styles that don't work with new version of plantuml --
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' -- END --
+
+skinparam ArrowThickness 2
+
 skinparam component {
+    BorderThickness 2
+    ' Yellow
+    BackgroundColor #FEFECE
     BorderColor #D4AC0D
     ' Red
     BackgroundColor<<red>> #FDEDEC
@@ -37,6 +49,9 @@ skinparam component {
     BorderColor<<grey>> #2C3E50
 }
 skinparam interface {
+    BorderThickness 2
+    ' Yellow
+    BackgroundColor #FEFECE
     BorderColor #D4AC0D
     ' Red
     BackgroundColor<<red>> #FDEDEC
