@@ -24,10 +24,11 @@ The **Reader API** must be used by developers of applications and card extension
 * [{{< icon name="github" pack="fab" >}} Calypsonet Terminal Reader Java API](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/)
 * [{{< icon name="github" pack="fab" >}} Calypsonet Terminal Card Java API](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/)
 
-## Calypso API
+## Calypso APIs
 
-This high-level API standardizes the way to interact with a Calypso® product (card, NFC smartphone applet/application, SAM, etc...).
+These high-level APIs standardizes the way to interact with a Calypso® product (card, NFC smartphone applet/application, SAM, etc...).
 
-This API should be used by developers of Calypso applications.
+These APIs should be used by developers of Calypso applications.
 
 * [{{< icon name="github" pack="fab" >}} Calypsonet Terminal Calypso Java API](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-api/)
+* [{{< icon name="github" pack="fab" >}} Calypsonet Terminal Calypso Crypto Legacy SAM Java API](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-crypto-legacysam-api/)

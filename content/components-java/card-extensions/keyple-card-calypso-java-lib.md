@@ -1,6 +1,6 @@
 ---
 title: Keyple Card Calypso Java Library
-linktitle: Calypso
+linktitle: Calypso Card
 summary: Add-on to manage Calypso® cards.
 type: book
 toc: true
