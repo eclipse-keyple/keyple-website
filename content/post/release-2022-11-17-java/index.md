@@ -1,7 +1,5 @@
 ---
-title: "Java components update"
-subtitle: ""
-summary: "Two Keyple® Java components have been released on November 17, 2022"
+title: "Keyple Util Java Lib (2.3.0) is available!"
 authors: [Calypso Networks Association]
 tags: ["Eclipse", "Keyple", "Release", "OpenSource", "SDK", "API", "Ticketing", "Calypso"]
 categories: [Release]
@@ -10,10 +8,7 @@ featured: false
 draft: false
 ---
 
-The following components have been released on November 17, 2022:
-- [keyple-util-java-lib]({{< ref "components-java/core/keyple-util-java-lib" >}}): 2.3.0
-- [keyple-card-calypso-java-lib]({{< ref "components-java/card-extensions/keyple-card-calypso-java-lib" >}}): 2.2.5
+Published on November 17, 2022, this minor version adds some useful methods to extract numbers from byte arrays.
 
-The details of the evolutions are available in the corresponding changelog files.
-
-The dependencies referenced by the [examples](https://github.com/eclipse/keyple-java-example) have been updated accordingly.
+For more information, please visit the component
+[page]({{< ref "components-java/core/keyple-util-java-lib" >}}).
