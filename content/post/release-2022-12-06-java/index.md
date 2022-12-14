@@ -1,7 +1,5 @@
 ---
-title: "Java components update"
-subtitle: ""
-summary: "One Keyple® Java component has been released on December 06, 2022"
+title: "Keyple Card Calypso Java Lib (2.3.0) is available!"
 authors: [Calypso Networks Association]
 tags: ["Eclipse", "Keyple", "Release", "OpenSource", "SDK", "API", "Ticketing", "Calypso"]
 categories: [Release]
@@ -10,9 +8,8 @@ featured: false
 draft: false
 ---
 
-The following component has been released on December 06, 2022:
-- [keyple-card-calypso-java-lib]({{< ref "components-java/card-extensions/keyple-card-calypso-java-lib" >}}): 2.3.0
+Published on December 06, 2022, this minor version adds a setting API to manage the limitations of some not fully 
+compliant terminals, and fix also the management of the maximum payload length for card and SAM transactions.
 
-The details of the evolutions are available in the corresponding changelog files.
-
-The dependencies referenced by the [examples](https://github.com/eclipse/keyple-java-example) have been updated accordingly.
+For more information, please visit the component 
+[page]({{< ref "components-java/card-extensions/keyple-card-calypso-java-lib" >}}).
