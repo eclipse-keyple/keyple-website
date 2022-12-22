@@ -64,7 +64,7 @@ For API components (i.e. artifacts suffixed with &lt;code>-api&lt;/code>), the i
 &lt;hr>
 &lt;h2 id="continuous-integration">Continuous integration&lt;/h2>
 &lt;p>Keyple continuous integration works with the &lt;a href="https://ci.eclipse.org/keyple/job/Keyple/" target="_blank" rel="noopener">Jenkins server&lt;/a> of the Eclipse Foundation.&lt;/p>
-&lt;p>The build process uses the home-made gradle plugin &lt;strong>Keyple Gradle&lt;/strong> available directly from the &lt;a href="https://search.maven.org/search?q=a:keyple-gradle" target="_blank" rel="noopener">Maven Central Repository&lt;/a> and whose sources are available on &lt;a href="https://github.com/eclipse/keyple-ops" target="_blank" rel="noopener">GitHub&lt;/a>.&lt;/p>
+&lt;p>The build process uses the home-made gradle plugin &lt;strong>Keyple Gradle&lt;/strong> available directly from the &lt;a href="https://central.sonatype.dev/search?q=keyple-gradle" target="_blank" rel="noopener">Maven Central Repository&lt;/a> and whose sources are available on &lt;a href="https://github.com/eclipse/keyple-ops" target="_blank" rel="noopener">GitHub&lt;/a>.&lt;/p>
 &lt;p>The CI automates the following tasks (defined in the &lt;code>Jenkinsfile&lt;/code> file):&lt;/p>
 &lt;ul>
 &lt;li>verify the validity of the version;&lt;/li>

@@ -26,7 +26,7 @@
 <meta property="og:title" content="Build process and continuous integration | Eclipse Keyple">
 <meta property="og:description" content="Learn how the Keyple components are built, tested and published."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2022-07-26T16:25:33+02:00">
+<meta property="article:modified_time" content="2022-12-22T17:50:40+01:00">
 <title>Build process and continuous integration | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=9ec9badc2611e8c72b4bce5aa2987b02>
@@ -234,7 +234,7 @@ For API components (i.e. artifacts suffixed with <code>-api</code>), the increme
 <hr>
 <h2 id=continuous-integration>Continuous integration</h2>
 <p>Keyple continuous integration works with the <a href=https://ci.eclipse.org/keyple/job/Keyple/ target=_blank rel=noopener>Jenkins server</a> of the Eclipse Foundation.</p>
-<p>The build process uses the home-made gradle plugin <strong>Keyple Gradle</strong> available directly from the <a href="https://search.maven.org/search?q=a:keyple-gradle" target=_blank rel=noopener>Maven Central Repository</a> and whose sources are available on <a href=https://github.com/eclipse/keyple-ops target=_blank rel=noopener>GitHub</a>.</p>
+<p>The build process uses the home-made gradle plugin <strong>Keyple Gradle</strong> available directly from the <a href="https://central.sonatype.dev/search?q=keyple-gradle" target=_blank rel=noopener>Maven Central Repository</a> and whose sources are available on <a href=https://github.com/eclipse/keyple-ops target=_blank rel=noopener>GitHub</a>.</p>
 <p>The CI automates the following tasks (defined in the <code>Jenkinsfile</code> file):</p>
 <ul>
 <li>verify the validity of the version;</li>
@@ -332,7 +332,7 @@ The artifact version defined in the <code>gradle.properties</code> file must not
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2022-07-26</p>
+<p>Last updated on 2022-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
