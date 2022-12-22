@@ -65,12 +65,12 @@ repositories {
 dependencies {
     // Import CNA APIs
     implementation 'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.1.+'
-    implementation 'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.4.+'
+    implementation 'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.5.+'
     // Import Keyple components
     implementation 'org.eclipse.keyple:keyple-common-java-api:2.0.+'
     implementation 'org.eclipse.keyple:keyple-util-java-lib:2.+'
     implementation 'org.eclipse.keyple:keyple-service-java-lib:2.1.1'
-    implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:2.3.0'
+    implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:2.3.1'
     implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.0'
 }
 {{< /code >}}

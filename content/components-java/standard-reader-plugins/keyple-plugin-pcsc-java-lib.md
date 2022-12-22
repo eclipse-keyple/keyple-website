@@ -27,7 +27,7 @@ It is compatible with **PC/SC Reader** (Windows PC/SC WinScard API, Unix PC/SC l
 
 ## Download
 
-All deliverables are available directly from the [Maven Central Repository](https://search.maven.org/search?q=a:keyple-plugin-pcsc-java-lib) or by using one of the project resource managers below:
+All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.dev/search?q=keyple-plugin-pcsc-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}
