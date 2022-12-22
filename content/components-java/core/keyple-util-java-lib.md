@@ -25,7 +25,7 @@ Therefore, it can be used by all developers.
 
 ## Download
 
-All deliverables are available directly from the [Maven Central Repository](https://search.maven.org/search?q=a:keyple-util-java-lib) or by using one of the project resource managers below:
+All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.dev/search?q=keyple-util-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}

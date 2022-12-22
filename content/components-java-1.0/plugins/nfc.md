@@ -53,4 +53,4 @@ implementation 'org.eclipse.keyple:keyple-android-plugin-nfc:{{% keyple-java-ver
 </dependency>
 ```
 
-* Direct [download](https://search.maven.org/search?q=a:keyple-android-plugin-nfc)
+* Direct [download](https://central.sonatype.dev/search?q=keyple-android-plugin-nfc)

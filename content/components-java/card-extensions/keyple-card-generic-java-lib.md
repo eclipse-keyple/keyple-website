@@ -27,7 +27,7 @@ It can be used on **Windows**, **Linux**, **macOS** and **Android** platforms.
 
 ## Download
 
-All deliverables are available directly from the [Maven Central Repository](https://search.maven.org/search?q=a:keyple-card-generic-java-lib) or by using one of the project resource managers below:
+All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.dev/search?q=keyple-card-generic-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}

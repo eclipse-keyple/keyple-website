@@ -52,4 +52,4 @@ implementation 'org.eclipse.keyple:keyple-java-core:{{% keyple-java-version %}}'
 </dependency>
 ```
 
-* Direct [download](https://search.maven.org/search?q=a:keyple-java-core)
+* Direct [download](https://central.sonatype.dev/search?q=keyple-java-core)

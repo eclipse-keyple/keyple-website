@@ -27,7 +27,7 @@ It is compatible with **Android 4.4 minimum**.
 
 ## Download
 
-All deliverables are available directly from the [Maven Central Repository](https://search.maven.org/search?q=a:keyple-plugin-android-nfc-java-lib) or by using one of the project resource managers below:
+All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.dev/search?q=keyple-plugin-android-nfc-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}
