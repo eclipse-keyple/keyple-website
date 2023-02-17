@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/86947160",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/86947160/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/86947160/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/releases/tag/2.3.1",
-  "id": 86947160,
+  "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/92843081",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/92843081/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/92843081/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/releases/tag/2.3.2",
+  "id": 92843081,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWfVs4FLrVY",
-  "tag_name": "2.3.1",
+  "node_id": "RE_kwDODMWfVs4FiKxJ",
+  "tag_name": "2.3.2",
   "target_commitish": "main",
-  "name": "2.3.1",
+  "name": "2.3.2",
   "draft": false,
   "prerelease": false,
-  "created_at": "2022-12-22T14:12:41Z",
-  "published_at": "2022-12-22T15:11:28Z",
+  "created_at": "2023-02-17T13:54:50Z",
+  "published_at": "2023-02-17T14:12:41Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/tarball/2.3.1",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/zipball/2.3.1",
-  "body": "### Fixed\r\n- SAM exception management for signature command.\r\n- Increase/Decrease commands postponed data management for legacy cards.\r\n### Deprecated\r\n- `CalypsoExtensionService.createSamSecuritySetting` method.\r\n- `CalypsoExtensionService.createSamTransaction` method.\r\n- `CalypsoExtensionService.createSamTransactionWithoutSecurity` method.\r\n### Upgraded\r\n- \"Calypsonet Terminal Calypso API\" to version `1.5.0` (extended mode management)."
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/tarball/2.3.2",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/zipball/2.3.2",
+  "body": "### Changed\r\n- The errors raised by the \"Read Record\" command executed during the card selection process are no longer blocking.\r\n### Upgraded\r\n- \"Calypsonet Terminal Reader API\" to version `1.2.0`.\r\n- \"Calypsonet Terminal Calypso API\" to version `1.6.0` (replacement of \"process\" commands by \"prepare\" commands).\r\n- \"Google Gson Library\" (com.google.code.gson) to version `2.10.1`."
 }
