@@ -26,7 +26,7 @@
 <meta property="og:title" content="Calypso Application User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user application using the Calypso card extension add-on."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2022-10-28T10:26:38+02:00">
+<meta property="article:modified_time" content="2023-02-17T19:13:15+01:00">
 <title>Calypso Application User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=1d609d9f8b83fb8096714c6553c2e185>
@@ -371,10 +371,10 @@ The provided <code>CalypsoCard</code> object is kept and updated dynamically all
   // Performs file reads using the card transaction manager in secure mode.
   cardExtension
       .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
+      .prepareOpenSecureSession(WriteAccessLevel.DEBIT)
       .prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
-      .processOpening(WriteAccessLevel.DEBIT)
-      .prepareReleaseCardChannel()
-      .processClosing();
+      .prepareCloseSecureSession()
+      .processCommands(true);
 } finally {
   try {
     CardResourceServiceProvider.getService().releaseCardResource(samResource);
@@ -415,7 +415,7 @@ The provided <code>CalypsoCard</code> object is kept and updated dynamically all
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2022-10-28</p>
+<p>Last updated on 2023-02-17</p>
 </div>
 </article>
 <footer class=site-footer>
