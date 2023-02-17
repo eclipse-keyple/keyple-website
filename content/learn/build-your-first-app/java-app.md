@@ -65,12 +65,12 @@ repositories {
 dependencies {
     // Import CNA APIs
     implementation 'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.2.+'
-    implementation 'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.5.+'
+    implementation 'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.6.+'
     // Import Keyple components
     implementation 'org.eclipse.keyple:keyple-common-java-api:2.0.+'
     implementation 'org.eclipse.keyple:keyple-util-java-lib:2.+'
-    implementation 'org.eclipse.keyple:keyple-service-java-lib:2.1.2'
-    implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:2.3.1'
+    implementation 'org.eclipse.keyple:keyple-service-java-lib:2.1.3'
+    implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:2.3.2'
     implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.0'
 }
 {{< /code >}}
@@ -240,8 +240,9 @@ The mutual authentication process between Calypso card and Calypso SAM is initia
     CardTransactionManager cardTransactionManager =
         calypsoExtensionService
             .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
+            .prepareOpenSecureSession(WriteAccessLevel.DEBIT)
             .prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
-            .processOpening(WriteAccessLevel.DEBIT);
+            .processCommands(false);
 {{< /code >}}
 
 ### Close the Calypso secure session
@@ -259,7 +260,7 @@ execution.
 
 {{< code lang="java" >}}
     // Close the secure session, free the communication channel at the same time
-    cardTransactionManager.prepareReleaseCardChannel().processClosing();
+    cardTransactionManager.prepareCloseSecureSession().processCommands(true);
 
     System.out.println(
         "= #### The Secure Session ended successfully, the card is authenticated and the data read are certified.");
@@ -494,14 +495,14 @@ public class DemoCardAuthentication {
             .setControlSamResource(samReader, calypsoSam);
 
     // Performs file reads using the card transaction manager in a secure session.
+    // Close the secure session, free the communication channel at the same time.
     CardTransactionManager cardTransactionManager =
         calypsoExtensionService
             .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
+            .prepareOpenSecureSession(WriteAccessLevel.DEBIT)
             .prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
-            .processOpening(WriteAccessLevel.DEBIT);
-
-    // Close the secure session, free the communication channel at the same time
-    cardTransactionManager.prepareReleaseCardChannel().processClosing();
+            .prepareCloseSecureSession()
+            .processCommands(true);
 
     System.out.println(
         "= #### The Secure Session ended successfully, the card is authenticated and the data read are certified.");

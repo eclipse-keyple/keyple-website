@@ -10,7 +10,7 @@ draft: false
 
 Published on January 10, 2023, this version implements the 
 [Calypsonet Terminal Reader Java API (1.2.0)](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/) 
-and therefore provide a mean to retrieve the physical name of the protocol currently used by the card reader to 
+and therefore provides now a way to retrieve the physical name of the protocol currently used by the card reader to 
 communicate with the card.
 
 For more information, please visit the component
