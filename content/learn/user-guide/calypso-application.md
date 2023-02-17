@@ -175,10 +175,10 @@ try {
   // Performs file reads using the card transaction manager in secure mode.
   cardExtension
       .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
+      .prepareOpenSecureSession(WriteAccessLevel.DEBIT)
       .prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
-      .processOpening(WriteAccessLevel.DEBIT)
-      .prepareReleaseCardChannel()
-      .processClosing();
+      .prepareCloseSecureSession()
+      .processCommands(true);
 } finally {
   try {
     CardResourceServiceProvider.getService().releaseCardResource(samResource);
