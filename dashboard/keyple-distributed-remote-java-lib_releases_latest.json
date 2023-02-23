@@ -1,41 +1,4 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-distributed-remote-java-lib/releases/92843296",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-distributed-remote-java-lib/releases/92843296/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-distributed-remote-java-lib/releases/92843296/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-distributed-remote-java-lib/releases/tag/2.1.0",
-  "id": 92843296,
-  "author": {
-    "login": "andrei-cristea",
-    "id": 26622621,
-    "node_id": "MDQ6VXNlcjI2NjIyNjIx",
-    "avatar_url": "https://avatars.githubusercontent.com/u/26622621?v=4",
-    "gravatar_id": "",
-    "url": "https://api.github.com/users/andrei-cristea",
-    "html_url": "https://github.com/andrei-cristea",
-    "followers_url": "https://api.github.com/users/andrei-cristea/followers",
-    "following_url": "https://api.github.com/users/andrei-cristea/following{/other_user}",
-    "gists_url": "https://api.github.com/users/andrei-cristea/gists{/gist_id}",
-    "starred_url": "https://api.github.com/users/andrei-cristea/starred{/owner}{/repo}",
-    "subscriptions_url": "https://api.github.com/users/andrei-cristea/subscriptions",
-    "organizations_url": "https://api.github.com/users/andrei-cristea/orgs",
-    "repos_url": "https://api.github.com/users/andrei-cristea/repos",
-    "events_url": "https://api.github.com/users/andrei-cristea/events{/privacy}",
-    "received_events_url": "https://api.github.com/users/andrei-cristea/received_events",
-    "type": "User",
-    "site_admin": false
-  },
-  "node_id": "RE_kwDODMWgRs4FiK0g",
-  "tag_name": "2.1.0",
-  "target_commitish": "main",
-  "name": "2.1.0",
-  "draft": false,
-  "prerelease": false,
-  "created_at": "2023-02-17T13:45:58Z",
-  "published_at": "2023-02-17T14:14:40Z",
-  "assets": [
-
-  ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-distributed-remote-java-lib/tarball/2.1.0",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-distributed-remote-java-lib/zipball/2.1.0",
-  "body": "### Added\r\n- The possibility to provide to the `RemotePluginServer` a custom executor service to be used to asynchronously notify \r\n  remote reader connection events (see new method \r\n  `RemotePluginServerFactoryBuilder.builder(String remotePluginName, ExecutorService executorService)`).\r\n- `CHANGELOG.md` file (issue [eclipse/keyple#6]).\r\n- CI: Forbid the publication of a version already released (issue [#3])\r\n### Upgraded\r\n- \"Keyple Distributed Remote API\" to version `2.1.0`\r\n- \"Keyple Util Library\" to version `2.3.0`\r\n- \"Google Gson Library\" (com.google.code.gson) to version `2.10.1`"
+  "message": "API rate limit exceeded for installation ID 5160853.",
+  "documentation_url": "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"
 }
