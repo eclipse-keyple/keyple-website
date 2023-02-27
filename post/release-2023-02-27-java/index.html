@@ -7,8 +7,8 @@
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
 <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
-<meta name=description content="Eclipse Keyple® accelerates the development through a universal, open and modular platform that provides high-level APIs and ensures application reliability and compliance.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/authors/calypso-networks-association/>
+<meta name=description content="Published on February 27, 2023, this version adds the counters ceilings management feature in static mode. This allows to update remotely the key ceilings of the reloading SAMs.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/post/release-2023-02-27-java/>
 <meta name=theme-color content="#1D87BB">
 <link rel=stylesheet href=../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
@@ -16,21 +16,22 @@
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
 <link rel=stylesheet href=../../css/wowchemy.9db9b0b1c722047613a38430e93fb0bf.css>
 <script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
-<link rel=alternate href=../../authors/calypso-networks-association/index.xml type=application/rss+xml title="Eclipse Keyple">
 <link rel=manifest href=../../manifest.webmanifest>
 <link rel=icon type=image/png href=../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
 <link rel=apple-touch-icon type=image/png href=../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/authors/calypso-networks-association/>
+<link rel=canonical href=https://keyple.org/post/release-2023-02-27-java/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/authors/calypso-networks-association/">
-<meta property="og:title" content="Calypso Networks Association | Eclipse Keyple">
-<meta property="og:description" content="Eclipse Keyple® accelerates the development through a universal, open and modular platform that provides high-level APIs and ensures application reliability and compliance."><meta property="og:image" content="https://keyple.org/media/logo.svg">
+<meta property="og:url" content="https://keyple.org/post/release-2023-02-27-java/">
+<meta property="og:title" content="Keyple Card Calypso Crypto Legacy SAM Java Lib (0.3.0) is available! | Eclipse Keyple">
+<meta property="og:description" content="Published on February 27, 2023, this version adds the counters ceilings management feature in static mode. This allows to update remotely the key ceilings of the reloading SAMs."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="og:updated_time" content="2023-02-27T12:00:00+01:00">
-<title>Calypso Networks Association | Eclipse Keyple</title>
+<meta property="article:published_time" content="2023-02-27T12:00:00+01:00">
+<meta property="article:modified_time" content="2023-02-27T17:50:31+01:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://keyple.org/post/release-2023-02-27-java/"},"headline":"Keyple Card Calypso Crypto Legacy SAM Java Lib (0.3.0) is available!","datePublished":"2023-02-27T12:00:00+01:00","dateModified":"2023-02-27T17:50:31+01:00","author":{"@type":"Person","name":"Calypso Networks Association"},"publisher":{"@type":"Organization","name":"Eclipse","logo":{"@type":"ImageObject","url":"https://keyple.org/media/logo.svg"}},"description":"Published on February 27, 2023, this version adds the counters ceilings management feature in static mode. This allows to update remotely the key ceilings of the reloading SAMs."}</script>
+<title>Keyple Card Calypso Crypto Legacy SAM Java Lib (0.3.0) is available! | Eclipse Keyple</title>
 </head>
-<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=e515a274baba78668e5e0c09f2e4e5ad>
 <script src=../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
 <aside class=search-modal id=search>
 <div class=container>
@@ -128,69 +129,93 @@
 </nav>
 </div>
 <div class=page-body>
-<div class="universal-wrapper pt-3">
-<h1>Calypso Networks Association</h1>
+<article class=article>
+<div class="article-container pt-3">
+<h1>Keyple Card Calypso Crypto Legacy SAM Java Lib (0.3.0) is available!</h1>
+<div class=article-metadata>
+<div>
+<span>
+<a href=../../authors/calypso-networks-association/>Calypso Networks Association</a></span>
 </div>
-<section id=profile-page class=pt-5>
-<div class=container>
-<div class="article-widget content-widget-hr">
-<h3>Latest</h3>
-<ul>
+<span class=article-date>
+Last updated on
+2023-02-27
+</span>
+<span class=middot-divider></span>
+<span class=article-reading-time>
+1 min read
+</span>
+<span class=middot-divider></span>
+<span class=article-categories>
+<i class="fas fa-folder mr-1"></i><a href=../../category/release/>Release</a></span>
+</div>
+</div>
+<div class=article-container>
+<div class=article-style>
+<p>Published on February 27, 2023, this version implements the
+<a href=https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-crypto-legacysam-api/ target=_blank rel=noopener>Calypsonet Terminal Calypso Crypto Legacy SAM Java API (0.2.0)</a>
+and therefore adds the counters ceilings management feature in static mode.
+This allows to update remotely the key ceilings of the reloading SAMs.</p>
+<p>For more information, please visit the component
+<a href=https://keyple.org/components-java/card-extensions/keyple-card-calypso-crypto-legacysam-java-lib/>page</a>.</p>
+</div>
+<div class=article-tags>
+<a class="badge badge-light" href=../../tag/eclipse/>Eclipse</a>
+<a class="badge badge-light" href=../../tag/keyple/>Keyple</a>
+<a class="badge badge-light" href=../../tag/release/>Release</a>
+<a class="badge badge-light" href=../../tag/opensource/>OpenSource</a>
+<a class="badge badge-light" href=../../tag/sdk/>SDK</a>
+<a class="badge badge-light" href=../../tag/api/>API</a>
+<a class="badge badge-light" href=../../tag/ticketing/>Ticketing</a>
+<a class="badge badge-light" href=../../tag/calypso/>Calypso</a>
+<a class="badge badge-light" href=../../tag/sam/>SAM</a>
+</div>
+<div class=share-box>
+<ul class=share>
 <li>
-<a href=../../post/release-2023-02-27-java/>Keyple Card Calypso Crypto Legacy SAM Java Lib (0.3.0) is available!</a>
+<a href="https://twitter.com/intent/tweet?url=https://keyple.org/post/release-2023-02-27-java/&text=Keyple%20Card%20Calypso%20Crypto%20Legacy%20SAM%20Java%20Lib%20%280.3.0%29%20is%20available!" target=_blank rel=noopener class=share-btn-twitter aria-label=twitter>
+<i class="fab fa-twitter"></i>
+</a>
 </li>
 <li>
-<a href=../../post/release-2023-02-17-2-java/>Keyple Card Calypso Java Lib (2.3.2) is available!</a>
+<a href="https://www.facebook.com/sharer.php?u=https://keyple.org/post/release-2023-02-27-java/&t=Keyple%20Card%20Calypso%20Crypto%20Legacy%20SAM%20Java%20Lib%20%280.3.0%29%20is%20available!" target=_blank rel=noopener class=share-btn-facebook aria-label=facebook>
+<i class="fab fa-facebook"></i>
+</a>
 </li>
 <li>
-<a href=../../post/release-2023-02-17-1-java/>Keyple Service Java Lib (2.1.3) and Keyple Distributed Remote Java Lib (2.1.0) are available!</a>
+<a href="mailto:?subject=Keyple%20Card%20Calypso%20Crypto%20Legacy%20SAM%20Java%20Lib%20%280.3.0%29%20is%20available!&body=https://keyple.org/post/release-2023-02-27-java/" target=_blank rel=noopener class=share-btn-email aria-label=envelope>
+<i class="fas fa-envelope"></i>
+</a>
 </li>
 <li>
-<a href=../../post/release-2023-01-10-java/>Keyple Service Java Lib (2.1.2) is available!</a>
+<a href="https://www.linkedin.com/shareArticle?url=https://keyple.org/post/release-2023-02-27-java/&title=Keyple%20Card%20Calypso%20Crypto%20Legacy%20SAM%20Java%20Lib%20%280.3.0%29%20is%20available!" target=_blank rel=noopener class=share-btn-linkedin aria-label=linkedin-in>
+<i class="fab fa-linkedin-in"></i>
+</a>
 </li>
 <li>
-<a href=../../post/release-2022-12-22-java/>Keyple Card Calypso Java Lib (2.3.1) is available!</a>
+<a href="whatsapp://send?text=Keyple%20Card%20Calypso%20Crypto%20Legacy%20SAM%20Java%20Lib%20%280.3.0%29%20is%20available!%20https://keyple.org/post/release-2023-02-27-java/" target=_blank rel=noopener class=share-btn-whatsapp aria-label=whatsapp>
+<i class="fab fa-whatsapp"></i>
+</a>
 </li>
 <li>
-<a href=../../post/release-2022-12-13-java/>Keyple Card Calypso Crypto Legacy SAM Java Lib (0.2.0) is in Beta!</a>
-</li>
-<li>
-<a href=../../post/release-2022-12-06-java/>Keyple Card Calypso Java Lib (2.3.0) is available!</a>
-</li>
-<li>
-<a href=../../post/release-2022-11-17-java-2/>Keyple Card Calypso Java Lib (2.2.5) is available!</a>
-</li>
-<li>
-<a href=../../post/release-2022-11-17-java/>Keyple Util Java Lib (2.3.0) is available!</a>
-</li>
-<li>
-<a href=../../post/2-new-adopters-cts-and-cna/>2 new adopters of Eclipse Keyple®</a>
-</li>
-<li>
-<a href=../../post/6-new-adopters/>6 new adopters of Eclipse Keyple®</a>
-</li>
-<li>
-<a href=../../post/release-2-0-0-java/>Release 2.0.0 of Eclipse Keyple® Java</a>
-</li>
-<li>
-<a href=../../post/release-0-9-0-cpp/>Release 0.9.0 C++ on the field</a>
-</li>
-<li>
-<a href=../../post/release-1-0-0-java/>Release 1.0.0 of Eclipse Keyple® Java</a>
-</li>
-<li>
-<a href=../../post/webinar-eclipse-keyple-developers-oct15-2020/>Webinar Eclipse Keyple® for Developers, Thursday, October 15, 2020 </a>
-</li>
-<li>
-<a href=../../post/release-0-9-0-java/>Release 0.9.0 Java on the field</a>
-</li>
-<li>
-<a href=../../post/first-meetup-eclipse-keyple/>First Meet Up Eclipse Keyple®</a>
+<a href="https://service.weibo.com/share/share.php?url=https://keyple.org/post/release-2023-02-27-java/&title=Keyple%20Card%20Calypso%20Crypto%20Legacy%20SAM%20Java%20Lib%20%280.3.0%29%20is%20available!" target=_blank rel=noopener class=share-btn-weibo aria-label=weibo>
+<i class="fab fa-weibo"></i>
+</a>
 </li>
 </ul>
 </div>
+<div class="article-widget content-widget-hr">
+<h3>Related</h3>
+<ul>
+<li><a href=../../post/release-2022-12-13-java/>Keyple Card Calypso Crypto Legacy SAM Java Lib (0.2.0) is in Beta!</a></li>
+<li><a href=../../post/release-2023-02-17-2-java/>Keyple Card Calypso Java Lib (2.3.2) is available!</a></li>
+<li><a href=../../post/release-2023-01-10-java/>Keyple Service Java Lib (2.1.2) is available!</a></li>
+<li><a href=../../post/release-2022-12-22-java/>Keyple Card Calypso Java Lib (2.3.1) is available!</a></li>
+<li><a href=../../post/release-2022-12-06-java/>Keyple Card Calypso Java Lib (2.3.0) is available!</a></li>
+</ul>
 </div>
-</section>
+</div>
+</article>
 </div>
 <div class=page-footer>
 <div class=container>
