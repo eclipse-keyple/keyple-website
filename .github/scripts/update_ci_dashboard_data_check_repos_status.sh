@@ -18,22 +18,25 @@ echo "Checking repository "$repository_name"..."
 # - "size": Unknown reason of size changing.
 # - "pushed_at": Cyclic commit when gh-pages branch is update (keyple-website).
 
-github_hash=`curl --request GET \
+github_json=`curl --request GET \
           --url https://api.github.com/repos/eclipse/$repository_name \
           --header "authorization: Bearer $token" \
           --header "content-type: application/json" | grep -v -e "size"$filter_website_repository`
+github_hash=`echo $github_json | md5sum | cut -d ' ' -f 1`
 
-dashboard_hash=`curl --request GET \
+dashboard_json=`curl --request GET \
           --url https://keyple.org/dashboard/$repository_name"_.json" \
           --header "content-type: application/json" | grep -v -e "size"$filter_website_repository`
-
-echo "github_hash="$github_hash
-echo "dashboard_hash="$dashboard_hash
+dashboard_hash=`echo $dashboard_json | md5sum | cut -d ' ' -f 1`
 
 if [ "$github_hash" = "$dashboard_hash" ]; then
   echo "No update required"
   exit 1
 else
   echo "Update required"
+  echo "github_hash   ="$github_hash
+  echo "dashboard_hash="$dashboard_hash
+  echo "github_json   ="$github_json
+  echo "dashboard_json="$dashboard_json
   exit 0
 fi
