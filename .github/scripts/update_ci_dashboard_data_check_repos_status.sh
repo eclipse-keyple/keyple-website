@@ -21,11 +21,11 @@ echo "Checking repository "$repository_name"..."
 github_hash=`curl --request GET \
           --url https://api.github.com/repos/eclipse/$repository_name \
           --header "authorization: Bearer $token" \
-          --header "content-type: application/json" | grep -v -e "size"$filter_website_repository
+          --header "content-type: application/json" | grep -v -e "size"$filter_website_repository`
 
 dashboard_hash=`curl --request GET \
           --url https://keyple.org/dashboard/$repository_name"_.json" \
-          --header "content-type: application/json" | grep -v -e "size"$filter_website_repository
+          --header "content-type: application/json" | grep -v -e "size"$filter_website_repository`
 
 echo "github_hash="$github_hash
 echo "dashboard_hash="$dashboard_hash
