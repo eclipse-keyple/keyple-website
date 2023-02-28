@@ -34,9 +34,13 @@ if [ "$github_hash" = "$dashboard_hash" ]; then
   exit 1
 else
   echo "Update required"
+  echo "###############"
   echo "github_hash   ="$github_hash
   echo "dashboard_hash="$dashboard_hash
+  echo "###############"
   echo "github_json   ="$github_json
+  echo "###############"
   echo "dashboard_json="$dashboard_json
+  echo "###############"
   exit 0
 fi
