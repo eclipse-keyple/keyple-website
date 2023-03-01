@@ -3,10 +3,7 @@ name: Update dashboard if needed
 on:
   schedule:
     - cron: '0 */1 * * *'
-  workflow_run:
-    workflows: [ "pages-build-deployment" ]
-    types:
-      - completed
+  workflow_dispatch: # To authorize manual run
 
 jobs:
   deploy:
@@ -24,7 +21,7 @@ jobs:
       - name: Update project dashboard data
         id: update
         working-directory: .
-        run: ./.github/scripts/update_ci_dashboard_data_all.sh ${{ github.repository_owner }} ${{ secrets.GITHUB_TOKEN }}
+        run: ./.github/scripts/dashboard_update.sh ${{ github.repository_owner }} ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
 
       - name: Update gh-pages
