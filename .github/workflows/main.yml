@@ -30,7 +30,7 @@ jobs:
 
       - name: Init dashboard data
         working-directory: ./public
-        run: ./.github/scripts/dashboard_init.sh ${{ secrets.GITHUB_TOKEN }}
+        run: ../.github/scripts/dashboard_init.sh ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
