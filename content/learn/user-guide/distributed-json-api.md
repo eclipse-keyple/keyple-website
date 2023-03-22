@@ -22,7 +22,7 @@ management of the card transaction to the server.
 
 The diagram below shows the global flow of JSON objects exchanges between the terminal and the server:
 
-{{< figure src="/media/learn/user-guide/distributed-json-api/distributed_messaging_flow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
 
 On its own initiative (e.g. following the detection of a card), the terminal sends a JSON object of type 
 `EXECUTE_REMOTE_SERVICE` to the server to ask it to start a card transaction.
@@ -38,6 +38,8 @@ which may contain custom transaction output data.
 
 ---
 ## EXECUTE_REMOTE_SERVICE
+
+{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_executeRemoteService.svg" caption="Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram" numbered="true" >}}
 
 | NAME              |  TYPE  | DESCRIPTION                                                            |
 |-------------------|:------:|------------------------------------------------------------------------|
@@ -68,6 +70,10 @@ which may contain custom transaction output data.
 
 ---
 ## CMD/RESP
+
+{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_cmd.svg" caption="Keyple Distributed JSON API - CMD class diagram" numbered="true" >}}
+
+{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - RESP class diagram" numbered="true" >}}
 
 ### TRANSMIT_CARD_SELECTION_REQUESTS
 
@@ -186,8 +192,7 @@ which may contain custom transaction output data.
 ---
 ## END_REMOTE_SERVICE
 
-
-
+{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_endRemoteService.svg" caption="Keyple Distributed JSON API - END_REMOTE_SERVICE class diagram" numbered="true" >}}
 
 ---
 ## JSON inner objects
