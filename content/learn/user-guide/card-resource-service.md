@@ -5,7 +5,7 @@ summary: How to develop an end-user application using the Card Resource Service.
 type: book
 toc: true
 draft: false
-weight: 4
+weight: 5
 ---
 
 ---
