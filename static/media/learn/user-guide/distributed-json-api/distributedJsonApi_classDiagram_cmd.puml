@@ -79,6 +79,9 @@ class IsCardPresentCmdBody extends CmdBody {
 ' TRANSMIT_CARD_SELECTION_REQUESTS (CMD)
 class TransmitCardSelectionRequestsCmdBody extends CmdBody {
     **service** : String = "**TRANSMIT_CARD_SELECTION_REQUESTS**"
+    **parameters** : TransmitCardSelectionRequestsCmdParameters
+}
+class TransmitCardSelectionRequestsCmdParameters {
     **cardSelectionRequests** : CardSelectionRequest
     **multiSelectionProcessing** : MultiSelectionProcessing
     **channelControl** : ChannelControl
@@ -128,6 +131,9 @@ enum ChannelControl {
 ' TRANSMIT_CARD_REQUEST (CMD)
 class TransmitCardRequestCmdBody extends CmdBody {
     **service** : String = "**TRANSMIT_CARD_REQUEST**"
+    **parameters** : TransmitCardRequestCmdParameters
+}
+class TransmitCardRequestCmdParameters {
     **channelControl** : ChannelControl
     **cardRequest** : CardRequest
 }
@@ -136,9 +142,11 @@ class TransmitCardRequestCmdBody extends CmdBody {
 
 CmdData *-- "1" CmdBody #C_LINK : JsonString
 
-TransmitCardSelectionRequestsCmdBody *-- "1" CardSelectionRequest #C_LINK
-TransmitCardSelectionRequestsCmdBody *-- "1" MultiSelectionProcessing #C_LINK
-TransmitCardSelectionRequestsCmdBody *-- "1" ChannelControl #C_LINK
+TransmitCardSelectionRequestsCmdBody *-- "1" TransmitCardSelectionRequestsCmdParameters #C_LINK
+
+TransmitCardSelectionRequestsCmdParameters *-- "1" CardSelectionRequest #C_LINK
+TransmitCardSelectionRequestsCmdParameters *-- "1" MultiSelectionProcessing #C_LINK
+TransmitCardSelectionRequestsCmdParameters *-- "1" ChannelControl #C_LINK
 
 CardSelectionRequest *-- "1" CardSelector #C_LINK
 CardSelectionRequest *.. "0..1" CardRequest #C_LINK
@@ -148,8 +156,10 @@ CardSelector *-- "1" FileControlInformation #C_LINK
 
 CardRequest *-- "1..N" ApduRequest #C_LINK
 
-TransmitCardRequestCmdBody *-- "1" ChannelControl #C_LINK
-TransmitCardRequestCmdBody *-- "1" CardRequest #C_LINK
+TransmitCardRequestCmdBody *-- "1" TransmitCardRequestCmdParameters #C_LINK
+
+TransmitCardRequestCmdParameters *-- "1" ChannelControl #C_LINK
+TransmitCardRequestCmdParameters *-- "1" CardRequest #C_LINK
 
 ' == LAYOUT ==
 
@@ -161,6 +171,7 @@ abstract class CmdBody <<green>>
 
 ' TRANSMIT_CARD_SELECTION_REQUESTS (CMD)
 class TransmitCardSelectionRequestsCmdBody <<green>>
+class TransmitCardSelectionRequestsCmdParameters <<green>>
 class CardSelectionRequest <<green>>
 class CardSelector <<green>>
 class CardRequest <<green>>
