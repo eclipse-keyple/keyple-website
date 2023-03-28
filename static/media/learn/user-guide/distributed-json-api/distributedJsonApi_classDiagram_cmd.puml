@@ -1,9 +1,9 @@
 @startuml
-title
-    Keyple Distributed JSON API
-    compliant with "keyple-service-java-lib" version 2.1.4
-    CMD (2023-03-22)
-end title
+'title
+'    Keyple Distributed JSON API
+'    compliant with "keyple-service-java-lib" version 2.1.4
+'    CMD (2023-03-22)
+'end title
 
 ' == THEME ==
 
@@ -54,7 +54,7 @@ hide <<grey>> stereotype
 ' == CONTENT ==
 
 ' CMD
-class CmdMessage {
+class CmdData {
     **action** : String = "**CMD**"
     **clientNodeId** : String
     **localReaderName** : String
@@ -134,7 +134,7 @@ class TransmitCardRequestCmdBody extends CmdBody {
 
 ' Associations
 
-CmdMessage *-- "1" CmdBody #C_LINK : JsonString
+CmdData *-- "1" CmdBody #C_LINK : JsonString
 
 TransmitCardSelectionRequestsCmdBody *-- "1" CardSelectionRequest #C_LINK
 TransmitCardSelectionRequestsCmdBody *-- "1" MultiSelectionProcessing #C_LINK
@@ -156,7 +156,7 @@ TransmitCardRequestCmdBody *-- "1" CardRequest #C_LINK
 ' == STYLE ==
 
 ' CMD
-class CmdMessage <<green>>
+class CmdData <<green>>
 abstract class CmdBody <<green>>
 
 ' TRANSMIT_CARD_SELECTION_REQUESTS (CMD)

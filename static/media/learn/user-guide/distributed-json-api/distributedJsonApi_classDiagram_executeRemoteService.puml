@@ -1,9 +1,9 @@
 @startuml
-title
-    Keyple Distributed JSON API
-    compliant with "keyple-service-java-lib" version 2.1.4
-    EXECUTE_REMOTE_SERVICE (2023-03-22)
-end title
+'title
+'    Keyple Distributed JSON API
+'    compliant with "keyple-service-java-lib" version 2.1.4
+'    EXECUTE_REMOTE_SERVICE (2023-03-22)
+'end title
 
 ' == THEME ==
 
@@ -54,7 +54,7 @@ hide <<grey>> stereotype
 ' == CONTENT ==
 
 ' EXECUTE_REMOTE_SERVICE
-class ExecuteRemoteServiceMessage {
+class ExecuteRemoteServiceData {
     **action** : String = "**EXECUTE_REMOTE_SERVICE**"
     **clientNodeId** : String
     **localReaderName** : String
@@ -68,14 +68,14 @@ class ExecuteRemoteServiceBody {
 
 ' Associations
 
-ExecuteRemoteServiceMessage *-- "1" ExecuteRemoteServiceBody #C_LINK : JsonString
+ExecuteRemoteServiceData *-- "1" ExecuteRemoteServiceBody #C_LINK : JsonString
 
 ' == LAYOUT ==
 
 
 ' == STYLE ==
 
-class ExecuteRemoteServiceMessage <<blue>>
+class ExecuteRemoteServiceData <<blue>>
 class ExecuteRemoteServiceBody <<blue>>
 
 @enduml

@@ -1,9 +1,9 @@
 @startuml
-title
-    Keyple Distributed JSON API
-    compliant with "keyple-service-java-lib" version 2.1.4
-    RESP (2023-03-22)
-end title
+'title
+'    Keyple Distributed JSON API
+'    compliant with "keyple-service-java-lib" version 2.1.4
+'    RESP (2023-03-22)
+'end title
 
 ' == THEME ==
 
@@ -54,7 +54,7 @@ hide <<grey>> stereotype
 ' == CONTENT ==
 
 ' RESP
-class RespMessage {
+class RespData {
     **action** : String = "**RESP**"
     **clientNodeId** : String
     **localReaderName** : String
@@ -106,7 +106,7 @@ class TransmitCardRequestRespBody extends RespBody {
 
 ' Associations
 
-RespMessage *-- "1" RespBody #C_LINK : JsonString
+RespData *-- "1" RespBody #C_LINK : JsonString
 
 TransmitCardSelectionRequestsRespBody *-- "1" CardSelectionResponse #C_LINK
 
@@ -123,7 +123,7 @@ TransmitCardRequestRespBody *-- "1" CardResponse #C_LINK
 ' == STYLE ==
 
 ' RESP
-class RespMessage <<blue>>
+class RespData <<blue>>
 abstract class RespBody <<blue>>
 
 ' TRANSMIT_CARD_REQUEST (RESP)

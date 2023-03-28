@@ -12,56 +12,85 @@ weight: 3
 ## Overview
 
 This guide explains how to connect a non-Keyple based client application to a Keyple based server using simple JSON 
-block exchanges.
+data exchanges. 
+It details the JSON data exchange between the terminal and the server, but does not cover the transport of this data.
 
 This allows the development of a distributed solution in which the client reader terminal delegates the entire 
 management of the card transaction to the server.
 
 ---
-## Messaging flow
+## Data flow
 
-The diagram below shows the global flow of JSON objects exchanges between the terminal and the server:
+The diagram below shows the global flow of JSON data exchanges between the terminal and the server:
 
 {{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
 
-On its own initiative (e.g. following the detection of a card), the terminal sends a JSON object of type 
-`EXECUTE_REMOTE_SERVICE` to the server to ask it to start a card transaction.
-At this step, the terminal has the ability to tell the server which business service to run and to provide additional 
-custom data.
+On its own initiative (e.g. following the detection of a card), the terminal sends a `EXECUTE_REMOTE_SERVICE` JSON 
+object to the server to ask it to start a card transaction.
+At this step, the terminal has the ability to tell the server which business service to run and also to provide 
+additional custom input data.
 
-As long as the transaction is not completed, the terminal receives from the server JSON objects of type `CMD` containing 
+As long as the transaction is not completed, the terminal receives from the server `CMD` JSON objects containing 
 the actions to be performed with the card or the terminal reader. 
-The results are sent back to the server in JSON objects of type `RESP`.
+The results are sent back to the server in `RESP` JSON objects.
 
-When the transaction is finished, the terminal receives from the server a last JSON object of type `END_REMOTE_SERVICE` 
-which may contain custom transaction output data.
+When the transaction is complete, instead of receiving a `CMD` JSON object, the terminal receives a final 
+`END_REMOTE_SERVICE` JSON object from the server which optionally contains custom transaction output data.
 
 ---
-## EXECUTE_REMOTE_SERVICE
+## Data format
+The Keyple transaction API uses 4 primary JSON object types, which are explained in detail in the sections below. 
 
-{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_executeRemoteService.svg" caption="Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram" numbered="true" >}}
+The `action` field is present in all JSON objects and allows to determine the type of the object and especially the 
+format of the `body` field content.
 
-| NAME              |  TYPE  | DESCRIPTION                                                            |
-|-------------------|:------:|------------------------------------------------------------------------|
-| `action`          | string | `EXECUTE_REMOTE_SERVICE`                                               |
-| `body`            | string | [ExecuteRemoteServiceData](#executeremoteservicedata) as a JSON string |
-| `clientNodeId`    | string | The terminal identifier                                                |
-| `localReaderName` | string | The name of the local reader                                           |
-| `sessionId`       | string | The identifier to be used for the whole current transaction            |
+It can have the following values: 
+- [`EXECUTE_REMOTE_SERVICE`](#execute_remote_service) 
+- [`CMD`](#cmd)
+- [`RESP`](#resp) 
+- [`END_REMOTE_SERVICE`](#end_remote_service)
 
-##### ExecuteRemoteServiceData
+### EXECUTE_REMOTE_SERVICE
 
-| NAME         |  TYPE  | DESCRIPTION                                                                                     |
-|--------------|:------:|-------------------------------------------------------------------------------------------------|
-| `SERVICE_ID` | string | The identifier of the remote business service to be executed                                    |
-| `INPUT_DATA` | object | (optional) - An object containing additional data to be provided to the remote business service |
+The purpose of this JSON object, sent to the server, is to initiate the server-controlled card 
+transaction. 
 
-##### Example
+By using the identification fields provided by the terminal in its subsequent responses, the server ensures 
+consistent and accurate data flow management throughout the entire system.
+
+Following the transmission of the `EXECUTE_REMOTE_SERVICE` request, the server will return a JSON object of type 
+[`CMD`](#cmd) or [`END_REMOTE_SERVICE`](#end_remote_service) containing the actions to be performed with the card or
+the terminal reader.
+
+The following UML class diagram illustrates the structure of this object and may help to implement it in the development 
+language of the target terminal.
+
+{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_executeRemoteService.svg" 
+caption="Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram" numbered="true" >}}
+
+#### ExecuteRemoteServiceData
+
+| NAME              |  TYPE  | DESCRIPTION                                                                                               |
+|-------------------|:------:|-----------------------------------------------------------------------------------------------------------|
+| `action`          | String | `"EXECUTE_REMOTE_SERVICE"`                                                                                |
+| `body`            | String | A JSON string containing a [ExecuteRemoteServiceBody](#executeremoteservicebody).                         |
+| `clientNodeId`    | String | The terminal identifier. It shall be unique per server.                                                   |
+| `localReaderName` | String | The identifier of the local reader used to perform the card transaction. It shall be unique per terminal. |
+| `sessionId`       | String | The session identifier. It shall be unique per card transaction.                                          |
+
+#### ExecuteRemoteServiceBody
+
+| NAME        |  TYPE  | DESCRIPTION                                                                                                                                                       |
+|-------------|:------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `serviceId` | String | The identifier of the business service to be executed by the server. It's a naming convention between the client and the server.                                  |
+| `inputData` | Object | (optional) - An object containing additional data to be provided to the remote business service. It's content is a convention between the client and the server.  |
+
+#### Example
 
 {{< code lang="json" >}}
 {
   "action": "EXECUTE_REMOTE_SERVICE",
-  "body": "{\"SERVICE_ID\":\"EXECUTE_CALYPSO_SESSION_FROM_REMOTE_SELECTION\",\"INPUT_DATA\":{\"userId\":\"test\"}}",
+  "body": "{\"serviceId\":\"EXECUTE_CALYPSO_SESSION_FROM_REMOTE_SELECTION\",\"inputData\":{\"userId\":\"test\"}}",
   "clientNodeId": "d4020f5a-b80c-42c7-b715-a222245e952a",
   "localReaderName": "stubReader",
   "sessionId": "bd2225d8-7838-410f-afa6-ec66dd0e497c"
@@ -69,25 +98,81 @@ which may contain custom transaction output data.
 {{< /code >}}
 
 ---
-## CMD/RESP
+### CMD
+
+The purpose of this JSON object, received from the server, is to ask the terminal to perform a specific service with the 
+card or the terminal's reader. 
+
+Each service is defined as a JSON object (in string format) contained in the `body` field of the `CMD` JSON object.
+
+For each service, this object contains a `service` field which identifies the requested service and also allows to 
+properly interpret the other fields of the object.
+
+The service field can take one of the following 4 values:
+- [`IS_CONTACTLESS`](#nbspnbspnbspnbspis_contactless)
+- [`IS_CARD_PRESENT`](#nbspnbspnbspnbspis_card_present)
+- [`TRANSMIT_CARD_SELECTION_REQUESTS`](#nbspnbspnbspnbsptransmit_card_selection_requests)
+- [`TRANSMIT_CARD_REQUEST`](#nbspnbspnbspnbsptransmit_card_request)
+
+After receiving a `CMD` JSON object, the terminal will send a `RESP` JSON object containing the result of the operation.
+
+The following UML class diagram illustrates the structure of this object and may help to implement it in the development language of the target terminal.
 
 {{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_cmd.svg" caption="Keyple Distributed JSON API - CMD class diagram" numbered="true" >}}
 
-{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - RESP class diagram" numbered="true" >}}
+---
+### &nbsp;&nbsp;&nbsp;&nbsp;IS_CONTACTLESS
+---
+### &nbsp;&nbsp;&nbsp;&nbsp;IS_CARD_PRESENT
+---
+### &nbsp;&nbsp;&nbsp;&nbsp;TRANSMIT_CARD_SELECTION_REQUESTS
 
-### TRANSMIT_CARD_SELECTION_REQUESTS
+The primary objective of this service is to establish a logical communication channel with a card.
 
-#### CMD
+The parameters coming from the server and the response to be provided by the terminal will be defined below.
+
+To enable processing of different card profiles, it offers the creation of selection scenarios with integrated 
+selection cases. The scenario is provided by the server after a card is detected, and it involves checking whether the card 
+is compatible with at least one of the selection cases. The selection cases are played successively, in the order in 
+which they are defined.
+
+There are several options for executing the scenario:
+- the process stops at the first selection case where the card is a match, or all scenarios are played systematically.
+- the physical channel can be kept open or closed at the end of each selection case.
+
+A card selection case incorporates various independent filters that can be applied individually or in combination 
+to determine if a detected card is suitable for performing a transaction. While some cards can be selected based on 
+communication protocol or response data from the power on operation, most of the cards require a selection through 
+Application Identifier (AID) using the ISO7816-4 SELECT APPLICATION command. 
+
+The structure outlined below allows for defining selection scenarios that combine these three types of filters:
+- based on the communication protocol
+- based on the response data from the power on stage
+- based on the Application Identifier (AID)
+
+When filtering by AID, the SELECT APPLICATION command is sent to the card in accordance with the ISO7816-4 standard.
+Additional parameters, also defined by the standard, can be set to specify the type of operation (FileOccurrence) 
+and the type of output (FileControlInformation).
+
+Each filter is optional, and if none are defined, the selection is deemed successful as soon as the card is detected.
+However, when a filter is specified, it becomes a prerequisite for the card selection.
+
+Along with card selection, a selection scenario can comprise a list of APDUs (Application Protocol Data Units) that are 
+to be transmitted to the card as soon as it becomes "selected". 
+Such a list enables the definition of commands that can be executed during the selection stage, specifically to obtain 
+contextual information from the card.
+
+#### JSON structure
 
 | NAME               |  TYPE  | DESCRIPTION                                                                                    |
 |--------------------|:------:|------------------------------------------------------------------------------------------------|
 | `action`           | string | `CMD`                                                                                          |
 | `body`             | string | [TransmitCardSelectionRequestsDataCmd](#transmitcardselectionrequestsdatacmd) as a JSON string |
 | `clientNodeId`     | string | The terminal identifier                                                                        |
-| `localReaderName`  | string | The name of the local reader                                                                   |
-| `remoteReaderName` | string | The name of the remote reader                                                                  |
+| `localReaderName`  | string | The identifier of the local reader as provided by EXECUTE_REMOTE_SERVICE                       |
+| `remoteReaderName` | string | The identifier of the virtual remote reader linked to the local reader                         |
 | `serverNodeId`     | string | The server identifier                                                                          |
-| `sessionId`        | string | The current transaction identifier                                                             |
+| `sessionId`        | string | The current transaction identifier as provided by EXECUTE_REMOTE_SERVICE                       |
 
 ##### TransmitCardSelectionRequestsDataCmd
 
@@ -145,7 +230,17 @@ which may contain custom transaction output data.
 }
 {{< /code >}}
 
-#### RESP
+### &nbsp;&nbsp;&nbsp;&nbsp;TRANSMIT_CARD_REQUEST
+
+### RESP
+
+{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - RESP class diagram" numbered="true" >}}
+
+### &nbsp;&nbsp;&nbsp;&nbsp;TRANSMIT_CARD_SELECTION_REQUESTS
+Après le traitement de l'étape de sélection avec les paramètres fournis par le serveur, le terminal envoie une réponse
+dont le contenu dépend à la fois des 
+
+#### JSON structure
 
 | NAME               |  TYPE  | DESCRIPTION                                                                                      |
 |--------------------|:------:|--------------------------------------------------------------------------------------------------|
@@ -185,19 +280,11 @@ which may contain custom transaction output data.
 }
 {{< /code >}}
 
-### TRANSMIT_CARD_REQUEST
-### IS_CONTACTLESS
-### IS_CARD_PRESENT
+### &nbsp;&nbsp;&nbsp;&nbsp;TRANSMIT_CARD_REQUEST
+### &nbsp;&nbsp;&nbsp;&nbsp;IS_CONTACTLESS
+### &nbsp;&nbsp;&nbsp;&nbsp;IS_CARD_PRESENT
 
 ---
-## END_REMOTE_SERVICE
+### END_REMOTE_SERVICE
 
 {{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_endRemoteService.svg" caption="Keyple Distributed JSON API - END_REMOTE_SERVICE class diagram" numbered="true" >}}
-
----
-## JSON inner objects
-
-### ExecuteRemoteServiceBody
-### ApduRequest
-### CardRequest
-### CardSelector
