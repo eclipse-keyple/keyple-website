@@ -64,6 +64,8 @@ class CmdData {
     **body** : CmdBody
 }
 abstract class CmdBody {
+    **service** : String
+    **parameters** : Object?
 }
 
 ' IS_CONTACTLESS (CMD) ==> NOP

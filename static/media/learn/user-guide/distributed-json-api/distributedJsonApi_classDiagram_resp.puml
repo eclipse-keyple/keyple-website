@@ -64,6 +64,8 @@ class RespData {
     **body** : RespBody
 }
 abstract class RespBody {
+    **service** : String
+    **result** : Object
 }
 
 ' IS_CONTACTLESS (RESP)
