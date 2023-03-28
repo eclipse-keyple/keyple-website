@@ -65,25 +65,32 @@ class RespData {
 }
 abstract class RespBody {
     **service** : String
-    **result** : Object
+    **result** : Object?
+    **error** : Error?
+}
+
+' Error
+class Error {
+    **code** : String
+    **message** : String
 }
 
 ' IS_CONTACTLESS (RESP)
 class IsContactlessRespBody extends RespBody {
     **service** : String = "**IS_CONTACTLESS**"
-    **result** : Boolean
+    **result** : Boolean?
 }
 
 ' IS_CARD_PRESENT (RESP)
 class IsCardPresentRespBody extends RespBody {
     **service** : String = "**IS_CARD_PRESENT**"
-    **result** : Boolean
+    **result** : Boolean?
 }
 
 ' TRANSMIT_CARD_SELECTION_REQUESTS (RESP)
 class TransmitCardSelectionRequestsRespBody extends RespBody {
     **service** : String = "**TRANSMIT_CARD_SELECTION_REQUESTS**"
-     **result** : CardSelectionResponse
+     **result** : CardSelectionResponse[]?
 }
 class CardSelectionResponse {
     **powerOnData** : String
@@ -103,21 +110,23 @@ class ApduResponse {
 ' TRANSMIT_CARD_REQUEST (RESP)
 class TransmitCardRequestRespBody extends RespBody {
     **service** : String = "**TRANSMIT_CARD_REQUEST**"
-    **result** : CardResponse
+    **result** : CardResponse?
 }
 
 ' Associations
 
 RespData *-- "1" RespBody #C_LINK : JsonString
 
-TransmitCardSelectionRequestsRespBody *-- "1" CardSelectionResponse #C_LINK
+RespBody *.right. "0..1" Error #C_LINK
+
+TransmitCardSelectionRequestsRespBody *.. "0..*" CardSelectionResponse #C_LINK
 
 CardSelectionResponse *.right. "0..1" CardResponse #C_LINK
 CardSelectionResponse *.. "0..1" ApduResponse #C_LINK
 
-CardResponse *-- "1..N" ApduResponse #C_LINK
+CardResponse *-- "1..*" ApduResponse #C_LINK
 
-TransmitCardRequestRespBody *-- "1" CardResponse #C_LINK
+TransmitCardRequestRespBody *.. "0..1" CardResponse #C_LINK
 
 ' == LAYOUT ==
 
@@ -127,6 +136,8 @@ TransmitCardRequestRespBody *-- "1" CardResponse #C_LINK
 ' RESP
 class RespData <<blue>>
 abstract class RespBody <<blue>>
+
+class Error <<blue>>
 
 ' TRANSMIT_CARD_REQUEST (RESP)
 class TransmitCardRequestRespBody <<blue>>

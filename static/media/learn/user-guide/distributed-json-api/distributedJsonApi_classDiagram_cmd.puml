@@ -84,7 +84,7 @@ class TransmitCardSelectionRequestsCmdBody extends CmdBody {
     **parameters** : TransmitCardSelectionRequestsCmdParameters
 }
 class TransmitCardSelectionRequestsCmdParameters {
-    **cardSelectionRequests** : CardSelectionRequest
+    **cardSelectionRequests** : CardSelectionRequest[]
     **multiSelectionProcessing** : MultiSelectionProcessing
     **channelControl** : ChannelControl
 }
@@ -146,7 +146,7 @@ CmdData *-- "1" CmdBody #C_LINK : JsonString
 
 TransmitCardSelectionRequestsCmdBody *-- "1" TransmitCardSelectionRequestsCmdParameters #C_LINK
 
-TransmitCardSelectionRequestsCmdParameters *-- "1" CardSelectionRequest #C_LINK
+TransmitCardSelectionRequestsCmdParameters *-- "1..*" CardSelectionRequest #C_LINK
 TransmitCardSelectionRequestsCmdParameters *-- "1" MultiSelectionProcessing #C_LINK
 TransmitCardSelectionRequestsCmdParameters *-- "1" ChannelControl #C_LINK
 
@@ -156,7 +156,7 @@ CardSelectionRequest *.. "0..1" CardRequest #C_LINK
 CardSelector *-- "1" FileOccurrence #C_LINK
 CardSelector *-- "1" FileControlInformation #C_LINK
 
-CardRequest *-- "1..N" ApduRequest #C_LINK
+CardRequest *-- "1..*" ApduRequest #C_LINK
 
 TransmitCardRequestCmdBody *-- "1" TransmitCardRequestCmdParameters #C_LINK
 
