@@ -9,6 +9,16 @@ weight: 3
 ---
 
 ---
+
+<style>
+table th:first-of-type {
+    width: 300px;
+}
+table th:nth-of-type(2) {
+    width: 300px;
+}
+</style>
+
 ## Overview
 
 This guide explains how to connect a non-Keyple based client application to a Keyple based server using simple JSON 
@@ -31,7 +41,7 @@ At this step, the terminal has the ability to tell the server which business ser
 additional custom input data.
 
 As long as the transaction is not completed, the terminal receives from the server `CMD` JSON objects containing 
-the actions to be performed with the card or the terminal reader. 
+the actions to be performed with the card or the terminal's reader. 
 The results are sent back to the server in `RESP` JSON objects.
 
 When the transaction is complete, instead of receiving a `CMD` JSON object, the terminal receives a final 
@@ -59,8 +69,8 @@ By using the identification fields provided by the terminal in its subsequent re
 consistent and accurate data flow management throughout the entire system.
 
 Following the transmission of the `EXECUTE_REMOTE_SERVICE` request, the server will return a JSON object of type 
-[`CMD`](#cmd) or [`END_REMOTE_SERVICE`](#end_remote_service) containing the actions to be performed with the card or
-the terminal reader.
+[`CMD`](#cmd), containing the first action to be performed with the card or the terminal's reader, or 
+[`END_REMOTE_SERVICE`](#end_remote_service) to terminate the transaction.
 
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development 
 language of the target terminal.
@@ -71,7 +81,7 @@ caption="Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram" num
 #### ExecuteRemoteServiceData
 
 | NAME              |  TYPE  | DESCRIPTION                                                                                               |
-|-------------------|:------:|-----------------------------------------------------------------------------------------------------------|
+|-------------------|--------|-----------------------------------------------------------------------------------------------------------|
 | `action`          | String | `"EXECUTE_REMOTE_SERVICE"`                                                                                |
 | `body`            | String | A JSON string containing a [ExecuteRemoteServiceBody](#executeremoteservicebody).                         |
 | `clientNodeId`    | String | The terminal identifier. It shall be unique per server.                                                   |
@@ -81,7 +91,7 @@ caption="Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram" num
 #### ExecuteRemoteServiceBody
 
 | NAME        |  TYPE  | DESCRIPTION                                                                                                                                                       |
-|-------------|:------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `serviceId` | String | The identifier of the business service to be executed by the server. It's a naming convention between the client and the server.                                  |
 | `inputData` | Object | (optional) - An object containing additional data to be provided to the remote business service. It's content is a convention between the client and the server.  |
 
@@ -100,10 +110,10 @@ caption="Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram" num
 ---
 ### CMD
 
-The purpose of this JSON object, received from the server, is to ask the terminal to perform a specific service with the 
+The purpose of this JSON object, received from the server, is to ask the terminal to perform a specific service with the
 card or the terminal's reader.
 
-The service is defined in the `body` field as a string containing a JSON object.
+The service input data is defined in the `body` field as a string containing a JSON object.
 
 The terminal must therefore first parse this string to extract the corresponding JSON object.
 
@@ -124,7 +134,7 @@ language of the target terminal.
 {{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_cmd.svg" caption="Keyple Distributed JSON API - CMD class diagram" numbered="true" >}}
 
 ---
-### &nbsp;&nbsp;&nbsp;&nbsp;IS_CONTACTLESS {#iscontactlesscmd}
+### &nbsp;&nbsp;&nbsp;&nbsp;IS_CONTACTLESS {#is_contactless_cmd}
 
 This service allows the server to know if the reader is in contact or contactless mode.
 
@@ -136,7 +146,7 @@ containing a boolean set to true if the reader is a contactless type.
 #### JSON structure
 
 | NAME               |  TYPE  | DESCRIPTION                                                                 |
-|--------------------|:------:|-----------------------------------------------------------------------------|
+|--------------------|--------|-----------------------------------------------------------------------------|
 | `action`           | String | `"CMD"`                                                                     |
 | `body`             | String | A JSON string containing a [IsContactlessCmdBody](#iscontactlessbody).      |
 | `clientNodeId`     | String | The terminal identifier as provided by `EXECUTE_REMOTE_SERVICE`.            |
@@ -148,7 +158,7 @@ containing a boolean set to true if the reader is a contactless type.
 ##### IsContactlessCmdBody
 
 | NAME      |  TYPE  | DESCRIPTION        |
-|-----------|:------:|--------------------|
+|-----------|--------|--------------------|
 | `service` | String | `"IS_CONTACTLESS"` |
 
 ##### Example
@@ -178,7 +188,7 @@ containing a boolean set to true if a card is present.
 #### JSON structure
 
 | NAME               |  TYPE  | DESCRIPTION                                                                 |
-|--------------------|:------:|-----------------------------------------------------------------------------|
+|--------------------|--------|-----------------------------------------------------------------------------|
 | `action`           | String | `"CMD"`                                                                     |
 | `body`             | String | A JSON string containing a [IsCardPresentCmdBody](#iscardpresentcmdbody).   |
 | `clientNodeId`     | String | The terminal identifier as provided by `EXECUTE_REMOTE_SERVICE`.            |
@@ -190,7 +200,7 @@ containing a boolean set to true if a card is present.
 ##### IsContactlessCmdBody
 
 | NAME      |  TYPE  | DESCRIPTION         |
-|-----------|:------:|---------------------|
+|-----------|--------|---------------------|
 | `service` | String | `"IS_CARD_PRESENT"` |
 
 ##### Example
@@ -257,7 +267,7 @@ The terminal must then send the response to the server in a `RESP`
 #### JSON structure
 
 | NAME               |  TYPE  | DESCRIPTION                                                                                               |
-|--------------------|:------:|-----------------------------------------------------------------------------------------------------------|
+|--------------------|--------|-----------------------------------------------------------------------------------------------------------|
 | `action`           | String | `"CMD"`                                                                                                   |
 | `body`             | String | A JSON string containing a [TransmitCardSelectionRequestsCmdBody](#transmitcardselectionrequestsCmdBody). |
 | `clientNodeId`     | String | The terminal identifier as provided by `EXECUTE_REMOTE_SERVICE`.                                          |
@@ -269,49 +279,49 @@ The terminal must then send the response to the server in a `RESP`
 ##### TransmitCardSelectionRequestsCmdBody
 
 | NAME         |                                        TYPE                                         | DESCRIPTION                          |
-|--------------|:-----------------------------------------------------------------------------------:|--------------------------------------|
+|--------------|-------------------------------------------------------------------------------------|--------------------------------------|
 | `service`    |                                       String                                        | `"TRANSMIT_CARD_SELECTION_REQUESTS"` |
 | `parameters` | [TransmitCardSelectionRequestsParameters](#transmitcardselectionrequestsparameters) | The card selection parameters.       |
 
 ##### TransmitCardSelectionRequestsParameters
 
-| NAME                       |                      TYPE                       | DESCRIPTION                                                                                                                                                                   |
-|----------------------------|:-----------------------------------------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `cardSelectionRequests`    | [CardSelectionRequest](#cardselectionrequest)[] | A not empty array                                                                                                                                                             |
-| `multiSelectionProcessing` |                     String                      | - `FIRST_MATCH`: the selection process stops as soon as a selection case is successful.<br/>- `PROCESS_ALL`: the selection process performs all the selection cases provided. |
-| `channelControl`           |                     String                      | - `KEEP_OPEN`: leaves the physical channel open.<br/>- `CLOSE_AFTER`: terminates communication with the card.                                                                 |
+| NAME                       |                      TYPE                       | DESCRIPTION                                                                                                                                                                                                                                        |
+|----------------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `cardSelectionRequests`    | [CardSelectionRequest](#cardselectionrequest)[] | A non-empty array                                                                                                                                                                                                                                  |
+| `multiSelectionProcessing` |                     String                      | - `"FIRST_MATCH"`: the selection process stops as soon as a selection case is successful.<br/>- `"PROCESS_ALL"`: the selection process performs all the selection cases provided (the logical channel is closed at the end of the selection case). |
+| `channelControl`           |                     String                      | - `"KEEP_OPEN"`: leaves the physical channel open.<br/>- `"CLOSE_AFTER"`: terminates communication with the card.                                                                                                                                  |
 
 ##### CardSelectionRequest
 
 | NAME           |             TYPE              | DESCRIPTION                                                                                         |
-|----------------|:-----------------------------:|-----------------------------------------------------------------------------------------------------|
+|----------------|-------------------------------|-----------------------------------------------------------------------------------------------------|
 | `cardSelector` | [CardSelector](#cardselector) | The card selection criteria.                                                                        |
 | `cardRequest`  | [CardRequest](#cardrequest)?  | An optional object containing a list of APDU requests to be sent after a successful card selection. |
 
 ##### CardSelector
 
 | NAME                             |   TYPE   | DESCRIPTION                                                                                                                                                                      |
-|----------------------------------|:--------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|----------------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `cardProtocol`                   | String?  | An optional name of the targeted card protocol.                                                                                                                                  |
 | `powerOnDataRegex`               | String?  | An optional regex to use to filter the power-on data.                                                                                                                            |
 | `aid`                            | String?  | An optional Application Identifier (AID) as an hexadecimal string to be sent with ISO7816-4 "Select Application".                                                                |
-| `fileOccurrence`                 |  String  | `FIRST`, `LAST`, `NEXT` or `PREVIOUS` according to the ISO7816-4 standard (only relevant when AID is set).                                                                       |
-| `fileControlInformation`         |  String  | `FCI`, `FCP`, `FMD` or `NO_RESPONSE` according to the ISO7816-4 standard (only relevant when AID is set).                                                                        |
-| `successfulSelectionStatusWords` | String[] | A not empty array of 2-byte hexadecimal strings containing the status word of the "Select Application" APDU command to be considered successful (only relevant when AID is set). |
+| `fileOccurrence`                 |  String  | `"FIRST"`, `"LAST"`, `"NEXT"` or `"PREVIOUS"` according to the ISO7816-4 standard (only relevant when AID is set).                                                                       |
+| `fileControlInformation`         |  String  | `"FCI"`, `"FCP"`, `"FMD"` or `"NO_RESPONSE"` according to the ISO7816-4 standard (only relevant when AID is set).                                                                        |
+| `successfulSelectionStatusWords` | String[] | A non-empty array of 2-byte hexadecimal strings containing the status word of the "Select Application" APDU command to be considered successful (only relevant when AID is set). |
 
 ##### CardRequest
 
 | NAME                               |             TYPE              | DESCRIPTION                                                                                                                                                               |
-|------------------------------------|:-----------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `apduRequests`                     | [ApduRequest](#apdurequest)[] | A not empty array of APDU requests.                                                                                                                                       |
+|------------------------------------|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `apduRequests`                     | [ApduRequest](#apdurequest)[] | A non-empty array of APDU requests.                                                                                                                                       |
 | `isStatusCodesVerificationEnabled` |            Boolean            | `true` if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words. |
 
 ##### ApduRequest
 
 | NAME                    |   TYPE   | DESCRIPTION                                                                                             |
-|-------------------------|:--------:|---------------------------------------------------------------------------------------------------------|
+|-------------------------|----------|---------------------------------------------------------------------------------------------------------|
 | `apdu`                  |  String  | An hexadecimal string containing the APDU to transmit to the card.                                      |
-| `successfulStatusWords` | String[] | A not empty array of 2-byte hexadecimal strings containing the status word to be considered successful. |
+| `successfulStatusWords` | String[] | A non-empty array of 2-byte hexadecimal strings containing the status word to be considered successful. |
 | `info`                  | String?  | An optional textual information about the command.                                                      |
 
 ##### Example
@@ -339,7 +349,7 @@ if requested.
 #### JSON structure
 
 | NAME               |  TYPE  | DESCRIPTION                                                                           |
-|--------------------|:------:|---------------------------------------------------------------------------------------|
+|--------------------|--------|---------------------------------------------------------------------------------------|
 | `action`           | String | `"CMD"`                                                                               |
 | `body`             | String | A JSON string containing a [TransmitCardRequestCmdBody](#transmitcardrequestcmdbody). |
 | `clientNodeId`     | String | The terminal identifier as provided by `EXECUTE_REMOTE_SERVICE`.                      |
@@ -352,7 +362,7 @@ if requested.
 ##### TransmitCardRequestCmdBody
 
 | NAME         |                              TYPE                               | DESCRIPTION                  |
-|--------------|:---------------------------------------------------------------:|------------------------------|
+|--------------|-----------------------------------------------------------------|------------------------------|
 | `service`    |                             String                              | `"TRANSMIT_CARD_REQUEST"`    |
 | `parameters` | [TransmitCardRequestParameters](#transmitcardrequestparameters) | The card request parameters. |
 
@@ -360,64 +370,174 @@ if requested.
 ##### TransmitCardRequestParameters
 
 | NAME             |             TYPE              | DESCRIPTION                                                                                                   |
-|------------------|:-----------------------------:|---------------------------------------------------------------------------------------------------------------|
+|------------------|-------------------------------|---------------------------------------------------------------------------------------------------------------|
 | `cardRequest`    | [CardRequest](#cardrequest-1) | An object containing the list of APDU requests to be sent.                                                    |
-| `channelControl` |            String             | - `KEEP_OPEN`: leaves the physical channel open.<br/>- `CLOSE_AFTER`: terminates communication with the card. |
+| `channelControl` |            String             | - `"KEEP_OPEN"`: leaves the physical channel open.<br/>- `"CLOSE_AFTER"`: terminates communication with the card. |
 
 ##### CardRequest
 
 | NAME                               |              TYPE               | DESCRIPTION                                                                                                                                                               |
-|------------------------------------|:-------------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `apduRequests`                     | [ApduRequest](#apdurequest-1)[] | A not empty array of APDU requests.                                                                                                                                       |
+|------------------------------------|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `apduRequests`                     | [ApduRequest](#apdurequest-1)[] | A non-empty array of APDU requests.                                                                                                                                       |
 | `isStatusCodesVerificationEnabled` |             Boolean             | `true` if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words. |
 
 ##### ApduRequest
 
 | NAME                    |   TYPE   | DESCRIPTION                                                                                             |
-|-------------------------|:--------:|---------------------------------------------------------------------------------------------------------|
+|-------------------------|----------|---------------------------------------------------------------------------------------------------------|
 | `apdu`                  |  String  | An hexadecimal string containing the APDU to transmit to the card.                                      |
-| `successfulStatusWords` | String[] | A not empty array of 2-byte hexadecimal strings containing the status word to be considered successful. |
+| `successfulStatusWords` | String[] | A non-empty array of 2-byte hexadecimal strings containing the status word to be considered successful. |
 | `info`                  | String?  | An optional textual information about the command.                                                      |
 
 ---
 ### RESP
+This JSON object, sent by the terminal to the server, is intended to transmit to the server the result of the specific 
+service previously performed on the card or the terminal's reader.
+
+The service output data must be formatted in the `body` field as a string containing a JSON object.
+
+The `service` field identifies the service that was executed and takes one of the following values:
+- [`IS_CONTACTLESS`](#is_contactless_resp)
+- [`IS_CARD_PRESENT`](#is_card_present_resp)
+- [`TRANSMIT_CARD_SELECTION_REQUESTS`](#transmit_card_selection_requests_resp)
+- [`TRANSMIT_CARD_REQUEST`](#transmit_card_request_resp)
+
+The `result` field is a JSON object that is present if the service was successful and its type is specific to each 
+service (see below for more details).
+
+The `error` field is a JSON object that is present if an error occurred during the execution of the service (see below 
+for more details).
+
+Following the transmission of the `RESP` request, the server will return a JSON object of type [`CMD`](#cmd),
+containing the next action to be performed, or [`END_REMOTE_SERVICE`](#end_remote_service) to terminate the transaction.
+
+The following UML class diagram illustrates the structure of this object and may help to implement it in the development
+language of the target terminal.
 
 {{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - RESP class diagram" numbered="true" >}}
 
 ---
 ### &nbsp;&nbsp;&nbsp;&nbsp;IS_CONTACTLESS {#is_contactless_resp}
----
-### &nbsp;&nbsp;&nbsp;&nbsp;IS_CARD_PRESENT {#is_card_present_resp}
----
-### &nbsp;&nbsp;&nbsp;&nbsp;TRANSMIT_CARD_SELECTION_REQUESTS {#transmit_card_selection_requests_resp}
-Après le traitement de l'étape de sélection avec les paramètres fournis par le serveur, le terminal envoie une réponse
-dont le contenu dépend à la fois des 
+
+This JSON object, sent by the terminal to the server in response to `CMD` [`IS_CONTACTLESS`](#is_contactless_cmd), is 
+intended to indicate to the server if the reader is contactless.
 
 #### JSON structure
 
-| NAME               |  TYPE  | DESCRIPTION                                                                                      |
-|--------------------|:------:|--------------------------------------------------------------------------------------------------|
-| `action`           | string | `RESP`                                                                                           |
-| `body`             | string | [TransmitCardSelectionRequestsDataResp](#transmitcardselectionrequestsdataresp) as a JSON string |
-| `clientNodeId`     | string | The terminal identifier                                                                          |
-| `localReaderName`  | string | The name of the local reader                                                                     |
-| `remoteReaderName` | string | The name of the remote reader                                                                    |
-| `serverNodeId`     | string | The server identifier                                                                            |
-| `sessionId`        | string | The current transaction identifier                                                               |
+| NAME               |  TYPE  | DESCRIPTION                                                                                  |
+|--------------------|--------|----------------------------------------------------------------------------------------------|
+| `action`           | String | `"RESP"`                                                                                     |
+| `body`             | String | A JSON string containing a [IsContactlessRespBody](#iscontactlessrespbody).                  |
+| `clientNodeId`     | String | The terminal identifier as provided by `EXECUTE_REMOTE_SERVICE`.                             |
+| `localReaderName`  | String | The identifier of the local reader as provided by `EXECUTE_REMOTE_SERVICE`.                  |
+| `remoteReaderName` | String | The identifier of the virtual remote reader linked to the local reader as provided by `CMD`. |
+| `serverNodeId`     | String | The server identifier as provided by `CMD`.                                                  |
+| `sessionId`        | String | The current transaction identifier as provided by `EXECUTE_REMOTE_SERVICE`.                  |
 
-##### TransmitCardSelectionRequestsDataResp
+##### IsContactlessRespBody
 
-| NAME      |  TYPE  | DESCRIPTION                                                 |
-|-----------|:------:|-------------------------------------------------------------|
-| `SERVICE` | string | `TRANSMIT_CARD_SELECTION_REQUESTS`                          |
-| `RESULT`  | array  | An array of [CardSelectionResponse](#cardselectionresponse) |
+| NAME      |                 TYPE                 | DESCRIPTION                                                    |
+|-----------|--------------------------------------|----------------------------------------------------------------|
+| `service` |                String                | `"IS_CONTACTLESS"`                                             |
+| `result`  |               Boolean?               | `true` if the reader is contactless (absent in case of error). |
+| `error`   | [Error](#is_contactless_resp_error)? | The error description (absent in case of success).             |
 
-##### CardSelectionResponse
 
-| NAME                        |  TYPE  | DESCRIPTION |
-|-----------------------------|:------:|-------------|
-| `powerOnData`               | string |             |
-| `selectApplicationResponse` | object |             |
+##### Error {#is_contactless_resp_error}
+
+| NAME      |  TYPE  | DESCRIPTION            |
+|-----------|--------|------------------------|
+| `code`    | String | Free value.            |
+| `message` | String | The error description. |
+
+---
+### &nbsp;&nbsp;&nbsp;&nbsp;IS_CARD_PRESENT {#is_card_present_resp}
+
+This JSON object, sent by the terminal to the server, is intended to indicate to the server if a card is present.
+
+#### JSON structure
+
+| NAME               |  TYPE  | DESCRIPTION                                                                                  |
+|--------------------|--------|----------------------------------------------------------------------------------------------|
+| `action`           | String | `"RESP"`                                                                                     |
+| `body`             | String | A JSON string containing a [IsCardPresentRespBody](#iscardpresentrespbody).                  |
+| `clientNodeId`     | String | The terminal identifier as provided by `EXECUTE_REMOTE_SERVICE`.                             |
+| `localReaderName`  | String | The identifier of the local reader as provided by `EXECUTE_REMOTE_SERVICE`.                  |
+| `remoteReaderName` | String | The identifier of the virtual remote reader linked to the local reader as provided by `CMD`. |
+| `serverNodeId`     | String | The server identifier as provided by `CMD`.                                                  |
+| `sessionId`        | String | The current transaction identifier as provided by `EXECUTE_REMOTE_SERVICE`.                  |
+
+##### IsCardPresentRespBody
+
+| NAME      | TYPE                                  | DESCRIPTION                                        |
+|-----------|---------------------------------------|----------------------------------------------------|
+| `service` | String                                | `"IS_CARD_PRESENT"`                                |
+| `result`  | Boolean?                              | `true` if a card is present.                       |
+| `error`   | [Error](#is_card_present_resp_error)? | The error description (absent in case of success). |
+
+
+##### Error {#is_card_present_resp_error}
+
+| NAME      |  TYPE  | DESCRIPTION                                                                                                                                                                             |
+|-----------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `code`    | String | - `"READER_COMMUNICATION_ERROR"`: if the issue is related to the reader communication link,<br/>- `"CARD_COMMUNICATION_ERROR"`: if the issue is related to the card communication link. |
+| `message` | String | The error description.                                                                                                                                                                  |
+
+---
+### &nbsp;&nbsp;&nbsp;&nbsp;TRANSMIT_CARD_SELECTION_REQUESTS {#transmit_card_selection_requests_resp}
+This JSON object, sent by the terminal to the server, is intended to transmit to the server the result of the execution 
+of the selection scenario.
+
+#### JSON structure
+
+| NAME               | TYPE   | DESCRIPTION                                                                                                 |
+|--------------------|--------|-------------------------------------------------------------------------------------------------------------|
+| `action`           | String | `"RESP"`                                                                                                    |
+| `body`             | String | A JSON string containing a [TransmitCardSelectionRequestsRespBody](#transmitcardselectionrequestsrespbody). |
+| `clientNodeId`     | String | The terminal identifier as provided by `EXECUTE_REMOTE_SERVICE`.                                            |
+| `localReaderName`  | String | The identifier of the local reader as provided by `EXECUTE_REMOTE_SERVICE`.                                 |
+| `remoteReaderName` | String | The identifier of the virtual remote reader linked to the local reader as provided by `CMD`.                |
+| `serverNodeId`     | String | The server identifier as provided by `CMD`.                                                                 |
+| `sessionId`        | String | The current transaction identifier as provided by `EXECUTE_REMOTE_SERVICE`.                                 |
+
+##### TransmitCardSelectionRequestsRespBody
+
+| NAME      | TYPE                                                   | DESCRIPTION                                                                                                   |
+|-----------|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| `service` | string                                                 | `"TRANSMIT_CARD_SELECTION_REQUESTS"`                                                                          |
+| `result`  | [CardSelectionResponse](#cardselectionresponse)[]?     | A non-empty list containing at most as many responses as there are selection cases (absent in case of error). |
+| `error`   | [Error](#transmit_card_selection_requests_resp_error)? | The error description (absent in case of success).                                                            |
+
+##### CardSelectionResponse {#cardselectionresponse}
+
+| NAME                        | TYPE                             | DESCRIPTION                                                                                                                                                                                                                                                                                                                |
+|-----------------------------|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `hasMatched`                | Boolean                          | `true` if the associated selection case has matched.                                                                                                                                                                                                                                                                       |
+| `powerOnData`               | String?                          | Data from the initialization phase of the communication with the card. E.g. the Answer To Reset (ATR) in the case of a contact card or any other string informing about the low level communication. This string can be used for filtering by power-on data defined in the command (absent if the protocol filter failed). |
+| `selectApplicationResponse` | [`ApduResponse`](#apduresponse)? | Data received in response to the ISO7816-4 "Select Application" command (absent if no AID filtering).                                                                                                                                                                                                                      |
+| `cardResponse`              | [`CardResponse`](#cardresponse)? | Data received in response to additional commands (absent if no additional commands were provided).                                                                                                                                                                                                                         |
+
+##### CardResponse {#cardresponse}
+
+| NAME                   | TYPE                              | DESCRIPTION                                                           |
+|------------------------|-----------------------------------|-----------------------------------------------------------------------|
+| `isLogicalChannelOpen` | Boolean                           | `true` if the logical channel is left open.                           |
+| `apduResponses`        | [`ApduResponse`](#apduresponse)[] | A list containing the APDU responses for each request in the command. |
+
+##### ApduResponse {#apduresponse}
+
+| NAME         | TYPE   | DESCRIPTION                                                                                   |
+|--------------|--------|-----------------------------------------------------------------------------------------------|
+| `apdu`       | String | An hexadecimal string containing the APDU received from the card (including the status word). |
+| `statusWord` | String | A 2-byte hexadecimal string containing the status word of the received APDU.                  |
+
+##### Error {#transmit_card_selection_requests_resp_error}
+
+| NAME      |  TYPE  | DESCRIPTION                                                                                                                                                                                                                                                        |
+|-----------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `code`    | String | - `"READER_COMMUNICATION_ERROR"`: if the issue is related to the reader communication link,<br/>- `"CARD_COMMUNICATION_ERROR"`: if the issue is related to the card communication link,<br/>- `CARD_COMMAND_ERROR`: if the card returned a unexpected status word. |
+| `message` | String | The error description.                                                                                                                                                                                                                                             |
+
 
 ##### Example
 
