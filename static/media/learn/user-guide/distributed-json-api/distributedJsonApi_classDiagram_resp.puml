@@ -93,8 +93,8 @@ class TransmitCardSelectionRequestsRespBody extends RespBody {
      **result** : CardSelectionResponse[]?
 }
 class CardSelectionResponse {
-    **powerOnData** : String
     **hasMatched** : Boolean
+    **powerOnData** : String?
     **selectApplicationResponse** : ApduResponse?
     **cardResponse** : CardResponse?
 }

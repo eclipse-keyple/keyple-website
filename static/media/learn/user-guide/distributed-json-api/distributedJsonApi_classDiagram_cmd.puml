@@ -84,9 +84,9 @@ class TransmitCardSelectionRequestsCmdBody extends CmdBody {
     **parameters** : TransmitCardSelectionRequestsCmdParameters
 }
 class TransmitCardSelectionRequestsCmdParameters {
-    **cardSelectionRequests** : CardSelectionRequest[]
     **multiSelectionProcessing** : MultiSelectionProcessing
     **channelControl** : ChannelControl
+    **cardSelectionRequests** : CardSelectionRequest[]
 }
 enum MultiSelectionProcessing {
     FIRST_MATCH
@@ -100,9 +100,9 @@ class CardSelector {
     **cardProtocol** : String?
     **powerOnDataRegex** : String?
     **aid** : String?
-    **successfulSelectionStatusWords** : String[]
     **fileOccurrence** : FileOccurrence
     **fileControlInformation** : FileControlInformation
+    **successfulSelectionStatusWords** : String[]
 }
 enum FileOccurrence {
     FIRST
