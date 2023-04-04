@@ -40,7 +40,7 @@ The diagram below shows the global flow of JSON data exchanges between the termi
 {{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
 
 {{% callout warning %}}
-**Caution:** for each terminal-server data exchange, the terminal sends to the server **a JSON object** and receives back **a JSON array
+For each terminal-server data exchange, the terminal sends to the server **a JSON object** and receives back **a JSON array
 containing a single JSON object**.
 {{% /callout %}}
 
