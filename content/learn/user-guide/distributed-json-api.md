@@ -33,6 +33,13 @@ It details the JSON data exchange between the terminal and the server, but does 
 This allows the development of a distributed solution in which the client reader terminal delegates the entire 
 management of the card transaction to the server.
 
+{{% callout warning %}}
+This API is compliant with the following Keyple server side components:
+- [Keyple Service Library]({{< ref "components-java/core/keyple-service-java-lib" >}}) version `2.1.4+`
+- [Keyple Distributed Network Library]({{< ref "components-java/distributed/keyple-distributed-network-java-lib" >}}) version `2.2.0+`
+- [Keyple Distributed Remote Library]({{< ref "components-java/distributed/keyple-distributed-remote-java-lib" >}}) version `2.2.0+`
+{{% /callout %}}
+
 ---
 ## Data flow
 
