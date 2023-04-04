@@ -40,6 +40,11 @@ The diagram below shows the global flow of JSON data exchanges between the termi
 
 {{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
 
+{{% callout warning %}}
+**Caution:** for each terminal-server data exchange, the terminal sends to the server **a JSON object** and receives back **a JSON array
+containing a single JSON object**.
+{{% /callout %}}
+
 On its own initiative (e.g. following the detection of a card), the terminal sends a `EXECUTE_REMOTE_SERVICE` JSON 
 object to the server to ask it to start a card transaction.
 At this step, the terminal has the ability to tell the server which business service to run and also to provide 
@@ -98,11 +103,11 @@ caption="Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram" num
 
 {{< code lang="json" >}}
 {
-  "action": "**EXECUTE_REMOTE_SERVICE**",
-  "body": "{\"serviceId\":\"EXECUTE_CALYPSO_SESSION_FROM_REMOTE_SELECTION\",\"inputData\":{\"userId\":\"test\"}}",
-  "clientNodeId": "d4020f5a-b80c-42c7-b715-a222245e952a",
-  "localReaderName": "stubReader",
-  "sessionId": "bd2225d8-7838-410f-afa6-ec66dd0e497c"
+    "action": "EXECUTE_REMOTE_SERVICE",
+    "body": "{\"serviceId\":\"AUTHENTICATE_CARD\",\"inputData\":{\"userId\":\"7b13592c-0d21-429b-80d2-3dc565338ea3\"}}",
+    "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
+    "localReaderName": "reader1",
+    "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9"
 }
 {{< /code >}}
 
@@ -130,7 +135,8 @@ of the operation.
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development 
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_cmd.svg" caption="Keyple Distributed JSON API - CMD class diagram" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_cmd.svg" 
+caption="Keyple Distributed JSON API - CMD class diagram" numbered="true" >}}
 
 ---
 ### &nbsp;&nbsp;&nbsp;&nbsp;IS_CONTACTLESS {#is_contactless_cmd}
@@ -157,15 +163,17 @@ containing a boolean set to true if the reader is a contactless type.
 ##### Example
 
 {{< code lang="json" >}}
-{
-"action": "**CMD**",
-"body": "{\"SERVICE\":\"IS_CONTACTLESS\"}",
-"clientNodeId": "d4020f5a-b80c-42c7-b715-a222245e952a",
-"localReaderName": "stubReader",
-"remoteReaderName": "2c4065b1-79d1-4545-9caf-b9a8aa1f46b5",
-"serverNodeId": "9fe9eab8-7a31-4098-820f-c7d4d4a5c902",
-"sessionId": "bd2225d8-7838-410f-afa6-ec66dd0e497c"
-}
+[
+    {
+        "action": "CMD",
+        "body": "{\"service\":\"IS_CONTACTLESS\"}",
+        "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
+        "localReaderName": "reader1",
+        "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
+        "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
+        "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9"
+    }
+]
 {{< /code >}}
 
 ---
@@ -193,15 +201,17 @@ containing a boolean set to true if a card is present.
 ##### Example
 
 {{< code lang="json" >}}
-{
-"action": "**CMD**",
-"body": "{\"SERVICE\":\"IS_CARD_PRESENT\"}",
-"clientNodeId": "d4020f5a-b80c-42c7-b715-a222245e952a",
-"localReaderName": "stubReader",
-"remoteReaderName": "2c4065b1-79d1-4545-9caf-b9a8aa1f46b5",
-"serverNodeId": "9fe9eab8-7a31-4098-820f-c7d4d4a5c902",
-"sessionId": "bd2225d8-7838-410f-afa6-ec66dd0e497c"
-}
+[
+    {
+        "action": "CMD",
+        "body": "{\"service\":\"IS_CARD_PRESENT\"}",
+        "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
+        "localReaderName": "reader1",
+        "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
+        "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
+        "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9"
+    }
+]
 {{< /code >}}
 
 ---
@@ -293,16 +303,20 @@ The terminal must then send the response to the server in a `RESP`
 ##### Example
 
 {{< code lang="json" >}}
-{
-  "action": "**CMD**",
-  "body": "{\"SERVICE\":\"TRANSMIT_CARD_SELECTION_REQUESTS\",\"CARD_SELECTION_REQUESTS\":[{\"cardSelector\":{\"cardProtocol\":\"ISO_14443_4_CARD\",\"aid\":\"315449432E49434131\",\"fileOccurrence\":\"FIRST\",\"fileControlInformation\":\"FCI\",\"successfulSelectionStatusWords\":[\"9000\"]},\"cardRequest\":{\"apduRequests\":[{\"apdu\":\"00B2013C00\",\"successfulStatusWords\":[\"9000\"],\"info\":\"Read Records - SFI: 7h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\"}],\"isStatusCodesVerificationEnabled\":false}}],\"MULTI_SELECTION_PROCESSING\":\"FIRST_MATCH\",\"CHANNEL_CONTROL\":\"KEEP_OPEN\"}",
-  "clientNodeId": "d4020f5a-b80c-42c7-b715-a222245e952a",
-  "localReaderName": "stubReader",
-  "remoteReaderName": "2c4065b1-79d1-4545-9caf-b9a8aa1f46b5",
-  "serverNodeId": "9fe9eab8-7a31-4098-820f-c7d4d4a5c902",
-  "sessionId": "bd2225d8-7838-410f-afa6-ec66dd0e497c"
-}
+[
+    {
+        "action": "CMD",
+        "body": "{\"service\":\"TRANSMIT_CARD_SELECTION_REQUESTS\",\"parameters\":{\"multiSelectionProcessing\":\"FIRST_MATCH\",\"channelControl\":\"KEEP_OPEN\",\"cardSelectionRequests\":[{\"cardSelector\":{\"cardProtocol\":\"ISO_14443_4_CARD\",\"aid\":\"315449432E49434131\",\"fileOccurrence\":\"FIRST\",\"fileControlInformation\":\"FCI\",\"successfulSelectionStatusWords\":[\"9000\"]},\"cardRequest\":{\"apduRequests\":[{\"apdu\":\"00B2013C00\",\"successfulStatusWords\":[\"9000\"],\"info\":\"Read Records - SFI: 7h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\"}],\"isStatusCodesVerificationEnabled\":false}}]}}",
+        "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
+        "localReaderName": "reader1",
+        "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
+        "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
+        "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9"
+    }
+]
 {{< /code >}}
+
+
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;TRANSMIT_CARD_REQUEST {#transmit_card_request_cmd}
 
@@ -339,6 +353,22 @@ if requested.
 - `apdu` <span class="text-secondary">**string**</span><br>An hexadecimal string containing the APDU to transmit to the card.
 - `successfulStatusWords` <span class="text-secondary">**string** [&nbsp;]<br>A non-empty array of 2-byte hexadecimal strings containing the status word to be considered successful.
 - `info` <span class="text-secondary">**string (optional)**</span><br>An optional textual information about the command.
+
+##### Example
+
+{{< code lang="json" >}}
+[
+    {
+        "action": "CMD",
+        "body": "{\"service\":\"TRANSMIT_CARD_REQUEST\",\"parameters\":{\"cardRequest\":{\"apduRequests\":[{\"apdu\":\"00B2014400\",\"successfulStatusWords\":[\"9000\"],\"info\":\"Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\"}],\"isStatusCodesVerificationEnabled\":true},\"channelControl\":\"CLOSE_AFTER\"}}",
+        "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
+        "localReaderName": "reader1",
+        "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
+        "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
+        "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9"
+    }
+]
+{{< /code >}}
 
 ---
 ### RESP
@@ -392,6 +422,20 @@ intended to indicate to the server if the reader is contactless.
 - `code` <span class="text-secondary">**string**</span><br>Free value.
 - `message` <span class="text-secondary">**string**</span><br>The error description.
 
+#### Example
+
+{{< code lang="json" >}}
+{
+    "action": "RESP",
+    "body": "{\"service\":\"IS_CONTACTLESS\",\"result\":true}",
+    "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
+    "localReaderName": "reader1",
+    "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
+    "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
+    "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9"
+}
+{{< /code >}}
+
 ---
 ### &nbsp;&nbsp;&nbsp;&nbsp;IS_CARD_PRESENT {#is_card_present_resp}
 
@@ -415,6 +459,20 @@ This JSON object, sent by the terminal to the server, is intended to indicate to
 - `code` <span class="text-secondary">**string**</span><br>- "**READER_COMMUNICATION_ERROR**": if the issue is related to the reader communication link,<br/>- "**CARD_COMMUNICATION_ERROR**": if the issue is related to the card communication link.
 - `message` <span class="text-secondary">**string**</span><br>The error description.                                                                                                                                                                  |
 
+
+#### Example
+
+{{< code lang="json" >}}
+{
+    "action": "RESP",
+    "body": "{\"service\":\"IS_CARD_PRESENT\",\"result\":true}",
+    "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
+    "localReaderName": "reader1",
+    "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
+    "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
+    "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9"
+}
+{{< /code >}}
 
 ---
 ### &nbsp;&nbsp;&nbsp;&nbsp;TRANSMIT_CARD_SELECTION_REQUESTS {#transmit_card_selection_requests_resp}
@@ -460,13 +518,13 @@ of the selection scenario.
 
 {{< code lang="json" >}}
 {
-  "action": "**RESP**",
-  "body": "{\"SERVICE\":\"TRANSMIT_CARD_SELECTION_REQUESTS\",\"RESULT\":[{\"powerOnData\":\"3B8880010000000000718100F9\",\"selectApplicationResponse\":{\"apdu\":\"6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C23121410019000\",\"statusWord\":\"9000\"},\"hasMatched\":true,\"cardResponse\":{\"apduResponses\":[{\"apdu\":\"24B92848080000131A50001200000000000000000000000000000000009000\",\"statusWord\":\"9000\"}],\"isLogicalChannelOpen\":true}}]}",
-  "clientNodeId": "d4020f5a-b80c-42c7-b715-a222245e952a",
-  "localReaderName": "stubReader",
-  "remoteReaderName": "2c4065b1-79d1-4545-9caf-b9a8aa1f46b5",
-  "serverNodeId": "9fe9eab8-7a31-4098-820f-c7d4d4a5c902",
-  "sessionId": "bd2225d8-7838-410f-afa6-ec66dd0e497c"
+    "action": "RESP",
+    "body": "{\"service\":\"TRANSMIT_CARD_SELECTION_REQUESTS\",\"result\":[{\"hasMatched\":true,\"powerOnData\":\"3B8880010000000000718100F9\",\"selectApplicationResponse\":{\"apdu\":\"6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C23121410019000\",\"statusWord\":\"9000\"},\"cardResponse\":{\"apduResponses\":[{\"apdu\":\"24B92848080000131A50001200000000000000000000000000000000009000\",\"statusWord\":\"9000\"}],\"isLogicalChannelOpen\":true}}]}",
+    "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
+    "localReaderName": "reader1",
+    "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
+    "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
+    "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9"
 }
 {{< /code >}}
 
@@ -508,13 +566,13 @@ of a card request.
 
 {{< code lang="json" >}}
 {
-  "action": "**RESP**",
-  "body": "{\"SERVICE\":\"TRANSMIT_CARD_REQUEST\",\"RESULT\":[{\"powerOnData\":\"3B8880010000000000718100F9\",\"selectApplicationResponse\":{\"apdu\":\"6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C23121410019000\",\"statusWord\":\"9000\"},\"hasMatched\":true,\"cardResponse\":{\"apduResponses\":[{\"apdu\":\"24B92848080000131A50001200000000000000000000000000000000009000\",\"statusWord\":\"9000\"}],\"isLogicalChannelOpen\":true}}]}",
-  "clientNodeId": "d4020f5a-b80c-42c7-b715-a222245e952a",
-  "localReaderName": "stubReader",
-  "remoteReaderName": "2c4065b1-79d1-4545-9caf-b9a8aa1f46b5",
-  "serverNodeId": "9fe9eab8-7a31-4098-820f-c7d4d4a5c902",
-  "sessionId": "bd2225d8-7838-410f-afa6-ec66dd0e497c"
+    "action": "RESP",
+    "body": "{\"service\":\"TRANSMIT_CARD_REQUEST\",\"result\":{\"apduResponses\":[{\"apdu\":\"00112233445566778899AABBCCDDEEFF00112233445566778899AABBCC9000\",\"statusWord\":\"9000\"}],\"isLogicalChannelOpen\":true}}",
+    "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
+    "localReaderName": "reader1",
+    "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
+    "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
+    "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9"
 }
 {{< /code >}}
 
@@ -544,11 +602,14 @@ service. Its content is a convention between the client and the server.
 #### Example
 
 {{< code lang="json" >}}
-{
-"action": "**END_REMOTE_SERVICE**",
-"body": "{\"serviceId\":\"EXECUTE_CALYPSO_SESSION_FROM_REMOTE_SELECTION\",\"outputData\":{\"userId\":\"test\"}}",
-"clientNodeId": "d4020f5a-b80c-42c7-b715-a222245e952a",
-"localReaderName": "stubReader",
-"sessionId": "bd2225d8-7838-410f-afa6-ec66dd0e497c"
-}
+[
+    {
+        "action": "END_REMOTE_SERVICE",
+        "body": "{\"outputData\":{\"isSuccessful\":true,\"userId\":\"test\"}}",
+        "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
+        "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
+        "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
+        "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9"
+    }
+]
 {{< /code >}}

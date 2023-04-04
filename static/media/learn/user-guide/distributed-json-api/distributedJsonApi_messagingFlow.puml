@@ -15,18 +15,18 @@ activate card #LightGrey
 card --\ client : a card is inserted
 
 activate client #LightGrey
-client -[#3498DB]> server : <color: #3498DB>JSON (**EXECUTE_REMOTE_SERVICE**, transaction input data)
+client -[#3498DB]> server : <color: #3498DB>JSON object { **EXECUTE_REMOTE_SERVICE**, transaction input data }
 
 activate server #LightGrey
 
 loop #EFEFEF while there are actions to be performed with the card or the terminal's reader
-    server -[#27AE60]-> client : <color:#27AE60>JSON (**CMD**, action)
+    server -[#27AE60]-> client : <color:#27AE60>JSON array [ { **CMD**, action } ]
     client -> card : process (action)
     card --> client : result
-    client -[#3498DB]> server : <color: #3498DB>JSON (**RESP**, result)
+    client -[#3498DB]> server : <color: #3498DB>JSON object { **RESP**, result }
 end
 
-server -[#27AE60]-> client : <color:#27AE60>JSON (**END_REMOTE_SERVICE**, transaction output data)
+server -[#27AE60]-> client : <color:#27AE60>JSON array [ { **END_REMOTE_SERVICE**, transaction output data } ]
 deactivate server
 
 card --\ client : the card is removed
