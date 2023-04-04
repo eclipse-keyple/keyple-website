@@ -11,14 +11,6 @@ weight: 3
 ---
 
 <style>
-code {
-    font-size: 1rem;
-    border-radius: 3px;
-    padding: .2em .4em;
-}
-pre code {
-    white-space: pre-wrap;
-}
 span.text-secondary {
     padding-left: 0.8rem;
 }

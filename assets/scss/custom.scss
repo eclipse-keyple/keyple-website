@@ -161,8 +161,15 @@ a:hover {
 
 // Increase code font size and style
 pre, code {
-  font-size: .9rem;
+  font-size: 1rem !important;
   font-family: monospace;
+  white-space: pre-wrap !important;
+}
+
+// improve code boxing
+code {
+  border-radius: 3px;
+  padding: .2em .4em;
 }
 
 // Color of tabpane headers
