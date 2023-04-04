@@ -5,7 +5,7 @@ summary: How to develop an end-user application using the Calypso card extension
 type: book
 toc: true
 draft: false
-weight: 3
+weight: 4
 ---
 
 ---

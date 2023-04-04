@@ -1,0 +1,155 @@
+@startuml
+'title
+'    Keyple Distributed JSON API
+'    compliant with "keyple-service-java-lib" version 2.1.4
+'    RESP (2023-03-22)
+'end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+' -- Styles that don't work with new version of plantuml --
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' -- END --
+
+skinparam ClassBorderThickness 2
+skinparam ArrowThickness 2
+
+' Yellow
+skinparam ClassBackgroundColor #FEFECE
+skinparam ClassBorderColor #D4AC0D
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+' RESP
+class RespData {
+    **action** : String = "**RESP**"
+    **clientNodeId** : String
+    **localReaderName** : String
+    **serverNodeId** : String
+    **remoteReaderName** : String
+    **sessionId** : String
+    **body** : RespBody
+}
+abstract class RespBody {
+    **service** : String
+    **result** : Object?
+    **error** : Error?
+}
+
+' Error
+class Error {
+    **code** : String
+    **message** : String
+}
+
+' IS_CONTACTLESS (RESP)
+class IsContactlessRespBody extends RespBody {
+    **service** : String = "**IS_CONTACTLESS**"
+    **result** : Boolean?
+}
+
+' IS_CARD_PRESENT (RESP)
+class IsCardPresentRespBody extends RespBody {
+    **service** : String = "**IS_CARD_PRESENT**"
+    **result** : Boolean?
+}
+
+' TRANSMIT_CARD_SELECTION_REQUESTS (RESP)
+class TransmitCardSelectionRequestsRespBody extends RespBody {
+    **service** : String = "**TRANSMIT_CARD_SELECTION_REQUESTS**"
+     **result** : CardSelectionResponse[]?
+}
+class CardSelectionResponse {
+    **hasMatched** : Boolean
+    **powerOnData** : String?
+    **selectApplicationResponse** : ApduResponse?
+    **cardResponse** : CardResponse?
+}
+class CardResponse {
+    **isLogicalChannelOpen** : Boolean
+    **apduResponses** : ApduResponse[]
+}
+class ApduResponse {
+    **apdu** : String
+    **statusWord** : String
+}
+
+' TRANSMIT_CARD_REQUEST (RESP)
+class TransmitCardRequestRespBody extends RespBody {
+    **service** : String = "**TRANSMIT_CARD_REQUEST**"
+    **result** : CardResponse?
+}
+
+' Associations
+
+RespData *-- "1" RespBody #C_LINK : JsonString
+
+RespBody *.right. "0..1" Error #C_LINK
+
+TransmitCardSelectionRequestsRespBody *.. "0..*" CardSelectionResponse #C_LINK
+
+CardSelectionResponse *.right. "0..1" CardResponse #C_LINK
+CardSelectionResponse *.. "0..1" ApduResponse #C_LINK
+
+CardResponse *-- "1..*" ApduResponse #C_LINK
+
+TransmitCardRequestRespBody *.. "0..1" CardResponse #C_LINK
+
+' == LAYOUT ==
+
+
+' == STYLE ==
+
+' RESP
+class RespData <<blue>>
+abstract class RespBody <<blue>>
+
+class Error <<blue>>
+
+' TRANSMIT_CARD_REQUEST (RESP)
+class TransmitCardRequestRespBody <<blue>>
+class TransmitCardSelectionRequestsRespBody <<blue>>
+class CardSelectionResponse <<blue>>
+class CardResponse <<blue>>
+class ApduResponse <<blue>>
+
+' IS_CARD_PRESENT (RESP)
+class IsCardPresentRespBody <<blue>>
+
+' IS_CONTACTLESS (RESP)
+class IsContactlessRespBody <<blue>>
+
+@enduml

@@ -70,3 +70,8 @@ related:
       weight: 70
 staticDir:
   - static
+security:
+  funcs:
+    getenv:
+      - ^HUGO_
+      - ^WC_

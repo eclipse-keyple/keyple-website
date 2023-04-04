@@ -1,0 +1,81 @@
+@startuml
+'title
+'    Keyple Distributed JSON API
+'    compliant with "keyple-service-java-lib" version 2.1.4
+'    END_REMOTE_SERVICE (2023-03-22)
+'end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+' -- Styles that don't work with new version of plantuml --
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' -- END --
+
+skinparam ClassBorderThickness 2
+skinparam ArrowThickness 2
+
+' Yellow
+skinparam ClassBackgroundColor #FEFECE
+skinparam ClassBorderColor #D4AC0D
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+' END_REMOTE_SERVICE
+class EndRemoteServiceData {
+    **action** : String = "**END_REMOTE_SERVICE**"
+    **clientNodeId** : String
+    **serverNodeId** : String
+    **remoteReaderName** : String
+    **sessionId** : String
+    **body** : EndRemoteServiceBody
+}
+class EndRemoteServiceBody {
+    **outputData** : Object?
+}
+
+' Associations
+
+EndRemoteServiceData *-- "1" EndRemoteServiceBody #C_LINK : JsonString
+
+' == LAYOUT ==
+
+' == STYLE ==
+
+' END_REMOTE_SERVICE
+class EndRemoteServiceData <<green>>
+class EndRemoteServiceBody <<green>>
+
+@enduml

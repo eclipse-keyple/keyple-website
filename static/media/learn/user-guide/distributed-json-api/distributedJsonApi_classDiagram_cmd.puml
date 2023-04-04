@@ -1,0 +1,192 @@
+@startuml
+'title
+'    Keyple Distributed JSON API
+'    compliant with "keyple-service-java-lib" version 2.1.4
+'    CMD (2023-03-22)
+'end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+' -- Styles that don't work with new version of plantuml --
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' -- END --
+
+skinparam ClassBorderThickness 2
+skinparam ArrowThickness 2
+
+' Yellow
+skinparam ClassBackgroundColor #FEFECE
+skinparam ClassBorderColor #D4AC0D
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+' CMD
+class CmdData {
+    **action** : String = "**CMD**"
+    **clientNodeId** : String
+    **localReaderName** : String
+    **serverNodeId** : String
+    **remoteReaderName** : String
+    **sessionId** : String
+    **body** : CmdBody
+}
+abstract class CmdBody {
+    **service** : String
+    **parameters** : Object?
+}
+
+' IS_CONTACTLESS (CMD) ==> NOP
+class IsContactlessCmdBody extends CmdBody {
+    **service** : String = "**IS_CONTACTLESS**"
+}
+
+' IS_CARD_PRESENT (CMD) ==> NOP
+class IsCardPresentCmdBody extends CmdBody {
+    **service** : String = "**IS_CARD_PRESENT**"
+}
+
+' TRANSMIT_CARD_SELECTION_REQUESTS (CMD)
+class TransmitCardSelectionRequestsCmdBody extends CmdBody {
+    **service** : String = "**TRANSMIT_CARD_SELECTION_REQUESTS**"
+    **parameters** : TransmitCardSelectionRequestsCmdParameters
+}
+class TransmitCardSelectionRequestsCmdParameters {
+    **multiSelectionProcessing** : MultiSelectionProcessing
+    **channelControl** : ChannelControl
+    **cardSelectionRequests** : CardSelectionRequest[]
+}
+enum MultiSelectionProcessing {
+    FIRST_MATCH
+    PROCESS_ALL
+}
+class CardSelectionRequest {
+    **cardSelector** : CardSelector
+    **cardRequest** : CardRequest?
+}
+class CardSelector {
+    **cardProtocol** : String?
+    **powerOnDataRegex** : String?
+    **aid** : String?
+    **fileOccurrence** : FileOccurrence
+    **fileControlInformation** : FileControlInformation
+    **successfulSelectionStatusWords** : String[]
+}
+enum FileOccurrence {
+    FIRST
+    LAST
+    NEXT
+    PREVIOUS
+}
+enum FileControlInformation {
+    FCI
+    FCP
+    FMD
+    NO_RESPONSE
+}
+class CardRequest {
+    **apduRequests** : ApduRequest[]
+    **stopOnUnsuccessfulStatusWord** : Boolean
+}
+class ApduRequest {
+    **apdu** : String
+    **successfulStatusWords** : String[]
+    **info** : String?
+}
+enum ChannelControl {
+    KEEP_OPEN
+    CLOSE_AFTER
+}
+
+' TRANSMIT_CARD_REQUEST (CMD)
+class TransmitCardRequestCmdBody extends CmdBody {
+    **service** : String = "**TRANSMIT_CARD_REQUEST**"
+    **parameters** : TransmitCardRequestCmdParameters
+}
+class TransmitCardRequestCmdParameters {
+    **channelControl** : ChannelControl
+    **cardRequest** : CardRequest
+}
+
+' Associations
+
+CmdData *-- "1" CmdBody #C_LINK : JsonString
+
+TransmitCardSelectionRequestsCmdBody *-- "1" TransmitCardSelectionRequestsCmdParameters #C_LINK
+
+TransmitCardSelectionRequestsCmdParameters *-- "1..*" CardSelectionRequest #C_LINK
+TransmitCardSelectionRequestsCmdParameters *-- "1" MultiSelectionProcessing #C_LINK
+TransmitCardSelectionRequestsCmdParameters *-- "1" ChannelControl #C_LINK
+
+CardSelectionRequest *-- "1" CardSelector #C_LINK
+CardSelectionRequest *.. "0..1" CardRequest #C_LINK
+
+CardSelector *-- "1" FileOccurrence #C_LINK
+CardSelector *-- "1" FileControlInformation #C_LINK
+
+CardRequest *-- "1..*" ApduRequest #C_LINK
+
+TransmitCardRequestCmdBody *-- "1" TransmitCardRequestCmdParameters #C_LINK
+
+TransmitCardRequestCmdParameters *-- "1" ChannelControl #C_LINK
+TransmitCardRequestCmdParameters *-- "1" CardRequest #C_LINK
+
+' == LAYOUT ==
+
+' == STYLE ==
+
+' CMD
+class CmdData <<green>>
+abstract class CmdBody <<green>>
+
+' TRANSMIT_CARD_SELECTION_REQUESTS (CMD)
+class TransmitCardSelectionRequestsCmdBody <<green>>
+class TransmitCardSelectionRequestsCmdParameters <<green>>
+class CardSelectionRequest <<green>>
+class CardSelector <<green>>
+class CardRequest <<green>>
+class ApduRequest <<green>>
+
+' TRANSMIT_CARD_REQUEST (CMD)
+class TransmitCardRequestCmdBody <<green>>
+class TransmitCardRequestCmdParameters <<green>>
+
+' IS_CARD_PRESENT (CMD) ==> NOP
+class IsCardPresentCmdBody <<green>>
+
+' IS_CONTACTLESS (CMD) ==> NOP
+class IsContactlessCmdBody <<green>>
+
+@enduml
