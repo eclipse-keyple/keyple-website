@@ -18,9 +18,9 @@ span.text-secondary {
 
 ## Overview
 
-This guide explains how to connect a non-Keyple based client application to a Keyple based server using simple JSON 
-data exchanges. 
-It details the JSON data exchange between the terminal and the server, but does not cover the transport of this data.
+This guide is specifically designed for users who are not currently using Keyple in their terminals, but wish to connect
+to a Keyple server. It details the JSON data exchange between the terminal and the server, but does not cover the 
+transport of this data.
 
 This allows the development of a distributed solution in which the client reader terminal delegates the entire 
 management of the card transaction to the server.
