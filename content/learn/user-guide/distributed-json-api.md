@@ -149,7 +149,7 @@ containing a boolean set to true if the reader is a contactless type.
 
 #### JSON structure
 - `action` <span class="text-secondary">**string**</span><br>Always set to "**CMD**".
-- `body` <span class="text-secondary">**string**</span><br>A JSON string containing a [IsContactlessCmdBody](#iscontactlessbody).
+- `body` <span class="text-secondary">**string**</span><br>A JSON string containing a [IsContactlessCmdBody](#iscontactlesscmdbody).
 - `clientNodeId` <span class="text-secondary">**string**</span><br>The terminal identifier as provided by `EXECUTE_REMOTE_SERVICE`.
 - `localReaderName` <span class="text-secondary">**string**</span><br>The identifier of the local reader as provided by `EXECUTE_REMOTE_SERVICE`.
 - `remoteReaderName` <span class="text-secondary">**string**</span><br>The identifier of the virtual remote reader linked to the local reader.
@@ -194,7 +194,7 @@ containing a boolean set to true if a card is present.
 - `serverNodeId` <span class="text-secondary">**string**</span><br>The server identifier.
 - `sessionId` <span class="text-secondary">**string**</span><br>The current transaction identifier as provided by `EXECUTE_REMOTE_SERVICE`.
 
-##### IsContactlessCmdBody
+##### IsCardPresentCmdBody
 - `service` <span class="text-secondary">**string**</span><br>Always set to "**IS_CARD_PRESENT**".
 
 ##### Example
@@ -262,7 +262,7 @@ The terminal must then send the response to the server in a `RESP`
 
 #### JSON structure
 - `action` <span class="text-secondary">**string**</span><br>Always set to "**CMD**".
-- `body` <span class="text-secondary">**string**</span><br>A JSON string containing a [TransmitCardSelectionRequestsCmdBody](#transmitcardselectionrequestsCmdBody).
+- `body` <span class="text-secondary">**string**</span><br>A JSON string containing a [TransmitCardSelectionRequestsCmdBody](#transmitcardselectionrequestscmdbody).
 - `clientNodeId` <span class="text-secondary">**string**</span><br>The terminal identifier as provided by `EXECUTE_REMOTE_SERVICE`.
 - `localReaderName` <span class="text-secondary">**string**</span><br>The identifier of the local reader as provided by `EXECUTE_REMOTE_SERVICE`.
 - `remoteReaderName` <span class="text-secondary">**string**</span><br>The identifier of the virtual remote reader linked to the local reader.
@@ -487,25 +487,22 @@ of the selection scenario.
 - `serverNodeId` <span class="text-secondary">**string**</span><br>The server identifier as provided by `CMD`.
 - `sessionId` <span class="text-secondary">**string**</span><br>The current transaction identifier as provided by `EXECUTE_REMOTE_SERVICE`.
 
-
-
 ##### TransmitCardSelectionRequestsRespBody
 - `service` <span class="text-secondary">**string**</span><br>Always set to "**TRANSMIT_CARD_SELECTION_REQUESTS**".
 - `result` <span class="text-secondary">[CardSelectionResponse](#cardselectionresponse) **[&nbsp;] (optional)**</span><br>A non-empty list containing at most as many responses as there are selection cases (absent in case of error).
 - `error` <span class="text-secondary">[Error](#transmit_card_selection_requests_resp_error) **(optional)**</span><br>The error description (absent in case of success).
 
-
-##### CardSelectionResponse {#cardselectionresponse}
+##### CardSelectionResponse
 - `hasMatched` <span class="text-secondary">**boolean**</span><br>`true` if the associated selection case has matched.                                                                                                                                                                                                                                                                       
 - `powerOnData` <span class="text-secondary">**string (optional)**</span><br>Data from the initialization phase of the communication with the card. E.g. the Answer To Reset (ATR) in the case of a contact card or any other string informing about the low level communication. This string can be used for filtering by power-on data defined in the command (absent if the protocol filter failed). 
 - `selectApplicationResponse` <span class="text-secondary">[`ApduResponse`](#apduresponse) **(optional)**</span><br>Data received in response to the ISO7816-4 "Select Application" command (absent if no AID filtering).                                                                                                                                                                                                                      
 - `cardResponse` <span class="text-secondary">[`CardResponse`](#cardresponse) **(optional)**</span><br>Data received in response to additional commands (absent if no additional commands were provided).                                                                                                                                                                                                                         
 
-##### CardResponse {#cardresponse}
+##### CardResponse
 - `isLogicalChannelOpen` <span class="text-secondary">**boolean**</span><br>`true` if the logical channel is left open.                           
 - `apduResponses` <span class="text-secondary">[`ApduResponse`](#apduresponse) **[&nbsp;]**</span><br>A list containing the APDU responses for each request in the command. 
 
-##### ApduResponse {#apduresponse}
+##### ApduResponse
 - `apdu` <span class="text-secondary">**string**</span><br>An hexadecimal string containing the APDU received from the card (including the status word). 
 - `statusWord` <span class="text-secondary">**string**</span><br>A 2-byte hexadecimal string containing the status word of the received APDU.                  
 
@@ -540,20 +537,16 @@ of a card request.
 - `serverNodeId` <span class="text-secondary">**string**</span><br>The server identifier as provided by `CMD`.
 - `sessionId` <span class="text-secondary">**string**</span><br>The current transaction identifier as provided by `EXECUTE_REMOTE_SERVICE`.
 
-
-
 ##### TransmitCardRequestRespBody
 - `service` <span class="text-secondary">**string**</span><br>Always set to "**TRANSMIT_CARD_REQUEST**".
 - `result` <span class="text-secondary">[CardResponse](#cardresponse-1) **[&nbsp;] (optional)**</span><br>A non-empty list containing at most as many responses as there are selection cases (absent in case of error).
 - `error` <span class="text-secondary">[Error](#transmit_card_request_resp_error) **(optional)**</span><br>The error description (absent in case of success).
 
-
-##### CardResponse {#cardresponse-1}
+##### CardResponse
 - `isLogicalChannelOpen` <span class="text-secondary">**boolean**</span><br>`true` if the logical channel is left open.
 - `apduResponses` <span class="text-secondary">[`ApduResponse`](#apduresponse-1) **[&nbsp;]**</span><br>A list containing the APDU responses for each request in the command.
 
-
-##### ApduResponse {#apduresponse-1}
+##### ApduResponse
 - `apdu` <span class="text-secondary">**string**</span><br>An hexadecimal string containing the APDU received from the card (including the status word).
 - `statusWord` <span class="text-secondary">**string**</span><br>A 2-byte hexadecimal string containing the status word of the received APDU.
 
