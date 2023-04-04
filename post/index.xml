@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>News | Eclipse Keyple</title><link>https://keyple.org/post/</link><atom:link href="https://keyple.org/post/index.xml" rel="self" type="application/rss+xml"/><description>News</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>News</title><link>https://keyple.org/post/</link></image><item><title>Keyple Card Calypso Java Lib (2.3.3) is available!</title><link>https://keyple.org/post/release-2023-03-08-java/</link><pubDate>Wed, 08 Mar 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2023-03-08-java/</guid><description>&lt;p>Published on March 08, 2023, this version implements the
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>News | Eclipse Keyple</title><link>https://keyple.org/post/</link><atom:link href="https://keyple.org/post/index.xml" rel="self" type="application/rss+xml"/><description>News</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>News</title><link>https://keyple.org/post/</link></image><item><title>Keyple Distributed JSON API User Guide is available!</title><link>https://keyple.org/post/release-2023-04-04-3-java/</link><pubDate>Tue, 04 Apr 2023 14:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2023-04-04-3-java/</guid><description>&lt;p>Published on April 04, 2023,
+this guide is specifically designed for users who are not currently using Keyple in their terminals, but wish to connect
+to a Keyple server.&lt;/p>
+&lt;p>This allows the development of a distributed solution in which the client reader terminal delegates the entire
+management of the card transaction to the server.&lt;/p>
+&lt;p>For more information, please visit the &lt;a href="https://keyple.org/learn/user-guide/distributed-json-api/">user guide&lt;/a>&lt;/p></description></item><item><title>Keyple Distributed Solution (2.2.0) is available!</title><link>https://keyple.org/post/release-2023-04-04-2-java/</link><pubDate>Tue, 04 Apr 2023 13:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2023-04-04-2-java/</guid><description>&lt;p>Published on April 04, 2023,
+one of the key changes in this release is that objects transmitted through the network for the &amp;ldquo;Distributed&amp;rdquo; solution
+are now serialized/de-serialized as JSON objects, and no longer as strings containing JSON objects.
+This change will enhance the efficiency of the software, and help ensure a smoother and more reliable network
+communication.&lt;/p>
+&lt;p>In addition, all JSON property names are now formatted as &amp;ldquo;lowerCamelCase&amp;rdquo;, providing a more consistent and
+easier-to-read format for the users.&lt;/p>
+&lt;p>For more information, please visit the components pages:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://keyple.org/components-java/distributed/keyple-distributed-network-java-lib/">Keyple Distributed Network Library&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components-java/distributed/keyple-distributed-local-java-lib/">Keyple Distributed Local Library&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components-java/distributed/keyple-distributed-remote-java-lib/">Keyple Distributed Remote Library&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components-java/core/keyple-service-java-lib/">Keyple Service Library&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Keyple Card Calypso Java Lib (2.3.4) is available!</title><link>https://keyple.org/post/release-2023-04-04-1-java/</link><pubDate>Tue, 04 Apr 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2023-04-04-1-java/</guid><description>&lt;p>Published on April 04, 2023, this version implements the
+&lt;a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-api/" target="_blank" rel="noopener">Calypsonet Terminal Calypso Java API (1.8.0)&lt;/a>
+and thus makes it possible to improve processing times by anticipating a SAM operation outside the transaction.&lt;/p>
+&lt;p>For more information, please visit the component
+&lt;a href="https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/">page&lt;/a>.&lt;/p></description></item><item><title>Keyple Card Calypso Java Lib (2.3.3) is available!</title><link>https://keyple.org/post/release-2023-03-08-java/</link><pubDate>Wed, 08 Mar 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2023-03-08-java/</guid><description>&lt;p>Published on March 08, 2023, this version implements the
 &lt;a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-api/" target="_blank" rel="noopener">Calypsonet Terminal Calypso Java API (1.7.0)&lt;/a>
 and therefore provides an implementation of the secure session &amp;ldquo;&lt;strong>pre-open&lt;/strong>&amp;rdquo; variant and adds the possibility to read
 counters and binary files during the card selection step.&lt;/p>

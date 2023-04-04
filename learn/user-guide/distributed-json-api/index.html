@@ -1,0 +1,907 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Wowchemy 5.3.0 for Hugo">
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
+<meta name=description content="How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/learn/user-guide/distributed-json-api/>
+<meta name=theme-color content="#1D87BB">
+<link rel=stylesheet href=../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
+<link rel=stylesheet href=../../../css/wowchemy.f59b11c298a8f17a7ac1cc9667b998a2.css>
+<script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
+<link rel=manifest href=../../../manifest.webmanifest>
+<link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
+<link rel=canonical href=https://keyple.org/learn/user-guide/distributed-json-api/>
+<meta property="twitter:card" content="summary">
+<meta property="og:site_name" content="Eclipse Keyple">
+<meta property="og:url" content="https://keyple.org/learn/user-guide/distributed-json-api/">
+<meta property="og:title" content="Distributed JSON API User Guide | Eclipse Keyple">
+<meta property="og:description" content="How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges."><meta property="og:image" content="https://keyple.org/media/logo.svg">
+<meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
+<meta property="article:modified_time" content="2023-04-04T18:26:08+02:00">
+<title>Distributed JSON API User Guide | Eclipse Keyple</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=19d26c87bf6b79cef4994ad58344b6e5>
+<script src=../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
+<aside class=search-modal id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Search</h1>
+</div>
+<div class="col-6 col-search-close">
+<a class=js-search href=# aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
+</div>
+</aside>
+<div class=page-header>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container-xl>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
+<a class=dropdown-item href=../../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
+<a class=dropdown-item href=../../../#news><span>News</span></a>
+</div>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../../learn/overview><span>Learn</span></a>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../components-java/overview/><span>Java implementation v2+</span></a>
+<a class=dropdown-item href=../../../components-cpp/overview/><span>C++ implementation v2+</span></a>
+<a class=dropdown-item href=../../../><span> </span></a>
+<a class=dropdown-item href=../../../learn/user-guide/migrate-to-2-0><span>Guide to migrate from v1.0 to v2+</span></a>
+<a class=dropdown-item href=../../../components-java-1.0/><span>Java implementation v1.0 (deprecated)</span></a>
+<a class=dropdown-item href=../../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../../community/roadmap/><span>Roadmap</span></a>
+<a class=dropdown-item href=../../../project-dashboard/><span>Project dashboard</span></a>
+<a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date"><span>Code quality dashboard</span></a>
+<a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
+<a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
+<a class=dropdown-item href=https://github.com/eclipse/keyple/><span>GitHub home repository</span></a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
+<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
+</div>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+<li class=nav-item>
+<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class=page-body>
+<div class="container-fluid docs">
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+<form class="docs-search d-flex align-items-center">
+<button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
+<div class=d-flex>
+<span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+User guides
+</span>
+<span><i class="fas fa-chevron-down"></i></span>
+</div>
+</button>
+<button class="form-control sidebar-search js-search d-none d-md-flex">
+<i class="fas fa-search pr-2"></i>
+<span class=sidebar-search-text>Search...</span>
+<span class=sidebar-search-shortcut>/</span>
+</button>
+</form>
+<nav class="collapse docs-links" id=docs-nav>
+<ul class="nav docs-sidenav">
+<li><a href=../../../learn/></a></li>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../learn/overview/>Overview</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li>
+<li><a href=../../../learn/overview/architecture/>Architecture</a></li>
+<li><a href=../../../learn/overview/terminalapis/>Calypso Terminal APIs</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../learn/build-your-first-app/>Build your first app</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../learn/build-your-first-app/java-app/>Java</a></li>
+<li><a href=../../../learn/build-your-first-app/android-app/>Android</a></li>
+<li><a href=../../../learn/build-your-first-app/cpp-app/>C++</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../learn/user-guide/>User guides</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
+<li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
+<li class=active><a href=../../../learn/user-guide/distributed-json-api/>Distributed JSON API</a></li>
+<li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
+<li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
+<li><a href=../../../learn/user-guide/migrate-to-2-0/>Upgrade Keyple</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li>
+<li><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../learn/example-code/>Example code</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../learn/example-code/java-example/>Java examples</a></li>
+<li><a href=../../../learn/example-code/cpp-example/>C++ examples</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../learn/keyple-in-depth/>Keyple in depth</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
+<li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
+<li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
+</ul>
+</div>
+</ul>
+</nav>
+</div>
+<div class="d-none d-xl-block col-xl-2 docs-toc">
+<ul class="nav toc-top">
+<li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
+</ul>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#overview>Overview</a></li>
+<li><a href=#data-flow>Data flow</a></li>
+<li><a href=#data-format>Data format</a>
+<ul>
+<li><a href=#execute_remote_service>EXECUTE_REMOTE_SERVICE</a></li>
+<li><a href=#cmd>CMD</a></li>
+<li><a href=#is_contactless_cmd>    IS_CONTACTLESS</a></li>
+<li><a href=#is_card_present_cmd>    IS_CARD_PRESENT</a></li>
+<li><a href=#transmit_card_selection_requests_cmd>    TRANSMIT_CARD_SELECTION_REQUESTS</a></li>
+<li><a href=#transmit_card_request_cmd>    TRANSMIT_CARD_REQUEST</a></li>
+<li><a href=#resp>RESP</a></li>
+<li><a href=#is_contactless_resp>    IS_CONTACTLESS</a></li>
+<li><a href=#is_card_present_resp>    IS_CARD_PRESENT</a></li>
+<li><a href=#transmit_card_selection_requests_resp>    TRANSMIT_CARD_SELECTION_REQUESTS</a></li>
+<li><a href=#transmit_card_request_resp>    TRANSMIT_CARD_REQUEST</a></li>
+<li><a href=#end_remote_service>END_REMOTE_SERVICE</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
+<article class=article>
+<div class=docs-article-container>
+<h1>Distributed JSON API User Guide</h1>
+<div class=article-style>
+<hr>
+<style>span.text-secondary{padding-left:.8rem}</style>
+<h2 id=overview>Overview</h2>
+<p>This guide is specifically designed for users who are not currently using Keyple in their terminals, but wish to connect
+to a Keyple server. It details the JSON data exchange between the terminal and the server, but does not cover the
+transport of this data.</p>
+<p>This allows the development of a distributed solution in which the client reader terminal delegates the entire
+management of the card transaction to the server.</p>
+<div class="alert alert-warning">
+<div>
+<p>This API is compliant with the following Keyple server side components:</p>
+<ul>
+<li><a href=https://keyple.org/components-java/core/keyple-service-java-lib/>Keyple Service Library</a> version <code>2.1.4+</code></li>
+<li><a href=https://keyple.org/components-java/distributed/keyple-distributed-network-java-lib/>Keyple Distributed Network Library</a> version <code>2.2.0+</code></li>
+<li><a href=https://keyple.org/components-java/distributed/keyple-distributed-remote-java-lib/>Keyple Distributed Remote Library</a> version <code>2.2.0+</code></li>
+</ul>
+</div>
+</div>
+<hr>
+<h2 id=data-flow>Data flow</h2>
+<p>The diagram below shows the global flow of JSON data exchanges between the terminal and the server:</p>
+<figure id=figure-keyple-distributed-json-api---messaging-flow>
+<div class="d-flex justify-content-center">
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api/distributedJsonApi_messagingFlow.svg alt="Keyple Distributed JSON API - Messaging flow" loading=lazy data-zoomable></div>
+</div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
+Keyple Distributed JSON API - Messaging flow
+</figcaption></figure>
+<div class="alert alert-warning">
+<div>
+For each terminal-server data exchange, the terminal sends to the server <strong>a JSON object</strong> and receives back <strong>a JSON array
+containing a single JSON object</strong>.
+</div>
+</div>
+<p>On its own initiative (e.g. following the detection of a card), the terminal sends a <code>EXECUTE_REMOTE_SERVICE</code> JSON
+object to the server to ask it to start a card transaction.
+At this step, the terminal has the ability to tell the server which business service to run and also to provide
+additional custom input data.</p>
+<p>As long as the transaction is not completed, the terminal receives from the server <code>CMD</code> JSON objects containing
+the actions to be performed with the card or the terminal&rsquo;s reader.
+The results are sent back to the server in <code>RESP</code> JSON objects.</p>
+<p>When the transaction is complete, instead of receiving a <code>CMD</code> JSON object, the terminal receives a final
+<code>END_REMOTE_SERVICE</code> JSON object from the server which optionally contains custom transaction output data.</p>
+<hr>
+<h2 id=data-format>Data format</h2>
+<p>The Keyple transaction API uses 4 primary JSON object types, which are explained in detail in the sections below.</p>
+<p>The <code>action</code> field is present in all JSON objects and allows to determine the type of the object and especially the
+format of the <code>body</code> field content.</p>
+<p>It can have the following values:</p>
+<ul>
+<li><a href=#execute_remote_service><code>EXECUTE_REMOTE_SERVICE</code></a></li>
+<li><a href=#cmd><code>CMD</code></a></li>
+<li><a href=#resp><code>RESP</code></a></li>
+<li><a href=#end_remote_service><code>END_REMOTE_SERVICE</code></a></li>
+</ul>
+<h3 id=execute_remote_service>EXECUTE_REMOTE_SERVICE</h3>
+<p>The purpose of this JSON object, sent to the server, is to initiate the server-controlled card
+transaction.</p>
+<p>By using the identification fields provided by the terminal in its subsequent responses, the server ensures
+consistent and accurate data flow management throughout the entire system.</p>
+<p>Following the transmission of the <code>EXECUTE_REMOTE_SERVICE</code> request, the server will return a JSON object of type
+<a href=#cmd><code>CMD</code></a>, containing the first action to be performed with the card or the terminal&rsquo;s reader, or
+<a href=#end_remote_service><code>END_REMOTE_SERVICE</code></a> to terminate the transaction.</p>
+<p>The following UML class diagram illustrates the structure of this object and may help to implement it in the development
+language of the target terminal.</p>
+<figure id=figure-keyple-distributed-json-api---execute_remote_service-class-diagram>
+<div class="d-flex justify-content-center">
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_executeRemoteService.svg alt="Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram" loading=lazy data-zoomable></div>
+</div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
+Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram
+</figcaption></figure>
+<h4 id=executeremoteservicedata>ExecuteRemoteServiceData</h4>
+<ul>
+<li><code>action</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>EXECUTE_REMOTE_SERVICE</strong>&rdquo;.</li>
+<li><code>body</code> <span class=text-secondary><strong>string</strong></span><br>A JSON string containing a <a href=#executeremoteservicebody>ExecuteRemoteServiceBody</a>.</li>
+<li><code>clientNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The terminal identifier. It shall be unique per server.</li>
+<li><code>localReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the local reader used to perform the card transaction. It shall be unique per terminal.</li>
+<li><code>sessionId</code> <span class=text-secondary><strong>string</strong></span><br>The session identifier. It shall be unique per card transaction.</li>
+</ul>
+<h4 id=executeremoteservicebody>ExecuteRemoteServiceBody</h4>
+<ul>
+<li><code>serviceId</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the business service to be executed by the server. It&rsquo;s a naming convention between the client and the server.</li>
+<li><code>inputData</code> <span class=text-secondary><strong>object (optional)</strong></span><br>An optional object containing additional data to be provided to the remote business service. Its content is a convention between the client and the server.</li>
+</ul>
+<h4 id=example>Example</h4>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('4',this)">Copy</button></div>
+<pre><code class=language-json id=code-4>{
+    &#34;action&#34;: &#34;EXECUTE_REMOTE_SERVICE&#34;,
+    &#34;body&#34;: &#34;{\&#34;serviceId\&#34;:\&#34;AUTHENTICATE_CARD\&#34;,\&#34;inputData\&#34;:{\&#34;userId\&#34;:\&#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&#34;}}&#34;,
+    &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
+    &#34;localReaderName&#34;: &#34;READER_1&#34;,
+    &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
+}</code></pre>
+<hr>
+<h3 id=cmd>CMD</h3>
+<p>The purpose of this JSON object, received from the server, is to ask the terminal to perform a specific service with the
+card or the terminal&rsquo;s reader.</p>
+<p>The service input data is defined in the <code>body</code> field as a string containing a JSON object.</p>
+<p>The terminal must therefore first parse this string to extract the corresponding JSON object.</p>
+<p>The <code>service</code> field identifies the service to be executed and can take one of the following values:</p>
+<ul>
+<li><a href=#is_contactless_cmd><code>IS_CONTACTLESS</code></a></li>
+<li><a href=#is_card_present_cmd><code>IS_CARD_PRESENT</code></a></li>
+<li><a href=#transmit_card_selection_requests_cmd><code>TRANSMIT_CARD_SELECTION_REQUESTS</code></a></li>
+<li><a href=#transmit_card_request_cmd><code>TRANSMIT_CARD_REQUEST</code></a></li>
+</ul>
+<p>The <code>parameters</code> field is an optional JSON object and is specific to each service (see below for details).</p>
+<p>After receiving a <code>CMD</code> JSON object, the terminal will return to the server a <code>RESP</code> JSON object containing the result
+of the operation.</p>
+<p>The following UML class diagram illustrates the structure of this object and may help to implement it in the development
+language of the target terminal.</p>
+<figure id=figure-keyple-distributed-json-api---cmd-class-diagram>
+<div class="d-flex justify-content-center">
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_cmd.svg alt="Keyple Distributed JSON API - CMD class diagram" loading=lazy data-zoomable></div>
+</div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
+Keyple Distributed JSON API - CMD class diagram
+</figcaption></figure>
+<hr>
+<h3 id=is_contactless_cmd>    IS_CONTACTLESS</h3>
+<p>This service allows the server to know if the reader is in contact or contactless mode.</p>
+<p>There are no parameters for this service.</p>
+<p>Upon receiving this request, the terminal must return a <code>RESP</code> <a href=#is_contactless_resp>IS_CONTACTLESS</a> JSON object
+containing a boolean set to true if the reader is a contactless type.</p>
+<h4 id=json-structure>JSON structure</h4>
+<ul>
+<li><code>action</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>CMD</strong>&rdquo;.</li>
+<li><code>body</code> <span class=text-secondary><strong>string</strong></span><br>A JSON string containing a <a href=#iscontactlesscmdbody>IsContactlessCmdBody</a>.</li>
+<li><code>clientNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The terminal identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>localReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the local reader as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>remoteReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the virtual remote reader linked to the local reader.</li>
+<li><code>serverNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The server identifier.</li>
+<li><code>sessionId</code> <span class=text-secondary><strong>string</strong></span><br>The current transaction identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+</ul>
+<h5 id=iscontactlesscmdbody>IsContactlessCmdBody</h5>
+<ul>
+<li><code>service</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>IS_CONTACTLESS</strong>&rdquo;.</li>
+</ul>
+<h5 id=example-1>Example</h5>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
+<pre><code class=language-json id=code-6>[
+    {
+        &#34;action&#34;: &#34;CMD&#34;,
+        &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CONTACTLESS\&#34;}&#34;,
+        &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
+        &#34;localReaderName&#34;: &#34;READER_1&#34;,
+        &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
+        &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
+        &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
+    }
+]</code></pre>
+<hr>
+<h3 id=is_card_present_cmd>    IS_CARD_PRESENT</h3>
+<p>This service allows the server to know if a card is inserted in the reader.</p>
+<p>There are no parameters for this service.</p>
+<p>Upon receiving this request, the terminal must return a <code>RESP</code> <a href=#is_card_present_resp>IS_CARD_PRESENT</a> JSON object
+containing a boolean set to true if a card is present.</p>
+<h4 id=json-structure-1>JSON structure</h4>
+<ul>
+<li><code>action</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>CMD</strong>&rdquo;.</li>
+<li><code>body</code> <span class=text-secondary><strong>string</strong></span><br>A JSON string containing a <a href=#iscardpresentcmdbody>IsCardPresentCmdBody</a>.</li>
+<li><code>clientNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The terminal identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>localReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the local reader as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>remoteReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the virtual remote reader linked to the local reader.</li>
+<li><code>serverNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The server identifier.</li>
+<li><code>sessionId</code> <span class=text-secondary><strong>string</strong></span><br>The current transaction identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+</ul>
+<h5 id=iscardpresentcmdbody>IsCardPresentCmdBody</h5>
+<ul>
+<li><code>service</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>IS_CARD_PRESENT</strong>&rdquo;.</li>
+</ul>
+<h5 id=example-2>Example</h5>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
+<pre><code class=language-json id=code-7>[
+    {
+        &#34;action&#34;: &#34;CMD&#34;,
+        &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CARD_PRESENT\&#34;}&#34;,
+        &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
+        &#34;localReaderName&#34;: &#34;READER_1&#34;,
+        &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
+        &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
+        &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
+    }
+]</code></pre>
+<hr>
+<h3 id=transmit_card_selection_requests_cmd>    TRANSMIT_CARD_SELECTION_REQUESTS</h3>
+<p>The primary objective of this service is to establish a logical communication channel with a card.</p>
+<p>To enable processing of different card profiles, it offers the creation of selection scenarios with integrated
+selection cases. The scenario is provided by the server after a card is detected, and it involves checking whether the
+card is compatible with at least one of the selection cases. The selection cases are processed successively, in the
+order in which they are defined.</p>
+<p>There are several options for executing the scenario:</p>
+<ul>
+<li>the process stops at the first selection case where the card matches, or all scenarios are systematically processed.</li>
+<li>the physical channel can be kept open or closed at the end of each selection case.</li>
+</ul>
+<p>A card selection case incorporates various independent filters that can be applied individually or in combination
+to determine if a detected card is suitable for performing a transaction. While some cards can be selected based on
+communication protocol or response data from the power-on operation, most of the cards require a selection through
+Application Identifier (AID) using the ISO7816-4 &ldquo;Select Application&rdquo; APDU command.</p>
+<p>The structure outlined below allows for defining selection scenarios that combine these three types of filters:</p>
+<ul>
+<li>based on the communication protocol,</li>
+<li>based on the response data from the power on stage,</li>
+<li>based on the Application Identifier (AID).</li>
+</ul>
+<p>When filtering by AID, the &ldquo;Select Application&rdquo; APDU command is sent to the card in accordance with the ISO7816-4
+standard.
+Additional parameters, also defined by the standard, can be set to specify the type of operation (<code>FileOccurrence</code>)
+and the type of output (<code>FileControlInformation</code>).</p>
+<p>Each filter is optional, and if none are defined, the selection is considered successful as soon as the card is
+detected.
+However, when a filter is specified, it becomes a prerequisite for the card selection.</p>
+<p>In addition to card selection, a selection scenario can include a list of APDUs that are to be transmitted to the card
+as soon as it becomes &ldquo;selected&rdquo;.</p>
+<p>The algorithm to be implemented by the terminal to process this service consists in iterating on the selection cases of
+the scenario.</p>
+<p>For each selection case, the terminal must determine which type of filter to apply and apply it: protocol, power-on
+data, AID.</p>
+<p>If all the defined filters are satisfied, the terminal must send any additional APDUs.</p>
+<p>The terminal must then send the response to the server in a <code>RESP</code>
+<a href=#transmit_card_selection_requests_resp>TRANSMIT_CARD_SELECTION_REQUESTS</a> JSON object.</p>
+<h4 id=json-structure-2>JSON structure</h4>
+<ul>
+<li><code>action</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>CMD</strong>&rdquo;.</li>
+<li><code>body</code> <span class=text-secondary><strong>string</strong></span><br>A JSON string containing a <a href=#transmitcardselectionrequestscmdbody>TransmitCardSelectionRequestsCmdBody</a>.</li>
+<li><code>clientNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The terminal identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>localReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the local reader as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>remoteReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the virtual remote reader linked to the local reader.</li>
+<li><code>serverNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The server identifier.</li>
+<li><code>sessionId</code> <span class=text-secondary><strong>string</strong></span><br>The current transaction identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+</ul>
+<h5 id=transmitcardselectionrequestscmdbody>TransmitCardSelectionRequestsCmdBody</h5>
+<ul>
+<li><code>service</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>TRANSMIT_CARD_SELECTION_REQUESTS</strong>&rdquo;.</li>
+<li><code>parameters</code> <span class=text-secondary><a href=#transmitcardselectionrequestsparameters>TransmitCardSelectionRequestsParameters</a></span><br>The card selection parameters.</li>
+</ul>
+<h5 id=transmitcardselectionrequestsparameters>TransmitCardSelectionRequestsParameters</h5>
+<ul>
+<li><code>cardSelectionRequests</code> <span class=text-secondary><a href=#cardselectionrequest>CardSelectionRequest</a> <strong>[ ]</strong></span><br>A non-empty array.</li>
+<li><code>multiSelectionProcessing</code> <span class=text-secondary><strong>string</strong></span><br>- &ldquo;<strong>FIRST_MATCH</strong>": the selection process stops as soon as a selection case is successful.<br>- &ldquo;<strong>PROCESS_ALL</strong>": the selection process performs all the selection cases provided (the logical channel is closed at the end of the selection case).</li>
+<li><code>channelControl</code> <span class=text-secondary><strong>string</strong></span><br>- &ldquo;<strong>KEEP_OPEN</strong>": leaves the physical channel open.<br>- &ldquo;<strong>CLOSE_AFTER</strong>": terminates communication with the card.</li>
+</ul>
+<h5 id=cardselectionrequest>CardSelectionRequest</h5>
+<ul>
+<li><code>cardSelector</code> <span class=text-secondary><a href=#cardselector>CardSelector</a></span><br>The card selection criteria.</li>
+<li><code>cardRequest</code> <span class=text-secondary><a href=#cardrequest>CardRequest</a> <strong>(optional)</strong></span><br>An optional object containing a list of APDU requests to be sent after a successful card selection.</li>
+</ul>
+<h5 id=cardselector>CardSelector</h5>
+<ul>
+<li><code>cardProtocol</code> <span class=text-secondary><strong>string (optional)</strong></span><br>An optional name of the targeted card protocol.</li>
+<li><code>powerOnDataRegex</code> <span class=text-secondary><strong>string (optional)</strong></span><br>An optional regex to use to filter the power-on data.</li>
+<li><code>aid</code> <span class=text-secondary><strong>string (optional)</strong></span><br>An optional Application Identifier (AID) as an hexadecimal string to be sent with ISO7816-4 &ldquo;Select Application&rdquo;.</li>
+<li><code>fileOccurrence</code> <span class=text-secondary><strong>string</strong></span><br>"<strong>FIRST</strong>&rdquo;, &ldquo;<strong>LAST</strong>&rdquo;, &ldquo;<strong>NEXT</strong>&rdquo; or &ldquo;<strong>PREVIOUS</strong>&rdquo; according to the ISO7816-4 standard (only relevant when AID is set).</li>
+<li><code>fileControlInformation</code> <span class=text-secondary><strong>string</strong></span><br>"<strong>FCI</strong>&rdquo;, &ldquo;<strong>FCP</strong>&rdquo;, &ldquo;<strong>FMD</strong>&rdquo; or &ldquo;<strong>NO_RESPONSE</strong>&rdquo; according to the ISO7816-4 standard (only relevant when AID is set).</li>
+<li><code>successfulSelectionStatusWords</code> <span class=text-secondary><strong>string</strong> [ ]<br>A non-empty array of 2-byte hexadecimal strings containing the status word of the &ldquo;Select Application&rdquo; APDU command to be considered successful (only relevant when AID is set).</li>
+</ul>
+<h5 id=cardrequest>CardRequest</h5>
+<ul>
+<li><code>apduRequests</code> <span class=text-secondary><a href=#apdurequest>ApduRequest</a> <strong>[ ]</strong></span><br>A non-empty array of APDU requests.</li>
+<li><code>isStatusCodesVerificationEnabled</code> <span class=text-secondary><strong>boolean</strong></span><br><code>true</code> if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words.</li>
+</ul>
+<h5 id=apdurequest>ApduRequest</h5>
+<ul>
+<li><code>apdu</code> <span class=text-secondary><strong>string</strong></span><br>An hexadecimal string containing the APDU to transmit to the card.</li>
+<li><code>successfulStatusWords</code> <span class=text-secondary><strong>string</strong> [ ]<br>A non-empty array of 2-byte hexadecimal strings containing the status word to be considered successful.</li>
+<li><code>info</code> <span class=text-secondary><strong>string (optional)</strong></span><br>An optional textual information about the command.</li>
+</ul>
+<h5 id=example-3>Example</h5>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('8',this)">Copy</button></div>
+<pre><code class=language-json id=code-8>[
+    {
+        &#34;action&#34;: &#34;CMD&#34;,
+        &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_SELECTION_REQUESTS\&#34;,\&#34;parameters\&#34;:{\&#34;multiSelectionProcessing\&#34;:\&#34;FIRST_MATCH\&#34;,\&#34;channelControl\&#34;:\&#34;KEEP_OPEN\&#34;,\&#34;cardSelectionRequests\&#34;:[{\&#34;cardSelector\&#34;:{\&#34;cardProtocol\&#34;:\&#34;ISO_14443_4_CARD\&#34;,\&#34;aid\&#34;:\&#34;315449432E49434131\&#34;,\&#34;fileOccurrence\&#34;:\&#34;FIRST\&#34;,\&#34;fileControlInformation\&#34;:\&#34;FCI\&#34;,\&#34;successfulSelectionStatusWords\&#34;:[\&#34;9000\&#34;]},\&#34;cardRequest\&#34;:{\&#34;apduRequests\&#34;:[{\&#34;apdu\&#34;:\&#34;00B2013C00\&#34;,\&#34;successfulStatusWords\&#34;:[\&#34;9000\&#34;],\&#34;info\&#34;:\&#34;Read Records - SFI: 7h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&#34;}],\&#34;isStatusCodesVerificationEnabled\&#34;:false}}]}}&#34;,
+        &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
+        &#34;localReaderName&#34;: &#34;READER_1&#34;,
+        &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
+        &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
+        &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
+    }
+]</code></pre>
+<h3 id=transmit_card_request_cmd>    TRANSMIT_CARD_REQUEST</h3>
+<p>The role of this service is to perform APDU exchanges with the card. The received answers are sent back to the
+server in a <code>RESP</code> <a href=#transmit_card_request_resp>TRANSMIT_CARD_REQUEST</a> JSON object.</p>
+<p>The terminal must iterate over the list of APDUs present in the card request and proceeds to close the physical channel
+if requested.</p>
+<h4 id=json-structure-3>JSON structure</h4>
+<ul>
+<li><code>action</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>CMD</strong>&rdquo;.</li>
+<li><code>body</code> <span class=text-secondary><strong>string</strong></span><br>A JSON string containing a <a href=#transmitcardrequestcmdbody>TransmitCardRequestCmdBody</a>.</li>
+<li><code>clientNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The terminal identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>localReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the local reader as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>remoteReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the virtual remote reader linked to the local reader.</li>
+<li><code>serverNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The server identifier.</li>
+<li><code>sessionId</code> <span class=text-secondary><strong>string</strong></span><br>The current transaction identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+</ul>
+<h5 id=transmitcardrequestcmdbody>TransmitCardRequestCmdBody</h5>
+<ul>
+<li><code>service</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>TRANSMIT_CARD_REQUEST</strong>&rdquo;.</li>
+<li><code>parameters</code> <span class=text-secondary><a href=#transmitcardrequestparameters>TransmitCardRequestParameters</a></span><br>The card request parameters.</li>
+</ul>
+<h5 id=transmitcardrequestparameters>TransmitCardRequestParameters</h5>
+<ul>
+<li><code>cardRequest</code> <span class=text-secondary><a href=#cardrequest-1>CardRequest</a></span><br>An object containing the list of APDU requests to be sent.</li>
+<li><code>channelControl</code> <span class=text-secondary><strong>string</strong></span><br>- &ldquo;<strong>KEEP_OPEN</strong>": leaves the physical channel open.<br>- &ldquo;<strong>CLOSE_AFTER</strong>": terminates communication with the card.</li>
+</ul>
+<h5 id=cardrequest-1>CardRequest</h5>
+<ul>
+<li><code>apduRequests</code> <span class=text-secondary><a href=#apdurequest-1>ApduRequest</a> <strong>[ ]</strong></span><br>A non-empty array of APDU requests.</li>
+<li><code>isStatusCodesVerificationEnabled</code> <span class=text-secondary><strong>boolean</strong></span><br><code>true</code> if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words.</li>
+</ul>
+<h5 id=apdurequest-1>ApduRequest</h5>
+<ul>
+<li><code>apdu</code> <span class=text-secondary><strong>string</strong></span><br>An hexadecimal string containing the APDU to transmit to the card.</li>
+<li><code>successfulStatusWords</code> <span class=text-secondary><strong>string</strong> [ ]<br>A non-empty array of 2-byte hexadecimal strings containing the status word to be considered successful.</li>
+<li><code>info</code> <span class=text-secondary><strong>string (optional)</strong></span><br>An optional textual information about the command.</li>
+</ul>
+<h5 id=example-4>Example</h5>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('9',this)">Copy</button></div>
+<pre><code class=language-json id=code-9>[
+    {
+        &#34;action&#34;: &#34;CMD&#34;,
+        &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_REQUEST\&#34;,\&#34;parameters\&#34;:{\&#34;cardRequest\&#34;:{\&#34;apduRequests\&#34;:[{\&#34;apdu\&#34;:\&#34;00B2014400\&#34;,\&#34;successfulStatusWords\&#34;:[\&#34;9000\&#34;],\&#34;info\&#34;:\&#34;Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&#34;}],\&#34;isStatusCodesVerificationEnabled\&#34;:true},\&#34;channelControl\&#34;:\&#34;CLOSE_AFTER\&#34;}}&#34;,
+        &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
+        &#34;localReaderName&#34;: &#34;READER_1&#34;,
+        &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
+        &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
+        &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
+    }
+]</code></pre>
+<hr>
+<h3 id=resp>RESP</h3>
+<p>This JSON object, sent by the terminal to the server, is intended to transmit to the server the result of the specific
+service previously performed on the card or the terminal&rsquo;s reader.</p>
+<p>The service output data must be formatted in the <code>body</code> field as a string containing a JSON object.</p>
+<p>The <code>service</code> field identifies the service that was executed and takes one of the following values:</p>
+<ul>
+<li><a href=#is_contactless_resp><code>IS_CONTACTLESS</code></a></li>
+<li><a href=#is_card_present_resp><code>IS_CARD_PRESENT</code></a></li>
+<li><a href=#transmit_card_selection_requests_resp><code>TRANSMIT_CARD_SELECTION_REQUESTS</code></a></li>
+<li><a href=#transmit_card_request_resp><code>TRANSMIT_CARD_REQUEST</code></a></li>
+</ul>
+<p>The <code>result</code> field is a JSON object that is present if the service was successful and its type is specific to each
+service (see below for more details).</p>
+<p>The <code>error</code> field is a JSON object that is present if an error occurred during the execution of the service (see below
+for more details).</p>
+<p>Following the transmission of the <code>RESP</code> request, the server will return a JSON object of type <a href=#cmd><code>CMD</code></a>,
+containing the next action to be performed, or <a href=#end_remote_service><code>END_REMOTE_SERVICE</code></a> to terminate the transaction.</p>
+<p>The following UML class diagram illustrates the structure of this object and may help to implement it in the development
+language of the target terminal.</p>
+<figure id=figure-keyple-distributed-json-api---resp-class-diagram>
+<div class="d-flex justify-content-center">
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_resp.svg alt="Keyple Distributed JSON API - RESP class diagram" loading=lazy data-zoomable></div>
+</div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
+Keyple Distributed JSON API - RESP class diagram
+</figcaption></figure>
+<hr>
+<h3 id=is_contactless_resp>    IS_CONTACTLESS</h3>
+<p>This JSON object, sent by the terminal to the server in response to <code>CMD</code> <a href=#is_contactless_cmd><code>IS_CONTACTLESS</code></a>, is
+intended to indicate to the server if the reader is contactless.</p>
+<h4 id=json-structure-4>JSON structure</h4>
+<ul>
+<li><code>action</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>RESP</strong>&rdquo;.</li>
+<li><code>body</code> <span class=text-secondary><strong>string</strong></span><br>A JSON string containing a <a href=#iscontactlessrespbody>IsContactlessRespBody</a>.</li>
+<li><code>clientNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The terminal identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>localReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the local reader as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>remoteReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the virtual remote reader linked to the local reader as provided by <code>CMD</code>.</li>
+<li><code>serverNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The server identifier as provided by <code>CMD</code>.</li>
+<li><code>sessionId</code> <span class=text-secondary><strong>string</strong></span><br>The current transaction identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+</ul>
+<h5 id=iscontactlessrespbody>IsContactlessRespBody</h5>
+<ul>
+<li><code>service</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>IS_CONTACTLESS</strong>&rdquo;.</li>
+<li><code>result</code> <span class=text-secondary><strong>boolean (optional)</strong></span><br><code>true</code> if the reader is contactless (absent in case of error).</li>
+<li><code>error</code> <span class=text-secondary><a href=#is_contactless_resp_error>Error</a> <strong>(optional)</strong></span><br>The error description (absent in case of success).</li>
+</ul>
+<h5 id=is_contactless_resp_error>Error</h5>
+<ul>
+<li><code>code</code> <span class=text-secondary><strong>string</strong></span><br>Free value.</li>
+<li><code>message</code> <span class=text-secondary><strong>string</strong></span><br>The error description.</li>
+</ul>
+<h4 id=example-5>Example</h4>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
+<pre><code class=language-json id=code-11>{
+    &#34;action&#34;: &#34;RESP&#34;,
+    &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CONTACTLESS\&#34;,\&#34;result\&#34;:true}&#34;,
+    &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
+    &#34;localReaderName&#34;: &#34;READER_1&#34;,
+    &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
+    &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
+    &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
+}</code></pre>
+<hr>
+<h3 id=is_card_present_resp>    IS_CARD_PRESENT</h3>
+<p>This JSON object, sent by the terminal to the server, is intended to indicate to the server if a card is present.</p>
+<h4 id=json-structure-5>JSON structure</h4>
+<ul>
+<li><code>action</code> <span class=text-secondary><strong>string</strong></span><br>The value is &ldquo;<strong>RESP</strong>&rdquo;.</li>
+<li><code>body</code> <span class=text-secondary><strong>string</strong></span><br>A JSON string containing a <a href=#iscardpresentrespbody>IsCardPresentRespBody</a>.</li>
+<li><code>clientNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The terminal identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>localReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the local reader as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>remoteReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the virtual remote reader linked to the local reader as provided by <code>CMD</code>.</li>
+<li><code>serverNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The server identifier as provided by <code>CMD</code>.</li>
+<li><code>sessionId</code> <span class=text-secondary><strong>string</strong></span><br>The current transaction identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+</ul>
+<h5 id=iscardpresentrespbody>IsCardPresentRespBody</h5>
+<ul>
+<li><code>service</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>IS_CARD_PRESENT</strong>&rdquo;.</li>
+<li><code>result</code> <span class=text-secondary><strong>boolean</strong></span><br>true if a card is present.</li>
+<li><code>error</code> <span class=text-secondary><a href=#is_card_present_resp_error>Error</a> <strong>(optional)</strong></span><br>The error description (absent in case of success).</li>
+</ul>
+<h5 id=is_card_present_resp_error>Error</h5>
+<ul>
+<li><code>code</code> <span class=text-secondary><strong>string</strong></span><br>- &ldquo;<strong>READER_COMMUNICATION_ERROR</strong>": if the issue is related to the reader communication link,<br>- &ldquo;<strong>CARD_COMMUNICATION_ERROR</strong>": if the issue is related to the card communication link.</li>
+<li><code>message</code> <span class=text-secondary><strong>string</strong></span><br>The error description. |</li>
+</ul>
+<h4 id=example-6>Example</h4>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('12',this)">Copy</button></div>
+<pre><code class=language-json id=code-12>{
+    &#34;action&#34;: &#34;RESP&#34;,
+    &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CARD_PRESENT\&#34;,\&#34;result\&#34;:true}&#34;,
+    &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
+    &#34;localReaderName&#34;: &#34;READER_1&#34;,
+    &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
+    &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
+    &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
+}</code></pre>
+<hr>
+<h3 id=transmit_card_selection_requests_resp>    TRANSMIT_CARD_SELECTION_REQUESTS</h3>
+<p>This JSON object, sent by the terminal to the server, is intended to transmit to the server the result of the execution
+of the selection scenario.</p>
+<h4 id=json-structure-6>JSON structure</h4>
+<ul>
+<li><code>action</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>RESP</strong>&rdquo;.</li>
+<li><code>body</code> <span class=text-secondary><strong>string</strong></span><br>A JSON string containing a <a href=#transmitcardselectionrequestsrespbody>TransmitCardSelectionRequestsRespBody</a>.</li>
+<li><code>clientNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The terminal identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>localReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the local reader as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>remoteReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the virtual remote reader linked to the local reader as provided by <code>CMD</code>.</li>
+<li><code>serverNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The server identifier as provided by <code>CMD</code>.</li>
+<li><code>sessionId</code> <span class=text-secondary><strong>string</strong></span><br>The current transaction identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+</ul>
+<h5 id=transmitcardselectionrequestsrespbody>TransmitCardSelectionRequestsRespBody</h5>
+<ul>
+<li><code>service</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>TRANSMIT_CARD_SELECTION_REQUESTS</strong>&rdquo;.</li>
+<li><code>result</code> <span class=text-secondary><a href=#cardselectionresponse>CardSelectionResponse</a> <strong>[ ] (optional)</strong></span><br>A non-empty list containing at most as many responses as there are selection cases (absent in case of error).</li>
+<li><code>error</code> <span class=text-secondary><a href=#transmit_card_selection_requests_resp_error>Error</a> <strong>(optional)</strong></span><br>The error description (absent in case of success).</li>
+</ul>
+<h5 id=cardselectionresponse>CardSelectionResponse</h5>
+<ul>
+<li><code>hasMatched</code> <span class=text-secondary><strong>boolean</strong></span><br><code>true</code> if the associated selection case has matched.</li>
+<li><code>powerOnData</code> <span class=text-secondary><strong>string (optional)</strong></span><br>Data from the initialization phase of the communication with the card. E.g. the Answer To Reset (ATR) in the case of a contact card or any other string informing about the low level communication. This string can be used for filtering by power-on data defined in the command (absent if the protocol filter failed).</li>
+<li><code>selectApplicationResponse</code> <span class=text-secondary><a href=#apduresponse><code>ApduResponse</code></a> <strong>(optional)</strong></span><br>Data received in response to the ISO7816-4 &ldquo;Select Application&rdquo; command (absent if no AID filtering).</li>
+<li><code>cardResponse</code> <span class=text-secondary><a href=#cardresponse><code>CardResponse</code></a> <strong>(optional)</strong></span><br>Data received in response to additional commands (absent if no additional commands were provided).</li>
+</ul>
+<h5 id=cardresponse>CardResponse</h5>
+<ul>
+<li><code>isLogicalChannelOpen</code> <span class=text-secondary><strong>boolean</strong></span><br><code>true</code> if the logical channel is left open.</li>
+<li><code>apduResponses</code> <span class=text-secondary><a href=#apduresponse><code>ApduResponse</code></a> <strong>[ ]</strong></span><br>A list containing the APDU responses for each request in the command.</li>
+</ul>
+<h5 id=apduresponse>ApduResponse</h5>
+<ul>
+<li><code>apdu</code> <span class=text-secondary><strong>string</strong></span><br>An hexadecimal string containing the APDU received from the card (including the status word).</li>
+<li><code>statusWord</code> <span class=text-secondary><strong>string</strong></span><br>A 2-byte hexadecimal string containing the status word of the received APDU.</li>
+</ul>
+<h5 id=transmit_card_selection_requests_resp_error>Error</h5>
+<ul>
+<li><code>code</code> <span class=text-secondary><strong>string</strong></span><br>- &ldquo;<strong>READER_COMMUNICATION_ERROR</strong>": if the issue is related to the reader communication link,<br>- &ldquo;<strong>CARD_COMMUNICATION_ERROR</strong>": if the issue is related to the card communication link,<br>- &ldquo;<strong>CARD_COMMAND_ERROR</strong>": if the card returned a unexpected status word.</li>
+<li><code>message</code> <span class=text-secondary><strong>string</strong></span><br>The error description.</li>
+</ul>
+<h5 id=example-7>Example</h5>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('13',this)">Copy</button></div>
+<pre><code class=language-json id=code-13>{
+    &#34;action&#34;: &#34;RESP&#34;,
+    &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_SELECTION_REQUESTS\&#34;,\&#34;result\&#34;:[{\&#34;hasMatched\&#34;:true,\&#34;powerOnData\&#34;:\&#34;3B8880010000000000718100F9\&#34;,\&#34;selectApplicationResponse\&#34;:{\&#34;apdu\&#34;:\&#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C23121410019000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;},\&#34;cardResponse\&#34;:{\&#34;apduResponses\&#34;:[{\&#34;apdu\&#34;:\&#34;24B92848080000131A50001200000000000000000000000000000000009000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;}],\&#34;isLogicalChannelOpen\&#34;:true}}]}&#34;,
+    &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
+    &#34;localReaderName&#34;: &#34;READER_1&#34;,
+    &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
+    &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
+    &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
+}</code></pre>
+<h3 id=transmit_card_request_resp>    TRANSMIT_CARD_REQUEST</h3>
+<p>This JSON object, sent by the terminal to the server, is intended to transmit to the server the result of the execution
+of a card request.</p>
+<h4 id=json-structure-7>JSON structure</h4>
+<ul>
+<li><code>action</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>RESP</strong>&rdquo;.</li>
+<li><code>body</code> <span class=text-secondary><strong>string</strong></span><br>A JSON string containing a <a href=#transmitcardrequestrespbody>TransmitCardRequestRespBody</a>.</li>
+<li><code>clientNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The terminal identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>localReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the local reader as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>remoteReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the virtual remote reader linked to the local reader as provided by <code>CMD</code>.</li>
+<li><code>serverNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The server identifier as provided by <code>CMD</code>.</li>
+<li><code>sessionId</code> <span class=text-secondary><strong>string</strong></span><br>The current transaction identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+</ul>
+<h5 id=transmitcardrequestrespbody>TransmitCardRequestRespBody</h5>
+<ul>
+<li><code>service</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>TRANSMIT_CARD_REQUEST</strong>&rdquo;.</li>
+<li><code>result</code> <span class=text-secondary><a href=#cardresponse-1>CardResponse</a> <strong>[ ] (optional)</strong></span><br>A non-empty list containing at most as many responses as there are selection cases (absent in case of error).</li>
+<li><code>error</code> <span class=text-secondary><a href=#transmit_card_request_resp_error>Error</a> <strong>(optional)</strong></span><br>The error description (absent in case of success).</li>
+</ul>
+<h5 id=cardresponse-1>CardResponse</h5>
+<ul>
+<li><code>isLogicalChannelOpen</code> <span class=text-secondary><strong>boolean</strong></span><br><code>true</code> if the logical channel is left open.</li>
+<li><code>apduResponses</code> <span class=text-secondary><a href=#apduresponse-1><code>ApduResponse</code></a> <strong>[ ]</strong></span><br>A list containing the APDU responses for each request in the command.</li>
+</ul>
+<h5 id=apduresponse-1>ApduResponse</h5>
+<ul>
+<li><code>apdu</code> <span class=text-secondary><strong>string</strong></span><br>An hexadecimal string containing the APDU received from the card (including the status word).</li>
+<li><code>statusWord</code> <span class=text-secondary><strong>string</strong></span><br>A 2-byte hexadecimal string containing the status word of the received APDU.</li>
+</ul>
+<h5 id=transmit_card_request_resp_error>Error</h5>
+<ul>
+<li><code>code</code> <span class=text-secondary><strong>string</strong></span><br>- &ldquo;<strong>READER_COMMUNICATION_ERROR</strong>": if the issue is related to the reader communication link,<br>- &ldquo;<strong>CARD_COMMUNICATION_ERROR</strong>": if the issue is related to the card communication link,<br>- &ldquo;<strong>CARD_COMMAND_ERROR</strong>": if the card returned a unexpected status word.</li>
+<li><code>message</code> <span class=text-secondary><strong>string</strong></span><br>The error description.</li>
+</ul>
+<h5 id=example-8>Example</h5>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('14',this)">Copy</button></div>
+<pre><code class=language-json id=code-14>{
+    &#34;action&#34;: &#34;RESP&#34;,
+    &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_REQUEST\&#34;,\&#34;result\&#34;:{\&#34;apduResponses\&#34;:[{\&#34;apdu\&#34;:\&#34;00112233445566778899AABBCCDDEEFF00112233445566778899AABBCC9000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;}],\&#34;isLogicalChannelOpen\&#34;:true}}&#34;,
+    &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
+    &#34;localReaderName&#34;: &#34;READER_1&#34;,
+    &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
+    &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
+    &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
+}</code></pre>
+<hr>
+<h3 id=end_remote_service>END_REMOTE_SERVICE</h3>
+<p>The purpose of this JSON object, received from the server, is to inform the terminal that the transaction has been
+completed and, if necessary, to transmit the result. No follow-up is expected from the server.</p>
+<p>The following UML class diagram illustrates the structure of this object and may help to implement it in the development
+language of the target terminal.</p>
+<figure id=figure-keyple-distributed-json-api---end_remote_service-class-diagram>
+<div class="d-flex justify-content-center">
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_endRemoteService.svg alt="Keyple Distributed JSON API - END_REMOTE_SERVICE class diagram" loading=lazy data-zoomable></div>
+</div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
+Keyple Distributed JSON API - END_REMOTE_SERVICE class diagram
+</figcaption></figure>
+<h4 id=endremoteservicedata>EndRemoteServiceData</h4>
+<ul>
+<li><code>action</code> <span class=text-secondary><strong>string</strong></span><br>Always set to &ldquo;<strong>END_REMOTE_SERVICE</strong>&rdquo;.</li>
+<li><code>body</code> <span class=text-secondary><strong>string</strong></span><br>A JSON string containing a <a href=#endremoteservicebody>EndRemoteServiceBody</a>.</li>
+<li><code>clientNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The terminal identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+<li><code>remoteReaderName</code> <span class=text-secondary><strong>string</strong></span><br>The identifier of the virtual remote reader linked to the local reader.</li>
+<li><code>serverNodeId</code> <span class=text-secondary><strong>string</strong></span><br>The server identifier.</li>
+<li><code>sessionId</code> <span class=text-secondary><strong>string</strong></span><br>The current transaction identifier as provided by <code>EXECUTE_REMOTE_SERVICE</code>.</li>
+</ul>
+<h4 id=endremoteservicebody>EndRemoteServiceBody</h4>
+<ul>
+<li><code>outputData</code> <span class=text-secondary><strong>object (optional)</strong></span><br>An optional object containing additional data provided by the remote business
+service. Its content is a convention between the client and the server.</li>
+</ul>
+<h4 id=example-9>Example</h4>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('16',this)">Copy</button></div>
+<pre><code class=language-json id=code-16>[
+    {
+        &#34;action&#34;: &#34;END_REMOTE_SERVICE&#34;,
+        &#34;body&#34;: &#34;{\&#34;outputData\&#34;:{\&#34;isSuccessful\&#34;:true,\&#34;userId\&#34;:\&#34;test\&#34;}}&#34;,
+        &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
+        &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
+        &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
+        &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
+    }
+]</code></pre>
+</div>
+<div class=article-widget>
+<div class=post-nav>
+<div class=post-nav-item>
+<div class=meta-nav>Previous</div>
+<a href=../../../learn/user-guide/distributed-application/ rel=next>Distributed Application User Guide</a>
+</div>
+<div class=post-nav-item>
+<div class=meta-nav>Next</div>
+<a href=../../../learn/user-guide/calypso-application/ rel=prev>Calypso Application User Guide</a>
+</div>
+</div>
+</div>
+</div>
+<div class=body-footer>
+<p>Last updated on 2023-04-04</p>
+</div>
+</article>
+<footer class=site-footer>
+<div class=container>
+<div class="row featurette">
+<div class="col-12 col-sm-4">
+<p style=color:#fff><b>ECLIPSE LEGAL</b></p>
+<a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a><br>
+<a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a><br>
+<a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a><br>
+<a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a><br>
+<a href=https://www.eclipse.org/legal/>Legal Resources</a><br>
+<a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a><br>
+</div>
+<div class="col-12 col-sm-4">
+<a href=https://www.eclipse.org target=_blank>
+<img src=../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
+</a>
+</div>
+<div class="col-12 col-sm-4">
+<a href=https://iot.eclipse.org target=_blank>
+<img src=../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
+</a>
+</div>
+</div>
+</div>
+<p class=powered-by id=copyright>
+© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.
+</p>
+<p class=powered-by id=template-info>
+Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-themes target=_blank rel=noopener>open source</a> website builder that empowers creators.
+</p>
+</footer>
+</main>
+</div>
+</div>
+</div>
+<div class=page-footer>
+</div>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Cite</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Copy
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Download
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+<script src=../../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/java.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/groovy.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/xml.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/kotlin.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/cpp.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/gradle.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/ini.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/make.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin=anonymous></script>
+<script>anchors.add()</script>
+<script id=search-hit-fuse-template type=text/x-template>
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+<script src=../../../en/js/wowchemy.min.f22cf9177784a571f8d011e1f155ae0e.js></script>
+<link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
+<script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
+<script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
+</body>
+</html>
