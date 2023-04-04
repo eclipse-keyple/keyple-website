@@ -1,5 +1,5 @@
 ---
-title: Distributed JSON API
+title: Distributed JSON API User Guide
 linktitle: Distributed JSON API
 summary: How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges.
 type: book
