@@ -1,5 +1,5 @@
 ---
-title: "Keyple Distributed JSON API User Guide is available!"
+title: "Keyple Distributed JSON API 1.0 User Guide is available!"
 summary: "Published on April 04, 2023, this guide is specifically designed for users who are not currently using Keyple 
     in their terminals, but wish to connect to a Keyple server."
 authors: [Calypso Networks Association]
@@ -17,4 +17,4 @@ to a Keyple server.
 This allows the development of a distributed solution in which the client reader terminal delegates the entire
 management of the card transaction to the server.
 
-For more information, please visit the [user guide]({{< ref "learn/user-guide/distributed-json-api" >}})
+For more information, please visit the [user guide]({{< ref "learn/user-guide/distributed-json-api-1-0" >}})
