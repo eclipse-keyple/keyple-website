@@ -8,7 +8,7 @@
 <link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
 <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
 <meta name=description content="How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/learn/user-guide/distributed-json-api/>
+<link rel=alternate hreflang=en-us href=https://keyple.org/learn/user-guide/distributed-json-api-1-0/>
 <meta name=theme-color content="#1D87BB">
 <link rel=stylesheet href=../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
@@ -19,17 +19,17 @@
 <link rel=manifest href=../../../manifest.webmanifest>
 <link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
 <link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/learn/user-guide/distributed-json-api/>
+<link rel=canonical href=https://keyple.org/learn/user-guide/distributed-json-api-1-0/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/learn/user-guide/distributed-json-api/">
-<meta property="og:title" content="Distributed JSON API User Guide | Eclipse Keyple">
+<meta property="og:url" content="https://keyple.org/learn/user-guide/distributed-json-api-1-0/">
+<meta property="og:title" content="Distributed JSON API 1.0 User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-04-04T18:26:08+02:00">
-<title>Distributed JSON API User Guide | Eclipse Keyple</title>
+<meta property="article:modified_time" content="2023-04-05T17:16:39+02:00">
+<title>Distributed JSON API 1.0 User Guide | Eclipse Keyple</title>
 </head>
-<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=19d26c87bf6b79cef4994ad58344b6e5>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=bf9a9c70da37c02fb0aa157c7e7a3e9f>
 <script src=../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
 <aside class=search-modal id=search>
 <div class=container>
@@ -169,7 +169,7 @@ User guides
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li class=active><a href=../../../learn/user-guide/distributed-json-api/>Distributed JSON API</a></li>
+<li class=active><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migrate-to-2-0/>Upgrade Keyple</a></li>
@@ -230,7 +230,7 @@ User guides
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
 <div class=docs-article-container>
-<h1>Distributed JSON API User Guide</h1>
+<h1>Distributed JSON API 1.0 User Guide</h1>
 <div class=article-style>
 <hr>
 <style>span.text-secondary{padding-left:.8rem}</style>
@@ -255,7 +255,7 @@ management of the card transaction to the server.</p>
 <p>The diagram below shows the global flow of JSON data exchanges between the terminal and the server:</p>
 <figure id=figure-keyple-distributed-json-api---messaging-flow>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api/distributedJsonApi_messagingFlow.svg alt="Keyple Distributed JSON API - Messaging flow" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_messagingFlow.svg alt="Keyple Distributed JSON API - Messaging flow" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed JSON API - Messaging flow
 </figcaption></figure>
@@ -298,7 +298,7 @@ consistent and accurate data flow management throughout the entire system.</p>
 language of the target terminal.</p>
 <figure id=figure-keyple-distributed-json-api---execute_remote_service-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_executeRemoteService.svg alt="Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_executeRemoteService.svg alt="Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram
 </figcaption></figure>
@@ -344,7 +344,7 @@ of the operation.</p>
 language of the target terminal.</p>
 <figure id=figure-keyple-distributed-json-api---cmd-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_cmd.svg alt="Keyple Distributed JSON API - CMD class diagram" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_cmd.svg alt="Keyple Distributed JSON API - CMD class diagram" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed JSON API - CMD class diagram
 </figcaption></figure>
@@ -582,7 +582,7 @@ containing the next action to be performed, or <a href=#end_remote_service><code
 language of the target terminal.</p>
 <figure id=figure-keyple-distributed-json-api---resp-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_resp.svg alt="Keyple Distributed JSON API - RESP class diagram" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_resp.svg alt="Keyple Distributed JSON API - RESP class diagram" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed JSON API - RESP class diagram
 </figcaption></figure>
@@ -763,7 +763,7 @@ completed and, if necessary, to transmit the result. No follow-up is expected fr
 language of the target terminal.</p>
 <figure id=figure-keyple-distributed-json-api---end_remote_service-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_endRemoteService.svg alt="Keyple Distributed JSON API - END_REMOTE_SERVICE class diagram" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_endRemoteService.svg alt="Keyple Distributed JSON API - END_REMOTE_SERVICE class diagram" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed JSON API - END_REMOTE_SERVICE class diagram
 </figcaption></figure>
@@ -808,7 +808,7 @@ service. Its content is a convention between the client and the server.</li>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-04-04</p>
+<p>Last updated on 2023-04-05</p>
 </div>
 </article>
 <footer class=site-footer>
