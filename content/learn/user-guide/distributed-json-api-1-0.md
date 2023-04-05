@@ -1,6 +1,6 @@
 ---
-title: Distributed JSON API User Guide
-linktitle: Distributed JSON API
+title: Distributed JSON API 1.0 User Guide
+linktitle: Distributed JSON API 1.0
 summary: How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges.
 type: book
 toc: true
@@ -37,7 +37,7 @@ This API is compliant with the following Keyple server side components:
 
 The diagram below shows the global flow of JSON data exchanges between the terminal and the server:
 
-{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
 
 {{% callout warning %}}
 For each terminal-server data exchange, the terminal sends to the server **a JSON object** and receives back **a JSON array
@@ -84,7 +84,7 @@ Following the transmission of the `EXECUTE_REMOTE_SERVICE` request, the server w
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development 
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_executeRemoteService.svg" 
+{{< figure src="/media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_executeRemoteService.svg" 
 caption="Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram" numbered="true" >}}
 
 #### ExecuteRemoteServiceData
@@ -134,7 +134,7 @@ of the operation.
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development 
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_cmd.svg" 
+{{< figure src="/media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_cmd.svg" 
 caption="Keyple Distributed JSON API - CMD class diagram" numbered="true" >}}
 
 ---
@@ -394,7 +394,7 @@ containing the next action to be performed, or [`END_REMOTE_SERVICE`](#end_remot
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - RESP class diagram" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - RESP class diagram" numbered="true" >}}
 
 ---
 ### &nbsp;&nbsp;&nbsp;&nbsp;IS_CONTACTLESS {#is_contactless_resp}
@@ -576,7 +576,7 @@ completed and, if necessary, to transmit the result. No follow-up is expected fr
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/distributed-json-api/distributedJsonApi_classDiagram_endRemoteService.svg" 
+{{< figure src="/media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_endRemoteService.svg" 
 caption="Keyple Distributed JSON API - END_REMOTE_SERVICE class diagram" numbered="true" >}}
 
 #### EndRemoteServiceData
