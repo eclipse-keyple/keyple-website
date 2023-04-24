@@ -10,7 +10,7 @@ featured: false
 draft: false
 ---
 
-Published on April 05, 2023, this version fixes a logging issue that caused crashes when level is "trace" and an issue 
+Published on April 05, 2023, this version fixes a logging issue that causes crashes when level is "trace" and an issue 
 with reader type identification filters.
 
 For more information, please visit the component
