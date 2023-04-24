@@ -89,7 +89,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
@@ -112,7 +112,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
@@ -135,7 +135,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
@@ -158,7 +158,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
@@ -181,7 +181,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
@@ -204,7 +204,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
@@ -227,7 +227,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
@@ -250,7 +250,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
@@ -273,7 +273,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
@@ -296,7 +296,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
@@ -319,7 +319,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
@@ -342,7 +342,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>2.0.0...2.1.1</td><!-- keyple-plugin-pcsc-java-lib -->
+            <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
