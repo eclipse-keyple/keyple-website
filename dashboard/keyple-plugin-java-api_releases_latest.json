@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-plugin-java-api/releases/50878345",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-plugin-java-api/releases/50878345/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-plugin-java-api/releases/50878345/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-plugin-java-api/releases/tag/2.0.0",
-  "id": 50878345,
+  "url": "https://api.github.com/repos/eclipse/keyple-plugin-java-api/releases/100823086",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-plugin-java-api/releases/100823086/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-plugin-java-api/releases/100823086/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-plugin-java-api/releases/tag/2.1.0",
+  "id": 100823086,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWdus4DCFeJ",
-  "tag_name": "2.0.0",
+  "node_id": "RE_kwDODMWdus4GAnAu",
+  "tag_name": "2.1.0",
   "target_commitish": "main",
-  "name": "2.0.0",
+  "name": "2.1.0",
   "draft": false,
   "prerelease": false,
-  "created_at": "2021-10-06T10:22:20Z",
-  "published_at": "2021-10-06T10:31:26Z",
+  "created_at": "2023-04-25T14:00:45Z",
+  "published_at": "2023-04-25T14:43:17Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-plugin-java-api/tarball/2.0.0",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-plugin-java-api/zipball/2.0.0",
-  "body": "This is the initial release of the **Keyple Plugin Java API**.\r\nIt follows the extraction of Keyple 1.0 components contained in the `eclipse/keyple-java` repository to dedicated repositories.\r\nIt also brings many major API changes."
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-plugin-java-api/tarball/2.1.0",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-plugin-java-api/zipball/2.1.0",
+  "body": "### Added\r\n- The method `PoolPluginSpi.allocateReader` now returns the new interface `PoolReaderSpi`, which extends `ReaderSpi`, in\r\n  order to retrieve the smart card that may be automatically selected.\r\n- `CHANGELOG.md` file (issue [eclipse/keyple#6]).\r\n- CI: Forbid the publication of a version already released (issue [#7])."
 }
