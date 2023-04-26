@@ -30,20 +30,19 @@ All deliverables are available directly from the [Maven Central Repository](http
 
 {{< tabpane >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}
-implementation 'org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-dynamic-gradle-version %}}'
+implementation 'org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}'
 {{< /tab >}}
 {{< tab header="Gradle Kotlin" lang="kotlin" >}}
-implementation("org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-dynamic-gradle-version %}}"){{< /tab >}}
+implementation("org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}"){{< /tab >}}
 {{< tab header="Maven" lang="xml" >}}
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-plugin-java-api</artifactId>
-  <version>{{% keyple-plugin-java-api-dynamic-maven-version %}}</version>
+  <version>{{% keyple-plugin-java-api-version %}}</version>
 </dependency>
 {{< /tab >}}
 {{< /tabpane >}}
 
 {{% callout note %}}
 The third version number (x.y.**z**) only concerns updates of the javadoc because this component does not contain any implementation, but only an API.
-Therefore, it is recommended to always perform a **dynamic import** as described above in order to have the most up-to-date documentation.
 {{% /callout %}}

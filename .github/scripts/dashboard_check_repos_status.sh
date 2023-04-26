@@ -73,6 +73,10 @@ fi
 if [ $? -eq 0 ]; then
   exit 0
 fi
+./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-plugin-cardresource-java-lib
+if [ $? -eq 0 ]; then
+  exit 0
+fi
 ./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-service-java-lib
 if [ $? -eq 0 ]; then
   exit 0

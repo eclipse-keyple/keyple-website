@@ -42,6 +42,8 @@ echo "," >> dashboard/repository_list.json
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token keyple-plugin-stub-java-lib main true true
 echo "," >> dashboard/repository_list.json
+../.github/scripts/dashboard_update_repo.sh $token keyple-plugin-cardresource-java-lib main true true
+echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token keyple-service-java-lib main true true
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token keyple-service-resource-java-lib main true true

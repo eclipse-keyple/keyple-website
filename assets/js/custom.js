@@ -39,17 +39,17 @@ copyCodeContentToClipboard = function(codeId, button) {
 const appDependencies = new Set();
 computeAppContent = function(language) {
     let tagPrefix = 'code#all-'+language+'-dependencies span#';
-    let contentHtml = $(tagPrefix+'calypsonet-terminal-reader-java-api-dynamic').html();
+    let contentHtml = $(tagPrefix+'calypsonet-terminal-reader-java-api').html();
     if (appDependencies.has("cardCalypso")) {
-        contentHtml += "\n" + $(tagPrefix+'calypsonet-terminal-calypso-java-api-dynamic').html();
+        contentHtml += "\n" + $(tagPrefix+'calypsonet-terminal-calypso-java-api').html();
     }
     if (appDependencies.has("cardCalypsoLegacySam")) {
-        contentHtml += "\n" + $(tagPrefix+'calypsonet-terminal-calypso-crypto-legacysam-java-api-dynamic').html();
+        contentHtml += "\n" + $(tagPrefix+'calypsonet-terminal-calypso-crypto-legacysam-java-api').html();
     }
-    contentHtml += "\n" + $(tagPrefix+'keyple-common-java-api-dynamic').html()
-        + "\n" + $(tagPrefix+'keyple-util-java-lib-dynamic').html()
+    contentHtml += "\n" + $(tagPrefix+'keyple-common-java-api').html()
+        + "\n" + $(tagPrefix+'keyple-util-java-lib').html()
         + "\n" + $(tagPrefix+'keyple-service-java-lib').html();
-    if (appDependencies.has("serviceResource")) {
+    if (appDependencies.has("serviceResource") || appDependencies.has("pluginCardResource")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-service-resource-java-lib').html();
     }
     if (appDependencies.has("distributedLocal") || appDependencies.has("distributedRemote")) {
@@ -75,6 +75,9 @@ computeAppContent = function(language) {
     }
     if (appDependencies.has("pluginAndroidOmapi")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-plugin-android-omapi-java-lib').html();
+    }
+    if (appDependencies.has("pluginCardResource")) {
+        contentHtml += "\n" + $(tagPrefix+'keyple-plugin-cardresource-java-lib').html();
     }
     if (appDependencies.has("pluginPcsc")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-plugin-pcsc-java-lib').html();
