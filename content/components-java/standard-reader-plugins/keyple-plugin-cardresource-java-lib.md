@@ -22,8 +22,13 @@ The **Keyple Plugin Card Resource Java Library** is a **PoolPlugin** to manage r
 
 Therefore, it should be used only by application developers.
 
-The plugin's primary role is to allocate readers with smart cards, such as a SAM, already inserted and selected. 
-The allocation process is based on the profile identifiers used to configure the **Card Resource Service**.
+The main role of the plugin is to allow remote access to the **Card Resource Service** via the **Keyple Distributed 
+Solution** components. 
+It provides an interface for allocating and deallocating readers by profiles that are part of those configured at the 
+**Card Resource Service** level.
+
+A typical use would be for the realization of a server providing cryptographic services through a pool of SAMs, each 
+inserted in a dedicated PC/SC reader.
 
 ## Documentation
 
