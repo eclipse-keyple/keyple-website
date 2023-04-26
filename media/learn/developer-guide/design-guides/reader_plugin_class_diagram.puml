@@ -13,13 +13,19 @@
 !define C_USE 27AE60
 !define C_YELLOW FEFECE
 
-skinparam Shadowing false
-skinparam ClassFontStyle italic
-skinparam ClassBorderColor #D4AC0D
+' -- Styles that don't work with new version of plantuml --
 skinparam stereotypeABorderColor #A9DCDF
 skinparam stereotypeIBorderColor #B4A7E5
 skinparam stereotypeCBorderColor #ADD1B2
 skinparam stereotypeEBorderColor #EB93DF
+' -- END --
+
+skinparam ClassBorderThickness 2
+skinparam ArrowThickness 2
+
+' Yellow
+skinparam ClassBackgroundColor #FEFECE
+skinparam ClassBorderColor #D4AC0D
 ' Red
 skinparam ClassBackgroundColor<<red>> #FDEDEC
 skinparam ClassBorderColor<<red>> #E74C3C
@@ -79,28 +85,28 @@ package "Plugin Xxx\norg.eclipse.keyple.plugin.xxx" as specificPluginApi {
         +{static} XxxPluginFactory getFactory ()
     }
     together {
-        +interface XxxPluginFactory extends KeyplePluginExtensionFactory {
+        +interface XxxPluginFactory extends commonApi.KeyplePluginExtensionFactory {
             --
             custom settings... (optional)
         }
-        +interface XxxPlugin extends KeyplePluginExtension {
+        +interface XxxPlugin extends commonApi.KeyplePluginExtension {
             --
             custom settings... (optional)
         }
-        +interface XxxReader extends KeypleReaderExtension {
+        +interface XxxReader extends commonApi.KeypleReaderExtension {
             --
             custom settings... (optional)
         }
         ' Adapters
-        ~class "**final** XxxPluginFactoryAdapter" as XxxPluginFactoryAdapter implements XxxPluginFactory, PluginFactorySpi {
+        ~class "**final** XxxPluginFactoryAdapter" as XxxPluginFactoryAdapter implements XxxPluginFactory, pluginSpi.PluginFactorySpi {
             --
             ...
         }
-        ~class "**final** XxxPluginAdapter" as XxxPluginAdapter implements XxxPlugin, PluginSpi {
+        ~class "**final** XxxPluginAdapter" as XxxPluginAdapter implements XxxPlugin, pluginSpi.PluginSpi {
             --
             ...
         }
-        ~class "**final** XxxReaderAdapter" as XxxReaderAdapter implements XxxReader, ReaderSpi {
+        ~class "**final** XxxReaderAdapter" as XxxReaderAdapter implements XxxReader, pluginSpi.ReaderSpi {
             --
             ...
         }
@@ -126,11 +132,11 @@ package commonApi #C_GREY1 {}
 package pluginSpi #C_GREY1 {}
 package specificPluginApi #C_GREY1 {}
 
-class XxxReaderAdapter <<blue>>
-class XxxPluginAdapter <<blue>>
-class XxxPluginFactoryAdapter <<blue>>
-interface ReaderSpi <<purple>>
-interface PluginSpi <<purple>>
-interface PluginFactorySpi <<purple>>
+class specificPluginApi.XxxReaderAdapter <<blue>>
+class specificPluginApi.XxxPluginAdapter <<blue>>
+class specificPluginApi.XxxPluginFactoryAdapter <<blue>>
+interface pluginSpi.ReaderSpi <<purple>>
+interface pluginSpi.PluginSpi <<purple>>
+interface pluginSpi.PluginFactorySpi <<purple>>
 
 @enduml

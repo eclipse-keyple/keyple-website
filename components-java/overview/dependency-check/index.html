@@ -26,7 +26,7 @@
 <meta property="og:title" content="Java - Dependency check | Eclipse Keyple">
 <meta property="og:description" content="Online tool to check the compatibility of Keyple components according to their internal API versions."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-04-24T13:48:44+02:00">
+<meta property="article:modified_time" content="2023-04-26T15:52:08+02:00">
 <title>Java - Dependency check | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=5bbd15816dfc796282edc8b28f299b4b>
@@ -195,6 +195,7 @@ Overview
 <ul class="nav docs-sidenav">
 <li><a href=../../../components-java/standard-reader-plugins/keyple-plugin-android-nfc-java-lib/>Android NFC</a></li>
 <li><a href=../../../components-java/standard-reader-plugins/keyple-plugin-android-omapi-java-lib/>Android OMAPI</a></li>
+<li><a href=../../../components-java/standard-reader-plugins/keyple-plugin-cardresource-java-lib/>Card Resource</a></li>
 <li><a href=../../../components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib/>PC/SC</a></li>
 <li><a href=../../../components-java/standard-reader-plugins/keyple-plugin-stub-java-lib/>Stub</a></li>
 </ul>
@@ -221,7 +222,7 @@ Overview
 <th colspan=3 class="text-center c-blue">Core libraries</th>
 <th colspan=3 class="text-center c-purple">Distributed systems libraries</th>
 <th colspan=3 class="text-center c-green">Card extensions libraries</th>
-<th colspan=4 class="text-center c-red">Standard reader plugins libraries</th>
+<th colspan=5 class="text-center c-red">Standard reader plugins libraries</th>
 </tr>
 <tr>
 <th class="rotate c-orange"><div class=rotate-190>calypsonet-terminal-reader-java-api</div></th>
@@ -243,11 +244,36 @@ Overview
 <th class="rotate c-green"><div class=rotate-190>keyple-card-generic-java-lib</div></th>
 <th class="rotate c-red"><div class=rotate-190>keyple-plugin-android-nfc-java-lib</div></th>
 <th class="rotate c-red"><div class=rotate-190>keyple-plugin-android-omapi-java-lib</div></th>
+<th class="rotate c-red"><div class=rotate-190>keyple-plugin-cardresource-java-lib</div></th>
 <th class="rotate c-red"><div class=rotate-190>keyple-plugin-pcsc-java-lib</div></th>
 <th class="rotate c-red"><div class=rotate-190>keyple-plugin-stub-java-lib</div></th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>1.2.+</td>
+<td>1.0.+</td>
+<td>1.8.+</td>
+<td>0.2.+</td>
+<td>2.0.+</td>
+<td>2.0.+</td>
+<td>2.1.+</td>
+<td>2.1.+</td>
+<td>2.3.0</td>
+<td>2.2.0</td>
+<td>2.1.0</td>
+<td>2.2.0</td>
+<td>2.2.0</td>
+<td>2.2.0</td>
+<td>2.3.4</td>
+<td>0.3.0</td>
+<td>2.0.0...2.0.2</td>
+<td>2.0.0...2.0.1</td>
+<td>2.0.0...2.0.1</td>
+<td>1.0.0</td>
+<td>2.0.0...2.1.2</td>
+<td>2.0.0...2.1.0</td>
+</tr>
 <tr>
 <td>1.2.+</td>
 <td>1.0.+</td>
@@ -268,6 +294,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -291,6 +318,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -314,6 +342,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -337,6 +366,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -360,6 +390,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -383,6 +414,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -406,6 +438,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -429,6 +462,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -452,6 +486,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -475,6 +510,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -498,6 +534,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -521,6 +558,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0...2.0.1</td>
 <td>2.0.0...2.0.1</td>
+<td>-</td>
 <td>2.0.0...2.1.2</td>
 <td>2.0.0...2.1.0</td>
 </tr>
@@ -544,6 +582,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0</td>
 <td>2.0.0</td>
+<td>-</td>
 <td>2.0.0</td>
 <td>2.0.0</td>
 </tr>
@@ -567,6 +606,7 @@ Overview
 <td>2.0.0...2.0.2</td>
 <td>2.0.0</td>
 <td>2.0.0</td>
+<td>-</td>
 <td>2.0.0</td>
 <td>2.0.0</td>
 </tr>
@@ -584,7 +624,7 @@ Overview
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-04-24</p>
+<p>Last updated on 2023-04-26</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -675,7 +715,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.f22cf9177784a571f8d011e1f155ae0e.js></script>
+<script src=../../../en/js/wowchemy.min.8414c33d590e497d63ce70adeefc8179.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
