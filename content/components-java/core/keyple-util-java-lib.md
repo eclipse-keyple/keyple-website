@@ -29,20 +29,19 @@ All deliverables are available directly from the [Maven Central Repository](http
 
 {{< tabpane >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}
-implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}'
+implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}'
 {{< /tab >}}
 {{< tab header="Gradle Kotlin" lang="kotlin" >}}
-implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-dynamic-gradle-version %}}"){{< /tab >}}
+implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}"){{< /tab >}}
 {{< tab header="Maven" lang="xml" >}}
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-util-java-lib</artifactId>
-  <version>{{% keyple-util-java-lib-dynamic-maven-version %}}</version>
+  <version>{{% keyple-util-java-lib-version %}}</version>
 </dependency>
 {{< /tab >}}
 {{< /tabpane >}}
 
 {{% callout warning %}}
-Since this library is used by all Keyple libraries, it is recommended to explicitly perform a **dynamic import** of the library for a given major version.
-This ensures compatibility with all the used libraries.
+Since this library is used by all Keyple libraries, it is recommended to import it explicitly.
 {{% /callout %}}
