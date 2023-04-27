@@ -81,7 +81,7 @@ Warning:
             <td>2.1.+</td><!-- keyple-plugin-java-api -->
             <td>2.3.0</td><!-- keyple-util-java-lib -->
             <td>2.2.0</td><!-- keyple-service-java-lib -->
-            <td>2.1.0</td><!-- keyple-service-resource-java-lib -->
+            <td>2.1.0...2.1.1</td><!-- keyple-service-resource-java-lib -->
             <td>2.2.0</td><!-- keyple-distributed-local-java-lib -->
             <td>2.2.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.2.0</td><!-- keyple-distributed-remote-java-lib -->
@@ -90,7 +90,7 @@ Warning:
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
-            <td>1.0.0</td><!-- keyple-plugin-cardresource-java-lib -->
+            <td>1.0.0...1.0.1</td><!-- keyple-plugin-cardresource-java-lib -->
             <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
