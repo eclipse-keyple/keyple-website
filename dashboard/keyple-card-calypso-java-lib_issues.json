@@ -1,3 +1,66 @@
 [
+  {
+    "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/96",
+    "repository_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib",
+    "labels_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/96/labels{/name}",
+    "comments_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/96/comments",
+    "events_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/96/events",
+    "html_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/issues/96",
+    "id": 1698067971,
+    "node_id": "I_kwDODMWfVs5lNnYD",
+    "number": 96,
+    "title": "Package private exceptions",
+    "user": {
+      "login": "amessara-billettiqueservices",
+      "id": 106753080,
+      "node_id": "U_kgDOBlzsOA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/106753080?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/amessara-billettiqueservices",
+      "html_url": "https://github.com/amessara-billettiqueservices",
+      "followers_url": "https://api.github.com/users/amessara-billettiqueservices/followers",
+      "following_url": "https://api.github.com/users/amessara-billettiqueservices/following{/other_user}",
+      "gists_url": "https://api.github.com/users/amessara-billettiqueservices/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/amessara-billettiqueservices/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/amessara-billettiqueservices/subscriptions",
+      "organizations_url": "https://api.github.com/users/amessara-billettiqueservices/orgs",
+      "repos_url": "https://api.github.com/users/amessara-billettiqueservices/repos",
+      "events_url": "https://api.github.com/users/amessara-billettiqueservices/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/amessara-billettiqueservices/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
 
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2023-05-05T19:07:34Z",
+    "updated_at": "2023-05-05T19:07:34Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "active_lock_reason": null,
+    "body": "Hello Team,\r\nIn Keyple V1, we used to catch exceptions like **_CalypsoSamAccessForbiddenException_** to report errors with a fine granularity.\r\nIn the latest versions of this package, these exception are not thrown directly but rather encapsulated in a generic one. The original exception is still present in a **_cause_** but the exception have become package private.\r\nIs there any reason for this visibility change? I understand why it's final but I don't see why it's package private.\r\nIs there any other way to get this information?\r\nThan you for your help.",
+    "reactions": {
+      "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/96/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/issues/96/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null
+  }
 ]
