@@ -1,6 +1,6 @@
 ---
 title: "Keyple Service Java Lib (2.2.1) & Keyple Distributed Remote Java Lib (2.2.1) are available!"
-summary: "Published on May 05, 2023, these releases fixes the communication issue between client and server components 
+summary: "Published on May 05, 2023, these releases fix the communication issue between client and server components 
   when using the 'Distributed' solution in 'Reader Client Side' mode."
 authors: [Calypso Networks Association]
 tags: ["Eclipse", "Keyple", "Release", "OpenSource", "SDK", "API", "Ticketing", "Distributed"]
@@ -11,7 +11,7 @@ draft: false
 ---
 
 Published on May 05, 2023,
-these releases fixes the communication issue between client and server components when using the **Distributed** solution 
+these releases fix the communication issue between client and server components when using the **Distributed** solution 
 in **Reader Client Side** mode.
 This problem occurred with the **Keyple Service Java Lib** (`2.1.4`) 
 and **Keyple Distributed Remote Java Lib** (`2.2.0`) components.
