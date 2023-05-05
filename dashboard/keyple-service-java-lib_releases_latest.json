@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/100828724",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/100828724/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-service-java-lib/releases/100828724/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-service-java-lib/releases/tag/2.2.0",
-  "id": 100828724,
+  "url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/102032891",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/102032891/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-service-java-lib/releases/102032891/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-service-java-lib/releases/tag/2.2.1",
+  "id": 102032891,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWeus4GAoY0",
-  "tag_name": "2.2.0",
+  "node_id": "RE_kwDODMWeus4GFOX7",
+  "tag_name": "2.2.1",
   "target_commitish": "main",
-  "name": "2.2.0",
+  "name": "2.2.1",
   "draft": false,
   "prerelease": false,
-  "created_at": "2023-04-25T14:55:25Z",
-  "published_at": "2023-04-25T15:18:59Z",
+  "created_at": "2023-05-05T15:01:33Z",
+  "published_at": "2023-05-05T15:48:38Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/tarball/2.2.0",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/zipball/2.2.0",
-  "body": ":warning: **CAUTION**: In the case of a distributed mode, it is required to use at least this version on the client and server side.\r\n### Added\r\n- The `PoolPlugin.getSelectedSmartCard` method to retrieve the smart card if it has been automatically selected by the reader allocation process.\r\n### Upgraded\r\n- \"Keyple Plugin API\" to version `2.1.0`"
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/tarball/2.2.1",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/zipball/2.2.1",
+  "body": "### Fixed\r\n- Fixes the communication issue between client and server components of the \"Distributed\" solution that appeared with version `2.1.4`."
 }
