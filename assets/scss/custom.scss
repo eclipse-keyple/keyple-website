@@ -294,3 +294,32 @@ code {
 table {
   overflow-x: auto;
 }
+
+// Changelog table
+#changelog-table th:nth-child(1),
+#changelog-table td:nth-child(1) {
+  text-align: center;
+  width: 6rem;
+}
+#changelog-table span.version {
+  padding-left: 1rem;
+}
+#changelog-table code {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: .8rem !important;
+}
+#changelog-table h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: .8rem;
+  font-weight: normal;
+}
+#changelog-table ul {
+  margin-bottom: 0;
+}
+#changelog-table hr {
+  margin-top: .75rem;
+  margin-bottom: .75rem;
+  background: #ddd;
+}
