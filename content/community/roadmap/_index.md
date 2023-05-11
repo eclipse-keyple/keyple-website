@@ -1,5 +1,5 @@
 ---
-title: Eclipse Keyple® project roadmap
+title: Project roadmap
 linktitle: Roadmap
 summary: Overview of past and future Keyple Releases.
 type: book
