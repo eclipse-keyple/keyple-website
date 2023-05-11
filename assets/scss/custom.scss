@@ -301,7 +301,11 @@ table {
   text-align: center;
   width: 6rem;
 }
+#changelog-table span.component {
+  font-weight: bold;
+}
 #changelog-table span.version {
+  font-weight: bold;
   padding-left: 1rem;
 }
 #changelog-table code {
@@ -313,7 +317,6 @@ table {
   margin-top: 0;
   margin-bottom: 0;
   font-size: .8rem;
-  font-weight: normal;
 }
 #changelog-table ul {
   margin-bottom: 0;
