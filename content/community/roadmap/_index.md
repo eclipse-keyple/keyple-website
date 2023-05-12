@@ -9,24 +9,19 @@ weight: 2
 
 ---
 ## Current work 
- - New enhancements are planned for the Calypso library
-   - confidential secure session (REV3.2 Prime Extended based on AES)
-   - asymmetric authentication (REV3.3 Prime PKI based on ECC)
-   - REV1/REV2 product specific supports
- - Looking to migrate the Java implementation in Kotlin Multiplatform in order to handle iOS & some native target for ticketing application based on a generic code compliant with Java environment.
- - Refactoring of the Calypso API to support extensions of different kind of Calypso SAM solutions (current legacy SAM-C1, coming Open-SAM).
+ - Refactoring of the Calypso API to support extensions of different kind of Calypso SAM solutions (current legacy SAM-C1, coming Open-SAM, or crypto libraries for PKI).
+ - Support of the Calypso secure session based on asymmetric authentication (REV3.3 Prime PKI based on ECC)
 
-## Future developments
-A Hoplink extension will be proposed (based on a high-level API on top of the Calypso API).
+## Long-term study 
+ - to provide a Hoplink extension (based on a high-level API on top of the Calypso Card API).
+ - looking to migrate the Java implementation in Kotlin Multiplatform in order to handle iOS & some native target for ticketing application based on a generic code compliant with Java environment.
 
-## Version history
-### Evolutions of the Keyple components after the version 2.0.0 of the SDK
+## Evolutions log
+### Main improvements in Keyple after the version 2.0.0
 
 <table>
 <thead>
   <tr>
-    <th rowspan="2">Component</th>
-    <th rowspan="2">Version</th>
     <th colspan="2">Availability Date</th>   
     <th rowspan="2">Description</th>
   </tr>
@@ -37,8 +32,28 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
 </thead>
 <tbody>
   <tr>
-    <td>Calypso lib</td>
-    <td>2.1</td>
+    <td>2023/04</td>
+    <td><mark>not supported</mark></td>
+    <td><ul><li><b>Specification of the JSON objects used by Keyple Distributed</b>
+    <ul><li>It facilitates the implementation of non-Keyple based clients communicating with a Keyple Distributed server</li>
+e.g. the smart card readers of a terminal without Keyple software can be remotely controlled by a Keyple service. 
+    </ul></li></ul></td>
+  </tr>
+  <tr>
+    <td>2022/12</td>
+    <td><mark>in progress</mark></td>
+    <td><ul><li><b>Support of Calypso Prime Extended</b>
+    <ul><li>Capability to operate a Calypso secure session in confidential mode and to support intermediate authentications</li>
+    </ul></li></ul></td>
+  </tr>
+  <tr>
+    <td>2022/06</td>
+    <td>2022/11</td>
+    <td><ul><li><b>SAM operation improvements</b>
+    <ul><li>Defintion of an API to operate standalone SAM transaction</li>
+    <li>Support of the PSO data signature feature: signature generation & verification. Possibility to operate a signature operation through the Card Transaction or a SAM Transaction.</li></ul></li></ul></td>
+  </tr>
+  <tr>
     <td>2022/02</td>
     <td>2022/08</td>
     <td><ul><li><b>Support of the full card command set of Calypso Prime Regular</b>
@@ -48,48 +63,11 @@ A Hoplink extension will be proposed (based on a high-level API on top of the Ca
     <li>Pre-personalization : possibility to personalized keyset with Change Key</li></ul>
     </ul></li></td>
   </tr>
-  <tr>
-    <td>Calypso lib</td>
-    <td>2.2</td>
-    <td>2022/06</td>
-    <td><mark>planned for 2022/11</mark></td>
-    <td><ul><li><b>SAM operation improvements</b>
-    <ul><li>Defintion of an API to operate standalone SAM transaction</li>
-    <li>Support of the PSO data signature feature: signature generation & verification. Possibility to operate a signature operation through the Card Transaction or a SAM Transaction.</li></ul></li></ul></td>
-  </tr>
-  <tr>
-    <td>Calypso lib</td>
-    <td>2.3</td>
-    <td><mark>planned for 2022/12</mark></td>
-    <td>-</td>
-   <td><ul><li><b>Support of Calypso Prime PKI</b>
-    <ul><li>Asymetric authentication of a Calypso card without involving a SAM</li>
-    </ul></li></ul></td>
-  </tr>
-  <tr>
-    <td>Calypso lib</td>
-    <td>2.4</td>
-    <td><mark>planned for 2023/Q1</mark></td>
-    <td></td>
-    <td><ul><li><b>Support of Calypso Prime Extended</b>
-    <ul><li>Capability to operate a Calypso secure session in confidential mode</li>
-    </ul></li></ul></td>
-  </tr>
-    <tr>
-    <td>Calypso lib</td>
-    <td>3.0</td>
-    <td><mark>planned for 2023/Q1</mark></td>
-    <td></td>
-    <td><ul><li><b>Extended API to interface Calypso SAM solutions</b>
-    <ul><li>Full management of the legacy SAM-C1 (Control SAM to target SAM transactions)</li>
-    <li>Preparation to support the new Calypso Open SAM</li>
-    </ul></li></ul></td>
-  </tr>
 </tbody>
 </table>
 
 
-### Global evolutions to the Keyple SDK until version 2.0.0 <mark>(obsolete)</mark>
+### Global evolutions of Keyple until version 2.0.0 <mark>(obsolete)</mark>
 Until the version 2.0.0 of Keyple, the components of Keyple Java or Keyple C++ were released at the same time with the same version number.
 The porting in C++ of Keyple Java is based on the same Object-Oriented Model. The Keyple C++ implemntation provides the same core & Calypso feature, but the support of the distributed module isn't part of the scope, and for reader integration, only the PC/SC reader is provided.
 
@@ -106,7 +84,7 @@ The porting in C++ of Keyple Java is based on the same Object-Oriented Model. Th
   <tr>
     <td>2.0.0</td>
     <td>2021/10</td>
-    <td>planned for 2022/03</td>
+    <td>2022/07</td>
    <td><ul><li><b>Calypso terminal compliance</b>
    <ul><li>The <a href="https://keyple.org/components-java/core/keyple-service-java-lib/">Keyple Service</a> component implements the <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/">Reader API 1.0</a> and <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/">Card API 1.0</a> standardized for the reader layer of Calypso terminals. The implementation is compliant with the <a href="https://calypsonet.org/calypso-for-terminals/">reader layer requirements</a> for Calypso terminals</li>
    <li>The <a href="https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/">Calypso card extension</a> library in version 2.0.0 follows also the <a href="https://calypsonet.org/calypso-for-terminals/">Calypso layer requirements</a> defined for Calypso terminals, it implements the <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-api/">Calypso API 1.0</a>.</li></ul>
