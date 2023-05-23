@@ -803,8 +803,8 @@ Keyple Distributed - Asynchronous network implementation
 &lt;li>&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Distributed JSON API 1.0 User Guide</title><link>https://keyple.org/learn/user-guide/distributed-json-api-1-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/distributed-json-api-1-0/</guid><description>&lt;hr>
 &lt;style>
-span.text-secondary {
-padding-left: 0.8rem;
+table th:nth-child(1) {
+width: 9rem;
 }
 &lt;/style>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -838,35 +838,35 @@ For each terminal-server data exchange, the terminal sends to the server &lt;str
 containing a single JSON object&lt;/strong>.
 &lt;/div>
 &lt;/div>
-&lt;p>On its own initiative (e.g. following the detection of a card), the terminal sends a &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code> JSON
-object to the server to ask it to start a card transaction.
+&lt;p>On its own initiative (e.g. following the detection of a card), the terminal sends to the server a JSON object of type
+&lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> to ask it to start a card transaction.
 At this step, the terminal has the ability to tell the server which business service to run and also to provide
 additional custom input data.&lt;/p>
-&lt;p>As long as the transaction is not completed, the terminal receives from the server &lt;code>CMD&lt;/code> JSON objects containing
-the actions to be performed with the card or the terminal&amp;rsquo;s reader.
-The results are sent back to the server in &lt;code>RESP&lt;/code> JSON objects.&lt;/p>
-&lt;p>When the transaction is complete, instead of receiving a &lt;code>CMD&lt;/code> JSON object, the terminal receives a final
-&lt;code>END_REMOTE_SERVICE&lt;/code> JSON object from the server which optionally contains custom transaction output data.&lt;/p>
+&lt;p>As long as the transaction is not completed, the terminal receives from the server JSON objects of type &lt;strong>CMD&lt;/strong>
+containing the actions to be performed with the card or the terminal&amp;rsquo;s reader.
+The results are sent back to the server in JSON objects of type &lt;strong>RESP&lt;/strong>.&lt;/p>
+&lt;p>When the transaction is complete, instead of receiving from the server a JSON object of type &lt;strong>CMD&lt;/strong>, the terminal
+receives a final JSON object of type &lt;strong>END_REMOTE_SERVICE&lt;/strong> which optionally contains custom transaction output data.&lt;/p>
 &lt;hr>
 &lt;h2 id="data-format">Data format&lt;/h2>
 &lt;p>The Keyple transaction API uses 4 primary JSON object types, which are explained in detail in the sections below.&lt;/p>
-&lt;p>The &lt;code>action&lt;/code> field is present in all JSON objects and allows to determine the type of the object and especially the
-format of the &lt;code>body&lt;/code> field content.&lt;/p>
+&lt;p>The &lt;code>action&lt;/code> property is present in all JSON objects and allows to determine the type of the object and especially the
+format of the content of the &lt;code>body&lt;/code> property.&lt;/p>
 &lt;p>It can have the following values:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="#execute_remote_service">&lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#cmd">&lt;code>CMD&lt;/code>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#resp">&lt;code>RESP&lt;/code>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#end_remote_service">&lt;code>END_REMOTE_SERVICE&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#execute_remote_service">EXECUTE_REMOTE_SERVICE&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#cmd">CMD&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#resp">RESP&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#end_remote_service">END_REMOTE_SERVICE&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h3 id="execute_remote_service">EXECUTE_REMOTE_SERVICE&lt;/h3>
 &lt;p>The purpose of this JSON object, sent to the server, is to initiate the server-controlled card
 transaction.&lt;/p>
-&lt;p>By using the identification fields provided by the terminal in its subsequent responses, the server ensures
+&lt;p>By using the identification properties provided by the terminal in its subsequent responses, the server ensures
 consistent and accurate data flow management throughout the entire system.&lt;/p>
-&lt;p>Following the transmission of the &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code> request, the server will return a JSON object of type
-&lt;a href="#cmd">&lt;code>CMD&lt;/code>&lt;/a>, containing the first action to be performed with the card or the terminal&amp;rsquo;s reader, or
-&lt;a href="#end_remote_service">&lt;code>END_REMOTE_SERVICE&lt;/code>&lt;/a> to terminate the transaction.&lt;/p>
+&lt;p>Following the transmission of this JSON object, the server will return a JSON object of type &lt;a href="#cmd">CMD&lt;/a>, containing the
+first action to be performed with the card or the terminal&amp;rsquo;s reader, or of type
+&lt;a href="#end_remote_service">END_REMOTE_SERVICE&lt;/a> to terminate the transaction.&lt;/p>
 &lt;p>The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.&lt;/p>
 &lt;figure id="figure-keyple-distributed-json-api---execute_remote_service-class-diagram">
@@ -876,18 +876,55 @@ language of the target terminal.&lt;/p>
 Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram
 &lt;/figcaption>&lt;/figure>
 &lt;h4 id="executeremoteservicedata">ExecuteRemoteServiceData&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>action&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>body&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A JSON string containing a &lt;a href="#executeremoteservicebody">ExecuteRemoteServiceBody&lt;/a>.&lt;/li>
-&lt;li>&lt;code>clientNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The terminal identifier. It shall be unique per server.&lt;/li>
-&lt;li>&lt;code>localReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the local reader used to perform the card transaction. It shall be unique per terminal.&lt;/li>
-&lt;li>&lt;code>sessionId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The session identifier. It shall be unique per card transaction.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>action&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>body&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#executeremoteservicebody">ExecuteRemoteServiceBody&lt;/a> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The terminal identifier. It shall be unique per server.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>localReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the local reader used to perform the card transaction. It shall be unique per terminal.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The session identifier. It shall be unique per card transaction.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h4 id="executeremoteservicebody">ExecuteRemoteServiceBody&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>serviceId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the business service to be executed by the server. It&amp;rsquo;s a naming convention between the client and the server.&lt;/li>
-&lt;li>&lt;code>inputData&lt;/code> &lt;span class="text-secondary">&lt;strong>object (optional)&lt;/strong>&lt;/span>&lt;br>An optional object containing additional data to be provided to the remote business service. Its content is a convention between the client and the server.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>serviceId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the business service to be executed by the server. It&amp;rsquo;s a naming convention between the client and the server.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>inputData&lt;/code>&lt;/td>
+&lt;td>&lt;strong>object (optional)&lt;/strong>&lt;br>An optional object containing additional data to be provided to the remote business service. Its content is a convention between the client and the server.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h4 id="example">Example&lt;/h4>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('4', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-json" id="code-4">{
@@ -901,18 +938,18 @@ Keyple Distributed JSON API - EXECUTE_REMOTE_SERVICE class diagram
 &lt;h3 id="cmd">CMD&lt;/h3>
 &lt;p>The purpose of this JSON object, received from the server, is to ask the terminal to perform a specific service with the
 card or the terminal&amp;rsquo;s reader.&lt;/p>
-&lt;p>The service input data is defined in the &lt;code>body&lt;/code> field as a string containing a JSON object.&lt;/p>
+&lt;p>The service input data is defined in the &lt;code>body&lt;/code> property as a string containing a JSON object.&lt;/p>
 &lt;p>The terminal must therefore first parse this string to extract the corresponding JSON object.&lt;/p>
-&lt;p>The &lt;code>service&lt;/code> field identifies the service to be executed and can take one of the following values:&lt;/p>
+&lt;p>The &lt;code>service&lt;/code> property identifies the service to be executed and can take one of the following values:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="#is_contactless_cmd">&lt;code>IS_CONTACTLESS&lt;/code>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#is_card_present_cmd">&lt;code>IS_CARD_PRESENT&lt;/code>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#transmit_card_selection_requests_cmd">&lt;code>TRANSMIT_CARD_SELECTION_REQUESTS&lt;/code>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#transmit_card_request_cmd">&lt;code>TRANSMIT_CARD_REQUEST&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#is_contactless_cmd">IS_CONTACTLESS&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#is_card_present_cmd">IS_CARD_PRESENT&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#transmit_card_selection_requests_cmd">TRANSMIT_CARD_SELECTION_REQUESTS&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#transmit_card_request_cmd">TRANSMIT_CARD_REQUEST&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>The &lt;code>parameters&lt;/code> field is an optional JSON object and is specific to each service (see below for details).&lt;/p>
-&lt;p>After receiving a &lt;code>CMD&lt;/code> JSON object, the terminal will return to the server a &lt;code>RESP&lt;/code> JSON object containing the result
-of the operation.&lt;/p>
+&lt;p>The &lt;code>parameters&lt;/code> property is an optional JSON object and is specific to each service (see below for details).&lt;/p>
+&lt;p>After receiving a JSON object of type &lt;strong>CMD&lt;/strong>, the terminal will return to the server a JSON object of type &lt;strong>RESP&lt;/strong>
+containing the result of the operation.&lt;/p>
 &lt;p>The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.&lt;/p>
 &lt;figure id="figure-keyple-distributed-json-api---cmd-class-diagram">
@@ -925,22 +962,62 @@ Keyple Distributed JSON API - CMD class diagram
 &lt;h3 id="is_contactless_cmd">    IS_CONTACTLESS&lt;/h3>
 &lt;p>This service allows the server to know if the reader is in contact or contactless mode.&lt;/p>
 &lt;p>There are no parameters for this service.&lt;/p>
-&lt;p>Upon receiving this request, the terminal must return a &lt;code>RESP&lt;/code> &lt;a href="#is_contactless_resp">IS_CONTACTLESS&lt;/a> JSON object
-containing a boolean set to true if the reader is a contactless type.&lt;/p>
+&lt;p>Upon receiving this request, the terminal must return to the server a JSON object of type
+&lt;a href="#is_contactless_resp">RESP/IS_CONTACTLESS&lt;/a> containing a boolean set to true if the reader is a contactless type.&lt;/p>
 &lt;h4 id="json-structure">JSON structure&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>action&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>CMD&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>body&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A JSON string containing a &lt;a href="#iscontactlesscmdbody">IsContactlessCmdBody&lt;/a>.&lt;/li>
-&lt;li>&lt;code>clientNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The terminal identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>localReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the local reader as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>remoteReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the virtual remote reader linked to the local reader.&lt;/li>
-&lt;li>&lt;code>serverNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The server identifier.&lt;/li>
-&lt;li>&lt;code>sessionId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The current transaction identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>action&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>CMD&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>body&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#iscontactlesscmdbody">IsContactlessCmdBody&lt;/a> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The terminal identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>localReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the local reader as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>remoteReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the virtual remote reader linked to the local reader.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>serverNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The server identifier.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The current transaction identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="iscontactlesscmdbody">IsContactlessCmdBody&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>service&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>IS_CONTACTLESS&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>service&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>IS_CONTACTLESS&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="example-1">Example&lt;/h5>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('6', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-json" id="code-6">[
@@ -958,22 +1035,62 @@ containing a boolean set to true if the reader is a contactless type.&lt;/p>
 &lt;h3 id="is_card_present_cmd">    IS_CARD_PRESENT&lt;/h3>
 &lt;p>This service allows the server to know if a card is inserted in the reader.&lt;/p>
 &lt;p>There are no parameters for this service.&lt;/p>
-&lt;p>Upon receiving this request, the terminal must return a &lt;code>RESP&lt;/code> &lt;a href="#is_card_present_resp">IS_CARD_PRESENT&lt;/a> JSON object
-containing a boolean set to true if a card is present.&lt;/p>
+&lt;p>Upon receiving this request, the terminal must return to the server a JSON object of type
+&lt;a href="#is_card_present_resp">RESP/IS_CARD_PRESENT&lt;/a> containing a boolean set to true if a card is present.&lt;/p>
 &lt;h4 id="json-structure-1">JSON structure&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>action&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>CMD&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>body&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A JSON string containing a &lt;a href="#iscardpresentcmdbody">IsCardPresentCmdBody&lt;/a>.&lt;/li>
-&lt;li>&lt;code>clientNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The terminal identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>localReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the local reader as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>remoteReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the virtual remote reader linked to the local reader.&lt;/li>
-&lt;li>&lt;code>serverNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The server identifier.&lt;/li>
-&lt;li>&lt;code>sessionId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The current transaction identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>action&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>CMD&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>body&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#iscardpresentcmdbody">IsCardPresentCmdBody&lt;/a> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The terminal identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>localReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the local reader as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>remoteReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the virtual remote reader linked to the local reader.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>serverNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The server identifier.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The current transaction identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="iscardpresentcmdbody">IsCardPresentCmdBody&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>service&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>IS_CARD_PRESENT&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>service&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>IS_CARD_PRESENT&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="example-2">Example&lt;/h5>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('7', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-json" id="code-7">[
@@ -1023,54 +1140,185 @@ the scenario.&lt;/p>
 &lt;p>For each selection case, the terminal must determine which type of filter to apply and apply it: protocol, power-on
 data, AID.&lt;/p>
 &lt;p>If all the defined filters are satisfied, the terminal must send any additional APDUs.&lt;/p>
-&lt;p>The terminal must then send the response to the server in a &lt;code>RESP&lt;/code>
-&lt;a href="#transmit_card_selection_requests_resp">TRANSMIT_CARD_SELECTION_REQUESTS&lt;/a> JSON object.&lt;/p>
+&lt;p>The terminal must then send the response to the server in a JSON object of type
+&lt;a href="#transmit_card_selection_requests_resp">RESP/TRANSMIT_CARD_SELECTION_REQUESTS&lt;/a>.&lt;/p>
 &lt;h4 id="json-structure-2">JSON structure&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>action&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>CMD&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>body&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A JSON string containing a &lt;a href="#transmitcardselectionrequestscmdbody">TransmitCardSelectionRequestsCmdBody&lt;/a>.&lt;/li>
-&lt;li>&lt;code>clientNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The terminal identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>localReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the local reader as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>remoteReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the virtual remote reader linked to the local reader.&lt;/li>
-&lt;li>&lt;code>serverNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The server identifier.&lt;/li>
-&lt;li>&lt;code>sessionId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The current transaction identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>action&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>CMD&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>body&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#transmitcardselectionrequestscmdbody">TransmitCardSelectionRequestsCmdBody&lt;/a> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The terminal identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>localReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the local reader as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>remoteReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the virtual remote reader linked to the local reader.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>serverNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The server identifier.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The current transaction identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="transmitcardselectionrequestscmdbody">TransmitCardSelectionRequestsCmdBody&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>service&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>TRANSMIT_CARD_SELECTION_REQUESTS&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>parameters&lt;/code> &lt;span class="text-secondary">&lt;a href="#transmitcardselectionrequestsparameters">TransmitCardSelectionRequestsParameters&lt;/a>&lt;/span>&lt;br>The card selection parameters.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>service&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>TRANSMIT_CARD_SELECTION_REQUESTS&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>parameters&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#transmitcardselectionrequestsparameters">TransmitCardSelectionRequestsParameters&lt;/a>&lt;br>The card selection parameters.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="transmitcardselectionrequestsparameters">TransmitCardSelectionRequestsParameters&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>cardSelectionRequests&lt;/code> &lt;span class="text-secondary">&lt;a href="#cardselectionrequest">CardSelectionRequest&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;/span>&lt;br>A non-empty array.&lt;/li>
-&lt;li>&lt;code>multiSelectionProcessing&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>- &amp;ldquo;&lt;strong>FIRST_MATCH&lt;/strong>&amp;quot;: the selection process stops as soon as a selection case is successful.&lt;br>- &amp;ldquo;&lt;strong>PROCESS_ALL&lt;/strong>&amp;quot;: the selection process performs all the selection cases provided (the logical channel is closed at the end of the selection case).&lt;/li>
-&lt;li>&lt;code>channelControl&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>- &amp;ldquo;&lt;strong>KEEP_OPEN&lt;/strong>&amp;quot;: leaves the physical channel open.&lt;br>- &amp;ldquo;&lt;strong>CLOSE_AFTER&lt;/strong>&amp;quot;: terminates communication with the card.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>cardSelectionRequests&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#cardselectionrequest">CardSelectionRequest&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;br>A non-empty array.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>multiSelectionProcessing&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>FIRST_MATCH&lt;/strong>&amp;quot;: the selection process stops as soon as a selection case is successful.&lt;br>- &amp;ldquo;&lt;strong>PROCESS_ALL&lt;/strong>&amp;quot;: the selection process performs all the selection cases provided (the logical channel is closed at the end of the selection case).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>channelControl&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>KEEP_OPEN&lt;/strong>&amp;quot;: leaves the physical channel open.&lt;br>- &amp;ldquo;&lt;strong>CLOSE_AFTER&lt;/strong>&amp;quot;: terminates communication with the card.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="cardselectionrequest">CardSelectionRequest&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>cardSelector&lt;/code> &lt;span class="text-secondary">&lt;a href="#cardselector">CardSelector&lt;/a>&lt;/span>&lt;br>The card selection criteria.&lt;/li>
-&lt;li>&lt;code>cardRequest&lt;/code> &lt;span class="text-secondary">&lt;a href="#cardrequest">CardRequest&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;/span>&lt;br>An optional object containing a list of APDU requests to be sent after a successful card selection.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>cardSelector&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#cardselector">CardSelector&lt;/a>&lt;br>The card selection criteria.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>cardRequest&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#cardrequest">CardRequest&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>An optional object containing a list of APDU requests to be sent after a successful card selection.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="cardselector">CardSelector&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>cardProtocol&lt;/code> &lt;span class="text-secondary">&lt;strong>string (optional)&lt;/strong>&lt;/span>&lt;br>An optional name of the targeted card protocol.&lt;/li>
-&lt;li>&lt;code>powerOnDataRegex&lt;/code> &lt;span class="text-secondary">&lt;strong>string (optional)&lt;/strong>&lt;/span>&lt;br>An optional regex to use to filter the power-on data.&lt;/li>
-&lt;li>&lt;code>aid&lt;/code> &lt;span class="text-secondary">&lt;strong>string (optional)&lt;/strong>&lt;/span>&lt;br>An optional Application Identifier (AID) as an hexadecimal string to be sent with ISO7816-4 &amp;ldquo;Select Application&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>fileOccurrence&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>&amp;quot;&lt;strong>FIRST&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>LAST&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>NEXT&lt;/strong>&amp;rdquo; or &amp;ldquo;&lt;strong>PREVIOUS&lt;/strong>&amp;rdquo; according to the ISO7816-4 standard (only relevant when AID is set).&lt;/li>
-&lt;li>&lt;code>fileControlInformation&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>&amp;quot;&lt;strong>FCI&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>FCP&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>FMD&lt;/strong>&amp;rdquo; or &amp;ldquo;&lt;strong>NO_RESPONSE&lt;/strong>&amp;rdquo; according to the ISO7816-4 standard (only relevant when AID is set).&lt;/li>
-&lt;li>&lt;code>successfulSelectionStatusWords&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong> [ ]&lt;br>A non-empty array of 2-byte hexadecimal strings containing the status word of the &amp;ldquo;Select Application&amp;rdquo; APDU command to be considered successful (only relevant when AID is set).&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>cardProtocol&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string (optional)&lt;/strong>&lt;br>An optional name of the targeted card protocol.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>powerOnDataRegex&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string (optional)&lt;/strong>&lt;br>An optional regex to use to filter the power-on data.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>aid&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string (optional)&lt;/strong>&lt;br>An optional Application Identifier (AID) as an hexadecimal string to be sent with ISO7816-4 &amp;ldquo;Select Application&amp;rdquo;.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>fileOccurrence&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Can have one of the following values:&lt;br>&amp;quot;&lt;strong>FIRST&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>LAST&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>NEXT&lt;/strong>&amp;rdquo; or &amp;ldquo;&lt;strong>PREVIOUS&lt;/strong>&amp;rdquo; according to the ISO7816-4 standard (only relevant when AID is set).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>fileControlInformation&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Can have one of the following values:&lt;br>&amp;quot;&lt;strong>FCI&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>FCP&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>FMD&lt;/strong>&amp;rdquo; or &amp;ldquo;&lt;strong>NO_RESPONSE&lt;/strong>&amp;rdquo; according to the ISO7816-4 standard (only relevant when AID is set).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>successfulSelectionStatusWords&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string [ ]&lt;/strong>&lt;br>A non-empty array of 2-byte hexadecimal strings containing the status word of the &amp;ldquo;Select Application&amp;rdquo; APDU command to be considered successful (only relevant when AID is set).&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="cardrequest">CardRequest&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>apduRequests&lt;/code> &lt;span class="text-secondary">&lt;a href="#apdurequest">ApduRequest&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;/span>&lt;br>A non-empty array of APDU requests.&lt;/li>
-&lt;li>&lt;code>isStatusCodesVerificationEnabled&lt;/code> &lt;span class="text-secondary">&lt;strong>boolean&lt;/strong>&lt;/span>&lt;br>&lt;code>true&lt;/code> if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>apduRequests&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#apdurequest">ApduRequest&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;br>A non-empty array of APDU requests.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>isStatusCodesVerificationEnabled&lt;/code>&lt;/td>
+&lt;td>&lt;strong>boolean&lt;/strong>&lt;br>Set to &amp;ldquo;&lt;strong>true&lt;/strong>&amp;rdquo; if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="apdurequest">ApduRequest&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>apdu&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>An hexadecimal string containing the APDU to transmit to the card.&lt;/li>
-&lt;li>&lt;code>successfulStatusWords&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong> [ ]&lt;br>A non-empty array of 2-byte hexadecimal strings containing the status word to be considered successful.&lt;/li>
-&lt;li>&lt;code>info&lt;/code> &lt;span class="text-secondary">&lt;strong>string (optional)&lt;/strong>&lt;/span>&lt;br>An optional textual information about the command.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>apdu&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>An hexadecimal string containing the APDU to transmit to the card.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>successfulStatusWords&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string [ ]&lt;/strong>&lt;br>A non-empty array of 2-byte hexadecimal strings containing the status word to be considered successful.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>info&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string (optional)&lt;/strong>&lt;br>An optional textual information about the command.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="example-3">Example&lt;/h5>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('8', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-json" id="code-8">[
@@ -1086,40 +1334,128 @@ data, AID.&lt;/p>
 ]&lt;/code>&lt;/pre>
 &lt;h3 id="transmit_card_request_cmd">    TRANSMIT_CARD_REQUEST&lt;/h3>
 &lt;p>The role of this service is to perform APDU exchanges with the card. The received answers are sent back to the
-server in a &lt;code>RESP&lt;/code> &lt;a href="#transmit_card_request_resp">TRANSMIT_CARD_REQUEST&lt;/a> JSON object.&lt;/p>
+server in a JSON object of type &lt;a href="#transmit_card_request_resp">RESP/TRANSMIT_CARD_REQUEST&lt;/a> .&lt;/p>
 &lt;p>The terminal must iterate over the list of APDUs present in the card request and proceeds to close the physical channel
 if requested.&lt;/p>
 &lt;h4 id="json-structure-3">JSON structure&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>action&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>CMD&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>body&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A JSON string containing a &lt;a href="#transmitcardrequestcmdbody">TransmitCardRequestCmdBody&lt;/a>.&lt;/li>
-&lt;li>&lt;code>clientNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The terminal identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>localReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the local reader as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>remoteReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the virtual remote reader linked to the local reader.&lt;/li>
-&lt;li>&lt;code>serverNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The server identifier.&lt;/li>
-&lt;li>&lt;code>sessionId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The current transaction identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>action&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>CMD&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>body&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#transmitcardrequestcmdbody">TransmitCardRequestCmdBody&lt;/a> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The terminal identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>localReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the local reader as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>remoteReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the virtual remote reader linked to the local reader.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>serverNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The server identifier.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The current transaction identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="transmitcardrequestcmdbody">TransmitCardRequestCmdBody&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>service&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>TRANSMIT_CARD_REQUEST&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>parameters&lt;/code> &lt;span class="text-secondary">&lt;a href="#transmitcardrequestparameters">TransmitCardRequestParameters&lt;/a>&lt;/span>&lt;br>The card request parameters.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>service&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>TRANSMIT_CARD_REQUEST&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>parameters&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#transmitcardrequestparameters">TransmitCardRequestParameters&lt;/a>&lt;br>The card request parameters.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="transmitcardrequestparameters">TransmitCardRequestParameters&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>cardRequest&lt;/code> &lt;span class="text-secondary">&lt;a href="#cardrequest-1">CardRequest&lt;/a>&lt;/span>&lt;br>An object containing the list of APDU requests to be sent.&lt;/li>
-&lt;li>&lt;code>channelControl&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>- &amp;ldquo;&lt;strong>KEEP_OPEN&lt;/strong>&amp;quot;: leaves the physical channel open.&lt;br/>- &amp;ldquo;&lt;strong>CLOSE_AFTER&lt;/strong>&amp;quot;: terminates communication with the card.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>cardRequest&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#cardrequest-1">CardRequest&lt;/a>&lt;br>An object containing the list of APDU requests to be sent.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>channelControl&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>KEEP_OPEN&lt;/strong>&amp;quot;: leaves the physical channel open.&lt;br>- &amp;ldquo;&lt;strong>CLOSE_AFTER&lt;/strong>&amp;quot;: terminates communication with the card.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="cardrequest-1">CardRequest&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>apduRequests&lt;/code> &lt;span class="text-secondary">&lt;a href="#apdurequest-1">ApduRequest&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;/span>&lt;br>A non-empty array of APDU requests.&lt;/li>
-&lt;li>&lt;code>isStatusCodesVerificationEnabled&lt;/code> &lt;span class="text-secondary">&lt;strong>boolean&lt;/strong>&lt;/span>&lt;br>&lt;code>true&lt;/code> if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>apduRequests&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#apdurequest-1">ApduRequest&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;br>A non-empty array of APDU requests.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>isStatusCodesVerificationEnabled&lt;/code>&lt;/td>
+&lt;td>&lt;strong>boolean&lt;/strong>&lt;br>Set to &amp;ldquo;&lt;strong>true&lt;/strong>&amp;rdquo; if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="apdurequest-1">ApduRequest&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>apdu&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>An hexadecimal string containing the APDU to transmit to the card.&lt;/li>
-&lt;li>&lt;code>successfulStatusWords&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong> [ ]&lt;br>A non-empty array of 2-byte hexadecimal strings containing the status word to be considered successful.&lt;/li>
-&lt;li>&lt;code>info&lt;/code> &lt;span class="text-secondary">&lt;strong>string (optional)&lt;/strong>&lt;/span>&lt;br>An optional textual information about the command.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>apdu&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>An hexadecimal string containing the APDU to transmit to the card.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>successfulStatusWords&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string [ ]&lt;/strong>&lt;br>A non-empty array of 2-byte hexadecimal strings containing the status word to be considered successful.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>info&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string (optional)&lt;/strong>&lt;br>An optional textual information about the command.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="example-4">Example&lt;/h5>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('9', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-json" id="code-9">[
@@ -1137,20 +1473,21 @@ if requested.&lt;/p>
 &lt;h3 id="resp">RESP&lt;/h3>
 &lt;p>This JSON object, sent by the terminal to the server, is intended to transmit to the server the result of the specific
 service previously performed on the card or the terminal&amp;rsquo;s reader.&lt;/p>
-&lt;p>The service output data must be formatted in the &lt;code>body&lt;/code> field as a string containing a JSON object.&lt;/p>
-&lt;p>The &lt;code>service&lt;/code> field identifies the service that was executed and takes one of the following values:&lt;/p>
+&lt;p>The service output data must be formatted in the &lt;code>body&lt;/code> property as a string containing a JSON object.&lt;/p>
+&lt;p>The &lt;code>service&lt;/code> property identifies the service that was executed and takes one of the following values:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="#is_contactless_resp">&lt;code>IS_CONTACTLESS&lt;/code>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#is_card_present_resp">&lt;code>IS_CARD_PRESENT&lt;/code>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#transmit_card_selection_requests_resp">&lt;code>TRANSMIT_CARD_SELECTION_REQUESTS&lt;/code>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#transmit_card_request_resp">&lt;code>TRANSMIT_CARD_REQUEST&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#is_contactless_resp">IS_CONTACTLESS&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#is_card_present_resp">IS_CARD_PRESENT&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#transmit_card_selection_requests_resp">TRANSMIT_CARD_SELECTION_REQUESTS&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#transmit_card_request_resp">TRANSMIT_CARD_REQUEST&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>The &lt;code>result&lt;/code> field is a JSON object that is present if the service was successful and its type is specific to each
+&lt;p>The &lt;code>result&lt;/code> property is a JSON object that is present if the service was successful and its type is specific to each
 service (see below for more details).&lt;/p>
-&lt;p>The &lt;code>error&lt;/code> field is a JSON object that is present if an error occurred during the execution of the service (see below
-for more details).&lt;/p>
-&lt;p>Following the transmission of the &lt;code>RESP&lt;/code> request, the server will return a JSON object of type &lt;a href="#cmd">&lt;code>CMD&lt;/code>&lt;/a>,
-containing the next action to be performed, or &lt;a href="#end_remote_service">&lt;code>END_REMOTE_SERVICE&lt;/code>&lt;/a> to terminate the transaction.&lt;/p>
+&lt;p>The &lt;code>error&lt;/code> property is a JSON object that is present if an error occurred during the execution of the service (see
+below for more details).&lt;/p>
+&lt;p>Following the transmission of the JSON object of type &lt;strong>RESP&lt;/strong>, the server will return a JSON object of type
+&lt;a href="#cmd">CMD&lt;/a>, containing the next action to be performed, or of type &lt;a href="#end_remote_service">END_REMOTE_SERVICE&lt;/a>
+to terminate the transaction.&lt;/p>
 &lt;p>The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.&lt;/p>
 &lt;figure id="figure-keyple-distributed-json-api---resp-class-diagram">
@@ -1161,29 +1498,89 @@ Keyple Distributed JSON API - RESP class diagram
 &lt;/figcaption>&lt;/figure>
 &lt;hr>
 &lt;h3 id="is_contactless_resp">    IS_CONTACTLESS&lt;/h3>
-&lt;p>This JSON object, sent by the terminal to the server in response to &lt;code>CMD&lt;/code> &lt;a href="#is_contactless_cmd">&lt;code>IS_CONTACTLESS&lt;/code>&lt;/a>, is
+&lt;p>This JSON object, sent by the terminal to the server in response to &lt;a href="#is_contactless_cmd">CMD/IS_CONTACTLESS&lt;/a>, is
 intended to indicate to the server if the reader is contactless.&lt;/p>
 &lt;h4 id="json-structure-4">JSON structure&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>action&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>RESP&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>body&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A JSON string containing a &lt;a href="#iscontactlessrespbody">IsContactlessRespBody&lt;/a>.&lt;/li>
-&lt;li>&lt;code>clientNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The terminal identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>localReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the local reader as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>remoteReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the virtual remote reader linked to the local reader as provided by &lt;code>CMD&lt;/code>.&lt;/li>
-&lt;li>&lt;code>serverNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The server identifier as provided by &lt;code>CMD&lt;/code>.&lt;/li>
-&lt;li>&lt;code>sessionId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The current transaction identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>action&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>RESP&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>body&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#iscontactlessrespbody">IsContactlessRespBody&lt;/a> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The terminal identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>localReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the local reader as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>remoteReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the virtual remote reader linked to the local reader as provided by the last &lt;strong>CMD&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>serverNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The server identifier as provided by the last &lt;strong>CMD&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The current transaction identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="iscontactlessrespbody">IsContactlessRespBody&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>service&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>IS_CONTACTLESS&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>result&lt;/code> &lt;span class="text-secondary">&lt;strong>boolean (optional)&lt;/strong>&lt;/span>&lt;br>&lt;code>true&lt;/code> if the reader is contactless (absent in case of error).&lt;/li>
-&lt;li>&lt;code>error&lt;/code> &lt;span class="text-secondary">&lt;a href="#is_contactless_resp_error">Error&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;/span>&lt;br>The error description (absent in case of success).&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>service&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>IS_CONTACTLESS&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>result&lt;/code>&lt;/td>
+&lt;td>&lt;strong>boolean (optional)&lt;/strong>&lt;br>Set to &amp;ldquo;&lt;strong>true&lt;/strong>&amp;rdquo; if the reader is contactless (absent in case of error).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>error&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#is_contactless_resp_error">Error&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>The error description (absent in case of success).&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="is_contactless_resp_error">Error&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>code&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Free value.&lt;/li>
-&lt;li>&lt;code>message&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The error description.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>code&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Free value.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>message&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The error description.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h4 id="example-5">Example&lt;/h4>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('11', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-json" id="code-11">{
@@ -1197,28 +1594,89 @@ intended to indicate to the server if the reader is contactless.&lt;/p>
 }&lt;/code>&lt;/pre>
 &lt;hr>
 &lt;h3 id="is_card_present_resp">    IS_CARD_PRESENT&lt;/h3>
-&lt;p>This JSON object, sent by the terminal to the server, is intended to indicate to the server if a card is present.&lt;/p>
+&lt;p>This JSON object, sent by the terminal to the server in response to &lt;a href="#is_card_present_cmd">CMD/IS_CARD_PRESENT&lt;/a>,
+is intended to indicate to the server if a card is present.&lt;/p>
 &lt;h4 id="json-structure-5">JSON structure&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>action&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The value is &amp;ldquo;&lt;strong>RESP&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>body&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A JSON string containing a &lt;a href="#iscardpresentrespbody">IsCardPresentRespBody&lt;/a>.&lt;/li>
-&lt;li>&lt;code>clientNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The terminal identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>localReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the local reader as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>remoteReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the virtual remote reader linked to the local reader as provided by &lt;code>CMD&lt;/code>.&lt;/li>
-&lt;li>&lt;code>serverNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The server identifier as provided by &lt;code>CMD&lt;/code>.&lt;/li>
-&lt;li>&lt;code>sessionId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The current transaction identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>action&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The value is &amp;ldquo;&lt;strong>RESP&lt;/strong>&amp;rdquo;.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>body&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#iscardpresentrespbody">IsCardPresentRespBody&lt;/a> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The terminal identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>localReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the local reader as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>remoteReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the virtual remote reader linked to the local reader as provided by the last &lt;strong>CMD&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>serverNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The server identifier as provided by the last &lt;strong>CMD&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The current transaction identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="iscardpresentrespbody">IsCardPresentRespBody&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>service&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>IS_CARD_PRESENT&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>result&lt;/code> &lt;span class="text-secondary">&lt;strong>boolean&lt;/strong>&lt;/span>&lt;br>true if a card is present.&lt;/li>
-&lt;li>&lt;code>error&lt;/code> &lt;span class="text-secondary">&lt;a href="#is_card_present_resp_error">Error&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;/span>&lt;br>The error description (absent in case of success).&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>service&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>IS_CARD_PRESENT&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>result&lt;/code>&lt;/td>
+&lt;td>&lt;strong>boolean&lt;/strong>&lt;br>Set to &amp;ldquo;&lt;strong>true&lt;/strong>&amp;rdquo; if a card is present (absent in case of error).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>error&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#is_card_present_resp_error">Error&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>The error description (absent in case of success).&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="is_card_present_resp_error">Error&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>code&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the reader communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the card communication link.&lt;/li>
-&lt;li>&lt;code>message&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The error description. |&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>code&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the reader communication link,&lt;br>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the card communication link.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>message&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The error description.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h4 id="example-6">Example&lt;/h4>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('12', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-json" id="code-12">{
@@ -1232,46 +1690,155 @@ intended to indicate to the server if the reader is contactless.&lt;/p>
 }&lt;/code>&lt;/pre>
 &lt;hr>
 &lt;h3 id="transmit_card_selection_requests_resp">    TRANSMIT_CARD_SELECTION_REQUESTS&lt;/h3>
-&lt;p>This JSON object, sent by the terminal to the server, is intended to transmit to the server the result of the execution
-of the selection scenario.&lt;/p>
+&lt;p>This JSON object, sent by the terminal to the server in response to
+&lt;a href="#transmit_card_selection_requests_cmd">CMD/TRANSMIT_CARD_SELECTION_REQUESTS&lt;/a>,
+is intended to transmit to the server the result of the execution of the selection scenario.&lt;/p>
 &lt;h4 id="json-structure-6">JSON structure&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>action&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>RESP&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>body&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A JSON string containing a &lt;a href="#transmitcardselectionrequestsrespbody">TransmitCardSelectionRequestsRespBody&lt;/a>.&lt;/li>
-&lt;li>&lt;code>clientNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The terminal identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>localReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the local reader as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>remoteReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the virtual remote reader linked to the local reader as provided by &lt;code>CMD&lt;/code>.&lt;/li>
-&lt;li>&lt;code>serverNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The server identifier as provided by &lt;code>CMD&lt;/code>.&lt;/li>
-&lt;li>&lt;code>sessionId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The current transaction identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>action&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>RESP&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>body&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#transmitcardselectionrequestsrespbody">TransmitCardSelectionRequestsRespBody&lt;/a> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The terminal identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>localReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the local reader as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>remoteReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the virtual remote reader linked to the local reader as provided by the last &lt;strong>CMD&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>serverNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The server identifier as provided by the last &lt;strong>CMD&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The current transaction identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="transmitcardselectionrequestsrespbody">TransmitCardSelectionRequestsRespBody&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>service&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>TRANSMIT_CARD_SELECTION_REQUESTS&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>result&lt;/code> &lt;span class="text-secondary">&lt;a href="#cardselectionresponse">CardSelectionResponse&lt;/a> &lt;strong>[ ] (optional)&lt;/strong>&lt;/span>&lt;br>A non-empty list containing at most as many responses as there are selection cases (absent in case of error).&lt;/li>
-&lt;li>&lt;code>error&lt;/code> &lt;span class="text-secondary">&lt;a href="#transmit_card_selection_requests_resp_error">Error&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;/span>&lt;br>The error description (absent in case of success).&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>service&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>TRANSMIT_CARD_SELECTION_REQUESTS&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>result&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#cardselectionresponse">CardSelectionResponse&lt;/a> &lt;strong>[ ] (optional)&lt;/strong>&lt;br>A non-empty list containing at most as many responses as there are selection cases (absent in case of error).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>error&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#transmit_card_selection_requests_resp_error">Error&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>The error description (absent in case of success).&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="cardselectionresponse">CardSelectionResponse&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>hasMatched&lt;/code> &lt;span class="text-secondary">&lt;strong>boolean&lt;/strong>&lt;/span>&lt;br>&lt;code>true&lt;/code> if the associated selection case has matched.&lt;/li>
-&lt;li>&lt;code>powerOnData&lt;/code> &lt;span class="text-secondary">&lt;strong>string (optional)&lt;/strong>&lt;/span>&lt;br>Data from the initialization phase of the communication with the card. E.g. the Answer To Reset (ATR) in the case of a contact card or any other string informing about the low level communication. This string can be used for filtering by power-on data defined in the command (absent if the protocol filter failed).&lt;/li>
-&lt;li>&lt;code>selectApplicationResponse&lt;/code> &lt;span class="text-secondary">&lt;a href="#apduresponse">&lt;code>ApduResponse&lt;/code>&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;/span>&lt;br>Data received in response to the ISO7816-4 &amp;ldquo;Select Application&amp;rdquo; command (absent if no AID filtering).&lt;/li>
-&lt;li>&lt;code>cardResponse&lt;/code> &lt;span class="text-secondary">&lt;a href="#cardresponse">&lt;code>CardResponse&lt;/code>&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;/span>&lt;br>Data received in response to additional commands (absent if no additional commands were provided).&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>hasMatched&lt;/code>&lt;/td>
+&lt;td>&lt;strong>boolean&lt;/strong>&lt;br>Set to &amp;ldquo;&lt;strong>true&lt;/strong>&amp;rdquo; if the associated selection case has matched.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>powerOnData&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string (optional)&lt;/strong>&lt;br>Data from the initialization phase of the communication with the card. E.g. the Answer To Reset (ATR) in the case of a contact card or any other string informing about the low level communication. This string can be used for filtering by power-on data defined in the command (absent if the protocol filter failed).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>selectApplicationResponse&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#apduresponse">ApduResponse&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>Data received in response to the ISO7816-4 &amp;ldquo;Select Application&amp;rdquo; command (absent if no AID filtering).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>cardResponse&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#cardresponse">CardResponse&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>Data received in response to additional commands (absent if no additional commands were provided).&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="cardresponse">CardResponse&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>isLogicalChannelOpen&lt;/code> &lt;span class="text-secondary">&lt;strong>boolean&lt;/strong>&lt;/span>&lt;br>&lt;code>true&lt;/code> if the logical channel is left open.&lt;/li>
-&lt;li>&lt;code>apduResponses&lt;/code> &lt;span class="text-secondary">&lt;a href="#apduresponse">&lt;code>ApduResponse&lt;/code>&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;/span>&lt;br>A list containing the APDU responses for each request in the command.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>isLogicalChannelOpen&lt;/code>&lt;/td>
+&lt;td>&lt;strong>boolean&lt;/strong>&lt;br>Set to &amp;ldquo;&lt;strong>true&lt;/strong>&amp;rdquo; if the logical channel is left open.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>apduResponses&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#apduresponse">ApduResponse&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;br>A list containing the APDU responses for each request in the command.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="apduresponse">ApduResponse&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>apdu&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>An hexadecimal string containing the APDU received from the card (including the status word).&lt;/li>
-&lt;li>&lt;code>statusWord&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A 2-byte hexadecimal string containing the status word of the received APDU.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>apdu&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>An hexadecimal string containing the APDU received from the card (including the status word).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>statusWord&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A 2-byte hexadecimal string containing the status word of the received APDU.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="transmit_card_selection_requests_resp_error">Error&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>code&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the reader communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the card communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMAND_ERROR&lt;/strong>&amp;quot;: if the card returned a unexpected status word.&lt;/li>
-&lt;li>&lt;code>message&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The error description.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>code&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the reader communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the card communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMAND_ERROR&lt;/strong>&amp;quot;: if the card returned an unexpected status word.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>message&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The error description.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="example-7">Example&lt;/h5>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('13', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-json" id="code-13">{
@@ -1284,39 +1851,128 @@ of the selection scenario.&lt;/p>
 &amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;
 }&lt;/code>&lt;/pre>
 &lt;h3 id="transmit_card_request_resp">    TRANSMIT_CARD_REQUEST&lt;/h3>
-&lt;p>This JSON object, sent by the terminal to the server, is intended to transmit to the server the result of the execution
-of a card request.&lt;/p>
+&lt;p>This JSON object, sent by the terminal to the server in response to
+&lt;a href="#transmit_card_request_cmd">CMD/TRANSMIT_CARD_REQUEST&lt;/a>,
+is intended to transmit to the server the result of the execution of a card request.&lt;/p>
 &lt;h4 id="json-structure-7">JSON structure&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>action&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>RESP&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>body&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A JSON string containing a &lt;a href="#transmitcardrequestrespbody">TransmitCardRequestRespBody&lt;/a>.&lt;/li>
-&lt;li>&lt;code>clientNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The terminal identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>localReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the local reader as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>remoteReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the virtual remote reader linked to the local reader as provided by &lt;code>CMD&lt;/code>.&lt;/li>
-&lt;li>&lt;code>serverNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The server identifier as provided by &lt;code>CMD&lt;/code>.&lt;/li>
-&lt;li>&lt;code>sessionId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The current transaction identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>action&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>RESP&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>body&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#transmitcardrequestrespbody">TransmitCardRequestRespBody&lt;/a> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The terminal identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>localReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the local reader as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>remoteReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the virtual remote reader linked to the local reader as provided by the last &lt;strong>CMD&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>serverNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The server identifier as provided by the last &lt;strong>CMD&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The current transaction identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="transmitcardrequestrespbody">TransmitCardRequestRespBody&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>service&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>TRANSMIT_CARD_REQUEST&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>result&lt;/code> &lt;span class="text-secondary">&lt;a href="#cardresponse-1">CardResponse&lt;/a> &lt;strong>[ ] (optional)&lt;/strong>&lt;/span>&lt;br>A non-empty list containing at most as many responses as there are selection cases (absent in case of error).&lt;/li>
-&lt;li>&lt;code>error&lt;/code> &lt;span class="text-secondary">&lt;a href="#transmit_card_request_resp_error">Error&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;/span>&lt;br>The error description (absent in case of success).&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>service&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>TRANSMIT_CARD_REQUEST&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>result&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#cardresponse-1">CardResponse&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>Data received in response to the card request (absent in case of error).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>error&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#transmit_card_request_resp_error">Error&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>The error description (absent in case of success).&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="cardresponse-1">CardResponse&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>isLogicalChannelOpen&lt;/code> &lt;span class="text-secondary">&lt;strong>boolean&lt;/strong>&lt;/span>&lt;br>&lt;code>true&lt;/code> if the logical channel is left open.&lt;/li>
-&lt;li>&lt;code>apduResponses&lt;/code> &lt;span class="text-secondary">&lt;a href="#apduresponse-1">&lt;code>ApduResponse&lt;/code>&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;/span>&lt;br>A list containing the APDU responses for each request in the command.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>isLogicalChannelOpen&lt;/code>&lt;/td>
+&lt;td>&lt;strong>boolean&lt;/strong>&lt;br>Set to &amp;ldquo;&lt;strong>true&lt;/strong>&amp;rdquo; if the logical channel is left open.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>apduResponses&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#apduresponse-1">ApduResponse&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;br>A list containing the APDU responses for each request in the command.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="apduresponse-1">ApduResponse&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>apdu&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>An hexadecimal string containing the APDU received from the card (including the status word).&lt;/li>
-&lt;li>&lt;code>statusWord&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A 2-byte hexadecimal string containing the status word of the received APDU.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>apdu&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>An hexadecimal string containing the APDU received from the card (including the status word).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>statusWord&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A 2-byte hexadecimal string containing the status word of the received APDU.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="transmit_card_request_resp_error">Error&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>code&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the reader communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the card communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMAND_ERROR&lt;/strong>&amp;quot;: if the card returned a unexpected status word.&lt;/li>
-&lt;li>&lt;code>message&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The error description.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>code&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the reader communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the card communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMAND_ERROR&lt;/strong>&amp;quot;: if the card returned an unexpected status word.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>message&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The error description.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h5 id="example-8">Example&lt;/h5>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('14', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-json" id="code-14">{
@@ -1341,19 +1997,55 @@ language of the target terminal.&lt;/p>
 Keyple Distributed JSON API - END_REMOTE_SERVICE class diagram
 &lt;/figcaption>&lt;/figure>
 &lt;h4 id="endremoteservicedata">EndRemoteServiceData&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>action&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>Always set to &amp;ldquo;&lt;strong>END_REMOTE_SERVICE&lt;/strong>&amp;rdquo;.&lt;/li>
-&lt;li>&lt;code>body&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>A JSON string containing a &lt;a href="#endremoteservicebody">EndRemoteServiceBody&lt;/a>.&lt;/li>
-&lt;li>&lt;code>clientNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The terminal identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;li>&lt;code>remoteReaderName&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The identifier of the virtual remote reader linked to the local reader.&lt;/li>
-&lt;li>&lt;code>serverNodeId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The server identifier.&lt;/li>
-&lt;li>&lt;code>sessionId&lt;/code> &lt;span class="text-secondary">&lt;strong>string&lt;/strong>&lt;/span>&lt;br>The current transaction identifier as provided by &lt;code>EXECUTE_REMOTE_SERVICE&lt;/code>.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>action&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>END_REMOTE_SERVICE&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>body&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#endremoteservicebody">EndRemoteServiceBody&lt;/a> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The terminal identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>remoteReaderName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The identifier of the virtual remote reader linked to the local reader.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>serverNodeId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The server identifier.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
+&lt;td>&lt;strong>string&lt;/strong>&lt;br>The current transaction identifier as provided by the initial &lt;strong>EXECUTE_REMOTE_SERVICE&lt;/strong> JSON object.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h4 id="endremoteservicebody">EndRemoteServiceBody&lt;/h4>
-&lt;ul>
-&lt;li>&lt;code>outputData&lt;/code> &lt;span class="text-secondary">&lt;strong>object (optional)&lt;/strong>&lt;/span>&lt;br>An optional object containing additional data provided by the remote business
-service. Its content is a convention between the client and the server.&lt;/li>
-&lt;/ul>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>outputData&lt;/code>&lt;/td>
+&lt;td>&lt;strong>object (optional)&lt;/strong>&lt;br>An optional object containing additional data provided by the remote business service. Its content is a convention between the client and the server.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h4 id="example-9">Example&lt;/h4>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('16', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-json" id="code-16">[
