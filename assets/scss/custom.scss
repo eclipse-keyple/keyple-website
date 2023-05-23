@@ -160,16 +160,22 @@ a:hover {
 }
 
 // Increase code font size and style
-pre, code {
-  font-size: 1rem !important;
+pre code {
+  font-size: .8rem !important;
   font-family: monospace;
   white-space: pre-wrap !important;
 }
 
 // improve code boxing
 code {
+  font-size: 1rem !important;
+  font-family: monospace;
   border-radius: 3px;
   padding: .2em .4em;
+}
+
+table code {
+  font-size: .8rem !important;
 }
 
 // Color of tabpane headers
@@ -296,17 +302,25 @@ table {
 }
 
 // Changelog table
+#changelog-table th {
+  font-size: 1rem;
+}
 #changelog-table th:nth-child(1),
 #changelog-table td:nth-child(1) {
   text-align: center;
-  width: 6rem;
+  font-size: 1rem;
+  width: 7.5rem;
 }
 #changelog-table span.component {
+  font-size: 1rem;
   font-weight: bold;
 }
 #changelog-table span.version {
   font-weight: bold;
   padding-left: 1rem;
+}
+#changelog-table span.version code {
+  font-size: 1rem !important;
 }
 #changelog-table code {
   padding-top: 0;
@@ -322,7 +336,8 @@ table {
   margin-bottom: 0;
 }
 #changelog-table hr {
+  visibility: hidden;
   margin-top: .75rem;
-  margin-bottom: .75rem;
+  margin-bottom: 0;
   background: #ddd;
 }
