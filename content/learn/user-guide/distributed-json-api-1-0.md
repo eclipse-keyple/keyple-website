@@ -136,7 +136,7 @@ caption="Keyple Distributed JSON API - \"Execute Remote Service\" class diagram"
 |             |                                                                                                                                                                                      |
 |-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `serviceId` | **String**<br>The identifier of the business service to be executed by the server. It's a naming convention between the client and the server.                                       |
-| `inputData` | **object (optional)**<br>An optional object containing additional data to be provided to the remote business service. Its content is a convention between the client and the server. |
+| `inputData` | **Object (optional)**<br>An optional object containing additional data to be provided to the remote business service. Its content is a convention between the client and the server. |
 
 #### Example
 
@@ -758,7 +758,7 @@ The `MessageDto` is contained in a single-element array!
 
 |              |                                                                                                                                                                                |
 |--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `outputData` | **object (optional)**<br>An optional object containing additional data provided by the remote business service. Its content is a convention between the client and the server. |
+| `outputData` | **Object (optional)**<br>An optional object containing additional data provided by the remote business service. Its content is a convention between the client and the server. |
 
 #### Example
 
