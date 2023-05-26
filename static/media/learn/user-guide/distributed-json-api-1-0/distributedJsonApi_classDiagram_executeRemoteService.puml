@@ -54,12 +54,14 @@ hide <<grey>> stereotype
 ' == CONTENT ==
 
 ' EXECUTE_REMOTE_SERVICE
-class ExecuteRemoteServiceData {
+class MessageDto {
     **action** : String = "**EXECUTE_REMOTE_SERVICE**"
+    **body** : String
+    **sessionId** : String
     **clientNodeId** : String
     **localReaderName** : String
-    **sessionId** : String
-    **body** : ExecuteRemoteServiceBody
+    <color:grey>**serverNodeId** : null
+    <color:grey>**remoteReaderName** : null
 }
 class ExecuteRemoteServiceBody {
     **serviceId** : String
@@ -68,14 +70,14 @@ class ExecuteRemoteServiceBody {
 
 ' Associations
 
-ExecuteRemoteServiceData *-- "1" ExecuteRemoteServiceBody #C_LINK : JsonString
+MessageDto *-- "1" ExecuteRemoteServiceBody #C_LINK : JsonString
 
 ' == LAYOUT ==
 
 
 ' == STYLE ==
 
-class ExecuteRemoteServiceData <<blue>>
+class MessageDto <<blue>>
 class ExecuteRemoteServiceBody <<blue>>
 
 @enduml
