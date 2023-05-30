@@ -11,13 +11,14 @@ weight: 2
 ---
 ## Overview
 
-Keyple provides the "Keyple Distributed" solution which allows a terminal to communicate with a smart card reader available in another terminal.
+Keyple provides the "Keyple Distributed" solution which allows an application to communicate with a smart card reader 
+interfaced with another host.
 
 In this way, you can manage transactions within a distributed architecture.
 
 The diagram below shows the location of the Keyple Distributed components in the software layers used in a distributed architecture:
 
-{{< figure src="/media/learn/user-guide/distributed-application/distributed_solution_layers_overview.svg" caption="Keyple Distributed - Solution layers overview" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_solution_layers_overview.drawio.svg" caption="Keyple Distributed - Solution layers overview" numbered="true" >}}
 
 ---
 ## How to use it
@@ -36,17 +37,17 @@ Here are the main concepts to keep in mind before continuing to read this user g
 
 <div id="concepts-table-1">
 
-| Concept | Description |
-| ------- | ----------- |
-| **Remote Lib** | This is the `keyple-distributed-remote-java-lib` library.<br>It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely. |
-| **Local Lib** | This is the `keyple-distributed-local-java-lib` library.<br>It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application. |
-| **Network Lib** | This is the `keyple-distributed-network-java-lib` library.<br>It must always be imported because it contains the network elements used by **Remote Lib** and **Local Lib**. |
-| **Remote Plugin** | Part of the **Remote Lib**, this is a Keyple reader plugin extension which provides only **Remote Readers** to the application. It manages data exchanges with the **Local Service**. This reader plugin extension must be registered to the smart card service like any Keyple reader plugin. |
-| **Remote Reader** | Part of the **Remote Lib**, this is a Keyple reader extension which has some specificities:<br>- each remote reader is connected to a local reader;<br>- any command sent by the application to a remote reader will be forwarded to the associated local reader;<br>- in some cases only, an event occurring on a local reader or plugin will be automatically forwarded to the associated remote reader or plugin. |
-| **Local Service** | Part of the **Local Lib**, this is a Keyple distributed local service extension which ensures data exchange between the **Remote Plugin** and local plugins and readers. It must be registered to the smart card service. |
-| **Factory** | **Remote Plugin** and **Local Service** each have a specific factory class to initialize them. |
-| **Node** | **Remote Plugin** and **Local Service** each are bind to a specific internal node which is responsible for the interfacing with the **Network Endpoint**. |
-| **Network Endpoint** | At the user's charge, this component ensures the network exchanges between the **Remote Plugin** and **Local Service** nodes. | 
+| Concept              | Description                                                                                                                                                                                                                                                                                                                                                                                                          |
+|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Remote Lib**       | This is the `keyple-distributed-remote-java-lib` library.<br>It must be imported and used by the application installed on the host not having local access to the smart card reader and that wishes to control the reader remotely.                                                                                                                                                                                  |
+| **Local Lib**        | This is the `keyple-distributed-local-java-lib` library.<br>It must be imported and used by the application installed on the host having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.                                                                                                                                               |
+| **Network Lib**      | This is the `keyple-distributed-network-java-lib` library.<br>It must always be imported because it contains the network elements used by **Remote Lib** and **Local Lib**.                                                                                                                                                                                                                                          |
+| **Remote Plugin**    | Part of the **Remote Lib**, this is a Keyple reader plugin extension which provides only **Remote Readers** to the application. It manages data exchanges with the **Local Service**. This reader plugin extension must be registered to the smart card service like any Keyple reader plugin.                                                                                                                       |
+| **Remote Reader**    | Part of the **Remote Lib**, this is a Keyple reader extension which has some specificities:<br>- each remote reader is connected to a local reader;<br>- any command sent by the application to a remote reader will be forwarded to the associated local reader;<br>- in some cases only, an event occurring on a local reader or plugin will be automatically forwarded to the associated remote reader or plugin. |
+| **Local Service**    | Part of the **Local Lib**, this is a Keyple distributed local service extension which ensures data exchange between the **Remote Plugin** and local plugins and readers. It must be registered to the smart card service.                                                                                                                                                                                            |
+| **Factory**          | **Remote Plugin** and **Local Service** each have a specific factory class to initialize them.                                                                                                                                                                                                                                                                                                                       |
+| **Node**             | **Remote Plugin** and **Local Service** each are bind to a specific internal node which is responsible for the interfacing with the **Network Endpoint**.                                                                                                                                                                                                                                                            |
+| **Network Endpoint** | At the user's charge, this component ensures the network exchanges between the **Remote Plugin** and **Local Service** nodes.                                                                                                                                                                                                                                                                                        | 
 
 </div>
 <style>
@@ -59,9 +60,9 @@ The diagram below illustrates the main functional concepts through a standard us
 
 {{< figure src="/media/learn/user-guide/distributed-application/distributed_concepts_1.svg" caption="Keyple Distributed - Concepts - Main use case" numbered="true" >}}
 
-The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.
+The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different hosts.
 
-These could be for example a ticketing reloading service, where the business logic would be on the terminal without local readers, with thin clients on A & B terminals communicating locally with the cards.
+These could be for example a ticketing reloading service, where the business logic would be on the host without local readers, with thin clients on A & B hosts communicating locally with the cards.
 
 In this use case, the Keyple Distributed solution is use for card communication.
 
@@ -82,9 +83,9 @@ The Keyple Distributed solution offers two different usage modes, each one havin
 
 <div id="plugins-table-1">
 
-| Usage mode | Description |
-|---|---|
-| [Reader Client Side](#reader-client-side) | Allows a **server** application to control a smart card reader available on a **client** (e.g. Card reader). |
+| Usage mode                                | Description                                                                                                      |
+|-------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| [Reader Client Side](#reader-client-side) | Allows a **server** application to control a smart card reader available on a **client** (e.g. Card reader).     |
 | [Reader Server Side](#reader-server-side) | Allows a **client** application to control a smart card reader available on a **server** (e.g. SAM reader, HSM). |
 
 </div>
@@ -110,15 +111,15 @@ The table below shows the classes and interfaces available for this usage mode.<
 Interfaces marked with an asterisk "*" come from the **Calypsonet Terminal Reader API**.<br>
 Interfaces marked with an asterisk "**" come from the **Keyple Service API**:
 
-| API | Client                             | Server                             |
-| --- |------------------------------------|------------------------------------|
-| **Library to use** | Local Lib                          | Remote Lib                         |
-| **Factory builder to be used** | `LocalServiceClientFactoryBuilder` | `RemotePluginServerFactoryBuilder` |
-| **Factory to be registered** | `LocalServiceClientFactory`        | `RemotePluginServerFactory`        |
-| **Local Service / Remote Plugin** | `DistributedLocalService` **       | `ObservablePlugin` **              |
+| API                                         | Client                             | Server                             |
+|---------------------------------------------|------------------------------------|------------------------------------|
+| **Library to use**                          | Local Lib                          | Remote Lib                         |
+| **Factory builder to be used**              | `LocalServiceClientFactoryBuilder` | `RemotePluginServerFactoryBuilder` |
+| **Factory to be registered**                | `LocalServiceClientFactory`        | `RemotePluginServerFactory`        |
+| **Local Service / Remote Plugin**           | `DistributedLocalService` **       | `ObservablePlugin` **              |
 | **Local Service / Remote Plugin extension** | `LocalServiceClient`               | `RemotePluginServer`               |
-| **Reader** | Any kind of reader                 | `CardReader` *                     |
-| **Reader extension** | Device specific                    | `RemoteReaderServer`               |
+| **Reader**                                  | Any kind of reader                 | `CardReader` *                     |
+| **Reader extension**                        | Device specific                    | `RemoteReaderServer`               |
 
 {{% callout warning %}} It is the responsibility of the client application to observe and configure the local plugins and readers. {{% /callout %}}
 
@@ -157,15 +158,15 @@ The table below shows the classes and interfaces available for this usage mode i
 Interfaces marked with an asterisk "*" come from the **Calypsonet Terminal Reader API**.<br>
 Interfaces marked with an asterisk "**" come from the **Keyple Service API**:
 
-| API | Client                                        | Server                             |
-| --- |-----------------------------------------------|------------------------------------|
-| **Library to use** | Remote Lib                                    | Local Lib                          |
-| **Factory builder to be used** | `RemotePluginClientFactoryBuilder`            | `LocalServiceServerFactoryBuilder` |
-| **Factory to be registered** | `RemotePluginClientFactory`                   | `LocalServiceServerFactory`        |
-| **Remote Plugin / Local Service** | `Plugin` ** or<br>`ObservablePlugin` **       | `DistributedLocalService` **       |
+| API                                         | Client                                        | Server                             |
+|---------------------------------------------|-----------------------------------------------|------------------------------------|
+| **Library to use**                          | Remote Lib                                    | Local Lib                          |
+| **Factory builder to be used**              | `RemotePluginClientFactoryBuilder`            | `LocalServiceServerFactoryBuilder` |
+| **Factory to be registered**                | `RemotePluginClientFactory`                   | `LocalServiceServerFactory`        |
+| **Remote Plugin / Local Service**           | `Plugin` ** or<br>`ObservablePlugin` **       | `DistributedLocalService` **       |
 | **Remote Plugin / Local Service extension** | `RemotePluginClient`                          | `LocalServiceServer`               |
-| **Reader** | `CardReader` * or<br>`ObservableCardReader` * | Any kind of reader                 |
-| **Reader extension** | `RemoteReaderClient`                          | Device specific                    |
+| **Reader**                                  | `CardReader` * or<br>`ObservableCardReader` * | Any kind of reader                 |
+| **Reader extension**                        | `RemoteReaderClient`                          | Device specific                    |
 
 * **Pool plugin** (`PoolPlugin`)
 
@@ -177,15 +178,15 @@ The table below shows the classes and interfaces available for this usage mode i
 Interfaces marked with an asterisk "*" come from the **Calypsonet Terminal Reader API**.<br>
 Interfaces marked with an asterisk "**" come from the **Keyple Service API**:
 
-| API | Client                                 | Server                             |
-| --- |----------------------------------------|------------------------------------|
-| **Library to use** | Remote Lib                             | Local Lib                          |
-| **Factory builder to be used** | `RemotePoolPluginClientFactoryBuilder` | `LocalServiceServerFactoryBuilder` |
-| **Factory to be registered** | `RemotePluginClientFactory`            | `LocalServiceServerFactory`        |
-| **Remote Plugin / Local Service** | `PoolPlugin` **                        | `DistributedLocalService` **       |
+| API                                         | Client                                 | Server                             |
+|---------------------------------------------|----------------------------------------|------------------------------------|
+| **Library to use**                          | Remote Lib                             | Local Lib                          |
+| **Factory builder to be used**              | `RemotePoolPluginClientFactoryBuilder` | `LocalServiceServerFactoryBuilder` |
+| **Factory to be registered**                | `RemotePluginClientFactory`            | `LocalServiceServerFactory`        |
+| **Remote Plugin / Local Service**           | `PoolPlugin` **                        | `DistributedLocalService` **       |
 | **Remote Plugin / Local Service extension** | `RemotePluginClient`                   | `LocalServiceServer`               |
-| **Reader** | `CardReader` *                         | Any kind of reader                 |
-| **Reader extension** | `RemoteReaderClient`                   | Device specific                    |
+| **Reader**                                  | `CardReader` *                         | Any kind of reader                 |
+| **Reader extension**                        | `RemoteReaderClient`                   | Device specific                    |
 
 {{% callout warning %}} Whatever the type of plugin, it is the responsibility of the server application to configure the local plugins and readers. {{% /callout %}}
 
@@ -209,12 +210,12 @@ The Keyple Distributed solution **does not provide** the network layer implement
 
 Choose this mode if you want to implement a Client-Server **synchronous** communication protocol, such as standard HTTP for example.
 
-| | Client | Server |
-|---|---|---|
-| Network endpoint SPI to be implemented | `SyncEndpointClientSpi` | - |
-| Node API | `SyncNodeClient` | `SyncNodeServer` |
-| Method to be used when initializing the factory | `withSyncNode(...)` | `withSyncNode()` |
-| Method provided by the remote plugin or local service extension<br>to use to access the node | - | `getSyncNode()` |
+|                                                                                              | Client                  | Server           |
+|----------------------------------------------------------------------------------------------|-------------------------|------------------|
+| Network endpoint SPI to be implemented                                                       | `SyncEndpointClientSpi` | -                |
+| Node API                                                                                     | `SyncNodeClient`        | `SyncNodeServer` |
+| Method to be used when initializing the factory                                              | `withSyncNode(...)`     | `withSyncNode()` |
+| Method provided by the remote plugin or local service extension<br>to use to access the node | -                       | `getSyncNode()`  |
 
 Here is the minimal algorithm to implement in a context with a **single server instance**:
 
@@ -226,12 +227,12 @@ In a context with several server instances, a mechanism must be implemented to e
 
 Choose this mode if you want to implement a Full-Duplex **asynchronous** communication protocol, such as Web Sockets for example.
 
-|     | Client | Server |
-|---|---|---|
-| Network endpoint SPI to be implemented | `AsyncEndpointClientSpi` | `AsyncEndpointServerSpi` |
-| Node API | `AsyncNodeClient` | `AsyncNodeServer` |
-| Method to be used when initializing the factory | `withAsyncNode(...)` | `withAsyncNode(...)` |
-| Method provided by the remote plugin or local service extension<br>to use to access the node | `getAsyncNode()` | `getAsyncNode()` |
+|                                                                                              | Client                   | Server                   |
+|----------------------------------------------------------------------------------------------|--------------------------|--------------------------|
+| Network endpoint SPI to be implemented                                                       | `AsyncEndpointClientSpi` | `AsyncEndpointServerSpi` |
+| Node API                                                                                     | `AsyncNodeClient`        | `AsyncNodeServer`        |
+| Method to be used when initializing the factory                                              | `withAsyncNode(...)`     | `withAsyncNode(...)`     |
+| Method provided by the remote plugin or local service extension<br>to use to access the node | `getAsyncNode()`         | `getAsyncNode()`         |
 
 Here is the minimal algorithm to implement:
 
