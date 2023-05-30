@@ -119,7 +119,7 @@ language of the target terminal.
 {{< figure src="/media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_executeRemoteService.svg" 
 caption="Keyple Distributed JSON API - \"Execute Remote Service\" class diagram" numbered="true" >}}
 
-#### MessageDto {#messagedto-executeremoteservice}
+#### MessageDto {#messagedto-execute-remote-service}
 
 |                    |                                                                                                                         |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------|
@@ -128,8 +128,8 @@ caption="Keyple Distributed JSON API - \"Execute Remote Service\" class diagram"
 | `sessionId`        | **String**<br>The session identifier. It shall be unique per card transaction.                                          |
 | `clientNodeId`     | **String**<br>The terminal identifier. It shall be unique per server.                                                   |
 | `localReaderName`  | **String**<br>The identifier of the local reader used to perform the card transaction. It shall be unique per terminal. |
-| `serverNodeId`     | **String (optional)**<br>Null or absent.                                                                                |
-| `remoteReaderName` | **String (optional)**<br>Null or absent.                                                                                |
+| `serverNodeId`     | **String (n/a)**<br>Null or absent.                                                                                     |
+| `remoteReaderName` | **String (n/a)**<br>Null or absent.                                                                                     |
 
 #### ExecuteRemoteServiceBody
 
@@ -160,17 +160,17 @@ There are four types of service potentially requested by the server:
 
 <div id="command-table-1">
 
-| Service                                                                   | Description                                                |
-|---------------------------------------------------------------------------|------------------------------------------------------------|
-| [Is Contactless](#is-contactless-cmd)                                     | Indicates if the reader is in contact or contactless mode. |
-| [Is Card Present](#is-card-present-cmd)                                   | Indicates if a card is present in the reader.              |
-| [Transmit Card Selection Requests](#transmit-card-selection-requests-cmd) | Establish a logical communication channel with a card.     |
-| [Transmit Card Request](#transmit-card-request-cmd)                       | Perform APDU exchanges with the card.                      |
+| Service                               | Description                                                                                                        |
+|---------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| [Reader Type](#reader-type-cmd)       | Indicates if the reader is in contact or contactless mode.                                                         |
+| [Card Presence](#card-presence-cmd)   | Indicates if a card is present in the reader.                                                                      |
+| [Card Selection](#card-selection-cmd) | Establish a logical communication channel with a card and, if required, perform additional APDU exchanges with it. |
+| [Card Commands](#card-commands-cmd)   | Perform APDU exchanges with the selected card.                                                                     |
 
 </div>
 <style>
 #command-table-1 table th:nth-child(1) {
-    width: 14rem;
+    width: 8rem;
 }
 </style>
 
@@ -192,20 +192,20 @@ The `MessageDto` is contained in a single-element array!
 {{% /callout %}}
 
 ---
-### Is Contactless {#is-contactless-cmd}
+### Reader Type {#reader-type-cmd}
 
 This service allows the server to know if the reader is in contact or contactless mode.
 
 There are no parameters for this service.
 
 The terminal must then send the response to the server in a message of type
-"[Is Contactless (Response)](#is-contactless-resp)".
+"[Reader Type (Response)](#reader-type-resp)".
 
 {{% callout warning %}}
 The `MessageDto` is contained in a single-element array!
 {{% /callout %}}
 
-#### MessageDto {#messagedto-is-contactless-cmd}
+#### MessageDto {#messagedto-reader-type-cmd}
 
 |                    |                                                                                                                   |
 |--------------------|-------------------------------------------------------------------------------------------------------------------|
@@ -240,20 +240,20 @@ The `MessageDto` is contained in a single-element array!
 {{< /code >}}
 
 ---
-### Is Card Present {#is-card-present-cmd}
+### Card Presence {#card-presence-cmd}
 
 This service allows the server to know if a card is inserted in the reader.
 
 There are no parameters for this service.
 
 The terminal must then send the response to the server in a message of type
-"[Is Card Present (Response)](#is-card-present-resp)".
+"[Card Presence (Response)](#card-presence-resp)".
 
 {{% callout warning %}}
 The `MessageDto` is contained in a single-element array!
 {{% /callout %}}
 
-#### MessageDto {#messagedto-is-card-present-cmd}
+#### MessageDto {#messagedto-card-presence-cmd}
 
 |                    |                                                                                                                   |
 |--------------------|-------------------------------------------------------------------------------------------------------------------|
@@ -288,7 +288,7 @@ The `MessageDto` is contained in a single-element array!
 {{< /code >}}
 
 ---
-### Transmit Card Selection Requests {#transmit-card-selection-requests-cmd}
+### Card Selection {#card-selection-cmd}
 
 The primary objective of this service is to establish a logical communication channel with a card.
 
@@ -332,13 +332,13 @@ data, AID.
 If all the defined filters are satisfied, the terminal must send any additional APDUs.
 
 The terminal must then send the response to the server in a message of type 
-"[Transmit Card Selection Requests (Response)](#transmit-card-selection-requests-resp)".
+"[Card Selection (Response)](#card-selection-resp)".
 
 {{% callout warning %}}
 The `MessageDto` is contained in a single-element array!
 {{% /callout %}}
 
-#### MessageDto {#messagedto-transmit-card-selection-requests-cmd}
+#### MessageDto {#messagedto-card-selection-cmd}
 
 |                    |                                                                                                                                     |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
@@ -414,7 +414,8 @@ The `MessageDto` is contained in a single-element array!
 ]
 {{< /code >}}
 
-### Transmit Card Request {#transmit-card-request-cmd}
+---
+### Card Commands {#card-commands-cmd}
 
 The role of this service is to perform APDU exchanges with the card.
 
@@ -422,13 +423,13 @@ The terminal must iterate over the list of APDUs present in the card request and
 if requested.
 
 The response must be sent to the server in a message of type
-"[Transmit Card Request (Response)](#transmit-card-request-resp)".
+"[Card Commands (Response)](#card-commands-resp)".
 
 {{% callout warning %}}
 The `MessageDto` is contained in a single-element array!
 {{% /callout %}}
 
-#### MessageDto {#messagedto-transmit-card-request-cmd}
+#### MessageDto {#messagedto-card-commands-cmd}
 
 |                    |                                                                                                                   |
 |--------------------|-------------------------------------------------------------------------------------------------------------------|
@@ -501,12 +502,12 @@ language of the target terminal.
 {{< figure src="/media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - \"Response\" class diagram" numbered="true" >}}
 
 ---
-### Is Contactless {#is-contactless-resp}
+### Reader Type {#reader-type-resp}
 
-This message, sent by the terminal to the server in response to "[Is Contactless (Command)](#is-contactless-cmd)", is 
+This message, sent by the terminal to the server in response to "[Reader Type (Command)](#reader-type-cmd)", is 
 intended to indicate to the server if the reader is contactless.
 
-#### MessageDto {#messagedto-is-contactless-resp}
+#### MessageDto {#messagedto-reader-type-resp}
 
 |                    |                                                                                                                                     |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
@@ -524,9 +525,9 @@ intended to indicate to the server if the reader is contactless.
 |-----------|------------------------------------------------------------------------------------------------------------------------|
 | `service` | **String**<br>Constant value: "**IS_CONTACTLESS**"                                                                     |
 | `result`  | **Boolean (optional)**<br>Set to **true** if the reader is contactless, **false** otherwise (absent in case of error). |
-| `error`   | [Error](#is-contactless-resp_error) **(optional)**<br>The error description (absent in case of success).               |
+| `error`   | [Error](#reader-type-resp-error) **(optional)**<br>The error description (absent in case of success).                  |
 
-##### Error {#is-contactless-resp_error}
+##### Error {#reader-type-resp-error}
 
 |           |                                      |
 |-----------|--------------------------------------|
@@ -548,12 +549,12 @@ intended to indicate to the server if the reader is contactless.
 {{< /code >}}
 
 ---
-### Is Card Present {#is-card-present-resp}
+### Card Presence {#card-presence-resp}
 
-This message, sent by the terminal to the server in response to "[Is Card Present (Command)](#is-card-present-cmd)", 
+This message, sent by the terminal to the server in response to "[Card Presence (Command)](#card-presence-cmd)", 
 is intended to indicate to the server if a card is present.
 
-#### MessageDto {#messagedto-is-card-present-resp}
+#### MessageDto {#messagedto-card-presence-resp}
 
 |                    |                                                                                                                                     |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
@@ -567,13 +568,13 @@ is intended to indicate to the server if a card is present.
 
 ##### IsCardPresentRespBody
 
-|           |                                                                                                           |
-|-----------|-----------------------------------------------------------------------------------------------------------|
-| `service` | **String**<br>Constant value: "**IS_CARD_PRESENT**"                                                       |
-| `result`  | **Boolean**<br>Set to **true** if a card is present, **false** otherwise (absent in case of error).       |
-| `error`   | [Error](#is-card-present-resp_error) **(optional)**<br>The error description (absent in case of success). |
+|           |                                                                                                         |
+|-----------|---------------------------------------------------------------------------------------------------------|
+| `service` | **String**<br>Constant value: "**IS_CARD_PRESENT**"                                                     |
+| `result`  | **Boolean**<br>Set to **true** if a card is present, **false** otherwise (absent in case of error).     |
+| `error`   | [Error](#card-presence-resp-error) **(optional)**<br>The error description (absent in case of success). |
 
-##### Error {#is-card-present-resp_error}
+##### Error {#card-presence-resp-error}
 
 |           |                                                                                                                                                                                                                                                   |
 |-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -595,13 +596,13 @@ is intended to indicate to the server if a card is present.
 {{< /code >}}
 
 ---
-### Transmit Card Selection Requests {#transmit-card-selection-requests-resp}
+### Card Selection {#card-selection-resp}
 
 This message, sent by the terminal to the server in response to 
-"[Transmit Card Selection Requests (Command)](#transmit-card-selection-requests-cmd)", 
+"[Card Selection (Command)](#card-selection-cmd)", 
 is intended to transmit to the server the result of the execution of the selection scenario.
 
-#### MessageDto {#messagedto-transmit-card-selection-requests-resp}
+#### MessageDto {#messagedto-card-selection-resp}
 
 |                    |                                                                                                                                       |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------|
@@ -619,7 +620,7 @@ is intended to transmit to the server the result of the execution of the selecti
 |-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `service` | **String**<br>Constant value: "**TRANSMIT_CARD_SELECTION_REQUESTS**"                                                                                                                |
 | `result`  | [CardSelectionResponse](#cardselectionresponse) **[ ] (optional)**<br>A non-empty list containing at most as many responses as there are selection cases (absent in case of error). |
-| `error`   | [Error](#transmit-card-selection-requests-resp_error) **(optional)**<br>The error description (absent in case of success).                                                          |
+| `error`   | [Error](#card-selection-resp-error) **(optional)**<br>The error description (absent in case of success).                                                                            |
 
 ##### CardSelectionResponse
 
@@ -644,7 +645,7 @@ is intended to transmit to the server the result of the execution of the selecti
 | `apdu`       | **String**<br>An hexadecimal string containing the APDU received from the card (including the status word). |
 | `statusWord` | **String**<br>A 2-byte hexadecimal string containing the status word of the received APDU.                  |
 
-##### Error {#transmit-card-selection-requests-resp_error}
+##### Error {#card-selection-resp-error}
 
 |           |                                                                                                                                                                                                                                                                                                                                    |
 |-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -665,13 +666,14 @@ is intended to transmit to the server the result of the execution of the selecti
 }
 {{< /code >}}
 
-### Transmit Card Request {#transmit-card-request-resp}
+---
+### Card Commands {#card-commands-resp}
 
 This message, sent by the terminal to the server in response to
-"[Transmit Card Request (Command)](#transmit-card-request-cmd)",
+"[Card Commands (Command)](#card-commands-cmd)",
 is intended to transmit to the server the result of the execution of a card request.
 
-#### MessageDto {#messagedto-transmit-card-request-resp}
+#### MessageDto {#messagedto-card-commands-resp}
 
 |                    |                                                                                                                                     |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
@@ -689,7 +691,7 @@ is intended to transmit to the server the result of the execution of a card requ
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
 | `service` | **String**<br>Constant value: "**TRANSMIT_CARD_REQUEST**"                                                                  |
 | `result`  | [CardResponse](#cardresponse-1) **(optional)**<br>Data received in response to the card request (absent in case of error). |
-| `error`   | [Error](#transmit-card-request-resp_error) **(optional)**<br>The error description (absent in case of success).            |
+| `error`   | [Error](#card-commands-resp-error) **(optional)**<br>The error description (absent in case of success).                    |
 
 ##### CardResponse
 
@@ -705,7 +707,7 @@ is intended to transmit to the server the result of the execution of a card requ
 | `apdu`       | **String**<br>An hexadecimal string containing the APDU received from the card (including the status word). |
 | `statusWord` | **String**<br>A 2-byte hexadecimal string containing the status word of the received APDU.                  |
 
-##### Error {#transmit-card-request-resp_error}
+##### Error {#card-commands-resp-error}
 
 |           |                                                                                                                                                                                                                                                                                                                                    |
 |-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -742,7 +744,7 @@ caption="Keyple Distributed JSON API - \"End Remote Service\" class diagram" num
 The `MessageDto` is contained in a single-element array!
 {{% /callout %}}
 
-#### MessageDto {#messagedto-endremoteservice}
+#### MessageDto {#messagedto-end-remote-service}
 
 |                    |                                                                                                                   |
 |--------------------|-------------------------------------------------------------------------------------------------------------------|
@@ -750,7 +752,7 @@ The `MessageDto` is contained in a single-element array!
 | `body`             | **String**<br>A JSON string containing a [EndRemoteServiceBody](#endremoteservicebody) JSON object.               |
 | `sessionId`        | **String**<br>The current transaction identifier as provided by the initial "**Execute Remote Service**" message. |
 | `clientNodeId`     | **String**<br>The terminal identifier as provided by the initial "**Execute Remote Service**" message.            |
-| `localReaderName`  | **String (optional)**<br>Null or absent.                                                                          |
+| `localReaderName`  | **String (n/a)**<br>Null or absent.                                                                               |
 | `serverNodeId`     | **String**<br>The server identifier.                                                                              |
 | `remoteReaderName` | **String**<br>The identifier of the virtual remote reader linked to the local reader.                             |
 
