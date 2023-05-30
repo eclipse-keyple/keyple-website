@@ -26,7 +26,7 @@
 <meta property="og:title" content="Distributed JSON API 1.0 User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-05-30T11:01:28+02:00">
+<meta property="article:modified_time" content="2023-05-30T15:47:50+02:00">
 <title>Distributed JSON API 1.0 User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=bf9a9c70da37c02fb0aa157c7e7a3e9f>
@@ -265,6 +265,14 @@ management of the card transaction to the server.</p>
 </ul>
 </div>
 </div>
+<p>The diagram below illustrates the architecture of a non-Keyple application installed on a terminal and connected to a
+server based on Keyple:</p>
+<figure id=figure-keyple-distributed-json-api---solution-layers-overview>
+<div class="d-flex justify-content-center">
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_overview.drawio.svg alt="Keyple Distributed JSON API - Solution layers overview" loading=lazy data-zoomable></div>
+</div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
+Keyple Distributed JSON API - Solution layers overview
+</figcaption></figure>
 <h3 id=principle>Principle</h3>
 <p>The Keyple remote transaction uses four types of messages exchanged between the terminal and the server in JSON format:</p>
 <div id=principles-table-1>
@@ -447,8 +455,8 @@ Keyple Distributed JSON API - &ldquo;Execute Remote Service&rdquo; class diagram
 </tbody>
 </table>
 <h4 id=example>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('5',this)">Copy</button></div>
-<pre><code class=language-json id=code-5>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
+<pre><code class=language-json id=code-6>{
     &#34;action&#34;: &#34;EXECUTE_REMOTE_SERVICE&#34;,
     &#34;body&#34;: &#34;{\&#34;serviceId\&#34;:\&#34;AUTHENTICATE_CARD\&#34;,\&#34;inputData\&#34;:{\&#34;userId\&#34;:\&#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&#34;}}&#34;,
     &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;,
@@ -575,8 +583,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-1>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('10',this)">Copy</button></div>
-<pre><code class=language-json id=code-10>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
+<pre><code class=language-json id=code-11>[
     {
         &#34;action&#34;: &#34;CMD&#34;,
         &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CONTACTLESS\&#34;}&#34;,
@@ -653,8 +661,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-2>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('12',this)">Copy</button></div>
-<pre><code class=language-json id=code-12>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('13',this)">Copy</button></div>
+<pre><code class=language-json id=code-13>[
     {
         &#34;action&#34;: &#34;CMD&#34;,
         &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CARD_PRESENT\&#34;}&#34;,
@@ -886,8 +894,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-3>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('14',this)">Copy</button></div>
-<pre><code class=language-json id=code-14>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('15',this)">Copy</button></div>
+<pre><code class=language-json id=code-15>[
     {
         &#34;action&#34;: &#34;CMD&#34;,
         &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_SELECTION_REQUESTS\&#34;,\&#34;parameters\&#34;:{\&#34;multiSelectionProcessing\&#34;:\&#34;FIRST_MATCH\&#34;,\&#34;channelControl\&#34;:\&#34;KEEP_OPEN\&#34;,\&#34;cardSelectionRequests\&#34;:[{\&#34;cardSelector\&#34;:{\&#34;cardProtocol\&#34;:\&#34;ISO_14443_4_CARD\&#34;,\&#34;aid\&#34;:\&#34;315449432E49434131\&#34;,\&#34;fileOccurrence\&#34;:\&#34;FIRST\&#34;,\&#34;fileControlInformation\&#34;:\&#34;FCI\&#34;,\&#34;successfulSelectionStatusWords\&#34;:[\&#34;9000\&#34;]},\&#34;cardRequest\&#34;:{\&#34;apduRequests\&#34;:[{\&#34;apdu\&#34;:\&#34;00B2013C00\&#34;,\&#34;successfulStatusWords\&#34;:[\&#34;9000\&#34;],\&#34;info\&#34;:\&#34;Read Records - SFI: 7h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&#34;}],\&#34;isStatusCodesVerificationEnabled\&#34;:false}}]}}&#34;,
@@ -1030,8 +1038,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-4>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('16',this)">Copy</button></div>
-<pre><code class=language-json id=code-16>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('17',this)">Copy</button></div>
+<pre><code class=language-json id=code-17>[
     {
         &#34;action&#34;: &#34;CMD&#34;,
         &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_REQUEST\&#34;,\&#34;parameters\&#34;:{\&#34;cardRequest\&#34;:{\&#34;apduRequests\&#34;:[{\&#34;apdu\&#34;:\&#34;00B2014400\&#34;,\&#34;successfulStatusWords\&#34;:[\&#34;9000\&#34;],\&#34;info\&#34;:\&#34;Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&#34;}],\&#34;isStatusCodesVerificationEnabled\&#34;:true},\&#34;channelControl\&#34;:\&#34;CLOSE_AFTER\&#34;}}&#34;,
@@ -1143,8 +1151,8 @@ intended to indicate to the server if the reader is contactless.</p>
 </tbody>
 </table>
 <h4 id=example-5>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('18',this)">Copy</button></div>
-<pre><code class=language-json id=code-18>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('19',this)">Copy</button></div>
+<pre><code class=language-json id=code-19>{
     &#34;action&#34;: &#34;RESP&#34;,
     &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CONTACTLESS\&#34;,\&#34;result\&#34;:true}&#34;,
     &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
@@ -1239,8 +1247,8 @@ is intended to indicate to the server if a card is present.</p>
 </tbody>
 </table>
 <h4 id=example-6>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('19',this)">Copy</button></div>
-<pre><code class=language-json id=code-19>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
+<pre><code class=language-json id=code-20>{
     &#34;action&#34;: &#34;RESP&#34;,
     &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CARD_PRESENT\&#34;,\&#34;result\&#34;:true}&#34;,
     &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
@@ -1401,8 +1409,8 @@ is intended to transmit to the server the result of the execution of the selecti
 </tbody>
 </table>
 <h5 id=example-7>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
-<pre><code class=language-json id=code-20>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('21',this)">Copy</button></div>
+<pre><code class=language-json id=code-21>{
     &#34;action&#34;: &#34;RESP&#34;,
     &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_SELECTION_REQUESTS\&#34;,\&#34;result\&#34;:[{\&#34;hasMatched\&#34;:true,\&#34;powerOnData\&#34;:\&#34;3B8880010000000000718100F9\&#34;,\&#34;selectApplicationResponse\&#34;:{\&#34;apdu\&#34;:\&#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C23121410019000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;},\&#34;cardResponse\&#34;:{\&#34;apduResponses\&#34;:[{\&#34;apdu\&#34;:\&#34;24B92848080000131A50001200000000000000000000000000000000009000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;}],\&#34;isLogicalChannelOpen\&#34;:true}}]}&#34;,
     &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
@@ -1536,8 +1544,8 @@ is intended to transmit to the server the result of the execution of a card requ
 </tbody>
 </table>
 <h5 id=example-8>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('21',this)">Copy</button></div>
-<pre><code class=language-json id=code-21>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('22',this)">Copy</button></div>
+<pre><code class=language-json id=code-22>{
     &#34;action&#34;: &#34;RESP&#34;,
     &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_REQUEST\&#34;,\&#34;result\&#34;:{\&#34;apduResponses\&#34;:[{\&#34;apdu\&#34;:\&#34;00112233445566778899AABBCCDDEEFF00112233445566778899AABBCC9000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;}],\&#34;isLogicalChannelOpen\&#34;:true}}&#34;,
     &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
@@ -1618,8 +1626,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h4 id=example-9>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('24',this)">Copy</button></div>
-<pre><code class=language-json id=code-24>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('25',this)">Copy</button></div>
+<pre><code class=language-json id=code-25>[
     {
         &#34;action&#34;: &#34;END_REMOTE_SERVICE&#34;,
         &#34;body&#34;: &#34;{\&#34;outputData\&#34;:{\&#34;isSuccessful\&#34;:true,\&#34;userId\&#34;:\&#34;test\&#34;}}&#34;,

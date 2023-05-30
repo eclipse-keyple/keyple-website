@@ -592,7 +592,7 @@ interaction with the user.&lt;/p>
 &lt;p>The diagram below illustrates the organization of a standalone application based on Keyple:
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./media/learn/user-guide/standalone-application/standalone_application_overview.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="./media/learn/user-guide/standalone-application/standalone_application_overview.drawio.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>&lt;/p>
 &lt;hr>
 &lt;h2 id="operating-mode">Operating mode&lt;/h2>
@@ -1311,12 +1311,13 @@ It is important to hide the internal Calypsonet interfaces of the &lt;strong>Cal
 &lt;li>&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Distributed Application User Guide</title><link>https://keyple.org/learn/user-guide/distributed-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/distributed-application/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>Keyple provides the &amp;ldquo;Keyple Distributed&amp;rdquo; solution which allows a terminal to communicate with a smart card reader available in another terminal.&lt;/p>
+&lt;p>Keyple provides the &amp;ldquo;Keyple Distributed&amp;rdquo; solution which allows an application to communicate with a smart card reader
+interfaced with another host.&lt;/p>
 &lt;p>In this way, you can manage transactions within a distributed architecture.&lt;/p>
 &lt;p>The diagram below shows the location of the Keyple Distributed components in the software layers used in a distributed architecture:&lt;/p>
 &lt;figure id="figure-keyple-distributed---solution-layers-overview">
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./media/learn/user-guide/distributed-application/distributed_solution_layers_overview.svg" alt="Keyple Distributed - Solution layers overview" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="./media/learn/user-guide/distributed-application/distributed_solution_layers_overview.drawio.svg" alt="Keyple Distributed - Solution layers overview" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
 Keyple Distributed - Solution layers overview
 &lt;/figcaption>&lt;/figure>
@@ -1344,11 +1345,11 @@ Keyple Distributed - Solution layers overview
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;strong>Remote Lib&lt;/strong>&lt;/td>
-&lt;td>This is the &lt;code>keyple-distributed-remote-java-lib&lt;/code> library.&lt;br>It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely.&lt;/td>
+&lt;td>This is the &lt;code>keyple-distributed-remote-java-lib&lt;/code> library.&lt;br>It must be imported and used by the application installed on the host not having local access to the smart card reader and that wishes to control the reader remotely.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;strong>Local Lib&lt;/strong>&lt;/td>
-&lt;td>This is the &lt;code>keyple-distributed-local-java-lib&lt;/code> library.&lt;br>It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.&lt;/td>
+&lt;td>This is the &lt;code>keyple-distributed-local-java-lib&lt;/code> library.&lt;br>It must be imported and used by the application installed on the host having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;strong>Network Lib&lt;/strong>&lt;/td>
@@ -1393,8 +1394,8 @@ width: 130px;
 &lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
 Keyple Distributed - Concepts - Main use case
 &lt;/figcaption>&lt;/figure>
-&lt;p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.&lt;/p>
-&lt;p>These could be for example a ticketing reloading service, where the business logic would be on the terminal without local readers, with thin clients on A &amp;amp; B terminals communicating locally with the cards.&lt;/p>
+&lt;p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different hosts.&lt;/p>
+&lt;p>These could be for example a ticketing reloading service, where the business logic would be on the host without local readers, with thin clients on A &amp;amp; B hosts communicating locally with the cards.&lt;/p>
 &lt;p>In this use case, the Keyple Distributed solution is use for card communication.&lt;/p>
 &lt;figure id="figure-keyple-distributed---concepts---one-remote-plugin-connected-to-many-local-services">
 &lt;div class="d-flex justify-content-center">
@@ -2214,6 +2215,14 @@ management of the card transaction to the server.&lt;/p>
 &lt;/ul>
 &lt;/div>
 &lt;/div>
+&lt;p>The diagram below illustrates the architecture of a non-Keyple application installed on a terminal and connected to a
+server based on Keyple:&lt;/p>
+&lt;figure id="figure-keyple-distributed-json-api---solution-layers-overview">
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="./media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_overview.drawio.svg" alt="Keyple Distributed JSON API - Solution layers overview" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
+Keyple Distributed JSON API - Solution layers overview
+&lt;/figcaption>&lt;/figure>
 &lt;h3 id="principle">Principle&lt;/h3>
 &lt;p>The Keyple remote transaction uses four types of messages exchanged between the terminal and the server in JSON format:&lt;/p>
 &lt;div id="principles-table-1">
@@ -2407,8 +2416,8 @@ Keyple Distributed JSON API - &amp;ldquo;Execute Remote Service&amp;rdquo; class
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="example">Example&lt;/h4>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('5', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-5">{
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('6', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-json" id="code-6">{
 &amp;#34;action&amp;#34;: &amp;#34;EXECUTE_REMOTE_SERVICE&amp;#34;,
 &amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;serviceId\&amp;#34;:\&amp;#34;AUTHENTICATE_CARD\&amp;#34;,\&amp;#34;inputData\&amp;#34;:{\&amp;#34;userId\&amp;#34;:\&amp;#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&amp;#34;}}&amp;#34;,
 &amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;,
@@ -2539,8 +2548,8 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-1">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('10', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-10">[
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('11', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-json" id="code-11">[
 {
 &amp;#34;action&amp;#34;: &amp;#34;CMD&amp;#34;,
 &amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CONTACTLESS\&amp;#34;}&amp;#34;,
@@ -2617,8 +2626,8 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-2">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('12', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-12">[
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('13', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-json" id="code-13">[
 {
 &amp;#34;action&amp;#34;: &amp;#34;CMD&amp;#34;,
 &amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CARD_PRESENT\&amp;#34;}&amp;#34;,
@@ -2850,8 +2859,8 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-3">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('14', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-14">[
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('15', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-json" id="code-15">[
 {
 &amp;#34;action&amp;#34;: &amp;#34;CMD&amp;#34;,
 &amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_SELECTION_REQUESTS\&amp;#34;,\&amp;#34;parameters\&amp;#34;:{\&amp;#34;multiSelectionProcessing\&amp;#34;:\&amp;#34;FIRST_MATCH\&amp;#34;,\&amp;#34;channelControl\&amp;#34;:\&amp;#34;KEEP_OPEN\&amp;#34;,\&amp;#34;cardSelectionRequests\&amp;#34;:[{\&amp;#34;cardSelector\&amp;#34;:{\&amp;#34;cardProtocol\&amp;#34;:\&amp;#34;ISO_14443_4_CARD\&amp;#34;,\&amp;#34;aid\&amp;#34;:\&amp;#34;315449432E49434131\&amp;#34;,\&amp;#34;fileOccurrence\&amp;#34;:\&amp;#34;FIRST\&amp;#34;,\&amp;#34;fileControlInformation\&amp;#34;:\&amp;#34;FCI\&amp;#34;,\&amp;#34;successfulSelectionStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;]},\&amp;#34;cardRequest\&amp;#34;:{\&amp;#34;apduRequests\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00B2013C00\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Read Records - SFI: 7h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&amp;#34;}],\&amp;#34;isStatusCodesVerificationEnabled\&amp;#34;:false}}]}}&amp;#34;,
@@ -2994,8 +3003,8 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-4">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('16', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-16">[
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('17', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-json" id="code-17">[
 {
 &amp;#34;action&amp;#34;: &amp;#34;CMD&amp;#34;,
 &amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_REQUEST\&amp;#34;,\&amp;#34;parameters\&amp;#34;:{\&amp;#34;cardRequest\&amp;#34;:{\&amp;#34;apduRequests\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00B2014400\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&amp;#34;}],\&amp;#34;isStatusCodesVerificationEnabled\&amp;#34;:true},\&amp;#34;channelControl\&amp;#34;:\&amp;#34;CLOSE_AFTER\&amp;#34;}}&amp;#34;,
@@ -3107,8 +3116,8 @@ intended to indicate to the server if the reader is contactless.&lt;/p>
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="example-5">Example&lt;/h4>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('18', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-18">{
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('19', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-json" id="code-19">{
 &amp;#34;action&amp;#34;: &amp;#34;RESP&amp;#34;,
 &amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CONTACTLESS\&amp;#34;,\&amp;#34;result\&amp;#34;:true}&amp;#34;,
 &amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
@@ -3203,8 +3212,8 @@ is intended to indicate to the server if a card is present.&lt;/p>
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="example-6">Example&lt;/h4>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('19', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-19">{
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('20', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-json" id="code-20">{
 &amp;#34;action&amp;#34;: &amp;#34;RESP&amp;#34;,
 &amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CARD_PRESENT\&amp;#34;,\&amp;#34;result\&amp;#34;:true}&amp;#34;,
 &amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
@@ -3365,8 +3374,8 @@ is intended to transmit to the server the result of the execution of the selecti
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-7">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('20', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-20">{
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('21', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-json" id="code-21">{
 &amp;#34;action&amp;#34;: &amp;#34;RESP&amp;#34;,
 &amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_SELECTION_REQUESTS\&amp;#34;,\&amp;#34;result\&amp;#34;:[{\&amp;#34;hasMatched\&amp;#34;:true,\&amp;#34;powerOnData\&amp;#34;:\&amp;#34;3B8880010000000000718100F9\&amp;#34;,\&amp;#34;selectApplicationResponse\&amp;#34;:{\&amp;#34;apdu\&amp;#34;:\&amp;#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C23121410019000\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;9000\&amp;#34;},\&amp;#34;cardResponse\&amp;#34;:{\&amp;#34;apduResponses\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;24B92848080000131A50001200000000000000000000000000000000009000\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;9000\&amp;#34;}],\&amp;#34;isLogicalChannelOpen\&amp;#34;:true}}]}&amp;#34;,
 &amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
@@ -3500,8 +3509,8 @@ is intended to transmit to the server the result of the execution of a card requ
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-8">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('21', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-21">{
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('22', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-json" id="code-22">{
 &amp;#34;action&amp;#34;: &amp;#34;RESP&amp;#34;,
 &amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_REQUEST\&amp;#34;,\&amp;#34;result\&amp;#34;:{\&amp;#34;apduResponses\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00112233445566778899AABBCCDDEEFF00112233445566778899AABBCC9000\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;9000\&amp;#34;}],\&amp;#34;isLogicalChannelOpen\&amp;#34;:true}}&amp;#34;,
 &amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
@@ -3582,8 +3591,8 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="example-9">Example&lt;/h4>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('24', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-24">[
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('25', this);">Copy&lt;/button>&lt;/div>
+&lt;pre>&lt;code class="language-json" id="code-25">[
 {
 &amp;#34;action&amp;#34;: &amp;#34;END_REMOTE_SERVICE&amp;#34;,
 &amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;outputData\&amp;#34;:{\&amp;#34;isSuccessful\&amp;#34;:true,\&amp;#34;userId\&amp;#34;:\&amp;#34;test\&amp;#34;}}&amp;#34;,
@@ -3609,7 +3618,7 @@ It completely hides the details of APDU orders that are sent to Calypso cards an
 &lt;p>The diagram below illustrates the organization of a Calypso application based on Keyple:
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./media/learn/user-guide/calypso-application/calypso_application_overview.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="./media/learn/user-guide/calypso-application/calypso_application_overview.drawio.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>&lt;/p>
 &lt;hr>
 &lt;h2 id="operating-mode">Operating mode&lt;/h2>

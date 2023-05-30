@@ -180,6 +180,14 @@ across all Keyple components repositories.
 </tr>
 </thead>
 <tbody>
+<tr><th>2023-05-30</th><td><span class=component>Keyple Service Java Lib</span><span class=version><code>2.3.1</code></span><hr><h3 id=fixed>Fixed</h3>
+<ul>
+<li>Fixes an issue with exception handling in the <code>WAIT_FOR_CARD_REMOVAL</code> state of the observable reader state machine
+that blocked the state machine in the same state.</li>
+<li>Fixes a performance issue introduced in version <code>2.1.3</code> related to the closing of the physical channel when processing
+a new card selection scenario with the same card (issue [#58]).</li>
+</ul>
+</td></tr>
 <tr><th>2023-05-22</th><td><span class=component>Keyple Service Java Lib</span><span class=version><code>2.3.0</code></span><hr><h3 id=upgraded>Upgraded</h3>
 <ul>
 <li>Calypsonet Terminal Reader API <code>1.2.0</code> -> <code>1.3.0</code>.

@@ -26,7 +26,7 @@
 <meta property="og:title" content="Distributed Application User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user application using network communications."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2022-07-26T16:25:33+02:00">
+<meta property="article:modified_time" content="2023-05-30T15:47:50+02:00">
 <title>Distributed Application User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=8a904b9f9936e7ea56be3cfe5bc9e243>
@@ -236,12 +236,13 @@ User guides
 <div class=article-style>
 <hr>
 <h2 id=overview>Overview</h2>
-<p>Keyple provides the &ldquo;Keyple Distributed&rdquo; solution which allows a terminal to communicate with a smart card reader available in another terminal.</p>
+<p>Keyple provides the &ldquo;Keyple Distributed&rdquo; solution which allows an application to communicate with a smart card reader
+interfaced with another host.</p>
 <p>In this way, you can manage transactions within a distributed architecture.</p>
 <p>The diagram below shows the location of the Keyple Distributed components in the software layers used in a distributed architecture:</p>
 <figure id=figure-keyple-distributed---solution-layers-overview>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_solution_layers_overview.svg alt="Keyple Distributed - Solution layers overview" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_solution_layers_overview.drawio.svg alt="Keyple Distributed - Solution layers overview" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed - Solution layers overview
 </figcaption></figure>
@@ -269,11 +270,11 @@ Keyple Distributed - Solution layers overview
 <tbody>
 <tr>
 <td><strong>Remote Lib</strong></td>
-<td>This is the <code>keyple-distributed-remote-java-lib</code> library.<br>It must be imported and used by the application installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely.</td>
+<td>This is the <code>keyple-distributed-remote-java-lib</code> library.<br>It must be imported and used by the application installed on the host not having local access to the smart card reader and that wishes to control the reader remotely.</td>
 </tr>
 <tr>
 <td><strong>Local Lib</strong></td>
-<td>This is the <code>keyple-distributed-local-java-lib</code> library.<br>It must be imported and used by the application installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.</td>
+<td>This is the <code>keyple-distributed-local-java-lib</code> library.<br>It must be imported and used by the application installed on the host having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.</td>
 </tr>
 <tr>
 <td><strong>Network Lib</strong></td>
@@ -314,8 +315,8 @@ Keyple Distributed - Solution layers overview
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed - Concepts - Main use case
 </figcaption></figure>
-<p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different terminals.</p>
-<p>These could be for example a ticketing reloading service, where the business logic would be on the terminal without local readers, with thin clients on A & B terminals communicating locally with the cards.</p>
+<p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different hosts.</p>
+<p>These could be for example a ticketing reloading service, where the business logic would be on the host without local readers, with thin clients on A & B hosts communicating locally with the cards.</p>
 <p>In this use case, the Keyple Distributed solution is use for card communication.</p>
 <figure id=figure-keyple-distributed---concepts---one-remote-plugin-connected-to-many-local-services>
 <div class="d-flex justify-content-center">
@@ -692,7 +693,7 @@ Keyple Distributed - Asynchronous network implementation
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2022-07-26</p>
+<p>Last updated on 2023-05-30</p>
 </div>
 </article>
 <footer class=site-footer>
