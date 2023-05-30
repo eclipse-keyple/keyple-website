@@ -54,18 +54,17 @@ hide <<grey>> stereotype
 ' == CONTENT ==
 
 ' CMD
-class CmdData {
+class MessageDto {
     **action** : String = "**CMD**"
+    **body** : CmdBody
+    **sessionId** : String
     **clientNodeId** : String
     **localReaderName** : String
     **serverNodeId** : String
     **remoteReaderName** : String
-    **sessionId** : String
-    **body** : CmdBody
 }
 abstract class CmdBody {
     **service** : String
-    **parameters** : Object?
 }
 
 ' IS_CONTACTLESS (CMD) ==> NOP
@@ -142,7 +141,7 @@ class TransmitCardRequestCmdParameters {
 
 ' Associations
 
-CmdData *-- "1" CmdBody #C_LINK : JsonString
+MessageDto *-- "1" CmdBody #C_LINK : JsonString
 
 TransmitCardSelectionRequestsCmdBody *-- "1" TransmitCardSelectionRequestsCmdParameters #C_LINK
 
@@ -168,7 +167,7 @@ TransmitCardRequestCmdParameters *-- "1" CardRequest #C_LINK
 ' == STYLE ==
 
 ' CMD
-class CmdData <<green>>
+class MessageDto <<green>>
 abstract class CmdBody <<green>>
 
 ' TRANSMIT_CARD_SELECTION_REQUESTS (CMD)

@@ -54,18 +54,17 @@ hide <<grey>> stereotype
 ' == CONTENT ==
 
 ' RESP
-class RespData {
+class MessageDto {
     **action** : String = "**RESP**"
+    **body** : RespBody
+    **sessionId** : String
     **clientNodeId** : String
     **localReaderName** : String
     **serverNodeId** : String
     **remoteReaderName** : String
-    **sessionId** : String
-    **body** : RespBody
 }
 abstract class RespBody {
     **service** : String
-    **result** : Object?
     **error** : Error?
 }
 
@@ -115,7 +114,7 @@ class TransmitCardRequestRespBody extends RespBody {
 
 ' Associations
 
-RespData *-- "1" RespBody #C_LINK : JsonString
+MessageDto *-- "1" RespBody #C_LINK : JsonString
 
 RespBody *.right. "0..1" Error #C_LINK
 
@@ -134,7 +133,7 @@ TransmitCardRequestRespBody *.. "0..1" CardResponse #C_LINK
 ' == STYLE ==
 
 ' RESP
-class RespData <<blue>>
+class MessageDto <<blue>>
 abstract class RespBody <<blue>>
 
 class Error <<blue>>
