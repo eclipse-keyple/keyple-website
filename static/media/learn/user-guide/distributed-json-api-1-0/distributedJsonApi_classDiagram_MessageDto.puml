@@ -1,9 +1,4 @@
 @startuml
-'title
-'    Keyple Distributed JSON API
-'    compliant with "keyple-service-java-lib" version 2.1.4
-'    END_REMOTE_SERVICE (2023-03-22)
-'end title
 
 ' == THEME ==
 
@@ -53,30 +48,23 @@ hide <<grey>> stereotype
 
 ' == CONTENT ==
 
-' END_REMOTE_SERVICE
 class MessageDto {
-    **action** : String = "**END_REMOTE_SERVICE**"
+    **action** : String
     **body** : String
     **sessionId** : String
     **clientNodeId** : String
-    <color:grey>**localReaderName** : null
-    **serverNodeId** : String
-    **remoteReaderName** : String
-}
-class EndRemoteServiceBody {
-    **outputData** : Object?
+    **localReaderName** : String?
+    **serverNodeId** : String?
+    **remoteReaderName** : String?
 }
 
 ' Associations
 
-MessageDto *-- "1" EndRemoteServiceBody #C_LINK : JsonString
 
 ' == LAYOUT ==
 
+
 ' == STYLE ==
 
-' END_REMOTE_SERVICE
-class MessageDto <<green>>
-class EndRemoteServiceBody <<green>>
 
 @enduml
