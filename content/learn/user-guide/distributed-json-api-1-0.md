@@ -32,6 +32,11 @@ This API is compliant with the following Keyple server side components:
 - [Keyple Distributed Remote Library]({{< ref "components-java/distributed/keyple-distributed-remote-java-lib" >}}) version `2.2.0+`
 {{% /callout %}}
 
+The diagram below illustrates the architecture of a non-Keyple application installed on a terminal and connected to a 
+server based on Keyple:
+
+{{< figure src="/media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_overview.drawio.svg" caption="Keyple Distributed JSON API - Solution layers overview" numbered="true" >}}
+
 ### Principle
 
 The Keyple remote transaction uses four types of messages exchanged between the terminal and the server in JSON format:
