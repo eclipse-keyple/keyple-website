@@ -180,6 +180,17 @@ across all Keyple components repositories.
 </tr>
 </thead>
 <tbody>
+<tr><th>2023-06-20</th><td><span class=component>Keyple Card Calypso Java Lib</span><span class=version><code>2.3.6</code></span><hr><h3 id=added>Added</h3>
+<ul>
+<li>Added project status badges on <code>README.md</code> file.</li>
+</ul>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>Fixed the unexpected behavior of card transactions containing only SAM commands, such as signature computation or verification, in which SAM commands were not taken into account.</li>
+<li>Fixed the <code>prepareIncreaseCounter</code> and <code>prepareDecreaseCounter</code> methods to allow the use of simulated counters.</li>
+<li>CI: code coverage report when releasing.</li>
+</ul>
+</td></tr>
 <tr><th>2023-05-30</th><td><span class=component>Keyple Service Java Lib</span><span class=version><code>2.3.1</code></span><hr><h3 id=fixed>Fixed</h3>
 <ul>
 <li>Fixes an issue with exception handling in the <code>WAIT_FOR_CARD_REMOVAL</code> state of the observable reader state machine
