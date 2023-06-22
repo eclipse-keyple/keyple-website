@@ -1,4 +1,41 @@
 {
-  "message": "API rate limit exceeded for installation ID 5160853.",
-  "documentation_url": "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"
+  "url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-lib/releases/98065796",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-lib/releases/98065796/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-distributed-local-java-lib/releases/98065796/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-distributed-local-java-lib/releases/tag/2.2.0",
+  "id": 98065796,
+  "author": {
+    "login": "andrei-cristea",
+    "id": 26622621,
+    "node_id": "MDQ6VXNlcjI2NjIyNjIx",
+    "avatar_url": "https://avatars.githubusercontent.com/u/26622621?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/andrei-cristea",
+    "html_url": "https://github.com/andrei-cristea",
+    "followers_url": "https://api.github.com/users/andrei-cristea/followers",
+    "following_url": "https://api.github.com/users/andrei-cristea/following{/other_user}",
+    "gists_url": "https://api.github.com/users/andrei-cristea/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/andrei-cristea/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/andrei-cristea/subscriptions",
+    "organizations_url": "https://api.github.com/users/andrei-cristea/orgs",
+    "repos_url": "https://api.github.com/users/andrei-cristea/repos",
+    "events_url": "https://api.github.com/users/andrei-cristea/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/andrei-cristea/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "node_id": "RE_kwDOEgs_Vc4F2F2E",
+  "tag_name": "2.2.0",
+  "target_commitish": "main",
+  "name": "2.2.0",
+  "draft": false,
+  "prerelease": false,
+  "created_at": "2023-04-04T14:08:20Z",
+  "published_at": "2023-04-04T16:16:04Z",
+  "assets": [
+
+  ],
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-lib/tarball/2.2.0",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-lib/zipball/2.2.0",
+  "body": ":warning: **CAUTION**: this version requires to use at least version `2.2.0` of the\r\n[Keyple Distributed Remote Library](https://keyple.org/components-java/distributed/keyple-distributed-remote-java-lib/)!\r\n### Added\r\n- `CHANGELOG.md` file (issue [eclipse/keyple#6]).\r\n- CI: Forbid the publication of a version already released (issue [#5]).\r\n### Changed\r\n- Initial card content and user input/output data used for \"ReaderClientSide\" mode are now serialized/de-serialized \r\n  as JSON objects, and no more as strings containing JSON objects.\r\n- All JSON property names are now \"lowerCamelCase\" formatted.\r\n### Upgraded\r\n- \"Keyple Distributed Network Library\" to version `2.2.0`.\r\n- \"Keyple Util Library\" to version `2.3.0`.\r\n- \"Google Gson Library\" (com.google.code.gson) to version `2.10.1`."
 }
