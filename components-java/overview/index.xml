@@ -153,13 +153,13 @@ Maven
 &lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
 id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
 &lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&amp;#39;
-implementation &amp;#39;org.eclipse.keyple:keyple-plugin-java-api:2.1.0&amp;#39;
+implementation &amp;#39;org.eclipse.keyple:keyple-plugin-java-api:2.2.0&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-util-java-lib:2.3.1&amp;#39;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
 &lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-common-java-api:2.0.0&amp;#34;)
-implementation(&amp;#34;org.eclipse.keyple:keyple-plugin-java-api:2.1.0&amp;#34;)
+implementation(&amp;#34;org.eclipse.keyple:keyple-plugin-java-api:2.2.0&amp;#34;)
 implementation(&amp;#34;org.eclipse.keyple:keyple-util-java-lib:2.3.1&amp;#34;)&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;div class="tab-pane fade"
@@ -172,7 +172,7 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &amp;lt;dependency&amp;gt;
 &amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
 &amp;lt;artifactId&amp;gt;keyple-plugin-java-api&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.1.0&amp;lt;/version&amp;gt;
+&amp;lt;version&amp;gt;2.2.0&amp;lt;/version&amp;gt;
 &amp;lt;/dependency&amp;gt;
 &amp;lt;dependency&amp;gt;
 &amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
@@ -346,7 +346,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;!-- All groovy dependencies -->
 &lt;code id="all-groovy-dependencies" style="display:none">
 &lt;span id="keyple-common-java-api">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-common-java-api:2.0.0'&lt;/span>&lt;/span>
-&lt;span id="keyple-service-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-service-java-lib:2.3.1'&lt;/span>&lt;/span>
+&lt;span id="keyple-service-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-service-java-lib:2.3.2'&lt;/span>&lt;/span>
 &lt;span id="keyple-service-resource-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-service-resource-java-lib:2.1.1'&lt;/span>&lt;/span>
 &lt;span id="keyple-util-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-util-java-lib:2.3.1'&lt;/span>&lt;/span>
 &lt;span id="keyple-card-calypso-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-java-lib:2.3.8'&lt;/span>&lt;/span>
@@ -355,7 +355,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-distributed-local-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-distributed-local-java-lib:2.2.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-network-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-distributed-network-java-lib:2.2.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-remote-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-distributed-remote-java-lib:2.2.1'&lt;/span>&lt;/span>
-&lt;span id="keyple-plugin-android-nfc-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.0.1'&lt;/span>&lt;/span>
+&lt;span id="keyple-plugin-android-nfc-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.1.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-omapi-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.0.1'&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-cardresource-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-plugin-cardresource-java-lib:1.0.1'&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-pcsc-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.2'&lt;/span>&lt;/span>
@@ -368,7 +368,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;!-- All kotlin dependencies -->
 &lt;code id="all-kotlin-dependencies" style="display:none">
 &lt;span id="keyple-common-java-api">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-common-java-api:2.0.0"&lt;/span>)&lt;/span>
-&lt;span id="keyple-service-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-service-java-lib:2.3.1"&lt;/span>)&lt;/span>
+&lt;span id="keyple-service-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-service-java-lib:2.3.2"&lt;/span>)&lt;/span>
 &lt;span id="keyple-service-resource-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-service-resource-java-lib:2.1.1"&lt;/span>)&lt;/span>
 &lt;span id="keyple-util-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-util-java-lib:2.3.1"&lt;/span>)&lt;/span>
 &lt;span id="keyple-card-calypso-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-java-lib:2.3.8"&lt;/span>)&lt;/span>
@@ -377,7 +377,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-distributed-local-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-distributed-local-java-lib:2.2.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-distributed-network-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-distributed-network-java-lib:2.2.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-distributed-remote-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-distributed-remote-java-lib:2.2.1"&lt;/span>)&lt;/span>
-&lt;span id="keyple-plugin-android-nfc-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.0.1"&lt;/span>)&lt;/span>
+&lt;span id="keyple-plugin-android-nfc-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.1.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-plugin-android-omapi-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.0.1"&lt;/span>)&lt;/span>
 &lt;span id="keyple-plugin-cardresource-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-plugin-cardresource-java-lib:1.0.1"&lt;/span>)&lt;/span>
 &lt;span id="keyple-plugin-pcsc-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.2"&lt;/span>)&lt;/span>
@@ -397,7 +397,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-service-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>keyple-service-java-lib&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>
-&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.3.1&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
+&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.3.2&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>&lt;/span>
 &lt;span id="keyple-service-resource-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
@@ -442,7 +442,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-plugin-android-nfc-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>keyple-plugin-android-nfc-java-lib&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>
-&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.0.1&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
+&amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>2.1.0&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-omapi-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &amp;nbsp;&amp;nbsp;&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
@@ -552,9 +552,33 @@ it is imperative to add a new line if "keyple-card-calypso-java-lib" or "keyple-
 &lt;td>2.0.+&lt;/td>&lt;!-- keyple-common-java-api -->
 &lt;td>2.0.+&lt;/td>&lt;!-- keyple-distributed-local-java-api -->
 &lt;td>2.1.+&lt;/td>&lt;!-- keyple-distributed-remote-java-api -->
+&lt;td>2.2.+&lt;/td>&lt;!-- keyple-plugin-java-api -->
+&lt;td>2.3.0...2.3.1&lt;/td>&lt;!-- keyple-util-java-lib -->
+&lt;td>2.3.2&lt;/td>&lt;!-- keyple-service-java-lib -->
+&lt;td>2.1.0...2.1.1&lt;/td>&lt;!-- keyple-service-resource-java-lib -->
+&lt;td>2.2.0&lt;/td>&lt;!-- keyple-distributed-local-java-lib -->
+&lt;td>2.2.0&lt;/td>&lt;!-- keyple-distributed-network-java-lib -->
+&lt;td>2.2.0...2.2.1&lt;/td>&lt;!-- keyple-distributed-remote-java-lib -->
+&lt;td>2.3.4...2.3.8&lt;/td>&lt;!-- keyple-card-calypso-java-lib -->
+&lt;td>0.3.0&lt;/td>&lt;!-- keyple-card-calypso-crypto-legacysam-java-lib -->
+&lt;td>2.0.0...2.0.2&lt;/td>&lt;!-- keyple-card-generic-java-lib -->
+&lt;td>2.1.0&lt;/td>&lt;!-- keyple-plugin-android-nfc-java-lib -->
+&lt;td>2.0.0...2.0.1&lt;/td>&lt;!-- keyple-plugin-android-omapi-java-lib -->
+&lt;td>1.0.0...1.0.1&lt;/td>&lt;!-- keyple-plugin-cardresource-java-lib -->
+&lt;td>2.0.0...2.1.2&lt;/td>&lt;!-- keyple-plugin-pcsc-java-lib -->
+&lt;td>2.0.0...2.1.0&lt;/td>&lt;!-- keyple-plugin-stub-java-lib -->
+&lt;/tr>
+&lt;tr>
+&lt;td>1.3.+&lt;/td>&lt;!-- calypsonet-terminal-reader-java-api -->
+&lt;td>1.0.+&lt;/td>&lt;!-- calypsonet-terminal-card-java-api -->
+&lt;td>1.8.+&lt;/td>&lt;!-- calypsonet-terminal-calypso-java-api -->
+&lt;td>0.2.+&lt;/td>&lt;!-- calypsonet-terminal-calypso-crypto-legacysam-java-api -->
+&lt;td>2.0.+&lt;/td>&lt;!-- keyple-common-java-api -->
+&lt;td>2.0.+&lt;/td>&lt;!-- keyple-distributed-local-java-api -->
+&lt;td>2.1.+&lt;/td>&lt;!-- keyple-distributed-remote-java-api -->
 &lt;td>2.1.+&lt;/td>&lt;!-- keyple-plugin-java-api -->
 &lt;td>2.3.0...2.3.1&lt;/td>&lt;!-- keyple-util-java-lib -->
-&lt;td>2.3.0...2.3.1&lt;/td>&lt;!-- keyple-service-java-lib -->
+&lt;td>2.3.0...2.3.2&lt;/td>&lt;!-- keyple-service-java-lib -->
 &lt;td>2.1.0...2.1.1&lt;/td>&lt;!-- keyple-service-resource-java-lib -->
 &lt;td>2.2.0&lt;/td>&lt;!-- keyple-distributed-local-java-lib -->
 &lt;td>2.2.0&lt;/td>&lt;!-- keyple-distributed-network-java-lib -->

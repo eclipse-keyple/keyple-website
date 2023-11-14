@@ -32,7 +32,7 @@ end legend
 
 start
 
-if (\nDoes the plugin have to provide\na reader allocation mechanism?\n) then (yes)
+if (Does the plugin have to provide\na reader allocation mechanism?) then (yes)
     partition "  Plugin factory object  " {
         #C_GREEN:**KeyplePluginExtensionFactory**;
         #C_PURPLE:specific **XxxPluginFactory**;
@@ -53,7 +53,7 @@ else (no)
         #C_GREEN:**KeyplePluginExtension**;
         #C_PURPLE:specific **XxxPlugin**;
         if (Is the reader removable?) then (yes)
-            if (\nDoes the plugin work\nautonomously to detect reader\nconnections and disconnections?\n) then (yes)
+            if (Does the plugin\nwork autonomously\nto detect reader\nconnections\nand disconnections?) then (yes)
                 #C_YELLOW:**AutonomousObservablePluginSpi**;
             else (no)
                 #C_YELLOW:**ObservablePluginSpi**;
@@ -68,45 +68,40 @@ partition "  Reader object  " {
     #C_GREEN:**KeypleReaderExtension**;
     #C_PURPLE:specific **XxxReader**;
 
-    if (Is the reader associated with a plugin that provides a reader allocation mechanism?) then (yes)
+    if (Is the reader associated with a plugin\nthat provides a reader allocation mechanism?) then (yes)
         #C_YELLOW:**PoolReaderSpi**;
     else (no)
     endif
 
-    if (Can the reader handle multiple protocols?) then (yes)
+    if (Is it possible to select the protocols\nused by the reader to communicate with the cards?) then (yes)
         #C_YELLOW:**ConfigurableReaderSpi**;
     else (no)
     endif
 
-    if (Is the reader autonomous to open a logical channel with the card?) then (yes)
+    if (Is the selection command sent to the card\nmanaged autonomously by the reader?) then (yes)
         #C_YELLOW:**AutonomousSelectionReaderSpi**;
     else (no)
     endif
 
-    if (Is the card removable?) then (yes)
+    if (Is it necessary\nto dynamically manage\ncard insertions and removals?) then (yes)
         #C_YELLOW:**ObservableReaderSpi**;
-        if (\nDoes the reader work autonomously\nto detect card insertions?\n) then (yes)
-            if (\nDoes the reader have\na built-in card presence\nnotification mechanism?\n) then (yes)
-                #C_YELLOW:**WaitForCardInsertionAutonomousSpi**;
+        if (Does the reader\nwork autonomously\nto detect card insertions?) then (yes)
+            if (Does the reader generate\nasynchronous events\nwhen a card is inserted?) then (yes)
+                #C_YELLOW:**CardInsertionWaiterAsynchronousSpi**;
             else (no)
-                #C_YELLOW:**WaitForCardInsertionBlockingSpi**;
+                #C_YELLOW:**CardInsertionWaiterBlockingSpi**;
             endif
         else (no)
-            #C_YELLOW:**WaitForCardInsertionNonBlockingSpi**;
+            #C_YELLOW:**CardInsertionWaiterNonBlockingSpi**;
         endif
-        if (\nIs the reader able to detect a card removal\nbetween two APDU transfers?\n) then (yes)
-            #C_YELLOW:**WaitForCardRemovalBlockingDuringProcessingSpi**;
-        else (no)
-            #C_YELLOW:**DontWaitForCardRemovalDuringProcessingSpi**;
-        endif
-        if (\nDoes the reader work autonomously\nto detect card removals?\n) then (yes)
-            if (\nDoes the reader have\na built-in missing card\nnotification mechanism?\n) then (yes)
-                #C_YELLOW:**WaitForCardRemovalAutonomousSpi**;
+        if (Does the reader\nwork autonomously\nto detect card removals?) then (yes)
+            if (Does the reader generate\nasynchronous events\nwhen a card is removed?) then (yes)
+                #C_YELLOW:**CardRemovalWaiterAsynchronousSpi**;
             else (no)
-                #C_YELLOW:**WaitForCardRemovalBlockingSpi**;
+                #C_YELLOW:**CardRemovalWaiterBlockingSpi**;
             endif
         else (no)
-            #C_YELLOW:**WaitForCardRemovalNonBlockingSpi**;
+            #C_YELLOW:**CardRemovalWaiterNonBlockingSpi**;
         endif
     else (no)
         #C_YELLOW:**ReaderSpi**;
