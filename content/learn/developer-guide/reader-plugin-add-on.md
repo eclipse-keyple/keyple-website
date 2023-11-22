@@ -107,4 +107,4 @@ Thus, the factory does not expose any method.
 ---
 ## Download
 
-* [Java components]({{< ref "components-java/overview/configuration-wizard" >}})
+* [Java components]({{< ref "components/overview/configuration-wizard" >}})

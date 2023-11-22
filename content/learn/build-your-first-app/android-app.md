@@ -24,11 +24,11 @@ The application available in the example repository requires:
 {{% /callout %}}
 
 It uses three main components of Keyple:
-* [Keyple Service Java Library]({{< relref "/components-java/core/" >}})
+* [Keyple Service Java Library]({{< relref "/components/core/" >}})
   which is the base component to which all the others refer,
-* [Keyple Card Generic]({{< relref "/components-java/card-extensions/keyple-card-generic-java-lib" >}})
+* [Keyple Card Generic]({{< relref "/components/card-extensions/keyple-card-generic-lib" >}})
   add-on to handle the commands sent to the Calypso card,
-* [Keyple Plugin Android NFC]({{< relref "/components-java/standard-reader-plugins/keyple-plugin-android-nfc-java-lib" >}})
+* [Keyple Plugin Android NFC]({{< relref "/components/standard-reader-plugins/keyple-plugin-android-nfc-lib" >}})
   add-on to provide the ability to drive the NFC reader.
 
 [Gradle](https://gradle.org/) is used as build automation tool, but it is easy to transpose these explanations to another tool
@@ -37,7 +37,7 @@ such as Maven for example.
 ---
 ## Project setup
 
-The dependencies to be imported into the project are accessible with the [configuration wizard]({{< relref "/components-java/overview/configuration-wizard" >}}).
+The dependencies to be imported into the project are accessible with the [configuration wizard]({{< relref "/components/overview/configuration-wizard" >}}).
 
 Depending on the nature of the hardware resources required, it is necessary to declare certain permissions in the project manifest file.
 In the case of the Android NFC example, access to NFC functions is declared as follows:

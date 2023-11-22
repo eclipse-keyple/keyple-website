@@ -204,4 +204,4 @@ try {
 ---
 ## Download
 
-* [Java components]({{< ref "components-java/overview/configuration-wizard" >}})
+* [Java components]({{< ref "components/overview/configuration-wizard" >}})

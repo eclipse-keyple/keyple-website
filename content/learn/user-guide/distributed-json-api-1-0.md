@@ -27,9 +27,9 @@ management of the card transaction to the server.
 
 {{% callout warning %}}
 This API is compliant with the following Keyple server side components:
-- [Keyple Service Library]({{< ref "components-java/core/keyple-service-java-lib" >}}) version `2.1.4+`
-- [Keyple Distributed Network Library]({{< ref "components-java/distributed/keyple-distributed-network-java-lib" >}}) version `2.2.0+`
-- [Keyple Distributed Remote Library]({{< ref "components-java/distributed/keyple-distributed-remote-java-lib" >}}) version `2.2.0+`
+- [Keyple Service Library]({{< ref "components/core/keyple-service-lib" >}}) version `2.1.4+`
+- [Keyple Distributed Network Library]({{< ref "components/distributed/keyple-distributed-network-lib" >}}) version `2.2.0+`
+- [Keyple Distributed Remote Library]({{< ref "components/distributed/keyple-distributed-remote-lib" >}}) version `2.2.0+`
 {{% /callout %}}
 
 The diagram below illustrates the architecture of a non-Keyple application installed on a terminal and connected to a 

@@ -26,10 +26,10 @@ subtitle = ""
   <div class="row" style="text-align: center">
     <div class="col-sm-3"></div>
     <div class="col-sm-3">
-      <a href="/components-java/overview/"><img src ="media/icon-java.svg" style="height: 60px; margin-left: auto; margin-right: auto"/><br>Eclipse Keyple® for Java</a>
+      <a href="/components/overview/"><img src ="media/icon-java.svg" style="height: 60px; margin-left: auto; margin-right: auto"/><br>Eclipse Keyple® for Java</a>
     </div>
     <div class="col-sm-3">
-      <a href="/components-cpp/overview/"><img src ="media/icon-cpp.svg" style="height: 60px; margin-left: auto; margin-right: auto"/><br>Eclipse Keyple® for C++</a>
+      <a href="/components/overview/"><img src ="media/icon-cpp.svg" style="height: 60px; margin-left: auto; margin-right: auto"/><br>Eclipse Keyple® for C++</a>
     </div>
     <div class="col-sm-3"></div>
   </div>

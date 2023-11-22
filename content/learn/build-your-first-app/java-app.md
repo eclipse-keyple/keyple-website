@@ -22,18 +22,18 @@ The demonstration application created for this quick start requires:
 
 
 We will use three main components of Keyple:
-* [Keyple Service Java Library]({{< relref "/components-java/core/" >}})
+* [Keyple Service Java Library]({{< relref "/components/core/" >}})
   which is the base component to which all the others refer,
-* [Keyple Card Calypso]({{< relref "/components-java/card-extensions/keyple-card-calypso-java-lib" >}}) 
+* [Keyple Card Calypso]({{< relref "/components/card-extensions/keyple-card-calypso-lib" >}}) 
   add-on to handle the commands sent to the Calypso card and the Calypso SAM,
-* [Keyple Plugin PC/SC]({{< relref "/components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib" >}})
+* [Keyple Plugin PC/SC]({{< relref "/components/standard-reader-plugins/keyple-plugin-pcsc-lib" >}})
   add-on to provide the ability to manage PC/SC readers.
 
 In this guide [Gradle](https://gradle.org/) is used as build automation
 tool, but it is easy to transpose these explanations to another tool
 such as Maven for example. 
 
-See [here]({{< relref "/components-java/overview/configuration-wizard" >}}) for the configuration of the dependencies.
+See [here]({{< relref "/components/overview/configuration-wizard" >}}) for the configuration of the dependencies.
 
 The example can run on any machine: Linux, Windows and macOS. If not
 installed in your machine, you will need to download :

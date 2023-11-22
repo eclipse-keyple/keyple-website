@@ -41,32 +41,8 @@ main:
     weight: 20
 
   - name: Components
-    url: '/components/'
+    url: '/components/overview'
     weight: 30
-  - name: Java implementation v2+
-    parent: Components
-    url: '/components-java/overview/'
-    weight: 10
-  - name: C++ implementation v2+
-    parent: Components
-    url: '/components-cpp/overview/'
-    weight: 20
-  - name: ' '
-    parent: Components
-    url: ''
-    weight: 30
-  - name: 'Guide to migrate from v1.0 to v2+'
-    parent: Components
-    url: '/learn/user-guide/migrate-to-2-0'
-    weight: 31
-  - name: Java implementation v1.0 (deprecated)
-    parent: Components
-    url: '/components-java-1.0/'
-    weight: 40
-  - name: C++ implementation v0.9 (deprecated)
-    parent: Components
-    url: '/components-cpp-0.9/'
-    weight: 50
 
   - name: Community
     url: '/community/'
@@ -103,6 +79,10 @@ main:
     parent: Community
     url: 'https://github.com/eclipse/keyple/'
     weight: 70
+  - name: Archives
+    parent: Community
+    url: '/archives/'
+    weight: 80
 
   - name: External resources
     url: '/external-resources/'

@@ -51,7 +51,7 @@ The table below lists the objects that must be created and indicates the interfa
 
 {{% callout warning %}}
 In the case where the smart card object has fields of type `interface`,
-it will then be necessary to define for each of them and recursively a JSON deserializer and register it during the service initialization with the method `JsonUtil.registerTypeAdapter(...)` provided by the [Keyple Util]({{< ref "components-java/core/keyple-util-java-lib" >}}) library.
+it will then be necessary to define for each of them and recursively a JSON deserializer and register it during the service initialization with the method `JsonUtil.registerTypeAdapter(...)` provided by the [Keyple Util]({{< ref "components/core/keyple-util-lib" >}}) library.
 
 This will allow the transport of this object through the network when using the Keyple Distributed solution.
 {{% /callout %}}
@@ -113,4 +113,4 @@ For this purpose, it is suggested to respect the following programming pattern b
 ---
 ## Download
 
-* [Java components]({{< ref "components-java/overview/configuration-wizard" >}})
+* [Java components]({{< ref "components/overview/configuration-wizard" >}})

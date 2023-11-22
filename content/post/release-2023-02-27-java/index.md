@@ -17,4 +17,4 @@ and therefore adds the counters ceilings management feature in static mode.
 This allows to update remotely the key ceilings of the reloading SAMs.
 
 For more information, please visit the component 
-[page]({{< ref "components-java/card-extensions/keyple-card-calypso-crypto-legacysam-java-lib" >}}).
+[page]({{< ref "components/card-extensions/keyple-card-calypso-crypto-legacysam-lib" >}}).
