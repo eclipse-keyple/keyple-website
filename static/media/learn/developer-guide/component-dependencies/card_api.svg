@@ -14,7 +14,7 @@ entity serviceApi--><ellipse cx="380" cy="173" fill="#FEFECE" rx="8" ry="8" styl
 entity service--><rect fill="#FEFECE" height="47.6094" style="stroke:#D4AC0D;stroke-width:1.5;" width="90" x="335" y="252"/><rect fill="#FEFECE" height="10" style="stroke:#D4AC0D;stroke-width:1.5;" width="15" x="405" y="257"/><rect fill="#FEFECE" height="2" style="stroke:#D4AC0D;stroke-width:1.5;" width="4" x="403" y="259"/><rect fill="#FEFECE" height="2" style="stroke:#D4AC0D;stroke-width:1.5;" width="4" x="403" y="263"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="350" y="286.5332">Adapter</text><!--MD5=[9c7f5ad1afce88c433e504bd5753a996]
 entity cardSpi--><ellipse cx="223" cy="432" fill="#E9F7EF" rx="8" ry="8" style="stroke:#27AE60;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="21" x="212.5" y="463.5332">SPI</text><!--MD5=[f74f7ef7641fa41957945dcfb119390e]
 entity cardApi--><ellipse cx="312" cy="432" fill="#FEFECE" rx="8" ry="8" style="stroke:#D4AC0D;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="21" x="301.5" y="463.5332">API</text><!--MD5=[37c33c71ce9550fe283f62c54b59719b]
-entity application--><rect fill="#EBF5FB" height="47.6094" style="stroke:#3498DB;stroke-width:1.5;" width="149" x="360.5" y="7"/><rect fill="#EBF5FB" height="10" style="stroke:#3498DB;stroke-width:1.5;" width="15" x="489.5" y="12"/><rect fill="#EBF5FB" height="2" style="stroke:#3498DB;stroke-width:1.5;" width="4" x="487.5" y="14"/><rect fill="#EBF5FB" height="2" style="stroke:#3498DB;stroke-width:1.5;" width="4" x="487.5" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="375.5" y="41.5332">Client Application</text><!--MD5=[97cb687705b43309886ad24724cbb257]
+entity application--><rect fill="#EBF5FB" height="47.6094" style="stroke:#3498DB;stroke-width:1.5;" width="149" x="360.5" y="7"/><rect fill="#EBF5FB" height="10" style="stroke:#3498DB;stroke-width:1.5;" width="15" x="489.5" y="12"/><rect fill="#EBF5FB" height="2" style="stroke:#3498DB;stroke-width:1.5;" width="4" x="487.5" y="14"/><rect fill="#EBF5FB" height="2" style="stroke:#3498DB;stroke-width:1.5;" width="4" x="487.5" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="375.5" y="41.5332">Application</text><!--MD5=[97cb687705b43309886ad24724cbb257]
 link commonApi to extension--><path d="M260.769,179.72 C238.814,193.324 182.478,228.232 144.443,251.799 " fill="none" id="commonApi-extension" style="stroke:#27AE60;stroke-width:1.0;"/><!--MD5=[a8851ad37ac5d7495f09bb79969e487f]
 link selectionSpi to extension--><path d="M480.836,181.51 C471.412,188.852 456.029,199.803 441,206 C342.607,246.574 217.721,264.188 152.055,271.081 " fill="none" id="selectionSpi-extension" style="stroke:#27AE60;stroke-width:1.0;"/><!--MD5=[af500f273bfd406437f3fb97b5209ad9]
 link specificCardExtensionApi to extension--><path d="M115.263,182.265 C113.928,197.247 111.064,229.392 109.085,251.601 " fill="none" id="specificCardExtensionApi-extension" style="stroke:#27AE60;stroke-width:1.0;"/><!--MD5=[c972e42a57bbdf1c0b9ca638d5b3e053]
@@ -100,7 +100,7 @@ hide <<grey>> stereotype
 
 ' == COMPONENTS ==
 
-[Client Application] as application <<blue>>
+[Application] as application <<blue>>
 package "Common API" as packCommonApi {
     interface " " as commonApi <<green>>
 }
@@ -207,7 +207,7 @@ hide <<green>> stereotype
 hide <<grey>> stereotype
 
 
-[Client Application] as application <<blue>>
+[Application] as application <<blue>>
 package "Common API" as packCommonApi {
     interface " " as commonApi <<green>>
 }

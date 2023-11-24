@@ -12,16 +12,15 @@ toc: true
 This online tool generates for you the `dependencies` section of Gradle or Maven configuration files.
 Choose your project profile and copy/paste the generated result into your project dependency manager.
 
-What do you want to develop?
-- [An application that uses existing Keyple components.](#client-application)
-- [A specific Keyple reader plugin add-on not already available.](#reader-plugin-add-on)
-- [A specific Keyple card extension add-on not already available.](#card-extension-add-on)
-- [An alternate Keyple distributed solution add-on.](#distributed-solution-add-on)
+What type of Keyple component are you working on?
+- [An application](#application)
+- [A specific reader plugin add-on](#reader-plugin-add-on)
+- [A specific card extension add-on](#card-extension-add-on)
+- [An alternate distributed solution add-on](#distributed-solution-add-on)
 
 <br>
 
-## Client application
-Please find below the configuration to use when developing an application that uses existing Keyple components:
+## Application
 
 - Which card extension do you want to use?
   >  <div>
@@ -84,7 +83,7 @@ Please find below the configuration to use when developing an application that u
 <br>
 
 ## Reader plugin add-on
-Please find below the configuration to use when developing a specific Keyple reader plugin add-on not already available:
+
 {{< tabpane ref="2" >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}
 implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}'
@@ -118,7 +117,6 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <br>
 
 ## Card extension add-on
-Please find below the configuration to use when developing a specific Keyple card extension add-on not already available:
 
 - Do you need additional services?
   >  <div>
@@ -135,7 +133,6 @@ Please find below the configuration to use when developing a specific Keyple car
 <br>
 
 ## Distributed solution add-on
-Please find below the configuration to use when developing an alternate Keyple distributed solution add-on:
 
 - **For the "Local Service" component:**
 {{< tabpane ref="4" >}}
@@ -216,10 +213,10 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <span id="keyple-plugin-cardresource-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-plugin-cardresource-java-lib:{{% keyple-plugin-cardresource-java-lib-version %}}'</span></span>
 <span id="keyple-plugin-pcsc-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin-pcsc-java-lib-version %}}'</span></span>
 <span id="keyple-plugin-stub-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-plugin-stub-java-lib:{{% keyple-plugin-stub-java-lib-version %}}'</span></span>
-<span id="calypsonet-terminal-reader-java-api">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-reader-java-api:{{% calypsonet-terminal-reader-java-api-version %}}'</span></span>
-<span id="calypsonet-terminal-card-java-api">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-card-java-api:{{% calypsonet-terminal-card-java-api-version %}}'</span></span>
-<span id="calypsonet-terminal-calypso-java-api">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:{{% calypsonet-terminal-calypso-java-api-version %}}'</span></span>
-<span id="calypsonet-terminal-calypso-crypto-legacysam-java-api">implementation <span class="hljs-string">'org.calypsonet.terminal:calypsonet-terminal-calypso-crypto-legacysam-java-api:{{% calypsonet-terminal-calypso-crypto-legacysam-java-api-version %}}'</span></span>
+<span id="keypop-reader-java-api">implementation <span class="hljs-string">'org.eclipse.keypop:keypop-reader-java-api:{{% keypop-reader-java-api-version %}}'</span></span>
+<span id="keypop-card-java-api">implementation <span class="hljs-string">'org.eclipse.keypop:keypop-card-java-api:{{% keypop-card-java-api-version %}}'</span></span>
+<span id="keypop-calypso-card-java-api">implementation <span class="hljs-string">'org.eclipse.keypop:keypop-calypso-card-java-api:{{% keypop-calypso-card-java-api-version %}}'</span></span>
+<span id="keypop-calypso-crypto-legacysam-java-api">implementation <span class="hljs-string">'org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:{{% keypop-calypso-crypto-legacysam-java-api-version %}}'</span></span>
 </code>
 
 <!-- All kotlin dependencies -->
@@ -239,10 +236,10 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <span id="keyple-plugin-cardresource-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-plugin-cardresource-java-lib:{{% keyple-plugin-cardresource-java-lib-version %}}"</span>)</span>
 <span id="keyple-plugin-pcsc-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin-pcsc-java-lib-version %}}"</span>)</span>
 <span id="keyple-plugin-stub-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-plugin-stub-java-lib:{{% keyple-plugin-stub-java-lib-version %}}"</span>)</span>
-<span id="calypsonet-terminal-reader-java-api">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-reader-java-api:{{% calypsonet-terminal-reader-java-api-version %}}"</span>)</span>
-<span id="calypsonet-terminal-card-java-api">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-card-java-api:{{% calypsonet-terminal-card-java-api-version %}}"</span>)</span>
-<span id="calypsonet-terminal-calypso-java-api">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:{{% calypsonet-terminal-calypso-java-api-version %}}"</span>)</span>
-<span id="calypsonet-terminal-calypso-crypto-legacysam-java-api">implementation(<span class="hljs-string">"org.calypsonet.terminal:calypsonet-terminal-calypso-crypto-legacysam-java-api:{{% calypsonet-terminal-calypso-crypto-legacysam-java-api-version %}}"</span>)</span>
+<span id="keypop-reader-java-api">implementation(<span class="hljs-string">"org.eclipse.keypop:keypop-reader-java-api:{{% keypop-reader-java-api-version %}}"</span>)</span>
+<span id="keypop-card-java-api">implementation(<span class="hljs-string">"org.eclipse.keypop:keypop-card-java-api:{{% keypop-card-java-api-version %}}"</span>)</span>
+<span id="keypop-calypso-card-java-api">implementation(<span class="hljs-string">"org.eclipse.keypop:keypop-calypso-card-java-api:{{% keypop-calypso-card-java-api-version %}}"</span>)</span>
+<span id="keypop-calypso-crypto-legacysam-java-api">implementation(<span class="hljs-string">"org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:{{% keypop-calypso-crypto-legacysam-java-api-version %}}"</span>)</span>
 </code>
 
 <!-- All maven dependencies -->
@@ -322,25 +319,25 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 &nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keyple-plugin-stub-java-lib<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
 &nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keyple-plugin-stub-java-lib-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
-<span id="calypsonet-terminal-reader-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.calypsonet.terminal<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>calypsonet-terminal-reader-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% calypsonet-terminal-reader-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span id="keypop-reader-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keypop<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keypop-reader-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keypop-reader-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
-<span id="calypsonet-terminal-card-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.calypsonet.terminal<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>calypsonet-terminal-card-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% calypsonet-terminal-card-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span id="keypop-card-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keypop<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keypop-card-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keypop-card-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
-<span id="calypsonet-terminal-calypso-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.calypsonet.terminal<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>calypsonet-terminal-calypso-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% calypsonet-terminal-calypso-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span id="keypop-calypso-card-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keypop<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keypop-calypso-card-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keypop-calypso-card-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
-<span id="calypsonet-terminal-calypso-crypto-legacysam-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.calypsonet.terminal<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>calypsonet-terminal-calypso-crypto-legacysam-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% calypsonet-terminal-calypso-crypto-legacysam-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span id="keypop-calypso-crypto-legacysam-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keypop<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keypop-calypso-crypto-legacysam-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keypop-calypso-crypto-legacysam-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
 </code>
 <script type="text/javascript">

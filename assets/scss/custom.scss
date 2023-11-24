@@ -122,8 +122,9 @@ a, h3.article-title a:hover {
 // increase left padding for left side menu
 // decrease font size
 .docs-sidebar .nav > li > a {
-  padding: 0 1rem 0 1.8rem;
+  padding: .2rem 1rem .2rem 1.8rem;
   font-size: 0.8rem;
+  line-height: 0.9rem;
 }
 
 // color of left and right TOCs links
@@ -146,9 +147,9 @@ a:hover {
 // color of right TOC, padding and margin
 #TableOfContents li a, .toc-top li a {
   color: rgba(0,0,0,.65);
-  padding: 0 0 0 1rem;
+  padding: 0.2rem 1rem;
   font-size: .7rem;
-  line-height: inherit;
+  line-height: .9rem;
 }
 #TableOfContents li {
   margin-bottom: 0;

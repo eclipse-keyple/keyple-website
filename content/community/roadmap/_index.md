@@ -10,7 +10,7 @@ weight: 2
 ---
 ## Current work 
  - Refactoring of the Calypso API to support extensions of different kind of Calypso SAM solutions (current legacy SAM-C1, coming Open-SAM, or crypto libraries for PKI).
- - Support of the Calypso secure session based on asymmetric authentication (REV3.3 Prime PKI based on ECC)
+ - Support of the Calypso secure session based on asymmetric authentication (REV3.3 Prime PKI based on ECC).
 
 ## Long-term study 
  - to provide a Hoplink extension (based on a high-level API on top of the Calypso Card API).

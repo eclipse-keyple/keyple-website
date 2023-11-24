@@ -2,7 +2,6 @@
 title: Overall project dashboard
 subtitle: 
 summary:
-aliases: ["/projects-dashboard/"]
 ---
 
 {{% callout note %}}

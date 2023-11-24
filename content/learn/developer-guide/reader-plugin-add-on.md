@@ -30,7 +30,7 @@ A Keyple reader plugin consists of three objects, a **plugin factory**, a **plug
   * **API** (Application Programming Interface): interface implemented by Keyple Service and directly usable by the plugin code.
   * **SPI** (Service Provider Interface): interface to be implemented by the plugin and directly used by Keyple Service.
 
-The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the client application:
+The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the application:
 {{< figure src="/media/learn/developer-guide/component-dependencies/plugin_api.svg" caption="" numbered="true" >}}
 
 ---
@@ -52,9 +52,9 @@ Depending on the characteristics of the reader, it may be necessary to add in th
 These features can be exposed at three levels:
 * In the **plugin factory** (`XxxPluginFactory` interface), for the initial configuration of the plugin (e.g. set custom plugin name).
 * In the **plugin** (`XxxPlugin` interface), for dynamic configurations that can be applied to all the readers (e.g. put the readers in sleep mode).<br>
-  The API will then be directly accessible from the client application through the `getExtension(...)` method of the plugin registered with Keyple Service.
+  The API will then be directly accessible from the application through the `getExtension(...)` method of the plugin registered with Keyple Service.
 * In the **reader** (`XxxReader` interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).<br>
-  The API will then be directly accessible from the client application through the `getReaderExtension(...)` method of the reader provided by the plugin registered with Keyple Service.
+  The API will then be directly accessible from the application through the `getReaderExtension(...)` method of the reader provided by the plugin registered with Keyple Service.
 
 ---
 ## Set up dev environment
@@ -84,7 +84,7 @@ The contribution procedure is described [here]({{< relref "contributing.md" >}})
 ## Implement the solution
 
 {{% callout warning %}}
-It is important to hide the internal Keyple interfaces of the **Plugin API** from the client application.
+It is important to hide the internal Keyple interfaces of the **Plugin API** from the application.
 {{% /callout %}}
 
 For this purpose, it is suggested to respect the following programming pattern based on the use of:

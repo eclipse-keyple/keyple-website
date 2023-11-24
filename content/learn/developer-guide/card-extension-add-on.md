@@ -31,7 +31,7 @@ A Keyple card extension contains a set of objects which meet the following three
   * **API** (Application Programming Interface): interface implemented by Keyple Service and directly usable by the card extension code.
   * **SPI** (Service Provider Interface): interface to be implemented by the card extension and directly used by Keyple Service.
 
-The component diagram below illustrates the internal API/SPI links between the card extension and Keyple Service, as well as the public APIs exposed to the client application:
+The component diagram below illustrates the internal API/SPI links between the card extension and Keyple Service, as well as the public APIs exposed to the application:
 {{< figure src="/media/learn/developer-guide/component-dependencies/card_api.svg" caption="" numbered="true" >}}
 
 ---
@@ -60,10 +60,10 @@ This will allow the transport of this object through the network when using the 
 ## Define the card commands
 
 The card extension takes part in the communication with the card in two ways:
-* **implicitly**, when the card is being selected, which is done directly by the client application via the Keyple Service selection manager;
-* **explicitly**, when the card has been selected, on request of the client application, by direct use of the APIs exposed by the Card API.
+* **implicitly**, when the card is being selected, which is done directly by the application via the Keyple Service selection manager;
+* **explicitly**, when the card has been selected, on request of the application, by direct use of the APIs exposed by the Card API.
 
-For explicit communication, the card extension must require the client application to provide a reference to a `CardReader` of the Reader API.
+For explicit communication, the card extension must require the application to provide a reference to a `CardReader` of the Reader API.
 This can then be cast internally to a `ProxyReaderApi` of the Card API through which it will be possible to transmit card commands.
 
 Each card extension is free to define the APIs it considers relevant to perform card transactions.
@@ -95,7 +95,7 @@ The contribution procedure is described [here]({{< relref "contributing.md" >}})
 ## Implement the solution
 
 {{% callout warning %}}
-It is important to hide the internal Calypsonet interfaces of the **Calypsonet Terminal Card API** from the client application.
+It is important to hide the internal Calypsonet interfaces of the **Calypsonet Terminal Card API** from the application.
 {{% /callout %}}
 
 For this purpose, it is suggested to respect the following programming pattern based on the use of:
