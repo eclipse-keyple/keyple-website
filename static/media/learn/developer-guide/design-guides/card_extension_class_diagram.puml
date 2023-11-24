@@ -13,13 +13,19 @@
 !define C_USE 27AE60
 !define C_YELLOW FEFECE
 
-skinparam Shadowing false
-skinparam ClassFontStyle italic
-skinparam ClassBorderColor #D4AC0D
+' -- Styles that don't work with new version of plantuml --
 skinparam stereotypeABorderColor #A9DCDF
 skinparam stereotypeIBorderColor #B4A7E5
 skinparam stereotypeCBorderColor #ADD1B2
 skinparam stereotypeEBorderColor #EB93DF
+' -- END --
+
+skinparam ClassBorderThickness 2
+skinparam ArrowThickness 2
+
+' Yellow
+skinparam ClassBackgroundColor #FEFECE
+skinparam ClassBorderColor #D4AC0D
 ' Red
 skinparam ClassBackgroundColor<<red>> #FDEDEC
 skinparam ClassBorderColor<<red>> #E74C3C
@@ -47,7 +53,7 @@ legend top
     __Colors legend__ :
     * <back:C_YELLOW>Public API (for application)</back>
     * <back:lightBlue>Private adapters</back>
-    * <back:plum>Calypsonet internal API</back>
+    * <back:plum>Keypop internal API</back>
 end legend
 
 package "Common API\norg.eclipse.keyple.core.common" as commonApi {
@@ -56,24 +62,20 @@ package "Common API\norg.eclipse.keyple.core.common" as commonApi {
         ...
     }
 }
-package "Calypsonet Terminal Reader API\norg.calypsonet.terminal.reader.selection.spi" as readerSelectionSpi {
-    +interface CardSelection {
+package "Keypop Reader API\norg.eclipse.keypop.reader.selection.spi" as readerSelectionSpi {
+    +interface CardSelectionExtension {
     }
     +interface SmartCard {
         --
         ...
     }
 }
-package "Calypsonet Terminal Card API\norg.calypsonet.terminal.card.spi" as cardSpi {
-    +interface CardSelectionSpi {
+package "Keypop Card API\norg.eclipse.keypop.card.spi" as cardSpi {
+    +interface CardSelectionExtensionSpi {
         --
         ...
     }
     +interface SmartCardSpi {
-    }
-    +interface CardSelectorSpi {
-        --
-        ...
     }
     +interface CardSelectionRequestSpi {
         --
@@ -90,46 +92,42 @@ package "Calypsonet Terminal Card API\norg.calypsonet.terminal.card.spi" as card
 }
 
 package "Card extension Xxx\norg.eclipse.keyple.card.xxx" as specificExtension {
-    +class "**final** XxxCardExtensionService" as XxxCardExtensionService implements KeypleCardExtension {
+    +class "**final** XxxCardExtensionService" as XxxCardExtensionService implements commonApi.KeypleCardExtension {
         --
         +{static} XxxCardExtensionService getInstance ()
         ..
-        +XxxCardSelection createXxxCardSelection ()
+        +XxxCardSelectionExtension createXxxCardSelectionExtension ()
         ...
     }
     ' Adapters
     together {
-        +interface XxxCardSelection extends CardSelection {
+        +interface XxxCardSelectionExtension extends readerSelectionSpi.CardSelectionExtension {
             --
             custom settings... (optional)
         }
-        +interface XxxSmartCard extends SmartCard {
+        +interface XxxSmartCard extends readerSelectionSpi.SmartCard {
             --
             custom settings... (optional)
         }
-        ~class "**final** XxxCardSelectionAdapter" as CardSelectionAdapter implements XxxCardSelection, CardSelectionSpi {
+        ~class "**final** XxxCardSelectionExtensionAdapter" as CardSelectionAdapter implements XxxCardSelectionExtension, cardSpi.CardSelectionExtensionSpi {
             --
             ...
         }
-        ~class "**final** XxxSmartCardAdapter" as SmartCardAdapter implements XxxSmartCard, SmartCardSpi {
+        ~class "**final** XxxSmartCardAdapter" as SmartCardAdapter implements XxxSmartCard, cardSpi.SmartCardSpi {
             --
             ...
         }
     }
     together {
-        ~class "**final** CardSelectorAdapter" as CardSelectorAdapter implements CardSelectorSpi {
+        ~class "**final** CardSelectionRequestAdapter" as CardSelectionRequestAdapter implements cardSpi.CardSelectionRequestSpi {
             --
             ...
         }
-        ~class "**final** CardSelectionRequestAdapter" as CardSelectionRequestAdapter implements CardSelectionRequestSpi {
+        ~class "**final** CardRequestAdapter" as CardRequestAdapter implements cardSpi.CardRequestSpi {
             --
             ...
         }
-        ~class "**final** CardRequestAdapter" as CardRequestAdapter implements CardRequestSpi {
-            --
-            ...
-        }
-        ~class "**final** ApduRequestAdapter" as ApduRequestAdapter implements ApduRequestSpi {
+        ~class "**final** ApduRequestAdapter" as ApduRequestAdapter implements cardSpi.ApduRequestSpi {
             --
             ...
         }
@@ -143,24 +141,19 @@ XxxCardExtensionService ..> CardSelectionAdapter #C_LINK : provide >
 CardSelectionAdapter .> SmartCardAdapter #C_LINK : provide >
 CardSelectionAdapter .> CardSelectionRequestAdapter #C_LINK : provide >
 
-CardSelectionRequestAdapter .left> CardSelectorAdapter #C_LINK : provide >
 CardSelectionRequestAdapter .> CardRequestAdapter #C_LINK : provide >
 
 CardRequestAdapter .> ApduRequestAdapter #C_LINK : provide >
 
 ' == LAYOUT ==
 
-CardSelectionAdapter -[hidden]- CardSelectionSpi
+CardSelectionAdapter -[hidden]- CardSelectionExtensionSpi
 SmartCardAdapter -[hidden]- SmartCardSpi
-CardSelectorAdapter -[hidden]- CardSelectorSpi
 CardSelectionRequestAdapter -[hidden]- CardSelectionRequestSpi
 CardRequestAdapter -[hidden]- CardRequestSpi
 ApduRequestAdapter -[hidden]- ApduRequestSpi
 
-XxxCardSelection -[hidden]- CardSelectionAdapter
-
-SmartCardAdapter -[hidden]right- CardSelectorAdapter
-
+XxxCardSelectionExtension -[hidden]- CardSelectionAdapter
 
 ' == STYLE ==
 
@@ -169,17 +162,15 @@ package specificExtension #C_GREY1 {}
 package cardSpi #C_GREY1 {}
 package readerSelectionSpi #C_GREY1 {}
 
-class CardSelectionAdapter <<blue>>
-class CardSelectorAdapter <<blue>>
-class SmartCardAdapter <<blue>>
-class CardSelectionRequestAdapter <<blue>>
-class CardRequestAdapter <<blue>>
-class ApduRequestAdapter <<blue>>
-interface CardSelectionSpi <<purple>>
-interface CardSelectorSpi <<purple>>
-interface SmartCardSpi <<purple>>
-interface CardSelectionRequestSpi <<purple>>
-interface CardRequestSpi <<purple>>
-interface ApduRequestSpi <<purple>>
+class specificExtension.CardSelectionAdapter <<blue>>
+class specificExtension.SmartCardAdapter <<blue>>
+class specificExtension.CardSelectionRequestAdapter <<blue>>
+class specificExtension.CardRequestAdapter <<blue>>
+class specificExtension.ApduRequestAdapter <<blue>>
+interface cardSpi.CardSelectionExtensionSpi <<purple>>
+interface cardSpi.SmartCardSpi <<purple>>
+interface cardSpi.CardSelectionRequestSpi <<purple>>
+interface cardSpi.CardRequestSpi <<purple>>
+interface cardSpi.ApduRequestSpi <<purple>>
 
 @enduml
