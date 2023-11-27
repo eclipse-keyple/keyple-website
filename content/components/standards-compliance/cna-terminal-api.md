@@ -1,6 +1,6 @@
 ---
-title: Calypsonet Terminal API
-linktitle: Calypsonet Terminal API
+title: CNA Terminal API
+linktitle: CNA Terminal API
 summary: Keyple is compliant with the Terminal API specifications provided by the Calypso Networks Association that standardize how to manage cards, readers, reader events and card selection.
 type: book
 weight: 10
