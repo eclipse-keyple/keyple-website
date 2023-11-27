@@ -4,7 +4,7 @@ linktitle: Upgrade Keyple
 summary: How to upgrade an existing Keyple application using an earlier version.
 type: book
 toc: true
-weight: 6
+weight: 7
 ---
 
 ---
