@@ -117,10 +117,7 @@ import org.eclipse.keypop.calypso.crypto.legacysam.LegacySamApiFactory;
 import org.eclipse.keypop.calypso.crypto.legacysam.sam.LegacySam;
 import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.ReaderApiFactory;
-import org.eclipse.keypop.reader.selection.CardSelectionManager;
-import org.eclipse.keypop.reader.selection.CardSelectionResult;
-import org.eclipse.keypop.reader.selection.CardSelector;
-import org.eclipse.keypop.reader.selection.IsoCardSelector;
+import org.eclipse.keypop.reader.selection.*;
 
 public class DemoCardAuthentication {
 
@@ -209,7 +206,7 @@ later within the transaction service.
     CardSelectionManager samSelectionManager = readerApiFactory.createCardSelectionManager();
 
     // Create a card selector without filer
-    CardSelector<IsoCardSelector> samCardSelector = readerApiFactory.createIsoCardSelector();
+    CardSelector<BasicCardSelector> samCardSelector = readerApiFactory.createBasicCardSelector();
 
     LegacySamApiFactory legacySamApiFactory =
         LegacySamExtensionService.getInstance().getLegacySamApiFactory();
@@ -484,10 +481,8 @@ import org.eclipse.keypop.calypso.crypto.legacysam.LegacySamApiFactory;
 import org.eclipse.keypop.calypso.crypto.legacysam.sam.LegacySam;
 import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.ReaderApiFactory;
-import org.eclipse.keypop.reader.selection.CardSelectionManager;
-import org.eclipse.keypop.reader.selection.CardSelectionResult;
-import org.eclipse.keypop.reader.selection.CardSelector;
-import org.eclipse.keypop.reader.selection.IsoCardSelector;
+import org.eclipse.keypop.reader.selection.*;
+
 
 public class DemoCardAuthentication {
 
@@ -539,7 +534,7 @@ public class DemoCardAuthentication {
     CardSelectionManager samSelectionManager = readerApiFactory.createCardSelectionManager();
 
     // Create a card selector without filer
-    CardSelector<IsoCardSelector> samCardSelector = readerApiFactory.createIsoCardSelector();
+    CardSelector<BasicCardSelector> samCardSelector = readerApiFactory.createBasicCardSelector();
 
     LegacySamApiFactory legacySamApiFactory =
         LegacySamExtensionService.getInstance().getLegacySamApiFactory();
