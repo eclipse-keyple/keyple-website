@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-api/releases/50878400",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-api/releases/50878400/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-distributed-local-java-api/releases/50878400/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-distributed-local-java-api/releases/tag/2.0.0",
-  "id": 50878400,
+  "url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-api/releases/131587912",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-api/releases/131587912/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-distributed-local-java-api/releases/131587912/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-distributed-local-java-api/releases/tag/2.1.0",
+  "id": 131587912,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWecc4DCFfA",
-  "tag_name": "2.0.0",
+  "node_id": "RE_kwDODMWecc4H199I",
+  "tag_name": "2.1.0",
   "target_commitish": "main",
-  "name": "2.0.0",
+  "name": "",
   "draft": false,
   "prerelease": false,
-  "created_at": "2021-10-06T10:20:24Z",
-  "published_at": "2021-10-06T10:32:24Z",
+  "created_at": "2023-11-27T16:06:23Z",
+  "published_at": "2023-11-27T16:31:45Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-api/tarball/2.0.0",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-api/zipball/2.0.0",
-  "body": "This is the initial release of the **Keyple Distributed Local Java API**.\r\nIt follows the extraction of Keyple 1.0 components contained in the `eclipse/keyple-java` repository to dedicated repositories.\r\nIt also brings many major API changes."
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-api/tarball/2.1.0",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-distributed-local-java-api/zipball/2.1.0",
+  "body": "### Added\r\n- Added a new method `int exchangeApiLevel(int coreApiLevel)` to the `LocalServiceSpi` interface to enable Core and Distributed layers to exchange their JSON API levels.\r\n- `CHANGELOG.md` file (issue [eclipse/keyple#6]).\r\n- Added project status badges on `README.md` file.\r\n- CI: Forbid the publication of a version already released (issue [#3]).\r\n### Fixed\r\n- CI: code coverage report when releasing."
 }
