@@ -330,8 +330,6 @@ Finally unregister the plugin before shutting down the application
 {{< code lang="java" >}}
     // Unregister the plugin before leaving the application
     smartCardService.unregisterPlugin(plugin.getName());
-
-    System.exit(0);
 {{< /code >}}
 
 Find the complete code source [below](#full-code).
