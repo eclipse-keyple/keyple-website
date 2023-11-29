@@ -417,18 +417,7 @@ The `MessageDto` is contained in a single-element array!
 ##### Example
 
 {{< code lang="json" >}}
-[
-    {
-        "apiLevel": 2,
-        "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9",
-        "action": "CMD",
-        "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
-        "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
-        "localReaderName": "READER_1",
-        "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
-        "body": "{\"coreApiLevel\":2,\"service\":\"TRANSMIT_CARD_SELECTION_REQUESTS\",\"parameters\":{\"multiSelectionProcessing\":\"FIRST_MATCH\",\"channelControl\":\"KEEP_OPEN\",\"cardSelectionRequests\":[{\"cardSelector\":{\"logicalProtocolName\":\"ISO_14443_4_CARD\",\"aid\":\"315449432E49434131\",\"fileOccurrence\":\"FIRST\",\"fileControlInformation\":\"FCI\",\"successfulSelectionStatusWords\":[\"9000\"]},\"cardRequest\":{\"apduRequests\":[{\"apdu\":\"00B2013C00\",\"successfulStatusWords\":[\"9000\"],\"info\":\"Read Records - SFI: 7h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\"}],\"isStatusCodesVerificationEnabled\":false}}]}}"
-    }
-]
+Coming soon...
 {{< /code >}}
 
 ---

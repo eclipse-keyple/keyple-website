@@ -32,6 +32,14 @@ weight: 2
 </thead>
 <tbody>
   <tr>
+    <td>2023/11</td>
+    <td><mark>not supported</mark></td>
+    <td><ul><li><b>Keyple adopts the Eclipse Keypop API</b>
+    <ul><li>The Keyple SDK is enhanced by the Eclipse Keypop project with new UML-compliant interfaces and APIs, offering 
+    new possibilities for the management of SAMs and PKI cards.</li>
+    </ul></li></ul></td>
+  </tr>
+  <tr>
     <td>2023/04</td>
     <td><mark>not supported</mark></td>
     <td><ul><li><b>Specification of the JSON objects used by Keyple Distributed</b>
