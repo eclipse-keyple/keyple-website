@@ -1,4 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SDK | Eclipse Keyple</title><link>https://keyple.org/tag/sdk/</link><atom:link href="https://keyple.org/tag/sdk/index.xml" rel="self" type="application/rss+xml"/><description>SDK</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.</copyright><lastBuildDate>Mon, 22 May 2023 12:00:00 +0100</lastBuildDate><image><url>https://keyple.org/media/logo.svg</url><title>SDK</title><link>https://keyple.org/tag/sdk/</link></image><item><title>Keyple Service Java Lib (2.3.0) is available!</title><link>https://keyple.org/post/release-2023-05-22-java/</link><pubDate>Mon, 22 May 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2023-05-22-java/</guid><description>&lt;p>Published on May 22, 2023, this minor version implements the
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SDK | Eclipse Keyple</title><link>https://keyple.org/tag/sdk/</link><atom:link href="https://keyple.org/tag/sdk/index.xml" rel="self" type="application/rss+xml"/><description>SDK</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.</copyright><lastBuildDate>Tue, 28 Nov 2023 12:00:00 +0100</lastBuildDate><image><url>https://keyple.org/media/logo.svg</url><title>SDK</title><link>https://keyple.org/tag/sdk/</link></image><item><title>Keyple adopts the Eclipse Keypop API!</title><link>https://keyple.org/post/keypop/</link><pubDate>Tue, 28 Nov 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/keypop/</guid><description>&lt;p>The field of compliance management for ticketing terminals has recently seen a paradigm shift with the launch of the
+&lt;a href="https://keypop.org" target="_blank" rel="noopener">Eclipse Keypop&lt;/a> project.
+This initiative defines a series of UML-compliant interfaces established by
+the &lt;a href="https://calypsonet.org" target="_blank" rel="noopener">Calypso Networks Association&lt;/a>.&lt;/p>
+&lt;p>As a result, the Keyple SDK components are upgraded to a new version, which adopts the Keypop APIs in place of the CNA
+Terminal APIs.
+As well as implementing these new APIs, this upgrade removes classes and methods previously marked as deprecated and
+brings a number of additional improvements.
+The main enhancement is the processing of Calypso cards.&lt;/p>
+&lt;p>Keypop introduces new APIs for managing cryptographic components, in particular SAMs and PKI service providers.&lt;/p>
+&lt;p>These innovations pave the way for new solutions, particularly in view of the forthcoming &lt;strong>Open SAM&lt;/strong>
+and &lt;strong>PKI-based card transactions&lt;/strong>.&lt;/p>
+&lt;p>For this purpose, the &lt;strong>Calypso Card&lt;/strong> library and the new &lt;strong>Calypso Legacy SAM&lt;/strong> library are now based on these new
+Keypop APIs.
+Details of changes to Keyple components are described in the CHANGELOG files at the root of each corresponding
+repository and the Keyple website has been updated accordingly.&lt;/p>
+&lt;p>Here is the list of libraries affected by the Keypop update:&lt;/p>
+&lt;ul>
+&lt;li>Core
+&lt;ul>
+&lt;li>&lt;a href="../../components/core/keyple-service-lib/">Service&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../components/core/keyple-service-resource-lib/">Service Resource&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Card extension add-ons
+&lt;ul>
+&lt;li>&lt;a href="../../components/card-extensions/keyple-card-calypso-lib/">Calypso Card&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/">Calypso Legacy SAM&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../components/card-extensions/keyple-card-generic-lib/">Generic&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Reader plugin add-ons
+&lt;ul>
+&lt;li>&lt;a href="../../components/standard-reader-plugins/keyple-plugin-cardresource-lib/">Card Resource&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Distributed add-ons
+&lt;ul>
+&lt;li>&lt;a href="../../components/distributed/keyple-distributed-local-lib/">Local&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../components/distributed/keyple-distributed-network-lib/">Network&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../components/distributed/keyple-distributed-remote-lib/">Remote&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Keyple Service Java Lib (2.3.0) is available!</title><link>https://keyple.org/post/release-2023-05-22-java/</link><pubDate>Mon, 22 May 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2023-05-22-java/</guid><description>&lt;p>Published on May 22, 2023, this minor version implements the
 &lt;a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/" target="_blank" rel="noopener">Calypsonet Terminal Reader Java API (1.3.0)&lt;/a>
 and therefore introduced a new capability to export a locally processed card selection scenario to be imported and
 analyzed remotely by another card selection manager.&lt;/p>
@@ -8,7 +51,7 @@ analyzed remotely by another card selection manager.&lt;/p>
 &lt;li>&lt;code>importProcessedCardSelectionScenario&lt;/code>.&lt;/li>
 &lt;/ul>
 &lt;p>For more information, please visit the component
-&lt;a href="../../components-java/core/keyple-service-java-lib/">page&lt;/a>.&lt;/p></description></item><item><title>Introducing the Keyple components unified timeline!</title><link>https://keyple.org/post/2023-05-11-website-changelog-page/</link><pubDate>Thu, 11 May 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/2023-05-11-website-changelog-page/</guid><description>&lt;p>We are pleased to announce a new addition to the Keyple website: the &lt;a href="https://keyple.org/community/changelog/">Changelog&lt;/a> page!&lt;/p>
+&lt;a href="../../components/core/keyple-service-lib/">page&lt;/a>.&lt;/p></description></item><item><title>Introducing the Keyple components unified timeline!</title><link>https://keyple.org/post/2023-05-11-website-changelog-page/</link><pubDate>Thu, 11 May 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/2023-05-11-website-changelog-page/</guid><description>&lt;p>We are pleased to announce a new addition to the Keyple website: the &lt;a href="https://keyple.org/community/changelog/">Changelog&lt;/a> page!&lt;/p>
 &lt;p>This page serves as a centralized hub, bringing a dynamic chronological overview that showcases the progress and updates
 across all Keyple components repositories.&lt;/p></description></item><item><title>Keyple Plugin Card Resource Java Lib (1.0.0) is available!</title><link>https://keyple.org/post/release-2023-04-26-java/</link><pubDate>Wed, 26 Apr 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2023-04-26-java/</guid><description>&lt;p>Published on April 26, 2023, this new component is a &lt;strong>PoolPlugin&lt;/strong> to manage readers provided by the
 &lt;strong>Card Resource Service&lt;/strong>.&lt;/p>
@@ -20,12 +63,12 @@ It provides an interface for allocating and deallocating readers by profiles tha
 inserted in a dedicated PC/SC reader.&lt;/p>
 &lt;p>To realize this plugin it was necessary to make evolve the following components:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="../../components-java/core/keyple-plugin-java-api/">&lt;strong>Keyple Plugin Java API&lt;/strong>&lt;/a> (2.1.0)&lt;/li>
-&lt;li>&lt;a href="../../components-java/core/keyple-service-java-lib/">&lt;strong>Keyple Service Java Lib&lt;/strong>&lt;/a> (2.2.0)&lt;/li>
-&lt;li>&lt;a href="../../components-java/core/keyple-service-resource-java-lib/">&lt;strong>Keyple Service Resource Java Lib&lt;/strong>&lt;/a> (2.1.0)&lt;/li>
+&lt;li>&lt;a href="../../components/core/keyple-plugin-api/">&lt;strong>Keyple Plugin Java API&lt;/strong>&lt;/a> (2.1.0)&lt;/li>
+&lt;li>&lt;a href="../../components/core/keyple-service-lib/">&lt;strong>Keyple Service Java Lib&lt;/strong>&lt;/a> (2.2.0)&lt;/li>
+&lt;li>&lt;a href="../../components/core/keyple-service-resource-lib/">&lt;strong>Keyple Service Resource Java Lib&lt;/strong>&lt;/a> (2.1.0)&lt;/li>
 &lt;/ul>
 &lt;p>For more information, please visit the component
-&lt;a href="https://keyple.org/components-java/standard-reader-plugins/keyple-plugin-cardresource-java-lib/">page&lt;/a>.&lt;/p></description></item><item><title>Keyple Distributed JSON API 1.0 User Guide is available!</title><link>https://keyple.org/post/2023-04-04-website-guide-json-api/</link><pubDate>Tue, 04 Apr 2023 14:00:00 +0100</pubDate><guid>https://keyple.org/post/2023-04-04-website-guide-json-api/</guid><description>&lt;p>Published on April 04, 2023,
+&lt;a href="https://keyple.org/components/standard-reader-plugins/keyple-plugin-cardresource-lib/">page&lt;/a>.&lt;/p></description></item><item><title>Keyple Distributed JSON API 1.0 User Guide is available!</title><link>https://keyple.org/post/2023-04-04-website-guide-json-api/</link><pubDate>Tue, 04 Apr 2023 14:00:00 +0100</pubDate><guid>https://keyple.org/post/2023-04-04-website-guide-json-api/</guid><description>&lt;p>Published on April 04, 2023,
 this guide is specifically designed for users who are not currently using Keyple in their terminals, but wish to connect
 to a Keyple server.&lt;/p>
 &lt;p>This allows the development of a distributed solution in which the client reader terminal delegates the entire
@@ -35,10 +78,10 @@ management of the card transaction to the server.&lt;/p>
 and therefore adds the counters ceilings management feature in static mode.
 This allows to update remotely the key ceilings of the reloading SAMs.&lt;/p>
 &lt;p>For more information, please visit the component
-&lt;a href="https://keyple.org/components-java/card-extensions/keyple-card-calypso-crypto-legacysam-java-lib/">page&lt;/a>.&lt;/p></description></item><item><title>Keyple Card Calypso Crypto Legacy SAM Java Lib (0.2.0) is in Beta!</title><link>https://keyple.org/post/release-2022-12-13-java/</link><pubDate>Tue, 13 Dec 2022 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2022-12-13-java/</guid><description>&lt;p>Published on December 13, 2022, the &lt;strong>Keyple Card Calypso Crypto Legacy SAM Java Library&lt;/strong> is an add-on to manage
+&lt;a href="https://keyple.org/components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/">page&lt;/a>.&lt;/p></description></item><item><title>Keyple Card Calypso Crypto Legacy SAM Java Lib (0.2.0) is in Beta!</title><link>https://keyple.org/post/release-2022-12-13-java/</link><pubDate>Tue, 13 Dec 2022 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2022-12-13-java/</guid><description>&lt;p>Published on December 13, 2022, the &lt;strong>Keyple Card Calypso Crypto Legacy SAM Java Library&lt;/strong> is an add-on to manage
 Calypso® legacy SAMs (SAM-C1, HSM-C1, etc&amp;hellip;).&lt;/p>
 &lt;p>For more information, please visit the component
-&lt;a href="https://keyple.org/components-java/card-extensions/keyple-card-calypso-crypto-legacysam-java-lib/">page&lt;/a>.&lt;/p></description></item><item><title>Release 2.0.0 of Eclipse Keyple® Java</title><link>https://keyple.org/post/release-2-0-0-java/</link><pubDate>Wed, 06 Oct 2021 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2-0-0-java/</guid><description>&lt;p>All the components of Eclipse Keyple Java have been release in version 2.0.0:&lt;/p>
+&lt;a href="https://keyple.org/components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/">page&lt;/a>.&lt;/p></description></item><item><title>Release 2.0.0 of Eclipse Keyple® Java</title><link>https://keyple.org/post/release-2-0-0-java/</link><pubDate>Wed, 06 Oct 2021 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2-0-0-java/</guid><description>&lt;p>All the components of Eclipse Keyple Java have been release in version 2.0.0:&lt;/p>
 &lt;ul>
 &lt;li>at the core level: the &lt;a href="https://github.com/eclipse/keyple-service-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">Keyple Service&lt;/a>, the &lt;a href="https://github.com/eclipse/keyple-plugin-java-api/releases/tag/2.0.0" target="_blank" rel="noopener">Plugin API&lt;/a>, the &lt;a href="https://github.com/eclipse/keyple-common-java-api/releases/tag/2.0.0" target="_blank" rel="noopener">shared references&lt;/a>, the &lt;a href="https://github.com/eclipse/keyple-util-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">helper functions&lt;/a>, and the &lt;a href="https://github.com/eclipse/keyple-service-resource-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">card resource manager&lt;/a>,&lt;/li>
 &lt;li>the distribution module inluding: the &lt;a href="https://github.com/eclipse/keyple-distributed-remote-java-api/releases/tag/2.0.0" target="_blank" rel="noopener">remote API&lt;/a>, the &lt;a href="https://github.com/eclipse/keyple-distributed-remote-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">remote lib&lt;/a>, the &lt;a href="https://github.com/eclipse/keyple-distributed-local-java-api/releases/tag/2.0.0" target="_blank" rel="noopener">local API&lt;/a>, the &lt;a href="https://github.com/eclipse/keyple-distributed-local-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">local lib&lt;/a>, the &lt;a href="https://github.com/eclipse/keyple-distributed-network-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">network messaging lib&lt;/a>,&lt;/li>
@@ -52,13 +95,13 @@ Keyple Java follows now the version 1.0 of the &lt;a href="https://terminal-api.
 &lt;li>New simplifications are introduced on the Calypso API. Keyple 0.8 had a high-level API for building map commands, but the map response data needed to be parsed with a low-level API. The Calypso 0.9.0 API provided a high-level API for retrieving map response data from a map image for which the file structure could be browsed.&lt;/li>
 &lt;li>The Core 0.9.0 has also made the reader observation function more reliable in order to be notified in case of card withdrawal.&lt;/li>
 &lt;/ul>
-&lt;p>&lt;a href="https://keyple.org/docs-1.0/api-reference/cpp-api/">C++ API reference&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://keyple.org/docs-1.0/build-your-first-app/cpp-app/">Build your first C++ application&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://keyple.org/archives/docs-1.0/api-reference/cpp-api/">C++ API reference&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://keyple.org/archives/docs-1.0/build-your-first-app/cpp-app/">Build your first C++ application&lt;/a>&lt;/p>
 &lt;p>The source of Keyple C++ is available on &lt;a href="https://github.com/eclipse/keyple-cpp" target="_blank" rel="noopener">https://github.com/eclipse/keyple-cpp&lt;/a>.
 Some dedicated support is provided on keyple.org:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://keyple.org/docs-1.0/api-reference/cpp-api/">the documentation of the C++ API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/docs-1.0/build-your-first-app/cpp-app/">a guide to Build a first C++ application&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/api-reference/cpp-api/">the documentation of the C++ API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/build-your-first-app/cpp-app/">a guide to Build a first C++ application&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Release 1.0.0 of Eclipse Keyple® Java</title><link>https://keyple.org/post/release-1-0-0-java/</link><pubDate>Thu, 17 Dec 2020 17:24:41 +0100</pubDate><guid>https://keyple.org/post/release-1-0-0-java/</guid><description>&lt;p>The &lt;a href="https://github.com/eclipse/keyple-java/releases/tag/1.0.0" target="_blank" rel="noopener">release 1.0.0 of Eclipse Keyple® Java&lt;/a> is available.&lt;/p>
 &lt;p>Most of the improvements concerns the Keyple Core:&lt;/p>
 &lt;ul>
@@ -84,7 +127,7 @@ tourism and events… or just discover what Eclipse Keyple® is and how it works
 Now the APDU responses of the Calypso® cards are automatically parsed to fill card images.
 Currently all the components of Eclipse Keyple® Java are following the same versioning.&lt;/p>
 &lt;p>From the version 1.0.0 scheduled for November 2020, the components will be defined with their own versioning in order to stabilize as possible the different APIs.&lt;/p>
-&lt;p>&lt;a href="https://keyple.org/docs-1.0/">Documentation&lt;/a> currently available:&lt;/p>
+&lt;p>&lt;a href="https://keyple.org/archives/docs-1.0/">Documentation&lt;/a> currently available:&lt;/p>
 &lt;ul>
 &lt;li>the project plan,&lt;/li>
 &lt;li>the guides of the different public API,&lt;/li>

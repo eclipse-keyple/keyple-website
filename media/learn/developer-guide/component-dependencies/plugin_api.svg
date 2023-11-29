@@ -10,7 +10,7 @@ entity serviceApi--><ellipse cx="104" cy="173" fill="#FEFECE" rx="8" ry="8" styl
 entity service--><rect fill="#FEFECE" height="47.6094" style="stroke:#D4AC0D;stroke-width:1.5;" width="90" x="32" y="252"/><rect fill="#FEFECE" height="10" style="stroke:#D4AC0D;stroke-width:1.5;" width="15" x="102" y="257"/><rect fill="#FEFECE" height="2" style="stroke:#D4AC0D;stroke-width:1.5;" width="4" x="100" y="259"/><rect fill="#FEFECE" height="2" style="stroke:#D4AC0D;stroke-width:1.5;" width="4" x="100" y="263"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="47" y="286.5332">Adapter</text><!--MD5=[c91beeae9d23cda8fa2ee4b23a5f449e]
 entity pluginApi--><ellipse cx="125" cy="432" fill="#FEFECE" rx="8" ry="8" style="stroke:#D4AC0D;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="21" x="114.5" y="463.5332">API</text><!--MD5=[718fa0839d801591e7d1aac6ab3b37fd]
 entity pluginSpi--><ellipse cx="214" cy="432" fill="#E9F7EF" rx="8" ry="8" style="stroke:#27AE60;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="21" x="203.5" y="463.5332">SPI</text><!--MD5=[37c33c71ce9550fe283f62c54b59719b]
-entity application--><rect fill="#EBF5FB" height="47.6094" style="stroke:#3498DB;stroke-width:1.5;" width="149" x="153.5" y="7"/><rect fill="#EBF5FB" height="10" style="stroke:#3498DB;stroke-width:1.5;" width="15" x="282.5" y="12"/><rect fill="#EBF5FB" height="2" style="stroke:#3498DB;stroke-width:1.5;" width="4" x="280.5" y="14"/><rect fill="#EBF5FB" height="2" style="stroke:#3498DB;stroke-width:1.5;" width="4" x="280.5" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="168.5" y="41.5332">Client Application</text><!--MD5=[3ea85f0df37fc1ea79a19a11dd5585ca]
+entity application--><rect fill="#EBF5FB" height="47.6094" style="stroke:#3498DB;stroke-width:1.5;" width="149" x="153.5" y="7"/><rect fill="#EBF5FB" height="10" style="stroke:#3498DB;stroke-width:1.5;" width="15" x="282.5" y="12"/><rect fill="#EBF5FB" height="2" style="stroke:#3498DB;stroke-width:1.5;" width="4" x="280.5" y="14"/><rect fill="#EBF5FB" height="2" style="stroke:#3498DB;stroke-width:1.5;" width="4" x="280.5" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="168.5" y="41.5332">Application</text><!--MD5=[3ea85f0df37fc1ea79a19a11dd5585ca]
 link commonApi to plugin--><path d="M237.17,181.591 C254.958,196.318 294.792,229.295 322.036,251.849 " fill="none" id="commonApi-plugin" style="stroke:#27AE60;stroke-width:1.0;"/><!--MD5=[d4e6d8964fcbc574ec5996643969ac84]
 link specificPluginApi to plugin--><path d="M341.737,182.265 C343.072,197.247 345.936,229.392 347.915,251.601 " fill="none" id="specificPluginApi-plugin" style="stroke:#27AE60;stroke-width:1.0;"/><!--MD5=[31f793b7a88a90184888e3e7c4dedf47]
 link plugin to pluginSpi--><path d="M339.15,300.313 C331.569,315.318 320.577,334.787 308,350 C281.371,382.21 241.119,412.1186 223.184,424.7161 " fill="none" id="plugin-pluginSpi" style="stroke:#27AE60;stroke-width:1.0;"/><!--MD5=[d28946eb54196e7507811bcb95f3b5ce]
@@ -89,7 +89,7 @@ hide <<grey>> stereotype
 
 ' == COMPONENTS ==
 
-[Client Application] as application <<blue>>
+[Application] as application <<blue>>
 package "Plugin Xxx" as packPlugin {
     interface " " as specificPluginApi <<green>>
     [Adapter] as plugin <<green>>
@@ -182,7 +182,7 @@ hide <<green>> stereotype
 hide <<grey>> stereotype
 
 
-[Client Application] as application <<blue>>
+[Application] as application <<blue>>
 package "Plugin Xxx" as packPlugin {
     interface " " as specificPluginApi <<green>>
     [Adapter] as plugin <<green>>

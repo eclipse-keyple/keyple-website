@@ -15,7 +15,7 @@
 &lt;p>The reader concept also applies to the hardware interfaces used to communicate with security elements such as SAMs (Secure Access Modules),
 which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.&lt;/p>
 &lt;p>To define the interface between an application and a reader,
-Keyple relies on the &lt;a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/" target="_blank" rel="noopener">standard Terminal Reader API&lt;/a> proposed by Calypso Networks Association and thus inherits an existing modeling effort.&lt;/p>
+Keyple relies on the &lt;a href="https://keypop.org/apis/keypop-reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a> based on the standard Terminal API specifications proposed by Calypso Networks Association and thus inherits an existing modeling effort.&lt;/p>
 &lt;p>Another benefit of using this terminal API is the ability to certify the functioning of a Keyple terminal via the associated certification process.&lt;/p>
 &lt;p>This certification provides a guarantee that the terminal will function as expected.&lt;/p>
 &lt;hr>
@@ -65,7 +65,7 @@ and also by allowing the execution of commands immediately following application
 The core provides the basic services for registering add-ons and also provides generic interfaces independent of card and reader technologies.&lt;/p>
 &lt;p>Add-ons are organized into four categories:&lt;/p>
 &lt;ul>
-&lt;li>Card extensions, offering high-level interfaces for managing exchanges between a client application and a particular card technology.&lt;/li>
+&lt;li>Card extensions, offering high-level interfaces for managing exchanges between an application and a particular card technology.&lt;/li>
 &lt;li>Reader plugins, which interface with the hardware through unified APIs.&lt;/li>
 &lt;li>Distributed libraries to manage readers remotely.&lt;/li>
 &lt;li>Additional services such as the dynamic allocation of card resources.&lt;/li>
@@ -76,9 +76,11 @@ The core provides the basic services for registering add-ons and also provides g
 &lt;div class="w-100" >&lt;img src="../../media/learn/overview/architecture/keyple_layers_overview.svg" alt="Keyple architecture layers overview" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption>
 Keyple architecture layers overview
-&lt;/figcaption>&lt;/figure></description></item><item><title>Calypso Terminal APIs</title><link>https://keyple.org/learn/overview/terminalapis/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/overview/terminalapis/</guid><description>&lt;hr>
-&lt;p>Keyple implements the 3 terminal APIs defined by the &lt;a href="https://calypsonet.org/" target="_blank" rel="noopener">Calypso Networks Association&lt;/a>. The corresponding documentation is hosted on &lt;a href="https://terminal-api.calypsonet.org/" target="_blank" rel="noopener">https://terminal-api.calypsonet.org/&lt;/a> .&lt;/p>
-&lt;ul>
-&lt;li>The Reader API &amp;amp; the Calypso API are public interfaces used by the ticketing applications based on Keyple to manage smartcard readers and to operate Calypso secure processing.&lt;/li>
-&lt;/ul>
-&lt;p>Keyple also defines additional public interface for plugin integration, remote reader management, etc&amp;hellip;&lt;/p></description></item></channel></rss>
+&lt;/figcaption>&lt;/figure></description></item><item><title>Keypop API</title><link>https://keyple.org/learn/overview/keypop-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/overview/keypop-api/</guid><description>&lt;hr>
+&lt;p>Keyple is compliant with the &lt;strong>Terminal API&lt;/strong> specifications provided by the &lt;a href="https://calypsonet.org" target="_blank" rel="noopener">Calypso Networks Association&lt;/a> that standardize how to manage cards, readers, reader events and card selection.&lt;/p>
+&lt;p>This compliance allows Keyple to obtain certifications from the Calypso Networks Association.
+It is a guarantee of reliability and reproducibility of the processes implemented on a variety of devices.&lt;/p>
+&lt;p>The open-source &lt;a href="https://keypop.org" target="_blank" rel="noopener">Eclipse Keypop&lt;/a> project exposes the &lt;strong>Terminal API&lt;/strong> specifications in the form of
+&lt;strong>Java&lt;/strong> and &lt;strong>C++&lt;/strong> interfaces,
+and Keyple is based on these interfaces.&lt;/p>
+&lt;p>Keyple also defines additional public interface for plugin integration, remote reader management, etc.&lt;/p></description></item></channel></rss>

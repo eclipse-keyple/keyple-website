@@ -14,7 +14,7 @@
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
-<link rel=stylesheet href=../../../css/wowchemy.89ae5919d5f0b7c63f18f9ce41ed6c86.css>
+<link rel=stylesheet href=../../../css/wowchemy.7ccc95ad09c8b2b61bf75bd806337be2.css>
 <script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
 <link rel=manifest href=../../../manifest.webmanifest>
 <link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
@@ -26,7 +26,7 @@
 <meta property="og:title" content="Standalone Application User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user standalone application."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-05-30T15:47:50+02:00">
+<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
 <title>Standalone Application User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=e77ca063ee6572d6bf15d5656980094d>
@@ -82,17 +82,8 @@
 <li class=nav-item>
 <a class=nav-link href=../../../learn/overview><span>Learn</span></a>
 </li>
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../../components-java/overview/><span>Java implementation v2+</span></a>
-<a class=dropdown-item href=../../../components-cpp/overview/><span>C++ implementation v2+</span></a>
-<a class=dropdown-item href=../../../><span> </span></a>
-<a class=dropdown-item href=../../../learn/user-guide/migrate-to-2-0><span>Guide to migrate from v1.0 to v2+</span></a>
-<a class=dropdown-item href=../../../components-java-1.0/><span>Java implementation v1.0 (deprecated)</span></a>
-<a class=dropdown-item href=../../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
-</div>
+<li class=nav-item>
+<a class=nav-link href=../../../components/overview><span>Components</span></a>
 </li>
 <li class="nav-item dropdown">
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
@@ -106,6 +97,7 @@
 <a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
 <a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
 <a class=dropdown-item href=https://github.com/eclipse/keyple/><span>GitHub home repository</span></a>
+<a class=dropdown-item href=../../../archives/><span>Archives</span></a>
 </div>
 </li>
 <li class="nav-item dropdown">
@@ -154,7 +146,7 @@ User guides
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li>
 <li><a href=../../../learn/overview/architecture/>Architecture</a></li>
-<li><a href=../../../learn/overview/terminalapis/>Calypso Terminal APIs</a></li>
+<li><a href=../../../learn/overview/keypop-api/>Keypop API</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -170,6 +162,7 @@ User guides
 <ul class="nav docs-sidenav">
 <li class=active><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
+<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
 <li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
@@ -284,8 +277,8 @@ For an Andoid terminal environment, the plugin could be the standard
 Android NFC plugin or one of the plugins available from the industrial
 partners of the project.</p>
 <p>For a complete list of available plugins, please see
-the <a href=https://keyple.org/components-java/standard-reader-plugins/>standard reader plugins</a>,
-the <a href=https://keyple.org/components-java/specific-reader-plugins/>specific reader plugins</a>
+the <a href=https://keyple.org/components/standard-reader-plugins/>standard reader plugins</a>,
+the <a href=https://keyple.org/components/specific-reader-plugins/>specific reader plugins</a>
 or one of our <a href=https://keyple.org/external-resources/external-add-ons/>partners reader plugins</a>.</p>
 <div class="alert alert-note">
 <div>
@@ -431,7 +424,7 @@ through a background task managed by Keyple Service.</p>
 <li>a reader observer implementing the <code>CardReaderObserverSpi</code> interface to be notified of reader events,</li>
 <li>an exception handler implementing the <code>CardReaderObservationExceptionHandlerSpi</code> interface to be notified of errors that may occur during the monitoring or events notifications.</li>
 </ul>
-<p>These two interfaces are available in the <code>org.calypsonet.terminal.reader.spi</code> package of the <strong>Calypsonet Terminal Reader API</strong> component.</p>
+<p>These two interfaces are available in the <code>org.eclipse.keypop.reader.spi</code> package of the <strong>Keypop Reader API</strong> component.</p>
 <p>Here is an example of a reader observer class including an exception handler:</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('19',this)">Copy</button></div>
 <pre><code class=language-java id=code-19>class ReaderObserver implements CardReaderObserverSpi, CardReaderObservationExceptionHandlerSpi {
@@ -475,54 +468,63 @@ Moreover, the notification process is sequential and synchronous.
 </div>
 <hr>
 <h2 id=select-a-card>Select a card</h2>
-<p>The starting point of any processing done with a card in the Keyple enrivonment, is to reference this card in the system.
+<p>The starting point of any processing done with a card in the Keyple environment, is to reference this card in the system.
 It is the role of the selection step to obtain this reference.</p>
 <p>You have first to prepare a selection scenario defining the eligible cards for a transaction, then to execute the scenario when a card is present.</p>
 <h3 id=prepare-a-scenario>Prepare a scenario</h3>
-<p>To prepare a scenario, you have to get a new instance of <code>CardSelectionManager</code> from the smart card service using the <code>createCardSelectionManager()</code> method,
+<p>To prepare a scenario, you have to get a new instance of <code>CardSelectionManager</code> from the smart card service using the
+<code>getReaderApiFactory().createCardSelectionManager()</code> method,
 then configure it with scenario cases using dedicated methods provided by one or more card extensions.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('22',this)">Copy</button></div>
-<pre><code class=language-java id=code-22>CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();```</code></pre>
-<p>The <code>prepareSelection(...)</code> method allows to add a selection case to the scenario by providing an implementation of the <code>CardSelection</code> interface and return the index of the added case in order to be able to identify later the case that matched.</p>
-<p>Please note that the order of addition is important because it will impact the selection cycle and favor the performance of the first added cases.</p>
+<pre><code class=language-java id=code-22>CardSelectionManager cardSelectionManager = smartCardService.getReaderApiFactory().createCardSelectionManager();</code></pre>
+<p>The <code>prepareSelection(...)</code> method allows to add a selection case to the scenario by providing a specific <code>CardSelector</code>
+and an implementation of the <code>CardSelectionExtension</code> interface.
+The method will return the index of the added case in order to be able to identify later the case that matched.</p>
+<p>Please note that the order of addition is important because it will impact the selection cycle and favor the performance
+of the first added cases.</p>
 <p>Providing one or more selection cases to the <code>CardSelectionManager</code> constitutes a selection scenario.
 The scenario is run by Keyple Service when a card is detected, the different cases being evaluated
 sequentially as long as the card does not match the criteria of the defined cases.</p>
-<p>The selection process for a case offers several options for selecting a processing based on the type of card presented to the reader.</p>
-<p>It is based on a filtering process according to three possible criteria,
-each of which is optional:</p>
+<p>The selection process for a case offers several options for selecting a processing based on the type of card presented
+to the reader.</p>
+<p>It is based on a filtering process according to three possible criteria, each of which is optional:</p>
 <ul>
-<li>the communication protocol of the card (usually also identifying a
-card technology)</li>
-<li>the power-on data collected by the reader when the card is detected (e.g. the Answer To Reset)</li>
+<li>the communication protocol of the card (usually also identifying a card technology),</li>
+<li>the power-on data collected by the reader when the card is detected (e.g. the Answer To Reset),</li>
 <li>the ISO standard application identifier (AID) used to perform a Select Application command.</li>
 </ul>
-<p>When a card is inserted, it is evaluated according to these criteria and
-will be given the status &ldquo;selected&rdquo; or not.</p>
+<p>When a card is inserted, it is evaluated according to these criteria and will be given the status &ldquo;selected&rdquo; or not.</p>
 <p>When a card is not selected, no other operation will be possible with it.</p>
 <p>The same card could correspond to several cases of the same scenario, especially when filtering by AID.
 By default, the selection process will stop at the first case that matches.
 It is however possible to choose another strategy using the <code>setMultipleSelectionMode()</code> method.
-In this case, the process will continue to the last selection case in the scenario and return all results, but only the last matching application will be selected.</p>
+In this case, the process will continue to the last selection case in the scenario and return all results,
+but only the last matching application will be selected.</p>
 <p>When a card is selected, the <code>CardSelectionManager</code> will make available the result
-as a <code>SmartCard</code> object containing all the information known about the card at that stage.</p>
+as a <code>SmartCard</code> (or <code>IsoSmartCard</code> if an <code>IsoCardSelector</code> is used) containing all the information known about the
+card at that stage.</p>
 <p>Depending on the card extension that is used, this <code>SmartCard</code> object can be cast to a more
 comprehensive object with specific features defined by the extension.</p>
-<p>In addition to the selection process itself, specific APDU commands may be sent to the card if the selection is successful.
+<p>In addition to the selection process itself, specific APDU commands may be sent to the card if the selection is
+successful.
 The output of these commands is available in the instance of the <code>SmartCard</code> object.</p>
 <p>The following snippet shows the preparation of two selection cases using the generic card extension:
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('23',this)">Copy</button></div>
 <pre><code class=language-java id=code-23>// prepare a selection for application 1
 int firstCaseIndex = cardSelectionManager.prepareSelection(
+    smartCardService.getReaderApiFactory()
+        .createIsoCardSelector()
+        .filterByDfName(AID1),
     GenericExtensionService.getInstance()
-        .createCardSelection()
-        .filterByDfName(AID1));
+        .createGenericCardSelectionExtension());
 
 // prepare a selection for application 2
 int secondCaseIndex = cardSelectionManager.prepareSelection(
+    smartCardService.getReaderApiFactory()
+        .createIsoCardSelector()
+        .filterByDfName(AID2),
     GenericExtensionService.getInstance()
-        .createCardSelection()
-        .filterByDfName(AID2));</code></pre></p>
+        .createGenericCardSelectionExtension());</code></pre></p>
 <h3 id=run-a-scenario>Run a scenario</h3>
 <p>If we know that the card is in the reader it is possible to run a selection scenario by invoking the <code>processCardSelectionScenario(...)</code> method on the corresponding reader.
 The result of the selection is then directly returned.</p>
@@ -542,11 +544,8 @@ if (smartCard == null) {
 <p>Invoke the <code>scheduleCardSelectionScenario(...)</code> to register the previously prepared scenario in the observable reader.</p>
 <p>In this case, it is necessary to register a reader observer and to have started the card detection in order to be able to retrieve the result of the selection which will be contained in a <code>CardReaderEvent</code>.</p>
 <p>Use the <code>parseScheduledCardSelectionsResponse(...)</code> method to extract the selection result from the event.</p>
-<p>Note that the scheduling of the execution of a scenario includes two options:</p>
-<ul>
-<li>the <code>DetectionMode</code> defining the expected behavior regarding the card detection allowing to automatically restart it or not.</li>
-<li>the <code>NotificationMode</code> allowing to choose if only the cards matching the selection (successfully selected) should trigger an event.</li>
-</ul>
+<p>Note that the scheduling of the execution of a scenario includes the <code>NotificationMode</code> option allowing to choose if
+only the cards matching the selection (successfully selected) should trigger an event.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('25',this)">Copy</button></div>
 <pre><code class=language-java id=code-25>...
 @Override
@@ -573,25 +572,29 @@ public void onReaderEvent(CardReaderEvent event) {
 ...</code></pre>
 <div class="alert alert-note">
 <div>
-<p>The <code>finalizeCardProcessing()</code> method must be invoked at the end of the transaction to ensure that the communication channel is closed.
+<p>The <code>finalizeCardProcessing()</code> method must be invoked at the end of the transaction to ensure that the communication
+channel is closed.
 This switches the underlying monitoring thread into a state of waiting for the card to be removed.</p>
 <p>Not doing this can lead to blocking states of the card insertion/removal monitoring mechanism.</p>
 </div>
 </div>
 <hr>
 <h2 id=perform-a-transaction>Perform a transaction</h2>
-<p>Once the smart card is referenced in the system it is possible to perform the desired transaction using the appropriate card extension.</p>
-<p>When the transaction is completed, if the reader is observed, it is imperative to invoke the <code>finalizeCardProcessing()</code> method on the observable reader (see the above note).</p>
+<p>Once the smart card is referenced in the system it is possible to perform the desired transaction using the appropriate
+card extension.</p>
+<p>When the transaction is completed, if the reader is observed, it is imperative to invoke the <code>finalizeCardProcessing()</code>
+method on the observable reader (see the above note).</p>
 <hr>
 <h2 id=unregister-a-plugin>Unregister a plugin</h2>
-<p>To shut down a Keyple application properly, it is necessary to free the resources and in particular to close opened card physical channels and stop the observation threads.</p>
+<p>To shut down a Keyple application properly, it is necessary to free the resources and in particular to close opened card
+physical channels and stop the observation threads.</p>
 <p>This is done by unregistering the plugins in the following way:</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('27',this)">Copy</button></div>
 <pre><code class=language-java id=code-27>smartCardService.unregisterPlugin(plugin.getName());</code></pre>
 <hr>
 <h2 id=api>API</h2>
 <ul>
-<li><a href=https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/ target=_blank rel=noopener>Calypsonet Terminal Reader API</a></li>
+<li><a href=https://keypop.org/apis/keypop-reader-api/ target=_blank rel=noopener>Keypop Reader API</a></li>
 <li><a href=https://eclipse.github.io/keyple-common-java-api target=_blank rel=noopener>Keyple Common API</a></li>
 <li><a href=https://eclipse.github.io/keyple-service-java-lib target=_blank rel=noopener>Keyple Service API</a></li>
 </ul>
@@ -603,7 +606,7 @@ This switches the underlying monitoring thread into a state of waiting for the c
 <hr>
 <h2 id=download>Download</h2>
 <ul>
-<li><a href=https://keyple.org/components-java/overview/configuration-wizard/>Java components</a></li>
+<li><a href=https://keyple.org/components/overview/configuration-wizard/>Java components</a></li>
 </ul>
 </div>
 <div class=article-widget>
@@ -616,7 +619,7 @@ This switches the underlying monitoring thread into a state of waiting for the c
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-05-30</p>
+<p>Last updated on 2023-11-29</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -707,7 +710,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.8414c33d590e497d63ce70adeefc8179.js></script>
+<script src=../../../en/js/wowchemy.min.735dd22779eecc9f58d38921584770aa.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

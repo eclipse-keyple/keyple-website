@@ -22,7 +22,7 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the client application:
+&lt;p>The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the application:
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/plugin_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
@@ -47,9 +47,9 @@ They are specific to the plugin &lt;code>Xxx&lt;/code> to be created but can rem
 &lt;ul>
 &lt;li>In the &lt;strong>plugin factory&lt;/strong> (&lt;code>XxxPluginFactory&lt;/code> interface), for the initial configuration of the plugin (e.g. set custom plugin name).&lt;/li>
 &lt;li>In the &lt;strong>plugin&lt;/strong> (&lt;code>XxxPlugin&lt;/code> interface), for dynamic configurations that can be applied to all the readers (e.g. put the readers in sleep mode).&lt;br>
-The API will then be directly accessible from the client application through the &lt;code>getExtension(...)&lt;/code> method of the plugin registered with Keyple Service.&lt;/li>
+The API will then be directly accessible from the application through the &lt;code>getExtension(...)&lt;/code> method of the plugin registered with Keyple Service.&lt;/li>
 &lt;li>In the &lt;strong>reader&lt;/strong> (&lt;code>XxxReader&lt;/code> interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).&lt;br>
-The API will then be directly accessible from the client application through the &lt;code>getReaderExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
+The API will then be directly accessible from the application through the &lt;code>getReaderExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
@@ -78,7 +78,7 @@ git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
-It is important to hide the internal Keyple interfaces of the &lt;strong>Plugin API&lt;/strong> from the client application.
+It is important to hide the internal Keyple interfaces of the &lt;strong>Plugin API&lt;/strong> from the application.
 &lt;/div>
 &lt;/div>
 &lt;p>For this purpose, it is suggested to respect the following programming pattern based on the use of:&lt;/p>
@@ -106,10 +106,11 @@ Thus, the factory does not expose any method.
 &lt;hr>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Card Extension Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/card-extension-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/card-extension-add-on/</guid><description>&lt;hr>
 &lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>This guide is intended to help developers who want to create a Keyple card extension add-on for a specific card technology.&lt;/p>
+&lt;p>This guide is intended to help developers who want to create a Keyple card extension add-on for a specific card
+technology.&lt;/p>
 &lt;hr>
 &lt;h2 id="operating-mode">Operating mode&lt;/h2>
 &lt;ol>
@@ -124,15 +125,20 @@ Thus, the factory does not expose any method.
 &lt;p>A Keyple card extension contains a set of objects which meet the following three interface specifications:&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>Common API&lt;/strong>: public contract including a generic type common to all card extensions.&lt;/li>
-&lt;li>&lt;strong>Calypsonet Terminal Reader API&lt;/strong>: public contract provided be Calypso Networks Association including two specific interfaces to be implemented by the card extension and required by the card selection manager.&lt;/li>
-&lt;li>&lt;strong>Calypsonet Terminal Card API&lt;/strong>: private contract provided be Calypso Networks Association based on two types of interfaces:
+&lt;li>&lt;strong>Keypop Reader API&lt;/strong>: public contract provided by the Eclipse Keypop project including two specific
+interfaces to be implemented by the card extension and required by the card selection manager.&lt;/li>
+&lt;li>&lt;strong>Keypop Card API&lt;/strong>: private contract provided by the Eclipse Keypop project based on two types of
+interfaces:
 &lt;ul>
-&lt;li>&lt;strong>API&lt;/strong> (Application Programming Interface): interface implemented by Keyple Service and directly usable by the card extension code.&lt;/li>
-&lt;li>&lt;strong>SPI&lt;/strong> (Service Provider Interface): interface to be implemented by the card extension and directly used by Keyple Service.&lt;/li>
+&lt;li>&lt;strong>API&lt;/strong> (Application Programming Interface): interface implemented by Keyple Service and directly usable by the
+card extension code.&lt;/li>
+&lt;li>&lt;strong>SPI&lt;/strong> (Service Provider Interface): interface to be implemented by the card extension and directly used by
+Keyple Service.&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>The component diagram below illustrates the internal API/SPI links between the card extension and Keyple Service, as well as the public APIs exposed to the client application:
+&lt;p>The component diagram below illustrates the internal API/SPI links between the card extension and Keyple Service, as
+well as the public APIs exposed to the application:
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/card_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
@@ -145,8 +151,8 @@ Thus, the factory does not expose any method.
 &lt;tr>
 &lt;th>Object&lt;/th>
 &lt;th style="text-align:center">Common API&lt;/th>
-&lt;th style="text-align:center">Calypsonet Terminal Reader API&lt;/th>
-&lt;th style="text-align:center">Calypsonet Terminal Card API&lt;/th>
+&lt;th style="text-align:center">Keypop Reader API&lt;/th>
+&lt;th style="text-align:center">Keypop Card API&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
@@ -159,20 +165,14 @@ Thus, the factory does not expose any method.
 &lt;tr>
 &lt;td>Card selection parser&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
-&lt;td style="text-align:center">&lt;code>CardSelection&lt;/code>&lt;/td>
-&lt;td style="text-align:center">&lt;code>CardSelectionSpi&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>CardSelectionExtension&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>CardSelectionExtensionSpi&lt;/code>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>Smart card object&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
-&lt;td style="text-align:center">&lt;code>SmartCard&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>SmartCard&lt;/code> or &lt;code>IsoSmartCard&lt;/code>&lt;/td>
 &lt;td style="text-align:center">&lt;code>SmartCardSpi&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Card selector DTO&lt;/td>
-&lt;td style="text-align:center">&lt;/td>
-&lt;td style="text-align:center">&lt;/td>
-&lt;td style="text-align:center">&lt;code>CardSelectorSpi&lt;/code>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>Card selection request DTO&lt;/td>
@@ -197,7 +197,9 @@ Thus, the factory does not expose any method.
 &lt;div class="alert alert-warning">
 &lt;div>
 &lt;p>In the case where the smart card object has fields of type &lt;code>interface&lt;/code>,
-it will then be necessary to define for each of them and recursively a JSON deserializer and register it during the service initialization with the method &lt;code>JsonUtil.registerTypeAdapter(...)&lt;/code> provided by the &lt;a href="https://keyple.org/components-java/core/keyple-util-java-lib/">Keyple Util&lt;/a> library.&lt;/p>
+it will then be necessary to define for each of them and recursively a JSON deserializer and register it during the
+service initialization with the method &lt;code>JsonUtil.registerTypeAdapter(...)&lt;/code> provided by the
+&lt;a href="https://keyple.org/components/core/keyple-util-lib/">Keyple Util&lt;/a> library.&lt;/p>
 &lt;p>This will allow the transport of this object through the network when using the Keyple Distributed solution.&lt;/p>
 &lt;/div>
 &lt;/div>
@@ -205,45 +207,54 @@ it will then be necessary to define for each of them and recursively a JSON dese
 &lt;h2 id="define-the-card-commands">Define the card commands&lt;/h2>
 &lt;p>The card extension takes part in the communication with the card in two ways:&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>implicitly&lt;/strong>, when the card is being selected, which is done directly by the client application via the Keyple Service selection manager;&lt;/li>
-&lt;li>&lt;strong>explicitly&lt;/strong>, when the card has been selected, on request of the client application, by direct use of the APIs exposed by the Card API.&lt;/li>
+&lt;li>&lt;strong>implicitly&lt;/strong>, when the card is being selected, which is done directly by the application via the Keyple Service
+selection manager;&lt;/li>
+&lt;li>&lt;strong>explicitly&lt;/strong>, when the card has been selected, on request of the application, by direct use of the APIs exposed by
+the Card API.&lt;/li>
 &lt;/ul>
-&lt;p>For explicit communication, the card extension must require the client application to provide a reference to a &lt;code>CardReader&lt;/code> of the Reader API.
-This can then be cast internally to a &lt;code>ProxyReaderApi&lt;/code> of the Card API through which it will be possible to transmit card commands.&lt;/p>
+&lt;p>For explicit communication, the card extension must require the application to provide a reference to a &lt;code>CardReader&lt;/code> of
+the Reader API.
+This can then be cast internally to a &lt;code>ProxyReaderApi&lt;/code> of the Card API through which it will be possible to transmit
+card commands.&lt;/p>
 &lt;p>Each card extension is free to define the APIs it considers relevant to perform card transactions.&lt;/p>
 &lt;hr>
 &lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
-For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of applications.
+For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of
+applications.
 &lt;/div>
 &lt;/div>
-&lt;p>If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project template:&lt;/p>
+&lt;p>If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project
+template:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="../../media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>: adapt fields &lt;code>[CARD_EXTENSION_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/li>
+&lt;li>&lt;a href="../../media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" target="_blank">Java
+template&lt;/a>: adapt fields &lt;code>[CARD_EXTENSION_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;div class="alert alert-warning">
 &lt;div>
-&lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:&lt;/p>
+&lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the
+following commands:&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('0', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-ini" id="code-0">git update-index --chmod=&amp;#43;x &amp;#34;gradlew&amp;#34;
 git update-index --chmod=&amp;#43;x &amp;#34;scripts/check_version.sh&amp;#34;
 git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/code>&lt;/pre>
 &lt;/div>
 &lt;/div>
-&lt;p>If examples are proposed, they should be placed in the &lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
+&lt;p>If examples are proposed, they should be placed in
+the &lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
 &lt;p>The contribution procedure is described &lt;a href="../../community/contributing/">here&lt;/a>.&lt;/p>
 &lt;hr>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
-It is important to hide the internal Calypsonet interfaces of the &lt;strong>Calypsonet Terminal Card API&lt;/strong> from the client application.
+It is important to hide the internal interfaces of the &lt;strong>Keypop Card API&lt;/strong> from the application.
 &lt;/div>
 &lt;/div>
 &lt;p>For this purpose, it is suggested to respect the following programming pattern based on the use of:&lt;/p>
 &lt;ul>
 &lt;li>public interfaces,&lt;/li>
-&lt;li>private interfaces adapters (package visibility) accessible from a public service.
+&lt;li>private interfaces adapters (package visibility) not accessible from a public service.
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/design-guides/card_extension_class_diagram.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
@@ -253,11 +264,11 @@ It is important to hide the internal Calypsonet interfaces of the &lt;strong>Cal
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://eclipse.github.io/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/" target="_blank" rel="noopener">Calypsonet Terminal Reader API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/" target="_blank" rel="noopener">Calypsonet Terminal Card API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/keypop-reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/keypop-card-api/" target="_blank" rel="noopener">Keypop Card API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://keyple.org/components-java/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item></channel></rss>

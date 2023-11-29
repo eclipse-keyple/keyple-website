@@ -14,7 +14,7 @@
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
-<link rel=stylesheet href=../../css/wowchemy.89ae5919d5f0b7c63f18f9ce41ed6c86.css>
+<link rel=stylesheet href=../../css/wowchemy.7ccc95ad09c8b2b61bf75bd806337be2.css>
 <script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
 <link rel=alternate href=../../community/changelog/index.xml type=application/rss+xml title="Eclipse Keyple">
 <link rel=manifest href=../../manifest.webmanifest>
@@ -82,17 +82,8 @@
 <li class=nav-item>
 <a class=nav-link href=../../learn/overview><span>Learn</span></a>
 </li>
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../components-java/overview/><span>Java implementation v2+</span></a>
-<a class=dropdown-item href=../../components-cpp/overview/><span>C++ implementation v2+</span></a>
-<a class=dropdown-item href=../../><span> </span></a>
-<a class=dropdown-item href=../../learn/user-guide/migrate-to-2-0><span>Guide to migrate from v1.0 to v2+</span></a>
-<a class=dropdown-item href=../../components-java-1.0/><span>Java implementation v1.0 (deprecated)</span></a>
-<a class=dropdown-item href=../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
-</div>
+<li class=nav-item>
+<a class=nav-link href=../../components/overview><span>Components</span></a>
 </li>
 <li class="nav-item dropdown">
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
@@ -106,6 +97,7 @@
 <a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
 <a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
 <a class=dropdown-item href=https://github.com/eclipse/keyple/><span>GitHub home repository</span></a>
+<a class=dropdown-item href=../../archives/><span>Archives</span></a>
 </div>
 </li>
 <li class="nav-item dropdown">
@@ -180,6 +172,317 @@ across all Keyple components repositories.
 </tr>
 </thead>
 <tbody>
+<tr><th>2023-11-28</th><td><span class=component>Keyple Plugin Cardresource Java Lib</span><span class=version><code>2.0.0</code></span><hr><p>⚠️ Major version! Following the migration of the &ldquo;Calypsonet Terminal&rdquo; APIs to the <a href=https://keypop.org>Eclipse Keypop project</a>, this library now implements Keypop interfaces.</p>
+<h3 id=added>Added</h3>
+<ul>
+<li>Added project status badges on <code>README.md</code> file.</li>
+</ul>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>CI: code coverage report when releasing.</li>
+</ul>
+<h3 id=upgraded>Upgraded</h3>
+<ul>
+<li>Calypsonet Terminal Reader API <code>1.2.0</code> -> Keypop Reader API <code>2.0.0</code></li>
+<li>Keyple Plugin API <code>2.1.0</code> -> <code>2.2.0</code></li>
+<li>Keyple Service Resource Library <code>2.1.1</code> -> <code>3.0.0</code></li>
+<li>Keyple Util Library <code>2.3.0</code> -> <code>2.3.1</code></li>
+</ul>
+</td></tr>
+<tr><th>2023-11-28</th><td><span class=component>Keyple Card Calypso Crypto Legacysam Java Lib</span><span class=version><code>0.4.0</code></span><hr><p>⚠️ Major version! Following the migration of the &ldquo;Calypsonet Terminal&rdquo; APIs to the <a href=https://keypop.org>Eclipse Keypop project</a>, this library now implements Keypop interfaces.</p>
+<h3 id=added>Added</h3>
+<ul>
+<li>Added dependency to &ldquo;Keypop Calypso Crypto Symmetric API&rdquo; <code>0.1.0</code></li>
+<li>Added S1D3 to S1D7 to the list of SAM types recognized by the library.</li>
+<li>Added a new interface <code>ContextSetting</code> to manage the limitations of some not fully compliant terminals.</li>
+<li>Added new methods to class <code>LegacySamExtensionService</code>:
+<ul>
+<li><code>ContextSetting getContextSetting()</code> to access to the new interface.</li>
+<li><code>LegacySamApiFactory getLegacySamApiFactory()</code> to get an implementation of the <code>LegacySamApiFactory</code> Keypop interface.</li>
+<li><code>CardResourceProfileExtension createLegacySamResourceProfileExtension(LegacySamSelectionExtension legacySamSelectionExtension, String powerOnDataRegex)</code></li>
+</ul>
+</li>
+<li>Added project status badges on <code>README.md</code> file.</li>
+</ul>
+<h3 id=changed>Changed</h3>
+<ul>
+<li>Refactoring:
+<ul>
+<li>Class <code>LegacySamCardExtensionService</code> -> <code>LegacySamExtensionService</code></li>
+</ul>
+</li>
+</ul>
+<h3 id=removed>Removed</h3>
+<ul>
+<li>Removed methods from class <code>LegacySamExtensionService</code>:
+<ul>
+<li><code>LegacySamSelectionFactory getLegacySamSelectionFactory()</code> (now provided by the <code>LegacySamApiFactory</code> Keypop interface)</li>
+<li><code>LSSecuritySettingFactory getSecuritySettingFactory()</code> (now provided by the <code>LegacySamApiFactory</code> Keypop interface)</li>
+<li><code>LSTransactionManagerFactory getTransactionManagerFactory()</code> (now provided by the <code>LegacySamApiFactory</code> Keypop interface)</li>
+<li><code>LSCommandDataFactory getCommandDataFactory()</code> (now provided by the <code>LegacySamApiFactory</code> Keypop interface)</li>
+</ul>
+</li>
+</ul>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>CI: code coverage report when releasing.</li>
+</ul>
+<h3 id=upgraded>Upgraded</h3>
+<ul>
+<li>Calypsonet Terminal Reader API <code>1.2.0</code> -> Keypop Reader API <code>2.0.0</code></li>
+<li>Calypsonet Terminal Card API <code>1.0.0</code> -> Keypop Card API <code>2.0.0</code></li>
+<li>Calypsonet Terminal Calypso API <code>1.8.0</code> -> Keypop Calypso Card API <code>2.0.0</code></li>
+<li>Calypsonet Terminal Calypso Crypto Legacy SAM API <code>0.2.0</code> -> Keypop Calypso Crypto Legacy SAM API <code>0.3.0</code></li>
+<li>Keyple Service Resource Library <code>2.0.2</code> -> <code>3.0.0</code></li>
+<li>Keyple Util Library <code>2.3.0</code> -> <code>2.3.1</code> (source code not impacted)</li>
+</ul>
+</td></tr>
+<tr><th>2023-11-28</th><td><span class=component>Keyple Card Generic Java Lib</span><span class=version><code>3.0.0</code></span><hr><p>⚠️ Major version! Following the migration of the &ldquo;Calypsonet Terminal&rdquo; APIs to the <a href=https://keypop.org>Eclipse Keypop project</a>, this library now implements Keypop interfaces.</p>
+<h3 id=added>Added</h3>
+<ul>
+<li>Added project status badges on <code>README.md</code> file.</li>
+</ul>
+<h3 id=changed>Changed</h3>
+<ul>
+<li>Class renamed:
+<ul>
+<li><code>GenericCardSelection</code> -> <code>GenericCardSelectionExtension</code></li>
+</ul>
+</li>
+<li>Methods renamed or signatures refactored:
+<ul>
+<li><code>GenericCardSelection createCardSelection ()</code> -> <code>GenericCardSelectionExtension createGenericCardSelectionExtension()</code></li>
+<li><code>CardResourceProfileExtension createCardResourceProfileExtension(GenericCardSelectionExtension genericCardSelectionExtension)</code> -> <code>CardResourceProfileExtension createCardResourceProfileExtension(CardSelector&lt;IsoCardSelector> cardSeletor, GenericCardSelectionExtension genericCardSelectionExtension)</code></li>
+<li><code>processApdusToByteArrays ()</code> -> <code>processApdusToByteArrays (ChannelControl channelControl)</code> and <code>processApdusToHexStrings ()</code> -> <code>processApdusToHexStrings (ChannelControl channelControl)
+The enum </code>ChannelControl` has been created for this purpose.</li>
+</ul>
+</li>
+</ul>
+<h3 id=removed>Removed</h3>
+<ul>
+<li>Removed methods from <code>GenericCardSelectionExtension</code> (now available from Keyple core service):
+<ul>
+<li><code>filterByCardProtocol(...)</code></li>
+<li><code>filterByPowerOnData(...)</code></li>
+<li><code>filterByDfName(...)</code></li>
+<li><code>setFileOccurrence(...)</code></li>
+<li><code>setFileControlInformation(...)</code></li>
+</ul>
+</li>
+<li>Removed enumerations:
+<ul>
+<li><code>FileOccurrence</code></li>
+<li><code>FileControlInformation</code></li>
+</ul>
+</li>
+<li>Removed method from <code>GenericExtensionService</code>:
+<ul>
+<li><code>prepareReleaseChannel()</code></li>
+</ul>
+</li>
+</ul>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>CI: code coverage report when releasing.</li>
+</ul>
+<h3 id=upgraded>Upgraded</h3>
+<ul>
+<li>Calypsonet Terminal Reader API <code>1.0.0</code> -> Keypop Reader API <code>2.0.0</code></li>
+<li>Calypsonet Terminal Card API <code>1.0.0</code> -> Keypop Card API <code>2.0.0</code></li>
+<li>Keyple Util Library <code>2.1.0</code> -> <code>2.3.1</code></li>
+<li>Keyple Service Resource Library <code>2.0.1</code> -> <code>3.0.0</code></li>
+</ul>
+</td></tr>
+<tr><th>2023-11-28</th><td><span class=component>Keyple Card Calypso Java Lib</span><span class=version><code>3.0.0</code></span><hr><p>⚠️ Major version! Following the migration of the &ldquo;Calypsonet Terminal&rdquo; APIs to the <a href=https://keypop.org>Eclipse Keypop project</a>, this library now implements Keypop interfaces.</p>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>Fixed the crash that occurred when using &ldquo;Read&rdquo; commands in best-effort mode during a free card transaction.</li>
+</ul>
+<h3 id=added>Added</h3>
+<ul>
+<li>Added dependency to &ldquo;Keypop Calypso Crypto Symmetric API&rdquo; <code>0.1.0</code></li>
+<li>Added the method <code>CalypsoCardApiFactory getCalypsoCardApiFactory()</code> to the <code>CalypsoCardExtensionService</code> class to get an implementation of the <code>CalypsoCardApiFactory</code> Keypop interface.</li>
+</ul>
+<h3 id=changed>Changed</h3>
+<ul>
+<li>Refactoring:
+<ul>
+<li>Class <code>CalypsoExtensionService</code> -> <code>CalypsoCardExtensionService</code></li>
+</ul>
+</li>
+</ul>
+<h3 id=removed>Removed</h3>
+<ul>
+<li>Removed dependency to &ldquo;Keyple Service Resource Library&rdquo;.</li>
+<li>Removed methods from <code>CalypsoExtensionService</code>:
+<ul>
+<li><code>getContextSetting()</code> (now provided by specific Calypso crypto module)</li>
+<li><code>createSearchCommandData()</code> (now provided by the <code>CalypsoCardApiFactory</code> Keypop interface)</li>
+<li><code>createBasicSignatureComputationData()</code> (now provided by specific Calypso crypto module)</li>
+<li><code>createTraceableSignatureComputationData()</code> (now provided by specific Calypso crypto module)</li>
+<li><code>createBasicSignatureVerificationData()</code> (now provided by specific Calypso crypto module)</li>
+<li><code>createTraceableSignatureVerificationData()</code> (now provided by specific Calypso crypto module)</li>
+<li><code>createCardSelection()</code> (now provided by the <code>CalypsoCardApiFactory</code> Keypop interface)</li>
+<li><code>createSamSelection()</code> (now provided by specific Calypso crypto module)</li>
+<li><code>createSamResourceProfileExtension(...)</code> (now provided by specific Calypso crypto module)</li>
+<li><code>createCardSecuritySetting()</code> (now provided by the <code>CalypsoCardApiFactory</code> Keypop interface)</li>
+<li><code>createCardTransaction(...)</code> (now provided by the <code>CalypsoCardApiFactory</code> Keypop interface)</li>
+<li><code>createCardTransactionWithoutSecurity(...)</code> (now provided by the <code>CalypsoCardApiFactory</code> Keypop interface)</li>
+<li><code>createSamSecuritySetting()</code> (now provided by specific Calypso crypto module)</li>
+<li><code>createSamTransaction(...)</code> (now provided by specific Calypso crypto module)</li>
+<li><code>createSamTransactionWithoutSecurity(...)</code> (now provided by specific Calypso crypto module)</li>
+</ul>
+</li>
+<li>Removed interface <code>ContextSetting</code> (now provided by specific Calypso crypto module)</li>
+</ul>
+<h3 id=upgraded>Upgraded</h3>
+<ul>
+<li>Calypsonet Terminal Reader API <code>1.3.0</code> -> Keypop Reader API <code>2.0.0</code></li>
+<li>Calypsonet Terminal Card API <code>1.0.0</code> -> Keypop Card API <code>2.0.0</code></li>
+<li>Calypsonet Terminal Calypso API <code>1.8.0</code> -> Keypop Calypso Card API <code>2.0.0</code></li>
+<li>Keyple Util Library <code>2.3.0</code> -> <code>2.3.1</code> (source code not impacted)</li>
+<li>Removed dependency to &ldquo;Keyple Service Resource Library&rdquo; (used only by crypto components)</li>
+</ul>
+</td></tr>
+<tr><th>2023-11-28</th><td><span class=component>Keyple Service Resource Java Lib</span><span class=version><code>3.0.0</code></span><hr><p>⚠️ Major version! Following the migration of the &ldquo;Calypsonet Terminal&rdquo; APIs to the <a href=https://keypop.org>Eclipse Keypop project</a>, this library now implements Keypop interfaces.</p>
+<h3 id=added>Added</h3>
+<ul>
+<li>Added project status badges on <code>README.md</code> file.</li>
+</ul>
+<h3 id=changed>Changed</h3>
+<ul>
+<li>Signature of method <code>CardResourceProfileExtension.matches(...)</code>:
+<ul>
+<li>previous: <code>SmartCard matches(CardReader reader, CardSelectionManager cardSelectionManager)</code></li>
+<li>current: <code>SmartCard matches(CardReader reader, ReaderApiFactory readerApiFactory)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>CI: code coverage report when releasing.</li>
+</ul>
+<h3 id=upgraded>Upgraded</h3>
+<ul>
+<li>Calypsonet Terminal Reader API <code>1.2.0</code> -> Keypop Reader API <code>2.0.0</code></li>
+<li>Keyple Service Library <code>2.2.0</code> -> <code>3.0.0</code></li>
+<li>Keyple Util Library <code>2.3.0</code> -> <code>2.3.1</code> (source code not impacted)</li>
+</ul>
+</td></tr>
+<tr><th>2023-11-28</th><td><span class=component>Keyple Service Java Lib</span><span class=version><code>3.0.0</code></span><hr><p>⚠️ Major version! Following the migration of the &ldquo;Calypsonet Terminal&rdquo; APIs to the <a href=https://keypop.org>Eclipse Keypop project</a>, this library now implements Keypop interfaces.</p>
+<h3 id=added>Added</h3>
+<ul>
+<li>Added the method <code>ReaderApiFactory getReaderApiFactory()</code> to the <code>SmartCardService</code> interface to get an implementation of the <code>ReaderApiFactory</code> Keypop interface.</li>
+<li>Added a property indicating the Core JSON API level in exchanged JSON data (current value: <code>"coreApiLevel": 2</code>).</li>
+<li>Added project status badges on <code>README.md</code> file.</li>
+</ul>
+<h3 id=changed>Changed</h3>
+<ul>
+<li>Distributed JSON API <code>1.0</code> -> <code>2.0</code> (compatibility with previous versions remains assured for the time being)</li>
+<li>Method signatures:
+<ul>
+<li>Interface <code>Plugin</code>: <code>Set&lt;Reader> getReaders()</code> -> <code>Set&lt;CardReader> getReaders()</code></li>
+<li>Interface <code>Plugin</code>: <code>Reader getReader(String readerName)</code> -> <code>CardReader getReader(String readerName)</code></li>
+<li>Interface <code>PoolPlugin</code>: <code>Reader allocateReader(String readerGroupReference)</code> -> <code>CardReader allocateReader(String readerGroupReference)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id=removed>Removed</h3>
+<ul>
+<li>Deprecated interfaces:
+<ul>
+<li><code>Reader</code> (replaced by <code>CardReader</code> in all methods signatures)</li>
+<li><code>ObservableReader</code> (replaced by <code>ObservableCardReader</code>)</li>
+<li><code>ConfigurableReader</code> (replaced by <code>ConfigurableCardReader</code>)</li>
+<li><code>ReaderEvent</code> (replaced by <code>CardReaderEvent</code>)</li>
+</ul>
+</li>
+<li>Method <code>SmartCardService.createCardSelectionManager()</code> (now provided by the <code>ReaderApiFactory</code> Keypop interface)</li>
+</ul>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>CI: code coverage report when releasing.</li>
+</ul>
+<h3 id=upgraded>Upgraded</h3>
+<ul>
+<li>Calypsonet Terminal Reader API <code>1.3.0</code> -> Keypop Reader API <code>2.0.0</code></li>
+<li>Calypsonet Terminal Card API <code>1.0.0</code> -> Keypop Card API <code>2.0.0</code></li>
+<li>Keyple Distributed Local API <code>2.0.0</code> -> <code>2.1.0</code></li>
+<li>Keyple Distributed Remote API <code>2.1.0</code> -> <code>3.0.0</code></li>
+</ul>
+</td></tr>
+<tr><th>2023-11-28</th><td><span class=component>Keyple Distributed Local Java Lib</span><span class=version><code>2.3.0</code></span><hr><h3 id=added>Added</h3>
+<ul>
+<li>Added a property indicating the Distributed JSON API level in exchanged JSON data (current value: <code>"apiLevel": 2</code>).</li>
+<li>Added project status badges on <code>README.md</code> file.</li>
+</ul>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>CI: code coverage report when releasing.</li>
+</ul>
+<h3 id=upgraded>Upgraded</h3>
+<ul>
+<li>Keyple Distributed Local API <code>2.0.0</code> -> <code>2.1.0</code></li>
+<li>Keyple Distributed Network Library <code>2.2.0</code> -> <code>2.3.0</code></li>
+<li>Keyple Util Library <code>2.3.0</code> -> <code>2.3.1</code> (source code not impacted)</li>
+</ul>
+</td></tr>
+<tr><th>2023-11-28</th><td><span class=component>Keyple Distributed Remote Java Lib</span><span class=version><code>2.3.0</code></span><hr><h3 id=added>Added</h3>
+<ul>
+<li>Added a property indicating the Distributed JSON API level in exchanged JSON data (current value: <code>"apiLevel": 2</code>).</li>
+<li>Added project status badges on <code>README.md</code> file.</li>
+</ul>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>CI: code coverage report when releasing.</li>
+</ul>
+<h3 id=upgraded>Upgraded</h3>
+<ul>
+<li>Keyple Distributed Remote API <code>2.1.0</code> -> <code>3.0.0</code></li>
+<li>Keyple Distributed Network Library <code>2.2.0</code> -> <code>2.3.0</code></li>
+<li>Keyple Util Library <code>2.3.0</code> -> <code>2.3.1</code> (source code not impacted)</li>
+</ul>
+</td></tr>
+<tr><th>2023-11-28</th><td><span class=component>Keyple Distributed Network Java Lib</span><span class=version><code>2.3.0</code></span><hr><h3 id=added>Added</h3>
+<ul>
+<li>Added a property indicating the Distributed JSON API level in exchanged JSON data (current value: <code>"apiLevel": 2</code>).</li>
+<li>Added project status badges on <code>README.md</code> file.</li>
+</ul>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>CI: code coverage report when releasing.</li>
+</ul>
+<h3 id=upgraded>Upgraded</h3>
+<ul>
+<li>Keyple Util Library <code>2.3.0</code> -> <code>2.3.1</code> (source code not impacted)</li>
+</ul>
+</td></tr>
+<tr><th>2023-11-27</th><td><span class=component>Keyple Distributed Local Java Api</span><span class=version><code>2.1.0</code></span><hr><h3 id=added>Added</h3>
+<ul>
+<li>Added a new method <code>int exchangeApiLevel(int coreApiLevel)</code> to the <code>LocalServiceSpi</code> interface to enable Core and Distributed layers to exchange their JSON API levels.</li>
+<li><code>CHANGELOG.md</code> file (issue [eclipse/keyple#6]).</li>
+<li>Added project status badges on <code>README.md</code> file.</li>
+<li>CI: Forbid the publication of a version already released (issue [#3]).</li>
+</ul>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>CI: code coverage report when releasing.</li>
+</ul>
+</td></tr>
+<tr><th>2023-11-27</th><td><span class=component>Keyple Distributed Remote Java Api</span><span class=version><code>3.0.0</code></span><hr><h3 id=added>Added</h3>
+<ul>
+<li>Added a new method <code>int exchangeApiLevel(int coreApiLevel)</code> to the <code>AbstractRemotePluginSpi</code> interface to enable Core and Distributed layers to exchange their JSON API levels.</li>
+<li>Added project status badges on <code>README.md</code> file.</li>
+</ul>
+<h3 id=changed>Changed</h3>
+<ul>
+<li>Updated the signature of the method <code>addRemoteReader</code> in the <code>ObservableRemotePluginApi</code> interface. The original signature was <code>void addRemoteReader(RemoteReaderSpi remoteReaderSpi)</code>, and it has now been modified to <code>void addRemoteReader(RemoteReaderSpi remoteReaderSpi, int clientCoreApiLevel)</code>. The new <code>clientCoreApiLevel</code> parameter will enable the Distributed layer to transmit the client&rsquo;s Core layer API level to the server&rsquo;s Core layer when a reader creation request is made.</li>
+</ul>
+<h3 id=fixed>Fixed</h3>
+<ul>
+<li>CI: code coverage report when releasing.</li>
+</ul>
+</td></tr>
 <tr><th>2023-11-13</th><td><span class=component>Keyple Plugin Android Nfc Java Lib</span><span class=version><code>2.1.0</code></span><hr><p>⚠️ <strong>CAUTION</strong>: this version requires to use at least version <code>2.3.2</code> of the
 <a href=https://keyple.org/components-java/core/keyple-service-java-lib/>Keyple Service Library</a>!</p>
 <h3 id=added>Added</h3>
@@ -1028,6 +1331,7 @@ It also brings many major API changes.</td></tr>
 <tr><th>2021-06-21</th><td><span class=component>Keyple Distributed Remote Java Api</span><span class=version><code>2.0-rc1</code></span><hr></td></tr>
 <tr><th>2021-06-21</th><td><span class=component>Keyple Plugin Java Api</span><span class=version><code>2.0-rc1</code></span><hr></td></tr>
 <tr><th>2021-06-21</th><td><span class=component>Keyple Distributed Local Java Api</span><span class=version><code>2.0-rc1</code></span><hr></td></tr>
+<tr><th>2021-06-21</th><td><span class=component>Keyple Common Java Api</span><span class=version><code>2.0-rc1</code></span><hr></td></tr>
 </tbody>
 </table>
 </div>
@@ -1128,7 +1432,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../en/js/wowchemy.min.8414c33d590e497d63ce70adeefc8179.js></script>
+<script src=../../en/js/wowchemy.min.735dd22779eecc9f58d38921584770aa.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

@@ -14,7 +14,7 @@
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
-<link rel=stylesheet href=../../../css/wowchemy.89ae5919d5f0b7c63f18f9ce41ed6c86.css>
+<link rel=stylesheet href=../../../css/wowchemy.7ccc95ad09c8b2b61bf75bd806337be2.css>
 <script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
 <link rel=manifest href=../../../manifest.webmanifest>
 <link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
@@ -26,7 +26,7 @@
 <meta property="og:title" content="Build your first Java application | Eclipse Keyple">
 <meta property="og:description" content="This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-14T09:33:01+01:00">
+<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
 <title>Build your first Java application | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=c1ed76ce001dc59ac73c503c92f61022>
@@ -82,17 +82,8 @@
 <li class=nav-item>
 <a class=nav-link href=../../../learn/overview><span>Learn</span></a>
 </li>
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../../components-java/overview/><span>Java implementation v2+</span></a>
-<a class=dropdown-item href=../../../components-cpp/overview/><span>C++ implementation v2+</span></a>
-<a class=dropdown-item href=../../../><span> </span></a>
-<a class=dropdown-item href=../../../learn/user-guide/migrate-to-2-0><span>Guide to migrate from v1.0 to v2+</span></a>
-<a class=dropdown-item href=../../../components-java-1.0/><span>Java implementation v1.0 (deprecated)</span></a>
-<a class=dropdown-item href=../../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
-</div>
+<li class=nav-item>
+<a class=nav-link href=../../../components/overview><span>Components</span></a>
 </li>
 <li class="nav-item dropdown">
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
@@ -106,6 +97,7 @@
 <a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
 <a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
 <a class=dropdown-item href=https://github.com/eclipse/keyple/><span>GitHub home repository</span></a>
+<a class=dropdown-item href=../../../archives/><span>Archives</span></a>
 </div>
 </li>
 <li class="nav-item dropdown">
@@ -154,7 +146,7 @@ Build your first app
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li>
 <li><a href=../../../learn/overview/architecture/>Architecture</a></li>
-<li><a href=../../../learn/overview/terminalapis/>Calypso Terminal APIs</a></li>
+<li><a href=../../../learn/overview/keypop-api/>Keypop API</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -170,6 +162,7 @@ Build your first app
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
+<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
 <li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
@@ -212,10 +205,12 @@ Build your first app
 <li><a href=#lets-code>Let&rsquo;s code</a>
 <ul>
 <li><a href=#create-the-class-skeleton>Create the class skeleton</a></li>
+<li><a href=#retrieve-the-main-services-and-factories>Retrieve the main services and factories</a></li>
 <li><a href=#set-up-the-pcsc-plugin>Set up the PC/SC plugin</a></li>
 <li><a href=#set-up-the-calypso-card-extension>Set up the Calypso card extension</a></li>
-<li><a href=#select-the-calypso-sam>Select the Calypso SAM</a></li>
+<li><a href=#select-the-legacy-sam>Select the Legacy SAM</a></li>
 <li><a href=#select-the-calypso-card>Select the Calypso card</a></li>
+<li><a href=#set-up-the-security-settings>Set up the security settings</a></li>
 <li><a href=#open-the-calypso-secure-session>Open the Calypso secure session</a></li>
 <li><a href=#close-the-calypso-secure-session>Close the Calypso secure session</a></li>
 <li><a href=#unregister-the-plugin>Unregister the plugin</a></li>
@@ -250,17 +245,17 @@ a Calypso Card involving two smart card readers.</p>
 </div>
 <p>We will use three main components of Keyple:</p>
 <ul>
-<li><a href=../../../components-java/core/>Keyple Service Java Library</a>
+<li><a href=../../../components/core/>Keyple Service Java Library</a>
 which is the base component to which all the others refer,</li>
-<li><a href=../../../components-java/card-extensions/keyple-card-calypso-java-lib/>Keyple Card Calypso</a>
+<li><a href=../../../components/card-extensions/keyple-card-calypso-lib/>Keyple Card Calypso</a>
 add-on to handle the commands sent to the Calypso card and the Calypso SAM,</li>
-<li><a href=../../../components-java/standard-reader-plugins/keyple-plugin-pcsc-java-lib/>Keyple Plugin PC/SC</a>
+<li><a href=../../../components/standard-reader-plugins/keyple-plugin-pcsc-lib/>Keyple Plugin PC/SC</a>
 add-on to provide the ability to manage PC/SC readers.</li>
 </ul>
 <p>In this guide <a href=https://gradle.org/ target=_blank rel=noopener>Gradle</a> is used as build automation
 tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.</p>
-<p>See <a href=../../../components-java/overview/configuration-wizard/>here</a> for the configuration of the dependencies.</p>
+<p>See <a href=../../../components/overview/configuration-wizard/>here</a> for the configuration of the dependencies.</p>
 <p>The example can run on any machine: Linux, Windows and macOS. If not
 installed in your machine, you will need to download :</p>
 <ul>
@@ -286,14 +281,14 @@ repositories {
 }
 
 dependencies {
-    // Import CNA APIs
-    implementation &#39;org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.3.0&#39;
-    implementation &#39;org.calypsonet.terminal:calypsonet-terminal-calypso-java-api:1.8.0&#39;
+    // Import Keypop APIs
+    implementation &#39;org.eclipse.keypop:keypop-reader-java-api:2.0.0&#39;
+    implementation &#39;org.eclipse.keypop:keypop-calypso-card-java-api:2.0.0&#39;
     // Import Keyple components
     implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&#39;
     implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.3.1&#39;
-    implementation &#39;org.eclipse.keyple:keyple-service-java-lib:2.3.2&#39;
-    implementation &#39;org.eclipse.keyple:keyple-card-calypso-java-lib:2.3.8&#39;
+    implementation &#39;org.eclipse.keyple:keyple-service-java-lib:3.0.0&#39;
+    implementation &#39;org.eclipse.keyple:keyple-card-calypso-java-lib:3.0.0&#39;
     implementation &#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.2&#39;
 }</code></pre>
 <p>If necessary, also create the usual tree in which the Java code of this
@@ -314,20 +309,24 @@ that follow or copy the whole class at the bottom of this page.</p>
 <p>Copy the source code below in a new Java Class named
 DemoCardAuthentication.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
-<pre><code class=language-java id=code-6>import org.calypsonet.terminal.calypso.WriteAccessLevel;
-import org.calypsonet.terminal.calypso.card.CalypsoCard;
-import org.calypsonet.terminal.calypso.sam.CalypsoSam;
-import org.calypsonet.terminal.calypso.transaction.CardSecuritySetting;
-import org.calypsonet.terminal.calypso.transaction.CardTransactionManager;
-import org.calypsonet.terminal.reader.CardReader;
-import org.calypsonet.terminal.reader.selection.CardSelectionManager;
-import org.calypsonet.terminal.reader.selection.CardSelectionResult;
-import org.eclipse.keyple.card.calypso.CalypsoExtensionService;
+<pre><code class=language-java id=code-6>import org.eclipse.keyple.card.calypso.CalypsoExtensionService;
+import org.eclipse.keyple.card.calypso.crypto.legacysam.LegacySamExtensionService;
 import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.SmartCardService;
 import org.eclipse.keyple.core.service.SmartCardServiceProvider;
 import org.eclipse.keyple.plugin.pcsc.PcscPluginFactoryBuilder;
 import org.eclipse.keyple.plugin.pcsc.PcscReader;
+import org.eclipse.keypop.calypso.card.CalypsoCardApiFactory;
+import org.eclipse.keypop.calypso.card.WriteAccessLevel;
+import org.eclipse.keypop.calypso.card.card.CalypsoCard;
+import org.eclipse.keypop.calypso.card.card.CalypsoCardSelectionExtension;
+import org.eclipse.keypop.calypso.card.transaction.ChannelControl;
+import org.eclipse.keypop.calypso.card.transaction.SymmetricCryptoSecuritySetting;
+import org.eclipse.keypop.calypso.crypto.legacysam.LegacySamApiFactory;
+import org.eclipse.keypop.calypso.crypto.legacysam.sam.LegacySam;
+import org.eclipse.keypop.reader.CardReader;
+import org.eclipse.keypop.reader.ReaderApiFactory;
+import org.eclipse.keypop.reader.selection.*;
 
 public class DemoCardAuthentication {
 
@@ -342,17 +341,23 @@ public class DemoCardAuthentication {
     // ... 
   }
 }</code></pre>
+<h3 id=retrieve-the-main-services-and-factories>Retrieve the main services and factories</h3>
+<p>The <code>SmartCardService</code> is used to register the plugins and check the extensions.
+The <code>ReaderApiFactory</code> creates the classes needed to manage the card selection.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
+<pre><code class=language-java id=code-7>    // Get the instance of the SmartCardService
+    SmartCardService smartCardService = SmartCardServiceProvider.getService();
+
+    // Get the ReaderApiFactory
+    ReaderApiFactory readerApiFactory = smartCardService.getReaderApiFactory();</code></pre>
 <h3 id=set-up-the-pcsc-plugin>Set up the PC/SC plugin</h3>
 <p>The first step to use Keyple is to initialize the plugin and smart card readers.</p>
 <p>In this snippet the PC/SC plugin is registered to the SmartCardService.</p>
 <p>Two readers needs to be connected to the local machine. Change
 &ldquo;CARD_READER_NAME&rdquo; and &ldquo;SAM_READER_NAME&rdquo; with the name of your USB readers.</p>
 <p>If you don&rsquo;t know the names of the readers, read how to find them in the <a href=#faq>FAQ</a>.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
-<pre><code class=language-java id=code-7>    // Get the instance of the SmartCardService
-    SmartCardService smartCardService = SmartCardServiceProvider.getService();
-
-    // Register the PcscPlugin with the SmartCardService, get a generic plugin instance in return
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('8',this)">Copy</button></div>
+<pre><code class=language-java id=code-8>    // Register the PcscPlugin with the SmartCardService, get a generic plugin instance in return
     Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
 
     // Get and set up the card reader
@@ -376,25 +381,36 @@ public class DemoCardAuthentication {
     }</code></pre>
 <h3 id=set-up-the-calypso-card-extension>Set up the Calypso card extension</h3>
 <p>The Calypso card extension service will provide means to handle cards, SAMs and to manage card transactions.
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('8',this)">Copy</button></div>
-<pre><code class=language-java id=code-8>    // Get the Calypso card extension service
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('9',this)">Copy</button></div>
+<pre><code class=language-java id=code-9>    // Get the Calypso card extension service
     CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();
     // Verify that the extension&#39;s API level is consistent with the current service.
     smartCardService.checkCardExtension(calypsoExtensionService);</code></pre></p>
-<h3 id=select-the-calypso-sam>Select the Calypso SAM</h3>
+<h3 id=select-the-legacy-sam>Select the Legacy SAM</h3>
 <p>Before executing a transaction each smart card should be selected. The
 next step is the selection of the Calypso SAM resulting in a
 CalypsoSam object.</p>
 <p>It is then combined with the SAM reader to form the SAM resource needed
 later within the transaction service.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('9',this)">Copy</button></div>
-<pre><code class=language-java id=code-9>    // Select the SAM
-    CardSelectionManager samSelectionManager = smartCardService.createCardSelectionManager();
-    samSelectionManager.prepareSelection(calypsoExtensionService.createSamSelection());
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('10',this)">Copy</button></div>
+<pre><code class=language-java id=code-10>    // Create a SAM selection manager.
+    CardSelectionManager samSelectionManager = readerApiFactory.createCardSelectionManager();
+
+    // Create a card selector without filer
+    CardSelector&lt;BasicCardSelector&gt; samCardSelector = readerApiFactory.createBasicCardSelector();
+
+    LegacySamApiFactory legacySamApiFactory =
+        LegacySamExtensionService.getInstance().getLegacySamApiFactory();
+
+    // Create a SAM selection using the Calypso card extension.
+    samSelectionManager.prepareSelection(
+        samCardSelector, legacySamApiFactory.createLegacySamSelectionExtension());
+
     CardSelectionResult samSelectionResult =
         samSelectionManager.processCardSelectionScenario(samReader);
-    CalypsoSam calypsoSam = (CalypsoSam) samSelectionResult.getActiveSmartCard();
-    if (calypsoSam == null) {
+
+    LegacySam sam = (LegacySam) samSelectionResult.getActiveSmartCard();
+    if (sam == null) {
       throw new IllegalStateException(&#34;The SAM selection failed.&#34;);
     }</code></pre>
 <h3 id=select-the-calypso-card>Select the Calypso card</h3>
@@ -402,36 +418,60 @@ later within the transaction service.</p>
 <p>The Calypso card selection is made using the card application&rsquo;s AID
 and results in a CalypsoCard object that will contain all the information extracted
 from the Calypso card all along the transaction.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('10',this)">Copy</button></div>
-<pre><code class=language-java id=code-10>    // Select the card
-    CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();
-    cardSelectionManager.prepareSelection(
-        calypsoExtensionService.createCardSelection().filterByDfName(AID));
-    CardSelectionResult cardSelectionResult =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
+<pre><code class=language-java id=code-11>    // Retrieve the CalypsoCardApiFactory
+    CalypsoCardApiFactory calypsoCardApiFactory =
+        calypsoExtensionService.getCalypsoCardApiFactory();
+
+    // Select the card
+    CardSelectionManager cardSelectionManager = readerApiFactory.createCardSelectionManager();
+
+    // Create a generic ISO selector
+    CardSelector&lt;IsoCardSelector&gt; cardSelector =
+        readerApiFactory.createIsoCardSelector().filterByDfName(AID);
+
+    // Create a specific Calypso card selection extension
+    CalypsoCardSelectionExtension calypsoCardSelectionExtension =
+        calypsoCardApiFactory.createCalypsoCardSelectionExtension().acceptInvalidatedCard();
+    
+    // Prepare the card selection
+    cardSelectionManager.prepareSelection(cardSelector, calypsoCardSelectionExtension);
+
+    // Process the card selection
+    CardSelectionResult selectionResult =
         cardSelectionManager.processCardSelectionScenario(cardReader);
-    CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();
-    if (calypsoCard == null) {
-      throw new IllegalStateException(&#34;The card selection failed.&#34;);
-    }</code></pre>
+
+    if (selectionResult.getActiveSmartCard() == null) {
+      throw new IllegalStateException(&#34;The selection of the application &#34; &#43; AID &#43; &#34; failed.&#34;);
+    }
+
+    CalypsoCard calypsoCard = (CalypsoCard) selectionResult.getActiveSmartCard();</code></pre>
+<h3 id=set-up-the-security-settings>Set up the security settings</h3>
+<p>The security settings holds the means to communicate with the SAM and parameters used during the card transaction. They
+may be reused each time a card is presented.</p>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('12',this)">Copy</button></div>
+<pre><code class=language-java id=code-12>    // Prepare the security settings used during the Calypso transaction
+    SymmetricCryptoSecuritySetting symmetricCryptoSecuritySetting =
+        calypsoCardApiFactory.createSymmetricCryptoSecuritySetting(
+            LegacySamExtensionService.getInstance()
+                .getLegacySamApiFactory()
+                .createSymmetricCryptoTransactionManagerFactory(samReader, sam));</code></pre>
 <h3 id=open-the-calypso-secure-session>Open the Calypso secure session</h3>
 <p>2nd card exchange :</p>
 <p>The secure session opening operated by the CardTransaction service is
 combined with the reading of the environment file (SFI=07h).</p>
 <p>The mutual authentication process between Calypso card and Calypso SAM is initiated transparently.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
-<pre><code class=language-java id=code-11>    // Prepare the security settings used during the Calypso transaction
-    CardSecuritySetting cardSecuritySetting =
-        calypsoExtensionService
-            .createCardSecuritySetting()
-            .setControlSamResource(samReader, calypsoSam);
-
-    // Performs file reads using the card transaction manager in a secure session.
-    CardTransactionManager cardTransactionManager =
-        calypsoExtensionService
-            .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('13',this)">Copy</button></div>
+<pre><code class=language-java id=code-13>    // Performs file reads using the card transaction manager in a secure session, keep the channel open.
+    SecureRegularModeTransactionManager cardTransactionManager = calypsoCardApiFactory
+            .createSecureRegularModeTransactionManager(
+                    cardReader, calypsoCard, symmetricCryptoSecuritySetting)
             .prepareOpenSecureSession(WriteAccessLevel.DEBIT)
             .prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
-            .processCommands(false);</code></pre>
+            .processCommands(ChannelControl.KEEP_OPEN);
+
+    System.out.println(
+        &#34;= #### FILE CONTENT = &#34; &#43; calypsoCard.getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER).toString());</code></pre>
 <h3 id=close-the-calypso-secure-session>Close the Calypso secure session</h3>
 <p>3rd card exchange:</p>
 <p>Simply close the Calypso secure session</p>
@@ -440,23 +480,21 @@ of the data in the read file.</p>
 <p>Note: any technical, cryptographic or content-related incident in the Calypso card
 would be signalled by an exception and would interrupt the thread of
 execution.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('12',this)">Copy</button></div>
-<pre><code class=language-java id=code-12>    // Close the secure session, free the communication channel at the same time
-    cardTransactionManager.prepareCloseSecureSession().processCommands(true);
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('14',this)">Copy</button></div>
+<pre><code class=language-java id=code-14>    // Close the secure session, free the communication channel at the same time
+    cardTransactionManager
+            .prepareCloseSecureSession()
+            .processCommands(ChannelControl.CLOSE_AFTER);
 
     System.out.println(
         &#34;= #### The Secure Session ended successfully, the card is authenticated and the data read are certified.&#34;);
-    System.out.println(
-        &#34;= #### FILE CONTENT = &#34; &#43; calypsoCard.getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER).toString());
 
     System.out.println(&#34;= #### End of the Calypso card processing.&#34;);</code></pre>
 <h3 id=unregister-the-plugin>Unregister the plugin</h3>
 <p>Finally unregister the plugin before shutting down the application</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('13',this)">Copy</button></div>
-<pre><code class=language-java id=code-13>    // Unregister the plugin before leaving the application
-    smartCardService.unregisterPlugin(plugin.getName());
-
-    System.exit(0);</code></pre>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('15',this)">Copy</button></div>
+<pre><code class=language-java id=code-15>    // Unregister the plugin before leaving the application
+    smartCardService.unregisterPlugin(plugin.getName());</code></pre>
 <p>Find the complete code source <a href=#full-code>below</a>.</p>
 <hr>
 <h2 id=run>Run</h2>
@@ -479,8 +517,8 @@ time.
 <p>To find out the names of the readers connected to your computer, we will
 use Keyple with the following class which prints in the console the
 number and names of the readers present:</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('15',this)">Copy</button></div>
-<pre><code class=language-java id=code-15>import org.eclipse.keyple.core.service.Plugin;
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('17',this)">Copy</button></div>
+<pre><code class=language-java id=code-17>import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.SmartCardService;
 import org.eclipse.keyple.plugin.pcsc.PcscPluginFactoryBuilder;
 
@@ -508,16 +546,16 @@ public class ReaderDiscovery {
 <h4 id=how-to-activate-the-keyples-logs>How to activate the Keyple&rsquo;s logs?</h4>
 <p>As soon as the <code>slf4j</code> library is imported into the project, Keyple
 modules are able to produce logs.
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('16',this)">Copy</button></div>
-<pre><code class=language-gradle id=code-16>    // Import logger libs
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('18',this)">Copy</button></div>
+<pre><code class=language-gradle id=code-18>    // Import logger libs
     implementation &#39;org.slf4j:slf4j-api:1.7.32&#39;
     implementation &#39;org.slf4j:slf4j-simple:1.7.32&#39;</code></pre></p>
 <p>However, to take full advantage of the possibilities of this library, it
 is necessary to create a <code>simplelogger.properties</code> file in the
 <code>/src/main/resources</code> folder of the project.</p>
 <p>The self-documented content of this file may be:</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('17',this)">Copy</button></div>
-<pre><code class=language-ini id=code-17># SLF4J&#39;s SimpleLogger configuration file
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('19',this)">Copy</button></div>
+<pre><code class=language-ini id=code-19># SLF4J&#39;s SimpleLogger configuration file
 # Simple implementation of Logger that sends all enabled log messages, for all defined loggers, to System.err.
 
 # Default logging detail level for all instances of SimpleLogger.
@@ -566,28 +604,35 @@ JVM. However, we have not found any problems with this implementation of
 the PC/SC plugin so far.</p>
 <h4 id=full-code>Full code</h4>
 <p>Here is the complete code of this quick start in one single block.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('18',this)">Copy</button></div>
-<pre><code class=language-java id=code-18>import org.calypsonet.terminal.calypso.WriteAccessLevel;
-import org.calypsonet.terminal.calypso.card.CalypsoCard;
-import org.calypsonet.terminal.calypso.sam.CalypsoSam;
-import org.calypsonet.terminal.calypso.transaction.CardSecuritySetting;
-import org.calypsonet.terminal.calypso.transaction.CardTransactionManager;
-import org.calypsonet.terminal.reader.CardReader;
-import org.calypsonet.terminal.reader.selection.CardSelectionManager;
-import org.calypsonet.terminal.reader.selection.CardSelectionResult;
-import org.eclipse.keyple.card.calypso.CalypsoExtensionService;
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
+<pre><code class=language-java id=code-20>import org.eclipse.keyple.card.calypso.CalypsoExtensionService;
+import org.eclipse.keyple.card.calypso.crypto.legacysam.LegacySamExtensionService;
 import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.SmartCardService;
 import org.eclipse.keyple.core.service.SmartCardServiceProvider;
 import org.eclipse.keyple.plugin.pcsc.PcscPluginFactoryBuilder;
 import org.eclipse.keyple.plugin.pcsc.PcscReader;
+import org.eclipse.keypop.calypso.card.CalypsoCardApiFactory;
+import org.eclipse.keypop.calypso.card.WriteAccessLevel;
+import org.eclipse.keypop.calypso.card.card.CalypsoCard;
+import org.eclipse.keypop.calypso.card.card.CalypsoCardSelectionExtension;
+import org.eclipse.keypop.calypso.card.transaction.ChannelControl;
+import org.eclipse.keypop.calypso.card.transaction.SecureRegularModeTransactionManager;
+import org.eclipse.keypop.calypso.card.transaction.SymmetricCryptoSecuritySetting;
+import org.eclipse.keypop.calypso.crypto.legacysam.LegacySamApiFactory;
+import org.eclipse.keypop.calypso.crypto.legacysam.sam.LegacySam;
+import org.eclipse.keypop.reader.CardReader;
+import org.eclipse.keypop.reader.ReaderApiFactory;
+import org.eclipse.keypop.reader.selection.*;
+
 
 public class DemoCardAuthentication {
 
   // The names of the readers must be adapted to the actual configuration.
   private static final String CARD_READER_NAME = &#34;ASK LoGO 0&#34;;
   private static final String SAM_READER_NAME = &#34;Identive CLOUD 2700 R Smart Card Reader 0&#34;;
-  private static final String AID = &#34;315449432E49434131&#34;; // Keyple test kit profile 1, Application 2
+  private static final String AID =
+      &#34;315449432E49434131&#34;; // Keyple test kit profile 1, Application 2
   private static final int RECORD_NUMBER_1 = 1;
   private static final byte SFI_ENVIRONMENT_AND_HOLDER = (byte) 0x07;
 
@@ -595,6 +640,9 @@ public class DemoCardAuthentication {
 
     // Get the instance of the SmartCardService
     SmartCardService smartCardService = SmartCardServiceProvider.getService();
+
+    // Get the ReaderApiFactory
+    ReaderApiFactory readerApiFactory = smartCardService.getReaderApiFactory();
 
     // Register the PcscPlugin with the SmartCardService, get a generic plugin instance in return
     Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
@@ -624,54 +672,85 @@ public class DemoCardAuthentication {
     // Verify that the extension&#39;s API level is consistent with the current service.
     smartCardService.checkCardExtension(calypsoExtensionService);
 
-    // Select the SAM
-    CardSelectionManager samSelectionManager = smartCardService.createCardSelectionManager();
-    samSelectionManager.prepareSelection(calypsoExtensionService.createSamSelection());
+    // Create a SAM selection manager.
+    CardSelectionManager samSelectionManager = readerApiFactory.createCardSelectionManager();
+
+    // Create a card selector without filer
+    CardSelector&lt;BasicCardSelector&gt; samCardSelector = readerApiFactory.createBasicCardSelector();
+
+    LegacySamApiFactory legacySamApiFactory =
+        LegacySamExtensionService.getInstance().getLegacySamApiFactory();
+
+    // Create a SAM selection using the Calypso card extension.
+    samSelectionManager.prepareSelection(
+        samCardSelector, legacySamApiFactory.createLegacySamSelectionExtension());
+
     CardSelectionResult samSelectionResult =
         samSelectionManager.processCardSelectionScenario(samReader);
-    CalypsoSam calypsoSam = (CalypsoSam) samSelectionResult.getActiveSmartCard();
-    if (calypsoSam == null) {
+
+    LegacySam sam = (LegacySam) samSelectionResult.getActiveSmartCard();
+    if (sam == null) {
       throw new IllegalStateException(&#34;The SAM selection failed.&#34;);
     }
 
+    // Retrieve the CalypsoCardApiFactory
+    CalypsoCardApiFactory calypsoCardApiFactory =
+        calypsoExtensionService.getCalypsoCardApiFactory();
+
     // Select the card
-    CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();
-    cardSelectionManager.prepareSelection(
-        calypsoExtensionService.createCardSelection().filterByDfName(AID));
-    CardSelectionResult cardSelectionResult =
+    CardSelectionManager cardSelectionManager = readerApiFactory.createCardSelectionManager();
+
+    // Create a generic ISO selector
+    CardSelector&lt;IsoCardSelector&gt; cardSelector =
+        readerApiFactory.createIsoCardSelector().filterByDfName(AID);
+
+    // Create a specific Calypso card selection extension
+    CalypsoCardSelectionExtension calypsoCardSelectionExtension =
+        calypsoCardApiFactory.createCalypsoCardSelectionExtension().acceptInvalidatedCard();
+
+    // Prepare the card selection
+    cardSelectionManager.prepareSelection(cardSelector, calypsoCardSelectionExtension);
+
+    // Process the card selection
+    CardSelectionResult selectionResult =
         cardSelectionManager.processCardSelectionScenario(cardReader);
-    CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();
-    if (calypsoCard == null) {
-      throw new IllegalStateException(&#34;The card selection failed.&#34;);
+
+    if (selectionResult.getActiveSmartCard() == null) {
+      throw new IllegalStateException(&#34;The selection of the application &#34; &#43; AID &#43; &#34; failed.&#34;);
     }
 
-    // Prepare the security settings used during the Calypso transaction
-    CardSecuritySetting cardSecuritySetting =
-        calypsoExtensionService
-            .createCardSecuritySetting()
-            .setControlSamResource(samReader, calypsoSam);
+    CalypsoCard calypsoCard = (CalypsoCard) selectionResult.getActiveSmartCard();
 
-    // Performs file reads using the card transaction manager in a secure session.
-    // Close the secure session, free the communication channel at the same time.
-    CardTransactionManager cardTransactionManager =
-        calypsoExtensionService
-            .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
+    // Prepare the security settings used during the Calypso transaction
+    SymmetricCryptoSecuritySetting symmetricCryptoSecuritySetting =
+        calypsoCardApiFactory.createSymmetricCryptoSecuritySetting(
+            LegacySamExtensionService.getInstance()
+                .getLegacySamApiFactory()
+                .createSymmetricCryptoTransactionManagerFactory(samReader, sam));
+
+    // Performs file reads using the card transaction manager in a secure session, keep the channel
+    // open.
+    SecureRegularModeTransactionManager cardTransactionManager =
+        calypsoCardApiFactory
+            .createSecureRegularModeTransactionManager(
+                cardReader, calypsoCard, symmetricCryptoSecuritySetting)
             .prepareOpenSecureSession(WriteAccessLevel.DEBIT)
             .prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
-            .prepareCloseSecureSession()
-            .processCommands(true);
+            .processCommands(ChannelControl.KEEP_OPEN);
+
+    System.out.println(
+        &#34;= #### FILE CONTENT = &#34; &#43; calypsoCard.getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER).toString());
+
+    // Close the secure session, close the channel.
+    cardTransactionManager.prepareCloseSecureSession().processCommands(ChannelControl.CLOSE_AFTER);
 
     System.out.println(
         &#34;= #### The Secure Session ended successfully, the card is authenticated and the data read are certified.&#34;);
-    System.out.println(
-        &#34;= #### FILE CONTENT = &#34; &#43; calypsoCard.getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER).toString());
 
     System.out.println(&#34;= #### End of the Calypso card processing.&#34;);
 
     // Unregister the plugin before leaving the application
     smartCardService.unregisterPlugin(plugin.getName());
-
-    System.exit(0);
   }
 }</code></pre>
 </div>
@@ -685,7 +764,7 @@ public class DemoCardAuthentication {
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-14</p>
+<p>Last updated on 2023-11-29</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -776,7 +855,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.8414c33d590e497d63ce70adeefc8179.js></script>
+<script src=../../../en/js/wowchemy.min.735dd22779eecc9f58d38921584770aa.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

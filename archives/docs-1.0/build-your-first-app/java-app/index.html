@@ -1,0 +1,833 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Wowchemy 5.3.0 for Hugo">
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
+<meta name=description content="This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/archives/docs-1.0/build-your-first-app/java-app/>
+<meta name=theme-color content="#1D87BB">
+<link rel=stylesheet href=../../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
+<link rel=stylesheet href=../../../../css/wowchemy.7ccc95ad09c8b2b61bf75bd806337be2.css>
+<script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
+<link rel=manifest href=../../../../manifest.webmanifest>
+<link rel=icon type=image/png href=../../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=../../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
+<link rel=canonical href=https://keyple.org/archives/docs-1.0/build-your-first-app/java-app/>
+<meta property="twitter:card" content="summary">
+<meta property="og:site_name" content="Eclipse Keyple">
+<meta property="og:url" content="https://keyple.org/archives/docs-1.0/build-your-first-app/java-app/">
+<meta property="og:title" content="Build your first Java application | Eclipse Keyple">
+<meta property="og:description" content="This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><meta property="og:image" content="https://keyple.org/media/logo.svg">
+<meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
+<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<title>Build your first Java application | Eclipse Keyple</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=aefeee413e530571f6cfb15359663de2>
+<script src=../../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
+<aside class=search-modal id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Search</h1>
+</div>
+<div class="col-6 col-search-close">
+<a class=js-search href=# aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
+</div>
+</aside>
+<div class=page-header>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container-xl>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=../../../../><img src=../../../../media/logo.svg alt="Eclipse Keyple"></a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=../../../../><img src=../../../../media/logo.svg alt="Eclipse Keyple"></a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../../what-is-keyple/overview/><span>Overview</span></a>
+<a class=dropdown-item href=../../../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
+<a class=dropdown-item href=../../../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
+<a class=dropdown-item href=../../../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
+<a class=dropdown-item href=../../../../#news><span>News</span></a>
+</div>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../../../learn/overview><span>Learn</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../../../components/overview><span>Components</span></a>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../../../community/roadmap/><span>Roadmap</span></a>
+<a class=dropdown-item href=../../../../community/changelog/><span>Changelog</span></a>
+<a class=dropdown-item href=../../../../project-dashboard/><span>Project dashboard</span></a>
+<a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date"><span>Code quality dashboard</span></a>
+<a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
+<a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
+<a class=dropdown-item href=https://github.com/eclipse/keyple/><span>GitHub home repository</span></a>
+<a class=dropdown-item href=../../../../archives/><span>Archives</span></a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
+<a class=dropdown-item href=../../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
+</div>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+<li class=nav-item>
+<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class=page-body>
+<div class="container-fluid docs">
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+<form class="docs-search d-flex align-items-center">
+<button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
+<div class=d-flex>
+<span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+Build your first app
+</span>
+<span><i class="fas fa-chevron-down"></i></span>
+</div>
+</button>
+<button class="form-control sidebar-search js-search d-none d-md-flex">
+<i class="fas fa-search pr-2"></i>
+<span class=sidebar-search-text>Search...</span>
+<span class=sidebar-search-shortcut>/</span>
+</button>
+</form>
+<nav class="collapse docs-links" id=docs-nav>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/> </a></li>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/docs-1.0/>== Docs 1.x ==</a>
+<ul class="nav docs-sidenav">
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/docs-1.0/build-your-first-app/>Build your first app</a>
+<ul class="nav docs-sidenav">
+<li class=active><a href=../../../../archives/docs-1.0/build-your-first-app/java-app/>Java</a></li>
+<li><a href=../../../../archives/docs-1.0/build-your-first-app/android-app/>Android</a></li>
+<li><a href=../../../../archives/docs-1.0/build-your-first-app/cpp-app/>C++</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/docs-1.0/developer-guide/>Developer guides</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/docs-1.0/developer-guide/common-concepts/>Common concepts</a></li>
+<li><a href=../../../../archives/docs-1.0/developer-guide/standalone-application/>Standalone application</a></li>
+<li><a href=../../../../archives/docs-1.0/developer-guide/distributed-application/>Distributed application</a></li>
+<li><a href=../../../../archives/docs-1.0/developer-guide/calypso-application/>Calypso application</a></li>
+<li><a href=../../../../archives/docs-1.0/developer-guide/create-plugin/>Create a plugin</a></li>
+<li><a href=../../../../archives/docs-1.0/developer-guide/create-extension/>Create an extension</a></li>
+<li><a href=../../../../archives/docs-1.0/developer-guide/upgrade/>Upgrade Keyple</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/docs-1.0/api-reference/>API reference</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/docs-1.0/api-reference/java-api/>Java</a></li>
+<li><a href=../../../../archives/docs-1.0/api-reference/cpp-api/>C++</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/docs-1.0/architecture/>Architecture</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/docs-1.0/architecture/keyple-global/>Global Solution</a></li>
+<li><a href=../../../../archives/docs-1.0/architecture/keyple-core/>Keyple Core</a></li>
+<li><a href=../../../../archives/docs-1.0/architecture/keyple-calypso/>Keyple Calypso</a></li>
+</ul>
+</div>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-java-1.0/>== Java 1.x components ==</a>
+<ul class="nav docs-sidenav">
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-java-1.0/core/>Core</a>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-java-1.0/distributed-systems/>Distributed systems</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/components-java-1.0/distributed-systems/local/>Local</a></li>
+<li><a href=../../../../archives/components-java-1.0/distributed-systems/network/>Network</a></li>
+<li><a href=../../../../archives/components-java-1.0/distributed-systems/remote/>Remote</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-java-1.0/extensions/>Extensions</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/components-java-1.0/extensions/calypso/>Calypso</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-java-1.0/plugins/>Reader plugins</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/components-java-1.0/plugins/nfc/>NFC</a></li>
+<li><a href=../../../../archives/components-java-1.0/plugins/omapi/>OMAPI</a></li>
+<li><a href=../../../../archives/components-java-1.0/plugins/pcsc/>PC/SC</a></li>
+<li><a href=../../../../archives/components-java-1.0/plugins/stub/>Stub</a></li>
+</ul>
+</div>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-cpp-0.9/>== C++ 0.x components ==</a>
+<ul class="nav docs-sidenav">
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-cpp-0.9/core/>Core</a>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-cpp-0.9/extensions/>Extensions</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/components-cpp-0.9/extensions/calypso/>Calypso</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-cpp-0.9/plugins/>Reader plugins</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/components-cpp-0.9/plugins/pcsc/>PC/SC</a></li>
+<li><a href=../../../../archives/components-cpp-0.9/plugins/stub/>Stub</a></li>
+</ul>
+</div>
+</ul>
+</div>
+</ul>
+</nav>
+</div>
+<div class="d-none d-xl-block col-xl-2 docs-toc">
+<ul class="nav toc-top">
+<li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
+</ul>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#create-a-gradle-based-empty-project>Create a Gradle-based empty project</a></li>
+<li><a href=#lets-code>Let&rsquo;s code</a>
+<ul>
+<li><a href=#create-the-class-skeleton>Create the class skeleton</a></li>
+<li><a href=#configure-the-pcsc-plugin-and-the-readers>Configure the PC/SC plugin and the readers</a></li>
+<li><a href=#select-the-calypso-sam>Select the Calypso SAM</a></li>
+<li><a href=#select-the-calypso-po>Select the Calypso PO</a></li>
+<li><a href=#open-the-calypso-secure-session>Open the Calypso secure session</a></li>
+<li><a href=#close-the-calypso-secure-session>Close the Calypso secure session</a></li>
+<li><a href=#unregister-the-plugin>Unregister the plugin</a></li>
+</ul>
+</li>
+<li><a href=#run>Run</a></li>
+<li><a href=#faq>FAQ</a>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
+<article class=article>
+<div class=docs-article-container>
+<h1>Build your first Java application</h1>
+<div class=article-style>
+<div class="alert alert-warning">
+<div>
+Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
+</div>
+</div>
+<p>This quick start describes how to create a ready-to-execute Java
+command-line application that runs a simple transaction based on
+a Calypso portable object (PO) involving two smart card readers.</p>
+<div class="alert alert-note">
+<div>
+The demonstration application created for this quick start requires a
+Calypso PO (contactless smart card, mobile phone with contactless
+communication) and a Calypso Secure Access Module (SAM).
+</div>
+</div>
+<p>We will use three main components of Keyple:</p>
+<ul>
+<li><a href=https://keyple.org/archives/components-java-1.0/core/>Keyple Core</a>
+which is the base component to which all the others refer,</li>
+<li><a href=https://keyple.org/archives/components-java-1.0/plugins/pcsc/>Keyple PC/SC plugin</a>
+to provide the ability to manage PC/SC readers,</li>
+<li><a href=https://keyple.org/archives/components-java-1.0/extensions/calypso/>Keyple Calypso extension</a>
+to handle the commands sent to the Calypso PO and the Calypso SAM.</li>
+</ul>
+<p>In this guide <a href=https://gradle.org/ target=_blank rel=noopener>Gradle</a> is used as build automation
+tool, but it is easy to transpose these explanations to another tool
+such as Maven for example.</p>
+<p>The example can run on any machine: Linux, Windows and macOS. If not
+installed in your machine, you will need to download :</p>
+<ul>
+<li>Java 1.6 or newer</li>
+<li><a href=https://gradle.org/install/ target=_blank rel=noopener>Gradle (any version)</a></li>
+</ul>
+<p>We recommend that you use a Java IDE like
+<a href=https://www.eclipse.org/ide/ target=_blank rel=noopener>Eclipse</a> or
+<a href=https://www.jetbrains.com/idea/ target=_blank rel=noopener>Intellij IDEA</a> to create your new
+Gradle project.</p>
+<hr>
+<h2 id=create-a-gradle-based-empty-project>Create a Gradle-based empty project</h2>
+<p>Create a new Java project and add the following statements to your
+<code>build.gradle</code> file to import the Keyple components into your
+project:</p>
+<pre><code class=language-gradle>apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //Keyple core is a mandatory library for using Keyple, in this case import the last version of keyple-java-core
+    implementation 'org.eclipse.keyple:keyple-java-core:1.0.0'
+
+    //Import Calypso library to support Calypso Portable Object, in this case import the last version of keyple-java-calypso
+    implementation 'org.eclipse.keyple:keyple-java-calypso:1.0.0'
+
+    //Import PC/SC library to use a Pcsc reader, in this case import the last version of keyple-java-plugin-pcsc
+    implementation 'org.eclipse.keyple:keyple-java-plugin-pcsc:1.0.0'
+
+    //Import logger lib
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    implementation &quot;org.slf4j:slf4j-simple:1.7.25&quot;
+}
+</code></pre>
+<p>If necessary, also create the usual tree in which the Java code of this
+guide will be placed, namely the folders: <code>\src\main\java</code></p>
+<hr>
+<h2 id=lets-code>Let&rsquo;s code</h2>
+<p>Now let&rsquo;s see step by step how to create in one single class the
+elements that allow a certified reading of data through a Calypso secure
+session.</p>
+<p>In a real ticketing application, the organization of the code would
+probably be different, but the point here is to show how Keyple makes it
+possible to perform very simply operations that normally require a
+quantity of code and knowledge that far exceeds what is implemented
+here.</p>
+<p>You can either progressively copy each of the small portions of code
+that follow or copy the whole class at the bottom of this page.</p>
+<h3 id=create-the-class-skeleton>Create the class skeleton</h3>
+<p>Copy the source code below in a new Java Class named
+DemoPoAuthentication.</p>
+<pre><code class=language-java>import org.eclipse.keyple.calypso.command.sam.SamRevision;
+import org.eclipse.keyple.calypso.transaction.*;
+import org.eclipse.keyple.core.card.selection.*;
+import org.eclipse.keyple.core.service.*;
+import org.eclipse.keyple.core.util.ByteArrayUtil;
+import org.eclipse.keyple.plugin.pcsc.*;
+
+public class DemoPoAuthentication  {
+    public static void main(String[] args) {
+        // ...
+    }
+} 
+</code></pre>
+<h3 id=configure-the-pcsc-plugin-and-the-readers>Configure the PC/SC plugin and the readers</h3>
+<p>The first step to use Keyple is to initialize the plugin and smart card readers.</p>
+<p>In this snippet the PC/SC plugin is registered to the SmartCardService.</p>
+<p>Two readers needs to be connected to the local machine. Replace
+&ldquo;PO_READER_NAME&rdquo; and &ldquo;SAM_READER_NAME&rdquo; with the name of the USB readers.</p>
+<p>If you don&rsquo;t know the names of the readers, read how to find them in the <a href=#faq>FAQ</a>.</p>
+<pre><code class=language-java>//...
+// Get the instance of the SmartCardService : main service of Keyple SDK
+SmartCardService smartCardService = SmartCardService.getInstance();
+
+// Register the PcscPlugin within the SmartCardService to use PC/SC readers
+Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory());
+
+// Get the PO reader
+PcscReader poReader = (PcscReader) plugin.getReader(&quot;PO_READER_NAME&quot;);
+
+// Configure the PO reader parameters
+poReader.setContactless(true);
+
+// Get the SAM reader
+PcscReader samReader = (PcscReader) plugin.getReader(&quot;SAM_READER_NAME&quot;);
+// ...
+</code></pre>
+<h3 id=select-the-calypso-sam>Select the Calypso SAM</h3>
+<p>Before executing a transaction each smart card should be selected. The
+next step is the selection of the Calypso SAM resulting in a
+CalypsoSam object.</p>
+<p>It is then combined with the SAM reader to form the SAM resource needed
+later within the transaction service.</p>
+<pre><code class=language-java>//...
+
+// Prepare a SamSelector that identifies the Calypso SAM
+SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.AUTO).build();
+
+// Perform the SAM selection
+CardSelectionService samSelection = new CardSelectionService();
+samSelection.prepareSelection(new SamSelection(samSelector));
+
+if (!samReader.isCardPresent()) {
+    throw new IllegalStateException(&quot;No SAM is present in the reader &quot; + samReader.getName());
+}
+
+CardSelectionsResult cardSelectionsResult = samSelection.processExplicitSelections(samReader);
+
+if (!cardSelectionsResult.hasActiveSelection()) {
+    throw new IllegalStateException(&quot;SAM matching failed!&quot;);
+}
+
+CalypsoSam calypsoSam = (CalypsoSam) cardSelectionsResult.getActiveSmartCard();
+
+// Associate the calypsoSam and the samReader to create a samResource
+CardResource&lt;CalypsoSam&gt; samResource = new CardResource&lt;CalypsoSam&gt;(samReader, calypsoSam);
+
+//...
+</code></pre>
+<h3 id=select-the-calypso-po>Select the Calypso PO</h3>
+<p>1st PO exchange:</p>
+<p>The Calypso PO selection is made using the portable object application&rsquo;s AID
+and results in a CalypsoPo object that will contain all the information extracted
+from the Calypso PO all along the transaction.</p>
+<pre><code class=language-java>// Prepare a Calypso PO selection
+final String AID = &quot;315449432E49434131&quot;; /* AID: Keyple test kit profile 1, Application 2 */
+
+CardSelectionService cardSelectionService = new CardSelectionService();
+
+// Setting up a selection based on the AID of a Calypso Revision 3.1 PO
+//
+// Select the first application matching the selection AID whatever the card communication protocol
+PoSelection poSelection = new PoSelection(
+        PoSelector.builder()
+                .aidSelector(CardSelector.AidSelector.builder().aidToSelect(AID).build()) // the application identifier
+                .invalidatedPo(PoSelector.InvalidatedPo.REJECT) // to indicate if an invalidated PO should be accepted or not
+                .build());
+
+// Add the selection case to the current selection
+// (we could have added other cases)
+cardSelectionService.prepareSelection(poSelection);
+
+if (!poReader.isCardPresent()) {
+    throw new IllegalStateException(&quot;The selection of the PO has failed.&quot;);
+}
+
+// Perform the PO selection and get a CalypsoPo container in return
+CalypsoPo calypsoPo = (CalypsoPo) cardSelectionService.processExplicitSelections(poReader).getActiveSmartCard();
+//...
+</code></pre>
+<h3 id=open-the-calypso-secure-session>Open the Calypso secure session</h3>
+<p>2nd PO exchange :</p>
+<p>The secure session opening operated by the PoTransaction service is
+combined with the reading of the environment file (SFI=07h).</p>
+<p>The mutual authentication process between Calypso PO and Calypso SAM is initiated transparently.</p>
+<pre><code class=language-java>// Prepare the security settings used during the Calypso transaction
+PoSecuritySettings poSecuritySettings = new PoSecuritySettings.PoSecuritySettingsBuilder(samResource).build();
+
+// Create a PoTransaction service to manage the Calypso transaction
+PoTransaction poTransaction = new PoTransaction(
+        new CardResource&lt;CalypsoPo(poReader, calypsoPo),
+        poSecuritySettings);
+
+final byte RECORD_NUMBER_1 = 1;
+final byte SFI_Environment = (byte) 0x07;
+
+// Schedule the reading of the Environment file after the secure session is opened
+// (we could have added other commands)
+poTransaction.prepareReadRecordFile(
+        SFI_Environment, // the sfi to select
+        RECORD_NUMBER_1);
+
+// Perform the session opening with the debit key
+poTransaction.processOpening(PoTransaction.SessionSetting.AccessLevel.SESSION_LVL_DEBIT);
+
+// Get and display the Environment data from the card image CalypsoPo
+ElementaryFile efEnvironment = calypsoPo.getFileBySfi(SFI_Environment);
+String environmentLog = ByteArrayUtil.toHex(efEnvironment.getData().getContent());
+System.out.println(&quot;Environment file content: &quot;+ environmentLog);
+//...
+</code></pre>
+<h3 id=close-the-calypso-secure-session>Close the Calypso secure session</h3>
+<p>3rd PO exchange:</p>
+<p>Simply close the Calypso secure session</p>
+<p>The mutual authentication is finalized, it includes the authentication
+of the data in the read file.</p>
+<p>Note: any technical, crytographic or content-related incident in the Calypso PO
+would be signalled by an exception and would interrupt the thread of
+execution.</p>
+<pre><code class=language-java>// Schedule the closure of the channel with the PO after the closing of the secure session
+poTransaction.prepareReleasePoChannel();
+
+// Perform the closing of the Calypso Secure Session
+poTransaction.processClosing();
+
+System.out.println(&quot;The data read in session have been certified by the successful closing.&quot;);
+//...       
+</code></pre>
+<h3 id=unregister-the-plugin>Unregister the plugin</h3>
+<p>Finally unregister the plugin before shutting down the application</p>
+<pre><code class=language-java>// Shutdown the application
+smartCardService.unregisterPlugin(plugin.getName());
+
+System.exit(0);
+</code></pre>
+<p>Find the complete code source <a href=#full-code>below</a>.</p>
+<hr>
+<h2 id=run>Run</h2>
+<ol>
+<li>Connect two USB PC/SC Readers.</li>
+<li>Insert the Calypso SAM in the SAM reader.</li>
+<li>Insert the Calypso PO in the PO reader.</li>
+<li>Run the application.</li>
+</ol>
+<div class="alert alert-note">
+<div>
+All project dependencies, including Keyple
+components, are downloaded during the first run, which can take some
+time.
+</div>
+</div>
+<hr>
+<h2 id=faq>FAQ</h2>
+<p><strong>How do I find out the names of the readers?</strong></p>
+<p>To find out the names of the readers connected to your computer, we will
+use Keyple with the following class which prints in the console the
+number and names of the readers present:</p>
+<pre><code class=language-java>import org.eclipse.keyple.core.service.Plugin;
+import org.eclipse.keyple.core.service.SmartCardService;
+import org.eclipse.keyple.plugin.pcsc.PcscPluginFactory;
+
+import java.util.Set;
+
+public class ReaderDiscovery {
+
+    public static void main(String[] args) {
+
+        SmartCardService smartCardService = SmartCardService.getInstance();
+
+        Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory());
+
+        Set&lt;String&gt; names = plugin.getReaderNames();
+
+        System.out.println(names.size() + &quot; readers found.&quot;);
+
+        for (String name : names) {
+            System.out.println('&quot;' + name + '&quot;');
+        }
+    }
+} 
+</code></pre>
+<p>The console output should look something like:</p>
+<pre><code>2 readers found.
+&quot;ASK LoGO 0&quot;
+&quot;Identive CLOUD 2700 R Smart Card Reader 0&quot;
+</code></pre>
+<p>Identify which reader will be the PO (contactless) reader and the SAM
+(contact) reader and replace <code>PO_READER_NAME</code> and
+<code>SAM_READER_NAME</code> with their values.</p>
+<p><strong>How to activate the Keyple&rsquo;s logs?</strong></p>
+<p>As soon as the <code>slf4j</code> library is imported into the project, Keyple
+modules are able to produce logs.</p>
+<p>However, to take full advantage of the possibilities of this library, it
+is necessary to create a <code>simplelogger.properties</code> file in the
+<code>/src/main/resources</code> folder of the project.</p>
+<p>The self-documented content of this file may be:</p>
+<pre><code># SLF4J's SimpleLogger configuration file
+# Simple implementation of Logger that sends all enabled log messages, for all defined loggers, to System.err.
+
+# Default logging detail level for all instances of SimpleLogger.
+# Must be one of (&quot;trace&quot;, &quot;debug&quot;, &quot;info&quot;, &quot;warn&quot;, or &quot;error&quot;).
+# If not specified, defaults to &quot;info&quot;.
+org.slf4j.simpleLogger.defaultLogLevel=debug
+
+# Logging detail level for a SimpleLogger instance named &quot;xxxxx&quot;.
+# Must be one of (&quot;trace&quot;, &quot;debug&quot;, &quot;info&quot;, &quot;warn&quot;, or &quot;error&quot;).
+# If not specified, the default logging detail level is used.
+#org.slf4j.simpleLogger.log.xxxxx=
+
+# Set to true if you want the current date and time to be included in output messages.
+# Default is false, and will output the number of milliseconds elapsed since startup.
+org.slf4j.simpleLogger.showDateTime=true
+
+# The date and time format to be used in the output messages.
+# The pattern describing the date and time format is the same that is used in java.text.SimpleDateFormat.
+# If the format is not specified or is invalid, the default format is used.
+# The default format is yyyy-MM-dd HH:mm:ss:SSS Z.
+org.slf4j.simpleLogger.dateTimeFormat=[HH:mm:ss:SSS]
+
+# Set to true if you want to output the current thread name.
+# Defaults to true.
+org.slf4j.simpleLogger.showThreadName=true
+
+# Set to true if you want the Logger instance name to be included in output messages.
+# Defaults to true.
+org.slf4j.simpleLogger.showLogName=false
+
+# Set to true if you want the last component of the name to be included in output messages.
+# Defaults to false.
+org.slf4j.simpleLogger.showShortLogName=true
+
+org.slf4j.simpleLogger.levelInBrackets=true
+</code></pre>
+<p><strong>Why do I see a warning in the console about illegal reflexive access
+when running the application?</strong></p>
+<p>A known problem on Windows 8/10 platforms causes the smartcard service
+to stop when the last reader is removed. This problem prevents a
+&ldquo;classic&rdquo; monitoring of connections and disconnections of readers with
+the smartcard.io library (Java PC/SC). So for the moment we are using a
+workaround based on reflexivity to overcome this problem and allow a
+correct monitoring of the readers in the PC/SC plugin. This has the
+disadvantage of generating a warning message with recent versions of the
+JVM. However, we have not found any problems with this implementation of
+the PC/SC plugin so far.</p>
+<h4 id=full-code>Full code</h4>
+<p>Here is the complete code of this quick start in one single block.</p>
+<pre><code class=language-java>import org.eclipse.keyple.calypso.command.sam.SamRevision;
+import org.eclipse.keyple.calypso.transaction.*;
+import org.eclipse.keyple.core.card.selection.*;
+import org.eclipse.keyple.core.service.*;
+import org.eclipse.keyple.core.util.ByteArrayUtil;
+import org.eclipse.keyple.plugin.pcsc.*;
+
+public class DemoPoAuthentication  {
+    public static void main(String[] args) {
+        // Get the instance of the SmartCardService : main service of Keyple SDK
+        SmartCardService smartCardService = SmartCardService.getInstance();
+
+        // Register a PcscPlugin within the SmartCardService to use PC/SC USB Readers
+        Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, null));
+
+        // Get the PO reader
+        PcscReader poReader = (PcscReader) plugin.getReader(&quot;ASK LoGO 0&quot;);
+
+        // Configure the PO reader parameters
+        poReader.setContactless(true);
+
+        // Get a SAM reader
+        PcscReader samReader = (PcscReader) plugin.getReader(&quot;Identive CLOUD 2700 R Smart Card Reader 0&quot;);
+
+        // Prepare a SamSelector that identifies the Calypso SAM
+        SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.AUTO).build();
+
+        // Perform the SAM selection
+        CardSelectionsService samSelection = new CardSelectionsService();
+        samSelection.prepareSelection(new SamSelection(samSelector));
+
+        if (!samReader.isCardPresent()) {
+            throw new IllegalStateException(&quot;No SAM is present in the reader &quot; + samReader.getName());
+        }
+
+        CardSelectionsResult cardSelectionsResult = samSelection.processExplicitSelections(samReader);
+
+        if (!cardSelectionsResult.hasActiveSelection()) {
+            throw new IllegalStateException(&quot;SAM matching failed!&quot;);
+        }
+
+        CalypsoSam calypsoSam = (CalypsoSam) cardSelectionsResult.getActiveSmartCard();
+
+        // Associate the calypsoSam and the samReader to create a samResource
+        CardResource&lt;CalypsoSam&gt; samResource = new CardResource&lt;CalypsoSam&gt;(samReader, calypsoSam);
+
+        // Prepare a Calypso PO selection
+        final String AID = &quot;315449432E49434131&quot;; /* AID: Keyple test kit profile 1, Application 2 */
+        final byte RECORD_NUMBER_1 = 1;
+        final byte SFI_Environment = (byte) 0x07;
+
+        CardSelectionsService cardSelectionService = new CardSelectionsService();
+
+        // Setting up a selection based on the AID of a Calypso Revision 3.1 PO
+        //
+        // Select the first application matching the selection AID whatever the card communication protocol
+        PoSelection poSelection = new PoSelection(
+                PoSelector.builder()
+                        .aidSelector(CardSelector.AidSelector.builder().aidToSelect(AID).build()) // the application identifier
+                        .invalidatedPo(PoSelector.InvalidatedPo.REJECT) // to indicate if an invalidated PO should be accepted or not
+                        .build());
+
+        // Add the selection case to the current selection
+        // (we could have added other cases)
+        cardSelectionService.prepareSelection(poSelection);
+
+        if (!poReader.isCardPresent()) {
+            throw new IllegalStateException(&quot;The selection of the PO has failed.&quot;);
+        }
+
+        // Perform the PO selection and get a CalypsoPo container in return
+        CalypsoPo calypsoPo = (CalypsoPo) cardSelectionService.processExplicitSelections(poReader).getActiveSmartCard();
+
+        // Prepare the security settings used during the Calypso transaction
+        PoSecuritySettings poSecuritySettings = new PoSecuritySettings.PoSecuritySettingsBuilder(samResource).build();
+
+        // Create a PoTransaction service to manage the Calypso transaction
+        PoTransaction poTransaction = new PoTransaction(
+                new CardResource&lt;CalypsoPo&gt;(poReader, calypsoPo),
+                poSecuritySettings);
+
+        // Schedule the reading of the Environment file after the secure session is opened
+        // (we could have added other commands)
+        poTransaction.prepareReadRecordFile(
+                SFI_Environment, // the sfi to select
+                RECORD_NUMBER_1);
+
+        // Perform the session opening with the debit key
+        poTransaction.processOpening(PoTransaction.SessionSetting.AccessLevel.SESSION_LVL_DEBIT);
+
+        // Get and display the Environment data from the card image CalypsoPo
+        ElementaryFile efEnvironment = calypsoPo.getFileBySfi(SFI_Environment);
+        String environmentLog = ByteArrayUtil.toHex(efEnvironment.getData().getContent());
+        System.out.println(&quot;Environment file content: &quot;+ environmentLog);
+
+        // Schedule the closure of the channel with the PO after the closing of the secure session
+        poTransaction.prepareReleasePoChannel();
+
+        // Perform the closing of the Calypso Secure Session
+        poTransaction.processClosing();
+
+        System.out.println(&quot;The data read in session have been certified by the successful closing.&quot;);
+
+        // Shutdown the application
+        smartCardService.unregisterPlugin(plugin.getName());
+
+        System.exit(0);
+    }
+} 
+</code></pre>
+</div>
+<div class=article-widget>
+<div class=post-nav>
+<div class=post-nav-item>
+<div class=meta-nav>Next</div>
+<a href=../../../../archives/docs-1.0/build-your-first-app/android-app/ rel=prev>Build your first Android application</a>
+</div>
+</div>
+</div>
+</div>
+<div class=body-footer>
+<p>Last updated on 2023-11-29</p>
+</div>
+</article>
+<footer class=site-footer>
+<div class=container>
+<div class="row featurette">
+<div class="col-12 col-sm-4">
+<p style=color:#fff><b>ECLIPSE LEGAL</b></p>
+<a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a><br>
+<a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a><br>
+<a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a><br>
+<a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a><br>
+<a href=https://www.eclipse.org/legal/>Legal Resources</a><br>
+<a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a><br>
+</div>
+<div class="col-12 col-sm-4">
+<a href=https://www.eclipse.org target=_blank>
+<img src=../../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
+</a>
+</div>
+<div class="col-12 col-sm-4">
+<a href=https://iot.eclipse.org target=_blank>
+<img src=../../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
+</a>
+</div>
+</div>
+</div>
+<p class=powered-by id=copyright>
+© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.
+</p>
+<p class=powered-by id=template-info>
+Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-themes target=_blank rel=noopener>open source</a> website builder that empowers creators.
+</p>
+</footer>
+</main>
+</div>
+</div>
+</div>
+<div class=page-footer>
+</div>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Cite</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Copy
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Download
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+<script src=../../../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/java.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/groovy.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/xml.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/kotlin.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/cpp.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/gradle.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/ini.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/make.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin=anonymous></script>
+<script>anchors.add()</script>
+<script id=search-hit-fuse-template type=text/x-template>
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+<script src=../../../../en/js/wowchemy.min.735dd22779eecc9f58d38921584770aa.js></script>
+<link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
+<script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
+<script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
+</body>
+</html>

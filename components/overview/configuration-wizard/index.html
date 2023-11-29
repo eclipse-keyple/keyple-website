@@ -1,0 +1,749 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Wowchemy 5.3.0 for Hugo">
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
+<meta name=description content="Online tool to generate the dependencies section of Gradle or Maven configuration files.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/components/overview/configuration-wizard/>
+<meta name=theme-color content="#1D87BB">
+<link rel=stylesheet href=../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
+<link rel=stylesheet href=../../../css/wowchemy.7ccc95ad09c8b2b61bf75bd806337be2.css>
+<script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
+<link rel=manifest href=../../../manifest.webmanifest>
+<link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
+<link rel=canonical href=https://keyple.org/components/overview/configuration-wizard/>
+<meta property="twitter:card" content="summary">
+<meta property="og:site_name" content="Eclipse Keyple">
+<meta property="og:url" content="https://keyple.org/components/overview/configuration-wizard/">
+<meta property="og:title" content="Configuration wizard | Eclipse Keyple">
+<meta property="og:description" content="Online tool to generate the dependencies section of Gradle or Maven configuration files."><meta property="og:image" content="https://keyple.org/media/logo.svg">
+<meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
+<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<title>Configuration wizard | Eclipse Keyple</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=f3141abed2b98189af41cb3e98cd4f58>
+<script src=../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
+<aside class=search-modal id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Search</h1>
+</div>
+<div class="col-6 col-search-close">
+<a class=js-search href=# aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
+</div>
+</aside>
+<div class=page-header>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container-xl>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
+<a class=dropdown-item href=../../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
+<a class=dropdown-item href=../../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
+<a class=dropdown-item href=../../../#news><span>News</span></a>
+</div>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../../learn/overview><span>Learn</span></a>
+</li>
+<li class=nav-item>
+<a class="nav-link active" href=../../../components/overview><span>Components</span></a>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../../community/roadmap/><span>Roadmap</span></a>
+<a class=dropdown-item href=../../../community/changelog/><span>Changelog</span></a>
+<a class=dropdown-item href=../../../project-dashboard/><span>Project dashboard</span></a>
+<a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date"><span>Code quality dashboard</span></a>
+<a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
+<a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
+<a class=dropdown-item href=https://github.com/eclipse/keyple/><span>GitHub home repository</span></a>
+<a class=dropdown-item href=../../../archives/><span>Archives</span></a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
+<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
+</div>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+<li class=nav-item>
+<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class=page-body>
+<div class="container-fluid docs">
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+<form class="docs-search d-flex align-items-center">
+<button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
+<div class=d-flex>
+<span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+Overview
+</span>
+<span><i class="fas fa-chevron-down"></i></span>
+</div>
+</button>
+<button class="form-control sidebar-search js-search d-none d-md-flex">
+<i class="fas fa-search pr-2"></i>
+<span class=sidebar-search-text>Search...</span>
+<span class=sidebar-search-shortcut>/</span>
+</button>
+</form>
+<nav class="collapse docs-links" id=docs-nav>
+<ul class="nav docs-sidenav">
+<li><a href=../../../components/> </a></li>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../components/overview/>Overview</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../components/overview/components-map/>Components map</a></li>
+<li class=active><a href=../../../components/overview/configuration-wizard/>Configuration wizard</a></li>
+<li><a href=../../../components/overview/dependency-check/>Dependency check</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../components/standards-compliance/>Standards compliance</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../components/standards-compliance/cna-terminal-api/>CNA Terminal API</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../components/core/>Core</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../components/core/keyple-common-api/>Common API</a></li>
+<li><a href=../../../components/core/keyple-distributed-local-api/>Distributed Local API</a></li>
+<li><a href=../../../components/core/keyple-distributed-remote-api/>Distributed Remote API</a></li>
+<li><a href=../../../components/core/keyple-plugin-api/>Plugin API</a></li>
+<li><a href=../../../components/core/keyple-service-lib/>Service</a></li>
+<li><a href=../../../components/core/keyple-service-resource-lib/>Service Resource</a></li>
+<li><a href=../../../components/core/keyple-util-lib/>Util</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../components/distributed/>Distributed systems</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../components/distributed/keyple-distributed-local-lib/>Local</a></li>
+<li><a href=../../../components/distributed/keyple-distributed-network-lib/>Network</a></li>
+<li><a href=../../../components/distributed/keyple-distributed-remote-lib/>Remote</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../components/card-extensions/>Card extensions</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../components/card-extensions/keyple-card-calypso-lib/>Calypso Card</a></li>
+<li><a href=../../../components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/>Calypso Legacy SAM</a></li>
+<li><a href=../../../components/card-extensions/keyple-card-generic-lib/>Generic</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../components/standard-reader-plugins/>Standard reader plugins</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../components/standard-reader-plugins/keyple-plugin-android-nfc-lib/>Android NFC</a></li>
+<li><a href=../../../components/standard-reader-plugins/keyple-plugin-android-omapi-lib/>Android OMAPI</a></li>
+<li><a href=../../../components/standard-reader-plugins/keyple-plugin-cardresource-lib/>Card Resource</a></li>
+<li><a href=../../../components/standard-reader-plugins/keyple-plugin-pcsc-lib/>PC/SC</a></li>
+<li><a href=../../../components/standard-reader-plugins/keyple-plugin-stub-lib/>Stub</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../components/specific-reader-plugins/>Specific reader plugins</a>
+</div>
+</ul>
+</nav>
+</div>
+<div class="d-none d-xl-block col-xl-2 docs-toc">
+<ul class="nav toc-top">
+<li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
+</ul>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#application>Application</a></li>
+<li><a href=#reader-plugin-add-on>Reader plugin add-on</a></li>
+<li><a href=#card-extension-add-on>Card extension add-on</a></li>
+<li><a href=#distributed-solution-add-on>Distributed solution add-on</a></li>
+</ul>
+</nav>
+</div>
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
+<article class=article>
+<div class=docs-article-container>
+<h1>Configuration wizard</h1>
+<div class=article-style>
+<br>
+<p>This online tool generates for you the <code>dependencies</code> section of Gradle or Maven configuration files.
+Choose your project profile and copy/paste the generated result into your project dependency manager.</p>
+<p>What type of Keyple component are you working on?</p>
+<ul>
+<li><a href=#application>An application</a></li>
+<li><a href=#reader-plugin-add-on>A specific reader plugin add-on</a></li>
+<li><a href=#card-extension-add-on>A specific card extension add-on</a></li>
+<li><a href=#distributed-solution-add-on>An alternate distributed solution add-on</a></li>
+</ul>
+<br>
+<h2 id=application>Application</h2>
+<ul>
+<li>
+<p>Which card extension do you want to use?</p>
+<blockquote>
+<div>
+<input type=checkbox id=cardGeneric onclick=updateAppDependencies(1,this)>
+<label for=cardGeneric>Generic (with low-level API)</label>
+</div>
+<div>
+<input type=checkbox id=cardCalypso onclick=updateAppDependencies(1,this)>
+<label for=cardCalypso>Calypso Card</label>
+</div>
+<div>
+<input type=checkbox id=cardCalypsoLegacySam onclick=updateAppDependencies(1,this)>
+<label for=cardCalypsoLegacySam>Calypso Legacy SAM</label>
+</div>
+</blockquote>
+</li>
+<li>
+<p>Which reader plugin do you want to use?</p>
+<blockquote>
+<div>
+<input type=checkbox id=pluginAndroidNfc onclick=updateAppDependencies(1,this)>
+<label for=pluginAndroidNfc>Android NFC</label>
+</div>
+<div>
+<input type=checkbox id=pluginAndroidOmapi onclick=updateAppDependencies(1,this)>
+<label for=pluginAndroidOmapi>Android OMAPI</label>
+</div>
+<div>
+<input type=checkbox id=pluginCardResource onclick=updateAppDependencies(1,this)>
+<label for=pluginCardResource>Card Resource</label>
+</div>
+<div>
+<input type=checkbox id=pluginPcsc onclick=updateAppDependencies(1,this)>
+<label for=pluginPcsc>PC/SC</label>
+</div>
+<div>
+<input type=checkbox id=pluginStub onclick=updateAppDependencies(1,this)>
+<label for=pluginStub>Stub (simulated reader)</label>
+</div>
+</blockquote>
+</li>
+<li>
+<p>In case of a distributed system, on which side is your application located?</p>
+<blockquote>
+<div>
+<input type=checkbox id=distributedLocal onclick=updateAppDependencies(1,this)>
+<label for=distributedLocal>On the device <strong>having</strong> local access to the smart card reader</label>
+</div>
+<div>
+<input type=checkbox id=distributedRemote onclick=updateAppDependencies(1,this)>
+<label for=distributedRemote>On the device <strong>not having</strong> local access to the smart card reader</label>
+</div>
+</blockquote>
+</li>
+<li>
+<p>Do you need additional services?</p>
+<blockquote>
+<div>
+<input type=checkbox id=serviceResource onclick=updateAppDependencies(1,this)>
+<label for=serviceResource>Service for dynamic card resource allocation (e.g. for HSM or pool of readers)</label>
+</div>
+</blockquote>
+</li>
+</ul>
+<ul class="nav nav-tabs" id=tabs-1 role=tablist><li class=nav-item>
+<a class="nav-link active tab-Gradle-Groovy" id=tabs-1-0-tab data-toggle=tab href=#tabs-1-0 role=tab onclick='handleClick("Gradle-Groovy")' aria-controls=tabs-1-0 aria-selected=true>
+Gradle Groovy
+</a>
+</li><li class=nav-item>
+<a class="nav-link tab-Gradle-Kotlin" id=tabs-1-1-tab data-toggle=tab href=#tabs-1-1 role=tab onclick='handleClick("Gradle-Kotlin")' aria-controls=tabs-1-1 aria-selected=false>
+Gradle Kotlin
+</a>
+</li><li class=nav-item>
+<a class="nav-link tab-Maven" id=tabs-1-2-tab data-toggle=tab href=#tabs-1-2 role=tab onclick='handleClick("Maven")' aria-controls=tabs-1-2 aria-selected=false>
+Maven
+</a>
+</li></ul>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyTabContentToClipboard('tabs-1',this)">Copy</button></div>
+<div class=tab-content id=tabs-1-content><div class="tab-pane fade show active" id=tabs-1-0 role=tabpanel aria-labelled-by=tabs-1-0-tab>
+<pre><code class=language-gradle></code></pre>
+</div>
+<div class="tab-pane fade" id=tabs-1-1 role=tabpanel aria-labelled-by=tabs-1-1-tab>
+<pre><code class=language-kotlin></code></pre>
+</div>
+<div class="tab-pane fade" id=tabs-1-2 role=tabpanel aria-labelled-by=tabs-1-2-tab>
+<pre><code class=language-xml></code></pre>
+</div>
+</div>
+<br>
+<h2 id=reader-plugin-add-on>Reader plugin add-on</h2>
+<ul class="nav nav-tabs" id=tabs-2 role=tablist><li class=nav-item>
+<a class="nav-link active tab-Gradle-Groovy" id=tabs-2-0-tab data-toggle=tab href=#tabs-2-0 role=tab onclick='handleClick("Gradle-Groovy")' aria-controls=tabs-2-0 aria-selected=true>
+Gradle Groovy
+</a>
+</li><li class=nav-item>
+<a class="nav-link tab-Gradle-Kotlin" id=tabs-2-1-tab data-toggle=tab href=#tabs-2-1 role=tab onclick='handleClick("Gradle-Kotlin")' aria-controls=tabs-2-1 aria-selected=false>
+Gradle Kotlin
+</a>
+</li><li class=nav-item>
+<a class="nav-link tab-Maven" id=tabs-2-2-tab data-toggle=tab href=#tabs-2-2 role=tab onclick='handleClick("Maven")' aria-controls=tabs-2-2 aria-selected=false>
+Maven
+</a>
+</li></ul>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyTabContentToClipboard('tabs-2',this)">Copy</button></div>
+<div class=tab-content id=tabs-2-content><div class="tab-pane fade show active" id=tabs-2-0 role=tabpanel aria-labelled-by=tabs-2-0-tab>
+<pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-plugin-java-api:2.2.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.3.1&#39;</code></pre>
+</div>
+<div class="tab-pane fade" id=tabs-2-1 role=tabpanel aria-labelled-by=tabs-2-1-tab>
+<pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-common-java-api:2.0.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-plugin-java-api:2.2.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.3.1&#34;)</code></pre>
+</div>
+<div class="tab-pane fade" id=tabs-2-2 role=tabpanel aria-labelled-by=tabs-2-2-tab>
+<pre><code class=language-xml>&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
+  &lt;artifactId&gt;keyple-common-java-api&lt;/artifactId&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
+  &lt;artifactId&gt;keyple-plugin-java-api&lt;/artifactId&gt;
+  &lt;version&gt;2.2.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
+  &lt;artifactId&gt;keyple-util-java-lib&lt;/artifactId&gt;
+  &lt;version&gt;2.3.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<br>
+<h2 id=card-extension-add-on>Card extension add-on</h2>
+<ul>
+<li>Do you need additional services?
+<blockquote>
+<div>
+<input type=checkbox id=cardServiceResource onclick=updateCardDependencies(3,this)>
+<label for=cardServiceResource>Service for dynamic card resource allocation (e.g. HSM or pool of readers)</label>
+</div>
+</blockquote>
+</li>
+</ul>
+<ul class="nav nav-tabs" id=tabs-3 role=tablist><li class=nav-item>
+<a class="nav-link active tab-Gradle-Groovy" id=tabs-3-0-tab data-toggle=tab href=#tabs-3-0 role=tab onclick='handleClick("Gradle-Groovy")' aria-controls=tabs-3-0 aria-selected=true>
+Gradle Groovy
+</a>
+</li><li class=nav-item>
+<a class="nav-link tab-Gradle-Kotlin" id=tabs-3-1-tab data-toggle=tab href=#tabs-3-1 role=tab onclick='handleClick("Gradle-Kotlin")' aria-controls=tabs-3-1 aria-selected=false>
+Gradle Kotlin
+</a>
+</li><li class=nav-item>
+<a class="nav-link tab-Maven" id=tabs-3-2-tab data-toggle=tab href=#tabs-3-2 role=tab onclick='handleClick("Maven")' aria-controls=tabs-3-2 aria-selected=false>
+Maven
+</a>
+</li></ul>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyTabContentToClipboard('tabs-3',this)">Copy</button></div>
+<div class=tab-content id=tabs-3-content><div class="tab-pane fade show active" id=tabs-3-0 role=tabpanel aria-labelled-by=tabs-3-0-tab>
+<pre><code class=language-gradle></code></pre>
+</div>
+<div class="tab-pane fade" id=tabs-3-1 role=tabpanel aria-labelled-by=tabs-3-1-tab>
+<pre><code class=language-kotlin></code></pre>
+</div>
+<div class="tab-pane fade" id=tabs-3-2 role=tabpanel aria-labelled-by=tabs-3-2-tab>
+<pre><code class=language-xml></code></pre>
+</div>
+</div>
+<br>
+<h2 id=distributed-solution-add-on>Distributed solution add-on</h2>
+<ul>
+<li>
+<p><strong>For the &ldquo;Local Service&rdquo; component:</strong>
+<ul class="nav nav-tabs" id=tabs-4 role=tablist><li class=nav-item>
+<a class="nav-link active tab-Gradle-Groovy" id=tabs-4-0-tab data-toggle=tab href=#tabs-4-0 role=tab onclick='handleClick("Gradle-Groovy")' aria-controls=tabs-4-0 aria-selected=true>
+Gradle Groovy
+</a>
+</li><li class=nav-item>
+<a class="nav-link tab-Gradle-Kotlin" id=tabs-4-1-tab data-toggle=tab href=#tabs-4-1 role=tab onclick='handleClick("Gradle-Kotlin")' aria-controls=tabs-4-1 aria-selected=false>
+Gradle Kotlin
+</a>
+</li><li class=nav-item>
+<a class="nav-link tab-Maven" id=tabs-4-2-tab data-toggle=tab href=#tabs-4-2 role=tab onclick='handleClick("Maven")' aria-controls=tabs-4-2 aria-selected=false>
+Maven
+</a>
+</li></ul>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyTabContentToClipboard('tabs-4',this)">Copy</button></div>
+<div class=tab-content id=tabs-4-content><div class="tab-pane fade show active" id=tabs-4-0 role=tabpanel aria-labelled-by=tabs-4-0-tab>
+<pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-distributed-local-java-api:2.1.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.3.1&#39;</code></pre>
+</div>
+<div class="tab-pane fade" id=tabs-4-1 role=tabpanel aria-labelled-by=tabs-4-1-tab>
+<pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-common-java-api:2.0.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-distributed-local-java-api:2.1.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.3.1&#34;)</code></pre>
+</div>
+<div class="tab-pane fade" id=tabs-4-2 role=tabpanel aria-labelled-by=tabs-4-2-tab>
+<pre><code class=language-xml>&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
+  &lt;artifactId&gt;keyple-common-java-api&lt;/artifactId&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
+  &lt;artifactId&gt;keyple-distributed-local-java-api&lt;/artifactId&gt;
+  &lt;version&gt;2.1.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
+  &lt;artifactId&gt;keyple-util-java-lib&lt;/artifactId&gt;
+  &lt;version&gt;2.3.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</p>
+</li>
+<li>
+<p><strong>For the &ldquo;Remote Plugin&rdquo; component:</strong>
+<ul class="nav nav-tabs" id=tabs-5 role=tablist><li class=nav-item>
+<a class="nav-link active tab-Gradle-Groovy" id=tabs-5-0-tab data-toggle=tab href=#tabs-5-0 role=tab onclick='handleClick("Gradle-Groovy")' aria-controls=tabs-5-0 aria-selected=true>
+Gradle Groovy
+</a>
+</li><li class=nav-item>
+<a class="nav-link tab-Gradle-Kotlin" id=tabs-5-1-tab data-toggle=tab href=#tabs-5-1 role=tab onclick='handleClick("Gradle-Kotlin")' aria-controls=tabs-5-1 aria-selected=false>
+Gradle Kotlin
+</a>
+</li><li class=nav-item>
+<a class="nav-link tab-Maven" id=tabs-5-2-tab data-toggle=tab href=#tabs-5-2 role=tab onclick='handleClick("Maven")' aria-controls=tabs-5-2 aria-selected=false>
+Maven
+</a>
+</li></ul>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyTabContentToClipboard('tabs-5',this)">Copy</button></div>
+<div class=tab-content id=tabs-5-content><div class="tab-pane fade show active" id=tabs-5-0 role=tabpanel aria-labelled-by=tabs-5-0-tab>
+<pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-distributed-remote-java-api:3.0.0&#39;
+implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.3.1&#39;</code></pre>
+</div>
+<div class="tab-pane fade" id=tabs-5-1 role=tabpanel aria-labelled-by=tabs-5-1-tab>
+<pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-common-java-api:2.0.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-distributed-remote-java-api:3.0.0&#34;)
+implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.3.1&#34;)</code></pre>
+</div>
+<div class="tab-pane fade" id=tabs-5-2 role=tabpanel aria-labelled-by=tabs-5-2-tab>
+<pre><code class=language-xml>&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
+  &lt;artifactId&gt;keyple-common-java-api&lt;/artifactId&gt;
+  &lt;version&gt;2.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
+  &lt;artifactId&gt;keyple-distributed-remote-java-api&lt;/artifactId&gt;
+  &lt;version&gt;3.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
+  &lt;artifactId&gt;keyple-util-java-lib&lt;/artifactId&gt;
+  &lt;version&gt;2.3.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</p>
+</li>
+</ul>
+<code id=all-groovy-dependencies style=display:none>
+<span id=keyple-common-java-api>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-common-java-api:2.0.0'</span></span>
+<span id=keyple-service-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-service-java-lib:3.0.0'</span></span>
+<span id=keyple-service-resource-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-service-resource-java-lib:3.0.0'</span></span>
+<span id=keyple-util-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-util-java-lib:2.3.1'</span></span>
+<span id=keyple-card-calypso-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-card-calypso-java-lib:3.0.0'</span></span>
+<span id=keyple-card-calypso-crypto-legacysam-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.4.0'</span></span>
+<span id=keyple-card-generic-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-card-generic-java-lib:3.0.0'</span></span>
+<span id=keyple-distributed-local-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-distributed-local-java-lib:2.3.0'</span></span>
+<span id=keyple-distributed-network-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-distributed-network-java-lib:2.3.0'</span></span>
+<span id=keyple-distributed-remote-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-distributed-remote-java-lib:2.3.0'</span></span>
+<span id=keyple-plugin-android-nfc-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.1.0'</span></span>
+<span id=keyple-plugin-android-omapi-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.0.1'</span></span>
+<span id=keyple-plugin-cardresource-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.0'</span></span>
+<span id=keyple-plugin-pcsc-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.2'</span></span>
+<span id=keyple-plugin-stub-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-plugin-stub-java-lib:2.1.0'</span></span>
+<span id=keypop-reader-java-api>implementation <span class=hljs-string>'org.eclipse.keypop:keypop-reader-java-api:2.0.0'</span></span>
+<span id=keypop-card-java-api>implementation <span class=hljs-string>'org.eclipse.keypop:keypop-card-java-api:2.0.0'</span></span>
+<span id=keypop-calypso-card-java-api>implementation <span class=hljs-string>'org.eclipse.keypop:keypop-calypso-card-java-api:2.0.0'</span></span>
+<span id=keypop-calypso-crypto-legacysam-java-api>implementation <span class=hljs-string>'org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.3.0'</span></span>
+</code>
+<code id=all-kotlin-dependencies style=display:none>
+<span id=keyple-common-java-api>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-common-java-api:2.0.0"</span>)</span>
+<span id=keyple-service-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-service-java-lib:3.0.0"</span>)</span>
+<span id=keyple-service-resource-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-service-resource-java-lib:3.0.0"</span>)</span>
+<span id=keyple-util-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-util-java-lib:2.3.1"</span>)</span>
+<span id=keyple-card-calypso-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-card-calypso-java-lib:3.0.0"</span>)</span>
+<span id=keyple-card-calypso-crypto-legacysam-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.4.0"</span>)</span>
+<span id=keyple-card-generic-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-card-generic-java-lib:3.0.0"</span>)</span>
+<span id=keyple-distributed-local-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-distributed-local-java-lib:2.3.0"</span>)</span>
+<span id=keyple-distributed-network-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-distributed-network-java-lib:2.3.0"</span>)</span>
+<span id=keyple-distributed-remote-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-distributed-remote-java-lib:2.3.0"</span>)</span>
+<span id=keyple-plugin-android-nfc-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.1.0"</span>)</span>
+<span id=keyple-plugin-android-omapi-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.0.1"</span>)</span>
+<span id=keyple-plugin-cardresource-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.0"</span>)</span>
+<span id=keyple-plugin-pcsc-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.2"</span>)</span>
+<span id=keyple-plugin-stub-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-plugin-stub-java-lib:2.1.0"</span>)</span>
+<span id=keypop-reader-java-api>implementation(<span class=hljs-string>"org.eclipse.keypop:keypop-reader-java-api:2.0.0"</span>)</span>
+<span id=keypop-card-java-api>implementation(<span class=hljs-string>"org.eclipse.keypop:keypop-card-java-api:2.0.0"</span>)</span>
+<span id=keypop-calypso-card-java-api>implementation(<span class=hljs-string>"org.eclipse.keypop:keypop-calypso-card-java-api:2.0.0"</span>)</span>
+<span id=keypop-calypso-crypto-legacysam-java-api>implementation(<span class=hljs-string>"org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.3.0"</span>)</span>
+</code>
+<code id=all-maven-dependencies style=display:none>
+<span id=keyple-common-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-common-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-service-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-service-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>3.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-service-resource-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-service-resource-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>3.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-util-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-util-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.3.1<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-card-calypso-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-card-calypso-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>3.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-card-calypso-crypto-legacysam-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-card-calypso-crypto-legacysam-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>0.4.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-card-generic-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-card-generic-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>3.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-distributed-local-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-distributed-local-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.3.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-distributed-network-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-distributed-network-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.3.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-distributed-remote-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-distributed-remote-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.3.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-plugin-android-nfc-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-plugin-android-nfc-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.1.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-plugin-android-omapi-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-plugin-android-omapi-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.0.1<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-plugin-cardresource-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-plugin-cardresource-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-plugin-pcsc-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-plugin-pcsc-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.1.2<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keyple-plugin-stub-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keyple-plugin-stub-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.1.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keypop-reader-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keypop<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keypop-reader-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keypop-card-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keypop<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keypop-card-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keypop-calypso-card-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keypop<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keypop-calypso-card-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>2.0.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+<span id=keypop-calypso-crypto-legacysam-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>></span>org.eclipse.keypop<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>></span>keypop-calypso-crypto-legacysam-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>></span>
+&nbsp;&nbsp;<span class=hljs-tag>&lt;<span class=hljs-name>version</span>></span>0.3.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>></span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>></span></span>
+</code>
+<script type=text/javascript>document.body.onload=function(){updateAppDependencies(1,null),updateCardDependencies(3,null)}</script>
+</div>
+<div class=article-widget>
+<div class=post-nav>
+<div class=post-nav-item>
+<div class=meta-nav>Previous</div>
+<a href=../../../components/overview/components-map/ rel=next>Components map</a>
+</div>
+<div class=post-nav-item>
+<div class=meta-nav>Next</div>
+<a href=../../../components/overview/dependency-check/ rel=prev>Dependency check</a>
+</div>
+</div>
+</div>
+</div>
+<div class=body-footer>
+<p>Last updated on 2023-11-29</p>
+</div>
+</article>
+<footer class=site-footer>
+<div class=container>
+<div class="row featurette">
+<div class="col-12 col-sm-4">
+<p style=color:#fff><b>ECLIPSE LEGAL</b></p>
+<a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a><br>
+<a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a><br>
+<a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a><br>
+<a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a><br>
+<a href=https://www.eclipse.org/legal/>Legal Resources</a><br>
+<a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a><br>
+</div>
+<div class="col-12 col-sm-4">
+<a href=https://www.eclipse.org target=_blank>
+<img src=../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
+</a>
+</div>
+<div class="col-12 col-sm-4">
+<a href=https://iot.eclipse.org target=_blank>
+<img src=../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
+</a>
+</div>
+</div>
+</div>
+<p class=powered-by id=copyright>
+© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.
+</p>
+<p class=powered-by id=template-info>
+Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-themes target=_blank rel=noopener>open source</a> website builder that empowers creators.
+</p>
+</footer>
+</main>
+</div>
+</div>
+</div>
+<div class=page-footer>
+</div>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Cite</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Copy
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Download
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+<script src=../../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/java.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/groovy.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/xml.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/kotlin.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/cpp.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/gradle.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/ini.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/make.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin=anonymous></script>
+<script>anchors.add()</script>
+<script id=search-hit-fuse-template type=text/x-template>
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+<script src=../../../en/js/wowchemy.min.735dd22779eecc9f58d38921584770aa.js></script>
+<link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
+<script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
+<script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
+</body>
+</html>

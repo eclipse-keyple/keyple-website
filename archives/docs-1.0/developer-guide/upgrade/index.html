@@ -1,0 +1,745 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Wowchemy 5.3.0 for Hugo">
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
+<meta name=description content="Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.   This guide is intended to help a user of a previous version of Keyple Java to upgrade his application to a new version of the library.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/archives/docs-1.0/developer-guide/upgrade/>
+<meta name=theme-color content="#1D87BB">
+<link rel=stylesheet href=../../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
+<link rel=stylesheet href=../../../../css/wowchemy.7ccc95ad09c8b2b61bf75bd806337be2.css>
+<script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
+<link rel=manifest href=../../../../manifest.webmanifest>
+<link rel=icon type=image/png href=../../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=../../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
+<link rel=canonical href=https://keyple.org/archives/docs-1.0/developer-guide/upgrade/>
+<meta property="twitter:card" content="summary">
+<meta property="og:site_name" content="Eclipse Keyple">
+<meta property="og:url" content="https://keyple.org/archives/docs-1.0/developer-guide/upgrade/">
+<meta property="og:title" content="Upgrade from an earlier version of Keyple | Eclipse Keyple">
+<meta property="og:description" content="Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.   This guide is intended to help a user of a previous version of Keyple Java to upgrade his application to a new version of the library."><meta property="og:image" content="https://keyple.org/media/logo.svg">
+<meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
+<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<title>Upgrade from an earlier version of Keyple | Eclipse Keyple</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=0346b94fc96babbec3fdf675808b8e5b>
+<script src=../../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
+<aside class=search-modal id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Search</h1>
+</div>
+<div class="col-6 col-search-close">
+<a class=js-search href=# aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
+</div>
+</aside>
+<div class=page-header>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container-xl>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=../../../../><img src=../../../../media/logo.svg alt="Eclipse Keyple"></a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=../../../../><img src=../../../../media/logo.svg alt="Eclipse Keyple"></a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../../what-is-keyple/overview/><span>Overview</span></a>
+<a class=dropdown-item href=../../../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
+<a class=dropdown-item href=../../../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
+<a class=dropdown-item href=../../../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
+<a class=dropdown-item href=../../../../#news><span>News</span></a>
+</div>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../../../learn/overview><span>Learn</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=../../../../components/overview><span>Components</span></a>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../../../community/roadmap/><span>Roadmap</span></a>
+<a class=dropdown-item href=../../../../community/changelog/><span>Changelog</span></a>
+<a class=dropdown-item href=../../../../project-dashboard/><span>Project dashboard</span></a>
+<a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date"><span>Code quality dashboard</span></a>
+<a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
+<a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
+<a class=dropdown-item href=https://github.com/eclipse/keyple/><span>GitHub home repository</span></a>
+<a class=dropdown-item href=../../../../archives/><span>Archives</span></a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=../../../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
+<a class=dropdown-item href=../../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
+</div>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+<li class=nav-item>
+<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+<div class=page-body>
+<div class="container-fluid docs">
+<div class="row flex-xl-nowrap">
+<div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+<form class="docs-search d-flex align-items-center">
+<button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
+<div class=d-flex>
+<span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+Developer guides
+</span>
+<span><i class="fas fa-chevron-down"></i></span>
+</div>
+</button>
+<button class="form-control sidebar-search js-search d-none d-md-flex">
+<i class="fas fa-search pr-2"></i>
+<span class=sidebar-search-text>Search...</span>
+<span class=sidebar-search-shortcut>/</span>
+</button>
+</form>
+<nav class="collapse docs-links" id=docs-nav>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/> </a></li>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/docs-1.0/>== Docs 1.x ==</a>
+<ul class="nav docs-sidenav">
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/docs-1.0/build-your-first-app/>Build your first app</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/docs-1.0/build-your-first-app/java-app/>Java</a></li>
+<li><a href=../../../../archives/docs-1.0/build-your-first-app/android-app/>Android</a></li>
+<li><a href=../../../../archives/docs-1.0/build-your-first-app/cpp-app/>C++</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/docs-1.0/developer-guide/>Developer guides</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/docs-1.0/developer-guide/common-concepts/>Common concepts</a></li>
+<li><a href=../../../../archives/docs-1.0/developer-guide/standalone-application/>Standalone application</a></li>
+<li><a href=../../../../archives/docs-1.0/developer-guide/distributed-application/>Distributed application</a></li>
+<li><a href=../../../../archives/docs-1.0/developer-guide/calypso-application/>Calypso application</a></li>
+<li><a href=../../../../archives/docs-1.0/developer-guide/create-plugin/>Create a plugin</a></li>
+<li><a href=../../../../archives/docs-1.0/developer-guide/create-extension/>Create an extension</a></li>
+<li class=active><a href=../../../../archives/docs-1.0/developer-guide/upgrade/>Upgrade Keyple</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/docs-1.0/api-reference/>API reference</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/docs-1.0/api-reference/java-api/>Java</a></li>
+<li><a href=../../../../archives/docs-1.0/api-reference/cpp-api/>C++</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/docs-1.0/architecture/>Architecture</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/docs-1.0/architecture/keyple-global/>Global Solution</a></li>
+<li><a href=../../../../archives/docs-1.0/architecture/keyple-core/>Keyple Core</a></li>
+<li><a href=../../../../archives/docs-1.0/architecture/keyple-calypso/>Keyple Calypso</a></li>
+</ul>
+</div>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-java-1.0/>== Java 1.x components ==</a>
+<ul class="nav docs-sidenav">
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-java-1.0/core/>Core</a>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-java-1.0/distributed-systems/>Distributed systems</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/components-java-1.0/distributed-systems/local/>Local</a></li>
+<li><a href=../../../../archives/components-java-1.0/distributed-systems/network/>Network</a></li>
+<li><a href=../../../../archives/components-java-1.0/distributed-systems/remote/>Remote</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-java-1.0/extensions/>Extensions</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/components-java-1.0/extensions/calypso/>Calypso</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-java-1.0/plugins/>Reader plugins</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/components-java-1.0/plugins/nfc/>NFC</a></li>
+<li><a href=../../../../archives/components-java-1.0/plugins/omapi/>OMAPI</a></li>
+<li><a href=../../../../archives/components-java-1.0/plugins/pcsc/>PC/SC</a></li>
+<li><a href=../../../../archives/components-java-1.0/plugins/stub/>Stub</a></li>
+</ul>
+</div>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-cpp-0.9/>== C++ 0.x components ==</a>
+<ul class="nav docs-sidenav">
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-cpp-0.9/core/>Core</a>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-cpp-0.9/extensions/>Extensions</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/components-cpp-0.9/extensions/calypso/>Calypso</a></li>
+</ul>
+</div>
+<div class=docs-toc-item>
+<a class=docs-toc-link href=../../../../archives/components-cpp-0.9/plugins/>Reader plugins</a>
+<ul class="nav docs-sidenav">
+<li><a href=../../../../archives/components-cpp-0.9/plugins/pcsc/>PC/SC</a></li>
+<li><a href=../../../../archives/components-cpp-0.9/plugins/stub/>Stub</a></li>
+</ul>
+</div>
+</ul>
+</div>
+</ul>
+</nav>
+</div>
+<div class="d-none d-xl-block col-xl-2 docs-toc">
+<ul class="nav toc-top">
+<li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
+</ul>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#upgrade-from-090-to-100>Upgrade from 0.9.0 to 1.0.0</a>
+<ul>
+<li><a href=#whats-changed>What&rsquo;s changed?</a></li>
+</ul>
+</li>
+<li><a href=#upgrade-from-081-to-090>Upgrade from 0.8.1 to 0.9.0</a>
+<ul>
+<li><a href=#whats-changed-1>What&rsquo;s changed?</a></li>
+<li><a href=#plugin-registration-in-the-seproxyservice>Plugin registration in the SeProxyService</a></li>
+<li><a href=#preparation-of-selection-cases>Preparation of selection cases</a></li>
+<li><a href=#retrieving-selection-results>Retrieving selection results</a></li>
+<li><a href=#definition-of-the-security-settings-of-the-transaction>Definition of the security settings of the transaction</a></li>
+<li><a href=#creation-of-the-potransaction-object>Creation of the PoTransaction object</a></li>
+<li><a href=#transaction-commands-preparation>Transaction commands preparation</a></li>
+<li><a href=#transaction-commands-processing>Transaction commands processing</a></li>
+<li><a href=#retrieving-data-read-from-pos>Retrieving data read from POs</a></li>
+</ul>
+</li>
+<li><a href=#error-handling>Error handling</a></li>
+</ul>
+</nav>
+</div>
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
+<article class=article>
+<div class=docs-article-container>
+<h1>Upgrade from an earlier version of Keyple</h1>
+<div class=article-style>
+<div class="alert alert-warning">
+<div>
+Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
+</div>
+</div>
+<p>This guide is intended to help a user of a previous version of Keyple Java to upgrade his application to a new version of the library.</p>
+<p>Upgrade from:</p>
+<ul>
+<li><a href=#upgrade-from-090-to-100>0.9.0 to 1.0.0</a></li>
+<li><a href=#upgrade-from-081-to-090>0.8.1 to 0.9.0</a></li>
+</ul>
+<p>Note: here we describe the evolutions in broad outline, for the details of the APIs, the reader is invited to consult
+the <a href=https://keyple.org/archives/docs-1.0/api-reference/>API reference</a> section.</p>
+<hr>
+<h2 id=upgrade-from-090-to-100>Upgrade from 0.9.0 to 1.0.0</h2>
+<h3 id=whats-changed>What&rsquo;s changed?</h3>
+<p>Compared to version 0.9, the goal of Keyple 1.0 is mainly to fix bugs,
+add features to make Keyple more robust and rename/reorganize classes to make it easier to learn.</p>
+<ul>
+<li><a href=#class-renaming>Renamings</a></li>
+<li><a href=#internal-exception-handling>Internal exception handling</a></li>
+<li><a href=#pcsc-plugin>PC/SC plugin</a></li>
+<li><a href=#keyple-distributed>Keyple Distributed</a></li>
+</ul>
+<h4 id=class-renaming>Class renaming</h4>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Old name (0.9.0)</th>
+<th>New name (1.0.0)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keyple Core</td>
+<td>SeProxyService</td>
+<td>SmartCardService</td>
+</tr>
+<tr>
+<td>Keyple Core</td>
+<td>ReaderPlugin</td>
+<td>Plugin</td>
+</tr>
+<tr>
+<td>Keyple Core</td>
+<td>SeReader</td>
+<td>Reader</td>
+</tr>
+<tr>
+<td>Keyple Core</td>
+<td>ReaderPoolPlugin</td>
+<td>PoolPlugin</td>
+</tr>
+<tr>
+<td>Keyple Core</td>
+<td>SeSelection</td>
+<td>CardSelectionService</td>
+</tr>
+<tr>
+<td>Keyple Core</td>
+<td>SeSelector</td>
+<td>CardSelector</td>
+</tr>
+<tr>
+<td>Keyple Core</td>
+<td>AbstractMatchingSe</td>
+<td>AbstractSmartCard</td>
+</tr>
+<tr>
+<td>Keyple Calypso</td>
+<td>PoSelectionRequest</td>
+<td>PoSelection</td>
+</tr>
+<tr>
+<td>Keyple Calypso</td>
+<td>SamSelectionRequest</td>
+<td>SamSelection</td>
+</tr>
+</tbody>
+</table>
+<h4 id=internal-exception-handling>Internal exception handling</h4>
+<p>New possibilities have been added in the management of observable objects (<em>Plugin</em> and <em>Reader</em>).</p>
+<p>If the Plugin or Reader is observable, it is now necessary to define exception handlers that will be called by the internal layers of Keyple in the case of an exception raised by an observation process.</p>
+<p>Two new interfaces have been added to the <em>event</em> package to allow applications via the factories of the concerned plugins to define the method that will be called when needed:</p>
+<ul>
+<li><code>PluginObservationExceptionHandler</code></li>
+<li><code>ReaderObservationExceptionHandler</code></li>
+</ul>
+<p>These handlers are usually provided by the application via the constructor of the plugin&rsquo;s factory.</p>
+<h4 id=pcsc-plugin>PC/SC plugin</h4>
+<p>The generic parameterization interface for plugins and readers has been removed in favor of methods specific to each plugin.</p>
+<p>In the case of the PC/SC plugin, the following methods have appeared:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PcscPlugin</td>
+<td><code>setReaderNameFilter</code></td>
+</tr>
+<tr>
+<td>PcscPlugin</td>
+<td><code>setProtocolIdentificationRule</code></td>
+</tr>
+<tr>
+<td>PcscReader</td>
+<td><code>setSharingMode</code></td>
+</tr>
+<tr>
+<td>PcscReader</td>
+<td><code>setContactless</code></td>
+</tr>
+<tr>
+<td>PcscReader</td>
+<td><code>setIsoProtocol</code></td>
+</tr>
+<tr>
+<td>PcscReader</td>
+<td><code>setDisconnectionMode</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id=keyple-distributed>Keyple Distributed</h4>
+<p>The use of Keyple in a remote context has been extensively reviewed and its description is beyond the scope of this guide. Please refer to the <a href=../../../../archives/docs-1.0/developer-guide/distributed-application/>distributed application</a> section.</p>
+<hr>
+<h2 id=upgrade-from-081-to-090>Upgrade from 0.8.1 to 0.9.0</h2>
+<h3 id=whats-changed-1>What&rsquo;s changed?</h3>
+<p>From a user API point of view, the changes relate to the following topics:
+From a user API point of view, the changes relate to the following topics:</p>
+<ul>
+<li><a href=#plugin-registration-in-the-seproxyservice>plugin registration in the SeProxyService</a></li>
+<li><a href=#preparation-of-selection-cases>preparation of selection cases</a></li>
+<li><a href=#retrieving-selection-results>retrieving selection results</a></li>
+<li><a href=#definition-of-the-security-settings-of-the-transaction>definition of the security settings of the transaction</a></li>
+<li><a href=#creation-of-the-potransaction-object>creation of the PoTransaction object</a></li>
+<li><a href=#transaction-commands-preparation>transaction commands preparation</a></li>
+<li><a href=#transaction-commands-processing>transaction commands processing</a></li>
+<li><a href=#retrieving-data-read-from-pos>retrieving data read from POs</a></li>
+<li><a href=#error-handling>error handling</a></li>
+</ul>
+<h3 id=plugin-registration-in-the-seproxyservice>Plugin registration in the SeProxyService</h3>
+<p>The <code>registerPlugin</code> method of the <code>SeProxyService</code> class now returns the reference of the registered plugin.</p>
+<p>This makes it possible, for example, to perform a reader setup in an application such as this one:</p>
+<pre><code class=language-java>   // Create a PcscPlugin and register it into the SeProxyService
+   ReaderPlugin pcscPlugin = seProxyService.registerPlugin(new PcscPluginFactory());`
+
+   // Get the PO reader from the plugin
+   SeReader poReader = pcscPlugin.getReader(&quot;ASK LoGO 0&quot;);
+</code></pre>
+<h3 id=preparation-of-selection-cases>Preparation of selection cases</h3>
+<p>The <code>AidSelector</code>, <code>Selector</code> and <code>PoSelector</code> classes now follow the Fluent Builder pattern for better handling of optional parameters.</p>
+<p>The construction of an <code>AidSelector</code> is as follows:</p>
+<pre><code class=language-java>AidSelector appAidSelector = AidSelector.builder()
+                            .aidToSelect(AID)
+                            .fileControlInformation(AidSelector.FileControlInformation.FCI)
+                            .fileOccurrence(AidSelector.FileOccurrence.FIRST)
+                            .build();
+</code></pre>
+<p>The <code>fileControlInformation</code> and <code>fileOccurrence</code> fields are optional (shown here with their default values), so a simple version can be :</p>
+<pre><code class=language-java>AidSelector aidSelector = AidSelector.builder().aidToSelect(CalypsoClassicInfo.AID).build();
+</code></pre>
+<p>The construction of a <code>SeSelector</code> is as follows:</p>
+<pre><code class=language-java>seSelector = SeSelector.builder()
+                .seProtocol(SeCommonProtocols.PROTOCOL_ISO14443_4)
+                .aidSelector(appAidSelector)
+                .build();
+</code></pre>
+<p>The <code>PoSelector</code> adds the possibility to specify that an invalidated PO should be processed</p>
+<pre><code class=language-java>seSelector = SeSelector.builder()
+                .seProtocol(SeCommonProtocols.PROTOCOL_ISO14443_4)
+                .aidSelector(appAidSelector)
+                .invalidatedPo(InvalidatedPo.ACCEPT)
+                .build();
+</code></pre>
+<p>The management of PO commands to be performed after the selection step (when it has been successful) is handled by the methods of the <code>PoSelectionRequest</code> class:</p>
+<ul>
+<li>preparing to read files has been simplified and is done using the unique following method:</li>
+</ul>
+<pre><code class=language-java>public void prepareReadRecordFile(byte sfi, int recordNumber)
+</code></pre>
+<ul>
+<li>preparing to select files is done using the following method:</li>
+</ul>
+<pre><code class=language-java>public void prepareSelectFile(byte[] lid)
+public void prepareSelectFile(short lid)
+</code></pre>
+<p>Note that from now the &ldquo;prepare&rdquo; methods no longer return indexes, the data will be placed in the CalypsoPo object.</p>
+<h3 id=retrieving-selection-results>Retrieving selection results</h3>
+<p>The <code>MatchingSelection</code> class no longer exists.
+In the class <code>SelectionsResult</code> (see <code>processDefaultSelection/processExplicitSelection</code>):</p>
+<ul>
+<li>
+<p><code>getActiveSelection</code> is replaced by <code>getActiveMatchingSe</code> which returns an <code>AbstractMatchingSe</code> object (the still existing <code>hasActiveSelection</code> method must be used before)</p>
+</li>
+<li>
+<p><code>getMatchingSelection</code> is replaced by <code>getMatchingSe</code> which returns an <code>AbstractMatchingSe</code> object (may be null if the index provided does not correspond to a successful selection case)</p>
+</li>
+<li>
+<p><code>getMatchingSelections</code> now returns a Map containing a list of associated <code>AbstractMatchingSe</code> with the selection index that produced it (<code>Map&lt;Integer, AbstractMatchingSe></code>)</p>
+</li>
+<li>
+<p>a new <code>hasSelectionMatched</code> method indicates whether the selection index provided corresponds to a successful selection case</p>
+</li>
+<li>
+<p>a new <code>getActiveSelectionIndex</code> method returns the index of the active selection (the still existing <code>hasActiveSelection</code> method must be used before)</p>
+</li>
+</ul>
+<h3 id=definition-of-the-security-settings-of-the-transaction>Definition of the security settings of the transaction</h3>
+<p>These parameters are defined via the <code>PoSecuritySettings</code> class, whose construction now follows the Fluent Builder pattern.</p>
+<p>All parameters are optional except the <code>SamResource</code>.</p>
+<p>Here is an example of a complete <code>PoSecuritySettings</code> build:</p>
+<pre><code class=language-java>poSecuritySettings = new PoSecuritySettings.PoSecuritySettingsBuilder(samResource)
+                            .sessionDefaultKif(AccessLevel.SESSION_LVL_PERSO, DEFAULT_KIF_PERSO)
+                            .sessionDefaultKif(AccessLevel.SESSION_LVL_LOAD, DEFAULT_KIF_LOAD)
+                            .sessionDefaultKif(AccessLevel.SESSION_LVL_DEBIT, DEFAULT_KIF_DEBIT)
+                            .sessionDefaultKeyRecordNumber(AccessLevel.SESSION_LVL_PERSO, DEFAULT_KEY_RECORD_NUMBER_PERSO)
+                            .sessionDefaultKeyRecordNumber(AccessLevel.SESSION_LVL_LOAD, DEFAULT_KEY_RECORD_NUMBER_LOAD)
+                            .sessionDefaultKeyRecordNumber(AccessLevel.SESSION_LVL_DEBIT, DEFAULT_KEY_RECORD_NUMBER_DEBIT)
+                            .sessionModificationMode(ModificationMode.ATOMIC)
+                            .ratificationMode(RatificationMode.CLOSE_RATIFIED)
+                            .sessionAuthorizedKvcList(authKvcs)
+                            .build();
+</code></pre>
+<h3 id=creation-of-the-potransaction-object>Creation of the PoTransaction object</h3>
+<p>Since PoSecuritySettings now integrates SamResource, the construction of PoTransaction has evolved slightly.</p>
+<p>Here is an example:</p>
+<pre><code class=language-java>PoTransaction poTransaction = new PoTransaction(new PoResource(poReader, calypsoPo), poSecuritySettings);
+</code></pre>
+<h3 id=transaction-commands-preparation>Transaction commands preparation</h3>
+<p>Just as with the &ldquo;prepare&rdquo; commands used for selection, the &ldquo;prepare&rdquo; commands used for transactions no longer return indexes.</p>
+<p>The available commands in version 0.9 are:</p>
+<pre><code class=language-java>public final void prepareSelectFile(SelectFileControl control)
+public final void prepareSelectFile(short lid)
+public final void prepareSelectFile(byte[] lid)
+public final void prepareReadRecordFile(byte sfi, int recordNumber)
+public final void prepareReadRecordFile(byte sfi, int firstRecordNumber, int numberOfRecords, int recordSize))
+public final void prepareReadCounterFile(byte sfi, int countersNumber)
+public final void prepareUpdateRecord(byte sfi, int recordNumber, byte[] recordData)
+public final void prepareWriteRecord(byte sfi, int recordNumber, byte[] recordData)
+public final void prepareAppendRecord(byte sfi, byte[] recordData)
+public final void prepareIncreaseCounter(byte sfi, int counterNumber, int incValue)
+public final void prepareDecreaseCounter(byte sfi, int counterNumber, int decValue)
+</code></pre>
+<h3 id=transaction-commands-processing>Transaction commands processing</h3>
+<p>The &ldquo;process&rdquo; commands have also been revised and simplified.</p>
+<p>They all return <code>void</code>.</p>
+<p>In case of failure a exception is raised (see below).</p>
+<pre><code class=language-java>public final void processOpening(PoTransaction.SessionSetting.AccessLevel accessLevel)
+</code></pre>
+<p>The <code>ModificationMode</code> is no longer required since it is integrated in the <code>PoSecuritySettings</code>.</p>
+<p>Parameters previously used to specify that a file is read at login are removed.</p>
+<p>Instead, the first prepareReadFile command will be automatically taken into account.</p>
+<pre><code class=language-java>public final void processPoCommands()
+public final void processPoCommandsInSession()
+public final void processCancel(ChannelControl channelControl)
+public final void processClosing(ChannelControl channelControl)
+</code></pre>
+<h3 id=retrieving-data-read-from-pos>Retrieving data read from POs</h3>
+<p>This is a major evolution of the Keyple API. Previously, data read from Calyspo POs were retrieved by applications using &ldquo;parser&rdquo; methods.</p>
+<p>With Keyple API 0.9, Calypso PO data is made available in the CalypsoPo object obtained during selection and enriched all along the operations performed with PoTransaction.</p>
+<p>The public getter methods of CalypsoPo are:</p>
+<pre><code class=language-java>public final String getDfName()
+public final byte[] getDfNameBytes()
+public final String getApplicationSerialNumber()
+public final byte[] getApplicationSerialNumberBytes()
+
+public final String getAtr()
+public final String getStartupInfo()
+public final PoRevision getRevision()
+public final byte getSessionModification()
+public final byte getApplicationType()
+public final byte getApplicationSubtype()
+public final byte getPlatform()
+public final byte getSoftwareIssuer()
+public final byte getSoftwareVersion()
+public final byte getSoftwareRevision()
+
+public final boolean isDeselectRatificationSupported()
+public final boolean isConfidentialSessionModeSupported()
+public final boolean isPublicAuthenticationSupported()
+public final boolean isPinFeatureAvailable()
+public final boolean isSvFeatureAvailable()
+
+public final boolean isDfInvalidated()
+public final boolean isDfRatified()
+
+public final DirectoryHeader getDirectoryHeader()
+public final ElementaryFile getFileBySfi(byte sfi)
+public final ElementaryFile getFileByLid(short lid)
+public final Map&lt;Byte, ElementaryFile&gt; getAllFiles()
+</code></pre>
+<p>Four new classes <code>DirectoryHeader</code>, <code>ElementaryFile</code>, <code>FileHeader</code> and <code>FileData</code> have been added.</p>
+<h5 id=directoryheader>DirectoryHeader</h5>
+<p>The public getters for this class are:</p>
+<pre><code class=language-java>public short getLid()
+public byte[] getAccessConditions()
+public byte[] getKeyIndexes()
+
+public byte getDfStatus()
+public byte getKif(AccessLevel level)
+public byte getKvc(AccessLevel level)
+
+public String toString()
+</code></pre>
+<h5 id=elementaryfile>ElementaryFile</h5>
+<p>The public getters for this class are:</p>
+<pre><code class=language-java>public byte getSfi()
+public FileHeader getHeader()
+public FileData getData()
+
+public String toString()
+</code></pre>
+<h5 id=fileheader>FileHeader</h5>
+<p>The public getters for this class are:</p>
+<pre><code class=language-java>public short getLid()
+public int getRecordsNumber()
+public int getRecordSize()
+public FileType getType()
+public byte getDfStatus()
+
+public boolean isShared()
+public Short getSharedReference()
+public byte[] getAccessConditions()
+public byte[] getKeyIndexes()
+
+public String toString()
+</code></pre>
+<h5 id=filedata>FileData</h5>
+<p>The public getters for this class are:</p>
+<pre><code class=language-java>public byte[] getContent()
+public byte[] getContent(int numRecord)
+public byte[] getContent(int numRecord, int dataOffset, int dataLength)
+public SortedMap&lt;Integer, byte[]&gt; getAllRecordsContent()
+
+public int getContentAsCounterValue(int numCounter)
+public SortedMap&lt;Integer, Integer&gt; getAllCountersValue()
+
+public String toString()
+</code></pre>
+<p>So, for example to extract the contents of contract files present in the PO, the code might look like this:</p>
+<pre><code class=language-java>[...]
+    /* Read all 4 contracts command, record size set to 29 */
+    poTransaction.prepareReadRecordFile(CalypsoClassicInfo.SFI_Contracts,
+            CalypsoClassicInfo.RECORD_NUMBER_1, 4, 29);
+    /* proceed with the sending of commands, don't close the channel */
+    poTransaction.processPoCommandsInSession();
+
+    ElementaryFile efContracts = calypsoPo.getFileBySfi(CalypsoClassicInfo.SFI_Contracts);
+
+    SortedMap&lt;Integer, byte[]&gt; records = efContracts.getData().getAllRecordsContent();
+    for (Map.Entry&lt;Integer, byte[]&gt; entry : records.entrySet()) {
+        logger.info(&quot;Contract #{}: {}&quot;, entry.getKey(),
+                ByteArrayUtil.toHex(entry.getValue()));
+    }
+[...]
+</code></pre>
+<h2 id=error-handling>Error handling</h2>
+<p>Since version 0.9, all Keyple exceptions are of the RuntimeException type.</p>
+<p>Catching exceptions is therefore now optional.</p>
+<p>However, it is possible to selectively catch certain exceptions in order to deal with particular cases.</p>
+<p>The new hierarchy of Keyple exceptions is shown <a href="https://keyple.atlassian.net/projects/KEYP/issues/KEYP-154?filter=allissues&orderby=priority%20DESC&keyword=exceptions" target=_blank rel=noopener>here</a></p>
+</div>
+<div class=article-widget>
+<div class=post-nav>
+<div class=post-nav-item>
+<div class=meta-nav>Previous</div>
+<a href=../../../../archives/docs-1.0/developer-guide/create-extension/ rel=next>Create an extension</a>
+</div>
+</div>
+</div>
+</div>
+<div class=body-footer>
+<p>Last updated on 2023-11-29</p>
+</div>
+</article>
+<footer class=site-footer>
+<div class=container>
+<div class="row featurette">
+<div class="col-12 col-sm-4">
+<p style=color:#fff><b>ECLIPSE LEGAL</b></p>
+<a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a><br>
+<a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a><br>
+<a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a><br>
+<a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a><br>
+<a href=https://www.eclipse.org/legal/>Legal Resources</a><br>
+<a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a><br>
+</div>
+<div class="col-12 col-sm-4">
+<a href=https://www.eclipse.org target=_blank>
+<img src=../../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
+</a>
+</div>
+<div class="col-12 col-sm-4">
+<a href=https://iot.eclipse.org target=_blank>
+<img src=../../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
+</a>
+</div>
+</div>
+</div>
+<p class=powered-by id=copyright>
+© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.
+</p>
+<p class=powered-by id=template-info>
+Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-themes target=_blank rel=noopener>open source</a> website builder that empowers creators.
+</p>
+</footer>
+</main>
+</div>
+</div>
+</div>
+<div class=page-footer>
+</div>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Cite</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Copy
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Download
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+<script src=../../../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/java.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/groovy.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/xml.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/kotlin.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/cpp.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/gradle.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/ini.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/make.min.js crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin=anonymous></script>
+<script>anchors.add()</script>
+<script id=search-hit-fuse-template type=text/x-template>
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+<script src=../../../../en/js/wowchemy.min.735dd22779eecc9f58d38921584770aa.js></script>
+<link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
+<script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
+<script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
+</body>
+</html>

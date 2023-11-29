@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keypop | Eclipse Keyple</title><link>https://keyple.org/tag/keypop/</link><atom:link href="https://keyple.org/tag/keypop/index.xml" rel="self" type="application/rss+xml"/><description>Keypop</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.</copyright><lastBuildDate>Tue, 28 Nov 2023 12:00:00 +0100</lastBuildDate><image><url>https://keyple.org/media/logo.svg</url><title>Keypop</title><link>https://keyple.org/tag/keypop/</link></image><item><title>Keyple adopts the Eclipse Keypop API!</title><link>https://keyple.org/post/keypop/</link><pubDate>Tue, 28 Nov 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/keypop/</guid><description>&lt;p>The field of compliance management for ticketing terminals has recently seen a paradigm shift with the launch of the
+&lt;a href="https://keypop.org" target="_blank" rel="noopener">Eclipse Keypop&lt;/a> project.
+This initiative defines a series of UML-compliant interfaces established by
+the &lt;a href="https://calypsonet.org" target="_blank" rel="noopener">Calypso Networks Association&lt;/a>.&lt;/p>
+&lt;p>As a result, the Keyple SDK components are upgraded to a new version, which adopts the Keypop APIs in place of the CNA
+Terminal APIs.
+As well as implementing these new APIs, this upgrade removes classes and methods previously marked as deprecated and
+brings a number of additional improvements.
+The main enhancement is the processing of Calypso cards.&lt;/p>
+&lt;p>Keypop introduces new APIs for managing cryptographic components, in particular SAMs and PKI service providers.&lt;/p>
+&lt;p>These innovations pave the way for new solutions, particularly in view of the forthcoming &lt;strong>Open SAM&lt;/strong>
+and &lt;strong>PKI-based card transactions&lt;/strong>.&lt;/p>
+&lt;p>For this purpose, the &lt;strong>Calypso Card&lt;/strong> library and the new &lt;strong>Calypso Legacy SAM&lt;/strong> library are now based on these new
+Keypop APIs.
+Details of changes to Keyple components are described in the CHANGELOG files at the root of each corresponding
+repository and the Keyple website has been updated accordingly.&lt;/p>
+&lt;p>Here is the list of libraries affected by the Keypop update:&lt;/p>
+&lt;ul>
+&lt;li>Core
+&lt;ul>
+&lt;li>&lt;a href="../../components/core/keyple-service-lib/">Service&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../components/core/keyple-service-resource-lib/">Service Resource&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Card extension add-ons
+&lt;ul>
+&lt;li>&lt;a href="../../components/card-extensions/keyple-card-calypso-lib/">Calypso Card&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/">Calypso Legacy SAM&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../components/card-extensions/keyple-card-generic-lib/">Generic&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Reader plugin add-ons
+&lt;ul>
+&lt;li>&lt;a href="../../components/standard-reader-plugins/keyple-plugin-cardresource-lib/">Card Resource&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Distributed add-ons
+&lt;ul>
+&lt;li>&lt;a href="../../components/distributed/keyple-distributed-local-lib/">Local&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../components/distributed/keyple-distributed-network-lib/">Network&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../components/distributed/keyple-distributed-remote-lib/">Remote&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item></channel></rss>

@@ -14,7 +14,7 @@
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
-<link rel=stylesheet href=../../css/wowchemy.89ae5919d5f0b7c63f18f9ce41ed6c86.css>
+<link rel=stylesheet href=../../css/wowchemy.7ccc95ad09c8b2b61bf75bd806337be2.css>
 <script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
 <link rel=alternate href=../../community/roadmap/index.xml type=application/rss+xml title="Eclipse Keyple">
 <link rel=manifest href=../../manifest.webmanifest>
@@ -82,17 +82,8 @@
 <li class=nav-item>
 <a class=nav-link href=../../learn/overview><span>Learn</span></a>
 </li>
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Components</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../components-java/overview/><span>Java implementation v2+</span></a>
-<a class=dropdown-item href=../../components-cpp/overview/><span>C++ implementation v2+</span></a>
-<a class=dropdown-item href=../../><span> </span></a>
-<a class=dropdown-item href=../../learn/user-guide/migrate-to-2-0><span>Guide to migrate from v1.0 to v2+</span></a>
-<a class=dropdown-item href=../../components-java-1.0/><span>Java implementation v1.0 (deprecated)</span></a>
-<a class=dropdown-item href=../../components-cpp-0.9/><span>C++ implementation v0.9 (deprecated)</span></a>
-</div>
+<li class=nav-item>
+<a class=nav-link href=../../components/overview><span>Components</span></a>
 </li>
 <li class="nav-item dropdown">
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
@@ -106,6 +97,7 @@
 <a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
 <a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
 <a class=dropdown-item href=https://github.com/eclipse/keyple/><span>GitHub home repository</span></a>
+<a class=dropdown-item href=../../archives/><span>Archives</span></a>
 </div>
 </li>
 <li class="nav-item dropdown">
@@ -186,7 +178,7 @@
 <h2 id=current-work>Current work</h2>
 <ul>
 <li>Refactoring of the Calypso API to support extensions of different kind of Calypso SAM solutions (current legacy SAM-C1, coming Open-SAM, or crypto libraries for PKI).</li>
-<li>Support of the Calypso secure session based on asymmetric authentication (REV3.3 Prime PKI based on ECC)</li>
+<li>Support of the Calypso secure session based on asymmetric authentication (REV3.3 Prime PKI based on ECC).</li>
 </ul>
 <h2 id=long-term-study>Long-term study</h2>
 <ul>
@@ -207,6 +199,14 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>2023/11</td>
+<td><mark>not supported</mark></td>
+<td><ul><li><b>Keyple adopts the Eclipse Keypop API</b>
+<ul><li>The Keyple SDK is enhanced by the Eclipse Keypop project with new UML-compliant interfaces and APIs, offering
+new possibilities for the management of SAMs and PKI cards.</li>
+</ul></li></ul></td>
+</tr>
 <tr>
 <td>2023/04</td>
 <td><mark>not supported</mark></td>
@@ -259,8 +259,8 @@ The porting in C++ of Keyple Java is based on the same Object-Oriented Model. Th
 <td>2021/10</td>
 <td>2022/07</td>
 <td><ul><li><b>Calypso terminal compliance</b>
-<ul><li>The <a href=https://keyple.org/components-java/core/keyple-service-java-lib/>Keyple Service</a> component implements the <a href=https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/>Reader API 1.0</a> and <a href=https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/>Card API 1.0</a> standardized for the reader layer of Calypso terminals. The implementation is compliant with the <a href=https://calypsonet.org/calypso-for-terminals/>reader layer requirements</a> for Calypso terminals</li>
-<li>The <a href=https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/>Calypso card extension</a> library in version 2.0.0 follows also the <a href=https://calypsonet.org/calypso-for-terminals/>Calypso layer requirements</a> defined for Calypso terminals, it implements the <a href=https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-api/>Calypso API 1.0</a>.</li></ul>
+<ul><li>The <a href=https://keyple.org/components/core/keyple-service-lib/>Keyple Service</a> component implements the <a href=https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/>Reader API 1.0</a> and <a href=https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/>Card API 1.0</a> standardized for the reader layer of Calypso terminals. The implementation is compliant with the <a href=https://calypsonet.org/calypso-for-terminals/>reader layer requirements</a> for Calypso terminals</li>
+<li>The <a href=https://keyple.org/components/card-extensions/keyple-card-calypso-lib/>Calypso card extension</a> library in version 2.0.0 follows also the <a href=https://calypsonet.org/calypso-for-terminals/>Calypso layer requirements</a> defined for Calypso terminals, it implements the <a href=https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-api/>Calypso API 1.0</a>.</li></ul>
 <li><b>Removal of dependencies</b> between Keyple components (Core, Calypso extension, and specific plugins): all components are released with their own version number and could evolve separately.
 <ul><li>Until the version 1.0.0, the source code of all the Keyple Java components was hosted in a single repository: <a href=https://github.com/eclipse/keyple-java>https://github.com/eclipse/keyple-java</a>. It was the same for Keyple C++ components hosted in <a href=https://github.com/eclipse/keyple-cpp>https://github.com/eclipse/keyple-cpp</a>. For the version 1.0.0 and below, there were strong dependencies between the Keyple components which had all to be released in the same version number.</li>
 <li>To facilitate the evolution and the maintenance, the version 2.0.0 proposes a full reorganization of the code. All the components are split in different repositories in order to allow them to evolve independently. The public interfaces are also separated to the specific implementations: the repositories are dedicated to host API or library implementation.</li>
@@ -301,7 +301,7 @@ The porting in C++ of Keyple Java is based on the same Object-Oriented Model. Th
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-05-12</p>
+<p>Last updated on 2023-11-29</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -392,7 +392,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../en/js/wowchemy.min.8414c33d590e497d63ce70adeefc8179.js></script>
+<script src=../../en/js/wowchemy.min.735dd22779eecc9f58d38921584770aa.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
