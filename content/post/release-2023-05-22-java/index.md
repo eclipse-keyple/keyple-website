@@ -21,4 +21,4 @@ For this purpose, the following two methods have been added to the `CardSelectio
 - `importProcessedCardSelectionScenario`.
 
 For more information, please visit the component
-[page]({{< relref "/components-java/core/keyple-service-java-lib" >}}).
+[page]({{< relref "/components/core/keyple-service-lib" >}}).

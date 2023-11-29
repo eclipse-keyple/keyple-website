@@ -10,7 +10,7 @@ weight: 2
 ---
 ## Current work 
  - Refactoring of the Calypso API to support extensions of different kind of Calypso SAM solutions (current legacy SAM-C1, coming Open-SAM, or crypto libraries for PKI).
- - Support of the Calypso secure session based on asymmetric authentication (REV3.3 Prime PKI based on ECC)
+ - Support of the Calypso secure session based on asymmetric authentication (REV3.3 Prime PKI based on ECC).
 
 ## Long-term study 
  - to provide a Hoplink extension (based on a high-level API on top of the Calypso Card API).
@@ -31,6 +31,14 @@ weight: 2
   </tr>
 </thead>
 <tbody>
+  <tr>
+    <td>2023/11</td>
+    <td><mark>not supported</mark></td>
+    <td><ul><li><b>Keyple adopts the Eclipse Keypop API</b>
+    <ul><li>The Keyple SDK is enhanced by the Eclipse Keypop project with new UML-compliant interfaces and APIs, offering 
+    new possibilities for the management of SAMs and PKI cards.</li>
+    </ul></li></ul></td>
+  </tr>
   <tr>
     <td>2023/04</td>
     <td><mark>not supported</mark></td>
@@ -86,8 +94,8 @@ The porting in C++ of Keyple Java is based on the same Object-Oriented Model. Th
     <td>2021/10</td>
     <td>2022/07</td>
    <td><ul><li><b>Calypso terminal compliance</b>
-   <ul><li>The <a href="https://keyple.org/components-java/core/keyple-service-java-lib/">Keyple Service</a> component implements the <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/">Reader API 1.0</a> and <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/">Card API 1.0</a> standardized for the reader layer of Calypso terminals. The implementation is compliant with the <a href="https://calypsonet.org/calypso-for-terminals/">reader layer requirements</a> for Calypso terminals</li>
-   <li>The <a href="https://keyple.org/components-java/card-extensions/keyple-card-calypso-java-lib/">Calypso card extension</a> library in version 2.0.0 follows also the <a href="https://calypsonet.org/calypso-for-terminals/">Calypso layer requirements</a> defined for Calypso terminals, it implements the <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-api/">Calypso API 1.0</a>.</li></ul>
+   <ul><li>The <a href="https://keyple.org/components/core/keyple-service-lib/">Keyple Service</a> component implements the <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/">Reader API 1.0</a> and <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/">Card API 1.0</a> standardized for the reader layer of Calypso terminals. The implementation is compliant with the <a href="https://calypsonet.org/calypso-for-terminals/">reader layer requirements</a> for Calypso terminals</li>
+   <li>The <a href="https://keyple.org/components/card-extensions/keyple-card-calypso-lib/">Calypso card extension</a> library in version 2.0.0 follows also the <a href="https://calypsonet.org/calypso-for-terminals/">Calypso layer requirements</a> defined for Calypso terminals, it implements the <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-api/">Calypso API 1.0</a>.</li></ul>
     <li><b>Removal of dependencies</b> between Keyple components (Core, Calypso extension, and specific plugins): all components are released with their own version number and could evolve separately.
      <ul><li>Until the version 1.0.0, the source code of all the Keyple Java components was hosted in a single repository: <a href="https://github.com/eclipse/keyple-java">https://github.com/eclipse/keyple-java</a>. It was the same for Keyple C++ components hosted in <a href="https://github.com/eclipse/keyple-cpp">https://github.com/eclipse/keyple-cpp</a>. For the version 1.0.0 and below, there were strong dependencies between the Keyple components which had all to be released in the same version number.</li>
 <li>To facilitate the evolution and the maintenance, the version 2.0.0 proposes a full reorganization of the code. All the components are split in different repositories in order to allow them to evolve independently. The public interfaces are also separated to the specific implementations: the repositories are dedicated to host API or library implementation.</li>

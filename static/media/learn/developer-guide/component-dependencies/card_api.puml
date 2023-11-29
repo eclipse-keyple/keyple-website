@@ -64,7 +64,7 @@ hide <<grey>> stereotype
 
 ' == COMPONENTS ==
 
-[Client Application] as application <<blue>>
+[Application] as application <<blue>>
 package "Common API" as packCommonApi {
     interface " " as commonApi <<green>>
 }
@@ -72,7 +72,7 @@ package "Card Extension Xxx" as packExtension {
     interface " " as specificCardExtensionApi <<green>>
     [Adapter] as extension <<green>>
 }
-package "Calypsonet Terminal Reader API" as packReaderApi {
+package "Keypop Reader API" as packReaderApi {
     interface "\nReader API" as readerApi
     interface "\nSelection API" as selectionApi
     interface "\nSelection SPI" as selectionSpi <<green>>
@@ -81,7 +81,7 @@ package "Keyple Service" as packService {
     interface " " as serviceApi
     [Adapter] as service
 }
-package "Calypsonet Terminal Card API" as packCardApi {
+package "Keypop Card API" as packCardApi {
     interface "SPI" as cardSpi <<green>>
     interface "API" as cardApi
 }

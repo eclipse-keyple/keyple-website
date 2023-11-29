@@ -4,7 +4,7 @@ linktitle: Upgrade Keyple
 summary: How to upgrade an existing Keyple application using an earlier version.
 type: book
 toc: true
-weight: 6
+weight: 7
 ---
 
 ---
@@ -20,7 +20,7 @@ Here is a comparative review of the main API changes between Keyple 1.0.0 and 2.
 
 ### Dependency management
 
-Use the [configuration wizard]({{< relref "/components-java/overview/configuration-wizard" >}}) to correctly import the new artifacts into your project.
+Use the [configuration wizard]({{< relref "/components/overview/configuration-wizard" >}}) to correctly import the new artifacts into your project.
 
 ### Initial configuration
 
@@ -225,7 +225,7 @@ SmartCard smartCard =
 
 #### SAM management
 
-The SAM resource manager has been replaced by a generic [Card Resource Service]({{< relref "/components-java/core/keyple-service-resource-java-lib" >}}).
+The SAM resource manager has been replaced by a generic [Card Resource Service]({{< relref "/components/core/keyple-service-resource-lib" >}}).
 
 #### Card transaction
 

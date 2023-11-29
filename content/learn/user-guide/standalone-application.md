@@ -54,8 +54,8 @@ Android NFC plugin or one of the plugins available from the industrial
 partners of the project.
 
 For a complete list of available plugins, please see
-the [standard reader plugins]({{< ref "components-java/standard-reader-plugins/_index.md" >}}),
-the [specific reader plugins]({{< ref "components-java/specific-reader-plugins/_index.md" >}})
+the [standard reader plugins]({{< ref "components/standard-reader-plugins/_index.md" >}}),
+the [specific reader plugins]({{< ref "components/specific-reader-plugins/_index.md" >}})
 or one of our [partners reader plugins]({{< ref "external-resources/external-add-ons/" >}}).
 
 {{% callout note %}}
@@ -214,7 +214,7 @@ To enable these observation mechanisms, it is imperative to provide:
 - a reader observer implementing the `CardReaderObserverSpi` interface to be notified of reader events,
 - an exception handler implementing the `CardReaderObservationExceptionHandlerSpi` interface to be notified of errors that may occur during the monitoring or events notifications.
 
-These two interfaces are available in the `org.calypsonet.terminal.reader.spi` package of the **Calypsonet Terminal Reader API** component.
+These two interfaces are available in the `org.eclipse.keypop.reader.spi` package of the **Keypop Reader API** component.
 
 Here is an example of a reader observer class including an exception handler:
 
@@ -266,69 +266,78 @@ Moreover, the notification process is sequential and synchronous.
 ---
 ## Select a card
 
-The starting point of any processing done with a card in the Keyple enrivonment, is to reference this card in the system. 
+The starting point of any processing done with a card in the Keyple environment, is to reference this card in the system. 
 It is the role of the selection step to obtain this reference.
 
 You have first to prepare a selection scenario defining the eligible cards for a transaction, then to execute the scenario when a card is present.
 
 ### Prepare a scenario
 
-To prepare a scenario, you have to get a new instance of `CardSelectionManager` from the smart card service using the `createCardSelectionManager()` method,
+To prepare a scenario, you have to get a new instance of `CardSelectionManager` from the smart card service using the 
+`getReaderApiFactory().createCardSelectionManager()` method,
 then configure it with scenario cases using dedicated methods provided by one or more card extensions.
 
 {{< code lang="java" >}}
-CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();```
+CardSelectionManager cardSelectionManager = smartCardService.getReaderApiFactory().createCardSelectionManager();
 {{< /code >}}
 
-The `prepareSelection(...)` method allows to add a selection case to the scenario by providing an implementation of the `CardSelection` interface and return the index of the added case in order to be able to identify later the case that matched.
+The `prepareSelection(...)` method allows to add a selection case to the scenario by providing a specific `CardSelector`
+and an implementation of the `CardSelectionExtension` interface.
+The method will return the index of the added case in order to be able to identify later the case that matched.
 
-Please note that the order of addition is important because it will impact the selection cycle and favor the performance of the first added cases. 
+Please note that the order of addition is important because it will impact the selection cycle and favor the performance
+of the first added cases. 
 
 Providing one or more selection cases to the `CardSelectionManager` constitutes a selection scenario.
 The scenario is run by Keyple Service when a card is detected, the different cases being evaluated
 sequentially as long as the card does not match the criteria of the defined cases.
 
-The selection process for a case offers several options for selecting a processing based on the type of card presented to the reader.
+The selection process for a case offers several options for selecting a processing based on the type of card presented 
+to the reader.
 
-It is based on a filtering process according to three possible criteria,
-each of which is optional:
-* the communication protocol of the card (usually also identifying a
-  card technology)
-* the power-on data collected by the reader when the card is detected (e.g. the Answer To Reset)
+It is based on a filtering process according to three possible criteria, each of which is optional:
+* the communication protocol of the card (usually also identifying a card technology),
+* the power-on data collected by the reader when the card is detected (e.g. the Answer To Reset),
 * the ISO standard application identifier (AID) used to perform a Select Application command.
 
-When a card is inserted, it is evaluated according to these criteria and
-will be given the status "selected" or not.
+When a card is inserted, it is evaluated according to these criteria and will be given the status "selected" or not.
 
 When a card is not selected, no other operation will be possible with it.
 
 The same card could correspond to several cases of the same scenario, especially when filtering by AID.
 By default, the selection process will stop at the first case that matches.
 It is however possible to choose another strategy using the `setMultipleSelectionMode()` method.
-In this case, the process will continue to the last selection case in the scenario and return all results, but only the last matching application will be selected.
+In this case, the process will continue to the last selection case in the scenario and return all results, 
+but only the last matching application will be selected.
 
 When a card is selected, the `CardSelectionManager` will make available the result
-as a `SmartCard` object containing all the information known about the card at that stage.
+as a `SmartCard` (or `IsoSmartCard` if an `IsoCardSelector` is used) containing all the information known about the 
+card at that stage.
 
 Depending on the card extension that is used, this `SmartCard` object can be cast to a more
 comprehensive object with specific features defined by the extension.
 
-In addition to the selection process itself, specific APDU commands may be sent to the card if the selection is successful.
+In addition to the selection process itself, specific APDU commands may be sent to the card if the selection is 
+successful.
 The output of these commands is available in the instance of the `SmartCard` object.
 
 The following snippet shows the preparation of two selection cases using the generic card extension:
 {{< code lang="java" >}}
 // prepare a selection for application 1
 int firstCaseIndex = cardSelectionManager.prepareSelection(
+    smartCardService.getReaderApiFactory()
+        .createIsoCardSelector()
+        .filterByDfName(AID1),
     GenericExtensionService.getInstance()
-        .createCardSelection()
-        .filterByDfName(AID1));
+        .createGenericCardSelectionExtension());
 
 // prepare a selection for application 2
 int secondCaseIndex = cardSelectionManager.prepareSelection(
+    smartCardService.getReaderApiFactory()
+        .createIsoCardSelector()
+        .filterByDfName(AID2),
     GenericExtensionService.getInstance()
-        .createCardSelection()
-        .filterByDfName(AID2));
+        .createGenericCardSelectionExtension());
 {{< /code >}}
 
 ### Run a scenario
@@ -359,9 +368,8 @@ In this case, it is necessary to register a reader observer and to have started 
 
 Use the `parseScheduledCardSelectionsResponse(...)` method to extract the selection result from the event.
 
-Note that the scheduling of the execution of a scenario includes two options:
-* the `DetectionMode` defining the expected behavior regarding the card detection allowing to automatically restart it or not.
-* the `NotificationMode` allowing to choose if only the cards matching the selection (successfully selected) should trigger an event.
+Note that the scheduling of the execution of a scenario includes the `NotificationMode` option allowing to choose if 
+only the cards matching the selection (successfully selected) should trigger an event.
 
 {{< code lang="java" >}}
 ...
@@ -390,7 +398,8 @@ public void onReaderEvent(CardReaderEvent event) {
 {{< /code >}}
 
 {{% callout note %}}
-The `finalizeCardProcessing()` method must be invoked at the end of the transaction to ensure that the communication channel is closed.
+The `finalizeCardProcessing()` method must be invoked at the end of the transaction to ensure that the communication 
+channel is closed.
 This switches the underlying monitoring thread into a state of waiting for the card to be removed.
 
 Not doing this can lead to blocking states of the card insertion/removal monitoring mechanism.
@@ -399,13 +408,16 @@ Not doing this can lead to blocking states of the card insertion/removal monitor
 ---
 ## Perform a transaction
 
-Once the smart card is referenced in the system it is possible to perform the desired transaction using the appropriate card extension.
+Once the smart card is referenced in the system it is possible to perform the desired transaction using the appropriate
+card extension.
 
-When the transaction is completed, if the reader is observed, it is imperative to invoke the `finalizeCardProcessing()` method on the observable reader (see the above note).
+When the transaction is completed, if the reader is observed, it is imperative to invoke the `finalizeCardProcessing()` 
+method on the observable reader (see the above note).
 
 ---
 ## Unregister a plugin
-To shut down a Keyple application properly, it is necessary to free the resources and in particular to close opened card physical channels and stop the observation threads.
+To shut down a Keyple application properly, it is necessary to free the resources and in particular to close opened card 
+physical channels and stop the observation threads.
 
 This is done by unregistering the plugins in the following way:
 
@@ -416,7 +428,7 @@ smartCardService.unregisterPlugin(plugin.getName());
 ---
 ## API
 
-* [Calypsonet Terminal Reader API](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/)
+* [Keypop Reader API](https://keypop.org/apis/keypop-reader-api/)
 * [Keyple Common API](https://eclipse.github.io/keyple-common-java-api)
 * [Keyple Service API](https://eclipse.github.io/keyple-service-java-lib)
 
@@ -428,4 +440,4 @@ smartCardService.unregisterPlugin(plugin.getName());
 ---
 ## Download
 
-* [Java components]({{< ref "components-java/overview/configuration-wizard" >}})
+* [Java components]({{< ref "components/overview/configuration-wizard" >}})

@@ -35,16 +35,16 @@ copyCodeContentToClipboard = function(codeId, button) {
     updateClipboard(content, button);
 }
 
-// Dynamic dependencies for "client application" profile of "configuration wizard" java page
+// Dynamic dependencies for "application" profile of "configuration wizard" java page
 const appDependencies = new Set();
 computeAppContent = function(language) {
     let tagPrefix = 'code#all-'+language+'-dependencies span#';
-    let contentHtml = $(tagPrefix+'calypsonet-terminal-reader-java-api').html();
+    let contentHtml = $(tagPrefix+'keypop-reader-java-api').html();
     if (appDependencies.has("cardCalypso")) {
-        contentHtml += "\n" + $(tagPrefix+'calypsonet-terminal-calypso-java-api').html();
+        contentHtml += "\n" + $(tagPrefix+'keypop-calypso-card-java-api').html();
     }
     if (appDependencies.has("cardCalypsoLegacySam")) {
-        contentHtml += "\n" + $(tagPrefix+'calypsonet-terminal-calypso-crypto-legacysam-java-api').html();
+        contentHtml += "\n" + $(tagPrefix+'keypop-calypso-crypto-legacysam-java-api').html();
     }
     contentHtml += "\n" + $(tagPrefix+'keyple-common-java-api').html()
         + "\n" + $(tagPrefix+'keyple-util-java-lib').html()
@@ -105,8 +105,8 @@ updateAppDependencies = function(tabRef, checkbox) {
 const cardDependencies = new Set();
 computeCardContent = function(language) {
     let tagPrefix = 'code#all-'+language+'-dependencies span#';
-    let contentHtml = $(tagPrefix+'calypsonet-terminal-reader-java-api').html()
-        + "\n" + $(tagPrefix+'calypsonet-terminal-card-java-api').html()
+    let contentHtml = $(tagPrefix+'keypop-reader-java-api').html()
+        + "\n" + $(tagPrefix+'keypop-card-java-api').html()
         + "\n" + $(tagPrefix+'keyple-common-java-api').html()
         + "\n" + $(tagPrefix+'keyple-util-java-lib').html();
     if (cardDependencies.has("cardServiceResource")) {

@@ -23,9 +23,9 @@ A typical use would be for the realization of a server providing cryptographic s
 inserted in a dedicated PC/SC reader.
 
 To realize this plugin it was necessary to make evolve the following components:
-- [**Keyple Plugin Java API**]({{< relref "/components-java/core/keyple-plugin-java-api" >}}) (2.1.0)
-- [**Keyple Service Java Lib**]({{< relref "/components-java/core/keyple-service-java-lib" >}}) (2.2.0)
-- [**Keyple Service Resource Java Lib**]({{< relref "/components-java/core/keyple-service-resource-java-lib" >}}) (2.1.0)
+- [**Keyple Plugin Java API**]({{< relref "/components/core/keyple-plugin-api" >}}) (2.1.0)
+- [**Keyple Service Java Lib**]({{< relref "/components/core/keyple-service-lib" >}}) (2.2.0)
+- [**Keyple Service Resource Java Lib**]({{< relref "/components/core/keyple-service-resource-lib" >}}) (2.1.0)
 
 For more information, please visit the component
-[page]({{< ref "components-java/standard-reader-plugins/keyple-plugin-cardresource-java-lib" >}}).
+[page]({{< ref "components/standard-reader-plugins/keyple-plugin-cardresource-lib" >}}).

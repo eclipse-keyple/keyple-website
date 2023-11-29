@@ -108,7 +108,7 @@ In this mode, the client is the initiator of the application processing followin
 He can hand over to the server whenever he wants to perform a remote ticketing service on a card present in one of his local readers.
 
 The table below shows the classes and interfaces available for this usage mode.<br>
-Interfaces marked with an asterisk "*" come from the **Calypsonet Terminal Reader API**.<br>
+Interfaces marked with an asterisk "*" come from the **Keypop Reader API**.<br>
 Interfaces marked with an asterisk "**" come from the **Keyple Service API**:
 
 | API                                         | Client                             | Server                             |
@@ -155,7 +155,7 @@ If the factory has been properly configured, then the remote plugin and reader b
 It is then possible to observe directly from the client the plugin and/or reader events (reader connection/disconnection or card insertion/removal) if desired.
 
 The table below shows the classes and interfaces available for this usage mode in the case of a **regular plugin**.<br>
-Interfaces marked with an asterisk "*" come from the **Calypsonet Terminal Reader API**.<br>
+Interfaces marked with an asterisk "*" come from the **Keypop Reader API**.<br>
 Interfaces marked with an asterisk "**" come from the **Keyple Service API**:
 
 | API                                         | Client                                        | Server                             |
@@ -175,7 +175,7 @@ The dynamic reader allocation process will search for the first available reader
 It is possible to define during the configuration phase of the local service factory a filter on the names of the pool plugins to use.
 
 The table below shows the classes and interfaces available for this usage mode in the case of a **pool plugin**.<br>
-Interfaces marked with an asterisk "*" come from the **Calypsonet Terminal Reader API**.<br>
+Interfaces marked with an asterisk "*" come from the **Keypop Reader API**.<br>
 Interfaces marked with an asterisk "**" come from the **Keyple Service API**:
 
 | API                                         | Client                                 | Server                             |
@@ -221,7 +221,10 @@ Here is the minimal algorithm to implement in a context with a **single server i
 
 {{< figure src="/media/learn/user-guide/distributed-application/distributed_synchronous.svg" caption="Keyple Distributed - Synchronous network implementation" numbered="true" >}}
 
-In a context with several server instances, a mechanism must be implemented to ensure that all messages containing information about a `serverNodeId` are routed to the server associated with a `SyncNodeServer` node having the `serverNodeId`.
+{{% callout warning %}}
+In a context with several server instances, a mechanism must be implemented to ensure that all messages containing
+a `sessionId` are routed to the same server instance.
+{{% /callout %}}
 
 ### Asynchronous
 
@@ -242,7 +245,7 @@ Here is the minimal algorithm to implement:
 
 The data exchanged between **Remote Plugin** and **Local Service** components are contained in the DTO (Data Transfer Object) `MessageDto`. It is built and processed by the plugin and **you don't need to modify it**.
 
-However, it is necessary in some contexts to access certain information such as the `sessionId` in the case of asynchronous communication or the `serverNodeId` in the case of synchronous communication with several server instances.
+However, it is necessary in some contexts to access certain information such as the `sessionId` in the case of communication with several server instances.
 
 ---
 ## API
@@ -259,4 +262,4 @@ However, it is necessary in some contexts to access certain information such as 
 ---
 ## Download
 
-* [Java components]({{< ref "components-java/overview/configuration-wizard" >}})
+* [Java components]({{< ref "components/overview/configuration-wizard" >}})

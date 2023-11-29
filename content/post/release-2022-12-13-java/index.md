@@ -12,4 +12,4 @@ Published on December 13, 2022, the **Keyple Card Calypso Crypto Legacy SAM Java
 Calypso® legacy SAMs (SAM-C1, HSM-C1, etc...).
 
 For more information, please visit the component 
-[page]({{< ref "components-java/card-extensions/keyple-card-calypso-crypto-legacysam-java-lib" >}}).
+[page]({{< ref "components/card-extensions/keyple-card-calypso-crypto-legacysam-lib" >}}).
