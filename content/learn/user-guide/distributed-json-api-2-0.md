@@ -417,7 +417,18 @@ The `MessageDto` is contained in a single-element array!
 ##### Example
 
 {{< code lang="json" >}}
-Coming soon...
+[
+   {
+      "apiLevel":2,
+      "sessionId":"5bf1ca9a-2de9-4f16-b170-5de168560179",
+      "action":"CMD",
+      "clientNodeId":"824f32f1-ccb0-447c-a103-618152eb49ba",
+      "serverNodeId":"fbf011a4-d0e2-4f3f-85c3-2ccd5be01919",
+      "localReaderName":"stubReader",
+      "remoteReaderName":"852f5841-0b5c-4922-a77a-b103cb5aac3f",
+      "body":"{\"coreApiLevel\":2,\"service\":\"TRANSMIT_CARD_SELECTION_REQUESTS\",\"parameters\":{\"multiSelectionProcessing\":\"FIRST_MATCH\",\"channelControl\":\"KEEP_OPEN\",\"cardSelectors\":[{\"fileOccurrence\":\"FIRST\",\"fileControlInformation\":\"FCI\"}],\"cardSelectionRequests\":[{\"successfulSelectionStatusWords\":[\"9000\"]}]}}"
+   }
+]
 {{< /code >}}
 
 ---

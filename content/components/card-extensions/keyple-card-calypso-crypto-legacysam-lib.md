@@ -7,18 +7,16 @@ toc: true
 ---
 
 {{% callout warning %}}
-This library is in **Beta** version.
-It is almost stable, but migration steps may be required in the future.
-We'll do our best to minimize any changes you have to make.
+This library is currently in **Beta** version as it implements the [Keypop Calypso Crypto Legacy SAM API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-calypso-crypto-legacysam-api/),
+which is also in **Beta**.
+While it's nearly stable, future migration steps might be necessary. We aim to minimize any changes you'll need to make.
 {{% /callout %}}
 
 <br>
 
-The **Keyple Card Calypso Crypto Legacy SAM Library** is an add-on to manage Calypso® legacy SAMs (SAM-C1, HSM-C1, etc...).
+The **Keyple Card Calypso Crypto Legacy SAM Library** is an add-on to manage Calypso® legacy SAMs (SAM-C1, HSM-C1, etc.).
 
 Therefore, it should be used only by application developers.
-
-It can be used on **Windows**, **Linux**, **macOS** and **Android** platforms.
 
 <br>
 

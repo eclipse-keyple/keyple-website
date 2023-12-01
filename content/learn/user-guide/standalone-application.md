@@ -428,7 +428,7 @@ smartCardService.unregisterPlugin(plugin.getName());
 ---
 ## API
 
-* [Keypop Reader API](https://keypop.org/apis/keypop-reader-api/)
+* [Keypop Reader API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/)
 * [Keyple Common API](https://eclipse.github.io/keyple-common-java-api)
 * [Keyple Service API](https://eclipse.github.io/keyple-service-java-lib)
 

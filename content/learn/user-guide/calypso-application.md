@@ -184,9 +184,9 @@ calypsoCardApiFactory
 ---
 ## API
 
-* [Keypop Reader API](https://keypop.org/apis/keypop-reader-api/)
-* [Keypop Calypso Card API](https://keypop.org/apis/keypop-calypso-card-api/)
-* [Keypop Calypso Crypto Legacy SAM API](https://keypop.org/apis/keypop-calypso-crypto-legacysam-api/)
+* [Keypop Reader API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/)
+* [Keypop Calypso Card API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-calypso-card-api/)
+* [Keypop Calypso Crypto Legacy SAM API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-calypso-crypto-legacysam-api/)
 * [Keyple Common API](https://eclipse.github.io/keyple-common-java-api)
 * [Keyple Card Calypso API](https://eclipse.github.io/keyple-card-calypso-java-lib)
 * [Keyple Card Calypso Crypto Legacy SAM API](https://eclipse.github.io/keyple-card-calypso-crypto-legacysam-java-lib)

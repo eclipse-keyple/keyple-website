@@ -12,8 +12,6 @@ The **Keyple Card Generic Library** is an add-on to manage cards with low-level 
 
 Therefore, it should be used only by application developers.
 
-It can be used on **Windows**, **Linux**, **macOS** and **Android** platforms.
-
 <br>
 
 ## Java component

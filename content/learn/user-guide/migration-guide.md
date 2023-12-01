@@ -11,7 +11,238 @@ weight: 7
 This guide is intended to help a user of a previous version of Keyple Java to upgrade his application to a new version of the library.
 
 Upgrade from:
+* [2.+ to 3.0.0](#upgrade-from-2-to-300)
 * [1.0.0 to 2.0.0](#upgrade-from-100-to-200)
+
+---
+## Upgrade from "2.+" to "3.0.0"
+
+This major release follows the adoption of **Keypop APIs** in place of **CNA Terminal APIs**.
+
+### Dependency management
+
+Use first the [configuration wizard]({{< relref "/components/overview/configuration-wizard" >}}) to correctly import the new artifacts into your project.
+
+### Renaming
+
+Search and replace (in "**case-sensitive**" and "**whole-word**" mode) in the following order the following strings when present:
+1. `org.calypsonet.terminal.calypso` => `org.eclipse.keypop.calypso.card`
+2. `org.calypsonet.terminal` => `org.eclipse.keypop`
+3. `card.sam` => `crypto.legacysam.sam`
+4. `Reader` => `CardReader`
+4. `ObservableReader` => `ObservableCardReader`
+4. `ReaderEvent` => `CardCardReader`
+4. `CalypsoSam` => `LegacySam`
+5. `CardSelection` => `CardSelectionExtension`
+6. `CalypsoApiProperties` => `CalypsoCardApiProperties`
+7. `SamIOException` => `CryptoIOException`
+8. `CalypsoCardSelection` => `CalypsoCardSelectionExtension`
+9. `CardSecuritySetting` => `SymmetricCryptoSecuritySetting`
+9. `createCardSecuritySetting` => `createSymmetricCryptoSecuritySetting`
+10. `processCommands(true)` => `processCommands(ChannelControl.CLOSE_AFTER)`
+11. `processCommands(false)` => `processCommands(ChannelControl.KEEP_OPEN)`
+12. `createCardSelectionManager()` => `getReaderApiFactory().createCardSelectionManager()`
+13. `createCardSelection()` => `getCalypsoCardApiFactory().createCalypsoCardSelectionExtension()`
+13. `createCardTransactionWithoutSecurity` => `getCalypsoCardApiFactory().createFreeTransactionManager`
+13. `createSearchCommandData` => `getCalypsoCardApiFactory().createSearchCommandData`
+12. `prepareComputeSignature` => `getCryptoExtension(CardTransactionLegacySamExtension.class).prepareComputeSignature`
+12. `prepareVerifySignature` => `getCryptoExtension(CardTransactionLegacySamExtension.class).prepareVerifySignature`
+
+### Card selection
+
+#### Prepare a Calypso Card selection case
+
+- 2.+
+
+{{< code lang="java" >}}
+CalypsoCardSelection calypsoCardSelection = 
+    CalypsoExtensionService.getInstance().createCardSelection()
+        .filterByDfName(...)
+        .setFileOccurrence(...)
+        .setFileControlInformation(...)
+
+cardSelectionManager.prepareSelection(calypsoCardSelection);
+{{< /code >}}
+
+- 3.0.0
+
+{{< code lang="java" >}}
+IsoCardSelector isoCardSelector =
+    SmartCardServiceProvider.getService().getReaderApiFactory().createIsoCardSelector()
+        .filterByDfName(...)
+        .setFileOccurrence(...)
+        .setFileControlInformation(...);
+
+CalypsoCardSelectionExtension calypsoCardSelectionExtension =
+    CalypsoExtensionService.getInstance().getCalypsoCardApiFactory().createCalypsoCardSelectionExtension();
+
+cardSelectionManager.prepareSelection(isoCardSelector, calypsoCardSelectionExtension);
+{{< /code >}}
+
+#### Prepare a Calypso SAM selection case
+
+- 2.+
+
+{{< code lang="java" >}}
+CalypsoSamSelection CalypsoSamSelection = 
+    CalypsoExtensionService.getInstance().createSamSelection()
+        .filterByProductType(productType)
+        .filterBySerialNumber(serialNumber);
+
+cardSelectionManager.prepareSelection(CalypsoSamSelection);
+{{< /code >}}
+
+- 3.0.0
+
+{{< code lang="java" >}}
+String powerOnDataFilter = LegacySamUtil.buildPowerOnDataFilter(productType, serialNumber);
+
+BasicCardSelector basicCardSelector =
+    SmartCardServiceProvider.getService().getReaderApiFactory().createBasicCardSelector()
+        .filterByPowerOnData(powerOnDataFilter);
+
+LegacySamSelectionExtension legacySamSelectionExtension =
+    LegacySamExtensionService.getInstance().getLegacySamApiFactory().createLegacySamSelectionExtension();
+
+cardSelectionManager.prepareSelection(basicCardSelector, legacySamSelectionExtension);
+{{< /code >}}
+
+#### Schedule a card selection scenario
+
+- 2.+
+
+{{< code lang="java" >}}
+cardSelectionManager.scheduleCardSelectionScenario(
+    observableCardReader,
+    detectionMode,
+    notificationMode);
+{{< /code >}}
+
+- 3.0.0
+
+{{< code lang="java" >}}
+cardSelectionManager.scheduleCardSelectionScenario(
+    observableCardReader,
+    notificationMode);
+{{< /code >}}
+
+### Card Transaction
+
+#### Create a card transaction manager without security
+
+- 2.+
+
+{{< code lang="java" >}}
+CardTransactionManager cardTransactionManager =
+    CalypsoExtensionService.getInstance()
+        .createCardTransactionWithoutSecurity(cardReader, card);
+{{< /code >}}
+
+- 3.0.0
+
+{{< code lang="java" >}}
+FreeTransactionManager cardTransactionManager =
+    CalypsoExtensionService.getInstance()
+        .getCalypsoCardApiFactory().createFreeTransactionManager(cardReader, card);
+{{< /code >}}
+
+#### Create a card transaction manager with security (regular mode)
+
+- 2.+
+
+{{< code lang="java" >}}
+CardSecuritySetting securitySetting =
+    CalypsoExtensionService.getInstance().createCardSecuritySetting()
+        .setControlSamResource(samReader, sam);
+
+CardTransactionManager cardTransactionManager =
+    CalypsoExtensionService.getInstance()
+        .createCardTransaction(cardReader, card, securitySetting)
+{{< /code >}}
+
+- 3.0.0
+
+{{< code lang="java" >}}
+SymmetricCryptoCardTransactionManagerFactory cryptoCardTransactionManagerFactory =
+    LegacySamExtensionService.getInstance().getLegacySamApiFactory()
+        .createSymmetricCryptoCardTransactionManagerFactory(samReader, sam);
+
+SymmetricCryptoSecuritySetting securitySetting =
+    CalypsoExtensionService.getInstance().getCalypsoCardApiFactory()
+        .createSymmetricCryptoSecuritySetting(cryptoCardTransactionManagerFactory);
+
+SecureRegularModeTransactionManager cardTransactionManager =
+    CalypsoExtensionService.getInstance().getCalypsoCardApiFactory()
+        .createSecureRegularModeTransactionManager(cardReader, card, securitySetting);
+{{< /code >}}
+
+#### Create a card transaction manager with security (extended mode)
+
+- 2.+
+
+{{< code lang="java" >}}
+CardSecuritySetting securitySetting =
+    CalypsoExtensionService.getInstance().createCardSecuritySetting()
+        .setControlSamResource(samReader, sam);
+
+CardTransactionManager cardTransactionManager =
+    CalypsoExtensionService.getInstance()
+        .createCardTransaction(cardReader, card, securitySetting)
+{{< /code >}}
+
+- 3.0.0
+
+{{< code lang="java" >}}
+SymmetricCryptoCardTransactionManagerFactory cryptoCardTransactionManagerFactory =
+    LegacySamExtensionService.getInstance().getLegacySamApiFactory()
+        .createSymmetricCryptoCardTransactionManagerFactory(samReader, sam);
+
+SymmetricCryptoSecuritySetting securitySetting =
+    CalypsoExtensionService.getInstance().getCalypsoCardApiFactory()
+        .createSymmetricCryptoSecuritySetting(cryptoCardTransactionManagerFactory);
+
+SecureExtendedModeTransactionManager cardTransactionManager =
+    CalypsoExtensionService.getInstance().getCalypsoCardApiFactory()
+        .createSecureExtendedModeTransactionManager(cardReader, card, securitySetting);
+{{< /code >}}
+
+### PSO signature manipulation (computation/verification)
+
+- 2.+
+
+{{< code lang="java" >}}
+TraceableSignatureComputationData signatureComputationData =
+    CalypsoExtensionService.getInstance()
+        .createTraceableSignatureComputationData();
+
+cardTransactionManager.prepareComputeSignature(signatureComputationData);
+{{< /code >}}
+
+- 3.0.0
+
+{{< code lang="java" >}}
+TraceableSignatureComputationData signatureComputationData =
+    LegacySamExtensionService.getInstance()
+        .getLegacySamApiFactory().createTraceableSignatureComputationData();
+
+cardTransactionManager.getCryptoExtension(CardTransactionLegacySamExtension.class)
+    .prepareComputeSignature(signatureComputationData);
+{{< /code >}}
+
+### Context setting
+
+- 2.+
+
+{{< code lang="java" >}}
+ContextSetting contextSetting = CalypsoExtensionService.getInstance().getContextSetting();
+{{< /code >}}
+
+- 3.0.0
+
+{{< code lang="java" >}}
+ContextSetting contextSetting = LegacySamExtensionService.getInstance().getContextSetting();
+{{< /code >}}
+
 
 ---
 ## Upgrade from "1.0.0" to "2.0.0"

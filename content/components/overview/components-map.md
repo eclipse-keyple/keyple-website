@@ -16,7 +16,7 @@ The dependencies between the Keyple components are shown in the diagram below:
 Key points:
 * Each component has its **own life cycle**.
 * There are two types of Keyple components: **APIs** and **libraries**.
-* Some APIs are provided by the [Eclipse Keypop](https://keypop.org) open-source project.
+* Some APIs are provided by the [Eclipse Keypop](https://eclipse-keypop.github.io/keypop-website) open-source project.
 * APIs contain **only interfaces**.
 * Libraries contain **interfaces and their implementation**.
 * Some APIs are **public** while others are **internal**.

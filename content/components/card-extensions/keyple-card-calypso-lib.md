@@ -12,7 +12,11 @@ The **Keyple Card Calypso Library** is an add-on to manage Calypso® cards.
 
 Therefore, it should be used only by application developers.
 
-It can be used on **Windows**, **Linux**, **macOS** and **Android** platforms.
+{{% callout warning %}}
+For card transactions that need to be secured by cryptographic calculations using symmetrical keys (SAM or HSM) or
+asymmetrical keys (PKI), **it is mandatory to use one of the dedicated crypto libraries** (Open SAM, Legacy SAM, PKI).
+At present, only the [Calypso Crypto Legacy SAM]({{< relref "keyple-card-calypso-crypto-legacysam-lib" >}}) library is available.
+{{% /callout %}}
 
 <br>
 
