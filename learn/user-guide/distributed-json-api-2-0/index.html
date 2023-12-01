@@ -26,7 +26,7 @@
 <meta property="og:title" content="Distributed JSON API 2.0 User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<meta property="article:modified_time" content="2023-12-01T18:32:45+01:00">
 <title>Distributed JSON API 2.0 User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=82c259b748eaaca3005cac3f23307c84>
@@ -166,7 +166,7 @@ User guides
 <li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
-<li><a href=../../../learn/user-guide/migrate-to-2-0/>Upgrade Keyple</a></li>
+<li><a href=../../../learn/user-guide/migration-guide/>Upgrade Keyple</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -923,7 +923,18 @@ The <code>MessageDto</code> is contained in a single-element array!
 </table>
 <h5 id=example-3>Example</h5>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('15',this)">Copy</button></div>
-<pre><code class=language-json id=code-15>Coming soon...</code></pre>
+<pre><code class=language-json id=code-15>[
+   {
+      &#34;apiLevel&#34;:2,
+      &#34;sessionId&#34;:&#34;5bf1ca9a-2de9-4f16-b170-5de168560179&#34;,
+      &#34;action&#34;:&#34;CMD&#34;,
+      &#34;clientNodeId&#34;:&#34;824f32f1-ccb0-447c-a103-618152eb49ba&#34;,
+      &#34;serverNodeId&#34;:&#34;fbf011a4-d0e2-4f3f-85c3-2ccd5be01919&#34;,
+      &#34;localReaderName&#34;:&#34;stubReader&#34;,
+      &#34;remoteReaderName&#34;:&#34;852f5841-0b5c-4922-a77a-b103cb5aac3f&#34;,
+      &#34;body&#34;:&#34;{\&#34;coreApiLevel\&#34;:2,\&#34;service\&#34;:\&#34;TRANSMIT_CARD_SELECTION_REQUESTS\&#34;,\&#34;parameters\&#34;:{\&#34;multiSelectionProcessing\&#34;:\&#34;FIRST_MATCH\&#34;,\&#34;channelControl\&#34;:\&#34;KEEP_OPEN\&#34;,\&#34;cardSelectors\&#34;:[{\&#34;fileOccurrence\&#34;:\&#34;FIRST\&#34;,\&#34;fileControlInformation\&#34;:\&#34;FCI\&#34;}],\&#34;cardSelectionRequests\&#34;:[{\&#34;successfulSelectionStatusWords\&#34;:[\&#34;9000\&#34;]}]}}&#34;
+   }
+]</code></pre>
 <hr>
 <h3 id=card-commands-cmd>Card Commands</h3>
 <p>The role of this service is to perform APDU exchanges with the card.</p>
@@ -1724,7 +1735,7 @@ The <code>MessageDto</code> is contained in a single-element array!
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-29</p>
+<p>Last updated on 2023-12-01</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -1815,7 +1826,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.735dd22779eecc9f58d38921584770aa.js></script>
+<script src=../../../en/js/wowchemy.min.0a7cc8dabc534d862c8775c42422dfd2.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

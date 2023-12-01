@@ -26,7 +26,7 @@
 <meta property="og:title" content="Keyple Card Calypso Library | Eclipse Keyple">
 <meta property="og:description" content="Add-on to manage Calypso® cards."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<meta property="article:modified_time" content="2023-12-01T18:32:45+01:00">
 <title>Keyple Card Calypso Library | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=77c2172456847a24c30695861f25b904>
@@ -222,7 +222,13 @@ Card extensions
 <br>
 <p>The <strong>Keyple Card Calypso Library</strong> is an add-on to manage Calypso® cards.</p>
 <p>Therefore, it should be used only by application developers.</p>
-<p>It can be used on <strong>Windows</strong>, <strong>Linux</strong>, <strong>macOS</strong> and <strong>Android</strong> platforms.</p>
+<div class="alert alert-warning">
+<div>
+For card transactions that need to be secured by cryptographic calculations using symmetrical keys (SAM or HSM) or
+asymmetrical keys (PKI), <strong>it is mandatory to use one of the dedicated crypto libraries</strong> (Open SAM, Legacy SAM, PKI).
+At present, only the <a href=../../../components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/>Calypso Crypto Legacy SAM</a> library is available.
+</div>
+</div>
 <br>
 <h2 id=java-component>Java component</h2>
 <div class="alert alert-note">
@@ -243,27 +249,27 @@ Card extensions
 </ul>
 <h3 id=download>Download</h3>
 <p>All deliverables are available directly from the <a href="https://central.sonatype.dev/search?q=keyple-card-calypso-java-lib" target=_blank rel=noopener>Maven Central Repository</a> or by using one of the project resource managers below:</p>
-<ul class="nav nav-tabs" id=tabs-2 role=tablist><li class=nav-item>
-<a class="nav-link active tab-Gradle-Groovy" id=tabs-2-0-tab data-toggle=tab href=#tabs-2-0 role=tab onclick='handleClick("Gradle-Groovy")' aria-controls=tabs-2-0 aria-selected=true>
+<ul class="nav nav-tabs" id=tabs-3 role=tablist><li class=nav-item>
+<a class="nav-link active tab-Gradle-Groovy" id=tabs-3-0-tab data-toggle=tab href=#tabs-3-0 role=tab onclick='handleClick("Gradle-Groovy")' aria-controls=tabs-3-0 aria-selected=true>
 Gradle Groovy
 </a>
 </li><li class=nav-item>
-<a class="nav-link tab-Gradle-Kotlin" id=tabs-2-1-tab data-toggle=tab href=#tabs-2-1 role=tab onclick='handleClick("Gradle-Kotlin")' aria-controls=tabs-2-1 aria-selected=false>
+<a class="nav-link tab-Gradle-Kotlin" id=tabs-3-1-tab data-toggle=tab href=#tabs-3-1 role=tab onclick='handleClick("Gradle-Kotlin")' aria-controls=tabs-3-1 aria-selected=false>
 Gradle Kotlin
 </a>
 </li><li class=nav-item>
-<a class="nav-link tab-Maven" id=tabs-2-2-tab data-toggle=tab href=#tabs-2-2 role=tab onclick='handleClick("Maven")' aria-controls=tabs-2-2 aria-selected=false>
+<a class="nav-link tab-Maven" id=tabs-3-2-tab data-toggle=tab href=#tabs-3-2 role=tab onclick='handleClick("Maven")' aria-controls=tabs-3-2 aria-selected=false>
 Maven
 </a>
 </li></ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyTabContentToClipboard('tabs-2',this)">Copy</button></div>
-<div class=tab-content id=tabs-2-content><div class="tab-pane fade show active" id=tabs-2-0 role=tabpanel aria-labelled-by=tabs-2-0-tab>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyTabContentToClipboard('tabs-3',this)">Copy</button></div>
+<div class=tab-content id=tabs-3-content><div class="tab-pane fade show active" id=tabs-3-0 role=tabpanel aria-labelled-by=tabs-3-0-tab>
 <pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-card-calypso-java-lib:3.0.0&#39;</code></pre>
 </div>
-<div class="tab-pane fade" id=tabs-2-1 role=tabpanel aria-labelled-by=tabs-2-1-tab>
+<div class="tab-pane fade" id=tabs-3-1 role=tabpanel aria-labelled-by=tabs-3-1-tab>
 <pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-card-calypso-java-lib:3.0.0&#34;)</code></pre>
 </div>
-<div class="tab-pane fade" id=tabs-2-2 role=tabpanel aria-labelled-by=tabs-2-2-tab>
+<div class="tab-pane fade" id=tabs-3-2 role=tabpanel aria-labelled-by=tabs-3-2-tab>
 <pre><code class=language-xml>&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
   &lt;artifactId&gt;keyple-card-calypso-java-lib&lt;/artifactId&gt;
@@ -282,7 +288,7 @@ Maven
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-29</p>
+<p>Last updated on 2023-12-01</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -373,7 +379,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.735dd22779eecc9f58d38921584770aa.js></script>
+<script src=../../../en/js/wowchemy.min.0a7cc8dabc534d862c8775c42422dfd2.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
