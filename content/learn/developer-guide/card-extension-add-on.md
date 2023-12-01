@@ -135,8 +135,8 @@ For this purpose, it is suggested to respect the following programming pattern b
 ## API
 
 * [Keyple Common API](https://eclipse.github.io/keyple-common-java-api)
-* [Keypop Reader API](https://keypop.org/apis/keypop-reader-api/)
-* [Keypop Card API](https://keypop.org/apis/keypop-card-api/)
+* [Keypop Reader API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/)
+* [Keypop Card API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-card-api/)
 
 ---
 

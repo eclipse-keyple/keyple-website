@@ -14,7 +14,7 @@ Keyple is compliant with the **Terminal API** specifications provided by the [Ca
 This compliance allows Keyple to obtain certifications from the Calypso Networks Association.
 It is a guarantee of reliability and reproducibility of the processes implemented on a variety of devices.
 
-The open-source [Eclipse Keypop](https://keypop.org) project exposes the **Terminal API** specifications in the form of 
+The open-source [Eclipse Keypop](https://eclipse-keypop.github.io/keypop-website) project exposes the **Terminal API** specifications in the form of 
 **Java** and **C++** interfaces,
 and Keyple is based on these interfaces.
 
@@ -25,8 +25,8 @@ They are generic and apply to all card and reader technologies.
 
 The **Reader API** must be used by developers of applications and card extensions, while the **Card API** must be used **only** by developers of card extensions.
 
-* [Keypop Reader API](https://keypop.org/apis/keypop-reader-api/)
-* [Keypop Card API](https://keypop.org/apis/keypop-card-api/)
+* [Keypop Reader API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/)
+* [Keypop Card API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-card-api/)
 
 ## Calypso APIs
 
@@ -34,5 +34,5 @@ These high-level APIs standardizes the way to interact with a Calypso® product 
 
 These APIs should be used by developers of Calypso applications.
 
-* [Keypop Calypso Card API](https://keypop.org/apis/keypop-calypso-card-api/)
-* [Keypop Calypso Crypto Legacy SAM API](https://keypop.org/apis/keypop-calypso-crypto-legacysam-api/)
+* [Keypop Calypso Card API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-calypso-card-api/)
+* [Keypop Calypso Crypto Legacy SAM API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-calypso-crypto-legacysam-api/)

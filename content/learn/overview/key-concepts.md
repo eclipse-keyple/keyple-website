@@ -31,7 +31,7 @@ The reader concept also applies to the hardware interfaces used to communicate w
 which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.
 
 To define the interface between an application and a reader,
-Keyple relies on the [Keypop Reader API](https://keypop.org/apis/keypop-reader-api/) based on the standard Terminal API specifications proposed by Calypso Networks Association and thus inherits an existing modeling effort.
+Keyple relies on the [Keypop Reader API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/) based on the standard Terminal API specifications proposed by Calypso Networks Association and thus inherits an existing modeling effort.
 
 Another benefit of using this terminal API is the ability to certify the functioning of a Keyple terminal via the associated certification process.
 
