@@ -26,7 +26,7 @@
 <meta property="og:title" content="Upgrade from an earlier version of Keyple | Eclipse Keyple">
 <meta property="og:description" content="How to upgrade an existing Keyple application using an earlier version."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-12-01T18:32:45+01:00">
+<meta property="article:modified_time" content="2023-12-04T16:25:55+01:00">
 <title>Upgrade from an earlier version of Keyple | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=56853d0e63919fb1c6a457bbb88c848f>
@@ -166,7 +166,7 @@ User guides
 <li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
-<li class=active><a href=../../../learn/user-guide/migration-guide/>Upgrade Keyple</a></li>
+<li class=active><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -177,10 +177,10 @@ User guides
 </ul>
 </div>
 <div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/example-code/>Example code</a>
+<a class=docs-toc-link href=../../../learn/code-samples/>Code samples</a>
 <ul class="nav docs-sidenav">
-<li><a href=../../../learn/example-code/java-example/>Java examples</a></li>
-<li><a href=../../../learn/example-code/cpp-example/>C++ examples</a></li>
+<li><a href=../../../learn/code-samples/java-example/>Java examples</a></li>
+<li><a href=../../../learn/code-samples/cpp-example/>C++ examples</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -200,19 +200,20 @@ User guides
 </ul>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#upgrade-from-2-to-300>Upgrade from &ldquo;2.+&rdquo; to &ldquo;3.0.0&rdquo;</a>
+<li><a href=#upgrade-from-2-to-3>Upgrade from &ldquo;2.+&rdquo; to &ldquo;3.+&rdquo;</a>
 <ul>
-<li><a href=#dependency-management>Dependency management</a></li>
+<li><a href=#dependencies-management>Dependencies management</a></li>
 <li><a href=#renaming>Renaming</a></li>
 <li><a href=#card-selection>Card selection</a></li>
 <li><a href=#card-transaction>Card Transaction</a></li>
-<li><a href=#pso-signature-manipulation-computationverification>PSO signature manipulation (computation/verification)</a></li>
-<li><a href=#context-setting>Context setting</a></li>
+<li><a href=#pso-signature-management-computationverification>PSO signature management (computation/verification)</a></li>
+<li><a href=#sam-resource-service>SAM resource service</a></li>
+<li><a href=#miscellaneous>Miscellaneous</a></li>
 </ul>
 </li>
-<li><a href=#upgrade-from-100-to-200>Upgrade from &ldquo;1.0.0&rdquo; to &ldquo;2.0.0&rdquo;</a>
+<li><a href=#upgrade-from-1-to-2>Upgrade from &ldquo;1.+&rdquo; to &ldquo;2.+&rdquo;</a>
 <ul>
-<li><a href=#dependency-management-1>Dependency management</a></li>
+<li><a href=#dependency-management>Dependency management</a></li>
 <li><a href=#initial-configuration>Initial configuration</a></li>
 <li><a href=#card-selection-1>Card selection</a></li>
 <li><a href=#calypso-card-extension>Calypso Card Extension</a></li>
@@ -231,14 +232,31 @@ User guides
 <p>This guide is intended to help a user of a previous version of Keyple Java to upgrade his application to a new version of the library.</p>
 <p>Upgrade from:</p>
 <ul>
-<li><a href=#upgrade-from-2-to-300>2.+ to 3.0.0</a></li>
-<li><a href=#upgrade-from-100-to-200>1.0.0 to 2.0.0</a></li>
+<li><a href=#upgrade-from-2-to-3>2.+ to 3.+</a></li>
+<li><a href=#upgrade-from-1-to-2>1.+ to 2.+</a></li>
 </ul>
 <hr>
-<h2 id=upgrade-from-2-to-300>Upgrade from &ldquo;2.+&rdquo; to &ldquo;3.0.0&rdquo;</h2>
+<h2 id=upgrade-from-2-to-3>Upgrade from &ldquo;2.+&rdquo; to &ldquo;3.+&rdquo;</h2>
 <p>This major release follows the adoption of <strong>Keypop APIs</strong> in place of <strong>CNA Terminal APIs</strong>.</p>
-<h3 id=dependency-management>Dependency management</h3>
-<p>Use first the <a href=../../../components/overview/configuration-wizard/>configuration wizard</a> to correctly import the new artifacts into your project.</p>
+<p>We recommend that you follow the steps below in the order suggested:</p>
+<ol>
+<li>Update the project <a href=#dependencies-management>dependencies management</a></li>
+<li>Perform a global <a href=#renaming>text search & replace</a> across the entire project</li>
+<li>Apply the changes to the <a href=#card-selection>card/SAM selection manager</a></li>
+<li>Apply the changes to the <a href=#card-transaction>card transaction manager</a></li>
+<li>Apply the changes to the <a href=#pso-signature-management-computationverification>signatures management (PSO or basic)</a> during card transactions</li>
+<li>Apply the changes to the <a href=#sam-resource-service>SAM resource service</a></li>
+</ol>
+<div class="alert alert-note">
+<div>
+All deprecated methods have been removed. If your project contains such methods, please check the changelogs for
+replacement methods.
+</div>
+</div>
+<h3 id=dependencies-management>Dependencies management</h3>
+<p>Replace the legacy Keyple dependencies with the latest versions.
+To do this, use the <a href=../../../components/overview/configuration-wizard/>configuration wizard</a>
+to correctly import the new artifacts into your project.</p>
 <h3 id=renaming>Renaming</h3>
 <p>Search and replace (in &ldquo;<strong>case-sensitive</strong>&rdquo; and &ldquo;<strong>whole-word</strong>&rdquo; mode) in the following order the following strings when present:</p>
 <ol>
@@ -253,35 +271,45 @@ User guides
 <li><code>CalypsoApiProperties</code> => <code>CalypsoCardApiProperties</code></li>
 <li><code>SamIOException</code> => <code>CryptoIOException</code></li>
 <li><code>CalypsoCardSelection</code> => <code>CalypsoCardSelectionExtension</code></li>
+<li><code>GenericCardSelection</code> => <code>GenericCardSelectionExtension</code></li>
 <li><code>CardSecuritySetting</code> => <code>SymmetricCryptoSecuritySetting</code></li>
 <li><code>createCardSecuritySetting</code> => <code>createSymmetricCryptoSecuritySetting</code></li>
 <li><code>processCommands(true)</code> => <code>processCommands(ChannelControl.CLOSE_AFTER)</code></li>
 <li><code>processCommands(false)</code> => <code>processCommands(ChannelControl.KEEP_OPEN)</code></li>
+<li><code>processApdusToByteArrays(true)</code> => <code>processApdusToByteArrays(ChannelControl.CLOSE_AFTER)</code></li>
+<li><code>processApdusToByteArrays(false)</code> => <code>processApdusToByteArrays(ChannelControl.KEEP_OPEN)</code></li>
+<li><code>processApdusToHexStrings(true)</code> => <code>processApdusToHexStrings(ChannelControl.CLOSE_AFTER)</code></li>
+<li><code>processApdusToHexStrings(false)</code> => <code>processApdusToHexStrings(ChannelControl.KEEP_OPEN)</code></li>
 <li><code>createCardSelectionManager()</code> => <code>getReaderApiFactory().createCardSelectionManager()</code></li>
-<li><code>createCardSelection()</code> => <code>getCalypsoCardApiFactory().createCalypsoCardSelectionExtension()</code></li>
+<li><code>createCardSelection()</code> =>
+<ul>
+<li><strong>Calypso</strong> card extension: <code>getCalypsoCardApiFactory().createCalypsoCardSelectionExtension()</code></li>
+<li><strong>Generic</strong> card extension: <code>createGenericCardSelectionExtension()</code></li>
+</ul>
+</li>
 <li><code>createCardTransactionWithoutSecurity</code> => <code>getCalypsoCardApiFactory().createFreeTransactionManager</code></li>
 <li><code>createSearchCommandData</code> => <code>getCalypsoCardApiFactory().createSearchCommandData</code></li>
 <li><code>prepareComputeSignature</code> => <code>getCryptoExtension(CardTransactionLegacySamExtension.class).prepareComputeSignature</code></li>
 <li><code>prepareVerifySignature</code> => <code>getCryptoExtension(CardTransactionLegacySamExtension.class).prepareVerifySignature</code></li>
 </ol>
 <h3 id=card-selection>Card selection</h3>
-<h4 id=prepare-a-calypso-card-selection-case>Prepare a Calypso Card selection case</h4>
+<h4 id=prepare-a-calypso-card-selection-case>Prepare a Calypso card selection case</h4>
 <ul>
 <li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('1',this)">Copy</button></div>
-<pre><code class=language-java id=code-1>CalypsoCardSelection calypsoCardSelection = 
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('2',this)">Copy</button></div>
+<pre><code class=language-java id=code-2>CalypsoCardSelection calypsoCardSelection = 
     CalypsoExtensionService.getInstance().createCardSelection()
         .filterByDfName(...)
         .setFileOccurrence(...)
-        .setFileControlInformation(...)
+        .setFileControlInformation(...);
 
 cardSelectionManager.prepareSelection(calypsoCardSelection);</code></pre>
 <ul>
-<li>3.0.0</li>
+<li>3.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('2',this)">Copy</button></div>
-<pre><code class=language-java id=code-2>IsoCardSelector isoCardSelector =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('3',this)">Copy</button></div>
+<pre><code class=language-java id=code-3>IsoCardSelector isoCardSelector =
     SmartCardServiceProvider.getService().getReaderApiFactory().createIsoCardSelector()
         .filterByDfName(...)
         .setFileOccurrence(...)
@@ -295,18 +323,18 @@ cardSelectionManager.prepareSelection(isoCardSelector, calypsoCardSelectionExten
 <ul>
 <li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('3',this)">Copy</button></div>
-<pre><code class=language-java id=code-3>CalypsoSamSelection CalypsoSamSelection = 
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('4',this)">Copy</button></div>
+<pre><code class=language-java id=code-4>CalypsoSamSelection CalypsoSamSelection = 
     CalypsoExtensionService.getInstance().createSamSelection()
         .filterByProductType(productType)
         .filterBySerialNumber(serialNumber);
 
 cardSelectionManager.prepareSelection(CalypsoSamSelection);</code></pre>
 <ul>
-<li>3.0.0</li>
+<li>3.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('4',this)">Copy</button></div>
-<pre><code class=language-java id=code-4>String powerOnDataFilter = LegacySamUtil.buildPowerOnDataFilter(productType, serialNumber);
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('5',this)">Copy</button></div>
+<pre><code class=language-java id=code-5>String powerOnDataFilter = LegacySamUtil.buildPowerOnDataFilter(productType, serialNumber);
 
 BasicCardSelector basicCardSelector =
     SmartCardServiceProvider.getService().getReaderApiFactory().createBasicCardSelector()
@@ -316,20 +344,46 @@ LegacySamSelectionExtension legacySamSelectionExtension =
     LegacySamExtensionService.getInstance().getLegacySamApiFactory().createLegacySamSelectionExtension();
 
 cardSelectionManager.prepareSelection(basicCardSelector, legacySamSelectionExtension);</code></pre>
+<h4 id=prepare-a-generic-card-selection-case>Prepare a Generic card selection case</h4>
+<ul>
+<li>2.+</li>
+</ul>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
+<pre><code class=language-java id=code-6>GenericCardSelection genericCardSelection =
+    GenericExtensionService.getInstance().createCardSelection()
+        .filterByDfName(...)
+        .setFileOccurrence(...)
+        .setFileControlInformation(...);
+
+cardSelectionManager.prepareSelection(genericCardSelection);</code></pre>
+<ul>
+<li>3.+</li>
+</ul>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
+<pre><code class=language-java id=code-7>IsoCardSelector isoCardSelector =
+    SmartCardServiceProvider.getService().getReaderApiFactory().createIsoCardSelector()
+        .filterByDfName(...)
+        .setFileOccurrence(...)
+        .setFileControlInformation(...);
+
+GenericCardSelectionExtension genericCardSelectionExtension =
+    GenericExtensionService.getInstance().createGenericCardSelectionExtension();
+
+cardSelectionManager.prepareSelection(isoCardSelector, genericCardSelectionExtension);</code></pre>
 <h4 id=schedule-a-card-selection-scenario>Schedule a card selection scenario</h4>
 <ul>
 <li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('5',this)">Copy</button></div>
-<pre><code class=language-java id=code-5>cardSelectionManager.scheduleCardSelectionScenario(
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('8',this)">Copy</button></div>
+<pre><code class=language-java id=code-8>cardSelectionManager.scheduleCardSelectionScenario(
     observableCardReader,
     detectionMode,
     notificationMode);</code></pre>
 <ul>
-<li>3.0.0</li>
+<li>3.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
-<pre><code class=language-java id=code-6>cardSelectionManager.scheduleCardSelectionScenario(
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('9',this)">Copy</button></div>
+<pre><code class=language-java id=code-9>cardSelectionManager.scheduleCardSelectionScenario(
     observableCardReader,
     notificationMode);</code></pre>
 <h3 id=card-transaction>Card Transaction</h3>
@@ -337,23 +391,23 @@ cardSelectionManager.prepareSelection(basicCardSelector, legacySamSelectionExten
 <ul>
 <li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
-<pre><code class=language-java id=code-7>CardTransactionManager cardTransactionManager =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('10',this)">Copy</button></div>
+<pre><code class=language-java id=code-10>CardTransactionManager cardTransactionManager =
     CalypsoExtensionService.getInstance()
         .createCardTransactionWithoutSecurity(cardReader, card);</code></pre>
 <ul>
-<li>3.0.0</li>
+<li>3.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('8',this)">Copy</button></div>
-<pre><code class=language-java id=code-8>FreeTransactionManager cardTransactionManager =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
+<pre><code class=language-java id=code-11>FreeTransactionManager cardTransactionManager =
     CalypsoExtensionService.getInstance()
         .getCalypsoCardApiFactory().createFreeTransactionManager(cardReader, card);</code></pre>
 <h4 id=create-a-card-transaction-manager-with-security-regular-mode>Create a card transaction manager with security (regular mode)</h4>
 <ul>
 <li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('9',this)">Copy</button></div>
-<pre><code class=language-java id=code-9>CardSecuritySetting securitySetting =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('12',this)">Copy</button></div>
+<pre><code class=language-java id=code-12>CardSecuritySetting securitySetting =
     CalypsoExtensionService.getInstance().createCardSecuritySetting()
         .setControlSamResource(samReader, sam);
 
@@ -361,10 +415,10 @@ CardTransactionManager cardTransactionManager =
     CalypsoExtensionService.getInstance()
         .createCardTransaction(cardReader, card, securitySetting)</code></pre>
 <ul>
-<li>3.0.0</li>
+<li>3.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('10',this)">Copy</button></div>
-<pre><code class=language-java id=code-10>SymmetricCryptoCardTransactionManagerFactory cryptoCardTransactionManagerFactory =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('13',this)">Copy</button></div>
+<pre><code class=language-java id=code-13>SymmetricCryptoCardTransactionManagerFactory cryptoCardTransactionManagerFactory =
     LegacySamExtensionService.getInstance().getLegacySamApiFactory()
         .createSymmetricCryptoCardTransactionManagerFactory(samReader, sam);
 
@@ -379,8 +433,8 @@ SecureRegularModeTransactionManager cardTransactionManager =
 <ul>
 <li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
-<pre><code class=language-java id=code-11>CardSecuritySetting securitySetting =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('14',this)">Copy</button></div>
+<pre><code class=language-java id=code-14>CardSecuritySetting securitySetting =
     CalypsoExtensionService.getInstance().createCardSecuritySetting()
         .setControlSamResource(samReader, sam);
 
@@ -388,10 +442,10 @@ CardTransactionManager cardTransactionManager =
     CalypsoExtensionService.getInstance()
         .createCardTransaction(cardReader, card, securitySetting)</code></pre>
 <ul>
-<li>3.0.0</li>
+<li>3.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('12',this)">Copy</button></div>
-<pre><code class=language-java id=code-12>SymmetricCryptoCardTransactionManagerFactory cryptoCardTransactionManagerFactory =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('15',this)">Copy</button></div>
+<pre><code class=language-java id=code-15>SymmetricCryptoCardTransactionManagerFactory cryptoCardTransactionManagerFactory =
     LegacySamExtensionService.getInstance().getLegacySamApiFactory()
         .createSymmetricCryptoCardTransactionManagerFactory(samReader, sam);
 
@@ -402,67 +456,92 @@ SymmetricCryptoSecuritySetting securitySetting =
 SecureExtendedModeTransactionManager cardTransactionManager =
     CalypsoExtensionService.getInstance().getCalypsoCardApiFactory()
         .createSecureExtendedModeTransactionManager(cardReader, card, securitySetting);</code></pre>
-<h3 id=pso-signature-manipulation-computationverification>PSO signature manipulation (computation/verification)</h3>
+<h3 id=pso-signature-management-computationverification>PSO signature management (computation/verification)</h3>
 <ul>
 <li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('13',this)">Copy</button></div>
-<pre><code class=language-java id=code-13>TraceableSignatureComputationData signatureComputationData =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('16',this)">Copy</button></div>
+<pre><code class=language-java id=code-16>TraceableSignatureComputationData signatureComputationData =
     CalypsoExtensionService.getInstance()
         .createTraceableSignatureComputationData();
 
 cardTransactionManager.prepareComputeSignature(signatureComputationData);</code></pre>
 <ul>
-<li>3.0.0</li>
+<li>3.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('14',this)">Copy</button></div>
-<pre><code class=language-java id=code-14>TraceableSignatureComputationData signatureComputationData =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('17',this)">Copy</button></div>
+<pre><code class=language-java id=code-17>TraceableSignatureComputationData signatureComputationData =
     LegacySamExtensionService.getInstance()
         .getLegacySamApiFactory().createTraceableSignatureComputationData();
 
 cardTransactionManager.getCryptoExtension(CardTransactionLegacySamExtension.class)
     .prepareComputeSignature(signatureComputationData);</code></pre>
-<h3 id=context-setting>Context setting</h3>
+<h3 id=sam-resource-service>SAM resource service</h3>
 <ul>
 <li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('15',this)">Copy</button></div>
-<pre><code class=language-java id=code-15>ContextSetting contextSetting = CalypsoExtensionService.getInstance().getContextSetting();</code></pre>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('18',this)">Copy</button></div>
+<pre><code class=language-java id=code-18>CardResourceProfileExtension samResourceProfileExtension =
+    CalypsoExtensionService.getInstance()
+        .createSamResourceProfileExtension(
+            CalypsoExtensionService.getInstance()
+                .createSamSelection()
+                .filterByProductType(CalypsoSam.ProductType.SAM_C1));</code></pre>
 <ul>
-<li>3.0.0</li>
+<li>3.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('16',this)">Copy</button></div>
-<pre><code class=language-java id=code-16>ContextSetting contextSetting = LegacySamExtensionService.getInstance().getContextSetting();</code></pre>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('19',this)">Copy</button></div>
+<pre><code class=language-java id=code-19>CardResourceProfileExtension samResourceProfileExtension =
+    LegacySamExtensionService.getInstance()
+        .createLegacySamResourceProfileExtension(
+            LegacySamExtensionService.getInstance()
+                .getLegacySamApiFactory()
+                .createLegacySamSelectionExtension(),
+            LegacySamUtil.buildPowerOnDataFilter(LegacySam.ProductType.SAM_C1, null));</code></pre>
+<h3 id=miscellaneous>Miscellaneous</h3>
+<h4 id=contact-reader-payload-capacity-management>Contact reader payload capacity management</h4>
+<ul>
+<li>2.+</li>
+</ul>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
+<pre><code class=language-java id=code-20>ContextSetting contextSetting = 
+    CalypsoExtensionService.getInstance().getContextSetting().setContactReaderPayloadCapacity(...);</code></pre>
+<ul>
+<li>3.+</li>
+</ul>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('21',this)">Copy</button></div>
+<pre><code class=language-java id=code-21>ContextSetting contextSetting = 
+    LegacySamExtensionService.getInstance().getContextSetting().setContactReaderPayloadCapacity(...);</code></pre>
 <hr>
-<h2 id=upgrade-from-100-to-200>Upgrade from &ldquo;1.0.0&rdquo; to &ldquo;2.0.0&rdquo;</h2>
-<p>Here is a comparative review of the main API changes between Keyple 1.0.0 and 2.0.0:</p>
-<h3 id=dependency-management-1>Dependency management</h3>
+<h2 id=upgrade-from-1-to-2>Upgrade from &ldquo;1.+&rdquo; to &ldquo;2.+&rdquo;</h2>
+<p>Here is a comparative review of the main API changes between Keyple 1.+ and 2.+:</p>
+<h3 id=dependency-management>Dependency management</h3>
 <p>Use the <a href=../../../components/overview/configuration-wizard/>configuration wizard</a> to correctly import the new artifacts into your project.</p>
 <h3 id=initial-configuration>Initial configuration</h3>
 <h4 id=use-of-a-provider-to-access-the-smart-card-service>Use of a provider to access the smart card service</h4>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('18',this)">Copy</button></div>
-<pre><code class=language-java id=code-18>SmartCardService smartCardService = SmartCardService.getInstance();</code></pre>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('23',this)">Copy</button></div>
+<pre><code class=language-java id=code-23>SmartCardService smartCardService = SmartCardService.getInstance();</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('19',this)">Copy</button></div>
-<pre><code class=language-java id=code-19>SmartCardService smartCardService = SmartCardServiceProvider.getService();</code></pre>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('24',this)">Copy</button></div>
+<pre><code class=language-java id=code-24>SmartCardService smartCardService = SmartCardServiceProvider.getService();</code></pre>
 <h4 id=use-of-builders-to-instantiate-plugin-factories>Use of builders to instantiate plugin factories</h4>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
-<pre><code class=language-java id=code-20>Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, new ExceptionHandlerImpl()));
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('25',this)">Copy</button></div>
+<pre><code class=language-java id=code-25>Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, new ExceptionHandlerImpl()));
 ...
 ((ObservableReader) reader).addObserver(new CardReaderObserver());</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('21',this)">Copy</button></div>
-<pre><code class=language-java id=code-21>Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('26',this)">Copy</button></div>
+<pre><code class=language-java id=code-26>Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
 ...
 ((ObservableCardReader) reader).setReaderObservationExceptionHandler(new ExceptionHandlerImpl());
 ((ObservableCardReader) reader).addObserver(new CardReaderObserver());</code></pre>
@@ -473,17 +552,17 @@ Exception handlers are no longer required when registering the plugin but only w
 </div>
 <h4 id=use-of-a-new-interface-dedicated-to-the-management-of-protocols>Use of a new interface dedicated to the management of protocols</h4>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('23',this)">Copy</button></div>
-<pre><code class=language-java id=code-23>reader.activateProtocol(
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('28',this)">Copy</button></div>
+<pre><code class=language-java id=code-28>reader.activateProtocol(
     PcscSupportedContactlessProtocols.ISO_14443_4.name(), 
     ContactlessCardCommonProtocols.ISO_14443_4.name());</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('24',this)">Copy</button></div>
-<pre><code class=language-java id=code-24>((ConfigurableCardReader) reader).activateProtocol(
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('29',this)">Copy</button></div>
+<pre><code class=language-java id=code-29>((ConfigurableCardReader) reader).activateProtocol(
     PcscSupportedContactlessProtocols.ISO_14443_4.name(), 
     CARD_ISO_14443_4);</code></pre>
 <h4 id=use-of-plugin-and-reader-extensions-for-specific-configurations>Use of plugin and reader extensions for specific configurations</h4>
@@ -493,31 +572,31 @@ The examples below show the evolutions for the configuration of a PC/SC reader b
 </div>
 </div>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('26',this)">Copy</button></div>
-<pre><code class=language-java id=code-26>reader
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('31',this)">Copy</button></div>
+<pre><code class=language-java id=code-31>reader
     .setContactless(true)
     .setIsoProtocol(PcscReader.IsoProtocol.T1);</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('27',this)">Copy</button></div>
-<pre><code class=language-java id=code-27>plugin.getReaderExtension(PcscReader.class, reader.getName())
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('32',this)">Copy</button></div>
+<pre><code class=language-java id=code-32>plugin.getReaderExtension(PcscReader.class, reader.getName())
     .setContactless(true)
     .setIsoProtocol(PcscReader.IsoProtocol.T1);</code></pre>
 <h3 id=card-selection-1>Card selection</h3>
 <h4 id=use-a-manager-instead-of-service-for-card-selection>Use a manager instead of service for card selection</h4>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('28',this)">Copy</button></div>
-<pre><code class=language-java id=code-28>CardSelectionsService cardSelectionsService = new CardSelectionsService();</code></pre>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('33',this)">Copy</button></div>
+<pre><code class=language-java id=code-33>CardSelectionsService cardSelectionsService = new CardSelectionsService();</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('29',this)">Copy</button></div>
-<pre><code class=language-java id=code-29>CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();</code></pre>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('34',this)">Copy</button></div>
+<pre><code class=language-java id=code-34>CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();</code></pre>
 <div class="alert alert-note">
 <div>
 A new instance of the card selection manager is provided by the smart card service.
@@ -525,19 +604,19 @@ A new instance of the card selection manager is provided by the smart card servi
 </div>
 <h4 id=use-of-a-card-extension-to-create-a-card-selection>Use of a card extension to create a card selection</h4>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('31',this)">Copy</button></div>
-<pre><code class=language-java id=code-31>GenericCardSelectionRequest genericCardSelectionRequest =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('36',this)">Copy</button></div>
+<pre><code class=language-java id=code-36>GenericCardSelectionRequest genericCardSelectionRequest =
     new GenericCardSelectionRequest(
         CardSelector.builder()
             .aidSelector(CardSelector.AidSelector.builder().aidToSelect(cardAid).build())
             .build());</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('32',this)">Copy</button></div>
-<pre><code class=language-java id=code-32>CardSelection cardSelection = GenericExtensionService.getInstance()
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('37',this)">Copy</button></div>
+<pre><code class=language-java id=code-37>CardSelection cardSelection = GenericExtensionService.getInstance()
     .createCardSelection()
     .filterByDfName(cardAid);</code></pre>
 <div class="alert alert-note">
@@ -551,15 +630,15 @@ A new instance of the card selection manager is provided by the smart card servi
 </div>
 <h4 id=explicit-card-selection>Explicit card selection</h4>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('34',this)">Copy</button></div>
-<pre><code class=language-java id=code-34>CardSelectionsResult selectionResult = cardSelectionsService.processExplicitSelections(reader);</code></pre>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('39',this)">Copy</button></div>
+<pre><code class=language-java id=code-39>CardSelectionsResult selectionResult = cardSelectionsService.processExplicitSelections(reader);</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('35',this)">Copy</button></div>
-<pre><code class=language-java id=code-35>CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);</code></pre>
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('40',this)">Copy</button></div>
+<pre><code class=language-java id=code-40>CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);</code></pre>
 <div class="alert alert-note">
 <div>
 Note the removal of the &ldquo;s&rdquo; in <code>CardSelectionResult</code>.
@@ -567,20 +646,20 @@ Note the removal of the &ldquo;s&rdquo; in <code>CardSelectionResult</code>.
 </div>
 <h4 id=scheduled-card-selection>Scheduled card selection</h4>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('37',this)">Copy</button></div>
-<pre><code class=language-java id=code-37>((ObservableReader) reader)
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('42',this)">Copy</button></div>
+<pre><code class=language-java id=code-42>((ObservableReader) reader)
     .setDefaultSelectionRequest(
         defaultSelectionsRequest,
         ObservableReader.NotificationMode.MATCHED_ONLY,
         ObservableReader.PollingMode.REPEATING);
 ((ObservableReader) reader).addObserver(new CardReaderObserver());</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('38',this)">Copy</button></div>
-<pre><code class=language-java id=code-38>cardSelectionManager.scheduleCardSelectionScenario(
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('43',this)">Copy</button></div>
+<pre><code class=language-java id=code-43>cardSelectionManager.scheduleCardSelectionScenario(
     (ObservableCardReader) reader,
     ObservableCardReader.DetectionMode.REPEATING,
     ObservableCardReader.NotificationMode.MATCHED_ONLY);
@@ -594,18 +673,18 @@ It is the observable reader that is provided to the selection manager.
 </div>
 <h4 id=the-processing-of-the-result-of-the-selection-response-has-changed>The processing of the result of the selection response has changed</h4>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('40',this)">Copy</button></div>
-<pre><code class=language-java id=code-40>AbstractSmartCard smartCard =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('45',this)">Copy</button></div>
+<pre><code class=language-java id=code-45>AbstractSmartCard smartCard =
   defaultSelection
       .processDefaultSelectionsResponse(event.getDefaultSelectionsResponse())
       .getActiveSmartCard();</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('41',this)">Copy</button></div>
-<pre><code class=language-java id=code-41>SmartCard smartCard =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('46',this)">Copy</button></div>
+<pre><code class=language-java id=code-46>SmartCard smartCard =
     cardSelectionManager
         .parseScheduledCardSelectionsResponse(event.getScheduledCardSelectionsResponse())
         .getActiveSmartCard();</code></pre>
@@ -624,26 +703,26 @@ It is the observable reader that is provided to the selection manager.
 <h4 id=card-transaction-1>Card transaction</h4>
 <p>Access to the card transaction manager has changed. It is now done through the card extension service.</p>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('44',this)">Copy</button></div>
-<pre><code class=language-java id=code-44>PoTransaction poTransaction =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('49',this)">Copy</button></div>
+<pre><code class=language-java id=code-49>PoTransaction poTransaction =
     new PoTransaction(
         new CardResource&lt;CalypsoPo&gt;(poReader, calypsoPo),
         CalypsoUtils.getSecuritySettings(samResource));</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('45',this)">Copy</button></div>
-<pre><code class=language-java id=code-45>CardTransactionManager transactionManager = CalypsoExtensionService.getInstance()
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('50',this)">Copy</button></div>
+<pre><code class=language-java id=code-50>CardTransactionManager transactionManager = CalypsoExtensionService.getInstance()
     .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting);</code></pre>
 <h3 id=distributed-systems>Distributed systems</h3>
 <h4 id=remote-plugin-registration>Remote plugin registration</h4>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('46',this)">Copy</button></div>
-<pre><code class=language-java id=code-46>// Init the remote plugin factory.
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('51',this)">Copy</button></div>
+<pre><code class=language-java id=code-51>// Init the remote plugin factory.
 RemotePluginServerFactory factory =
     RemotePluginServerFactory.builder()
         .withDefaultPluginName()
@@ -656,10 +735,10 @@ RemotePluginServerFactory factory =
 // Register the remote plugin to the smart card service using the factory.
 SmartCardService.getInstance().registerPlugin(factory);</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('47',this)">Copy</button></div>
-<pre><code class=language-java id=code-47>RemotePluginServerFactory factory =
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('52',this)">Copy</button></div>
+<pre><code class=language-java id=code-52>RemotePluginServerFactory factory =
     RemotePluginServerFactoryBuilder.builder(REMOTE_PLUGIN_NAME)
         .withSyncNode()
         .build();
@@ -682,20 +761,20 @@ plugin.addObserver(new RemotePluginServerObserver());</code></pre>
 </div>
 <h4 id=local-service-registration>Local service registration</h4>
 <ul>
-<li>1.0.0</li>
+<li>1.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('49',this)">Copy</button></div>
-<pre><code class=language-java id=code-49>// Init the local service using the associated factory.
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('54',this)">Copy</button></div>
+<pre><code class=language-java id=code-54>// Init the local service using the associated factory.
 LocalServiceClientFactory.builder()
     .withDefaultServiceName()
     .withSyncNode(endpointClient)
     .withoutReaderObservation()
     .getService();</code></pre>
 <ul>
-<li>2.0.0</li>
+<li>2.+</li>
 </ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('50',this)">Copy</button></div>
-<pre><code class=language-java id=code-50>// Init the local service factory.
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('55',this)">Copy</button></div>
+<pre><code class=language-java id=code-55>// Init the local service factory.
 LocalServiceClientFactory factory =
     LocalServiceClientFactoryBuilder.builder(LOCAL_SERVICE_NAME)
         .withSyncNode(endpointClient)
@@ -723,7 +802,7 @@ SmartCardServiceProvider.getService().registerDistributedLocalService(factory);<
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-12-01</p>
+<p>Last updated on 2023-12-04</p>
 </div>
 </article>
 <footer class=site-footer>

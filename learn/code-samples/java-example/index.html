@@ -7,8 +7,8 @@
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
 <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
-<meta name=description content="Code  example involving the Keyple C++ implementation.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/learn/example-code/cpp-example/>
+<meta name=description content="Code example involving the Keyple Java implementation.">
+<link rel=alternate hreflang=en-us href=https://keyple.org/learn/code-samples/java-example/>
 <meta name=theme-color content="#1D87BB">
 <link rel=stylesheet href=../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
@@ -19,17 +19,17 @@
 <link rel=manifest href=../../../manifest.webmanifest>
 <link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
 <link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/learn/example-code/cpp-example/>
+<link rel=canonical href=https://keyple.org/learn/code-samples/java-example/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/learn/example-code/cpp-example/">
-<meta property="og:title" content="C++ examples | Eclipse Keyple">
-<meta property="og:description" content="Code  example involving the Keyple C++ implementation."><meta property="og:image" content="https://keyple.org/media/logo.svg">
+<meta property="og:url" content="https://keyple.org/learn/code-samples/java-example/">
+<meta property="og:title" content="Java examples | Eclipse Keyple">
+<meta property="og:description" content="Code example involving the Keyple Java implementation."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2022-05-25T14:09:17+04:00">
-<title>C++ examples | Eclipse Keyple</title>
+<meta property="article:modified_time" content="2023-12-04T16:25:55+01:00">
+<title>Java examples | Eclipse Keyple</title>
 </head>
-<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=3f4148ed1a8d47b32b49856ce8f5eb25>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=798a1de4fc742cd845609bac031b4cc5>
 <script src=../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
 <aside class=search-modal id=search>
 <div class=container>
@@ -127,7 +127,7 @@
 <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
 <div class=d-flex>
 <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
-Example code
+Code samples
 </span>
 <span><i class="fas fa-chevron-down"></i></span>
 </div>
@@ -166,7 +166,7 @@ Example code
 <li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
-<li><a href=../../../learn/user-guide/migration-guide/>Upgrade Keyple</a></li>
+<li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -177,10 +177,10 @@ Example code
 </ul>
 </div>
 <div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/example-code/>Example code</a>
+<a class=docs-toc-link href=../../../learn/code-samples/>Code samples</a>
 <ul class="nav docs-sidenav">
-<li><a href=../../../learn/example-code/java-example/>Java examples</a></li>
-<li class=active><a href=../../../learn/example-code/cpp-example/>C++ examples</a></li>
+<li class=active><a href=../../../learn/code-samples/java-example/>Java examples</a></li>
+<li><a href=../../../learn/code-samples/cpp-example/>C++ examples</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -203,22 +203,22 @@ Example code
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
 <div class=docs-article-container>
-<h1>C++ examples</h1>
+<h1>Java examples</h1>
 <div class=article-style>
 <hr>
-<p><a href=https://github.com/eclipse/keyple-cpp-example target=_blank rel=noopener>https://github.com/eclipse/keyple-cpp-example</a></p>
+<p><a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>https://github.com/eclipse/keyple-java-example</a></p>
 </div>
 <div class=article-widget>
 <div class=post-nav>
 <div class=post-nav-item>
-<div class=meta-nav>Previous</div>
-<a href=../../../learn/example-code/java-example/ rel=next>Java examples</a>
+<div class=meta-nav>Next</div>
+<a href=../../../learn/code-samples/cpp-example/ rel=prev>C++ examples</a>
 </div>
 </div>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2022-05-25</p>
+<p>Last updated on 2023-12-04</p>
 </div>
 </article>
 <footer class=site-footer>
