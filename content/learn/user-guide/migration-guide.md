@@ -1,6 +1,6 @@
 ---
 title: Upgrade from an earlier version of Keyple
-linktitle: Upgrade Keyple
+linktitle: How to upgrade Keyple
 summary: How to upgrade an existing Keyple application using an earlier version.
 type: book
 toc: true
@@ -11,17 +11,32 @@ weight: 7
 This guide is intended to help a user of a previous version of Keyple Java to upgrade his application to a new version of the library.
 
 Upgrade from:
-* [2.+ to 3.0.0](#upgrade-from-2-to-300)
-* [1.0.0 to 2.0.0](#upgrade-from-100-to-200)
+* [2.+ to 3.+](#upgrade-from-2-to-3)
+* [1.+ to 2.+](#upgrade-from-1-to-2)
 
 ---
-## Upgrade from "2.+" to "3.0.0"
+## Upgrade from "2.+" to "3.+"
 
 This major release follows the adoption of **Keypop APIs** in place of **CNA Terminal APIs**.
 
-### Dependency management
+We recommend that you follow the steps below in the order suggested:
+1. Update the project [dependencies management](#dependencies-management)
+2. Perform a global [text search & replace](#renaming) across the entire project
+3. Apply the changes to the [card/SAM selection manager](#card-selection)
+4. Apply the changes to the [card transaction manager](#card-transaction)
+5. Apply the changes to the [signatures management (PSO or basic)](#pso-signature-management-computationverification) during card transactions
+6. Apply the changes to the [SAM resource service](#sam-resource-service)
 
-Use first the [configuration wizard]({{< relref "/components/overview/configuration-wizard" >}}) to correctly import the new artifacts into your project.
+{{% callout note %}}
+All deprecated methods have been removed. If your project contains such methods, please check the changelogs for
+replacement methods.
+{{% /callout %}}
+
+### Dependencies management
+
+Replace the legacy Keyple dependencies with the latest versions.
+To do this, use the [configuration wizard]({{< relref "/components/overview/configuration-wizard" >}}) 
+to correctly import the new artifacts into your project.
 
 ### Renaming
 
@@ -30,27 +45,34 @@ Search and replace (in "**case-sensitive**" and "**whole-word**" mode) in the fo
 2. `org.calypsonet.terminal` => `org.eclipse.keypop`
 3. `card.sam` => `crypto.legacysam.sam`
 4. `Reader` => `CardReader`
-4. `ObservableReader` => `ObservableCardReader`
-4. `ReaderEvent` => `CardCardReader`
-4. `CalypsoSam` => `LegacySam`
-5. `CardSelection` => `CardSelectionExtension`
-6. `CalypsoApiProperties` => `CalypsoCardApiProperties`
-7. `SamIOException` => `CryptoIOException`
-8. `CalypsoCardSelection` => `CalypsoCardSelectionExtension`
-9. `CardSecuritySetting` => `SymmetricCryptoSecuritySetting`
-9. `createCardSecuritySetting` => `createSymmetricCryptoSecuritySetting`
-10. `processCommands(true)` => `processCommands(ChannelControl.CLOSE_AFTER)`
-11. `processCommands(false)` => `processCommands(ChannelControl.KEEP_OPEN)`
-12. `createCardSelectionManager()` => `getReaderApiFactory().createCardSelectionManager()`
-13. `createCardSelection()` => `getCalypsoCardApiFactory().createCalypsoCardSelectionExtension()`
-13. `createCardTransactionWithoutSecurity` => `getCalypsoCardApiFactory().createFreeTransactionManager`
-13. `createSearchCommandData` => `getCalypsoCardApiFactory().createSearchCommandData`
-12. `prepareComputeSignature` => `getCryptoExtension(CardTransactionLegacySamExtension.class).prepareComputeSignature`
-12. `prepareVerifySignature` => `getCryptoExtension(CardTransactionLegacySamExtension.class).prepareVerifySignature`
+5. `ObservableReader` => `ObservableCardReader`
+6. `ReaderEvent` => `CardCardReader`
+7. `CalypsoSam` => `LegacySam`
+8. `CardSelection` => `CardSelectionExtension`
+9. `CalypsoApiProperties` => `CalypsoCardApiProperties`
+10. `SamIOException` => `CryptoIOException`
+11. `CalypsoCardSelection` => `CalypsoCardSelectionExtension`
+12. `GenericCardSelection` => `GenericCardSelectionExtension`
+13. `CardSecuritySetting` => `SymmetricCryptoSecuritySetting`
+14. `createCardSecuritySetting` => `createSymmetricCryptoSecuritySetting`
+15. `processCommands(true)` => `processCommands(ChannelControl.CLOSE_AFTER)`
+16. `processCommands(false)` => `processCommands(ChannelControl.KEEP_OPEN)`
+17. `processApdusToByteArrays(true)` => `processApdusToByteArrays(ChannelControl.CLOSE_AFTER)`
+18. `processApdusToByteArrays(false)` => `processApdusToByteArrays(ChannelControl.KEEP_OPEN)`
+19. `processApdusToHexStrings(true)` => `processApdusToHexStrings(ChannelControl.CLOSE_AFTER)`
+20. `processApdusToHexStrings(false)` => `processApdusToHexStrings(ChannelControl.KEEP_OPEN)`
+21. `createCardSelectionManager()` => `getReaderApiFactory().createCardSelectionManager()`
+22. `createCardSelection()` =>
+    - **Calypso** card extension: `getCalypsoCardApiFactory().createCalypsoCardSelectionExtension()`
+    - **Generic** card extension: `createGenericCardSelectionExtension()`
+23. `createCardTransactionWithoutSecurity` => `getCalypsoCardApiFactory().createFreeTransactionManager`
+24. `createSearchCommandData` => `getCalypsoCardApiFactory().createSearchCommandData`
+25. `prepareComputeSignature` => `getCryptoExtension(CardTransactionLegacySamExtension.class).prepareComputeSignature`
+26. `prepareVerifySignature` => `getCryptoExtension(CardTransactionLegacySamExtension.class).prepareVerifySignature`
 
 ### Card selection
 
-#### Prepare a Calypso Card selection case
+#### Prepare a Calypso card selection case
 
 - 2.+
 
@@ -59,12 +81,12 @@ CalypsoCardSelection calypsoCardSelection =
     CalypsoExtensionService.getInstance().createCardSelection()
         .filterByDfName(...)
         .setFileOccurrence(...)
-        .setFileControlInformation(...)
+        .setFileControlInformation(...);
 
 cardSelectionManager.prepareSelection(calypsoCardSelection);
 {{< /code >}}
 
-- 3.0.0
+- 3.+
 
 {{< code lang="java" >}}
 IsoCardSelector isoCardSelector =
@@ -92,7 +114,7 @@ CalypsoSamSelection CalypsoSamSelection =
 cardSelectionManager.prepareSelection(CalypsoSamSelection);
 {{< /code >}}
 
-- 3.0.0
+- 3.+
 
 {{< code lang="java" >}}
 String powerOnDataFilter = LegacySamUtil.buildPowerOnDataFilter(productType, serialNumber);
@@ -107,6 +129,35 @@ LegacySamSelectionExtension legacySamSelectionExtension =
 cardSelectionManager.prepareSelection(basicCardSelector, legacySamSelectionExtension);
 {{< /code >}}
 
+#### Prepare a Generic card selection case
+
+- 2.+
+
+{{< code lang="java" >}}
+GenericCardSelection genericCardSelection =
+    GenericExtensionService.getInstance().createCardSelection()
+        .filterByDfName(...)
+        .setFileOccurrence(...)
+        .setFileControlInformation(...);
+
+cardSelectionManager.prepareSelection(genericCardSelection);
+{{< /code >}}
+
+- 3.+
+
+{{< code lang="java" >}}
+IsoCardSelector isoCardSelector =
+    SmartCardServiceProvider.getService().getReaderApiFactory().createIsoCardSelector()
+        .filterByDfName(...)
+        .setFileOccurrence(...)
+        .setFileControlInformation(...);
+
+GenericCardSelectionExtension genericCardSelectionExtension =
+    GenericExtensionService.getInstance().createGenericCardSelectionExtension();
+
+cardSelectionManager.prepareSelection(isoCardSelector, genericCardSelectionExtension);
+{{< /code >}}
+
 #### Schedule a card selection scenario
 
 - 2.+
@@ -118,7 +169,7 @@ cardSelectionManager.scheduleCardSelectionScenario(
     notificationMode);
 {{< /code >}}
 
-- 3.0.0
+- 3.+
 
 {{< code lang="java" >}}
 cardSelectionManager.scheduleCardSelectionScenario(
@@ -138,7 +189,7 @@ CardTransactionManager cardTransactionManager =
         .createCardTransactionWithoutSecurity(cardReader, card);
 {{< /code >}}
 
-- 3.0.0
+- 3.+
 
 {{< code lang="java" >}}
 FreeTransactionManager cardTransactionManager =
@@ -160,7 +211,7 @@ CardTransactionManager cardTransactionManager =
         .createCardTransaction(cardReader, card, securitySetting)
 {{< /code >}}
 
-- 3.0.0
+- 3.+
 
 {{< code lang="java" >}}
 SymmetricCryptoCardTransactionManagerFactory cryptoCardTransactionManagerFactory =
@@ -190,7 +241,7 @@ CardTransactionManager cardTransactionManager =
         .createCardTransaction(cardReader, card, securitySetting)
 {{< /code >}}
 
-- 3.0.0
+- 3.+
 
 {{< code lang="java" >}}
 SymmetricCryptoCardTransactionManagerFactory cryptoCardTransactionManagerFactory =
@@ -206,7 +257,7 @@ SecureExtendedModeTransactionManager cardTransactionManager =
         .createSecureExtendedModeTransactionManager(cardReader, card, securitySetting);
 {{< /code >}}
 
-### PSO signature manipulation (computation/verification)
+### PSO signature management (computation/verification)
 
 - 2.+
 
@@ -218,7 +269,7 @@ TraceableSignatureComputationData signatureComputationData =
 cardTransactionManager.prepareComputeSignature(signatureComputationData);
 {{< /code >}}
 
-- 3.0.0
+- 3.+
 
 {{< code lang="java" >}}
 TraceableSignatureComputationData signatureComputationData =
@@ -229,25 +280,54 @@ cardTransactionManager.getCryptoExtension(CardTransactionLegacySamExtension.clas
     .prepareComputeSignature(signatureComputationData);
 {{< /code >}}
 
-### Context setting
+### SAM resource service
 
 - 2.+
 
 {{< code lang="java" >}}
-ContextSetting contextSetting = CalypsoExtensionService.getInstance().getContextSetting();
+CardResourceProfileExtension samResourceProfileExtension =
+    CalypsoExtensionService.getInstance()
+        .createSamResourceProfileExtension(
+            CalypsoExtensionService.getInstance()
+                .createSamSelection()
+                .filterByProductType(CalypsoSam.ProductType.SAM_C1));
 {{< /code >}}
 
-- 3.0.0
+- 3.+
 
 {{< code lang="java" >}}
-ContextSetting contextSetting = LegacySamExtensionService.getInstance().getContextSetting();
+CardResourceProfileExtension samResourceProfileExtension =
+    LegacySamExtensionService.getInstance()
+        .createLegacySamResourceProfileExtension(
+            LegacySamExtensionService.getInstance()
+                .getLegacySamApiFactory()
+                .createLegacySamSelectionExtension(),
+            LegacySamUtil.buildPowerOnDataFilter(LegacySam.ProductType.SAM_C1, null));
+{{< /code >}}
+
+### Miscellaneous
+
+#### Contact reader payload capacity management
+
+- 2.+
+
+{{< code lang="java" >}}
+ContextSetting contextSetting = 
+    CalypsoExtensionService.getInstance().getContextSetting().setContactReaderPayloadCapacity(...);
+{{< /code >}}
+
+- 3.+
+
+{{< code lang="java" >}}
+ContextSetting contextSetting = 
+    LegacySamExtensionService.getInstance().getContextSetting().setContactReaderPayloadCapacity(...);
 {{< /code >}}
 
 
 ---
-## Upgrade from "1.0.0" to "2.0.0"
+## Upgrade from "1.+" to "2.+"
 
-Here is a comparative review of the main API changes between Keyple 1.0.0 and 2.0.0:
+Here is a comparative review of the main API changes between Keyple 1.+ and 2.+:
 
 ### Dependency management
 
@@ -257,13 +337,13 @@ Use the [configuration wizard]({{< relref "/components/overview/configuration-wi
 
 #### Use of a provider to access the smart card service
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 SmartCardService smartCardService = SmartCardService.getInstance();
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 SmartCardService smartCardService = SmartCardServiceProvider.getService();
@@ -271,7 +351,7 @@ SmartCardService smartCardService = SmartCardServiceProvider.getService();
 
 #### Use of builders to instantiate plugin factories
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, new ExceptionHandlerImpl()));
@@ -279,7 +359,7 @@ Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, new 
 ((ObservableReader) reader).addObserver(new CardReaderObserver());
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
@@ -294,7 +374,7 @@ Exception handlers are no longer required when registering the plugin but only w
 
 #### Use of a new interface dedicated to the management of protocols
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 reader.activateProtocol(
@@ -302,7 +382,7 @@ reader.activateProtocol(
     ContactlessCardCommonProtocols.ISO_14443_4.name());
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 ((ConfigurableCardReader) reader).activateProtocol(
@@ -316,7 +396,7 @@ reader.activateProtocol(
 The examples below show the evolutions for the configuration of a PC/SC reader but the principle is the same for all plugins and readers.
 {{% /callout %}}
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 reader
@@ -324,7 +404,7 @@ reader
     .setIsoProtocol(PcscReader.IsoProtocol.T1);
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 plugin.getReaderExtension(PcscReader.class, reader.getName())
@@ -336,13 +416,13 @@ plugin.getReaderExtension(PcscReader.class, reader.getName())
 
 #### Use a manager instead of service for card selection
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 CardSelectionsService cardSelectionsService = new CardSelectionsService();
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();
@@ -354,7 +434,7 @@ A new instance of the card selection manager is provided by the smart card servi
 
 #### Use of a card extension to create a card selection
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 GenericCardSelectionRequest genericCardSelectionRequest =
@@ -364,7 +444,7 @@ GenericCardSelectionRequest genericCardSelectionRequest =
             .build());
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 CardSelection cardSelection = GenericExtensionService.getInstance()
@@ -380,13 +460,13 @@ CardSelection cardSelection = GenericExtensionService.getInstance()
 
 #### Explicit card selection
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 CardSelectionsResult selectionResult = cardSelectionsService.processExplicitSelections(reader);
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);
@@ -398,7 +478,7 @@ Note the removal of the "s" in `CardSelectionResult`.
 
 #### Scheduled card selection
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 ((ObservableReader) reader)
@@ -409,7 +489,7 @@ Note the removal of the "s" in `CardSelectionResult`.
 ((ObservableReader) reader).addObserver(new CardReaderObserver());
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 cardSelectionManager.scheduleCardSelectionScenario(
@@ -427,7 +507,7 @@ It is the observable reader that is provided to the selection manager.
 
 #### The processing of the result of the selection response has changed
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 AbstractSmartCard smartCard =
@@ -436,7 +516,7 @@ AbstractSmartCard smartCard =
       .getActiveSmartCard();
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 SmartCard smartCard =
@@ -462,7 +542,7 @@ The SAM resource manager has been replaced by a generic [Card Resource Service](
 
 Access to the card transaction manager has changed. It is now done through the card extension service.
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 PoTransaction poTransaction =
@@ -471,7 +551,7 @@ PoTransaction poTransaction =
         CalypsoUtils.getSecuritySettings(samResource));
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 CardTransactionManager transactionManager = CalypsoExtensionService.getInstance()
@@ -482,7 +562,7 @@ CardTransactionManager transactionManager = CalypsoExtensionService.getInstance(
 
 #### Remote plugin registration
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 // Init the remote plugin factory.
@@ -499,7 +579,7 @@ RemotePluginServerFactory factory =
 SmartCardService.getInstance().registerPlugin(factory);
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 RemotePluginServerFactory factory =
@@ -524,7 +604,7 @@ plugin.addObserver(new RemotePluginServerObserver());
 
 #### Local service registration
 
-- 1.0.0
+- 1.+
 
 {{< code lang="java" >}}
 // Init the local service using the associated factory.
@@ -535,7 +615,7 @@ LocalServiceClientFactory.builder()
     .getService();
 {{< /code >}}
 
-- 2.0.0
+- 2.+
 
 {{< code lang="java" >}}
 // Init the local service factory.
