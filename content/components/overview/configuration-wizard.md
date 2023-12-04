@@ -261,7 +261,8 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 </code>
 
 <!-- All maven dependencies -->
-<code id="all-maven-dependencies" style="display:none">
+<pre style="display:none">
+<code id="all-maven-dependencies">
 <span id="keyple-common-java-api"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keyple-common-java-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
@@ -358,6 +359,7 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keypop-calypso-crypto-legacysam-java-api-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
 </code>
+</pre>
 <script type="text/javascript">
 document.body.onload = function() {
     updateAppDependencies(1, null);
