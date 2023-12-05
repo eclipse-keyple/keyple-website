@@ -607,6 +607,12 @@ classes (issue [#25]).</li>
 <li>CI: code coverage report when releasing.</li>
 </ul>
 </td></tr>
+<tr><th>2023-06-05</th><td><span class=component>Keyple Service Cpp Lib</span><span class=version><code>2.1.1.1</code></span><hr><h3 id=fixed>Fixed</h3>
+<ul>
+<li>Fix: CLang / Windows compilation fixes</li>
+<li>Fix: fixed runtime issue on Windows</li>
+</ul>
+</td></tr>
 <tr><th>2023-05-30</th><td><span class=component>Keyple Service Java Lib</span><span class=version><code>2.3.1</code></span><hr><h3 id=fixed>Fixed</h3>
 <ul>
 <li>Fixes an issue with exception handling in the <code>WAIT_FOR_CARD_REMOVAL</code> state of the observable reader state machine
@@ -650,6 +656,8 @@ that appeared with version <code>2.2.0</code>.</li>
 <li>Fixes the communication issue between client and server components of the &ldquo;Distributed&rdquo; solution that appeared with version <code>2.1.4</code>.</li>
 </ul>
 </td></tr>
+<tr><th>2023-05-05</th><td><span class=component>Keyple Util Cpp Lib</span><span class=version><code>2.3.0.4</code></span><hr></td></tr>
+<tr><th>2023-05-05</th><td><span class=component>Keyple Plugin Pcsc Cpp Lib</span><span class=version><code>2.1.0.1</code></span><hr></td></tr>
 <tr><th>2023-04-27</th><td><span class=component>Keyple Plugin Cardresource Java Lib</span><span class=version><code>1.0.1</code></span><hr><h3 id=fixed>Fixed</h3>
 <ul>
 <li>Exception handling associated with the reader allocation process.</li>
@@ -705,6 +713,9 @@ order to retrieve the smart card that may be automatically selected.</li>
 environment.</li>
 </ul>
 </td></tr>
+<tr><th>2023-04-17</th><td><span class=component>Keyple Util Cpp Lib</span><span class=version><code>2.3.0.3</code></span><hr></td></tr>
+<tr><th>2023-04-12</th><td><span class=component>Keyple Service Cpp Lib</span><span class=version><code>2.1.1</code></span><hr></td></tr>
+<tr><th>2023-04-12</th><td><span class=component>Keyple Util Cpp Lib</span><span class=version><code>2.3.0.2</code></span><hr></td></tr>
 <tr><th>2023-04-05</th><td><span class=component>Keyple Plugin Pcsc Java Lib</span><span class=version><code>2.1.1</code></span><hr><h3 id=changed>Changed</h3>
 <ul>
 <li><code>PcscPluginFactoryBuilder.useContactReaderIdentificationFilter</code> method marked as deprecated.</li>
@@ -838,12 +849,21 @@ notify remote reader connection events (see new method <code>ObservableRemotePlu
 <li>CI: Forbid the publication of a version already released (issue [#3])</li>
 </ul>
 </td></tr>
+<tr><th>2023-01-31</th><td><span class=component>Keyple Util Cpp Lib</span><span class=version><code>2.3.0.1</code></span><hr></td></tr>
 <tr><th>2023-01-10</th><td><span class=component>Keyple Service Java Lib</span><span class=version><code>2.1.2</code></span><hr><h3 id=upgraded>Upgraded</h3>
 <ul>
 <li>&ldquo;Calypsonet Terminal Reader API&rdquo; to version <code>1.2.0</code>.</li>
 <li>&ldquo;Keyple Util Library&rdquo; to version <code>2.3.0</code>.</li>
 </ul>
 </td></tr>
+<tr><th>2023-01-01</th><td><span class=component>Keyple Plugin Stub Cpp Lib</span><span class=version><code>2.1.0</code></span><hr></td></tr>
+<tr><th>2022-12-31</th><td><span class=component>Keyple Plugin Pcsc Cpp Lib</span><span class=version><code>2.1.0</code></span><hr></td></tr>
+<tr><th>2022-12-30</th><td><span class=component>Keyple Card Generic Cpp Lib</span><span class=version><code>2.0.2.1</code></span><hr></td></tr>
+<tr><th>2022-12-30</th><td><span class=component>Keyple Service Resource Cpp Lib</span><span class=version><code>2.0.2</code></span><hr></td></tr>
+<tr><th>2022-12-29</th><td><span class=component>Keyple Service Cpp Lib</span><span class=version><code>2.1.0</code></span><hr></td></tr>
+<tr><th>2022-12-28</th><td><span class=component>Keyple Util Cpp Lib</span><span class=version><code>2.3.0</code></span><hr></td></tr>
+<tr><th>2022-12-28</th><td><span class=component>Keyple Util Cpp Lib</span><span class=version><code>2.2.0</code></span><hr></td></tr>
+<tr><th>2022-12-28</th><td><span class=component>Keyple Util Cpp Lib</span><span class=version><code>2.1.0</code></span><hr></td></tr>
 <tr><th>2022-12-22</th><td><span class=component>Keyple Card Calypso Java Lib</span><span class=version><code>2.3.1</code></span><hr><h3 id=fixed>Fixed</h3>
 <ul>
 <li>SAM exception management for signature command.</li>
@@ -917,6 +937,7 @@ information pattern:
 <li><code>ByteArrayUtil.copyBytes</code> method.</li>
 </ul>
 </td></tr>
+<tr><th>2022-11-04</th><td><span class=component>Keyple Plugin Cpp Api</span><span class=version><code>2.0.0</code></span><hr></td></tr>
 <tr><th>2022-10-27</th><td><span class=component>Keyple Card Calypso Java Lib</span><span class=version><code>2.2.3</code></span><hr><h3 id=added>Added</h3>
 <ul>
 <li>JSON serializers for the new import/export feature of the card selection manager.</li>
@@ -1022,6 +1043,13 @@ information pattern:
 <li>Setting the smartcard.io path in the case of MacOS platform.</li>
 </ul>
 </td></tr>
+<tr><th>2022-07-05</th><td><span class=component>Keyple Util Cpp Lib</span><span class=version><code>2.0.0</code></span><hr></td></tr>
+<tr><th>2022-07-05</th><td><span class=component>Keyple Service Resource Cpp Lib</span><span class=version><code>2.0.1</code></span><hr></td></tr>
+<tr><th>2022-07-05</th><td><span class=component>Keyple Service Cpp Lib</span><span class=version><code>2.0.1</code></span><hr></td></tr>
+<tr><th>2022-07-05</th><td><span class=component>Keyple Plugin Stub Cpp Lib</span><span class=version><code>2.0.0</code></span><hr></td></tr>
+<tr><th>2022-07-05</th><td><span class=component>Keyple Plugin Pcsc Cpp Lib</span><span class=version><code>2.0.0</code></span><hr></td></tr>
+<tr><th>2022-07-05</th><td><span class=component>Keyple Common Cpp Api</span><span class=version><code>2.0.0</code></span><hr></td></tr>
+<tr><th>2022-07-05</th><td><span class=component>Keyple Card Generic Cpp Lib</span><span class=version><code>2.0.2</code></span><hr></td></tr>
 <tr><th>2022-06-09</th><td><span class=component>Keyple Plugin Android Omapi Java Lib</span><span class=version><code>2.0.1</code></span><hr><h3 id=added>Added</h3>
 <ul>
 <li><code>CHANGELOG.md</code> file (issue [eclipse/keyple#6]).</li>
@@ -1124,6 +1152,14 @@ information pattern:
 <li><code>ContactlessCardCommonProtocol</code> class.</li>
 </ul>
 </td></tr>
+<tr><th>2022-05-25</th><td><span class=component>Keyple Service Resource Cpp Lib</span><span class=version><code>2.0.1-ipr</code></span><hr></td></tr>
+<tr><th>2022-05-25</th><td><span class=component>Keyple Common Cpp Api</span><span class=version><code>2.0.0-ipr</code></span><hr></td></tr>
+<tr><th>2022-05-24</th><td><span class=component>Keyple Util Cpp Lib</span><span class=version><code>2.0.0-ipr</code></span><hr></td></tr>
+<tr><th>2022-05-24</th><td><span class=component>Keyple Service Cpp Lib</span><span class=version><code>2.0.1-ipr</code></span><hr></td></tr>
+<tr><th>2022-05-24</th><td><span class=component>Keyple Plugin Stub Cpp Lib</span><span class=version><code>2.0.0-ipr</code></span><hr></td></tr>
+<tr><th>2022-05-24</th><td><span class=component>Keyple Plugin Pcsc Cpp Lib</span><span class=version><code>2.0.0-ipr</code></span><hr></td></tr>
+<tr><th>2022-05-24</th><td><span class=component>Keyple Plugin Cpp Api</span><span class=version><code>2.0.0-ipr</code></span><hr></td></tr>
+<tr><th>2022-05-24</th><td><span class=component>Keyple Card Generic Cpp Lib</span><span class=version><code>2.0.2-ipr</code></span><hr></td></tr>
 <tr><th>2022-02-01</th><td><span class=component>Keyple Card Calypso Java Lib</span><span class=version><code>2.1.0</code></span><hr><h3 id=added>Added</h3>
 <ul>
 <li>Implementation of <code>EF_LIST</code> and <code>TRACEABILITY_INFORMATION</code> tags to <code>prepareGetData</code> methods (issue [#33]).</li>
