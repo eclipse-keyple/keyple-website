@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/131712747",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/131712747/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-service-java-lib/releases/131712747/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-service-java-lib/releases/tag/3.0.0",
-  "id": 131712747,
+  "url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/132856120",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/releases/132856120/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-service-java-lib/releases/132856120/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-service-java-lib/releases/tag/3.0.1",
+  "id": 132856120,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWeus4H2cbr",
-  "tag_name": "3.0.0",
+  "node_id": "RE_kwDODMWeus4H6zk4",
+  "tag_name": "3.0.1",
   "target_commitish": "main",
-  "name": "",
+  "name": "3.0.1",
   "draft": false,
   "prerelease": false,
-  "created_at": "2023-11-28T10:40:56Z",
-  "published_at": "2023-11-28T11:05:31Z",
+  "created_at": "2023-12-06T14:10:23Z",
+  "published_at": "2023-12-06T14:29:59Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/tarball/3.0.0",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/zipball/3.0.0",
-  "body": ":warning: Major version! Following the migration of the \"Calypsonet Terminal\" APIs to the [Eclipse Keypop project](https://keypop.org), this library now implements Keypop interfaces.\r\n### Added\r\n- Added the method `ReaderApiFactory getReaderApiFactory()` to the `SmartCardService` interface to get an implementation of the `ReaderApiFactory` Keypop interface.\r\n- Added a property indicating the Core JSON API level in exchanged JSON data (current value: `\"coreApiLevel\": 2`).\r\n- Added project status badges on `README.md` file.\r\n### Changed\r\n- Distributed JSON API `1.0` -> `2.0` (compatibility with previous versions remains assured for the time being)\r\n- Method signatures:\r\n    - Interface `Plugin`: `Set<Reader> getReaders()` -> `Set<CardReader> getReaders()`\r\n    - Interface `Plugin`: `Reader getReader(String readerName)` -> `CardReader getReader(String readerName)`\r\n    - Interface `PoolPlugin`: `Reader allocateReader(String readerGroupReference)` -> `CardReader allocateReader(String readerGroupReference)`\r\n### Removed\r\n- Deprecated interfaces:\r\n    - `Reader` (replaced by `CardReader` in all methods signatures)\r\n    - `ObservableReader` (replaced by `ObservableCardReader`)\r\n    - `ConfigurableReader` (replaced by `ConfigurableCardReader`)\r\n    - `ReaderEvent` (replaced by `CardReaderEvent`)\r\n- Method `SmartCardService.createCardSelectionManager()` (now provided by the `ReaderApiFactory` Keypop interface)\r\n### Fixed\r\n- CI: code coverage report when releasing.\r\n### Upgraded\r\n- Calypsonet Terminal Reader API `1.3.0` -> Keypop Reader API `2.0.0`\r\n- Calypsonet Terminal Card API `1.0.0` -> Keypop Card API `2.0.0`\r\n- Keyple Distributed Local API `2.0.0` -> `2.1.0`\r\n- Keyple Distributed Remote API `2.1.0` -> `3.0.0`"
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/tarball/3.0.1",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-service-java-lib/zipball/3.0.1",
+  "body": "### Fixed\r\n- Corrects a server-side anomaly in communication between the server and a client using a version of the Distributed JSON API prior to 2.0, when the card selection request does not contain an additional card request.\r\n- `CARD_REMOVED` events are no longer notified when the card selection scenario notification mode is set to `MATCH_ONLY` and a non-matching card has been inserted then removed."
 }

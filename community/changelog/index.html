@@ -172,6 +172,17 @@ across all Keyple components repositories.
 </tr>
 </thead>
 <tbody>
+<tr><th>2023-12-06</th><td><span class=component>Keyple Card Calypso Java Lib</span><span class=version><code>3.0.1</code></span><hr><h3 id=fixed>Fixed</h3>
+<ul>
+<li><code>InvalidPinException</code> exception is now thrown instead of the generic <code>UnexpectedCommandStatusException</code> when the PIN entered is incorrect.</li>
+</ul>
+</td></tr>
+<tr><th>2023-12-06</th><td><span class=component>Keyple Service Java Lib</span><span class=version><code>3.0.1</code></span><hr><h3 id=fixed>Fixed</h3>
+<ul>
+<li>Corrects a server-side anomaly in communication between the server and a client using a version of the Distributed JSON API prior to 2.0, when the card selection request does not contain an additional card request.</li>
+<li><code>CARD_REMOVED</code> events are no longer notified when the card selection scenario notification mode is set to <code>MATCH_ONLY</code> and a non-matching card has been inserted then removed.</li>
+</ul>
+</td></tr>
 <tr><th>2023-11-30</th><td><span class=component>Keyple Plugin Stub Java Lib</span><span class=version><code>2.2.0</code></span><hr><h3 id=added>Added</h3>
 <ul>
 <li>Added project status badges on <code>README.md</code> file.</li>

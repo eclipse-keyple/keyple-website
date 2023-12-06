@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/131752256",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/131752256/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/131752256/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/releases/tag/3.0.0",
-  "id": 131752256,
+  "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/132858764",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/132858764/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-card-calypso-java-lib/releases/132858764/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-card-calypso-java-lib/releases/tag/3.0.1",
+  "id": 132858764,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWfVs4H2mFA",
-  "tag_name": "3.0.0",
+  "node_id": "RE_kwDODMWfVs4H60OM",
+  "tag_name": "3.0.1",
   "target_commitish": "main",
   "name": "",
   "draft": false,
   "prerelease": false,
-  "created_at": "2023-11-28T14:38:48Z",
-  "published_at": "2023-11-28T14:52:24Z",
+  "created_at": "2023-12-06T14:34:06Z",
+  "published_at": "2023-12-06T14:44:35Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/tarball/3.0.0",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/zipball/3.0.0",
-  "body": ":warning: Major version! Following the migration of the \"Calypsonet Terminal\" APIs to the [Eclipse Keypop project](https://keypop.org), this library now implements Keypop interfaces.\r\n### Fixed\r\n- Fixed the crash that occurred when using \"Read\" commands in best-effort mode during a free card transaction.\r\n### Added\r\n- Added dependency to \"Keypop Calypso Crypto Symmetric API\" `0.1.0`\r\n- Added the method `CalypsoCardApiFactory getCalypsoCardApiFactory()` to the `CalypsoCardExtensionService` class to get an implementation of the `CalypsoCardApiFactory` Keypop interface.\r\n### Removed\r\n- Removed dependency to \"Keyple Service Resource Library\".\r\n- Removed methods from `CalypsoExtensionService`:\r\n  - `getContextSetting()` (now provided by specific Calypso crypto module)\r\n  - `createSearchCommandData()` (now provided by the `CalypsoCardApiFactory` Keypop interface)\r\n  - `createBasicSignatureComputationData()` (now provided by specific Calypso crypto module)\r\n  - `createTraceableSignatureComputationData()` (now provided by specific Calypso crypto module)\r\n  - `createBasicSignatureVerificationData()` (now provided by specific Calypso crypto module)\r\n  - `createTraceableSignatureVerificationData()` (now provided by specific Calypso crypto module)\r\n  - `createCardSelection()` (now provided by the `CalypsoCardApiFactory` Keypop interface)\r\n  - `createSamSelection()` (now provided by specific Calypso crypto module)\r\n  - `createSamResourceProfileExtension(...)` (now provided by specific Calypso crypto module)\r\n  - `createCardSecuritySetting()` (now provided by the `CalypsoCardApiFactory` Keypop interface)\r\n  - `createCardTransaction(...)` (now provided by the `CalypsoCardApiFactory` Keypop interface)\r\n  - `createCardTransactionWithoutSecurity(...)` (now provided by the `CalypsoCardApiFactory` Keypop interface)\r\n  - `createSamSecuritySetting()` (now provided by specific Calypso crypto module)\r\n  - `createSamTransaction(...)` (now provided by specific Calypso crypto module)\r\n  - `createSamTransactionWithoutSecurity(...)` (now provided by specific Calypso crypto module)\r\n- Removed interface `ContextSetting` (now provided by specific Calypso crypto module)\r\n### Upgraded\r\n- Calypsonet Terminal Reader API `1.3.0` -> Keypop Reader API `2.0.0`\r\n- Calypsonet Terminal Card API `1.0.0` -> Keypop Card API `2.0.0`\r\n- Calypsonet Terminal Calypso API `1.8.0` -> Keypop Calypso Card API `2.0.0`\r\n- Keyple Util Library `2.3.0` -> `2.3.1` (source code not impacted)\r\n- Removed dependency to \"Keyple Service Resource Library\" (used only by crypto components)"
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/tarball/3.0.1",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-java-lib/zipball/3.0.1",
+  "body": "### Fixed\r\n- `InvalidPinException` exception is now thrown instead of the generic `UnexpectedCommandStatusException` when the PIN entered is incorrect."
 }
