@@ -5,10 +5,297 @@ pageFooterContainer.removeClass("container");
 pageFooterContainer.css("padding-left", "0");
 pageFooterContainer.css("padding-right", "0");
 
+/**
+ * Dependency check management
+ */
+const ComponentName = {
+    READER_API: "readerApi",
+    CARD_API: "cardApi",
+    CALYPSO_API: "calypsoApi",
+    CALYPSO_SYMMETRIC_API: "calypsoSymmetricApi",
+    CALYPSO_LEGACY_SAM_API: "calypsoLegacySamApi",
+    CALYPSO_ASYMMETRIC_API: "calypsoAsymmetricApi",
+    COMMON_API: "commonApi",
+    DISTRIBUTED_LOCAL_API: "distributedLocalApi",
+    DISTRIBUTED_REMOTE_API: "distributedRemoteApi",
+    PLUGIN_API: "pluginApi",
+    UTIL_LIB: "utilLib",
+    SERVICE_LIB: "serviceLib",
+    SERVICE_RESOURCE_LIB: "serviceResourceLib",
+    DISTRIBUTED_LOCAL_LIB: "distributedLocalLib",
+    DISTRIBUTED_NETWORK_LIB: "distributedNetworkLib",
+    DISTRIBUTED_REMOTE_LIB: "distributedRemoteLib",
+    CALYPSO_CARD_LIB: "calypsoCardLib",
+    CALYPSO_LEGACY_SAM_LIB: "calypsoLegacySamLib",
+    GENERIC_LIB: "genericLib",
+    PLUGIN_ANDROID_NFC_LIB: "pluginAndroidNfcLib",
+    PLUGIN_ANDROID_OMAPI_LIB: "pluginAndroidOmapiLib",
+    PLUGIN_CARD_RESOURCE_LIB: "pluginCardResourceLib",
+    PLUGIN_PCSC_LIB: "pluginPcscLib",
+    PLUGIN_STUB_LIB: "pluginStubLib"
+};
+const componentNames = [
+    ComponentName.READER_API,
+    ComponentName.CARD_API,
+    ComponentName.CALYPSO_API,
+    ComponentName.CALYPSO_SYMMETRIC_API,
+    ComponentName.CALYPSO_LEGACY_SAM_API,
+    ComponentName.CALYPSO_ASYMMETRIC_API,
+    ComponentName.COMMON_API,
+    ComponentName.DISTRIBUTED_LOCAL_API,
+    ComponentName.DISTRIBUTED_REMOTE_API,
+    ComponentName.PLUGIN_API,
+    ComponentName.UTIL_LIB,
+    ComponentName.SERVICE_LIB,
+    ComponentName.SERVICE_RESOURCE_LIB,
+    ComponentName.DISTRIBUTED_LOCAL_LIB,
+    ComponentName.DISTRIBUTED_NETWORK_LIB,
+    ComponentName.DISTRIBUTED_REMOTE_LIB,
+    ComponentName.CALYPSO_CARD_LIB,
+    ComponentName.CALYPSO_LEGACY_SAM_LIB,
+    ComponentName.GENERIC_LIB,
+    ComponentName.PLUGIN_ANDROID_NFC_LIB,
+    ComponentName.PLUGIN_ANDROID_OMAPI_LIB,
+    ComponentName.PLUGIN_CARD_RESOURCE_LIB,
+    ComponentName.PLUGIN_PCSC_LIB,
+    ComponentName.PLUGIN_STUB_LIB
+];
+function Release (componentName, componentVersion) {
+    this.componentName = componentName;
+    this.componentVersions = [componentVersion];
+}
+function ReleaseTrain (...releases) {
+    this.releases = releases;
+}
+/******************************************************************************
+ * Release trains of the dependency check tool
+ *
+ * Caution: always add on first position!
+ *****************************************************************************/
+let releaseTrains = [];
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.SERVICE_LIB, "3.0.1")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.CALYPSO_CARD_LIB, "3.0.1")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.UTIL_LIB, "2.3.1")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "2.1.0")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.PLUGIN_ANDROID_OMAPI_LIB, "2.0.1")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.PLUGIN_PCSC_LIB, "2.1.2")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.PLUGIN_STUB_LIB, "2.2.0")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.READER_API, "2.0.+"),
+    new Release(ComponentName.CARD_API, "2.0.+"),
+    new Release(ComponentName.CALYPSO_API, "2.0.+"),
+    new Release(ComponentName.CALYPSO_SYMMETRIC_API, "0.1.+"),
+    new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.3.+"),
+    new Release(ComponentName.CALYPSO_ASYMMETRIC_API, "0.1.+"),
+    new Release(ComponentName.COMMON_API, "2.0.+"),
+    new Release(ComponentName.DISTRIBUTED_LOCAL_API, "2.1.+"),
+    new Release(ComponentName.DISTRIBUTED_REMOTE_API, "3.0.+"),
+    new Release(ComponentName.PLUGIN_API, "2.2.+"),
+    new Release(ComponentName.UTIL_LIB, "2.3.0"),
+    new Release(ComponentName.SERVICE_LIB, "3.0.0"),
+    new Release(ComponentName.SERVICE_RESOURCE_LIB, "3.0.0"),
+    new Release(ComponentName.DISTRIBUTED_LOCAL_LIB, "2.3.0"),
+    new Release(ComponentName.DISTRIBUTED_NETWORK_LIB, "2.3.0"),
+    new Release(ComponentName.DISTRIBUTED_REMOTE_LIB, "2.3.0"),
+    new Release(ComponentName.CALYPSO_CARD_LIB, "3.0.0"),
+    new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "0.4.0"),
+    new Release(ComponentName.GENERIC_LIB, "3.0.0"),
+    new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "2.0.0"),
+    new Release(ComponentName.PLUGIN_ANDROID_OMAPI_LIB, "2.0.0"),
+    new Release(ComponentName.PLUGIN_CARD_RESOURCE_LIB, "2.0.0"),
+    new Release(ComponentName.PLUGIN_PCSC_LIB, "2.0.0"),
+    new Release(ComponentName.PLUGIN_STUB_LIB, "2.0.0")
+));
+/**
+ * The aim is to get rid of non-impacting release trains,
+ * i.e. release trains that only concern a single release and have no impact on other components,
+ * as these release trains should not generate a new entry in the dependency check table.
+ * These non-impacting releases versions should be displayed as a range of values (e.g. 1.0.0...1.2.3).
+ * We will therefore aggregate these non-impacting releases versions
+ * into impacting release trains referencing several releases, then delete the non-impacting release trains.
+ */
+mergeNonImpactingReleaseTrains = function() {
+    let componentNameToVersionsMap = new Map();
+    let indexesOfNonImpactingReleaseTrains = [];
+    // Merge all non-impacting releases versions
+    for (let i = 0; i < releaseTrains.length; i++) {
+        let releaseTrain = releaseTrains[i];
+        // Check if the current release train is non-impacting
+        if (releaseTrain.releases.length === 1) {
+            // Non-impacting release train => we register the version of the release train's only release in the map of
+            // non-impacting releases in the first position, in case this component is already present,
+            // and we also register the release train's index so that we can delete the release later.
+            let componentName = releaseTrain.releases[0].componentName;
+            let componentVersion = releaseTrain.releases[0].componentVersions[0];
+            if (componentNameToVersionsMap.has(componentName)) {
+                // Add version to first position
+                let componentLatestVersions = componentNameToVersionsMap.get(componentName);
+                componentLatestVersions.unshift(componentVersion);
+            } else {
+                // Save version as a single array-element
+                componentNameToVersionsMap.set(componentName, [componentVersion]);
+            }
+            // Save the release train index
+            indexesOfNonImpactingReleaseTrains.push(i);
+        } else {
+            // Impacting release trains => for each release in the release train, we check whether it is present in the 
+            // map of non-impacting releases. If so, we aggregate the versions associated with the component in the 
+            // release, then remove the component from the map.
+            for (let j = 0; j < releaseTrain.releases.length; j++) {
+                let componentName = releaseTrain.releases[j].componentName;
+                let componentVersions = releaseTrain.releases[j].componentVersions;
+                if (componentNameToVersionsMap.has(componentName)) {
+                    // Add latest version(s) to the current release
+                    let componentLatestVersions = componentNameToVersionsMap.get(componentName);
+                    componentVersions.push(...componentLatestVersions);
+                    // Remove the component from the map
+                    componentNameToVersionsMap.delete(componentName);
+                }
+            }
+        }
+    }
+    // Remove all non-impacting releases
+    for (let i = indexesOfNonImpactingReleaseTrains.length - 1; i >= 0; i--) {
+        releaseTrains.splice(indexesOfNonImpactingReleaseTrains[i], 1);
+    }
+}
+/**
+ * Generates raw html content for rows in the dependency check table.
+ * To do this, we go through the remaining (i.e. impacting) release trains from the oldest to the most recent.
+ * For each of them, we generate the html content and update the version of each component impacted by the release train
+ * in order to carry it over to more recent release trains.
+ */
+insertRowsIntoDependencyCheckHtmlTable = function() {
+    let componentNameToVersionsMap = new Map();
+    let htmlRows = [];
+    for (let i = releaseTrains.length - 1; i >= 0; i--) {
+        // Update the versions into the map for all components present into the current release
+        let releases = releaseTrains[i].releases;
+        for (let j = 0; j < releases.length; j++) {
+            componentNameToVersionsMap.set(releases[j].componentName, releases[j].componentVersions);
+        }
+        // Build the row with the values from the map
+        let htmlRow = "<tr>";
+        for (let j = 0; j < componentNames.length; j++) {
+            htmlRow += "<td>";
+            let componentName = componentNames[j];
+            if (componentNameToVersionsMap.has(componentName)) {
+                let componentVersions = componentNameToVersionsMap.get(componentName);
+                htmlRow += componentVersions[0];
+                if (componentVersions.length > 1) {
+                    // Add a range with the latest version
+                    htmlRow += "...";
+                    htmlRow += componentVersions[componentVersions.length - 1];
+                }
+            } else {
+                htmlRow += "-";
+            }
+            htmlRow += "</td>";
+        }
+        htmlRow += "</tr>";
+        // Add row to first position
+        htmlRows.unshift(htmlRow);
+    }
+    // Insert rows into the table
+    $('#datatable-dependency-check tbody').html(htmlRows.join());
+}
+initDatatableDependencyCheck = function() {
+    // Prepare table rows
+    mergeNonImpactingReleaseTrains();
+    insertRowsIntoDependencyCheckHtmlTable();
+    // Draw table
+    $('#datatable-dependency-check').DataTable( {
+        fixedHeader: {
+            header: true,
+            footer: true
+        },
+        scrollCollapse: true,
+        scrollX: true,
+        scrollY: 200,
+        ordering: false,
+        paging: false,
+        initComplete: function () {
+            // Remove the search input text & the footer information showing the number of results
+            $("#datatable-dependency-check_wrapper div.row:nth-child(3)").remove();
+            $("#datatable-dependency-check_wrapper div.row:nth-child(1)").remove();
+            // Add the select button to the header of each column
+            this.api().columns().every( function () {
+                let column = this;
+                let select = $('<br><select><option value=""></option></select>')
+                    .appendTo($(column.header()))
+                    .on('change', function () {
+                        let val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search(val ? '^' + val + '$' : '', true, false)
+                            .draw();
+                    });
+                column.data().unique().sort().reverse().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+            // Refresh the content in order to adapt correctly the columns' width.
+            this.api().draw();
+        }
+    } );
+}
+initDatatableDependencyCheckOld = function() {
+    $('#datatable-dependency-check-old').DataTable( {
+        fixedHeader: {
+            header: true,
+            footer: true
+        },
+        scrollCollapse: true,
+        scrollX: true,
+        scrollY: 200,
+        ordering: false,
+        paging: false,
+        initComplete: function () {
+            // Remove the search input text & the footer information showing the number of results
+            $("#datatable-dependency-check-old_wrapper div.row:nth-child(3)").remove();
+            $("#datatable-dependency-check-old_wrapper div.row:nth-child(1)").remove();
+            // Add the select button to the header of each column
+            this.api().columns().every( function () {
+                let column = this;
+                let select = $('<br><select><option value=""></option></select>')
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        let val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+                column.data().unique().sort().reverse().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+            // Refresh the content in order to adapt correctly the columns' width.
+            this.api().draw();
+        }
+    } );
+}
+
 // Copy to clipboard
 updateClipboard = function(newClip, button) {
     navigator.permissions.query({name: "clipboard-write"}).then(result => {
-        if (result.state == "granted" || result.state == "prompt") {
+        if (result.state === "granted" || result.state === "prompt") {
             /* write to the clipboard now */
             navigator.clipboard.writeText(newClip).then(function() {
                 /* clipboard successfully set */
@@ -95,7 +382,7 @@ const msgWizardGeneratedBeginXml = "&lt!-- " + msgWizardGeneratedBegin + " --&gt
 const msgWizardGeneratedEndXml = "<br>&lt!-- " + msgWizardGeneratedEnd + " --&gt";
 updateAppDependencies = function(tabRef, checkbox) {
     if (checkbox != null) {
-        if (checkbox.checked == true) {
+        if (checkbox.checked === true) {
             appDependencies.add(checkbox.id);
         } else {
             appDependencies.delete(checkbox.id);
@@ -122,7 +409,7 @@ computeCardContent = function(language) {
 }
 updateCardDependencies = function(tabRef, checkbox) {
     if (checkbox != null) {
-        if (checkbox.checked == true) {
+        if (checkbox.checked === true) {
             cardDependencies.add(checkbox.id);
         } else {
             cardDependencies.delete(checkbox.id);
@@ -132,36 +419,6 @@ updateCardDependencies = function(tabRef, checkbox) {
     $(tabContentId+" .language-gradle")[0].innerHTML = msgWizardGeneratedBeginDefault + computeCardContent("groovy") + msgWizardGeneratedEndDefault;
     $(tabContentId+" .language-kotlin")[0].innerHTML = msgWizardGeneratedBeginDefault + computeCardContent("kotlin") + msgWizardGeneratedEndDefault;
     $(tabContentId+" .language-xml")[0].innerHTML = msgWizardGeneratedBeginXml + computeCardContent("maven") + msgWizardGeneratedEndXml;
-}
-
-// Data table of dependency check tool
-initDatatableDependencyCheck = function() {
-    $('#datatable-dependency-check').DataTable( {
-        ordering: false,
-        paging: false,
-        initComplete: function () {
-            // Remove the search input text & the footer information showing the number of results
-            $("#datatable-dependency-check_wrapper div.row:nth-child(3)").remove();
-            $("#datatable-dependency-check_wrapper div.row:nth-child(1)").remove();
-            // Add the select button to the header of each column
-            this.api().columns().every( function () {
-                var column = this;
-                var select = $('<select><option value=""></option></select>')
-                    .appendTo( $(column.header()) )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
-                column.data().unique().sort().reverse().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
-        }
-    } );
 }
 
 // Load the project dashboard table content
