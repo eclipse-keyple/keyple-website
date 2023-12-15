@@ -11,12 +11,78 @@ toc: false
 
 This online tool helps you to check the compatibility of Keyple components according to their API versions.
 
-Select the targeted versions of the APIs to show the associated compliant libraries versions:
+Select the targeted versions of the APIs to show the associated compliant libraries versions (internal APIs are marked with an asterisk *):
 
 <!-- 
 ##########################################################
 /!\ Instructions to maintain the content of this table /!\
 ##########################################################
+
+For each release, you need to update the table of release trains in the "/assets/js/custom.js" file, 
+in order to update the dependency checking mechanism.
+
+If the release of a component has no impact on the other components, 
+you will need to insert a release train in the "releaseTrains" table, 
+containing a single release for that component only.
+
+If several components are released simultaneously, 
+because they are dependent on each other, 
+you will need to insert a single release train in the "releaseTrains" table, 
+referencing all the related releases concerned.
+
+Releases of bugfix API components (version X.Y.*) should not be included, 
+as they only concern documentation updates.
+-->
+
+<table id="datatable-dependency-check" class="display compact stripe nowrap" style="width:100%">
+    <thead class="text-center">
+        <tr>
+            <th colspan="6" class="bg-orange">Keypop APIs</th>
+            <th colspan="4" class="bg-yellow">Core APIs</th>
+            <th colspan="3" class="bg-blue">Core libraries</th>
+            <th colspan="3" class="bg-purple">Distributed systems libraries</th>
+            <th colspan="3" class="bg-green">Card extensions libraries</th>
+            <th colspan="5" class="bg-red">Standard reader plugins libraries</th>
+        </tr>
+        <tr>
+            <th class="bg-orange">Reader<br>API</th>
+            <th class="bg-orange c-grey">Card<br>API*</th>
+            <th class="bg-orange">Calypso Card<br>API</th>
+            <th class="bg-orange c-grey">Calypso Crypto Symmetric<br>API*</th>
+            <th class="bg-orange">Calypso Legacy SAM<br>API</th>
+            <th class="bg-orange c-grey">Calypso Crypto Asymmetric<br>API*</th>
+            <th class="bg-yellow">Common<br>API</th>
+            <th class="bg-yellow c-grey">Distributed Local<br>API*</th>
+            <th class="bg-yellow c-grey">Distributed Remote<br>API*</th>
+            <th class="bg-yellow c-grey">Plugin<br>API*</th>
+            <th class="bg-blue">Util<br>Lib</th>
+            <th class="bg-blue">Service<br>Lib</th>
+            <th class="bg-blue">Service Resource<br>Lib</th>
+            <th class="bg-purple">Local<br>Lib</th>
+            <th class="bg-purple">Network<br>Lib</th>
+            <th class="bg-purple">Remote<br>Lib</th>
+            <th class="bg-green">Calypso Card<br>Lib</th>
+            <th class="bg-green">Calypso Legacy SAM<br>Lib</th>
+            <th class="bg-green">Generic<br>Lib</th>
+            <th class="bg-red">Android NFC<br>Lib</th>
+            <th class="bg-red">Android OMAPI<br>Lib</th>
+            <th class="bg-red">Card Resource<br>Lib</th>
+            <th class="bg-red">PC/SC<br>Lib</th>
+            <th class="bg-red">Stub<br>Lib</th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+    </tbody>
+</table>
+
+<br>
+
+## Components previously based on the Calypsonet Terminal API
+
+<!-- 
+##############################################################
+/!\ Instructions to maintain the content of this old table /!\
+##############################################################
 
 - Insert a row each time an API has been updated (major or minor version) then update all impacted components.
 
@@ -35,42 +101,42 @@ Warning:
   it is imperative to add a new line if "keyple-card-calypso-java-lib" or "keyple-card-generic-java-lib" uses one of the new features.
 -->
 
-<table id="datatable-dependency-check" class="display compact" style="width:100%">
-    <thead>
+<table id="datatable-dependency-check-old" class="display compact stripe nowrap" style="width:100%">
+    <thead class="text-center">
         <tr>
-            <th colspan="4" class="text-center c-orange">Calypso Networks Association APIs</th>
-            <th colspan="4" class="text-center c-yellow">Core APIs</th>
-            <th colspan="3" class="text-center c-blue">Core libraries</th>
-            <th colspan="3" class="text-center c-purple">Distributed systems libraries</th>
-            <th colspan="3" class="text-center c-green">Card extensions libraries</th>
-            <th colspan="5" class="text-center c-red">Standard reader plugins libraries</th>
+            <th colspan="4" class="bg-orange">Calypso Networks Association APIs</th>
+            <th colspan="4" class="bg-yellow">Core APIs</th>
+            <th colspan="3" class="bg-blue">Core libraries</th>
+            <th colspan="3" class="bg-purple">Distributed systems libraries</th>
+            <th colspan="3" class="bg-green">Card extensions libraries</th>
+            <th colspan="5" class="bg-red">Standard reader plugins libraries</th>
         </tr>
         <tr>
-            <th class="rotate c-orange"><div class="rotate-190">calypsonet-terminal-reader-java-api</div></th>
-            <th class="rotate c-orange"><div class="rotate-190">calypsonet-terminal-card-java-api</div></th>
-            <th class="rotate c-orange"><div class="rotate-190">calypsonet-terminal-calypso-java-api</div></th>
-            <th class="rotate c-orange"><div class="rotate-190">calypsonet-terminal-calypso-crypto-legacysam-java-api</div></th>
-            <th class="rotate c-yellow"><div class="rotate-190">keyple-common-java-api</div></th>
-            <th class="rotate c-yellow"><div class="rotate-190">keyple-distributed-local-java-api</div></th>
-            <th class="rotate c-yellow"><div class="rotate-190">keyple-distributed-remote-java-api</div></th>
-            <th class="rotate c-yellow"><div class="rotate-190">keyple-plugin-java-api</div></th>
-            <th class="rotate c-blue"><div class="rotate-190">keyple-util-java-lib</div></th>
-            <th class="rotate c-blue"><div class="rotate-190">keyple-service-java-lib</div></th>
-            <th class="rotate c-blue"><div class="rotate-190">keyple-service-resource-java-lib</div></th>
-            <th class="rotate c-purple"><div class="rotate-190">keyple-distributed-local-java-lib</div></th>
-            <th class="rotate c-purple"><div class="rotate-190">keyple-distributed-network-java-lib</div></th>
-            <th class="rotate c-purple"><div class="rotate-190">keyple-distributed-remote-java-lib</div></th>
-            <th class="rotate c-green"><div class="rotate-190">keyple-card-calypso-java-lib</div></th>
-            <th class="rotate c-green"><div class="rotate-190">keyple-card-calypso-crypto-legacysam-java-lib</div></th>
-            <th class="rotate c-green"><div class="rotate-190">keyple-card-generic-java-lib</div></th>
-            <th class="rotate c-red"><div class="rotate-190">keyple-plugin-android-nfc-java-lib</div></th>
-            <th class="rotate c-red"><div class="rotate-190">keyple-plugin-android-omapi-java-lib</div></th>
-            <th class="rotate c-red"><div class="rotate-190">keyple-plugin-cardresource-java-lib</div></th>
-            <th class="rotate c-red"><div class="rotate-190">keyple-plugin-pcsc-java-lib</div></th>
-            <th class="rotate c-red"><div class="rotate-190">keyple-plugin-stub-java-lib</div></th>
+            <th class="bg-orange">Reader<br>API</th>
+            <th class="bg-orange c-grey">Card<br>API*</th>
+            <th class="bg-orange">Calypso Card<br>API</th>
+            <th class="bg-orange">Calypso Legacy SAM<br>API</th>
+            <th class="bg-yellow">Common<br>API</th>
+            <th class="bg-yellow c-grey">Distributed Local<br>API*</th>
+            <th class="bg-yellow c-grey">Distributed Remote<br>API*</th>
+            <th class="bg-yellow c-grey">Plugin<br>API*</th>
+            <th class="bg-blue">Util<br>Lib</th>
+            <th class="bg-blue">Service<br>Lib</th>
+            <th class="bg-blue">Service Resource<br>Lib</th>
+            <th class="bg-purple">Local<br>Lib</th>
+            <th class="bg-purple">Network<br>Lib</th>
+            <th class="bg-purple">Remote<br>Lib</th>
+            <th class="bg-green">Calypso Card<br>Lib</th>
+            <th class="bg-green">Calypso Legacy SAM<br>Lib</th>
+            <th class="bg-green">Generic<br>Lib</th>
+            <th class="bg-red">Android NFC<br>Lib</th>
+            <th class="bg-red">Android OMAPI<br>Lib</th>
+            <th class="bg-red">Card Resource<br>Lib</th>
+            <th class="bg-red">PC/SC<br>Lib</th>
+            <th class="bg-red">Stub<br>Lib</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
         <tr>
             <td>1.3.+</td><!-- calypsonet-terminal-reader-java-api -->
             <td>1.0.+</td><!-- calypsonet-terminal-card-java-api -->
@@ -89,11 +155,11 @@ Warning:
             <td>2.3.4...2.3.8</td><!-- keyple-card-calypso-java-lib -->
             <td>0.3.0</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
-            <td>2.1.0</td><!-- keyple-plugin-android-nfc-java-lib -->
+            <td>2.0.0...2.1.0</td><!-- keyple-plugin-android-nfc-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-omapi-java-lib -->
             <td>1.0.0...1.0.1</td><!-- keyple-plugin-cardresource-java-lib -->
             <td>2.0.0...2.1.2</td><!-- keyple-plugin-pcsc-java-lib -->
-            <td>2.0.0...2.1.0</td><!-- keyple-plugin-stub-java-lib -->
+            <td>2.0.0...2.2.0</td><!-- keyple-plugin-stub-java-lib -->
         </tr>
         <tr>
             <td>1.3.+</td><!-- calypsonet-terminal-reader-java-api -->
@@ -484,5 +550,6 @@ Warning:
 <script type="text/javascript">
 document.body.onload = function() {
     initDatatableDependencyCheck();
+    initDatatableDependencyCheckOld();
 };
 </script>

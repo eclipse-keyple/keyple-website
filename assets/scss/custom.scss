@@ -207,51 +207,27 @@ table code {
   width: 4rem;
 }
 
-// Text rotation for dependency check tool
-.rotate {
-  writing-mode: vertical-rl;
-  -webkit-writing-mode: vertical-rl;
-  -ms-writing-mode: vertical-rl;
-  text-align: right;
-}
-.rotate-190 {
-  display: inline-block;
-  transform: rotate(190deg);
-  /* Legacy vendor prefixes that you probably don't need... */
-  /* Safari */
-  -webkit-transform: rotate(190deg);
-  /* Firefox */
-  -moz-transform: rotate(190deg);
-  /* IE */
-  -ms-transform: rotate(190deg);
-  /* Opera */
-  -o-transform: rotate(190deg);
-  /* Internet Explorer */
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
-}
-.rotate select {
-  margin-top: .5rem;
-}
-.c-yellow {
+// Dependency check tool
+.bg-yellow {
   background: #FEFECE;
 }
-.c-red {
+.bg-red {
   background: #FDEDEC;
 }
-.c-purple {
+.bg-purple {
   background: #F4ECF7;
 }
-.c-blue {
+.bg-blue {
   background: #EBF5FB;
 }
-.c-green {
+.bg-green {
   background: #E9F7EF;
 }
-.c-orange {
+.bg-orange {
   background: #FDF2E9;
 }
 .c-grey {
-  background: #EAECEE;
+  color: grey;
 }
 
 // Logos style on footer section
@@ -301,11 +277,6 @@ table code {
 table {
   display: table;
   overflow-x: auto;
-}
-
-// Fix "datatable-dependency-check" table
-table#datatable-dependency-check {
-  display: block;
 }
 
 // Changelog table
