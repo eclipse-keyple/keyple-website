@@ -14,7 +14,7 @@
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
-<link rel=stylesheet href=../../../css/wowchemy.7ccc95ad09c8b2b61bf75bd806337be2.css>
+<link rel=stylesheet href=../../../css/wowchemy.0f3f69197f45d71e19baab92de51a127.css>
 <script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
 <link rel=manifest href=../../../manifest.webmanifest>
 <link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
@@ -26,7 +26,7 @@
 <meta property="og:title" content="Dependency check | Eclipse Keyple">
 <meta property="og:description" content="Online tool to check the compatibility of Keyple components according to their internal API versions."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<meta property="article:modified_time" content="2023-12-15T12:26:40+01:00">
 <title>Dependency check | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=6cc4daa52e019030fd3d2890d372e765>
@@ -206,43 +206,85 @@ Overview
 <div class=article-style>
 <br>
 <p>This online tool helps you to check the compatibility of Keyple components according to their API versions.</p>
-<p>Select the targeted versions of the APIs to show the associated compliant libraries versions:</p>
-<table id=datatable-dependency-check class="display compact" style=width:100%>
-<thead>
+<p>Select the targeted versions of the APIs to show the associated compliant libraries versions (internal APIs are marked with an asterisk *):</p>
+<table id=datatable-dependency-check class="display compact stripe nowrap" style=width:100%>
+<thead class=text-center>
 <tr>
-<th colspan=4 class="text-center c-orange">Calypso Networks Association APIs</th>
-<th colspan=4 class="text-center c-yellow">Core APIs</th>
-<th colspan=3 class="text-center c-blue">Core libraries</th>
-<th colspan=3 class="text-center c-purple">Distributed systems libraries</th>
-<th colspan=3 class="text-center c-green">Card extensions libraries</th>
-<th colspan=5 class="text-center c-red">Standard reader plugins libraries</th>
+<th colspan=6 class=bg-orange>Keypop APIs</th>
+<th colspan=4 class=bg-yellow>Core APIs</th>
+<th colspan=3 class=bg-blue>Core libraries</th>
+<th colspan=3 class=bg-purple>Distributed systems libraries</th>
+<th colspan=3 class=bg-green>Card extensions libraries</th>
+<th colspan=5 class=bg-red>Standard reader plugins libraries</th>
 </tr>
 <tr>
-<th class="rotate c-orange"><div class=rotate-190>calypsonet-terminal-reader-java-api</div></th>
-<th class="rotate c-orange"><div class=rotate-190>calypsonet-terminal-card-java-api</div></th>
-<th class="rotate c-orange"><div class=rotate-190>calypsonet-terminal-calypso-java-api</div></th>
-<th class="rotate c-orange"><div class=rotate-190>calypsonet-terminal-calypso-crypto-legacysam-java-api</div></th>
-<th class="rotate c-yellow"><div class=rotate-190>keyple-common-java-api</div></th>
-<th class="rotate c-yellow"><div class=rotate-190>keyple-distributed-local-java-api</div></th>
-<th class="rotate c-yellow"><div class=rotate-190>keyple-distributed-remote-java-api</div></th>
-<th class="rotate c-yellow"><div class=rotate-190>keyple-plugin-java-api</div></th>
-<th class="rotate c-blue"><div class=rotate-190>keyple-util-java-lib</div></th>
-<th class="rotate c-blue"><div class=rotate-190>keyple-service-java-lib</div></th>
-<th class="rotate c-blue"><div class=rotate-190>keyple-service-resource-java-lib</div></th>
-<th class="rotate c-purple"><div class=rotate-190>keyple-distributed-local-java-lib</div></th>
-<th class="rotate c-purple"><div class=rotate-190>keyple-distributed-network-java-lib</div></th>
-<th class="rotate c-purple"><div class=rotate-190>keyple-distributed-remote-java-lib</div></th>
-<th class="rotate c-green"><div class=rotate-190>keyple-card-calypso-java-lib</div></th>
-<th class="rotate c-green"><div class=rotate-190>keyple-card-calypso-crypto-legacysam-java-lib</div></th>
-<th class="rotate c-green"><div class=rotate-190>keyple-card-generic-java-lib</div></th>
-<th class="rotate c-red"><div class=rotate-190>keyple-plugin-android-nfc-java-lib</div></th>
-<th class="rotate c-red"><div class=rotate-190>keyple-plugin-android-omapi-java-lib</div></th>
-<th class="rotate c-red"><div class=rotate-190>keyple-plugin-cardresource-java-lib</div></th>
-<th class="rotate c-red"><div class=rotate-190>keyple-plugin-pcsc-java-lib</div></th>
-<th class="rotate c-red"><div class=rotate-190>keyple-plugin-stub-java-lib</div></th>
+<th class=bg-orange>Reader<br>API</th>
+<th class="bg-orange c-grey">Card<br>API*</th>
+<th class=bg-orange>Calypso Card<br>API</th>
+<th class="bg-orange c-grey">Calypso Crypto Symmetric<br>API*</th>
+<th class=bg-orange>Calypso Legacy SAM<br>API</th>
+<th class="bg-orange c-grey">Calypso Crypto Asymmetric<br>API*</th>
+<th class=bg-yellow>Common<br>API</th>
+<th class="bg-yellow c-grey">Distributed Local<br>API*</th>
+<th class="bg-yellow c-grey">Distributed Remote<br>API*</th>
+<th class="bg-yellow c-grey">Plugin<br>API*</th>
+<th class=bg-blue>Util<br>Lib</th>
+<th class=bg-blue>Service<br>Lib</th>
+<th class=bg-blue>Service Resource<br>Lib</th>
+<th class=bg-purple>Local<br>Lib</th>
+<th class=bg-purple>Network<br>Lib</th>
+<th class=bg-purple>Remote<br>Lib</th>
+<th class=bg-green>Calypso Card<br>Lib</th>
+<th class=bg-green>Calypso Legacy SAM<br>Lib</th>
+<th class=bg-green>Generic<br>Lib</th>
+<th class=bg-red>Android NFC<br>Lib</th>
+<th class=bg-red>Android OMAPI<br>Lib</th>
+<th class=bg-red>Card Resource<br>Lib</th>
+<th class=bg-red>PC/SC<br>Lib</th>
+<th class=bg-red>Stub<br>Lib</th>
 </tr>
 </thead>
-<tbody>
+<tbody class=text-center>
+</tbody>
+</table>
+<br>
+<h2 id=components-previously-based-on-the-calypsonet-terminal-api>Components previously based on the Calypsonet Terminal API</h2>
+<table id=datatable-dependency-check-old class="display compact stripe nowrap" style=width:100%>
+<thead class=text-center>
+<tr>
+<th colspan=4 class=bg-orange>Calypso Networks Association APIs</th>
+<th colspan=4 class=bg-yellow>Core APIs</th>
+<th colspan=3 class=bg-blue>Core libraries</th>
+<th colspan=3 class=bg-purple>Distributed systems libraries</th>
+<th colspan=3 class=bg-green>Card extensions libraries</th>
+<th colspan=5 class=bg-red>Standard reader plugins libraries</th>
+</tr>
+<tr>
+<th class=bg-orange>Reader<br>API</th>
+<th class="bg-orange c-grey">Card<br>API*</th>
+<th class=bg-orange>Calypso Card<br>API</th>
+<th class=bg-orange>Calypso Legacy SAM<br>API</th>
+<th class=bg-yellow>Common<br>API</th>
+<th class="bg-yellow c-grey">Distributed Local<br>API*</th>
+<th class="bg-yellow c-grey">Distributed Remote<br>API*</th>
+<th class="bg-yellow c-grey">Plugin<br>API*</th>
+<th class=bg-blue>Util<br>Lib</th>
+<th class=bg-blue>Service<br>Lib</th>
+<th class=bg-blue>Service Resource<br>Lib</th>
+<th class=bg-purple>Local<br>Lib</th>
+<th class=bg-purple>Network<br>Lib</th>
+<th class=bg-purple>Remote<br>Lib</th>
+<th class=bg-green>Calypso Card<br>Lib</th>
+<th class=bg-green>Calypso Legacy SAM<br>Lib</th>
+<th class=bg-green>Generic<br>Lib</th>
+<th class=bg-red>Android NFC<br>Lib</th>
+<th class=bg-red>Android OMAPI<br>Lib</th>
+<th class=bg-red>Card Resource<br>Lib</th>
+<th class=bg-red>PC/SC<br>Lib</th>
+<th class=bg-red>Stub<br>Lib</th>
+</tr>
+</thead>
+<tbody class=text-center>
 <tr>
 <td>1.3.+</td>
 <td>1.0.+</td>
@@ -261,11 +303,11 @@ Overview
 <td>2.3.4...2.3.8</td>
 <td>0.3.0</td>
 <td>2.0.0...2.0.2</td>
-<td>2.1.0</td>
+<td>2.0.0...2.1.0</td>
 <td>2.0.0...2.0.1</td>
 <td>1.0.0...1.0.1</td>
 <td>2.0.0...2.1.2</td>
-<td>2.0.0...2.1.0</td>
+<td>2.0.0...2.2.0</td>
 </tr>
 <tr>
 <td>1.3.+</td>
@@ -653,7 +695,7 @@ Overview
 </tr>
 </tbody>
 </table>
-<script type=text/javascript>document.body.onload=function(){initDatatableDependencyCheck()}</script>
+<script type=text/javascript>document.body.onload=function(){initDatatableDependencyCheck(),initDatatableDependencyCheckOld()}</script>
 </div>
 <div class=article-widget>
 <div class=post-nav>
@@ -665,7 +707,7 @@ Overview
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-29</p>
+<p>Last updated on 2023-12-15</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -756,7 +798,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.0a7cc8dabc534d862c8775c42422dfd2.js></script>
+<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
