@@ -36,7 +36,8 @@ will need to download :
 - CMake 2.8 or newer [(download)](https://cmake.org/install/)
 - GCC / CLang / MSVC compiler
 
----
+<br>
+
 ## Let's code
 
 Now let's see step by step how to create in one single class the
@@ -334,7 +335,8 @@ poTransaction->processClosing();
 
 Find the complete code source [below](#full-code).
 
----
+<br>
+
 ## CMake build
 
 Create a CMakeLists.txt file as follows:
@@ -437,7 +439,8 @@ cmake ..
 make
 ```
 
----
+<br>
+
 ## Run
 
 1) Connect two USB PC/SC Readers.
@@ -445,7 +448,8 @@ make
 3) Insert the Calypso PO in the PO reader.
 4) Run the application.
 
----
+<br>
+
 ## FAQ
 
 **How do I find out the names of the readers?**

@@ -57,7 +57,8 @@ Ticketing terminal applications must import only the high-level Calypso transact
 
 <!-- The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages. -->
 
----
+<br>
+
 ## Calypso Portable Object Selection
 Compared to the generic Card Selection API (cf. https://keyple.org/learn/architecture/keyple-core/#card-selection), a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn't selected).
 
@@ -70,7 +71,8 @@ The matching SmartCard resulting from a PO Selection Request is a Calypso PO. In
 
 {{< figure src="/media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PO_Selection_1_0_0.svg" title="Calypso Selection v1.0.0" >}}
 
----
+<br>
+
 ## Calypso Portable Object Transaction
 
 A Card Resource is a set of a Reader and a **selected** Card application.
@@ -111,12 +113,14 @@ The prepareReleaseChannel method allows to the logical channel with the Calypso 
 
 {{< figure src="/media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_PoTransaction_1_0_0.svg" title="Calypso transaction" >}}
 
----
+<br>
+
 ## Data model extension
 
 {{< figure src="/media/archive-1.0/architecture/KeypleCalypso_Transaction_ClassDiag_SpecificPoTransaction_1_0_0.svg" title="Calypso Data Model" >}}
 
----
+<br>
+
 ## Secure session sequence
 
 {{< figure src="/media/archive-1.0/architecture/KeypleCalypso_Transaction_SequenceDiag_SecureSessionProcessing_1_0_0.svg" title="Calypso session" >}}

@@ -7,14 +7,16 @@ toc: true
 weight: 2
 ---
 
----
+<br>
+
 
 ## Overview
 
 This guide is intended to help developers who want to create a Keyple card extension add-on for a specific card
 technology.
 
----
+<br>
+
 
 ## Operating mode
 
@@ -24,7 +26,8 @@ technology.
 4. [Set up the development environment](#set-up-dev-environment)
 5. [Implement the solution](#implement-the-solution)
 
----
+<br>
+
 
 ## Card extension architecture
 
@@ -44,7 +47,8 @@ The component diagram below illustrates the internal API/SPI links between the c
 well as the public APIs exposed to the application:
 {{< figure src="/media/learn/developer-guide/component-dependencies/card_api.svg" caption="" numbered="true" >}}
 
----
+<br>
+
 
 ## Minimal requirements
 
@@ -68,7 +72,8 @@ service initialization with the method `JsonUtil.registerTypeAdapter(...)` provi
 This will allow the transport of this object through the network when using the Keyple Distributed solution.
 {{% /callout %}}
 
----
+<br>
+
 
 ## Define the card commands
 
@@ -86,7 +91,8 @@ card commands.
 
 Each card extension is free to define the APIs it considers relevant to perform card transactions.
 
----
+<br>
+
 
 ## Set up dev environment
 
@@ -116,7 +122,8 @@ the [keyple-java-example](https://github.com/eclipse/keyple-java-example) reposi
 
 The contribution procedure is described [here]({{< relref "contributing.md" >}}).
 
----
+<br>
+
 
 ## Implement the solution
 
@@ -130,7 +137,8 @@ For this purpose, it is suggested to respect the following programming pattern b
 * private interfaces adapters (package visibility) not accessible from a public service.
   {{< figure src="/media/learn/developer-guide/design-guides/card_extension_class_diagram.svg" caption="" numbered="true" >}}
 
----
+<br>
+
 
 ## API
 
@@ -138,7 +146,8 @@ For this purpose, it is suggested to respect the following programming pattern b
 * [Keypop Reader API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/)
 * [Keypop Card API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-card-api/)
 
----
+<br>
+
 
 ## Download
 

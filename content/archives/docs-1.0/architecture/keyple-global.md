@@ -24,7 +24,8 @@ The Keyple Core provides 3 interfaces:
 
 The Keyple Calypso extension provides the Calypso API: a high-level interface to manage Calypso card processing.
 
----
+<br>
+
 ## Application integration
 
 The Card API is a low-level interface to manage the transmission of APDU commands with a smart card.
@@ -35,7 +36,8 @@ A terminal application operating processing with a specific smart card solution 
 Another way offering a better abstraction on smart card technical settings could be to implement on the Card API a smart card solution library extension providing a high-level interface: a specific Solution API.
 This is how the Keyple Calypso extension has be defined, the Calypso API is a high-level functional interface, which hides the low-level APDU operations.
 
----
+<br>
+
 ## Reader integration
 
 ### native integration
@@ -62,7 +64,8 @@ In this case a reader manager plugin, also based on the Plugin API, could allow 
 
 For example, an EMV certified reader manager could call a Keyple application in case of PPSE selection failure.
 
----
+<br>
+
 ## Smart card processing
 ### stand-alone
 By default, a terminal application manages the processing of a specific smart card in stand-alone with its local readers.
@@ -73,7 +76,8 @@ By default, a terminal application manages the processing of a specific smart ca
 The **Distributed** extension of the Keyple Core provides a solution allowing a master terminal application to manage the processing of a smart card localized in a remote driven terminal.
 {{< figure src="/media/archive-1.0/architecture/Keyple_Architecture_Remote_Plugin.svg" title="Keyple Architecture Remote Plugin" >}}
 
----
+<br>
+
 ## Smart card transaction
 There are two ways for a terminal application to manage a transaction with a smart card.
  - Either the smart card processing could be directly started by the terminal application.

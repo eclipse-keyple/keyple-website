@@ -7,7 +7,8 @@ draft: false
 weight: 3
 ---
 
----
+<br>
+
 Keyple is compliant with the **Terminal API** specifications provided by the [Calypso Networks Association](https://calypsonet.org) that standardize how to manage cards, readers, reader events and card selection.
 
 This compliance allows Keyple to obtain certifications from the Calypso Networks Association.

@@ -7,12 +7,14 @@ toc: true
 weight: 1
 ---
 
----
+<br>
+
 ## Overview
 
 This guide is intended to help developers who want to create a Keyple reader plugin add-on for a specific device.
 
----
+<br>
+
 ## Operating mode
 
 1. Learn the [plugin architecture](#plugin-architecture) concepts
@@ -21,7 +23,8 @@ This guide is intended to help developers who want to create a Keyple reader plu
 4. [Set up the development environment](#set-up-dev-environment)
 5. [Implement the solution](#implement-the-solution)
 
----
+<br>
+
 ## Plugin architecture
 
 A Keyple reader plugin consists of three objects, a **plugin factory**, a **plugin** and a **reader**, which meet the following two interface specifications:
@@ -33,7 +36,8 @@ A Keyple reader plugin consists of three objects, a **plugin factory**, a **plug
 The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the application:
 {{< figure src="/media/learn/developer-guide/component-dependencies/plugin_api.svg" caption="" numbered="true" >}}
 
----
+<br>
+
 ## Select predefined features
 
 The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
@@ -44,7 +48,8 @@ The `XxxPluginFactory`, `XxxPlugin` and `XxxReader` interfaces must be created.
 They are specific to the plugin `Xxx` to be created but can remain empty if there is no specific feature.
 {{% /callout %}}
 
----
+<br>
+
 ## Define specific features
 
 Depending on the characteristics of the reader, it may be necessary to add in the specific APIs configuration methods appropriate to the technical context.
@@ -56,7 +61,8 @@ These features can be exposed at three levels:
 * In the **reader** (`XxxReader` interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).<br>
   The API will then be directly accessible from the application through the `getReaderExtension(...)` method of the reader provided by the plugin registered with Keyple Service.
 
----
+<br>
+
 ## Set up dev environment
 
 {{% callout warning %}}
@@ -80,7 +86,8 @@ If examples are proposed, they should be placed in the [keyple-java-example](htt
 
 The contribution procedure is described [here]({{< relref "contributing.md" >}}).
 
----
+<br>
+
 ## Implement the solution
 
 {{% callout warning %}}
@@ -98,13 +105,15 @@ For example, if the plugin factory needs to expose specific configuration method
 Thus, the factory does not expose any method.
 {{% /callout %}}
 
----
+<br>
+
 ## API
 
 * [Keyple Common API](https://eclipse.github.io/keyple-common-java-api)
 * [Keyple Plugin API](https://eclipse.github.io/keyple-plugin-java-api)
 
----
+<br>
+
 ## Download
 
 * [Java components]({{< ref "components/overview/configuration-wizard" >}})

@@ -54,7 +54,7 @@ The Keyple remote transaction uses four types of messages exchanged between the 
 
 The diagram below shows the global messaging flow:
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/distributedJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
 
 On its own initiative (e.g. following the detection of a card), the terminal sends to the server a
 message of type "[Execute Remote Service](#execute-remote-service)" to ask it to start a card transaction.
@@ -115,7 +115,7 @@ This API is compliant with the following Keyple server side components:
 The diagram below shows the structure of the `MessageDto` object but the detailed content will be described in the
 sections associated with each message type:
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/distributedJsonApi_classDiagram_MessageDto.svg" caption="Keyple Distributed JSON API - MessageDto" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_MessageDto.svg" caption="Keyple Distributed JSON API - MessageDto" numbered="true" >}}
 
 {{% callout note %}}
 The value of the `action` property determines the message type.
@@ -138,7 +138,7 @@ containing the first action to be performed with the card or the terminal's read
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development 
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/distributedJsonApi_classDiagram_executeRemoteService.svg" 
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_executeRemoteService.svg" 
 caption="Keyple Distributed JSON API - \"Execute Remote Service\" class diagram" numbered="true" >}}
 
 #### MessageDto {#messagedto-execute-remote-service}
@@ -206,7 +206,7 @@ Following the reception of this message, the terminal will send to the server a 
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development 
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/distributedJsonApi_classDiagram_cmd.svg" 
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_cmd.svg" 
 caption="Keyple Distributed JSON API - \"Command\" class diagram" numbered="true" >}}
 
 {{% callout note %}}
@@ -542,7 +542,7 @@ Following the transmission of this message, the server will return a message of 
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/distributedJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - \"Response\" class diagram" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - \"Response\" class diagram" numbered="true" >}}
 
 <br>
 
@@ -797,7 +797,7 @@ completed and, if necessary, to transmit the result. No follow-up is expected fr
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/distributedJsonApi_classDiagram_endRemoteService.svg" 
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_endRemoteService.svg" 
 caption="Keyple Distributed JSON API - \"End Remote Service\" class diagram" numbered="true" >}}
 
 {{% callout warning %}}

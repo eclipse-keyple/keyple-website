@@ -26,7 +26,8 @@ components: {{< figure library="true"
 src="archive-1.0/standalone-application/component/Local_Application_Components_Overview.svg"
 title="" >}}
 
----
+<br>
+
 ## Before you start
 
 1. In pre-requisite, read the [common concepts]({{< relref
@@ -46,7 +47,8 @@ title="" >}}
 7. Don't forget to explore the potential of Keyple card-specific
    extensions such as **Keyple Calypso**.
 
----
+<br>
+
 ## Workflow
 
 **Keyple Core** is built around the concepts described [here]({{< relref
@@ -555,7 +557,8 @@ This is done by unregistering the plugins in the following way:
 smartCardService.unregisterPlugin(plugin.getName());
 ```
 
----
+<br>
+
 ## Keyple Core API
 
 To learn all the details of the **Keyple Core** API, please consult the
@@ -578,7 +581,8 @@ However, here are two diagrams showing the main features of Keyple Core:
 
 >}}
 
----
+<br>
+
 ## Examples
 
 To help in the implementation of the different facilities offered by
@@ -637,7 +641,8 @@ assigned to them.
 
 [see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification)
 
----
+<br>
+
 ## Download
 
 The artifact **Keyple Core** and how to integrate it into your

@@ -7,7 +7,8 @@ toc: true
 weight: 2
 ---
 
----
+<br>
+
 ## Overview
 
 The development of an Android application based on Keyple follows the same principles as those exposed in the Java part.
@@ -34,7 +35,8 @@ It uses three main components of Keyple:
 [Gradle](https://gradle.org/) is used as build automation tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.
 
----
+<br>
+
 ## Project setup
 
 The dependencies to be imported into the project are accessible with the [configuration wizard]({{< relref "/components/overview/configuration-wizard" >}}).
@@ -64,7 +66,8 @@ In the case of the Android NFC example, access to NFC functions is declared as f
 
 You will have to adapt this section according to the reader plugin used.
 
----
+<br>
+
 ## Focus on Keyple specific code
 
 {{< code lang="kotlin" >}}
@@ -151,7 +154,8 @@ class MainActivity : AppCompatActivity(), CardReaderObserverSpi, CardReaderObser
 }
 {{< /code >}}
 
----
+<br>
+
 ## FAQ
 
 #### How to fix "_More than one file was found with OS independent path 'META-INF/NOTICE.md'_".

@@ -18,7 +18,6 @@ links:
     icon: images
     name: Discover the photos
     url: 'https://drive.google.com/file/d/1HdrThZD70bFIun8jFLYKfgozyCvX9SQg/view'
-
 ---
 
 On October 17, 2019, we organized the first Meet Up Eclipse Keyple®! 

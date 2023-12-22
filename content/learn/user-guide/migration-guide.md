@@ -7,12 +7,15 @@ toc: true
 weight: 7
 ---
 
----
+<br>
+
 This guide is intended to help a user of a previous version of Keyple Java to upgrade his application to a new version of the library.
 
 Upgrade from:
 * [2.+ to 3.+](#upgrade-from-2-to-3)
 * [1.+ to 2.+](#upgrade-from-1-to-2)
+
+<br>
 
 ---
 ## Upgrade from "2.+" to "3.+"
@@ -323,6 +326,8 @@ ContextSetting contextSetting =
     LegacySamExtensionService.getInstance().getContextSetting().setContactReaderPayloadCapacity(...);
 {{< /code >}}
 
+
+<br>
 
 ---
 ## Upgrade from "1.+" to "2.+"

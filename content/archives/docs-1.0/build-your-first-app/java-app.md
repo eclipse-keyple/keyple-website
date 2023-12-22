@@ -44,7 +44,8 @@ We recommend that you use a Java IDE like
 [Intellij IDEA](https://www.jetbrains.com/idea/) to create your new
 Gradle project.
 
----
+<br>
+
 ## Create a Gradle-based empty project
 
 Create a new Java project and add the following statements to your
@@ -77,7 +78,8 @@ dependencies {
 If necessary, also create the usual tree in which the Java code of this
 guide will be placed, namely the folders: ```\src\main\java```
 
----
+<br>
+
 ## Let's code
 
 Now let's see step by step how to create in one single class the
@@ -290,7 +292,8 @@ System.exit(0);
 
 Find the complete code source [below](#full-code).
 
----
+<br>
+
 ## Run
 
 1) Connect two USB PC/SC Readers.
@@ -303,7 +306,8 @@ components, are downloaded during the first run, which can take some
 time. {{% /callout %}}
 
 
----
+<br>
+
 ## FAQ
 
 **How do I find out the names of the readers?**

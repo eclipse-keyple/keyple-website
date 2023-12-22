@@ -6,7 +6,8 @@ toc: true
 weight: 10
 ---
 
----
+<br>
+
 ## Internal adapters (release)
 
 ### Service
@@ -21,7 +22,8 @@ weight: 10
 
 ![coming soon!](https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/{{% keyple-distributed-network-java-lib-version %}}/src/main/uml/adapter_class_diagram.svg)
 
----
+<br>
+
 ## Internal adapters (snapshot)
 
 ### Service

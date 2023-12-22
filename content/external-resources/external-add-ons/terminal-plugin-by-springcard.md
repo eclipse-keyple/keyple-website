@@ -7,7 +7,8 @@ toc: false
 weight: 1
 ---
 
----
+<br>
+
 SpringCard is happy to contribute to the Keyple project by providing a plugin that makes it possible to use SpringCard PC/SC couplers from a stock Android tablet or mobile phone.
 
 The plugin works
