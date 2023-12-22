@@ -8,21 +8,40 @@ draft: false
 weight: 2
 ---
 
----
+<br>
+
 ## Overview
 
 Keyple provides the "Keyple Distributed" solution which allows an application to communicate with a smart card reader 
 interfaced with another host.
 
-In this way, you can manage transactions within a distributed architecture.
+In this way, you can manage transactions seamlessly within a distributed architecture.
 
-The diagram below shows the location of the Keyple Distributed components in the software layers used in a distributed architecture:
+The "Keyple Distributed" solution can be deployed in two ways:
+- both client and server embed Keyple components,
+- only the server embeds Keyple components, the client has its own libraries to communicate with its card reader.
 
-{{< figure src="/media/learn/user-guide/distributed-application/distributed_solution_layers_overview.drawio.svg" caption="Keyple Distributed - Solution layers overview" numbered="true" >}}
+The diagram below illustrates the first way, the use of the Keyple Distributed components when both client and 
+server embed Keyple components (note that the card reader can be either client-side or server-side):
 
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_solution_1_layers_overview.drawio.svg" caption="Keyple on both client and server sides" numbered="true" >}}
+
+The diagram below illustrates the second way, the architecture with a client not running Keyple but connected to a
+server based on Keyple:
+
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_solution_2_layers_overview.drawio.svg" caption="Keyple on server side only" numbered="true" >}}
+
+### User guides
+
+- [How to build a fully Keyple distributed application](#fully-keyple-distributed-application)
+- [How to make a non-Keyple client interact with a Keyple-based server application]({{< relref "server-json-api.md" >}})
+
+## 
 ---
-## How to use it
 
+## Fully Keyple distributed application
+
+Steps:
 1. In pre-requisite, read [Standalone Application User Guide]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application.
 2. Learn [main terms and concepts](#concepts) of the Keyple Distributed solution.
 3. Find your [usage mode](#usage-modes). This will help you to determine exactly which library and API to use.
@@ -30,7 +49,8 @@ The diagram below shows the location of the Keyple Distributed components in the
 5. Implement the transport layer adapted to your [network configuration](#network-configuration).
 6. Implement your ticketing services as specified in the associated usage mode.
 
----
+<br>
+
 ## Concepts
 
 Here are the main concepts to keep in mind before continuing to read this user guide:
@@ -58,7 +78,7 @@ Here are the main concepts to keep in mind before continuing to read this user g
 
 The diagram below illustrates the main functional concepts through a standard use case:
 
-{{< figure src="/media/learn/user-guide/distributed-application/distributed_concepts_1.svg" caption="Keyple Distributed - Concepts - Main use case" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_concepts_1.svg" caption="Concepts - Main use case" numbered="true" >}}
 
 The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different hosts.
 
@@ -66,7 +86,7 @@ These could be for example a ticketing reloading service, where the business log
 
 In this use case, the Keyple Distributed solution is use for card communication.
 
-{{< figure src="/media/learn/user-guide/distributed-application/distributed_concepts_2.svg" caption="Keyple Distributed - Concepts - One remote plugin connected to many local services" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_concepts_2.svg" caption="Concepts - One remote plugin connected to many local services" numbered="true" >}}
 
 Here is another example, but this time it illustrates several remote plugins connected to the same local service.
 
@@ -74,9 +94,10 @@ These could be for example ticketing terminals with transaction logic, which com
 
 In this use case, the Keyple Distributed solution is use for SAM communication.
 
-{{< figure src="/media/learn/user-guide/distributed-application/distributed_concepts_3.svg" caption="Keyple Distributed - Concepts - Many remote plugins connected to one local service" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_concepts_3.svg" caption="Concepts - Many remote plugins connected to one local service" numbered="true" >}}
 
----
+<br>
+
 ## Usage modes
 
 The Keyple Distributed solution offers two different usage modes, each one having a specific API designed on a **Client-Server** model:
@@ -201,7 +222,8 @@ Interfaces marked with an asterisk "**" come from the **Keyple Service API**:
     2. Register the **Remote Plugin** to the smart card service by providing the previously built factory.
     3. Use the registered remote plugin as a local plugin.
 
----
+<br>
+
 ## Network configuration
 
 The Keyple Distributed solution **does not provide** the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between **Remote Plugin** and **Local Service** components.
@@ -219,7 +241,7 @@ Choose this mode if you want to implement a Client-Server **synchronous** commun
 
 Here is the minimal algorithm to implement in a context with a **single server instance**:
 
-{{< figure src="/media/learn/user-guide/distributed-application/distributed_synchronous.svg" caption="Keyple Distributed - Synchronous network implementation" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_synchronous.svg" caption="Synchronous network implementation" numbered="true" >}}
 
 {{% callout warning %}}
 In a context with several server instances, a mechanism must be implemented to ensure that all messages containing
@@ -239,7 +261,7 @@ Choose this mode if you want to implement a Full-Duplex **asynchronous** communi
 
 Here is the minimal algorithm to implement:
 
-{{< figure src="/media/learn/user-guide/distributed-application/distributed_asynchronous.svg" caption="Keyple Distributed - Asynchronous network implementation" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_asynchronous.svg" caption="Asynchronous network implementation" numbered="true" >}}
 
 ### Exchanged data
 
@@ -247,19 +269,22 @@ The data exchanged between **Remote Plugin** and **Local Service** components ar
 
 However, it is necessary in some contexts to access certain information such as the `sessionId` in the case of communication with several server instances.
 
----
+<br>
+
 ## API
 
 * [Local API](https://eclipse.github.io/keyple-distributed-local-java-lib)
 * [Network API](https://eclipse.github.io/keyple-distributed-network-java-lib)
 * [Remote API](https://eclipse.github.io/keyple-distributed-remote-java-lib)
 
----
+<br>
+
 ## Examples
 
 * [Java examples](https://github.com/eclipse/keyple-java-example)
 
----
+<br>
+
 ## Download
 
 * [Java components]({{< ref "components/overview/configuration-wizard" >}})
