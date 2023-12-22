@@ -17,4 +17,4 @@ to a Keyple server.
 This allows the development of a distributed solution in which the client reader terminal delegates the entire
 management of the card transaction to the server.
 
-For more information, please visit the [user guide]({{< ref "learn/user-guide/distributed-json-api-1-0" >}})
+For more information, please visit the [user guide]({{< ref "learn/user-guide/server-json-api" >}})

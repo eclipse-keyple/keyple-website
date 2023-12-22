@@ -1,14 +1,16 @@
 ---
-title: Distributed JSON API 2.0 User Guide
-linktitle: Distributed JSON API 2.0
+title: Server JSON API for non-Keyple clients
+linktitle: Server JSON API for non-Keyple clients
 summary: How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges.
 type: book
 toc: true
 draft: false
 weight: 3
+aliases:
+  - /server-json-apis/api-2-0
 ---
 
----
+<br>
 
 <style>
 table th:nth-child(1) {
@@ -25,17 +27,10 @@ transport of this data.
 This allows the development of a distributed solution in which the client reader terminal delegates the entire 
 management of the card transaction to the server.
 
-{{% callout warning %}}
-This API is compliant with the following Keyple server side components:
-- [Keyple Service Library]({{< ref "components/core/keyple-service-lib" >}}) version `3.0.0+`
-- [Keyple Distributed Network Library]({{< ref "components/distributed/keyple-distributed-network-lib" >}}) version `2.3.0+`
-- [Keyple Distributed Remote Library]({{< ref "components/distributed/keyple-distributed-remote-lib" >}}) version `2.3.0+`
-{{% /callout %}}
-
 The diagram below illustrates the architecture of a non-Keyple application installed on a terminal and connected to a 
 server based on Keyple:
 
-{{< figure src="/media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_overview.drawio.svg" caption="Keyple Distributed JSON API - Solution layers overview" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/distributed-application/distributed_solution_2_layers_overview.drawio.svg" caption="Keyple on server side only" numbered="true" >}}
 
 ### Principle
 
@@ -59,7 +54,7 @@ The Keyple remote transaction uses four types of messages exchanged between the 
 
 The diagram below shows the global messaging flow:
 
-{{< figure src="/media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
 
 On its own initiative (e.g. following the detection of a card), the terminal sends to the server a
 message of type "[Execute Remote Service](#execute-remote-service)" to ask it to start a card transaction.
@@ -96,16 +91,38 @@ Messages are in JSON format and have the following structure:
 }
 </style>
 
+### API specifications
+
+- [API 2.0](#api-20)
+- [API 1.0]({{< ref "server-json-apis/api-1-0.md" >}})
+
+##
+---
+
+## API 2.0
+
+{{% callout warning %}}
+This API is compliant with the following Keyple server side components:
+- [Keyple Service Library]({{< ref "components/core/keyple-service-lib" >}}) version `3.0.0+`
+- [Keyple Distributed Network Library]({{< ref "components/distributed/keyple-distributed-network-lib" >}}) version `2.3.0+`
+- [Keyple Distributed Remote Library]({{< ref "components/distributed/keyple-distributed-remote-lib" >}}) version `2.3.0+`
+{{% /callout %}}
+
+<br>
+
+## MessageDto
+
 The diagram below shows the structure of the `MessageDto` object but the detailed content will be described in the
 sections associated with each message type:
 
-{{< figure src="/media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_classDiagram_MessageDto.svg" caption="Keyple Distributed JSON API - MessageDto" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_MessageDto.svg" caption="Keyple Distributed JSON API - MessageDto" numbered="true" >}}
 
 {{% callout note %}}
 The value of the `action` property determines the message type.
 {{% /callout %}}
 
----
+<br>
+
 ## Execute Remote Service
 
 The purpose of this message, sent to the server, is to initiate the server-controlled card 
@@ -121,7 +138,7 @@ containing the first action to be performed with the card or the terminal's read
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development 
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_classDiagram_executeRemoteService.svg" 
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_executeRemoteService.svg" 
 caption="Keyple Distributed JSON API - \"Execute Remote Service\" class diagram" numbered="true" >}}
 
 #### MessageDto {#messagedto-execute-remote-service}
@@ -158,7 +175,8 @@ caption="Keyple Distributed JSON API - \"Execute Remote Service\" class diagram"
 }
 {{< /code >}}
 
----
+<br>
+
 ## Command
 
 The purpose of this message, received from the server, is to ask the terminal to perform a specific service with the
@@ -188,7 +206,7 @@ Following the reception of this message, the terminal will send to the server a 
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development 
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_classDiagram_cmd.svg" 
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_cmd.svg" 
 caption="Keyple Distributed JSON API - \"Command\" class diagram" numbered="true" >}}
 
 {{% callout note %}}
@@ -199,7 +217,8 @@ The value of the `service` property determines the service to be performed.
 The `MessageDto` is contained in a single-element array!
 {{% /callout %}}
 
----
+<br>
+
 ### Reader Type {#reader-type-cmd}
 
 This service allows the server to know if the reader is in contact or contactless mode.
@@ -250,7 +269,8 @@ The `MessageDto` is contained in a single-element array!
 ]
 {{< /code >}}
 
----
+<br>
+
 ### Card Presence {#card-presence-cmd}
 
 This service allows the server to know if a card is inserted in the reader.
@@ -301,7 +321,8 @@ The `MessageDto` is contained in a single-element array!
 ]
 {{< /code >}}
 
----
+<br>
+
 ### Card Selection {#card-selection-cmd}
 
 The primary objective of this service is to establish a logical communication channel with a card.
@@ -431,7 +452,8 @@ The `MessageDto` is contained in a single-element array!
 ]
 {{< /code >}}
 
----
+<br>
+
 ### Card Commands {#card-commands-cmd}
 
 The role of this service is to perform APDU exchanges with the card.
@@ -506,7 +528,8 @@ The `MessageDto` is contained in a single-element array!
 ]
 {{< /code >}}
 
----
+<br>
+
 ## Response
 
 This message, sent by the terminal to the server, is intended to transmit to the server the result of the specific 
@@ -519,9 +542,10 @@ Following the transmission of this message, the server will return a message of 
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - \"Response\" class diagram" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - \"Response\" class diagram" numbered="true" >}}
 
----
+<br>
+
 ### Reader Type {#reader-type-resp}
 
 This message, sent by the terminal to the server in response to "[Reader Type (Command)](#reader-type-cmd)", is 
@@ -571,7 +595,8 @@ intended to indicate to the server if the reader is contactless.
 }
 {{< /code >}}
 
----
+<br>
+
 ### Card Presence {#card-presence-resp}
 
 This message, sent by the terminal to the server in response to "[Card Presence (Command)](#card-presence-cmd)", 
@@ -621,7 +646,8 @@ is intended to indicate to the server if a card is present.
 }
 {{< /code >}}
 
----
+<br>
+
 ### Card Selection {#card-selection-resp}
 
 This message, sent by the terminal to the server in response to 
@@ -695,7 +721,8 @@ is intended to transmit to the server the result of the execution of the selecti
 }
 {{< /code >}}
 
----
+<br>
+
 ### Card Commands {#card-commands-resp}
 
 This message, sent by the terminal to the server in response to
@@ -760,7 +787,8 @@ is intended to transmit to the server the result of the execution of a card requ
 }
 {{< /code >}}
 
----
+<br>
+
 ## End Remote Service
 
 The purpose of this message, received from the server, is to inform the terminal that the transaction has been 
@@ -769,7 +797,7 @@ completed and, if necessary, to transmit the result. No follow-up is expected fr
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_classDiagram_endRemoteService.svg" 
+{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_endRemoteService.svg" 
 caption="Keyple Distributed JSON API - \"End Remote Service\" class diagram" numbered="true" >}}
 
 {{% callout warning %}}

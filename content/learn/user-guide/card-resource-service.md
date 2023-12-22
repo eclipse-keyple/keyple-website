@@ -8,7 +8,8 @@ draft: false
 weight: 6
 ---
 
----
+<br>
+
 
 ## Overview
 
@@ -18,7 +19,8 @@ dedicated to the current transaction to manage the security of the transaction (
 To meet this need, Keyple proposes the Service Resource component which provides a service that supports dynamic card
 resource allocation, using a profile-based filtering mechanism.
 
----
+<br>
+
 
 ## Features
 
@@ -33,7 +35,8 @@ resource allocation, using a profile-based filtering mechanism.
 * configurable allocation timeout;
 * failure management.
 
----
+<br>
+
 
 ## Operating mode
 
@@ -48,7 +51,8 @@ resource allocation, using a profile-based filtering mechanism.
 9. Use the resource
 10. [Release the used resource](#release-a-resource)
 
----
+<br>
+
 
 ## Access to the service
 
@@ -58,7 +62,8 @@ Invoke the `CardResourceServiceProvider.getService()` static method to access th
 CardResourceService cardResourceService = CardResourceServiceProvider.getService();
 {{< /code >}}
 
----
+<br>
+
 
 ## Configure the service
 
@@ -188,7 +193,8 @@ If the service was already started at that moment, then it stops, applies the ne
 .configure();
 {{< /code >}}
 
----
+<br>
+
 
 ## Use the service
 
@@ -242,19 +248,22 @@ resources are accessible.
 cardResourceService.stop();
 {{< /code >}}
 
----
+<br>
+
 
 ## API
 
 * [API documentation & class diagram](https://eclipse.github.io/keyple-service-resource-java-lib)
 
----
+<br>
+
 
 ## Example
 
 * [Java example](https://github.com/eclipse/keyple-java-example)
 
----
+<br>
+
 
 ## Download
 

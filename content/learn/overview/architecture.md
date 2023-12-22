@@ -7,7 +7,8 @@ draft: false
 weight: 2
 ---
 
----
+<br>
+
 Keyple is designed to operate exchanges with secure data media such as smart cards, tags or smartphones.
 
 Keyple is as much as possible agnostic towards the secured media as towards the hardware allowing to communicate with them.

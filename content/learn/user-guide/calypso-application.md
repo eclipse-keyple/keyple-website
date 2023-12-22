@@ -8,7 +8,8 @@ draft: false
 weight: 6
 ---
 
----
+<br>
+
 ## Overview
 
 Keyple provides a card extension add-on dedicated to the Calypso® card technology.
@@ -27,7 +28,8 @@ The main features are:
 The diagram below illustrates the organization of a Calypso application based on Keyple:
 {{< figure src="/media/learn/user-guide/calypso-application/calypso_application_overview.drawio.svg" caption="" >}}
 
----
+<br>
+
 ## Operating mode
 {{% callout warning %}}
 Pre-requisites:
@@ -40,7 +42,8 @@ Pre-requisites:
 3. [Set up the security settings](#set-up-security-settings) (optional)
 4. [Operate a card transaction](#operate-a-card-transaction)
 
----
+<br>
+
 ## The Calypso extension service
 
 As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.
@@ -59,7 +62,8 @@ In case of incompatibility a warning will be produced in the log file.
 smartCardService.checkCardExtension(calypsoExtensionService);
 {{< /code >}}
 
----
+<br>
+
 ## Select a card
 In order to perform a transaction it is necessary to have selected the card first.
 
@@ -100,7 +104,8 @@ if (calypsoCard == null) {
 }
 {{< /code >}}
 
----
+<br>
+
 ## Set up security settings
 {{% callout note %}}
 The security settings must be initialized only for secure transactions.
@@ -155,7 +160,8 @@ symmetricCryptoSecuritySetting =
             .createSymmetricCryptoTransactionManagerFactory(samReader, sam));
 {{< /code >}}
 
----
+<br>
+
 ## Operate a card transaction
 It is possible to perform secure or non-secure transactions depending on the need.
 A transaction is managed by a dedicated `CardTransactionManager` which is provided by the Calypso card extension service.
@@ -181,7 +187,8 @@ calypsoCardApiFactory
     .processCommands(ChannelControl.CLOSE_AFTER);
 {{< /code >}}
 
----
+<br>
+
 ## API
 
 * [Keypop Reader API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/)
@@ -191,12 +198,14 @@ calypsoCardApiFactory
 * [Keyple Card Calypso API](https://eclipse.github.io/keyple-card-calypso-java-lib)
 * [Keyple Card Calypso Crypto Legacy SAM API](https://eclipse.github.io/keyple-card-calypso-crypto-legacysam-java-lib)
 
----
+<br>
+
 ## Examples
 
 * [Java examples](https://github.com/eclipse/keyple-java-example)
 
----
+<br>
+
 ## Download
 
 * [Java components]({{< ref "components/overview/configuration-wizard" >}})

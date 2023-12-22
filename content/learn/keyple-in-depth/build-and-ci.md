@@ -7,12 +7,14 @@ toc: true
 weight: 30
 ---
 
----
+<br>
+
 ## Build automation tool
 
 Keyple uses Gradle.
 
----
+<br>
+
 ## Versioning rules
 
 Keyple components are versioned according to [Semantic Versioning 2.0.0](https://semver.org) which is based on the three numbers `X.Y.Z`
@@ -21,7 +23,8 @@ Keyple components are versioned according to [Semantic Versioning 2.0.0](https:/
 For API components (i.e. artifacts suffixed with `-api`), the incrementation of `Z` indicates only a documentation update.
 {{% /callout %}}
 
----
+<br>
+
 ## Continuous integration
 
 Keyple continuous integration works with the [Jenkins server](https://ci.eclipse.org/keyple/job/Keyple/) of the Eclipse Foundation.
@@ -37,7 +40,8 @@ The CI automates the following tasks (defined in the `Jenkinsfile` file):
 * publish the javadoc to the corresponding GitHub Pages;
 * publish the code quality report to [SonarCloud](https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date).
 
----
+<br>
+
 ## Snapshot publication
 
 A snapshot artifact (suffixed with `-SNAPSHOT`) is automatically published after each commit on the `main` branch, except in the case of a release (see [Release publication](#release-publication)).
@@ -46,7 +50,8 @@ A snapshot artifact (suffixed with `-SNAPSHOT`) is automatically published after
 The artifact version defined in the `gradle.properties` file must not have a `-SNAPSHOT` suffix because the suffix is automatically added by the Keyple Gradle plugin.
 {{% /callout %}}
 
----
+<br>
+
 ## Release publication
 
 A release artifact is automatically published if and only if the following two conditions are met:
@@ -57,7 +62,8 @@ A release artifact is automatically published if and only if the following two c
 `X.Y.Z` must be the version defined in the `gradle.properties` file.
 {{% /callout %}}
 
----
+<br>
+
 ## Integration tests
 
 Integration tests are defined in an independent GitHub repository: [keyple-integration-java-test](https://github.com/eclipse/keyple-integration-java-test)

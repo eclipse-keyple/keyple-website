@@ -8,14 +8,14 @@ draft: false
 weight: 1
 ---
 
----
-## Overview
+<br>
 
 This page describes the core elements of Keyple, i.e. the concepts and APIs that are used to build any application implementing Keyple.
  
 It is essential for the future user of Keyple to be familiar with what is said in this chapter.
 
----
+<br>
+
 ## Reader
 
 Keyple's primary goal being to interact with smart cards (or smartphones) held by individuals, it is logical to put the Reader at the top of Keyple's concepts.
@@ -37,7 +37,8 @@ Another benefit of using this terminal API is the ability to certify the functio
 
 This certification provides a guarantee that the terminal will function as expected.
 
----
+<br>
+
 ## Plugin
 
 In Keyple terminology, a plugin is an add-on that allows the management of readers of a certain type.
@@ -46,7 +47,8 @@ The readers of the same plugin are usually hardware linked to the same physical 
 
 Depending on its profile, an application may use different types of plugins to communicate with the different elements it needs (card, SAM).
 
----
+<br>
+
 ## Card extension
 
 A card extension is an add-on that provides high-level access to the features of a particular card technology.
@@ -55,14 +57,16 @@ Two card extensions are provided natively by the Keyple project:
 - a generic card extension providing basic means to communicate with a card,
 - a Calypso card extension providing high-level access to Calypso card features. It includes a Secure Session based transaction manager involving Calypso cards and SAMs.
 
----
+<br>
+
 ## Smart card service
 
 This is the main service of Keyple that concentrates the knowledge of active plugins and readers and provides card selection managers.
 
 At startup, a Keyple application must register the add-ons (plugins and card extensions) it uses.
 
----
+<br>
+
 ## Observation
 
 The concept of observation applies to certain types of readers and plugins.
@@ -71,7 +75,8 @@ It consists in monitoring changes such as reader connection/disconnection or car
 
 Not all plugins and readers are observable and for those which are, the observation is optional.
 
----
+<br>
+
 ## Selection
 
 The Keyple **selection** concept is derived from the application selection defined by the ISO7816-4 standard.
@@ -87,14 +92,16 @@ The **selection scenario** principle consists in providing a set of selection ca
 
 The Keyple card selection process is generic, allowing the management of cards of different types or technologies within the same application.
 
----
+<br>
+
 ## Smart card
 
 The Keyple **smart card** is an object representation of the physical card.
 
 It is built by the specific card extension used (e.g. Keyple Calypso) and is provided to the user by the card selection service.
 
----
+<br>
+
 ## Protocol
 
 At the time of selection, Keyple offers the possibility to distinguish cards by their communication **protocol**.

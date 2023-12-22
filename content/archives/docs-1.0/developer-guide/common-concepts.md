@@ -14,7 +14,8 @@ This page describes the core elements of Keyple, i.e. the concepts and APIs of *
  
 It is essential for the future user of Keyple to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on **Keyple Core**.
 
----
+<br>
+
 ## Reader
 
 Keyple's primary goal being to interact with smart cards (or smartphones) worn by individuals, it is logical to put the Reader at the top of **Keyple Core**'s concepts.
@@ -30,7 +31,8 @@ The reader concept also applies to the hardware interfaces used to communicate w
 
 [More information]({{< relref "../architecture/keyple-core.md#reader-access" >}})
 
----
+<br>
+
 ## Plugin
 
 In Keyple language a plugin is a service that allows the management of readers of a certain type.
@@ -43,7 +45,8 @@ The Plugin interface essentially allows to list and retrieve the available reade
 
 [More information]({{< relref "../architecture/keyple-core.md#reader-access" >}})
 
----
+<br>
+
 ## Smart card service
 
 This is the **Keyple Core** service that concentrates the knowledge of active plugins and readers.
@@ -54,7 +57,8 @@ The **SmartCardService** will then make sure that the resources used are properl
 
 [More information]({{< relref "../architecture/keyple-core.md#reader-access" >}})
 
----
+<br>
+
 ## Observation
 
 The observation concept applies to readers as well as to plugins; optional, it is used depending on the needs.
@@ -65,7 +69,8 @@ Not all plugins and readers are observable.
 
 [More information]({{< relref "../architecture/keyple-core.md#reader-notifications" >}})
 
----
+<br>
+
 ## Selection
 
 In Keyple the concept of selection is derived from the application selection defined by the ISO7816-4 standard.
@@ -80,7 +85,8 @@ The **default selection** principle consists in providing an observable reader w
 
 [More information]({{< relref "../architecture/keyple-core.md#card-selection" >}})
 
----
+<br>
+
 ## Abstract smart card
 
 The **abstract smart card** concept is used by specific extensions (e.g. **Keyple Calypso**) and by the **Keyple Core** selection mechanism.

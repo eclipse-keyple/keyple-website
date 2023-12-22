@@ -7,7 +7,8 @@ toc: true
 weight: 1
 ---
 
----
+<br>
+
 ## Types of contributions
 
 Thanks for your interest in the Eclipse Keyple® project.
@@ -18,7 +19,8 @@ There are several ways to contribute to the project:
 * **Propose the creation of a new component**.
   In this case you will first have to create an issue in the repository https://github.com/eclipse/keyple to justify the need and request the creation of a new repository, wait for the issue to be resolved by the decision of the committers, and then create an issue in the new repository signifying the start of development of the new component.
 
----
+<br>
+
 ## Eclipse Contributor Agreement
 
 Before your contribution can be accepted by the project team contributors must
@@ -35,7 +37,8 @@ Contributor Agreement (ECA) on file.
 For more information, please see the Eclipse Committer Handbook:
 https://www.eclipse.org/projects/handbook/#contributing
 
----
+<br>
+
 ## Contributing via fork
 
 1. Check if there is already a GitHub issue for what you want to work on or create one.
@@ -53,7 +56,8 @@ To improve the chances for your contribution to be accepted, you'll want to wait
 11. Submit a [pull request](https://help.github.com/articles/using-pull-requests/) referencing the related issue(s).
 12. After submitting, do not use your branch for any other development, otherwise further changes that you make will be visible in the PR.
 
----
+<br>
+
 ## Contributing as a project committer
 
 1. Check if there is already a GitHub issue for what you want to work on or create one.
@@ -69,7 +73,8 @@ To improve the chances for your contribution to be accepted, you'll want to wait
 1. Submit a [pull request](https://help.github.com/articles/using-pull-requests/) and ask somebody who is familiar with the code you modified to review it.
 1. If the reviewer approves and all checks are OK, merge using **squash & commit** method.
 
----
+<br>
+
 ## Commits message conventions
 
 In order to ensure good readability of the commit history, it is necessary to have consistency in the structure of the commit messages.

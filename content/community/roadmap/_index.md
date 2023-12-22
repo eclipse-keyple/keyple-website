@@ -7,7 +7,8 @@ toc: true
 weight: 2
 ---
 
----
+<br>
+
 ## Current work 
  - Refactoring of the Calypso API to support extensions of different kind of Calypso SAM solutions (current legacy SAM-C1, coming Open-SAM, or crypto libraries for PKI).
  - Support of the Calypso secure session based on asymmetric authentication (REV3.3 Prime PKI based on ECC).

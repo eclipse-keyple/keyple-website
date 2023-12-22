@@ -76,7 +76,8 @@ According to the developer’s objective different packages must be imported:
 
 {{< figure src="/media/archive-1.0/architecture/KeypleCore_Packages.svg" title="Core packages" >}}
 
----
+<br>
+
 ## Service Interface - Reader Access
 for the development of ticketing terminal application
 
@@ -142,7 +143,8 @@ If a Card detection is started with the **repeating** polling mode, then later w
 Whatever the Plugin of Observable Reader, when waiting for the Card removal, any Observable Reader shall have the capability to notify the remove of the Card.
 Some Plugin solutions could have the capability to notify a Card removal also during the processing of the Card.
 
----
+<br>
+
 ## Service Interface - Card Selection
 for the development of ticketing terminal application
 
@@ -172,7 +174,8 @@ According to the defined **multi selection processing** mode, the card selection
 
 The result of a card request selection is a card image of a matching card. For a card selection with multiple requests, several matching card could be provided.
 
----
+<br>
+
 ## Card Interface
 for the development of smartcard solution library
 
@@ -181,7 +184,8 @@ The Keyple Calypso extension uses the card interface to exchange APDU commands w
 ### APDU Transmission
 {{< figure src="/media/archive-1.0/architecture/KeypleCore_Card_ClassDiag_CardMessage_1_0_0.svg" title="APDU Transmission v1.0.0" >}}
 
----
+<br>
+
 ## Plugin API
 for the implementation of smartcard reader plugins
 

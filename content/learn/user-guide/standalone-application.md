@@ -8,7 +8,8 @@ draft: false
 weight: 1
 ---
 
----
+<br>
+
 ## Overview
 
 A standalone application is an application that runs in a device in contact
@@ -20,7 +21,8 @@ interaction with the user.
 The diagram below illustrates the organization of a standalone application based on Keyple: 
 {{< figure src="/media/learn/user-guide/standalone-application/standalone_application_overview.drawio.svg" caption="" >}}
 
----
+<br>
+
 ## Operating mode
 {{% callout warning %}}
 If you are new to Keyple, read the [key concepts]({{< relref "key-concepts.md" >}}) page and familiarize yourself with the fundamentals behind Keyple.
@@ -43,7 +45,8 @@ The service is accessible by invoking the `SmartCardServiceProvider.getService()
 SmartCardService smartCardService = SmartCardServiceProvider.getService();
 {{< /code >}}
 
----
+<br>
+
 ## Set up a plugin
 The Keyple application developer will choose the reader plugins he needs
 according to the equipment on which the Keyple application will run.
@@ -154,7 +157,8 @@ PluginObserver pluginObserver = new PluginObserver();
 Note that the monitoring thread only works if there is at least one observer registered, and the notification process is sequential and synchronous.
 {{% /callout %}}
 
----
+<br>
+
 ## Set up a reader
 The readers are provided by the plugins, that's why you have to [set up the plugin](#set-up-a-plugin) first.
 
@@ -263,7 +267,8 @@ The API offers different options to manage the needs around card detection.<br>
 Moreover, the notification process is sequential and synchronous.
 {{% /callout %}}
 
----
+<br>
+
 ## Select a card
 
 The starting point of any processing done with a card in the Keyple environment, is to reference this card in the system. 
@@ -405,7 +410,8 @@ This switches the underlying monitoring thread into a state of waiting for the c
 Not doing this can lead to blocking states of the card insertion/removal monitoring mechanism.
 {{% /callout %}}
 
----
+<br>
+
 ## Perform a transaction
 
 Once the smart card is referenced in the system it is possible to perform the desired transaction using the appropriate
@@ -414,7 +420,8 @@ card extension.
 When the transaction is completed, if the reader is observed, it is imperative to invoke the `finalizeCardProcessing()` 
 method on the observable reader (see the above note).
 
----
+<br>
+
 ## Unregister a plugin
 To shut down a Keyple application properly, it is necessary to free the resources and in particular to close opened card 
 physical channels and stop the observation threads.
@@ -425,19 +432,22 @@ This is done by unregistering the plugins in the following way:
 smartCardService.unregisterPlugin(plugin.getName());
 {{< /code >}}
 
----
+<br>
+
 ## API
 
 * [Keypop Reader API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/)
 * [Keyple Common API](https://eclipse.github.io/keyple-common-java-api)
 * [Keyple Service API](https://eclipse.github.io/keyple-service-java-lib)
 
----
+<br>
+
 ## Examples
 
 * [Java examples](https://github.com/eclipse/keyple-java-example)
 
----
+<br>
+
 ## Download
 
 * [Java components]({{< ref "components/overview/configuration-wizard" >}})

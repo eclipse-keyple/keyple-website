@@ -19,7 +19,8 @@ Upgrade from:
 Note: here we describe the evolutions in broad outline, for the details of the APIs, the reader is invited to consult
 the [API reference]({{< ref "../api-reference/_index.md" >}}) section.
 
----
+<br>
+
 
 ## Upgrade from 0.9.0 to 1.0.0
 

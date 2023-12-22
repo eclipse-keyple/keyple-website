@@ -30,7 +30,8 @@ This guide will describe how to start a ticketing application using Keyple SDK a
 * Android OS 19+
 * A NFC SmartCard with Calypso PO
 
----
+<br>
+
 ## Integration
 ### Application setup
 
@@ -84,7 +85,8 @@ To use Keyple Calypso User API simply import the jar within the gradle dependenc
 implementation "org.eclipse.keyple:keyple-java-calypso:$keyple_version"
 ```
 
----
+<br>
+
 ## Let's code
 ### Initializing the SDK
 #### Register a plugin
@@ -471,7 +473,8 @@ class MainActivity : AppCompatActivity(), ObservableReader.ReaderObserver {
 }
 ```
 
----
+<br>
+
 ## FAQ
 
 **How to fix "More than one file was found with OS independent path 'META-INF/NOTICE.md'."**

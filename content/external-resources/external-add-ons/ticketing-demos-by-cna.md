@@ -7,7 +7,8 @@ toc: false
 weight: 2
 ---
 
----
+<br>
+
 The Calypso Networks Association has created several innovative demos to showcase the potential of Keyple 
 Java-based ticketing terminals, which are representative of the use cases encountered in public transport ticketing.
 

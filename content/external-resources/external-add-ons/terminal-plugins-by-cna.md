@@ -7,7 +7,8 @@ toc: false
 weight: 1
 ---
 
----
+<br>
+
 The Calypso Networks Association has implemented several plugins to integrate Keyple Java on different ticketing terminals.
 
 Some are fully provide as open source:

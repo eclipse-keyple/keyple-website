@@ -8,7 +8,8 @@ draft: false
 weight: 1
 ---
 
----
+<br>
+
 ## Overview
 
 This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on
@@ -46,7 +47,8 @@ We recommend that you use a Java IDE like
 [Intellij IDEA](https://www.jetbrains.com/idea/) to create your new
 Gradle project.
 
----
+<br>
+
 ## Create a Gradle-based empty project
 
 Create a new Java project and add the following statements to your
@@ -69,7 +71,7 @@ dependencies {
     // Import Keyple components
     implementation 'org.eclipse.keyple:keyple-common-java-api:2.0.0'
     implementation 'org.eclipse.keyple:keyple-util-java-lib:2.3.1'
-    implementation 'org.eclipse.keyple:keyple-service-java-lib:3.0.1'
+    implementation 'org.eclipse.keyple:keyple-service-java-lib:3.1.0'
     implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:3.0.1'
     implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.2'
 }
@@ -78,7 +80,8 @@ dependencies {
 If necessary, also create the usual tree in which the Java code of this
 guide will be placed, namely the folders: ```\src\main\java```
 
----
+<br>
+
 ## Let's code
 
 Now let's see step by step how to create in one single class the
@@ -334,7 +337,8 @@ Finally unregister the plugin before shutting down the application
 
 Find the complete code source [below](#full-code).
 
----
+<br>
+
 ## Run
 
 1) Connect two USB PC/SC Readers.
@@ -347,7 +351,8 @@ components, are downloaded during the first run, which can take some
 time. {{% /callout %}}
 
 
----
+<br>
+
 ## FAQ
 
 #### How do I find out the names of the readers?

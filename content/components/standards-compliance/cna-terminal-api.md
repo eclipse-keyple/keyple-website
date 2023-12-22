@@ -18,6 +18,8 @@ The open-source [Eclipse Keypop](https://eclipse-keypop.github.io/keypop-website
 **Java** and **C++** interfaces,
 and Keyple is based on these interfaces.
 
+<br>
+
 ## Reader & Card APIs
 
 These two APIs standardize the way that a reader and a card interact.
@@ -27,6 +29,8 @@ The **Reader API** must be used by developers of applications and card extension
 
 * [Keypop Reader API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/)
 * [Keypop Card API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-card-api/)
+
+<br>
 
 ## Calypso APIs
 

@@ -8,7 +8,6 @@ draft: false
 weight: 3
 ---
 
----
 {{% callout warning %}}  
 This page is still under construction and may contain inaccurate information.
 {{% /callout %}}
@@ -43,7 +42,8 @@ Here are the prerequisites to build the keyple components (dynamic libraries):
 
 In this guide, the Keyple components and application are build under Linux using CMake as build automation tool.
 
----
+<br>
+
 ## Create the build environment
 
 The building of all the necessary components is facilitated by a dedicated "meta-project" allowing to get all the 
@@ -63,7 +63,8 @@ make
 ```gcc-linux``` may be replaced by one of the build configurations available [here](https://github.com/eclipse/keyple-cpp-meta/tree/master/toolchain).
 {{% /callout %}}
 
----
+<br>
+
 ## Let's code
 
 Now let's see step by step how to create in one single class the elements that allow a certified reading of data through 
@@ -355,7 +356,8 @@ exit(0);
 
 Find the complete code source [below](#full-code).
 
----
+<br>
+
 ## Run
 
 1) Connect two USB PC/SC Readers.
@@ -368,7 +370,8 @@ components, are downloaded during the first run, which can take some
 time. {{% /callout %}}
 
 
----
+<br>
+
 ## FAQ
 
 #### How do I find out the names of the readers?
