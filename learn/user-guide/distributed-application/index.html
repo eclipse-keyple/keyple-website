@@ -26,7 +26,7 @@
 <meta property="og:title" content="Distributed Application User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user application using network communications."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Distributed Application User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=8a904b9f9936e7ea56be3cfe5bc9e243>
@@ -162,8 +162,7 @@ User guides
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li class=active><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -200,8 +199,13 @@ User guides
 </ul>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#overview>Overview</a></li>
-<li><a href=#how-to-use-it>How to use it</a></li>
+<li><a href=#overview>Overview</a>
+<ul>
+<li><a href=#user-guides>User guides</a></li>
+</ul>
+</li>
+<li><a href=#heading></a></li>
+<li><a href=#fully-keyple-distributed-application>Fully Keyple distributed application</a></li>
 <li><a href=#concepts>Concepts</a></li>
 <li><a href=#usage-modes>Usage modes</a>
 <ul>
@@ -227,20 +231,41 @@ User guides
 <div class=docs-article-container>
 <h1>Distributed Application User Guide</h1>
 <div class=article-style>
-<hr>
+<br>
 <h2 id=overview>Overview</h2>
 <p>Keyple provides the &ldquo;Keyple Distributed&rdquo; solution which allows an application to communicate with a smart card reader
 interfaced with another host.</p>
-<p>In this way, you can manage transactions within a distributed architecture.</p>
-<p>The diagram below shows the location of the Keyple Distributed components in the software layers used in a distributed architecture:</p>
-<figure id=figure-keyple-distributed---solution-layers-overview>
+<p>In this way, you can manage transactions seamlessly within a distributed architecture.</p>
+<p>The &ldquo;Keyple Distributed&rdquo; solution can be deployed in two ways:</p>
+<ul>
+<li>both client and server embed Keyple components,</li>
+<li>only the server embeds Keyple components, the client has its own libraries to communicate with its card reader.</li>
+</ul>
+<p>The diagram below illustrates the first way, the use of the Keyple Distributed components when both client and
+server embed Keyple components (note that the card reader can be either client-side or server-side):</p>
+<figure id=figure-keyple-on-both-client-and-server-sides>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_solution_layers_overview.drawio.svg alt="Keyple Distributed - Solution layers overview" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_solution_1_layers_overview.drawio.svg alt="Keyple on both client and server sides" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed - Solution layers overview
+Keyple on both client and server sides
 </figcaption></figure>
+<p>The diagram below illustrates the second way, the architecture with a client not running Keyple but connected to a
+server based on Keyple:</p>
+<figure id=figure-keyple-on-server-side-only>
+<div class="d-flex justify-content-center">
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_solution_2_layers_overview.drawio.svg alt="Keyple on server side only" loading=lazy data-zoomable></div>
+</div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
+Keyple on server side only
+</figcaption></figure>
+<h3 id=user-guides>User guides</h3>
+<ul>
+<li><a href=#fully-keyple-distributed-application>How to build a fully Keyple distributed application</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>How to make a non-Keyple client interact with a Keyple-based server application</a></li>
+</ul>
+<h2 id=heading></h2>
 <hr>
-<h2 id=how-to-use-it>How to use it</h2>
+<h2 id=fully-keyple-distributed-application>Fully Keyple distributed application</h2>
+<p>Steps:</p>
 <ol>
 <li>In pre-requisite, read <a href=../../../learn/user-guide/standalone-application/>Standalone Application User Guide</a> to understand the main concepts of Keyple in a standalone application.</li>
 <li>Learn <a href=#concepts>main terms and concepts</a> of the Keyple Distributed solution.</li>
@@ -249,7 +274,7 @@ Keyple Distributed - Solution layers overview
 <li>Implement the transport layer adapted to your <a href=#network-configuration>network configuration</a>.</li>
 <li>Implement your ticketing services as specified in the associated usage mode.</li>
 </ol>
-<hr>
+<br>
 <h2 id=concepts>Concepts</h2>
 <p>Here are the main concepts to keep in mind before continuing to read this user guide:</p>
 <div id=concepts-table-1>
@@ -302,31 +327,31 @@ Keyple Distributed - Solution layers overview
 </div>
 <style>#concepts-table-1 table th:first-of-type{width:130px}</style>
 <p>The diagram below illustrates the main functional concepts through a standard use case:</p>
-<figure id=figure-keyple-distributed---concepts---main-use-case>
+<figure id=figure-concepts---main-use-case>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_concepts_1.svg alt="Keyple Distributed - Concepts - Main use case" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_concepts_1.svg alt="Concepts - Main use case" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed - Concepts - Main use case
+Concepts - Main use case
 </figcaption></figure>
 <p>The second diagram below illustrates an arbitrary more complex possible use case with several hardware readers connected to different hosts.</p>
 <p>These could be for example a ticketing reloading service, where the business logic would be on the host without local readers, with thin clients on A & B hosts communicating locally with the cards.</p>
 <p>In this use case, the Keyple Distributed solution is use for card communication.</p>
-<figure id=figure-keyple-distributed---concepts---one-remote-plugin-connected-to-many-local-services>
+<figure id=figure-concepts---one-remote-plugin-connected-to-many-local-services>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_concepts_2.svg alt="Keyple Distributed - Concepts - One remote plugin connected to many local services" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_concepts_2.svg alt="Concepts - One remote plugin connected to many local services" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed - Concepts - One remote plugin connected to many local services
+Concepts - One remote plugin connected to many local services
 </figcaption></figure>
 <p>Here is another example, but this time it illustrates several remote plugins connected to the same local service.</p>
 <p>These could be for example ticketing terminals with transaction logic, which communicate locally with cards, but which do not have SAM, and which use a SAM server with hardware reader.</p>
 <p>In this use case, the Keyple Distributed solution is use for SAM communication.</p>
-<figure id=figure-keyple-distributed---concepts---many-remote-plugins-connected-to-one-local-service>
+<figure id=figure-concepts---many-remote-plugins-connected-to-one-local-service>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_concepts_3.svg alt="Keyple Distributed - Concepts - Many remote plugins connected to one local service" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_concepts_3.svg alt="Concepts - Many remote plugins connected to one local service" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed - Concepts - Many remote plugins connected to one local service
+Concepts - Many remote plugins connected to one local service
 </figcaption></figure>
-<hr>
+<br>
 <h2 id=usage-modes>Usage modes</h2>
 <p>The Keyple Distributed solution offers two different usage modes, each one having a specific API designed on a <strong>Client-Server</strong> model:</p>
 <div id=plugins-table-1>
@@ -567,7 +592,7 @@ Whatever the type of plugin, it is the responsibility of the server application 
 </ol>
 </li>
 </ul>
-<hr>
+<br>
 <h2 id=network-configuration>Network configuration</h2>
 <p>The Keyple Distributed solution <strong>does not provide</strong> the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between <strong>Remote Plugin</strong> and <strong>Local Service</strong> components.</p>
 <h3 id=synchronous>Synchronous</h3>
@@ -604,11 +629,11 @@ Whatever the type of plugin, it is the responsibility of the server application 
 </tbody>
 </table>
 <p>Here is the minimal algorithm to implement in a context with a <strong>single server instance</strong>:</p>
-<figure id=figure-keyple-distributed---synchronous-network-implementation>
+<figure id=figure-synchronous-network-implementation>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_synchronous.svg alt="Keyple Distributed - Synchronous network implementation" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_synchronous.svg alt="Synchronous network implementation" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed - Synchronous network implementation
+Synchronous network implementation
 </figcaption></figure>
 <div class="alert alert-warning">
 <div>
@@ -650,28 +675,28 @@ a <code>sessionId</code> are routed to the same server instance.
 </tbody>
 </table>
 <p>Here is the minimal algorithm to implement:</p>
-<figure id=figure-keyple-distributed---asynchronous-network-implementation>
+<figure id=figure-asynchronous-network-implementation>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_asynchronous.svg alt="Keyple Distributed - Asynchronous network implementation" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_asynchronous.svg alt="Asynchronous network implementation" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed - Asynchronous network implementation
+Asynchronous network implementation
 </figcaption></figure>
 <h3 id=exchanged-data>Exchanged data</h3>
 <p>The data exchanged between <strong>Remote Plugin</strong> and <strong>Local Service</strong> components are contained in the DTO (Data Transfer Object) <code>MessageDto</code>. It is built and processed by the plugin and <strong>you don&rsquo;t need to modify it</strong>.</p>
 <p>However, it is necessary in some contexts to access certain information such as the <code>sessionId</code> in the case of communication with several server instances.</p>
-<hr>
+<br>
 <h2 id=api>API</h2>
 <ul>
 <li><a href=https://eclipse.github.io/keyple-distributed-local-java-lib target=_blank rel=noopener>Local API</a></li>
 <li><a href=https://eclipse.github.io/keyple-distributed-network-java-lib target=_blank rel=noopener>Network API</a></li>
 <li><a href=https://eclipse.github.io/keyple-distributed-remote-java-lib target=_blank rel=noopener>Remote API</a></li>
 </ul>
-<hr>
+<br>
 <h2 id=examples>Examples</h2>
 <ul>
 <li><a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>Java examples</a></li>
 </ul>
-<hr>
+<br>
 <h2 id=download>Download</h2>
 <ul>
 <li><a href=https://keyple.org/components/overview/configuration-wizard/>Java components</a></li>
@@ -685,13 +710,13 @@ Keyple Distributed - Asynchronous network implementation
 </div>
 <div class=post-nav-item>
 <div class=meta-nav>Next</div>
-<a href=../../../learn/user-guide/distributed-json-api-2-0/ rel=prev>Distributed JSON API 2.0 User Guide</a>
+<a href=../../../learn/user-guide/server-json-api/ rel=prev>Server JSON API for non-Keyple clients</a>
 </div>
 </div>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-29</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -782,7 +807,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

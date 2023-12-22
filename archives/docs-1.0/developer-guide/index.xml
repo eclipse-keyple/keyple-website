@@ -5,7 +5,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;/div>
 &lt;p>This page describes the core elements of Keyple, i.e. the concepts and APIs of &lt;strong>Keyple Core&lt;/strong> that are used to build any application implementing Keyple.&lt;/p>
 &lt;p>It is essential for the future user of Keyple to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on &lt;strong>Keyple Core&lt;/strong>.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="reader">Reader&lt;/h2>
 &lt;p>Keyple&amp;rsquo;s primary goal being to interact with smart cards (or smartphones) worn by individuals, it is logical to put the Reader at the top of &lt;strong>Keyple Core&lt;/strong>&amp;rsquo;s concepts.&lt;/p>
 &lt;p>Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via &lt;strong>Keyple Core&lt;/strong> or using an extension (such as &lt;strong>Keyple Calypso&lt;/strong>).&lt;/p>
@@ -17,7 +17,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;/ul>
 &lt;p>The reader concept also applies to the hardware interfaces used to communicate with security elements such as SAMs (Secure Access Modules), which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.&lt;/p>
 &lt;p>&lt;a href="../../../archives/docs-1.0/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="plugin">Plugin&lt;/h2>
 &lt;p>In Keyple language a plugin is a service that allows the management of readers of a certain type.
 The plugin is responsible for informing the application about the availability of readers.
@@ -25,19 +25,19 @@ The readers of the same plugin are usually hardware linked to the same physical 
 &lt;p>Depending on its profile, an application may use different types of plugins to communicate with the different elements it needs (card, SAM).&lt;/p>
 &lt;p>The Plugin interface essentially allows to list and retrieve the available readers.&lt;/p>
 &lt;p>&lt;a href="../../../archives/docs-1.0/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="smart-card-service">Smart card service&lt;/h2>
 &lt;p>This is the &lt;strong>Keyple Core&lt;/strong> service that concentrates the knowledge of active plugins and readers.&lt;/p>
 &lt;p>At startup, a Keyple application must register the plugins it uses. Conversely, it can also unregister them.&lt;/p>
 &lt;p>The &lt;strong>SmartCardService&lt;/strong> will then make sure that the resources used are properly released.&lt;/p>
 &lt;p>&lt;a href="../../../archives/docs-1.0/architecture/keyple-core/#reader-access">More information&lt;/a>&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="observation">Observation&lt;/h2>
 &lt;p>The observation concept applies to readers as well as to plugins; optional, it is used depending on the needs.&lt;/p>
 &lt;p>It consists in monitoring changes such as reader connection/disconnection or card insertion/removal and informing the observing application through a dedicated interface.&lt;/p>
 &lt;p>Not all plugins and readers are observable.&lt;/p>
 &lt;p>&lt;a href="../../../archives/docs-1.0/architecture/keyple-core/#reader-notifications">More information&lt;/a>&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="selection">Selection&lt;/h2>
 &lt;p>In Keyple the concept of selection is derived from the application selection defined by the ISO7816-4 standard.&lt;/p>
 &lt;p>It supplements it by managing cards that do not have the standard command using identification mechanisms based on Answer To Reset and the communication protocol, and also by allowing the execution of commands immediately following application selection or detection.&lt;/p>
@@ -45,7 +45,7 @@ The readers of the same plugin are usually hardware linked to the same physical 
 &lt;p>Several targets can be defined by the application according to the different customer cards expected.&lt;/p>
 &lt;p>The &lt;strong>default selection&lt;/strong> principle consists in providing an observable reader with a set of selection cases corresponding to the expected cards and receiving notifications containing not only the card identification but also the result of all additional commands that the application will have attached.&lt;/p>
 &lt;p>&lt;a href="../../../archives/docs-1.0/architecture/keyple-core/#card-selection">More information&lt;/a>&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="abstract-smart-card">Abstract smart card&lt;/h2>
 &lt;p>The &lt;strong>abstract smart card&lt;/strong> concept is used by specific extensions (e.g. &lt;strong>Keyple Calypso&lt;/strong>) and by the &lt;strong>Keyple Core&lt;/strong> selection mechanism.
 It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.&lt;/p>
@@ -69,7 +69,7 @@ components:
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="archive-1.0/standalone-application/component/Local_Application_Components_Overview.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="before-you-start">Before you start&lt;/h2>
 &lt;ol>
 &lt;li>In pre-requisite, read the &lt;a href="../../../archives/docs-1.0/developer-guide/common-concepts/">common concepts&lt;/a> page and become familiar with the basic
@@ -87,7 +87,7 @@ environment.&lt;/li>
 &lt;li>Don&amp;rsquo;t forget to explore the potential of Keyple card-specific
 extensions such as &lt;strong>Keyple Calypso&lt;/strong>.&lt;/li>
 &lt;/ol>
-&lt;hr>
+&lt;br>
 &lt;h2 id="workflow">Workflow&lt;/h2>
 &lt;p>&lt;strong>Keyple Core&lt;/strong> is built around the concepts described &lt;a href="../../../archives/docs-1.0/developer-guide/common-concepts/">here&lt;/a> and sometimes proposes several ways to perform
 an action or to achieve a result depending on the needs of the
@@ -487,7 +487,7 @@ resources and in particular the shutdown of the observation threads.&lt;/p>
 &lt;p>This is done by unregistering the plugins in the following way:&lt;/p>
 &lt;pre>&lt;code class="language-java">smartCardService.unregisterPlugin(plugin.getName());
 &lt;/code>&lt;/pre>
-&lt;hr>
+&lt;br>
 &lt;h2 id="keyple-core-api">Keyple Core API&lt;/h2>
 &lt;p>To learn all the details of the &lt;strong>Keyple Core&lt;/strong> API, please consult the
 &lt;a href="https://keyple.org/archives/docs-1.0/api-reference/">Javadoc documentation&lt;/a>.&lt;/p>
@@ -510,7 +510,7 @@ operations.
 &lt;/div>&lt;/figure>&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;hr>
+&lt;br>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;p>To help in the implementation of the different facilities offered by
 Keyple to process smart cards, a set of examples is present in the
@@ -547,7 +547,7 @@ technologies are likely to be processed by the application.&lt;/p>
 and its readers. Readers are dynamically created and an observer is
 assigned to them.&lt;/p>
 &lt;p>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;p>The artifact &lt;strong>Keyple Core&lt;/strong> and how to integrate it into your
 application is available here:&lt;/p>
@@ -567,7 +567,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../../media/archive-1.0/distributed-application/component/Distributed_Component_Overview.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;hr>
+&lt;br>
 &lt;h2 id="how-to-use-it-">How to use it ?&lt;/h2>
 &lt;ol>
 &lt;li>In pre-requisite, read page &lt;a href="../../../archives/docs-1.0/developer-guide/standalone-application/">Standalone application&lt;/a> to understand the main concepts of Keyple in a standalone application.&lt;/li>
@@ -578,7 +578,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;li>Using chapter &lt;a href="#network-configuration">Network configuration&lt;/a>, implement the transport layer adapted to your network configuration.&lt;/li>
 &lt;li>Implement your ticketing services as specified in the associated use case.&lt;/li>
 &lt;/ol>
-&lt;hr>
+&lt;br>
 &lt;h2 id="concepts">Concepts&lt;/h2>
 &lt;p>Here are the main concepts to keep in mind before continuing to read this user guide :&lt;/p>
 &lt;div id="concepts-table-1">
@@ -657,7 +657,7 @@ width: 130px;
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../../media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_3.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;hr>
+&lt;br>
 &lt;h2 id="configuration-modes">Configuration modes&lt;/h2>
 &lt;p>The &lt;strong>Keyple Distributed&lt;/strong> solution provides &lt;strong>3&lt;/strong> different configuration modes, each one having a specific &lt;a href="#apis">API&lt;/a> designed on a &lt;strong>Client-Server&lt;/strong> model :&lt;/p>
 &lt;div id="plugins-table-1">
@@ -867,7 +867,7 @@ This configuration mode will only be available from version &lt;strong>1.1&lt;/s
 &lt;/ol>
 &lt;/li>
 &lt;/ul>
-&lt;hr>
+&lt;br>
 &lt;h2 id="use-cases">Use cases&lt;/h2>
 &lt;p>Here is a summary table of all proposed use cases. Search for the one that corresponds to your need and then look at the associated description :&lt;/p>
 &lt;div id="use-cases-table-2">
@@ -1129,7 +1129,7 @@ width: 240px;
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;hr>
+&lt;br>
 &lt;h2 id="network-configuration">Network configuration&lt;/h2>
 &lt;p>The &lt;strong>Keyple Distributed&lt;/strong> solution &lt;strong>does not provide&lt;/strong> the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between &lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> components.&lt;/p>
 &lt;h3 id="synchronous">Synchronous&lt;/h3>
@@ -1212,7 +1212,7 @@ width: 240px;
 &lt;h3 id="exchanged-data">Exchanged data&lt;/h3>
 &lt;p>The data exchanged between &lt;strong>Remote Plugin&lt;/strong> and &lt;strong>Local Service&lt;/strong> components are contained in the DTO (Data Transfer Object) &lt;code>MessageDto&lt;/code>. It is built and processed by the plugin and &lt;strong>you don&amp;rsquo;t need to modify it&lt;/strong>.&lt;/p>
 &lt;p>However, it is necessary in some contexts to access certain information such as the &lt;code>sessionId&lt;/code> in the case of asynchronous communication or the &lt;code>serverNodeId&lt;/code> in the case of synchronous communication with several server instances.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="apis">APIs&lt;/h2>
 &lt;p>The class diagrams below shows the different APIs exposed and SPIs required by the &lt;strong>Keyple Distributed&lt;/strong> solution.&lt;/p>
 &lt;p>An &lt;strong>SPI&lt;/strong> (Service Provider Interface) is an interface that must be implemented by the user.&lt;/p>
@@ -1262,12 +1262,12 @@ width: 240px;
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../../media/archive-1.0/distributed-application/class/Distributed_Class_Local_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;hr>
+&lt;br>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/distributed" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;hr>
+&lt;br>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/archives/components-java-1.0/distributed-systems/">Java components&lt;/a>&lt;/li>
@@ -1662,7 +1662,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;/ul>
 &lt;p>Note: here we describe the evolutions in broad outline, for the details of the APIs, the reader is invited to consult
 the &lt;a href="https://keyple.org/archives/docs-1.0/api-reference/">API reference&lt;/a> section.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="upgrade-from-090-to-100">Upgrade from 0.9.0 to 1.0.0&lt;/h2>
 &lt;h3 id="whats-changed">What&amp;rsquo;s changed?&lt;/h3>
 &lt;p>Compared to version 0.9, the goal of Keyple 1.0 is mainly to fix bugs,

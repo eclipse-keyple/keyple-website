@@ -26,7 +26,7 @@
 <meta property="og:title" content="Distributed application | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user application using network communications."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Distributed application | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=381273b4ac828b7943d728cba3e1f187>
@@ -294,7 +294,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 <div class="d-flex justify-content-center">
 <div class=w-100><img src=../../../../media/archive-1.0/distributed-application/component/Distributed_Component_Overview.svg alt loading=lazy data-zoomable></div>
 </div></figure>
-<hr>
+<br>
 <h2 id=how-to-use-it->How to use it ?</h2>
 <ol>
 <li>In pre-requisite, read page <a href=../../../../archives/docs-1.0/developer-guide/standalone-application/>Standalone application</a> to understand the main concepts of Keyple in a standalone application.</li>
@@ -305,7 +305,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 <li>Using chapter <a href=#network-configuration>Network configuration</a>, implement the transport layer adapted to your network configuration.</li>
 <li>Implement your ticketing services as specified in the associated use case.</li>
 </ol>
-<hr>
+<br>
 <h2 id=concepts>Concepts</h2>
 <p>Here are the main concepts to keep in mind before continuing to read this user guide :</p>
 <div id=concepts-table-1>
@@ -380,7 +380,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 <div class="d-flex justify-content-center">
 <div class=w-100><img src=../../../../media/archive-1.0/distributed-application/component/Distributed_Component_Concepts_3.svg alt loading=lazy data-zoomable></div>
 </div></figure>
-<hr>
+<br>
 <h2 id=configuration-modes>Configuration modes</h2>
 <p>The <strong>Keyple Distributed</strong> solution provides <strong>3</strong> different configuration modes, each one having a specific <a href=#apis>API</a> designed on a <strong>Client-Server</strong> model :</p>
 <div id=plugins-table-1>
@@ -586,7 +586,7 @@ This configuration mode will only be available from version <strong>1.1</strong>
 </ol>
 </li>
 </ul>
-<hr>
+<br>
 <h2 id=use-cases>Use cases</h2>
 <p>Here is a summary table of all proposed use cases. Search for the one that corresponds to your need and then look at the associated description :</p>
 <div id=use-cases-table-2>
@@ -844,7 +844,7 @@ This configuration mode will only be available from version <strong>1.1</strong>
 </tr>
 </tbody>
 </table>
-<hr>
+<br>
 <h2 id=network-configuration>Network configuration</h2>
 <p>The <strong>Keyple Distributed</strong> solution <strong>does not provide</strong> the network layer implementation, but it provides a set of SPIs (Service Provider Interfaces) to be implemented by the user in order to enable it to exchange data between <strong>Remote Plugin</strong> and <strong>Local Service</strong> components.</p>
 <h3 id=synchronous>Synchronous</h3>
@@ -927,7 +927,7 @@ This configuration mode will only be available from version <strong>1.1</strong>
 <h3 id=exchanged-data>Exchanged data</h3>
 <p>The data exchanged between <strong>Remote Plugin</strong> and <strong>Local Service</strong> components are contained in the DTO (Data Transfer Object) <code>MessageDto</code>. It is built and processed by the plugin and <strong>you don&rsquo;t need to modify it</strong>.</p>
 <p>However, it is necessary in some contexts to access certain information such as the <code>sessionId</code> in the case of asynchronous communication or the <code>serverNodeId</code> in the case of synchronous communication with several server instances.</p>
-<hr>
+<br>
 <h2 id=apis>APIs</h2>
 <p>The class diagrams below shows the different APIs exposed and SPIs required by the <strong>Keyple Distributed</strong> solution.</p>
 <p>An <strong>SPI</strong> (Service Provider Interface) is an interface that must be implemented by the user.</p>
@@ -977,12 +977,12 @@ This configuration mode will only be available from version <strong>1.1</strong>
 <div class="d-flex justify-content-center">
 <div class=w-100><img src=../../../../media/archive-1.0/distributed-application/class/Distributed_Class_Local_API.svg alt loading=lazy data-zoomable></div>
 </div></figure>
-<hr>
+<br>
 <h2 id=examples>Examples</h2>
 <ul>
 <li><a href=https://github.com/eclipse/keyple-java/tree/master/java/example/generic/distributed target=_blank rel=noopener>Java examples</a></li>
 </ul>
-<hr>
+<br>
 <h2 id=download>Download</h2>
 <ul>
 <li><a href=https://keyple.org/archives/components-java-1.0/distributed-systems/>Java components</a></li>
@@ -1002,7 +1002,7 @@ This configuration mode will only be available from version <strong>1.1</strong>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-29</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -1093,7 +1093,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

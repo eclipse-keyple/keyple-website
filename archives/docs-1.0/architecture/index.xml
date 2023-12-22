@@ -22,7 +22,7 @@ Keyple Architecture Global
 &lt;li>the &lt;strong>Plugin API&lt;/strong>, to integrate specific smart card reader solutions.&lt;/li>
 &lt;/ul>
 &lt;p>The Keyple Calypso extension provides the Calypso API: a high-level interface to manage Calypso card processing.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="application-integration">Application integration&lt;/h2>
 &lt;p>The Card API is a low-level interface to manage the transmission of APDU commands with a smart card.
 A terminal application operating processing with a specific smart card solution could be implemented directly on top the Card API.&lt;/p>
@@ -34,7 +34,7 @@ Keyple Architecture Application Integration
 &lt;/figcaption>&lt;/figure>
 &lt;p>Another way offering a better abstraction on smart card technical settings could be to implement on the Card API a smart card solution library extension providing a high-level interface: a specific Solution API.
 This is how the Keyple Calypso extension has be defined, the Calypso API is a high-level functional interface, which hides the low-level APDU operations.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="reader-integration">Reader integration&lt;/h2>
 &lt;h3 id="native-integration">native integration&lt;/h3>
 &lt;p>The smart card readers could be directly integrated with the Keyple Core. By interfacing through the Plugin API, a specific plugin dedicated to a smart card reader solution, the Keyple Core could have the capability to fully manage the smart card readers corresponding to this native plugin.&lt;/p>
@@ -66,7 +66,7 @@ Keyple Architecture Hybrid Plugins
 &lt;/figcaption>&lt;/figure>
 &lt;p>In this case a reader manager plugin, also based on the Plugin API, could allow the Keyple Core to operate the processing of a specific smart card, when requested by the Reader Manager.&lt;/p>
 &lt;p>For example, an EMV certified reader manager could call a Keyple application in case of PPSE selection failure.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="smart-card-processing">Smart card processing&lt;/h2>
 &lt;h3 id="stand-alone">stand-alone&lt;/h3>
 &lt;p>By default, a terminal application manages the processing of a specific smart card in stand-alone with its local readers.&lt;/p>
@@ -84,7 +84,7 @@ Keyple Architecture Local Plugin
 &lt;/div>&lt;figcaption>
 Keyple Architecture Remote Plugin
 &lt;/figcaption>&lt;/figure>&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="smart-card-transaction">Smart card transaction&lt;/h2>
 &lt;p>There are two ways for a terminal application to manage a transaction with a smart card.&lt;/p>
 &lt;ul>
@@ -189,7 +189,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;/div>&lt;figcaption>
 Core packages
 &lt;/figcaption>&lt;/figure>
-&lt;hr>
+&lt;br>
 &lt;h2 id="service-interface---reader-access">Service Interface - Reader Access&lt;/h2>
 &lt;p>for the development of ticketing terminal application&lt;/p>
 &lt;h3 id="types-of-plugin--reader">Types of plugin &amp;amp; reader&lt;/h3>
@@ -275,7 +275,7 @@ Observable Reader States
 &lt;p>If a Card detection is started with the &lt;strong>repeating&lt;/strong> polling mode, then later when the Card is removed, the Reader starts again the detection of a new Card.&lt;/p>
 &lt;p>Whatever the Plugin of Observable Reader, when waiting for the Card removal, any Observable Reader shall have the capability to notify the remove of the Card.
 Some Plugin solutions could have the capability to notify a Card removal also during the processing of the Card.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="service-interface---card-selection">Service Interface - Card Selection&lt;/h2>
 &lt;p>for the development of ticketing terminal application&lt;/p>
 &lt;h3 id="selection-scenarios">Selection scenarios&lt;/h3>
@@ -312,7 +312,7 @@ If a SE Selector is defined without any filter, the selection is always successf
 Card Selection v1.0.0
 &lt;/figcaption>&lt;/figure>
 &lt;p>The result of a card request selection is a card image of a matching card. For a card selection with multiple requests, several matching card could be provided.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="card-interface">Card Interface&lt;/h2>
 &lt;p>for the development of smartcard solution library&lt;/p>
 &lt;p>The Keyple Calypso extension uses the card interface to exchange APDU commands with Calypso cards and SAM.&lt;/p>
@@ -323,7 +323,7 @@ Card Selection v1.0.0
 &lt;/div>&lt;figcaption>
 APDU Transmission v1.0.0
 &lt;/figcaption>&lt;/figure>
-&lt;hr>
+&lt;br>
 &lt;h2 id="plugin-api">Plugin API&lt;/h2>
 &lt;p>for the implementation of smartcard reader plugins&lt;/p>
 &lt;h3 id="plugin-factorized-processing">Plugin Factorized Processing&lt;/h3>
@@ -399,7 +399,7 @@ org.eclipse.keyple.calypso.&lt;b>command&lt;/b>.sam.parser.session&lt;/td>
 Calypso packages
 &lt;/figcaption>&lt;/figure>
 &lt;!-- The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages. -->
-&lt;hr>
+&lt;br>
 &lt;h2 id="calypso-portable-object-selection">Calypso Portable Object Selection&lt;/h2>
 &lt;p>Compared to the generic Card Selection API (cf. &lt;a href="https://keyple.org/learn/architecture/keyple-core/#card-selection%29," target="_blank" rel="noopener">https://keyple.org/learn/architecture/keyple-core/#card-selection),&lt;/a> a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
 &lt;p>In addition, a PO Selection Request provides methods:&lt;/p>
@@ -414,7 +414,7 @@ Calypso packages
 &lt;/div>&lt;figcaption>
 Calypso Selection v1.0.0
 &lt;/figcaption>&lt;/figure>
-&lt;hr>
+&lt;br>
 &lt;h2 id="calypso-portable-object-transaction">Calypso Portable Object Transaction&lt;/h2>
 &lt;p>A Card Resource is a set of a Reader and a &lt;strong>selected&lt;/strong> Card application.&lt;/p>
 &lt;ul>
@@ -464,7 +464,7 @@ Calypso PO card image
 &lt;/div>&lt;figcaption>
 Calypso transaction
 &lt;/figcaption>&lt;/figure>
-&lt;hr>
+&lt;br>
 &lt;h2 id="data-model-extension">Data model extension&lt;/h2>
 &lt;figure id="figure-calypso-data-model">
 &lt;div class="d-flex justify-content-center">
@@ -472,7 +472,7 @@ Calypso transaction
 &lt;/div>&lt;figcaption>
 Calypso Data Model
 &lt;/figcaption>&lt;/figure>
-&lt;hr>
+&lt;br>
 &lt;h2 id="secure-session-sequence">Secure session sequence&lt;/h2>
 &lt;figure id="figure-calypso-session">
 &lt;div class="d-flex justify-content-center">

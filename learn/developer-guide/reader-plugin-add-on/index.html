@@ -26,7 +26,7 @@
 <meta property="og:title" content="Reader Plugin Add-on Developer Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an add-on to handle a specific hardware device."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Reader Plugin Add-on Developer Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=25e4a51c408d2c72488dc9bce481ce98>
@@ -162,8 +162,7 @@ Developer guides
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -217,10 +216,10 @@ Developer guides
 <div class=docs-article-container>
 <h1>Reader Plugin Add-on Developer Guide</h1>
 <div class=article-style>
-<hr>
+<br>
 <h2 id=overview>Overview</h2>
 <p>This guide is intended to help developers who want to create a Keyple reader plugin add-on for a specific device.</p>
-<hr>
+<br>
 <h2 id=operating-mode>Operating mode</h2>
 <ol>
 <li>Learn the <a href=#plugin-architecture>plugin architecture</a> concepts</li>
@@ -229,7 +228,7 @@ Developer guides
 <li><a href=#set-up-dev-environment>Set up the development environment</a></li>
 <li><a href=#implement-the-solution>Implement the solution</a></li>
 </ol>
-<hr>
+<br>
 <h2 id=plugin-architecture>Plugin architecture</h2>
 <p>A Keyple reader plugin consists of three objects, a <strong>plugin factory</strong>, a <strong>plugin</strong> and a <strong>reader</strong>, which meet the following two interface specifications:</p>
 <ul>
@@ -246,7 +245,7 @@ Developer guides
 <div class="d-flex justify-content-center">
 <div class=w-100><img src=../../../media/learn/developer-guide/component-dependencies/plugin_api.svg alt loading=lazy data-zoomable></div>
 </div></figure></p>
-<hr>
+<br>
 <h2 id=select-predefined-features>Select predefined features</h2>
 <p>The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
 <figure>
@@ -259,7 +258,7 @@ The <code>XxxPluginFactory</code>, <code>XxxPlugin</code> and <code>XxxReader</c
 They are specific to the plugin <code>Xxx</code> to be created but can remain empty if there is no specific feature.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=define-specific-features>Define specific features</h2>
 <p>Depending on the characteristics of the reader, it may be necessary to add in the specific APIs configuration methods appropriate to the technical context.</p>
 <p>These features can be exposed at three levels:</p>
@@ -270,7 +269,7 @@ The API will then be directly accessible from the application through the <code>
 <li>In the <strong>reader</strong> (<code>XxxReader</code> interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).<br>
 The API will then be directly accessible from the application through the <code>getReaderExtension(...)</code> method of the reader provided by the plugin registered with Keyple Service.</li>
 </ul>
-<hr>
+<br>
 <h2 id=set-up-dev-environment>Set up dev environment</h2>
 <div class="alert alert-warning">
 <div>
@@ -293,7 +292,7 @@ git update-index --chmod=&#43;x &#34;scripts/prepare_javadoc.sh&#34;</code></pre
 </div>
 <p>If examples are proposed, they should be placed in the <a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>keyple-java-example</a> repository.</p>
 <p>The contribution procedure is described <a href=../../../community/contributing/>here</a>.</p>
-<hr>
+<br>
 <h2 id=implement-the-solution>Implement the solution</h2>
 <div class="alert alert-warning">
 <div>
@@ -316,13 +315,13 @@ For example, if the plugin factory needs to expose specific configuration method
 Thus, the factory does not expose any method.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=api>API</h2>
 <ul>
 <li><a href=https://eclipse.github.io/keyple-common-java-api target=_blank rel=noopener>Keyple Common API</a></li>
 <li><a href=https://eclipse.github.io/keyple-plugin-java-api target=_blank rel=noopener>Keyple Plugin API</a></li>
 </ul>
-<hr>
+<br>
 <h2 id=download>Download</h2>
 <ul>
 <li><a href=https://keyple.org/components/overview/configuration-wizard/>Java components</a></li>
@@ -338,7 +337,7 @@ Thus, the factory does not expose any method.
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-29</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -429,7 +428,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

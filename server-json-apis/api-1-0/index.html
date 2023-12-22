@@ -8,29 +8,29 @@
 <link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
 <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
 <meta name=description content="How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/learn/user-guide/distributed-json-api-1-0/>
+<link rel=alternate hreflang=en-us href=https://keyple.org/server-json-apis/api-1-0/>
 <meta name=theme-color content="#1D87BB">
-<link rel=stylesheet href=../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
+<link rel=stylesheet href=../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
-<link rel=stylesheet href=../../../css/wowchemy.0f3f69197f45d71e19baab92de51a127.css>
+<link rel=stylesheet href=../../css/wowchemy.0f3f69197f45d71e19baab92de51a127.css>
 <script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
-<link rel=manifest href=../../../manifest.webmanifest>
-<link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
-<link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/learn/user-guide/distributed-json-api-1-0/>
+<link rel=manifest href=../../manifest.webmanifest>
+<link rel=icon type=image/png href=../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
+<link rel=canonical href=https://keyple.org/server-json-apis/api-1-0/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/learn/user-guide/distributed-json-api-1-0/">
-<meta property="og:title" content="Distributed JSON API 1.0 User Guide | Eclipse Keyple">
+<meta property="og:url" content="https://keyple.org/server-json-apis/api-1-0/">
+<meta property="og:title" content="Server JSON API 1.0 | Eclipse Keyple">
 <meta property="og:description" content="How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
-<title>Distributed JSON API 1.0 User Guide | Eclipse Keyple</title>
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
+<title>Server JSON API 1.0 | Eclipse Keyple</title>
 </head>
-<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=bf9a9c70da37c02fb0aa157c7e7a3e9f>
-<script src=../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=5377dcb79b335b508c81f9689b6aa536>
+<script src=../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
 <aside class=search-modal id=search>
 <div class=container>
 <section class=search-header>
@@ -56,13 +56,13 @@
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
 <div class=container-xl>
 <div class="d-none d-lg-inline-flex">
-<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
+<a class=navbar-brand href=../../><img src=../../media/logo.svg alt="Eclipse Keyple"></a>
 </div>
 <button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
 <span><i class="fas fa-bars"></i></span>
 </button>
 <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
-<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
+<a class=navbar-brand href=../../><img src=../../media/logo.svg alt="Eclipse Keyple"></a>
 </div>
 <div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
 <ul class="navbar-nav d-md-inline-flex">
@@ -70,43 +70,43 @@
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span>
 </a>
 <div class=dropdown-menu>
-<a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
-<a class=dropdown-item href=../../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
-<a class=dropdown-item href=../../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
-<a class=dropdown-item href=../../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
-<a class=dropdown-item href=../../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
-<a class=dropdown-item href=../../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
-<a class=dropdown-item href=../../../#news><span>News</span></a>
+<a class=dropdown-item href=../../what-is-keyple/overview/><span>Overview</span></a>
+<a class=dropdown-item href=../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
+<a class=dropdown-item href=../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
+<a class=dropdown-item href=../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
+<a class=dropdown-item href=../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
+<a class=dropdown-item href=../../#news><span>News</span></a>
 </div>
 </li>
 <li class=nav-item>
-<a class=nav-link href=../../../learn/overview><span>Learn</span></a>
+<a class=nav-link href=../../learn/overview><span>Learn</span></a>
 </li>
 <li class=nav-item>
-<a class=nav-link href=../../../components/overview><span>Components</span></a>
+<a class=nav-link href=../../components/overview><span>Components</span></a>
 </li>
 <li class="nav-item dropdown">
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
 </a>
 <div class=dropdown-menu>
-<a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
-<a class=dropdown-item href=../../../community/roadmap/><span>Roadmap</span></a>
-<a class=dropdown-item href=../../../community/changelog/><span>Changelog</span></a>
-<a class=dropdown-item href=../../../project-dashboard/><span>Project dashboard</span></a>
+<a class=dropdown-item href=../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../community/roadmap/><span>Roadmap</span></a>
+<a class=dropdown-item href=../../community/changelog/><span>Changelog</span></a>
+<a class=dropdown-item href=../../project-dashboard/><span>Project dashboard</span></a>
 <a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date"><span>Code quality dashboard</span></a>
 <a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
 <a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
 <a class=dropdown-item href=https://github.com/eclipse/keyple/><span>GitHub home repository</span></a>
-<a class=dropdown-item href=../../../archives/><span>Archives</span></a>
+<a class=dropdown-item href=../../archives/><span>Archives</span></a>
 </div>
 </li>
 <li class="nav-item dropdown">
 <a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
 </a>
 <div class=dropdown-menu>
-<a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
-<a class=dropdown-item href=../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
-<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
+<a class=dropdown-item href=../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
+<a class=dropdown-item href=../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
 </div>
 </li>
 </ul>
@@ -127,7 +127,6 @@
 <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
 <div class=d-flex>
 <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
-User guides
 </span>
 <span><i class="fas fa-chevron-down"></i></span>
 </div>
@@ -140,57 +139,9 @@ User guides
 </form>
 <nav class="collapse docs-links" id=docs-nav>
 <ul class="nav docs-sidenav">
-<li><a href=../../../learn/></a></li>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/overview/>Overview</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li>
-<li><a href=../../../learn/overview/architecture/>Architecture</a></li>
-<li><a href=../../../learn/overview/keypop-api/>Keypop API</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/build-your-first-app/>Build your first app</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/build-your-first-app/java-app/>Java</a></li>
-<li><a href=../../../learn/build-your-first-app/android-app/>Android</a></li>
-<li><a href=../../../learn/build-your-first-app/cpp-app/>C++</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/user-guide/>User guides</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
-<li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li class=active><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
-<li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
-<li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
-<li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li>
-<li><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/code-samples/>Code samples</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/code-samples/java-example/>Java examples</a></li>
-<li><a href=../../../learn/code-samples/cpp-example/>C++ examples</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/keyple-in-depth/>Keyple in depth</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
-<li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
-<li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
-</ul>
-</div>
+<li><a href=../../server-json-apis/> </a></li>
+<li><a href=../../server-json-apis/api-2-0/>Server JSON API 2.0</a></li>
+<li class=active><a href=../../server-json-apis/api-1-0/>Server JSON API 1.0</a></li>
 </ul>
 </nav>
 </div>
@@ -200,12 +151,7 @@ User guides
 </ul>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#overview>Overview</a>
-<ul>
-<li><a href=#principle>Principle</a></li>
-<li><a href=#data-structure>Data structure</a></li>
-</ul>
-</li>
+<li><a href=#messagedto>MessageDto</a></li>
 <li><a href=#execute-remote-service>Execute Remote Service</a>
 <ul>
 <li></li>
@@ -238,16 +184,9 @@ User guides
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
 <div class=docs-article-container>
-<h1>Distributed JSON API 1.0 User Guide</h1>
+<h1>Server JSON API 1.0</h1>
 <div class=article-style>
-<hr>
 <style>table th:nth-child(1){width:9rem}</style>
-<h2 id=overview>Overview</h2>
-<p>This guide is specifically designed for users who are not currently using Keyple in their terminals, but wish to connect
-to a Keyple server. It details the JSON data exchange between the terminal and the server, but does not cover the
-transport of this data.</p>
-<p>This allows the development of a distributed solution in which the client reader terminal delegates the entire
-management of the card transaction to the server.</p>
 <div class="alert alert-warning">
 <div>
 <p>This API is compliant with the following Keyple server side components:</p>
@@ -258,121 +197,22 @@ management of the card transaction to the server.</p>
 </ul>
 </div>
 </div>
-<p>The diagram below illustrates the architecture of a non-Keyple application installed on a terminal and connected to a
-server based on Keyple:</p>
-<figure id=figure-keyple-distributed-json-api---solution-layers-overview>
-<div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_overview.drawio.svg alt="Keyple Distributed JSON API - Solution layers overview" loading=lazy data-zoomable></div>
-</div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed JSON API - Solution layers overview
-</figcaption></figure>
-<h3 id=principle>Principle</h3>
-<p>The Keyple remote transaction uses four types of messages exchanged between the terminal and the server in JSON format:</p>
-<div id=principles-table-1>
-<table>
-<thead>
-<tr>
-<th>Message</th>
-<th style=text-align:center>Direction</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href=#execute-remote-service>Execute Remote Service</a></td>
-<td style=text-align:center>To server</td>
-<td>Allows the terminal to request the server to start the remote ticketing transaction.</td>
-</tr>
-<tr>
-<td><a href=#command>Command</a></td>
-<td style=text-align:center>From server</td>
-<td>Requests the terminal to process specific services with the card or the terminal&rsquo;s reader.</td>
-</tr>
-<tr>
-<td><a href=#response>Response</a></td>
-<td style=text-align:center>To server</td>
-<td>Allows the terminal to send to the server the responses to the services it has performed.</td>
-</tr>
-<tr>
-<td><a href=#end-remote-service>End Remote Service</a></td>
-<td style=text-align:center>From server</td>
-<td>Tells the terminal that the remote ticketing transaction is complete.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<style>#principles-table-1 table th:nth-child(1){width:10.5rem}</style>
-<p>The diagram below shows the global messaging flow:</p>
-<figure id=figure-keyple-distributed-json-api---messaging-flow>
-<div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_messagingFlow.svg alt="Keyple Distributed JSON API - Messaging flow" loading=lazy data-zoomable></div>
-</div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed JSON API - Messaging flow
-</figcaption></figure>
-<p>On its own initiative (e.g. following the detection of a card), the terminal sends to the server a
-message of type &ldquo;<a href=#execute-remote-service>Execute Remote Service</a>&rdquo; to ask it to start a card transaction.
-At this step, the terminal has the ability to tell the server which business service to run and also to provide
-additional custom input data.</p>
-<p>As long as the transaction is not completed, the terminal receives from the server messages of type &ldquo;<a href=#command>Command</a>&rdquo;
-containing the actions to be performed with the card or the terminal&rsquo;s reader.
-The responses are sent to the server in messages of type &ldquo;<a href=#response>Response</a>&rdquo;.</p>
-<p>When the transaction is complete, the terminal receives from the server a final message
-of type &ldquo;<a href=#end-remote-service>End Remote Service</a>&rdquo; which optionally contains custom transaction output data.</p>
-<h3 id=data-structure>Data structure</h3>
-<p>Messages are in JSON format and have the following structure:</p>
-<div id=data-structure-table-1>
-<table>
-<thead>
-<tr>
-<th>Message</th>
-<th style=text-align:center>Direction</th>
-<th style=text-align:center>JSON Structure</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href=#execute-remote-service>Execute Remote Service</a></td>
-<td style=text-align:center>To server</td>
-<td style=text-align:center><code>MessageDto</code></td>
-<td>An object.</td>
-</tr>
-<tr>
-<td><a href=#command>Command</a></td>
-<td style=text-align:center>From server</td>
-<td style=text-align:center><code>[ MessageDto ]</code></td>
-<td>An array containing a single object.</td>
-</tr>
-<tr>
-<td><a href=#response>Response</a></td>
-<td style=text-align:center>To server</td>
-<td style=text-align:center><code>MessageDto</code></td>
-<td>An object.</td>
-</tr>
-<tr>
-<td><a href=#end-remote-service>End Remote Service</a></td>
-<td style=text-align:center>From server</td>
-<td style=text-align:center><code>[ MessageDto ]</code></td>
-<td>An array containing a single object.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<style>#data-structure-table-1 table th:nth-child(1){width:10.5rem}#data-structure-table-1 table th:nth-child(3){width:8rem}</style>
+<br>
+<h2 id=messagedto>MessageDto</h2>
 <p>The diagram below shows the structure of the <code>MessageDto</code> object but the detailed content will be described in the
 sections associated with each message type:</p>
-<figure id=figure-keyple-distributed-json-api---messagedto>
+<figure id=figure-messagedto>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_MessageDto.svg alt="Keyple Distributed JSON API - MessageDto" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../media/learn/user-guide/server-json-api-1-0/serverJsonApi_classDiagram_MessageDto.svg alt=MessageDto loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed JSON API - MessageDto
+MessageDto
 </figcaption></figure>
 <div class="alert alert-note">
 <div>
 The value of the <code>action</code> property determines the message type.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=execute-remote-service>Execute Remote Service</h2>
 <p>The purpose of this message, sent to the server, is to initiate the server-controlled card
 transaction.</p>
@@ -383,11 +223,11 @@ containing the first action to be performed with the card or the terminal&rsquo;
 &ldquo;<a href=#end-remote-service>End Remote Service</a>&rdquo; to terminate the transaction.</p>
 <p>The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.</p>
-<figure id=figure-keyple-distributed-json-api---execute-remote-service-class-diagram>
+<figure id=figure-execute-remote-service-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_executeRemoteService.svg alt='Keyple Distributed JSON API - "Execute Remote Service" class diagram' loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../media/learn/user-guide/server-json-api-1-0/serverJsonApi_classDiagram_executeRemoteService.svg alt='"Execute Remote Service" class diagram' loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed JSON API - &ldquo;Execute Remote Service&rdquo; class diagram
+&ldquo;Execute Remote Service&rdquo; class diagram
 </figcaption></figure>
 <h4 id=messagedto-execute-remote-service>MessageDto</h4>
 <table>
@@ -448,15 +288,15 @@ Keyple Distributed JSON API - &ldquo;Execute Remote Service&rdquo; class diagram
 </tbody>
 </table>
 <h4 id=example>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
-<pre><code class=language-json id=code-6>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('4',this)">Copy</button></div>
+<pre><code class=language-json id=code-4>{
     &#34;action&#34;: &#34;EXECUTE_REMOTE_SERVICE&#34;,
     &#34;body&#34;: &#34;{\&#34;serviceId\&#34;:\&#34;AUTHENTICATE_CARD\&#34;,\&#34;inputData\&#34;:{\&#34;userId\&#34;:\&#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&#34;}}&#34;,
     &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;,
     &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
     &#34;localReaderName&#34;: &#34;READER_1&#34;
 }</code></pre>
-<hr>
+<br>
 <h2 id=command>Command</h2>
 <p>The purpose of this message, received from the server, is to ask the terminal to perform a specific service with the
 card or the terminal&rsquo;s reader.</p>
@@ -494,11 +334,11 @@ card or the terminal&rsquo;s reader.</p>
 &ldquo;<a href=#response>Response</a>&rdquo; containing the response of the operation.</p>
 <p>The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.</p>
-<figure id=figure-keyple-distributed-json-api---command-class-diagram>
+<figure id=figure-command-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_cmd.svg alt='Keyple Distributed JSON API - "Command" class diagram' loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../media/learn/user-guide/server-json-api-1-0/serverJsonApi_classDiagram_cmd.svg alt='"Command" class diagram' loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed JSON API - &ldquo;Command&rdquo; class diagram
+&ldquo;Command&rdquo; class diagram
 </figcaption></figure>
 <div class="alert alert-note">
 <div>
@@ -510,7 +350,7 @@ The value of the <code>service</code> property determines the service to be perf
 The <code>MessageDto</code> is contained in a single-element array!
 </div>
 </div>
-<hr>
+<br>
 <h3 id=reader-type-cmd>Reader Type</h3>
 <p>This service allows the server to know if the reader is in contact or contactless mode.</p>
 <p>There are no parameters for this service.</p>
@@ -576,8 +416,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-1>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
-<pre><code class=language-json id=code-11>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('9',this)">Copy</button></div>
+<pre><code class=language-json id=code-9>[
     {
         &#34;action&#34;: &#34;CMD&#34;,
         &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CONTACTLESS\&#34;}&#34;,
@@ -588,7 +428,7 @@ The <code>MessageDto</code> is contained in a single-element array!
         &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
     }
 ]</code></pre>
-<hr>
+<br>
 <h3 id=card-presence-cmd>Card Presence</h3>
 <p>This service allows the server to know if a card is inserted in the reader.</p>
 <p>There are no parameters for this service.</p>
@@ -654,8 +494,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-2>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('13',this)">Copy</button></div>
-<pre><code class=language-json id=code-13>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
+<pre><code class=language-json id=code-11>[
     {
         &#34;action&#34;: &#34;CMD&#34;,
         &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CARD_PRESENT\&#34;}&#34;,
@@ -666,7 +506,7 @@ The <code>MessageDto</code> is contained in a single-element array!
         &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
     }
 ]</code></pre>
-<hr>
+<br>
 <h3 id=card-selection-cmd>Card Selection</h3>
 <p>The primary objective of this service is to establish a logical communication channel with a card.</p>
 <p>To enable processing of different card profiles, it offers the creation of selection scenarios with integrated
@@ -887,8 +727,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-3>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('15',this)">Copy</button></div>
-<pre><code class=language-json id=code-15>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('13',this)">Copy</button></div>
+<pre><code class=language-json id=code-13>[
     {
         &#34;action&#34;: &#34;CMD&#34;,
         &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_SELECTION_REQUESTS\&#34;,\&#34;parameters\&#34;:{\&#34;multiSelectionProcessing\&#34;:\&#34;FIRST_MATCH\&#34;,\&#34;channelControl\&#34;:\&#34;KEEP_OPEN\&#34;,\&#34;cardSelectionRequests\&#34;:[{\&#34;cardSelector\&#34;:{\&#34;cardProtocol\&#34;:\&#34;ISO_14443_4_CARD\&#34;,\&#34;aid\&#34;:\&#34;315449432E49434131\&#34;,\&#34;fileOccurrence\&#34;:\&#34;FIRST\&#34;,\&#34;fileControlInformation\&#34;:\&#34;FCI\&#34;,\&#34;successfulSelectionStatusWords\&#34;:[\&#34;9000\&#34;]},\&#34;cardRequest\&#34;:{\&#34;apduRequests\&#34;:[{\&#34;apdu\&#34;:\&#34;00B2013C00\&#34;,\&#34;successfulStatusWords\&#34;:[\&#34;9000\&#34;],\&#34;info\&#34;:\&#34;Read Records - SFI: 7h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&#34;}],\&#34;isStatusCodesVerificationEnabled\&#34;:false}}]}}&#34;,
@@ -899,7 +739,7 @@ The <code>MessageDto</code> is contained in a single-element array!
         &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
     }
 ]</code></pre>
-<hr>
+<br>
 <h3 id=card-commands-cmd>Card Commands</h3>
 <p>The role of this service is to perform APDU exchanges with the card.</p>
 <p>The terminal must iterate over the list of APDUs present in the card request and proceeds to close the physical channel
@@ -1031,8 +871,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-4>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('17',this)">Copy</button></div>
-<pre><code class=language-json id=code-17>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('15',this)">Copy</button></div>
+<pre><code class=language-json id=code-15>[
     {
         &#34;action&#34;: &#34;CMD&#34;,
         &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_REQUEST\&#34;,\&#34;parameters\&#34;:{\&#34;cardRequest\&#34;:{\&#34;apduRequests\&#34;:[{\&#34;apdu\&#34;:\&#34;00B2014400\&#34;,\&#34;successfulStatusWords\&#34;:[\&#34;9000\&#34;],\&#34;info\&#34;:\&#34;Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&#34;}],\&#34;isStatusCodesVerificationEnabled\&#34;:true},\&#34;channelControl\&#34;:\&#34;CLOSE_AFTER\&#34;}}&#34;,
@@ -1043,7 +883,7 @@ The <code>MessageDto</code> is contained in a single-element array!
         &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
     }
 ]</code></pre>
-<hr>
+<br>
 <h2 id=response>Response</h2>
 <p>This message, sent by the terminal to the server, is intended to transmit to the server the result of the specific
 service previously performed on the card or the terminal&rsquo;s reader.</p>
@@ -1052,13 +892,13 @@ service previously performed on the card or the terminal&rsquo;s reader.</p>
 &ldquo;<a href=#end-remote-service>End Remote Service</a>&rdquo; to terminate the transaction.</p>
 <p>The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.</p>
-<figure id=figure-keyple-distributed-json-api---response-class-diagram>
+<figure id=figure-response-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_resp.svg alt='Keyple Distributed JSON API - "Response" class diagram' loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../media/learn/user-guide/server-json-api-1-0/serverJsonApi_classDiagram_resp.svg alt='"Response" class diagram' loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed JSON API - &ldquo;Response&rdquo; class diagram
+&ldquo;Response&rdquo; class diagram
 </figcaption></figure>
-<hr>
+<br>
 <h3 id=reader-type-resp>Reader Type</h3>
 <p>This message, sent by the terminal to the server in response to &ldquo;<a href=#reader-type-cmd>Reader Type (Command)</a>&rdquo;, is
 intended to indicate to the server if the reader is contactless.</p>
@@ -1144,8 +984,8 @@ intended to indicate to the server if the reader is contactless.</p>
 </tbody>
 </table>
 <h4 id=example-5>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('19',this)">Copy</button></div>
-<pre><code class=language-json id=code-19>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('17',this)">Copy</button></div>
+<pre><code class=language-json id=code-17>{
     &#34;action&#34;: &#34;RESP&#34;,
     &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CONTACTLESS\&#34;,\&#34;result\&#34;:true}&#34;,
     &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
@@ -1154,7 +994,7 @@ intended to indicate to the server if the reader is contactless.</p>
     &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
     &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
 }</code></pre>
-<hr>
+<br>
 <h3 id=card-presence-resp>Card Presence</h3>
 <p>This message, sent by the terminal to the server in response to &ldquo;<a href=#card-presence-cmd>Card Presence (Command)</a>&rdquo;,
 is intended to indicate to the server if a card is present.</p>
@@ -1240,8 +1080,8 @@ is intended to indicate to the server if a card is present.</p>
 </tbody>
 </table>
 <h4 id=example-6>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
-<pre><code class=language-json id=code-20>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('18',this)">Copy</button></div>
+<pre><code class=language-json id=code-18>{
     &#34;action&#34;: &#34;RESP&#34;,
     &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;IS_CARD_PRESENT\&#34;,\&#34;result\&#34;:true}&#34;,
     &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
@@ -1250,7 +1090,7 @@ is intended to indicate to the server if a card is present.</p>
     &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
     &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
 }</code></pre>
-<hr>
+<br>
 <h3 id=card-selection-resp>Card Selection</h3>
 <p>This message, sent by the terminal to the server in response to
 &ldquo;<a href=#card-selection-cmd>Card Selection (Command)</a>&rdquo;,
@@ -1402,8 +1242,8 @@ is intended to transmit to the server the result of the execution of the selecti
 </tbody>
 </table>
 <h5 id=example-7>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('21',this)">Copy</button></div>
-<pre><code class=language-json id=code-21>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('19',this)">Copy</button></div>
+<pre><code class=language-json id=code-19>{
     &#34;action&#34;: &#34;RESP&#34;,
     &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_SELECTION_REQUESTS\&#34;,\&#34;result\&#34;:[{\&#34;hasMatched\&#34;:true,\&#34;powerOnData\&#34;:\&#34;3B8880010000000000718100F9\&#34;,\&#34;selectApplicationResponse\&#34;:{\&#34;apdu\&#34;:\&#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C23121410019000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;},\&#34;cardResponse\&#34;:{\&#34;apduResponses\&#34;:[{\&#34;apdu\&#34;:\&#34;24B92848080000131A50001200000000000000000000000000000000009000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;}],\&#34;isLogicalChannelOpen\&#34;:true}}]}&#34;,
     &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
@@ -1412,7 +1252,7 @@ is intended to transmit to the server the result of the execution of the selecti
     &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
     &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
 }</code></pre>
-<hr>
+<br>
 <h3 id=card-commands-resp>Card Commands</h3>
 <p>This message, sent by the terminal to the server in response to
 &ldquo;<a href=#card-commands-cmd>Card Commands (Command)</a>&rdquo;,
@@ -1537,8 +1377,8 @@ is intended to transmit to the server the result of the execution of a card requ
 </tbody>
 </table>
 <h5 id=example-8>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('22',this)">Copy</button></div>
-<pre><code class=language-json id=code-22>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
+<pre><code class=language-json id=code-20>{
     &#34;action&#34;: &#34;RESP&#34;,
     &#34;body&#34;: &#34;{\&#34;service\&#34;:\&#34;TRANSMIT_CARD_REQUEST\&#34;,\&#34;result\&#34;:{\&#34;apduResponses\&#34;:[{\&#34;apdu\&#34;:\&#34;00112233445566778899AABBCCDDEEFF00112233445566778899AABBCC9000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;}],\&#34;isLogicalChannelOpen\&#34;:true}}&#34;,
     &#34;clientNodeId&#34;: &#34;ca21fd3c-a055-4be5-aad1-c61af3528371&#34;,
@@ -1547,17 +1387,17 @@ is intended to transmit to the server the result of the execution of a card requ
     &#34;serverNodeId&#34;: &#34;4132f1ef-4386-49b0-acb6-cc16035c107a&#34;,
     &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;
 }</code></pre>
-<hr>
+<br>
 <h2 id=end-remote-service>End Remote Service</h2>
 <p>The purpose of this message, received from the server, is to inform the terminal that the transaction has been
 completed and, if necessary, to transmit the result. No follow-up is expected from the server.</p>
 <p>The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.</p>
-<figure id=figure-keyple-distributed-json-api---end-remote-service-class-diagram>
+<figure id=figure-end-remote-service-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-1-0/distributedJsonApi_classDiagram_endRemoteService.svg alt='Keyple Distributed JSON API - "End Remote Service" class diagram' loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../media/learn/user-guide/server-json-api-1-0/serverJsonApi_classDiagram_endRemoteService.svg alt='"End Remote Service" class diagram' loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed JSON API - &ldquo;End Remote Service&rdquo; class diagram
+&ldquo;End Remote Service&rdquo; class diagram
 </figcaption></figure>
 <div class="alert alert-warning">
 <div>
@@ -1619,8 +1459,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h4 id=example-9>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('25',this)">Copy</button></div>
-<pre><code class=language-json id=code-25>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('23',this)">Copy</button></div>
+<pre><code class=language-json id=code-23>[
     {
         &#34;action&#34;: &#34;END_REMOTE_SERVICE&#34;,
         &#34;body&#34;: &#34;{\&#34;outputData\&#34;:{\&#34;isSuccessful\&#34;:true,\&#34;userId\&#34;:\&#34;test\&#34;}}&#34;,
@@ -1635,17 +1475,13 @@ The <code>MessageDto</code> is contained in a single-element array!
 <div class=post-nav>
 <div class=post-nav-item>
 <div class=meta-nav>Previous</div>
-<a href=../../../learn/user-guide/distributed-json-api-2-0/ rel=next>Distributed JSON API 2.0 User Guide</a>
-</div>
-<div class=post-nav-item>
-<div class=meta-nav>Next</div>
-<a href=../../../learn/user-guide/calypso-application/ rel=prev>Calypso Application User Guide</a>
+<a href=../../server-json-apis/api-2-0/ rel=next>Server JSON API 2.0</a>
 </div>
 </div>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-29</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -1662,12 +1498,12 @@ The <code>MessageDto</code> is contained in a single-element array!
 </div>
 <div class="col-12 col-sm-4">
 <a href=https://www.eclipse.org target=_blank>
-<img src=../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
+<img src=../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
 </a>
 </div>
 <div class="col-12 col-sm-4">
 <a href=https://iot.eclipse.org target=_blank>
-<img src=../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
+<img src=../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
 </a>
 </div>
 </div>
@@ -1709,7 +1545,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
 </div>
 </div>
 </div>
-<script src=../../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
+<script src=../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin=anonymous></script>
@@ -1736,7 +1572,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

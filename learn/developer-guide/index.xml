@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Developer guides | Eclipse Keyple</title><link>https://keyple.org/learn/developer-guide/</link><atom:link href="https://keyple.org/learn/developer-guide/index.xml" rel="self" type="application/rss+xml"/><description>Developer guides</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Developer guides</title><link>https://keyple.org/learn/developer-guide/</link></image><item><title>Reader Plugin Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</guid><description>&lt;hr>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Developer guides | Eclipse Keyple</title><link>https://keyple.org/learn/developer-guide/</link><atom:link href="https://keyple.org/learn/developer-guide/index.xml" rel="self" type="application/rss+xml"/><description>Developer guides</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Developer guides</title><link>https://keyple.org/learn/developer-guide/</link></image><item><title>Reader Plugin Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</guid><description>&lt;br>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This guide is intended to help developers who want to create a Keyple reader plugin add-on for a specific device.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="operating-mode">Operating mode&lt;/h2>
 &lt;ol>
 &lt;li>Learn the &lt;a href="#plugin-architecture">plugin architecture&lt;/a> concepts&lt;/li>
@@ -10,7 +10,7 @@
 &lt;li>&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
-&lt;hr>
+&lt;br>
 &lt;h2 id="plugin-architecture">Plugin architecture&lt;/h2>
 &lt;p>A Keyple reader plugin consists of three objects, a &lt;strong>plugin factory&lt;/strong>, a &lt;strong>plugin&lt;/strong> and a &lt;strong>reader&lt;/strong>, which meet the following two interface specifications:&lt;/p>
 &lt;ul>
@@ -27,7 +27,7 @@
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/plugin_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="select-predefined-features">Select predefined features&lt;/h2>
 &lt;p>The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
 &lt;figure >
@@ -40,7 +40,7 @@ The &lt;code>XxxPluginFactory&lt;/code>, &lt;code>XxxPlugin&lt;/code> and &lt;co
 They are specific to the plugin &lt;code>Xxx&lt;/code> to be created but can remain empty if there is no specific feature.
 &lt;/div>
 &lt;/div>
-&lt;hr>
+&lt;br>
 &lt;h2 id="define-specific-features">Define specific features&lt;/h2>
 &lt;p>Depending on the characteristics of the reader, it may be necessary to add in the specific APIs configuration methods appropriate to the technical context.&lt;/p>
 &lt;p>These features can be exposed at three levels:&lt;/p>
@@ -51,7 +51,7 @@ The API will then be directly accessible from the application through the &lt;co
 &lt;li>In the &lt;strong>reader&lt;/strong> (&lt;code>XxxReader&lt;/code> interface), for dynamic configurations specific to each reader (e.g. activate/deactivate a LED).&lt;br>
 The API will then be directly accessible from the application through the &lt;code>getReaderExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
 &lt;/ul>
-&lt;hr>
+&lt;br>
 &lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
@@ -74,7 +74,7 @@ git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;
 &lt;/div>
 &lt;p>If examples are proposed, they should be placed in the &lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
 &lt;p>The contribution procedure is described &lt;a href="../../community/contributing/">here&lt;/a>.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
@@ -97,21 +97,21 @@ For example, if the plugin factory needs to expose specific configuration method
 Thus, the factory does not expose any method.
 &lt;/div>
 &lt;/div>
-&lt;hr>
+&lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://eclipse.github.io/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://eclipse.github.io/keyple-plugin-java-api" target="_blank" rel="noopener">Keyple Plugin API&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;hr>
+&lt;br>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/components/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Card Extension Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/card-extension-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/card-extension-add-on/</guid><description>&lt;hr>
+&lt;/ul></description></item><item><title>Card Extension Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/card-extension-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/card-extension-add-on/</guid><description>&lt;br>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This guide is intended to help developers who want to create a Keyple card extension add-on for a specific card
 technology.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="operating-mode">Operating mode&lt;/h2>
 &lt;ol>
 &lt;li>Learn the &lt;a href="#card-extension-architecture">card extension architecture&lt;/a> concepts&lt;/li>
@@ -120,7 +120,7 @@ technology.&lt;/p>
 &lt;li>&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
-&lt;hr>
+&lt;br>
 &lt;h2 id="card-extension-architecture">Card extension architecture&lt;/h2>
 &lt;p>A Keyple card extension contains a set of objects which meet the following three interface specifications:&lt;/p>
 &lt;ul>
@@ -143,7 +143,7 @@ well as the public APIs exposed to the application:
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/card_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="minimal-requirements">Minimal requirements&lt;/h2>
 &lt;p>The table below lists the objects that must be created and indicates the interfaces to be implemented for each of them:&lt;/p>
 &lt;table>
@@ -203,7 +203,7 @@ service initialization with the method &lt;code>JsonUtil.registerTypeAdapter(...
 &lt;p>This will allow the transport of this object through the network when using the Keyple Distributed solution.&lt;/p>
 &lt;/div>
 &lt;/div>
-&lt;hr>
+&lt;br>
 &lt;h2 id="define-the-card-commands">Define the card commands&lt;/h2>
 &lt;p>The card extension takes part in the communication with the card in two ways:&lt;/p>
 &lt;ul>
@@ -217,7 +217,7 @@ the Reader API.
 This can then be cast internally to a &lt;code>ProxyReaderApi&lt;/code> of the Card API through which it will be possible to transmit
 card commands.&lt;/p>
 &lt;p>Each card extension is free to define the APIs it considers relevant to perform card transactions.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
@@ -244,7 +244,7 @@ git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;
 &lt;p>If examples are proposed, they should be placed in
 the &lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
 &lt;p>The contribution procedure is described &lt;a href="../../community/contributing/">here&lt;/a>.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
@@ -260,14 +260,14 @@ It is important to hide the internal interfaces of the &lt;strong>Keypop Card AP
 &lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/design-guides/card_extension_class_diagram.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>&lt;/li>
 &lt;/ul>
-&lt;hr>
+&lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://eclipse.github.io/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://eclipse-keypop.github.io/keypop-website/apis/keypop-card-api/" target="_blank" rel="noopener">Keypop Card API&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;hr>
+&lt;br>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/components/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>

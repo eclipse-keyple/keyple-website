@@ -26,7 +26,7 @@
 <meta property="og:title" content="Build your first Android application | Eclipse Keyple">
 <meta property="og:description" content="This guide describes how to start a ticketing application using Keyple and Android NFC plugin to read the content of a Calypso card."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Build your first Android application | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=3809efcf55808c5f84377d047bfb6fb4>
@@ -162,8 +162,7 @@ Build your first app
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -216,7 +215,7 @@ Build your first app
 <div class=docs-article-container>
 <h1>Build your first Android application</h1>
 <div class=article-style>
-<hr>
+<br>
 <h2 id=overview>Overview</h2>
 <p>The development of an Android application based on Keyple follows the same principles as those exposed in the Java part.</p>
 <p>However, this guide points out the specificities of this environment based on the <strong>Android NFC application</strong> example provided in the <a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>keyple-java-example</a> repository.</p>
@@ -242,7 +241,7 @@ add-on to provide the ability to drive the NFC reader.</li>
 </ul>
 <p><a href=https://gradle.org/ target=_blank rel=noopener>Gradle</a> is used as build automation tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.</p>
-<hr>
+<br>
 <h2 id=project-setup>Project setup</h2>
 <p>The dependencies to be imported into the project are accessible with the <a href=../../../components/overview/configuration-wizard/>configuration wizard</a>.</p>
 <p>Depending on the nature of the hardware resources required, it is necessary to declare certain permissions in the project manifest file.
@@ -267,7 +266,7 @@ In the case of the Android NFC example, access to NFC functions is declared as f
     &lt;/application&gt;
 &lt;/manifest&gt;</code></pre></p>
 <p>You will have to adapt this section according to the reader plugin used.</p>
-<hr>
+<br>
 <h2 id=focus-on-keyple-specific-code>Focus on Keyple specific code</h2>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
 <pre><code class=language-kotlin id=code-6>...
@@ -351,7 +350,7 @@ class MainActivity : AppCompatActivity(), CardReaderObserverSpi, CardReaderObser
         ...
     }
 }</code></pre>
-<hr>
+<br>
 <h2 id=faq>FAQ</h2>
 <h4 id=how-to-fix-_more-than-one-file-was-found-with-os-independent-path-meta-infnoticemd_>How to fix &ldquo;<em>More than one file was found with OS independent path &lsquo;META-INF/NOTICE.md&rsquo;</em>&rdquo;.</h4>
 <p>Add lines below to your :app build.gradle file</p>
@@ -376,7 +375,7 @@ class MainActivity : AppCompatActivity(), CardReaderObserverSpi, CardReaderObser
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-29</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -467,7 +466,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

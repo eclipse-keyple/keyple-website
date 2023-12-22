@@ -26,7 +26,7 @@
 <meta property="og:title" content="Common concepts | Eclipse Keyple">
 <meta property="og:description" content="Glossary of the key terms of the Keyple solution."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Common concepts | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=4a40b4b0f7eae67694450fefec8438ff>
@@ -263,7 +263,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 </div>
 <p>This page describes the core elements of Keyple, i.e. the concepts and APIs of <strong>Keyple Core</strong> that are used to build any application implementing Keyple.</p>
 <p>It is essential for the future user of Keyple to be familiar with what is said in this chapter because the other modules made available by the project are all dependent on <strong>Keyple Core</strong>.</p>
-<hr>
+<br>
 <h2 id=reader>Reader</h2>
 <p>Keyple&rsquo;s primary goal being to interact with smart cards (or smartphones) worn by individuals, it is logical to put the Reader at the top of <strong>Keyple Core</strong>&rsquo;s concepts.</p>
 <p>Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via <strong>Keyple Core</strong> or using an extension (such as <strong>Keyple Calypso</strong>).</p>
@@ -275,7 +275,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 </ul>
 <p>The reader concept also applies to the hardware interfaces used to communicate with security elements such as SAMs (Secure Access Modules), which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.</p>
 <p><a href=../../../../archives/docs-1.0/architecture/keyple-core/#reader-access>More information</a></p>
-<hr>
+<br>
 <h2 id=plugin>Plugin</h2>
 <p>In Keyple language a plugin is a service that allows the management of readers of a certain type.
 The plugin is responsible for informing the application about the availability of readers.
@@ -283,19 +283,19 @@ The readers of the same plugin are usually hardware linked to the same physical 
 <p>Depending on its profile, an application may use different types of plugins to communicate with the different elements it needs (card, SAM).</p>
 <p>The Plugin interface essentially allows to list and retrieve the available readers.</p>
 <p><a href=../../../../archives/docs-1.0/architecture/keyple-core/#reader-access>More information</a></p>
-<hr>
+<br>
 <h2 id=smart-card-service>Smart card service</h2>
 <p>This is the <strong>Keyple Core</strong> service that concentrates the knowledge of active plugins and readers.</p>
 <p>At startup, a Keyple application must register the plugins it uses. Conversely, it can also unregister them.</p>
 <p>The <strong>SmartCardService</strong> will then make sure that the resources used are properly released.</p>
 <p><a href=../../../../archives/docs-1.0/architecture/keyple-core/#reader-access>More information</a></p>
-<hr>
+<br>
 <h2 id=observation>Observation</h2>
 <p>The observation concept applies to readers as well as to plugins; optional, it is used depending on the needs.</p>
 <p>It consists in monitoring changes such as reader connection/disconnection or card insertion/removal and informing the observing application through a dedicated interface.</p>
 <p>Not all plugins and readers are observable.</p>
 <p><a href=../../../../archives/docs-1.0/architecture/keyple-core/#reader-notifications>More information</a></p>
-<hr>
+<br>
 <h2 id=selection>Selection</h2>
 <p>In Keyple the concept of selection is derived from the application selection defined by the ISO7816-4 standard.</p>
 <p>It supplements it by managing cards that do not have the standard command using identification mechanisms based on Answer To Reset and the communication protocol, and also by allowing the execution of commands immediately following application selection or detection.</p>
@@ -303,7 +303,7 @@ The readers of the same plugin are usually hardware linked to the same physical 
 <p>Several targets can be defined by the application according to the different customer cards expected.</p>
 <p>The <strong>default selection</strong> principle consists in providing an observable reader with a set of selection cases corresponding to the expected cards and receiving notifications containing not only the card identification but also the result of all additional commands that the application will have attached.</p>
 <p><a href=../../../../archives/docs-1.0/architecture/keyple-core/#card-selection>More information</a></p>
-<hr>
+<br>
 <h2 id=abstract-smart-card>Abstract smart card</h2>
 <p>The <strong>abstract smart card</strong> concept is used by specific extensions (e.g. <strong>Keyple Calypso</strong>) and by the <strong>Keyple Core</strong> selection mechanism.
 It corresponds to an abstract container model implemented by the extension specific to a card type and returned by the selection process.</p>
@@ -321,7 +321,7 @@ It corresponds to an abstract container model implemented by the extension speci
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-29</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -412,7 +412,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

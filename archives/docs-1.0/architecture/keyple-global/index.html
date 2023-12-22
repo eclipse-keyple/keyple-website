@@ -26,7 +26,7 @@
 <meta property="og:title" content="Global Solution | Eclipse Keyple">
 <meta property="og:description" content="Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.   Overview The Keyple solution provides currently 2 modules:"><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Global Solution | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=3beffed99b5b90e0bc6b5b83d460997f>
@@ -294,7 +294,7 @@ Keyple Architecture Global
 <li>the <strong>Plugin API</strong>, to integrate specific smart card reader solutions.</li>
 </ul>
 <p>The Keyple Calypso extension provides the Calypso API: a high-level interface to manage Calypso card processing.</p>
-<hr>
+<br>
 <h2 id=application-integration>Application integration</h2>
 <p>The Card API is a low-level interface to manage the transmission of APDU commands with a smart card.
 A terminal application operating processing with a specific smart card solution could be implemented directly on top the Card API.</p>
@@ -306,7 +306,7 @@ Keyple Architecture Application Integration
 </figcaption></figure>
 <p>Another way offering a better abstraction on smart card technical settings could be to implement on the Card API a smart card solution library extension providing a high-level interface: a specific Solution API.
 This is how the Keyple Calypso extension has be defined, the Calypso API is a high-level functional interface, which hides the low-level APDU operations.</p>
-<hr>
+<br>
 <h2 id=reader-integration>Reader integration</h2>
 <h3 id=native-integration>native integration</h3>
 <p>The smart card readers could be directly integrated with the Keyple Core. By interfacing through the Plugin API, a specific plugin dedicated to a smart card reader solution, the Keyple Core could have the capability to fully manage the smart card readers corresponding to this native plugin.</p>
@@ -338,7 +338,7 @@ Keyple Architecture Hybrid Plugins
 </figcaption></figure>
 <p>In this case a reader manager plugin, also based on the Plugin API, could allow the Keyple Core to operate the processing of a specific smart card, when requested by the Reader Manager.</p>
 <p>For example, an EMV certified reader manager could call a Keyple application in case of PPSE selection failure.</p>
-<hr>
+<br>
 <h2 id=smart-card-processing>Smart card processing</h2>
 <h3 id=stand-alone>stand-alone</h3>
 <p>By default, a terminal application manages the processing of a specific smart card in stand-alone with its local readers.</p>
@@ -356,7 +356,7 @@ Keyple Architecture Local Plugin
 </div><figcaption>
 Keyple Architecture Remote Plugin
 </figcaption></figure></p>
-<hr>
+<br>
 <h2 id=smart-card-transaction>Smart card transaction</h2>
 <p>There are two ways for a terminal application to manage a transaction with a smart card.</p>
 <ul>
@@ -398,7 +398,7 @@ Keyple Architecture Remote Plugin
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-29</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -489,7 +489,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

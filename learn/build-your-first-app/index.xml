@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Build your first app | Eclipse Keyple</title><link>https://keyple.org/learn/build-your-first-app/</link><atom:link href="https://keyple.org/learn/build-your-first-app/index.xml" rel="self" type="application/rss+xml"/><description>Build your first app</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Build your first app</title><link>https://keyple.org/learn/build-your-first-app/</link></image><item><title>Build your first Java application</title><link>https://keyple.org/learn/build-your-first-app/java-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/java-app/</guid><description>&lt;hr>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Build your first app | Eclipse Keyple</title><link>https://keyple.org/learn/build-your-first-app/</link><atom:link href="https://keyple.org/learn/build-your-first-app/index.xml" rel="self" type="application/rss+xml"/><description>Build your first app</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Build your first app</title><link>https://keyple.org/learn/build-your-first-app/</link></image><item><title>Build your first Java application</title><link>https://keyple.org/learn/build-your-first-app/java-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/java-app/</guid><description>&lt;br>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on
 a Calypso Card involving two smart card readers.&lt;/p>
@@ -34,7 +34,7 @@ installed in your machine, you will need to download :&lt;/p>
 &lt;a href="https://www.eclipse.org/ide/" target="_blank" rel="noopener">Eclipse&lt;/a> or
 &lt;a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">Intellij IDEA&lt;/a> to create your new
 Gradle project.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="create-a-gradle-based-empty-project">Create a Gradle-based empty project&lt;/h2>
 &lt;p>Create a new Java project and add the following statements to your
 &lt;code>build.gradle&lt;/code> file to import the Keyple components into your
@@ -53,13 +53,13 @@ implementation &amp;#39;org.eclipse.keypop:keypop-calypso-card-java-api:2.0.0&am
 // Import Keyple components
 implementation &amp;#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-util-java-lib:2.3.1&amp;#39;
-implementation &amp;#39;org.eclipse.keyple:keyple-service-java-lib:3.0.1&amp;#39;
+implementation &amp;#39;org.eclipse.keyple:keyple-service-java-lib:3.1.0&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:3.0.1&amp;#39;
 implementation &amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.2&amp;#39;
 }&lt;/code>&lt;/pre>
 &lt;p>If necessary, also create the usual tree in which the Java code of this
 guide will be placed, namely the folders: &lt;code>\src\main\java&lt;/code>&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="lets-code">Let&amp;rsquo;s code&lt;/h2>
 &lt;p>Now let&amp;rsquo;s see step by step how to create in one single class the
 elements that allow a certified reading of data through a Calypso secure
@@ -241,7 +241,7 @@ System.out.println(&amp;#34;= #### End of the Calypso card processing.&amp;#34;)
 &lt;pre>&lt;code class="language-java" id="code-15"> // Unregister the plugin before leaving the application
 smartCardService.unregisterPlugin(plugin.getName());&lt;/code>&lt;/pre>
 &lt;p>Find the complete code source &lt;a href="#full-code">below&lt;/a>.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="run">Run&lt;/h2>
 &lt;ol>
 &lt;li>Connect two USB PC/SC Readers.&lt;/li>
@@ -256,7 +256,7 @@ components, are downloaded during the first run, which can take some
 time.
 &lt;/div>
 &lt;/div>
-&lt;hr>
+&lt;br>
 &lt;h2 id="faq">FAQ&lt;/h2>
 &lt;h4 id="how-do-i-find-out-the-names-of-the-readers">How do I find out the names of the readers?&lt;/h4>
 &lt;p>To find out the names of the readers connected to your computer, we will
@@ -456,7 +456,7 @@ System.out.println(&amp;#34;= #### End of the Calypso card processing.&amp;#34;)
 // Unregister the plugin before leaving the application
 smartCardService.unregisterPlugin(plugin.getName());
 }
-}&lt;/code>&lt;/pre></description></item><item><title>Build your first Android application</title><link>https://keyple.org/learn/build-your-first-app/android-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/android-app/</guid><description>&lt;hr>
+}&lt;/code>&lt;/pre></description></item><item><title>Build your first Android application</title><link>https://keyple.org/learn/build-your-first-app/android-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/android-app/</guid><description>&lt;br>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The development of an Android application based on Keyple follows the same principles as those exposed in the Java part.&lt;/p>
 &lt;p>However, this guide points out the specificities of this environment based on the &lt;strong>Android NFC application&lt;/strong> example provided in the &lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
@@ -482,7 +482,7 @@ add-on to provide the ability to drive the NFC reader.&lt;/li>
 &lt;/ul>
 &lt;p>&lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="project-setup">Project setup&lt;/h2>
 &lt;p>The dependencies to be imported into the project are accessible with the &lt;a href="../../components/overview/configuration-wizard/">configuration wizard&lt;/a>.&lt;/p>
 &lt;p>Depending on the nature of the hardware resources required, it is necessary to declare certain permissions in the project manifest file.
@@ -507,7 +507,7 @@ android:resource=&amp;#34;@xml/tech_list&amp;#34; /&amp;gt;
 &amp;lt;/application&amp;gt;
 &amp;lt;/manifest&amp;gt;&lt;/code>&lt;/pre>&lt;/p>
 &lt;p>You will have to adapt this section according to the reader plugin used.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="focus-on-keyple-specific-code">Focus on Keyple specific code&lt;/h2>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('6', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-kotlin" id="code-6">...
@@ -582,7 +582,7 @@ override fun onReaderObservationError(contextInfo: String?, readerName: String?,
 ...
 }
 }&lt;/code>&lt;/pre>
-&lt;hr>
+&lt;br>
 &lt;h2 id="faq">FAQ&lt;/h2>
 &lt;h4 id="how-to-fix-_more-than-one-file-was-found-with-os-independent-path-meta-infnoticemd_">How to fix &amp;ldquo;&lt;em>More than one file was found with OS independent path &amp;lsquo;META-INF/NOTICE.md&amp;rsquo;&lt;/em>&amp;rdquo;.&lt;/h4>
 &lt;p>Add lines below to your :app build.gradle file&lt;/p>
@@ -591,8 +591,7 @@ override fun onReaderObservationError(contextInfo: String?, readerName: String?,
 packagingOptions {
 exclude &amp;#39;META-INF/NOTICE.md&amp;#39;
 }
-}&lt;/code>&lt;/pre></description></item><item><title>Build your first C++ application</title><link>https://keyple.org/learn/build-your-first-app/cpp-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/cpp-app/</guid><description>&lt;hr>
-&lt;div class="alert alert-warning">
+}&lt;/code>&lt;/pre></description></item><item><title>Build your first C++ application</title><link>https://keyple.org/learn/build-your-first-app/cpp-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/cpp-app/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 This page is still under construction and may contain inaccurate information.
 &lt;/div>
@@ -630,7 +629,7 @@ add-on to provide the ability to manage PC/SC readers.&lt;/li>
 &lt;/div>
 &lt;/div>
 &lt;p>In this guide, the Keyple components and application are build under Linux using CMake as build automation tool.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="create-the-build-environment">Create the build environment&lt;/h2>
 &lt;p>The building of all the necessary components is facilitated by a dedicated &amp;ldquo;meta-project&amp;rdquo; allowing to get all the
 components and dependencies in a single step.&lt;/p>
@@ -646,7 +645,7 @@ make&lt;/code>&lt;/pre>
 &lt;code>gcc-linux&lt;/code> may be replaced by one of the build configurations available &lt;a href="https://github.com/eclipse/keyple-cpp-meta/tree/master/toolchain">here&lt;/a>.
 &lt;/div>
 &lt;/div>
-&lt;hr>
+&lt;br>
 &lt;h2 id="lets-code">Let&amp;rsquo;s code&lt;/h2>
 &lt;p>Now let&amp;rsquo;s see step by step how to create in one single class the elements that allow a certified reading of data through
 a Calypso secure session.&lt;/p>
@@ -855,7 +854,7 @@ printf(&amp;#34;\n= #### End of the Calypso card processing.&amp;#34;);&lt;/code
 smartCardService.unregisterPlugin(plugin.getName());
 exit(0);&lt;/code>&lt;/pre>
 &lt;p>Find the complete code source &lt;a href="#full-code">below&lt;/a>.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="run">Run&lt;/h2>
 &lt;ol>
 &lt;li>Connect two USB PC/SC Readers.&lt;/li>
@@ -870,7 +869,7 @@ components, are downloaded during the first run, which can take some
 time.
 &lt;/div>
 &lt;/div>
-&lt;hr>
+&lt;br>
 &lt;h2 id="faq">FAQ&lt;/h2>
 &lt;h4 id="how-do-i-find-out-the-names-of-the-readers">How do I find out the names of the readers?&lt;/h4>
 &lt;p>To find out the names of the readers connected to your computer, we will

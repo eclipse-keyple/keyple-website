@@ -8,7 +8,7 @@
 <link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
 <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
 <meta name=description content="How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/learn/user-guide/distributed-json-api-2-0/>
+<link rel=alternate hreflang=en-us href=https://keyple.org/learn/user-guide/server-json-api/>
 <meta name=theme-color content="#1D87BB">
 <link rel=stylesheet href=../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
@@ -19,17 +19,17 @@
 <link rel=manifest href=../../../manifest.webmanifest>
 <link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
 <link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/learn/user-guide/distributed-json-api-2-0/>
+<link rel=canonical href=https://keyple.org/learn/user-guide/server-json-api/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/learn/user-guide/distributed-json-api-2-0/">
-<meta property="og:title" content="Distributed JSON API 2.0 User Guide | Eclipse Keyple">
+<meta property="og:url" content="https://keyple.org/learn/user-guide/server-json-api/">
+<meta property="og:title" content="Server JSON API for non-Keyple clients | Eclipse Keyple">
 <meta property="og:description" content="How to connect a non-Keyple based client application to a Keyple based server using simple JSON block exchanges."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-12-01T18:32:45+01:00">
-<title>Distributed JSON API 2.0 User Guide | Eclipse Keyple</title>
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
+<title>Server JSON API for non-Keyple clients | Eclipse Keyple</title>
 </head>
-<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=82c259b748eaaca3005cac3f23307c84>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=7703a422ce952010b592fc2a6f2d47c4>
 <script src=../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
 <aside class=search-modal id=search>
 <div class=container>
@@ -162,8 +162,7 @@ User guides
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li class=active><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li class=active><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -204,8 +203,12 @@ User guides
 <ul>
 <li><a href=#principle>Principle</a></li>
 <li><a href=#data-structure>Data structure</a></li>
+<li><a href=#api-specifications>API specifications</a></li>
 </ul>
 </li>
+<li><a href=#heading></a></li>
+<li><a href=#api-20>API 2.0</a></li>
+<li><a href=#messagedto>MessageDto</a></li>
 <li><a href=#execute-remote-service>Execute Remote Service</a>
 <ul>
 <li></li>
@@ -238,9 +241,9 @@ User guides
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
 <div class=docs-article-container>
-<h1>Distributed JSON API 2.0 User Guide</h1>
+<h1>Server JSON API for non-Keyple clients</h1>
 <div class=article-style>
-<hr>
+<br>
 <style>table th:nth-child(1){width:9rem}</style>
 <h2 id=overview>Overview</h2>
 <p>This guide is specifically designed for users who are not currently using Keyple in their terminals, but wish to connect
@@ -248,23 +251,13 @@ to a Keyple server. It details the JSON data exchange between the terminal and t
 transport of this data.</p>
 <p>This allows the development of a distributed solution in which the client reader terminal delegates the entire
 management of the card transaction to the server.</p>
-<div class="alert alert-warning">
-<div>
-<p>This API is compliant with the following Keyple server side components:</p>
-<ul>
-<li><a href=https://keyple.org/components/core/keyple-service-lib/>Keyple Service Library</a> version <code>3.0.0+</code></li>
-<li><a href=https://keyple.org/components/distributed/keyple-distributed-network-lib/>Keyple Distributed Network Library</a> version <code>2.3.0+</code></li>
-<li><a href=https://keyple.org/components/distributed/keyple-distributed-remote-lib/>Keyple Distributed Remote Library</a> version <code>2.3.0+</code></li>
-</ul>
-</div>
-</div>
 <p>The diagram below illustrates the architecture of a non-Keyple application installed on a terminal and connected to a
 server based on Keyple:</p>
-<figure id=figure-keyple-distributed-json-api---solution-layers-overview>
+<figure id=figure-keyple-on-server-side-only>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_overview.drawio.svg alt="Keyple Distributed JSON API - Solution layers overview" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/distributed-application/distributed_solution_2_layers_overview.drawio.svg alt="Keyple on server side only" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
-Keyple Distributed JSON API - Solution layers overview
+Keyple on server side only
 </figcaption></figure>
 <h3 id=principle>Principle</h3>
 <p>The Keyple remote transaction uses four types of messages exchanged between the terminal and the server in JSON format:</p>
@@ -305,7 +298,7 @@ Keyple Distributed JSON API - Solution layers overview
 <p>The diagram below shows the global messaging flow:</p>
 <figure id=figure-keyple-distributed-json-api---messaging-flow>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_messagingFlow.svg alt="Keyple Distributed JSON API - Messaging flow" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_messagingFlow.svg alt="Keyple Distributed JSON API - Messaging flow" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed JSON API - Messaging flow
 </figcaption></figure>
@@ -359,11 +352,31 @@ of type &ldquo;<a href=#end-remote-service>End Remote Service</a>&rdquo; which o
 </table>
 </div>
 <style>#data-structure-table-1 table th:nth-child(1){width:10.5rem}#data-structure-table-1 table th:nth-child(3){width:8rem}</style>
+<h3 id=api-specifications>API specifications</h3>
+<ul>
+<li><a href=#api-20>API 2.0</a></li>
+<li><a href=https://keyple.org/server-json-apis/api-1-0/>API 1.0</a></li>
+</ul>
+<h2 id=heading></h2>
+<hr>
+<h2 id=api-20>API 2.0</h2>
+<div class="alert alert-warning">
+<div>
+<p>This API is compliant with the following Keyple server side components:</p>
+<ul>
+<li><a href=https://keyple.org/components/core/keyple-service-lib/>Keyple Service Library</a> version <code>3.0.0+</code></li>
+<li><a href=https://keyple.org/components/distributed/keyple-distributed-network-lib/>Keyple Distributed Network Library</a> version <code>2.3.0+</code></li>
+<li><a href=https://keyple.org/components/distributed/keyple-distributed-remote-lib/>Keyple Distributed Remote Library</a> version <code>2.3.0+</code></li>
+</ul>
+</div>
+</div>
+<br>
+<h2 id=messagedto>MessageDto</h2>
 <p>The diagram below shows the structure of the <code>MessageDto</code> object but the detailed content will be described in the
 sections associated with each message type:</p>
 <figure id=figure-keyple-distributed-json-api---messagedto>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_classDiagram_MessageDto.svg alt="Keyple Distributed JSON API - MessageDto" loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_MessageDto.svg alt="Keyple Distributed JSON API - MessageDto" loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed JSON API - MessageDto
 </figcaption></figure>
@@ -372,7 +385,7 @@ Keyple Distributed JSON API - MessageDto
 The value of the <code>action</code> property determines the message type.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=execute-remote-service>Execute Remote Service</h2>
 <p>The purpose of this message, sent to the server, is to initiate the server-controlled card
 transaction.</p>
@@ -385,7 +398,7 @@ containing the first action to be performed with the card or the terminal&rsquo;
 language of the target terminal.</p>
 <figure id=figure-keyple-distributed-json-api---execute-remote-service-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_classDiagram_executeRemoteService.svg alt='Keyple Distributed JSON API - "Execute Remote Service" class diagram' loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_executeRemoteService.svg alt='Keyple Distributed JSON API - "Execute Remote Service" class diagram' loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed JSON API - &ldquo;Execute Remote Service&rdquo; class diagram
 </figcaption></figure>
@@ -456,8 +469,8 @@ Keyple Distributed JSON API - &ldquo;Execute Remote Service&rdquo; class diagram
 </tbody>
 </table>
 <h4 id=example>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
-<pre><code class=language-json id=code-6>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
+<pre><code class=language-json id=code-7>{
     &#34;apiLevel&#34;: 2,
     &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;,
     &#34;action&#34;: &#34;EXECUTE_REMOTE_SERVICE&#34;,
@@ -465,7 +478,7 @@ Keyple Distributed JSON API - &ldquo;Execute Remote Service&rdquo; class diagram
     &#34;localReaderName&#34;: &#34;READER_1&#34;,
     &#34;body&#34;: &#34;{\&#34;coreApiLevel\&#34;:2,\&#34;serviceId\&#34;:\&#34;AUTHENTICATE_CARD\&#34;,\&#34;inputData\&#34;:{\&#34;userId\&#34;:\&#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&#34;}}&#34;
 }</code></pre>
-<hr>
+<br>
 <h2 id=command>Command</h2>
 <p>The purpose of this message, received from the server, is to ask the terminal to perform a specific service with the
 card or the terminal&rsquo;s reader.</p>
@@ -505,7 +518,7 @@ card or the terminal&rsquo;s reader.</p>
 language of the target terminal.</p>
 <figure id=figure-keyple-distributed-json-api---command-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_classDiagram_cmd.svg alt='Keyple Distributed JSON API - "Command" class diagram' loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_cmd.svg alt='Keyple Distributed JSON API - "Command" class diagram' loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed JSON API - &ldquo;Command&rdquo; class diagram
 </figcaption></figure>
@@ -519,7 +532,7 @@ The value of the <code>service</code> property determines the service to be perf
 The <code>MessageDto</code> is contained in a single-element array!
 </div>
 </div>
-<hr>
+<br>
 <h3 id=reader-type-cmd>Reader Type</h3>
 <p>This service allows the server to know if the reader is in contact or contactless mode.</p>
 <p>There are no parameters for this service.</p>
@@ -593,8 +606,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-1>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
-<pre><code class=language-json id=code-11>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('12',this)">Copy</button></div>
+<pre><code class=language-json id=code-12>[
     {
         &#34;apiLevel&#34;: 2,
         &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;,
@@ -606,7 +619,7 @@ The <code>MessageDto</code> is contained in a single-element array!
         &#34;body&#34;: &#34;{\&#34;coreApiLevel\&#34;:2,\&#34;service\&#34;:\&#34;IS_CONTACTLESS\&#34;}&#34;
     }
 ]</code></pre>
-<hr>
+<br>
 <h3 id=card-presence-cmd>Card Presence</h3>
 <p>This service allows the server to know if a card is inserted in the reader.</p>
 <p>There are no parameters for this service.</p>
@@ -680,8 +693,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-2>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('13',this)">Copy</button></div>
-<pre><code class=language-json id=code-13>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('14',this)">Copy</button></div>
+<pre><code class=language-json id=code-14>[
     {
         &#34;apiLevel&#34;: 2,
         &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;,
@@ -693,7 +706,7 @@ The <code>MessageDto</code> is contained in a single-element array!
         &#34;body&#34;: &#34;{\&#34;coreApiLevel\&#34;:2,\&#34;service\&#34;:\&#34;IS_CARD_PRESENT\&#34;}&#34;
     }
 ]</code></pre>
-<hr>
+<br>
 <h3 id=card-selection-cmd>Card Selection</h3>
 <p>The primary objective of this service is to establish a logical communication channel with a card.</p>
 <p>To enable processing of different card profiles, it offers the creation of selection scenarios with integrated
@@ -922,8 +935,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-3>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('15',this)">Copy</button></div>
-<pre><code class=language-json id=code-15>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('16',this)">Copy</button></div>
+<pre><code class=language-json id=code-16>[
    {
       &#34;apiLevel&#34;:2,
       &#34;sessionId&#34;:&#34;5bf1ca9a-2de9-4f16-b170-5de168560179&#34;,
@@ -935,7 +948,7 @@ The <code>MessageDto</code> is contained in a single-element array!
       &#34;body&#34;:&#34;{\&#34;coreApiLevel\&#34;:2,\&#34;service\&#34;:\&#34;TRANSMIT_CARD_SELECTION_REQUESTS\&#34;,\&#34;parameters\&#34;:{\&#34;multiSelectionProcessing\&#34;:\&#34;FIRST_MATCH\&#34;,\&#34;channelControl\&#34;:\&#34;KEEP_OPEN\&#34;,\&#34;cardSelectors\&#34;:[{\&#34;fileOccurrence\&#34;:\&#34;FIRST\&#34;,\&#34;fileControlInformation\&#34;:\&#34;FCI\&#34;}],\&#34;cardSelectionRequests\&#34;:[{\&#34;successfulSelectionStatusWords\&#34;:[\&#34;9000\&#34;]}]}}&#34;
    }
 ]</code></pre>
-<hr>
+<br>
 <h3 id=card-commands-cmd>Card Commands</h3>
 <p>The role of this service is to perform APDU exchanges with the card.</p>
 <p>The terminal must iterate over the list of APDUs present in the card request and proceeds to close the physical channel
@@ -1075,8 +1088,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h5 id=example-4>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('17',this)">Copy</button></div>
-<pre><code class=language-json id=code-17>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('18',this)">Copy</button></div>
+<pre><code class=language-json id=code-18>[
     {
         &#34;apiLevel&#34;: 2,
         &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;,
@@ -1088,7 +1101,7 @@ The <code>MessageDto</code> is contained in a single-element array!
         &#34;body&#34;: &#34;{\&#34;coreApiLevel\&#34;:2,\&#34;service\&#34;:\&#34;TRANSMIT_CARD_REQUEST\&#34;,\&#34;parameters\&#34;:{\&#34;cardRequest\&#34;:{\&#34;apduRequests\&#34;:[{\&#34;apdu\&#34;:\&#34;00B2014400\&#34;,\&#34;successfulStatusWords\&#34;:[\&#34;9000\&#34;],\&#34;info\&#34;:\&#34;Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&#34;}],\&#34;isStatusCodesVerificationEnabled\&#34;:true},\&#34;channelControl\&#34;:\&#34;CLOSE_AFTER\&#34;}}&#34;
     }
 ]</code></pre>
-<hr>
+<br>
 <h2 id=response>Response</h2>
 <p>This message, sent by the terminal to the server, is intended to transmit to the server the result of the specific
 service previously performed on the card or the terminal&rsquo;s reader.</p>
@@ -1099,11 +1112,11 @@ service previously performed on the card or the terminal&rsquo;s reader.</p>
 language of the target terminal.</p>
 <figure id=figure-keyple-distributed-json-api---response-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_classDiagram_resp.svg alt='Keyple Distributed JSON API - "Response" class diagram' loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_resp.svg alt='Keyple Distributed JSON API - "Response" class diagram' loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed JSON API - &ldquo;Response&rdquo; class diagram
 </figcaption></figure>
-<hr>
+<br>
 <h3 id=reader-type-resp>Reader Type</h3>
 <p>This message, sent by the terminal to the server in response to &ldquo;<a href=#reader-type-cmd>Reader Type (Command)</a>&rdquo;, is
 intended to indicate to the server if the reader is contactless.</p>
@@ -1197,8 +1210,8 @@ intended to indicate to the server if the reader is contactless.</p>
 </tbody>
 </table>
 <h4 id=example-5>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('19',this)">Copy</button></div>
-<pre><code class=language-json id=code-19>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
+<pre><code class=language-json id=code-20>{
     &#34;apiLevel&#34;: 2,
     &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;,
     &#34;action&#34;: &#34;RESP&#34;,
@@ -1208,7 +1221,7 @@ intended to indicate to the server if the reader is contactless.</p>
     &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
     &#34;body&#34;: &#34;{\&#34;coreApiLevel\&#34;:2,\&#34;service\&#34;:\&#34;IS_CONTACTLESS\&#34;,\&#34;result\&#34;:true}&#34;
 }</code></pre>
-<hr>
+<br>
 <h3 id=card-presence-resp>Card Presence</h3>
 <p>This message, sent by the terminal to the server in response to &ldquo;<a href=#card-presence-cmd>Card Presence (Command)</a>&rdquo;,
 is intended to indicate to the server if a card is present.</p>
@@ -1302,8 +1315,8 @@ is intended to indicate to the server if a card is present.</p>
 </tbody>
 </table>
 <h4 id=example-6>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('20',this)">Copy</button></div>
-<pre><code class=language-json id=code-20>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('21',this)">Copy</button></div>
+<pre><code class=language-json id=code-21>{
     &#34;apiLevel&#34;: 2,
     &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;,
     &#34;action&#34;: &#34;RESP&#34;,
@@ -1313,7 +1326,7 @@ is intended to indicate to the server if a card is present.</p>
     &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
     &#34;body&#34;: &#34;{\&#34;coreApiLevel\&#34;:2,\&#34;service\&#34;:\&#34;IS_CARD_PRESENT\&#34;,\&#34;result\&#34;:true}&#34;
 }</code></pre>
-<hr>
+<br>
 <h3 id=card-selection-resp>Card Selection</h3>
 <p>This message, sent by the terminal to the server in response to
 &ldquo;<a href=#card-selection-cmd>Card Selection (Command)</a>&rdquo;,
@@ -1473,8 +1486,8 @@ is intended to transmit to the server the result of the execution of the selecti
 </tbody>
 </table>
 <h5 id=example-7>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('21',this)">Copy</button></div>
-<pre><code class=language-json id=code-21>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('22',this)">Copy</button></div>
+<pre><code class=language-json id=code-22>{
     &#34;apiLevel&#34;: 2,
     &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;,
     &#34;action&#34;: &#34;RESP&#34;,
@@ -1484,7 +1497,7 @@ is intended to transmit to the server the result of the execution of the selecti
     &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
     &#34;body&#34;: &#34;{\&#34;coreApiLevel\&#34;:2,\&#34;service\&#34;:\&#34;TRANSMIT_CARD_SELECTION_REQUESTS\&#34;,\&#34;result\&#34;:[{\&#34;hasMatched\&#34;:true,\&#34;powerOnData\&#34;:\&#34;3B8880010000000000718100F9\&#34;,\&#34;selectApplicationResponse\&#34;:{\&#34;apdu\&#34;:\&#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C23121410019000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;},\&#34;cardResponse\&#34;:{\&#34;apduResponses\&#34;:[{\&#34;apdu\&#34;:\&#34;24B92848080000131A50001200000000000000000000000000000000009000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;}],\&#34;isLogicalChannelOpen\&#34;:true}}]}&#34;
 }</code></pre>
-<hr>
+<br>
 <h3 id=card-commands-resp>Card Commands</h3>
 <p>This message, sent by the terminal to the server in response to
 &ldquo;<a href=#card-commands-cmd>Card Commands (Command)</a>&rdquo;,
@@ -1617,8 +1630,8 @@ is intended to transmit to the server the result of the execution of a card requ
 </tbody>
 </table>
 <h5 id=example-8>Example</h5>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('22',this)">Copy</button></div>
-<pre><code class=language-json id=code-22>{
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('23',this)">Copy</button></div>
+<pre><code class=language-json id=code-23>{
     &#34;apiLevel&#34;: 2,
     &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;,
     &#34;action&#34;: &#34;RESP&#34;,
@@ -1628,7 +1641,7 @@ is intended to transmit to the server the result of the execution of a card requ
     &#34;remoteReaderName&#34;: &#34;a65f4920-7e96-4082-986a-b58d85978c07&#34;,
     &#34;body&#34;: &#34;{\&#34;coreApiLevel\&#34;:2,\&#34;service\&#34;:\&#34;TRANSMIT_CARD_REQUEST\&#34;,\&#34;result\&#34;:{\&#34;apduResponses\&#34;:[{\&#34;apdu\&#34;:\&#34;00112233445566778899AABBCCDDEEFF00112233445566778899AABBCC9000\&#34;,\&#34;statusWord\&#34;:\&#34;9000\&#34;}],\&#34;isLogicalChannelOpen\&#34;:true}}&#34;
 }</code></pre>
-<hr>
+<br>
 <h2 id=end-remote-service>End Remote Service</h2>
 <p>The purpose of this message, received from the server, is to inform the terminal that the transaction has been
 completed and, if necessary, to transmit the result. No follow-up is expected from the server.</p>
@@ -1636,7 +1649,7 @@ completed and, if necessary, to transmit the result. No follow-up is expected fr
 language of the target terminal.</p>
 <figure id=figure-keyple-distributed-json-api---end-remote-service-class-diagram>
 <div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/distributed-json-api-2-0/distributedJsonApi_classDiagram_endRemoteService.svg alt='Keyple Distributed JSON API - "End Remote Service" class diagram' loading=lazy data-zoomable></div>
+<div class=w-100><img src=../../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_endRemoteService.svg alt='Keyple Distributed JSON API - "End Remote Service" class diagram' loading=lazy data-zoomable></div>
 </div><figcaption data-pre=Figure&nbsp; data-post=:&nbsp; class=numbered>
 Keyple Distributed JSON API - &ldquo;End Remote Service&rdquo; class diagram
 </figcaption></figure>
@@ -1708,8 +1721,8 @@ The <code>MessageDto</code> is contained in a single-element array!
 </tbody>
 </table>
 <h4 id=example-9>Example</h4>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('25',this)">Copy</button></div>
-<pre><code class=language-json id=code-25>[
+<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('26',this)">Copy</button></div>
+<pre><code class=language-json id=code-26>[
     {
         &#34;apiLevel&#34;: 2,
         &#34;sessionId&#34;: &#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&#34;,
@@ -1729,13 +1742,13 @@ The <code>MessageDto</code> is contained in a single-element array!
 </div>
 <div class=post-nav-item>
 <div class=meta-nav>Next</div>
-<a href=../../../learn/user-guide/distributed-json-api-1-0/ rel=prev>Distributed JSON API 1.0 User Guide</a>
+<a href=../../../learn/user-guide/calypso-application/ rel=prev>Calypso Application User Guide</a>
 </div>
 </div>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-12-01</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -1826,7 +1839,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

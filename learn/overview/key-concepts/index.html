@@ -26,7 +26,7 @@
 <meta property="og:title" content="The Keyple key concepts | Eclipse Keyple">
 <meta property="og:description" content="Understand the concepts behind Keyple."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-12-01T18:32:45+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>The Keyple key concepts | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=f15b055c274c840753dd4baf098df1cd>
@@ -162,8 +162,7 @@ Overview
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -200,7 +199,6 @@ Overview
 </ul>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#overview>Overview</a></li>
 <li><a href=#reader>Reader</a></li>
 <li><a href=#plugin>Plugin</a></li>
 <li><a href=#card-extension>Card extension</a></li>
@@ -217,11 +215,10 @@ Overview
 <div class=docs-article-container>
 <h1>The Keyple key concepts</h1>
 <div class=article-style>
-<hr>
-<h2 id=overview>Overview</h2>
+<br>
 <p>This page describes the core elements of Keyple, i.e. the concepts and APIs that are used to build any application implementing Keyple.</p>
 <p>It is essential for the future user of Keyple to be familiar with what is said in this chapter.</p>
-<hr>
+<br>
 <h2 id=reader>Reader</h2>
 <p>Keyple&rsquo;s primary goal being to interact with smart cards (or smartphones) held by individuals, it is logical to put the Reader at the top of Keyple&rsquo;s concepts.</p>
 <p>Indeed, it is through the reader interfaces that all interactions with the smart cards will take place, either directly via the Keyple Service or using a card extension (such as Keyple Calypso card extension add-on for example).</p>
@@ -237,13 +234,13 @@ which are sometimes integrated into devices and the virtual interfaces represent
 Keyple relies on the <a href=https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/ target=_blank rel=noopener>Keypop Reader API</a> based on the standard Terminal API specifications proposed by Calypso Networks Association and thus inherits an existing modeling effort.</p>
 <p>Another benefit of using this terminal API is the ability to certify the functioning of a Keyple terminal via the associated certification process.</p>
 <p>This certification provides a guarantee that the terminal will function as expected.</p>
-<hr>
+<br>
 <h2 id=plugin>Plugin</h2>
 <p>In Keyple terminology, a plugin is an add-on that allows the management of readers of a certain type.
 The plugin is responsible for informing the application about the availability of readers.
 The readers of the same plugin are usually hardware linked to the same physical interface.</p>
 <p>Depending on its profile, an application may use different types of plugins to communicate with the different elements it needs (card, SAM).</p>
-<hr>
+<br>
 <h2 id=card-extension>Card extension</h2>
 <p>A card extension is an add-on that provides high-level access to the features of a particular card technology.</p>
 <p>Two card extensions are provided natively by the Keyple project:</p>
@@ -251,16 +248,16 @@ The readers of the same plugin are usually hardware linked to the same physical 
 <li>a generic card extension providing basic means to communicate with a card,</li>
 <li>a Calypso card extension providing high-level access to Calypso card features. It includes a Secure Session based transaction manager involving Calypso cards and SAMs.</li>
 </ul>
-<hr>
+<br>
 <h2 id=smart-card-service>Smart card service</h2>
 <p>This is the main service of Keyple that concentrates the knowledge of active plugins and readers and provides card selection managers.</p>
 <p>At startup, a Keyple application must register the add-ons (plugins and card extensions) it uses.</p>
-<hr>
+<br>
 <h2 id=observation>Observation</h2>
 <p>The concept of observation applies to certain types of readers and plugins.</p>
 <p>It consists in monitoring changes such as reader connection/disconnection or card insertion/removal and informing the observing application through a dedicated interface.</p>
 <p>Not all plugins and readers are observable and for those which are, the observation is optional.</p>
-<hr>
+<br>
 <h2 id=selection>Selection</h2>
 <p>The Keyple <strong>selection</strong> concept is derived from the application selection defined by the ISO7816-4 standard.</p>
 <p>It supplements it by managing cards that do not have the standard command using identification mechanisms based on power-on data and communication protocol,
@@ -269,11 +266,11 @@ and also by allowing the execution of commands immediately following application
 <p>Several targets can be defined by the application according to the different customer cards expected within a selection scenario.</p>
 <p>The <strong>selection scenario</strong> principle consists in providing a set of selection cases corresponding to the expected cards and receiving a selection result containing not only the card identification but also the result of all additional commands that the application will have attached.</p>
 <p>The Keyple card selection process is generic, allowing the management of cards of different types or technologies within the same application.</p>
-<hr>
+<br>
 <h2 id=smart-card>Smart card</h2>
 <p>The Keyple <strong>smart card</strong> is an object representation of the physical card.</p>
 <p>It is built by the specific card extension used (e.g. Keyple Calypso) and is provided to the user by the card selection service.</p>
-<hr>
+<br>
 <h2 id=protocol>Protocol</h2>
 <p>At the time of selection, Keyple offers the possibility to distinguish cards by their communication <strong>protocol</strong>.</p>
 <p>In order to associate a type of <strong>protocol</strong> (or card technology), Keyple proposes the concept of configurable reader with a method allowing to associate a <strong>protocol</strong> identifier known by the reader (name of the physical <strong>protocol</strong>) and another one known by the application (name of the logical <strong>protocol</strong>).</p>
@@ -289,7 +286,7 @@ and also by allowing the execution of commands immediately following application
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-12-01</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -380,7 +377,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

@@ -26,7 +26,7 @@
 <meta property="og:title" content="Card Extension Add-on Developer Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an add-on to manage a specific type of card."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-12-01T18:32:45+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Card Extension Add-on Developer Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=b7677d71ff4e99ab19423e5f98a625d9>
@@ -162,8 +162,7 @@ Developer guides
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -217,11 +216,11 @@ Developer guides
 <div class=docs-article-container>
 <h1>Card Extension Add-on Developer Guide</h1>
 <div class=article-style>
-<hr>
+<br>
 <h2 id=overview>Overview</h2>
 <p>This guide is intended to help developers who want to create a Keyple card extension add-on for a specific card
 technology.</p>
-<hr>
+<br>
 <h2 id=operating-mode>Operating mode</h2>
 <ol>
 <li>Learn the <a href=#card-extension-architecture>card extension architecture</a> concepts</li>
@@ -230,7 +229,7 @@ technology.</p>
 <li><a href=#set-up-dev-environment>Set up the development environment</a></li>
 <li><a href=#implement-the-solution>Implement the solution</a></li>
 </ol>
-<hr>
+<br>
 <h2 id=card-extension-architecture>Card extension architecture</h2>
 <p>A Keyple card extension contains a set of objects which meet the following three interface specifications:</p>
 <ul>
@@ -253,7 +252,7 @@ well as the public APIs exposed to the application:
 <div class="d-flex justify-content-center">
 <div class=w-100><img src=../../../media/learn/developer-guide/component-dependencies/card_api.svg alt loading=lazy data-zoomable></div>
 </div></figure></p>
-<hr>
+<br>
 <h2 id=minimal-requirements>Minimal requirements</h2>
 <p>The table below lists the objects that must be created and indicates the interfaces to be implemented for each of them:</p>
 <table>
@@ -313,7 +312,7 @@ service initialization with the method <code>JsonUtil.registerTypeAdapter(...)</
 <p>This will allow the transport of this object through the network when using the Keyple Distributed solution.</p>
 </div>
 </div>
-<hr>
+<br>
 <h2 id=define-the-card-commands>Define the card commands</h2>
 <p>The card extension takes part in the communication with the card in two ways:</p>
 <ul>
@@ -327,7 +326,7 @@ the Reader API.
 This can then be cast internally to a <code>ProxyReaderApi</code> of the Card API through which it will be possible to transmit
 card commands.</p>
 <p>Each card extension is free to define the APIs it considers relevant to perform card transactions.</p>
-<hr>
+<br>
 <h2 id=set-up-dev-environment>Set up dev environment</h2>
 <div class="alert alert-warning">
 <div>
@@ -354,7 +353,7 @@ git update-index --chmod=&#43;x &#34;scripts/prepare_javadoc.sh&#34;</code></pre
 <p>If examples are proposed, they should be placed in
 the <a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>keyple-java-example</a> repository.</p>
 <p>The contribution procedure is described <a href=../../../community/contributing/>here</a>.</p>
-<hr>
+<br>
 <h2 id=implement-the-solution>Implement the solution</h2>
 <div class="alert alert-warning">
 <div>
@@ -370,14 +369,14 @@ It is important to hide the internal interfaces of the <strong>Keypop Card API</
 <div class=w-100><img src=../../../media/learn/developer-guide/design-guides/card_extension_class_diagram.svg alt loading=lazy data-zoomable></div>
 </div></figure></li>
 </ul>
-<hr>
+<br>
 <h2 id=api>API</h2>
 <ul>
 <li><a href=https://eclipse.github.io/keyple-common-java-api target=_blank rel=noopener>Keyple Common API</a></li>
 <li><a href=https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/ target=_blank rel=noopener>Keypop Reader API</a></li>
 <li><a href=https://eclipse-keypop.github.io/keypop-website/apis/keypop-card-api/ target=_blank rel=noopener>Keypop Card API</a></li>
 </ul>
-<hr>
+<br>
 <h2 id=download>Download</h2>
 <ul>
 <li><a href=https://keyple.org/components/overview/configuration-wizard/>Java components</a></li>
@@ -393,7 +392,7 @@ It is important to hide the internal interfaces of the <strong>Keypop Card API</
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-12-01</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -484,7 +483,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

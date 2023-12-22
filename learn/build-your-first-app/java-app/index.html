@@ -26,7 +26,7 @@
 <meta property="og:title" content="Build your first Java application | Eclipse Keyple">
 <meta property="og:description" content="This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-12-06T15:52:45+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Build your first Java application | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=c1ed76ce001dc59ac73c503c92f61022>
@@ -162,8 +162,7 @@ Build your first app
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -230,7 +229,7 @@ Build your first app
 <div class=docs-article-container>
 <h1>Build your first Java application</h1>
 <div class=article-style>
-<hr>
+<br>
 <h2 id=overview>Overview</h2>
 <p>This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on
 a Calypso Card involving two smart card readers.</p>
@@ -266,7 +265,7 @@ installed in your machine, you will need to download :</p>
 <a href=https://www.eclipse.org/ide/ target=_blank rel=noopener>Eclipse</a> or
 <a href=https://www.jetbrains.com/idea/ target=_blank rel=noopener>Intellij IDEA</a> to create your new
 Gradle project.</p>
-<hr>
+<br>
 <h2 id=create-a-gradle-based-empty-project>Create a Gradle-based empty project</h2>
 <p>Create a new Java project and add the following statements to your
 <code>build.gradle</code> file to import the Keyple components into your
@@ -287,13 +286,13 @@ dependencies {
     // Import Keyple components
     implementation &#39;org.eclipse.keyple:keyple-common-java-api:2.0.0&#39;
     implementation &#39;org.eclipse.keyple:keyple-util-java-lib:2.3.1&#39;
-    implementation &#39;org.eclipse.keyple:keyple-service-java-lib:3.0.1&#39;
+    implementation &#39;org.eclipse.keyple:keyple-service-java-lib:3.1.0&#39;
     implementation &#39;org.eclipse.keyple:keyple-card-calypso-java-lib:3.0.1&#39;
     implementation &#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.1.2&#39;
 }</code></pre>
 <p>If necessary, also create the usual tree in which the Java code of this
 guide will be placed, namely the folders: <code>\src\main\java</code></p>
-<hr>
+<br>
 <h2 id=lets-code>Let&rsquo;s code</h2>
 <p>Now let&rsquo;s see step by step how to create in one single class the
 elements that allow a certified reading of data through a Calypso secure
@@ -496,7 +495,7 @@ execution.</p>
 <pre><code class=language-java id=code-15>    // Unregister the plugin before leaving the application
     smartCardService.unregisterPlugin(plugin.getName());</code></pre>
 <p>Find the complete code source <a href=#full-code>below</a>.</p>
-<hr>
+<br>
 <h2 id=run>Run</h2>
 <ol>
 <li>Connect two USB PC/SC Readers.</li>
@@ -511,7 +510,7 @@ components, are downloaded during the first run, which can take some
 time.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=faq>FAQ</h2>
 <h4 id=how-do-i-find-out-the-names-of-the-readers>How do I find out the names of the readers?</h4>
 <p>To find out the names of the readers connected to your computer, we will
@@ -764,7 +763,7 @@ public class DemoCardAuthentication {
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-12-06</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -855,7 +854,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

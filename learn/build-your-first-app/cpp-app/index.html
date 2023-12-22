@@ -26,7 +26,7 @@
 <meta property="og:title" content="Build your first C++ application | Eclipse Keyple">
 <meta property="og:description" content="This quick start describes how to create a ready-to-execute C++ command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2022-09-05T14:16:06+02:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Build your first C++ application | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=8c80269a49e13a1d6fb880d95fc68e9b>
@@ -162,8 +162,7 @@ Build your first app
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -230,7 +229,6 @@ Build your first app
 <div class=docs-article-container>
 <h1>Build your first C++ application</h1>
 <div class=article-style>
-<hr>
 <div class="alert alert-warning">
 <div>
 This page is still under construction and may contain inaccurate information.
@@ -269,7 +267,7 @@ add-on to provide the ability to manage PC/SC readers.</li>
 </div>
 </div>
 <p>In this guide, the Keyple components and application are build under Linux using CMake as build automation tool.</p>
-<hr>
+<br>
 <h2 id=create-the-build-environment>Create the build environment</h2>
 <p>The building of all the necessary components is facilitated by a dedicated &ldquo;meta-project&rdquo; allowing to get all the
 components and dependencies in a single step.</p>
@@ -285,7 +283,7 @@ make</code></pre>
 <code>gcc-linux</code> may be replaced by one of the build configurations available <a href=https://github.com/eclipse/keyple-cpp-meta/tree/master/toolchain>here</a>.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=lets-code>Let&rsquo;s code</h2>
 <p>Now let&rsquo;s see step by step how to create in one single class the elements that allow a certified reading of data through
 a Calypso secure session.</p>
@@ -525,7 +523,7 @@ printf(&#34;\n= #### End of the Calypso card processing.&#34;);</code></pre>
 smartCardService.unregisterPlugin(plugin.getName());
 exit(0);</code></pre>
 <p>Find the complete code source <a href=#full-code>below</a>.</p>
-<hr>
+<br>
 <h2 id=run>Run</h2>
 <ol>
 <li>Connect two USB PC/SC Readers.</li>
@@ -540,7 +538,7 @@ components, are downloaded during the first run, which can take some
 time.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=faq>FAQ</h2>
 <h4 id=how-do-i-find-out-the-names-of-the-readers>How do I find out the names of the readers?</h4>
 <p>To find out the names of the readers connected to your computer, we will
@@ -690,7 +688,7 @@ int main()
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2022-09-05</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -781,7 +779,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

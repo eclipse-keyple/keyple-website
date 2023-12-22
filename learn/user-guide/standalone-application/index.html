@@ -26,7 +26,7 @@
 <meta property="og:title" content="Standalone Application User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user standalone application."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-12-01T18:32:45+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Standalone Application User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=e77ca063ee6572d6bf15d5656980094d>
@@ -162,8 +162,7 @@ User guides
 <ul class="nav docs-sidenav">
 <li class=active><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -237,7 +236,7 @@ User guides
 <div class=docs-article-container>
 <h1>Standalone Application User Guide</h1>
 <div class=article-style>
-<hr>
+<br>
 <h2 id=overview>Overview</h2>
 <p>A standalone application is an application that runs in a device in contact
 with the end user.</p>
@@ -248,7 +247,7 @@ interaction with the user.</p>
 <div class="d-flex justify-content-center">
 <div class=w-100><img src=../../../media/learn/user-guide/standalone-application/standalone_application_overview.drawio.svg alt loading=lazy data-zoomable></div>
 </div></figure></p>
-<hr>
+<br>
 <h2 id=operating-mode>Operating mode</h2>
 <div class="alert alert-warning">
 <div>
@@ -268,7 +267,7 @@ life cycle.</p>
 <p>The service is accessible by invoking the <code>SmartCardServiceProvider.getService()</code> static method.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('2',this)">Copy</button></div>
 <pre><code class=language-java id=code-2>SmartCardService smartCardService = SmartCardServiceProvider.getService();</code></pre>
-<hr>
+<br>
 <h2 id=set-up-a-plugin>Set up a plugin</h2>
 <p>The Keyple application developer will choose the reader plugins he needs
 according to the equipment on which the Keyple application will run.</p>
@@ -363,7 +362,7 @@ the definition of the exception handler must be done first.</p>
 Note that the monitoring thread only works if there is at least one observer registered, and the notification process is sequential and synchronous.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=set-up-a-reader>Set up a reader</h2>
 <p>The readers are provided by the plugins, that&rsquo;s why you have to <a href=#set-up-a-plugin>set up the plugin</a> first.</p>
 <h3 id=access-to-a-reader>Access to a reader</h3>
@@ -466,7 +465,7 @@ The API offers different options to manage the needs around card detection.<br>
 Moreover, the notification process is sequential and synchronous.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=select-a-card>Select a card</h2>
 <p>The starting point of any processing done with a card in the Keyple environment, is to reference this card in the system.
 It is the role of the selection step to obtain this reference.</p>
@@ -578,32 +577,32 @@ This switches the underlying monitoring thread into a state of waiting for the c
 <p>Not doing this can lead to blocking states of the card insertion/removal monitoring mechanism.</p>
 </div>
 </div>
-<hr>
+<br>
 <h2 id=perform-a-transaction>Perform a transaction</h2>
 <p>Once the smart card is referenced in the system it is possible to perform the desired transaction using the appropriate
 card extension.</p>
 <p>When the transaction is completed, if the reader is observed, it is imperative to invoke the <code>finalizeCardProcessing()</code>
 method on the observable reader (see the above note).</p>
-<hr>
+<br>
 <h2 id=unregister-a-plugin>Unregister a plugin</h2>
 <p>To shut down a Keyple application properly, it is necessary to free the resources and in particular to close opened card
 physical channels and stop the observation threads.</p>
 <p>This is done by unregistering the plugins in the following way:</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('27',this)">Copy</button></div>
 <pre><code class=language-java id=code-27>smartCardService.unregisterPlugin(plugin.getName());</code></pre>
-<hr>
+<br>
 <h2 id=api>API</h2>
 <ul>
 <li><a href=https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/ target=_blank rel=noopener>Keypop Reader API</a></li>
 <li><a href=https://eclipse.github.io/keyple-common-java-api target=_blank rel=noopener>Keyple Common API</a></li>
 <li><a href=https://eclipse.github.io/keyple-service-java-lib target=_blank rel=noopener>Keyple Service API</a></li>
 </ul>
-<hr>
+<br>
 <h2 id=examples>Examples</h2>
 <ul>
 <li><a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>Java examples</a></li>
 </ul>
-<hr>
+<br>
 <h2 id=download>Download</h2>
 <ul>
 <li><a href=https://keyple.org/components/overview/configuration-wizard/>Java components</a></li>
@@ -619,7 +618,7 @@ physical channels and stop the observation threads.</p>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-12-01</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -710,7 +709,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

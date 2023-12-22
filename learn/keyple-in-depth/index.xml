@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keyple in depth | Eclipse Keyple</title><link>https://keyple.org/learn/keyple-in-depth/</link><atom:link href="https://keyple.org/learn/keyple-in-depth/index.xml" rel="self" type="application/rss+xml"/><description>Keyple in depth</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Keyple in depth</title><link>https://keyple.org/learn/keyple-in-depth/</link></image><item><title>Core services</title><link>https://keyple.org/learn/keyple-in-depth/core-services/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/core-services/</guid><description>&lt;hr>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keyple in depth | Eclipse Keyple</title><link>https://keyple.org/learn/keyple-in-depth/</link><atom:link href="https://keyple.org/learn/keyple-in-depth/index.xml" rel="self" type="application/rss+xml"/><description>Keyple in depth</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2023 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Keyple in depth</title><link>https://keyple.org/learn/keyple-in-depth/</link></image><item><title>Core services</title><link>https://keyple.org/learn/keyple-in-depth/core-services/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/core-services/</guid><description>&lt;br>
 &lt;h2 id="internal-adapters-release">Internal adapters (release)&lt;/h2>
 &lt;h3 id="service">Service&lt;/h3>
 &lt;p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/3.0.1/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/3.1.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/p>
 &lt;h3 id="card-resource-service">Card resource service&lt;/h3>
@@ -21,7 +21,7 @@
 &lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/2.3.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="internal-adapters-snapshot">Internal adapters (snapshot)&lt;/h2>
 &lt;h3 id="service-1">Service&lt;/h3>
 &lt;p>
@@ -43,17 +43,17 @@
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/main/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;/p></description></item><item><title>Calypso card extension</title><link>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</guid><description>&lt;hr>
+&lt;/p></description></item><item><title>Calypso card extension</title><link>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</guid><description>&lt;br>
 &lt;p>The diagram below illustrates the sequence of exchanges and the grouping of APDU commands during a secure Calypso transaction:&lt;/p>
 &lt;figure id="figure-calypso-secure-transaction">
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/keyple-in-depth/calypso_secure_transaction_sequence_diagram.svg" alt="Calypso secure transaction" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption>
 Calypso secure transaction
-&lt;/figcaption>&lt;/figure></description></item><item><title>Build process and continuous integration</title><link>https://keyple.org/learn/keyple-in-depth/build-and-ci/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/build-and-ci/</guid><description>&lt;hr>
+&lt;/figcaption>&lt;/figure></description></item><item><title>Build process and continuous integration</title><link>https://keyple.org/learn/keyple-in-depth/build-and-ci/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/build-and-ci/</guid><description>&lt;br>
 &lt;h2 id="build-automation-tool">Build automation tool&lt;/h2>
 &lt;p>Keyple uses Gradle.&lt;/p>
-&lt;hr>
+&lt;br>
 &lt;h2 id="versioning-rules">Versioning rules&lt;/h2>
 &lt;p>Keyple components are versioned according to &lt;a href="https://semver.org" target="_blank" rel="noopener">Semantic Versioning 2.0.0&lt;/a> which is based on the three numbers &lt;code>X.Y.Z&lt;/code>&lt;/p>
 &lt;div class="alert alert-note">
@@ -61,7 +61,7 @@ Calypso secure transaction
 For API components (i.e. artifacts suffixed with &lt;code>-api&lt;/code>), the incrementation of &lt;code>Z&lt;/code> indicates only a documentation update.
 &lt;/div>
 &lt;/div>
-&lt;hr>
+&lt;br>
 &lt;h2 id="continuous-integration">Continuous integration&lt;/h2>
 &lt;p>Keyple continuous integration works with the &lt;a href="https://ci.eclipse.org/keyple/job/Keyple/" target="_blank" rel="noopener">Jenkins server&lt;/a> of the Eclipse Foundation.&lt;/p>
 &lt;p>The build process uses the home-made gradle plugin &lt;strong>Keyple Gradle&lt;/strong> available directly from the &lt;a href="https://central.sonatype.dev/search?q=keyple-gradle" target="_blank" rel="noopener">Maven Central Repository&lt;/a> and whose sources are available on &lt;a href="https://github.com/eclipse/keyple-ops" target="_blank" rel="noopener">GitHub&lt;/a>.&lt;/p>
@@ -75,7 +75,7 @@ For API components (i.e. artifacts suffixed with &lt;code>-api&lt;/code>), the i
 &lt;li>publish the javadoc to the corresponding GitHub Pages;&lt;/li>
 &lt;li>publish the code quality report to &lt;a href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&amp;amp;sort=-analysis_date" target="_blank" rel="noopener">SonarCloud&lt;/a>.&lt;/li>
 &lt;/ul>
-&lt;hr>
+&lt;br>
 &lt;h2 id="snapshot-publication">Snapshot publication&lt;/h2>
 &lt;p>A snapshot artifact (suffixed with &lt;code>-SNAPSHOT&lt;/code>) is automatically published after each commit on the &lt;code>main&lt;/code> branch, except in the case of a release (see &lt;a href="#release-publication">Release publication&lt;/a>).&lt;/p>
 &lt;div class="alert alert-warning">
@@ -83,7 +83,7 @@ For API components (i.e. artifacts suffixed with &lt;code>-api&lt;/code>), the i
 The artifact version defined in the &lt;code>gradle.properties&lt;/code> file must not have a &lt;code>-SNAPSHOT&lt;/code> suffix because the suffix is automatically added by the Keyple Gradle plugin.
 &lt;/div>
 &lt;/div>
-&lt;hr>
+&lt;br>
 &lt;h2 id="release-publication">Release publication&lt;/h2>
 &lt;p>A release artifact is automatically published if and only if the following two conditions are met:&lt;/p>
 &lt;ul>
@@ -95,7 +95,7 @@ The artifact version defined in the &lt;code>gradle.properties&lt;/code> file mu
 &lt;code>X.Y.Z&lt;/code> must be the version defined in the &lt;code>gradle.properties&lt;/code> file.
 &lt;/div>
 &lt;/div>
-&lt;hr>
+&lt;br>
 &lt;h2 id="integration-tests">Integration tests&lt;/h2>
 &lt;p>Integration tests are defined in an independent GitHub repository: &lt;a href="https://github.com/eclipse/keyple-integration-java-test" target="_blank" rel="noopener">keyple-integration-java-test&lt;/a>&lt;/p>
 &lt;h2 id="release-procedure">Release procedure&lt;/h2>

@@ -26,7 +26,7 @@
 <meta property="og:title" content="Build process and continuous integration | Eclipse Keyple">
 <meta property="og:description" content="Learn how the Keyple components are built, tested and published."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2022-12-22T17:50:40+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Build process and continuous integration | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=9ec9badc2611e8c72b4bce5aa2987b02>
@@ -162,8 +162,7 @@ Keyple in depth
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -215,10 +214,10 @@ Keyple in depth
 <div class=docs-article-container>
 <h1>Build process and continuous integration</h1>
 <div class=article-style>
-<hr>
+<br>
 <h2 id=build-automation-tool>Build automation tool</h2>
 <p>Keyple uses Gradle.</p>
-<hr>
+<br>
 <h2 id=versioning-rules>Versioning rules</h2>
 <p>Keyple components are versioned according to <a href=https://semver.org target=_blank rel=noopener>Semantic Versioning 2.0.0</a> which is based on the three numbers <code>X.Y.Z</code></p>
 <div class="alert alert-note">
@@ -226,7 +225,7 @@ Keyple in depth
 For API components (i.e. artifacts suffixed with <code>-api</code>), the incrementation of <code>Z</code> indicates only a documentation update.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=continuous-integration>Continuous integration</h2>
 <p>Keyple continuous integration works with the <a href=https://ci.eclipse.org/keyple/job/Keyple/ target=_blank rel=noopener>Jenkins server</a> of the Eclipse Foundation.</p>
 <p>The build process uses the home-made gradle plugin <strong>Keyple Gradle</strong> available directly from the <a href="https://central.sonatype.dev/search?q=keyple-gradle" target=_blank rel=noopener>Maven Central Repository</a> and whose sources are available on <a href=https://github.com/eclipse/keyple-ops target=_blank rel=noopener>GitHub</a>.</p>
@@ -240,7 +239,7 @@ For API components (i.e. artifacts suffixed with <code>-api</code>), the increme
 <li>publish the javadoc to the corresponding GitHub Pages;</li>
 <li>publish the code quality report to <a href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date" target=_blank rel=noopener>SonarCloud</a>.</li>
 </ul>
-<hr>
+<br>
 <h2 id=snapshot-publication>Snapshot publication</h2>
 <p>A snapshot artifact (suffixed with <code>-SNAPSHOT</code>) is automatically published after each commit on the <code>main</code> branch, except in the case of a release (see <a href=#release-publication>Release publication</a>).</p>
 <div class="alert alert-warning">
@@ -248,7 +247,7 @@ For API components (i.e. artifacts suffixed with <code>-api</code>), the increme
 The artifact version defined in the <code>gradle.properties</code> file must not have a <code>-SNAPSHOT</code> suffix because the suffix is automatically added by the Keyple Gradle plugin.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=release-publication>Release publication</h2>
 <p>A release artifact is automatically published if and only if the following two conditions are met:</p>
 <ul>
@@ -260,7 +259,7 @@ The artifact version defined in the <code>gradle.properties</code> file must not
 <code>X.Y.Z</code> must be the version defined in the <code>gradle.properties</code> file.
 </div>
 </div>
-<hr>
+<br>
 <h2 id=integration-tests>Integration tests</h2>
 <p>Integration tests are defined in an independent GitHub repository: <a href=https://github.com/eclipse/keyple-integration-java-test target=_blank rel=noopener>keyple-integration-java-test</a></p>
 <h2 id=release-procedure>Release procedure</h2>
@@ -327,7 +326,7 @@ The artifact version defined in the <code>gradle.properties</code> file must not
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2022-12-22</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -418,7 +417,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

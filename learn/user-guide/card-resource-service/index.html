@@ -26,7 +26,7 @@
 <meta property="og:title" content="Card Resource Service User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user application using the Card Resource Service."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-11-29T10:53:57+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Card Resource Service User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=90cca05980b207aa4a4b326e816d455c>
@@ -162,8 +162,7 @@ User guides
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li class=active><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -234,13 +233,13 @@ User guides
 <div class=docs-article-container>
 <h1>Card Resource Service User Guide</h1>
 <div class=article-style>
-<hr>
+<br>
 <h2 id=overview>Overview</h2>
 <p>An application that performs secure transactions on smart cards may need to dynamically allocate a card resource
 dedicated to the current transaction to manage the security of the transaction (e.g. SAM or HSM).</p>
 <p>To meet this need, Keyple proposes the Service Resource component which provides a service that supports dynamic card
 resource allocation, using a profile-based filtering mechanism.</p>
-<hr>
+<br>
 <h2 id=features>Features</h2>
 <ul>
 <li>card resource locking during use;</li>
@@ -254,7 +253,7 @@ group name for pool plugins, specific card selection);</li>
 <li>configurable allocation timeout;</li>
 <li>failure management.</li>
 </ul>
-<hr>
+<br>
 <h2 id=operating-mode>Operating mode</h2>
 <ol>
 <li><a href=#access-to-the-service>Access to the service</a></li>
@@ -268,12 +267,12 @@ group name for pool plugins, specific card selection);</li>
 <li>Use the resource</li>
 <li><a href=#release-a-resource>Release the used resource</a></li>
 </ol>
-<hr>
+<br>
 <h2 id=access-to-the-service>Access to the service</h2>
 <p>Invoke the <code>CardResourceServiceProvider.getService()</code> static method to access the service.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('0',this)">Copy</button></div>
 <pre><code class=language-java id=code-0>CardResourceService cardResourceService = CardResourceServiceProvider.getService();</code></pre>
-<hr>
+<br>
 <h2 id=configure-the-service>Configure the service</h2>
 <h3 id=access-to-the-configurator>Access to the configurator</h3>
 <p>Invoke the <code>getConfigurator()</code> method on the service to get a new instance of the service configurator.
@@ -365,7 +364,7 @@ can always return after a certain time if it has still not found anything.</p>
 If the service was already started at that moment, then it stops, applies the new configuration, and restarts.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
 <pre><code class=language-java id=code-6>.configure();</code></pre>
-<hr>
+<br>
 <h2 id=use-the-service>Use the service</h2>
 <h3 id=start-the-service>Start the service</h3>
 <p>Invoke the <code>start()</code> method on the service to start the service using the current configuration.
@@ -396,17 +395,17 @@ You just have to provide the card resource to remove.</p>
 resources are accessible.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
 <pre><code class=language-java id=code-11>cardResourceService.stop();</code></pre>
-<hr>
+<br>
 <h2 id=api>API</h2>
 <ul>
 <li><a href=https://eclipse.github.io/keyple-service-resource-java-lib target=_blank rel=noopener>API documentation & class diagram</a></li>
 </ul>
-<hr>
+<br>
 <h2 id=example>Example</h2>
 <ul>
 <li><a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>Java example</a></li>
 </ul>
-<hr>
+<br>
 <h2 id=download>Download</h2>
 <ul>
 <li><a href=https://keyple.org/components/overview/configuration-wizard/>Java components</a></li>
@@ -426,7 +425,7 @@ resources are accessible.</p>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-11-29</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -517,7 +516,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

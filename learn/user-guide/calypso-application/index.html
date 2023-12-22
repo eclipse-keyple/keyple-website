@@ -26,7 +26,7 @@
 <meta property="og:title" content="Calypso Application User Guide | Eclipse Keyple">
 <meta property="og:description" content="How to develop an end-user application using the Calypso card extension add-on."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-12-01T18:32:45+01:00">
+<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
 <title>Calypso Application User Guide | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=1d609d9f8b83fb8096714c6553c2e185>
@@ -162,8 +162,7 @@ User guides
 <ul class="nav docs-sidenav">
 <li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
 <li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-2-0/>Distributed JSON API 2.0</a></li>
-<li><a href=../../../learn/user-guide/distributed-json-api-1-0/>Distributed JSON API 1.0</a></li>
+<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
 <li class=active><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
 <li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
 <li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
@@ -217,7 +216,7 @@ User guides
 <div class=docs-article-container>
 <h1>Calypso Application User Guide</h1>
 <div class=article-style>
-<hr>
+<br>
 <h2 id=overview>Overview</h2>
 <p>Keyple provides a card extension add-on dedicated to the Calypso® card technology.</p>
 <p>This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way.
@@ -236,7 +235,7 @@ It completely hides the details of APDU orders that are sent to Calypso cards an
 <div class="d-flex justify-content-center">
 <div class=w-100><img src=../../../media/learn/user-guide/calypso-application/calypso_application_overview.drawio.svg alt loading=lazy data-zoomable></div>
 </div></figure></p>
-<hr>
+<br>
 <h2 id=operating-mode>Operating mode</h2>
 <div class="alert alert-warning">
 <div>
@@ -253,7 +252,7 @@ It completely hides the details of APDU orders that are sent to Calypso cards an
 <li><a href=#set-up-security-settings>Set up the security settings</a> (optional)</li>
 <li><a href=#operate-a-card-transaction>Operate a card transaction</a></li>
 </ol>
-<hr>
+<br>
 <h2 id=the-calypso-extension-service>The Calypso extension service</h2>
 <p>As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.</p>
 <p>The service is accessible by invoking the <code>CalypsoExtensionService.getInstance()</code> static method.</p>
@@ -263,7 +262,7 @@ It completely hides the details of APDU orders that are sent to Calypso cards an
 <p>In case of incompatibility a warning will be produced in the log file.</p>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('3',this)">Copy</button></div>
 <pre><code class=language-java id=code-3>smartCardService.checkCardExtension(calypsoExtensionService);</code></pre>
-<hr>
+<br>
 <h2 id=select-a-card>Select a card</h2>
 <p>In order to perform a transaction it is necessary to have selected the card first.</p>
 <p>To do this, you must create a selection case for a selection scenario by invoking the <code>createCardSelection()</code> method.</p>
@@ -298,7 +297,7 @@ CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard()
 if (calypsoCard == null) {
     throw new IllegalStateException(&#34;The card selection failed.&#34;);
 }</code></pre>
-<hr>
+<br>
 <h2 id=set-up-security-settings>Set up security settings</h2>
 <div class="alert alert-note">
 <div>
@@ -348,7 +347,7 @@ symmetricCryptoSecuritySetting =
         LegacySamExtensionService.getInstance()
             .getLegacySamApiFactory()
             .createSymmetricCryptoTransactionManagerFactory(samReader, sam));</code></pre></p>
-<hr>
+<br>
 <h2 id=operate-a-card-transaction>Operate a card transaction</h2>
 <p>It is possible to perform secure or non-secure transactions depending on the need.
 A transaction is managed by a dedicated <code>CardTransactionManager</code> which is provided by the Calypso card extension service.</p>
@@ -370,7 +369,7 @@ calypsoCardApiFactory
     .prepareReadRecords(SFI_ENVIRONMENT_AND_HOLDER, 1, 1, 29)
     .prepareCloseSecureSession()
     .processCommands(ChannelControl.CLOSE_AFTER);</code></pre>
-<hr>
+<br>
 <h2 id=api>API</h2>
 <ul>
 <li><a href=https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/ target=_blank rel=noopener>Keypop Reader API</a></li>
@@ -380,12 +379,12 @@ calypsoCardApiFactory
 <li><a href=https://eclipse.github.io/keyple-card-calypso-java-lib target=_blank rel=noopener>Keyple Card Calypso API</a></li>
 <li><a href=https://eclipse.github.io/keyple-card-calypso-crypto-legacysam-java-lib target=_blank rel=noopener>Keyple Card Calypso Crypto Legacy SAM API</a></li>
 </ul>
-<hr>
+<br>
 <h2 id=examples>Examples</h2>
 <ul>
 <li><a href=https://github.com/eclipse/keyple-java-example target=_blank rel=noopener>Java examples</a></li>
 </ul>
-<hr>
+<br>
 <h2 id=download>Download</h2>
 <ul>
 <li><a href=https://keyple.org/components/overview/configuration-wizard/>Java components</a></li>
@@ -395,7 +394,7 @@ calypsoCardApiFactory
 <div class=post-nav>
 <div class=post-nav-item>
 <div class=meta-nav>Previous</div>
-<a href=../../../learn/user-guide/distributed-json-api-1-0/ rel=next>Distributed JSON API 1.0 User Guide</a>
+<a href=../../../learn/user-guide/server-json-api/ rel=next>Server JSON API for non-Keyple clients</a>
 </div>
 <div class=post-nav-item>
 <div class=meta-nav>Next</div>
@@ -405,7 +404,7 @@ calypsoCardApiFactory
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-12-01</p>
+<p>Last updated on 2023-12-22</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -496,7 +495,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.e92c2a13dcdfa421022f6d3913e1ee3c.js></script>
+<script src=../../../en/js/wowchemy.min.205995d392e9ab55d279ab54ed718c33.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
