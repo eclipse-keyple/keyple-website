@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/releases/131771296",
-  "assets_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/releases/131771296/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/releases/131771296/assets{?name,label}",
-  "html_url": "https://github.com/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/releases/tag/0.4.0",
-  "id": 131771296,
+  "url": "https://api.github.com/repos/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/releases/136458541",
+  "assets_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/releases/136458541/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/releases/136458541/assets{?name,label}",
+  "html_url": "https://github.com/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/releases/tag/0.5.0",
+  "id": 136458541,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDOIlQf7c4H2qug",
-  "tag_name": "0.4.0",
+  "node_id": "RE_kwDOIlQf7c4IIjEt",
+  "tag_name": "0.5.0",
   "target_commitish": "main",
   "name": "",
   "draft": false,
   "prerelease": false,
-  "created_at": "2023-11-28T16:18:03Z",
-  "published_at": "2023-11-28T16:33:42Z",
+  "created_at": "2024-01-10T09:54:13Z",
+  "published_at": "2024-01-10T10:00:05Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/tarball/0.4.0",
-  "zipball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/zipball/0.4.0",
-  "body": ":warning: Major version! Following the migration of the \"Calypsonet Terminal\" APIs to the [Eclipse Keypop project](https://keypop.org), this library now implements Keypop interfaces.\r\n### Added\r\n- Added dependency to \"Keypop Calypso Crypto Symmetric API\" `0.1.0`\r\n- Added S1D3 to S1D7 to the list of SAM types recognized by the library.\r\n- Added a new interface `ContextSetting` to manage the limitations of some not fully compliant terminals.\r\n- Added new methods to class `LegacySamExtensionService`:\r\n  - `ContextSetting getContextSetting()` to access to the new interface.\r\n  - `LegacySamApiFactory getLegacySamApiFactory()` to get an implementation of the `LegacySamApiFactory` Keypop interface.\r\n  - `CardResourceProfileExtension createLegacySamResourceProfileExtension(LegacySamSelectionExtension legacySamSelectionExtension, String powerOnDataRegex)` \r\n- Added project status badges on `README.md` file.\r\n### Changed\r\n- Refactoring:\r\n    - Class `LegacySamCardExtensionService` -> `LegacySamExtensionService`\r\n### Removed\r\n- Removed methods from class `LegacySamExtensionService`:\r\n  - `LegacySamSelectionFactory getLegacySamSelectionFactory()` (now provided by the `LegacySamApiFactory` Keypop interface)\r\n  - `LSSecuritySettingFactory getSecuritySettingFactory()` (now provided by the `LegacySamApiFactory` Keypop interface)\r\n  - `LSTransactionManagerFactory getTransactionManagerFactory()` (now provided by the `LegacySamApiFactory` Keypop interface)\r\n  - `LSCommandDataFactory getCommandDataFactory()` (now provided by the `LegacySamApiFactory` Keypop interface)\r\n### Fixed\r\n- CI: code coverage report when releasing.\r\n### Upgraded\r\n- Calypsonet Terminal Reader API `1.2.0` -> Keypop Reader API `2.0.0`\r\n- Calypsonet Terminal Card API `1.0.0` -> Keypop Card API `2.0.0`\r\n- Calypsonet Terminal Calypso API `1.8.0` -> Keypop Calypso Card API `2.0.0`\r\n- Calypsonet Terminal Calypso Crypto Legacy SAM API `0.2.0` -> Keypop Calypso Crypto Legacy SAM API `0.3.0`\r\n- Keyple Service Resource Library `2.0.2` -> `3.0.0`\r\n- Keyple Util Library `2.3.0` -> `2.3.1` (source code not impacted)"
+  "tarball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/tarball/0.5.0",
+  "zipball_url": "https://api.github.com/repos/eclipse/keyple-card-calypso-crypto-legacysam-java-lib/zipball/0.5.0",
+  "body": "### Upgraded\r\n- Keypop Calypso Crypto Legacy SAM API `0.3.0` -> `0.4.0` (management of advanced SAM unlocking)"
 }
