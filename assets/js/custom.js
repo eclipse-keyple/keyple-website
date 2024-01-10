@@ -74,6 +74,10 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.4.+"),
+    new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "0.5.0")
+));
+releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.SERVICE_LIB, "3.1.0")
 ));
 releaseTrains.push(new ReleaseTrain(
