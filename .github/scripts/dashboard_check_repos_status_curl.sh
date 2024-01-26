@@ -4,7 +4,8 @@
 # returns 0 if true, 1 if false.
 
 token=$1
-repository_name=$2
+organization=$2
+repository_name=$3
 
 filter_website_repository=""
 
@@ -19,7 +20,7 @@ echo "Checking repository "$repository_name"..."
 # - "pushed_at": Cyclic commit when gh-pages branch is update (keyple-website).
 
 github_json=`curl --request GET \
-          --url https://api.github.com/repos/eclipse/$repository_name \
+          --url https://api.github.com/repos/$organization/$repository_name \
           --header "authorization: Bearer $token" \
           --header "content-type: application/json" | grep -v -e "size"$filter_website_repository`
 github_hash=`echo $github_json | md5sum | cut -d ' ' -f 1`
