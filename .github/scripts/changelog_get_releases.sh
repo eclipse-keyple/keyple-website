@@ -1,5 +1,8 @@
 #!/bin/bash
 
+organization=$1
+repository_name=$2
+
 # Module name
 # Replace '-' with ' '
 temp="${1//-/ }"
@@ -13,7 +16,7 @@ for word in $temp; do
 done
 
 # Download and process JSON data
-curl -s -S -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/eclipse/$1/releases?per_page=1000&page=1" | \
+curl -s -S -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/$organization/$repository_name/releases?per_page=1000&page=1" | \
 jq -c '.[] | tojson' | while read -r i; do
   i=$(echo "$i" | jq -r '.')
   tag_name=$(echo "$i" | jq -r '.tag_name')

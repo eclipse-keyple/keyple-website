@@ -5,135 +5,135 @@
 
 token=$1
 
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-card-calypso-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-card-calypso-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-card-calypso-crypto-legacysam-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-card-calypso-crypto-legacysam-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-card-generic-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-card-generic-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-common-java-api
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keyple-common-java-api
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-distributed-local-java-api
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-distributed-local-java-api
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-distributed-local-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-distributed-local-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-distributed-network-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-distributed-network-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-distributed-remote-java-api
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-distributed-remote-java-api
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-distributed-remote-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-distributed-remote-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-integration-java-test
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-integration-java-test
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-java-example
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-java-example
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-plugin-android-nfc-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-plugin-android-nfc-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-plugin-android-omapi-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-plugin-android-omapi-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-plugin-java-api
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-plugin-java-api
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-plugin-pcsc-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-plugin-pcsc-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-plugin-stub-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-plugin-stub-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-plugin-cardresource-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-plugin-cardresource-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-service-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-service-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-service-resource-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-service-resource-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-util-java-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-util-java-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-common-cpp-api
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-common-cpp-api
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-util-cpp-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-util-cpp-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-service-cpp-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-service-cpp-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-service-resource-cpp-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-service-resource-cpp-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-plugin-cpp-api
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-plugin-cpp-api
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-plugin-stub-cpp-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-plugin-stub-cpp-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-plugin-pcsc-cpp-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-plugin-pcsc-cpp-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-card-generic-cpp-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-card-generic-cpp-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-card-calypso-cpp-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-card-calypso-cpp-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-cpp-example
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-cpp-example
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-cpp-meta
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-cpp-meta
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token keyple-website
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse keyple-website
 if [ $? -eq 0 ]; then
   exit 0
 fi
