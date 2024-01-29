@@ -27,7 +27,7 @@ It is compatible with **Android 4.4 minimum**.
 
 ### Documentation
 
-* [API documentation](https://eclipse.github.io/keyple-plugin-android-nfc-java-lib)
+* [API documentation](https://eclipse-keyple.github.io/keyple-plugin-android-nfc-java-lib)
 
 ### Download
 

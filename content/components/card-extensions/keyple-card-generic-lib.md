@@ -25,7 +25,7 @@ Therefore, it should be used only by application developers.
 
 ### Documentation
 
-* [API documentation](https://eclipse.github.io/keyple-card-generic-java-lib)
+* [API documentation](https://eclipse-keyple.github.io/keyple-card-generic-java-lib)
 
 ### Download
 
