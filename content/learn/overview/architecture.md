@@ -24,4 +24,4 @@ Add-ons are organized into four categories:
 
 The diagram below shows an overview of the Keyple layers:
 
-{{< figure src="/media/learn/overview/architecture/keyple_layers_overview.svg" caption="Keyple architecture layers overview" >}}
+{{< figure src="/media/learn/overview/architecture/keyple_layers_overview.drawio.svg" caption="Keyple architecture layers overview" >}}
