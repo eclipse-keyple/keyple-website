@@ -491,5 +491,5 @@ android{
 
 **Where can I see more examples**
 
-Android native plugins are provided with example applications. Check it to see more use cases: [Examples](https://github.com/eclipse/keyple-java/tree/master/java/example)
+Android native plugins are provided with example applications. Check it to see more use cases: [Examples](https://github.com/eclipse-keyple/keyple-java/tree/master/java/example)
 

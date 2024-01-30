@@ -406,7 +406,7 @@ The associated **API** documentation is available <a href="../../api-reference/j
 
 ## Examples
 
-* [Java examples](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/distributed)
+* [Java examples](https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/distributed)
 
 <br>
 

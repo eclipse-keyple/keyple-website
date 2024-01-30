@@ -12,7 +12,7 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 
 ## About this documentation
 
-This documentation is constantly evolving according to the feedback from its readers. Do not hesitate to [open a ticket](https://github.com/eclipse/keyple-website/issues) or to join our [mailing list](https://accounts.eclipse.org/mailing-list/keyple-dev) with questions and/or any topic you think deserves clarification or seems confusing.
+This documentation is constantly evolving according to the feedback from its readers. Do not hesitate to [open a ticket](https://github.com/eclipse-keyple/keyple-website/issues) or to join our [mailing list](https://accounts.eclipse.org/mailing-list/keyple-dev) with questions and/or any topic you think deserves clarification or seems confusing.
 
 ## Global Architecture
 

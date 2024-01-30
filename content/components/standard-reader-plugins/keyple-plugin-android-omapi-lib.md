@@ -24,8 +24,8 @@ This allows the app to benefit from enhanced SE-based security services.
 {{% callout note %}}
 **`{{% keyple-plugin-android-omapi-java-lib-version %}}`**
 <span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse/keyple-plugin-android-omapi-java-lib/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse/keyple-plugin-android-omapi-java-lib/blob/main/CHANGELOG.md)</span>
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-plugin-android-omapi-java-lib/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-plugin-android-omapi-java-lib/blob/main/CHANGELOG.md)</span>
 {{% /callout %}}
 
 ### Documentation

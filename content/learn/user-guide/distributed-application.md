@@ -281,7 +281,7 @@ However, it is necessary in some contexts to access certain information such as 
 
 ## Examples
 
-* [Java examples](https://github.com/eclipse/keyple-java-example)
+* [Java examples](https://github.com/eclipse-keyple/keyple-java-example)
 
 <br>
 

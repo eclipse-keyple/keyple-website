@@ -8,7 +8,7 @@ weight: 1
 ---
 
 {{% callout note %}}
-To reference your add-on please [create an issue](https://github.com/eclipse/keyple-website/issues) on GitHub **and/or** directly contribute to this website using the [contribution guide]({{< relref "community/contributing/" >}}).
+To reference your add-on please [create an issue](https://github.com/eclipse-keyple/keyple-website/issues) on GitHub **and/or** directly contribute to this website using the [contribution guide]({{< relref "community/contributing/" >}}).
 {{% /callout %}}
 
 {{< list_children >}}

@@ -9,4 +9,4 @@ weight: 20
 
 <br>
 
-https://github.com/eclipse/keyple-cpp-example
+https://github.com/eclipse-keyple/keyple-cpp-example

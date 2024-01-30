@@ -23,8 +23,8 @@ The third version number (x.y.**z**) only concerns updates of the public API doc
 {{% callout note %}}
 **`{{% keyple-common-java-api-version %}}`**
 <span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse/keyple-common-java-api/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse/keyple-common-java-api/blob/main/CHANGELOG.md)</span>
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-common-java-api/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-common-java-api/blob/main/CHANGELOG.md)</span>
 {{% /callout %}}
 
 ### Documentation

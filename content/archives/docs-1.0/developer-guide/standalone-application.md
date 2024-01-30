@@ -588,7 +588,7 @@ However, here are two diagrams showing the main features of Keyple Core:
 To help in the implementation of the different facilities offered by
 Keyple to process smart cards, a set of examples is present in the
 project repository
-[{{< icon name="github" pack="fab" >}} examples](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone)
+[{{< icon name="github" pack="fab" >}} examples](https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone)
 
 Nevertheless, you will find below a brief description of them:
 
@@ -597,7 +597,7 @@ Nevertheless, you will find below a brief description of them:
 Shows the use of Keyple to make a card selection without observing the
 reader, based on testing the presence of the card by the application.
 
-[see the code](https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid)
+[see the code](https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid)
 
 ### Default Selection
 
@@ -605,14 +605,14 @@ Shows the use of Keyple to make a card selection with observation of the
 reader. A default selection is prepared, the presentation of a card
 triggers the notification of a reader event to the application.
 
-[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification)
+[see the code](https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification)
 
 ### Sequential Multiple Selection
 
 Executes successively several independent selection operations with the
 use of the ISO 'NEXT' navigation flag.
 
-[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection)
+[see the code](https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection)
 
 Illustrates the case of a card exploration with maintenance of the physical channel open.
 
@@ -624,14 +624,14 @@ selection.
 Allows the exploration of the applications of a card in a single
 operation but without selection at the end.
 
-[see the code](https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection)
+[see the code](https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection)
 
 ### Demo Card Protocol Detection
 
 Demonstrates the use of Keyple in a context where several card
 technologies are likely to be processed by the application.
 
-[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection)
+[see the code](https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection)
 
 ### Demo Observable Reader Notification
 
@@ -639,7 +639,7 @@ Demonstrates the use of Keyple to implement the observation of a plugin
 and its readers. Readers are dynamically created and an observer is
 assigned to them.
 
-[see the code](https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification)
+[see the code](https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification)
 
 <br>
 

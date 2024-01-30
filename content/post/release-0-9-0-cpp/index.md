@@ -21,7 +21,7 @@ This 0.9.0 C++ Keyple implementation follows the API design for the 0.9.0 Java K
 [Build your first C++ application]({{< ref "../../../archives/docs-1.0/build-your-first-app/cpp-app/" >}})
 
 
-The source of Keyple C++ is available on [https://github.com/eclipse/keyple-cpp](https://github.com/eclipse/keyple-cpp).
+The source of Keyple C++ is available on [https://github.com/eclipse-keyple/keyple-cpp](https://github.com/eclipse-keyple/keyple-cpp).
 Some dedicated support is provided on keyple.org:
  - [the documentation of the C++ API]({{< ref "../../../archives/docs-1.0/api-reference/cpp-api/" >}})
  - [a guide to Build a first C++ application]({{< ref "../../../archives/docs-1.0/build-your-first-app/cpp-app/" >}})

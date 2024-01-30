@@ -24,6 +24,6 @@ across all Keyple components repositories.
       </tr>
    </thead>
    <tbody>
-<!-- CHANGELOG_CONTENT -->
+
    </tbody>
 </table>

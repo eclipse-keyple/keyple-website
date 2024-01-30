@@ -21,8 +21,8 @@ It is compatible with **Android 4.4 minimum**.
 {{% callout note %}}
 **`{{% keyple-plugin-android-nfc-java-lib-version %}}`**
 <span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse/keyple-plugin-android-nfc-java-lib/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse/keyple-plugin-android-nfc-java-lib/blob/main/CHANGELOG.md)</span>
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/blob/main/CHANGELOG.md)</span>
 {{% /callout %}}
 
 ### Documentation

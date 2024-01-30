@@ -260,7 +260,7 @@ cardResourceService.stop();
 
 ## Example
 
-* [Java example](https://github.com/eclipse/keyple-java-example)
+* [Java example](https://github.com/eclipse-keyple/keyple-java-example)
 
 <br>
 

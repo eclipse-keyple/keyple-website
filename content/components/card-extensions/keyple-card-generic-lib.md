@@ -19,8 +19,8 @@ Therefore, it should be used only by application developers.
 {{% callout note %}}
 **`{{% keyple-card-generic-java-lib-version %}}`**
 <span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse/keyple-card-generic-java-lib/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse/keyple-card-generic-java-lib/blob/main/CHANGELOG.md)</span>
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-card-generic-java-lib/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-card-generic-java-lib/blob/main/CHANGELOG.md)</span>
 {{% /callout %}}
 
 ### Documentation

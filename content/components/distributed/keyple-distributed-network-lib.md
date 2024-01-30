@@ -21,8 +21,8 @@ It is compatible with **Windows**, **Linux**, **macOS** and **Android** platform
 {{% callout note %}}
 **`{{% keyple-distributed-network-java-lib-version %}}`**
 <span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse/keyple-distributed-network-java-lib/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse/keyple-distributed-network-java-lib/blob/main/CHANGELOG.md)</span>
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/blob/main/CHANGELOG.md)</span>
 {{% /callout %}}
 
 ### Documentation

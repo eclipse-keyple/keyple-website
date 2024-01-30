@@ -28,11 +28,11 @@ SPDX-License-Identifier: EPL-2.0
 
 The project maintains the following source code repositories:
 
-* https://github.com/eclipse/keyple
-* https://github.com/eclipse/keyple-website
-* https://github.com/eclipse/keyple-java
-* https://github.com/eclipse/keyple-cpp
-* https://github.com/eclipse/keyple-ops
+* https://github.com/eclipse-keyple/keyple
+* https://github.com/eclipse-keyple/keyple-website
+* https://github.com/eclipse-keyple/keyple-java
+* https://github.com/eclipse-keyple/keyple-cpp
+* https://github.com/eclipse-keyple/keyple-ops
 
 ## Third-party Content
 

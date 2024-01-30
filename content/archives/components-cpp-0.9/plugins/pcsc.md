@@ -17,9 +17,9 @@ Keyple project
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="download" pack="fas" >}}
 [Download](#download)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="github" pack="fab" >}}
-[GitHub](https://github.com/eclipse/keyple-cpp/tree/master/component/keyple-plugin/pcsc)
+[GitHub](https://github.com/eclipse-keyple/keyple-cpp/tree/master/component/keyple-plugin/pcsc)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="exchange-alt" pack="fas" >}}
-[Changelogs](https://github.com/eclipse/keyple-cpp/releases/)
+[Changelogs](https://github.com/eclipse-keyple/keyple-cpp/releases/)
 {{% /callout %}}
 
 ## Overview
@@ -34,4 +34,4 @@ It is compatible with **PC/SC Reader** (Windows PC/SC WinScard API, Unix PC/SC l
 
 ## Download
 
-All sources are available on [GitHub](https://github.com/eclipse/keyple-cpp/).
+All sources are available on [GitHub](https://github.com/eclipse-keyple/keyple-cpp/).

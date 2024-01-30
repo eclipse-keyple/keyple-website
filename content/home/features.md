@@ -21,7 +21,7 @@ subtitle = ""
   icon = "github"
   icon_pack = "fab"
   name = "Contributions welcome!"
-  description = "The [Keyple source code](https://github.com/eclipse/keyple) is available on **GitHub**.<br>You'll find more information on how to contribute to the project in the README.md contained there.<br>New users are always welcome!"  
+  description = "The [Keyple source code](https://github.com/eclipse-keyple/keyple) is available on **GitHub**.<br>You'll find more information on how to contribute to the project in the README.md contained there.<br>New users are always welcome!"  
   
 [[feature]]
   icon = "envelope"
