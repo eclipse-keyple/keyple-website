@@ -5,10 +5,6 @@
 
 token=$1
 
-./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keyple
-if [ $? -eq 0 ]; then
-  exit 0
-fi
 ./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keyple-card-calypso-java-lib
 if [ $? -eq 0 ]; then
   exit 0
