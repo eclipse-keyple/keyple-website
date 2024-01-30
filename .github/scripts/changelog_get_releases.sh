@@ -5,7 +5,7 @@ repository_name=$2
 
 # Module name
 # Replace '-' with ' '
-temp="${1//-/ }"
+temp="${2//-/ }"
 
 # Capitalize the first letter of each word
 module_name=""
