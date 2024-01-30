@@ -9,12 +9,12 @@ echo "Removing existing .md files..."
 rm -f ./*.md
 
 # Loop through each line in the changelog_repos.list file
-while read -r repo; do
-  if [ ! -z "$repo" ]; then
-    organization=$(echo $repo | cut -d ' ' -f1)
-    repository=$(echo $repo | cut -d ' ' -f2)
-    echo "Processing repository: $repo"
-    ./.github/scripts/changelog_get_releases.sh "$organization $repository"
+while read -r line; do
+  if [ ! -z "$line" ]; then
+    organization=$(echo $line | cut -d ' ' -f1)
+    repository=$(echo $line | cut -d ' ' -f2)
+    echo "Processing repository: $organization $repository"
+    ./.github/scripts/changelog_get_releases.sh $organization $repository
   fi
 done < $REPOS_LIST
 
