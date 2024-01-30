@@ -253,7 +253,7 @@ cardResourceService.stop();
 
 ## API
 
-* [API documentation & class diagram](https://eclipse.github.io/keyple-service-resource-java-lib)
+* [API documentation & class diagram](https://eclipse-keyple.github.io/keyple-service-resource-java-lib)
 
 <br>
 

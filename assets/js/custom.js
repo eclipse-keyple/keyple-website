@@ -478,7 +478,7 @@ loadProjectDashboard = async function() {
             cell.appendChild(space);
             a.innerHTML = "<i class=\"fas fa-book\"></i>";
             a.title = "API documentation for " + json.name;
-            a.href = "https://eclipse.github.io/" + json.name;
+            a.href = "https://eclipse-keyple.github.io/" + json.name;
             a.target = "_blank";
             cell.appendChild(a);
         }
