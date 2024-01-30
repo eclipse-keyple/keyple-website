@@ -202,7 +202,7 @@ calypsoCardApiFactory
 
 ## Examples
 
-* [Java examples](https://github.com/eclipse/keyple-java-example)
+* [Java examples](https://github.com/eclipse-keyple/keyple-java-example)
 
 <br>
 

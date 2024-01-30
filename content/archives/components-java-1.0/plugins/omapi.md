@@ -17,9 +17,9 @@ Keyple project
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="download" pack="fas" >}}
 [Download](#download)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="github" pack="fab" >}}
-[GitHub](https://github.com/eclipse/keyple-java/tree/master/android/keyple-plugin/android-omapi)
+[GitHub](https://github.com/eclipse-keyple/keyple-java/tree/master/android/keyple-plugin/android-omapi)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="exchange-alt" pack="fas" >}}
-[Changelogs](https://github.com/eclipse/keyple-java/releases/)
+[Changelogs](https://github.com/eclipse-keyple/keyple-java/releases/)
 {{% /callout %}}
 
 ## Overview

@@ -49,7 +49,7 @@ In this guide, the Keyple components and application are build under Linux using
 The building of all the necessary components is facilitated by a dedicated "meta-project" allowing to get all the 
 components and dependencies in a single step. 
 
-Git checkout the [meta project](https://github.com/eclipse/keyple-cpp-meta) into a directory of you local disk, then 
+Git checkout the [meta project](https://github.com/eclipse-keyple/keyple-cpp-meta) into a directory of you local disk, then 
 enter the created directory and execute the following commands:
 
 {{< code lang="bash" >}}
@@ -60,7 +60,7 @@ make
 {{< /code >}}
 
 {{% callout note %}}  
-```gcc-linux``` may be replaced by one of the build configurations available [here](https://github.com/eclipse/keyple-cpp-meta/tree/master/toolchain).
+```gcc-linux``` may be replaced by one of the build configurations available [here](https://github.com/eclipse-keyple/keyple-cpp-meta/tree/master/toolchain).
 {{% /callout %}}
 
 <br>

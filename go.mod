@@ -1,4 +1,4 @@
-module github.com/eclipse/keyple-website
+module github.com/eclipse-keyple/keyple-website
 
 go 1.15
 

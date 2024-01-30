@@ -9,4 +9,4 @@ weight: 10
 
 <br>
 
-https://github.com/eclipse/keyple-java-example
+https://github.com/eclipse-keyple/keyple-java-example

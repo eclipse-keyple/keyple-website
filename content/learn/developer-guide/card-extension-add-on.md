@@ -118,7 +118,7 @@ git update-index --chmod=+x "scripts/prepare_javadoc.sh"
 {{% /callout %}}
 
 If examples are proposed, they should be placed in
-the [keyple-java-example](https://github.com/eclipse/keyple-java-example) repository.
+the [keyple-java-example](https://github.com/eclipse-keyple/keyple-java-example) repository.
 
 The contribution procedure is described [here]({{< relref "contributing.md" >}}).
 

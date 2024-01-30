@@ -13,7 +13,7 @@ weight: 2
 
 The development of an Android application based on Keyple follows the same principles as those exposed in the Java part.
 
-However, this guide points out the specificities of this environment based on the **Android NFC application** example provided in the [keyple-java-example](https://github.com/eclipse/keyple-java-example) repository.
+However, this guide points out the specificities of this environment based on the **Android NFC application** example provided in the [keyple-java-example](https://github.com/eclipse-keyple/keyple-java-example) repository.
 
 We recommend that Android application developers clone this example to better understand how Keyple works on Android.
 

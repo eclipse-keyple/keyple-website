@@ -16,9 +16,9 @@ Keyple project
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="download" pack="fas" >}}
 [Download](#download)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="github" pack="fab" >}}
-[GitHub](https://github.com/eclipse/keyple-cpp/tree/master/component/keyple-core)
+[GitHub](https://github.com/eclipse-keyple/keyple-cpp/tree/master/component/keyple-core)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{< icon name="exchange-alt" pack="fas" >}}
-[Changelogs](https://github.com/eclipse/keyple-cpp/releases/)
+[Changelogs](https://github.com/eclipse-keyple/keyple-cpp/releases/)
 {{% /callout %}}
 
 ## Overview
@@ -35,4 +35,4 @@ It is compatible with **PC** and **MAC** platforms.
 
 ## Download
 
-All sources are available on [GitHub](https://github.com/eclipse/keyple-cpp/).
+All sources are available on [GitHub](https://github.com/eclipse-keyple/keyple-cpp/).

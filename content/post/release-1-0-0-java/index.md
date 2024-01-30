@@ -11,7 +11,7 @@ featured: false
 draft: false
 ---
 
-The [release 1.0.0 of Eclipse Keyple® Java](https://github.com/eclipse/keyple-java/releases/tag/1.0.0) is available.
+The [release 1.0.0 of Eclipse Keyple® Java](https://github.com/eclipse-keyple/keyple-java/releases/tag/1.0.0) is available.
 
 Most of the improvements concerns the Keyple Core:
 - the new Core extension to manage "distributed architecture" and operate remote smart card readers,
