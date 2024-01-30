@@ -14,7 +14,7 @@ while read -r line; do
     organization=$(echo $line | cut -d ' ' -f1)
     repository=$(echo $line | cut -d ' ' -f2)
     echo "Processing repository: $organization $repository"
-    ./.github/scripts/changelog_get_releases.sh $organization $repository
+    ./.github/scripts/changelog_get_releases.sh "$organization" "$repository"
   fi
 done < $REPOS_LIST
 
@@ -28,3 +28,4 @@ done
 echo "Inserting changelog text into destination page..."
 awk -v replacement="$(cat ./changelog)" '{gsub("<!-- CHANGELOG_CONTENT -->", replacement)}1' $CHANGELOG_PAGE > temp.md
 mv temp.md $CHANGELOG_PAGE
+cat $CHANGELOG_PAGE
