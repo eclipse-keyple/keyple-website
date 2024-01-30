@@ -459,7 +459,7 @@ smartCardService.unregisterPlugin(plugin.getName());
 }&lt;/code>&lt;/pre></description></item><item><title>Build your first Android application</title><link>https://keyple.org/learn/build-your-first-app/android-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/android-app/</guid><description>&lt;br>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The development of an Android application based on Keyple follows the same principles as those exposed in the Java part.&lt;/p>
-&lt;p>However, this guide points out the specificities of this environment based on the &lt;strong>Android NFC application&lt;/strong> example provided in the &lt;a href="https://github.com/eclipse/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
+&lt;p>However, this guide points out the specificities of this environment based on the &lt;strong>Android NFC application&lt;/strong> example provided in the &lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
 &lt;p>We recommend that Android application developers clone this example to better understand how Keyple works on Android.&lt;/p>
 &lt;div class="alert alert-warning">
 &lt;div>
@@ -633,7 +633,7 @@ add-on to provide the ability to manage PC/SC readers.&lt;/li>
 &lt;h2 id="create-the-build-environment">Create the build environment&lt;/h2>
 &lt;p>The building of all the necessary components is facilitated by a dedicated &amp;ldquo;meta-project&amp;rdquo; allowing to get all the
 components and dependencies in a single step.&lt;/p>
-&lt;p>Git checkout the &lt;a href="https://github.com/eclipse/keyple-cpp-meta" target="_blank" rel="noopener">meta project&lt;/a> into a directory of you local disk, then
+&lt;p>Git checkout the &lt;a href="https://github.com/eclipse-keyple/keyple-cpp-meta" target="_blank" rel="noopener">meta project&lt;/a> into a directory of you local disk, then
 enter the created directory and execute the following commands:&lt;/p>
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('3', this);">Copy&lt;/button>&lt;/div>
 &lt;pre>&lt;code class="language-bash" id="code-3">mkdir build
@@ -642,7 +642,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../toolchain/gcc-linux.cmake ..
 make&lt;/code>&lt;/pre>
 &lt;div class="alert alert-note">
 &lt;div>
-&lt;code>gcc-linux&lt;/code> may be replaced by one of the build configurations available &lt;a href="https://github.com/eclipse/keyple-cpp-meta/tree/master/toolchain">here&lt;/a>.
+&lt;code>gcc-linux&lt;/code> may be replaced by one of the build configurations available &lt;a href="https://github.com/eclipse-keyple/keyple-cpp-meta/tree/master/toolchain">here&lt;/a>.
 &lt;/div>
 &lt;/div>
 &lt;br>

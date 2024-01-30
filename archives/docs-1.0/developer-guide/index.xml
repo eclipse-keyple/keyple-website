@@ -515,38 +515,38 @@ operations.
 &lt;p>To help in the implementation of the different facilities offered by
 Keyple to process smart cards, a set of examples is present in the
 project repository
-&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone" target="_blank" rel="noopener">
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone" target="_blank" rel="noopener">
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> examples&lt;/a>&lt;/p>
 &lt;p>Nevertheless, you will find below a brief description of them:&lt;/p>
 &lt;h3 id="explicit-selection">Explicit Selection&lt;/h3>
 &lt;p>Shows the use of Keyple to make a card selection without observing the
 reader, based on testing the presence of the card by the application.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;h3 id="default-selection">Default Selection&lt;/h3>
 &lt;p>Shows the use of Keyple to make a card selection with observation of the
 reader. A default selection is prepared, the presentation of a card
 triggers the notification of a reader event to the application.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;h3 id="sequential-multiple-selection">Sequential Multiple Selection&lt;/h3>
 &lt;p>Executes successively several independent selection operations with the
 use of the ISO &amp;lsquo;NEXT&amp;rsquo; navigation flag.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;p>Illustrates the case of a card exploration with maintenance of the physical channel open.&lt;/p>
 &lt;h3 id="grouped-multiple-selection">Grouped Multiple Selection&lt;/h3>
 &lt;p>Executes a multiple selection with logical channel closure between each
 selection.&lt;/p>
 &lt;p>Allows the exploration of the applications of a card in a single
 operation but without selection at the end.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;h3 id="demo-card-protocol-detection">Demo Card Protocol Detection&lt;/h3>
 &lt;p>Demonstrates the use of Keyple in a context where several card
 technologies are likely to be processed by the application.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;h3 id="demo-observable-reader-notification">Demo Observable Reader Notification&lt;/h3>
 &lt;p>Demonstrates the use of Keyple to implement the observation of a plugin
 and its readers. Readers are dynamically created and an observer is
 assigned to them.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;p>The artifact &lt;strong>Keyple Core&lt;/strong> and how to integrate it into your
@@ -1265,7 +1265,7 @@ width: 240px;
 &lt;br>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/distributed" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/distributed" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -1629,8 +1629,8 @@ all in detail but here is an example from which other variants can be obtained.&
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;p>Detailed use case examples can be seen here:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/calypso/src/main/java/org/eclipse/keyple/example/calypso" target="_blank" rel="noopener">PC&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/eclipse/keyple-java/tree/master/java/example/generic/android" target="_blank" rel="noopener">Android&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/calypso/src/main/java/org/eclipse/keyple/example/calypso" target="_blank" rel="noopener">PC&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/android" target="_blank" rel="noopener">Android&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Create a plugin</title><link>https://keyple.org/archives/docs-1.0/developer-guide/create-plugin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/docs-1.0/developer-guide/create-plugin/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
