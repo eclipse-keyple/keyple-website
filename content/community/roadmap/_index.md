@@ -10,8 +10,12 @@ weight: 2
 <br>
 
 ## Current work 
- - Refactoring of the Calypso API to support extensions of different kind of Calypso SAM solutions (current legacy SAM-C1, coming Open-SAM, or crypto libraries for PKI).
- - Support of the Calypso secure session based on asymmetric authentication (REV3.3 Prime PKI based on ECC).
+ - Java implementation
+   - Refactoring of the Calypso API to support extensions of different kind of Calypso SAM solutions (current legacy SAM-C1, coming Open-SAM, or crypto libraries for PKI).
+   - Support of the Calypso secure session based on asymmetric authentication (REV3.3 Prime PKI based on ECC).
+ - C++ implementation
+   - Porting current components updated with Keypop APIs.
+   - Next addition of distributed mode support for building a Keyple Distributed C++ client (interacting with a Keyple Distributed Java server).
 
 ## Long-term study 
  - to provide a Hoplink extension (based on a high-level API on top of the Calypso Card API).
