@@ -7,8 +7,8 @@
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
 <link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
 <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
-<meta name=description content="Ticketing applications to emulate an autonomous validator, a hand-held inspection terminal, a distributed solution for remote ticket sales and loading">
-<link rel=alternate hreflang=en-us href=https://keyple.org/external-resources/external-add-ons/ticketing-demos-by-cna/>
+<meta name=description content="Keyple-based tool to process cards">
+<link rel=alternate hreflang=en-us href=https://keyple.org/external-resources/external-add-ons/card-tool-by-cna/>
 <meta name=theme-color content="#1D87BB">
 <link rel=stylesheet href=../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
@@ -19,17 +19,17 @@
 <link rel=manifest href=../../../manifest.webmanifest>
 <link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
 <link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/external-resources/external-add-ons/ticketing-demos-by-cna/>
+<link rel=canonical href=https://keyple.org/external-resources/external-add-ons/card-tool-by-cna/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/external-resources/external-add-ons/ticketing-demos-by-cna/">
-<meta property="og:title" content="Advanced ticketing demos by the Calypso Networks Association | Eclipse Keyple">
-<meta property="og:description" content="Ticketing applications to emulate an autonomous validator, a hand-held inspection terminal, a distributed solution for remote ticket sales and loading"><meta property="og:image" content="https://keyple.org/media/logo.svg">
+<meta property="og:url" content="https://keyple.org/external-resources/external-add-ons/card-tool-by-cna/">
+<meta property="og:title" content="Advanced card tools by the Calypso Networks Association | Eclipse Keyple">
+<meta property="og:description" content="Keyple-based tool to process cards"><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
-<title>Advanced ticketing demos by the Calypso Networks Association | Eclipse Keyple</title>
+<meta property="article:modified_time" content="2024-03-28T13:22:15+04:00">
+<title>Advanced card tools by the Calypso Networks Association | Eclipse Keyple</title>
 </head>
-<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=d252d9606db38c1e3265863b0c893bf8>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=a204f4dd57c6f19fc66042a29bd8c8b5>
 <script src=../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
 <aside class=search-modal id=search>
 <div class=container>
@@ -146,8 +146,8 @@ External add-ons
 <ul class="nav docs-sidenav">
 <li><a href=../../../external-resources/external-add-ons/terminal-plugin-by-springcard/>Terminal plugin by SpringCard</a></li>
 <li><a href=../../../external-resources/external-add-ons/terminal-plugins-by-cna/>Terminal plugins by CNA</a></li>
-<li><a href=../../../external-resources/external-add-ons/card-tool-by-cna/>Card tools by CNA</a></li>
-<li class=active><a href=../../../external-resources/external-add-ons/ticketing-demos-by-cna/>Ticketing demos by CNA</a></li>
+<li class=active><a href=../../../external-resources/external-add-ons/card-tool-by-cna/>Card tools by CNA</a></li>
+<li><a href=../../../external-resources/external-add-ons/ticketing-demos-by-cna/>Ticketing demos by CNA</a></li>
 </ul>
 </div>
 <div class=docs-toc-item>
@@ -165,56 +165,35 @@ External add-ons
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
 <article class=article>
 <div class=docs-article-container>
-<h1>Advanced ticketing demos by the Calypso Networks Association</h1>
+<h1>Advanced card tools by the Calypso Networks Association</h1>
 <div class=article-style>
 <br>
-<p>The Calypso Networks Association has created several innovative demos to showcase the potential of Keyple
-Java-based ticketing terminals, which are representative of the use cases encountered in public transport ticketing.</p>
+<p>The Calypso Networks Association provides a first tool to showcase the potential of Keyple
+Java-based ticketing terminals, to help check the configuration and file structure of Calypso cards.</p>
 <ul>
-<li>
-<p><a href=https://github.com/calypsonet/keyple-java-demo-remote target=_blank rel=noopener>Demo Reload Remote</a> (client/server environment):</p>
+<li><a href=https://github.com/calypsonet/calypso-card-analyzer target=_blank rel=noopener>Calypso Card Analyzer</a>:
 <ul>
-<li>On the client side, an Android application loaded in a standard NFC smartphone provides the means to a customer to
-make the ticket purchase.
-The Android NFC plugin is used to communicate with the contactless card, and the Calypso card commands are fully
-managed by the back-office ticketing server using the Keyple Distributed solution.</li>
-<li>On the server side, the back-office includes a Java server application to process the ticketing sale and manage the
-Calypso secure session to reload contracts in remote cards.
-The server manages a pool of Calypso SAM using the PC/SC plugin and the Calypso SAM resource manager.</li>
-</ul>
-</li>
-<li>
-<p><a href=https://github.com/calypsonet/keyple-android-demo-validation target=_blank rel=noopener>Demo Validation</a>:</p>
-<ul>
-<li>An autonomous validator on Android-based ticketing terminal that seamlessly starts a secure session when a contactless card is detected.</li>
-<li>The machine checks the last transport event and the available ticketing contracts.</li>
-<li>If access is granted, a new event is written.</li>
-</ul>
-</li>
-<li>
-<p><a href=https://github.com/calypsonet/keyple-android-demo-control target=_blank rel=noopener>Demo Control</a>:</p>
-<ul>
-<li>A hand-held inspection terminal on Android portable terminal that allows an operator to check the content of a card.</li>
-<li>The application verifies the validity of the last transport event regarding the current time and location.</li>
-<li>Finally, it displays the result.</li>
+<li>A simple tool to check the settings and the file structure of Calypso cards.</li>
 </ul>
 </li>
 </ul>
-<p>The &ldquo;Validation&rdquo; and &ldquo;Control&rdquo; demos can be installed on various terminals such as
-Coppernic, Famoco, Flowbird, and Bluebird, using the <a href=../../../external-resources/external-add-ons/terminal-plugins-by-cna/>dedicated plugins</a> provided by CNA.</p>
 <p>For further information and guides on these demos, please visit the <a href=https://calypsonet.org/keyple-resources/ target=_blank rel=noopener>CNA website</a>.</p>
 </div>
 <div class=article-widget>
 <div class=post-nav>
 <div class=post-nav-item>
 <div class=meta-nav>Previous</div>
-<a href=../../../external-resources/external-add-ons/card-tool-by-cna/ rel=next>Advanced card tools by the Calypso Networks Association</a>
+<a href=../../../external-resources/external-add-ons/terminal-plugins-by-cna/ rel=next>Terminal plugins by the Calypso Networks Association</a>
+</div>
+<div class=post-nav-item>
+<div class=meta-nav>Next</div>
+<a href=../../../external-resources/external-add-ons/ticketing-demos-by-cna/ rel=prev>Advanced ticketing demos by the Calypso Networks Association</a>
 </div>
 </div>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-12-22</p>
+<p>Last updated on 2024-03-28</p>
 </div>
 </article>
 <footer class=site-footer>
