@@ -25,6 +25,7 @@ hero_media = "hero-image.jpg"
 **_"the best middleware for processing smart cards"_**
 - This open source solution is compliant with **any terminal** architecture (embedded / distributed), **any card reader** technology (standard / proprietary, local / remote), **any smart card** solution (ticketing, access control etc…).
 - But the main advantage of Keyple is that it's **easy to maintain and simple to upgrade and expand**.
+Two implementations of Keyple are available: in Java and in C++.
 
 Keyple implements the high-level open source APIs of [Eclipse Keypop®](https://keypop.org/) allowing terminal application to operate smart card reader in a universal way.
 
