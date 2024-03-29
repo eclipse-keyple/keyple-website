@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-java-api/releases/129163866",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-java-api/releases/129163866/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-java-api/releases/129163866/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-java-api/releases/tag/2.2.0",
-  "id": 129163866,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-java-api/releases/148997588",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-java-api/releases/148997588/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-java-api/releases/148997588/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-java-api/releases/tag/2.3.0",
+  "id": 148997588,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWdus4HsuJa",
-  "tag_name": "2.2.0",
+  "node_id": "RE_kwDODMWdus4I4YXU",
+  "tag_name": "2.3.0",
   "target_commitish": "main",
   "name": "",
   "draft": false,
   "prerelease": false,
-  "created_at": "2023-11-13T13:39:10Z",
-  "published_at": "2023-11-13T14:37:04Z",
+  "created_at": "2024-03-29T08:44:54Z",
+  "published_at": "2024-03-29T08:57:18Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-java-api/tarball/2.2.0",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-java-api/zipball/2.2.0",
-  "body": "### Fixed\r\n- CI: code coverage report when releasing.\r\n### Added\r\n- CI: added project status badges on `README.md` file.\r\n- Added precisions to Javadoc of `openPhysicalChannel()`, `closePhysicalChannel()` and `checkCardPresence()` methods of the `ReaderSpi` interface.\r\n- `CardInsertionWaiterAsynchronousApi` (renaming)\r\n- `CardRemovalWaiterAsynchronousApi` (renaming)\r\n- `CardInsertionWaiterAsynchronousSpi` (renaming)\r\n- `CardInsertionWaiterBlockingSpi` (renaming)\r\n- `CardInsertionWaiterNonBlockingSpi` (renaming and adds the capability to customize the polling cycle duration)\r\n- `CardRemovalWaiterAsynchronousSpi` (renaming)\r\n- `CardRemovalWaiterBlockingSpi` (renaming)\r\n- `CardRemovalWaiterNonBlockingSpi` (renaming and adds the capability to customize the polling cycle duration)\r\n- `AutonomousObservablePluginSpi.setCallback(...)` (renaming)\r\n### Deprecated\r\n- `WaitForCardInsertionAutonomousReaderApi` (replaced by `CardInsertionWaiterAsynchronousApi`)\r\n- `WaitForCardRemovalAutonomousReaderApi` (replaced by `CardRemovalWaiterAsynchronousApi`)\r\n- `WaitForCardInsertionAutonomousSpi` (replaced by `CardInsertionWaiterAsynchronousSpi`)\r\n- `WaitForCardInsertionBlockingSpi` (replaced by `CardInsertionWaiterBlockingSpi`)\r\n- `WaitForCardInsertionNonBlockingSpi` (replaced by `CardInsertionWaiterNonBlockingSpi`)\r\n- `DontWaitForCardRemovalDuringProcessingSpi` (no more used)\r\n- `WaitForCardRemovalDuringProcessingBlockingSpi` (no more used)\r\n- `WaitForCardRemovalAutonomousSpi` (replaced by `CardRemovalWaiterAsynchronousSpi`)\r\n- `WaitForCardRemovalBlockingSpi` (replaced by `CardRemovalWaiterBlockingSpi`)\r\n- `WaitForCardRemovalNonBlockingSpi` (replaced by `CardRemovalWaiterNonBlockingSpi`)\r\n- `AutonomousObservablePluginSpi.connect(...)` (replaced by `setCallback(...)`)\r\n"
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-java-api/tarball/2.3.0",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-java-api/zipball/2.3.0",
+  "body": "### Added\r\n- `CardPresenceMonitorBlockingSpi` as a replacement of the deprecated `WaitForCardRemovalDuringProcessingBlockingSpi` interface."
 }
