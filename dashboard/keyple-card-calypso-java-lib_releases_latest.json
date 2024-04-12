@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/releases/132858764",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/releases/132858764/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/releases/132858764/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-card-calypso-java-lib/releases/tag/3.0.1",
-  "id": 132858764,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/releases/150936567",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/releases/150936567/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/releases/150936567/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-card-calypso-java-lib/releases/tag/3.1.1",
+  "id": 150936567,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWfVs4H60OM",
-  "tag_name": "3.0.1",
+  "node_id": "RE_kwDODMWfVs4I_xv3",
+  "tag_name": "3.1.1",
   "target_commitish": "main",
   "name": "",
   "draft": false,
   "prerelease": false,
-  "created_at": "2023-12-06T14:34:06Z",
-  "published_at": "2023-12-06T14:44:35Z",
+  "created_at": "2024-04-12T13:43:44Z",
+  "published_at": "2024-04-12T14:01:29Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/tarball/3.0.1",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/zipball/3.0.1",
-  "body": "### Fixed\r\n- `InvalidPinException` exception is now thrown instead of the generic `UnexpectedCommandStatusException` when the PIN entered is incorrect."
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/tarball/3.1.1",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/zipball/3.1.1",
+  "body": "### Changed\r\n- Java source and target levels `1.6` -> `1.8`\r\n### Added\r\n- Added dependency to \"Keypop Calypso Crypto Asymmetric API\" `0.1.0`\r\n- Added support for PKI card transactions. \r\n### Fixed\r\n- Fixed `Le` value sent in SV Get card command.\r\n- Fixed postponed data issue for increase/decrease counter commands for PACA cards revision 2 having the following startup information pattern:\r\n  - `0A 0A 01 02 20 03 11` (issue [#109]) (Contributed by SNCF Connect).\r\n### Upgraded\r\n- Keypop Reader API `2.0.0` -> `2.0.1`\r\n- Keypop Card API `2.0.0` -> `2.0.1`\r\n- Keypop Calypso Card API `2.0.0` -> `2.1.0`\r\n- Keypop Calypso Crypto Symmetric API `0.1.0` -> `0.1.1`\r\n- Keypop Calypso Crypto Asymmetric API `0.1.0` -> `0.2.0`\r\n- Keyple Common API `2.0.0` -> `2.0.1`\r\n- Keyple Util Lib `2.3.1` -> `2.4.0`\r\n- Gradle `6.8.3` -> `7.6.4`"
 }
