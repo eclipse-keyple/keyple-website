@@ -74,6 +74,27 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.CARD_API, "2.0.1+"),
+    new Release(ComponentName.CALYPSO_API, "2.1.+"),
+    new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.5.+"),
+    new Release(ComponentName.CALYPSO_ASYMMETRIC_API, "0.2.+"),
+    new Release(ComponentName.PLUGIN_API, "2.3.+"),
+    new Release(ComponentName.UTIL_LIB, "2.4.0"),
+    new Release(ComponentName.SERVICE_LIB, "3.2.1"),
+    new Release(ComponentName.SERVICE_RESOURCE_LIB, "3.0.1"),
+    new Release(ComponentName.DISTRIBUTED_LOCAL_LIB, "2.3.1"),
+    new Release(ComponentName.DISTRIBUTED_NETWORK_LIB, "2.3.1"),
+    new Release(ComponentName.DISTRIBUTED_REMOTE_LIB, "2.3.1"),
+    new Release(ComponentName.CALYPSO_CARD_LIB, "3.1.1"),
+    new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "0.6.0"),
+    new Release(ComponentName.GENERIC_LIB, "3.0.1"),
+    new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "2.2.0"),
+    new Release(ComponentName.PLUGIN_ANDROID_OMAPI_LIB, "2.1.0"),
+    new Release(ComponentName.PLUGIN_CARD_RESOURCE_LIB, "2.0.1"),
+    new Release(ComponentName.PLUGIN_PCSC_LIB, "2.2.1"),
+    new Release(ComponentName.PLUGIN_STUB_LIB, "2.2.1")
+));
+releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.PLUGIN_API, "2.3.+"),
     new Release(ComponentName.SERVICE_LIB, "3.2.0"),
     new Release(ComponentName.PLUGIN_PCSC_LIB, "2.2.0")
@@ -108,7 +129,7 @@ releaseTrains.push(new ReleaseTrain(
 ));
 releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.READER_API, "2.0.+"),
-    new Release(ComponentName.CARD_API, "2.0.+"),
+    new Release(ComponentName.CARD_API, "2.0.0"),
     new Release(ComponentName.CALYPSO_API, "2.0.+"),
     new Release(ComponentName.CALYPSO_SYMMETRIC_API, "0.1.+"),
     new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.3.+"),
