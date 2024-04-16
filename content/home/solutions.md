@@ -4,7 +4,7 @@ headless = true
 active = true
 weight = 20
 
-title = "Solutions"
+title = "Solution overview"
 subtitle = "Eclipse Keyple® addresses a wide range of domains, hardware readers and media"
 
 [design]

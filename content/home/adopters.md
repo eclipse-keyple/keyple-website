@@ -10,7 +10,7 @@ title = "They are using Eclipse Keyple®"
   columns = "1"
 
 [design.background]
-  color = "white"
+  color = "#eff7fe"
   image = "" 
   image_darken = 0 
   image_size = "cover" 
