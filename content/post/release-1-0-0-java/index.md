@@ -3,7 +3,7 @@ title: "Release 1.0.0 of Eclipse Keyple® Java"
 subtitle: ""
 summary: "Version 1.0.0 of the Java implementation of Eclipse Keyple® was released December 17, 2020."
 authors: [Calypso Networks Association]
-tags: ["Eclipse", "Keyple", "Release", "OpenSource", "SDK", "API", "OpenSolutions", "Ticketing", "MaaS", "CNA"]
+tags: ["Eclipse", "Keyple", "Release", "OpenSource", "Middleware", "API", "OpenSolutions", "Ticketing", "MaaS", "CNA"]
 categories: [Release]
 date: 2020-12-17T17:24:41+01:00
 lastmod: 2020-12-17T17:24:41+01:00

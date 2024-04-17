@@ -3,7 +3,7 @@ title: "First Meet Up Eclipse Keyple®"
 subtitle: ""
 summary: "On October 17, 2019, we organized the first Meet Up Eclipse Keyple®!"
 authors: [Calypso Networks Association]
-tags: ["Eclipse", "Keyple", "Events", "OpenSource", "SDK", "API", "OpenSolutions", "Ticketing", "MaaS", "CNA"]
+tags: ["Eclipse", "Keyple", "Events", "OpenSource", "Middleware", "API", "OpenSolutions", "Ticketing", "MaaS", "CNA"]
 categories: ["Events"]
 date: 2019-10-17T00:00:00
 featured: false
@@ -21,7 +21,7 @@ links:
 ---
 
 On October 17, 2019, we organized the first Meet Up Eclipse Keyple®! 
-Great moments of exchanges around the first Open Source SDK for Ticketing with Benoît Boute, 
+Great moments of exchanges around the first Open Source Middleware for Ticketing with Benoît Boute, 
 Nicolas Generali, Pierre Terree, Hicham Elbizy, Benoist Laforge, Gaël Blondelle, Camille Moulin, 
 Philippe Vappereau, Valentina Zajackowski. Many thanks to them for their interventions and also 
 to Manon Chaix, Jean-Pierre Fortune, Olivier Delcroix, Ludovic Teixeira Costa and all the participants!

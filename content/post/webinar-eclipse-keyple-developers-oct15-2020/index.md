@@ -3,7 +3,7 @@ title: "Webinar Eclipse Keyple® for Developers, Thursday, October 15, 2020 "
 subtitle: ""
 summary: "Are you a mobility aggregator, a system integrator, an event manager, a developer or a multi-mobility startup?"
 authors: [Calypso Networks Association]
-tags: ["Eclipse", "Keyple", "Events", "OpenSource", "SDK", "API", "OpenSolutions", "Ticketing", "MaaS", "CNA", "Mobility"]
+tags: ["Eclipse", "Keyple", "Events", "OpenSource", "Middleware", "API", "OpenSolutions", "Ticketing", "MaaS", "CNA", "Mobility"]
 categories: ["Events"]
 date: 2020-09-25T14:57:23+02:00
 featured: false

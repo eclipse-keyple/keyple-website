@@ -3,7 +3,7 @@ title: "Keyple Distributed JSON API 1.0 User Guide is available!"
 summary: "Published on April 04, 2023, this guide is specifically designed for users who are not currently using Keyple 
     in their terminals, but wish to connect to a Keyple server."
 authors: [Calypso Networks Association]
-tags: ["Eclipse", "Keyple", "OpenSource", "SDK", "API", "Ticketing", "Distributed", "JSON", "Website"]
+tags: ["Eclipse", "Keyple", "OpenSource", "Middleware", "API", "Ticketing", "Distributed", "JSON", "Website"]
 categories: [Documentation]
 date: 2023-04-04T14:00:00+01:00
 featured: false

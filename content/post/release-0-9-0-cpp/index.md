@@ -3,7 +3,7 @@ title: "Release 0.9.0 C++ on the field"
 subtitle: ""
 summary: "Version 0.9.0 of the Java implementation of Eclipse Keyple® was released January 26, 2021."
 authors: [Calypso Networks Association]
-tags: ["Eclipse", "Keyple", "Release", "OpenSource", "SDK", "API", "OpenSolutions", "Ticketing", "MaaS", "CNA"]
+tags: ["Eclipse", "Keyple", "Release", "OpenSource", "Middleware", "API", "OpenSolutions", "Ticketing", "MaaS", "CNA"]
 categories: [Release]
 date: 2021-01-26T14:57:56+02:00
 featured: false

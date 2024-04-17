@@ -8,7 +8,7 @@ weight = 10
 
 Coming from a rather closed technical environment, ticketing for transport is essentially based on proprietary solutions provided by manufacturers. 
 However, in order for the concept of Mobility as a Service to become a reality, and at a reasonable cost, the ecosystem should, as far as possible, 
-rely on open standards, APIs and SDKs as well as Open Source technologies. This openness has already been a reality for several years in the field 
+rely on open standards, APIs and middlewares as well as Open Source technologies. This openness has already been a reality for several years in the field 
 of passenger information and has enabled the explosion of rich and high-quality applications, thanks in particular to Open Data. Today, Eclipse 
 Keyple is paving the way for ticketing to follow the same path, by making available for free the first fully Open Source API.
 

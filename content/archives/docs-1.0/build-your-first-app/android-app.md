@@ -1,7 +1,7 @@
 ---
 title: Build your first Android application
 linktitle: Android
-summary: This guide describes how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso Portable Object.
+summary: This guide describes how to start a ticketing application using Keyple middleware and Android NFC plugin to read the content of a Calypso Portable Object.
 type: book
 toc: true
 draft: false
@@ -20,9 +20,9 @@ Keyple could also be used to develop an application reading SmartCard content th
 
 {{< figure src="/media/archive-1.0/android-app/component/Android_App_Overview.png" title="" >}} 
  
-As Keyple request low-level reader access, the key features of Keyple SDK relies on components called **Plugins**. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer's own custom SDKs. 
+As Keyple request low-level reader access, the key features of Keyple middleware relies on components called **Plugins**. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer's own custom SDKs. 
 
-This guide will describe how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso SmartCard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.
+This guide will describe how to start a ticketing application using Keyple middleware and Android NFC plugin to read the content of a Calypso SmartCard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.
 
 ### What to we need for this guide?
 

@@ -128,7 +128,7 @@ If you don't know the names of the readers, read how to find them in the [FAQ](#
 
 ```java
 //...
-// Get the instance of the SmartCardService : main service of Keyple SDK
+// Get the instance of the SmartCardService : main service of Keyple middleware
 SmartCardService smartCardService = SmartCardService.getInstance();
 
 // Register the PcscPlugin within the SmartCardService to use PC/SC readers
@@ -431,7 +431,7 @@ import org.eclipse.keyple.plugin.pcsc.*;
 
 public class DemoPoAuthentication  {
     public static void main(String[] args) {
-        // Get the instance of the SmartCardService : main service of Keyple SDK
+        // Get the instance of the SmartCardService : main service of Keyple middleware
         SmartCardService smartCardService = SmartCardService.getInstance();
 
         // Register a PcscPlugin within the SmartCardService to use PC/SC USB Readers

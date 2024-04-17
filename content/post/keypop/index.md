@@ -3,7 +3,7 @@ title: "Keyple adopts the Eclipse Keypop API!"
 summary: "The Keyple SDK is enhanced by the Eclipse Keypop project with new UML-compliant interfaces and APIs, offering 
     new possibilities for the management of SAMs and PKI cards."
 authors: [Calypso Networks Association]
-tags: ["Eclipse", "Keyple", "Keypop", "Release", "OpenSource", "SDK", "API", "Ticketing"]
+tags: ["Eclipse", "Keyple", "Keypop", "Release", "OpenSource", "Middleware", "API", "Ticketing"]
 categories: [Release]
 date: 2023-11-28T12:00:00+01:00
 featured: false

@@ -3,7 +3,7 @@ title: "Release 2.0.0 of Eclipse Keyple® Java"
 subtitle: ""
 summary: "Version 2.0.0 of the Java implementation of Eclipse Keyple® was released on October 06, 2021."
 authors: [Calypso Networks Association]
-tags: ["Eclipse", "Keyple", "Release", "OpenSource", "SDK", "API", "Ticketing", "Calypso"]
+tags: ["Eclipse", "Keyple", "Release", "OpenSource", "Middleware", "API", "Ticketing", "Calypso"]
 categories: [Release]
 date: 2021-10-06T12:00:00+01:00
 lastmod: 2021-10-06T12:00:00+01:00
