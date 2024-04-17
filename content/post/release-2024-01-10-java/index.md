@@ -2,7 +2,7 @@
 title: "Keyple Card Calypso Crypto Legacy SAM Java Lib (0.5.0) is available!"
 summary: "Published on January 10, 2024, this version adds support for advanced SAM unlocking mechanisms (static and dynamic modes)."
 authors: [Calypso Networks Association]
-tags: ["Eclipse", "Keyple", "Release", "OpenSource", "SDK", "API", "Ticketing", "Calypso", "SAM"]
+tags: ["Eclipse", "Keyple", "Release", "OpenSource", "Middleware", "API", "Ticketing", "Calypso", "SAM"]
 categories: [Release]
 date: 2024-01-10T12:00:00+01:00
 featured: false

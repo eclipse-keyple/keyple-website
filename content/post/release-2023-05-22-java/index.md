@@ -4,7 +4,7 @@ summary: "Published on May 22, 2023, this minor version implements the 'Calypson
     and therefore introduced a new capability to export a locally processed card selection scenario to be imported and 
     analyzed remotely by another card selection manager."
 authors: [Calypso Networks Association]
-tags: ["Eclipse", "Keyple", "Release", "OpenSource", "SDK", "API", "Ticketing"]
+tags: ["Eclipse", "Keyple", "Release", "OpenSource", "Middleware", "API", "Ticketing"]
 categories: [Release]
 date: 2023-05-22T12:00:00+01:00
 featured: false

@@ -3,7 +3,7 @@ title: "Keyple Card Calypso Crypto Legacy SAM Java Lib (0.3.0) is available!"
 summary: "Published on February 27, 2023, this version adds the counters ceilings management feature in static mode.
     This allows to update remotely the key ceilings of the reloading SAMs."
 authors: [Calypso Networks Association]
-tags: ["Eclipse", "Keyple", "Release", "OpenSource", "SDK", "API", "Ticketing", "Calypso", "SAM"]
+tags: ["Eclipse", "Keyple", "Release", "OpenSource", "Middleware", "API", "Ticketing", "Calypso", "SAM"]
 categories: [Release]
 date: 2023-02-27T12:00:00+01:00
 featured: false
