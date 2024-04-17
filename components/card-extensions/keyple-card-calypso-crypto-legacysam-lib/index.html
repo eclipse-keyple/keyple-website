@@ -26,7 +26,7 @@
 <meta property="og:title" content="Keyple Card Calypso Crypto Legacy SAM Library | Eclipse Keyple">
 <meta property="og:description" content="Add-on to manage Calypso® legacy SAMs (SAM-C1, HSM-C1, etc...)."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2024-01-30T10:38:42+01:00">
+<meta property="article:modified_time" content="2024-04-17T17:12:54+02:00">
 <title>Keyple Card Calypso Crypto Legacy SAM Library | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=fb761574f776efdd607a0dd36d567380>
@@ -183,6 +183,7 @@ Card extensions
 <ul class="nav docs-sidenav">
 <li><a href=../../../components/card-extensions/keyple-card-calypso-lib/>Calypso Card</a></li>
 <li class=active><a href=../../../components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/>Calypso Legacy SAM</a></li>
+<li><a href=../../../components/card-extensions/keyple-card-calypso-crypto-pki-lib/>Calypso PKI</a></li>
 <li><a href=../../../components/card-extensions/keyple-card-generic-lib/>Generic</a></li>
 </ul>
 </div>
@@ -236,7 +237,7 @@ While it&rsquo;s nearly stable, future migration steps might be necessary. We ai
 <h2 id=java-component>Java component</h2>
 <div class="alert alert-note">
 <div>
-<strong><code>0.6.0</code></strong>
+<strong><code>0.7.0</code></strong>
 <span class=component-metadata>
 <i class="fas fa-download pr-1 fa-fw"></i> <a href=#download>Download</a></span>
 <span class=component-metadata>
@@ -250,7 +251,7 @@ While it&rsquo;s nearly stable, future migration steps might be necessary. We ai
 <li><a href=https://eclipse-keyple.github.io/keyple-card-calypso-crypto-legacysam-java-lib target=_blank rel=noopener>API documentation</a></li>
 </ul>
 <h3 id=download>Download</h3>
-<p>All deliverables are available directly from the <a href="https://central.sonatype.dev/search?q=keyple-card-calypso-crypto-legacysam-java-lib" target=_blank rel=noopener>Maven Central Repository</a> or by using one of the project resource managers below:</p>
+<p>All deliverables are available directly from the <a href="https://central.sonatype.com/search?q=keyple-card-calypso-crypto-legacysam-java-lib" target=_blank rel=noopener>Maven Central Repository</a> or by using one of the project resource managers below:</p>
 <ul class="nav nav-tabs" id=tabs-2 role=tablist><li class=nav-item>
 <a class="nav-link active tab-Gradle-Groovy" id=tabs-2-0-tab data-toggle=tab href=#tabs-2-0 role=tab onclick='handleClick("Gradle-Groovy")' aria-controls=tabs-2-0 aria-selected=true>
 Gradle Groovy
@@ -266,16 +267,16 @@ Maven
 </li></ul>
 <div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyTabContentToClipboard('tabs-2',this)">Copy</button></div>
 <div class=tab-content id=tabs-2-content><div class="tab-pane fade show active" id=tabs-2-0 role=tabpanel aria-labelled-by=tabs-2-0-tab>
-<pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.6.0&#39;</code></pre>
+<pre><code class=language-gradle>implementation &#39;org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.7.0&#39;</code></pre>
 </div>
 <div class="tab-pane fade" id=tabs-2-1 role=tabpanel aria-labelled-by=tabs-2-1-tab>
-<pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.6.0&#34;)</code></pre>
+<pre><code class=language-kotlin>implementation(&#34;org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.7.0&#34;)</code></pre>
 </div>
 <div class="tab-pane fade" id=tabs-2-2 role=tabpanel aria-labelled-by=tabs-2-2-tab>
 <pre><code class=language-xml>&lt;dependency&gt;
   &lt;groupId&gt;org.eclipse.keyple&lt;/groupId&gt;
   &lt;artifactId&gt;keyple-card-calypso-crypto-legacysam-java-lib&lt;/artifactId&gt;
-  &lt;version&gt;0.6.0&lt;/version&gt;
+  &lt;version&gt;0.7.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -288,13 +289,13 @@ Maven
 </div>
 <div class=post-nav-item>
 <div class=meta-nav>Next</div>
-<a href=../../../components/card-extensions/keyple-card-generic-lib/ rel=prev>Keyple Card Generic Library</a>
+<a href=../../../components/card-extensions/keyple-card-calypso-crypto-pki-lib/ rel=prev>Keyple Card Calypso Crypto PKI Library</a>
 </div>
 </div>
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2024-01-30</p>
+<p>Last updated on 2024-04-17</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -385,7 +386,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.38c5a73ae08db53532d78ee8bc9af1d8.js></script>
+<script src=../../../en/js/wowchemy.min.3e9e983029b2f19036e863f00795497b.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

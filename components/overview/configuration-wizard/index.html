@@ -26,7 +26,7 @@
 <meta property="og:title" content="Configuration wizard | Eclipse Keyple">
 <meta property="og:description" content="Online tool to generate the dependencies section of Gradle or Maven configuration files."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-12-04T16:59:17+01:00">
+<meta property="article:modified_time" content="2024-04-17T17:12:54+02:00">
 <title>Configuration wizard | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=f3141abed2b98189af41cb3e98cd4f58>
@@ -183,6 +183,7 @@ Overview
 <ul class="nav docs-sidenav">
 <li><a href=../../../components/card-extensions/keyple-card-calypso-lib/>Calypso Card</a></li>
 <li><a href=../../../components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/>Calypso Legacy SAM</a></li>
+<li><a href=../../../components/card-extensions/keyple-card-calypso-crypto-pki-lib/>Calypso PKI</a></li>
 <li><a href=../../../components/card-extensions/keyple-card-generic-lib/>Generic</a></li>
 </ul>
 </div>
@@ -247,6 +248,10 @@ Choose your project profile and copy/paste the generated result into your projec
 <div>
 <input type=checkbox id=cardCalypsoLegacySam onclick=updateAppDependencies(1,this)>
 <label for=cardCalypsoLegacySam>Calypso Legacy SAM (required for secure card transactions)</label>
+</div>
+<div>
+<input type=checkbox id=cardCalypsoPki onclick=updateAppDependencies(1,this)>
+<label for=cardCalypsoPki>Calypso PKI (required for PKI card transactions)</label>
 </div>
 </blockquote>
 </li>
@@ -522,7 +527,8 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.4.0&#34;)
 <span id=keyple-service-resource-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-service-resource-java-lib:3.0.1'</span></span>
 <span id=keyple-util-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-util-java-lib:2.4.0'</span></span>
 <span id=keyple-card-calypso-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.1'</span></span>
-<span id=keyple-card-calypso-crypto-legacysam-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.6.0'</span></span>
+<span id=keyple-card-calypso-crypto-legacysam-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.7.0'</span></span>
+<span id=keyple-card-calypso-crypto-pki-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:0.2.0'</span></span>
 <span id=keyple-card-generic-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-card-generic-java-lib:3.0.1'</span></span>
 <span id=keyple-distributed-local-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-distributed-local-java-lib:2.3.1'</span></span>
 <span id=keyple-distributed-network-java-lib>implementation <span class=hljs-string>'org.eclipse.keyple:keyple-distributed-network-java-lib:2.3.1'</span></span>
@@ -535,7 +541,7 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.4.0&#34;)
 <span id=keypop-reader-java-api>implementation <span class=hljs-string>'org.eclipse.keypop:keypop-reader-java-api:2.0.1'</span></span>
 <span id=keypop-card-java-api>implementation <span class=hljs-string>'org.eclipse.keypop:keypop-card-java-api:2.0.1'</span></span>
 <span id=keypop-calypso-card-java-api>implementation <span class=hljs-string>'org.eclipse.keypop:keypop-calypso-card-java-api:2.1.0'</span></span>
-<span id=keypop-calypso-crypto-legacysam-java-api>implementation <span class=hljs-string>'org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.5.0'</span></span>
+<span id=keypop-calypso-crypto-legacysam-java-api>implementation <span class=hljs-string>'org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.6.0'</span></span>
 </code>
 <code id=all-kotlin-dependencies style=display:none>
 <span id=keyple-common-java-api>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-common-java-api:2.0.1"</span>)</span>
@@ -543,7 +549,8 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.4.0&#34;)
 <span id=keyple-service-resource-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-service-resource-java-lib:3.0.1"</span>)</span>
 <span id=keyple-util-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-util-java-lib:2.4.0"</span>)</span>
 <span id=keyple-card-calypso-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.1"</span>)</span>
-<span id=keyple-card-calypso-crypto-legacysam-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.6.0"</span>)</span>
+<span id=keyple-card-calypso-crypto-legacysam-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.7.0"</span>)</span>
+<span id=keyple-card-calypso-crypto-pki-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:0.2.0"</span>)</span>
 <span id=keyple-card-generic-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-card-generic-java-lib:3.0.1"</span>)</span>
 <span id=keyple-distributed-local-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-distributed-local-java-lib:2.3.1"</span>)</span>
 <span id=keyple-distributed-network-java-lib>implementation(<span class=hljs-string>"org.eclipse.keyple:keyple-distributed-network-java-lib:2.3.1"</span>)</span>
@@ -556,7 +563,7 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.4.0&#34;)
 <span id=keypop-reader-java-api>implementation(<span class=hljs-string>"org.eclipse.keypop:keypop-reader-java-api:2.0.1"</span>)</span>
 <span id=keypop-card-java-api>implementation(<span class=hljs-string>"org.eclipse.keypop:keypop-card-java-api:2.0.1"</span>)</span>
 <span id=keypop-calypso-card-java-api>implementation(<span class=hljs-string>"org.eclipse.keypop:keypop-calypso-card-java-api:2.1.0"</span>)</span>
-<span id=keypop-calypso-crypto-legacysam-java-api>implementation(<span class=hljs-string>"org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.5.0"</span>)</span>
+<span id=keypop-calypso-crypto-legacysam-java-api>implementation(<span class=hljs-string>"org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.6.0"</span>)</span>
 </code>
 <pre style=display:none>
 <code id=all-maven-dependencies>
@@ -588,7 +595,12 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.4.0&#34;)
 <span id=keyple-card-calypso-crypto-legacysam-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>&gt;</span>
   <span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>&gt;</span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>&gt;</span>
   <span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>&gt;</span>keyple-card-calypso-crypto-legacysam-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>&gt;</span>
-  <span class=hljs-tag>&lt;<span class=hljs-name>version</span>&gt;</span>0.6.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-name>version</span>&gt;</span>0.7.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>&gt;</span>
+<span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>&gt;</span></span>
+<span id=keyple-card-calypso-crypto-pki-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>&gt;</span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>&gt;</span>keyple-card-calypso-crypto-pki-java-lib<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-name>version</span>&gt;</span>0.2.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>&gt;</span>
 <span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>&gt;</span></span>
 <span id=keyple-card-generic-java-lib><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>&gt;</span>
   <span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>&gt;</span>org.eclipse.keyple<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>&gt;</span>
@@ -653,7 +665,7 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.4.0&#34;)
 <span id=keypop-calypso-crypto-legacysam-java-api><span class=hljs-tag>&lt;<span class=hljs-name>dependency</span>&gt;</span>
   <span class=hljs-tag>&lt;<span class=hljs-name>groupId</span>&gt;</span>org.eclipse.keypop<span class=hljs-tag>&lt;/<span class=hljs-name>groupId</span>&gt;</span>
   <span class=hljs-tag>&lt;<span class=hljs-name>artifactId</span>&gt;</span>keypop-calypso-crypto-legacysam-java-api<span class=hljs-tag>&lt;/<span class=hljs-name>artifactId</span>&gt;</span>
-  <span class=hljs-tag>&lt;<span class=hljs-name>version</span>&gt;</span>0.5.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-name>version</span>&gt;</span>0.6.0<span class=hljs-tag>&lt;/<span class=hljs-name>version</span>&gt;</span>
 <span class=hljs-tag>&lt;/<span class=hljs-name>dependency</span>&gt;</span></span>
 </code>
 </pre>
@@ -674,7 +686,7 @@ implementation(&#34;org.eclipse.keyple:keyple-util-java-lib:2.4.0&#34;)
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-12-04</p>
+<p>Last updated on 2024-04-17</p>
 </div>
 </article>
 <footer class=site-footer>
@@ -765,7 +777,7 @@ Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_bl
       </script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.38c5a73ae08db53532d78ee8bc9af1d8.js></script>
+<script src=../../../en/js/wowchemy.min.3e9e983029b2f19036e863f00795497b.js></script>
 <link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
 <script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
 <script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>

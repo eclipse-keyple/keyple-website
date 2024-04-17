@@ -43,6 +43,10 @@ Choose your project profile and copy/paste the generated result into your projec
 &lt;input type="checkbox" id="cardCalypsoLegacySam" onclick="javascript:updateAppDependencies(1, this);">
 &lt;label for="cardCalypsoLegacySam">Calypso Legacy SAM (required for secure card transactions)&lt;/label>
 &lt;/div>
+&lt;div>
+&lt;input type="checkbox" id="cardCalypsoPki" onclick="javascript:updateAppDependencies(1, this);">
+&lt;label for="cardCalypsoPki">Calypso PKI (required for PKI card transactions)&lt;/label>
+&lt;/div>
 &lt;/blockquote>
 &lt;/li>
 &lt;li>
@@ -363,7 +367,8 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-service-resource-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-service-resource-java-lib:3.0.1'&lt;/span>&lt;/span>
 &lt;span id="keyple-util-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-util-java-lib:2.4.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-card-calypso-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.1'&lt;/span>&lt;/span>
-&lt;span id="keyple-card-calypso-crypto-legacysam-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.6.0'&lt;/span>&lt;/span>
+&lt;span id="keyple-card-calypso-crypto-legacysam-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.7.0'&lt;/span>&lt;/span>
+&lt;span id="keyple-card-calypso-crypto-pki-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:0.2.0'&lt;/span>&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-card-generic-java-lib:3.0.1'&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-local-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-distributed-local-java-lib:2.3.1'&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-network-java-lib">implementation &lt;span class="hljs-string">'org.eclipse.keyple:keyple-distributed-network-java-lib:2.3.1'&lt;/span>&lt;/span>
@@ -376,7 +381,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keypop-reader-java-api">implementation &lt;span class="hljs-string">'org.eclipse.keypop:keypop-reader-java-api:2.0.1'&lt;/span>&lt;/span>
 &lt;span id="keypop-card-java-api">implementation &lt;span class="hljs-string">'org.eclipse.keypop:keypop-card-java-api:2.0.1'&lt;/span>&lt;/span>
 &lt;span id="keypop-calypso-card-java-api">implementation &lt;span class="hljs-string">'org.eclipse.keypop:keypop-calypso-card-java-api:2.1.0'&lt;/span>&lt;/span>
-&lt;span id="keypop-calypso-crypto-legacysam-java-api">implementation &lt;span class="hljs-string">'org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.5.0'&lt;/span>&lt;/span>
+&lt;span id="keypop-calypso-crypto-legacysam-java-api">implementation &lt;span class="hljs-string">'org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.6.0'&lt;/span>&lt;/span>
 &lt;/code>
 &lt;!-- All kotlin dependencies -->
 &lt;code id="all-kotlin-dependencies" style="display:none">
@@ -385,7 +390,8 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-service-resource-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-service-resource-java-lib:3.0.1"&lt;/span>)&lt;/span>
 &lt;span id="keyple-util-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-util-java-lib:2.4.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-card-calypso-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.1"&lt;/span>)&lt;/span>
-&lt;span id="keyple-card-calypso-crypto-legacysam-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.6.0"&lt;/span>)&lt;/span>
+&lt;span id="keyple-card-calypso-crypto-legacysam-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.7.0"&lt;/span>)&lt;/span>
+&lt;span id="keyple-card-calypso-crypto-pki-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:0.2.0"&lt;/span>)&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-card-generic-java-lib:3.0.1"&lt;/span>)&lt;/span>
 &lt;span id="keyple-distributed-local-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-distributed-local-java-lib:2.3.1"&lt;/span>)&lt;/span>
 &lt;span id="keyple-distributed-network-java-lib">implementation(&lt;span class="hljs-string">"org.eclipse.keyple:keyple-distributed-network-java-lib:2.3.1"&lt;/span>)&lt;/span>
@@ -398,7 +404,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keypop-reader-java-api">implementation(&lt;span class="hljs-string">"org.eclipse.keypop:keypop-reader-java-api:2.0.1"&lt;/span>)&lt;/span>
 &lt;span id="keypop-card-java-api">implementation(&lt;span class="hljs-string">"org.eclipse.keypop:keypop-card-java-api:2.0.1"&lt;/span>)&lt;/span>
 &lt;span id="keypop-calypso-card-java-api">implementation(&lt;span class="hljs-string">"org.eclipse.keypop:keypop-calypso-card-java-api:2.1.0"&lt;/span>)&lt;/span>
-&lt;span id="keypop-calypso-crypto-legacysam-java-api">implementation(&lt;span class="hljs-string">"org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.5.0"&lt;/span>)&lt;/span>
+&lt;span id="keypop-calypso-crypto-legacysam-java-api">implementation(&lt;span class="hljs-string">"org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.6.0"&lt;/span>)&lt;/span>
 &lt;/code>
 &lt;!-- All maven dependencies -->
 &lt;pre style="display:none">
@@ -431,7 +437,12 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-card-calypso-crypto-legacysam-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>keyple-card-calypso-crypto-legacysam-java-lib&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>
-&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>0.6.0&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
+&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>0.7.0&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
+&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>&lt;/span>
+&lt;span id="keyple-card-calypso-crypto-pki-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
+&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
+&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>keyple-card-calypso-crypto-pki-java-lib&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>
+&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>0.2.0&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
@@ -496,7 +507,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keypop-calypso-crypto-legacysam-java-api">&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>org.eclipse.keypop&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">groupId&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>keypop-calypso-crypto-legacysam-java-api&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">artifactId&lt;/span>&amp;gt;&lt;/span>
-&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>0.5.0&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
+&lt;span class="hljs-tag">&amp;lt;&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>0.6.0&lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">version&lt;/span>&amp;gt;&lt;/span>
 &lt;span class="hljs-tag">&amp;lt;/&lt;span class="hljs-name">dependency&lt;/span>&amp;gt;&lt;/span>&lt;/span>
 &lt;/code>
 &lt;/pre>
@@ -532,7 +543,7 @@ as they only concern documentation updates.
 &lt;th colspan="4" class="bg-yellow">Core APIs&lt;/th>
 &lt;th colspan="3" class="bg-blue">Core libraries&lt;/th>
 &lt;th colspan="3" class="bg-purple">Distributed systems libraries&lt;/th>
-&lt;th colspan="3" class="bg-green">Card extensions libraries&lt;/th>
+&lt;th colspan="4" class="bg-green">Card extensions libraries&lt;/th>
 &lt;th colspan="5" class="bg-red">Standard reader plugins libraries&lt;/th>
 &lt;/tr>
 &lt;tr>
@@ -554,6 +565,7 @@ as they only concern documentation updates.
 &lt;th class="bg-purple">Remote&lt;br>Lib&lt;/th>
 &lt;th class="bg-green">Calypso Card&lt;br>Lib&lt;/th>
 &lt;th class="bg-green">Calypso Legacy SAM&lt;br>Lib&lt;/th>
+&lt;th class="bg-green">Calypso PKI&lt;br>Lib&lt;/th>
 &lt;th class="bg-green">Generic&lt;br>Lib&lt;/th>
 &lt;th class="bg-red">Android NFC&lt;br>Lib&lt;/th>
 &lt;th class="bg-red">Android OMAPI&lt;br>Lib&lt;/th>
