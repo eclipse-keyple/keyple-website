@@ -5022,7 +5022,7 @@ This allows the app to benefit from enhanced SE-based security services.&lt;/p>
 &lt;li>Direct &lt;a href="https://central.sonatype.dev/search?q=keyple-android-plugin-omapi" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Overview</title><link>https://keyple.org/what-is-keyple/overview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/what-is-keyple/overview/</guid><description>&lt;p>Coming from a rather closed technical environment, ticketing for transport is essentially based on proprietary solutions provided by manufacturers.
 However, in order for the concept of Mobility as a Service to become a reality, and at a reasonable cost, the ecosystem should, as far as possible,
-rely on open standards, APIs and SDKs as well as Open Source technologies. This openness has already been a reality for several years in the field
+rely on open standards, APIs and middlewares as well as Open Source technologies. This openness has already been a reality for several years in the field
 of passenger information and has enabled the explosion of rich and high-quality applications, thanks in particular to Open Data. Today, Eclipse
 Keyple is paving the way for ticketing to follow the same path, by making available for free the first fully Open Source API.&lt;/p>
 &lt;p>Eclipse Keyple® accelerates the integration and development of ticketing applications by enabling multimodal transport services, public transport
@@ -8354,7 +8354,7 @@ public static void main(String[] args) {
 &amp;ldquo;PO_READER_NAME&amp;rdquo; and &amp;ldquo;SAM_READER_NAME&amp;rdquo; with the name of the USB readers.&lt;/p>
 &lt;p>If you don&amp;rsquo;t know the names of the readers, read how to find them in the &lt;a href="#faq">FAQ&lt;/a>.&lt;/p>
 &lt;pre>&lt;code class="language-java">//...
-// Get the instance of the SmartCardService : main service of Keyple SDK
+// Get the instance of the SmartCardService : main service of Keyple middleware
 SmartCardService smartCardService = SmartCardService.getInstance();
 // Register the PcscPlugin within the SmartCardService to use PC/SC readers
 Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory());
@@ -8566,7 +8566,7 @@ import org.eclipse.keyple.core.util.ByteArrayUtil;
 import org.eclipse.keyple.plugin.pcsc.*;
 public class DemoPoAuthentication {
 public static void main(String[] args) {
-// Get the instance of the SmartCardService : main service of Keyple SDK
+// Get the instance of the SmartCardService : main service of Keyple middleware
 SmartCardService smartCardService = SmartCardService.getInstance();
 // Register a PcscPlugin within the SmartCardService to use PC/SC USB Readers
 Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, null));
@@ -8653,8 +8653,8 @@ Keyple could also be used to develop an application reading SmartCard content th
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="./media/archive-1.0/android-app/component/Android_App_Overview.png" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;p>As Keyple request low-level reader access, the key features of Keyple SDK relies on components called &lt;strong>Plugins&lt;/strong>. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer&amp;rsquo;s own custom SDKs.&lt;/p>
-&lt;p>This guide will describe how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso SmartCard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.&lt;/p>
+&lt;p>As Keyple request low-level reader access, the key features of Keyple middleware relies on components called &lt;strong>Plugins&lt;/strong>. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer&amp;rsquo;s own custom SDKs.&lt;/p>
+&lt;p>This guide will describe how to start a ticketing application using Keyple middleware and Android NFC plugin to read the content of a Calypso SmartCard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.&lt;/p>
 &lt;h3 id="what-to-we-need-for-this-guide">What to we need for this guide?&lt;/h3>
 &lt;ul>
 &lt;li>Retail Device with NFC powered by android.nfc library (integrated into standard Android SDK).&lt;/li>
@@ -11977,7 +11977,7 @@ Currently all the components of Eclipse Keyple® Java are following the same ver
 &lt;li>the guides of the different public API,&lt;/li>
 &lt;li>and a guide to manage the migration between the release 0.8.1 &amp;amp; 0.9.0.&lt;/li>
 &lt;/ul></description></item><item><title>First Meet Up Eclipse Keyple®</title><link>https://keyple.org/post/first-meetup-eclipse-keyple/</link><pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate><guid>https://keyple.org/post/first-meetup-eclipse-keyple/</guid><description>&lt;p>On October 17, 2019, we organized the first Meet Up Eclipse Keyple®!
-Great moments of exchanges around the first Open Source SDK for Ticketing with Benoît Boute,
+Great moments of exchanges around the first Open Source Middleware for Ticketing with Benoît Boute,
 Nicolas Generali, Pierre Terree, Hicham Elbizy, Benoist Laforge, Gaël Blondelle, Camille Moulin,
 Philippe Vappereau, Valentina Zajackowski. Many thanks to them for their interventions and also
 to Manon Chaix, Jean-Pierre Fortune, Olivier Delcroix, Ludovic Teixeira Costa and all the participants!&lt;/p>

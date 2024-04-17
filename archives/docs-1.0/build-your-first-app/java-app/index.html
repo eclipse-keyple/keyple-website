@@ -26,7 +26,7 @@
 <meta property="og:title" content="Build your first Java application | Eclipse Keyple">
 <meta property="og:description" content="This quick start describes how to create a ready-to-execute Java command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><meta property="og:image" content="https://keyple.org/media/logo.svg">
 <meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2023-12-22T17:52:48+01:00">
+<meta property="article:modified_time" content="2024-04-17T09:45:23+02:00">
 <title>Build your first Java application | Eclipse Keyple</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=aefeee413e530571f6cfb15359663de2>
@@ -371,7 +371,7 @@ public class DemoPoAuthentication  {
 &ldquo;PO_READER_NAME&rdquo; and &ldquo;SAM_READER_NAME&rdquo; with the name of the USB readers.</p>
 <p>If you don&rsquo;t know the names of the readers, read how to find them in the <a href=#faq>FAQ</a>.</p>
 <pre><code class=language-java>//...
-// Get the instance of the SmartCardService : main service of Keyple SDK
+// Get the instance of the SmartCardService : main service of Keyple middleware
 SmartCardService smartCardService = SmartCardService.getInstance();
 
 // Register the PcscPlugin within the SmartCardService to use PC/SC readers
@@ -625,7 +625,7 @@ import org.eclipse.keyple.plugin.pcsc.*;
 
 public class DemoPoAuthentication  {
     public static void main(String[] args) {
-        // Get the instance of the SmartCardService : main service of Keyple SDK
+        // Get the instance of the SmartCardService : main service of Keyple middleware
         SmartCardService smartCardService = SmartCardService.getInstance();
 
         // Register a PcscPlugin within the SmartCardService to use PC/SC USB Readers
@@ -737,7 +737,7 @@ public class DemoPoAuthentication  {
 </div>
 </div>
 <div class=body-footer>
-<p>Last updated on 2023-12-22</p>
+<p>Last updated on 2024-04-17</p>
 </div>
 </article>
 <footer class=site-footer>

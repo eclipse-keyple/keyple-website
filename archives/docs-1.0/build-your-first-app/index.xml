@@ -92,7 +92,7 @@ public static void main(String[] args) {
 &amp;ldquo;PO_READER_NAME&amp;rdquo; and &amp;ldquo;SAM_READER_NAME&amp;rdquo; with the name of the USB readers.&lt;/p>
 &lt;p>If you don&amp;rsquo;t know the names of the readers, read how to find them in the &lt;a href="#faq">FAQ&lt;/a>.&lt;/p>
 &lt;pre>&lt;code class="language-java">//...
-// Get the instance of the SmartCardService : main service of Keyple SDK
+// Get the instance of the SmartCardService : main service of Keyple middleware
 SmartCardService smartCardService = SmartCardService.getInstance();
 // Register the PcscPlugin within the SmartCardService to use PC/SC readers
 Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory());
@@ -304,7 +304,7 @@ import org.eclipse.keyple.core.util.ByteArrayUtil;
 import org.eclipse.keyple.plugin.pcsc.*;
 public class DemoPoAuthentication {
 public static void main(String[] args) {
-// Get the instance of the SmartCardService : main service of Keyple SDK
+// Get the instance of the SmartCardService : main service of Keyple middleware
 SmartCardService smartCardService = SmartCardService.getInstance();
 // Register a PcscPlugin within the SmartCardService to use PC/SC USB Readers
 Plugin plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, null));
@@ -391,8 +391,8 @@ Keyple could also be used to develop an application reading SmartCard content th
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../../media/archive-1.0/android-app/component/Android_App_Overview.png" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;p>As Keyple request low-level reader access, the key features of Keyple SDK relies on components called &lt;strong>Plugins&lt;/strong>. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer&amp;rsquo;s own custom SDKs.&lt;/p>
-&lt;p>This guide will describe how to start a ticketing application using Keyple SDK and Android NFC plugin to read the content of a Calypso SmartCard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.&lt;/p>
+&lt;p>As Keyple request low-level reader access, the key features of Keyple middleware relies on components called &lt;strong>Plugins&lt;/strong>. These are the plugins that allow access to the hardware functionality of the terminal by using the native Android SDK or the terminal manufacturer&amp;rsquo;s own custom SDKs.&lt;/p>
+&lt;p>This guide will describe how to start a ticketing application using Keyple middleware and Android NFC plugin to read the content of a Calypso SmartCard. As we want to focus on Keyple integration, the Android application architecture will remain the simplest as possible.&lt;/p>
 &lt;h3 id="what-to-we-need-for-this-guide">What to we need for this guide?&lt;/h3>
 &lt;ul>
 &lt;li>Retail Device with NFC powered by android.nfc library (integrated into standard Android SDK).&lt;/li>
