@@ -53,4 +53,4 @@ implementation 'org.eclipse.keyple:keyple-java-plugin-stub:{{% keyple-java-versi
 </dependency>
 ```
 
-* Direct [download](https://central.sonatype.dev/search?q=keyple-java-plugin-stub)
+* Direct [download](https://central.sonatype.com/search?q=keyple-java-plugin-stub)

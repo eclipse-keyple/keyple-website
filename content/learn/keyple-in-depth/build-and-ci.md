@@ -29,7 +29,7 @@ For API components (i.e. artifacts suffixed with `-api`), the incrementation of 
 
 Keyple continuous integration works with the [Jenkins server](https://ci.eclipse.org/keyple/job/Keyple/) of the Eclipse Foundation.
 
-The build process uses the home-made gradle plugin **Keyple Gradle** available directly from the [Maven Central Repository](https://central.sonatype.dev/search?q=keyple-gradle) and whose sources are available on [GitHub](https://github.com/eclipse-keyple/keyple-ops).
+The build process uses the home-made gradle plugin **Keyple Gradle** available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-gradle) and whose sources are available on [GitHub](https://github.com/eclipse-keyple/keyple-ops).
 
 The CI automates the following tasks (defined in the `Jenkinsfile` file):
 * verify the validity of the version;

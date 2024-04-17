@@ -36,7 +36,7 @@ At present, only the [Calypso Crypto Legacy SAM]({{< relref "keyple-card-calypso
 
 ### Download
 
-All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.dev/search?q=keyple-card-calypso-java-lib) or by using one of the project resource managers below:
+All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-card-calypso-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}

@@ -35,7 +35,7 @@ Therefore, it should be used only by application developers.
 
 ### Download
 
-All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.dev/search?q=keyple-card-calypso-crypto-legacysam-java-lib) or by using one of the project resource managers below:
+All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-card-calypso-crypto-legacysam-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}

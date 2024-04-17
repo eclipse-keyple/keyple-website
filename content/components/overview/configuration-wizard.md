@@ -35,6 +35,10 @@ What type of Keyple component are you working on?
   >    <input type="checkbox" id="cardCalypsoLegacySam" onclick="javascript:updateAppDependencies(1, this);">
   >    <label for="cardCalypsoLegacySam">Calypso Legacy SAM (required for secure card transactions)</label>
   >  </div>
+  >  <div>
+  >    <input type="checkbox" id="cardCalypsoPki" onclick="javascript:updateAppDependencies(1, this);">
+  >    <label for="cardCalypsoPki">Calypso PKI (required for PKI card transactions)</label>
+  >  </div>
 
 - Which reader plugin do you want to use?
   >  <div>
@@ -222,6 +226,7 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <span id="keyple-util-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}'</span></span>
 <span id="keyple-card-calypso-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-java-lib:{{% keyple-card-calypso-java-lib-version %}}'</span></span>
 <span id="keyple-card-calypso-crypto-legacysam-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:{{% keyple-card-calypso-crypto-legacysam-java-lib-version %}}'</span></span>
+<span id="keyple-card-calypso-crypto-pki-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:{{% keyple-card-calypso-crypto-pki-java-lib-version %}}'</span></span>
 <span id="keyple-card-generic-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-card-generic-java-lib:{{% keyple-card-generic-java-lib-version %}}'</span></span>
 <span id="keyple-distributed-local-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-distributed-local-java-lib:{{% keyple-distributed-local-java-lib-version %}}'</span></span>
 <span id="keyple-distributed-network-java-lib">implementation <span class="hljs-string">'org.eclipse.keyple:keyple-distributed-network-java-lib:{{% keyple-distributed-network-java-lib-version %}}'</span></span>
@@ -245,6 +250,7 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <span id="keyple-util-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}"</span>)</span>
 <span id="keyple-card-calypso-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-java-lib:{{% keyple-card-calypso-java-lib-version %}}"</span>)</span>
 <span id="keyple-card-calypso-crypto-legacysam-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:{{% keyple-card-calypso-crypto-legacysam-java-lib-version %}}"</span>)</span>
+<span id="keyple-card-calypso-crypto-pki-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:{{% keyple-card-calypso-crypto-pki-java-lib-version %}}"</span>)</span>
 <span id="keyple-card-generic-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-card-generic-java-lib:{{% keyple-card-generic-java-lib-version %}}"</span>)</span>
 <span id="keyple-distributed-local-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-distributed-local-java-lib:{{% keyple-distributed-local-java-lib-version %}}"</span>)</span>
 <span id="keyple-distributed-network-java-lib">implementation(<span class="hljs-string">"org.eclipse.keyple:keyple-distributed-network-java-lib:{{% keyple-distributed-network-java-lib-version %}}"</span>)</span>
@@ -292,6 +298,11 @@ implementation("org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keyple-card-calypso-crypto-legacysam-java-lib<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keyple-card-calypso-crypto-legacysam-java-lib-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
+<span id="keyple-card-calypso-crypto-pki-java-lib"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>keyple-card-calypso-crypto-pki-java-lib<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>{{% keyple-card-calypso-crypto-pki-java-lib-version %}}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span>
 <span id="keyple-card-generic-java-lib"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.eclipse.keyple<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>

@@ -57,4 +57,4 @@ implementation 'org.eclipse.keyple:keyple-java-distributed-remote:{{% keyple-jav
 </dependency>
 ```
 
-* Direct [download](https://central.sonatype.dev/search?q=keyple-java-distributed-remote)
+* Direct [download](https://central.sonatype.com/search?q=keyple-java-distributed-remote)

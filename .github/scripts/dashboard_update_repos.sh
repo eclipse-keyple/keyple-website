@@ -12,6 +12,8 @@ echo "[" >> dashboard/repository_list.json
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-card-calypso-crypto-legacysam-java-lib main true true
 echo "," >> dashboard/repository_list.json
+../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-card-calypso-crypto-pki-java-lib main true true
+echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-card-generic-java-lib main true true
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-common-java-api main true true

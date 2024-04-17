@@ -57,4 +57,4 @@ implementation 'org.eclipse.keyple:keyple-java-distributed-local:{{% keyple-java
 </dependency>
 ```
 
-* Direct [download](https://central.sonatype.dev/search?q=keyple-java-distributed-local)
+* Direct [download](https://central.sonatype.com/search?q=keyple-java-distributed-local)
