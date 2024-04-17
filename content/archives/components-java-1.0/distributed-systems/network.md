@@ -55,4 +55,4 @@ implementation 'org.eclipse.keyple:keyple-java-distributed-network:{{% keyple-ja
 </dependency>
 ```
 
-* Direct [download](https://central.sonatype.dev/search?q=keyple-java-distributed-network)
+* Direct [download](https://central.sonatype.com/search?q=keyple-java-distributed-network)

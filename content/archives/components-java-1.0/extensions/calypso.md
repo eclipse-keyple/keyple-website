@@ -53,4 +53,4 @@ implementation 'org.eclipse.keyple:keyple-java-calypso:{{% keyple-java-version %
 </dependency>
 ```
 
-* Direct [download](https://central.sonatype.dev/search?q=keyple-java-calypso)
+* Direct [download](https://central.sonatype.com/search?q=keyple-java-calypso)

@@ -27,6 +27,7 @@ const ComponentName = {
     DISTRIBUTED_REMOTE_LIB: "distributedRemoteLib",
     CALYPSO_CARD_LIB: "calypsoCardLib",
     CALYPSO_LEGACY_SAM_LIB: "calypsoLegacySamLib",
+    CALYPSO_PKI_LIB: "calypsoPkiLib",
     GENERIC_LIB: "genericLib",
     PLUGIN_ANDROID_NFC_LIB: "pluginAndroidNfcLib",
     PLUGIN_ANDROID_OMAPI_LIB: "pluginAndroidOmapiLib",
@@ -53,6 +54,7 @@ const componentNames = [
     ComponentName.DISTRIBUTED_REMOTE_LIB,
     ComponentName.CALYPSO_CARD_LIB,
     ComponentName.CALYPSO_LEGACY_SAM_LIB,
+    ComponentName.CALYPSO_PKI_LIB,
     ComponentName.GENERIC_LIB,
     ComponentName.PLUGIN_ANDROID_NFC_LIB,
     ComponentName.PLUGIN_ANDROID_OMAPI_LIB,
@@ -74,6 +76,13 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.CALYPSO_PKI_LIB, "0.2.0")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.6.+"),
+    new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "0.7.0")
+));
+releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.CARD_API, "2.0.1+"),
     new Release(ComponentName.CALYPSO_API, "2.1.+"),
     new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.5.+"),
@@ -87,6 +96,7 @@ releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.DISTRIBUTED_REMOTE_LIB, "2.3.1"),
     new Release(ComponentName.CALYPSO_CARD_LIB, "3.1.1"),
     new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "0.6.0"),
+    new Release(ComponentName.CALYPSO_PKI_LIB, "0.1.0"),
     new Release(ComponentName.GENERIC_LIB, "3.0.1"),
     new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "2.2.0"),
     new Release(ComponentName.PLUGIN_ANDROID_OMAPI_LIB, "2.1.0"),
@@ -389,6 +399,9 @@ computeAppContent = function(language) {
     }
     if (appDependencies.has("cardCalypsoLegacySam")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-card-calypso-crypto-legacysam-java-lib').html();
+    }
+    if (appDependencies.has("cardCalypsoPki")) {
+        contentHtml += "\n" + $(tagPrefix+'keyple-card-calypso-crypto-pki-java-lib').html();
     }
     if (appDependencies.has("pluginAndroidNfc")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-plugin-android-nfc-java-lib').html();

@@ -34,7 +34,7 @@ The third version number (x.y.**z**) only concerns updates of the public API doc
 
 ### Download
 
-All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.dev/search?q=keyple-plugin-java-api) or by using one of the project resource managers below:
+All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-plugin-java-api) or by using one of the project resource managers below:
 
 {{< tabpane >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}

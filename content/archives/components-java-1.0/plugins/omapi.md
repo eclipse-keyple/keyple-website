@@ -56,4 +56,4 @@ implementation 'org.eclipse.keyple:keyple-android-plugin-omapi:{{% keyple-java-v
 </dependency>
 ```
 
-* Direct [download](https://central.sonatype.dev/search?q=keyple-android-plugin-omapi)
+* Direct [download](https://central.sonatype.com/search?q=keyple-android-plugin-omapi)

@@ -31,7 +31,7 @@ It is compatible with **Windows**, **Linux**, **macOS** and **Android** platform
 
 ### Download
 
-All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.dev/search?q=keyple-plugin-stub-java-lib) or by using one of the project resource managers below:
+All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-plugin-stub-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
 {{< tab header="Gradle Groovy" lang="gradle" >}}

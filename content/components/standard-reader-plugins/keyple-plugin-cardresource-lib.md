@@ -41,7 +41,7 @@ inserted in a dedicated PC/SC reader.
 ### Download
 
 All deliverables are available directly from the 
-[Maven Central Repository](https://central.sonatype.dev/search?q=keyple-plugin-cardresource-java-lib) or by using one 
+[Maven Central Repository](https://central.sonatype.com/search?q=keyple-plugin-cardresource-java-lib) or by using one 
 of the project resource managers below:
 
 {{< tabpane >}}
