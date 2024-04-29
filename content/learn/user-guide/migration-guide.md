@@ -373,8 +373,9 @@ Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder
 ((ObservableCardReader) reader).addObserver(new CardReaderObserver());
 {{< /code >}}
 
-{{% callout note %}}
-Exception handlers are no longer required when registering the plugin but only when starting the observation.
+<br>
+
+{{% callout note %}}Exception handlers are no longer required when registering the plugin but only when starting the observation.
 {{% /callout %}}
 
 #### Use of a new interface dedicated to the management of protocols
@@ -433,8 +434,9 @@ CardSelectionsService cardSelectionsService = new CardSelectionsService();
 CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();
 {{< /code >}}
 
-{{% callout note %}}
-A new instance of the card selection manager is provided by the smart card service.
+<br>
+
+{{% callout note %}}A new instance of the card selection manager is provided by the smart card service.
 {{% /callout %}}
 
 #### Use of a card extension to create a card selection
@@ -477,8 +479,9 @@ CardSelectionsResult selectionResult = cardSelectionsService.processExplicitSele
 CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);
 {{< /code >}}
 
-{{% callout note %}}
-Note the removal of the "s" in `CardSelectionResult`.
+<br>
+
+{{% callout note %}}Note the removal of the "s" in `CardSelectionResult`.
 {{% /callout %}}
 
 #### Scheduled card selection
@@ -505,8 +508,9 @@ cardSelectionManager.scheduleCardSelectionScenario(
 ((ObservableCardReader) reader).addObserver(new CardReaderObserver());
 {{< /code >}}
 
-{{% callout note %}}
-The selection data is no longer provided to the observable reader but to the selection manager.
+<br>
+
+{{% callout note %}}The selection data is no longer provided to the observable reader but to the selection manager.
 It is the observable reader that is provided to the selection manager.
 {{% /callout %}}
 
@@ -530,8 +534,9 @@ SmartCard smartCard =
         .getActiveSmartCard();
 {{< /code >}}
 
-{{% callout note %}}
-`AbstractSmartCard` was changed to the `SmartCard` interface.
+<br>
+
+{{% callout note %}}`AbstractSmartCard` was changed to the `SmartCard` interface.
 {{% /callout %}}
 
 ### Calypso Card Extension
@@ -601,8 +606,9 @@ plugin.setPluginObservationExceptionHandler(new ExceptionHandlerImpl());
 plugin.addObserver(new RemotePluginServerObserver());
 {{< /code >}}
 
-{{% callout note %}}
-- You have to specify the name of the plugin.
+<br>
+
+{{% callout note %}}- You have to specify the name of the plugin.
 - It is no longer necessary to provide a thread pool.
 - The exception handler must be provided as for any observable plugin before adding an observer.
 {{% /callout %}}
@@ -633,8 +639,9 @@ LocalServiceClientFactory factory =
 SmartCardServiceProvider.getService().registerDistributedLocalService(factory);
 {{< /code >}}
 
-{{% callout note %}}
-- You have to specify the name of the local service.
+<br>
+
+{{% callout note %}}- You have to specify the name of the local service.
 - The local service must be registered with the smart card service.
 - It behaves like a plugin or reader and also provides an extension to access specific settings.
 {{% /callout %}}

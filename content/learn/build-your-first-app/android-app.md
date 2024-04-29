@@ -43,7 +43,7 @@ The dependencies to be imported into the project are accessible with the [config
 
 Depending on the nature of the hardware resources required, it is necessary to declare certain permissions in the project manifest file.
 In the case of the Android NFC example, access to NFC functions is declared as follows:
-{{< code lang="xml" >}}
+{{< code lang="xml" copy="true">}}
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     ...
     <uses-permission android:name="android.permission.NFC" />

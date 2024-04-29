@@ -1,11 +1,10 @@
 # Configuration of Hugo
-# Guide: https://wowchemy.com/docs/getting-started/
+# Guide: https://docs.hugoblox.com/tutorial/
 # Hugo Documentation: https://gohugo.io/getting-started/configuration/#all-configuration-settings
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: Eclipse Keyple # Website name
 baseurl: 'https://keyple.org/' # Website URL
-copyright: '&copy; 2020-{year} The Eclipse Keyple® project. All Rights Reserved.'
 relativeURLs: true
 canonifyURLs: true
 
@@ -19,15 +18,6 @@ defaultContentLanguageInSubdir: false
 removePathAccents: true
 
 ############################
-## MODULES
-############################
-
-module:
-  imports:
-    - path: github.com/wowchemy/wowchemy-hugo-modules/wowchemy-cms/v5
-    - path: github.com/wowchemy/wowchemy-hugo-modules/wowchemy/v5
-
-############################
 ## ADVANCED
 ############################
 
@@ -39,7 +29,7 @@ enableRobotsTXT: true
 footnotereturnlinkcontents: <sup>^</sup>
 ignoreFiles: [\.ipynb$, .ipynb_checkpoints$, \.Rmd$, \.Rmarkdown$, _cache$]
 permalinks:
-  event: '/talk/:slug/'
+  authors: '/author/:slug/'
   tags: '/tag/:slug/'
   categories: '/category/:slug/'
   publication_types: '/publication-type/:slug/'
@@ -68,10 +58,7 @@ related:
       weight: 100
     - name: categories
       weight: 70
-staticDir:
-  - static
 security:
-  funcs:
-    getenv:
-      - ^HUGO_
-      - ^WC_
+  _merge: deep
+sitemap:
+  _merge: deep

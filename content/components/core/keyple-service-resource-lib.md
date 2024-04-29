@@ -33,16 +33,23 @@ Therefore, it can be used by developers of applications or card extensions.
 All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-service-resource-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
-{{< tab header="Gradle Groovy" lang="gradle" >}}
+{{< tab header="Gradle Groovy" >}}
+{{< code lang="gradle" copy="true">}}
 implementation 'org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-service-resource-java-lib-version %}}'
+{{< /code>}}
 {{< /tab >}}
-{{< tab header="Gradle Kotlin" lang="kotlin" >}}
-implementation("org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-service-resource-java-lib-version %}}"){{< /tab >}}
-{{< tab header="Maven" lang="xml" >}}
+{{< tab header="Gradle Kotlin" >}}
+{{< code lang="kotlin" copy="true">}}
+implementation("org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-service-resource-java-lib-version %}}")
+{{< /code>}}
+{{< /tab >}}
+{{< tab header="Maven" >}}
+{{< code lang="xml" copy="true">}}
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-service-resource-java-lib</artifactId>
   <version>{{% keyple-service-resource-java-lib-version %}}</version>
 </dependency>
+{{< /code>}}
 {{< /tab >}}
 {{< /tabpane >}}

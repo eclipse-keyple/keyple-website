@@ -32,7 +32,7 @@
     {{- $entryid := printf "tabs-%v-%v" $ref $index | anchorize -}}
     <div class="tab-pane fade{{ if eq $index "0" }} show active{{ end }}"
         id="{{ $entryid }}" role="tabpanel" aria-labelled-by="{{ $tabid }}">
-      <pre><code class="language-{{ $element.language }}">{{ replaceRE "&#43;" "+" $element.content }}</code></pre>
+      {{ $element.content }}
     </div>
   {{ end }}
 </div>
