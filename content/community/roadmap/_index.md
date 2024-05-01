@@ -74,7 +74,7 @@ e.g. the smart card readers of a terminal without Keyple software can be remotel
     <li>Binary files' access for read, write, & update,</li>
     <li>Read Record Multiple, Search Record Multiple, Increase Multiple & Decrease Multiple</li>
     <li>Pre-personalization : possibility to personalized keyset with Change Key</li></ul>
-    </ul></li></td>
+    </ul></td>
   </tr>
 </tbody>
 </table>
