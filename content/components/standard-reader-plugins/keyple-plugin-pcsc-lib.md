@@ -34,14 +34,14 @@ It is compatible with **PC/SC Reader** (Windows PC/SC WinScard API, Unix PC/SC l
 All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-plugin-pcsc-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin-pcsc-java-lib-version %}}'
-{{< /code>}}
-{{< /tab >}}
 {{< tab header="Gradle Kotlin" >}}
 {{< code lang="kotlin" copy="true">}}
 implementation("org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin-pcsc-java-lib-version %}}")
+{{< /code>}}
+{{< /tab >}}
+{{< tab header="Gradle Groovy" >}}
+{{< code lang="gradle" copy="true">}}
+implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin-pcsc-java-lib-version %}}'
 {{< /code>}}
 {{< /tab >}}
 {{< tab header="Maven" >}}

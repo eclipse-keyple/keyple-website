@@ -35,14 +35,14 @@ It is compatible with **Windows**, **Linux**, **macOS** and **Android** platform
 All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-distributed-local-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation 'org.eclipse.keyple:keyple-distributed-local-java-lib:{{% keyple-distributed-local-java-lib-version %}}'
-{{< /code>}}
-{{< /tab >}}
 {{< tab header="Gradle Kotlin" >}}
 {{< code lang="kotlin" copy="true">}}
 implementation("org.eclipse.keyple:keyple-distributed-local-java-lib:{{% keyple-distributed-local-java-lib-version %}}")
+{{< /code>}}
+{{< /tab >}}
+{{< tab header="Gradle Groovy" >}}
+{{< code lang="gradle" copy="true">}}
+implementation 'org.eclipse.keyple:keyple-distributed-local-java-lib:{{% keyple-distributed-local-java-lib-version %}}'
 {{< /code>}}
 {{< /tab >}}
 {{< tab header="Maven" >}}

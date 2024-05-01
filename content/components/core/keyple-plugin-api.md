@@ -37,14 +37,14 @@ The third version number (x.y.**z**) only concerns updates of the public API doc
 All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-plugin-java-api) or by using one of the project resource managers below:
 
 {{< tabpane >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation 'org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}'
-{{< /code>}}
-{{< /tab >}}
 {{< tab header="Gradle Kotlin" >}}
 {{< code lang="kotlin" copy="true">}}
 implementation("org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}")
+{{< /code>}}
+{{< /tab >}}
+{{< tab header="Gradle Groovy" >}}
+{{< code lang="gradle" copy="true">}}
+implementation 'org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}'
 {{< /code>}}
 {{< /tab >}}
 {{< tab header="Maven" >}}

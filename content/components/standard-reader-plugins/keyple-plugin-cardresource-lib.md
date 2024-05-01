@@ -45,14 +45,14 @@ All deliverables are available directly from the
 of the project resource managers below:
 
 {{< tabpane >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation 'org.eclipse.keyple:keyple-plugin-cardresource-java-lib:{{% keyple-plugin-cardresource-java-lib-version %}}'
-{{< /code>}}
-{{< /tab >}}
 {{< tab header="Gradle Kotlin" >}}
 {{< code lang="kotlin" copy="true">}}
 implementation("org.eclipse.keyple:keyple-plugin-cardresource-java-lib:{{% keyple-plugin-cardresource-java-lib-version %}}")
+{{< /code>}}
+{{< /tab >}}
+{{< tab header="Gradle Groovy" >}}
+{{< code lang="gradle" copy="true">}}
+implementation 'org.eclipse.keyple:keyple-plugin-cardresource-java-lib:{{% keyple-plugin-cardresource-java-lib-version %}}'
 {{< /code>}}
 {{< /tab >}}
 {{< tab header="Maven" >}}
