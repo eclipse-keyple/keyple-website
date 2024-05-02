@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Standard reader plugins components | Eclipse Keyple</title><link>https://keyple.org/components/standard-reader-plugins/</link><atom:link href="https://keyple.org/components/standard-reader-plugins/index.xml" rel="self" type="application/rss+xml"/><description>Standard reader plugins components</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2024 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Standard reader plugins components</title><link>https://keyple.org/components/standard-reader-plugins/</link></image><item><title>Keyple Plugin Android NFC Library</title><link>https://keyple.org/components/standard-reader-plugins/keyple-plugin-android-nfc-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/standard-reader-plugins/keyple-plugin-android-nfc-lib/</guid><description>&lt;br>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Standard reader plugins components | Eclipse Keyple</title><link>https://keyple.org/components/standard-reader-plugins/</link><atom:link href="https://keyple.org/components/standard-reader-plugins/index.xml" rel="self" type="application/rss+xml"/><description>Standard reader plugins components</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://keyple.org/media/logo.svg</url><title>Standard reader plugins components</title><link>https://keyple.org/components/standard-reader-plugins/</link></image><item><title>Keyple Plugin Android NFC Library</title><link>https://keyple.org/components/standard-reader-plugins/keyple-plugin-android-nfc-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/standard-reader-plugins/keyple-plugin-android-nfc-lib/</guid><description>&lt;br>
 &lt;p>The &lt;strong>Keyple Plugin Android NFC Library&lt;/strong> is an add-on to manage &lt;strong>Android NFC&lt;/strong> readers.&lt;/p>
 &lt;p>Therefore, it should be used only by application developers.&lt;/p>
 &lt;p>It is compatible with &lt;strong>Android 4.4 minimum&lt;/strong>.&lt;/p>
@@ -10,9 +10,9 @@
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/">GitHub&lt;/a>&lt;/span>
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/span>
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
 &lt;/div>
 &lt;/div>
 &lt;h3 id="documentation">Documentation&lt;/h3>
@@ -22,16 +22,16 @@
 &lt;h3 id="download">Download&lt;/h3>
 &lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-plugin-android-nfc-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
 &lt;ul class="nav nav-tabs" id="tabs-1" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Gradle-Groovy"
-id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
 aria-controls="tabs-1-0" aria-selected="true">
-Gradle Groovy
+Gradle Kotlin
 &lt;/a>
 &lt;/li>&lt;li class="nav-item">
-&lt;a class="nav-link tab-Gradle-Kotlin"
-id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
 aria-controls="tabs-1-1" aria-selected="false">
-Gradle Kotlin
+Gradle Groovy
 &lt;/a>
 &lt;/li>&lt;li class="nav-item">
 &lt;a class="nav-link tab-Maven"
@@ -43,19 +43,28 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-1', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-1-content">&lt;div class="tab-pane fade show active"
 id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab">
-&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.2.0&amp;#39;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.2.0&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab">
-&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.2.0&amp;#34;)&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.2.0&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
-&lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;keyple-plugin-android-nfc-java-lib&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.2.0&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-android-nfc-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.2.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Plugin Android OMAPI Library</title><link>https://keyple.org/components/standard-reader-plugins/keyple-plugin-android-omapi-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/standard-reader-plugins/keyple-plugin-android-omapi-lib/</guid><description>&lt;br>
 &lt;p>The &lt;strong>Keyple Plugin Android OMAPI Library&lt;/strong> is an add-on to manage &lt;strong>Android OMAPI&lt;/strong> readers.&lt;/p>
@@ -71,9 +80,9 @@ This allows the app to benefit from enhanced SE-based security services.&lt;/p>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-omapi-java-lib/">GitHub&lt;/a>&lt;/span>
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-omapi-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-omapi-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/span>
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-omapi-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
 &lt;/div>
 &lt;/div>
 &lt;h3 id="documentation">Documentation&lt;/h3>
@@ -83,16 +92,16 @@ This allows the app to benefit from enhanced SE-based security services.&lt;/p>
 &lt;h3 id="download">Download&lt;/h3>
 &lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-plugin-android-omapi-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
 &lt;ul class="nav nav-tabs" id="tabs-1" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Gradle-Groovy"
-id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
 aria-controls="tabs-1-0" aria-selected="true">
-Gradle Groovy
+Gradle Kotlin
 &lt;/a>
 &lt;/li>&lt;li class="nav-item">
-&lt;a class="nav-link tab-Gradle-Kotlin"
-id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
 aria-controls="tabs-1-1" aria-selected="false">
-Gradle Kotlin
+Gradle Groovy
 &lt;/a>
 &lt;/li>&lt;li class="nav-item">
 &lt;a class="nav-link tab-Maven"
@@ -104,19 +113,28 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-1', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-1-content">&lt;div class="tab-pane fade show active"
 id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab">
-&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.1.0&amp;#39;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.1.0&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab">
-&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.1.0&amp;#34;)&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.1.0&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
-&lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;keyple-plugin-android-omapi-java-lib&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.1.0&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-android-omapi-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.1.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Plugin Card Resource Library</title><link>https://keyple.org/components/standard-reader-plugins/keyple-plugin-cardresource-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/standard-reader-plugins/keyple-plugin-cardresource-lib/</guid><description>&lt;br>
 &lt;p>The &lt;strong>Keyple Plugin Card Resource Library&lt;/strong> is a &lt;strong>PoolPlugin&lt;/strong> to manage readers provided by the
@@ -137,10 +155,10 @@ inserted in a dedicated PC/SC reader.&lt;/p>
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-plugin-cardresource-java-lib/">GitHub&lt;/a>&lt;/span>
+&lt;a href="https://github.com/eclipse-keyple/keyple-plugin-cardresource-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-plugin-cardresource-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/span>
+&lt;a href="https://github.com/eclipse-keyple/keyple-plugin-cardresource-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
 &lt;/div>
 &lt;/div>
 &lt;h3 id="documentation">Documentation&lt;/h3>
@@ -152,16 +170,16 @@ inserted in a dedicated PC/SC reader.&lt;/p>
 &lt;a href="https://central.sonatype.com/search?q=keyple-plugin-cardresource-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one
 of the project resource managers below:&lt;/p>
 &lt;ul class="nav nav-tabs" id="tabs-2" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Gradle-Groovy"
-id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
 aria-controls="tabs-2-0" aria-selected="true">
-Gradle Groovy
+Gradle Kotlin
 &lt;/a>
 &lt;/li>&lt;li class="nav-item">
-&lt;a class="nav-link tab-Gradle-Kotlin"
-id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
 aria-controls="tabs-2-1" aria-selected="false">
-Gradle Kotlin
+Gradle Groovy
 &lt;/a>
 &lt;/li>&lt;li class="nav-item">
 &lt;a class="nav-link tab-Maven"
@@ -173,19 +191,28 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
 id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
-&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.1&amp;#39;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.1&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
-&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.1&amp;#34;)&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.1&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
-&lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;keyple-plugin-cardresource-java-lib&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.0.1&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-cardresource-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.0.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Plugin PC/SC Library</title><link>https://keyple.org/components/standard-reader-plugins/keyple-plugin-pcsc-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/standard-reader-plugins/keyple-plugin-pcsc-lib/</guid><description>&lt;br>
 &lt;p>The &lt;strong>Keyple Plugin PC/SC Library&lt;/strong> is an add-on to manage &lt;strong>PC/SC&lt;/strong> readers.&lt;/p>
@@ -199,9 +226,9 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/">GitHub&lt;/a>&lt;/span>
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/span>
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
 &lt;/div>
 &lt;/div>
 &lt;h3 id="documentation">Documentation&lt;/h3>
@@ -211,16 +238,16 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;h3 id="download">Download&lt;/h3>
 &lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-plugin-pcsc-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
 &lt;ul class="nav nav-tabs" id="tabs-1" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Gradle-Groovy"
-id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
 aria-controls="tabs-1-0" aria-selected="true">
-Gradle Groovy
+Gradle Kotlin
 &lt;/a>
 &lt;/li>&lt;li class="nav-item">
-&lt;a class="nav-link tab-Gradle-Kotlin"
-id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
 aria-controls="tabs-1-1" aria-selected="false">
-Gradle Kotlin
+Gradle Groovy
 &lt;/a>
 &lt;/li>&lt;li class="nav-item">
 &lt;a class="nav-link tab-Maven"
@@ -232,19 +259,28 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-1', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-1-content">&lt;div class="tab-pane fade show active"
 id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab">
-&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.2.1&amp;#39;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.2.1&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab">
-&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.2.1&amp;#34;)&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.2.1&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
-&lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;keyple-plugin-pcsc-java-lib&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.2.1&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-pcsc-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.2.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;/div></description></item><item><title>Keyple Plugin Stub Library</title><link>https://keyple.org/components/standard-reader-plugins/keyple-plugin-stub-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/standard-reader-plugins/keyple-plugin-stub-lib/</guid><description>&lt;br>
 &lt;p>The &lt;strong>Keyple Plugin Stub Library&lt;/strong> is an add-on to manage &lt;strong>virtual&lt;/strong> readers and cards.&lt;/p>
@@ -258,9 +294,9 @@ id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-stub-java-lib/">GitHub&lt;/a>&lt;/span>
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-stub-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-stub-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/span>
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-stub-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
 &lt;/div>
 &lt;/div>
 &lt;h3 id="documentation">Documentation&lt;/h3>
@@ -270,16 +306,16 @@ id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
 &lt;h3 id="download">Download&lt;/h3>
 &lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-plugin-stub-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
 &lt;ul class="nav nav-tabs" id="tabs-1" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Gradle-Groovy"
-id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
 aria-controls="tabs-1-0" aria-selected="true">
-Gradle Groovy
+Gradle Kotlin
 &lt;/a>
 &lt;/li>&lt;li class="nav-item">
-&lt;a class="nav-link tab-Gradle-Kotlin"
-id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
 aria-controls="tabs-1-1" aria-selected="false">
-Gradle Kotlin
+Gradle Groovy
 &lt;/a>
 &lt;/li>&lt;li class="nav-item">
 &lt;a class="nav-link tab-Maven"
@@ -291,18 +327,27 @@ Maven
 &lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-1', this);">Copy&lt;/button>&lt;/div>
 &lt;div class="tab-content" id="tabs-1-content">&lt;div class="tab-pane fade show active"
 id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab">
-&lt;pre>&lt;code class="language-gradle">implementation &amp;#39;org.eclipse.keyple:keyple-plugin-stub-java-lib:2.2.1&amp;#39;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-plugin-stub-java-lib:2.2.1&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab">
-&lt;pre>&lt;code class="language-kotlin">implementation(&amp;#34;org.eclipse.keyple:keyple-plugin-stub-java-lib:2.2.1&amp;#34;)&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-plugin-stub-java-lib:2.2.1&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
-&lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;keyple-plugin-stub-java-lib&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.2.1&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-stub-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.2.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;/div></description></item></channel></rss>

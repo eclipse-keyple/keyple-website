@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Developer guides | Eclipse Keyple</title><link>https://keyple.org/archives/docs-1.0/developer-guide/</link><atom:link href="https://keyple.org/archives/docs-1.0/developer-guide/index.xml" rel="self" type="application/rss+xml"/><description>Developer guides</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2024 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Developer guides</title><link>https://keyple.org/archives/docs-1.0/developer-guide/</link></image><item><title>Common concepts</title><link>https://keyple.org/archives/docs-1.0/developer-guide/common-concepts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/docs-1.0/developer-guide/common-concepts/</guid><description>&lt;div class="alert alert-warning">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Developer guides | Eclipse Keyple</title><link>https://keyple.org/archives/docs-1.0/developer-guide/</link><atom:link href="https://keyple.org/archives/docs-1.0/developer-guide/index.xml" rel="self" type="application/rss+xml"/><description>Developer guides</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://keyple.org/media/logo.svg</url><title>Developer guides</title><link>https://keyple.org/archives/docs-1.0/developer-guide/</link></image><item><title>Common concepts</title><link>https://keyple.org/archives/docs-1.0/developer-guide/common-concepts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/docs-1.0/developer-guide/common-concepts/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -68,7 +68,8 @@ components:
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="archive-1.0/standalone-application/component/Local_Application_Components_Overview.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>&lt;/p>
+&lt;/div>&lt;/figure>
+&lt;/p>
 &lt;br>
 &lt;h2 id="before-you-start">Before you start&lt;/h2>
 &lt;ol>
@@ -95,10 +96,9 @@ application.&lt;/p>
 &lt;p>The purpose of this section is to guide you in its use.&lt;/p>
 &lt;h3 id="creation-of-the-smart-card-service">Creation of the Smart Card Service&lt;/h3>
 &lt;p>This is the very first step in the realization of a Keyple application:&lt;/p>
-&lt;pre>&lt;code class="language-java">/* Get the instance of the SmartCardService */
-SmartCardService smartCardService = SmartCardService.getInstance();
-&lt;/code>&lt;/pre>
-&lt;p>The Smart Card Service is based on the SmartCardService object, which is
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="cm">/* Get the instance of the SmartCardService */&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">SmartCardService&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">smartCardService&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">SmartCardService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getInstance&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The Smart Card Service is based on the SmartCardService object, which is
 a singleton that must be held by the application all along its
 execution.&lt;/p>
 &lt;p>Its main role is to centralize Keyple resources and manage their
@@ -122,10 +122,9 @@ plugin.
 &lt;p>All Keyple plugins implement the &lt;code>Plugin&lt;/code> interface.&lt;/p>
 &lt;p>The plugin registration consists in submitting its factory to the Smart
 Card Service.&lt;/p>
-&lt;pre>&lt;code class="language-java">/* Assign the PcscPlugin to the SmartCardService */
-plugin = smartCardService.registerPlugin(new PcscPluginFactory(null, readerExceptionHandlerImpl));
-&lt;/code>&lt;/pre>
-&lt;div class="alert alert-note">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="cm">/* Assign the PcscPlugin to the SmartCardService */&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">plugin&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">smartCardService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">registerPlugin&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PcscPluginFactory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kc">null&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">readerExceptionHandlerImpl&lt;/span>&lt;span class="p">));&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="alert alert-note">
 &lt;div>
 &lt;p>The plugin factories all implement the interface expected by
 SmartCardService.&lt;/p>
@@ -149,48 +148,48 @@ through a background task managed by &lt;strong>Keyple Core&lt;/strong>.&lt;/p>
 during monitoring or event notification.&lt;/p>
 &lt;p>Here is an example of exception handler implementation in a PC/SC plugin
 context:&lt;/p>
-&lt;pre>&lt;code class="language-java">...
-private static class PluginExceptionHandlerImpl implements PluginObservationExceptionHandler {
-@Override
-public void onPluginObservationError(String pluginName, Throwable throwable) {
-logger.error(&amp;quot;An unexpected plugin error occurred: {}&amp;quot;, pluginName, throwable);
-}
-}
-}
-/* Create an exception handler for plugin observation */
-PluginExceptionHandlerImpl pluginExceptionHandlerImpl = new ExceptionHandlerImpl();
-/* Assign the PcscPlugin to the SmartCardService */
-plugin = smartCardService.registerPlugin(new PcscPluginFactory(pluginExceptionHandlerImpl, null));
-...
-&lt;/code>&lt;/pre>
-&lt;p>For the observation of the plugin itself, the application must provide
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">private&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">static&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">class&lt;/span> &lt;span class="nc">PluginExceptionHandlerImpl&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">implements&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PluginObservationExceptionHandler&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nd">@Override&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">onPluginObservationError&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">pluginName&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Throwable&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">throwable&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">error&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;An unexpected plugin error occurred: {}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">pluginName&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">throwable&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="cm">/* Create an exception handler for plugin observation */&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">PluginExceptionHandlerImpl&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">pluginExceptionHandlerImpl&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ExceptionHandlerImpl&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="cm">/* Assign the PcscPlugin to the SmartCardService */&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">plugin&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">smartCardService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">registerPlugin&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PcscPluginFactory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pluginExceptionHandlerImpl&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">null&lt;/span>&lt;span class="p">));&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>For the observation of the plugin itself, the application must provide
 an object implementing the &lt;code>PluginObserver&lt;/code> interface to the plugin
 after having cast it in &lt;code>ObservablePlugin&lt;/code>.&lt;/p>
-&lt;pre>&lt;code class="language-java">((ObservablePlugin) plugin).addObserver(new PluginObserver());
-&lt;/code>&lt;/pre>
-&lt;p>The &lt;code>PluginObserver&lt;/code> interface requires the implementation of the
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="p">((&lt;/span>&lt;span class="n">ObservablePlugin&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">plugin&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="na">addObserver&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PluginObserver&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>PluginObserver&lt;/code> interface requires the implementation of the
 &lt;code>update&lt;/code> method that will be called by Keyple Core when notifying
 plugin events.&lt;/p>
-&lt;pre>&lt;code class="language-java">class PluginObserver implements ObservablePlugin.PluginObserver {
-@Override
-public void update(PluginEvent event) {
-switch (event.getEventType()) {
-case READER_CONNECTED:
-// here the processing to be done when a reader is connected
-...
-break;
-case READER_DISCONNECTED:
-// here the processing to be done when a reader is disconnected
-...
-break;
-default:
-break;
-}
-}
-}
-}
-&lt;/code>&lt;/pre>
-&lt;h3 id="retrieve-the-reader">Retrieve the reader&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">class&lt;/span> &lt;span class="nc">PluginObserver&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">implements&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ObservablePlugin&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">PluginObserver&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nd">@Override&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">update&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">PluginEvent&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">switch&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getEventType&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">case&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">READER_CONNECTED&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// here the processing to be done when a reader is connected&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">case&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">READER_DISCONNECTED&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// here the processing to be done when a reader is disconnected&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">default&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="retrieve-the-reader">Retrieve the reader&lt;/h3>
 &lt;p>Readers are objects implementing the &lt;code>Reader&lt;/code> interface and are
 returned by the plugin&amp;rsquo;s &lt;code>getReader&lt;/code> method taking the name of the
 reader as argument.&lt;/p>
@@ -200,10 +199,9 @@ list of strings by the &lt;code>getReaderNames&lt;/code> method.&lt;/p>
 whose key is the name of the reader and the value the &lt;code>Reader&lt;/code>
 object.&lt;/p>
 &lt;p>Here is an example to get the 1st PC/SC reader:&lt;/p>
-&lt;pre>&lt;code class="language-java">String readerName = plugin.getReaderNames().get(0);
-Reader reader = plugin.getReader(readerName);
-&lt;/code>&lt;/pre>
-&lt;div class="alert alert-note">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">readerName&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">plugin&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getReaderNames&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">0&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">Reader&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">reader&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">plugin&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getReader&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">readerName&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="alert alert-note">
 &lt;div>
 Depending on the type of plugin, the reader names are
 more or less dynamic (e.g. a PC/SC based system vs. an embedded
@@ -223,49 +221,49 @@ on the hardware context.&lt;/p>
 to the observation of plugins in that it requires the same operations,
 i.e. the use of an exception handler and an object implementing a
 dedicated interface.&lt;/p>
-&lt;pre>&lt;code class="language-java">...
-private static class ReaderExceptionHandlerImpl implements ReaderObservationExceptionHandler {
-@Override
-public void onReaderObservationError(String pluginName, String readerName, Throwable throwable) {
-logger.error(&amp;quot;An unexpected reader error occurred: {}:{}&amp;quot;, pluginName, readerName, throwable);
-}
-}
-}
-/* Create an exception handler for reader observation */
-ReaderExceptionHandlerImpl readerExceptionHandlerImpl = new ExceptionHandlerImpl();
-/* Assign the PcscPlugin to the SmartCardService */
-plugin = smartCardService.registerPlugin(new PcscPluginFactory(pluginExceptionHandlerImpl, readerExceptionHandlerImpl));
-...
-&lt;/code>&lt;/pre>
-&lt;p>The observation of the events of the reader is done in a similar way to
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">private&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">static&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">class&lt;/span> &lt;span class="nc">ReaderExceptionHandlerImpl&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">implements&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ReaderObservationExceptionHandler&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nd">@Override&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">onReaderObservationError&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">pluginName&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">readerName&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Throwable&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">throwable&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">error&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;An unexpected reader error occurred: {}:{}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">pluginName&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">readerName&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">throwable&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="cm">/* Create an exception handler for reader observation */&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">ReaderExceptionHandlerImpl&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">readerExceptionHandlerImpl&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ExceptionHandlerImpl&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="cm">/* Assign the PcscPlugin to the SmartCardService */&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">plugin&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">smartCardService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">registerPlugin&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PcscPluginFactory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pluginExceptionHandlerImpl&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">readerExceptionHandlerImpl&lt;/span>&lt;span class="p">));&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The observation of the events of the reader is done in a similar way to
 that of the plugin, by adding an observer:&lt;/p>
-&lt;pre>&lt;code class="language-java">((ObservableReader) reader).addObserver(new ReaderObserver());
-&lt;/code>&lt;/pre>
-&lt;p>and implementing the ReaderObserver interface:&lt;/p>
-&lt;pre>&lt;code class="language-java">class ReaderObserver implements ObservableReader.ReaderObserver {
-@Override
-public void update(ReaderEvent event) {
-switch (event.getEventType()) {
-case CARD_INSERTED:
-// here the processing to be done when a card is inserted
-...
-break;
-case CARD_MATCHED:
-// here the processing to be done when a card matched the selection
-...
-break;
-case CARD_REMOVED:
-// here the processing to be done when a card is removed
-...
-break;
-default:
-break;
-}
-}
-}
-}
-&lt;/code>&lt;/pre>
-&lt;div class="alert alert-note">
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="p">((&lt;/span>&lt;span class="n">ObservableReader&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">reader&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="na">addObserver&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ReaderObserver&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>and implementing the ReaderObserver interface:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">class&lt;/span> &lt;span class="nc">ReaderObserver&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">implements&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ObservableReader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">ReaderObserver&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nd">@Override&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">update&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ReaderEvent&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">switch&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getEventType&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">case&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CARD_INSERTED&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// here the processing to be done when a card is inserted&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">case&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CARD_MATCHED&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// here the processing to be done when a card matched the selection&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">case&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CARD_REMOVED&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// here the processing to be done when a card is removed&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">default&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="alert alert-note">
 &lt;div>
 Observation of the readers is optional in Keyple. It
 facilitates an event-driven programming mode, but an application
@@ -320,68 +318,73 @@ example.&lt;/p>
 &lt;h5 id="create-the-card-selection-service">Create the card selection service&lt;/h5>
 &lt;p>The card selection service will be used all along the card search
 process.&lt;/p>
-&lt;pre>&lt;code class="language-java"> cardSelectionService = new CardSelectionsService();
-&lt;/code>&lt;/pre>
-&lt;h5 id="create-the-selection-cases">Create the selection cases&lt;/h5>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionService&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CardSelectionsService&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="create-the-selection-cases">Create the selection cases&lt;/h5>
 &lt;p>The application can create as many selection cases as the type of cards
 expected. The order in which the selection cases are prepared is
 important because it will favor the latency delay for the processing of
 the cards corresponding to the first case. It is therefore recommended
 to place the most common card profile in the application context first.&lt;/p>
-&lt;pre>&lt;code class="language-java">/** Create a new class extending AbstractCardSelection */
-public final class GenericCardSelection extends AbstractCardSelection {
-public GenericCardSelection(CardSelector cardSelector) {
-super(cardSelector);
-}
-@Override
-protected AbstractSmartCard parse(CardSelectionResponse cardSelectionResponse) {
-class GenericSmartCard extends AbstractSmartCard {
-public GenericSmartCard(CardSelectionResponse cardSelectionResponse) {
-super(cardSelectionResponse);
-}
-public String toJson() {
-return &amp;quot;{}&amp;quot;;
-}
-}
-return new GenericSmartCard(cardSelectionResponse);
-}
-}
-final String aid1 = &amp;quot;AABBCCDDEE&amp;quot;;
-final String aid2 = &amp;quot;EEDDCCBBAA&amp;quot;;
-// first selection case targeting cards with AID1
-GenericCardSelection cardSelector1 =
-new GenericCardSelection(
-CardSelector.builder()
-.cardProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name())
-.aidSelector(CardSelector.AidSelector.builder().aidToSelect(aid1).build())
-.build());
-// Add the selection case to the current selection
-cardSelectionsService.prepareSelection(cardSelector1);
-// first selection case targeting cards with AID1
-GenericCardSelection cardSelector2 =
-new GenericCardSelection(
-CardSelector.builder()
-.cardProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name())
-.aidSelector(CardSelector.AidSelector.builder().aidToSelect(aid2).build())
-.build());
-// Add the selection case to the current selection
-cardSelectionsService.prepareSelection(cardSelector2);
-&lt;/code>&lt;/pre>
-&lt;h5 id="proceed-to-the-selection-with-a-non-observable-reader">Proceed to the selection with a non-observable reader&lt;/h5>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="cm">/** Create a new class extending AbstractCardSelection */&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">class&lt;/span> &lt;span class="nc">GenericCardSelection&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">extends&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">AbstractCardSelection&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">GenericCardSelection&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CardSelector&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelector&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">super&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">cardSelector&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nd">@Override&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">protected&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">AbstractSmartCard&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">parse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CardSelectionResponse&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionResponse&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">class&lt;/span> &lt;span class="nc">GenericSmartCard&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">extends&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">AbstractSmartCard&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">GenericSmartCard&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CardSelectionResponse&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionResponse&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">super&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">cardSelectionResponse&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">toJson&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;{}&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">GenericSmartCard&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">cardSelectionResponse&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">aid1&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;AABBCCDDEE&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">aid2&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;EEDDCCBBAA&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// first selection case targeting cards with AID1&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">GenericCardSelection&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelector1&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">GenericCardSelection&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CardSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">cardProtocol&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ContactlessCardCommonProtocols&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">ISO_14443_4&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">name&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">aidSelector&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CardSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">AidSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">aidToSelect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">aid1&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// Add the selection case to the current selection&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">cardSelectionsService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">prepareSelection&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">cardSelector1&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// first selection case targeting cards with AID1&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">GenericCardSelection&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelector2&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">GenericCardSelection&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CardSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">cardProtocol&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ContactlessCardCommonProtocols&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">ISO_14443_4&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">name&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">aidSelector&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CardSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">AidSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">aidToSelect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">aid2&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// Add the selection case to the current selection&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">cardSelectionsService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">prepareSelection&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">cardSelector2&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="proceed-to-the-selection-with-a-non-observable-reader">Proceed to the selection with a non-observable reader&lt;/h5>
 &lt;p>The &lt;code>processExplicitSelections&lt;/code> method of &lt;code>CardSelectionService&lt;/code>
 performs the actual communication with the card.&lt;/p>
-&lt;pre>&lt;code class="language-java">...
-// Check if a card is present in the reader
-if (!reader.isCardPresent()) {
-logger.error(&amp;quot;No Po Card is present in the reader.&amp;quot;);
-return;
-}
-// Actual card communication: operate through a single request the card selection
-CardSelectionsResult cardSelectionsResult =
-cardSelectionsService.processExplicitSelections(reader);
-...
-&lt;/code>&lt;/pre>
-&lt;h5 id="proceed-to-the-selection-with-an-observable-reader">Proceed to the selection with an observable reader&lt;/h5>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// Check if a card is present in the reader&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">reader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">isCardPresent&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">error&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;No Po Card is present in the reader.&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// Actual card communication: operate through a single request the card selection&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">CardSelectionsResult&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionsResult&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionsService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">processExplicitSelections&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">reader&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="proceed-to-the-selection-with-an-observable-reader">Proceed to the selection with an observable reader&lt;/h5>
 &lt;p>In the case of an observable reader, the selection request is provided
 to the reader (it is then named Default Selection) and will be processed
 automatically as soon as a card is presented. The application is then
@@ -391,14 +394,13 @@ all card presentations (&lt;code>CARD_INSERTED&lt;/code> event) or only those
 presentations that led to a successful selection (&lt;code>CARD_MATCHED&lt;/code>
 event).&lt;/p>
 &lt;h6 id="add-a-default-selection">Add a default selection&lt;/h6>
-&lt;pre>&lt;code class="language-java">// Provide the Reader with the selection operation to be processed when a card is inserted.
-((ObservableReader) reader)
-.setDefaultSelectionRequest(
-cardSelectionService.getDefaultSelection().getDefaultSelectionsRequest(),
-ObservableReader.NotificationMode.MATCHED_ONLY,
-ObservableReader.PollingMode.REPEATING);
-&lt;/code>&lt;/pre>
-&lt;p>The &lt;code>NotificationMode&lt;/code> allows you to specify whether all card
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// Provide the Reader with the selection operation to be processed when a card is inserted.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">ObservableReader&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">reader&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">setDefaultSelectionRequest&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getDefaultSelection&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">getDefaultSelectionsRequest&lt;/span>&lt;span class="p">(),&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">ObservableReader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">NotificationMode&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">MATCHED_ONLY&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">ObservableReader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">PollingMode&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">REPEATING&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>NotificationMode&lt;/code> allows you to specify whether all card
 insertions should be reported to the application or only those that led
 to a successful selection.&lt;/p>
 &lt;p>&lt;code>PollingMode&lt;/code> indicates whether to go back to waiting for the card
@@ -409,70 +411,70 @@ parameter, the card detection is started automatically. However, it is
 possible to set a default selection without automatic start and by
 starting the detection independently with &lt;code>startCardDetection&lt;/code>.&lt;/p>
 &lt;h6 id="receive-the-result-as-an-event">Receive the result as an event&lt;/h6>
-&lt;pre>&lt;code class="language-java">...
-@Override
-public void update(ReaderEvent event) {
-switch (event.getEventType()) {
-case CARD_MATCHED:
-AbstractSmartCard selectedCard = null;
-try {
-selectedCard =
-getDefaultSelection()
-.processDefaultSelectionsResponse(event.getDefaultSelectionsResponse())
-.getActiveSmartCard();
-} catch (KeypleException e) {
-logger.error(&amp;quot;Exception: {}&amp;quot;, e.getMessage());
-((ObservableReader) (event.getReader())).finalizeCardProcessing();
-}
-if (selectedCard != null) {
-logger.info(&amp;quot;Observer notification: the selection of the card has succeeded.&amp;quot;);
-// insert the processing of the card here
-...
-logger.info(&amp;quot;= #### End of the card processing.&amp;quot;);
-} else {
-logger.error(
-&amp;quot;The selection of the card has failed. Should not have occurred due to the MATCHED_ONLY selection mode.&amp;quot;);
-}
-break;
-case CARD_INSERTED:
-logger.error(
-&amp;quot;CARD_INSERTED event: should not have occurred due to the MATCHED_ONLY selection mode.&amp;quot;);
-break;
-case CARD_REMOVED:
-logger.trace(&amp;quot;There is no PO inserted anymore. Return to the waiting state...&amp;quot;);
-break;
-default:
-break;
-}
-if (event.getEventType() == ReaderEvent.EventType.CARD_INSERTED
-|| event.getEventType() == ReaderEvent.EventType.CARD_MATCHED) {
-// Informs the underlying layer of the end of the card processing, in order to manage the
-// removal sequence.
-((ObservableReader) (event.getReader())).finalizeCardProcessing();
-}
-}
-...
-&lt;/code>&lt;/pre>
-&lt;h5 id="get-the-selection-result">Get the selection result&lt;/h5>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nd">@Override&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">update&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ReaderEvent&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">switch&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getEventType&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">case&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CARD_MATCHED&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">AbstractSmartCard&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">selectedCard&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">null&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">try&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">selectedCard&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">getDefaultSelection&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">processDefaultSelectionsResponse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getDefaultSelectionsResponse&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getActiveSmartCard&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">catch&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">KeypleException&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">error&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Exception: {}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getMessage&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">ObservableReader&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getReader&lt;/span>&lt;span class="p">())).&lt;/span>&lt;span class="na">finalizeCardProcessing&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">selectedCard&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">!=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">null&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">info&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Observer notification: the selection of the card has succeeded.&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// insert the processing of the card here&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">info&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;= #### End of the card processing.&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">else&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">error&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;The selection of the card has failed. Should not have occurred due to the MATCHED_ONLY selection mode.&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">case&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CARD_INSERTED&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">error&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;CARD_INSERTED event: should not have occurred due to the MATCHED_ONLY selection mode.&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">case&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CARD_REMOVED&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">trace&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;There is no PO inserted anymore. Return to the waiting state...&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">default&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">break&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getEventType&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ReaderEvent&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">EventType&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">CARD_INSERTED&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="o">||&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getEventType&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ReaderEvent&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">EventType&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">CARD_MATCHED&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Informs the underlying layer of the end of the card processing, in order to manage the&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// removal sequence.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">ObservableReader&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">event&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getReader&lt;/span>&lt;span class="p">())).&lt;/span>&lt;span class="na">finalizeCardProcessing&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="get-the-selection-result">Get the selection result&lt;/h5>
 &lt;p>The result of the selection is available in the &lt;code>AbstractSmartCard&lt;/code>
 object.&lt;/p>
-&lt;pre>&lt;code class="language-java">...
-if (!cardSelectionsResult.hasActiveSelection()) {
-logger.warn(&amp;quot;The selection of the application &amp;quot; + cardAid + &amp;quot; failed.&amp;quot;);
-}
-AbstractSmartCard smartCard = cardSelectionsResult.getActiveSmartCard();
-logger.info(&amp;quot;The selection of the card has succeeded.&amp;quot;);
-if (smartCard.hasFci()) {
-String fci = ByteArrayUtil.toHex(smartCard.getFciBytes());
-logger.info(&amp;quot;Application FCI = {}&amp;quot;, fci);
-}
-if (smartCard.hasAtr()) {
-String atr = ByteArrayUtil.toHex(smartCard.getAtrBytes());
-logger.info(&amp;quot;Card ATR = {}&amp;quot;, atr);
-}
-...
-&lt;/code>&lt;/pre>
-&lt;h3 id="implementation-of-the-application-service">Implementation of the application service&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">cardSelectionsResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">hasActiveSelection&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">warn&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;The selection of the application &amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardAid&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34; failed.&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">AbstractSmartCard&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">smartCard&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionsResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getActiveSmartCard&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">info&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;The selection of the card has succeeded.&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">smartCard&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">hasFci&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">fci&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ByteArrayUtil&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">toHex&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">smartCard&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getFciBytes&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">info&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Application FCI = {}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">fci&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">smartCard&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">hasAtr&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">atr&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ByteArrayUtil&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">toHex&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">smartCard&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getAtrBytes&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">info&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Card ATR = {}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">atr&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="implementation-of-the-application-service">Implementation of the application service&lt;/h3>
 &lt;p>The applicative processing of the card that follows the selection of the
 card is to be inserted in the processing of the &lt;code>CARD_INSERTED&lt;/code> or
 &lt;code>CARD_MATCHED&lt;/code> event.&lt;/p>
@@ -485,9 +487,8 @@ the application via the exception handler configured beforehand.&lt;/p>
 &lt;p>The clean shutdown of a Keyple application requires the release of
 resources and in particular the shutdown of the observation threads.&lt;/p>
 &lt;p>This is done by unregistering the plugins in the following way:&lt;/p>
-&lt;pre>&lt;code class="language-java">smartCardService.unregisterPlugin(plugin.getName());
-&lt;/code>&lt;/pre>
-&lt;br>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="n">smartCardService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">unregisterPlugin&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">plugin&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getName&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;br>
 &lt;h2 id="keyple-core-api">Keyple Core API&lt;/h2>
 &lt;p>To learn all the details of the &lt;strong>Keyple Core&lt;/strong> API, please consult the
 &lt;a href="https://keyple.org/archives/docs-1.0/api-reference/">Javadoc documentation&lt;/a>.&lt;/p>
@@ -499,7 +500,8 @@ resources and in particular the shutdown of the observation threads.&lt;/p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="archive-1.0/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>&lt;/p>
+&lt;/div>&lt;/figure>
+&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>The diagram below represents the main classes used for selection
@@ -507,7 +509,8 @@ operations.
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="archive-1.0/architecture/KeypleCore_CardSelection_ClassDiag_SelectorAndSelection_1_0_0.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>&lt;/p>
+&lt;/div>&lt;/figure>
+&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;br>
@@ -893,7 +896,7 @@ This configuration mode will only be available from version &lt;strong>1.1&lt;/s
 &lt;td style="text-align:center">&lt;a href="#uc-2">UC 2&lt;/a>&lt;/td>
 &lt;td style="text-align:center">Simple&lt;/td>
 &lt;td style="text-align:center">Client&lt;/td>
-&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">&amp;#x2714;&amp;#xfe0f;&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -907,7 +910,7 @@ This configuration mode will only be available from version &lt;strong>1.1&lt;/s
 &lt;td style="text-align:center">&lt;a href="#uc-4">UC 4&lt;/a>&lt;/td>
 &lt;td style="text-align:center">Simple&lt;/td>
 &lt;td style="text-align:center">Server&lt;/td>
-&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">&amp;#x2714;&amp;#xfe0f;&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -915,14 +918,14 @@ This configuration mode will only be available from version &lt;strong>1.1&lt;/s
 &lt;td style="text-align:center">Simple&lt;/td>
 &lt;td style="text-align:center">Server&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
-&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">&amp;#x2714;&amp;#xfe0f;&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:center">&lt;a href="#uc-6">UC 6&lt;/a>&lt;/td>
 &lt;td style="text-align:center">Simple&lt;/td>
 &lt;td style="text-align:center">Server&lt;/td>
-&lt;td style="text-align:center">✔️&lt;/td>
-&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">&amp;#x2714;&amp;#xfe0f;&lt;/td>
+&lt;td style="text-align:center">&amp;#x2714;&amp;#xfe0f;&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align:center">&lt;a href="#uc-7">UC 7&lt;/a>&lt;/td>
@@ -1228,18 +1231,18 @@ width: 240px;
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;a href="#network-api">Network API&lt;/a>&lt;/td>
-&lt;td style="text-align:center">✔️&lt;/td>
-&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">&amp;#x2714;&amp;#xfe0f;&lt;/td>
+&lt;td style="text-align:center">&amp;#x2714;&amp;#xfe0f;&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;a href="#remote-api">Remote API&lt;/a>&lt;/td>
-&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">&amp;#x2714;&amp;#xfe0f;&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;a href="#local-api">Local API&lt;/a>&lt;/td>
 &lt;td style="text-align:center">&lt;/td>
-&lt;td style="text-align:center">✔️&lt;/td>
+&lt;td style="text-align:center">&amp;#x2714;&amp;#xfe0f;&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -1311,25 +1314,23 @@ secure Calypso transaction seamlessly. It completely hides the details of the AP
 &lt;li>The files, counters, SV data read or modified during the execution of the processes defined by PoTransaction&lt;/li>
 &lt;/ul>
 &lt;p>The Calypso PO fields are first populated from the CardSelectionResponse obtained through the PO selection process then each time a PoTransaction &amp;ldquo;process&amp;rdquo; method is invoked.&lt;/p>
-&lt;pre>&lt;code class="language-java"> ...
-//Retrieve PO's informations
-String atr = calypsoPo.getAtr()
-byte[] applicationSerial+Number = calypsoPo.getApplicationSerialNumber()
-//SFI_EventLog = 0x08
-ElementaryFile efEventLog = calypsoPo.getFileBySfi(SFI_EventLog);
-//SFI_EnvironmentAndHolder = 0x07
-ElementaryFile efEnvironmentAndHolder =calypsoPo.getFileBySfi(SFI_EnvironmentAndHolder);
-...
-&lt;/code>&lt;/pre>
-&lt;h3 id="elementaryfile">ElementaryFile&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">//Retrieve PO&amp;#39;s informations&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">atr&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getAtr&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">applicationSerial&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="n">Number&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getApplicationSerialNumber&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">//SFI_EventLog = 0x08&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">ElementaryFile&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">efEventLog&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getFileBySfi&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SFI_EventLog&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">//SFI_EnvironmentAndHolder = 0x07&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">ElementaryFile&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">efEnvironmentAndHolder&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getFileBySfi&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SFI_EnvironmentAndHolder&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="elementaryfile">ElementaryFile&lt;/h3>
 &lt;p>Object containing the description of a Calypso Elementary File. Can be retrieved from Calypso PO using its SFI.&lt;/p>
-&lt;pre>&lt;code class="language-java"> ...
-ElementaryFile efEventLog = calypsoPo.getFileBySfi(SFI_EventLog);
-//Read data content of sevent log elemenatary file
-String eventLog = ByteArrayUtil.toHex(efEventLog.getData().getContent());
-...
-&lt;/code>&lt;/pre>
-&lt;h3 id="calypso-sam">Calypso SAM&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">ElementaryFile&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">efEventLog&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getFileBySfi&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SFI_EventLog&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">//Read data content of sevent log elemenatary file&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">eventLog&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ByteArrayUtil&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">toHex&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">efEventLog&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getData&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">getContent&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="calypso-sam">Calypso SAM&lt;/h3>
 &lt;p>Concentrates all the informations we know about the SAM currently selected. Accessible informations are:&lt;/p>
 &lt;ul>
 &lt;li>The Sam Revision&lt;/li>
@@ -1342,11 +1343,10 @@ String eventLog = ByteArrayUtil.toHex(efEventLog.getData().getContent());
 &lt;li>The Software Revision number&lt;/li>
 &lt;/ul>
 &lt;p>Calypso SAM fields are populated by analysis of the ATR within a CardSelectionResponse obtained through the SAM selection process.&lt;/p>
-&lt;pre>&lt;code class="language-java"> ...
-byte[] serialNumber = calypsoSam.getSerialNumber()
-...
-&lt;/code>&lt;/pre>
-&lt;h3 id="posecuritysettings">PoSecuritySettings&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">serialNumber&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoSam&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getSerialNumber&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="posecuritysettings">PoSecuritySettings&lt;/h3>
 &lt;p>Concentrate the security settings involved in Calypso Secure Sessions:&lt;/p>
 &lt;ul>
 &lt;li>A reference to the SAM resource&lt;/li>
@@ -1362,11 +1362,10 @@ byte[] serialNumber = calypsoSam.getSerialNumber()
 &lt;/ul>
 &lt;p>The fields are populated with default values when the object is instantiated but can be customized to adjust the settings
 to the application needs.&lt;/p>
-&lt;pre>&lt;code class="language-java"> ...
-poSecuritySettings.getSessionModificationMode()
-...
-&lt;/code>&lt;/pre>
-&lt;p>Secure session settings can be finely tuned with PoSecuritySettings and a set of enums provided by Keyple:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">poSecuritySettings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getSessionModificationMode&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Secure session settings can be finely tuned with PoSecuritySettings and a set of enums provided by Keyple:&lt;/p>
 &lt;h4 id="modification-mode">Modification mode&lt;/h4>
 &lt;p>Indicates whether the secure session can be closed and reopened to manage the limitation of the PO buffer memory (session modifications buffer).&lt;/p>
 &lt;table>
@@ -1387,14 +1386,13 @@ poSecuritySettings.getSessionModificationMode()
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;pre>&lt;code class="language-java"> ...
-PoSecuritySettings poSecuritySettings =
-new PoSecuritySettings.PoSecuritySettingsBuilder(samResource)
-.svGetLogReadMode(SvSettings.LogRead.ALL)
-.build();
-...
-&lt;/code>&lt;/pre>
-&lt;h4 id="ratification-mode">Ratification mode&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">PoSecuritySettings&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">poSecuritySettings&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PoSecuritySettings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">PoSecuritySettingsBuilder&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">samResource&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">svGetLogReadMode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SvSettings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">LogRead&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">ALL&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="ratification-mode">Ratification mode&lt;/h4>
 &lt;p>The ratification mode defines the behavior of processClosing regarding the ratification process.&lt;/p>
 &lt;table>
 &lt;thead>
@@ -1414,14 +1412,13 @@ new PoSecuritySettings.PoSecuritySettingsBuilder(samResource)
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;pre>&lt;code class="language-java"> ...
-PoSecuritySettings poSecuritySettings =
-new PoSecuritySettings.PoSecuritySettingsBuilder(samResource)
-.ratificationMode(RatificationMode.CLOSE_RATIFIED)
-.build();
-...
-&lt;/code>&lt;/pre>
-&lt;h4 id="pin-transmission-mode">Pin Transmission Mode&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">PoSecuritySettings&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">poSecuritySettings&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PoSecuritySettings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">PoSecuritySettingsBuilder&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">samResource&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">ratificationMode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RatificationMode&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">CLOSE_RATIFIED&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="pin-transmission-mode">Pin Transmission Mode&lt;/h4>
 &lt;p>Defines the PIN transmission modes: plain or encrypted.&lt;/p>
 &lt;table>
 &lt;thead>
@@ -1481,53 +1478,58 @@ new PoSecuritySettings.PoSecuritySettingsBuilder(samResource)
 &lt;li>Produces a CalypsoPO object from the CardSelectionResponse. The object is filled with the PO identification data from the FCI and the
 possible responses to additional APDU commands executed after the selection.&lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code class="language-java"> ...
-// Prepare a Calypso PO selection
-CardSelectionsService cardSelectionsService = new CardSelectionsService();
-// Setting of an AID based selection of a Calypso REV3 PO
-// Select the first application matching the selection AID whatever the card communication
-// protocol keep the logical channel open after the selection
-// Calypso selection: configures a PoSelection with all the desired attributes to
-// make the selection and read additional information afterwards
-PoSelection poSelection =
-new PoSelection(
-PoSelector.builder()
-.cardProtocol(ContactlessCardCommonProtocols.ISO_14443_4.name())
-.aidSelector(
-CardSelector.AidSelector.builder().aidToSelect(CalypsoClassicInfo.AID).build())
-.invalidatedPo(PoSelector.InvalidatedPo.REJECT)
-.build());
-// Prepare the reading order.
-poSelection.prepareReadRecordFile(
-CalypsoClassicInfo.SFI_EnvironmentAndHolder, CalypsoClassicInfo.RECORD_NUMBER_1);
-// Add the selection case to the current selection (we could have added other cases
-// here)
-cardSelectionsService.prepareSelection(poSelection);
-CalypsoPo calypsoPo = (CalypsoPo) cardSelectionsService.processExplicitSelections(poReader).getActiveSmartCard();
-...
-&lt;/code>&lt;/pre>
-&lt;h2 id="samselection">SamSelection&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Prepare a Calypso PO selection&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CardSelectionsService&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionsService&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CardSelectionsService&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Setting of an AID based selection of a Calypso REV3 PO&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Select the first application matching the selection AID whatever the card communication&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// protocol keep the logical channel open after the selection&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Calypso selection: configures a PoSelection with all the desired attributes to&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// make the selection and read additional information afterwards&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">PoSelection&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">poSelection&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PoSelection&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">PoSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">cardProtocol&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ContactlessCardCommonProtocols&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">ISO_14443_4&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">name&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">aidSelector&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CardSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">AidSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">aidToSelect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CalypsoClassicInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">AID&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">invalidatedPo&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">PoSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">InvalidatedPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">REJECT&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Prepare the reading order.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">poSelection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">prepareReadRecordFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CalypsoClassicInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SFI_EnvironmentAndHolder&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CalypsoClassicInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">RECORD_NUMBER_1&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Add the selection case to the current selection (we could have added other cases&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// here)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionsService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">prepareSelection&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">poSelection&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CalypsoPo&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CalypsoPo&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionsService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">processExplicitSelections&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">poReader&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="na">getActiveSmartCard&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="samselection">SamSelection&lt;/h2>
 &lt;p>This service provides the means to define a selection case targeting a Calypso SAM.&lt;/p>
 &lt;p>It integrates with the &lt;strong>Keyple Core Card Selection&lt;/strong> service to manage the specific features of Calypso SAMs:&lt;/p>
 &lt;ul>
 &lt;li>optionally executes an unlock command during the selection process.&lt;/li>
 &lt;li>provides an instance of Calypso SAM.&lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code class="language-java"> ...
-CardSelectionsService samSelection = new CardSelectionsService();
-//Sam selection parameters
-SamSelector samSelector = SamSelector.builder().samRevision(SamRevision.C1).serialNumber(&amp;quot;.*&amp;quot;).build();
-samSelection.prepareSelection(new SamSelection(samSelector));
-//Sam reader retrieved from registered plugin
-CardSelectionsResult cardSelectionsResult = samSelection.processExplicitSelections(samReader);
-if (!cardSelectionsResult.hasActiveSelection()) {
-throw new IllegalStateException(&amp;quot;Unable to open a logical channel for SAM!&amp;quot;);
-}
-//Cast selected card to CalypsoSam
-CalypsoSam calypsoSam = (CalypsoSam) cardSelectionsResult.getActiveSmartCard();
-...
-&lt;/code>&lt;/pre>
-&lt;h3 id="potransaction">PoTransaction&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CardSelectionsService&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">samSelection&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CardSelectionsService&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">//Sam selection parameters&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">SamSelector&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">samSelector&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">SamSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">samRevision&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SamRevision&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">C1&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="na">serialNumber&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;.*&amp;#34;&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">samSelection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">prepareSelection&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">SamSelection&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">samSelector&lt;/span>&lt;span class="p">));&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">//Sam reader retrieved from registered plugin&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CardSelectionsResult&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionsResult&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">samSelection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">processExplicitSelections&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">samReader&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">cardSelectionsResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">hasActiveSelection&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">throw&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">IllegalStateException&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Unable to open a logical channel for SAM!&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">//Cast selected card to CalypsoSam&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CalypsoSam&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoSam&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CalypsoSam&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardSelectionsResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getActiveSmartCard&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="potransaction">PoTransaction&lt;/h3>
 &lt;p>Service providing high-level API to manage transactions with a Calypso PO. The tied CalypsoPO Object is kept and updated at
 each step of using this service.&lt;/p>
 &lt;p>This service workflow is composed of two steps:&lt;/p>
@@ -1540,38 +1542,47 @@ each step of using this service.&lt;/p>
 &lt;li>Regarding of commands, the presence of SAM is mandatory or not (mandatory when a &lt;em>Calypso Secure Session&lt;/em> is open).&lt;/li>
 &lt;li>Pay attention to the number of commands affecting the session modifications buffer, see the &lt;em>ModificationMode&lt;/em> setting.&lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code class="language-java"> ...
-// CardResource allow management of specific card.
-// In this example a SAM is available
-CardResource&amp;lt;CalypsoPo&amp;gt; poResource = new CardResource&amp;lt;CalypsoPo&amp;gt;(poReader, calypsoPo);
-CardResource&amp;lt;CalypsoSam&amp;gt; samResource = new CardResource&amp;lt;CalypsoPo&amp;gt;(samReader, calypsoSam);
-// Configure Security settings
-// Both Reload and Debit SV logs are requested
-PoSecuritySettings poSecuritySettings =
-new PoSecuritySettings.PoSecuritySettingsBuilder(samResource)
-.svGetLogReadMode(SvSettings.LogRead.ALL)
-.build();
-PoTransaction poTransaction = new PoTransaction(poResource, poSecuritySettings);
-// Read the EventLog file at record 1 within the Session Opening
-poTransaction.prepareReadRecordFile(CalypsoClassicInfo.SFI_EventLog, CalypsoClassicInfo.RECORD_NUMBER_1);
-// Open a secure session (DEBIT level) and execute the prepared command
-poTransaction.processOpening(PoTransaction.SessionSetting.AccessLevel.SESSION_LVL_DEBIT);
-// Get and display the EventLog data
-ElementaryFile efEventLog = calypsoPo.getFileBySfi(CalypsoClassicInfo.SFI_EventLog);
-// Example of data parsing
-String eventLog = ByteArrayUtil.toHex(efEventLog.getData().getContent());
-// Prepare a SV Debit (this command could also have been placed before processOpening
-// since it is not followed by any other command)
-poTransaction.prepareSvGet(SvSettings.Operation.DEBIT, SvSettings.Action.DO);
-// Execute the prepared command
-poTransaction.processPoCommands();
-//Get updated sv balance
-int svBalance = calypsoPo.getSvBalance()
-//Get the updated SV last transaction number
-int svLastTNum = calypsoPo.getSvLastTNum()
-...
-&lt;/code>&lt;/pre>
-&lt;h4 id="secure-session-access-level">Secure Session Access level&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// CardResource allow management of specific card.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// In this example a SAM is available &lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CardResource&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">CalypsoPo&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">poResource&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CardResource&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">CalypsoPo&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">poReader&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CardResource&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">CalypsoSam&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">samResource&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CardResource&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">CalypsoPo&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">samReader&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoSam&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Configure Security settings&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Both Reload and Debit SV logs are requested&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">PoSecuritySettings&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">poSecuritySettings&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PoSecuritySettings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">PoSecuritySettingsBuilder&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">samResource&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">svGetLogReadMode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SvSettings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">LogRead&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">ALL&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">PoTransaction&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">poTransaction&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PoTransaction&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">poResource&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">poSecuritySettings&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Read the EventLog file at record 1 within the Session Opening&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">poTransaction&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">prepareReadRecordFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CalypsoClassicInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SFI_EventLog&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">CalypsoClassicInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">RECORD_NUMBER_1&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Open a secure session (DEBIT level) and execute the prepared command&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">poTransaction&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">processOpening&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">PoTransaction&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SessionSetting&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">AccessLevel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SESSION_LVL_DEBIT&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Get and display the EventLog data&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">ElementaryFile&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">efEventLog&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getFileBySfi&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CalypsoClassicInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SFI_EventLog&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Example of data parsing&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">eventLog&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ByteArrayUtil&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">toHex&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">efEventLog&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getData&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">getContent&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Prepare a SV Debit (this command could also have been placed before processOpening&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// since it is not followed by any other command)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">poTransaction&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">prepareSvGet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SvSettings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">Operation&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">DEBIT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">SvSettings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">Action&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">DO&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Execute the prepared command&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">poTransaction&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">processPoCommands&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">//Get updated sv balance&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">svBalance&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getSvBalance&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">//Get the updated SV last transaction number&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">svLastTNum&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getSvLastTNum&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="secure-session-access-level">Secure Session Access level&lt;/h4>
 &lt;p>PoTransaction.processOpening() allows to open a Calypso Secure Session. If commands have been prepared previously, they will be executed.&lt;/p>
 &lt;p>Keyple provides an enums to easily configure the Secure Session AccessLevel:&lt;/p>
 &lt;table>
@@ -1797,49 +1808,43 @@ From a user API point of view, the changes relate to the following topics:&lt;/p
 &lt;h3 id="plugin-registration-in-the-seproxyservice">Plugin registration in the SeProxyService&lt;/h3>
 &lt;p>The &lt;code>registerPlugin&lt;/code> method of the &lt;code>SeProxyService&lt;/code> class now returns the reference of the registered plugin.&lt;/p>
 &lt;p>This makes it possible, for example, to perform a reader setup in an application such as this one:&lt;/p>
-&lt;pre>&lt;code class="language-java"> // Create a PcscPlugin and register it into the SeProxyService
-ReaderPlugin pcscPlugin = seProxyService.registerPlugin(new PcscPluginFactory());`
-// Get the PO reader from the plugin
-SeReader poReader = pcscPlugin.getReader(&amp;quot;ASK LoGO 0&amp;quot;);
-&lt;/code>&lt;/pre>
-&lt;h3 id="preparation-of-selection-cases">Preparation of selection cases&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Create a PcscPlugin and register it into the SeProxyService&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">ReaderPlugin&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">pcscPlugin&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">seProxyService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">registerPlugin&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PcscPluginFactory&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="err">`&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Get the PO reader from the plugin&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">SeReader&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">poReader&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">pcscPlugin&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getReader&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;ASK LoGO 0&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="preparation-of-selection-cases">Preparation of selection cases&lt;/h3>
 &lt;p>The &lt;code>AidSelector&lt;/code>, &lt;code>Selector&lt;/code> and &lt;code>PoSelector&lt;/code> classes now follow the Fluent Builder pattern for better handling of optional parameters.&lt;/p>
 &lt;p>The construction of an &lt;code>AidSelector&lt;/code> is as follows:&lt;/p>
-&lt;pre>&lt;code class="language-java">AidSelector appAidSelector = AidSelector.builder()
-.aidToSelect(AID)
-.fileControlInformation(AidSelector.FileControlInformation.FCI)
-.fileOccurrence(AidSelector.FileOccurrence.FIRST)
-.build();
-&lt;/code>&lt;/pre>
-&lt;p>The &lt;code>fileControlInformation&lt;/code> and &lt;code>fileOccurrence&lt;/code> fields are optional (shown here with their default values), so a simple version can be :&lt;/p>
-&lt;pre>&lt;code class="language-java">AidSelector aidSelector = AidSelector.builder().aidToSelect(CalypsoClassicInfo.AID).build();
-&lt;/code>&lt;/pre>
-&lt;p>The construction of a &lt;code>SeSelector&lt;/code> is as follows:&lt;/p>
-&lt;pre>&lt;code class="language-java">seSelector = SeSelector.builder()
-.seProtocol(SeCommonProtocols.PROTOCOL_ISO14443_4)
-.aidSelector(appAidSelector)
-.build();
-&lt;/code>&lt;/pre>
-&lt;p>The &lt;code>PoSelector&lt;/code> adds the possibility to specify that an invalidated PO should be processed&lt;/p>
-&lt;pre>&lt;code class="language-java">seSelector = SeSelector.builder()
-.seProtocol(SeCommonProtocols.PROTOCOL_ISO14443_4)
-.aidSelector(appAidSelector)
-.invalidatedPo(InvalidatedPo.ACCEPT)
-.build();
-&lt;/code>&lt;/pre>
-&lt;p>The management of PO commands to be performed after the selection step (when it has been successful) is handled by the methods of the &lt;code>PoSelectionRequest&lt;/code> class:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="n">AidSelector&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">appAidSelector&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">AidSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">aidToSelect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">AID&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">fileControlInformation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">AidSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">FileControlInformation&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">FCI&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">fileOccurrence&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">AidSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">FileOccurrence&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">FIRST&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>fileControlInformation&lt;/code> and &lt;code>fileOccurrence&lt;/code> fields are optional (shown here with their default values), so a simple version can be :&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="n">AidSelector&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">aidSelector&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">AidSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">aidToSelect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CalypsoClassicInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">AID&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The construction of a &lt;code>SeSelector&lt;/code> is as follows:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="n">seSelector&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">SeSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">seProtocol&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SeCommonProtocols&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">PROTOCOL_ISO14443_4&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">aidSelector&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">appAidSelector&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>PoSelector&lt;/code> adds the possibility to specify that an invalidated PO should be processed&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="n">seSelector&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">SeSelector&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">seProtocol&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SeCommonProtocols&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">PROTOCOL_ISO14443_4&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">aidSelector&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">appAidSelector&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">invalidatedPo&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">InvalidatedPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">ACCEPT&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The management of PO commands to be performed after the selection step (when it has been successful) is handled by the methods of the &lt;code>PoSelectionRequest&lt;/code> class:&lt;/p>
 &lt;ul>
 &lt;li>preparing to read files has been simplified and is done using the unique following method:&lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code class="language-java">public void prepareReadRecordFile(byte sfi, int recordNumber)
-&lt;/code>&lt;/pre>
-&lt;ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareReadRecordFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sfi&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">recordNumber&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>preparing to select files is done using the following method:&lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code class="language-java">public void prepareSelectFile(byte[] lid)
-public void prepareSelectFile(short lid)
-&lt;/code>&lt;/pre>
-&lt;p>Note that from now the &amp;ldquo;prepare&amp;rdquo; methods no longer return indexes, the data will be placed in the CalypsoPo object.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareSelectFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">lid&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareSelectFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">short&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">lid&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Note that from now the &amp;ldquo;prepare&amp;rdquo; methods no longer return indexes, the data will be placed in the CalypsoPo object.&lt;/p>
 &lt;h3 id="retrieving-selection-results">Retrieving selection results&lt;/h3>
 &lt;p>The &lt;code>MatchingSelection&lt;/code> class no longer exists.
 In the class &lt;code>SelectionsResult&lt;/code> (see &lt;code>processDefaultSelection/processExplicitSelection&lt;/code>):&lt;/p>
@@ -1864,139 +1869,141 @@ In the class &lt;code>SelectionsResult&lt;/code> (see &lt;code>processDefaultSel
 &lt;p>These parameters are defined via the &lt;code>PoSecuritySettings&lt;/code> class, whose construction now follows the Fluent Builder pattern.&lt;/p>
 &lt;p>All parameters are optional except the &lt;code>SamResource&lt;/code>.&lt;/p>
 &lt;p>Here is an example of a complete &lt;code>PoSecuritySettings&lt;/code> build:&lt;/p>
-&lt;pre>&lt;code class="language-java">poSecuritySettings = new PoSecuritySettings.PoSecuritySettingsBuilder(samResource)
-.sessionDefaultKif(AccessLevel.SESSION_LVL_PERSO, DEFAULT_KIF_PERSO)
-.sessionDefaultKif(AccessLevel.SESSION_LVL_LOAD, DEFAULT_KIF_LOAD)
-.sessionDefaultKif(AccessLevel.SESSION_LVL_DEBIT, DEFAULT_KIF_DEBIT)
-.sessionDefaultKeyRecordNumber(AccessLevel.SESSION_LVL_PERSO, DEFAULT_KEY_RECORD_NUMBER_PERSO)
-.sessionDefaultKeyRecordNumber(AccessLevel.SESSION_LVL_LOAD, DEFAULT_KEY_RECORD_NUMBER_LOAD)
-.sessionDefaultKeyRecordNumber(AccessLevel.SESSION_LVL_DEBIT, DEFAULT_KEY_RECORD_NUMBER_DEBIT)
-.sessionModificationMode(ModificationMode.ATOMIC)
-.ratificationMode(RatificationMode.CLOSE_RATIFIED)
-.sessionAuthorizedKvcList(authKvcs)
-.build();
-&lt;/code>&lt;/pre>
-&lt;h3 id="creation-of-the-potransaction-object">Creation of the PoTransaction object&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="n">poSecuritySettings&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PoSecuritySettings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">PoSecuritySettingsBuilder&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">samResource&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">sessionDefaultKif&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">AccessLevel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SESSION_LVL_PERSO&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">DEFAULT_KIF_PERSO&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">sessionDefaultKif&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">AccessLevel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SESSION_LVL_LOAD&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">DEFAULT_KIF_LOAD&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">sessionDefaultKif&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">AccessLevel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SESSION_LVL_DEBIT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">DEFAULT_KIF_DEBIT&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">sessionDefaultKeyRecordNumber&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">AccessLevel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SESSION_LVL_PERSO&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">DEFAULT_KEY_RECORD_NUMBER_PERSO&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">sessionDefaultKeyRecordNumber&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">AccessLevel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SESSION_LVL_LOAD&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">DEFAULT_KEY_RECORD_NUMBER_LOAD&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">sessionDefaultKeyRecordNumber&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">AccessLevel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SESSION_LVL_DEBIT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">DEFAULT_KEY_RECORD_NUMBER_DEBIT&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">sessionModificationMode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ModificationMode&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">ATOMIC&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">ratificationMode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">RatificationMode&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">CLOSE_RATIFIED&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">sessionAuthorizedKvcList&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">authKvcs&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="creation-of-the-potransaction-object">Creation of the PoTransaction object&lt;/h3>
 &lt;p>Since PoSecuritySettings now integrates SamResource, the construction of PoTransaction has evolved slightly.&lt;/p>
 &lt;p>Here is an example:&lt;/p>
-&lt;pre>&lt;code class="language-java">PoTransaction poTransaction = new PoTransaction(new PoResource(poReader, calypsoPo), poSecuritySettings);
-&lt;/code>&lt;/pre>
-&lt;h3 id="transaction-commands-preparation">Transaction commands preparation&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="n">PoTransaction&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">poTransaction&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PoTransaction&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PoResource&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">poReader&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">),&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">poSecuritySettings&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="transaction-commands-preparation">Transaction commands preparation&lt;/h3>
 &lt;p>Just as with the &amp;ldquo;prepare&amp;rdquo; commands used for selection, the &amp;ldquo;prepare&amp;rdquo; commands used for transactions no longer return indexes.&lt;/p>
 &lt;p>The available commands in version 0.9 are:&lt;/p>
-&lt;pre>&lt;code class="language-java">public final void prepareSelectFile(SelectFileControl control)
-public final void prepareSelectFile(short lid)
-public final void prepareSelectFile(byte[] lid)
-public final void prepareReadRecordFile(byte sfi, int recordNumber)
-public final void prepareReadRecordFile(byte sfi, int firstRecordNumber, int numberOfRecords, int recordSize))
-public final void prepareReadCounterFile(byte sfi, int countersNumber)
-public final void prepareUpdateRecord(byte sfi, int recordNumber, byte[] recordData)
-public final void prepareWriteRecord(byte sfi, int recordNumber, byte[] recordData)
-public final void prepareAppendRecord(byte sfi, byte[] recordData)
-public final void prepareIncreaseCounter(byte sfi, int counterNumber, int incValue)
-public final void prepareDecreaseCounter(byte sfi, int counterNumber, int decValue)
-&lt;/code>&lt;/pre>
-&lt;h3 id="transaction-commands-processing">Transaction commands processing&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareSelectFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SelectFileControl&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">control&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareSelectFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">short&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">lid&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareSelectFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">lid&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareReadRecordFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sfi&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">recordNumber&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareReadRecordFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sfi&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">firstRecordNumber&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">numberOfRecords&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">recordSize&lt;/span>&lt;span class="p">))&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareReadCounterFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sfi&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">countersNumber&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareUpdateRecord&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sfi&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">recordNumber&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">recordData&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareWriteRecord&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sfi&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">recordNumber&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">recordData&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareAppendRecord&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sfi&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">recordData&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareIncreaseCounter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sfi&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">counterNumber&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">incValue&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">prepareDecreaseCounter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sfi&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">counterNumber&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">decValue&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="transaction-commands-processing">Transaction commands processing&lt;/h3>
 &lt;p>The &amp;ldquo;process&amp;rdquo; commands have also been revised and simplified.&lt;/p>
 &lt;p>They all return &lt;code>void&lt;/code>.&lt;/p>
 &lt;p>In case of failure a exception is raised (see below).&lt;/p>
-&lt;pre>&lt;code class="language-java">public final void processOpening(PoTransaction.SessionSetting.AccessLevel accessLevel)
-&lt;/code>&lt;/pre>
-&lt;p>The &lt;code>ModificationMode&lt;/code> is no longer required since it is integrated in the &lt;code>PoSecuritySettings&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">processOpening&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">PoTransaction&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SessionSetting&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">AccessLevel&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">accessLevel&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>ModificationMode&lt;/code> is no longer required since it is integrated in the &lt;code>PoSecuritySettings&lt;/code>.&lt;/p>
 &lt;p>Parameters previously used to specify that a file is read at login are removed.&lt;/p>
 &lt;p>Instead, the first prepareReadFile command will be automatically taken into account.&lt;/p>
-&lt;pre>&lt;code class="language-java">public final void processPoCommands()
-public final void processPoCommandsInSession()
-public final void processCancel(ChannelControl channelControl)
-public final void processClosing(ChannelControl channelControl)
-&lt;/code>&lt;/pre>
-&lt;h3 id="retrieving-data-read-from-pos">Retrieving data read from POs&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">processPoCommands&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">processPoCommandsInSession&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">processCancel&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ChannelControl&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">channelControl&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">processClosing&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ChannelControl&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">channelControl&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="retrieving-data-read-from-pos">Retrieving data read from POs&lt;/h3>
 &lt;p>This is a major evolution of the Keyple API. Previously, data read from Calyspo POs were retrieved by applications using &amp;ldquo;parser&amp;rdquo; methods.&lt;/p>
 &lt;p>With Keyple API 0.9, Calypso PO data is made available in the CalypsoPo object obtained during selection and enriched all along the operations performed with PoTransaction.&lt;/p>
 &lt;p>The public getter methods of CalypsoPo are:&lt;/p>
-&lt;pre>&lt;code class="language-java">public final String getDfName()
-public final byte[] getDfNameBytes()
-public final String getApplicationSerialNumber()
-public final byte[] getApplicationSerialNumberBytes()
-public final String getAtr()
-public final String getStartupInfo()
-public final PoRevision getRevision()
-public final byte getSessionModification()
-public final byte getApplicationType()
-public final byte getApplicationSubtype()
-public final byte getPlatform()
-public final byte getSoftwareIssuer()
-public final byte getSoftwareVersion()
-public final byte getSoftwareRevision()
-public final boolean isDeselectRatificationSupported()
-public final boolean isConfidentialSessionModeSupported()
-public final boolean isPublicAuthenticationSupported()
-public final boolean isPinFeatureAvailable()
-public final boolean isSvFeatureAvailable()
-public final boolean isDfInvalidated()
-public final boolean isDfRatified()
-public final DirectoryHeader getDirectoryHeader()
-public final ElementaryFile getFileBySfi(byte sfi)
-public final ElementaryFile getFileByLid(short lid)
-public final Map&amp;lt;Byte, ElementaryFile&amp;gt; getAllFiles()
-&lt;/code>&lt;/pre>
-&lt;p>Four new classes &lt;code>DirectoryHeader&lt;/code>, &lt;code>ElementaryFile&lt;/code>, &lt;code>FileHeader&lt;/code> and &lt;code>FileData&lt;/code> have been added.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getDfName&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getDfNameBytes&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getApplicationSerialNumber&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getApplicationSerialNumberBytes&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getAtr&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getStartupInfo&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">PoRevision&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getRevision&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getSessionModification&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getApplicationType&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getApplicationSubtype&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getPlatform&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getSoftwareIssuer&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getSoftwareVersion&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getSoftwareRevision&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">boolean&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">isDeselectRatificationSupported&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">boolean&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">isConfidentialSessionModeSupported&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">boolean&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">isPublicAuthenticationSupported&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">boolean&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">isPinFeatureAvailable&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">boolean&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">isSvFeatureAvailable&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">boolean&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">isDfInvalidated&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">boolean&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">isDfRatified&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">DirectoryHeader&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getDirectoryHeader&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ElementaryFile&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getFileBySfi&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sfi&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ElementaryFile&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getFileByLid&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">short&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">lid&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">final&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Map&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Byte&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ElementaryFile&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getAllFiles&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Four new classes &lt;code>DirectoryHeader&lt;/code>, &lt;code>ElementaryFile&lt;/code>, &lt;code>FileHeader&lt;/code> and &lt;code>FileData&lt;/code> have been added.&lt;/p>
 &lt;h5 id="directoryheader">DirectoryHeader&lt;/h5>
 &lt;p>The public getters for this class are:&lt;/p>
-&lt;pre>&lt;code class="language-java">public short getLid()
-public byte[] getAccessConditions()
-public byte[] getKeyIndexes()
-public byte getDfStatus()
-public byte getKif(AccessLevel level)
-public byte getKvc(AccessLevel level)
-public String toString()
-&lt;/code>&lt;/pre>
-&lt;h5 id="elementaryfile">ElementaryFile&lt;/h5>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">short&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getLid&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getAccessConditions&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getKeyIndexes&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getDfStatus&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getKif&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">AccessLevel&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">level&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getKvc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">AccessLevel&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">level&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">toString&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="elementaryfile">ElementaryFile&lt;/h5>
 &lt;p>The public getters for this class are:&lt;/p>
-&lt;pre>&lt;code class="language-java">public byte getSfi()
-public FileHeader getHeader()
-public FileData getData()
-public String toString()
-&lt;/code>&lt;/pre>
-&lt;h5 id="fileheader">FileHeader&lt;/h5>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getSfi&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">FileHeader&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getHeader&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">FileData&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getData&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">toString&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="fileheader">FileHeader&lt;/h5>
 &lt;p>The public getters for this class are:&lt;/p>
-&lt;pre>&lt;code class="language-java">public short getLid()
-public int getRecordsNumber()
-public int getRecordSize()
-public FileType getType()
-public byte getDfStatus()
-public boolean isShared()
-public Short getSharedReference()
-public byte[] getAccessConditions()
-public byte[] getKeyIndexes()
-public String toString()
-&lt;/code>&lt;/pre>
-&lt;h5 id="filedata">FileData&lt;/h5>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">short&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getLid&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getRecordsNumber&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getRecordSize&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">FileType&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getType&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getDfStatus&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">boolean&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">isShared&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Short&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getSharedReference&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getAccessConditions&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getKeyIndexes&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">toString&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="filedata">FileData&lt;/h5>
 &lt;p>The public getters for this class are:&lt;/p>
-&lt;pre>&lt;code class="language-java">public byte[] getContent()
-public byte[] getContent(int numRecord)
-public byte[] getContent(int numRecord, int dataOffset, int dataLength)
-public SortedMap&amp;lt;Integer, byte[]&amp;gt; getAllRecordsContent()
-public int getContentAsCounterValue(int numCounter)
-public SortedMap&amp;lt;Integer, Integer&amp;gt; getAllCountersValue()
-public String toString()
-&lt;/code>&lt;/pre>
-&lt;p>So, for example to extract the contents of contract files present in the PO, the code might look like this:&lt;/p>
-&lt;pre>&lt;code class="language-java">[...]
-/* Read all 4 contracts command, record size set to 29 */
-poTransaction.prepareReadRecordFile(CalypsoClassicInfo.SFI_Contracts,
-CalypsoClassicInfo.RECORD_NUMBER_1, 4, 29);
-/* proceed with the sending of commands, don't close the channel */
-poTransaction.processPoCommandsInSession();
-ElementaryFile efContracts = calypsoPo.getFileBySfi(CalypsoClassicInfo.SFI_Contracts);
-SortedMap&amp;lt;Integer, byte[]&amp;gt; records = efContracts.getData().getAllRecordsContent();
-for (Map.Entry&amp;lt;Integer, byte[]&amp;gt; entry : records.entrySet()) {
-logger.info(&amp;quot;Contract #{}: {}&amp;quot;, entry.getKey(),
-ByteArrayUtil.toHex(entry.getValue()));
-}
-[...]
-&lt;/code>&lt;/pre>
-&lt;h2 id="error-handling">Error handling&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getContent&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getContent&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">numRecord&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getContent&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">numRecord&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">dataOffset&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">dataLength&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">SortedMap&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Integer&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getAllRecordsContent&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getContentAsCounterValue&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">numCounter&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">SortedMap&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Integer&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Integer&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">getAllCountersValue&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">toString&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>So, for example to extract the contents of contract files present in the PO, the code might look like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">]&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="cm">/* Read all 4 contracts command, record size set to 29 */&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">poTransaction&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">prepareReadRecordFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CalypsoClassicInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SFI_Contracts&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">CalypsoClassicInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">RECORD_NUMBER_1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">4&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">29&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="cm">/* proceed with the sending of commands, don&amp;#39;t close the channel */&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">poTransaction&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">processPoCommandsInSession&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">ElementaryFile&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">efContracts&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getFileBySfi&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">CalypsoClassicInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">SFI_Contracts&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">SortedMap&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Integer&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">records&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">efContracts&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getData&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">getAllRecordsContent&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">for&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Map&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">Entry&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Integer&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">entry&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">records&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">entrySet&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">info&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Contract #{}: {}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">entry&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getKey&lt;/span>&lt;span class="p">(),&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">ByteArrayUtil&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">toHex&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">entry&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getValue&lt;/span>&lt;span class="p">()));&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">]&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="error-handling">Error handling&lt;/h2>
 &lt;p>Since version 0.9, all Keyple exceptions are of the RuntimeException type.&lt;/p>
 &lt;p>Catching exceptions is therefore now optional.&lt;/p>
 &lt;p>However, it is possible to selectively catch certain exceptions in order to deal with particular cases.&lt;/p>

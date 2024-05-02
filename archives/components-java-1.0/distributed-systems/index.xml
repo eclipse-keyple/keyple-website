@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Distributed systems | Eclipse Keyple</title><link>https://keyple.org/archives/components-java-1.0/distributed-systems/</link><atom:link href="https://keyple.org/archives/components-java-1.0/distributed-systems/index.xml" rel="self" type="application/rss+xml"/><description>Distributed systems</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2024 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Distributed systems</title><link>https://keyple.org/archives/components-java-1.0/distributed-systems/</link></image><item><title>Keyple Distributed Local</title><link>https://keyple.org/archives/components-java-1.0/distributed-systems/local/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/distributed-systems/local/</guid><description>&lt;div class="alert alert-warning">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Distributed systems | Eclipse Keyple</title><link>https://keyple.org/archives/components-java-1.0/distributed-systems/</link><atom:link href="https://keyple.org/archives/components-java-1.0/distributed-systems/index.xml" rel="self" type="application/rss+xml"/><description>Distributed systems</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://keyple.org/media/logo.svg</url><title>Distributed systems</title><link>https://keyple.org/archives/components-java-1.0/distributed-systems/</link></image><item><title>Keyple Distributed Local</title><link>https://keyple.org/archives/components-java-1.0/distributed-systems/local/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/distributed-systems/local/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -14,10 +14,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/local">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/local" target="_blank" rel="noopener">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -35,18 +35,16 @@ Keyple project
 &lt;ul>
 &lt;li>Using &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code class="language-gradle">implementation 'org.eclipse.keyple:keyple-java-distributed-local:1.0.0'
-&lt;/code>&lt;/pre>
-&lt;ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-java-distributed-local:1.0.0&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>Using &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;keyple-java-distributed-local&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;1.0.0&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&lt;/code>&lt;/pre>
-&lt;ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-java-distributed-local&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-distributed-local" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Keyple Distributed Network</title><link>https://keyple.org/archives/components-java-1.0/distributed-systems/network/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/distributed-systems/network/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
@@ -64,10 +62,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/network">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/network" target="_blank" rel="noopener">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -84,18 +82,16 @@ Keyple project
 &lt;ul>
 &lt;li>Using &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code class="language-gradle">implementation 'org.eclipse.keyple:keyple-java-distributed-network:1.0.0'
-&lt;/code>&lt;/pre>
-&lt;ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-java-distributed-network:1.0.0&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>Using &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;keyple-java-distributed-network&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;1.0.0&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&lt;/code>&lt;/pre>
-&lt;ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-java-distributed-network&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-distributed-network" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Keyple Distributed Remote</title><link>https://keyple.org/archives/components-java-1.0/distributed-systems/remote/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/distributed-systems/remote/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
@@ -113,10 +109,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/remote">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/remote" target="_blank" rel="noopener">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -134,17 +130,15 @@ Keyple project
 &lt;ul>
 &lt;li>Using &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code class="language-gradle">implementation 'org.eclipse.keyple:keyple-java-distributed-remote:1.0.0'
-&lt;/code>&lt;/pre>
-&lt;ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-java-distributed-remote:1.0.0&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>Using &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code class="language-xml">&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.eclipse.keyple&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;keyple-java-distributed-remote&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;1.0.0&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&lt;/code>&lt;/pre>
-&lt;ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-java-distributed-remote&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-distributed-remote" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
 &lt;/ul></description></item></channel></rss>

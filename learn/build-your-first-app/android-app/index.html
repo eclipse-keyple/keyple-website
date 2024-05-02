@@ -1,477 +1,139 @@
-<!doctype html><html lang=en-us>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Wowchemy 5.3.0 for Hugo">
-<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-<link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
-<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
-<meta name=description content="This guide describes how to start a ticketing application using Keyple and Android NFC plugin to read the content of a Calypso card.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/learn/build-your-first-app/android-app/>
-<meta name=theme-color content="#1D87BB">
-<link rel=stylesheet href=../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
-<link rel=stylesheet href=../../../css/wowchemy.515e06faef9f54bb760004647e75b940.css>
-<script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
-<link rel=manifest href=../../../manifest.webmanifest>
-<link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
-<link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/learn/build-your-first-app/android-app/>
-<meta property="twitter:card" content="summary">
-<meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/learn/build-your-first-app/android-app/">
-<meta property="og:title" content="Build your first Android application | Eclipse Keyple">
-<meta property="og:description" content="This guide describes how to start a ticketing application using Keyple and Android NFC plugin to read the content of a Calypso card."><meta property="og:image" content="https://keyple.org/media/logo.svg">
-<meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2024-01-30T10:38:42+01:00">
-<title>Build your first Android application | Eclipse Keyple</title>
-</head>
-<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=3809efcf55808c5f84377d047bfb6fb4>
-<script src=../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
-<aside class=search-modal id=search>
-<div class=container>
-<section class=search-header>
-<div class="row no-gutters justify-content-between mb-3">
-<div class=col-6>
-<h1>Search</h1>
-</div>
-<div class="col-6 col-search-close">
-<a class=js-search href=# aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
-</div>
-</div>
-<div id=search-box>
-<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...>
-</div>
-</section>
-<section class=section-search-results>
-<div id=search-hits>
-</div>
-</section>
-</div>
-</aside>
-<div class=page-header>
-<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
-<div class=container-xl>
-<div class="d-none d-lg-inline-flex">
-<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
-</div>
-<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
-<span><i class="fas fa-bars"></i></span>
-</button>
-<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
-<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
-</div>
-<div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
-<ul class="navbar-nav d-md-inline-flex">
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=generator content="Hugo Blox Builder 5.9.6"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload='this.media="all"'><link rel=stylesheet href=../../../css/vendor-bundle.min.047268c6dd09ad74ba54a0ba71837064.css media=print onload='this.media="all"'><link rel=stylesheet href=https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin=anonymous media=print onload='this.media="all"'><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css integrity crossorigin=anonymous media=print onload='this.media="all"'><link rel=stylesheet href=../../../css/wowchemy.c7209c1a36b3770940c9d67675a0cbef.css><link rel=stylesheet href=../../../css/libs/chroma/github-dark.min.css title=hl-light media=print onload='this.media="all"'><link rel=stylesheet href=../../../css/libs/chroma/github-dark.min.css title=hl-dark media=print onload='this.media="all"' disabled><meta name=description content="This guide describes how to start a ticketing application using Keyple and Android NFC plugin to read the content of a Calypso card."><link rel=alternate hreflang=en-us href=https://keyple.org/learn/build-your-first-app/android-app/><link rel=canonical href=https://keyple.org/learn/build-your-first-app/android-app/><link rel=manifest href=../../../manifest.webmanifest><link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png><link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png><meta name=theme-color content="#1D87BB"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:type" content="article"><meta property="og:site_name" content="Eclipse Keyple"><meta property="og:url" content="https://keyple.org/learn/build-your-first-app/android-app/"><meta property="og:title" content="Build your first Android application | Eclipse Keyple"><meta property="og:description" content="This guide describes how to start a ticketing application using Keyple and Android NFC plugin to read the content of a Calypso card."><meta property="og:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us"><meta property="article:modified_time" content="2024-05-02T15:14:25+02:00"><title>Build your first Android application | Eclipse Keyple</title></head><body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=3809efcf55808c5f84377d047bfb6fb4><script src=../../../js/wowchemy-init.min.d66af272089c6c0601f1a57edc3bf6ab.js></script><aside class=search-modal id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href=# aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box><input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><div class="page-header header--fixed"><header><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container-xl><div class="d-none d-lg-inline-flex"><a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a></div><div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
 <a class=dropdown-item href=../../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
-<a class=dropdown-item href=../../../#news><span>News</span></a>
-</div>
-</li>
-<li class=nav-item>
-<a class=nav-link href=../../../learn/overview><span>Learn</span></a>
-</li>
-<li class=nav-item>
-<a class=nav-link href=../../../components/overview><span>Components</span></a>
-</li>
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../../#news><span>News</span></a></div></li><li class=nav-item><a class=nav-link href=../../../learn/overview><span>Learn</span></a></li><li class=nav-item><a class=nav-link href=../../../components/overview><span>Components</span></a></li><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
 <a class=dropdown-item href=../../../community/roadmap/><span>Roadmap</span></a>
 <a class=dropdown-item href=../../../community/changelog/><span>Changelog</span></a>
 <a class=dropdown-item href=../../../project-dashboard/><span>Project dashboard</span></a>
-<a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date"><span>Code quality dashboard</span></a>
+<a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&amp;sort=-analysis_date"><span>Code quality dashboard</span></a>
 <a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
 <a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
 <a class=dropdown-item href=https://github.com/eclipse-keyple/keyple/><span>GitHub home repository</span></a>
-<a class=dropdown-item href=../../../archives/><span>Archives</span></a>
-</div>
-</li>
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../../archives/><span>Archives</span></a></div></li><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
 <a class=dropdown-item href=../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
-<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
-</div>
-</li>
-<li class=nav-item>
-<a class="nav-link active" href=../../../learn/build-your-first-app/><button class="btn btn-info"><i class="fas fa-rocket pr-1" aria-hidden=true></i> <span>START CODING</span></button></a>
-</li>
-</ul>
-</div>
-<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-<li class=nav-item>
-<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
-</li>
-</ul>
-</div>
-</nav>
-</div>
-<div class=page-body>
-<div class="container-fluid docs">
-<div class="row flex-xl-nowrap">
-<div class="col-12 col-md-3 col-xl-2 docs-sidebar">
-<form class="docs-search d-flex align-items-center">
-<button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
-<div class=d-flex>
-<span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
-Build your first app
-</span>
-<span><i class="fas fa-chevron-down"></i></span>
-</div>
-</button>
+<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a></div></li><li class=nav-item><a class="nav-link active" href=../../../learn/build-your-first-app/><button class='btn btn-info'><i class='fas fa-rocket pr-1' aria-hidden=true></i> <span>START CODING</span></button></a></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"><li class=nav-item><a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a></li></ul></div></nav></header></div><div class=page-body><div class="container-fluid docs"><div class="row flex-xl-nowrap"><div class="col-12 col-md-3 col-xl-2 docs-sidebar"><form class="docs-search d-flex align-items-center"><button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation"><div class=d-flex><span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">Build your first app
+</span><span><i class="fas fa-chevron-down"></i></span></div></button>
 <button class="form-control sidebar-search js-search d-none d-md-flex">
 <i class="fas fa-search pr-2"></i>
 <span class=sidebar-search-text>Search...</span>
-<span class=sidebar-search-shortcut>/</span>
-</button>
-</form>
-<nav class="collapse docs-links" id=docs-nav>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/></a></li>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/overview/>Overview</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li>
-<li><a href=../../../learn/overview/architecture/>Architecture</a></li>
-<li><a href=../../../learn/overview/keypop-api/>Keypop API</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/build-your-first-app/>Build your first app</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/build-your-first-app/java-app/>Java</a></li>
-<li class=active><a href=../../../learn/build-your-first-app/android-app/>Android</a></li>
-<li><a href=../../../learn/build-your-first-app/cpp-app/>C++</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/user-guide/>User guides</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
-<li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
-<li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
-<li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
-<li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li>
-<li><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/code-samples/>Code samples</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/code-samples/java-example/>Java examples</a></li>
-<li><a href=../../../learn/code-samples/cpp-example/>C++ examples</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/keyple-in-depth/>Keyple in depth</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
-<li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
-<li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
-</ul>
-</div>
-</ul>
-</nav>
-</div>
-<div class="d-none d-xl-block col-xl-2 docs-toc">
-<ul class="nav toc-top">
-<li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
-</ul>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#overview>Overview</a></li>
-<li><a href=#project-setup>Project setup</a></li>
-<li><a href=#focus-on-keyple-specific-code>Focus on Keyple specific code</a></li>
-<li><a href=#faq>FAQ</a>
-<ul>
-<li></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
-<article class=article>
-<div class=docs-article-container>
-<h1>Build your first Android application</h1>
-<div class=article-style>
-<br>
-<h2 id=overview>Overview</h2>
-<p>The development of an Android application based on Keyple follows the same principles as those exposed in the Java part.</p>
-<p>However, this guide points out the specificities of this environment based on the <strong>Android NFC application</strong> example provided in the <a href=https://github.com/eclipse-keyple/keyple-java-example target=_blank rel=noopener>keyple-java-example</a> repository.</p>
-<p>We recommend that Android application developers clone this example to better understand how Keyple works on Android.</p>
-<div class="alert alert-warning">
-<div>
-<p>The application available in the example repository requires:</p>
-<ul>
-<li>a retail Device with NFC powered by android.nfc library (integrated into standard Android SDK),</li>
-<li>Android OS 19+,</li>
-<li>a Calypso card (contactless smart card, NFC mobile phone with a Calypso applet or application).</li>
-</ul>
-</div>
-</div>
-<p>It uses three main components of Keyple:</p>
-<ul>
-<li><a href=../../../components/core/>Keyple Service Java Library</a>
-which is the base component to which all the others refer,</li>
-<li><a href=../../../components/card-extensions/keyple-card-generic-lib/>Keyple Card Generic</a>
-add-on to handle the commands sent to the Calypso card,</li>
-<li><a href=../../../components/standard-reader-plugins/keyple-plugin-android-nfc-lib/>Keyple Plugin Android NFC</a>
-add-on to provide the ability to drive the NFC reader.</li>
-</ul>
-<p><a href=https://gradle.org/ target=_blank rel=noopener>Gradle</a> is used as build automation tool, but it is easy to transpose these explanations to another tool
-such as Maven for example.</p>
-<br>
-<h2 id=project-setup>Project setup</h2>
-<p>The dependencies to be imported into the project are accessible with the <a href=../../../components/overview/configuration-wizard/>configuration wizard</a>.</p>
-<p>Depending on the nature of the hardware resources required, it is necessary to declare certain permissions in the project manifest file.
-In the case of the Android NFC example, access to NFC functions is declared as follows:
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('5',this)">Copy</button></div>
-<pre><code class=language-xml id=code-5>&lt;manifest xmlns:android=&#34;http://schemas.android.com/apk/res/android&#34;&gt;
-    ...
-    &lt;uses-permission android:name=&#34;android.permission.NFC&#34; /&gt;
-    &lt;uses-feature android:name=&#34;android.hardware.nfc&#34; android:required=&#34;true&#34; /&gt;
-    ...
-    &lt;application ...&gt;
-        ...
-        &lt;activity ... &gt;
-            ...
-            &lt;intent-filter&gt;
-                &lt;action android:name=&#34;android.nfc.action.TECH_DISCOVERED&#34; /&gt;
-            &lt;/intent-filter&gt;
-            &lt;meta-data
-                    android:name=&#34;android.nfc.action.TECH_DISCOVERED&#34;
-                    android:resource=&#34;@xml/tech_list&#34; /&gt;
-        &lt;/activity&gt;
-    &lt;/application&gt;
-&lt;/manifest&gt;</code></pre></p>
-<p>You will have to adapt this section according to the reader plugin used.</p>
-<br>
-<h2 id=focus-on-keyple-specific-code>Focus on Keyple specific code</h2>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
-<pre><code class=language-kotlin id=code-6>...
-class MainActivity : AppCompatActivity(), CardReaderObserverSpi, CardReaderObservationExceptionHandlerSpi {
-
-  private lateinit var reader: ObservableCardReader
-  private lateinit var cardSelectionManager: CardSelectionManager
-  private val readerApiFactory: ReaderApiFactory =
-      SmartCardServiceProvider.getService().readerApiFactory
-  private var calypsoExtensionService = CalypsoExtensionService.getInstance()
-  private val calypsoCardApiFactory: CalypsoCardApiFactory =
-      calypsoExtensionService.getCalypsoCardApiFactory()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        ...
-        // Retrieve the NFC reader
-        val plugin =
-            SmartCardServiceProvider.getService()
-                .registerPlugin(AndroidNfcPluginFactoryProvider(this).getFactory())
-        reader = plugin.getReader(AndroidNfcReader.READER_NAME) as ObservableCardReader
-        reader.setReaderObservationExceptionHandler(this)
-        reader.addObserver(this)
-        (reader as ConfigurableCardReader).activateProtocol(
-            AndroidNfcSupportedProtocols.ISO_14443_4.name, &#34;ISODEP&#34;)
-        ...
-        // Configure the card selection
-        cardSelectionManager = readerApiFactory.createCardSelectionManager()
-    
-        // Create a generic ISO selector
-        val cardSelector =
-            readerApiFactory.createIsoCardSelector().filterByDfName(CalypsoConstants.KEYPLE_KIT_AID)
-    
-        // Create a specific Calypso card selection extension
-        val calypsoCardSelectionExtension =
-            calypsoCardApiFactory.createCalypsoCardSelectionExtension().acceptInvalidatedCard()
-    
-        cardSelectionManager.prepareSelection(cardSelector, calypsoCardSelectionExtension)
-        ...
-        // Start the card detection
-        cardSelectionManager.scheduleCardSelectionScenario(
-            reader, ObservableCardReader.NotificationMode.ALWAYS)
-    
-        reader.startCardDetection(ObservableCardReader.DetectionMode.REPEATING)
-        ...
-    }
-
-    override fun onDestroy() {
-        ...
-        SmartCardServiceProvider.getService().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
-    }
-    
-    override fun onReaderEvent(readerEvent: CardReaderEvent?) {
-        CoroutineScope(Dispatchers.Main).launch {
-          readerEvent?.let { event -&gt;
-            when (event.type) {
-              CardReaderEvent.Type.CARD_INSERTED -&gt; {
-                // handle card inserted event
-                ...
-                reader.finalizeCardProcessing()
-              }
-              CardReaderEvent.Type.CARD_MATCHED -&gt; {
-                // handle card matched event
-                ...
-                reader.finalizeCardProcessing()
-              }
-              CardReaderEvent.Type.CARD_REMOVED -&gt; {
-                // handle card removed event
-                ...
-              }
-              else -&gt; {
-                // Handle other event types if necessary
-              }
-            }
-          }
-          ...
-        }
-    }
-
-    override fun onReaderObservationError(contextInfo: String?, readerName: String?, e: Throwable?) {
-        // Handle the error
-        ...
-    }
-}</code></pre>
-<br>
-<h2 id=faq>FAQ</h2>
-<h4 id=how-to-fix-_more-than-one-file-was-found-with-os-independent-path-meta-infnoticemd_>How to fix &ldquo;<em>More than one file was found with OS independent path &lsquo;META-INF/NOTICE.md&rsquo;</em>&rdquo;.</h4>
-<p>Add lines below to your :app build.gradle file</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
-<pre><code class=language-kotlin id=code-7>android {
-    packagingOptions {
-        exclude &#39;META-INF/NOTICE.md&#39;
-    }
-}</code></pre>
-</div>
-<div class=article-widget>
-<div class=post-nav>
-<div class=post-nav-item>
-<div class=meta-nav>Previous</div>
-<a href=../../../learn/build-your-first-app/java-app/ rel=next>Build your first Java application</a>
-</div>
-<div class=post-nav-item>
-<div class=meta-nav>Next</div>
-<a href=../../../learn/build-your-first-app/cpp-app/ rel=prev>Build your first C++ application</a>
-</div>
-</div>
-</div>
-</div>
-<div class=body-footer>
-<p>Last updated on 2024-01-30</p>
-</div>
-</article>
-<footer class=site-footer>
-<div class=container>
-<div class="row featurette">
-<div class="col-12 col-sm-4">
-<p style=color:#fff><b>ECLIPSE LEGAL</b></p>
-<a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a><br>
-<a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a><br>
-<a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a><br>
-<a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a><br>
-<a href=https://www.eclipse.org/legal/>Legal Resources</a><br>
-<a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a><br>
-</div>
-<div class="col-12 col-sm-4">
-<a href=https://www.eclipse.org target=_blank>
-<img src=../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
-</a>
-</div>
-<div class="col-12 col-sm-4">
-<a href=https://iot.eclipse.org target=_blank>
-<img src=../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
-</a>
-</div>
-</div>
-</div>
-<p class=powered-by id=copyright>
-© 2020-2024 The Eclipse Keyple® project. All Rights Reserved.
-</p>
-<p class=powered-by id=template-info>
-Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-themes target=_blank rel=noopener>open source</a> website builder that empowers creators.
-</p>
-</footer>
-</main>
-</div>
-</div>
-</div>
-<div class=page-footer>
-</div>
-<div id=modal class="modal fade" role=dialog>
-<div class=modal-dialog>
-<div class=modal-content>
-<div class=modal-header>
-<h5 class=modal-title>Cite</h5>
-<button type=button class=close data-dismiss=modal aria-label=Close>
-<span aria-hidden=true>&#215;</span>
-</button>
-</div>
-<div class=modal-body>
-<pre><code class="tex hljs"></code></pre>
-</div>
-<div class=modal-footer>
-<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
-<i class="fas fa-copy"></i> Copy
-</a>
-<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
-<i class="fas fa-download"></i> Download
-</a>
-<div id=modal-error></div>
-</div>
-</div>
-</div>
-</div>
-<script src=../../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/java.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/groovy.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/xml.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/kotlin.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/cpp.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/gradle.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/ini.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/make.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin=anonymous></script>
-<script>anchors.add()</script>
-<script id=search-hit-fuse-template type=text/x-template>
-        <div class="search-hit" id="summary-{{key}}">
-          <div class="search-hit-content">
-            <div class="search-hit-name">
-              <a href="{{relpermalink}}">{{title}}</a>
-              <div class="article-metadata search-hit-type">{{type}}</div>
-              <p class="search-hit-description">{{snippet}}</p>
-            </div>
-          </div>
+<span class=sidebar-search-shortcut>/</span></button></form><nav class="collapse docs-links" id=docs-nav><ul class="nav docs-sidenav"><li><a href=../../../learn/></a></li><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/overview/>Overview</a><ul class="nav docs-sidenav"><li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li><li><a href=../../../learn/overview/architecture/>Architecture</a></li><li><a href=../../../learn/overview/keypop-api/>Keypop API</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/build-your-first-app/>Build your first app</a><ul class="nav docs-sidenav"><li><a href=../../../learn/build-your-first-app/java-app/>Java</a></li><li class=active><a href=../../../learn/build-your-first-app/android-app/>Android</a></li><li><a href=../../../learn/build-your-first-app/cpp-app/>C++</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/user-guide/>User guides</a><ul class="nav docs-sidenav"><li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li><li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li><li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li><li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li><li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li><li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a><ul class="nav docs-sidenav"><li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li><li><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/code-samples/>Code samples</a><ul class="nav docs-sidenav"><li><a href=../../../learn/code-samples/java-example/>Java examples</a></li><li><a href=../../../learn/code-samples/cpp-example/>C++ examples</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/keyple-in-depth/>Keyple in depth</a><ul class="nav docs-sidenav"><li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li><li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li><li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li></ul></div></ul></nav></div><div class="d-none d-xl-block col-xl-2 docs-toc"><ul class="nav toc-top"><li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li></ul><nav id=TableOfContents><ul><li><a href=#overview>Overview</a></li><li><a href=#project-setup>Project setup</a></li><li><a href=#focus-on-keyple-specific-code>Focus on Keyple specific code</a></li><li><a href=#faq>FAQ</a><ul><li></li></ul></li></ul></nav></div><main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main><div class=docs-article-container></div><div class=docs-article-container><h1>Build your first Android application</h1><article class=article-style><br><h2 id=overview>Overview</h2><p>The development of an Android application based on Keyple follows the same principles as those exposed in the Java part.</p><p>However, this guide points out the specificities of this environment based on the <strong>Android NFC application</strong> example provided in the <a href=https://github.com/eclipse-keyple/keyple-java-example target=_blank rel=noopener>keyple-java-example</a> repository.</p><p>We recommend that Android application developers clone this example to better understand how Keyple works on Android.</p><div class="alert alert-warning"><div><p>The application available in the example repository requires:</p><ul><li>a retail Device with NFC powered by android.nfc library (integrated into standard Android SDK),</li><li>Android OS 19+,</li><li>a Calypso card (contactless smart card, NFC mobile phone with a Calypso applet or application).</li></ul></div></div><p>It uses three main components of Keyple:</p><ul><li><a href=../../../components/core/>Keyple Service Java Library</a>
+which is the base component to which all the others refer,</li><li><a href=../../../components/card-extensions/keyple-card-generic-lib/>Keyple Card Generic</a>
+add-on to handle the commands sent to the Calypso card,</li><li><a href=../../../components/standard-reader-plugins/keyple-plugin-android-nfc-lib/>Keyple Plugin Android NFC</a>
+add-on to provide the ability to drive the NFC reader.</li></ul><p><a href=https://gradle.org/ target=_blank rel=noopener>Gradle</a> is used as build automation tool, but it is easy to transpose these explanations to another tool
+such as Maven for example.</p><br><h2 id=project-setup>Project setup</h2><p>The dependencies to be imported into the project are accessible with the <a href=../../../components/overview/configuration-wizard/>configuration wizard</a>.</p><p>Depending on the nature of the hardware resources required, it is necessary to declare certain permissions in the project manifest file.
+In the case of the Android NFC example, access to NFC functions is declared as follows:<div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;manifest</span> <span class=na>xmlns:android=</span><span class=s>&#34;http://schemas.android.com/apk/res/android&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    ...
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;uses-permission</span> <span class=na>android:name=</span><span class=s>&#34;android.permission.NFC&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;uses-feature</span> <span class=na>android:name=</span><span class=s>&#34;android.hardware.nfc&#34;</span> <span class=na>android:required=</span><span class=s>&#34;true&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    ...
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;application</span> <span class=err>...</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>        ...
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;activity</span> <span class=err>...</span> <span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>            ...
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;intent-filter&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&lt;action</span> <span class=na>android:name=</span><span class=s>&#34;android.nfc.action.TECH_DISCOVERED&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;/intent-filter&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;meta-data</span>
+</span></span><span class=line><span class=cl>                    <span class=na>android:name=</span><span class=s>&#34;android.nfc.action.TECH_DISCOVERED&#34;</span>
+</span></span><span class=line><span class=cl>                    <span class=na>android:resource=</span><span class=s>&#34;@xml/tech_list&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;/activity&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/application&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/manifest&gt;</span></span></span></code></pre></div></div></div></p><p>You will have to adapt this section according to the reader plugin used.</p><br><h2 id=focus-on-keyple-specific-code>Focus on Keyple specific code</h2><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-kotlin data-lang=kotlin><span class=line><span class=cl><span class=o>..</span><span class=p>.</span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>MainActivity</span> <span class=p>:</span> <span class=n>AppCompatActivity</span><span class=p>(),</span> <span class=n>CardReaderObserverSpi</span><span class=p>,</span> <span class=n>CardReaderObservationExceptionHandlerSpi</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=k>private</span> <span class=k>lateinit</span> <span class=k>var</span> <span class=py>reader</span><span class=p>:</span> <span class=n>ObservableCardReader</span>
+</span></span><span class=line><span class=cl>  <span class=k>private</span> <span class=k>lateinit</span> <span class=k>var</span> <span class=py>cardSelectionManager</span><span class=p>:</span> <span class=n>CardSelectionManager</span>
+</span></span><span class=line><span class=cl>  <span class=k>private</span> <span class=k>val</span> <span class=py>readerApiFactory</span><span class=p>:</span> <span class=n>ReaderApiFactory</span> <span class=p>=</span>
+</span></span><span class=line><span class=cl>      <span class=nc>SmartCardServiceProvider</span><span class=p>.</span><span class=n>getService</span><span class=p>().</span><span class=n>readerApiFactory</span>
+</span></span><span class=line><span class=cl>  <span class=k>private</span> <span class=k>var</span> <span class=py>calypsoExtensionService</span> <span class=p>=</span> <span class=nc>CalypsoExtensionService</span><span class=p>.</span><span class=n>getInstance</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>  <span class=k>private</span> <span class=k>val</span> <span class=py>calypsoCardApiFactory</span><span class=p>:</span> <span class=n>CalypsoCardApiFactory</span> <span class=p>=</span>
+</span></span><span class=line><span class=cl>      <span class=n>calypsoExtensionService</span><span class=p>.</span><span class=n>getCalypsoCardApiFactory</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>override</span> <span class=k>fun</span> <span class=nf>onCreate</span><span class=p>(</span><span class=n>savedInstanceState</span><span class=p>:</span> <span class=n>Bundle</span><span class=p>?)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=o>..</span><span class=p>.</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// Retrieve the NFC reader
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>val</span> <span class=py>plugin</span> <span class=p>=</span>
+</span></span><span class=line><span class=cl>            <span class=nc>SmartCardServiceProvider</span><span class=p>.</span><span class=n>getService</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>                <span class=p>.</span><span class=n>registerPlugin</span><span class=p>(</span><span class=n>AndroidNfcPluginFactoryProvider</span><span class=p>(</span><span class=k>this</span><span class=p>).</span><span class=n>getFactory</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=n>reader</span> <span class=p>=</span> <span class=n>plugin</span><span class=p>.</span><span class=n>getReader</span><span class=p>(</span><span class=nc>AndroidNfcReader</span><span class=p>.</span><span class=n>READER_NAME</span><span class=p>)</span> <span class=k>as</span> <span class=n>ObservableCardReader</span>
+</span></span><span class=line><span class=cl>        <span class=n>reader</span><span class=p>.</span><span class=n>setReaderObservationExceptionHandler</span><span class=p>(</span><span class=k>this</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>reader</span><span class=p>.</span><span class=n>addObserver</span><span class=p>(</span><span class=k>this</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>(</span><span class=n>reader</span> <span class=k>as</span> <span class=n>ConfigurableCardReader</span><span class=p>).</span><span class=n>activateProtocol</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>            <span class=nc>AndroidNfcSupportedProtocols</span><span class=p>.</span><span class=n>ISO_14443_4</span><span class=p>.</span><span class=n>name</span><span class=p>,</span> <span class=s2>&#34;ISODEP&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=o>..</span><span class=p>.</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// Configure the card selection
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>cardSelectionManager</span> <span class=p>=</span> <span class=n>readerApiFactory</span><span class=p>.</span><span class=n>createCardSelectionManager</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>        <span class=c1>// Create a generic ISO selector
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>val</span> <span class=py>cardSelector</span> <span class=p>=</span>
+</span></span><span class=line><span class=cl>            <span class=n>readerApiFactory</span><span class=p>.</span><span class=n>createIsoCardSelector</span><span class=p>().</span><span class=n>filterByDfName</span><span class=p>(</span><span class=nc>CalypsoConstants</span><span class=p>.</span><span class=n>KEYPLE_KIT_AID</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>        <span class=c1>// Create a specific Calypso card selection extension
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>val</span> <span class=py>calypsoCardSelectionExtension</span> <span class=p>=</span>
+</span></span><span class=line><span class=cl>            <span class=n>calypsoCardApiFactory</span><span class=p>.</span><span class=n>createCalypsoCardSelectionExtension</span><span class=p>().</span><span class=n>acceptInvalidatedCard</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>        <span class=n>cardSelectionManager</span><span class=p>.</span><span class=n>prepareSelection</span><span class=p>(</span><span class=n>cardSelector</span><span class=p>,</span> <span class=n>calypsoCardSelectionExtension</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=o>..</span><span class=p>.</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// Start the card detection
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>cardSelectionManager</span><span class=p>.</span><span class=n>scheduleCardSelectionScenario</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>            <span class=n>reader</span><span class=p>,</span> <span class=nc>ObservableCardReader</span><span class=p>.</span><span class=nc>NotificationMode</span><span class=p>.</span><span class=n>ALWAYS</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>        <span class=n>reader</span><span class=p>.</span><span class=n>startCardDetection</span><span class=p>(</span><span class=nc>ObservableCardReader</span><span class=p>.</span><span class=nc>DetectionMode</span><span class=p>.</span><span class=n>REPEATING</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=o>..</span><span class=p>.</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>override</span> <span class=k>fun</span> <span class=nf>onDestroy</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=o>..</span><span class=p>.</span>
+</span></span><span class=line><span class=cl>        <span class=nc>SmartCardServiceProvider</span><span class=p>.</span><span class=n>getService</span><span class=p>().</span><span class=n>unregisterPlugin</span><span class=p>(</span><span class=nc>AndroidNfcPlugin</span><span class=p>.</span><span class=n>PLUGIN_NAME</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>override</span> <span class=k>fun</span> <span class=nf>onReaderEvent</span><span class=p>(</span><span class=n>readerEvent</span><span class=p>:</span> <span class=n>CardReaderEvent</span><span class=p>?)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>CoroutineScope</span><span class=p>(</span><span class=nc>Dispatchers</span><span class=p>.</span><span class=n>Main</span><span class=p>).</span><span class=n>launch</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>          <span class=n>readerEvent</span><span class=o>?.</span><span class=n>let</span> <span class=p>{</span> <span class=n>event</span> <span class=o>-&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=k>when</span> <span class=p>(</span><span class=n>event</span><span class=p>.</span><span class=n>type</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>              <span class=nc>CardReaderEvent</span><span class=p>.</span><span class=nc>Type</span><span class=p>.</span><span class=n>CARD_INSERTED</span> <span class=o>-&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=c1>// handle card inserted event
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=o>..</span><span class=p>.</span>
+</span></span><span class=line><span class=cl>                <span class=n>reader</span><span class=p>.</span><span class=n>finalizeCardProcessing</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>              <span class=p>}</span>
+</span></span><span class=line><span class=cl>              <span class=nc>CardReaderEvent</span><span class=p>.</span><span class=nc>Type</span><span class=p>.</span><span class=n>CARD_MATCHED</span> <span class=o>-&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=c1>// handle card matched event
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=o>..</span><span class=p>.</span>
+</span></span><span class=line><span class=cl>                <span class=n>reader</span><span class=p>.</span><span class=n>finalizeCardProcessing</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>              <span class=p>}</span>
+</span></span><span class=line><span class=cl>              <span class=nc>CardReaderEvent</span><span class=p>.</span><span class=nc>Type</span><span class=p>.</span><span class=n>CARD_REMOVED</span> <span class=o>-&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=c1>// handle card removed event
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=o>..</span><span class=p>.</span>
+</span></span><span class=line><span class=cl>              <span class=p>}</span>
+</span></span><span class=line><span class=cl>              <span class=k>else</span> <span class=o>-&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=c1>// Handle other event types if necessary
+</span></span></span><span class=line><span class=cl><span class=c1></span>              <span class=p>}</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>          <span class=p>}</span>
+</span></span><span class=line><span class=cl>          <span class=o>..</span><span class=p>.</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>override</span> <span class=k>fun</span> <span class=nf>onReaderObservationError</span><span class=p>(</span><span class=n>contextInfo</span><span class=p>:</span> <span class=n>String</span><span class=p>?,</span> <span class=n>readerName</span><span class=p>:</span> <span class=n>String</span><span class=p>?,</span> <span class=n>e</span><span class=p>:</span> <span class=n>Throwable</span><span class=p>?)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// Handle the error
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=o>..</span><span class=p>.</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div></div></div><br><h2 id=faq>FAQ</h2><h4 id=how-to-fix-_more-than-one-file-was-found-with-os-independent-path-meta-infnoticemd_>How to fix &ldquo;<em>More than one file was found with OS independent path &lsquo;META-INF/NOTICE.md&rsquo;</em>&rdquo;.</h4><p>Add lines below to your :app build.gradle file</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-kotlin data-lang=kotlin><span class=line><span class=cl><span class=n>android</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>packagingOptions</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>exclude</span> <span class=err>&#39;</span><span class=n>META</span><span class=p>-</span><span class=n>INF</span><span class=p>/</span><span class=nc>NOTICE</span><span class=p>.</span><span class=n>md</span><span class=err>&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div></div></div></article><div class=article-widget><div class=post-nav><div class=post-nav-item><div class=meta-nav>Previous</div><a href=../../../learn/build-your-first-app/java-app/ rel=next>Build your first Java application</a></div><div class=post-nav-item><div class=meta-nav>Next</div><a href=../../../learn/build-your-first-app/cpp-app/ rel=prev>Build your first C++ application</a></div></div></div></div><div class=body-footer><p>Last updated on 2024-05-02</p></div><footer class=site-footer><div class=container><div class="row featurette"><div class="col-12 col-sm-4"><p style=color:#fff><b>ECLIPSE LEGAL</b></p><a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a><br><a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a><br><a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a><br><a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a><br><a href=https://www.eclipse.org/legal/>Legal Resources</a><br><a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a><br></div><div class="col-12 col-sm-4"><a href=https://www.eclipse.org target=_blank><img src=../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation></a></div><div class="col-12 col-sm-4"><a href=https://iot.eclipse.org target=_blank><img src=../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot></a></div></div></div><p class="powered-by copyright-license-text">© 2023-2024 The Eclipse Keyple® project. All Rights Reserved.</p><p class=powered-by id=template-info>Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target=_blank rel=noopener>Hugo Blox Builder</a> — the free, <a href=https://github.com/HugoBlox/hugo-blox-builder target=_blank rel=noopener>open source</a> website builder that empowers creators.</p></footer></main></div></div></div><div class=page-footer></div><script src=../../../js/vendor-bundle.min.938a3a7554cd9f6602290411f64d2617.js></script><script src=https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js integrity crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js integrity="sha256-aQmOEF2ZD4NM/xt4hthzREIo/2PFkOX/g01WjxEV7Ys=" crossorigin=anonymous></script><script>anchors.add()</script><script id=search-hit-fuse-template type=text/x-template>
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
         </div>
-      </script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.3e9e983029b2f19036e863f00795497b.js></script>
-<link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
-<script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
-<script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
-</body>
-</html>
+      </div>
+    </div>
+  </script><script src=https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin=anonymous></script><script id=page-data type=application/json>{"use_headroom":false}</script><script src=../../../en/js/wowchemy.min.27a6b98e2945e58d8c2db5ab7dfc1d3b.js></script><script src=../../../js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js type=module></script><link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css><script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script><script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script></body></html>

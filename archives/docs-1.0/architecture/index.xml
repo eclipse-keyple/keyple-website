@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>https://keyple.org/archives/docs-1.0/architecture/</link><atom:link href="https://keyple.org/archives/docs-1.0/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2024 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Architecture</title><link>https://keyple.org/archives/docs-1.0/architecture/</link></image><item><title>Global Solution</title><link>https://keyple.org/archives/docs-1.0/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/docs-1.0/architecture/keyple-global/</guid><description>&lt;div class="alert alert-warning">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture | Eclipse Keyple</title><link>https://keyple.org/archives/docs-1.0/architecture/</link><atom:link href="https://keyple.org/archives/docs-1.0/architecture/index.xml" rel="self" type="application/rss+xml"/><description>Architecture</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://keyple.org/media/logo.svg</url><title>Architecture</title><link>https://keyple.org/archives/docs-1.0/architecture/</link></image><item><title>Global Solution</title><link>https://keyple.org/archives/docs-1.0/architecture/keyple-global/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/docs-1.0/architecture/keyple-global/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -83,7 +83,8 @@ Keyple Architecture Local Plugin
 &lt;div class="w-100" >&lt;img src="../../../media/archive-1.0/architecture/Keyple_Architecture_Remote_Plugin.svg" alt="Keyple Architecture Remote Plugin" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption>
 Keyple Architecture Remote Plugin
-&lt;/figcaption>&lt;/figure>&lt;/p>
+&lt;/figcaption>&lt;/figure>
+&lt;/p>
 &lt;br>
 &lt;h2 id="smart-card-transaction">Smart card transaction&lt;/h2>
 &lt;p>There are two ways for a terminal application to manage a transaction with a smart card.&lt;/p>
@@ -209,7 +210,8 @@ The &lt;strong>SmartCard Service&lt;/strong> singleton provides the unique name 
 &lt;div class="w-100" >&lt;img src="../../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_PluginSettingAndReaderAccess_1_0_0.svg" alt="[Reader Access v1.0.0" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption>
 [Reader Access v1.0.0
-&lt;/figcaption>&lt;/figure>&lt;/li>
+&lt;/figcaption>&lt;/figure>
+&lt;/li>
 &lt;/ul>
 &lt;p>(The APDU transmission with a Card is managed at a lower layer, through a Card Solution API.)&lt;/p>
 &lt;h3 id="specific-plugin-integration">Specific Plugin integration&lt;/h3>
@@ -219,7 +221,8 @@ The &lt;strong>SmartCard Service&lt;/strong> singleton provides the unique name 
 &lt;div class="w-100" >&lt;img src="../../../media/archive-1.0/architecture/KeypleCore_Reader_ClassDiag_SpecificPluginFactoryAndProtocol_1_0_0.svg" alt="Specific Plugin v1.0.0" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption>
 Specific Plugin v1.0.0
-&lt;/figcaption>&lt;/figure>&lt;/p>
+&lt;/figcaption>&lt;/figure>
+&lt;/p>
 &lt;h3 id="reader-notifications">Reader Notifications&lt;/h3>
 &lt;p>To be notified about &lt;strong>Plugin Event&lt;/strong> or &lt;strong>Reader Event&lt;/strong>, a terminal application must implement the dedicated &lt;strong>Plugin Observer&lt;/strong> or &lt;strong>Reader Observer&lt;/strong> interfaces.&lt;/p>
 &lt;figure id="figure-reader-notifications-v100">
@@ -401,7 +404,7 @@ Calypso packages
 &lt;!-- The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages. -->
 &lt;br>
 &lt;h2 id="calypso-portable-object-selection">Calypso Portable Object Selection&lt;/h2>
-&lt;p>Compared to the generic Card Selection API (cf. &lt;a href="https://keyple.org/learn/architecture/keyple-core/#card-selection%29," target="_blank" rel="noopener">https://keyple.org/learn/architecture/keyple-core/#card-selection),&lt;/a> a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
+&lt;p>Compared to the generic Card Selection API (cf. &lt;a href="https://keyple.org/learn/architecture/keyple-core/#card-selection%29" target="_blank" rel="noopener">https://keyple.org/learn/architecture/keyple-core/#card-selection)&lt;/a>, a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
 &lt;p>In addition, a PO Selection Request provides methods:&lt;/p>
 &lt;ul>
 &lt;li>to prepare Select File command (useful in particular to manage REV1 Calypso PO for which the select of the targeted DF is required).&lt;/li>

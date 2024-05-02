@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Server JSON API for non-Keyple clients | Eclipse Keyple</title><link>https://keyple.org/server-json-apis/</link><atom:link href="https://keyple.org/server-json-apis/index.xml" rel="self" type="application/rss+xml"/><description>Server JSON API for non-Keyple clients</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2024 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Server JSON API for non-Keyple clients</title><link>https://keyple.org/server-json-apis/</link></image><item><title>Server JSON API 2.0</title><link>https://keyple.org/server-json-apis/api-2-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/server-json-apis/api-2-0/</guid><description>&lt;br>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Server JSON API for non-Keyple clients | Eclipse Keyple</title><link>https://keyple.org/server-json-apis/</link><atom:link href="https://keyple.org/server-json-apis/index.xml" rel="self" type="application/rss+xml"/><description>Server JSON API for non-Keyple clients</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://keyple.org/media/logo.svg</url><title>Server JSON API for non-Keyple clients</title><link>https://keyple.org/server-json-apis/</link></image><item><title>Server JSON API 2.0</title><link>https://keyple.org/server-json-apis/api-2-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/server-json-apis/api-2-0/</guid><description>&lt;br>
 &lt;p>Link to &lt;a href="https://keyple.org/learn/user-guide/server-json-api/#api-20">Server JSON API 2.0&lt;/a>&lt;/p></description></item><item><title>Server JSON API 1.0</title><link>https://keyple.org/server-json-apis/api-1-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/server-json-apis/api-1-0/</guid><description>&lt;style>
 table th:nth-child(1) {
 width: 9rem;
@@ -8,9 +8,9 @@ width: 9rem;
 &lt;div>
 &lt;p>This API is compliant with the following Keyple server side components:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/">Keyple Service Library&lt;/a> version &lt;code>2.1.4+&lt;/code>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-network-lib/">Keyple Distributed Network Library&lt;/a> version &lt;code>2.2.0+&lt;/code>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-remote-lib/">Keyple Distributed Remote Library&lt;/a> version &lt;code>2.2.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/" target="_blank" rel="noopener">Keyple Service Library&lt;/a> version &lt;code>2.1.4+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-network-lib/" target="_blank" rel="noopener">Keyple Distributed Network Library&lt;/a> version &lt;code>2.2.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-remote-lib/" target="_blank" rel="noopener">Keyple Distributed Remote Library&lt;/a> version &lt;code>2.2.0+&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;/div>
 &lt;/div>
@@ -105,14 +105,16 @@ language of the target terminal.&lt;/p>
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="example">Example&lt;/h4>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('4', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-4">{
-&amp;#34;action&amp;#34;: &amp;#34;EXECUTE_REMOTE_SERVICE&amp;#34;,
-&amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;serviceId\&amp;#34;:\&amp;#34;AUTHENTICATE_CARD\&amp;#34;,\&amp;#34;inputData\&amp;#34;:{\&amp;#34;userId\&amp;#34;:\&amp;#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&amp;#34;}}&amp;#34;,
-&amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;,
-&amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
-&amp;#34;localReaderName&amp;#34;: &amp;#34;READER_1&amp;#34;
-}&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;EXECUTE_REMOTE_SERVICE&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;serviceId\&amp;#34;:\&amp;#34;AUTHENTICATE_CARD\&amp;#34;,\&amp;#34;inputData\&amp;#34;:{\&amp;#34;userId\&amp;#34;:\&amp;#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&amp;#34;}}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h2 id="command">Command&lt;/h2>
 &lt;p>The purpose of this message, received from the server, is to ask the terminal to perform a specific service with the
@@ -237,18 +239,20 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-1">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('9', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-9">[
-{
-&amp;#34;action&amp;#34;: &amp;#34;CMD&amp;#34;,
-&amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CONTACTLESS\&amp;#34;}&amp;#34;,
-&amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
-&amp;#34;localReaderName&amp;#34;: &amp;#34;READER_1&amp;#34;,
-&amp;#34;remoteReaderName&amp;#34;: &amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;,
-&amp;#34;serverNodeId&amp;#34;: &amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;,
-&amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;
-}
-]&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;CMD&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CONTACTLESS\&amp;#34;}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h3 id="card-presence-cmd">Card Presence&lt;/h3>
 &lt;p>This service allows the server to know if a card is inserted in the reader.&lt;/p>
@@ -315,18 +319,20 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-2">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('11', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-11">[
-{
-&amp;#34;action&amp;#34;: &amp;#34;CMD&amp;#34;,
-&amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CARD_PRESENT\&amp;#34;}&amp;#34;,
-&amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
-&amp;#34;localReaderName&amp;#34;: &amp;#34;READER_1&amp;#34;,
-&amp;#34;remoteReaderName&amp;#34;: &amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;,
-&amp;#34;serverNodeId&amp;#34;: &amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;,
-&amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;
-}
-]&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;CMD&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CARD_PRESENT\&amp;#34;}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h3 id="card-selection-cmd">Card Selection&lt;/h3>
 &lt;p>The primary objective of this service is to establish a logical communication channel with a card.&lt;/p>
@@ -443,11 +449,11 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>multiSelectionProcessing&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>FIRST_MATCH&lt;/strong>&amp;quot;: the selection process stops as soon as a selection case is successful.&lt;br>- &amp;ldquo;&lt;strong>PROCESS_ALL&lt;/strong>&amp;quot;: the selection process performs all the selection cases provided (the logical channel is closed at the end of the selection case).&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>FIRST_MATCH&lt;/strong>&amp;rdquo;: the selection process stops as soon as a selection case is successful.&lt;br>- &amp;ldquo;&lt;strong>PROCESS_ALL&lt;/strong>&amp;rdquo;: the selection process performs all the selection cases provided (the logical channel is closed at the end of the selection case).&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>channelControl&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>KEEP_OPEN&lt;/strong>&amp;quot;: leaves the physical channel open.&lt;br>- &amp;ldquo;&lt;strong>CLOSE_AFTER&lt;/strong>&amp;quot;: terminates communication with the card.&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>KEEP_OPEN&lt;/strong>&amp;rdquo;: leaves the physical channel open.&lt;br>- &amp;ldquo;&lt;strong>CLOSE_AFTER&lt;/strong>&amp;rdquo;: terminates communication with the card.&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -493,11 +499,11 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>fileOccurrence&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>&amp;quot;&lt;strong>FIRST&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>LAST&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>NEXT&lt;/strong>&amp;rdquo; or &amp;ldquo;&lt;strong>PREVIOUS&lt;/strong>&amp;rdquo; according to the ISO7816-4 standard (only relevant when AID is set).&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>&amp;quot;&lt;strong>FIRST&lt;/strong>&amp;quot;, &amp;ldquo;&lt;strong>LAST&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>NEXT&lt;/strong>&amp;rdquo; or &amp;ldquo;&lt;strong>PREVIOUS&lt;/strong>&amp;rdquo; according to the ISO7816-4 standard (only relevant when AID is set).&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>fileControlInformation&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>&amp;quot;&lt;strong>FCI&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>FCP&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>FMD&lt;/strong>&amp;rdquo; or &amp;ldquo;&lt;strong>NO_RESPONSE&lt;/strong>&amp;rdquo; according to the ISO7816-4 standard (only relevant when AID is set).&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>&amp;quot;&lt;strong>FCI&lt;/strong>&amp;quot;, &amp;ldquo;&lt;strong>FCP&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>FMD&lt;/strong>&amp;rdquo; or &amp;ldquo;&lt;strong>NO_RESPONSE&lt;/strong>&amp;rdquo; according to the ISO7816-4 standard (only relevant when AID is set).&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>successfulSelectionStatusWords&lt;/code>&lt;/td>
@@ -548,18 +554,20 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-3">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('13', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-13">[
-{
-&amp;#34;action&amp;#34;: &amp;#34;CMD&amp;#34;,
-&amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_SELECTION_REQUESTS\&amp;#34;,\&amp;#34;parameters\&amp;#34;:{\&amp;#34;multiSelectionProcessing\&amp;#34;:\&amp;#34;FIRST_MATCH\&amp;#34;,\&amp;#34;channelControl\&amp;#34;:\&amp;#34;KEEP_OPEN\&amp;#34;,\&amp;#34;cardSelectionRequests\&amp;#34;:[{\&amp;#34;cardSelector\&amp;#34;:{\&amp;#34;cardProtocol\&amp;#34;:\&amp;#34;ISO_14443_4_CARD\&amp;#34;,\&amp;#34;aid\&amp;#34;:\&amp;#34;315449432E49434131\&amp;#34;,\&amp;#34;fileOccurrence\&amp;#34;:\&amp;#34;FIRST\&amp;#34;,\&amp;#34;fileControlInformation\&amp;#34;:\&amp;#34;FCI\&amp;#34;,\&amp;#34;successfulSelectionStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;]},\&amp;#34;cardRequest\&amp;#34;:{\&amp;#34;apduRequests\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00B2013C00\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Read Records - SFI: 7h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&amp;#34;}],\&amp;#34;isStatusCodesVerificationEnabled\&amp;#34;:false}}]}}&amp;#34;,
-&amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
-&amp;#34;localReaderName&amp;#34;: &amp;#34;READER_1&amp;#34;,
-&amp;#34;remoteReaderName&amp;#34;: &amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;,
-&amp;#34;serverNodeId&amp;#34;: &amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;,
-&amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;
-}
-]&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;CMD&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_SELECTION_REQUESTS\&amp;#34;,\&amp;#34;parameters\&amp;#34;:{\&amp;#34;multiSelectionProcessing\&amp;#34;:\&amp;#34;FIRST_MATCH\&amp;#34;,\&amp;#34;channelControl\&amp;#34;:\&amp;#34;KEEP_OPEN\&amp;#34;,\&amp;#34;cardSelectionRequests\&amp;#34;:[{\&amp;#34;cardSelector\&amp;#34;:{\&amp;#34;cardProtocol\&amp;#34;:\&amp;#34;ISO_14443_4_CARD\&amp;#34;,\&amp;#34;aid\&amp;#34;:\&amp;#34;315449432E49434131\&amp;#34;,\&amp;#34;fileOccurrence\&amp;#34;:\&amp;#34;FIRST\&amp;#34;,\&amp;#34;fileControlInformation\&amp;#34;:\&amp;#34;FCI\&amp;#34;,\&amp;#34;successfulSelectionStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;]},\&amp;#34;cardRequest\&amp;#34;:{\&amp;#34;apduRequests\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00B2013C00\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Read Records - SFI: 7h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&amp;#34;}],\&amp;#34;isStatusCodesVerificationEnabled\&amp;#34;:false}}]}}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h3 id="card-commands-cmd">Card Commands&lt;/h3>
 &lt;p>The role of this service is to perform APDU exchanges with the card.&lt;/p>
@@ -645,7 +653,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>channelControl&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>KEEP_OPEN&lt;/strong>&amp;quot;: leaves the physical channel open.&lt;br>- &amp;ldquo;&lt;strong>CLOSE_AFTER&lt;/strong>&amp;quot;: terminates communication with the card.&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>KEEP_OPEN&lt;/strong>&amp;rdquo;: leaves the physical channel open.&lt;br>- &amp;ldquo;&lt;strong>CLOSE_AFTER&lt;/strong>&amp;rdquo;: terminates communication with the card.&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -692,18 +700,20 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-4">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('15', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-15">[
-{
-&amp;#34;action&amp;#34;: &amp;#34;CMD&amp;#34;,
-&amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_REQUEST\&amp;#34;,\&amp;#34;parameters\&amp;#34;:{\&amp;#34;cardRequest\&amp;#34;:{\&amp;#34;apduRequests\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00B2014400\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&amp;#34;}],\&amp;#34;isStatusCodesVerificationEnabled\&amp;#34;:true},\&amp;#34;channelControl\&amp;#34;:\&amp;#34;CLOSE_AFTER\&amp;#34;}}&amp;#34;,
-&amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
-&amp;#34;localReaderName&amp;#34;: &amp;#34;READER_1&amp;#34;,
-&amp;#34;remoteReaderName&amp;#34;: &amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;,
-&amp;#34;serverNodeId&amp;#34;: &amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;,
-&amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;
-}
-]&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;CMD&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_REQUEST\&amp;#34;,\&amp;#34;parameters\&amp;#34;:{\&amp;#34;cardRequest\&amp;#34;:{\&amp;#34;apduRequests\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00B2014400\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&amp;#34;}],\&amp;#34;isStatusCodesVerificationEnabled\&amp;#34;:true},\&amp;#34;channelControl\&amp;#34;:\&amp;#34;CLOSE_AFTER\&amp;#34;}}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h2 id="response">Response&lt;/h2>
 &lt;p>This message, sent by the terminal to the server, is intended to transmit to the server the result of the specific
@@ -805,16 +815,18 @@ intended to indicate to the server if the reader is contactless.&lt;/p>
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="example-5">Example&lt;/h4>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('17', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-17">{
-&amp;#34;action&amp;#34;: &amp;#34;RESP&amp;#34;,
-&amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CONTACTLESS\&amp;#34;,\&amp;#34;result\&amp;#34;:true}&amp;#34;,
-&amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
-&amp;#34;localReaderName&amp;#34;: &amp;#34;READER_1&amp;#34;,
-&amp;#34;remoteReaderName&amp;#34;: &amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;,
-&amp;#34;serverNodeId&amp;#34;: &amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;,
-&amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;
-}&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;RESP&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CONTACTLESS\&amp;#34;,\&amp;#34;result\&amp;#34;:true}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h3 id="card-presence-resp">Card Presence&lt;/h3>
 &lt;p>This message, sent by the terminal to the server in response to &amp;ldquo;&lt;a href="#card-presence-cmd">Card Presence (Command)&lt;/a>&amp;rdquo;,
@@ -892,7 +904,7 @@ is intended to indicate to the server if a card is present.&lt;/p>
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>code&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the reader communication link,&lt;br>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the card communication link.&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;rdquo;: if the issue is related to the reader communication link,&lt;br>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;rdquo;: if the issue is related to the card communication link.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>message&lt;/code>&lt;/td>
@@ -901,16 +913,18 @@ is intended to indicate to the server if a card is present.&lt;/p>
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="example-6">Example&lt;/h4>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('18', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-18">{
-&amp;#34;action&amp;#34;: &amp;#34;RESP&amp;#34;,
-&amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CARD_PRESENT\&amp;#34;,\&amp;#34;result\&amp;#34;:true}&amp;#34;,
-&amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
-&amp;#34;localReaderName&amp;#34;: &amp;#34;READER_1&amp;#34;,
-&amp;#34;remoteReaderName&amp;#34;: &amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;,
-&amp;#34;serverNodeId&amp;#34;: &amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;,
-&amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;
-}&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;RESP&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CARD_PRESENT\&amp;#34;,\&amp;#34;result\&amp;#34;:true}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h3 id="card-selection-resp">Card Selection&lt;/h3>
 &lt;p>This message, sent by the terminal to the server in response to
@@ -1054,7 +1068,7 @@ is intended to transmit to the server the result of the execution of the selecti
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>code&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the reader communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the card communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMAND_ERROR&lt;/strong>&amp;quot;: if the card returned an unexpected status word.&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;rdquo;: if the issue is related to the reader communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;rdquo;: if the issue is related to the card communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMAND_ERROR&lt;/strong>&amp;rdquo;: if the card returned an unexpected status word.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>message&lt;/code>&lt;/td>
@@ -1063,16 +1077,18 @@ is intended to transmit to the server the result of the execution of the selecti
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-7">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('19', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-19">{
-&amp;#34;action&amp;#34;: &amp;#34;RESP&amp;#34;,
-&amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_SELECTION_REQUESTS\&amp;#34;,\&amp;#34;result\&amp;#34;:[{\&amp;#34;hasMatched\&amp;#34;:true,\&amp;#34;powerOnData\&amp;#34;:\&amp;#34;3B8880010000000000718100F9\&amp;#34;,\&amp;#34;selectApplicationResponse\&amp;#34;:{\&amp;#34;apdu\&amp;#34;:\&amp;#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C23121410019000\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;9000\&amp;#34;},\&amp;#34;cardResponse\&amp;#34;:{\&amp;#34;apduResponses\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;24B92848080000131A50001200000000000000000000000000000000009000\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;9000\&amp;#34;}],\&amp;#34;isLogicalChannelOpen\&amp;#34;:true}}]}&amp;#34;,
-&amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
-&amp;#34;localReaderName&amp;#34;: &amp;#34;READER_1&amp;#34;,
-&amp;#34;remoteReaderName&amp;#34;: &amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;,
-&amp;#34;serverNodeId&amp;#34;: &amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;,
-&amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;
-}&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;RESP&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_SELECTION_REQUESTS\&amp;#34;,\&amp;#34;result\&amp;#34;:[{\&amp;#34;hasMatched\&amp;#34;:true,\&amp;#34;powerOnData\&amp;#34;:\&amp;#34;3B8880010000000000718100F9\&amp;#34;,\&amp;#34;selectApplicationResponse\&amp;#34;:{\&amp;#34;apdu\&amp;#34;:\&amp;#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C23121410019000\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;9000\&amp;#34;},\&amp;#34;cardResponse\&amp;#34;:{\&amp;#34;apduResponses\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;24B92848080000131A50001200000000000000000000000000000000009000\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;9000\&amp;#34;}],\&amp;#34;isLogicalChannelOpen\&amp;#34;:true}}]}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h3 id="card-commands-resp">Card Commands&lt;/h3>
 &lt;p>This message, sent by the terminal to the server in response to
@@ -1189,7 +1205,7 @@ is intended to transmit to the server the result of the execution of a card requ
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>code&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the reader communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;quot;: if the issue is related to the card communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMAND_ERROR&lt;/strong>&amp;quot;: if the card returned an unexpected status word.&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>READER_COMMUNICATION_ERROR&lt;/strong>&amp;rdquo;: if the issue is related to the reader communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMUNICATION_ERROR&lt;/strong>&amp;rdquo;: if the issue is related to the card communication link,&lt;br/>- &amp;ldquo;&lt;strong>CARD_COMMAND_ERROR&lt;/strong>&amp;rdquo;: if the card returned an unexpected status word.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>message&lt;/code>&lt;/td>
@@ -1198,16 +1214,18 @@ is intended to transmit to the server the result of the execution of a card requ
 &lt;/tbody>
 &lt;/table>
 &lt;h5 id="example-8">Example&lt;/h5>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('20', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-20">{
-&amp;#34;action&amp;#34;: &amp;#34;RESP&amp;#34;,
-&amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_REQUEST\&amp;#34;,\&amp;#34;result\&amp;#34;:{\&amp;#34;apduResponses\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00112233445566778899AABBCCDDEEFF00112233445566778899AABBCC9000\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;9000\&amp;#34;}],\&amp;#34;isLogicalChannelOpen\&amp;#34;:true}}&amp;#34;,
-&amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
-&amp;#34;localReaderName&amp;#34;: &amp;#34;READER_1&amp;#34;,
-&amp;#34;remoteReaderName&amp;#34;: &amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;,
-&amp;#34;serverNodeId&amp;#34;: &amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;,
-&amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;
-}&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;RESP&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_REQUEST\&amp;#34;,\&amp;#34;result\&amp;#34;:{\&amp;#34;apduResponses\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00112233445566778899AABBCCDDEEFF00112233445566778899AABBCC9000\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;9000\&amp;#34;}],\&amp;#34;isLogicalChannelOpen\&amp;#34;:true}}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h2 id="end-remote-service">End Remote Service&lt;/h2>
 &lt;p>The purpose of this message, received from the server, is to inform the terminal that the transaction has been
@@ -1280,14 +1298,16 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="example-9">Example&lt;/h4>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('23', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-json" id="code-23">[
-{
-&amp;#34;action&amp;#34;: &amp;#34;END_REMOTE_SERVICE&amp;#34;,
-&amp;#34;body&amp;#34;: &amp;#34;{\&amp;#34;outputData\&amp;#34;:{\&amp;#34;isSuccessful\&amp;#34;:true,\&amp;#34;userId\&amp;#34;:\&amp;#34;test\&amp;#34;}}&amp;#34;,
-&amp;#34;sessionId&amp;#34;: &amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;,
-&amp;#34;clientNodeId&amp;#34;: &amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;,
-&amp;#34;serverNodeId&amp;#34;: &amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;,
-&amp;#34;remoteReaderName&amp;#34;: &amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;
-}
-]&lt;/code>&lt;/pre></description></item></channel></rss>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;END_REMOTE_SERVICE&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;outputData\&amp;#34;:{\&amp;#34;isSuccessful\&amp;#34;:true,\&amp;#34;userId\&amp;#34;:\&amp;#34;test\&amp;#34;}}&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

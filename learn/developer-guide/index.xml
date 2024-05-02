@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Developer guides | Eclipse Keyple</title><link>https://keyple.org/learn/developer-guide/</link><atom:link href="https://keyple.org/learn/developer-guide/index.xml" rel="self" type="application/rss+xml"/><description>Developer guides</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020-2024 The Eclipse Keyple® project. All Rights Reserved.</copyright><image><url>https://keyple.org/media/logo.svg</url><title>Developer guides</title><link>https://keyple.org/learn/developer-guide/</link></image><item><title>Reader Plugin Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</guid><description>&lt;br>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Developer guides | Eclipse Keyple</title><link>https://keyple.org/learn/developer-guide/</link><atom:link href="https://keyple.org/learn/developer-guide/index.xml" rel="self" type="application/rss+xml"/><description>Developer guides</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://keyple.org/media/logo.svg</url><title>Developer guides</title><link>https://keyple.org/learn/developer-guide/</link></image><item><title>Reader Plugin Add-on Developer Guide</title><link>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/developer-guide/reader-plugin-add-on/</guid><description>&lt;br>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>This guide is intended to help developers who want to create a Keyple reader plugin add-on for a specific device.&lt;/p>
 &lt;br>
@@ -26,14 +26,16 @@
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/plugin_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>&lt;/p>
+&lt;/div>&lt;/figure>
+&lt;/p>
 &lt;br>
 &lt;h2 id="select-predefined-features">Select predefined features&lt;/h2>
 &lt;p>The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/design-guides/reader_plugin_activity_diagram.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>&lt;/p>
+&lt;/div>&lt;/figure>
+&lt;/p>
 &lt;div class="alert alert-warning">
 &lt;div>
 The &lt;code>XxxPluginFactory&lt;/code>, &lt;code>XxxPlugin&lt;/code> and &lt;code>XxxReader&lt;/code> interfaces must be created.
@@ -58,18 +60,28 @@ The API will then be directly accessible from the application through the &lt;co
 For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of applications.
 &lt;/div>
 &lt;/div>
-&lt;p>If the reader plugin add-on is to be integrated into the Eclipse Keyple® project, it must use one of the following project templates:&lt;/p>
+&lt;p>If the reader plugin add-on is to be integrated into the Eclipse Keyple® project, it must use one of the following project templates:
+*&lt;/p>
+&lt;dl>
+&lt;dt>&lt;a href="../../media/project-templates/java/keyple-plugin-[READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>&lt;/dt>
+&lt;dd>adapt fields &lt;code>[READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
+&lt;/dl>
 &lt;ul>
-&lt;li>&lt;a href="../../media/project-templates/java/keyple-plugin-[READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>: adapt fields &lt;code>[READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/li>
-&lt;li>&lt;a href="../../media/project-templates/android/keyple-plugin-[ANDROID_READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Android template&lt;/a>: adapt fields &lt;code>[ANDROID_READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/li>
+&lt;li>&lt;/li>
 &lt;/ul>
+&lt;dl>
+&lt;dt>&lt;a href="../../media/project-templates/android/keyple-plugin-[ANDROID_READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Android template&lt;/a>&lt;/dt>
+&lt;dd>adapt fields &lt;code>[ANDROID_READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
+&lt;/dl>
 &lt;div class="alert alert-warning">
 &lt;div>
 &lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('0', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-ini" id="code-0">git update-index --chmod=&amp;#43;x &amp;#34;gradlew&amp;#34;
-git update-index --chmod=&amp;#43;x &amp;#34;scripts/check_version.sh&amp;#34;
-git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;gradlew&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/check_version.sh&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;p>If examples are proposed, they should be placed in the &lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
@@ -88,7 +100,8 @@ It is important to hide the internal Keyple interfaces of the &lt;strong>Plugin 
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/design-guides/reader_plugin_class_diagram.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>&lt;/li>
+&lt;/div>&lt;/figure>
+&lt;/li>
 &lt;/ul>
 &lt;div class="alert alert-note">
 &lt;div>
@@ -142,7 +155,8 @@ well as the public APIs exposed to the application:
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/card_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>&lt;/p>
+&lt;/div>&lt;/figure>
+&lt;/p>
 &lt;br>
 &lt;h2 id="minimal-requirements">Minimal requirements&lt;/h2>
 &lt;p>The table below lists the objects that must be created and indicates the interfaces to be implemented for each of them:&lt;/p>
@@ -199,7 +213,7 @@ well as the public APIs exposed to the application:
 &lt;p>In the case where the smart card object has fields of type &lt;code>interface&lt;/code>,
 it will then be necessary to define for each of them and recursively a JSON deserializer and register it during the
 service initialization with the method &lt;code>JsonUtil.registerTypeAdapter(...)&lt;/code> provided by the
-&lt;a href="https://keyple.org/components/core/keyple-util-lib/">Keyple Util&lt;/a> library.&lt;/p>
+&lt;a href="https://keyple.org/components/core/keyple-util-lib/" target="_blank" rel="noopener">Keyple Util&lt;/a> library.&lt;/p>
 &lt;p>This will allow the transport of this object through the network when using the Keyple Distributed solution.&lt;/p>
 &lt;/div>
 &lt;/div>
@@ -228,17 +242,23 @@ applications.
 &lt;p>If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project
 template:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="../../media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" target="_blank">Java
-template&lt;/a>: adapt fields &lt;code>[CARD_EXTENSION_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/li>
+&lt;li>&lt;/li>
 &lt;/ul>
+&lt;dl>
+&lt;dt>&lt;a href="../../media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" target="_blank">Java&lt;/dt>
+&lt;dt>template&lt;/a>&lt;/dt>
+&lt;dd>adapt fields &lt;code>[CARD_EXTENSION_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
+&lt;/dl>
 &lt;div class="alert alert-warning">
 &lt;div>
 &lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the
 following commands:&lt;/p>
-&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('0', this);">Copy&lt;/button>&lt;/div>
-&lt;pre>&lt;code class="language-ini" id="code-0">git update-index --chmod=&amp;#43;x &amp;#34;gradlew&amp;#34;
-git update-index --chmod=&amp;#43;x &amp;#34;scripts/check_version.sh&amp;#34;
-git update-index --chmod=&amp;#43;x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/code>&lt;/pre>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;gradlew&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/check_version.sh&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;p>If examples are proposed, they should be placed in
@@ -258,7 +278,8 @@ It is important to hide the internal interfaces of the &lt;strong>Keypop Card AP
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/design-guides/card_extension_class_diagram.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>&lt;/li>
+&lt;/div>&lt;/figure>
+&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>

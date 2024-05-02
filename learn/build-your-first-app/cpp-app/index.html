@@ -1,790 +1,346 @@
-<!doctype html><html lang=en-us>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Wowchemy 5.3.0 for Hugo">
-<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-<link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
-<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
-<meta name=description content="This quick start describes how to create a ready-to-execute C++ command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/learn/build-your-first-app/cpp-app/>
-<meta name=theme-color content="#1D87BB">
-<link rel=stylesheet href=../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
-<link rel=stylesheet href=../../../css/wowchemy.515e06faef9f54bb760004647e75b940.css>
-<script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
-<link rel=manifest href=../../../manifest.webmanifest>
-<link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
-<link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/learn/build-your-first-app/cpp-app/>
-<meta property="twitter:card" content="summary">
-<meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/learn/build-your-first-app/cpp-app/">
-<meta property="og:title" content="Build your first C++ application | Eclipse Keyple">
-<meta property="og:description" content="This quick start describes how to create a ready-to-execute C++ command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><meta property="og:image" content="https://keyple.org/media/logo.svg">
-<meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2024-01-30T10:38:42+01:00">
-<title>Build your first C++ application | Eclipse Keyple</title>
-</head>
-<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=8c80269a49e13a1d6fb880d95fc68e9b>
-<script src=../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
-<aside class=search-modal id=search>
-<div class=container>
-<section class=search-header>
-<div class="row no-gutters justify-content-between mb-3">
-<div class=col-6>
-<h1>Search</h1>
-</div>
-<div class="col-6 col-search-close">
-<a class=js-search href=# aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
-</div>
-</div>
-<div id=search-box>
-<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...>
-</div>
-</section>
-<section class=section-search-results>
-<div id=search-hits>
-</div>
-</section>
-</div>
-</aside>
-<div class=page-header>
-<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
-<div class=container-xl>
-<div class="d-none d-lg-inline-flex">
-<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
-</div>
-<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
-<span><i class="fas fa-bars"></i></span>
-</button>
-<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
-<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
-</div>
-<div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
-<ul class="navbar-nav d-md-inline-flex">
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=generator content="Hugo Blox Builder 5.9.6"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload='this.media="all"'><link rel=stylesheet href=../../../css/vendor-bundle.min.047268c6dd09ad74ba54a0ba71837064.css media=print onload='this.media="all"'><link rel=stylesheet href=https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin=anonymous media=print onload='this.media="all"'><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css integrity crossorigin=anonymous media=print onload='this.media="all"'><link rel=stylesheet href=../../../css/wowchemy.c7209c1a36b3770940c9d67675a0cbef.css><link rel=stylesheet href=../../../css/libs/chroma/github-dark.min.css title=hl-light media=print onload='this.media="all"'><link rel=stylesheet href=../../../css/libs/chroma/github-dark.min.css title=hl-dark media=print onload='this.media="all"' disabled><meta name=description content="This quick start describes how to create a ready-to-execute C++ command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><link rel=alternate hreflang=en-us href=https://keyple.org/learn/build-your-first-app/cpp-app/><link rel=canonical href=https://keyple.org/learn/build-your-first-app/cpp-app/><link rel=manifest href=../../../manifest.webmanifest><link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png><link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png><meta name=theme-color content="#1D87BB"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:type" content="article"><meta property="og:site_name" content="Eclipse Keyple"><meta property="og:url" content="https://keyple.org/learn/build-your-first-app/cpp-app/"><meta property="og:title" content="Build your first C++ application | Eclipse Keyple"><meta property="og:description" content="This quick start describes how to create a ready-to-execute C++ command-line application that runs a simple transaction based on a Calypso portable object involving two smart card readers."><meta property="og:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us"><meta property="article:modified_time" content="2024-01-30T10:38:42+01:00"><title>Build your first C++ application | Eclipse Keyple</title></head><body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=8c80269a49e13a1d6fb880d95fc68e9b><script src=../../../js/wowchemy-init.min.d66af272089c6c0601f1a57edc3bf6ab.js></script><aside class=search-modal id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href=# aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box><input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><div class="page-header header--fixed"><header><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container-xl><div class="d-none d-lg-inline-flex"><a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a></div><div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
 <a class=dropdown-item href=../../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
-<a class=dropdown-item href=../../../#news><span>News</span></a>
-</div>
-</li>
-<li class=nav-item>
-<a class=nav-link href=../../../learn/overview><span>Learn</span></a>
-</li>
-<li class=nav-item>
-<a class=nav-link href=../../../components/overview><span>Components</span></a>
-</li>
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../../#news><span>News</span></a></div></li><li class=nav-item><a class=nav-link href=../../../learn/overview><span>Learn</span></a></li><li class=nav-item><a class=nav-link href=../../../components/overview><span>Components</span></a></li><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
 <a class=dropdown-item href=../../../community/roadmap/><span>Roadmap</span></a>
 <a class=dropdown-item href=../../../community/changelog/><span>Changelog</span></a>
 <a class=dropdown-item href=../../../project-dashboard/><span>Project dashboard</span></a>
-<a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date"><span>Code quality dashboard</span></a>
+<a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&amp;sort=-analysis_date"><span>Code quality dashboard</span></a>
 <a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
 <a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
 <a class=dropdown-item href=https://github.com/eclipse-keyple/keyple/><span>GitHub home repository</span></a>
-<a class=dropdown-item href=../../../archives/><span>Archives</span></a>
-</div>
-</li>
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../../archives/><span>Archives</span></a></div></li><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
 <a class=dropdown-item href=../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
-<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
-</div>
-</li>
-<li class=nav-item>
-<a class="nav-link active" href=../../../learn/build-your-first-app/><button class="btn btn-info"><i class="fas fa-rocket pr-1" aria-hidden=true></i> <span>START CODING</span></button></a>
-</li>
-</ul>
-</div>
-<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-<li class=nav-item>
-<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
-</li>
-</ul>
-</div>
-</nav>
-</div>
-<div class=page-body>
-<div class="container-fluid docs">
-<div class="row flex-xl-nowrap">
-<div class="col-12 col-md-3 col-xl-2 docs-sidebar">
-<form class="docs-search d-flex align-items-center">
-<button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
-<div class=d-flex>
-<span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
-Build your first app
-</span>
-<span><i class="fas fa-chevron-down"></i></span>
-</div>
-</button>
+<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a></div></li><li class=nav-item><a class="nav-link active" href=../../../learn/build-your-first-app/><button class='btn btn-info'><i class='fas fa-rocket pr-1' aria-hidden=true></i> <span>START CODING</span></button></a></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"><li class=nav-item><a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a></li></ul></div></nav></header></div><div class=page-body><div class="container-fluid docs"><div class="row flex-xl-nowrap"><div class="col-12 col-md-3 col-xl-2 docs-sidebar"><form class="docs-search d-flex align-items-center"><button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation"><div class=d-flex><span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">Build your first app
+</span><span><i class="fas fa-chevron-down"></i></span></div></button>
 <button class="form-control sidebar-search js-search d-none d-md-flex">
 <i class="fas fa-search pr-2"></i>
 <span class=sidebar-search-text>Search...</span>
-<span class=sidebar-search-shortcut>/</span>
-</button>
-</form>
-<nav class="collapse docs-links" id=docs-nav>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/></a></li>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/overview/>Overview</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li>
-<li><a href=../../../learn/overview/architecture/>Architecture</a></li>
-<li><a href=../../../learn/overview/keypop-api/>Keypop API</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/build-your-first-app/>Build your first app</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/build-your-first-app/java-app/>Java</a></li>
-<li><a href=../../../learn/build-your-first-app/android-app/>Android</a></li>
-<li class=active><a href=../../../learn/build-your-first-app/cpp-app/>C++</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/user-guide/>User guides</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
-<li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
-<li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
-<li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
-<li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li>
-<li><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/code-samples/>Code samples</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/code-samples/java-example/>Java examples</a></li>
-<li><a href=../../../learn/code-samples/cpp-example/>C++ examples</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/keyple-in-depth/>Keyple in depth</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
-<li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
-<li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
-</ul>
-</div>
-</ul>
-</nav>
-</div>
-<div class="d-none d-xl-block col-xl-2 docs-toc">
-<ul class="nav toc-top">
-<li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
-</ul>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#overview>Overview</a></li>
-<li><a href=#create-the-build-environment>Create the build environment</a></li>
-<li><a href=#lets-code>Let&rsquo;s code</a>
-<ul>
-<li><a href=#create-a-directory-dedicated-to-the-application>Create a directory dedicated to the application</a></li>
-<li><a href=#create-a-directory-for-the-source-code>Create a directory for the source code</a></li>
-<li><a href=#create-the-class-skeleton>Create the class skeleton</a></li>
-<li><a href=#set-up-the-pcsc-plugin>Set up the PC/SC plugin</a></li>
-<li><a href=#set-up-the-calypso-card-extension>Set up the Calypso card extension</a></li>
-<li><a href=#select-the-calypso-sam>Select the Calypso SAM</a></li>
-<li><a href=#select-the-calypso-card>Select the Calypso card</a></li>
-<li><a href=#open-the-calypso-secure-session>Open the Calypso secure session</a></li>
-<li><a href=#close-the-calypso-secure-session>Close the Calypso secure session</a></li>
-<li><a href=#unregister-the-plugin>Unregister the plugin</a></li>
-</ul>
-</li>
-<li><a href=#run>Run</a></li>
-<li><a href=#faq>FAQ</a>
-<ul>
-<li></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
-<article class=article>
-<div class=docs-article-container>
-<h1>Build your first C++ application</h1>
-<div class=article-style>
-<div class="alert alert-warning">
-<div>
-This page is still under construction and may contain inaccurate information.
-</div>
-</div>
-<h2 id=overview>Overview</h2>
-<p>This quick start describes how to create a ready-to-execute command-line application that runs a simple transaction based on
-a Calypso Card involving two smart card readers.</p>
-<div class="alert alert-warning">
-<div>
-<p>The demonstration application created for this quick start requires:</p>
-<ul>
-<li>a Calypso Card (contactless smart card, NFC mobile phone with a Calypso applet or application),</li>
-<li>a Calypso SAM (Secure Access Module).</li>
-</ul>
-</div>
-</div>
-<p>We will use three main components of Keyple:</p>
-<ul>
-<li><strong>Keyple Service C++ Library</strong>
-which is the base component to which all the others refer,</li>
-<li><strong>Keyple Card Calypso C++ Library</strong>
-add-on to handle the commands sent to the Calypso card and the Calypso SAM,</li>
-<li><strong>Keyple Plugin PC/SC C++ Library</strong>
-add-on to provide the ability to manage PC/SC readers.</li>
-</ul>
-<div class="alert alert-info">
-<div>
-<p>Prerequisites</p>
-<p>Here are the prerequisites to build the keyple components (dynamic libraries):</p>
-<ul>
-<li>G++ 6 and higher, MSVC++ 14 (other compilers untested)</li>
-<li><a href=https://cmake.org/>CMake</a></li>
-<li>libpcsclite1 and libpcsclite-dev packages installed (Linux) to build the PC/SC plugin</li>
-</ul>
-</div>
-</div>
-<p>In this guide, the Keyple components and application are build under Linux using CMake as build automation tool.</p>
-<br>
-<h2 id=create-the-build-environment>Create the build environment</h2>
-<p>The building of all the necessary components is facilitated by a dedicated &ldquo;meta-project&rdquo; allowing to get all the
-components and dependencies in a single step.</p>
-<p>Git checkout the <a href=https://github.com/eclipse-keyple/keyple-cpp-meta target=_blank rel=noopener>meta project</a> into a directory of you local disk, then
-enter the created directory and execute the following commands:</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('3',this)">Copy</button></div>
-<pre><code class=language-bash id=code-3>mkdir build
-cd build
-cmake -DCMAKE_TOOLCHAIN_FILE=../toolchain/gcc-linux.cmake ..
-make</code></pre>
-<div class="alert alert-note">
-<div>
-<code>gcc-linux</code> may be replaced by one of the build configurations available <a href=https://github.com/eclipse-keyple/keyple-cpp-meta/tree/master/toolchain>here</a>.
-</div>
-</div>
-<br>
-<h2 id=lets-code>Let&rsquo;s code</h2>
-<p>Now let&rsquo;s see step by step how to create in one single class the elements that allow a certified reading of data through
-a Calypso secure session.</p>
-<p>In a real ticketing application, the organization of the code would probably be different, but the point here is to show
+<span class=sidebar-search-shortcut>/</span></button></form><nav class="collapse docs-links" id=docs-nav><ul class="nav docs-sidenav"><li><a href=../../../learn/></a></li><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/overview/>Overview</a><ul class="nav docs-sidenav"><li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li><li><a href=../../../learn/overview/architecture/>Architecture</a></li><li><a href=../../../learn/overview/keypop-api/>Keypop API</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/build-your-first-app/>Build your first app</a><ul class="nav docs-sidenav"><li><a href=../../../learn/build-your-first-app/java-app/>Java</a></li><li><a href=../../../learn/build-your-first-app/android-app/>Android</a></li><li class=active><a href=../../../learn/build-your-first-app/cpp-app/>C++</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/user-guide/>User guides</a><ul class="nav docs-sidenav"><li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li><li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li><li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li><li><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li><li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li><li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a><ul class="nav docs-sidenav"><li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li><li><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/code-samples/>Code samples</a><ul class="nav docs-sidenav"><li><a href=../../../learn/code-samples/java-example/>Java examples</a></li><li><a href=../../../learn/code-samples/cpp-example/>C++ examples</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/keyple-in-depth/>Keyple in depth</a><ul class="nav docs-sidenav"><li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li><li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li><li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li></ul></div></ul></nav></div><div class="d-none d-xl-block col-xl-2 docs-toc"><ul class="nav toc-top"><li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li></ul><nav id=TableOfContents><ul><li><a href=#overview>Overview</a></li><li><a href=#create-the-build-environment>Create the build environment</a></li><li><a href=#lets-code>Let&rsquo;s code</a><ul><li><a href=#create-a-directory-dedicated-to-the-application>Create a directory dedicated to the application</a></li><li><a href=#create-a-directory-for-the-source-code>Create a directory for the source code</a></li><li><a href=#create-the-class-skeleton>Create the class skeleton</a></li><li><a href=#set-up-the-pcsc-plugin>Set up the PC/SC plugin</a></li><li><a href=#set-up-the-calypso-card-extension>Set up the Calypso card extension</a></li><li><a href=#select-the-calypso-sam>Select the Calypso SAM</a></li><li><a href=#select-the-calypso-card>Select the Calypso card</a></li><li><a href=#open-the-calypso-secure-session>Open the Calypso secure session</a></li><li><a href=#close-the-calypso-secure-session>Close the Calypso secure session</a></li><li><a href=#unregister-the-plugin>Unregister the plugin</a></li></ul></li><li><a href=#run>Run</a></li><li><a href=#faq>FAQ</a><ul><li></li></ul></li></ul></nav></div><main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main><div class=docs-article-container></div><div class=docs-article-container><h1>Build your first C++ application</h1><article class=article-style><div class="alert alert-warning"><div>This page is still under construction and may contain inaccurate information.</div></div><h2 id=overview>Overview</h2><p>This quick start describes how to create a ready-to-execute command-line application that runs a simple transaction based on
+a Calypso Card involving two smart card readers.</p><div class="alert alert-warning"><div><p>The demonstration application created for this quick start requires:</p><ul><li>a Calypso Card (contactless smart card, NFC mobile phone with a Calypso applet or application),</li><li>a Calypso SAM (Secure Access Module).</li></ul></div></div><p>We will use three main components of Keyple:</p><ul><li><strong>Keyple Service C++ Library</strong>
+which is the base component to which all the others refer,</li><li><strong>Keyple Card Calypso C++ Library</strong>
+add-on to handle the commands sent to the Calypso card and the Calypso SAM,</li><li><strong>Keyple Plugin PC/SC C++ Library</strong>
+add-on to provide the ability to manage PC/SC readers.</li></ul><div class="alert alert-info"><div><p>Prerequisites</p><p>Here are the prerequisites to build the keyple components (dynamic libraries):</p><ul><li>G++ 6 and higher, MSVC++ 14 (other compilers untested)</li><li><a href=https://cmake.org/ target=_blank rel=noopener>CMake</a></li><li>libpcsclite1 and libpcsclite-dev packages installed (Linux) to build the PC/SC plugin</li></ul></div></div><p>In this guide, the Keyple components and application are build under Linux using CMake as build automation tool.</p><br><h2 id=create-the-build-environment>Create the build environment</h2><p>The building of all the necessary components is facilitated by a dedicated &ldquo;meta-project&rdquo; allowing to get all the
+components and dependencies in a single step.</p><p>Git checkout the <a href=https://github.com/eclipse-keyple/keyple-cpp-meta target=_blank rel=noopener>meta project</a> into a directory of you local disk, then
+enter the created directory and execute the following commands:</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir build
+</span></span><span class=line><span class=cl><span class=nb>cd</span> build
+</span></span><span class=line><span class=cl>cmake -DCMAKE_TOOLCHAIN_FILE<span class=o>=</span>../toolchain/gcc-linux.cmake ..
+</span></span><span class=line><span class=cl>make</span></span></code></pre></div></div></div><div class="alert alert-note"><div><code>gcc-linux</code> may be replaced by one of the build configurations available <a href=https://github.com/eclipse-keyple/keyple-cpp-meta/tree/master/toolchain target=_blank rel=noopener>here</a>.</div></div><br><h2 id=lets-code>Let&rsquo;s code</h2><p>Now let&rsquo;s see step by step how to create in one single class the elements that allow a certified reading of data through
+a Calypso secure session.</p><p>In a real ticketing application, the organization of the code would probably be different, but the point here is to show
 how Keyple makes it possible to perform very simply operations that normally require a quantity of code and knowledge
-that far exceeds what is implemented here.</p>
-<p>You can either progressively copy each of the small portions of code
-that follow or copy the whole class at the bottom of this page.</p>
-<h3 id=create-a-directory-dedicated-to-the-application>Create a directory dedicated to the application</h3>
-<p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('5',this)">Copy</button></div>
-<pre><code class=language-bash id=code-5>cd ..
-mkdir app
-cd app</code></pre>
-We assume here that the current directory was the previously created <code>build</code> directory.</p>
-<p>Create a file named <code>CMakeLists.txt</code> with the following content:
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('6',this)">Copy</button></div>
-<pre><code class=language-make id=code-6>SET(CALYPSONET_CALYPSO_DIR &#34;../../calypsonet-terminal-calypso-cpp-api&#34;)
-SET(CALYPSONET_CARD_DIR    &#34;../../calypsonet-terminal-card-cpp-api&#34;)
-SET(CALYPSONET_READER_DIR  &#34;../../calypsonet-terminal-reader-cpp-api&#34;)
-SET(KEYPLE_CALYPSO_DIR     &#34;../../keyple-card-calypso-cpp-lib&#34;)
-SET(KEYPLE_COMMON_DIR      &#34;../../keyple-common-cpp-api&#34;)
-SET(KEYPLE_PLUGIN_DIR      &#34;../../keyple-plugin-cpp-api&#34;)
-SET(KEYPLE_PCSC_DIR        &#34;../../keyple-plugin-pcsc-cpp-lib&#34;)
-SET(KEYPLE_SERVICE_DIR     &#34;../../keyple-service-cpp-lib&#34;)
-SET(KEYPLE_UTIL_DIR        &#34;../../keyple-util-cpp-lib&#34;)
-
-SET(KEYPLE_CALYPSO_LIB     &#34;keyplecardcalypsocpplib&#34;)
-SET(KEYPLE_PCSC_LIB        &#34;keyplepluginpcsccpplib&#34;)
-SET(KEYPLE_SERVICE_LIB     &#34;keypleservicecpplib&#34;)
-SET(KEYPLE_UTIL_LIB        &#34;keypleutilcpplib&#34;)
-
-INCLUDE_DIRECTORIES(
-  ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/main/common
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/main/spi
-  
-  ${CALYPSONET_CALYPSO_DIR}/src/main
-  ${CALYPSONET_CALYPSO_DIR}/src/main/card
-  ${CALYPSONET_CALYPSO_DIR}/src/main/sam
-  ${CALYPSONET_CALYPSO_DIR}/src/main/transaction
-  
-  ${CALYPSONET_CARD_DIR}/src/main
-  ${CALYPSONET_CARD_DIR}/src/main/spi
-  
-  ${CALYPSONET_READER_DIR}/src/main
-  ${CALYPSONET_READER_DIR}/src/main/selection
-  ${CALYPSONET_READER_DIR}/src/main/selection/spi
-  ${CALYPSONET_READER_DIR}/src/main/spi
-  
-  ${KEYPLE_CALYPSO_DIR}/src/main
-  
-  ${KEYPLE_CARD_DIR}/src/main
-  
-  ${KEYPLE_COMMON_DIR}/src/main
-  
-  ${KEYPLE_PCSC_DIR}/src/main
-  
-  ${KEYPLE_PLUGIN_DIR}/src/main
-  ${KEYPLE_PLUGIN_DIR}/src/main/spi
-  ${KEYPLE_PLUGIN_DIR}/src/main/spi/reader
-  ${KEYPLE_PLUGIN_DIR}/src/main/spi/reader/observable/
-  ${KEYPLE_PLUGIN_DIR}/src/main/spi/reader/observable/state/insertion
-  ${KEYPLE_PLUGIN_DIR}/src/main/spi/reader/observable/state/processing
-  ${KEYPLE_PLUGIN_DIR}/src/main/spi/reader/observable/state/removal
-  
-  ${KEYPLE_RESOURCE_DIR}/src/main
-  ${KEYPLE_RESOURCE_DIR}/src/main/spi
-  
-  ${KEYPLE_SERVICE_DIR}/src/main
-  ${KEYPLE_SERVICE_DIR}/src/main/cpp
-  ${KEYPLE_SERVICE_DIR}/src/main/spi
-  
-  ${KEYPLE_STUB_DIR}/src/main
-  
-  ${KEYPLE_UTIL_DIR}/src/main
-  ${KEYPLE_UTIL_DIR}/src/main/cpp
-  ${KEYPLE_UTIL_DIR}/src/main/cpp/exception
-  ${KEYPLE_UTIL_DIR}/src/main/protocol
-)
-
-IF(APPLE OR UNIX)
-SET(THREAD_LIB pthread)
-ELSE()
-ENDIF(APPLE OR UNIX)
-
-SET(USECASE1 UseCase1_ExplicitSelectionAid)
-SET(USECASE1_STUB ${USECASE1}_Stub)
-ADD_EXECUTABLE(${USECASE1_STUB}
-${CMAKE_CURRENT_SOURCE_DIR}/src/main/common/CalypsoConstants.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/main/common/StubSmartCardFactory.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/src/main/${USECASE1}/Main_ExplicitSelectionAid_Stub.cpp)
-TARGET_LINK_LIBRARIES(${USECASE1_STUB} ${KEYPLE_CARD_LIB} ${KEYPLE_STUB_LIB} ${KEYPLE_SERVICE_LIB} ${KEYPLE_UTIL_LIB} ${KEYPLE_CALYPSO_LIB} ${THREAD_LIB})</code></pre></p>
-<h3 id=create-a-directory-for-the-source-code>Create a directory for the source code</h3>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
-<pre><code class=language-bash id=code-7>mkdir src
-cd src</code></pre>
-<h3 id=create-the-class-skeleton>Create the class skeleton</h3>
-<p>Copy the source code below in a new C++ file named <code>DemoCardAuthentication.cpp</code></p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('8',this)">Copy</button></div>
-<pre><code class=language-cpp id=code-8>#include &#34;CalypsoExtensionService.h&#34;
-
-#include &#34;ConfigurableReader.h&#34;
-#include &#34;SmartCardService.h&#34;
-#include &#34;SmartCardServiceProvider.h&#34;
-
-#include &#34;ByteArrayUtil.h&#34;
-#include &#34;ContactCardCommonProtocol.h&#34;
-#include &#34;ContactlessCardCommonProtocol.h&#34;
-#include &#34;IllegalStateException.h&#34;
-#include &#34;LoggerFactory.h&#34;
-#include &#34;StringUtils.h&#34;
-
-#include &#34;PcscPlugin.h&#34;
-#include &#34;PcscPluginFactory.h&#34;
-#include &#34;PcscPluginFactoryBuilder.h&#34;
-#include &#34;PcscReader.h&#34;
-#include &#34;PcscSupportedContactlessProtocol.h&#34;
-
-#include &#34;CardResource.h&#34;
-#include &#34;CardResourceServiceProvider.h&#34;
-
-#include &#34;CalypsoConstants.h&#34;
-#include &#34;ConfigurationUtil.h&#34;
-
-using namespace keyple::card::calypso;
-using namespace keyple::core::service;
-using namespace keyple::core::service::resource;
-using namespace keyple::core::util;
-using namespace keyple::core::util::cpp;
-using namespace keyple::core::util::cpp::exception;
-using namespace keyple::core::util::protocol;
-using namespace keyple::plugin::pcsc;
-
-class Main_CardAuthentication_Pcsc {};
-static const std::unique_ptr&lt;Logger&gt; logger = LoggerFactory::getLogger(typeid(Main_CardAuthentication_Pcsc));
-
-int main()
-{
-  // ...
-}</code></pre>
-<h3 id=set-up-the-pcsc-plugin>Set up the PC/SC plugin</h3>
-<p>The first step to use Keyple is to initialize the plugin and smart card readers.</p>
-<p>In this snippet the PC/SC plugin is registered to the SmartCardService.</p>
-<p>Two readers needs to be connected to the local machine. Change
-&ldquo;CARD_READER_NAME&rdquo; and &ldquo;SAM_READER_NAME&rdquo; with the name of your USB readers.</p>
-<p>If you don&rsquo;t know the names of the readers, read how to find them in the <a href=#faq>FAQ</a>.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('9',this)">Copy</button></div>
-<pre><code class=language-cpp id=code-9>// Get the instance of the SmartCardService
-std::shared_ptr&lt;SmartCardService&gt; smartCardService = SmartCardServiceProvider::getService();
-
-// Register the PcscPlugin with the SmartCardService, retrieve anc configure the readers
-std::shared_ptr&lt;Plugin&gt; plugin = smartCardService-&gt;registerPlugin(PcscPluginFactoryBuilder::builder()-&gt;build());
-
-std::shared_ptr&lt;Reader&gt; cardReader = std::dynamic_pointer_cast&lt;ConfigurableReader&gt;(plugin-&gt;getReader(&#34;CARD_READER_NAME&#34;));
-
-std::shared_ptr&lt;Reader&gt; samReader = std::dynamic_pointer_cast&lt;ConfigurableReader&gt;(plugin-&gt;getReader(&#34;SAM_READER_NAME&#34;));</code></pre>
-<h3 id=set-up-the-calypso-card-extension>Set up the Calypso card extension</h3>
-<p>The Calypso card extension service will provide means to handle cards, SAMs and to manage card transactions.
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('10',this)">Copy</button></div>
-<pre><code class=language-cpp id=code-10>// Get the Calypso card extension service
-std::shared_ptr&lt;CalypsoExtensionService&gt; cardExtension = CalypsoExtensionService::getInstance();
-
-// Verify that the extension&#39;s API level is consistent with the current service
-smartCardService-&gt;checkCardExtension(cardExtension);</code></pre></p>
-<h3 id=select-the-calypso-sam>Select the Calypso SAM</h3>
-<p>Before executing a transaction each smart card should be selected. The
+that far exceeds what is implemented here.</p><p>You can either progressively copy each of the small portions of code
+that follow or copy the whole class at the bottom of this page.</p><h3 id=create-a-directory-dedicated-to-the-application>Create a directory dedicated to the application</h3><p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>cd</span> ..
+</span></span><span class=line><span class=cl>mkdir app
+</span></span><span class=line><span class=cl><span class=nb>cd</span> app</span></span></code></pre></div></div></div>We assume here that the current directory was the previously created <code>build</code> directory.</p><p>Create a file named <code>CMakeLists.txt</code> with the following content:<div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-make data-lang=make><span class=line><span class=cl><span class=err>SET(CALYPSONET_CALYPSO_DIR</span> <span class=s2>&#34;../../calypsonet-terminal-calypso-cpp-api&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(CALYPSONET_CARD_DIR</span>    <span class=s2>&#34;../../calypsonet-terminal-card-cpp-api&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(CALYPSONET_READER_DIR</span>  <span class=s2>&#34;../../calypsonet-terminal-reader-cpp-api&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(KEYPLE_CALYPSO_DIR</span>     <span class=s2>&#34;../../keyple-card-calypso-cpp-lib&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(KEYPLE_COMMON_DIR</span>      <span class=s2>&#34;../../keyple-common-cpp-api&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(KEYPLE_PLUGIN_DIR</span>      <span class=s2>&#34;../../keyple-plugin-cpp-api&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(KEYPLE_PCSC_DIR</span>        <span class=s2>&#34;../../keyple-plugin-pcsc-cpp-lib&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(KEYPLE_SERVICE_DIR</span>     <span class=s2>&#34;../../keyple-service-cpp-lib&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(KEYPLE_UTIL_DIR</span>        <span class=s2>&#34;../../keyple-util-cpp-lib&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=err>SET(KEYPLE_CALYPSO_LIB</span>     <span class=s2>&#34;keyplecardcalypsocpplib&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(KEYPLE_PCSC_LIB</span>        <span class=s2>&#34;keyplepluginpcsccpplib&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(KEYPLE_SERVICE_LIB</span>     <span class=s2>&#34;keypleservicecpplib&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(KEYPLE_UTIL_LIB</span>        <span class=s2>&#34;keypleutilcpplib&#34;</span><span class=err>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=err>INCLUDE_DIRECTORIES(</span>
+</span></span><span class=line><span class=cl>  <span class=err>${CMAKE_CURRENT_SOURCE_DIR}</span>
+</span></span><span class=line><span class=cl>  <span class=err>${CMAKE_CURRENT_SOURCE_DIR}/src/main/common</span>
+</span></span><span class=line><span class=cl>  <span class=err>${CMAKE_CURRENT_SOURCE_DIR}/src/main/spi</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${CALYPSONET_CALYPSO_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  <span class=err>${CALYPSONET_CALYPSO_DIR}/src/main/card</span>
+</span></span><span class=line><span class=cl>  <span class=err>${CALYPSONET_CALYPSO_DIR}/src/main/sam</span>
+</span></span><span class=line><span class=cl>  <span class=err>${CALYPSONET_CALYPSO_DIR}/src/main/transaction</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${CALYPSONET_CARD_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  <span class=err>${CALYPSONET_CARD_DIR}/src/main/spi</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${CALYPSONET_READER_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  <span class=err>${CALYPSONET_READER_DIR}/src/main/selection</span>
+</span></span><span class=line><span class=cl>  <span class=err>${CALYPSONET_READER_DIR}/src/main/selection/spi</span>
+</span></span><span class=line><span class=cl>  <span class=err>${CALYPSONET_READER_DIR}/src/main/spi</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_CALYPSO_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_CARD_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_COMMON_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_PCSC_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_PLUGIN_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_PLUGIN_DIR}/src/main/spi</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_PLUGIN_DIR}/src/main/spi/reader</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_PLUGIN_DIR}/src/main/spi/reader/observable/</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_PLUGIN_DIR}/src/main/spi/reader/observable/state/insertion</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_PLUGIN_DIR}/src/main/spi/reader/observable/state/processing</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_PLUGIN_DIR}/src/main/spi/reader/observable/state/removal</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_RESOURCE_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_RESOURCE_DIR}/src/main/spi</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_SERVICE_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_SERVICE_DIR}/src/main/cpp</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_SERVICE_DIR}/src/main/spi</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_STUB_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_UTIL_DIR}/src/main</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_UTIL_DIR}/src/main/cpp</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_UTIL_DIR}/src/main/cpp/exception</span>
+</span></span><span class=line><span class=cl>  <span class=err>${KEYPLE_UTIL_DIR}/src/main/protocol</span>
+</span></span><span class=line><span class=cl><span class=err>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=err>IF(APPLE</span> <span class=err>OR</span> <span class=err>UNIX)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(THREAD_LIB</span> <span class=err>pthread)</span>
+</span></span><span class=line><span class=cl><span class=err>ELSE()</span>
+</span></span><span class=line><span class=cl><span class=err>ENDIF(APPLE</span> <span class=err>OR</span> <span class=err>UNIX)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=err>SET(USECASE1</span> <span class=err>UseCase1_ExplicitSelectionAid)</span>
+</span></span><span class=line><span class=cl><span class=err>SET(USECASE1_STUB</span> <span class=err>${USECASE1}_Stub)</span>
+</span></span><span class=line><span class=cl><span class=err>ADD_EXECUTABLE(${USECASE1_STUB}</span>
+</span></span><span class=line><span class=cl><span class=err>${CMAKE_CURRENT_SOURCE_DIR}/src/main/common/CalypsoConstants.cpp</span>
+</span></span><span class=line><span class=cl><span class=err>${CMAKE_CURRENT_SOURCE_DIR}/src/main/common/StubSmartCardFactory.cpp</span>
+</span></span><span class=line><span class=cl><span class=err>${CMAKE_CURRENT_SOURCE_DIR}/src/main/${USECASE1}/Main_ExplicitSelectionAid_Stub.cpp)</span>
+</span></span><span class=line><span class=cl><span class=err>TARGET_LINK_LIBRARIES(${USECASE1_STUB}</span> <span class=err>${KEYPLE_CARD_LIB}</span> <span class=err>${KEYPLE_STUB_LIB}</span> <span class=err>${KEYPLE_SERVICE_LIB}</span> <span class=err>${KEYPLE_UTIL_LIB}</span> <span class=err>${KEYPLE_CALYPSO_LIB}</span> <span class=err>${THREAD_LIB})</span></span></span></code></pre></div></div></div></p><h3 id=create-a-directory-for-the-source-code>Create a directory for the source code</h3><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir src
+</span></span><span class=line><span class=cl><span class=nb>cd</span> src</span></span></code></pre></div></div></div><h3 id=create-the-class-skeleton>Create the class skeleton</h3><p>Copy the source code below in a new C++ file named <code>DemoCardAuthentication.cpp</code></p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;CalypsoExtensionService.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;ConfigurableReader.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;SmartCardService.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;SmartCardServiceProvider.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;ByteArrayUtil.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;ContactCardCommonProtocol.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;ContactlessCardCommonProtocol.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;IllegalStateException.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;LoggerFactory.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;StringUtils.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscPlugin.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscPluginFactory.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscPluginFactoryBuilder.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscReader.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscSupportedContactlessProtocol.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;CardResource.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;CardResourceServiceProvider.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;CalypsoConstants.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;ConfigurationUtil.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>card</span><span class=o>::</span><span class=n>calypso</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>service</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>service</span><span class=o>::</span><span class=n>resource</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>util</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>util</span><span class=o>::</span><span class=n>cpp</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>util</span><span class=o>::</span><span class=n>cpp</span><span class=o>::</span><span class=n>exception</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>util</span><span class=o>::</span><span class=n>protocol</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>plugin</span><span class=o>::</span><span class=n>pcsc</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Main_CardAuthentication_Pcsc</span> <span class=p>{};</span>
+</span></span><span class=line><span class=cl><span class=k>static</span> <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>unique_ptr</span><span class=o>&lt;</span><span class=n>Logger</span><span class=o>&gt;</span> <span class=n>logger</span> <span class=o>=</span> <span class=n>LoggerFactory</span><span class=o>::</span><span class=n>getLogger</span><span class=p>(</span><span class=k>typeid</span><span class=p>(</span><span class=n>Main_CardAuthentication_Pcsc</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// ...
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span></span></span></code></pre></div></div></div><h3 id=set-up-the-pcsc-plugin>Set up the PC/SC plugin</h3><p>The first step to use Keyple is to initialize the plugin and smart card readers.</p><p>In this snippet the PC/SC plugin is registered to the SmartCardService.</p><p>Two readers needs to be connected to the local machine. Change
+&ldquo;CARD_READER_NAME&rdquo; and &ldquo;SAM_READER_NAME&rdquo; with the name of your USB readers.</p><p>If you don&rsquo;t know the names of the readers, read how to find them in the <a href=#faq>FAQ</a>.</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// Get the instance of the SmartCardService
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>SmartCardService</span><span class=o>&gt;</span> <span class=n>smartCardService</span> <span class=o>=</span> <span class=n>SmartCardServiceProvider</span><span class=o>::</span><span class=n>getService</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Register the PcscPlugin with the SmartCardService, retrieve anc configure the readers
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>Plugin</span><span class=o>&gt;</span> <span class=n>plugin</span> <span class=o>=</span> <span class=n>smartCardService</span><span class=o>-&gt;</span><span class=n>registerPlugin</span><span class=p>(</span><span class=n>PcscPluginFactoryBuilder</span><span class=o>::</span><span class=n>builder</span><span class=p>()</span><span class=o>-&gt;</span><span class=n>build</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>Reader</span><span class=o>&gt;</span> <span class=n>cardReader</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>dynamic_pointer_cast</span><span class=o>&lt;</span><span class=n>ConfigurableReader</span><span class=o>&gt;</span><span class=p>(</span><span class=n>plugin</span><span class=o>-&gt;</span><span class=n>getReader</span><span class=p>(</span><span class=s>&#34;CARD_READER_NAME&#34;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>Reader</span><span class=o>&gt;</span> <span class=n>samReader</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>dynamic_pointer_cast</span><span class=o>&lt;</span><span class=n>ConfigurableReader</span><span class=o>&gt;</span><span class=p>(</span><span class=n>plugin</span><span class=o>-&gt;</span><span class=n>getReader</span><span class=p>(</span><span class=s>&#34;SAM_READER_NAME&#34;</span><span class=p>));</span></span></span></code></pre></div></div></div><h3 id=set-up-the-calypso-card-extension>Set up the Calypso card extension</h3><p>The Calypso card extension service will provide means to handle cards, SAMs and to manage card transactions.<div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// Get the Calypso card extension service
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CalypsoExtensionService</span><span class=o>&gt;</span> <span class=n>cardExtension</span> <span class=o>=</span> <span class=n>CalypsoExtensionService</span><span class=o>::</span><span class=n>getInstance</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Verify that the extension&#39;s API level is consistent with the current service
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>smartCardService</span><span class=o>-&gt;</span><span class=n>checkCardExtension</span><span class=p>(</span><span class=n>cardExtension</span><span class=p>);</span></span></span></code></pre></div></div></div></p><h3 id=select-the-calypso-sam>Select the Calypso SAM</h3><p>Before executing a transaction each smart card should be selected. The
 next step is the selection of the Calypso SAM resulting in a
-CalypsoSam object.</p>
-<p>It is then combined with the SAM reader to form the SAM resource needed
-later within the transaction service.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('11',this)">Copy</button></div>
-<pre><code class=language-cpp id=code-11>// Select the SAM
-std::shared_ptr&lt;CardSelectionManager&gt; samSelectionManager = smartCardService.createCardSelectionManager();
-samSelectionManager.prepareSelection(calypsoExtensionService.createSamSelection());
-std::shared_ptr&lt;CardSelectionResult&gt; samSelectionResult = samSelectionManager.processCardSelectionScenario(samReader);
-std::shared_ptr&lt;CalypsoSam&gt; calypsoSam = std::dynamic_pointer_cast&lt;CalypsoSam&gt; samSelectionResult.getActiveSmartCard();
-if (calypsoSam == nullptr) {
-  throw IllegalStateException(&#34;The SAM selection failed.&#34;);
-}</code></pre>
-<h3 id=select-the-calypso-card>Select the Calypso card</h3>
-<p>1st card exchange:</p>
-<p>The Calypso card selection is made using the card application&rsquo;s AID
+CalypsoSam object.</p><p>It is then combined with the SAM reader to form the SAM resource needed
+later within the transaction service.</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// Select the SAM
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardSelectionManager</span><span class=o>&gt;</span> <span class=n>samSelectionManager</span> <span class=o>=</span> <span class=n>smartCardService</span><span class=p>.</span><span class=n>createCardSelectionManager</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=n>samSelectionManager</span><span class=p>.</span><span class=n>prepareSelection</span><span class=p>(</span><span class=n>calypsoExtensionService</span><span class=p>.</span><span class=n>createSamSelection</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardSelectionResult</span><span class=o>&gt;</span> <span class=n>samSelectionResult</span> <span class=o>=</span> <span class=n>samSelectionManager</span><span class=p>.</span><span class=n>processCardSelectionScenario</span><span class=p>(</span><span class=n>samReader</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CalypsoSam</span><span class=o>&gt;</span> <span class=n>calypsoSam</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>dynamic_pointer_cast</span><span class=o>&lt;</span><span class=n>CalypsoSam</span><span class=o>&gt;</span> <span class=n>samSelectionResult</span><span class=p>.</span><span class=n>getActiveSmartCard</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=n>calypsoSam</span> <span class=o>==</span> <span class=k>nullptr</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>throw</span> <span class=nf>IllegalStateException</span><span class=p>(</span><span class=s>&#34;The SAM selection failed.&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div></div></div><h3 id=select-the-calypso-card>Select the Calypso card</h3><p>1st card exchange:</p><p>The Calypso card selection is made using the card application&rsquo;s AID
 and results in a CalypsoCard object that will contain all the information extracted
-from the Calypso card all along the transaction.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('12',this)">Copy</button></div>
-<pre><code class=language-cpp id=code-12>// Select the card
-std::shared_ptr&lt;CardSelectionManager&gt; cardSelectionManager = smartCardService.createCardSelectionManager();
-cardSelectionManager.prepareSelection(
-calypsoExtensionService.createCardSelection().filterByDfName(AID));
-std::shared_ptr&lt;CardSelectionResult&gt; cardSelectionResult =
-cardSelectionManager.processCardSelectionScenario(cardReader);
-std::shared_ptr&lt;CalypsoCard&gt; calypsoCard = std::dynamic_pointer_cast&lt;CalypsoCard&gt; cardSelectionResult.getActiveSmartCard();
-if (calypsoCard == nullptr) {
-  throw IllegalStateException(&#34;The card selection failed.&#34;);
-}</code></pre>
-<h3 id=open-the-calypso-secure-session>Open the Calypso secure session</h3>
-<p>2nd card exchange :</p>
-<p>The secure session opening operated by the CardTransaction service is
-combined with the reading of the environment file (SFI=07h).</p>
-<p>The mutual authentication process between Calypso card and Calypso SAM is initiated transparently.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('13',this)">Copy</button></div>
-<pre><code class=language-cpp id=code-13>// Prepare the security settings used during the Calypso transaction
-std::shared_ptr&lt;CardSecuritySetting&gt; cardSecuritySetting =
-        calypsoExtensionService
-          .createCardSecuritySetting()
-          .setControlSamResource(samReader, calypsoSam);
-
-// Performs file reads using the card transaction manager in a secure session.
-std::shared_ptr&lt;CardTransactionManager&gt; cardTransactionManager =
-    calypsoExtensionService
-        .createCardTransaction(cardReader, calypsoCard, cardSecuritySetting)
-        .prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1)
-        .processOpening(WriteAccessLevel.DEBIT);</code></pre>
-<h3 id=close-the-calypso-secure-session>Close the Calypso secure session</h3>
-<p>3rd card exchange:</p>
-<p>Simply close the Calypso secure session</p>
-<p>The mutual authentication is finalized, it includes the authentication
-of the data in the read file.</p>
-<p>Note: any technical, cryptographic or content-related incident in the Calypso card
+from the Calypso card all along the transaction.</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// Select the card
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardSelectionManager</span><span class=o>&gt;</span> <span class=n>cardSelectionManager</span> <span class=o>=</span> <span class=n>smartCardService</span><span class=p>.</span><span class=n>createCardSelectionManager</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=n>cardSelectionManager</span><span class=p>.</span><span class=n>prepareSelection</span><span class=p>(</span>
+</span></span><span class=line><span class=cl><span class=n>calypsoExtensionService</span><span class=p>.</span><span class=n>createCardSelection</span><span class=p>().</span><span class=n>filterByDfName</span><span class=p>(</span><span class=n>AID</span><span class=p>));</span>
+</span></span><span class=line><span class=cl><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardSelectionResult</span><span class=o>&gt;</span> <span class=n>cardSelectionResult</span> <span class=o>=</span>
+</span></span><span class=line><span class=cl><span class=n>cardSelectionManager</span><span class=p>.</span><span class=n>processCardSelectionScenario</span><span class=p>(</span><span class=n>cardReader</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CalypsoCard</span><span class=o>&gt;</span> <span class=n>calypsoCard</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>dynamic_pointer_cast</span><span class=o>&lt;</span><span class=n>CalypsoCard</span><span class=o>&gt;</span> <span class=n>cardSelectionResult</span><span class=p>.</span><span class=n>getActiveSmartCard</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=n>calypsoCard</span> <span class=o>==</span> <span class=k>nullptr</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>throw</span> <span class=nf>IllegalStateException</span><span class=p>(</span><span class=s>&#34;The card selection failed.&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div></div></div><h3 id=open-the-calypso-secure-session>Open the Calypso secure session</h3><p>2nd card exchange :</p><p>The secure session opening operated by the CardTransaction service is
+combined with the reading of the environment file (SFI=07h).</p><p>The mutual authentication process between Calypso card and Calypso SAM is initiated transparently.</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// Prepare the security settings used during the Calypso transaction
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardSecuritySetting</span><span class=o>&gt;</span> <span class=n>cardSecuritySetting</span> <span class=o>=</span>
+</span></span><span class=line><span class=cl>        <span class=n>calypsoExtensionService</span>
+</span></span><span class=line><span class=cl>          <span class=p>.</span><span class=n>createCardSecuritySetting</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>          <span class=p>.</span><span class=n>setControlSamResource</span><span class=p>(</span><span class=n>samReader</span><span class=p>,</span> <span class=n>calypsoSam</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Performs file reads using the card transaction manager in a secure session.
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardTransactionManager</span><span class=o>&gt;</span> <span class=n>cardTransactionManager</span> <span class=o>=</span>
+</span></span><span class=line><span class=cl>    <span class=n>calypsoExtensionService</span>
+</span></span><span class=line><span class=cl>        <span class=p>.</span><span class=n>createCardTransaction</span><span class=p>(</span><span class=n>cardReader</span><span class=p>,</span> <span class=n>calypsoCard</span><span class=p>,</span> <span class=n>cardSecuritySetting</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>.</span><span class=n>prepareReadRecord</span><span class=p>(</span><span class=n>SFI_ENVIRONMENT_AND_HOLDER</span><span class=p>,</span> <span class=n>RECORD_NUMBER_1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>.</span><span class=n>processOpening</span><span class=p>(</span><span class=n>WriteAccessLevel</span><span class=p>.</span><span class=n>DEBIT</span><span class=p>);</span></span></span></code></pre></div></div></div><h3 id=close-the-calypso-secure-session>Close the Calypso secure session</h3><p>3rd card exchange:</p><p>Simply close the Calypso secure session</p><p>The mutual authentication is finalized, it includes the authentication
+of the data in the read file.</p><p>Note: any technical, cryptographic or content-related incident in the Calypso card
 would be signalled by an exception and would interrupt the thread of
-execution.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('14',this)">Copy</button></div>
-<pre><code class=language-cpp id=code-14>// Close the secure session, free the communication channel at the same time
-cardTransactionManager.prepareReleaseCardChannel().processClosing();
-
-printf(
-    &#34;= #### The Secure Session ended successfully, the card is authenticated and the data read are certified.&#34;);
-System.out.println(
-    &#34;\n= #### FILE CONTENT = &#34; &#43; calypsoCard.getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER));
-
-printf(&#34;\n= #### End of the Calypso card processing.&#34;);</code></pre>
-<h3 id=unregister-the-plugin>Unregister the plugin</h3>
-<p>Finally unregister the plugin before shutting down the application</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('15',this)">Copy</button></div>
-<pre><code class=language-cpp id=code-15>// Unregister the plugin before leaving the application
-smartCardService.unregisterPlugin(plugin.getName());
-exit(0);</code></pre>
-<p>Find the complete code source <a href=#full-code>below</a>.</p>
-<br>
-<h2 id=run>Run</h2>
-<ol>
-<li>Connect two USB PC/SC Readers.</li>
-<li>Insert the Calypso SAM in the SAM reader.</li>
-<li>Insert the Calypso card in the card reader.</li>
-<li>Run the application.</li>
-</ol>
-<div class="alert alert-note">
-<div>
-All project dependencies, including Keyple
+execution.</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// Close the secure session, free the communication channel at the same time
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>cardTransactionManager</span><span class=p>.</span><span class=n>prepareReleaseCardChannel</span><span class=p>().</span><span class=n>processClosing</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>printf</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;= #### The Secure Session ended successfully, the card is authenticated and the data read are certified.&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>System</span><span class=p>.</span><span class=n>out</span><span class=p>.</span><span class=n>println</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;</span><span class=se>\n</span><span class=s>= #### FILE CONTENT = &#34;</span> <span class=o>+</span> <span class=n>calypsoCard</span><span class=p>.</span><span class=n>getFileBySfi</span><span class=p>(</span><span class=n>SFI_ENVIRONMENT_AND_HOLDER</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>printf</span><span class=p>(</span><span class=s>&#34;</span><span class=se>\n</span><span class=s>= #### End of the Calypso card processing.&#34;</span><span class=p>);</span></span></span></code></pre></div></div></div><h3 id=unregister-the-plugin>Unregister the plugin</h3><p>Finally unregister the plugin before shutting down the application</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// Unregister the plugin before leaving the application
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>smartCardService</span><span class=p>.</span><span class=n>unregisterPlugin</span><span class=p>(</span><span class=n>plugin</span><span class=p>.</span><span class=n>getName</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=n>exit</span><span class=p>(</span><span class=mi>0</span><span class=p>);</span></span></span></code></pre></div></div></div><p>Find the complete code source <a href=#full-code>below</a>.</p><br><h2 id=run>Run</h2><ol><li>Connect two USB PC/SC Readers.</li><li>Insert the Calypso SAM in the SAM reader.</li><li>Insert the Calypso card in the card reader.</li><li>Run the application.</li></ol><div class="alert alert-note"><div>All project dependencies, including Keyple
 components, are downloaded during the first run, which can take some
-time.
-</div>
-</div>
-<br>
-<h2 id=faq>FAQ</h2>
-<h4 id=how-do-i-find-out-the-names-of-the-readers>How do I find out the names of the readers?</h4>
-<p>To find out the names of the readers connected to your computer, we will
+time.</div></div><br><h2 id=faq>FAQ</h2><h4 id=how-do-i-find-out-the-names-of-the-readers>How do I find out the names of the readers?</h4><p>To find out the names of the readers connected to your computer, we will
 use Keyple with the following class which prints in the console the
-number and names of the readers present:</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('17',this)">Copy</button></div>
-<pre><code class=language-cpp id=code-17>#include &#34;SmartCardService.h&#34;
-#include &#34;SmartCardServiceProvider.h&#34;
-
-#include &#34;PcscPlugin.h&#34;
-#include &#34;PcscPluginFactory.h&#34;
-#include &#34;PcscPluginFactoryBuilder.h&#34;
-#include &#34;PcscReader.h&#34;
-
-using namespace keyple::core::service;
-using namespace keyple::plugin::pcsc;
-
-class ReaderDiscovery {};
-
-int main()
-{
-    std::shared_ptr&lt;SmartCardService&gt; smartCardService = SmartCardServiceProvider::getService();
-    std::shared_ptr&lt;Plugin&gt; plugin = smartCardService-&gt;registerPlugin(PcscPluginFactoryBuilder::builder()-&gt;build());
-    std::cout &lt;&lt; plugin-&gt;getReaderNames().size() &lt;&lt; &#34; reader(s) found.&#34; &lt;&lt; std::endl;
-    for (const auto&amp; readerName : plugin-&gt;getReaderNames()) {
-        std::cout &lt;&lt; &#34;\&#34;&#34; &lt;&lt; readerName &lt;&lt; &#34;\&#34;&#34; &lt;&lt; std::endl;
-    }
-}</code></pre>
-<p>The console output should look something like:</p>
-<pre><code>2 reader(s) found.
-&quot;ASK LoGO 0&quot;
-&quot;Identive CLOUD 2700 R Smart Card Reader 0&quot;
-</code></pre>
-<p>Identify which reader will be the card (contactless) reader and the SAM
+number and names of the readers present:</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;SmartCardService.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;SmartCardServiceProvider.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscPlugin.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscPluginFactory.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscPluginFactoryBuilder.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscReader.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>service</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>plugin</span><span class=o>::</span><span class=n>pcsc</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ReaderDiscovery</span> <span class=p>{};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>SmartCardService</span><span class=o>&gt;</span> <span class=n>smartCardService</span> <span class=o>=</span> <span class=n>SmartCardServiceProvider</span><span class=o>::</span><span class=n>getService</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>Plugin</span><span class=o>&gt;</span> <span class=n>plugin</span> <span class=o>=</span> <span class=n>smartCardService</span><span class=o>-&gt;</span><span class=n>registerPlugin</span><span class=p>(</span><span class=n>PcscPluginFactoryBuilder</span><span class=o>::</span><span class=n>builder</span><span class=p>()</span><span class=o>-&gt;</span><span class=n>build</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>plugin</span><span class=o>-&gt;</span><span class=n>getReaderNames</span><span class=p>().</span><span class=n>size</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=s>&#34; reader(s) found.&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=k>const</span> <span class=k>auto</span><span class=o>&amp;</span> <span class=nl>readerName</span> <span class=p>:</span> <span class=n>plugin</span><span class=o>-&gt;</span><span class=n>getReaderNames</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;</span><span class=se>\&#34;</span><span class=s>&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>readerName</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;</span><span class=se>\&#34;</span><span class=s>&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div></div></div><p>The console output should look something like:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>2 reader(s) found.
+</span></span><span class=line><span class=cl>&#34;ASK LoGO 0&#34;
+</span></span><span class=line><span class=cl>&#34;Identive CLOUD 2700 R Smart Card Reader 0&#34;
+</span></span></code></pre></div><p>Identify which reader will be the card (contactless) reader and the SAM
 (contact) reader and replace <code>CARD_READER_NAME</code> and
-<code>SAM_READER_NAME</code> with their values.</p>
-<h4 id=the-program-is-terminated-with-the-samcard-selection-failed>The program is terminated with &lsquo;The SAM/card selection failed&rsquo;</h4>
-<p>Check the presence of the SAM and/or the card. The expected SAM is a Calypso S1 SAM and the expected card must have an
-application identifier (DFNAME) corresponding to the AID used.</p>
-<h4 id=the-program-is-terminated-with-an-exception>The program is terminated with an exception</h4>
-<p>The cause is probably an error in the name of one of the two readers or the absence of a card on the contactless reader.</p>
-<p>To better identify the origin of the problem, it is always possible to surround the code with try/catch and display the cause.</p>
-<h4 id=full-code>Full code</h4>
-<p>Here is the complete code of this quick start in one single block.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('18',this)">Copy</button></div>
-<pre><code class=language-cpp id=code-18>#include &#34;CalypsoExtensionService.h&#34;
-
-#include &#34;ConfigurableReader.h&#34;
-#include &#34;SmartCardService.h&#34;
-#include &#34;SmartCardServiceProvider.h&#34;
-
-#include &#34;ByteArrayUtil.h&#34;
-#include &#34;ContactCardCommonProtocol.h&#34;
-#include &#34;ContactlessCardCommonProtocol.h&#34;
-#include &#34;IllegalStateException.h&#34;
-#include &#34;LoggerFactory.h&#34;
-#include &#34;StringUtils.h&#34;
-
-#include &#34;PcscPlugin.h&#34;
-#include &#34;PcscPluginFactory.h&#34;
-#include &#34;PcscPluginFactoryBuilder.h&#34;
-#include &#34;PcscReader.h&#34;
-#include &#34;PcscSupportedContactlessProtocol.h&#34;
-
-using namespace keyple::card::calypso;
-using namespace keyple::core::service;
-using namespace keyple::core::service::resource;
-using namespace keyple::core::util;
-using namespace keyple::core::util::cpp;
-using namespace keyple::core::util::cpp::exception;
-using namespace keyple::core::util::protocol;
-using namespace keyple::plugin::pcsc;
-
-const std::string AID                    = &#34;315449432E49434131&#34;;
-const uint8_t SFI_ENVIRONMENT_AND_HOLDER = 0x07;
-const uint8_t RECORD_NUMBER_1            = 1;
-
-class Main_CardAuthentication_Pcsc {};
-
-int main()
-{
-    // Get the instance of the SmartCardService
-    std::shared_ptr&lt;SmartCardService&gt; smartCardService = SmartCardServiceProvider::getService();
-
-    // Register the PcscPlugin with the SmartCardService, retrieve anc configure the readers
-    std::shared_ptr&lt;Plugin&gt; plugin = smartCardService-&gt;registerPlugin(PcscPluginFactoryBuilder::builder()-&gt;build());
-
-    std::shared_ptr&lt;Reader&gt; cardReader = std::dynamic_pointer_cast&lt;ConfigurableReader&gt;(plugin-&gt;getReader(&#34;CARD_READER_NAME&#34;));
-
-    std::shared_ptr&lt;Reader&gt; samReader = std::dynamic_pointer_cast&lt;ConfigurableReader&gt;(plugin-&gt;getReader(&#34;SAM_READER_NAME&#34;));
-
-    // Get the Calypso card extension service
-    std::shared_ptr&lt;CalypsoExtensionService&gt; calypsoExtensionService = CalypsoExtensionService::getInstance();
-
-    // Verify that the extension&#39;s API level is consistent with the current service
-    smartCardService-&gt;checkCardExtension(calypsoExtensionService);
-
-    // Select the SAM
-    std::shared_ptr&lt;CardSelectionManager&gt; samSelectionManager = smartCardService-&gt;createCardSelectionManager();
-    samSelectionManager-&gt;prepareSelection(calypsoExtensionService-&gt;createSamSelection());
-    std::shared_ptr&lt;CardSelectionResult&gt; samSelectionResult = samSelectionManager-&gt;processCardSelectionScenario(samReader);
-    std::shared_ptr&lt;CalypsoSam&gt; calypsoSam                  = std::dynamic_pointer_cast&lt;CalypsoSam&gt;(samSelectionResult-&gt;getActiveSmartCard());
-    if (calypsoSam == nullptr)
-    {
-        throw IllegalStateException(&#34;The SAM selection failed.&#34;);
-    }
-
-    // Select the card
-    std::shared_ptr&lt;CardSelectionManager&gt; cardSelectionManager = smartCardService-&gt;createCardSelectionManager();
-    std::shared_ptr&lt;CalypsoCardSelection&gt; cardSelection        = calypsoExtensionService-&gt;createCardSelection();
-    cardSelection-&gt;filterByDfName(AID);
-    cardSelectionManager-&gt;prepareSelection(cardSelection);
-    std::shared_ptr&lt;CardSelectionResult&gt; cardSelectionResult = cardSelectionManager-&gt;processCardSelectionScenario(cardReader);
-    std::shared_ptr&lt;CalypsoCard&gt; calypsoCard                 = std::dynamic_pointer_cast&lt;CalypsoCard&gt;(cardSelectionResult-&gt;getActiveSmartCard());
-    if (calypsoCard == nullptr)
-    {
-        throw IllegalStateException(&#34;The card selection failed.&#34;);
-    }
-
-    // Prepare the security settings used during the Calypso transaction
-    std::shared_ptr&lt;CardSecuritySetting&gt; cardSecuritySetting = calypsoExtensionService-&gt;createCardSecuritySetting();
-    cardSecuritySetting-&gt;setSamResource(samReader, calypsoSam);
-
-    // Performs file reads using the card transaction manager in a secure session.
-    std::shared_ptr&lt;CardTransactionManager&gt; cardTransactionManager = calypsoExtensionService-&gt;createCardTransaction(cardReader, calypsoCard, cardSecuritySetting);
-
-    cardTransactionManager-&gt;prepareReadRecord(SFI_ENVIRONMENT_AND_HOLDER, RECORD_NUMBER_1).processOpening(WriteAccessLevel::DEBIT);
-
-    // Close the secure session, free the communication channel at the same time
-    cardTransactionManager-&gt;prepareReleaseCardChannel().processClosing();
-
-    printf(&#34;= #### The Secure Session ended successfully, the card is &#34;
-           &#34;authenticated and the data read are certified.&#34;);
-    //  printf(&#34;\n= #### FILE CONTENT = &#34; &#43;
-    //  calypsoCard-&gt;getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER));
-
-    printf(&#34;\n= #### End of the Calypso card processing.&#34;);
-}</code></pre>
-</div>
-<div class=article-widget>
-<div class=post-nav>
-<div class=post-nav-item>
-<div class=meta-nav>Previous</div>
-<a href=../../../learn/build-your-first-app/android-app/ rel=next>Build your first Android application</a>
-</div>
-</div>
-</div>
-</div>
-<div class=body-footer>
-<p>Last updated on 2024-01-30</p>
-</div>
-</article>
-<footer class=site-footer>
-<div class=container>
-<div class="row featurette">
-<div class="col-12 col-sm-4">
-<p style=color:#fff><b>ECLIPSE LEGAL</b></p>
-<a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a><br>
-<a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a><br>
-<a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a><br>
-<a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a><br>
-<a href=https://www.eclipse.org/legal/>Legal Resources</a><br>
-<a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a><br>
-</div>
-<div class="col-12 col-sm-4">
-<a href=https://www.eclipse.org target=_blank>
-<img src=../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
-</a>
-</div>
-<div class="col-12 col-sm-4">
-<a href=https://iot.eclipse.org target=_blank>
-<img src=../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
-</a>
-</div>
-</div>
-</div>
-<p class=powered-by id=copyright>
-© 2020-2024 The Eclipse Keyple® project. All Rights Reserved.
-</p>
-<p class=powered-by id=template-info>
-Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-themes target=_blank rel=noopener>open source</a> website builder that empowers creators.
-</p>
-</footer>
-</main>
-</div>
-</div>
-</div>
-<div class=page-footer>
-</div>
-<div id=modal class="modal fade" role=dialog>
-<div class=modal-dialog>
-<div class=modal-content>
-<div class=modal-header>
-<h5 class=modal-title>Cite</h5>
-<button type=button class=close data-dismiss=modal aria-label=Close>
-<span aria-hidden=true>&#215;</span>
-</button>
-</div>
-<div class=modal-body>
-<pre><code class="tex hljs"></code></pre>
-</div>
-<div class=modal-footer>
-<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
-<i class="fas fa-copy"></i> Copy
-</a>
-<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
-<i class="fas fa-download"></i> Download
-</a>
-<div id=modal-error></div>
-</div>
-</div>
-</div>
-</div>
-<script src=../../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/java.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/groovy.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/xml.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/kotlin.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/cpp.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/gradle.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/ini.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/make.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin=anonymous></script>
-<script>anchors.add()</script>
-<script id=search-hit-fuse-template type=text/x-template>
-        <div class="search-hit" id="summary-{{key}}">
-          <div class="search-hit-content">
-            <div class="search-hit-name">
-              <a href="{{relpermalink}}">{{title}}</a>
-              <div class="article-metadata search-hit-type">{{type}}</div>
-              <p class="search-hit-description">{{snippet}}</p>
-            </div>
-          </div>
+<code>SAM_READER_NAME</code> with their values.</p><h4 id=the-program-is-terminated-with-the-samcard-selection-failed>The program is terminated with &lsquo;The SAM/card selection failed&rsquo;</h4><p>Check the presence of the SAM and/or the card. The expected SAM is a Calypso S1 SAM and the expected card must have an
+application identifier (DFNAME) corresponding to the AID used.</p><h4 id=the-program-is-terminated-with-an-exception>The program is terminated with an exception</h4><p>The cause is probably an error in the name of one of the two readers or the absence of a card on the contactless reader.</p><p>To better identify the origin of the problem, it is always possible to surround the code with try/catch and display the cause.</p><h4 id=full-code>Full code</h4><p>Here is the complete code of this quick start in one single block.</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;CalypsoExtensionService.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;ConfigurableReader.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;SmartCardService.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;SmartCardServiceProvider.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;ByteArrayUtil.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;ContactCardCommonProtocol.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;ContactlessCardCommonProtocol.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;IllegalStateException.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;LoggerFactory.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;StringUtils.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscPlugin.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscPluginFactory.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscPluginFactoryBuilder.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscReader.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;PcscSupportedContactlessProtocol.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>card</span><span class=o>::</span><span class=n>calypso</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>service</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>service</span><span class=o>::</span><span class=n>resource</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>util</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>util</span><span class=o>::</span><span class=n>cpp</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>util</span><span class=o>::</span><span class=n>cpp</span><span class=o>::</span><span class=n>exception</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>core</span><span class=o>::</span><span class=n>util</span><span class=o>::</span><span class=n>protocol</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>keyple</span><span class=o>::</span><span class=n>plugin</span><span class=o>::</span><span class=n>pcsc</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>AID</span>                    <span class=o>=</span> <span class=s>&#34;315449432E49434131&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>uint8_t</span> <span class=n>SFI_ENVIRONMENT_AND_HOLDER</span> <span class=o>=</span> <span class=mh>0x07</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>uint8_t</span> <span class=n>RECORD_NUMBER_1</span>            <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Main_CardAuthentication_Pcsc</span> <span class=p>{};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// Get the instance of the SmartCardService
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>SmartCardService</span><span class=o>&gt;</span> <span class=n>smartCardService</span> <span class=o>=</span> <span class=n>SmartCardServiceProvider</span><span class=o>::</span><span class=n>getService</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// Register the PcscPlugin with the SmartCardService, retrieve anc configure the readers
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>Plugin</span><span class=o>&gt;</span> <span class=n>plugin</span> <span class=o>=</span> <span class=n>smartCardService</span><span class=o>-&gt;</span><span class=n>registerPlugin</span><span class=p>(</span><span class=n>PcscPluginFactoryBuilder</span><span class=o>::</span><span class=n>builder</span><span class=p>()</span><span class=o>-&gt;</span><span class=n>build</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>Reader</span><span class=o>&gt;</span> <span class=n>cardReader</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>dynamic_pointer_cast</span><span class=o>&lt;</span><span class=n>ConfigurableReader</span><span class=o>&gt;</span><span class=p>(</span><span class=n>plugin</span><span class=o>-&gt;</span><span class=n>getReader</span><span class=p>(</span><span class=s>&#34;CARD_READER_NAME&#34;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>Reader</span><span class=o>&gt;</span> <span class=n>samReader</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>dynamic_pointer_cast</span><span class=o>&lt;</span><span class=n>ConfigurableReader</span><span class=o>&gt;</span><span class=p>(</span><span class=n>plugin</span><span class=o>-&gt;</span><span class=n>getReader</span><span class=p>(</span><span class=s>&#34;SAM_READER_NAME&#34;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// Get the Calypso card extension service
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CalypsoExtensionService</span><span class=o>&gt;</span> <span class=n>calypsoExtensionService</span> <span class=o>=</span> <span class=n>CalypsoExtensionService</span><span class=o>::</span><span class=n>getInstance</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// Verify that the extension&#39;s API level is consistent with the current service
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>smartCardService</span><span class=o>-&gt;</span><span class=n>checkCardExtension</span><span class=p>(</span><span class=n>calypsoExtensionService</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// Select the SAM
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardSelectionManager</span><span class=o>&gt;</span> <span class=n>samSelectionManager</span> <span class=o>=</span> <span class=n>smartCardService</span><span class=o>-&gt;</span><span class=n>createCardSelectionManager</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>samSelectionManager</span><span class=o>-&gt;</span><span class=n>prepareSelection</span><span class=p>(</span><span class=n>calypsoExtensionService</span><span class=o>-&gt;</span><span class=n>createSamSelection</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardSelectionResult</span><span class=o>&gt;</span> <span class=n>samSelectionResult</span> <span class=o>=</span> <span class=n>samSelectionManager</span><span class=o>-&gt;</span><span class=n>processCardSelectionScenario</span><span class=p>(</span><span class=n>samReader</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CalypsoSam</span><span class=o>&gt;</span> <span class=n>calypsoSam</span>                  <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>dynamic_pointer_cast</span><span class=o>&lt;</span><span class=n>CalypsoSam</span><span class=o>&gt;</span><span class=p>(</span><span class=n>samSelectionResult</span><span class=o>-&gt;</span><span class=n>getActiveSmartCard</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>calypsoSam</span> <span class=o>==</span> <span class=k>nullptr</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>throw</span> <span class=n>IllegalStateException</span><span class=p>(</span><span class=s>&#34;The SAM selection failed.&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// Select the card
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardSelectionManager</span><span class=o>&gt;</span> <span class=n>cardSelectionManager</span> <span class=o>=</span> <span class=n>smartCardService</span><span class=o>-&gt;</span><span class=n>createCardSelectionManager</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CalypsoCardSelection</span><span class=o>&gt;</span> <span class=n>cardSelection</span>        <span class=o>=</span> <span class=n>calypsoExtensionService</span><span class=o>-&gt;</span><span class=n>createCardSelection</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>cardSelection</span><span class=o>-&gt;</span><span class=n>filterByDfName</span><span class=p>(</span><span class=n>AID</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>cardSelectionManager</span><span class=o>-&gt;</span><span class=n>prepareSelection</span><span class=p>(</span><span class=n>cardSelection</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardSelectionResult</span><span class=o>&gt;</span> <span class=n>cardSelectionResult</span> <span class=o>=</span> <span class=n>cardSelectionManager</span><span class=o>-&gt;</span><span class=n>processCardSelectionScenario</span><span class=p>(</span><span class=n>cardReader</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CalypsoCard</span><span class=o>&gt;</span> <span class=n>calypsoCard</span>                 <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>dynamic_pointer_cast</span><span class=o>&lt;</span><span class=n>CalypsoCard</span><span class=o>&gt;</span><span class=p>(</span><span class=n>cardSelectionResult</span><span class=o>-&gt;</span><span class=n>getActiveSmartCard</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>calypsoCard</span> <span class=o>==</span> <span class=k>nullptr</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>throw</span> <span class=n>IllegalStateException</span><span class=p>(</span><span class=s>&#34;The card selection failed.&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// Prepare the security settings used during the Calypso transaction
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardSecuritySetting</span><span class=o>&gt;</span> <span class=n>cardSecuritySetting</span> <span class=o>=</span> <span class=n>calypsoExtensionService</span><span class=o>-&gt;</span><span class=n>createCardSecuritySetting</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>cardSecuritySetting</span><span class=o>-&gt;</span><span class=n>setSamResource</span><span class=p>(</span><span class=n>samReader</span><span class=p>,</span> <span class=n>calypsoSam</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// Performs file reads using the card transaction manager in a secure session.
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>CardTransactionManager</span><span class=o>&gt;</span> <span class=n>cardTransactionManager</span> <span class=o>=</span> <span class=n>calypsoExtensionService</span><span class=o>-&gt;</span><span class=n>createCardTransaction</span><span class=p>(</span><span class=n>cardReader</span><span class=p>,</span> <span class=n>calypsoCard</span><span class=p>,</span> <span class=n>cardSecuritySetting</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>cardTransactionManager</span><span class=o>-&gt;</span><span class=n>prepareReadRecord</span><span class=p>(</span><span class=n>SFI_ENVIRONMENT_AND_HOLDER</span><span class=p>,</span> <span class=n>RECORD_NUMBER_1</span><span class=p>).</span><span class=n>processOpening</span><span class=p>(</span><span class=n>WriteAccessLevel</span><span class=o>::</span><span class=n>DEBIT</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// Close the secure session, free the communication channel at the same time
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>cardTransactionManager</span><span class=o>-&gt;</span><span class=n>prepareReleaseCardChannel</span><span class=p>().</span><span class=n>processClosing</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>printf</span><span class=p>(</span><span class=s>&#34;= #### The Secure Session ended successfully, the card is &#34;</span>
+</span></span><span class=line><span class=cl>           <span class=s>&#34;authenticated and the data read are certified.&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//  printf(&#34;\n= #### FILE CONTENT = &#34; +
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//  calypsoCard-&gt;getFileBySfi(SFI_ENVIRONMENT_AND_HOLDER));
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl>    <span class=n>printf</span><span class=p>(</span><span class=s>&#34;</span><span class=se>\n</span><span class=s>= #### End of the Calypso card processing.&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></div></div></div></article><div class=article-widget><div class=post-nav><div class=post-nav-item><div class=meta-nav>Previous</div><a href=../../../learn/build-your-first-app/android-app/ rel=next>Build your first Android application</a></div></div></div></div><div class=body-footer><p>Last updated on 2024-01-30</p></div><footer class=site-footer><div class=container><div class="row featurette"><div class="col-12 col-sm-4"><p style=color:#fff><b>ECLIPSE LEGAL</b></p><a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a><br><a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a><br><a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a><br><a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a><br><a href=https://www.eclipse.org/legal/>Legal Resources</a><br><a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a><br></div><div class="col-12 col-sm-4"><a href=https://www.eclipse.org target=_blank><img src=../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation></a></div><div class="col-12 col-sm-4"><a href=https://iot.eclipse.org target=_blank><img src=../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot></a></div></div></div><p class="powered-by copyright-license-text">© 2023-2024 The Eclipse Keyple® project. All Rights Reserved.</p><p class=powered-by id=template-info>Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target=_blank rel=noopener>Hugo Blox Builder</a> — the free, <a href=https://github.com/HugoBlox/hugo-blox-builder target=_blank rel=noopener>open source</a> website builder that empowers creators.</p></footer></main></div></div></div><div class=page-footer></div><script src=../../../js/vendor-bundle.min.938a3a7554cd9f6602290411f64d2617.js></script><script src=https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js integrity crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js integrity="sha256-aQmOEF2ZD4NM/xt4hthzREIo/2PFkOX/g01WjxEV7Ys=" crossorigin=anonymous></script><script>anchors.add()</script><script id=search-hit-fuse-template type=text/x-template>
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
         </div>
-      </script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.3e9e983029b2f19036e863f00795497b.js></script>
-<link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
-<script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
-<script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
-</body>
-</html>
+      </div>
+    </div>
+  </script><script src=https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin=anonymous></script><script id=page-data type=application/json>{"use_headroom":false}</script><script src=../../../en/js/wowchemy.min.27a6b98e2945e58d8c2db5ab7dfc1d3b.js></script><script src=../../../js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js type=module></script><link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css><script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script><script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script></body></html>

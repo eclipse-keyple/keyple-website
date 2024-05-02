@@ -1,506 +1,108 @@
-<!doctype html><html lang=en-us>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Wowchemy 5.3.0 for Hugo">
-<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-<link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
-<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload="this.media='all'">
-<meta name=description content="How to develop an end-user application using the Calypso card extension add-on.">
-<link rel=alternate hreflang=en-us href=https://keyple.org/learn/user-guide/calypso-application/>
-<meta name=theme-color content="#1D87BB">
-<link rel=stylesheet href=../../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'">
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/darcula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
-<link rel=stylesheet href=../../../css/wowchemy.515e06faef9f54bb760004647e75b940.css>
-<script>(function(b,d,e,a,g){b[a]=b[a]||[],b[a].push({'gtm.start':(new Date).getTime(),event:'gtm.js'});var f=d.getElementsByTagName(e)[0],c=d.createElement(e),h=a!='dataLayer'?'&l='+a:'';c.async=!0,c.src='https://www.googletagmanager.com/gtm.js?id='+g+h,f.parentNode.insertBefore(c,f)})(window,document,'script','dataLayer','GTM-5WLCZXC')</script>
-<link rel=manifest href=../../../manifest.webmanifest>
-<link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png>
-<link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://keyple.org/learn/user-guide/calypso-application/>
-<meta property="twitter:card" content="summary">
-<meta property="og:site_name" content="Eclipse Keyple">
-<meta property="og:url" content="https://keyple.org/learn/user-guide/calypso-application/">
-<meta property="og:title" content="Calypso Application User Guide | Eclipse Keyple">
-<meta property="og:description" content="How to develop an end-user application using the Calypso card extension add-on."><meta property="og:image" content="https://keyple.org/media/logo.svg">
-<meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us">
-<meta property="article:modified_time" content="2024-01-30T10:38:42+01:00">
-<title>Calypso Application User Guide | Eclipse Keyple</title>
-</head>
-<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=1d609d9f8b83fb8096714c6553c2e185>
-<script src=../../../js/wowchemy-init.min.da42964e270e05a6063fbca894d7ccff.js></script>
-<aside class=search-modal id=search>
-<div class=container>
-<section class=search-header>
-<div class="row no-gutters justify-content-between mb-3">
-<div class=col-6>
-<h1>Search</h1>
-</div>
-<div class="col-6 col-search-close">
-<a class=js-search href=# aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
-</div>
-</div>
-<div id=search-box>
-<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...>
-</div>
-</section>
-<section class=section-search-results>
-<div id=search-hits>
-</div>
-</section>
-</div>
-</aside>
-<div class=page-header>
-<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
-<div class=container-xl>
-<div class="d-none d-lg-inline-flex">
-<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
-</div>
-<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
-<span><i class="fas fa-bars"></i></span>
-</button>
-<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
-<a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a>
-</div>
-<div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content>
-<ul class="navbar-nav d-md-inline-flex">
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=generator content="Hugo Blox Builder 5.9.6"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" media=print onload='this.media="all"'><link rel=stylesheet href=../../../css/vendor-bundle.min.047268c6dd09ad74ba54a0ba71837064.css media=print onload='this.media="all"'><link rel=stylesheet href=https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin=anonymous media=print onload='this.media="all"'><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css integrity crossorigin=anonymous media=print onload='this.media="all"'><link rel=stylesheet href=../../../css/wowchemy.c7209c1a36b3770940c9d67675a0cbef.css><link rel=stylesheet href=../../../css/libs/chroma/github-dark.min.css title=hl-light media=print onload='this.media="all"'><link rel=stylesheet href=../../../css/libs/chroma/github-dark.min.css title=hl-dark media=print onload='this.media="all"' disabled><meta name=description content="How to develop an end-user application using the Calypso card extension add-on."><link rel=alternate hreflang=en-us href=https://keyple.org/learn/user-guide/calypso-application/><link rel=canonical href=https://keyple.org/learn/user-guide/calypso-application/><link rel=manifest href=../../../manifest.webmanifest><link rel=icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_32x32_fill_lanczos_center_3.png><link rel=apple-touch-icon type=image/png href=../../../media/icon_hu16db34b3636b127457de39ca2fab620f_9845_180x180_fill_lanczos_center_3.png><meta name=theme-color content="#1D87BB"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://keyple.org/media/logo.svg"><meta property="og:type" content="article"><meta property="og:site_name" content="Eclipse Keyple"><meta property="og:url" content="https://keyple.org/learn/user-guide/calypso-application/"><meta property="og:title" content="Calypso Application User Guide | Eclipse Keyple"><meta property="og:description" content="How to develop an end-user application using the Calypso card extension add-on."><meta property="og:image" content="https://keyple.org/media/logo.svg"><meta property="og:locale" content="en-us"><meta property="article:modified_time" content="2024-01-30T10:38:42+01:00"><title>Calypso Application User Guide | Eclipse Keyple</title></head><body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=1d609d9f8b83fb8096714c6553c2e185><script src=../../../js/wowchemy-init.min.d66af272089c6c0601f1a57edc3bf6ab.js></script><aside class=search-modal id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href=# aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box><input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><div class="page-header header--fixed"><header><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container-xl><div class="d-none d-lg-inline-flex"><a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href=../../../><img src=../../../media/logo.svg alt="Eclipse Keyple"></a></div><div class="navbar-collapse main-menu-item collapse justify-content-center" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>What is Eclipse Keyple®</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../what-is-keyple/overview/><span>Overview</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/why-trust/><span>Why trust Eclipse Keyple®?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/who-is-it-for/><span>Who is it for?</span></a>
 <a class=dropdown-item href=../../../#adopters><span>Who is using Eclipse Keyple®?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/what-is-calypso/><span>What is Calypso®?</span></a>
 <a class=dropdown-item href=../../../what-is-keyple/main-features/><span>Keyple's main features</span></a>
-<a class=dropdown-item href=../../../#news><span>News</span></a>
-</div>
-</li>
-<li class=nav-item>
-<a class=nav-link href=../../../learn/overview><span>Learn</span></a>
-</li>
-<li class=nav-item>
-<a class=nav-link href=../../../components/overview><span>Components</span></a>
-</li>
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
+<a class=dropdown-item href=../../../#news><span>News</span></a></div></li><li class=nav-item><a class=nav-link href=../../../learn/overview><span>Learn</span></a></li><li class=nav-item><a class=nav-link href=../../../components/overview><span>Components</span></a></li><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>Community</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../community/contributing/><span>Contributing</span></a>
 <a class=dropdown-item href=../../../community/roadmap/><span>Roadmap</span></a>
 <a class=dropdown-item href=../../../community/changelog/><span>Changelog</span></a>
 <a class=dropdown-item href=../../../project-dashboard/><span>Project dashboard</span></a>
-<a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date"><span>Code quality dashboard</span></a>
+<a class=dropdown-item href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&amp;sort=-analysis_date"><span>Code quality dashboard</span></a>
 <a class=dropdown-item href=https://projects.eclipse.org/projects/iot.keyple/><span>Eclipse Foundation Keyple page</span></a>
 <a class=dropdown-item href=https://accounts.eclipse.org/mailing-list/keyple-dev/><span>Mailing list</span></a>
 <a class=dropdown-item href=https://github.com/eclipse-keyple/keyple/><span>GitHub home repository</span></a>
-<a class=dropdown-item href=../../../archives/><span>Archives</span></a>
-</div>
-</li>
-<li class="nav-item dropdown">
-<a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span>
-</a>
-<div class=dropdown-menu>
-<a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
+<a class=dropdown-item href=../../../archives/><span>Archives</span></a></div></li><li class="nav-item dropdown"><a href=# class="nav-link dropdown-toggle" data-toggle=dropdown aria-haspopup=true><span>External resources</span><span class=caret></span></a><div class=dropdown-menu><a class=dropdown-item href=../../../external-resources/external-add-ons/><span>External add-ons</span></a>
 <a class=dropdown-item href=../../../external-resources/compliant-terminals/><span>Compliant terminals</span></a>
-<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a>
-</div>
-</li>
-<li class=nav-item>
-<a class=nav-link href=../../../learn/build-your-first-app/><button class="btn btn-info"><i class="fas fa-rocket pr-1" aria-hidden=true></i> <span>START CODING</span></button></a>
-</li>
-</ul>
-</div>
-<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-<li class=nav-item>
-<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
-</li>
-</ul>
-</div>
-</nav>
-</div>
-<div class=page-body>
-<div class="container-fluid docs">
-<div class="row flex-xl-nowrap">
-<div class="col-12 col-md-3 col-xl-2 docs-sidebar">
-<form class="docs-search d-flex align-items-center">
-<button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation">
-<div class=d-flex>
-<span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
-User guides
-</span>
-<span><i class="fas fa-chevron-down"></i></span>
-</div>
-</button>
+<a class=dropdown-item href=../../../external-resources/support-and-training-companies/><span>Support & training companies</span></a></div></li><li class=nav-item><a class=nav-link href=../../../learn/build-your-first-app/><button class='btn btn-info'><i class='fas fa-rocket pr-1' aria-hidden=true></i> <span>START CODING</span></button></a></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"><li class=nav-item><a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a></li></ul></div></nav></header></div><div class=page-body><div class="container-fluid docs"><div class="row flex-xl-nowrap"><div class="col-12 col-md-3 col-xl-2 docs-sidebar"><form class="docs-search d-flex align-items-center"><button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type=button data-toggle=collapse data-target=#docs-nav aria-controls=docs-nav aria-expanded=false aria-label="Toggle section navigation"><div class=d-flex><span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">User guides
+</span><span><i class="fas fa-chevron-down"></i></span></div></button>
 <button class="form-control sidebar-search js-search d-none d-md-flex">
 <i class="fas fa-search pr-2"></i>
 <span class=sidebar-search-text>Search...</span>
-<span class=sidebar-search-shortcut>/</span>
-</button>
-</form>
-<nav class="collapse docs-links" id=docs-nav>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/></a></li>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/overview/>Overview</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li>
-<li><a href=../../../learn/overview/architecture/>Architecture</a></li>
-<li><a href=../../../learn/overview/keypop-api/>Keypop API</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/build-your-first-app/>Build your first app</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/build-your-first-app/java-app/>Java</a></li>
-<li><a href=../../../learn/build-your-first-app/android-app/>Android</a></li>
-<li><a href=../../../learn/build-your-first-app/cpp-app/>C++</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/user-guide/>User guides</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li>
-<li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li>
-<li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li>
-<li class=active><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li>
-<li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li>
-<li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li>
-<li><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/code-samples/>Code samples</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/code-samples/java-example/>Java examples</a></li>
-<li><a href=../../../learn/code-samples/cpp-example/>C++ examples</a></li>
-</ul>
-</div>
-<div class=docs-toc-item>
-<a class=docs-toc-link href=../../../learn/keyple-in-depth/>Keyple in depth</a>
-<ul class="nav docs-sidenav">
-<li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li>
-<li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li>
-<li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li>
-</ul>
-</div>
-</ul>
-</nav>
-</div>
-<div class="d-none d-xl-block col-xl-2 docs-toc">
-<ul class="nav toc-top">
-<li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li>
-</ul>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#overview>Overview</a></li>
-<li><a href=#operating-mode>Operating mode</a></li>
-<li><a href=#the-calypso-extension-service>The Calypso extension service</a></li>
-<li><a href=#select-a-card>Select a card</a></li>
-<li><a href=#set-up-security-settings>Set up security settings</a></li>
-<li><a href=#operate-a-card-transaction>Operate a card transaction</a></li>
-<li><a href=#api>API</a></li>
-<li><a href=#examples>Examples</a></li>
-<li><a href=#download>Download</a></li>
-</ul>
-</nav>
-</div>
-<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main>
-<article class=article>
-<div class=docs-article-container>
-<h1>Calypso Application User Guide</h1>
-<div class=article-style>
-<br>
-<h2 id=overview>Overview</h2>
-<p>Keyple provides a card extension add-on dedicated to the Calypso® card technology.</p>
-<p>This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way.
-It completely hides the details of APDU orders that are sent to Calypso cards and SAMs, which are usually tedious operations.</p>
-<p>The main features are:</p>
-<ul>
-<li>support for different card revisions;</li>
-<li>object mapping of card data structures;</li>
-<li>complete management of the secure session with SAMs;</li>
-<li>PIN code management;</li>
-<li>Stored Value operations management;</li>
-<li>card invalidation / rehabilitation.</li>
-</ul>
-<p>The diagram below illustrates the organization of a Calypso application based on Keyple:
-<figure>
-<div class="d-flex justify-content-center">
-<div class=w-100><img src=../../../media/learn/user-guide/calypso-application/calypso_application_overview.drawio.svg alt loading=lazy data-zoomable></div>
-</div></figure></p>
-<br>
-<h2 id=operating-mode>Operating mode</h2>
-<div class="alert alert-warning">
-<div>
-<p>Pre-requisites:</p>
-<ul>
-<li>Have a global view of Calypso product concepts (cards, SAM, security principles)</li>
-<li>Have read the <a href=../../../learn/user-guide/standalone-application/>Standalone Application User Guide</a> to understand the main concepts of Keyple in a standalone application</li>
-</ul>
-</div>
-</div>
-<ol>
-<li>Access to the <a href=#the-calypso-extension-service>Calypso card extension service</a></li>
-<li><a href=#select-a-card>Select a card</a></li>
-<li><a href=#set-up-security-settings>Set up the security settings</a> (optional)</li>
-<li><a href=#operate-a-card-transaction>Operate a card transaction</a></li>
-</ol>
-<br>
-<h2 id=the-calypso-extension-service>The Calypso extension service</h2>
-<p>As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.</p>
-<p>The service is accessible by invoking the <code>CalypsoExtensionService.getInstance()</code> static method.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('2',this)">Copy</button></div>
-<pre><code class=language-java id=code-2>CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();</code></pre>
-<p>During initialization, it is recommended to check the extension with the smart card service to ensure the compatibility of the different libraries involved.</p>
-<p>In case of incompatibility a warning will be produced in the log file.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('3',this)">Copy</button></div>
-<pre><code class=language-java id=code-3>smartCardService.checkCardExtension(calypsoExtensionService);</code></pre>
-<br>
-<h2 id=select-a-card>Select a card</h2>
-<p>In order to perform a transaction it is necessary to have selected the card first.</p>
-<p>To do this, you must create a selection case for a selection scenario by invoking the <code>createCardSelection()</code> method.</p>
-<p>In addition to the filtering capabilities offered by Keyple Service, the Calypso Selection API allows you to add
+<span class=sidebar-search-shortcut>/</span></button></form><nav class="collapse docs-links" id=docs-nav><ul class="nav docs-sidenav"><li><a href=../../../learn/></a></li><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/overview/>Overview</a><ul class="nav docs-sidenav"><li><a href=../../../learn/overview/key-concepts/>Key concepts</a></li><li><a href=../../../learn/overview/architecture/>Architecture</a></li><li><a href=../../../learn/overview/keypop-api/>Keypop API</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/build-your-first-app/>Build your first app</a><ul class="nav docs-sidenav"><li><a href=../../../learn/build-your-first-app/java-app/>Java</a></li><li><a href=../../../learn/build-your-first-app/android-app/>Android</a></li><li><a href=../../../learn/build-your-first-app/cpp-app/>C++</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/user-guide/>User guides</a><ul class="nav docs-sidenav"><li><a href=../../../learn/user-guide/standalone-application/>Standalone application</a></li><li><a href=../../../learn/user-guide/distributed-application/>Distributed application</a></li><li><a href=../../../learn/user-guide/server-json-api/>Server JSON API for non-Keyple clients</a></li><li class=active><a href=../../../learn/user-guide/calypso-application/>Calypso application</a></li><li><a href=../../../learn/user-guide/card-resource-service/>Card resource service</a></li><li><a href=../../../learn/user-guide/migration-guide/>How to upgrade Keyple</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/developer-guide/>Developer guides</a><ul class="nav docs-sidenav"><li><a href=../../../learn/developer-guide/reader-plugin-add-on/>Reader plugin add-on</a></li><li><a href=../../../learn/developer-guide/card-extension-add-on/>Card extension add-on</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/code-samples/>Code samples</a><ul class="nav docs-sidenav"><li><a href=../../../learn/code-samples/java-example/>Java examples</a></li><li><a href=../../../learn/code-samples/cpp-example/>C++ examples</a></li></ul></div><div class=docs-toc-item><a class=docs-toc-link href=../../../learn/keyple-in-depth/>Keyple in depth</a><ul class="nav docs-sidenav"><li><a href=../../../learn/keyple-in-depth/core-services/>Core services</a></li><li><a href=../../../learn/keyple-in-depth/calypso-card-extension/>Calypso card extension</a></li><li><a href=../../../learn/keyple-in-depth/build-and-ci/>Build and CI</a></li></ul></div></ul></nav></div><div class="d-none d-xl-block col-xl-2 docs-toc"><ul class="nav toc-top"><li><a href=# id=back_to_top class=docs-toc-title>Contents</a></li></ul><nav id=TableOfContents><ul><li><a href=#overview>Overview</a></li><li><a href=#operating-mode>Operating mode</a></li><li><a href=#the-calypso-extension-service>The Calypso extension service</a></li><li><a href=#select-a-card>Select a card</a></li><li><a href=#set-up-security-settings>Set up security settings</a></li><li><a href=#operate-a-card-transaction>Operate a card transaction</a></li><li><a href=#api>API</a></li><li><a href=#examples>Examples</a></li><li><a href=#download>Download</a></li></ul></nav></div><main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role=main><div class=docs-article-container></div><div class=docs-article-container><h1>Calypso Application User Guide</h1><article class=article-style><br><h2 id=overview>Overview</h2><p>Keyple provides a card extension add-on dedicated to the Calypso® card technology.</p><p>This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way.
+It completely hides the details of APDU orders that are sent to Calypso cards and SAMs, which are usually tedious operations.</p><p>The main features are:</p><ul><li>support for different card revisions;</li><li>object mapping of card data structures;</li><li>complete management of the secure session with SAMs;</li><li>PIN code management;</li><li>Stored Value operations management;</li><li>card invalidation / rehabilitation.</li></ul><p>The diagram below illustrates the organization of a Calypso application based on Keyple:<figure><div class="d-flex justify-content-center"><div class=w-100><img src=../../../media/learn/user-guide/calypso-application/calypso_application_overview.drawio.svg alt loading=lazy data-zoomable></div></div></figure></p><br><h2 id=operating-mode>Operating mode</h2><div class="alert alert-warning"><div><p>Pre-requisites:</p><ul><li>Have a global view of Calypso product concepts (cards, SAM, security principles)</li><li>Have read the <a href=../../../learn/user-guide/standalone-application/>Standalone Application User Guide</a> to understand the main concepts of Keyple in a standalone application</li></ul></div></div><ol><li>Access to the <a href=#the-calypso-extension-service>Calypso card extension service</a></li><li><a href=#select-a-card>Select a card</a></li><li><a href=#set-up-security-settings>Set up the security settings</a> (optional)</li><li><a href=#operate-a-card-transaction>Operate a card transaction</a></li></ol><br><h2 id=the-calypso-extension-service>The Calypso extension service</h2><p>As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.</p><p>The service is accessible by invoking the <code>CalypsoExtensionService.getInstance()</code> static method.</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>CalypsoExtensionService</span><span class=w> </span><span class=n>calypsoExtensionService</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>CalypsoExtensionService</span><span class=p>.</span><span class=na>getInstance</span><span class=p>();</span></span></span></code></pre></div></div></div><p>During initialization, it is recommended to check the extension with the smart card service to ensure the compatibility of the different libraries involved.</p><p>In case of incompatibility a warning will be produced in the log file.</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>smartCardService</span><span class=p>.</span><span class=na>checkCardExtension</span><span class=p>(</span><span class=n>calypsoExtensionService</span><span class=p>);</span></span></span></code></pre></div></div></div><br><h2 id=select-a-card>Select a card</h2><p>In order to perform a transaction it is necessary to have selected the card first.</p><p>To do this, you must create a selection case for a selection scenario by invoking the <code>createCardSelection()</code> method.</p><p>In addition to the filtering capabilities offered by Keyple Service, the Calypso Selection API allows you to add
 commands that will be sent to the card after a successful selection (the details of these features are described in the
-API documentation).</p>
-<p>The resulting <code>IsoSmartCard</code> can be cast to a <code>CalypsoCard</code> object which concentrate all known information about the
+API documentation).</p><p>The resulting <code>IsoSmartCard</code> can be cast to a <code>CalypsoCard</code> object which concentrate all known information about the
 card being processed.
 Its content is dynamically updated during the transaction.
-The application will use it to get the data necessary for its business logic.</p>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('4',this)">Copy</button></div>
-<pre><code class=language-java id=code-4>// Create a card selection manager.
-CardSelectionManager cardSelectionManager =
-    smartCardService.getReaderApiFactory().createCardSelectionManager();
-
-// Create a card selection using the Calypso card extension.
-cardSelectionManager.prepareSelection(
-    smartCardService.getReaderApiFactory()
-        .createIsoCardSelector()
-        .filterByDfName(AID),
-    calypsoExtensionService.getCalypsoCardApiFactory()
-        .createCalypsoCardSelectionExtension());
-
-// Actual card communication: process the card selection.
-CardSelectionResult cardSelectionResult =
-    cardSelectionManager.processCardSelectionScenario(cardReader);
-
-// Get the SmartCard resulting of the selection.
-CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();
-
-// Check the selection result.
-if (calypsoCard == null) {
-    throw new IllegalStateException(&#34;The card selection failed.&#34;);
-}</code></pre>
-<br>
-<h2 id=set-up-security-settings>Set up security settings</h2>
-<div class="alert alert-note">
-<div>
-The security settings must be initialized only for secure transactions.
-</div>
-</div>
-<p>The API offers several types of settings such as choosing the SAM to use, enabling various modes, specifying keys for
-legacy cards, etc&mldr; (see the API documentation for more information).</p>
-<p>If the card transaction is to be secured using a symmetrical key cryptographic module (such as a SAM), it will be
+The application will use it to get the data necessary for its business logic.</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=c1>// Create a card selection manager.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>CardSelectionManager</span><span class=w> </span><span class=n>cardSelectionManager</span><span class=w> </span><span class=o>=</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>smartCardService</span><span class=p>.</span><span class=na>getReaderApiFactory</span><span class=p>().</span><span class=na>createCardSelectionManager</span><span class=p>();</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// Create a card selection using the Calypso card extension.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>cardSelectionManager</span><span class=p>.</span><span class=na>prepareSelection</span><span class=p>(</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>smartCardService</span><span class=p>.</span><span class=na>getReaderApiFactory</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=p>.</span><span class=na>createIsoCardSelector</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=p>.</span><span class=na>filterByDfName</span><span class=p>(</span><span class=n>AID</span><span class=p>),</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>calypsoExtensionService</span><span class=p>.</span><span class=na>getCalypsoCardApiFactory</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=p>.</span><span class=na>createCalypsoCardSelectionExtension</span><span class=p>());</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// Actual card communication: process the card selection.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>CardSelectionResult</span><span class=w> </span><span class=n>cardSelectionResult</span><span class=w> </span><span class=o>=</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>cardSelectionManager</span><span class=p>.</span><span class=na>processCardSelectionScenario</span><span class=p>(</span><span class=n>cardReader</span><span class=p>);</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// Get the SmartCard resulting of the selection.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>CalypsoCard</span><span class=w> </span><span class=n>calypsoCard</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>(</span><span class=n>CalypsoCard</span><span class=p>)</span><span class=w> </span><span class=n>cardSelectionResult</span><span class=p>.</span><span class=na>getActiveSmartCard</span><span class=p>();</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// Check the selection result.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=k>if</span><span class=w> </span><span class=p>(</span><span class=n>calypsoCard</span><span class=w> </span><span class=o>==</span><span class=w> </span><span class=kc>null</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=k>throw</span><span class=w> </span><span class=k>new</span><span class=w> </span><span class=n>IllegalStateException</span><span class=p>(</span><span class=s>&#34;The card selection failed.&#34;</span><span class=p>);</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=p>}</span></span></span></code></pre></div></div></div><br><h2 id=set-up-security-settings>Set up security settings</h2><div class="alert alert-note"><div>The security settings must be initialized only for secure transactions.</div></div><p>The API offers several types of settings such as choosing the SAM to use, enabling various modes, specifying keys for
+legacy cards, etc&mldr; (see the API documentation for more information).</p><p>If the card transaction is to be secured using a symmetrical key cryptographic module (such as a SAM), it will be
 necessary to initialize a <code>SymmetricSecuritySetting</code>, associated with an implementation of the cryptographic module
-to be used (e.g. Calypso Crypto Legacy SAM Lib).</p>
-<p>The SAM must first be selected via the Calypso Crypto Legacy SAM Lib.</p>
-<p>In the case of the Card Resource Service, you have to create a profile extension, specifying the previously built
+to be used (e.g. Calypso Crypto Legacy SAM Lib).</p><p>The SAM must first be selected via the Calypso Crypto Legacy SAM Lib.</p><p>In the case of the Card Resource Service, you have to create a profile extension, specifying the previously built
 selection case, and then associate it to a dedicated profile in the service (see
-the <a href=../../../learn/user-guide/card-resource-service/>Card Resource Service User Guide</a>).</p>
-<p>The following snippet shows the selection of the SAM and the initialization of the security settings:
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('7',this)">Copy</button></div>
-<pre><code class=language-java id=code-7>// Create a SAM selection manager.
-CardSelectionManager samSelectionManager = readerApiFactory.createCardSelectionManager();
-
-// Create a card selector without filer
-CardSelector&lt;IsoCardSelector&gt; cardSelector = readerApiFactory.createIsoCardSelector();
-
-// Retrieve the Legacy SAM API factory
-LegacySamApiFactory legacySamApiFactory =
-    LegacySamExtensionService.getInstance().getLegacySamApiFactory();
-
-// Create a SAM selection using the Calypso Legacy SAM card extension.
-samSelectionManager.prepareSelection(
-    cardSelector, legacySamApiFactory.createLegacySamSelectionExtension());
-
-// SAM communication: run the selection scenario.
-CardSelectionResult samSelectionResult =
-    samSelectionManager.processCardSelectionScenario(reader);
-
-// Check the selection result.
-if (samSelectionResult.getActiveSmartCard() == null) {
-  throw new IllegalStateException(&#34;The selection of the SAM failed.&#34;);
-}
-
-// Get the Calypso SAM SmartCard resulting of the selection.
-LegacySam sam = (LegacySam) samSelectionResult.getActiveSmartCard();
-
-// Build the security settings
-symmetricCryptoSecuritySetting =
-    calypsoCardApiFactory.createSymmetricCryptoSecuritySetting(
-        LegacySamExtensionService.getInstance()
-            .getLegacySamApiFactory()
-            .createSymmetricCryptoTransactionManagerFactory(samReader, sam));</code></pre></p>
-<br>
-<h2 id=operate-a-card-transaction>Operate a card transaction</h2>
-<p>It is possible to perform secure or non-secure transactions depending on the need.
-A transaction is managed by a dedicated <code>CardTransactionManager</code> which is provided by the Calypso card extension service.</p>
-<p>The transaction manager provides high-level API to manage transactions with a Calypso card.
-The provided <code>CalypsoCard</code> object is kept and updated dynamically all along the transaction process.</p>
-<p>The transaction takes place in several repeatable steps:</p>
-<ul>
-<li>Preparation of the commands to be sent to the card. Several command preparations can be stacked (no communication
-neither with the card nor with the SAM).</li>
-<li>Processing of the prepared commands. Performs all necessary communications with the card and/or the SAM to carry out
-the previously prepared operations.</li>
-</ul>
-<div class=bd-clipboard><button type=button class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onclick="copyCodeContentToClipboard('8',this)">Copy</button></div>
-<pre><code class=language-java id=code-8>// Execute the transaction: the environment file is read within a secure session to ensure data
-// authenticity.
-calypsoCardApiFactory
-    .createSecureRegularModeTransactionManager(cardReader, calypsoCard, symmetricCryptoSecuritySetting)
-    .prepareOpenSecureSession(WriteAccessLevel.DEBIT)
-    .prepareReadRecords(SFI_ENVIRONMENT_AND_HOLDER, 1, 1, 29)
-    .prepareCloseSecureSession()
-    .processCommands(ChannelControl.CLOSE_AFTER);</code></pre>
-<br>
-<h2 id=api>API</h2>
-<ul>
-<li><a href=https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/ target=_blank rel=noopener>Keypop Reader API</a></li>
-<li><a href=https://eclipse-keypop.github.io/keypop-website/apis/keypop-calypso-card-api/ target=_blank rel=noopener>Keypop Calypso Card API</a></li>
-<li><a href=https://eclipse-keypop.github.io/keypop-website/apis/keypop-calypso-crypto-legacysam-api/ target=_blank rel=noopener>Keypop Calypso Crypto Legacy SAM API</a></li>
-<li><a href=https://eclipse-keyple.github.io/keyple-common-java-api target=_blank rel=noopener>Keyple Common API</a></li>
-<li><a href=https://eclipse-keyple.github.io/keyple-card-calypso-java-lib target=_blank rel=noopener>Keyple Card Calypso API</a></li>
-<li><a href=https://eclipse-keyple.github.io/keyple-card-calypso-crypto-legacysam-java-lib target=_blank rel=noopener>Keyple Card Calypso Crypto Legacy SAM API</a></li>
-</ul>
-<br>
-<h2 id=examples>Examples</h2>
-<ul>
-<li><a href=https://github.com/eclipse-keyple/keyple-java-example target=_blank rel=noopener>Java examples</a></li>
-</ul>
-<br>
-<h2 id=download>Download</h2>
-<ul>
-<li><a href=https://keyple.org/components/overview/configuration-wizard/>Java components</a></li>
-</ul>
-</div>
-<div class=article-widget>
-<div class=post-nav>
-<div class=post-nav-item>
-<div class=meta-nav>Previous</div>
-<a href=../../../learn/user-guide/server-json-api/ rel=next>Server JSON API for non-Keyple clients</a>
-</div>
-<div class=post-nav-item>
-<div class=meta-nav>Next</div>
-<a href=../../../learn/user-guide/card-resource-service/ rel=prev>Card Resource Service User Guide</a>
-</div>
-</div>
-</div>
-</div>
-<div class=body-footer>
-<p>Last updated on 2024-01-30</p>
-</div>
-</article>
-<footer class=site-footer>
-<div class=container>
-<div class="row featurette">
-<div class="col-12 col-sm-4">
-<p style=color:#fff><b>ECLIPSE LEGAL</b></p>
-<a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a><br>
-<a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a><br>
-<a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a><br>
-<a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a><br>
-<a href=https://www.eclipse.org/legal/>Legal Resources</a><br>
-<a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a><br>
-</div>
-<div class="col-12 col-sm-4">
-<a href=https://www.eclipse.org target=_blank>
-<img src=../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation>
-</a>
-</div>
-<div class="col-12 col-sm-4">
-<a href=https://iot.eclipse.org target=_blank>
-<img src=../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot>
-</a>
-</div>
-</div>
-</div>
-<p class=powered-by id=copyright>
-© 2020-2024 The Eclipse Keyple® project. All Rights Reserved.
-</p>
-<p class=powered-by id=template-info>
-Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-themes target=_blank rel=noopener>open source</a> website builder that empowers creators.
-</p>
-</footer>
-</main>
-</div>
-</div>
-</div>
-<div class=page-footer>
-</div>
-<div id=modal class="modal fade" role=dialog>
-<div class=modal-dialog>
-<div class=modal-content>
-<div class=modal-header>
-<h5 class=modal-title>Cite</h5>
-<button type=button class=close data-dismiss=modal aria-label=Close>
-<span aria-hidden=true>&#215;</span>
-</button>
-</div>
-<div class=modal-body>
-<pre><code class="tex hljs"></code></pre>
-</div>
-<div class=modal-footer>
-<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
-<i class="fas fa-copy"></i> Copy
-</a>
-<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
-<i class="fas fa-download"></i> Download
-</a>
-<div id=modal-error></div>
-</div>
-</div>
-</div>
-</div>
-<script src=../../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/java.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/groovy.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/xml.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/kotlin.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/cpp.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/gradle.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/ini.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/make.min.js crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.2/anchor.min.js integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin=anonymous></script>
-<script>anchors.add()</script>
-<script id=search-hit-fuse-template type=text/x-template>
-        <div class="search-hit" id="summary-{{key}}">
-          <div class="search-hit-content">
-            <div class="search-hit-name">
-              <a href="{{relpermalink}}">{{title}}</a>
-              <div class="article-metadata search-hit-type">{{type}}</div>
-              <p class="search-hit-description">{{snippet}}</p>
-            </div>
-          </div>
+the <a href=../../../learn/user-guide/card-resource-service/>Card Resource Service User Guide</a>).</p><p>The following snippet shows the selection of the SAM and the initialization of the security settings:<div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=c1>// Create a SAM selection manager.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>CardSelectionManager</span><span class=w> </span><span class=n>samSelectionManager</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>readerApiFactory</span><span class=p>.</span><span class=na>createCardSelectionManager</span><span class=p>();</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// Create a card selector without filer</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>CardSelector</span><span class=o>&lt;</span><span class=n>IsoCardSelector</span><span class=o>&gt;</span><span class=w> </span><span class=n>cardSelector</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>readerApiFactory</span><span class=p>.</span><span class=na>createIsoCardSelector</span><span class=p>();</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// Retrieve the Legacy SAM API factory</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>LegacySamApiFactory</span><span class=w> </span><span class=n>legacySamApiFactory</span><span class=w> </span><span class=o>=</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>LegacySamExtensionService</span><span class=p>.</span><span class=na>getInstance</span><span class=p>().</span><span class=na>getLegacySamApiFactory</span><span class=p>();</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// Create a SAM selection using the Calypso Legacy SAM card extension.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>samSelectionManager</span><span class=p>.</span><span class=na>prepareSelection</span><span class=p>(</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>cardSelector</span><span class=p>,</span><span class=w> </span><span class=n>legacySamApiFactory</span><span class=p>.</span><span class=na>createLegacySamSelectionExtension</span><span class=p>());</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// SAM communication: run the selection scenario.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>CardSelectionResult</span><span class=w> </span><span class=n>samSelectionResult</span><span class=w> </span><span class=o>=</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>samSelectionManager</span><span class=p>.</span><span class=na>processCardSelectionScenario</span><span class=p>(</span><span class=n>reader</span><span class=p>);</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// Check the selection result.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=k>if</span><span class=w> </span><span class=p>(</span><span class=n>samSelectionResult</span><span class=p>.</span><span class=na>getActiveSmartCard</span><span class=p>()</span><span class=w> </span><span class=o>==</span><span class=w> </span><span class=kc>null</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=k>throw</span><span class=w> </span><span class=k>new</span><span class=w> </span><span class=n>IllegalStateException</span><span class=p>(</span><span class=s>&#34;The selection of the SAM failed.&#34;</span><span class=p>);</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// Get the Calypso SAM SmartCard resulting of the selection.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>LegacySam</span><span class=w> </span><span class=n>sam</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>(</span><span class=n>LegacySam</span><span class=p>)</span><span class=w> </span><span class=n>samSelectionResult</span><span class=p>.</span><span class=na>getActiveSmartCard</span><span class=p>();</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// Build the security settings</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>symmetricCryptoSecuritySetting</span><span class=w> </span><span class=o>=</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>calypsoCardApiFactory</span><span class=p>.</span><span class=na>createSymmetricCryptoSecuritySetting</span><span class=p>(</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=n>LegacySamExtensionService</span><span class=p>.</span><span class=na>getInstance</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=p>.</span><span class=na>getLegacySamApiFactory</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=p>.</span><span class=na>createSymmetricCryptoTransactionManagerFactory</span><span class=p>(</span><span class=n>samReader</span><span class=p>,</span><span class=w> </span><span class=n>sam</span><span class=p>));</span></span></span></code></pre></div></div></div></p><br><h2 id=operate-a-card-transaction>Operate a card transaction</h2><p>It is possible to perform secure or non-secure transactions depending on the need.
+A transaction is managed by a dedicated <code>CardTransactionManager</code> which is provided by the Calypso card extension service.</p><p>The transaction manager provides high-level API to manage transactions with a Calypso card.
+The provided <code>CalypsoCard</code> object is kept and updated dynamically all along the transaction process.</p><p>The transaction takes place in several repeatable steps:</p><ul><li>Preparation of the commands to be sent to the card. Several command preparations can be stacked (no communication
+neither with the card nor with the SAM).</li><li>Processing of the prepared commands. Performs all necessary communications with the card and/or the SAM to carry out
+the previously prepared operations.</li></ul><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=c1>// Execute the transaction: the environment file is read within a secure session to ensure data</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// authenticity.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>calypsoCardApiFactory</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>createSecureRegularModeTransactionManager</span><span class=p>(</span><span class=n>cardReader</span><span class=p>,</span><span class=w> </span><span class=n>calypsoCard</span><span class=p>,</span><span class=w> </span><span class=n>symmetricCryptoSecuritySetting</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>prepareOpenSecureSession</span><span class=p>(</span><span class=n>WriteAccessLevel</span><span class=p>.</span><span class=na>DEBIT</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>prepareReadRecords</span><span class=p>(</span><span class=n>SFI_ENVIRONMENT_AND_HOLDER</span><span class=p>,</span><span class=w> </span><span class=n>1</span><span class=p>,</span><span class=w> </span><span class=n>1</span><span class=p>,</span><span class=w> </span><span class=n>29</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>prepareCloseSecureSession</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>.</span><span class=na>processCommands</span><span class=p>(</span><span class=n>ChannelControl</span><span class=p>.</span><span class=na>CLOSE_AFTER</span><span class=p>);</span></span></span></code></pre></div></div></div><br><h2 id=api>API</h2><ul><li><a href=https://eclipse-keypop.github.io/keypop-website/apis/keypop-reader-api/ target=_blank rel=noopener>Keypop Reader API</a></li><li><a href=https://eclipse-keypop.github.io/keypop-website/apis/keypop-calypso-card-api/ target=_blank rel=noopener>Keypop Calypso Card API</a></li><li><a href=https://eclipse-keypop.github.io/keypop-website/apis/keypop-calypso-crypto-legacysam-api/ target=_blank rel=noopener>Keypop Calypso Crypto Legacy SAM API</a></li><li><a href=https://eclipse-keyple.github.io/keyple-common-java-api target=_blank rel=noopener>Keyple Common API</a></li><li><a href=https://eclipse-keyple.github.io/keyple-card-calypso-java-lib target=_blank rel=noopener>Keyple Card Calypso API</a></li><li><a href=https://eclipse-keyple.github.io/keyple-card-calypso-crypto-legacysam-java-lib target=_blank rel=noopener>Keyple Card Calypso Crypto Legacy SAM API</a></li></ul><br><h2 id=examples>Examples</h2><ul><li><a href=https://github.com/eclipse-keyple/keyple-java-example target=_blank rel=noopener>Java examples</a></li></ul><br><h2 id=download>Download</h2><ul><li><a href=https://keyple.org/components/overview/configuration-wizard/>Java components</a></li></ul></article><div class=article-widget><div class=post-nav><div class=post-nav-item><div class=meta-nav>Previous</div><a href=../../../learn/user-guide/server-json-api/ rel=next>Server JSON API for non-Keyple clients</a></div><div class=post-nav-item><div class=meta-nav>Next</div><a href=../../../learn/user-guide/card-resource-service/ rel=prev>Card Resource Service User Guide</a></div></div></div></div><div class=body-footer><p>Last updated on 2024-01-30</p></div><footer class=site-footer><div class=container><div class="row featurette"><div class="col-12 col-sm-4"><p style=color:#fff><b>ECLIPSE LEGAL</b></p><a href=https://www.eclipse.org/legal/privacy.php>Privacy Policy</a><br><a href=https://www.eclipse.org/legal/termsofuse.php>Terms of Use</a><br><a href=https://www.eclipse.org/legal/copyright.php>Copyright Agent</a><br><a href=https://www.eclipse.org/legal/epl-2.0/>Eclipse Public License</a><br><a href=https://www.eclipse.org/legal/>Legal Resources</a><br><a href=https://eclipse.org/security/ target=_blank>Report a Vulnerability</a><br></div><div class="col-12 col-sm-4"><a href=https://www.eclipse.org target=_blank><img src=../../../media/eclipse_foundation_logo.svg id=logo-eclipse-foundation></a></div><div class="col-12 col-sm-4"><a href=https://iot.eclipse.org target=_blank><img src=../../../media/eclipse_iot_logo.svg id=logo-eclipse-iot></a></div></div></div><p class="powered-by copyright-license-text">© 2023-2024 The Eclipse Keyple® project. All Rights Reserved.</p><p class=powered-by id=template-info>Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target=_blank rel=noopener>Hugo Blox Builder</a> — the free, <a href=https://github.com/HugoBlox/hugo-blox-builder target=_blank rel=noopener>open source</a> website builder that empowers creators.</p></footer></main></div></div></div><div class=page-footer></div><script src=../../../js/vendor-bundle.min.938a3a7554cd9f6602290411f64d2617.js></script><script src=https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js integrity crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js integrity="sha256-aQmOEF2ZD4NM/xt4hthzREIo/2PFkOX/g01WjxEV7Ys=" crossorigin=anonymous></script><script>anchors.add()</script><script id=search-hit-fuse-template type=text/x-template>
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
         </div>
-      </script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-<script src=../../../en/js/wowchemy.min.3e9e983029b2f19036e863f00795497b.js></script>
-<link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css>
-<script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script>
-<script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script>
-</body>
-</html>
+      </div>
+    </div>
+  </script><script src=https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin=anonymous></script><script id=page-data type=application/json>{"use_headroom":false}</script><script src=../../../en/js/wowchemy.min.27a6b98e2945e58d8c2db5ab7dfc1d3b.js></script><script src=../../../js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js type=module></script><link rel=stylesheet href=https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css><script src=https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js></script><script src=https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js></script></body></html>
