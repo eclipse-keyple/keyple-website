@@ -3,6 +3,7 @@ title: Calypso application
 type: book
 toc: true
 draft: false
+private: true
 weight: 330
 ---
 {{% callout warning %}}

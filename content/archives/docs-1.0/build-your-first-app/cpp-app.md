@@ -5,6 +5,7 @@ summary: This quick start describes how to create a ready-to-execute C++ command
 type: book
 toc: true
 draft: false
+private: true
 weight: 230
 ---
 {{% callout warning %}}

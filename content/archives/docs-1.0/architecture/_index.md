@@ -2,6 +2,7 @@
 title: Architecture
 type: book
 toc: false
+private: true
 weight: 500
 ---
 {{% callout warning %}}

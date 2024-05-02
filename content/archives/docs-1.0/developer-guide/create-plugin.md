@@ -4,6 +4,7 @@ summary: How to develop a specific hardware device Keyple plugin.
 type: book
 toc: true
 draft: false
+private: true
 weight: 340
 ---
 {{% callout warning %}}

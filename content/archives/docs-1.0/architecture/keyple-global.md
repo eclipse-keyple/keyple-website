@@ -3,6 +3,7 @@ title: Global Solution
 type: book
 toc: true
 draft: false
+private: true
 weight: 110
 ---
 {{% callout warning %}}

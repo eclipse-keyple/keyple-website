@@ -4,6 +4,7 @@ linktitle: Java
 summary: The JavaDoc for the Keyple project is available online.
 type: book
 toc: false
+private: true
 weight: 410
 ---
 {{% callout warning %}}

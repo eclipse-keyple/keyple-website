@@ -4,6 +4,7 @@ linktitle: Upgrade Keyple
 type: book
 toc: true
 draft: false
+private: true
 weight: 350
 ---
 {{% callout warning %}}

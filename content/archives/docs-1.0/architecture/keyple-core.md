@@ -3,6 +3,7 @@ title: Keyple Core
 type: book
 toc: true
 draft: false
+private: true
 weight: 120
 ---
 {{% callout warning %}}

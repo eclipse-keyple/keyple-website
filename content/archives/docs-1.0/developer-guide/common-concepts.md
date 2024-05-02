@@ -4,6 +4,7 @@ summary: Glossary of the key terms of the Keyple solution.
 type: book
 toc: true
 draft: false
+private: true
 weight: 300
 ---
 {{% callout warning %}}

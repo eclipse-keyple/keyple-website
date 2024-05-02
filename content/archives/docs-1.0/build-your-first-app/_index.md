@@ -2,6 +2,7 @@
 title: Build your first app
 type: book
 toc: false
+private: true
 weight: 200
 ---
 {{% callout warning %}}

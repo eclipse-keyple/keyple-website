@@ -3,6 +3,7 @@ title = "== Java 1.x components =="
 type = "book"
 weight = 20
 toc = false
+private = true
 +++
 
 {{% callout warning %}}

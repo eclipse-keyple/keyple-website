@@ -3,6 +3,7 @@ title: Keyple Calypso
 type: book
 toc: true
 draft: false
+private: true
 weight: 130
 ---
 {{% callout warning %}}

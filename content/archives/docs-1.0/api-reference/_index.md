@@ -3,6 +3,7 @@ title: API reference
 type: book
 weight: 400
 toc: false
+private: true
 ---
 
 <br>
