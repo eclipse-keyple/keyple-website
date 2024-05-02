@@ -373,6 +373,8 @@ Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder
 ((ObservableCardReader) reader).addObserver(new CardReaderObserver());
 {{< /code >}}
 
+<br>
+
 {{% callout note %}}
 Exception handlers are no longer required when registering the plugin but only when starting the observation.
 {{% /callout %}}
@@ -433,6 +435,8 @@ CardSelectionsService cardSelectionsService = new CardSelectionsService();
 CardSelectionManager cardSelectionManager = smartCardService.createCardSelectionManager();
 {{< /code >}}
 
+<br>
+
 {{% callout note %}}
 A new instance of the card selection manager is provided by the smart card service.
 {{% /callout %}}
@@ -477,6 +481,8 @@ CardSelectionsResult selectionResult = cardSelectionsService.processExplicitSele
 CardSelectionResult selectionResult = cardSelectionManager.processCardSelectionScenario(reader);
 {{< /code >}}
 
+<br>
+
 {{% callout note %}}
 Note the removal of the "s" in `CardSelectionResult`.
 {{% /callout %}}
@@ -505,6 +511,8 @@ cardSelectionManager.scheduleCardSelectionScenario(
 ((ObservableCardReader) reader).addObserver(new CardReaderObserver());
 {{< /code >}}
 
+<br>
+
 {{% callout note %}}
 The selection data is no longer provided to the observable reader but to the selection manager.
 It is the observable reader that is provided to the selection manager.
@@ -529,6 +537,8 @@ SmartCard smartCard =
         .parseScheduledCardSelectionsResponse(event.getScheduledCardSelectionsResponse())
         .getActiveSmartCard();
 {{< /code >}}
+
+<br>
 
 {{% callout note %}}
 `AbstractSmartCard` was changed to the `SmartCard` interface.
@@ -601,6 +611,8 @@ plugin.setPluginObservationExceptionHandler(new ExceptionHandlerImpl());
 plugin.addObserver(new RemotePluginServerObserver());
 {{< /code >}}
 
+<br>
+
 {{% callout note %}}
 - You have to specify the name of the plugin.
 - It is no longer necessary to provide a thread pool.
@@ -632,6 +644,8 @@ LocalServiceClientFactory factory =
 // Init the local service using the associated factory.
 SmartCardServiceProvider.getService().registerDistributedLocalService(factory);
 {{< /code >}}
+
+<br>
 
 {{% callout note %}}
 - You have to specify the name of the local service.

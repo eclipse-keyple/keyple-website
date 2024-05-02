@@ -10,13 +10,9 @@
 
 <!-- store all tab info in dict tab -->
 {{ $tab := dict "header" $header }}
-{{ with $.Get "lang" }}
-  {{ $tab = merge $tab (dict "language" ($.Get "lang")) }}
-{{ end }}
 {{ with $.Inner }}
-  <!-- Trim any leading and trailing newlines from .Inner, this avoids
-  spurious lines during syntax highlighting -->
-  {{ $tab = merge $tab (dict "content" (trim $.Inner "\n\r")) }}
+{{ $innerDict := dict "content" $.Inner }}
+{{ $tab = merge $tab $innerDict }}
 {{ end }}
 
 <!-- add dict tab to parent's scratchpad -->

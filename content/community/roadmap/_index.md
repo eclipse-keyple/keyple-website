@@ -74,7 +74,7 @@ e.g. the smart card readers of a terminal without Keyple software can be remotel
     <li>Binary files' access for read, write, & update,</li>
     <li>Read Record Multiple, Search Record Multiple, Increase Multiple & Decrease Multiple</li>
     <li>Pre-personalization : possibility to personalized keyset with Change Key</li></ul>
-    </ul></li></td>
+    </li></ul></td>
   </tr>
 </tbody>
 </table>
@@ -82,7 +82,7 @@ e.g. the smart card readers of a terminal without Keyple software can be remotel
 
 ### Global evolutions of Keyple until version 2.0.0 <mark>(obsolete)</mark>
 Until the version 2.0.0 of Keyple, the components of Keyple Java or Keyple C++ were released at the same time with the same version number.
-The porting in C++ of Keyple Java is based on the same Object-Oriented Model. The Keyple C++ implemntation provides the same core & Calypso feature, but the support of the distributed module isn't part of the scope, and for reader integration, only the PC/SC reader is provided.
+The porting in C++ of Keyple Java is based on the same Object-Oriented Model. The Keyple C++ implementation provides the same core & Calypso feature, but the support of the distributed module isn't part of the scope, and for reader integration, only the PC/SC reader is provided.
 
 <table>
 <thead>

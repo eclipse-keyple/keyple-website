@@ -39,16 +39,23 @@ At present, only the [Calypso Crypto Legacy SAM]({{< relref "keyple-card-calypso
 All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-card-calypso-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
-{{< tab header="Gradle Groovy" lang="gradle" >}}
-implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:{{% keyple-card-calypso-java-lib-version %}}'
+{{< tab header="Gradle Kotlin" >}}
+{{< code lang="kotlin" copy="true">}}
+implementation("org.eclipse.keyple:keyple-card-calypso-java-lib:{{% keyple-card-calypso-java-lib-version %}}")
+{{< /code>}}
 {{< /tab >}}
-{{< tab header="Gradle Kotlin" lang="kotlin" >}}
-implementation("org.eclipse.keyple:keyple-card-calypso-java-lib:{{% keyple-card-calypso-java-lib-version %}}"){{< /tab >}}
-{{< tab header="Maven" lang="xml" >}}
+{{< tab header="Gradle Groovy" >}}
+{{< code lang="gradle" copy="true">}}
+implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:{{% keyple-card-calypso-java-lib-version %}}'
+{{< /code>}}
+{{< /tab >}}
+{{< tab header="Maven" >}}
+{{< code lang="xml" copy="true">}}
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-card-calypso-java-lib</artifactId>
   <version>{{% keyple-card-calypso-java-lib-version %}}</version>
 </dependency>
+{{< /code>}}
 {{< /tab >}}
 {{< /tabpane >}}

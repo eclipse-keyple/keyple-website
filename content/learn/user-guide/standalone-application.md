@@ -173,7 +173,7 @@ Readers are accessible directly from the associated `Plugin` instance.
 String readerName = plugin.getReaderNames().get(0);
 CardReader reader = plugin.getReader(readerName);
 {{< /code >}}
-
+<br>
 {{% callout note %}}
 Depending on the type of plugin, the reader names are
 more or less dynamic (e.g. a PC/SC based system vs. an embedded
@@ -260,7 +260,7 @@ ReaderObserver readerObserver = new ReaderObserver();
 ((ObservableCardReader) reader).addObserver(readerObserver);
 ((ObservableCardReader) reader).startCardDetection(ObservableCardReader.DetectionMode.REPEATING);
 {{< /code >}}
-
+<br>
 {{% callout note %}}
 Note that the `startCardDetection(...)` and `stopCardDetection()` methods start and stop the monitoring thread.
 The API offers different options to manage the needs around card detection.<br>
@@ -401,6 +401,8 @@ public void onReaderEvent(CardReaderEvent event) {
 }
 ...
 {{< /code >}}
+
+<br>
 
 {{% callout note %}}
 The `finalizeCardProcessing()` method must be invoked at the end of the transaction to ensure that the communication 

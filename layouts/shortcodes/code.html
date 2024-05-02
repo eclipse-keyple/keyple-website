@@ -1,11 +1,28 @@
-{{ $ref := $.Ordinal }}
-{{ with $.Get "ref" }}
-    {{ $ref = $.Get "ref" }}
-{{ end }}
-{{ $lang := "ini" }}
-{{ with $.Get "lang" }}
-    {{ $lang = $.Get "lang" }}
-{{ end }}
-<!-- Inner content -->
-<div class="bd-clipboard"><button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyCodeContentToClipboard('{{- $ref -}}', this);">Copy</button></div>
-<pre><code class="language-{{- $lang -}}" id="code-{{- $ref -}}">{{ replaceRE "&#43;" "+" (trim $.Inner "\n\r") }}</code></pre>
+{{- /*
+Renders syntax highlighted code.
+
+@param {string} [file] The file name to display above the rendered code.
+@param {string} [lang] The code language of the inner content.
+
+@returns {template.HTML}
+*/}}
+
+{{- /* Initialize. */}}
+{{- $file := "&nbsp;" }}
+{{- $lang := "" }}
+
+{{- /* Get parameters. */}}
+{{- $file = .Get "file" }}
+{{- $lang = or (.Get "lang") (path.Ext $file | strings.TrimPrefix ".") "text" }}
+
+{{- /* Use the go-html-template Chroma lexer for HTML. */}}
+{{- if eq $lang "html" }}
+{{- $lang = "go-html-template" }}
+{{- end }}
+
+{{- /* Render. */}}
+<div class="code relative" id="{{ $file | urlize }}">
+    <div class="code-copy-content nt3">
+        {{- highlight (trim .Inner "\n\r") $lang }}
+    </div>
+</div>

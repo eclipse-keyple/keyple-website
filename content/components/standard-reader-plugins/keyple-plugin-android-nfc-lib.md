@@ -34,16 +34,23 @@ It is compatible with **Android 4.4 minimum**.
 All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-plugin-android-nfc-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
-{{< tab header="Gradle Groovy" lang="gradle" >}}
-implementation 'org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:{{% keyple-plugin-android-nfc-java-lib-version %}}'
+{{< tab header="Gradle Kotlin" >}}
+{{< code lang="kotlin" copy="true">}}
+implementation("org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:{{% keyple-plugin-android-nfc-java-lib-version %}}")
+{{< /code>}}
 {{< /tab >}}
-{{< tab header="Gradle Kotlin" lang="kotlin" >}}
-implementation("org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:{{% keyple-plugin-android-nfc-java-lib-version %}}"){{< /tab >}}
-{{< tab header="Maven" lang="xml" >}}
+{{< tab header="Gradle Groovy" >}}
+{{< code lang="gradle" copy="true">}}
+implementation 'org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:{{% keyple-plugin-android-nfc-java-lib-version %}}'
+{{< /code>}}
+{{< /tab >}}
+{{< tab header="Maven" >}}
+{{< code lang="xml" copy="true">}}
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-plugin-android-nfc-java-lib</artifactId>
   <version>{{% keyple-plugin-android-nfc-java-lib-version %}}</version>
 </dependency>
+{{< /code>}}
 {{< /tab >}}
 {{< /tabpane >}}

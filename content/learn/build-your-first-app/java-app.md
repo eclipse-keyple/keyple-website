@@ -55,7 +55,7 @@ Create a new Java project and add the following statements to your
 ```build.gradle``` file to import the Keyple components into your
 project:
 
-{{< code lang="gradle" >}}
+{{< code lang="gradle" copy="true">}}
 plugins {
     id 'java'
 }

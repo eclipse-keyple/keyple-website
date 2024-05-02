@@ -35,16 +35,23 @@ It is compatible with **Windows**, **Linux**, **macOS** and **Android** platform
 All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-distributed-remote-java-lib) or by using one of the project resource managers below:
 
 {{< tabpane >}}
-{{< tab header="Gradle Groovy" lang="gradle" >}}
-implementation 'org.eclipse.keyple:keyple-distributed-remote-java-lib:{{% keyple-distributed-remote-java-lib-version %}}'
+{{< tab header="Gradle Kotlin" >}}
+{{< code lang="kotlin" copy="true">}}
+implementation("org.eclipse.keyple:keyple-distributed-remote-java-lib:{{% keyple-distributed-remote-java-lib-version %}}")
+{{< /code>}}
 {{< /tab >}}
-{{< tab header="Gradle Kotlin" lang="kotlin" >}}
-implementation("org.eclipse.keyple:keyple-distributed-remote-java-lib:{{% keyple-distributed-remote-java-lib-version %}}"){{< /tab >}}
-{{< tab header="Maven" lang="xml" >}}
+{{< tab header="Gradle Groovy" >}}
+{{< code lang="gradle" copy="true">}}
+implementation 'org.eclipse.keyple:keyple-distributed-remote-java-lib:{{% keyple-distributed-remote-java-lib-version %}}'
+{{< /code>}}
+{{< /tab >}}
+{{< tab header="Maven" >}}
+{{< code lang="xml" copy="true">}}
 <dependency>
   <groupId>org.eclipse.keyple</groupId>
   <artifactId>keyple-distributed-remote-java-lib</artifactId>
   <version>{{% keyple-distributed-remote-java-lib-version %}}</version>
 </dependency>
+{{< /code>}}
 {{< /tab >}}
 {{< /tabpane >}}

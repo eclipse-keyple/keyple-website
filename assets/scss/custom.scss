@@ -160,19 +160,21 @@ a:hover {
   flex: 0 1 400px;
 }
 
-// Increase code font size and style
-pre code {
-  font-size: .8rem !important;
-  font-family: monospace;
-  white-space: pre-wrap !important;
-}
-
 // improve code boxing
 code {
   font-size: 1rem !important;
   font-family: monospace;
   border-radius: 3px;
   padding: .2em .4em;
+  background-color: #f8f8f8;
+}
+
+// Increase code font size and style
+pre code {
+  font-size: .8rem !important;
+  font-family: monospace;
+  white-space: pre-wrap !important;
+  background-color: inherit;
 }
 
 table code {
@@ -243,7 +245,7 @@ table code {
 }
 
 // Powered by on footer section
-.site-footer #copyright {
+.copyright-license-text {
   font-weight: bold;
 }
 .site-footer #template-info {
@@ -323,4 +325,14 @@ table {
 // Button alignment on navbar
 .navbar-light {
   line-height: 2;
+}
+
+// Fix color for odd table rows
+table>tbody>tr:nth-child(odd)>td, table>tbody>tr:nth-child(odd)>th {
+  background-color: #f9f9f9;
+}
+
+// Fix copy button visibility
+.btn-copy-code {
+  display: block;
 }
