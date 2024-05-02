@@ -153,7 +153,8 @@ PluginObserver pluginObserver = new PluginObserver();
 ((ObservablePlugin) plugin).addObserver(pluginObserver);
 {{< /code >}}
 
-{{% callout note %}}Note that the monitoring thread only works if there is at least one observer registered, and the notification process is sequential and synchronous.
+{{% callout note %}}
+Note that the monitoring thread only works if there is at least one observer registered, and the notification process is sequential and synchronous.
 {{% /callout %}}
 
 <br>
@@ -173,7 +174,8 @@ String readerName = plugin.getReaderNames().get(0);
 CardReader reader = plugin.getReader(readerName);
 {{< /code >}}
 <br>
-{{% callout note %}}Depending on the type of plugin, the reader names are
+{{% callout note %}}
+Depending on the type of plugin, the reader names are
 more or less dynamic (e.g. a PC/SC based system vs. an embedded
 terminal), it is sometimes necessary to implement an identification
 mechanism in order to assign the right reader to the right place in the
@@ -259,7 +261,8 @@ ReaderObserver readerObserver = new ReaderObserver();
 ((ObservableCardReader) reader).startCardDetection(ObservableCardReader.DetectionMode.REPEATING);
 {{< /code >}}
 <br>
-{{% callout note %}}Note that the `startCardDetection(...)` and `stopCardDetection()` methods start and stop the monitoring thread.
+{{% callout note %}}
+Note that the `startCardDetection(...)` and `stopCardDetection()` methods start and stop the monitoring thread.
 The API offers different options to manage the needs around card detection.<br>
 Moreover, the notification process is sequential and synchronous.
 {{% /callout %}}
@@ -401,7 +404,8 @@ public void onReaderEvent(CardReaderEvent event) {
 
 <br>
 
-{{% callout note %}}The `finalizeCardProcessing()` method must be invoked at the end of the transaction to ensure that the communication 
+{{% callout note %}}
+The `finalizeCardProcessing()` method must be invoked at the end of the transaction to ensure that the communication 
 channel is closed.
 This switches the underlying monitoring thread into a state of waiting for the card to be removed.
 
