@@ -4,6 +4,7 @@ linktitle: C++
 summary: The C++ documentation for the Keyple project will be available online.
 type: book
 toc: false
+private: true
 weight: 420
 ---
 {{% callout warning %}}

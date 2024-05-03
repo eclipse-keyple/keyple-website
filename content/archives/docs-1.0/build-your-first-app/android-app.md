@@ -5,6 +5,7 @@ summary: This guide describes how to start a ticketing application using Keyple 
 type: book
 toc: true
 draft: false
+private: true
 weight: 220
 ---
 {{% callout warning %}}

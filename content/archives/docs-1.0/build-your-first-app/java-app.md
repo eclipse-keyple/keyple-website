@@ -5,6 +5,7 @@ summary: This quick start describes how to create a ready-to-execute Java comman
 type: book
 toc: true
 draft: false
+private: true
 weight: 210
 ---
 {{% callout warning %}}

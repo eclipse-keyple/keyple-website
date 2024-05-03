@@ -4,6 +4,7 @@ summary: How to develop a card specific Keyple extension.
 type: book
 toc: true
 draft: false
+private: true
 weight: 350
 ---
 {{% callout warning %}}

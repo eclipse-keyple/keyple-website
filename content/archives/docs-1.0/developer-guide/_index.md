@@ -2,6 +2,7 @@
 title: Developer guides
 type: book
 toc: false
+private: true
 weight: 300
 ---`
 {{% callout warning %}}

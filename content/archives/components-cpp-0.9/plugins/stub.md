@@ -5,6 +5,7 @@ summary: Keyple C++ plugin used to stub smart card readers.
 type: book
 weight: 10
 toc: true
+private: true
 ---
 {{% callout warning %}}
 Version 0.9 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.

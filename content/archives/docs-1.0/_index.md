@@ -3,6 +3,7 @@ title: == Docs 1.x ==
 subtitle: "Global Architecture of Keyple"
 type: book
 toc: false
+private: true
 weight: 10
 ---
 

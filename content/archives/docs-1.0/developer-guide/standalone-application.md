@@ -4,6 +4,7 @@ summary: How to develop an end-user standalone application.
 type: book
 toc: true
 draft: false
+private: true
 weight: 310
 ---
 {{% callout warning %}}
