@@ -12,7 +12,7 @@ draft: false
 
 
 Published on February 27, 2023, this version implements the
-[Calypsonet Terminal Calypso Crypto Legacy SAM Java API (0.2.0)](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-calypso-crypto-legacysam-api/)
+[Calypsonet Terminal Calypso Crypto Legacy SAM Java API (0.2.0)](https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-calypso-crypto-legacysam-api/)
 and therefore adds the counters ceilings management feature in static mode.
 This allows to update remotely the key ceilings of the reloading SAMs.
 
