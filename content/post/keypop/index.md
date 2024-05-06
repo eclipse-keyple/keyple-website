@@ -11,7 +11,7 @@ draft: false
 ---
 
 The field of compliance management for ticketing terminals has recently seen a paradigm shift with the launch of the
-[Eclipse Keypop](https://eclipse-keypop.github.io/keypop-website) project.
+[Eclipse Keypop](https://keypop.org) project.
 This initiative defines a series of UML-compliant interfaces established by
 the [Calypso Networks Association](https://calypsonet.org).
 
