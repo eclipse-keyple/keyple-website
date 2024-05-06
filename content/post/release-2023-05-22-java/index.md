@@ -12,7 +12,7 @@ draft: false
 ---
 
 Published on May 22, 2023, this minor version implements the
-[Calypsonet Terminal Reader Java API (1.3.0)](https://terminal-api.calypsonet.org/apis/calypsonet-terminal-reader-api/)
+[Calypsonet Terminal Reader Java API (1.3.0)](https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-reader-api/)
 and therefore introduced a new capability to export a locally processed card selection scenario to be imported and 
 analyzed remotely by another card selection manager.
 

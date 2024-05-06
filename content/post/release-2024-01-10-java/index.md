@@ -11,7 +11,7 @@ draft: false
 
 
 Published on January 10, 2024, this version implements the
-[Keypop Calypso Crypto Legacy SAM Java API (0.4.0)](https://www.keypop.org/apis/keypop-calypso-crypto-legacysam-api/)
+[Keypop Calypso Crypto Legacy SAM Java API (0.4.0)](https://keypop.org/apis/calypso-layer/calypso-legacysam-api/)
 and therefore adds support for advanced SAM unlocking mechanisms (static and dynamic modes).
 
 For more information, please visit the component 
