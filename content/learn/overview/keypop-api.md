@@ -14,7 +14,7 @@ Keyple is compliant with the **Terminal API** specifications provided by the [Ca
 This compliance allows Keyple to obtain certifications from the Calypso Networks Association.
 It is a guarantee of reliability and reproducibility of the processes implemented on a variety of devices.
 
-The open source [Eclipse Keypop](https://eclipse-keypop.github.io/keypop-website) project exposes the **Terminal API** specifications in the form of
+The open source [Eclipse Keypop](https://keypop.org) project exposes the **Terminal API** specifications in the form of
 **Java** and **C++** interfaces,
 and Keyple is based on these interfaces.
 

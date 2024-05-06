@@ -7,7 +7,7 @@ toc: true
 ---
 
 {{% callout warning %}}
-This library is currently in **Beta** version as it implements the [Keypop Calypso Crypto Legacy SAM API](https://eclipse-keypop.github.io/keypop-website/apis/keypop-calypso-crypto-legacysam-api/),
+This library is currently in **Beta** version as it implements the [Keypop Calypso Crypto Legacy SAM API](https://keypop.org/apis/calypso-layer/calypso-legacysam-api/),
 which is also in **Beta**.
 While it's nearly stable, future migration steps might be necessary. We aim to minimize any changes you'll need to make.
 {{% /callout %}}
