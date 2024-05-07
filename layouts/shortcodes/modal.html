@@ -1,0 +1,19 @@
+{{- $title := .Get "title" -}}
+{{- $id := printf "%s%s" "modal-" ((printf "%s%s" $title .Inner) | sha1) -}}
+<a href="" data-toggle="modal" data-target="#{{ $id }}"><i class="fa-solid fa-eye"></i></a>
+<div class="modal" id="{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $id }}Title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="{{ $id }}Title">{{ $title }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-left">{{ .Inner }}</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

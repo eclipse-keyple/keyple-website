@@ -4,7 +4,7 @@ linktitle: Support & training companies
 summary: Find here the list of companies offering Keyple support and training.
 type: book
 toc: false
-weight: 3
+weight: 6
 ---
 
 {{% callout note %}}

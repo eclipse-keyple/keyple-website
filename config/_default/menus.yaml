@@ -87,18 +87,30 @@ main:
   - name: External resources
     url: '/external-resources/'
     weight: 50
-  - name: External add-ons
+  - name: Reader plugins
     parent: External resources
-    url: '/external-resources/external-add-ons/'
+    url: '/external-resources/reader-plugins/'
     weight: 10
+  - name: Card extensions
+    parent: External resources
+    url: '/external-resources/card-extensions/'
+    weight: 20
+  - name: Demos
+    parent: External resources
+    url: '/external-resources/demos/'
+    weight: 30
+  - name: Tools
+    parent: External resources
+    url: '/external-resources/tools/'
+    weight: 40
   - name: Compliant terminals
     parent: External resources
     url: '/external-resources/compliant-terminals/'
-    weight: 20
+    weight: 60
   - name: Support & training companies
     parent: External resources
     url: '/external-resources/support-and-training-companies/'
-    weight: 30
+    weight: 70
 
   - name: START CODING
     url: '/learn/build-your-first-app/'

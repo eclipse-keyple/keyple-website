@@ -4,7 +4,7 @@ linktitle: Compliant terminals
 summary: Find here a list of terminals compliant with Keyple.
 type: book
 toc: false
-weight: 2
+weight: 5
 ---
 
 {{% callout note %}}

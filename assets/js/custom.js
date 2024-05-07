@@ -749,3 +749,15 @@ loadProjectDashboard = async function() {
             });
     })();
 }
+
+// Init the external resource table content
+initExternalResourceTable = function() {
+    $('#external-resource-table').DataTable({
+        "lengthMenu": [25, 50, 75, 100],
+        "pageLength": 50,
+        "oLanguage": {"sSearch": "Filter:"}
+    });
+    $('.dataTables_length').addClass('bs-select');
+    // update the container's width with the real table size
+    $('.universal-wrapper').width($('#external-resource-table')[0].scrollWidth);
+}
