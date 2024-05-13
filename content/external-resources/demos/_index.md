@@ -15,7 +15,7 @@ GitHub **and/or** directly contribute to this website using the
         <th scope="col" class="text-center">OS</th>
         <th scope="col" class="text-center">Language</th>
         <th scope="col" class="text-center">Access</th>
-        <th scope="col" class="text-center">Owner</th>
+        <th scope="col" class="text-center">Supplier</th>
         <th scope="col" class="text-center" data-orderable="false">Info</th>
     </tr>
     </thead>
