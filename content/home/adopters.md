@@ -2,7 +2,7 @@
 widget = "featurette" 
 headless = true 
 active = true 
-weight = 40 
+weight = 30 
 
 title = "They are using Eclipse Keyple®"
 
@@ -10,7 +10,6 @@ title = "They are using Eclipse Keyple®"
   columns = "1"
 
 [design.background]
-  color = "#eff7fe"
   image = "" 
   image_darken = 0 
   image_size = "cover" 

@@ -28,7 +28,7 @@ If you are a Keyple user: first subscribe to the keyple-user mailing list, then 
 Moreover, everyone is welcome to [contribute]({{< relref "/community/contributing/" >}}) to the Eclipse Keyple project.
 
 In particular there is the possibility to include inside the Eclipse Keyple project additional [specific plugins]({{< relref "/components/specific-reader-plugins/" >}}).\
-The Keyple project provides also the possibility to reference [external add-ons]({{< relref "/external-resources/" >}}): open source or closed add-ons like additional plugins, card extensions, specific libraries.\
-Terminal manufacturers could also reference their [terminal solutions]({{< relref "/external-resources/compliant-terminals/" >}}) based on Keyple.
+The Keyple project provides also the possibility to reference [external add-ons]({{< relref "/external-resources/index.md" >}}): open source or closed add-ons like additional plugins, card extensions, specific libraries.\
+Terminal manufacturers could also reference their [terminal solutions]({{< relref "/external-resources/index.md" >}}) based on Keyple.
 
 Eclipse Keyple team

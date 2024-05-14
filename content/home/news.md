@@ -8,7 +8,7 @@
 widget = "pages"
 headless = true 
 active = true 
-weight = 30 
+weight = 40 
 
 title = "What's new?"
 
