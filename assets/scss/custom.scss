@@ -346,3 +346,15 @@ table>tbody>tr:nth-child(odd)>td, table>tbody>tr:nth-child(odd)>th {
   //max-height: calc(100vh - 5rem - 70px);
   max-height: calc(100vh - 4rem);
 }
+
+// Add separator to button group of external resources page
+#external-resources .btn-group > .btn {
+  margin-left: 1px;
+}
+
+// Add an external link icon to all portfolio card-text
+.card-text a::after {
+  content: "\f08e"; // Code Unicode of external link icon
+  font-family: "Font Awesome 5 Free", sans-serif;
+  margin-left: 10px;
+}

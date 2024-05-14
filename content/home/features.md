@@ -8,7 +8,6 @@ title = ""
 subtitle = ""
 
 [design.background]
-  color = "white"
   text_color_light = false 
 
 [[feature]]

@@ -47,6 +47,10 @@ main:
   - name: Community
     url: '/community/'
     weight: 40
+  - name: Adopters & Testimonials
+    parent: Community
+    url: '/adopters-and-testimonials/'
+    weight: 5
   - name: Contributing
     parent: Community
     url: '/community/contributing/'
@@ -87,18 +91,6 @@ main:
   - name: External resources
     url: '/external-resources/'
     weight: 50
-  - name: External add-ons
-    parent: External resources
-    url: '/external-resources/external-add-ons/'
-    weight: 10
-  - name: Compliant terminals
-    parent: External resources
-    url: '/external-resources/compliant-terminals/'
-    weight: 20
-  - name: Support & training companies
-    parent: External resources
-    url: '/external-resources/support-and-training-companies/'
-    weight: 30
 
   - name: START CODING
     url: '/learn/build-your-first-app/'
