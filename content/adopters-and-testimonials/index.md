@@ -17,16 +17,19 @@ sections:
                     logo_white: false
                 });
             </script>
-            <br>
             <div class="eclipsefdn-adopters"></div>
-            <br>
             <a href="https://iot.eclipse.org/adopters/" target="_blank" rel="noopener">Follow this link to discover how to be listed as an adopter of Eclipse Keyple®</a>'
   - block: portfolio
     id: testimonials
     content:
       title: Testimonials
       subtitle:
-      text: 
+      text: "{{% callout note %}}
+            To add your testimonial please 
+            [create an issue](https://github.com/eclipse-keyple/keyple-website/issues) on GitHub 
+            **and/or** directly contribute to this website using the 
+            [contribution guide]({{< relref \"community/contributing/\" >}}).
+            {{% /callout %}}"
       filters:
         # Folders to display content from
         folders:
@@ -54,7 +57,7 @@ sections:
         - name: All
           tag: '*'
         - name: Transport operators
-          tag: TransportOperators
+          tag: Transport operators
         - name: Integrators
           tag: Integrators
     design:

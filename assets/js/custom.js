@@ -753,11 +753,7 @@ loadProjectDashboard = async function() {
 // Init the external resource table content
 initExternalResourceTable = function(tableId) {
     $('#'+tableId).DataTable({
-        "lengthMenu": [25, 50, 75, 100],
-        "pageLength": 50,
+        paging: false,
         "oLanguage": {"sSearch": "Filter:"}
     });
-    $('.dataTables_length').addClass('bs-select');
-    // update the container's width with the real table size
-    $('.universal-wrapper').width($('#'+tableId)[0].scrollWidth);
 }
