@@ -1,0 +1,73 @@
+name: External Resources Proposal Form
+description: Fill out this form to provide information about the external resources to be referenced
+title: "External Resources Proposal"
+labels: ["resource"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Supplier name
+  - type: input
+    attributes:
+      label: Name of the company that provides the resources
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        <br>
+
+        ## Provided resource types
+  - type: dropdown
+    attributes:
+      label: Types of products or services provided (multiple options can be selected)
+      multiple: true
+      options:
+        - Reader plugins
+        - Card extensions
+        - Demos
+        - Tools
+        - Compliant terminals
+        - Training
+        - Development
+  - type: input
+    attributes:
+      label: Other types (not listed above)
+      placeholder: R1, R2, etc.
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        <br>
+
+        ## Short description
+  - type: input
+    attributes:
+      label: Short description (sentence 1)
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Short description (sentence 2, optional)
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        <br>
+
+        ## Full description
+  - type: input
+    attributes:
+      label: External page URL
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: "or"
+  - type: textarea
+    attributes:
+      label: Rich text description
+    validations:
+      required: false
