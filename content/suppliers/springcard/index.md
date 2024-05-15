@@ -2,7 +2,9 @@
 title: SpringCard
 summary: SpringCard is happy to contribute to the Keyple project by providing a plugin that makes it possible to use 
   SpringCard PC/SC couplers from a stock Android tablet or mobile phone.
-tags: ["ReaderPlugins"]
+tags: ["Reader plugins"]
+linktitle: " "
+type: book
 ---
 
 <br>

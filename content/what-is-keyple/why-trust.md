@@ -10,8 +10,6 @@ weight = 20
 Eclipse Keyple® is an Eclipse open source project currently leaded by Calypso Networks Association, which has been the leader in contactless 
 electronic ticketing transportation standards since 2003.
 
-{{< youtube 3CWNho1rrSw >}}
-
 | Free, easy-to-use and flexible      | Built by developers, for developers | Tailored to public entities requirements | 
 |-------------------------------------|-------------------------------------|-------------------------------------------|
 | Interoperable with any smart card reader solution (standard/proprietary, local/remote) | Open source libraries in Java and C++|Audit and certification|

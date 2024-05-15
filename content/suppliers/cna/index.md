@@ -2,7 +2,9 @@
 title: Calypso Networks Association
 summary: As initiator of the Keyple project, CNA offers numerous additional resources such as reader plugins, 
   demonstrations, tools, training and support for implementing Keyple.
-tags: ["ReaderPlugins", "Demos", "Tools", "Training"]
+tags: ["Reader plugins", "Demos", "Tools", "Training"]
+linktitle: " "
+type: book
 ---
 
 > {{< icon name="globe" pack="fas" >}} [Discover more about CNA here](https://calypsonet.org)
@@ -95,6 +97,7 @@ Calypso® certified portable objects from several manufacturers in various confi
     </tbody>
 </table>
 
+<br>
 <br>
 
 ## Demos
@@ -201,6 +204,9 @@ Finally, it displays the result.
     </tbody>
 </table>
 
+{{< youtube 3CWNho1rrSw >}}
+
+<br>
 <br>
 
 ## Tools

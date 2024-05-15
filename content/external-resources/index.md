@@ -1,6 +1,8 @@
 ---
 title: External resources
 type: landing
+aliases:
+  - /suppliers/
 
 sections:
   - block: portfolio
@@ -21,7 +23,7 @@ sections:
         folders:
           - suppliers
         # Only show content with these tags
-        tags: ["ReaderPlugins", "CardExtensions", "Demos", "Tools", "CompliantTerminals", "Training", "Development"]
+        tags: ["Reader plugins", "Card extensions", "Demos", "Tools", "Compliant terminals", "Training", "Development"]
         # Exclude content with these tags
         exclude_tags: []
         # Which Hugo page kinds to show (https://gohugo.io/templates/section-templates/#page-kinds)
@@ -43,15 +45,15 @@ sections:
         - name: All
           tag: '*'
         - name: Reader plugins
-          tag: ReaderPlugins
+          tag: Reader plugins
         - name: Card extensions
-          tag: CardExtensions
+          tag: Card extensions
         - name: Demos
           tag: Demos
         - name: Tools
           tag: Tools
         - name: Compliant terminals
-          tag: CompliantTerminals
+          tag: Compliant terminals
         - name: Training
           tag: Training
         - name: Development

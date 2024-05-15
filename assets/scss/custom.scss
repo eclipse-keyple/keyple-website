@@ -347,9 +347,9 @@ table>tbody>tr:nth-child(odd)>td, table>tbody>tr:nth-child(odd)>th {
   max-height: calc(100vh - 4rem);
 }
 
-// Add separator to button group of external resources page
-#external-resources .btn-group > .btn {
-  margin-left: 1px;
+// Add vertical separator to all button groups
+.btn-group .btn {
+  margin-left: 1px !important;
 }
 
 // Add an external link icon to all portfolio card-text
