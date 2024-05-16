@@ -98,7 +98,6 @@ Calypso® certified portable objects from several manufacturers in various confi
 </table>
 
 <br>
-<br>
 
 ## Demos
 
@@ -206,7 +205,6 @@ Finally, it displays the result.
 
 {{< youtube 3CWNho1rrSw >}}
 
-<br>
 <br>
 
 ## Tools

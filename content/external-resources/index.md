@@ -1,8 +1,6 @@
 ---
 title: External resources
 type: landing
-aliases:
-  - /suppliers/
 
 sections:
   - block: portfolio
@@ -14,7 +12,7 @@ sections:
             You can filter them by the type of resource you're looking for, 
             then click on the supplier's name for more information.
             To reference your company please 
-            [create an issue](https://github.com/eclipse-keyple/keyple-website/issues) on GitHub 
+            [create an issue](https://github.com/eclipse-keyple/keyple-website/issues/new?template=external-resources-proposal.yml) on GitHub 
             **and/or** directly contribute to this website using the 
             [contribution guide]({{< relref \"community/contributing/\" >}}).
             {{% /callout %}}"
