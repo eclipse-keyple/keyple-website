@@ -1,8 +1,6 @@
 ---
 title: External resources
 type: landing
-aliases:
-  - /suppliers/
 
 sections:
   - block: portfolio

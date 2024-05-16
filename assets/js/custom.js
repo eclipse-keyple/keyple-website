@@ -754,6 +754,7 @@ loadProjectDashboard = async function() {
 initExternalResourceTable = function(tableId) {
     $('#'+tableId).DataTable({
         paging: false,
-        "oLanguage": {"sSearch": "Filter:"}
+        filter: false,
+        "language": {"info": ""} // Remove bottom info
     });
 }

@@ -7,7 +7,4 @@ toc: true
 draft: false
 weight: 98
 ---
-
-<br>
-
-Link to [Server JSON API 2.0]({{< ref "learn/user-guide/server-json-api#api-20" >}})
+{{< redirect "/learn/user-guide/server-json-api/#api-20" >}}

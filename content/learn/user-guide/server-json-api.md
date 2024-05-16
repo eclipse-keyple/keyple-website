@@ -6,8 +6,6 @@ type: book
 toc: true
 draft: false
 weight: 3
-aliases:
-  - /server-json-apis/api-2-0
 ---
 
 <br>
