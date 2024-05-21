@@ -1,0 +1,93 @@
+name: Testimonial Submission Form
+description: Fill out this form to share your testimonial and provide feedback
+title: "Testimonial Submission"
+labels: ["testimonial"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Company information
+  - type: input
+    attributes:
+      label: Company name
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Company website URL
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        <br>
+
+        ## Keyple context
+  - type: dropdown
+    attributes:
+      label: Entity type
+      multiple: true
+      options:
+        - Authority
+        - Operator
+        - System integrator
+        - Terminal manufacturer
+        - Card manufacturer
+  - type: dropdown
+    attributes:
+      label: Terminal usage
+      multiple: true
+      options:
+        - Access control / Payment
+        - Card inspection
+        - Rights loading
+        - Personalization
+  - type: dropdown
+    attributes:
+      label: Terminal architecture
+      multiple: true
+      options:
+        - Embedded local reader
+        - Distributed remote reader
+  - type: markdown
+    attributes:
+      value: |
+        <br>
+
+        ## Key figures
+  - type: input
+    attributes:
+      label: Number of Keyple built-in terminals
+    validations:
+      required: false
+  - type: input
+    attributes:
+      label: Volume of cards processed by Keyple-based terminals
+    validations:
+      required: false
+  - type: input
+    attributes:
+      label: Deployment benefits (% of time or cost)
+    validations:
+      required: false
+  - type: input
+    attributes:
+      label: Maintenance savings (% of time or cost)
+    validations:
+      required: false
+  - type: input
+    attributes:
+      label: Other types (not listed above)
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        <br>
+
+        ## Describe your Keyple experience
+  - type: textarea
+    attributes:
+      label: Rich text description
+    validations:
+      required: false
