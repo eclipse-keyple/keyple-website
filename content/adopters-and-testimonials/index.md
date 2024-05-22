@@ -24,7 +24,8 @@ sections:
     content:
       title: Testimonials
       subtitle:
-      text: "{{% callout note %}}
+      text: "Eclipse Keyple is a truly free and open solution. It is not possible for the team to know the scope of usage and deployment. A great way to support us and promote the project is simply to share your experience of the solution.
+            {{% callout note %}}
             To add your testimonial please 
             [create an issue](https://github.com/eclipse-keyple/keyple-website/issues/new?labels=testimonial&template=testimonial.yml&title=Testimonial+Submission) on GitHub 
             **and/or** directly contribute to this website using the 
