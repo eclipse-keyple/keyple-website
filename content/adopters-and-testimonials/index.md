@@ -26,7 +26,7 @@ sections:
       subtitle:
       text: "{{% callout note %}}
             To add your testimonial please 
-            [create an issue](https://github.com/eclipse-keyple/keyple-website/issues) on GitHub 
+            [create an issue](https://github.com/eclipse-keyple/keyple-website/issues/new?labels=testimonial&template=testimonial.yml&title=Testimonial+Submission) on GitHub 
             **and/or** directly contribute to this website using the 
             [contribution guide]({{< relref \"community/contributing/\" >}}).
             {{% /callout %}}"
@@ -35,7 +35,7 @@ sections:
         folders:
           - testimonials
         # Only show content with these tags
-        tags: ["TransportOperators", "Integrators"]
+        tags: ["Authority", "Operator", "SystemIntegrator", "TerminalManufacturer", "CardManufacturer", "AccessControlPayment", "CardInspection", "RightsLoading", "Personalization"]
         # Exclude content with these tags
         exclude_tags: []
         # Which Hugo page kinds to show (https://gohugo.io/templates/section-templates/#page-kinds)
@@ -56,10 +56,24 @@ sections:
       buttons:
         - name: All
           tag: '*'
-        - name: Transport operators
-          tag: Transport operators
-        - name: Integrators
-          tag: Integrators
+        - name: Authority
+          tag: Authority
+        - name: Operator
+          tag: Operator
+        - name: System integrator
+          tag: SystemIntegrator
+        - name: Terminal manufacturer
+          tag: TerminalManufacturer
+        - name: Card manufacturer
+          tag: CardManufacturer
+        - name: Access control / Payment
+          tag: AccessControlPayment
+        - name: Card inspection
+          tag: CardInspection
+        - name: Rights loading
+          tag: RightsLoading
+        - name: Personalization
+          tag: Personalization
     design:
       # See Page Builder docs for all section customization options.
       # Choose how many columns the section has. Valid values: '1' or '2'.
