@@ -36,7 +36,7 @@ sections:
         folders:
           - testimonials
         # Only show content with these tags
-        tags: ["Authority", "Operator", "SystemIntegrator", "TerminalManufacturer", "CardManufacturer", "AccessControlPayment", "CardInspection", "RightsLoading", "Personalization"]
+        tags: ["Authority", "Operator", "System integrator", "Terminal manufacturer", "Card manufacturer", "Access control / Validation", "Card inspection", "Rights loading", "Personalization", "Embedded local reader", "Distributed remote reader"]
         # Exclude content with these tags
         exclude_tags: []
         # Which Hugo page kinds to show (https://gohugo.io/templates/section-templates/#page-kinds)
@@ -62,19 +62,23 @@ sections:
         - name: Operator
           tag: Operator
         - name: System integrator
-          tag: SystemIntegrator
+          tag: System integrator
         - name: Terminal manufacturer
-          tag: TerminalManufacturer
+          tag: Terminal manufacturer
         - name: Card manufacturer
-          tag: CardManufacturer
-        - name: Access control / Payment
-          tag: AccessControlPayment
+          tag: Card manufacturer
+        - name: Access control / Validation
+          tag: Access control / Validation
         - name: Card inspection
-          tag: CardInspection
+          tag: Card inspection
         - name: Rights loading
-          tag: RightsLoading
+          tag: Rights loading
         - name: Personalization
           tag: Personalization
+        - name: Embedded local reader
+          tag: Embedded local reader
+        - name: Distributed remote reader
+          tag: Distributed remote reader
     design:
       # See Page Builder docs for all section customization options.
       # Choose how many columns the section has. Valid values: '1' or '2'.

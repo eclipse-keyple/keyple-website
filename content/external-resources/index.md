@@ -12,7 +12,7 @@ sections:
             You can filter them by the type of resource you're looking for, 
             then click on the supplier's name for more information.
             To reference your company please 
-            [create an issue](https://github.com/eclipse-keyple/keyple-website/issues/new?labels=resource&title=Add%20or%20update%20external%20resources&template=external-resources-proposal.yml) on GitHub 
+            [create an issue](https://github.com/eclipse-keyple/keyple-website/issues/new?labels=resource&title=Add%20or%20update%20external%20resources&template=external-resources.yml) on GitHub 
             **and/or** directly contribute to this website using the 
             [contribution guide]({{< relref \"community/contributing/\" >}}).
             {{% /callout %}}"
