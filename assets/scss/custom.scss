@@ -347,8 +347,9 @@ table>tbody>tr:nth-child(odd)>td, table>tbody>tr:nth-child(odd)>th {
   max-height: calc(100vh - 4rem);
 }
 
-// Add vertical separator to all button groups
+// Add horizontal/vertical separator to all button groups
 .btn-group .btn {
+  margin-top: 1px !important;
   margin-left: 1px !important;
 }
 
