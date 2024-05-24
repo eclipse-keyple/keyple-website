@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repo Statistics with D3.js</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+<body>
+    <h1>GitHub Repo Statistics</h1>
+    <div id="chart"></div>
+
+    <script>
+        // Function to fetch and parse CSV file using D3
+        function fetchCSVData(filePath) {
+            return d3.csv(filePath, d3.autoType);
+        }
+
+        // Function to fetch repo list
+        async function fetchRepoList() {
+            const response = await fetch('repos_list.csv');
+            const text = await response.text();
+            const rows = text.split('\n').map(row => row.trim()).filter(row => row);
+            return rows.map(row => {
+                const parts = row.split(' ');
+                return parts[0].split('/')[1];
+            });
+        }
+
+        // Function to create chart with fetched data
+        async function createChart() {
+            const repoList = await fetchRepoList();
+            console.log('Repo list:', repoList);
+
+            const datasets = [];
+            let colorIndex = 0;
+            const colors = d3.schemeCategory10;
+
+            for (const repo of repoList) {
+                const csvFileName = `${repo}.csv`;
+                console.log(`Loading CSV for repo: ${repo}, file: ${csvFileName}`);
+                const data = await fetchCSVData(csvFileName);
+                console.log('CSV data for', repo, data);
+
+                if (data.length > 0) {
+                    datasets.push({ repo, data, color: colors[colorIndex % colors.length] });
+                    colorIndex++;
+                } else {
+                    console.warn(`No data found in ${csvFileName}`);
+                }
+            }
+
+            console.log(`Total datasets: ${datasets.length}`);
+
+            datasets.forEach((dataset, index) => {
+                console.log(`Dataset ${index + 1} for repo ${dataset.repo} contains ${dataset.data.length} data points.`);
+            });
+
+            const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+            const width = 960 - margin.left - margin.right;
+            const height = 500 - margin.top - margin.bottom;
+
+            const svg = d3.select("#chart").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            const x = d3.scaleTime()
+                .domain([
+                    d3.min(datasets, d => d3.min(d.data, d => d.date)),
+                    d3.max(datasets, d => d3.max(d.data, d => d.date))
+                ])
+                .range([0, width]);
+
+            const y = d3.scaleLinear()
+                .domain([0, d3.max(datasets, d => d3.max(d.data, d => d.total_lines))])
+                .nice()
+                .range([height, 0]);
+
+            svg.append("g")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x));
+
+            svg.append("g")
+                .call(d3.axisLeft(y));
+
+            const line = d3.line()
+                .x(d => x(d.date))
+                .y(d => y(d.total_lines));
+
+            const tooltip = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("position", "absolute")
+                .style("background", "#fff")
+                .style("border", "1px solid #ccc")
+                .style("padding", "10px")
+                .style("display", "none");
+
+            datasets.forEach(dataset => {
+                svg.append("path")
+                    .datum(dataset.data)
+                    .attr("fill", "none")
+                    .attr("stroke", dataset.color)
+                    .attr("stroke-width", 1.5)
+                    .attr("d", line);
+
+                svg.selectAll(`.dot-${dataset.repo}`)
+                    .data(dataset.data)
+                    .enter().append("circle")
+                    .attr("class", `dot dot-${dataset.repo}`)
+                    .attr("cx", d => {
+                        console.log(`Date: ${d.date}`);
+                        return x(d.date);
+                    })
+                    .attr("cy", d => {
+                        console.log(`Total lines: ${d.total_lines}`);
+                        return y(d.total_lines);
+                    })
+                    .attr("r", 5)
+                    .attr("fill", dataset.color)
+                    .on("mouseover", function(event, d) {
+                        tooltip.style("display", "block")
+                            .html(`<strong>${dataset.repo}</strong><br/>
+                                   Date: ${d3.timeFormat("%B %d, %Y")(d.date)}<br/>
+                                   Total Lines: ${d.total_lines}<br/>
+                                   Version: ${d.version_tag}<br/>
+                                   Lines Added: ${d.lines_added}<br/>
+                                   Lines Deleted: ${d.lines_deleted}`);
+                    })
+                    .on("mousemove", function(event) {
+                        tooltip.style("left", (event.pageX + 10) + "px")
+                            .style("top", (event.pageY - 20) + "px");
+                    })
+                    .on("mouseout", function() {
+                        tooltip.style("display", "none");
+                    });
+            });
+        }
+
+        // Call the function to create the chart
+        createChart().catch(error => console.error('Error creating chart:', error));
+    </script>
+    <style>
+        .tooltip {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</body>
+</html>

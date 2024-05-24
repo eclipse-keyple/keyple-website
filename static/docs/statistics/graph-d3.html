@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repo Statistics with D3.js</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+        .tooltip {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: none;
+        }
+        #resetZoom {
+            margin-bottom: 20px;
+        }
+        .legend {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>GitHub Repo Statistics</h1>
+    <button id="resetZoom">Reset Zoom</button>
+    <div id="chart"></div>
+    <div id="legend" class="legend"></div>
+
+    <script>
+        // Function to fetch and parse CSV file using D3
+        function fetchCSVData(filePath) {
+            return d3.csv(filePath, d3.autoType);
+        }
+
+        // Function to fetch repo list
+        async function fetchRepoList() {
+            const response = await fetch('repos_list.csv');
+            const text = await response.text();
+            const rows = text.split('\n').map(row => row.trim()).filter(row => row);
+            return rows.map(row => {
+                const parts = row.split(' ');
+                return parts[0].split('/')[1];
+            });
+        }
+
+        // Function to create chart with fetched data
+        async function createChart() {
+            const repoList = await fetchRepoList();
+            console.log('Repo list:', repoList);
+
+            const datasets = [];
+            let colorIndex = 0;
+            const colors = d3.schemeCategory10;
+
+            for (const repo of repoList) {
+                const csvFileName = `${repo}.csv`;
+                console.log(`Loading CSV for repo: ${repo}, file: ${csvFileName}`);
+                const data = await fetchCSVData(csvFileName);
+                console.log('CSV data for', repo, data);
+
+                if (data.length > 0) {
+                    datasets.push({ repo, data, color: colors[colorIndex % colors.length] });
+                    colorIndex++;
+                } else {
+                    console.warn(`No data found in ${csvFileName}`);
+                }
+            }
+
+            console.log(`Total datasets: ${datasets.length}`);
+
+            datasets.forEach((dataset, index) => {
+                console.log(`Dataset ${index + 1} for repo ${dataset.repo} contains ${dataset.data.length} data points.`);
+            });
+
+            const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+            const width = 960 - margin.left - margin.right;
+            const height = 500 - margin.top - margin.bottom;
+
+            const svg = d3.select("#chart").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            const x = d3.scaleTime()
+                .domain([
+                    d3.min(datasets, d => d3.min(d.data, d => d.date)),
+                    d3.max(datasets, d => d3.max(d.data, d => d.date))
+                ])
+                .range([0, width]);
+
+            const y = d3.scaleLinear()
+                .domain([0, d3.max(datasets, d => d3.max(d.data, d => d.total_lines))])
+                .nice()
+                .range([height, 0]);
+
+            const initialXDomain = x.domain();
+            const initialYDomain = y.domain();
+
+            const xAxis = svg.append("g")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x));
+
+            const yAxis = svg.append("g")
+                .call(d3.axisLeft(y));
+
+            const line = d3.line()
+                .x(d => x(d.date))
+                .y(d => y(d.total_lines));
+
+            const tooltip = d3.select("body").append("div")
+                .attr("class", "tooltip");
+
+            const pathGroup = svg.append("g");
+
+            datasets.forEach(dataset => {
+                const path = pathGroup.append("path")
+                    .datum(dataset.data)
+                    .attr("class", `line line-${dataset.repo}`)
+                    .attr("fill", "none")
+                    .attr("stroke", dataset.color)
+                    .attr("stroke-width", 1.5)
+                    .attr("d", line);
+
+                const circles = pathGroup.selectAll(`.dot-${dataset.repo}`)
+                    .data(dataset.data)
+                    .enter().append("circle")
+                    .attr("class", `dot dot-${dataset.repo}`)
+                    .attr("cx", d => x(d.date))
+                    .attr("cy", d => y(d.total_lines))
+                    .attr("r", 5)
+                    .attr("fill", dataset.color);
+
+                // Attach tooltip events to each circle
+                attachTooltipEvents(circles, dataset.repo);
+            });
+
+            // Create the legend
+            const legend = d3.select("#legend");
+            datasets.forEach(dataset => {
+                const legendItem = legend.append("div")
+                    .attr("class", "legend-item");
+
+                legendItem.append("div")
+                    .attr("class", "legend-color")
+                    .style("background-color", dataset.color);
+
+                legendItem.append("label")
+                    .text(dataset.repo);
+
+                legendItem.append("input")
+                    .attr("type", "checkbox")
+                    .attr("checked", true)
+                    .on("change", function() {
+                        const isChecked = d3.select(this).property("checked");
+                        svg.selectAll(`.line-${dataset.repo}`).style("display", isChecked ? null : "none");
+                        svg.selectAll(`.dot-${dataset.repo}`).style("display", isChecked ? null : "none");
+                    });
+            });
+
+            const brush = d3.brush().extent([[0, 0], [width, height]])
+                .on("end", updateChart);
+
+            svg.append("g")
+                .attr("class", "brush")
+                .call(brush);
+
+            function attachTooltipEvents(selection, repo) {
+                console.log(`attachTooltipEvents: ${repo}`);
+                selection.each(function(d, i) {
+                    console.log(`Attaching tooltip for ${repo} at index ${i}:`, d);
+                });
+
+                selection.on("mouseover", function(event, d) {
+                    console.log(`Tooltip for ${repo} at date ${d.date}`);
+                    tooltip.style("display", "block")
+                        .html(`<strong>${repo}</strong><br/>
+                               Date: ${d3.timeFormat("%B %d, %Y")(d.date)}<br/>
+                               Total Lines: ${d.total_lines}<br/>
+                               Version: ${d.version_tag}<br/>
+                               Lines Added: ${d.lines_added}<br/>
+                               Lines Deleted: ${d.lines_deleted}`);
+                })
+                .on("mousemove", function(event) {
+                    tooltip.style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 20) + "px");
+                })
+                .on("mouseout", function() {
+                    tooltip.style("display", "none");
+                });
+            }
+
+            function updateChart(event) {
+                const extent = event.selection;
+                if (!extent) return;
+
+                const [x0, y0] = extent[0];
+                const [x1, y1] = extent[1];
+
+                const newDomainX = [x.invert(x0), x.invert(x1)];
+                const newDomainY = [y.invert(y1), y.invert(y0)];
+
+                x.domain(newDomainX);
+                y.domain(newDomainY);
+
+                xAxis.transition().duration(1000).call(d3.axisBottom(x));
+                yAxis.transition().duration(1000).call(d3.axisLeft(y));
+
+                pathGroup.selectAll("path")
+                    .transition().duration(1000)
+                    .attr("d", d => line.x(p => x(p.date)).y(p => y(p.total_lines))(d));
+
+                const circles = pathGroup.selectAll("circle")
+                    .transition().duration(1000)
+                    .attr("cx", d => x(d.date))
+                    .attr("cy", d => y(d.total_lines));
+
+                // Reattach tooltip events after transition
+                circles.on("end", () => {
+                    attachTooltipEvents(pathGroup.selectAll("circle"), datasets.map(ds => ds.repo).join(', '));
+                });
+
+                svg.select(".brush").call(brush.move, null);
+            }
+
+            d3.select("#resetZoom").on("click", () => {
+                x.domain(initialXDomain);
+                y.domain(initialYDomain);
+
+                xAxis.transition().duration(1000).call(d3.axisBottom(x));
+                yAxis.transition().duration(1000).call(d3.axisLeft(y));
+
+                pathGroup.selectAll("path")
+                    .transition().duration(1000)
+                    .attr("d", d => line.x(p => x(p.date)).y(p => y(p.total_lines))(d));
+
+                const circles = pathGroup.selectAll("circle")
+                    .transition().duration(1000)
+                    .attr("cx", d => x(d.date))
+                    .attr("cy", d => y(d.total_lines));
+
+                // Reattach tooltip events after reset
+                circles.on("end", () => {
+                    attachTooltipEvents(pathGroup.selectAll("circle"), datasets.map(ds => ds.repo).join(', '));
+                });
+            });
+        }
+
+        // Call the function to create the chart
+        createChart().catch(error => console.error('Error creating chart:', error));
+    </script>
+</body>
+</html>
