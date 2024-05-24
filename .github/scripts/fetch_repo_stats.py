@@ -32,7 +32,7 @@ def get_repo_creation_date(owner, repo, headers):
     return creation_date
 
 def get_commit_activity(owner, repo, headers):
-    url = f'https://api.github.com/repos/{owner}/{repo}/stats/code_frequency'
+    url = f'https://api.github.com/repos/{owner}/{repo}/stats/code_frequency?ref=main'
     print(f'Calling get_commit_activity with URL: {url}')
     response = rate_limited_get(url, headers)
     commit_activity = response.json()
