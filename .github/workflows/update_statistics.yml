@@ -1,0 +1,52 @@
+name: Update statistics
+
+on:
+  workflow_run:
+    workflows: ["Update dashboard if needed"]
+    types:
+      - completed
+  workflow_dispatch: # To authorize manual run
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install requirements
+        run: pip install requests
+
+      - name: Update permissions
+        working-directory: .
+        run: chmod +x ./.github/scripts/*.*
+
+      - name: Checkout gh-pages branch
+        id: checkout
+        run: ./.github/scripts/checkout_gh-pages.sh ${{ github.repository_owner }}
+        continue-on-error: true
+
+      - name: Fetch repository statistics
+        working-directory: .
+        run: python ./.github/scripts/fetch_repo_stats.py --token ${{ secrets.GITHUB_TOKEN }} --output-dir ./keyple-website/docs/statistics ./.github/scripts/statistics_repos.list
+
+      - name: Copy repositories list
+        working-directory: .
+        run: cp ./.github/scripts/statistics_repos.list ./keyple-website/docs/statistics/repos_list
+
+      - name: Update gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./keyple-website
+          enable_jekyll: true
+        if: steps.checkout.outcome == 'success'
