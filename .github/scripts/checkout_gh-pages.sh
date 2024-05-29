@@ -24,7 +24,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Delete existing data directory..."
-rm -f docs/statistics/*.csv
-rm -f docs/statistics/repos_list
+rm -f statistics/*.csv
+rm -f statistics/stats_files
 
 echo "Checkout complete and old CSV data deleted."
