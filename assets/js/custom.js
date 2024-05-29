@@ -758,3 +758,257 @@ initExternalResourceTable = function(tableId) {
         "language": {"info": ""} // Remove bottom info
     });
 }
+
+// Statistics
+loadStatistics = async function() {
+
+    const hotfixesBranchSuffix = "-hotfixes-";
+
+    // Function to fetch repo list
+    async function fetchStatsFilesFile() {
+        const response = await fetch('stats_files');
+        const text = await response.text();
+        const rows = text.split('\n').map(row => row.trim()).filter(row => row);
+        return rows.map(row => {
+            const parts = row.split(' ');
+            return parts[0].split('/')[1];
+        });
+    }
+
+    // Function to fetch and parse CSV file using D3
+    function fetchCSVData(fileName) {
+        return d3.csv(fileName, d3.autoType);
+    }
+
+    // Function to create chart with fetched data
+    async function createChart() {
+
+        function attachTooltipEvents(circles, repo) {
+            circles
+                .on("mouseover", function(event, d) {
+                    tooltip.style("display", "block")
+                        .html(`<strong>${repo.split(hotfixesBranchSuffix)[0]}</strong><br/>
+                               <u>Version</u>: ${d.version_tag}<br/>
+                               <u>Date</u>: ${d3.timeFormat("%Y-%m-%d")(d.date)}<br/>
+                               <u>Total lines</u>: ${d.total_lines}<br/>
+                               <u>Lines added</u>: ${d.lines_added}<br/>
+                               <u>Lines deleted</u>: ${d.lines_deleted}<br/>
+                               <u>Delta</u>: ${d.lines_added - d.lines_deleted}`);
+                })
+                .on("mousemove", function(event) {
+                    tooltip.style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 20) + "px");
+                })
+                .on("mouseout", function() {
+                    tooltip.style("display", "none");
+                });
+        }
+
+        function updateChart(event) {
+            const extent = event.selection;
+            if (!extent) return;
+
+            const [x0, y0] = extent[0];
+            const [x1, y1] = extent[1];
+
+            const newDomainX = [x.invert(x0), x.invert(x1)];
+            const newDomainY = [y.invert(y1), y.invert(y0)];
+
+            x.domain(newDomainX);
+            y.domain(newDomainY);
+
+            xAxis.transition().duration(1000).call(d3.axisBottom(x));
+            yAxis.transition().duration(1000).call(d3.axisLeft(y));
+
+            pathGroup.selectAll("path")
+                .transition().duration(1000)
+                .attr("d", d => line.x(p => x(p.date)).y(p => y(p.total_lines))(d));
+
+            const circles = pathGroup.selectAll("circle")
+                .transition().duration(1000)
+                .attr("cx", d => x(d.date))
+                .attr("cy", d => y(d.total_lines));
+
+            svg.select(".brush").call(brush.move, null);
+        }
+
+        // Create the chart
+
+        // Load file containing the list of the stats files names
+        const statsFilesFile = await fetchStatsFilesFile();
+        const fetchPromises = statsFilesFile.map(repo => fetchCSVData(`${repo}.csv`).then(data => ({ repo, data })));
+        const datasets = (await Promise.all(fetchPromises)).filter(d => d.data.length > 0);
+
+        // Configure the graph design
+        const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+        const width = $(".article-style")[0].clientWidth - margin.left - margin.right;
+        const height = 500 - margin.top - margin.bottom;
+
+        const svg = d3.select("#chart").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const x = d3.scaleTime()
+            .domain([
+                d3.min(datasets, d => d3.min(d.data, d => d.date)),
+                d3.max(datasets, d => d3.max(d.data, d => d.date))
+            ])
+            .range([0, width]);
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(datasets, d => d3.max(d.data, d => d.total_lines))])
+            .nice()
+            .range([height, 0]);
+
+        const initialXDomain = x.domain();
+        const initialYDomain = y.domain();
+
+        const xAxis = svg.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x));
+
+        const yAxis = svg.append("g")
+            .call(d3.axisLeft(y));
+
+        const line = d3.line()
+            .x(d => x(d.date))
+            .y(d => y(d.total_lines));
+
+        const brush = d3.brush().extent([[0, 0], [width, height]])
+            .on("end", updateChart);
+
+        svg.append("g")
+            .attr("class", "brush")
+            .call(brush);
+
+        const pathGroup = svg.append("g");
+
+        const tooltip = d3.select("#chartTooltip");
+
+        // Create all the lines and circles
+        const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+        const colorsMap = new Map();
+        const reposLinesMap = new Map();
+
+        datasets.forEach(dataset => {
+
+            let color;
+            const repoName = dataset.repo.split(hotfixesBranchSuffix)[0];
+            let repoLines = [];
+            if (colorsMap.has(repoName)) {
+                color = colorsMap.get(repoName);
+                repoLines = reposLinesMap.get(repoName);
+            } else {
+                color = colorScale(repoName);
+                colorsMap.set(repoName, color);
+                reposLinesMap.set(repoName, repoLines);
+            }
+            repoLines.push(dataset.repo);
+
+            const path = pathGroup.append("path")
+                .datum(dataset.data)
+                .attr("class", `line line-${dataset.repo}`)
+                .attr("fill", "none")
+                .attr("stroke", color)
+                .attr("stroke-width", 1.5)
+                .attr("d", line);
+
+            const circles = pathGroup.selectAll(`.dot-${dataset.repo}`)
+                .data(dataset.data)
+                .enter().append("circle")
+                .attr("class", `dot dot-${dataset.repo}`)
+                .attr("cx", d => x(d.date))
+                .attr("cy", d => y(d.total_lines))
+                .attr("r", 7)
+                .attr("fill", color);
+
+            // Attach tooltip events to each circle
+            attachTooltipEvents(circles, dataset.repo);
+        });
+
+        // Create the reset button
+        d3.select("#resetZoom").on("click", () => {
+            x.domain(initialXDomain);
+            y.domain(initialYDomain);
+
+            xAxis.transition().duration(1000).call(d3.axisBottom(x));
+            yAxis.transition().duration(1000).call(d3.axisLeft(y));
+
+            pathGroup.selectAll("path")
+                .transition().duration(1000)
+                .attr("d", d => line.x(p => x(p.date)).y(p => y(p.total_lines))(d));
+
+            const circles = pathGroup.selectAll("circle")
+                .transition().duration(1000)
+                .attr("cx", d => x(d.date))
+                .attr("cy", d => y(d.total_lines));
+        });
+
+        // Create the statistics table
+        d3.select("#checkbox-select-all")
+            .property("checked", true)
+            .on("change", function() {
+            const isChecked = d3.select(this).property("checked");
+            d3.selectAll(".checkbox-component").property("checked", isChecked).each(function() {
+                d3.select(this).dispatch("change");
+            });
+        });
+
+        // Fill the table
+        const tableContent = d3.select("#datatable-statistics-content");
+        datasets.forEach(dataset => {
+            // Display only main branches
+            if (dataset.repo.indexOf(hotfixesBranchSuffix) === -1) {
+
+                const repoName = dataset.repo.split(hotfixesBranchSuffix)[0];
+                const row = tableContent.append("tr");
+
+                let cell =  row.append("td");
+                cell.append("input")
+                    .attr("type", "checkbox")
+                    .attr("class", "checkbox-component")
+                    .attr("checked", true)
+                    .on("change", function() {
+                        const isChecked = d3.select(this).property("checked");
+                        reposLinesMap.get(repoName).forEach(name => {
+                            svg.selectAll(`.line-${name}`).style("display", isChecked ? null : "none");
+                            svg.selectAll(`.dot-${name}`).style("display", isChecked ? null : "none");
+                        });
+                    });
+
+                row.append("td")
+                    .text(dataset.repo);
+
+                row.append("td")
+                    .style("background-color", colorsMap.get(dataset.repo));
+
+                const repoLatestData = dataset.data[dataset.data.length - 1];
+                row.append("td")
+                    .text(repoLatestData.version_tag);
+                row.append("td")
+                    .text(d3.timeFormat("%Y-%m-%d")(repoLatestData.date));
+                row.append("td")
+                    .text(repoLatestData.total_lines);
+                row.append("td")
+                    .text(repoLatestData.majors);
+                row.append("td")
+                    .text(repoLatestData.minors);
+                row.append("td")
+                    .text(repoLatestData.patches);
+            }
+        });
+
+        $('#datatable-statistics').DataTable({
+            paging: false,
+            filter: false,
+            "order": [[1, 'asc']],
+            "language": {"info": ""} // Remove bottom info
+        });
+    }
+
+    // Call the function to create the chart
+    createChart().catch(error => console.error('Error creating chart:', error));
+}
