@@ -974,7 +974,6 @@ loadStatistics = async function() {
                     .on("change", function() {
                         const isChecked = d3.select(this).property("checked");
                         reposLinesMap.get(repoName).forEach(name => {
-                            console.log(name);
                             svg.selectAll(`.line-${name}`).style("display", isChecked ? null : "none");
                             svg.selectAll(`.dot-${name}`).style("display", isChecked ? null : "none");
                         });
