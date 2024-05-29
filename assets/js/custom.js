@@ -762,11 +762,11 @@ initExternalResourceTable = function(tableId) {
 // Statistics
 loadStatistics = async function() {
 
-    const basePath = "/docs/statistics/";
+    const hotfixesBranchSuffix = "-hotfixes-";
 
     // Function to fetch repo list
-    async function fetchRepoList() {
-        const response = await fetch(basePath + 'repos_list');
+    async function fetchStatsFilesFile() {
+        const response = await fetch('stats_files');
         const text = await response.text();
         const rows = text.split('\n').map(row => row.trim()).filter(row => row);
         return rows.map(row => {
@@ -777,7 +777,7 @@ loadStatistics = async function() {
 
     // Function to fetch and parse CSV file using D3
     function fetchCSVData(fileName) {
-        return d3.csv(basePath + fileName, d3.autoType);
+        return d3.csv(fileName, d3.autoType);
     }
 
     // Function to create chart with fetched data
@@ -787,7 +787,7 @@ loadStatistics = async function() {
             circles
                 .on("mouseover", function(event, d) {
                     tooltip.style("display", "block")
-                        .html(`<strong>${repo}</strong><br/>
+                        .html(`<strong>${repo.split(hotfixesBranchSuffix)[0]}</strong><br/>
                                <u>Version</u>: ${d.version_tag}<br/>
                                <u>Date</u>: ${d3.timeFormat("%Y-%m-%d")(d.date)}<br/>
                                <u>Total lines</u>: ${d.total_lines}<br/>
@@ -833,14 +833,15 @@ loadStatistics = async function() {
         }
 
         // Create the chart
-        const repoList = await fetchRepoList();
-        const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
-        const fetchPromises = repoList.map(repo => fetchCSVData(`${repo}.csv`).then(data => ({ repo, data })));
+        // Load file containing the list of the stats files names
+        const statsFilesFile = await fetchStatsFilesFile();
+        const fetchPromises = statsFilesFile.map(repo => fetchCSVData(`${repo}.csv`).then(data => ({ repo, data })));
         const datasets = (await Promise.all(fetchPromises)).filter(d => d.data.length > 0);
 
+        // Configure the graph design
         const margin = { top: 20, right: 30, bottom: 30, left: 40 };
-        const width = $(".article-style")[0].clientWidth - margin.left - margin.right; // 960
+        const width = $(".article-style")[0].clientWidth - margin.left - margin.right;
         const height = 500 - margin.top - margin.bottom;
 
         const svg = d3.select("#chart").append("svg")
@@ -882,14 +883,30 @@ loadStatistics = async function() {
             .attr("class", "brush")
             .call(brush);
 
-        const tooltip = d3.select("#chartTooltip");
-
         const pathGroup = svg.append("g");
 
-        const colors = [];
+        const tooltip = d3.select("#chartTooltip");
+
+        // Create all the lines and circles
+        const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+        const colorsMap = new Map();
+        const reposLinesMap = new Map();
+
         datasets.forEach(dataset => {
-            const color = colorScale(dataset.repo);
-            colors.push(color);
+
+            let color;
+            const repoName = dataset.repo.split(hotfixesBranchSuffix)[0];
+            let repoLines = [];
+            if (colorsMap.has(repoName)) {
+                color = colorsMap.get(repoName);
+                repoLines = reposLinesMap.get(repoName);
+            } else {
+                color = colorScale(repoName);
+                colorsMap.set(repoName, color);
+                reposLinesMap.set(repoName, repoLines);
+            }
+            repoLines.push(dataset.repo);
 
             const path = pathGroup.append("path")
                 .datum(dataset.data)
@@ -940,42 +957,49 @@ loadStatistics = async function() {
             });
         });
 
+        // Fill the table
         const tableContent = d3.select("#datatable-statistics-content");
-        let i = 0;
         datasets.forEach(dataset => {
+            // Display only main branches
+            if (dataset.repo.indexOf(hotfixesBranchSuffix) === -1) {
 
-            const row = tableContent.append("tr");
+                const repoName = dataset.repo.split(hotfixesBranchSuffix)[0];
+                const row = tableContent.append("tr");
 
-            let cell =  row.append("td");
-            cell.append("input")
-                .attr("type", "checkbox")
-                .attr("class", "checkbox-component")
-                .attr("checked", true)
-                .on("change", function() {
-                    const isChecked = d3.select(this).property("checked");
-                    svg.selectAll(`.line-${dataset.repo}`).style("display", isChecked ? null : "none");
-                    svg.selectAll(`.dot-${dataset.repo}`).style("display", isChecked ? null : "none");
-                });
+                let cell =  row.append("td");
+                cell.append("input")
+                    .attr("type", "checkbox")
+                    .attr("class", "checkbox-component")
+                    .attr("checked", true)
+                    .on("change", function() {
+                        const isChecked = d3.select(this).property("checked");
+                        reposLinesMap.get(repoName).forEach(name => {
+                            console.log(name);
+                            svg.selectAll(`.line-${name}`).style("display", isChecked ? null : "none");
+                            svg.selectAll(`.dot-${name}`).style("display", isChecked ? null : "none");
+                        });
+                    });
 
-            row.append("td")
-                .text(dataset.repo);
+                row.append("td")
+                    .text(dataset.repo);
 
-            row.append("td")
-                .style("background-color", colors[i++]);
+                row.append("td")
+                    .style("background-color", colorsMap.get(dataset.repo));
 
-            const repoLatestData = dataset.data[dataset.data.length - 1];
-            row.append("td")
-                .text(repoLatestData.version_tag);
-            row.append("td")
-                .text(d3.timeFormat("%Y-%m-%d")(repoLatestData.date));
-            row.append("td")
-                .text(repoLatestData.total_lines);
-            row.append("td")
-                .text(repoLatestData.majors);
-            row.append("td")
-                .text(repoLatestData.minors);
-            row.append("td")
-                .text(repoLatestData.patches);
+                const repoLatestData = dataset.data[dataset.data.length - 1];
+                row.append("td")
+                    .text(repoLatestData.version_tag);
+                row.append("td")
+                    .text(d3.timeFormat("%Y-%m-%d")(repoLatestData.date));
+                row.append("td")
+                    .text(repoLatestData.total_lines);
+                row.append("td")
+                    .text(repoLatestData.majors);
+                row.append("td")
+                    .text(repoLatestData.minors);
+                row.append("td")
+                    .text(repoLatestData.patches);
+            }
         });
 
         $('#datatable-statistics').DataTable({
