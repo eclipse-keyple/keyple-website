@@ -1,7 +1,7 @@
 ---
 title: "Keyple supports Calypso Prime PKI cards!"
-summary: "Since April, Keyple supports sessions secured by public key cryptography on Calypso Prime PKI cards.
-    This makes it possible to perform strong authentication of data read from the card, without the need for a SAM."
+summary: "Since April, Keyple supports sessions secured by public key cryptography on Calypso Prime PKI cards. 
+    This enables strong authentication of both the card and the data read from it, without necessarily requiring a SAM."
 authors: [ Calypso Networks Association ]
 tags: [ "Eclipse", "Keyple", "Keypop", "Release", "OpenSource", "Middleware", "API", "Ticketing", "PKI" ]
 categories: [ Release ]
@@ -32,7 +32,7 @@ separate libraries. This modular design allows for upgrades and modifications in
 terminal applications.
 
 For asymmetric cryptographic computations (ECC/RSA), Keyple provides a
-[specific library](https://keyple.org/components/card-extensions/keyple-card-calypso-crypto-pki-lib/) using Java Runtime
+[specific library]({{< relref "/components/card-extensions/keyple-card-calypso-crypto-pki-lib" >}}) using Java Runtime
 Environment libraries and the open-source “Bouncy Castle” libraries. Ticketing integrators can also opt to use Keyple
 Calypso Card extensions with their own cryptographic engine implementations, supporting any certificate format.
 
