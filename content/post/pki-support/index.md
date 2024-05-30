@@ -15,8 +15,9 @@ strong authentication of both the card and the data read from it, without necess
 
 #### Keypop APIs for PKI-based Ticketing Systems
 
-The Keypop Calypso Card Java API now includes features for managing Public Key Infrastructure (PKI) mode, offering
-integrators the flexibility to define any type of chain-of-trust model for a PKI-based ticketing system.
+The [Keypop Calypso Card API](https://keypop.org/apis/calypso-layer/calypso-card-api/) now includes features for
+managing Public Key Infrastructure (PKI) mode, offering integrators the flexibility to define any type of chain-of-trust
+model for a PKI-based ticketing system.
 
 #### Extensible Certificate Format Support
 
@@ -30,9 +31,10 @@ Like most other Keyple components, Keyple’s internal interfaces for managing c
 separate libraries. This modular design allows for upgrades and modifications independent of Keyple-based ticketing
 terminal applications.
 
-For asymmetric cryptographic computations (ECC/RSA), Keyple provides a specific library using Java Runtime Environment
-libraries and the open-source “Bouncy Castle” libraries. Ticketing integrators can also opt to use Keyple Calypso Card
-extensions with their own cryptographic engine implementations, supporting any certificate format.
+For asymmetric cryptographic computations (ECC/RSA), Keyple provides a
+[specific library](https://keyple.org/components/card-extensions/keyple-card-calypso-crypto-pki-lib/) using Java Runtime
+Environment libraries and the open-source “Bouncy Castle” libraries. Ticketing integrators can also opt to use Keyple
+Calypso Card extensions with their own cryptographic engine implementations, supporting any certificate format.
 
 Keyple already supports such a scheme for secure card sessions with a SAM module and is prepared to seamlessly integrate
 the future OpenSAM solution.
