@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keyple | Eclipse Keyple</title><link>https://keyple.org/tag/keyple/</link><atom:link href="https://keyple.org/tag/keyple/index.xml" rel="self" type="application/rss+xml"/><description>Keyple</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 06 May 2024 00:00:00 +0100</lastBuildDate><image><url>https://keyple.org/media/logo.svg</url><title>Keyple</title><link>https://keyple.org/tag/keyple/</link></image><item><title>Keyple goes Java 8, Android 7.0!</title><link>https://keyple.org/post/java8-android7/</link><pubDate>Mon, 06 May 2024 00:00:00 +0100</pubDate><guid>https://keyple.org/post/java8-android7/</guid><description>&lt;p>All Keyple components have been updated to set the minimum API level to &lt;strong>Java 8&lt;/strong>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keyple | Eclipse Keyple</title><link>https://keyple.org/tag/keyple/</link><atom:link href="https://keyple.org/tag/keyple/index.xml" rel="self" type="application/rss+xml"/><description>Keyple</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 29 May 2024 00:00:00 +0100</lastBuildDate><image><url>https://keyple.org/media/logo.svg</url><title>Keyple</title><link>https://keyple.org/tag/keyple/</link></image><item><title>Keyple supports Calypso Prime PKI cards!</title><link>https://keyple.org/post/pki-support/</link><pubDate>Wed, 29 May 2024 00:00:00 +0100</pubDate><guid>https://keyple.org/post/pki-support/</guid><description>&lt;p>Since April, Keyple supports sessions secured by public key cryptography on Calypso Prime PKI cards. This enables
+strong authentication of both the card and the data read from it, without necessarily requiring a SAM.&lt;/p>
+&lt;h4 id="keypop-apis-for-pki-based-ticketing-systems">Keypop APIs for PKI-based Ticketing Systems&lt;/h4>
+&lt;p>The &lt;a href="https://keypop.org/apis/calypso-layer/calypso-card-api/" target="_blank" rel="noopener">Keypop Calypso Card API&lt;/a> now includes features for
+managing Public Key Infrastructure (PKI) mode, offering integrators the flexibility to define any type of chain-of-trust
+model for a PKI-based ticketing system.&lt;/p>
+&lt;h4 id="extensible-certificate-format-support">Extensible Certificate Format Support&lt;/h4>
+&lt;p>The Keyple libraries natively support the card (CardCert) and authority (CACert) certificate formats defined in the
+Calypso Prime PKI specification. Moreover, they have been designed for easy extension to support any other
+certificate format, ensuring seamless integration with various PKI implementations.&lt;/p>
+&lt;h4 id="modular-cryptographic-processing">Modular Cryptographic Processing&lt;/h4>
+&lt;p>Like most other Keyple components, Keyple’s internal interfaces for managing cryptographic processing are designed as
+separate libraries. This modular design allows for upgrades and modifications independent of Keyple-based ticketing
+terminal applications.&lt;/p>
+&lt;p>For asymmetric cryptographic computations (ECC/RSA), Keyple provides a
+&lt;a href="../../components/card-extensions/keyple-card-calypso-crypto-pki-lib/">specific library&lt;/a> using Java Runtime
+Environment libraries and the open-source “Bouncy Castle” libraries. Ticketing integrators can also opt to use Keyple
+Calypso Card extensions with their own cryptographic engine implementations, supporting any certificate format.&lt;/p>
+&lt;p>Keyple already supports such a scheme for secure card sessions with a SAM module and is prepared to seamlessly integrate
+the future OpenSAM solution.&lt;/p></description></item><item><title>Keyple goes Java 8, Android 7.0!</title><link>https://keyple.org/post/java8-android7/</link><pubDate>Mon, 06 May 2024 00:00:00 +0100</pubDate><guid>https://keyple.org/post/java8-android7/</guid><description>&lt;p>All Keyple components have been updated to set the minimum API level to &lt;strong>Java 8&lt;/strong>
 and &lt;strong>Android 7.0 Nougat (API Level 24)&lt;/strong>.&lt;/p>
 &lt;p>This update was necessary to resolve compatibility issues with modern code analysis and continuous integration tools.
 Many cutting-edge development tools like SonarCloud no longer support older Java versions.
