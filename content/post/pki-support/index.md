@@ -10,33 +10,30 @@ featured: false
 draft: false
 ---
 
-Since April, Keyple supports sessions secured by public key cryptography on Calypso Prime PKI cards.
-This makes it possible to perform strong authentication of data read from the card, without the need for a SAM.
+Since April, Keyple supports sessions secured by public key cryptography on Calypso Prime PKI cards. This enables
+strong authentication of both the card and the data read from it, without necessarily requiring a SAM.
 
 #### Keypop APIs for PKI-based Ticketing Systems
 
-The latest Keypop APIs dedicated to Public Key Infrastructure (PKI) offer integrators the flexibility to define any
-type of chain-of-trust model for a PKI-based ticketing system.
+The Keypop Calypso Card Java API now includes features for managing Public Key Infrastructure (PKI) mode, offering
+integrators the flexibility to define any type of chain-of-trust model for a PKI-based ticketing system.
 
 #### Extensible Certificate Format Support
 
 The Keyple libraries natively support the card (CardCert) and authority (CACert) certificate formats defined in the
-Calypso Prime PKI specification.
-
-However, they can be extended to support any other certificate format,
-allowing for seamless integration with various PKI implementations.
+Calypso Prime PKI specification. Moreover, they have been designed for easy extension to support any other
+certificate format, ensuring seamless integration with various PKI implementations.
 
 #### Modular Cryptographic Processing
 
-Keyple's internal interfaces for managing cryptographic processing have been designed, like most Keyple components, as
-separate libraries to enable upgrades and modifications independently of Keyple-based ticketing terminal applications.
+Like most other Keyple components, Keyple’s internal interfaces for managing cryptographic processing are designed as
+separate libraries. This modular design allows for upgrades and modifications independent of Keyple-based ticketing
+terminal applications.
 
-For asymmetric cryptographic computations (ECC/RSA),
-Keyple provides a specific library using the Java Runtime Environment libraries 
-and the open-source Bouncy Castle libraries.
-However, ticketing integrators have the option to use Keyple Calypso Card extension with their own cryptographic
-engine implementations, enabling support for any certificate formats.
+For asymmetric cryptographic computations (ECC/RSA), Keyple provides a specific library using Java Runtime Environment
+libraries and the open-source “Bouncy Castle” libraries. Ticketing integrators can also opt to use Keyple Calypso Card
+extensions with their own cryptographic engine implementations, supporting any certificate format.
 
-Keyple already supports such scheme for the support of secure card sessions with a SAM module,
-being prepared to seamlessly integrate the future OpenSAM solution.
-This forward-thinking design allows for easy adoption of emerging security technologies.
+Keyple already supports such a scheme for secure card sessions with a SAM module and is prepared to seamlessly integrate
+the future OpenSAM solution.
+
