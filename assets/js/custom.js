@@ -76,6 +76,9 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.SERVICE_LIB, "3.2.2")
+));
+releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.DISTRIBUTED_NETWORK_LIB, "2.4.0"),
     new Release(ComponentName.DISTRIBUTED_REMOTE_LIB, "2.4.0")
 ));
