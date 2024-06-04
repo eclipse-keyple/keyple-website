@@ -232,20 +232,44 @@ The Keyple Distributed solution **does not provide** the network layer implement
 
 Choose this mode if you want to implement a Client-Server **synchronous** communication protocol, such as standard HTTP for example.
 
-|                                                                                              | Client                  | Server           |
-|----------------------------------------------------------------------------------------------|-------------------------|------------------|
-| Network endpoint SPI to be implemented                                                       | `SyncEndpointClientSpi` | -                |
-| Node API                                                                                     | `SyncNodeClient`        | `SyncNodeServer` |
-| Method to be used when initializing the factory                                              | `withSyncNode(...)`     | `withSyncNode()` |
-| Method provided by the remote plugin or local service extension<br>to use to access the node | -                       | `getSyncNode()`  |
+|                                                                                              | Client                  | Server              |
+|----------------------------------------------------------------------------------------------|-------------------------|---------------------|
+| Network endpoint SPI to be implemented                                                       | `SyncEndpointClientSpi` | -                   |
+| Node API                                                                                     | `SyncNodeClient`        | `SyncNodeServer`    |
+| Method to be used when initializing the factory                                              | `withSyncNode(...)`     | `withSyncNode(...)` |
+| Method provided by the remote plugin or local service extension<br>to use to access the node | -                       | `getSyncNode()`     |
 
 Here is the minimal algorithm to implement in a context with a **single server instance**:
 
 {{< figure src="/media/learn/user-guide/distributed-application/distributed_synchronous.svg" caption="Synchronous network implementation" numbered="true" >}}
 
 {{% callout warning %}}
-In a context with several server instances, a mechanism must be implemented to ensure that all messages containing
-a `sessionId` are routed to the same server instance.
+In a context with several server instances, a mechanism must be implemented to ensure that all messages associated to
+a functional transaction are routed to the same server instance.
+
+For the **Reader Client Side** usage mode, 
+the client endpoint can use the value of the `sessionId` field contained in the `MessageDto` object 
+transmitted by the Keyple client node to identify transactions. 
+This value is generated for each new execution of a remote service. 
+When the client endpoint detects a new value, it can, for example, 
+transmit the first message without a session cookie in order to be routed to the first available server,
+then transmit the session cookie returned by the server in subsequent exchanges until a new transaction is detected.
+
+For the **Reader Server Side** usage mode with **pool plugins**, 
+if there are several server instances, 
+each reader cycle (from reader allocation to reader release) must be performed on the same server instance. 
+A mechanism must be put in place to inform the client endpoint that a new reader cycle is about to begin 
+because the `sessionId` field is not relevant here. 
+So, for example, when requested by the Keyple client node, 
+the client endpoint can transmit the first message without a session cookie in order to be routed to the first 
+available server, 
+and then transmit the session cookie returned by the server in subsequent exchanges until the start of a new cycle.
+
+For the **Reader Server Side** usage mode with **regular plugins (non-pool)**, 
+if several server instances exist, 
+a remote plugin must be created for each server instance, 
+and each remote plugin must be associated with a distinct client endpoint dedicated to a server instance.
+
 {{% /callout %}}
 
 ### Asynchronous

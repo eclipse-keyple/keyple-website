@@ -333,11 +333,11 @@ The **Keyple Distributed** solution **does not provide** the network layer imple
 
 Choose this mode if you want to implement a Client-Server **Synchronous** communication protocol, such as standard HTTP for example.
 
-|     | Client | Server |
-| --- | ------ | ------ |
-| SPI to be implemented | `SyncEndpointClient` | - |
-| Node API | `SyncNodeClient` | `SyncNodeServer` |
-| Methods to be used when initializing the factory | `withSyncNode(...)` | `withSyncNode()` |
+|     | Client | Server                                    |
+| --- | ------ |-------------------------------------------|
+| SPI to be implemented | `SyncEndpointClient` | -                                         |
+| Node API | `SyncNodeClient` | `SyncNodeServer`                          |
+| Methods to be used when initializing the factory | `withSyncNode(...)` | `withSyncNode(...)`                       |
 | Utility method to use to access the node | - | `getSyncNode()` or<br> `getSyncNode(...)` |
 
 Here is the minimal algorithm to implement in a context with a **single server instance** :
