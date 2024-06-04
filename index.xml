@@ -1870,7 +1870,7 @@ Whatever the type of plugin, it is the responsibility of the server application 
 &lt;tr>
 &lt;td>Method to be used when initializing the factory&lt;/td>
 &lt;td>&lt;code>withSyncNode(...)&lt;/code>&lt;/td>
-&lt;td>&lt;code>withSyncNode()&lt;/code>&lt;/td>
+&lt;td>&lt;code>withSyncNode(...)&lt;/code>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>Method provided by the remote plugin or local service extension&lt;br>to use to access the node&lt;/td>
@@ -1888,8 +1888,28 @@ Synchronous network implementation
 &lt;/figcaption>&lt;/figure>
 &lt;div class="alert alert-warning">
 &lt;div>
-In a context with several server instances, a mechanism must be implemented to ensure that all messages containing
-a &lt;code>sessionId&lt;/code> are routed to the same server instance.
+&lt;p>In a context with several server instances, a mechanism must be implemented to ensure that all messages associated to
+a functional transaction are routed to the same server instance.&lt;/p>
+&lt;p>For the &lt;strong>Reader Client Side&lt;/strong> usage mode,
+the client endpoint can use the value of the &lt;code>sessionId&lt;/code> field contained in the &lt;code>MessageDto&lt;/code> object
+transmitted by the Keyple client node to identify transactions.
+This value is generated for each new execution of a remote service.
+When the client endpoint detects a new value, it can, for example,
+transmit the first message without a session cookie in order to be routed to the first available server,
+then transmit the session cookie returned by the server in subsequent exchanges until a new transaction is detected.&lt;/p>
+&lt;p>For the &lt;strong>Reader Server Side&lt;/strong> usage mode with &lt;strong>pool plugins&lt;/strong>,
+if there are several server instances,
+each reader cycle (from reader allocation to reader release) must be performed on the same server instance.
+A mechanism must be put in place to inform the client endpoint that a new reader cycle is about to begin
+because the &lt;code>sessionId&lt;/code> field is not relevant here.
+So, for example, when requested by the Keyple client node,
+the client endpoint can transmit the first message without a session cookie in order to be routed to the first
+available server,
+and then transmit the session cookie returned by the server in subsequent exchanges until the start of a new cycle.&lt;/p>
+&lt;p>For the &lt;strong>Reader Server Side&lt;/strong> usage mode with &lt;strong>regular plugins (non-pool)&lt;/strong>,
+if several server instances exist,
+a remote plugin must be created for each server instance,
+and each remote plugin must be associated with a distinct client endpoint dedicated to a server instance.&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;h3 id="asynchronous">Asynchronous&lt;/h3>
@@ -5138,7 +5158,7 @@ They are generic and apply to all card and reader technologies.&lt;/p>
 &lt;p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/2.3.1/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-distributed-network-java-lib/2.4.0/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/p>
 &lt;br>
@@ -5975,8 +5995,8 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-card-calypso-crypto-pki-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:0.2.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-card-generic-java-lib:3.0.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-local-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-distributed-local-java-lib:2.3.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keyple-distributed-network-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-distributed-network-java-lib:2.3.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keyple-distributed-remote-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-distributed-remote-java-lib:2.3.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-distributed-network-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-distributed-network-java-lib:2.4.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-distributed-remote-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-distributed-remote-java-lib:2.4.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-nfc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.2.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-omapi-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.1.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-cardresource-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
@@ -5998,8 +6018,8 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-card-calypso-crypto-pki-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:0.2.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-card-generic-java-lib:3.0.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-local-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-distributed-local-java-lib:2.3.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keyple-distributed-network-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-distributed-network-java-lib:2.3.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keyple-distributed-remote-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-distributed-remote-java-lib:2.3.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-distributed-network-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-distributed-network-java-lib:2.4.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-distributed-remote-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-distributed-remote-java-lib:2.4.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-nfc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.2.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-omapi-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.1.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-cardresource-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
@@ -6061,12 +6081,12 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-distributed-network-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-distributed-network-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
-&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.3.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.4.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-remote-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-distributed-remote-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
-&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.3.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.4.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-nfc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
@@ -11508,7 +11528,7 @@ width: 240px;
 &lt;tr>
 &lt;td>Methods to be used when initializing the factory&lt;/td>
 &lt;td>&lt;code>withSyncNode(...)&lt;/code>&lt;/td>
-&lt;td>&lt;code>withSyncNode()&lt;/code>&lt;/td>
+&lt;td>&lt;code>withSyncNode(...)&lt;/code>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>Utility method to use to access the node&lt;/td>
@@ -12589,7 +12609,7 @@ to Manon Chaix, Jean-Pierre Fortune, Olivier Delcroix, Ludovic Teixeira Costa an
 &lt;p>
 &lt;i class="fas fa-file-pdf pr-1 fa-fw">&lt;/i> Discover the &lt;a href="https://drive.google.com/file/d/1GAAhW-mv-E6kxqVySv8-KSjMJ15tZBkM/view" target="_blank" rel="noopener">presentation&lt;/a>.&lt;/p>
 &lt;p>
-&lt;i class="fas fa-images pr-1 fa-fw">&lt;/i> Discover the &lt;a href="https://drive.google.com/drive/folders/1StRgiAxKrn0mHsP9WwIQ_bopQW-eGVb8" target="_blank" rel="noopener">photos&lt;/a>.&lt;/p></description></item><item><title>Calypso Networks Association</title><link>https://keyple.org/suppliers/cna/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/suppliers/cna/</guid><description>&lt;blockquote>
+&lt;i class="fas fa-images pr-1 fa-fw">&lt;/i> Discover the &lt;a href="https://drive.google.com/drive/folders/1StRgiAxKrn0mHsP9WwIQ_bopQW-eGVb8" target="_blank" rel="noopener">photos&lt;/a>.&lt;/p></description></item><item><title>Avantronics S.A De C.V.</title><link>https://keyple.org/suppliers/avantronics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/suppliers/avantronics/</guid><description/></item><item><title>Calypso Networks Association</title><link>https://keyple.org/suppliers/cna/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/suppliers/cna/</guid><description>&lt;blockquote>
 &lt;p>
 &lt;i class="fas fa-globe pr-1 fa-fw">&lt;/i> &lt;a href="https://calypsonet.org" target="_blank" rel="noopener">Discover more about CNA here&lt;/a>&lt;/p>
 &lt;p>
@@ -13699,7 +13719,7 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;h2 id="java-component">Java component&lt;/h2>
 &lt;div class="alert alert-note">
 &lt;div>
-&lt;strong>&lt;code>2.3.1&lt;/code>&lt;/strong>
+&lt;strong>&lt;code>2.4.0&lt;/code>&lt;/strong>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
@@ -13738,14 +13758,14 @@ Maven
 &lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
 id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-distributed-network-java-lib:2.3.1&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-distributed-network-java-lib:2.4.0&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-distributed-network-java-lib:2.3.1&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-distributed-network-java-lib:2.4.0&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
@@ -13755,7 +13775,7 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-distributed-network-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.3.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.4.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
@@ -13909,7 +13929,7 @@ id="tabs-3-2" role="tabpanel" aria-labelled-by="tabs-3-2-tab">
 &lt;h2 id="java-component">Java component&lt;/h2>
 &lt;div class="alert alert-note">
 &lt;div>
-&lt;strong>&lt;code>2.3.1&lt;/code>&lt;/strong>
+&lt;strong>&lt;code>2.4.0&lt;/code>&lt;/strong>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
@@ -13948,14 +13968,14 @@ Maven
 &lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
 id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-distributed-remote-java-lib:2.3.1&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-distributed-remote-java-lib:2.4.0&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-distributed-remote-java-lib:2.3.1&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-distributed-remote-java-lib:2.4.0&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
@@ -13965,7 +13985,7 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-distributed-remote-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.3.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.4.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>

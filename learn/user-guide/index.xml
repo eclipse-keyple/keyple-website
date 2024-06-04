@@ -798,7 +798,7 @@ Whatever the type of plugin, it is the responsibility of the server application 
 &lt;tr>
 &lt;td>Method to be used when initializing the factory&lt;/td>
 &lt;td>&lt;code>withSyncNode(...)&lt;/code>&lt;/td>
-&lt;td>&lt;code>withSyncNode()&lt;/code>&lt;/td>
+&lt;td>&lt;code>withSyncNode(...)&lt;/code>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>Method provided by the remote plugin or local service extension&lt;br>to use to access the node&lt;/td>
@@ -816,8 +816,28 @@ Synchronous network implementation
 &lt;/figcaption>&lt;/figure>
 &lt;div class="alert alert-warning">
 &lt;div>
-In a context with several server instances, a mechanism must be implemented to ensure that all messages containing
-a &lt;code>sessionId&lt;/code> are routed to the same server instance.
+&lt;p>In a context with several server instances, a mechanism must be implemented to ensure that all messages associated to
+a functional transaction are routed to the same server instance.&lt;/p>
+&lt;p>For the &lt;strong>Reader Client Side&lt;/strong> usage mode,
+the client endpoint can use the value of the &lt;code>sessionId&lt;/code> field contained in the &lt;code>MessageDto&lt;/code> object
+transmitted by the Keyple client node to identify transactions.
+This value is generated for each new execution of a remote service.
+When the client endpoint detects a new value, it can, for example,
+transmit the first message without a session cookie in order to be routed to the first available server,
+then transmit the session cookie returned by the server in subsequent exchanges until a new transaction is detected.&lt;/p>
+&lt;p>For the &lt;strong>Reader Server Side&lt;/strong> usage mode with &lt;strong>pool plugins&lt;/strong>,
+if there are several server instances,
+each reader cycle (from reader allocation to reader release) must be performed on the same server instance.
+A mechanism must be put in place to inform the client endpoint that a new reader cycle is about to begin
+because the &lt;code>sessionId&lt;/code> field is not relevant here.
+So, for example, when requested by the Keyple client node,
+the client endpoint can transmit the first message without a session cookie in order to be routed to the first
+available server,
+and then transmit the session cookie returned by the server in subsequent exchanges until the start of a new cycle.&lt;/p>
+&lt;p>For the &lt;strong>Reader Server Side&lt;/strong> usage mode with &lt;strong>regular plugins (non-pool)&lt;/strong>,
+if several server instances exist,
+a remote plugin must be created for each server instance,
+and each remote plugin must be associated with a distinct client endpoint dedicated to a server instance.&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;h3 id="asynchronous">Asynchronous&lt;/h3>
