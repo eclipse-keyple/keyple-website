@@ -7,10 +7,26 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Supplier name
+        ## Supplier
   - type: input
     attributes:
       label: Name of the company that provides the resources
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Company website
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Company logo
+      description: |
+        **Provide your company logo to be listed as an adopter on the Eclipse Foundation website.**
+        Important: Please attach your logos in svg or png format, zipped if svg.
+        Please note that we require both color options for logos for distribution purposes. 
+        - We need color logo with transparent background.
+        - We also need white logo with a transparent background.
     validations:
       required: true
   - type: markdown
