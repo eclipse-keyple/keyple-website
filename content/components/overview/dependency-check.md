@@ -148,12 +148,12 @@ Warning:
             <td>2.1.+</td><!-- keyple-distributed-remote-java-api -->
             <td>2.3.+</td><!-- keyple-plugin-java-api -->
             <td>2.3.0...2.3.1</td><!-- keyple-util-java-lib -->
-            <td>2.3.3...2.3.4</td><!-- keyple-service-java-lib -->
+            <td>2.3.3...2.3.5</td><!-- keyple-service-java-lib -->
             <td>2.1.0...2.1.1</td><!-- keyple-service-resource-java-lib -->
             <td>2.2.0</td><!-- keyple-distributed-local-java-lib -->
             <td>2.2.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.2.0...2.2.1</td><!-- keyple-distributed-remote-java-lib -->
-            <td>2.3.4...2.3.10</td><!-- keyple-card-calypso-java-lib -->
+            <td>2.3.4...2.3.11</td><!-- keyple-card-calypso-java-lib -->
             <td>0.3.0</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-android-nfc-java-lib -->
@@ -177,7 +177,7 @@ Warning:
             <td>2.2.0</td><!-- keyple-distributed-local-java-lib -->
             <td>2.2.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.2.0...2.2.1</td><!-- keyple-distributed-remote-java-lib -->
-            <td>2.3.4...2.3.10</td><!-- keyple-card-calypso-java-lib -->
+            <td>2.3.4...2.3.11</td><!-- keyple-card-calypso-java-lib -->
             <td>0.3.0</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.1.0</td><!-- keyple-plugin-android-nfc-java-lib -->
@@ -201,7 +201,7 @@ Warning:
             <td>2.2.0</td><!-- keyple-distributed-local-java-lib -->
             <td>2.2.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.2.0...2.2.1</td><!-- keyple-distributed-remote-java-lib -->
-            <td>2.3.4...2.3.10</td><!-- keyple-card-calypso-java-lib -->
+            <td>2.3.4...2.3.11</td><!-- keyple-card-calypso-java-lib -->
             <td>0.3.0</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
@@ -225,7 +225,7 @@ Warning:
             <td>2.2.0</td><!-- keyple-distributed-local-java-lib -->
             <td>2.2.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.2.0...2.2.1</td><!-- keyple-distributed-remote-java-lib -->
-            <td>2.3.4...2.3.10</td><!-- keyple-card-calypso-java-lib -->
+            <td>2.3.4...2.3.11</td><!-- keyple-card-calypso-java-lib -->
             <td>0.3.0</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
@@ -249,7 +249,7 @@ Warning:
             <td>2.2.0</td><!-- keyple-distributed-local-java-lib -->
             <td>2.2.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.2.0...2.2.1</td><!-- keyple-distributed-remote-java-lib -->
-            <td>2.3.4...2.3.10</td><!-- keyple-card-calypso-java-lib -->
+            <td>2.3.4...2.3.11</td><!-- keyple-card-calypso-java-lib -->
             <td>0.3.0</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
@@ -273,7 +273,7 @@ Warning:
             <td>2.0.0</td><!-- keyple-distributed-local-java-lib -->
             <td>2.0.0</td><!-- keyple-distributed-network-java-lib -->
             <td>2.1.0</td><!-- keyple-distributed-remote-java-lib -->
-            <td>2.3.4...2.3.10</td><!-- keyple-card-calypso-java-lib -->
+            <td>2.3.4...2.3.11</td><!-- keyple-card-calypso-java-lib -->
             <td>0.3.0</td><!-- keyple-card-calypso-crypto-legacysam-java-lib -->
             <td>2.0.0...2.0.2</td><!-- keyple-card-generic-java-lib -->
             <td>2.0.0...2.0.1</td><!-- keyple-plugin-android-nfc-java-lib -->
