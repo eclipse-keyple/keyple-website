@@ -209,3 +209,34 @@ calypsoCardApiFactory
 ## Download
 
 * [Java components]({{< ref "components/overview/configuration-wizard" >}})
+
+<br>
+
+## FAQ
+
+#### How can I retrieve the two bytes of the HCE validity token?
+
+While the `CalypsoCard` API doesn't directly provide this information, it can be easily obtained using the following
+snippet:
+
+{{< code lang="java" >}}
+
+import org.eclipse.keyple.core.util.BerTlvUtil;
+
+[...]
+
+    if (calypsoCard.isHce()) {
+      byte[] hceValidityToken = extractHceValidityToken(calypsoCard.getSelectApplicationResponse());
+      // Check the validity for the current
+      [...]
+    }
+
+[...]
+
+private static byte[] extractHceValidityToken(byte[] selectApplicationResponse) {
+    byte[] fullSerialNumber = BerTlvUtil.parseSimple(selectApplicationResponse, true).get(0xC7);
+    return Arrays.copyOf(fullSerialNumber, 2);
+}
+
+[...]
+{{< /code >}}
