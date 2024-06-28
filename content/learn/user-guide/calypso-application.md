@@ -14,12 +14,10 @@ weight: 6
 
 Keyple provides a card extension add-on dedicated to the Calypso® card technology.
 
-This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way.
-It completely hides the details of APDU orders that are sent to Calypso cards and SAMs, which are usually tedious
-operations.
+This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way. 
+It completely hides the details of APDU orders that are sent to Calypso cards and SAMs, which are usually tedious operations.
 
 The main features are:
-
 * support for different card revisions;
 * object mapping of card data structures;
 * complete management of the secure session with SAMs;
@@ -33,14 +31,11 @@ The diagram below illustrates the organization of a Calypso application based on
 <br>
 
 ## Operating mode
-
 {{% callout warning %}}
 Pre-requisites:
-
 * Have a global view of Calypso product concepts (cards, SAM, security principles)
-* Have read the [Standalone Application User Guide]({{< relref "standalone-application.md" >}}) to understand the main
-  concepts of Keyple in a standalone application
-  {{% /callout %}}
+* Have read the [Standalone Application User Guide]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application
+{{% /callout %}}
 
 1. Access to the [Calypso card extension service](#the-calypso-extension-service)
 2. [Select a card](#select-a-card)
@@ -59,8 +54,7 @@ The service is accessible by invoking the `CalypsoExtensionService.getInstance()
 CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();
 {{< /code >}}
 
-During initialization, it is recommended to check the extension with the smart card service to ensure the compatibility
-of the different libraries involved.
+During initialization, it is recommended to check the extension with the smart card service to ensure the compatibility of the different libraries involved.
 
 In case of incompatibility a warning will be produced in the log file.
 
@@ -71,7 +65,6 @@ smartCardService.checkCardExtension(calypsoExtensionService);
 <br>
 
 ## Select a card
-
 In order to perform a transaction it is necessary to have selected the card first.
 
 To do this, you must create a selection case for a selection scenario by invoking the `createCardSelection()` method.
@@ -80,7 +73,7 @@ In addition to the filtering capabilities offered by Keyple Service, the Calypso
 commands that will be sent to the card after a successful selection (the details of these features are described in the
 API documentation).
 
-The resulting `IsoSmartCard` can be cast to a `CalypsoCard` object which concentrate all known information about the
+The resulting `IsoSmartCard` can be cast to a `CalypsoCard` object which concentrate all known information about the 
 card being processed.
 Its content is dynamically updated during the transaction.
 The application will use it to get the data necessary for its business logic.
@@ -88,33 +81,32 @@ The application will use it to get the data necessary for its business logic.
 {{< code lang="java" >}}
 // Create a card selection manager.
 CardSelectionManager cardSelectionManager =
-smartCardService.getReaderApiFactory().createCardSelectionManager();
+    smartCardService.getReaderApiFactory().createCardSelectionManager();
 
 // Create a card selection using the Calypso card extension.
 cardSelectionManager.prepareSelection(
-smartCardService.getReaderApiFactory()
-.createIsoCardSelector()
-.filterByDfName(AID),
-calypsoExtensionService.getCalypsoCardApiFactory()
-.createCalypsoCardSelectionExtension());
+    smartCardService.getReaderApiFactory()
+        .createIsoCardSelector()
+        .filterByDfName(AID),
+    calypsoExtensionService.getCalypsoCardApiFactory()
+        .createCalypsoCardSelectionExtension());
 
 // Actual card communication: process the card selection.
 CardSelectionResult cardSelectionResult =
-cardSelectionManager.processCardSelectionScenario(cardReader);
+    cardSelectionManager.processCardSelectionScenario(cardReader);
 
 // Get the SmartCard resulting of the selection.
 CalypsoCard calypsoCard = (CalypsoCard) cardSelectionResult.getActiveSmartCard();
 
 // Check the selection result.
 if (calypsoCard == null) {
-throw new IllegalStateException("The card selection failed.");
+    throw new IllegalStateException("The card selection failed.");
 }
 {{< /code >}}
 
 <br>
 
 ## Set up security settings
-
 {{% callout note %}}
 The security settings must be initialized only for secure transactions.
 {{% /callout %}}
@@ -132,7 +124,7 @@ In the case of the Card Resource Service, you have to create a profile extension
 selection case, and then associate it to a dedicated profile in the service (see
 the [Card Resource Service User Guide]({{< relref "card-resource-service.md" >}})).
 
-The following snippet shows the selection of the SAM and the initialization of the security settings:
+The following snippet shows the selection of the SAM and the initialization of the security settings: 
 {{< code lang="java" >}}
 // Create a SAM selection manager.
 CardSelectionManager samSelectionManager = readerApiFactory.createCardSelectionManager();
@@ -142,19 +134,19 @@ CardSelector<IsoCardSelector> cardSelector = readerApiFactory.createIsoCardSelec
 
 // Retrieve the Legacy SAM API factory
 LegacySamApiFactory legacySamApiFactory =
-LegacySamExtensionService.getInstance().getLegacySamApiFactory();
+    LegacySamExtensionService.getInstance().getLegacySamApiFactory();
 
 // Create a SAM selection using the Calypso Legacy SAM card extension.
 samSelectionManager.prepareSelection(
-cardSelector, legacySamApiFactory.createLegacySamSelectionExtension());
+    cardSelector, legacySamApiFactory.createLegacySamSelectionExtension());
 
 // SAM communication: run the selection scenario.
 CardSelectionResult samSelectionResult =
-samSelectionManager.processCardSelectionScenario(reader);
+    samSelectionManager.processCardSelectionScenario(reader);
 
 // Check the selection result.
 if (samSelectionResult.getActiveSmartCard() == null) {
-throw new IllegalStateException("The selection of the SAM failed.");
+  throw new IllegalStateException("The selection of the SAM failed.");
 }
 
 // Get the Calypso SAM SmartCard resulting of the selection.
@@ -162,21 +154,19 @@ LegacySam sam = (LegacySam) samSelectionResult.getActiveSmartCard();
 
 // Build the security settings
 symmetricCryptoSecuritySetting =
-calypsoCardApiFactory.createSymmetricCryptoSecuritySetting(
-LegacySamExtensionService.getInstance()
-.getLegacySamApiFactory()
-.createSymmetricCryptoTransactionManagerFactory(samReader, sam));
+    calypsoCardApiFactory.createSymmetricCryptoSecuritySetting(
+        LegacySamExtensionService.getInstance()
+            .getLegacySamApiFactory()
+            .createSymmetricCryptoTransactionManagerFactory(samReader, sam));
 {{< /code >}}
 
 <br>
 
 ## Operate a card transaction
-
 It is possible to perform secure or non-secure transactions depending on the need.
-A transaction is managed by a dedicated `CardTransactionManager` which is provided by the Calypso card extension
-service.
+A transaction is managed by a dedicated `CardTransactionManager` which is provided by the Calypso card extension service.
 
-The transaction manager provides high-level API to manage transactions with a Calypso card.
+The transaction manager provides high-level API to manage transactions with a Calypso card. 
 The provided `CalypsoCard` object is kept and updated dynamically all along the transaction process.
 
 The transaction takes place in several repeatable steps:
@@ -190,11 +180,11 @@ The transaction takes place in several repeatable steps:
 // Execute the transaction: the environment file is read within a secure session to ensure data
 // authenticity.
 calypsoCardApiFactory
-.createSecureRegularModeTransactionManager(cardReader, calypsoCard, symmetricCryptoSecuritySetting)
-.prepareOpenSecureSession(WriteAccessLevel.DEBIT)
-.prepareReadRecords(SFI_ENVIRONMENT_AND_HOLDER, 1, 1, 29)
-.prepareCloseSecureSession()
-.processCommands(ChannelControl.CLOSE_AFTER);
+    .createSecureRegularModeTransactionManager(cardReader, calypsoCard, symmetricCryptoSecuritySetting)
+    .prepareOpenSecureSession(WriteAccessLevel.DEBIT)
+    .prepareReadRecords(SFI_ENVIRONMENT_AND_HOLDER, 1, 1, 29)
+    .prepareCloseSecureSession()
+    .processCommands(ChannelControl.CLOSE_AFTER);
 {{< /code >}}
 
 <br>
