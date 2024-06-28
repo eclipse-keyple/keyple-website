@@ -210,6 +210,8 @@ calypsoCardApiFactory
 
 * [Java components]({{< ref "components/overview/configuration-wizard" >}})
 
+<br>
+
 ## FAQ
 
 #### How can I retrieve the two bytes of the HCE validity token?
