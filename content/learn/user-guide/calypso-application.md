@@ -225,7 +225,7 @@ import org.eclipse.keyple.core.util.BerTlvUtil;
 
 [...]
 
-    if(calypsoCard.isHce()) {
+    if (calypsoCard.isHce()) {
       byte[] hceValidityToken = extractHceValidityToken(calypsoCard.getSelectApplicationResponse());
       // Check the validity for the current
       [...]
