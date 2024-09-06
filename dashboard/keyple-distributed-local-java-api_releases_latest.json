@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-local-java-api/releases/150901989",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-local-java-api/releases/150901989/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-distributed-local-java-api/releases/150901989/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-distributed-local-java-api/releases/tag/2.1.1",
-  "id": 150901989,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-local-java-api/releases/173795347",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-local-java-api/releases/173795347/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-distributed-local-java-api/releases/173795347/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-distributed-local-java-api/releases/tag/2.2.0",
+  "id": 173795347,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWecc4I_pTl",
-  "tag_name": "2.1.1",
+  "node_id": "RE_kwDODMWecc4KW-gT",
+  "tag_name": "2.2.0",
   "target_commitish": "main",
   "name": "",
   "draft": false,
   "prerelease": false,
-  "created_at": "2024-04-12T09:46:35Z",
-  "published_at": "2024-04-12T09:59:18Z",
+  "created_at": "2024-09-06T08:16:59Z",
+  "published_at": "2024-09-06T08:48:20Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-local-java-api/tarball/2.1.1",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-local-java-api/zipball/2.1.1",
-  "body": "### Changed\r\n- Java source and target levels `1.6` -> `1.8`\r\n### Upgraded\r\n- Gradle `6.8.3` -> `7.6.4`"
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-local-java-api/tarball/2.2.0",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-local-java-api/zipball/2.2.0",
+  "body": "### Added\r\n- Added a new method `boolean isReaderContactless(String readerName)` to the `LocalServiceApi` interface. This method enables the Local lib to identify whether or not a reader is contactless, so that it can transmit this information to the Remote lib as soon as possible. This reduces the number of network exchanges."
 }
