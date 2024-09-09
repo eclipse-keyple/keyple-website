@@ -52,7 +52,7 @@ The Keyple remote transaction uses four types of messages exchanged between the 
 
 The diagram below shows the global messaging flow:
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/server-json-api-common/serverJsonApi_messagingFlow.svg" caption="Keyple Distributed JSON API - Messaging flow" numbered="true" >}}
 
 On its own initiative (e.g. following the detection of a card), the terminal sends to the server a
 message of type "[Execute Remote Service](#execute-remote-service)" to ask it to start a card transaction.
@@ -85,25 +85,26 @@ Messages are in JSON format and have the following structure:
     width: 10.5rem;
 }
 #data-structure-table-1 table th:nth-child(3) {
-    width: 8rem;
+    width: 10rem;
 }
 </style>
 
 ### API specifications
 
-- [API 2.0](#api-20)
+- [API 2.1](#api-21)
+- [API 2.0]({{< ref "server-json-apis/api-2-0.md" >}})
 - [API 1.0]({{< ref "server-json-apis/api-1-0.md" >}})
 
 ##
 ---
 
-## API 2.0
+## API 2.1
 
 {{% callout warning %}}
 This API is compliant with the following Keyple server side components:
-- [Keyple Service Library]({{< ref "components/core/keyple-service-lib" >}}) version `3.0.0+`
-- [Keyple Distributed Network Library]({{< ref "components/distributed/keyple-distributed-network-lib" >}}) version `2.3.0+`
-- [Keyple Distributed Remote Library]({{< ref "components/distributed/keyple-distributed-remote-lib" >}}) version `2.3.0+`
+- [Keyple Service Library]({{< ref "components/core/keyple-service-lib" >}}) version `3.3.0+`
+- [Keyple Distributed Network Library]({{< ref "components/distributed/keyple-distributed-network-lib" >}}) version `2.5.0+`
+- [Keyple Distributed Remote Library]({{< ref "components/distributed/keyple-distributed-remote-lib" >}}) version `2.5.0+`
 {{% /callout %}}
 
 <br>
@@ -113,7 +114,7 @@ This API is compliant with the following Keyple server side components:
 The diagram below shows the structure of the `MessageDto` object but the detailed content will be described in the
 sections associated with each message type:
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_MessageDto.svg" caption="Keyple Distributed JSON API - MessageDto" numbered="true" >}}
+{{< figure src="/media/learn/user-guide/server-json-api-2-1/serverJsonApi_classDiagram_MessageDto.svg" caption="Keyple Distributed JSON API - MessageDto" numbered="true" >}}
 
 {{% callout note %}}
 The value of the `action` property determines the message type.
@@ -136,14 +137,14 @@ containing the first action to be performed with the card or the terminal's read
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development 
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_executeRemoteService.svg" 
+{{< figure src="/media/learn/user-guide/server-json-api-2-1/serverJsonApi_classDiagram_executeRemoteService.svg" 
 caption="Keyple Distributed JSON API - \"Execute Remote Service\" class diagram" numbered="true" >}}
 
 #### MessageDto {#messagedto-execute-remote-service}
 
 |                    |                                                                                                                         |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------|
-| `apiLevel`         | **Number**<br>Constant value: **2**                                                                                     |
+| `apiLevel`         | **Number**<br>Constant value: **3**                                                                                     |
 | `sessionId`        | **String**<br>The session identifier. It shall be unique per card transaction.                                          |
 | `action`           | **String**<br>Constant value: "**EXECUTE_REMOTE_SERVICE**"                                                              |
 | `clientNodeId`     | **String**<br>The terminal identifier. It shall be unique per server.                                                   |
@@ -154,11 +155,12 @@ caption="Keyple Distributed JSON API - \"Execute Remote Service\" class diagram"
 
 #### ExecuteRemoteServiceBody
 
-|                |                                                                                                                                                                                      |
-|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `coreApiLevel` | **Number**<br>Constant value: **2**                                                                                                                                                  |
-| `serviceId`    | **String**<br>The identifier of the business service to be executed by the server. It's a naming convention between the client and the server.                                       |
-| `inputData`    | **Object (optional)**<br>An optional object containing additional data to be provided to the remote business service. Its content is a convention between the client and the server. |
+|                       |                                                                                                                                                                                      |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `coreApiLevel`        | **Number**<br>Constant value: **2**                                                                                                                                                  |
+| `serviceId`           | **String**<br>The identifier of the business service to be executed by the server. It's a naming convention between the client and the server.                                       |
+| `isReaderContactless` | **Boolean**<br>Set to **true** if the reader is in contactless mode, **false** otherwise.                                                                                            |
+| `inputData`           | **Object (optional)**<br>An optional object containing additional data to be provided to the remote business service. Its content is a convention between the client and the server. |
 
 #### Example
 
@@ -169,7 +171,7 @@ caption="Keyple Distributed JSON API - \"Execute Remote Service\" class diagram"
     "action": "EXECUTE_REMOTE_SERVICE",
     "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
     "localReaderName": "READER_1",
-    "body": "{\"coreApiLevel\":2,\"serviceId\":\"AUTHENTICATE_CARD\",\"inputData\":{\"userId\":\"7b13592c-0d21-429b-80d2-3dc565338ea3\"}}"
+    "body": "{\"coreApiLevel\":2,\"serviceId\":\"AUTHENTICATE_CARD\",\"isReaderContactless\":true,\"inputData\":{\"userId\":\"7b13592c-0d21-429b-80d2-3dc565338ea3\"}}"
 }
 {{< /code >}}
 
@@ -180,13 +182,12 @@ caption="Keyple Distributed JSON API - \"Execute Remote Service\" class diagram"
 The purpose of this message, received from the server, is to ask the terminal to perform a specific service with the
 card or the terminal's reader.
 
-There are four types of service potentially requested by the server:
+There are three types of services potentially requested by the server:
 
 <div id="command-table-1">
 
 | Service                               | Description                                                                                                        |
 |---------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| [Reader Type](#reader-type-cmd)       | Indicates if the reader is in contact or contactless mode.                                                         |
 | [Card Presence](#card-presence-cmd)   | Indicates if a card is present in the reader.                                                                      |
 | [Card Selection](#card-selection-cmd) | Establish a logical communication channel with a card and, if required, perform additional APDU exchanges with it. |
 | [Card Commands](#card-commands-cmd)   | Perform APDU exchanges with the selected card.                                                                     |
@@ -204,7 +205,7 @@ Following the reception of this message, the terminal will send to the server a 
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development 
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_cmd.svg" 
+{{< figure src="/media/learn/user-guide/server-json-api-2-1/serverJsonApi_classDiagram_cmd.svg" 
 caption="Keyple Distributed JSON API - \"Command\" class diagram" numbered="true" >}}
 
 {{% callout note %}}
@@ -214,58 +215,6 @@ The value of the `service` property determines the service to be performed.
 {{% callout warning %}}
 The `MessageDto` is contained in a single-element array!
 {{% /callout %}}
-
-<br>
-
-### Reader Type {#reader-type-cmd}
-
-This service allows the server to know if the reader is in contact or contactless mode.
-
-There are no parameters for this service.
-
-The terminal must then send the response to the server in a message of type
-"[Reader Type (Response)](#reader-type-resp)".
-
-{{% callout warning %}}
-The `MessageDto` is contained in a single-element array!
-{{% /callout %}}
-
-#### MessageDto {#messagedto-reader-type-cmd}
-
-|                    |                                                                                                                   |
-|--------------------|-------------------------------------------------------------------------------------------------------------------|
-| `apiLevel`         | **Number**<br>Constant value: **2**                                                                               |
-| `sessionId`        | **String**<br>The current transaction identifier as provided by the initial "**Execute Remote Service**" message. |
-| `action`           | **String**<br>Constant value: "**CMD**"                                                                           |
-| `clientNodeId`     | **String**<br>The terminal identifier as provided by the initial "**Execute Remote Service**" message.            |
-| `serverNodeId`     | **String**<br>The server identifier.                                                                              |
-| `localReaderName`  | **String**<br>The identifier of the local reader as provided by the initial "**Execute Remote Service**" message. |
-| `remoteReaderName` | **String**<br>The identifier of the virtual remote reader linked to the local reader.                             |
-| `body`             | **String**<br>A JSON string containing a [IsContactlessCmdBody](#iscontactlesscmdbody) JSON object.               |
-
-##### IsContactlessCmdBody
-
-|                |                                                    |
-|----------------|----------------------------------------------------|
-| `coreApiLevel` | **Number**<br>Constant value: **2**                |
-| `service`      | **String**<br>Constant value: "**IS_CONTACTLESS**" |
-
-##### Example
-
-{{< code lang="json" >}}
-[
-    {
-        "apiLevel": 2,
-        "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9",
-        "action": "CMD",
-        "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
-        "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
-        "localReaderName": "READER_1",
-        "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
-        "body": "{\"coreApiLevel\":2,\"service\":\"IS_CONTACTLESS\"}"
-    }
-]
-{{< /code >}}
 
 <br>
 
@@ -286,7 +235,7 @@ The `MessageDto` is contained in a single-element array!
 
 |                    |                                                                                                                   |
 |--------------------|-------------------------------------------------------------------------------------------------------------------|
-| `apiLevel`         | **Number**<br>Constant value: **2**                                                                               |
+| `apiLevel`         | **Number**<br>Constant value: **3**                                                                               |
 | `sessionId`        | **String**<br>The current transaction identifier as provided by the initial "**Execute Remote Service**" message. |
 | `action`           | **String**<br>Constant value: "**CMD**"                                                                           |
 | `clientNodeId`     | **String**<br>The terminal identifier as provided by the initial "**Execute Remote Service**" message.            |
@@ -375,7 +324,7 @@ The `MessageDto` is contained in a single-element array!
 
 |                    |                                                                                                                                     |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `apiLevel`         | **Number**<br>Constant value: **2**                                                                                                 |
+| `apiLevel`         | **Number**<br>Constant value: **3**                                                                                                 |
 | `sessionId`        | **String**<br>The current transaction identifier as provided by the initial "**Execute Remote Service**" message.                   |
 | `action`           | **String**<br>Constant value: "**CMD**"                                                                                             |
 | `clientNodeId`     | **String**<br>The terminal identifier as provided by the initial "**Execute Remote Service**" message.                              |
@@ -470,7 +419,7 @@ The `MessageDto` is contained in a single-element array!
 
 |                    |                                                                                                                   |
 |--------------------|-------------------------------------------------------------------------------------------------------------------|
-| `apiLevel`         | **Number**<br>Constant value: **2**                                                                               |
+| `apiLevel`         | **Number**<br>Constant value: **3**                                                                               |
 | `sessionId`        | **String**<br>The current transaction identifier as provided by the initial "**Execute Remote Service**" message. |
 | `action`           | **String**<br>Constant value: "**CMD**"                                                                           |
 | `clientNodeId`     | **String**<br>The terminal identifier as provided by the initial "**Execute Remote Service**" message.            |
@@ -540,58 +489,7 @@ Following the transmission of this message, the server will return a message of 
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - \"Response\" class diagram" numbered="true" >}}
-
-<br>
-
-### Reader Type {#reader-type-resp}
-
-This message, sent by the terminal to the server in response to "[Reader Type (Command)](#reader-type-cmd)", is 
-intended to indicate to the server if the reader is contactless.
-
-#### MessageDto {#messagedto-reader-type-resp}
-
-|                    |                                                                                                                                     |
-|--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `apiLevel`         | **Number**<br>Constant value: **2**                                                                                                 |
-| `sessionId`        | **String**<br>The current transaction identifier as provided by the initial "**Execute Remote Service**" message.                   |
-| `action`           | **String**<br>Constant value: "**RESP**"                                                                                            |
-| `clientNodeId`     | **String**<br>The terminal identifier as provided by the initial "**Execute Remote Service**" message.                              |
-| `serverNodeId`     | **String**<br>The server identifier as provided by the last "**Command**" message.                                                  |
-| `localReaderName`  | **String**<br>The identifier of the local reader as provided by the initial "**Execute Remote Service**" message.                   |
-| `remoteReaderName` | **String**<br>The identifier of the virtual remote reader linked to the local reader as provided by the last "**Command**" message. |
-| `body`             | **String**<br>A JSON string containing a [IsContactlessRespBody](#iscontactlessrespbody) JSON object.                               |
-
-##### IsContactlessRespBody
-
-|                |                                                                                                                        |
-|----------------|------------------------------------------------------------------------------------------------------------------------|
-| `coreApiLevel` | **Number**<br>Constant value: **2**                                                                                    |
-| `service`      | **String**<br>Constant value: "**IS_CONTACTLESS**"                                                                     |
-| `result`       | **Boolean (optional)**<br>Set to **true** if the reader is contactless, **false** otherwise (absent in case of error). |
-| `error`        | [Error](#reader-type-resp-error) **(optional)**<br>The error description (absent in case of success).                  |
-
-##### Error {#reader-type-resp-error}
-
-|           |                                      |
-|-----------|--------------------------------------|
-| `code`    | **String**<br>Free value.            |
-| `message` | **String**<br>The error description. |
-
-#### Example
-
-{{< code lang="json" >}}
-{
-    "apiLevel": 2,
-    "sessionId": "b1b8ed38-bae6-4b2e-a747-67d233652ea9",
-    "action": "RESP",
-    "clientNodeId": "ca21fd3c-a055-4be5-aad1-c61af3528371",
-    "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
-    "localReaderName": "READER_1",
-    "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
-    "body": "{\"coreApiLevel\":2,\"service\":\"IS_CONTACTLESS\",\"result\":true}"
-}
-{{< /code >}}
+{{< figure src="/media/learn/user-guide/server-json-api-2-1/serverJsonApi_classDiagram_resp.svg" caption="Keyple Distributed JSON API - \"Response\" class diagram" numbered="true" >}}
 
 <br>
 
@@ -604,7 +502,7 @@ is intended to indicate to the server if a card is present.
 
 |                    |                                                                                                                                     |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `apiLevel`         | **Number**<br>Constant value: **2**                                                                                                 |
+| `apiLevel`         | **Number**<br>Constant value: **3**                                                                                                 |
 | `sessionId`        | **String**<br>The current transaction identifier as provided by the initial "**Execute Remote Service**" message.                   |
 | `action`           | **String**<br>The value is "**RESP**".                                                                                              |
 | `clientNodeId`     | **String**<br>The terminal identifier as provided by the initial "**Execute Remote Service**" message.                              |
@@ -656,7 +554,7 @@ is intended to transmit to the server the result of the execution of the selecti
 
 |                    |                                                                                                                                       |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| `apiLevel`         | **Number**<br>Constant value: **2**                                                                                                   |
+| `apiLevel`         | **Number**<br>Constant value: **3**                                                                                                   |
 | `sessionId`        | **String**<br>The current transaction identifier as provided by the initial "**Execute Remote Service**" message.                     |
 | `action`           | **String**<br>Constant value: "**RESP**"                                                                                              |
 | `clientNodeId`     | **String**<br>The terminal identifier as provided by the initial "**Execute Remote Service**" message.                                |
@@ -731,7 +629,7 @@ is intended to transmit to the server the result of the execution of a card requ
 
 |                    |                                                                                                                                     |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `apiLevel`         | **Number**<br>Constant value: **2**                                                                                                 |
+| `apiLevel`         | **Number**<br>Constant value: **3**                                                                                                 |
 | `sessionId`        | **String**<br>The current transaction identifier as provided by the initial "**Execute Remote Service**" message.                   |
 | `action`           | **String**<br>Constant value: "**RESP**"                                                                                            |
 | `clientNodeId`     | **String**<br>The terminal identifier as provided by the initial "**Execute Remote Service**" message.                              |
@@ -795,7 +693,7 @@ completed and, if necessary, to transmit the result. No follow-up is expected fr
 The following UML class diagram illustrates the structure of this object and may help to implement it in the development
 language of the target terminal.
 
-{{< figure src="/media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_endRemoteService.svg" 
+{{< figure src="/media/learn/user-guide/server-json-api-2-1/serverJsonApi_classDiagram_endRemoteService.svg" 
 caption="Keyple Distributed JSON API - \"End Remote Service\" class diagram" numbered="true" >}}
 
 {{% callout warning %}}
@@ -806,7 +704,7 @@ The `MessageDto` is contained in a single-element array!
 
 |                    |                                                                                                                   |
 |--------------------|-------------------------------------------------------------------------------------------------------------------|
-| `apiLevel`         | **Number**<br>Constant value: **2**                                                                               |
+| `apiLevel`         | **Number**<br>Constant value: **3**                                                                               |
 | `sessionId`        | **String**<br>The current transaction identifier as provided by the initial "**Execute Remote Service**" message. |
 | `action`           | **String**<br>Constant value: "**END_REMOTE_SERVICE**"                                                            |
 | `clientNodeId`     | **String**<br>The terminal identifier as provided by the initial "**Execute Remote Service**" message.            |

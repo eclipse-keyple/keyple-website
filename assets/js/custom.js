@@ -76,6 +76,19 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.SERVICE_RESOURCE_LIB, "3.1.0"),
+    new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "0.8.0"),
+    new Release(ComponentName.GENERIC_LIB, "3.1.0")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.DISTRIBUTED_LOCAL_API, "2.2.+"),
+    new Release(ComponentName.DISTRIBUTED_REMOTE_API, "3.1.+"),
+    new Release(ComponentName.DISTRIBUTED_NETWORK_LIB, "2.5.0"),
+    new Release(ComponentName.DISTRIBUTED_LOCAL_LIB, "2.5.0"),
+    new Release(ComponentName.DISTRIBUTED_REMOTE_LIB, "2.5.0"),
+    new Release(ComponentName.SERVICE_LIB, "3.3.0")
+));
+releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "0.7.1")
 ));
 releaseTrains.push(new ReleaseTrain(
