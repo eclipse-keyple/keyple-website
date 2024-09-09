@@ -105,6 +105,7 @@
     "author_association": "CONTRIBUTOR",
     "active_lock_reason": null,
     "body": "Currently, the org.eclipse.keyple.core.plugin.spi.reader.ReaderSpi interface allows APDU commands to be transmitted uniquely one-by-one to a local reader.\r\nFor a reader solution based on a communication interface with high latency (e.g. Bluetooth), this limitation could have a significant impact on transaction performance.\r\n\r\n→ **enable transmission of APDU commands group**\r\nin this case, it might be necessary to add a bit of intelligence to the plugin's processing: for example, in the case of an unexpected status on an APDU response, interrupt transmission of the remaining APDU commands",
+    "closed_by": null,
     "reactions": {
       "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-java-api/issues/14/reactions",
       "total_count": 0,
