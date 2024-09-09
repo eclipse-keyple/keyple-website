@@ -962,7 +962,7 @@ width: 10.5rem;
 &lt;p>The diagram below shows the global messaging flow:&lt;/p>
 &lt;figure id="figure-keyple-distributed-json-api---messaging-flow">
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_messagingFlow.svg" alt="Keyple Distributed JSON API - Messaging flow" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-common/serverJsonApi_messagingFlow.svg" alt="Keyple Distributed JSON API - Messaging flow" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
 Keyple Distributed JSON API - Messaging flow
 &lt;/figcaption>&lt;/figure>
@@ -1020,24 +1020,25 @@ of type &amp;ldquo;&lt;a href="#end-remote-service">End Remote Service&lt;/a>&am
 width: 10.5rem;
 }
 #data-structure-table-1 table th:nth-child(3) {
-width: 8rem;
+width: 10rem;
 }
 &lt;/style>
 &lt;h3 id="api-specifications">API specifications&lt;/h3>
 &lt;ul>
-&lt;li>&lt;a href="#api-20">API 2.0&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#api-21">API 2.1&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/server-json-apis/api-2-0/">API 2.0&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://keyple.org/server-json-apis/api-1-0/">API 1.0&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="heading">&lt;/h2>
 &lt;hr>
-&lt;h2 id="api-20">API 2.0&lt;/h2>
+&lt;h2 id="api-21">API 2.1&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
 &lt;p>This API is compliant with the following Keyple server side components:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/" target="_blank" rel="noopener">Keyple Service Library&lt;/a> version &lt;code>3.0.0+&lt;/code>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-network-lib/" target="_blank" rel="noopener">Keyple Distributed Network Library&lt;/a> version &lt;code>2.3.0+&lt;/code>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-remote-lib/" target="_blank" rel="noopener">Keyple Distributed Remote Library&lt;/a> version &lt;code>2.3.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/" target="_blank" rel="noopener">Keyple Service Library&lt;/a> version &lt;code>3.3.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-network-lib/" target="_blank" rel="noopener">Keyple Distributed Network Library&lt;/a> version &lt;code>2.5.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-remote-lib/" target="_blank" rel="noopener">Keyple Distributed Remote Library&lt;/a> version &lt;code>2.5.0+&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;/div>
 &lt;/div>
@@ -1047,7 +1048,7 @@ width: 8rem;
 sections associated with each message type:&lt;/p>
 &lt;figure id="figure-keyple-distributed-json-api---messagedto">
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_MessageDto.svg" alt="Keyple Distributed JSON API - MessageDto" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-2-1/serverJsonApi_classDiagram_MessageDto.svg" alt="Keyple Distributed JSON API - MessageDto" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
 Keyple Distributed JSON API - MessageDto
 &lt;/figcaption>&lt;/figure>
@@ -1069,7 +1070,7 @@ containing the first action to be performed with the card or the terminal&amp;rs
 language of the target terminal.&lt;/p>
 &lt;figure id="figure-keyple-distributed-json-api---execute-remote-service-class-diagram">
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_executeRemoteService.svg" alt="Keyple Distributed JSON API - &amp;#34;Execute Remote Service&amp;#34; class diagram" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-2-1/serverJsonApi_classDiagram_executeRemoteService.svg" alt="Keyple Distributed JSON API - &amp;#34;Execute Remote Service&amp;#34; class diagram" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
 Keyple Distributed JSON API - &amp;ldquo;Execute Remote Service&amp;rdquo; class diagram
 &lt;/figcaption>&lt;/figure>
@@ -1084,7 +1085,7 @@ Keyple Distributed JSON API - &amp;ldquo;Execute Remote Service&amp;rdquo; class
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>apiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>3&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
@@ -1134,6 +1135,10 @@ Keyple Distributed JSON API - &amp;ldquo;Execute Remote Service&amp;rdquo; class
 &lt;td>&lt;strong>String&lt;/strong>&lt;br>The identifier of the business service to be executed by the server. It&amp;rsquo;s a naming convention between the client and the server.&lt;/td>
 &lt;/tr>
 &lt;tr>
+&lt;td>&lt;code>isReaderContactless&lt;/code>&lt;/td>
+&lt;td>&lt;strong>Boolean&lt;/strong>&lt;br>Set to &lt;strong>true&lt;/strong> if the reader is in contactless mode, &lt;strong>false&lt;/strong> otherwise.&lt;/td>
+&lt;/tr>
+&lt;tr>
 &lt;td>&lt;code>inputData&lt;/code>&lt;/td>
 &lt;td>&lt;strong>Object (optional)&lt;/strong>&lt;br>An optional object containing additional data to be provided to the remote business service. Its content is a convention between the client and the server.&lt;/td>
 &lt;/tr>
@@ -1147,7 +1152,7 @@ Keyple Distributed JSON API - &amp;ldquo;Execute Remote Service&amp;rdquo; class
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;EXECUTE_REMOTE_SERVICE&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;coreApiLevel\&amp;#34;:2,\&amp;#34;serviceId\&amp;#34;:\&amp;#34;AUTHENTICATE_CARD\&amp;#34;,\&amp;#34;inputData\&amp;#34;:{\&amp;#34;userId\&amp;#34;:\&amp;#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&amp;#34;}}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;coreApiLevel\&amp;#34;:2,\&amp;#34;serviceId\&amp;#34;:\&amp;#34;AUTHENTICATE_CARD\&amp;#34;,\&amp;#34;isReaderContactless\&amp;#34;:true,\&amp;#34;inputData\&amp;#34;:{\&amp;#34;userId\&amp;#34;:\&amp;#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&amp;#34;}}&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
@@ -1155,7 +1160,7 @@ Keyple Distributed JSON API - &amp;ldquo;Execute Remote Service&amp;rdquo; class
 &lt;h2 id="command">Command&lt;/h2>
 &lt;p>The purpose of this message, received from the server, is to ask the terminal to perform a specific service with the
 card or the terminal&amp;rsquo;s reader.&lt;/p>
-&lt;p>There are four types of service potentially requested by the server:&lt;/p>
+&lt;p>There are three types of services potentially requested by the server:&lt;/p>
 &lt;div id="command-table-1">
 &lt;table>
 &lt;thead>
@@ -1165,10 +1170,6 @@ card or the terminal&amp;rsquo;s reader.&lt;/p>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
-&lt;tr>
-&lt;td>&lt;a href="#reader-type-cmd">Reader Type&lt;/a>&lt;/td>
-&lt;td>Indicates if the reader is in contact or contactless mode.&lt;/td>
-&lt;/tr>
 &lt;tr>
 &lt;td>&lt;a href="#card-presence-cmd">Card Presence&lt;/a>&lt;/td>
 &lt;td>Indicates if a card is present in the reader.&lt;/td>
@@ -1195,7 +1196,7 @@ width: 8rem;
 language of the target terminal.&lt;/p>
 &lt;figure id="figure-keyple-distributed-json-api---command-class-diagram">
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_cmd.svg" alt="Keyple Distributed JSON API - &amp;#34;Command&amp;#34; class diagram" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-2-1/serverJsonApi_classDiagram_cmd.svg" alt="Keyple Distributed JSON API - &amp;#34;Command&amp;#34; class diagram" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
 Keyple Distributed JSON API - &amp;ldquo;Command&amp;rdquo; class diagram
 &lt;/figcaption>&lt;/figure>
@@ -1207,95 +1208,6 @@ The value of the &lt;code>service&lt;/code> property determines the service to b
 &lt;div class="alert alert-warning">
 &lt;div>
 The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
-&lt;/div>
-&lt;/div>
-&lt;br>
-&lt;h3 id="reader-type-cmd">Reader Type&lt;/h3>
-&lt;p>This service allows the server to know if the reader is in contact or contactless mode.&lt;/p>
-&lt;p>There are no parameters for this service.&lt;/p>
-&lt;p>The terminal must then send the response to the server in a message of type
-&amp;ldquo;&lt;a href="#reader-type-resp">Reader Type (Response)&lt;/a>&amp;rdquo;.&lt;/p>
-&lt;div class="alert alert-warning">
-&lt;div>
-The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
-&lt;/div>
-&lt;/div>
-&lt;h4 id="messagedto-reader-type-cmd">MessageDto&lt;/h4>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;code>apiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>The current transaction identifier as provided by the initial &amp;ldquo;&lt;strong>Execute Remote Service&lt;/strong>&amp;rdquo; message.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>action&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>CMD&lt;/strong>&amp;rdquo;&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>The terminal identifier as provided by the initial &amp;ldquo;&lt;strong>Execute Remote Service&lt;/strong>&amp;rdquo; message.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>serverNodeId&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>The server identifier.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>localReaderName&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>The identifier of the local reader as provided by the initial &amp;ldquo;&lt;strong>Execute Remote Service&lt;/strong>&amp;rdquo; message.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>remoteReaderName&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>The identifier of the virtual remote reader linked to the local reader.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>body&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#iscontactlesscmdbody">IsContactlessCmdBody&lt;/a> JSON object.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h5 id="iscontactlesscmdbody">IsContactlessCmdBody&lt;/h5>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;code>coreApiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>service&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>IS_CONTACTLESS&lt;/strong>&amp;rdquo;&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h5 id="example-1">Example&lt;/h5>
-&lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apiLevel&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;CMD&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;coreApiLevel\&amp;#34;:2,\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CONTACTLESS\&amp;#34;}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;br>
@@ -1320,7 +1232,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>apiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>3&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
@@ -1371,7 +1283,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h5 id="example-2">Example&lt;/h5>
+&lt;h5 id="example-1">Example&lt;/h5>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
@@ -1441,7 +1353,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>apiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>3&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
@@ -1615,7 +1527,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h5 id="example-3">Example&lt;/h5>
+&lt;h5 id="example-2">Example&lt;/h5>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
@@ -1654,7 +1566,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>apiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>3&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
@@ -1770,7 +1682,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h5 id="example-4">Example&lt;/h5>
+&lt;h5 id="example-3">Example&lt;/h5>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
@@ -1797,117 +1709,10 @@ service previously performed on the card or the terminal&amp;rsquo;s reader.&lt;
 language of the target terminal.&lt;/p>
 &lt;figure id="figure-keyple-distributed-json-api---response-class-diagram">
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_resp.svg" alt="Keyple Distributed JSON API - &amp;#34;Response&amp;#34; class diagram" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-2-1/serverJsonApi_classDiagram_resp.svg" alt="Keyple Distributed JSON API - &amp;#34;Response&amp;#34; class diagram" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
 Keyple Distributed JSON API - &amp;ldquo;Response&amp;rdquo; class diagram
 &lt;/figcaption>&lt;/figure>
-&lt;br>
-&lt;h3 id="reader-type-resp">Reader Type&lt;/h3>
-&lt;p>This message, sent by the terminal to the server in response to &amp;ldquo;&lt;a href="#reader-type-cmd">Reader Type (Command)&lt;/a>&amp;rdquo;, is
-intended to indicate to the server if the reader is contactless.&lt;/p>
-&lt;h4 id="messagedto-reader-type-resp">MessageDto&lt;/h4>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;code>apiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>The current transaction identifier as provided by the initial &amp;ldquo;&lt;strong>Execute Remote Service&lt;/strong>&amp;rdquo; message.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>action&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>RESP&lt;/strong>&amp;rdquo;&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>clientNodeId&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>The terminal identifier as provided by the initial &amp;ldquo;&lt;strong>Execute Remote Service&lt;/strong>&amp;rdquo; message.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>serverNodeId&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>The server identifier as provided by the last &amp;ldquo;&lt;strong>Command&lt;/strong>&amp;rdquo; message.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>localReaderName&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>The identifier of the local reader as provided by the initial &amp;ldquo;&lt;strong>Execute Remote Service&lt;/strong>&amp;rdquo; message.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>remoteReaderName&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>The identifier of the virtual remote reader linked to the local reader as provided by the last &amp;ldquo;&lt;strong>Command&lt;/strong>&amp;rdquo; message.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>body&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>A JSON string containing a &lt;a href="#iscontactlessrespbody">IsContactlessRespBody&lt;/a> JSON object.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h5 id="iscontactlessrespbody">IsContactlessRespBody&lt;/h5>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;code>coreApiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>service&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>IS_CONTACTLESS&lt;/strong>&amp;rdquo;&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>result&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Boolean (optional)&lt;/strong>&lt;br>Set to &lt;strong>true&lt;/strong> if the reader is contactless, &lt;strong>false&lt;/strong> otherwise (absent in case of error).&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>error&lt;/code>&lt;/td>
-&lt;td>&lt;a href="#reader-type-resp-error">Error&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>The error description (absent in case of success).&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h5 id="reader-type-resp-error">Error&lt;/h5>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;code>code&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>Free value.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>message&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String&lt;/strong>&lt;br>The error description.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h4 id="example-5">Example&lt;/h4>
-&lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apiLevel&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sessionId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;b1b8ed38-bae6-4b2e-a747-67d233652ea9&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;RESP&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;coreApiLevel\&amp;#34;:2,\&amp;#34;service\&amp;#34;:\&amp;#34;IS_CONTACTLESS\&amp;#34;,\&amp;#34;result\&amp;#34;:true}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
-&lt;/div>
-&lt;/div>
 &lt;br>
 &lt;h3 id="card-presence-resp">Card Presence&lt;/h3>
 &lt;p>This message, sent by the terminal to the server in response to &amp;ldquo;&lt;a href="#card-presence-cmd">Card Presence (Command)&lt;/a>&amp;rdquo;,
@@ -1923,7 +1728,7 @@ is intended to indicate to the server if a card is present.&lt;/p>
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>apiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>3&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
@@ -2001,7 +1806,7 @@ is intended to indicate to the server if a card is present.&lt;/p>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h4 id="example-6">Example&lt;/h4>
+&lt;h4 id="example-4">Example&lt;/h4>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apiLevel&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>
@@ -2031,7 +1836,7 @@ is intended to transmit to the server the result of the execution of the selecti
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>apiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>3&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
@@ -2174,7 +1979,7 @@ is intended to transmit to the server the result of the execution of the selecti
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h5 id="example-7">Example&lt;/h5>
+&lt;h5 id="example-5">Example&lt;/h5>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apiLevel&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>
@@ -2204,7 +2009,7 @@ is intended to transmit to the server the result of the execution of a card requ
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>apiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>3&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
@@ -2320,7 +2125,7 @@ is intended to transmit to the server the result of the execution of a card requ
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h5 id="example-8">Example&lt;/h5>
+&lt;h5 id="example-6">Example&lt;/h5>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apiLevel&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span>
@@ -2342,7 +2147,7 @@ completed and, if necessary, to transmit the result. No follow-up is expected fr
 language of the target terminal.&lt;/p>
 &lt;figure id="figure-keyple-distributed-json-api---end-remote-service-class-diagram">
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-2-0/serverJsonApi_classDiagram_endRemoteService.svg" alt="Keyple Distributed JSON API - &amp;#34;End Remote Service&amp;#34; class diagram" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/server-json-api-2-1/serverJsonApi_classDiagram_endRemoteService.svg" alt="Keyple Distributed JSON API - &amp;#34;End Remote Service&amp;#34; class diagram" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption data-pre="Figure&amp;nbsp;" data-post=":&amp;nbsp;" class="numbered">
 Keyple Distributed JSON API - &amp;ldquo;End Remote Service&amp;rdquo; class diagram
 &lt;/figcaption>&lt;/figure>
@@ -2362,7 +2167,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>apiLevel&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>2&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>Number&lt;/strong>&lt;br>Constant value: &lt;strong>3&lt;/strong>&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>sessionId&lt;/code>&lt;/td>
@@ -2413,7 +2218,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h4 id="example-9">Example&lt;/h4>
+&lt;h4 id="example-7">Example&lt;/h4>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
