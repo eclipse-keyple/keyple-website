@@ -324,10 +324,11 @@ The `MessageDto` is contained in a single-element array!
 
 ##### CardRequest
 
-|                                    |                                                                                                                                                                                                                        |
-|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `apduRequests`                     | [ApduRequest](#apdurequest) **[ ]**<br>A non-empty array of APDU requests.                                                                                                                                             |
-| `isStatusCodesVerificationEnabled` | **Boolean**<br>Set to **true** if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, **false** otherwise. |
+|                                    |                                                                                                                                                                                                                                               |
+|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `apduRequests`                     | [ApduRequest](#apdurequest) **[ ]**<br>A non-empty array of APDU requests.                                                                                                                                                                    |
+| `stopOnUnsuccessfulStatusWord`     | **Boolean (optional)**<br>If present, set to **true** if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, **false** otherwise. |
+| `isStatusCodesVerificationEnabled` | **Boolean (optional)**<br>If present, set to **true** if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, **false** otherwise. |
 
 ##### ApduRequest
 
@@ -397,10 +398,11 @@ The `MessageDto` is contained in a single-element array!
 
 ##### CardRequest
 
-|                                    |                                                                                                                                                                                                                        |
-|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `apduRequests`                     | [ApduRequest](#apdurequest-1) **[ ]**<br>A non-empty array of APDU requests.                                                                                                                                           |
-| `isStatusCodesVerificationEnabled` | **Boolean**<br>Set to **true** if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, **false** otherwise. |
+|                                    |                                                                                                                                                                                                                                               |
+|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `apduRequests`                     | [ApduRequest](#apdurequest-1) **[ ]**<br>A non-empty array of APDU requests.                                                                                                                                                                  |
+| `stopOnUnsuccessfulStatusWord`     | **Boolean (optional)**<br>If present, set to **true** if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, **false** otherwise. |
+| `isStatusCodesVerificationEnabled` | **Boolean (optional)**<br>If present, set to **true** if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, **false** otherwise. |
 
 ##### ApduRequest
 

@@ -117,7 +117,8 @@ enum FileControlInformation {
 }
 class CardRequest {
     **apduRequests** : ApduRequest[]
-    **stopOnUnsuccessfulStatusWord** : Boolean
+    **stopOnUnsuccessfulStatusWord** : Boolean?
+    **isStatusCodesVerificationEnabled** : Boolean?
 }
 class ApduRequest {
     **apdu** : String

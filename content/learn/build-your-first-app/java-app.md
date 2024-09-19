@@ -71,9 +71,9 @@ dependencies {
     // Import Keyple components
     implementation 'org.eclipse.keyple:keyple-common-java-api:2.0.1'
     implementation 'org.eclipse.keyple:keyple-util-java-lib:2.4.0'
-    implementation 'org.eclipse.keyple:keyple-service-java-lib:3.3.0'
-    implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.2'
-    implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.2.2'
+    implementation 'org.eclipse.keyple:keyple-service-java-lib:3.3.1'
+    implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.3'
+    implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.2.3'
 }
 {{< /code >}}
 
