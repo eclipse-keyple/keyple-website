@@ -1043,6 +1043,11 @@ width: 10rem;
 &lt;/div>
 &lt;/div>
 &lt;br>
+&lt;h2 id="changelog">Changelog&lt;/h2>
+&lt;p>This minor version optimizes transaction time by reducing the number of network exchanges.
+A new field has been added to the &amp;ldquo;&lt;a href="#execute-remote-service">Execute Remote Service&lt;/a>&amp;rdquo; message sent to the server,
+and the &amp;ldquo;Reader Type&amp;rdquo; command received from the server has been removed.&lt;/p>
+&lt;br>
 &lt;h2 id="messagedto">MessageDto&lt;/h2>
 &lt;p>The diagram below shows the structure of the &lt;code>MessageDto&lt;/code> object but the detailed content will be described in the
 sections associated with each message type:&lt;/p>
@@ -1499,7 +1504,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;td>&lt;a href="#apdurequest">ApduRequest&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;br>A non-empty array of APDU requests.&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;code>isStatusCodesVerificationEnabled&lt;/code>&lt;/td>
+&lt;td>&lt;code>stopOnUnsuccessfulStatusWord&lt;/code>&lt;/td>
 &lt;td>&lt;strong>Boolean&lt;/strong>&lt;br>Set to &lt;strong>true&lt;/strong> if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, &lt;strong>false&lt;/strong> otherwise.&lt;/td>
 &lt;/tr>
 &lt;/tbody>
@@ -1654,7 +1659,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;td>&lt;a href="#apdurequest-1">ApduRequest&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;br>A non-empty array of APDU requests.&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;code>isStatusCodesVerificationEnabled&lt;/code>&lt;/td>
+&lt;td>&lt;code>stopOnUnsuccessfulStatusWord&lt;/code>&lt;/td>
 &lt;td>&lt;strong>Boolean&lt;/strong>&lt;br>Set to &lt;strong>true&lt;/strong> if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, &lt;strong>false&lt;/strong> otherwise.&lt;/td>
 &lt;/tr>
 &lt;/tbody>
@@ -1693,7 +1698,7 @@ The &lt;code>MessageDto&lt;/code> is contained in a single-element array!
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;serverNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;4132f1ef-4386-49b0-acb6-cc16035c107a&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;remoteReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;a65f4920-7e96-4082-986a-b58d85978c07&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;coreApiLevel\&amp;#34;:2,\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_REQUEST\&amp;#34;,\&amp;#34;parameters\&amp;#34;:{\&amp;#34;cardRequest\&amp;#34;:{\&amp;#34;apduRequests\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00B2014400\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&amp;#34;}],\&amp;#34;isStatusCodesVerificationEnabled\&amp;#34;:true},\&amp;#34;channelControl\&amp;#34;:\&amp;#34;CLOSE_AFTER\&amp;#34;}}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;coreApiLevel\&amp;#34;:2,\&amp;#34;service\&amp;#34;:\&amp;#34;TRANSMIT_CARD_REQUEST\&amp;#34;,\&amp;#34;parameters\&amp;#34;:{\&amp;#34;cardRequest\&amp;#34;:{\&amp;#34;apduRequests\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00B2014400\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\&amp;#34;}],\&amp;#34;stopOnUnsuccessfulStatusWord\&amp;#34;:true},\&amp;#34;channelControl\&amp;#34;:\&amp;#34;CLOSE_AFTER\&amp;#34;}}&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
