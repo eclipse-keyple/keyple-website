@@ -17,6 +17,12 @@ This API is compliant with the following Keyple server side components:
 
 <br>
 
+## Changelog
+
+This major release follows the restructuring of the `CardSelector` object.
+
+<br>
+
 ## MessageDto
 
 The diagram below shows the structure of the `MessageDto` object but the detailed content will be described in the
@@ -329,10 +335,10 @@ The `MessageDto` is contained in a single-element array!
 
 ##### CardRequest
 
-|                                    |                                                                                                                                                                                                                        |
-|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `apduRequests`                     | [ApduRequest](#apdurequest) **[ ]**<br>A non-empty array of APDU requests.                                                                                                                                             |
-| `isStatusCodesVerificationEnabled` | **Boolean**<br>Set to **true** if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, **false** otherwise. |
+|                                |                                                                                                                                                                                                                        |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `apduRequests`                 | [ApduRequest](#apdurequest) **[ ]**<br>A non-empty array of APDU requests.                                                                                                                                             |
+| `stopOnUnsuccessfulStatusWord` | **Boolean**<br>Set to **true** if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, **false** otherwise. |
 
 ##### ApduRequest
 
@@ -405,10 +411,10 @@ The `MessageDto` is contained in a single-element array!
 
 ##### CardRequest
 
-|                                    |                                                                                                                                                                                                                        |
-|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `apduRequests`                     | [ApduRequest](#apdurequest-1) **[ ]**<br>A non-empty array of APDU requests.                                                                                                                                           |
-| `isStatusCodesVerificationEnabled` | **Boolean**<br>Set to **true** if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, **false** otherwise. |
+|                                |                                                                                                                                                                                                                        |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `apduRequests`                 | [ApduRequest](#apdurequest-1) **[ ]**<br>A non-empty array of APDU requests.                                                                                                                                           |
+| `stopOnUnsuccessfulStatusWord` | **Boolean**<br>Set to **true** if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, **false** otherwise. |
 
 ##### ApduRequest
 
@@ -430,7 +436,7 @@ The `MessageDto` is contained in a single-element array!
         "serverNodeId": "4132f1ef-4386-49b0-acb6-cc16035c107a",
         "localReaderName": "READER_1",
         "remoteReaderName": "a65f4920-7e96-4082-986a-b58d85978c07",
-        "body": "{\"coreApiLevel\":2,\"service\":\"TRANSMIT_CARD_REQUEST\",\"parameters\":{\"cardRequest\":{\"apduRequests\":[{\"apdu\":\"00B2014400\",\"successfulStatusWords\":[\"9000\"],\"info\":\"Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\"}],\"isStatusCodesVerificationEnabled\":true},\"channelControl\":\"CLOSE_AFTER\"}}"
+        "body": "{\"coreApiLevel\":2,\"service\":\"TRANSMIT_CARD_REQUEST\",\"parameters\":{\"cardRequest\":{\"apduRequests\":[{\"apdu\":\"00B2014400\",\"successfulStatusWords\":[\"9000\"],\"info\":\"Read Records - SFI: 8h, REC: 1, READMODE: ONE_RECORD, EXPECTEDLENGTH: 0\"}],\"stopOnUnsuccessfulStatusWord\":true},\"channelControl\":\"CLOSE_AFTER\"}}"
     }
 ]
 {{< /code >}}

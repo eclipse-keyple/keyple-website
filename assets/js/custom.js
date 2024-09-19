@@ -76,6 +76,23 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.DISTRIBUTED_NETWORK_LIB, "2.5.1"),
+    new Release(ComponentName.DISTRIBUTED_LOCAL_LIB, "2.5.1"),
+    new Release(ComponentName.DISTRIBUTED_REMOTE_LIB, "2.5.1"),
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.SERVICE_LIB, "3.3.1")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.GENERIC_LIB, "3.1.1")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.CALYPSO_CARD_LIB, "3.1.3")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.PLUGIN_PCSC_LIB, "2.2.3")
+));
+releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.PLUGIN_PCSC_LIB, "2.2.2")
 ));
 releaseTrains.push(new ReleaseTrain(
@@ -957,7 +974,7 @@ loadStatistics = async function() {
                 .attr("class", `dot dot-${dataset.repo}`)
                 .attr("cx", d => x(d.date))
                 .attr("cy", d => y(d.total_lines))
-                .attr("r", 7)
+                .attr("r", 4)
                 .attr("fill", color);
 
             // Attach tooltip events to each circle
