@@ -109,7 +109,7 @@ There are four types of service potentially requested by the server:
 </div>
 <style>
 #command-table-1 table th:nth-child(1) {
-    width: 8rem;
+    width: 9rem;
 }
 </style>
 

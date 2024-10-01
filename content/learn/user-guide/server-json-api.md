@@ -46,7 +46,7 @@ The Keyple remote transaction uses four types of messages exchanged between the 
 </div>
 <style>
 #principles-table-1 table th:nth-child(1) {
-    width: 10.5rem;
+    width: 12rem;
 }
 </style>
 
@@ -82,7 +82,7 @@ Messages are in JSON format and have the following structure:
 </div>
 <style>
 #data-structure-table-1 table th:nth-child(1) {
-    width: 10.5rem;
+    width: 12rem;
 }
 #data-structure-table-1 table th:nth-child(3) {
     width: 10rem;
@@ -203,7 +203,7 @@ There are three types of services potentially requested by the server:
 </div>
 <style>
 #command-table-1 table th:nth-child(1) {
-    width: 8rem;
+    width: 9rem;
 }
 </style>
 

@@ -72,7 +72,7 @@ Here are the main concepts to keep in mind before continuing to read this user g
 </div>
 <style>
 #concepts-table-1 table th:first-of-type {
-    width: 130px;
+    width: 170px;
 }
 </style>
 
