@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/176585247",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/176585247/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/176585247/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/tag/2.3.0",
-  "id": 176585247,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/177740712",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/177740712/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/177740712/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/tag/2.3.1",
+  "id": 177740712,
   "author": {
     "login": "jeanpierrefortune",
     "id": 1011563,
@@ -24,18 +24,18 @@
     "type": "User",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWf6s4Khnof",
-  "tag_name": "2.3.0",
+  "node_id": "RE_kwDODMWf6s4KmBuo",
+  "tag_name": "2.3.1",
   "target_commitish": "main",
   "name": "",
   "draft": false,
   "prerelease": false,
-  "created_at": "2024-09-24T09:59:05Z",
-  "published_at": "2024-09-24T10:08:45Z",
+  "created_at": "2024-10-01T07:41:14Z",
+  "published_at": "2024-10-01T07:47:22Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/tarball/2.3.0",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/zipball/2.3.0",
-  "body": "### Fixed\r\n- Use `jnasmartcardio` lib built with Java 8.\r\n### Added\r\n- Add configurable card monitoring cycle duration through a new method `setCardMonitoringCycleDuration(int cycleDuration)` to set the card monitoring cycle duration in `PcscPluginFactoryBuilder`, enabling customization of the default 500ms value. Especially useful under Linux environments."
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/tarball/2.3.1",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/zipball/2.3.1",
+  "body": "### Fixed\r\n- Avoid creating multiple contexts when monitoring readers."
 }
