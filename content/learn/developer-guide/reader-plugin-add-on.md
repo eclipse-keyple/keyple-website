@@ -70,8 +70,10 @@ For Java and Android projects, the code should be compliant with **Java 1.6** in
 {{% /callout %}}
 
 If the reader plugin add-on is to be integrated into the Eclipse Keyple® project, it must use one of the following project templates:
-* {{% staticref "media/project-templates/java/keyple-plugin-[READER_PLUGIN_NAME]-java-lib.zip" "newtab" %}}Java template{{% /staticref %}}: adapt fields `[READER_PLUGIN_NAME]`, `Xxx`, `xxx`, `TODO`
-* {{% staticref "media/project-templates/android/keyple-plugin-[ANDROID_READER_PLUGIN_NAME]-java-lib.zip" "newtab" %}}Android template{{% /staticref %}}: adapt fields `[ANDROID_READER_PLUGIN_NAME]`, `Xxx`, `xxx`, `TODO`
+
+{{% staticref "media/project-templates/java/keyple-plugin-[READER_PLUGIN_NAME]-java-lib.zip" "newtab" %}}Java template{{% /staticref %}}: adapt fields `[READER_PLUGIN_NAME]`, `Xxx`, `xxx`, `TODO`
+
+{{% staticref "media/project-templates/android/keyple-plugin-[ANDROID_READER_PLUGIN_NAME]-java-lib.zip" "newtab" %}}Android template{{% /staticref %}}: adapt fields `[ANDROID_READER_PLUGIN_NAME]`, `Xxx`, `xxx`, `TODO`
 
 {{% callout warning %}}
 Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:

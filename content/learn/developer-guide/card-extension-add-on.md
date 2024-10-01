@@ -104,8 +104,7 @@ applications.
 If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project
 template:
 
-* {{% staticref "media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" "newtab" %}}Java
-  template{{% /staticref %}}: adapt fields `[CARD_EXTENSION_NAME]`, `Xxx`, `xxx`, `TODO`
+{{% staticref "media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" "newtab" %}}Java template{{% /staticref %}}: adapt fields `[CARD_EXTENSION_NAME]`, `Xxx`, `xxx`, `TODO`
 
 {{% callout warning %}}
 Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the
