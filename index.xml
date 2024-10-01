@@ -55,9 +55,9 @@ project:&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Import Keyple components
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-common-java-api:2.0.1&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-util-java-lib:2.4.0&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-service-java-lib:3.3.2&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-service-java-lib:3.3.3&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.4&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.3.0&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.3.1&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
@@ -670,16 +670,10 @@ The API will then be directly accessible from the application through the &lt;co
 For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of applications.
 &lt;/div>
 &lt;/div>
-&lt;p>If the reader plugin add-on is to be integrated into the Eclipse Keyple® project, it must use one of the following project templates:
-*&lt;/p>
+&lt;p>If the reader plugin add-on is to be integrated into the Eclipse Keyple® project, it must use one of the following project templates:&lt;/p>
 &lt;dl>
 &lt;dt>&lt;a href="./media/project-templates/java/keyple-plugin-[READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>&lt;/dt>
 &lt;dd>adapt fields &lt;code>[READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
-&lt;/dl>
-&lt;ul>
-&lt;li>&lt;/li>
-&lt;/ul>
-&lt;dl>
 &lt;dt>&lt;a href="./media/project-templates/android/keyple-plugin-[ANDROID_READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Android template&lt;/a>&lt;/dt>
 &lt;dd>adapt fields &lt;code>[ANDROID_READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
 &lt;/dl>
@@ -1423,12 +1417,8 @@ applications.
 &lt;/div>
 &lt;p>If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project
 template:&lt;/p>
-&lt;ul>
-&lt;li>&lt;/li>
-&lt;/ul>
 &lt;dl>
-&lt;dt>&lt;a href="./media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" target="_blank">Java&lt;/dt>
-&lt;dt>template&lt;/a>&lt;/dt>
+&lt;dt>&lt;a href="./media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>&lt;/dt>
 &lt;dd>adapt fields &lt;code>[CARD_EXTENSION_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
 &lt;/dl>
 &lt;div class="alert alert-warning">
@@ -1570,7 +1560,7 @@ Keyple on server side only
 &lt;/div>
 &lt;style>
 #concepts-table-1 table th:first-of-type {
-width: 130px;
+width: 170px;
 }
 &lt;/style>
 &lt;p>The diagram below illustrates the main functional concepts through a standard use case:&lt;/p>
@@ -2509,7 +2499,7 @@ Keyple on server side only
 &lt;/div>
 &lt;style>
 #principles-table-1 table th:nth-child(1) {
-width: 10.5rem;
+width: 12rem;
 }
 &lt;/style>
 &lt;p>The diagram below shows the global messaging flow:&lt;/p>
@@ -2570,7 +2560,7 @@ of type &amp;ldquo;&lt;a href="#end-remote-service">End Remote Service&lt;/a>&am
 &lt;/div>
 &lt;style>
 #data-structure-table-1 table th:nth-child(1) {
-width: 10.5rem;
+width: 12rem;
 }
 #data-structure-table-1 table th:nth-child(3) {
 width: 10rem;
@@ -2745,7 +2735,7 @@ card or the terminal&amp;rsquo;s reader.&lt;/p>
 &lt;/div>
 &lt;style>
 #command-table-1 table th:nth-child(1) {
-width: 8rem;
+width: 9rem;
 }
 &lt;/style>
 &lt;p>Following the reception of this message, the terminal will send to the server a message of type
@@ -4980,7 +4970,7 @@ They are generic and apply to all card and reader technologies.&lt;/p>
 &lt;p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/3.3.2/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="https://raw.githubusercontent.com/eclipse/keyple-service-java-lib/3.3.3/src/main/uml/adapter_class_diagram.svg" alt="coming soon!" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/p>
 &lt;h3 id="card-resource-service">Card resource service&lt;/h3>
@@ -5823,7 +5813,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;!-- All groovy dependencies -->
 &lt;code id="all-groovy-dependencies" style="display:none">
 &lt;span id="keyple-common-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-common-java-api:2.0.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keyple-service-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-service-java-lib:3.3.2'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-service-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-service-java-lib:3.3.3'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-service-resource-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-service-resource-java-lib:3.1.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-util-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-util-java-lib:2.4.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-card-calypso-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.4'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
@@ -5836,7 +5826,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-plugin-android-nfc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.2.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-omapi-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.1.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-cardresource-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keyple-plugin-pcsc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.3.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-plugin-pcsc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.3.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-stub-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-stub-java-lib:2.2.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-reader-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-reader-java-api:2.0.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-card-java-api:2.0.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
@@ -5846,7 +5836,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;!-- All kotlin dependencies -->
 &lt;code id="all-kotlin-dependencies" style="display:none">
 &lt;span id="keyple-common-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-common-java-api:2.0.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keyple-service-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-service-java-lib:3.3.2"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-service-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-service-java-lib:3.3.3"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-service-resource-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-service-resource-java-lib:3.1.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-util-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-util-java-lib:2.4.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-card-calypso-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.4"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
@@ -5859,7 +5849,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-plugin-android-nfc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:2.2.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-omapi-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.1.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-cardresource-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keyple-plugin-pcsc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.3.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-plugin-pcsc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.3.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-stub-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-stub-java-lib:2.2.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-reader-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-reader-java-api:2.0.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-card-java-api:2.0.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
@@ -5877,7 +5867,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-service-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-service-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
-&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>3.3.2&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>3.3.3&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-service-resource-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
@@ -5942,7 +5932,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-plugin-pcsc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-pcsc-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
-&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.3.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.3.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-stub-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
@@ -6881,7 +6871,7 @@ card or the terminal&amp;rsquo;s reader.&lt;/p>
 &lt;/div>
 &lt;style>
 #command-table-1 table th:nth-child(1) {
-width: 8rem;
+width: 9rem;
 }
 &lt;/style>
 &lt;p>Following the reception of this message, the terminal will send to the server a message of type
@@ -8273,7 +8263,7 @@ card or the terminal&amp;rsquo;s reader.&lt;/p>
 &lt;/div>
 &lt;style>
 #command-table-1 table th:nth-child(1) {
-width: 8rem;
+width: 9rem;
 }
 &lt;/style>
 &lt;p>Following the reception of this message, the terminal will send to the server a message of type
@@ -14742,7 +14732,7 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;h2 id="java-component">Java component&lt;/h2>
 &lt;div class="alert alert-note">
 &lt;div>
-&lt;strong>&lt;code>2.3.0&lt;/code>&lt;/strong>
+&lt;strong>&lt;code>2.3.1&lt;/code>&lt;/strong>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
@@ -14780,14 +14770,14 @@ Maven
 &lt;div class="tab-content" id="tabs-1-content">&lt;div class="tab-pane fade show active"
 id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.3.0&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.3.1&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.3.0&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.3.1&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
@@ -14797,7 +14787,7 @@ id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-pcsc-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.3.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.3.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
@@ -14951,7 +14941,7 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;h2 id="java-component">Java component&lt;/h2>
 &lt;div class="alert alert-note">
 &lt;div>
-&lt;strong>&lt;code>3.3.2&lt;/code>&lt;/strong>
+&lt;strong>&lt;code>3.3.3&lt;/code>&lt;/strong>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
@@ -14990,14 +14980,14 @@ Maven
 &lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
 id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-service-java-lib:3.3.2&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-service-java-lib:3.3.3&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-service-java-lib:3.3.2&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-service-java-lib:3.3.3&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
@@ -15007,7 +14997,7 @@ id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-service-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>3.3.2&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>3.3.3&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
