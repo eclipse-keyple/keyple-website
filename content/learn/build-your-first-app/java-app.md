@@ -276,7 +276,7 @@ may be reused each time a card is presented.
         calypsoCardApiFactory.createSymmetricCryptoSecuritySetting(
             LegacySamExtensionService.getInstance()
                 .getLegacySamApiFactory()
-                .createSymmetricCryptoTransactionManagerFactory(samReader, sam));
+                .createSymmetricCryptoCardTransactionManagerFactory(samReader, sam));
 {{< /code >}}
 
 ### Open the Calypso secure session
@@ -587,7 +587,7 @@ public class DemoCardAuthentication {
         calypsoCardApiFactory.createSymmetricCryptoSecuritySetting(
             LegacySamExtensionService.getInstance()
                 .getLegacySamApiFactory()
-                .createSymmetricCryptoTransactionManagerFactory(samReader, sam));
+                .createSymmetricCryptoCardTransactionManagerFactory(samReader, sam));
 
     // Performs file reads using the card transaction manager in a secure session, keep the channel
     // open.
