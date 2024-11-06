@@ -5,5 +5,5 @@ summary: As initiator of the Keyple project, CNA offers numerous additional reso
 tags: ["Reader plugins", "Demos", "Tools", "Training"]
 linktitle: " "
 type: book
-external_link: https://keyple-support.calypsonet.org/resources/
+external_link: https://keyple-support.calypsonet.org/
 ---
