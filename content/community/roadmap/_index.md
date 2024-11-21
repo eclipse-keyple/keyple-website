@@ -9,18 +9,17 @@ weight: 2
 
 ## Current work 
  - Java implementation
-   - Refactoring of the Calypso API to support extensions of different kind of Calypso SAM solutions (current legacy SAM-C1, coming Open-SAM, or crypto libraries for PKI).
-   - Support of the Calypso secure session based on asymmetric authentication (REV3.3 Prime PKI based on ECC).
+   - supply a Calypso security extension library to manage the Calypso OpenSAM security module
  - C++ implementation
    - Porting current components updated with Keypop APIs.
-   - Next addition of distributed mode support for building a Keyple Distributed C++ client (interacting with a Keyple Distributed Java server).
+   - Next for the future, support for building a Keyple Distributed C++ client (interacting with a Keyple Distributed Java server).
 
 ## Long-term study 
  - to provide a Hoplink extension (based on a high-level API on top of the Calypso Card API).
  - looking to migrate the Java implementation in Kotlin Multiplatform in order to handle iOS & some native target for ticketing application based on a generic code compliant with Java environment.
 
 ## Evolutions log
-### Main improvements in Keyple after the version 2.0.0
+### Major improvements in Keyple after the version 2.0.0
 
 <table>
 <thead>
@@ -35,11 +34,25 @@ weight: 2
 </thead>
 <tbody>
   <tr>
+    <td colspan="2">2024/12</td>
+    <td><ul><li><b>Keyple-less distributed client design support</b> (Keyple dependency-free application connected to a Keyple Distributed server): 2 Kotlin MultiPlatform libraries that can be compiled for <b>any</b> environment, artifacts for the Java runtime environment and native artifacts for Windows, Linux, macOS, Android & iOS systems.
+    <ul><li>library for managing the JSON Keyple Distributed protocol</li>
+    <li>library for interfacing a contactless reader to any device: NFC reader on Android or iOS mobile, or PC/SC reader on PC.</li></ul></li></ul></td>
+  </tr>
+
+  <tr>
+    <td>2024/04</td>
+    <td><mark>in progress (scheduled Q1/2025)</mark></td>
+    <td><ul><li><b>Support of Calypso Prime PKI</b>
+    <ul><li>Capability to manage a simple asymmetric authentication of a Calypso card without involving a SAM (REV3.3 Prime PKI based on ECC)</li>
+    </ul></li></ul></td>
+  </tr>
+  <tr>
     <td>2023/11</td>
-    <td><mark>not supported</mark></td>
-    <td><ul><li><b>Keyple adopts the Eclipse Keypop API</b>
-    <ul><li>The Keyple middleware is enhanced by the Eclipse Keypop project with new UML-compliant interfaces and APIs, offering 
-    new possibilities for the management of SAMs and PKI cards.</li>
+    <td><mark>in progress (scheduled Q1/2025)</mark></td>
+    <td><ul><li><b>Adoption of the Eclipse Keypop API</b>
+    <ul><li>The Keyple middleware is enhanced by the Eclipse Keypop project with new UML-compliant interfaces and APIs.</li>
+    <li>The Keyple Calypso Card library can be extended with other libraries to handle SAM security features or PKI cryptography.</li>
     </ul></li></ul></td>
   </tr>
   <tr>
@@ -52,7 +65,7 @@ e.g. the smart card readers of a terminal without Keyple software can be remotel
   </tr>
   <tr>
     <td>2022/12</td>
-    <td><mark>in progress</mark></td>
+    <td><mark>in progress (scheduled Q1/2025)</mark></td>
     <td><ul><li><b>Support of Calypso Prime Extended</b>
     <ul><li>Capability to operate a Calypso secure session in confidential mode and to support intermediate authentications</li>
     </ul></li></ul></td>
@@ -61,7 +74,7 @@ e.g. the smart card readers of a terminal without Keyple software can be remotel
     <td>2022/06</td>
     <td>2022/11</td>
     <td><ul><li><b>SAM operation improvements</b>
-    <ul><li>Defintion of an API to operate standalone SAM transaction</li>
+    <ul><li>Definition of an API to operate standalone SAM transaction</li>
     <li>Support of the PSO data signature feature: signature generation & verification. Possibility to operate a signature operation through the Card Transaction or a SAM Transaction.</li></ul></li></ul></td>
   </tr>
   <tr>
