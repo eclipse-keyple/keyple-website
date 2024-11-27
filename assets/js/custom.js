@@ -748,7 +748,7 @@ loadProjectDashboard = async function() {
             case "error":
             case "failure":
                 a.style.color = "red";
-                a.title += ": failure";gi
+                a.title += ": failure";
                 break;
             case "pending":
                 a.style.color = "orange";
