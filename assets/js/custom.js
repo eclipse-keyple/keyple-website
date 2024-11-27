@@ -593,7 +593,7 @@ loadProjectDashboard = async function() {
             cell.appendChild(space);
             a.innerHTML = "<i class=\"fas fa-book\"></i>";
             a.title = "API documentation for " + json.name;
-            a.href = "https://eclipse-keyple.github.io/" + json.name;
+            a.href = "https://docs.keyple.org/" + json.name;
             a.target = "_blank";
             cell.appendChild(a);
         }
@@ -748,7 +748,7 @@ loadProjectDashboard = async function() {
             case "error":
             case "failure":
                 a.style.color = "red";
-                a.title += ": failure";
+                a.title += ": failure";gi
                 break;
             case "pending":
                 a.style.color = "orange";
