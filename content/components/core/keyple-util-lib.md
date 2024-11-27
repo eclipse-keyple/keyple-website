@@ -29,7 +29,7 @@ Since this library is used by all Keyple libraries, it is recommended to import 
 
 ### Documentation
 
-* [API documentation](https://eclipse-keyple.github.io/keyple-util-java-lib)
+* [API documentation](https://docs.keyple.org/keyple-util-java-lib)
 
 ### Download
 

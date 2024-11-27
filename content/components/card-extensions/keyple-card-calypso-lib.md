@@ -31,7 +31,7 @@ At present, only the [Calypso Crypto Legacy SAM]({{< relref "keyple-card-calypso
 
 ### Documentation
 
-* [API documentation](https://eclipse-keyple.github.io/keyple-card-calypso-java-lib)
+* [API documentation](https://docs.keyple.org/keyple-card-calypso-java-lib)
 * [User guide]({{< relref "/learn/user-guide/calypso-application" >}})
 
 ### Download

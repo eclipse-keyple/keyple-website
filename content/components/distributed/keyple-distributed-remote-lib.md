@@ -27,7 +27,7 @@ It is compatible with **Windows**, **Linux**, **macOS** and **Android** platform
 
 ### Documentation
 
-* [API documentation](https://eclipse-keyple.github.io/keyple-distributed-remote-java-lib)
+* [API documentation](https://docs.keyple.org/keyple-distributed-remote-java-lib)
 * [User guide]({{< relref "/learn/user-guide/distributed-application" >}})
 
 ### Download

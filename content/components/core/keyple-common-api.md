@@ -29,7 +29,7 @@ The third version number (x.y.**z**) only concerns updates of the public API doc
 
 ### Documentation
 
-* [API documentation](https://eclipse-keyple.github.io/keyple-common-java-api)
+* [API documentation](https://docs.keyple.org/keyple-common-java-api)
 * [User guide]({{< relref "/learn/user-guide/standalone-application" >}})
  
 ### Download

@@ -25,7 +25,7 @@ Therefore, it must be used only by application developers.
 
 ### Documentation
 
-* [API documentation](https://eclipse-keyple.github.io/keyple-service-java-lib)
+* [API documentation](https://docs.keyple.org/keyple-service-java-lib)
 * [User guide]({{< relref "/learn/user-guide/standalone-application" >}})
 
 ### Download

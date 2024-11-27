@@ -36,7 +36,7 @@ inserted in a dedicated PC/SC reader.
 
 ### Documentation
 
-* [API documentation](https://eclipse-keyple.github.io/keyple-plugin-cardresource-java-lib)
+* [API documentation](https://docs.keyple.org/keyple-plugin-cardresource-java-lib)
 
 ### Download
 

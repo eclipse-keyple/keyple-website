@@ -27,7 +27,7 @@ It is compatible with **PC/SC Reader** (Windows PC/SC WinScard API, Unix PC/SC l
 
 ### Documentation
 
-* [API documentation](https://eclipse-keyple.github.io/keyple-plugin-pcsc-java-lib)
+* [API documentation](https://docs.keyple.org/keyple-plugin-pcsc-java-lib)
 
 ### Download
 
