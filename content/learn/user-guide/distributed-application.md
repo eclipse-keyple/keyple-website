@@ -297,9 +297,9 @@ However, it is necessary in some contexts to access certain information such as 
 
 ## API
 
-* [Local API](https://eclipse-keyple.github.io/keyple-distributed-local-java-lib)
-* [Network API](https://eclipse-keyple.github.io/keyple-distributed-network-java-lib)
-* [Remote API](https://eclipse-keyple.github.io/keyple-distributed-remote-java-lib)
+* [Local API](https://docs.keyple.org/keyple-distributed-local-java-lib)
+* [Network API](https://docs.keyple.org/keyple-distributed-network-java-lib)
+* [Remote API](https://docs.keyple.org/keyple-distributed-remote-java-lib)
 
 <br>
 

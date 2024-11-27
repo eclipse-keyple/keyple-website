@@ -25,7 +25,7 @@ Therefore, it can be used by developers of applications or card extensions.
 
 ### Documentation
 
-* [API documentation](https://eclipse-keyple.github.io/keyple-service-resource-java-lib)
+* [API documentation](https://docs.keyple.org/keyple-service-resource-java-lib)
 * [User guide]({{< relref "/learn/user-guide/card-resource-service" >}})
 
 ### Download

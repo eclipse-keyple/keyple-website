@@ -31,7 +31,7 @@ Therefore, it should be used only by application developers.
 
 ### Documentation
 
-* [API documentation](https://eclipse-keyple.github.io/keyple-card-calypso-crypto-legacysam-java-lib)
+* [API documentation](https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-java-lib)
 
 ### Download
 

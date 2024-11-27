@@ -27,7 +27,7 @@ It is compatible with **Windows**, **Linux**, **macOS** and **Android** platform
 
 ### Documentation
 
-* [API documentation](https://eclipse-keyple.github.io/keyple-plugin-stub-java-lib)
+* [API documentation](https://docs.keyple.org/keyple-plugin-stub-java-lib)
 
 ### Download
 

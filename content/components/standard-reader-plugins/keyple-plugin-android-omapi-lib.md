@@ -30,7 +30,7 @@ This allows the app to benefit from enhanced SE-based security services.
 
 ### Documentation
 
-* [API documentation](https://eclipse-keyple.github.io/keyple-plugin-android-omapi-java-lib)
+* [API documentation](https://docs.keyple.org/keyple-plugin-android-omapi-java-lib)
 
 ### Download
 

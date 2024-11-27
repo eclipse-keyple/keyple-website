@@ -111,8 +111,8 @@ Thus, the factory does not expose any method.
 
 ## API
 
-* [Keyple Common API](https://eclipse-keyple.github.io/keyple-common-java-api)
-* [Keyple Plugin API](https://eclipse-keyple.github.io/keyple-plugin-java-api)
+* [Keyple Common API](https://docs.keyple.org/keyple-common-java-api)
+* [Keyple Plugin API](https://docs.keyple.org/keyple-plugin-java-api)
 
 <br>
 
