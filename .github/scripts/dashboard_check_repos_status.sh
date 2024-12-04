@@ -137,5 +137,13 @@ fi
 if [ $? -eq 0 ]; then
   exit 0
 fi
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keyple-actions
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keyple-api-docs
+if [ $? -eq 0 ]; then
+  exit 0
+fi
 
 exit 1
