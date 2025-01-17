@@ -33,7 +33,7 @@ def get_repo_creation_date(owner, repo, headers):
     return creation_date
 
 def get_releases(owner, repo, headers):
-    url = f'https://api.github.com/repos/{owner}/{repo}/releases'
+    url = f'https://api.github.com/repos/{owner}/{repo}/releases?page=1&per_page=1000'
     print(f'Calling get_releases with URL: {url}')
     response = rate_limited_get(url, headers)
     releases = response.json()
