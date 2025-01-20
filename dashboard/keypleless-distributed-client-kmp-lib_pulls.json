@@ -34,7 +34,7 @@
     },
     "body": "SPI for NfcReader:\r\nRevert dependency between distributed and mobilenfc reader libraries.\r\nThis lib declares the NFCReader SPI that the reader lib (or any other third party lib) must implement.\r\n\r\nSPI for Networking:\r\nThis SPI allows users to provide their own networking implementation for communication with keyple servers with different authentication needs for example.\r\nFor ease of use, the current basic auth http implementation is kept. It's available as SimpleHttpNetworkClient.\r\n",
     "created_at": "2025-01-16T10:44:49Z",
-    "updated_at": "2025-01-16T14:08:04Z",
+    "updated_at": "2025-01-20T10:00:43Z",
     "closed_at": null,
     "merged_at": null,
     "merge_commit_sha": "b6e022497a709d8cb88cda439b321869f354be56",
