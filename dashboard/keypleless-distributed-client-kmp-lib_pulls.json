@@ -34,10 +34,10 @@
     },
     "body": "SPI for NfcReader:\r\nRevert dependency between distributed and mobilenfc reader libraries.\r\nThis lib declares the NFCReader SPI that the reader lib (or any other third party lib) must implement.\r\n\r\nSPI for Networking:\r\nThis SPI allows users to provide their own networking implementation for communication with keyple servers with different authentication needs for example.\r\nFor ease of use, the current basic auth http implementation is kept. It's available as SimpleHttpNetworkClient.\r\n",
     "created_at": "2025-01-16T10:44:49Z",
-    "updated_at": "2025-01-20T10:00:43Z",
+    "updated_at": "2025-01-21T11:00:56Z",
     "closed_at": null,
     "merged_at": null,
-    "merge_commit_sha": "b6e022497a709d8cb88cda439b321869f354be56",
+    "merge_commit_sha": "bf7dd4c297a9ef5cf213182bd41ab7a3fac92c7a",
     "assignee": null,
     "assignees": [
 
@@ -57,11 +57,11 @@
     "review_comments_url": "https://api.github.com/repos/eclipse-keyple/keypleless-distributed-client-kmp-lib/pulls/3/comments",
     "review_comment_url": "https://api.github.com/repos/eclipse-keyple/keypleless-distributed-client-kmp-lib/pulls/comments{/number}",
     "comments_url": "https://api.github.com/repos/eclipse-keyple/keypleless-distributed-client-kmp-lib/issues/3/comments",
-    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keypleless-distributed-client-kmp-lib/statuses/8af388b3d0f94aadc6fe4e283098e9c5e2aec3ab",
+    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keypleless-distributed-client-kmp-lib/statuses/42bc41f243a21a62ff923fddb1ee49aa6356bfdb",
     "head": {
       "label": "tdassonville:netSpi",
       "ref": "netSpi",
-      "sha": "8af388b3d0f94aadc6fe4e283098e9c5e2aec3ab",
+      "sha": "42bc41f243a21a62ff923fddb1ee49aa6356bfdb",
       "user": {
         "login": "tdassonville",
         "id": 1982823,
@@ -152,7 +152,7 @@
         "deployments_url": "https://api.github.com/repos/tdassonville/keyple-less-distributed-client-kmp-lib/deployments",
         "created_at": "2024-10-25T14:41:52Z",
         "updated_at": "2025-01-15T14:25:06Z",
-        "pushed_at": "2025-01-16T14:08:03Z",
+        "pushed_at": "2025-01-21T11:00:54Z",
         "git_url": "git://github.com/tdassonville/keyple-less-distributed-client-kmp-lib.git",
         "ssh_url": "git@github.com:tdassonville/keyple-less-distributed-client-kmp-lib.git",
         "clone_url": "https://github.com/tdassonville/keyple-less-distributed-client-kmp-lib.git",
@@ -351,7 +351,7 @@
         "href": "https://api.github.com/repos/eclipse-keyple/keypleless-distributed-client-kmp-lib/pulls/3/commits"
       },
       "statuses": {
-        "href": "https://api.github.com/repos/eclipse-keyple/keypleless-distributed-client-kmp-lib/statuses/8af388b3d0f94aadc6fe4e283098e9c5e2aec3ab"
+        "href": "https://api.github.com/repos/eclipse-keyple/keypleless-distributed-client-kmp-lib/statuses/42bc41f243a21a62ff923fddb1ee49aa6356bfdb"
       }
     },
     "author_association": "CONTRIBUTOR",
