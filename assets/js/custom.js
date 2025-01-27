@@ -76,6 +76,9 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.PLUGIN_PCSC_LIB, "2.4.2")
+));
+releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.PLUGIN_PCSC_LIB, "2.4.1")
 ));
 releaseTrains.push(new ReleaseTrain(
