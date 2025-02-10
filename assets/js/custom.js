@@ -76,6 +76,9 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.0.0")
+));
+releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.PLUGIN_PCSC_LIB, "2.4.2")
 ));
 releaseTrains.push(new ReleaseTrain(
