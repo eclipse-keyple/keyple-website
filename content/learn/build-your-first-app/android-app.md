@@ -87,8 +87,8 @@ class MainActivity : AppCompatActivity(), CardReaderObserverSpi, CardReaderObser
         // Retrieve the NFC reader
         val plugin =
             SmartCardServiceProvider.getService()
-                .registerPlugin(AndroidNfcPluginFactoryProvider(this).getFactory())
-        reader = plugin.getReader(AndroidNfcReader.READER_NAME) as ObservableCardReader
+                .registerPlugin(AndroidNfcPluginFactoryProvider.provideFactory(AndroidNfcConfig(this)))
+        reader = plugin.getReader(AndroidNfcConstants.READER_NAME) as ObservableCardReader
         reader.setReaderObservationExceptionHandler(this)
         reader.addObserver(this)
         (reader as ConfigurableCardReader).activateProtocol(
@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity(), CardReaderObserverSpi, CardReaderObser
 
     override fun onDestroy() {
         ...
-        SmartCardServiceProvider.getService().unregisterPlugin(AndroidNfcPlugin.PLUGIN_NAME)
+        SmartCardServiceProvider.getService().unregisterPlugin(AndroidNfcConstants.PLUGIN_NAME)
     }
     
     override fun onReaderEvent(readerEvent: CardReaderEvent?) {
