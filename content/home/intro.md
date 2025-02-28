@@ -4,7 +4,7 @@ headless = true
 active = true 
 weight = 5 
 
-title = "_\"the best open source middleware for smart card processing\"_<br><br>"
+title = "_\"a powerfull & versatile open source middleware for smart card processing terminal\"_<br><br>"
 subtitle = "" 
 
 [design.background]
