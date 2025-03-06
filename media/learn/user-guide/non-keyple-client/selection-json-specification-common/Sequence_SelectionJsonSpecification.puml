@@ -1,0 +1,45 @@
+@startuml
+
+' == THEME ==
+
+skinparam RoundCorner 10
+'skinparam sequenceArrowThickness 2
+
+' == CONTENT ==
+
+entity "Card" as card
+participant "Terminal" as client
+participant "Server" as server
+
+activate client #LightGrey
+client -> server ++ #LightGrey : Retrieve card selection scenario
+return <color:#27AE60>**CardSelectionScenarioJsonString**
+
+|||
+
+card -->> client #LightGrey : Card inserted event
+activate card #LightGrey
+
+|||
+
+client -> card : Process card selection scenario
+client <-- card : selection result
+
+|||
+
+client -> server ++ #LightGrey : **Execute Remote Service** (\n\tinputData = <color: #3498DB>**ProcessedCardSelectionScenarioJsonString**</color>,\n\t...\n)
+
+loop #F5F5F5 while there are actions to be performed with the card or the terminal's reader
+    client <-- server : **Command**
+    card <- client : command
+    card --> client : response
+    client -> server : **Response**
+end
+
+client <-- server -- : **End Remote Service**
+
+card -->> client -- : Card removed event
+deactivate client
+deactivate card
+
+@enduml

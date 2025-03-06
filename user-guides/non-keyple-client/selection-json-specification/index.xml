@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Selection JSON Specification (for non-Keyple client) | Eclipse Keyple</title><link>https://keyple.org/user-guides/non-keyple-client/selection-json-specification/</link><atom:link href="https://keyple.org/user-guides/non-keyple-client/selection-json-specification/index.xml" rel="self" type="application/rss+xml"/><description>Selection JSON Specification (for non-Keyple client)</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://keyple.org/media/logo.svg</url><title>Selection JSON Specification (for non-Keyple client)</title><link>https://keyple.org/user-guides/non-keyple-client/selection-json-specification/</link></image><item><title>Selection JSON Specification v1.0</title><link>https://keyple.org/user-guides/non-keyple-client/selection-json-specification/1-0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/user-guides/non-keyple-client/selection-json-specification/1-0/</guid><description>&lt;style>
+table th:nth-child(1) {
+width: 9rem;
+}
+&lt;/style>
+&lt;div class="alert alert-warning">
+&lt;div>
+&lt;p>This specification is compliant with the following Keyple server side components:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/" target="_blank" rel="noopener">Keyple Service Library&lt;/a> version &lt;code>3.0.0+&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;/div>
+&lt;br>
+&lt;h2 id="card-selection-scenario">Card selection scenario&lt;/h2>
+&lt;p>The JSON string &lt;code>CardSelectionScenarioJsonString&lt;/code> contains a JSON object &lt;a href="#cardselectionscenario">CardSelectionScenario&lt;/a>
+containing the card selection scenario to be processed when a card is detected.&lt;/p>
+&lt;p>The following UML class diagram illustrates the format of this object and may help to implement it in the development
+language of the target terminal.&lt;/p>
+&lt;figure id="figure-cardselectionscenario-class-diagram">
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../../media/learn/user-guide/non-keyple-client/selection-json-specification-1-0/Class_CardSelectionScenario.svg" alt="&amp;#34;CardSelectionScenario&amp;#34; class diagram" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
+&amp;ldquo;CardSelectionScenario&amp;rdquo; class diagram
+&lt;/figcaption>&lt;/figure>
+&lt;h3 id="cardselectionscenario">CardSelectionScenario&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>multiSelectionProcessing&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>FIRST_MATCH&lt;/strong>&amp;rdquo;: the selection process stops as soon as a selection case is successful.&lt;br>- &amp;ldquo;&lt;strong>PROCESS_ALL&lt;/strong>&amp;rdquo;: the selection process performs all the selection cases provided (the logical channel is closed at the end of the selection case).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>channelControl&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>- &amp;ldquo;&lt;strong>KEEP_OPEN&lt;/strong>&amp;rdquo;: leaves the physical channel open.&lt;br>- &amp;ldquo;&lt;strong>CLOSE_AFTER&lt;/strong>&amp;rdquo;: terminates communication with the card.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>cardSelectors&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#cardselector">CardSelector&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;br>A non-empty array.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>defaultCardSelections&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#defaultcardselection">DefaultCardSelection&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;br>A non-empty array containing the same number of elements as &lt;code>cardSelectors&lt;/code>.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;div class="alert alert-warning">
+&lt;div>
+Please note that additional properties are present, but are useless for a non-Keyple client and are therefore to be
+ignored!
+&lt;/div>
+&lt;/div>
+&lt;h3 id="cardselector">CardSelector&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>logicalProtocolName&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String (optional)&lt;/strong>&lt;br>An optional &amp;ldquo;logical&amp;rdquo; name of the targeted card protocol.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>powerOnDataRegex&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String (optional)&lt;/strong>&lt;br>An optional regex to use to filter the power-on data.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>aid&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String (optional)&lt;/strong>&lt;br>An optional Application Identifier (AID) as an hexadecimal string to be sent with ISO7816-4 &amp;ldquo;Select Application&amp;rdquo;.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>fileOccurrence&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>&amp;quot;&lt;strong>FIRST&lt;/strong>&amp;quot;, &amp;ldquo;&lt;strong>LAST&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>NEXT&lt;/strong>&amp;rdquo; or &amp;ldquo;&lt;strong>PREVIOUS&lt;/strong>&amp;rdquo; according to the ISO7816-4 standard (only relevant when AID is set).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>fileControlInformation&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>Can have one of the following values:&lt;br>&amp;quot;&lt;strong>FCI&lt;/strong>&amp;quot;, &amp;ldquo;&lt;strong>FCP&lt;/strong>&amp;rdquo;, &amp;ldquo;&lt;strong>FMD&lt;/strong>&amp;rdquo; or &amp;ldquo;&lt;strong>NO_RESPONSE&lt;/strong>&amp;rdquo; according to the ISO7816-4 standard (only relevant when AID is set).&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="defaultcardselection">DefaultCardSelection&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>CardSelectionRequest&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#cardselectionrequest">CardSelectionRequest&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="cardselectionrequest">CardSelectionRequest&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>cardRequest&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#cardrequest">CardRequest&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>An optional object containing a list of APDU requests to be sent after a successful card selection.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>successfulSelectionStatusWords&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String [ ]&lt;/strong>&lt;br>A non-empty array of 2-byte hexadecimal strings containing the status word of the &amp;ldquo;Select Application&amp;rdquo; APDU command to be considered successful (only relevant when AID is set).&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="cardrequest">CardRequest&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>apduRequests&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#apdurequest">ApduRequest&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;br>A non-empty array of APDU requests.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>stopOnUnsuccessfulStatusWord&lt;/code>&lt;/td>
+&lt;td>&lt;strong>Boolean&lt;/strong>&lt;br>Set to &lt;strong>true&lt;/strong> if the transmission of the APDUs should be interrupted as soon as the status word of a response does not belong to the associated list of successful status words, &lt;strong>false&lt;/strong> otherwise.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="apdurequest">ApduRequest&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>apdu&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>An hexadecimal string containing the APDU to transmit to the card.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>successfulStatusWords&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String [ ]&lt;/strong>&lt;br>A non-empty array of 2-byte hexadecimal strings containing the status word to be considered successful.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>info&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String (optional)&lt;/strong>&lt;br>An optional textual information about the command.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="example">Example&lt;/h3>
+&lt;h4 id="cardselectionscenariojsonstring">CardSelectionScenarioJsonString&lt;/h4>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;{\&amp;#34;multiSelectionProcessing\&amp;#34;:\&amp;#34;FIRST_MATCH\&amp;#34;,\&amp;#34;channelControl\&amp;#34;:\&amp;#34;KEEP_OPEN\&amp;#34;,\&amp;#34;cardSelectors\&amp;#34;:[{\&amp;#34;logicalProtocolName\&amp;#34;:\&amp;#34;CALYPSO_CARD_PROTOCOL\&amp;#34;,\&amp;#34;powerOnDataRegex\&amp;#34;:\&amp;#34;.*\&amp;#34;,\&amp;#34;aid\&amp;#34;:\&amp;#34;1122334455\&amp;#34;,\&amp;#34;fileOccurrence\&amp;#34;:\&amp;#34;FIRST\&amp;#34;,\&amp;#34;fileControlInformation\&amp;#34;:\&amp;#34;FCI\&amp;#34;},{\&amp;#34;logicalProtocolName\&amp;#34;:\&amp;#34;GENERIC_CARD_PROTOCOL\&amp;#34;,\&amp;#34;powerOnDataRegex\&amp;#34;:\&amp;#34;.*\&amp;#34;,\&amp;#34;aid\&amp;#34;:\&amp;#34;1122334455\&amp;#34;,\&amp;#34;fileOccurrence\&amp;#34;:\&amp;#34;FIRST\&amp;#34;,\&amp;#34;fileControlInformation\&amp;#34;:\&amp;#34;FCI\&amp;#34;}],\&amp;#34;defaultCardSelections\&amp;#34;:[{\&amp;#34;cardSelectionRequest\&amp;#34;:{\&amp;#34;cardRequest\&amp;#34;:{\&amp;#34;apduRequests\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00B2020C00\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Read Records - sfi: 01h, rec: 2, read mode: ONE_RECORD, expected length: 0\&amp;#34;},{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00B081000A\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Read Binary - sfi: 01h, offset: 0, length: 10\&amp;#34;},{\&amp;#34;apdu\&amp;#34;:\&amp;#34;00B2010C03\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Read Records - sfi: 01h, rec: 1, read mode: ONE_RECORD, expected length: 3\&amp;#34;},{\&amp;#34;apdu\&amp;#34;:\&amp;#34;008A0302010000\&amp;#34;,\&amp;#34;successfulStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;],\&amp;#34;info\&amp;#34;:\&amp;#34;Open Secure Session - key index: 3, sfi: 00h, rec: 0 - pre-open\&amp;#34;}],\&amp;#34;stopOnUnsuccessfulStatusWord\&amp;#34;:false},\&amp;#34;successfulSelectionStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;,\&amp;#34;6283\&amp;#34;]}},{\&amp;#34;cardSelectionRequest\&amp;#34;:{\&amp;#34;successfulSelectionStatusWords\&amp;#34;:[\&amp;#34;9000\&amp;#34;]}}]}&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h4 id="json-content">JSON content&lt;/h4>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;multiSelectionProcessing&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;FIRST_MATCH&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;channelControl&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;KEEP_OPEN&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;cardSelectors&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;logicalProtocolName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;CALYPSO_CARD_PROTOCOL&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;powerOnDataRegex&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;.*&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;aid&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;1122334455&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;fileOccurrence&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;FIRST&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;fileControlInformation&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;FCI&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;logicalProtocolName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;GENERIC_CARD_PROTOCOL&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;powerOnDataRegex&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;.*&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;aid&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;1122334455&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;fileOccurrence&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;FIRST&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;fileControlInformation&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;FCI&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;defaultCardSelections&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;cardSelectionRequest&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;cardRequest&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apduRequests&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apdu&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;00B2020C00&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;successfulStatusWords&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;9000&amp;#34;&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;info&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Read Records - sfi: 01h, rec: 2, read mode: ONE_RECORD, expected length: 0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apdu&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;00B081000A&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;successfulStatusWords&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;9000&amp;#34;&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;info&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Read Binary - sfi: 01h, offset: 0, length: 10&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apdu&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;00B2010C03&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;successfulStatusWords&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;9000&amp;#34;&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;info&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Read Records - sfi: 01h, rec: 1, read mode: ONE_RECORD, expected length: 3&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apdu&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;008A0302010000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;successfulStatusWords&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;9000&amp;#34;&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;info&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Open Secure Session - key index: 3, sfi: 00h, rec: 0 - pre-open&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;stopOnUnsuccessfulStatusWord&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;successfulSelectionStatusWords&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;9000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;6283&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;cardSelectionRequest&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;successfulSelectionStatusWords&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;9000&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">...&lt;/span> &lt;span class="err">additional&lt;/span> &lt;span class="err">properties&lt;/span> &lt;span class="err">are&lt;/span> &lt;span class="err">to&lt;/span> &lt;span class="err">be&lt;/span> &lt;span class="err">ignored&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;br>
+&lt;h2 id="processed-card-selection-scenario">Processed card selection scenario&lt;/h2>
+&lt;p>The JSON string &lt;code>ProcessedCardSelectionScenarioJsonString&lt;/code> contains a JSON array of JSON objects
+&lt;a href="#cardselectionresponse">CardSelectionResponse&lt;/a> containing the result of each processed case of the card selection
+scenario.&lt;/p>
+&lt;p>Depending on the configuration of the selection scenario, the result list may contain fewer elements than the number of
+selection cases present in the scenario (e.g. if the &lt;code>multiSelectionProcessing&lt;/code> property is set to &lt;code>FIRST_MATCH&lt;/code>).&lt;/p>
+&lt;p>The following UML class diagram illustrates the format of this object and may help to implement it in the development
+language of the target terminal.&lt;/p>
+&lt;figure id="figure-cardselectionresponse-class-diagram">
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="../../../media/learn/user-guide/non-keyple-client/selection-json-specification-1-0/Class_CardSelectionResponse.svg" alt="&amp;#34;CardSelectionResponse&amp;#34; class diagram" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
+&amp;ldquo;CardSelectionResponse&amp;rdquo; class diagram
+&lt;/figcaption>&lt;/figure>
+&lt;h3 id="cardselectionresponse">CardSelectionResponse&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>hasMatched&lt;/code>&lt;/td>
+&lt;td>&lt;strong>Boolean&lt;/strong>&lt;br>Set to &lt;strong>true&lt;/strong> if the associated selection case has matched, &lt;strong>false&lt;/strong> otherwise.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>powerOnData&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String (optional)&lt;/strong>&lt;br>Data from the initialization phase of the communication with the card. E.g. the Answer To Reset (ATR) in the case of a contact card or any other string informing about the low level communication. This string can be used for filtering by power-on data defined in the command (absent if the protocol filter failed).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>selectApplicationResponse&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#apduresponse">ApduResponse&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>Data received in response to the ISO7816-4 &amp;ldquo;Select Application&amp;rdquo; command (absent if no AID filtering).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>cardResponse&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#cardresponse">CardResponse&lt;/a> &lt;strong>(optional)&lt;/strong>&lt;br>Data received in response to additional commands (absent if no additional commands were provided).&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="cardresponse">CardResponse&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>isLogicalChannelOpen&lt;/code>&lt;/td>
+&lt;td>&lt;strong>Boolean&lt;/strong>&lt;br>Set to &lt;strong>true&lt;/strong> if the logical channel is left open, &lt;strong>false&lt;/strong> otherwise.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>apduResponses&lt;/code>&lt;/td>
+&lt;td>&lt;a href="#apduresponse">ApduResponse&lt;/a> &lt;strong>[ ]&lt;/strong>&lt;br>A list containing the APDU responses for each request in the command.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="apduresponse">ApduResponse&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>apdu&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>An hexadecimal string containing the APDU received from the card (including the status word).&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>statusWord&lt;/code>&lt;/td>
+&lt;td>&lt;strong>String&lt;/strong>&lt;br>A 2-byte hexadecimal string containing the status word of the received APDU.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="example-1">Example&lt;/h3>
+&lt;h4 id="processedcardselectionscenariojsonstring">ProcessedCardSelectionScenarioJsonString&lt;/h4>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;[{\&amp;#34;hasMatched\&amp;#34;:false,\&amp;#34;powerOnData\&amp;#34;:\&amp;#34;1234\&amp;#34;,\&amp;#34;selectApplicationResponse\&amp;#34;:{\&amp;#34;apdu\&amp;#34;:\&amp;#34;6400\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;6400\&amp;#34;},\&amp;#34;cardResponse\&amp;#34;:{\&amp;#34;apduResponses\&amp;#34;:[],\&amp;#34;isLogicalChannelOpen\&amp;#34;:false}},{\&amp;#34;hasMatched\&amp;#34;:true,\&amp;#34;powerOnData\&amp;#34;:\&amp;#34;1234\&amp;#34;,\&amp;#34;selectApplicationResponse\&amp;#34;:{\&amp;#34;apdu\&amp;#34;:\&amp;#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C20051410019000\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;9000\&amp;#34;},\&amp;#34;cardResponse\&amp;#34;:{\&amp;#34;apduResponses\&amp;#34;:[{\&amp;#34;apdu\&amp;#34;:\&amp;#34;ABCD9000\&amp;#34;,\&amp;#34;statusWord\&amp;#34;:\&amp;#34;9000\&amp;#34;}],\&amp;#34;isLogicalChannelOpen\&amp;#34;:true}}]&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h4 id="json-content-1">JSON content&lt;/h4>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;hasMatched&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;powerOnData&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;1234&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;selectApplicationResponse&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apdu&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;6400&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;statusWord&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;6400&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;cardResponse&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apduResponses&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;isLogicalChannelOpen&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;hasMatched&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;powerOnData&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;1234&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;selectApplicationResponse&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apdu&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C20051410019000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;statusWord&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;9000&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;cardResponse&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apduResponses&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;apdu&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ABCD9000&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;statusWord&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;9000&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;isLogicalChannelOpen&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

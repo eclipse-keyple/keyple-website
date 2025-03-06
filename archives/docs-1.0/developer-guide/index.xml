@@ -1313,7 +1313,7 @@ secure Calypso transaction seamlessly. It completely hides the details of the AP
 &lt;li>The invalidation status&lt;/li>
 &lt;li>The files, counters, SV data read or modified during the execution of the processes defined by PoTransaction&lt;/li>
 &lt;/ul>
-&lt;p>The Calypso PO fields are first populated from the CardSelectionResponse obtained through the PO selection process then each time a PoTransaction &amp;ldquo;process&amp;rdquo; method is invoked.&lt;/p>
+&lt;p>The Calypso PO fields are first populated from the CardSelectionResponse obtained through the PO selection process then each time a PoTransaction &amp;ldquo;process&amp;rdquo; method is called.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">//Retrieve PO&amp;#39;s informations&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">atr&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoPo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getAtr&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
