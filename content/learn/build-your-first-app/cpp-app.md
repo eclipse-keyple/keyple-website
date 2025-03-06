@@ -31,8 +31,8 @@ We will use three main components of Keyple:
 * **Keyple Plugin PC/SC C++ Library**
   add-on to provide the ability to manage PC/SC readers.
 
-{{% callout info %}}  
-Prerequisites
+{{% callout note %}}  
+**Prerequisites**
 
 Here are the prerequisites to build the keyple components (dynamic libraries):
 * G++ 6 and higher, MSVC++ 14 (other compilers untested)

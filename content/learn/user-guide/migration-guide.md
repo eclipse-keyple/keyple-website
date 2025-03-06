@@ -49,7 +49,7 @@ Search and replace (in "**case-sensitive**" and "**whole-word**" mode) in the fo
 3. `card.sam` => `crypto.legacysam.sam`
 4. `Reader` => `CardReader`
 5. `ObservableReader` => `ObservableCardReader`
-6. `ReaderEvent` => `CardCardReader`
+6. `ReaderEvent` => `CardReaderEvent`
 7. `CalypsoSam` => `LegacySam`
 8. `CardSelection` => `CardSelectionExtension`
 9. `CalypsoApiProperties` => `CalypsoCardApiProperties`
