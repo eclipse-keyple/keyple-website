@@ -46,7 +46,7 @@ Concentrates all known information about the Personal Object being processed. Ac
 * The invalidation status
 * The files, counters, SV data read or modified during the execution of the processes defined  by PoTransaction
 
-The Calypso PO fields are first populated from the CardSelectionResponse obtained through the PO selection process then each time a PoTransaction "process" method is invoked.
+The Calypso PO fields are first populated from the CardSelectionResponse obtained through the PO selection process then each time a PoTransaction "process" method is called.
 
 ```java
     ...

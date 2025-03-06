@@ -11,25 +11,22 @@ entity "Card" as card
 participant "Terminal" as client
 participant "Server" as server
 
+card -->> client ++ #LightGrey : card is inserted
 activate card #LightGrey
-card --\ client : a card is inserted
 
-activate client #LightGrey
-client -[#3498DB]> server : <color: #3498DB>**Execute Remote Service**
-
-activate server #LightGrey
+client -[#3498DB]> server ++ #LightGrey : <color: #3498DB>**Execute Remote Service**
 
 loop #F5F5F5 while there are actions to be performed with the card or the terminal's reader
-    server -[#27AE60]-> client : <color:#27AE60>**Command**
-    client -> card : command
+    client <-[#27AE60]- server : <color:#27AE60>**Command**
+    card <- client : command
     card --> client : response
     client -[#3498DB]> server : <color: #3498DB>**Response**
 end
 
-server -[#27AE60]-> client : <color:#27AE60>**End Remote Service**
-deactivate server
+client <-[#27AE60]- server -- : <color:#27AE60>**End Remote Service**
 
-card --\ client : the card is removed
+card -->> client -- : card is removed
+deactivate client
 deactivate card
 
 @enduml

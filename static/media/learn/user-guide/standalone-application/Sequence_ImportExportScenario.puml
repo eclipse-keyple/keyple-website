@@ -1,0 +1,65 @@
+@startuml
+
+' == THEME ==
+
+skinparam RoundCorner 10
+
+' == CONTENT ==
+
+entity "Card" as card
+box "Terminal" #F0F0F0
+participant "CardSelectionManager" as clientManager
+participant "Client application" as client
+end box
+box "Server" #F0F0F0
+participant "Server application" as server
+participant "CardSelectionManager" as serverManager
+end box
+
+activate client #LightGrey
+client -> server ++ #LightGrey : Retrieve card selection scenario
+
+server -> serverManager ** : New
+
+server -> serverManager ++ #LightGrey : Prepare card selection scenario
+return
+
+server -> serverManager ++ #LightGrey : **<color:red>exportCardSelectionScenario</color> ()**
+return **<color:green>CardSelectionScenarioJsonString</color>**
+
+client <-- server -- : **<color:green>CardSelectionScenarioJsonString</color>**
+
+client -> clientManager ** : New
+
+client -> clientManager ++ #LightGrey : **<color:red>importCardSelectionScenario</color> (**\n\t**<color:green>CardSelectionScenarioJsonString</color>**\n**)**
+return
+
+|||
+
+card -->> client : Card inserted event
+activate card #LightGrey
+
+client -> clientManager ++ #LightGrey : Process scenario
+clientManager -> card
+clientManager <-- card
+return
+
+|||
+
+client -> clientManager ++ #LightGrey : **<color:red>exportProcessedCardSelectionScenario</color> ()**
+return **<color:blue>ProcessedCardSelectionScenarioJsonString</color>**
+
+client -> server ++ #LightGrey : Execute remote service (\n\tinputData = **<color:blue>ProcessedCardSelectionScenarioJsonString</color>**,\n\t...\n)
+
+server -> serverManager ++ #LightGrey : **<color:red>importProcessedCardSelectionScenario</color> (**\n\t**<color:blue>ProcessedCardSelectionScenarioJsonString</color>**\n**)**
+return **cardSelectionResult**
+
+server -> server : process card transaction
+
+client <-- server
+deactivate server
+
+card -->> client : Card removed event
+deactivate card
+
+@enduml

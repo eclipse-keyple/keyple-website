@@ -39,7 +39,7 @@ If you are new to Keyple, read the [key concepts]({{< relref "key-concepts.md" >
 As part of Keyple Service component, the smart card service is the main service of Keyple. Its role is to centralize the add-on resources and to manage their
 life cycle.
 
-The service is accessible by invoking the `SmartCardServiceProvider.getService()` static method.
+The service is accessible by calling the `SmartCardServiceProvider.getService()` static method.
 
 {{< code lang="java" >}}
 SmartCardService smartCardService = SmartCardServiceProvider.getService();
@@ -89,7 +89,7 @@ Some plugin types may offer specific options.
 
 Static options are usually directly exposed by the plugin factory API while dynamic options are exposed by the plugin extension API.
 
-To access the plugin extension it is necessary to invoke the `getExtension(...)` method on the registered `Plugin` by specifying the expected class of the extension which must extends the `KeyplePluginExtension` interface.
+To access the plugin extension it is necessary to call the `getExtension(...)` method on the registered `Plugin` by specifying the expected class of the extension which must extends the `KeyplePluginExtension` interface.
 After that, the dedicated methods are available from the resulting object.
 
 {{< code lang="java" >}}
@@ -190,7 +190,7 @@ It is then possible to activate or deactivate the protocols supported by the rea
   <div class="alert alert-note"><div>Use of these methods may be optional if the application does not intend to target products by protocol filtering.</div></div>
 
 * The reader's extension API exposes specific options:<br>
-To access the reader extension it is necessary to invoke the `getReaderExtension(...)` method on the `Plugin` instance by specifying the expected class of the extension (which must extends the `KeypleReaderExtension` interface) and the reader's name.
+To access the reader extension it is necessary to call the `getReaderExtension(...)` method on the `Plugin` instance by specifying the expected class of the extension (which must extends the `KeypleReaderExtension` interface) and the reader's name.
 After that, the dedicated methods, if any, are available from the resulting object.
 {{< code lang="java" >}}
 // Here is a snippet showing how to get and use the extension of the Stub reader
@@ -347,7 +347,7 @@ int secondCaseIndex = cardSelectionManager.prepareSelection(
 
 ### Run a scenario
 
-If we know that the card is in the reader it is possible to run a selection scenario by invoking the `processCardSelectionScenario(...)` method on the corresponding reader.
+If we know that the card is in the reader it is possible to run a selection scenario by calling the `processCardSelectionScenario(...)` method on the corresponding reader.
 The result of the selection is then directly returned.
 
 {{< code lang="java" >}}
@@ -367,7 +367,7 @@ if (smartCard == null) {
 
 If the reader is of type `ObservableCardReader` then it is possible to schedule in advance the execution of a selection scenario as soon as a card is presented.
 
-Invoke the `scheduleCardSelectionScenario(...)` to register the previously prepared scenario in the observable reader.
+Call the `scheduleCardSelectionScenario(...)` method to register the previously prepared scenario in the observable reader.
 
 In this case, it is necessary to register a reader observer and to have started the card detection in order to be able to retrieve the result of the selection which will be contained in a `CardReaderEvent`.
 
@@ -405,11 +405,43 @@ public void onReaderEvent(CardReaderEvent event) {
 <br>
 
 {{% callout note %}}
-The `finalizeCardProcessing()` method must be invoked at the end of the transaction to ensure that the communication 
+The `finalizeCardProcessing()` method must be called at the end of the transaction to ensure that the communication
 channel is closed.
 This switches the underlying monitoring thread into a state of waiting for the card to be removed.
 
 Not doing this can lead to blocking states of the card insertion/removal monitoring mechanism.
+{{% /callout %}}
+
+### Import/Export a scenario
+
+In some cases, it may be useful or even necessary to be able to import/export a prepared or processed card selection 
+scenario.
+
+This feature is particularly useful and **strongly recommended** for distributed applications with lightweight client 
+terminals (i.e. with no Keyple card extension installed locally).
+
+It increases performance by reducing the number of network exchanges, 
+as the selection scenario can be performed autonomously by the terminal as soon as a card is presented.
+
+Use `exportCardSelectionScenario()` method to export the content of the current prepared card selection scenario as a 
+JSON string. The resulting string can be stored and later reloaded on the same or another card selection manager.
+
+Use `importCardSelectionScenario(...)` method to import a previously exported card selection scenario.
+The scenario can now be processed or scheduled on the card.
+
+Use `exportProcessedCardSelectionScenario()` method to export a previously processed card selection scenario as a JSON 
+string. Please note that the resulting string can only be imported into the same or another card selection manager 
+using all the card extensions involved in the processed scenario.
+
+Use `importProcessedCardSelectionScenario(...)` method to import a previously exported processed scenario and returns 
+the corresponding `CardSelectionResult`.
+
+The diagram below summarizes the workflow:
+
+{{< figure src="/media/learn/user-guide/standalone-application/Sequence_ImportExportScenario.svg" caption="Import/Export card selection scenario - Use case for lightweight client terminals" numbered="true" >}}
+
+{{% callout note %}}
+Please note that the way to retrieve the export of the prepared card selection scenario is completely up to the user.
 {{% /callout %}}
 
 <br>
@@ -419,7 +451,7 @@ Not doing this can lead to blocking states of the card insertion/removal monitor
 Once the smart card is referenced in the system it is possible to perform the desired transaction using the appropriate
 card extension.
 
-When the transaction is completed, if the reader is observed, it is imperative to invoke the `finalizeCardProcessing()` 
+When the transaction is completed, if the reader is observed, it is imperative to call the `finalizeCardProcessing()` 
 method on the observable reader (see the above note).
 
 <br>

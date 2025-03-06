@@ -48,7 +48,7 @@ Pre-requisites:
 
 As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.
 
-The service is accessible by invoking the `CalypsoExtensionService.getInstance()` static method.
+The service is accessible by calling the `CalypsoExtensionService.getInstance()` static method.
 
 {{< code lang="java" >}}
 CalypsoExtensionService calypsoExtensionService = CalypsoExtensionService.getInstance();
@@ -67,7 +67,7 @@ smartCardService.checkCardExtension(calypsoExtensionService);
 ## Select a card
 In order to perform a transaction it is necessary to have selected the card first.
 
-To do this, you must create a selection case for a selection scenario by invoking the `createCardSelection()` method.
+To do this, you must create a selection case for a selection scenario by calling the `createCardSelection()` method.
 
 In addition to the filtering capabilities offered by Keyple Service, the Calypso Selection API allows you to add
 commands that will be sent to the card after a successful selection (the details of these features are described in the

@@ -27,19 +27,19 @@ server embed Keyple components (note that the card reader can be either client-s
 {{< figure src="/media/learn/user-guide/distributed-application/distributed_solution_1_layers_overview.drawio.svg" caption="Keyple on both client and server sides" numbered="true" >}}
 
 The diagram below illustrates the second way, the architecture with a client not running Keyple but connected to a
-server based on Keyple:
+Keyple-based server:
 
 {{< figure src="/media/learn/user-guide/distributed-application/distributed_solution_2_layers_overview.drawio.svg" caption="Keyple on server side only" numbered="true" >}}
 
 ### User guides
 
-- [How to build a fully Keyple distributed application](#fully-keyple-distributed-application)
-- [How to make a non-Keyple client interact with a Keyple-based server application]({{< relref "server-json-api.md" >}})
+- [How to build a full Keyple distributed application](#full-keyple-distributed-application)
+- [How to make a non-Keyple client interact with a Keyple-based server application]({{< ref "/user-guides/non-keyple-client/overview" >}})
 
 ## 
 ---
 
-## Fully Keyple distributed application
+## Full Keyple distributed application
 
 Steps:
 1. In pre-requisite, read [Standalone Application User Guide]({{< relref "standalone-application.md" >}}) to understand the main concepts of Keyple in a standalone application.
@@ -59,7 +59,7 @@ Here are the main concepts to keep in mind before continuing to read this user g
 
 | Concept              | Description                                                                                                                                                                                                                                                                                                                                                                                                          |
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Remote Lib**       | This is the `keyple-distributed-remote-java-lib` library.<br>It must be imported and used by the application installed on the host not having local access to the smart card reader and that wishes to control the reader remotely.                                                                                                                                                                                  |
+| **Remote Lib**       | This is the `keyple-distributed-remote-java-lib` library.<br>It must be imported and used by the application installed on the host not having local access to the smart card reader and that wishes to interact with the reader remotely.                                                                                                                                                                            |
 | **Local Lib**        | This is the `keyple-distributed-local-java-lib` library.<br>It must be imported and used by the application installed on the host having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.                                                                                                                                               |
 | **Network Lib**      | This is the `keyple-distributed-network-java-lib` library.<br>It must always be imported because it contains the network elements used by **Remote Lib** and **Local Lib**.                                                                                                                                                                                                                                          |
 | **Remote Plugin**    | Part of the **Remote Lib**, this is a Keyple reader plugin extension which provides only **Remote Readers** to the application. It manages data exchanges with the **Local Service**. This reader plugin extension must be registered to the smart card service like any Keyple reader plugin.                                                                                                                       |
@@ -104,10 +104,10 @@ The Keyple Distributed solution offers two different usage modes, each one havin
 
 <div id="plugins-table-1">
 
-| Usage mode                                | Description                                                                                                      |
-|-------------------------------------------|------------------------------------------------------------------------------------------------------------------|
-| [Reader Client Side](#reader-client-side) | Allows a **server** application to control a smart card reader available on a **client** (e.g. Card reader).     |
-| [Reader Server Side](#reader-server-side) | Allows a **client** application to control a smart card reader available on a **server** (e.g. SAM reader, HSM). |
+| Usage mode                                | Description                                                                                                            |
+|-------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| [Reader Client Side](#reader-client-side) | Allows a **server** application to interact with a smart card reader available on a **client** (e.g. Card reader).     |
+| [Reader Server Side](#reader-server-side) | Allows a **client** application to interact with a smart card reader available on a **server** (e.g. SAM reader, HSM). |
 
 </div>
 <style>
@@ -122,7 +122,7 @@ In an application, it is possible to use simultaneously several usage modes and 
 
 ### Reader Client Side
 
-This usage mode allows a **server** application to control a smart card reader available on a **client** (e.g. Card reader).
+This usage mode allows a **server** application to interact with a smart card reader available on a **client** (e.g. Card reader).
 
 In this mode, the client is the initiator of the application processing following the local plugin or reader events (reader connection/disconnection or card insertion/removal).
 
@@ -154,16 +154,24 @@ Interfaces marked with an asterisk "**" come from the **Keyple Service API**:
     5. When an event occurs, you must retrieve the connected remote reader from the registered plugin using the name of the reader contained in the event.<br><div class="alert alert-note"><div>Please note that the remote reader is strictly an instance of `CardReader`, even if the local reader is an `ObservableCardReader`.<br>This usage mode does not allow to observe reader events such as card insertion or removal from the server.<br>It is the responsibility of the client to observe the local reader if needed, then to ask the server to execute a specific remote service depending on the case.</div></div>
     6. Use information inside the `RemoteReaderServer` extension of the remote reader to identify the ticketing service to execute.
     7. Execute the specified ticketing service using the remote reader and all of its other information.
-    8. End the remote ticketing service by invoking the associated method provided by the `RemotePluginServer` extension of the remote plugin.<br>It is then possible to send additional information to the client if necessary.
+    8. End the remote ticketing service by calling the associated method provided by the `RemotePluginServer` extension of the remote plugin.<br>It is then possible to send additional information to the client if necessary.
 * **Client**
     1. Build an instance of the `LocalServiceClientFactory` using the `LocalServiceClientFactoryBuilder` class, specifying a unique name for the **Local Service** to be registered and your network endpoint implementation.
     2. Register the **Local Service** to the smart card service by providing the previously built factory.
     3. Register at least a local plugin to the smart card service and get the name of the local reader to connect to the server.
-    4. Execute the desired remote service by invoking the associated method provided by the `LocalServiceClient` extension of the local service by specifying the identifier of the ticketing service to be executed, the name of the target local reader, and transmitting to the server if necessary the contents of the previously read smart card or additional information.
-    
+    4. Execute the desired remote service by calling the associated method provided by the `LocalServiceClient` 
+       extension of the local service by specifying the identifier of the ticketing service to be executed, 
+       the name of the target local reader, and transmitting to the server if necessary the contents of the previously 
+       read smart card or additional information.<br><div class="alert alert-note"><div><p>Please note that if the 
+       client does not use Keyple card extension locally, it is strongly recommended to use the card selection scenario
+       import/export feature to reduce the number of network exchanges during the card transaction.</p><p>
+       It will then be possible to process the card selection scenario locally following the detection of a card,
+       then export the result of the selection and transmit it to the server in the `inputData` field.</p>
+       [More information]({{< relref "standalone-application.md/#importexport-a-scenario" >}})</div></div>
+
 ### Reader Server Side
 
-This usage mode allows a **client** application to control a smart card reader or a pool of smart card readers available on a **server** (e.g. SAM reader, HSM).
+This usage mode allows a **client** application to interact with a smart card reader or a pool of smart card readers available on a **server** (e.g. SAM reader, HSM).
 
 The Keyple Distributed solution offers for this usage mode a remote control of all types of plugins (`Plugin`, `ObservablePlugin`, `PoolPlugin`):
 

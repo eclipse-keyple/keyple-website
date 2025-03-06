@@ -56,7 +56,7 @@ resource allocation, using a profile-based filtering mechanism.
 
 ## Access to the service
 
-Invoke the `CardResourceServiceProvider.getService()` static method to access the service.
+Call the `CardResourceServiceProvider.getService()` static method to access the service.
 
 {{< code lang="java" >}}
 CardResourceService cardResourceService = CardResourceServiceProvider.getService();
@@ -69,7 +69,7 @@ CardResourceService cardResourceService = CardResourceServiceProvider.getService
 
 ### Access to the configurator
 
-Invoke the `getConfigurator()` method on the service to get a new instance of the service configurator.
+Call the `getConfigurator()` method on the service to get a new instance of the service configurator.
 It is built on the fluent pattern, and it guides you through the various steps to be specified during the configuration
 process.
 
@@ -184,7 +184,7 @@ can always return after a certain time if it has still not found anything.
 
 ### Apply the configuration
 
-Invoke the `configure()` method on the configurator to finalise and apply the configuration.
+Call the `configure()` method on the configurator to finalise and apply the configuration.
 
 Once finalized, the new configuration replaces the previous one but does not change the state of the service.
 If the service was already started at that moment, then it stops, applies the new configuration, and restarts.
@@ -200,7 +200,7 @@ If the service was already started at that moment, then it stops, applies the ne
 
 ### Start the service
 
-Invoke the `start()` method on the service to start the service using the current configuration.
+Call the `start()` method on the service to start the service using the current configuration.
 The service will initialize the list of available resources for each profile and start the monitoring processes if
 requested.
 
@@ -210,7 +210,7 @@ cardResourceService.start();
 
 ### Allocate a resource
 
-Invoke the `getCardResource(...)` method on the service to retrieve and lock a card resource.
+Call the `getCardResource(...)` method on the service to retrieve and lock a card resource.
 You just have to specify the name of the profile to use.
 
 If the allocation mode is blocking, then the method will wait a while for a resource to become available.
@@ -221,7 +221,7 @@ CardResource cardResource = cardResourceService.getCardResource(RESOURCE_A);
 
 ### Release a resource
 
-Invoke the `releaseCardResource(...)` method on the service to unlock a card resource.
+Call the `releaseCardResource(...)` method on the service to unlock a card resource.
 You just have to provide the card resource to release.
 
 {{< code lang="java" >}}
@@ -230,7 +230,7 @@ cardResourceService.releaseCardResource(cardResource);
 
 ### Delete a resource
 
-Invoke the `removeCardResource(...)` method on the service to remove a card resource from the available card resource
+Call the `removeCardResource(...)` method on the service to remove a card resource from the available card resource
 list.
 This can be useful in some cases if the card or reader has failed.
 You just have to provide the card resource to remove.
@@ -241,7 +241,7 @@ cardResourceService.removeCardResource(cardResource);
 
 ### Stop the service
 
-Invoke the `stop()` method on the service to stop the service if needed. Any monitoring is then stopped and no more
+Call the `stop()` method on the service to stop the service if needed. Any monitoring is then stopped and no more
 resources are accessible.
 
 {{< code lang="java" >}}

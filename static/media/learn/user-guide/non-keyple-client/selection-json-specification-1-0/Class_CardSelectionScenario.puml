@@ -1,0 +1,128 @@
+@startuml
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+' -- Styles that don't work with new version of plantuml --
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' -- END --
+
+skinparam ClassBorderThickness 2
+skinparam ArrowThickness 2
+
+' Yellow
+skinparam ClassBackgroundColor #FEFECE
+skinparam ClassBorderColor #D4AC0D
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+class CardSelectionScenario {
+    **multiSelectionProcessing**: MultiSelectionProcessing
+    **channelControl**: ChannelControl
+    **cardSelectors**: CardSelector[]
+    **defaultCardSelections**: DefaultCardSelection[]
+    <color:red><i>... additional properties are to be ignored
+}
+enum MultiSelectionProcessing {
+    FIRST_MATCH
+    PROCESS_ALL
+}
+enum ChannelControl {
+    KEEP_OPEN
+    CLOSE_AFTER
+}
+class CardSelector {
+    **logicalProtocolName**: String?
+    **powerOnDataRegex**: String?
+    **aid**: String?
+    **fileOccurrence**: FileOccurrence?
+    **fileControlInformation**: FileControlInformation?
+}
+enum FileOccurrence {
+    FIRST
+    LAST
+    NEXT
+    PREVIOUS
+}
+enum FileControlInformation {
+    FCI
+    FCP
+    FMD
+    NO_RESPONSE
+}
+class DefaultCardSelection {
+    **cardSelectionRequest**: CardSelectionRequest
+}
+class CardSelectionRequest {
+    **cardRequest**: CardRequest?
+    **successfulSelectionStatusWords**: String[]
+}
+class CardRequest {
+    **apduRequests**: ApduRequest[]
+    **stopOnUnsuccessfulStatusWord**: Boolean
+}
+class ApduRequest {
+    **apdu**: String
+    **successfulStatusWords**: String[]
+    **info**: String?
+}
+
+' Associations
+
+CardSelectionScenario *-left- "1" MultiSelectionProcessing #C_LINK
+CardSelectionScenario *-right- "1" ChannelControl #C_LINK
+CardSelectionScenario *-- "1..*" CardSelector #C_LINK
+CardSelectionScenario *-- "1..*" DefaultCardSelection #C_LINK
+
+CardSelector *.. "0..1" FileOccurrence #C_LINK
+CardSelector *.. "0..1" FileControlInformation #C_LINK
+
+DefaultCardSelection *-- "1" CardSelectionRequest #C_LINK
+
+CardSelectionRequest *.. "0..1" CardRequest #C_LINK
+
+CardRequest *-- "1..*" ApduRequest #C_LINK
+
+' == LAYOUT ==
+
+' == STYLE ==
+
+class CardSelectionScenario <<green>>
+class CardSelector <<green>>
+class DefaultCardSelection <<green>>
+class CardSelectionRequest <<green>>
+class CardRequest <<green>>
+class ApduRequest <<green>>
+
+@enduml
