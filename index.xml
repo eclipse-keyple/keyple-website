@@ -2479,7 +2479,7 @@ It is a guarantee of reliability and reproducibility of the processes implemente
 &lt;strong>Java&lt;/strong> and &lt;strong>C++&lt;/strong> interfaces,
 and Keyple is based on these interfaces.&lt;/p>
 &lt;p>Keyple also defines additional public interface for plugin integration, remote reader management, etc.&lt;/p></description></item><item><title>Non-Keyple Client User Guide</title><link>https://keyple.org/learn/user-guide/non-keyple-client/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/non-keyple-client/</guid><description>&lt;meta http-equiv="refresh" content="0; url=./user-guides/non-keyple-client/overview/"></description></item><item><title>Calypso Application User Guide</title><link>https://keyple.org/learn/user-guide/calypso-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/calypso-application/</guid><description>&lt;br>
-&lt;h1 id="overview">Overview&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>Keyple provides a card extension add-on dedicated to the Calypso® card technology.&lt;/p>
 &lt;p>This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way.
 It completely hides the details of APDU orders that are sent to Calypso cards and SAMs, which are usually tedious operations.&lt;/p>
@@ -2499,7 +2499,7 @@ It completely hides the details of APDU orders that are sent to Calypso cards an
 &lt;/div>&lt;/figure>
 &lt;/p>
 &lt;br>
-&lt;h1 id="operating-mode">Operating mode&lt;/h1>
+&lt;h2 id="operating-mode">Operating mode&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
 &lt;p>Pre-requisites:&lt;/p>
@@ -2516,7 +2516,7 @@ It completely hides the details of APDU orders that are sent to Calypso cards an
 &lt;li>&lt;a href="#operate-a-card-transaction">Operate a card transaction&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;br>
-&lt;h1 id="the-calypso-extension-service">The Calypso extension service&lt;/h1>
+&lt;h2 id="the-calypso-extension-service">The Calypso extension service&lt;/h2>
 &lt;p>As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.&lt;/p>
 &lt;p>The service is accessible by calling the &lt;code>CalypsoExtensionService.getInstance()&lt;/code> static method.&lt;/p>
 &lt;div class="code relative" id="">
@@ -2530,7 +2530,7 @@ It completely hides the details of APDU orders that are sent to Calypso cards an
 &lt;/div>
 &lt;/div>
 &lt;br>
-&lt;h1 id="select-a-card">Select a card&lt;/h1>
+&lt;h2 id="select-a-card">Select a card&lt;/h2>
 &lt;p>In order to perform a transaction it is necessary to have selected the card first.&lt;/p>
 &lt;p>To do this, you must create a selection case for a selection scenario by calling the &lt;code>createCardSelection()&lt;/code> method.&lt;/p>
 &lt;p>In addition to the filtering capabilities offered by Keyple Service, the Calypso Selection API allows you to add
@@ -2567,7 +2567,7 @@ The application will use it to get the data necessary for its business logic.&lt
 &lt;/div>
 &lt;/div>
 &lt;br>
-&lt;h1 id="set-up-security-settings">Set up security settings&lt;/h1>
+&lt;h2 id="set-up-security-settings">Set up security settings&lt;/h2>
 &lt;div class="alert alert-note">
 &lt;div>
 The security settings must be initialized only for secure transactions.
@@ -2619,7 +2619,7 @@ the &lt;a href="./learn/user-guide/card-resource-service/">Card Resource Service
 &lt;/div>
 &lt;/div>&lt;/p>
 &lt;br>
-&lt;h1 id="operate-a-card-transaction">Operate a card transaction&lt;/h1>
+&lt;h2 id="operate-a-card-transaction">Operate a card transaction&lt;/h2>
 &lt;p>It is possible to perform secure or non-secure transactions depending on the need.
 A transaction is managed by a dedicated &lt;code>CardTransactionManager&lt;/code> which is provided by the Calypso card extension service.&lt;/p>
 &lt;p>The transaction manager provides high-level API to manage transactions with a Calypso card.
@@ -2643,8 +2643,8 @@ the previously prepared operations.&lt;/li>
 &lt;/div>
 &lt;/div>
 &lt;br>
-&lt;h1 id="specific-security-measures">Specific security measures&lt;/h1>
-&lt;h2 id="legacy-card-authentication">Legacy card authentication&lt;/h2>
+&lt;h2 id="specific-security-measures">Specific security measures&lt;/h2>
+&lt;h3 id="legacy-card-authentication">Legacy card authentication&lt;/h3>
 &lt;p>In order to &lt;strong>securely manage legacy card solutions configured with DES or DES-X keys&lt;/strong>, it is important for these cards to exchange in a secure session only APDU commands for which the size of the response data can be predetermined.
 For Keyple-based processing, this means avoiding within a secure session the use of methods: &lt;code>TransactionManager.prepareReadRecord&lt;/code>, &lt;code>prepareReadRecordsPartially&lt;/code>, &lt;code>prepareSearchRecords&lt;/code>, &lt;code>prepareGetData&lt;/code>.&lt;/p>
 &lt;p>These methods could be “useful” for high-performance identification of some card data; here&amp;rsquo;s the safe way to operate them on legacy cards:&lt;/p>
@@ -2653,7 +2653,7 @@ For Keyple-based processing, this means avoiding within a secure session the use
 &lt;li>then, if some of the data read out of session is sensitive and requires authentication, repeat a secure reading of the sensitive data in session, using commands allowing the size of the response data to be predetermined.&lt;/li>
 &lt;/ul>
 &lt;br>
-&lt;h2 id="hce-service-handling">HCE service handling&lt;/h2>
+&lt;h3 id="hce-service-handling">HCE service handling&lt;/h3>
 &lt;p>In access control, in order to accept and authenticate card solutions based on an HCE-type NFC service, it is necessary to check the validity of the “HCE token”. &lt;strong>How to retrieve the two bytes of the HCE validity token?&lt;/strong>&lt;/p>
 &lt;p>While the &lt;code>CalypsoCard&lt;/code> API doesn&amp;rsquo;t directly provide this information, it can be easily obtained using the following
 snippet:&lt;/p>
@@ -2679,7 +2679,7 @@ snippet:&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;br>
-&lt;h1 id="api">API&lt;/h1>
+&lt;h2 id="api">API&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-card-api/" target="_blank" rel="noopener">Keypop Calypso Card API&lt;/a>&lt;/li>
@@ -2689,12 +2689,12 @@ snippet:&lt;/p>
 &lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-java-lib" target="_blank" rel="noopener">Keyple Card Calypso Crypto Legacy SAM API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
-&lt;h1 id="examples">Examples&lt;/h1>
+&lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
-&lt;h1 id="download">Download&lt;/h1>
+&lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/components/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul>
