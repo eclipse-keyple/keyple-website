@@ -10,7 +10,7 @@ weight: 6
 
 <br>
 
-## Overview
+# Overview
 
 Keyple provides a card extension add-on dedicated to the Calypso® card technology.
 
@@ -30,7 +30,7 @@ The diagram below illustrates the organization of a Calypso application based on
 
 <br>
 
-## Operating mode
+# Operating mode
 {{% callout warning %}}
 Pre-requisites:
 * Have a global view of Calypso product concepts (cards, SAM, security principles)
@@ -44,7 +44,7 @@ Pre-requisites:
 
 <br>
 
-## The Calypso extension service
+# The Calypso extension service
 
 As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.
 
@@ -64,7 +64,7 @@ smartCardService.checkCardExtension(calypsoExtensionService);
 
 <br>
 
-## Select a card
+# Select a card
 In order to perform a transaction it is necessary to have selected the card first.
 
 To do this, you must create a selection case for a selection scenario by calling the `createCardSelection()` method.
@@ -106,7 +106,7 @@ if (calypsoCard == null) {
 
 <br>
 
-## Set up security settings
+# Set up security settings
 {{% callout note %}}
 The security settings must be initialized only for secure transactions.
 {{% /callout %}}
@@ -162,7 +162,7 @@ symmetricCryptoSecuritySetting =
 
 <br>
 
-## Operate a card transaction
+# Operate a card transaction
 It is possible to perform secure or non-secure transactions depending on the need.
 A transaction is managed by a dedicated `CardTransactionManager` which is provided by the Calypso card extension service.
 
@@ -189,32 +189,19 @@ calypsoCardApiFactory
 
 <br>
 
-## API
+# Specific security measures
+## Legacy card authentication
+In order to **securely manage legacy card solutions configured with DES or DES-X keys**, it is important for these cards to exchange in a secure session only APDU commands for which the size of the response data can be predetermined.
+For Keyple-based processing, this means avoiding within a secure session the use of methods: `TransactionManager.prepareReadRecord`, `prepareReadRecordsPartially`, `prepareSearchRecords`, `prepareGetData`.
 
-* [Keypop Reader API](https://keypop.org/apis/reader-layer/reader-api/)
-* [Keypop Calypso Card API](https://keypop.org/apis/calypso-layer/calypso-card-api/)
-* [Keypop Calypso Crypto Legacy SAM API](https://keypop.org/apis/calypso-layer/calypso-legacysam-api/)
-* [Keyple Common API](https://docs.keyple.org/keyple-common-java-api)
-* [Keyple Card Calypso API](https://docs.keyple.org/keyple-card-calypso-java-lib)
-* [Keyple Card Calypso Crypto Legacy SAM API](https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-java-lib)
-
-<br>
-
-## Examples
-
-* [Java examples](https://github.com/eclipse-keyple/keyple-java-example)
+These methods could be “useful” for high-performance identification of some card data; here's the safe way to operate them on legacy cards:
+- first exchange these commands before opening a secure session: this enables card data to be efficiently identified,
+- then, if some of the data read out of session is sensitive and requires authentication, repeat a secure reading of the sensitive data in session, using commands allowing the size of the response data to be predetermined.
 
 <br>
 
-## Download
-
-* [Java components]({{< ref "components/overview/configuration-wizard" >}})
-
-<br>
-
-## FAQ
-
-#### How can I retrieve the two bytes of the HCE validity token?
+## HCE service handling
+In access control, in order to accept and authenticate card solutions based on an HCE-type NFC service, it is necessary to check the validity of the “HCE token”. **How to retrieve the two bytes of the HCE validity token?**
 
 While the `CalypsoCard` API doesn't directly provide this information, it can be easily obtained using the following
 snippet:
@@ -240,3 +227,29 @@ private static byte[] extractHceValidityToken(byte[] selectApplicationResponse) 
 
 [...]
 {{< /code >}}
+
+<br>
+
+# API
+
+* [Keypop Reader API](https://keypop.org/apis/reader-layer/reader-api/)
+* [Keypop Calypso Card API](https://keypop.org/apis/calypso-layer/calypso-card-api/)
+* [Keypop Calypso Crypto Legacy SAM API](https://keypop.org/apis/calypso-layer/calypso-legacysam-api/)
+* [Keyple Common API](https://docs.keyple.org/keyple-common-java-api)
+* [Keyple Card Calypso API](https://docs.keyple.org/keyple-card-calypso-java-lib)
+* [Keyple Card Calypso Crypto Legacy SAM API](https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-java-lib)
+
+<br>
+
+# Examples
+
+* [Java examples](https://github.com/eclipse-keyple/keyple-java-example)
+
+<br>
+
+# Download
+
+* [Java components]({{< ref "components/overview/configuration-wizard" >}})
+
+<br>
+
