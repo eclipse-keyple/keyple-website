@@ -10,7 +10,7 @@ weight: 6
 
 <br>
 
-# Overview
+## Overview
 
 Keyple provides a card extension add-on dedicated to the Calypso® card technology.
 
@@ -30,7 +30,7 @@ The diagram below illustrates the organization of a Calypso application based on
 
 <br>
 
-# Operating mode
+## Operating mode
 {{% callout warning %}}
 Pre-requisites:
 * Have a global view of Calypso product concepts (cards, SAM, security principles)
@@ -44,7 +44,7 @@ Pre-requisites:
 
 <br>
 
-# The Calypso extension service
+## The Calypso extension service
 
 As part of the Calypso card extension add-on, the Calypso extension service is the provider of the API implementations.
 
@@ -64,7 +64,7 @@ smartCardService.checkCardExtension(calypsoExtensionService);
 
 <br>
 
-# Select a card
+## Select a card
 In order to perform a transaction it is necessary to have selected the card first.
 
 To do this, you must create a selection case for a selection scenario by calling the `createCardSelection()` method.
@@ -106,7 +106,7 @@ if (calypsoCard == null) {
 
 <br>
 
-# Set up security settings
+## Set up security settings
 {{% callout note %}}
 The security settings must be initialized only for secure transactions.
 {{% /callout %}}
@@ -162,7 +162,7 @@ symmetricCryptoSecuritySetting =
 
 <br>
 
-# Operate a card transaction
+## Operate a card transaction
 It is possible to perform secure or non-secure transactions depending on the need.
 A transaction is managed by a dedicated `CardTransactionManager` which is provided by the Calypso card extension service.
 
@@ -189,8 +189,8 @@ calypsoCardApiFactory
 
 <br>
 
-# Specific security measures
-## Legacy card authentication
+## Specific security measures
+### Legacy card authentication
 In order to **securely manage legacy card solutions configured with DES or DES-X keys**, it is important for these cards to exchange in a secure session only APDU commands for which the size of the response data can be predetermined.
 For Keyple-based processing, this means avoiding within a secure session the use of methods: `TransactionManager.prepareReadRecord`, `prepareReadRecordsPartially`, `prepareSearchRecords`, `prepareGetData`.
 
@@ -200,7 +200,7 @@ These methods could be “useful” for high-performance identification of some 
 
 <br>
 
-## HCE service handling
+### HCE service handling
 In access control, in order to accept and authenticate card solutions based on an HCE-type NFC service, it is necessary to check the validity of the “HCE token”. **How to retrieve the two bytes of the HCE validity token?**
 
 While the `CalypsoCard` API doesn't directly provide this information, it can be easily obtained using the following
@@ -230,7 +230,7 @@ private static byte[] extractHceValidityToken(byte[] selectApplicationResponse) 
 
 <br>
 
-# API
+## API
 
 * [Keypop Reader API](https://keypop.org/apis/reader-layer/reader-api/)
 * [Keypop Calypso Card API](https://keypop.org/apis/calypso-layer/calypso-card-api/)
@@ -241,13 +241,13 @@ private static byte[] extractHceValidityToken(byte[] selectApplicationResponse) 
 
 <br>
 
-# Examples
+## Examples
 
 * [Java examples](https://github.com/eclipse-keyple/keyple-java-example)
 
 <br>
 
-# Download
+## Download
 
 * [Java components]({{< ref "components/overview/configuration-wizard" >}})
 
