@@ -32,18 +32,66 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 1608567177,
+        "node_id": "MDU6TGFiZWwxNjA4NTY3MTc3",
+        "url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true,
+        "description": "Something isn't working"
+      }
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "andrei-cristea",
+      "id": 26622621,
+      "node_id": "MDQ6VXNlcjI2NjIyNjIx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26622621?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/andrei-cristea",
+      "html_url": "https://github.com/andrei-cristea",
+      "followers_url": "https://api.github.com/users/andrei-cristea/followers",
+      "following_url": "https://api.github.com/users/andrei-cristea/following{/other_user}",
+      "gists_url": "https://api.github.com/users/andrei-cristea/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/andrei-cristea/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/andrei-cristea/subscriptions",
+      "organizations_url": "https://api.github.com/users/andrei-cristea/orgs",
+      "repos_url": "https://api.github.com/users/andrei-cristea/repos",
+      "events_url": "https://api.github.com/users/andrei-cristea/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/andrei-cristea/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "andrei-cristea",
+        "id": 26622621,
+        "node_id": "MDQ6VXNlcjI2NjIyNjIx",
+        "avatar_url": "https://avatars.githubusercontent.com/u/26622621?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/andrei-cristea",
+        "html_url": "https://github.com/andrei-cristea",
+        "followers_url": "https://api.github.com/users/andrei-cristea/followers",
+        "following_url": "https://api.github.com/users/andrei-cristea/following{/other_user}",
+        "gists_url": "https://api.github.com/users/andrei-cristea/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/andrei-cristea/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/andrei-cristea/subscriptions",
+        "organizations_url": "https://api.github.com/users/andrei-cristea/orgs",
+        "repos_url": "https://api.github.com/users/andrei-cristea/repos",
+        "events_url": "https://api.github.com/users/andrei-cristea/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/andrei-cristea/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 0,
     "created_at": "2025-03-19T09:03:03Z",
-    "updated_at": "2025-03-19T09:03:03Z",
+    "updated_at": "2025-03-19T11:05:49Z",
     "closed_at": null,
     "author_association": "NONE",
     "type": null,
@@ -53,7 +101,7 @@
       "percent_completed": 0
     },
     "active_lock_reason": null,
-    "body": "When scheduling a selection on a remote observable reader, the serialized request is incorrect.\n\n```json\n{\n  \"coreApiLevel\": 2,\n  \"service\": \"SCHEDULE_CARD_SELECTION_SCENARIO\",\n  \"parameters\": {\n    \"cardSelectionScenario\": {\n      \"cardSelectionRequests\": [\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        },\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        },\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        },\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        }\n      ],\n      \"cardSelectors\": [\n        {},\n        {},\n        {},\n        {}\n      ],\n      \"channelControl\": \"KEEP_OPEN\",\n      \"multiSelectionProcessing\": \"FIRST_MATCH\"\n    },\n    \"notificationMode\": \"ALWAYS\"\n  }\n}\n```\n\nHere is the serialized object\n\n![Image](https://github.com/user-attachments/assets/f0796551-6239-438b-9bb2-83d255dccf73)",
+    "body": "When scheduling a selection on a remote observable reader, the serialized request is incorrect.\n\n```json\n{\n  \"coreApiLevel\": 2,\n  \"service\": \"SCHEDULE_CARD_SELECTION_SCENARIO\",\n  \"parameters\": {\n    \"cardSelectionScenario\": {\n      \"cardSelectionRequests\": [\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        },\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        },\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        },\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        }\n      ],\n      \"cardSelectors\": [\n        {},\n        {},\n        {},\n        {}\n      ],\n      \"channelControl\": \"KEEP_OPEN\",\n      \"multiSelectionProcessing\": \"FIRST_MATCH\"\n    },\n    \"notificationMode\": \"ALWAYS\"\n  }\n}\n```\n\nHere is the serialized object\n\n![Image](https://github.com/user-attachments/assets/f0796551-6239-438b-9bb2-83d255dccf73)\n\nCardSelector interface is a bit intricate and I think GSON struggles to serialize it\n`public interface CardSelector<T extends CardSelector<T>>`",
     "closed_by": null,
     "reactions": {
       "url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/issues/79/reactions",
