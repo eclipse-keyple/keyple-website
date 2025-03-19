@@ -1,5 +1,77 @@
 [
   {
+    "url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/issues/79",
+    "repository_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib",
+    "labels_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/issues/79/labels{/name}",
+    "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/issues/79/comments",
+    "events_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/issues/79/events",
+    "html_url": "https://github.com/eclipse-keyple/keyple-service-java-lib/issues/79",
+    "id": 2930984491,
+    "node_id": "I_kwDODMWeus6us0Yr",
+    "number": 79,
+    "title": "Scheduled selection not working for remote reader",
+    "user": {
+      "login": "amessara-billettiqueservices",
+      "id": 106753080,
+      "node_id": "U_kgDOBlzsOA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/106753080?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/amessara-billettiqueservices",
+      "html_url": "https://github.com/amessara-billettiqueservices",
+      "followers_url": "https://api.github.com/users/amessara-billettiqueservices/followers",
+      "following_url": "https://api.github.com/users/amessara-billettiqueservices/following{/other_user}",
+      "gists_url": "https://api.github.com/users/amessara-billettiqueservices/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/amessara-billettiqueservices/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/amessara-billettiqueservices/subscriptions",
+      "organizations_url": "https://api.github.com/users/amessara-billettiqueservices/orgs",
+      "repos_url": "https://api.github.com/users/amessara-billettiqueservices/repos",
+      "events_url": "https://api.github.com/users/amessara-billettiqueservices/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/amessara-billettiqueservices/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2025-03-19T09:03:03Z",
+    "updated_at": "2025-03-19T09:03:03Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "type": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "active_lock_reason": null,
+    "body": "When scheduling a selection on a remote observable reader, the serialized request is incorrect.\n\n```json\n{\n  \"coreApiLevel\": 2,\n  \"service\": \"SCHEDULE_CARD_SELECTION_SCENARIO\",\n  \"parameters\": {\n    \"cardSelectionScenario\": {\n      \"cardSelectionRequests\": [\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        },\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        },\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        },\n        {\n          \"successfulSelectionStatusWords\": [\n            \"9000\",\n            \"6283\"\n          ]\n        }\n      ],\n      \"cardSelectors\": [\n        {},\n        {},\n        {},\n        {}\n      ],\n      \"channelControl\": \"KEEP_OPEN\",\n      \"multiSelectionProcessing\": \"FIRST_MATCH\"\n    },\n    \"notificationMode\": \"ALWAYS\"\n  }\n}\n```\n\nHere is the serialized object\n\n![Image](https://github.com/user-attachments/assets/f0796551-6239-438b-9bb2-83d255dccf73)",
+    "closed_by": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/issues/79/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/issues/79/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null
+  },
+  {
     "url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/issues/78",
     "repository_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib",
     "labels_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/issues/78/labels{/name}",
