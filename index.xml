@@ -51,12 +51,12 @@ project:&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dependencies&lt;/span> &lt;span class="o">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Import Keypop APIs
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keypop:keypop-reader-java-api:2.0.1&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keypop:keypop-calypso-card-java-api:2.0.1&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keypop:keypop-calypso-card-java-api:2.1.2&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Import Keyple components
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-common-java-api:2.0.1&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-util-java-lib:2.4.0&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-service-java-lib:3.3.4&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.6&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.7&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.4.2&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
@@ -2645,18 +2645,24 @@ the previously prepared operations.&lt;/li>
 &lt;br>
 &lt;h2 id="specific-security-measures">Specific security measures&lt;/h2>
 &lt;h3 id="legacy-card-authentication">Legacy card authentication&lt;/h3>
-&lt;p>In order to &lt;strong>securely manage legacy card solutions configured with DES or DES-X keys&lt;/strong>, it is important for these cards to exchange in a secure session only APDU commands for which the size of the response data can be predetermined.
-For Keyple-based processing, this means avoiding within a secure session the use of methods: &lt;code>TransactionManager.prepareReadRecord&lt;/code>, &lt;code>prepareReadRecordsPartially&lt;/code>, &lt;code>prepareSearchRecords&lt;/code>, &lt;code>prepareGetData&lt;/code>.&lt;/p>
-&lt;p>These methods could be “useful” for high-performance identification of some card data; here&amp;rsquo;s the safe way to operate them on legacy cards:&lt;/p>
+&lt;p>In order to &lt;strong>securely manage legacy card solutions configured with DES or DES-X keys&lt;/strong>, it is &lt;strong>imperative&lt;/strong> to exchange
+with these cards in secure sessions only APDU commands for which the size of the response data can be predetermined.&lt;/p>
+&lt;p>For a Keyple-based processing, this means that the following methods of the &lt;code>TransactionManager&lt;/code> must not be used
+within a secure session: &lt;code>prepareReadRecord(...)&lt;/code>, &lt;code>prepareReadRecordsPartially(...)&lt;/code>, &lt;code>prepareSearchRecords(...)&lt;/code> and
+&lt;code>prepareGetData(...)&lt;/code>.&lt;/p>
+&lt;p>As these methods could be useful for high-performance identification of some card data, here&amp;rsquo;s how to use them safely on
+legacy cards:&lt;/p>
 &lt;ul>
-&lt;li>first exchange these commands before opening a secure session: this enables card data to be efficiently identified,&lt;/li>
-&lt;li>then, if some of the data read out of session is sensitive and requires authentication, repeat a secure reading of the sensitive data in session, using commands allowing the size of the response data to be predetermined.&lt;/li>
+&lt;li>first of all, exchange these commands before opening a secure session: this enables effective identification of the
+card data,&lt;/li>
+&lt;li>then, if any of the data read out of session is sensitive and requires authentication, repeat a secure read of the
+sensitive data within the session, using commands that predetermine the size of the response data.&lt;/li>
 &lt;/ul>
-&lt;br>
 &lt;h3 id="hce-service-handling">HCE service handling&lt;/h3>
-&lt;p>In access control, in order to accept and authenticate card solutions based on an HCE-type NFC service, it is necessary to check the validity of the “HCE token”. &lt;strong>How to retrieve the two bytes of the HCE validity token?&lt;/strong>&lt;/p>
-&lt;p>While the &lt;code>CalypsoCard&lt;/code> API doesn&amp;rsquo;t directly provide this information, it can be easily obtained using the following
-snippet:&lt;/p>
+&lt;p>In the context of access control, it is necessary to check the validity of the &lt;strong>HCE token&lt;/strong> in order to accept and
+authenticate card solutions based on an HCE-type NFC service.&lt;/p>
+&lt;p>While the &lt;code>CalypsoCard&lt;/code> API doesn&amp;rsquo;t directly provide this information, the two bytes of the HCE validity token can be
+easily obtained using the following snippet:&lt;/p>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nn">org.eclipse.keyple.core.util.BerTlvUtil&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
@@ -4525,7 +4531,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-service-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-service-java-lib:3.3.4'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-service-resource-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-service-resource-java-lib:3.1.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-util-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-util-java-lib:2.4.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keyple-card-calypso-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.6'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-card-calypso-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.7'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-card-calypso-crypto-legacysam-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.9.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-card-calypso-crypto-pki-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:0.2.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-card-generic-java-lib:3.1.2'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
@@ -4539,7 +4545,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-plugin-stub-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-stub-java-lib:2.2.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-reader-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-reader-java-api:2.0.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-card-java-api:2.0.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keypop-calypso-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-calypso-card-java-api:2.1.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keypop-calypso-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-calypso-card-java-api:2.1.2'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-calypso-crypto-legacysam-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.7.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;/code>
 &lt;!-- All kotlin dependencies -->
@@ -4548,7 +4554,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-service-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-service-java-lib:3.3.4"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-service-resource-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-service-resource-java-lib:3.1.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-util-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-util-java-lib:2.4.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keyple-card-calypso-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.6"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-card-calypso-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.7"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-card-calypso-crypto-legacysam-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.9.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-card-calypso-crypto-pki-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:0.2.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-card-generic-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-card-generic-java-lib:3.1.2"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
@@ -4562,7 +4568,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-plugin-stub-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-stub-java-lib:2.2.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-reader-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-reader-java-api:2.0.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-card-java-api:2.0.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
-&lt;span id="keypop-calypso-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-calypso-card-java-api:2.1.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keypop-calypso-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-calypso-card-java-api:2.1.2"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-calypso-crypto-legacysam-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.7.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;/code>
 &lt;!-- All maven dependencies -->
@@ -4591,7 +4597,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-card-calypso-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-card-calypso-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
-&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>3.1.6&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>3.1.7&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-card-calypso-crypto-legacysam-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
@@ -4661,7 +4667,7 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keypop-calypso-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keypop&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keypop-calypso-card-java-api&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
-&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.1.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.1.2&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-calypso-crypto-legacysam-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keypop&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
@@ -14279,7 +14285,7 @@ At present, only the &lt;a href="./components/card-extensions/keyple-card-calyps
 &lt;h2 id="java-component">Java component&lt;/h2>
 &lt;div class="alert alert-note">
 &lt;div>
-&lt;strong>&lt;code>3.1.6&lt;/code>&lt;/strong>
+&lt;strong>&lt;code>3.1.7&lt;/code>&lt;/strong>
 &lt;span class="component-metadata">
 &lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
 &lt;span class="component-metadata">
@@ -14318,14 +14324,14 @@ Maven
 &lt;div class="tab-content" id="tabs-3-content">&lt;div class="tab-pane fade show active"
 id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.6&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.7&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.6&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.7&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
@@ -14335,7 +14341,7 @@ id="tabs-3-2" role="tabpanel" aria-labelled-by="tabs-3-2-tab">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-card-calypso-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>3.1.6&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>3.1.7&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>

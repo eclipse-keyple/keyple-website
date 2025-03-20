@@ -1102,18 +1102,24 @@ the previously prepared operations.&lt;/li>
 &lt;br>
 &lt;h2 id="specific-security-measures">Specific security measures&lt;/h2>
 &lt;h3 id="legacy-card-authentication">Legacy card authentication&lt;/h3>
-&lt;p>In order to &lt;strong>securely manage legacy card solutions configured with DES or DES-X keys&lt;/strong>, it is important for these cards to exchange in a secure session only APDU commands for which the size of the response data can be predetermined.
-For Keyple-based processing, this means avoiding within a secure session the use of methods: &lt;code>TransactionManager.prepareReadRecord&lt;/code>, &lt;code>prepareReadRecordsPartially&lt;/code>, &lt;code>prepareSearchRecords&lt;/code>, &lt;code>prepareGetData&lt;/code>.&lt;/p>
-&lt;p>These methods could be “useful” for high-performance identification of some card data; here&amp;rsquo;s the safe way to operate them on legacy cards:&lt;/p>
+&lt;p>In order to &lt;strong>securely manage legacy card solutions configured with DES or DES-X keys&lt;/strong>, it is &lt;strong>imperative&lt;/strong> to exchange
+with these cards in secure sessions only APDU commands for which the size of the response data can be predetermined.&lt;/p>
+&lt;p>For a Keyple-based processing, this means that the following methods of the &lt;code>TransactionManager&lt;/code> must not be used
+within a secure session: &lt;code>prepareReadRecord(...)&lt;/code>, &lt;code>prepareReadRecordsPartially(...)&lt;/code>, &lt;code>prepareSearchRecords(...)&lt;/code> and
+&lt;code>prepareGetData(...)&lt;/code>.&lt;/p>
+&lt;p>As these methods could be useful for high-performance identification of some card data, here&amp;rsquo;s how to use them safely on
+legacy cards:&lt;/p>
 &lt;ul>
-&lt;li>first exchange these commands before opening a secure session: this enables card data to be efficiently identified,&lt;/li>
-&lt;li>then, if some of the data read out of session is sensitive and requires authentication, repeat a secure reading of the sensitive data in session, using commands allowing the size of the response data to be predetermined.&lt;/li>
+&lt;li>first of all, exchange these commands before opening a secure session: this enables effective identification of the
+card data,&lt;/li>
+&lt;li>then, if any of the data read out of session is sensitive and requires authentication, repeat a secure read of the
+sensitive data within the session, using commands that predetermine the size of the response data.&lt;/li>
 &lt;/ul>
-&lt;br>
 &lt;h3 id="hce-service-handling">HCE service handling&lt;/h3>
-&lt;p>In access control, in order to accept and authenticate card solutions based on an HCE-type NFC service, it is necessary to check the validity of the “HCE token”. &lt;strong>How to retrieve the two bytes of the HCE validity token?&lt;/strong>&lt;/p>
-&lt;p>While the &lt;code>CalypsoCard&lt;/code> API doesn&amp;rsquo;t directly provide this information, it can be easily obtained using the following
-snippet:&lt;/p>
+&lt;p>In the context of access control, it is necessary to check the validity of the &lt;strong>HCE token&lt;/strong> in order to accept and
+authenticate card solutions based on an HCE-type NFC service.&lt;/p>
+&lt;p>While the &lt;code>CalypsoCard&lt;/code> API doesn&amp;rsquo;t directly provide this information, the two bytes of the HCE validity token can be
+easily obtained using the following snippet:&lt;/p>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nn">org.eclipse.keyple.core.util.BerTlvUtil&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
