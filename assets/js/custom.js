@@ -76,6 +76,10 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.CALYPSO_API, "2.1.2"),
+    new Release(ComponentName.CALYPSO_CARD_LIB, "3.1.7")
+));
+releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.0.0")
 ));
 releaseTrains.push(new ReleaseTrain(

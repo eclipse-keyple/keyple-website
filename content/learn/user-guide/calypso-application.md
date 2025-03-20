@@ -190,21 +190,30 @@ calypsoCardApiFactory
 <br>
 
 ## Specific security measures
+
 ### Legacy card authentication
-In order to **securely manage legacy card solutions configured with DES or DES-X keys**, it is important for these cards to exchange in a secure session only APDU commands for which the size of the response data can be predetermined.
-For Keyple-based processing, this means avoiding within a secure session the use of methods: `TransactionManager.prepareReadRecord`, `prepareReadRecordsPartially`, `prepareSearchRecords`, `prepareGetData`.
 
-These methods could be “useful” for high-performance identification of some card data; here's the safe way to operate them on legacy cards:
-- first exchange these commands before opening a secure session: this enables card data to be efficiently identified,
-- then, if some of the data read out of session is sensitive and requires authentication, repeat a secure reading of the sensitive data in session, using commands allowing the size of the response data to be predetermined.
+In order to **securely manage legacy card solutions configured with DES or DES-X keys**, it is **imperative** to exchange
+with these cards in secure sessions only APDU commands for which the size of the response data can be predetermined.
 
-<br>
+For a Keyple-based processing, this means that the following methods of the `TransactionManager` must not be used 
+within a secure session: `prepareReadRecord(...)`, `prepareReadRecordsPartially(...)`, `prepareSearchRecords(...)` and
+`prepareGetData(...)`.
+
+As these methods could be useful for high-performance identification of some card data, here's how to use them safely on
+legacy cards:
+- first of all, exchange these commands before opening a secure session: this enables effective identification of the
+  card data,
+- then, if any of the data read out of session is sensitive and requires authentication, repeat a secure read of the
+  sensitive data within the session, using commands that predetermine the size of the response data.
 
 ### HCE service handling
-In access control, in order to accept and authenticate card solutions based on an HCE-type NFC service, it is necessary to check the validity of the “HCE token”. **How to retrieve the two bytes of the HCE validity token?**
 
-While the `CalypsoCard` API doesn't directly provide this information, it can be easily obtained using the following
-snippet:
+In the context of access control, it is necessary to check the validity of the **HCE token** in order to accept and
+authenticate card solutions based on an HCE-type NFC service.
+
+While the `CalypsoCard` API doesn't directly provide this information, the two bytes of the HCE validity token can be 
+easily obtained using the following snippet:
 
 {{< code lang="java" >}}
 
