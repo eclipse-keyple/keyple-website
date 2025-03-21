@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/190213520",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/190213520/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/190213520/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-service-java-lib/releases/tag/3.3.4",
-  "id": 190213520,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/207374550",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/207374550/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/207374550/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-service-java-lib/releases/tag/3.3.5",
+  "id": 207374550,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -25,18 +25,18 @@
     "user_view_type": "public",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWeus4LVm2Q",
-  "tag_name": "3.3.4",
+  "node_id": "RE_kwDODMWeus4MXEjW",
+  "tag_name": "3.3.5",
   "target_commitish": "main",
   "name": "",
   "draft": false,
   "prerelease": false,
-  "created_at": "2024-12-11T14:02:16Z",
-  "published_at": "2024-12-11T14:11:43Z",
+  "created_at": "2025-03-21T09:19:19Z",
+  "published_at": "2025-03-21T09:26:48Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/tarball/3.3.4",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/zipball/3.3.4",
-  "body": "### Fixed\r\n- Remove unexpected `CARD_REMOVED` event processing in **Wait For Card Insertion** state.\r\n- Remove unexpected `CARD_REMOVED` event sending when task **Card Removal Passive Monitoring Job** is cancelled."
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/tarball/3.3.5",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/zipball/3.3.5",
+  "body": "### Fixed\r\n- Fixed the management of physical channel closure in the case of unexpected APDU response status (issue [#78]).\r\n- Fixed the JSON format of data exchanged in the \"Reader Server Side\" mode of the \"Keyple Distributed\" solution (issue [#79])."
 }
