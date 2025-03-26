@@ -94,8 +94,8 @@ If all the defined filters are satisfied, the terminal must send any additional 
 ## Selection result processing
 
 The JSON string `ProcessedCardSelectionScenarioJsonString` resulting from the processed card selection scenario 
-must be transmitted to the server in the `inputData` property of the “**Execute Remote Service**” message 
-of the [Server JSON API]({{< relref "server-json-api.md" >}}).
+should be transmitted to the server in the `initialCardContent` or `inputData` property of the 
+“**Execute Remote Service**” message of the [Server JSON API]({{< relref "server-json-api.md" >}}).
 
 {{% callout note %}}
 The JSON string can be wrapped inside a parent object if other
