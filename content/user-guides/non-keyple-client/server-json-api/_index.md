@@ -41,8 +41,9 @@ The Keyple remote transaction involves four types of messages exchanged between 
 On its own initiative (e.g. following the detection of a card), the terminal sends to the server an
 "**Execute Remote Service**" message to request it to start a card transaction.
 At this point, the terminal has the ability to tell the server which business service to run and also to provide
-additional custom input data and/or the result of an already processed card selection scenario
-(e.g. [ProcessedCardSelectionScenarioJsonString]({{< relref "selection-json-specification.md#selection-result-processing" >}})).
+the result of an already processed card selection scenario
+(e.g. [ProcessedCardSelectionScenarioJsonString]({{< relref "selection-json-specification.md#selection-result-processing" >}}))
+and/or additional custom input data.
 
 As long as the transaction is not completed, the terminal receives from the server "**Command**" messages
 containing the actions to be performed with the card or the terminal's reader.
