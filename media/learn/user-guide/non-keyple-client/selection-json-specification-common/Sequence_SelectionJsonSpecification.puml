@@ -27,7 +27,7 @@ client <-- card : selection result
 
 |||
 
-client -> server ++ #LightGrey : **Execute Remote Service** (\n\tinputData = <color: #3498DB>**ProcessedCardSelectionScenarioJsonString**</color>,\n\t...\n)
+client -> server ++ #LightGrey : **Execute Remote Service** (\n\tinitialCardContent = <color: #3498DB>**ProcessedCardSelectionScenarioJsonString**</color>,\n\t...\n)
 
 loop #F5F5F5 while there are actions to be performed with the card or the terminal's reader
     client <-- server : **Command**
