@@ -49,7 +49,7 @@ return
 client -> clientManager ++ #LightGrey : **<color:red>exportProcessedCardSelectionScenario</color> ()**
 return **<color:blue>ProcessedCardSelectionScenarioJsonString</color>**
 
-client -> server ++ #LightGrey : Execute remote service (\n\tinitialCardContent = **<color:blue>ProcessedCardSelectionScenarioJsonString</color>**,\n\t...\n)
+client -> server ++ #LightGrey : Execute remote service (\n\t**<color:blue>ProcessedCardSelectionScenarioJsonString</color>**,\n\t...\n)
 
 server -> serverManager ++ #LightGrey : **<color:red>importProcessedCardSelectionScenario</color> (**\n\t**<color:blue>ProcessedCardSelectionScenarioJsonString</color>**\n**)**
 return **cardSelectionResult**

@@ -1122,7 +1122,18 @@ Import/Export card selection scenario - Use case for lightweight client terminal
 &lt;/figcaption>&lt;/figure>
 &lt;div class="alert alert-note">
 &lt;div>
-Please note that the way to retrieve the export of the prepared card selection scenario is completely up to the user.
+&lt;p>&lt;strong>Important information regarding &lt;code>CardSelectionScenarioJsonString&lt;/code>!&lt;/strong>&lt;/p>
+&lt;p>Keyple does not provide support for retrieving the export of the card selection scenario. It is up to
+the client to define the most appropriate way to retrieve it, depending on the context.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="alert alert-note">
+&lt;div>
+&lt;p>&lt;strong>Important information regarding &lt;code>ProcessedCardSelectionScenarioJsonString&lt;/code>!&lt;/strong>&lt;/p>
+&lt;p>By mutual agreement with the server, the client may transmit the &lt;code>ProcessedCardSelectionScenarioJsonString&lt;/code> data when
+calling the &amp;ldquo;Execute Remote Service&amp;rdquo; function. This data can be included in either the &lt;code>initialCardContent&lt;/code> or
+&lt;code>inputData&lt;/code> field.&lt;/p>
+&lt;p>In both cases, it must be encapsulated within an object recognized by the server.&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;br>
@@ -5546,15 +5557,15 @@ Keyple Distributed JSON API - &amp;ldquo;Execute Remote Service&amp;rdquo; class
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>inputData&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Object (optional)&lt;/strong>&lt;br>An optional object containing additional data to be provided to the remote business service. The content of this property is a convention between the client and the server.&lt;/td>
+&lt;td>&lt;strong>Object (optional)&lt;/strong>&lt;br>An optional object containing additional data to be provided to the remote business service, as for example the &lt;a href="./user-guides/non-keyple-client/selection-json-specification/#selection-result-processing">ProcessedCardSelectionScenarioJsonString&lt;/a> containing the result of an already processed card selection scenario. The content of this property is a convention between the client and the server.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>initialCardContent&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String (optional)&lt;/strong>&lt;br>An optional &lt;a href="./user-guides/non-keyple-client/selection-json-specification/#selection-result-processing">ProcessedCardSelectionScenarioJsonString&lt;/a> containing the result of an already processed card selection scenario. The content of this property is a convention between the client and the server.&lt;/td>
+&lt;td>&lt;strong>Object (optional)&lt;/strong>&lt;br>An optional object containing the &lt;a href="./user-guides/non-keyple-client/selection-json-specification/#selection-result-processing">ProcessedCardSelectionScenarioJsonString&lt;/a> containing the result of an already processed card selection scenario. The content of this property is a convention between the client and the server.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>initialCardContentClassName&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String (required only if &lt;code>initialCardContent&lt;/code> is set)&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>java.lang.String&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;td>&lt;strong>String (required only if &lt;code>initialCardContent&lt;/code> is set)&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>java.util.Properties&lt;/strong>&amp;rdquo;&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -5566,7 +5577,7 @@ Keyple Distributed JSON API - &amp;ldquo;Execute Remote Service&amp;rdquo; class
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;EXECUTE_REMOTE_SERVICE&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;coreApiLevel\&amp;#34;:2,\&amp;#34;serviceId\&amp;#34;:\&amp;#34;AUTHENTICATE_CARD\&amp;#34;,\&amp;#34;isReaderContactless\&amp;#34;:true,\&amp;#34;inputData\&amp;#34;:{\&amp;#34;userId\&amp;#34;:\&amp;#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&amp;#34;},\&amp;#34;initialCardContent\&amp;#34;:\&amp;#34;[{\\\&amp;#34;hasMatched\\\&amp;#34;:false,\\\&amp;#34;powerOnData\\\&amp;#34;:\\\&amp;#34;1234\\\&amp;#34;,\\\&amp;#34;selectApplicationResponse\\\&amp;#34;:{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;6400\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;6400\\\&amp;#34;},\\\&amp;#34;cardResponse\\\&amp;#34;:{\\\&amp;#34;apduResponses\\\&amp;#34;:[],\\\&amp;#34;isLogicalChannelOpen\\\&amp;#34;:false}},{\\\&amp;#34;hasMatched\\\&amp;#34;:true,\\\&amp;#34;powerOnData\\\&amp;#34;:\\\&amp;#34;1234\\\&amp;#34;,\\\&amp;#34;selectApplicationResponse\\\&amp;#34;:{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C20051410019000\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;9000\\\&amp;#34;},\\\&amp;#34;cardResponse\\\&amp;#34;:{\\\&amp;#34;apduResponses\\\&amp;#34;:[{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;ABCD9000\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;9000\\\&amp;#34;}],\\\&amp;#34;isLogicalChannelOpen\\\&amp;#34;:true}}]\&amp;#34;,\&amp;#34;initialCardContentClassName\&amp;#34;:\&amp;#34;java.lang.String\&amp;#34;}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;coreApiLevel\&amp;#34;:2,\&amp;#34;serviceId\&amp;#34;:\&amp;#34;AUTHENTICATE_CARD\&amp;#34;,\&amp;#34;isReaderContactless\&amp;#34;:true,\&amp;#34;inputData\&amp;#34;:{\&amp;#34;userId\&amp;#34;:\&amp;#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&amp;#34;},\&amp;#34;initialCardContent\&amp;#34;:{\&amp;#34;processedCardSelectionScenarioJsonString\&amp;#34;:\&amp;#34;[{\\\&amp;#34;hasMatched\\\&amp;#34;:false,\\\&amp;#34;powerOnData\\\&amp;#34;:\\\&amp;#34;1234\\\&amp;#34;,\\\&amp;#34;selectApplicationResponse\\\&amp;#34;:{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;6400\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;6400\\\&amp;#34;},\\\&amp;#34;cardResponse\\\&amp;#34;:{\\\&amp;#34;apduResponses\\\&amp;#34;:[],\\\&amp;#34;isLogicalChannelOpen\\\&amp;#34;:false}},{\\\&amp;#34;hasMatched\\\&amp;#34;:true,\\\&amp;#34;powerOnData\\\&amp;#34;:\\\&amp;#34;1234\\\&amp;#34;,\\\&amp;#34;selectApplicationResponse\\\&amp;#34;:{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C20051410019000\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;9000\\\&amp;#34;},\\\&amp;#34;cardResponse\\\&amp;#34;:{\\\&amp;#34;apduResponses\\\&amp;#34;:[{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;ABCD9000\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;9000\\\&amp;#34;}],\\\&amp;#34;isLogicalChannelOpen\\\&amp;#34;:true}}]\&amp;#34;},\&amp;#34;initialCardContentClassName\&amp;#34;:\&amp;#34;java.util.Properties\&amp;#34;}&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
@@ -6753,15 +6764,15 @@ Keyple Distributed JSON API - &amp;ldquo;Execute Remote Service&amp;rdquo; class
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>inputData&lt;/code>&lt;/td>
-&lt;td>&lt;strong>Object (optional)&lt;/strong>&lt;br>An optional object containing additional data to be provided to the remote business service. The content of this property is a convention between the client and the server.&lt;/td>
+&lt;td>&lt;strong>Object (optional)&lt;/strong>&lt;br>An optional object containing additional data to be provided to the remote business service, as for example the &lt;a href="./user-guides/non-keyple-client/selection-json-specification/#selection-result-processing">ProcessedCardSelectionScenarioJsonString&lt;/a> containing the result of an already processed card selection scenario. The content of this property is a convention between the client and the server.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>initialCardContent&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String (optional)&lt;/strong>&lt;br>An optional &lt;a href="./user-guides/non-keyple-client/selection-json-specification/#selection-result-processing">ProcessedCardSelectionScenarioJsonString&lt;/a> containing the result of an already processed card selection scenario. The content of this property is a convention between the client and the server.&lt;/td>
+&lt;td>&lt;strong>Object (optional)&lt;/strong>&lt;br>An optional object containing the &lt;a href="./user-guides/non-keyple-client/selection-json-specification/#selection-result-processing">ProcessedCardSelectionScenarioJsonString&lt;/a> containing the result of an already processed card selection scenario. The content of this property is a convention between the client and the server.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>initialCardContentClassName&lt;/code>&lt;/td>
-&lt;td>&lt;strong>String (required only if &lt;code>initialCardContent&lt;/code> is set)&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>java.lang.String&lt;/strong>&amp;rdquo;&lt;/td>
+&lt;td>&lt;strong>String (required only if &lt;code>initialCardContent&lt;/code> is set)&lt;/strong>&lt;br>Constant value: &amp;ldquo;&lt;strong>java.util.Properties&lt;/strong>&amp;rdquo;&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -6773,7 +6784,7 @@ Keyple Distributed JSON API - &amp;ldquo;Execute Remote Service&amp;rdquo; class
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;action&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;EXECUTE_REMOTE_SERVICE&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;clientNodeId&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;ca21fd3c-a055-4be5-aad1-c61af3528371&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;localReaderName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;READER_1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;coreApiLevel\&amp;#34;:2,\&amp;#34;serviceId\&amp;#34;:\&amp;#34;AUTHENTICATE_CARD\&amp;#34;,\&amp;#34;inputData\&amp;#34;:{\&amp;#34;userId\&amp;#34;:\&amp;#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&amp;#34;},\&amp;#34;initialCardContent\&amp;#34;:\&amp;#34;[{\\\&amp;#34;hasMatched\\\&amp;#34;:false,\\\&amp;#34;powerOnData\\\&amp;#34;:\\\&amp;#34;1234\\\&amp;#34;,\\\&amp;#34;selectApplicationResponse\\\&amp;#34;:{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;6400\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;6400\\\&amp;#34;},\\\&amp;#34;cardResponse\\\&amp;#34;:{\\\&amp;#34;apduResponses\\\&amp;#34;:[],\\\&amp;#34;isLogicalChannelOpen\\\&amp;#34;:false}},{\\\&amp;#34;hasMatched\\\&amp;#34;:true,\\\&amp;#34;powerOnData\\\&amp;#34;:\\\&amp;#34;1234\\\&amp;#34;,\\\&amp;#34;selectApplicationResponse\\\&amp;#34;:{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C20051410019000\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;9000\\\&amp;#34;},\\\&amp;#34;cardResponse\\\&amp;#34;:{\\\&amp;#34;apduResponses\\\&amp;#34;:[{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;ABCD9000\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;9000\\\&amp;#34;}],\\\&amp;#34;isLogicalChannelOpen\\\&amp;#34;:true}}]\&amp;#34;,\&amp;#34;initialCardContentClassName\&amp;#34;:\&amp;#34;java.lang.String\&amp;#34;}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;body&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;{\&amp;#34;coreApiLevel\&amp;#34;:2,\&amp;#34;serviceId\&amp;#34;:\&amp;#34;AUTHENTICATE_CARD\&amp;#34;,\&amp;#34;inputData\&amp;#34;:{\&amp;#34;userId\&amp;#34;:\&amp;#34;7b13592c-0d21-429b-80d2-3dc565338ea3\&amp;#34;},\&amp;#34;initialCardContent\&amp;#34;:{\&amp;#34;processedCardSelectionScenarioJsonString\&amp;#34;:\&amp;#34;[{\\\&amp;#34;hasMatched\\\&amp;#34;:false,\\\&amp;#34;powerOnData\\\&amp;#34;:\\\&amp;#34;1234\\\&amp;#34;,\\\&amp;#34;selectApplicationResponse\\\&amp;#34;:{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;6400\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;6400\\\&amp;#34;},\\\&amp;#34;cardResponse\\\&amp;#34;:{\\\&amp;#34;apduResponses\\\&amp;#34;:[],\\\&amp;#34;isLogicalChannelOpen\\\&amp;#34;:false}},{\\\&amp;#34;hasMatched\\\&amp;#34;:true,\\\&amp;#34;powerOnData\\\&amp;#34;:\\\&amp;#34;1234\\\&amp;#34;,\\\&amp;#34;selectApplicationResponse\\\&amp;#34;:{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;6F238409315449432E49434131A516BF0C13C708000000001122334453070A3C20051410019000\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;9000\\\&amp;#34;},\\\&amp;#34;cardResponse\\\&amp;#34;:{\\\&amp;#34;apduResponses\\\&amp;#34;:[{\\\&amp;#34;apdu\\\&amp;#34;:\\\&amp;#34;ABCD9000\\\&amp;#34;,\\\&amp;#34;statusWord\\\&amp;#34;:\\\&amp;#34;9000\\\&amp;#34;}],\\\&amp;#34;isLogicalChannelOpen\\\&amp;#34;:true}}]\&amp;#34;},\&amp;#34;initialCardContentClassName\&amp;#34;:\&amp;#34;java.util.Properties\&amp;#34;}&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>

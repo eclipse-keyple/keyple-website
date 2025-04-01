@@ -396,7 +396,18 @@ Import/Export card selection scenario - Use case for lightweight client terminal
 &lt;/figcaption>&lt;/figure>
 &lt;div class="alert alert-note">
 &lt;div>
-Please note that the way to retrieve the export of the prepared card selection scenario is completely up to the user.
+&lt;p>&lt;strong>Important information regarding &lt;code>CardSelectionScenarioJsonString&lt;/code>!&lt;/strong>&lt;/p>
+&lt;p>Keyple does not provide support for retrieving the export of the card selection scenario. It is up to
+the client to define the most appropriate way to retrieve it, depending on the context.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="alert alert-note">
+&lt;div>
+&lt;p>&lt;strong>Important information regarding &lt;code>ProcessedCardSelectionScenarioJsonString&lt;/code>!&lt;/strong>&lt;/p>
+&lt;p>By mutual agreement with the server, the client may transmit the &lt;code>ProcessedCardSelectionScenarioJsonString&lt;/code> data when
+calling the &amp;ldquo;Execute Remote Service&amp;rdquo; function. This data can be included in either the &lt;code>initialCardContent&lt;/code> or
+&lt;code>inputData&lt;/code> field.&lt;/p>
+&lt;p>In both cases, it must be encapsulated within an object recognized by the server.&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;br>

@@ -63,8 +63,8 @@ class ExecuteRemoteServiceBody {
     **coreApiLevel** : Number = 2
     **serviceId** : String
     **inputData** : Object?
-    **initialCardContent** : String?
-    **initialCardContentClassName** : String? = "java.lang.String"
+    **initialCardContent** : Object?
+    **initialCardContentClassName** : String? = "java.util.Properties"
 }
 
 ' Associations
