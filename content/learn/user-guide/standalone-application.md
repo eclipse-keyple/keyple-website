@@ -441,7 +441,20 @@ The diagram below summarizes the workflow:
 {{< figure src="/media/learn/user-guide/standalone-application/Sequence_ImportExportScenario.svg" caption="Import/Export card selection scenario - Use case for lightweight client terminals" numbered="true" >}}
 
 {{% callout note %}}
-Please note that the way to retrieve the export of the prepared card selection scenario is completely up to the user.
+**Important information regarding `CardSelectionScenarioJsonString`!**
+
+Keyple does not provide support for retrieving the export of the card selection scenario. It is up to
+the client to define the most appropriate way to retrieve it, depending on the context.
+{{% /callout %}}
+
+{{% callout note %}}
+**Important information regarding `ProcessedCardSelectionScenarioJsonString`!**
+
+By mutual agreement with the server, the client may transmit the `ProcessedCardSelectionScenarioJsonString` data when
+calling the "Execute Remote Service" function. This data can be included in either the `initialCardContent` or
+`inputData` field.
+
+In both cases, it must be encapsulated within an object recognized by the server.
 {{% /callout %}}
 
 <br>

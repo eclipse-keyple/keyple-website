@@ -64,8 +64,8 @@ class ExecuteRemoteServiceBody {
     **serviceId** : String
     <color:blue>**isReaderContactless** : Boolean
     **inputData** : Object?
-    **initialCardContent** : String?
-    **initialCardContentClassName** : String? = "java.lang.String"
+    **initialCardContent** : Object?
+    **initialCardContentClassName** : String? = "java.util.Properties"
 }
 
 ' Associations
