@@ -10,7 +10,7 @@
     "number": 4,
     "state": "open",
     "locked": false,
-    "title": "fix: fix startCardDetection()",
+    "title": "fix: Documentation and various fixes ",
     "user": {
       "login": "tdassonville",
       "id": 1982823,
@@ -32,12 +32,12 @@
       "user_view_type": "public",
       "site_admin": false
     },
-    "body": "startCardDetection() is the async version of waiting for a card, it should not be a **suspend** fun\r\nProvide implementation that was missing for iOS\r\n",
+    "body": "Add some documentation \r\n\r\nstartCardDetection() is the async version of waiting for a card, it should not be a **suspend** fun\r\nProvide implementation that was missing for iOS\r\n\r\nfix android reader issues\r\n",
     "created_at": "2025-04-04T15:07:43Z",
-    "updated_at": "2025-04-10T15:03:21Z",
+    "updated_at": "2025-04-16T15:07:10Z",
     "closed_at": null,
     "merged_at": null,
-    "merge_commit_sha": "715f359892aa555e30e2f41f6f248be54050879f",
+    "merge_commit_sha": "92bab3c6d9e2eaef4298eb9cd8456e75c7d40d84",
     "assignee": null,
     "assignees": [
 
@@ -57,11 +57,11 @@
     "review_comments_url": "https://api.github.com/repos/eclipse-keyple/keypleless-reader-nfcmobile-kmp-lib/pulls/4/comments",
     "review_comment_url": "https://api.github.com/repos/eclipse-keyple/keypleless-reader-nfcmobile-kmp-lib/pulls/comments{/number}",
     "comments_url": "https://api.github.com/repos/eclipse-keyple/keypleless-reader-nfcmobile-kmp-lib/issues/4/comments",
-    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keypleless-reader-nfcmobile-kmp-lib/statuses/da237ce033196201e01d7e541a3485e55e904abb",
+    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keypleless-reader-nfcmobile-kmp-lib/statuses/698d7164a2cfc6cf80ed7b69aa7bedb8978220e0",
     "head": {
       "label": "tdassonville:main",
       "ref": "main",
-      "sha": "da237ce033196201e01d7e541a3485e55e904abb",
+      "sha": "698d7164a2cfc6cf80ed7b69aa7bedb8978220e0",
       "user": {
         "login": "tdassonville",
         "id": 1982823,
@@ -151,14 +151,14 @@
         "releases_url": "https://api.github.com/repos/tdassonville/keyple-less-reader-nfcmobile-kmp-lib/releases{/id}",
         "deployments_url": "https://api.github.com/repos/tdassonville/keyple-less-reader-nfcmobile-kmp-lib/deployments",
         "created_at": "2024-10-23T13:59:44Z",
-        "updated_at": "2025-04-10T15:03:23Z",
-        "pushed_at": "2025-04-10T15:03:20Z",
+        "updated_at": "2025-04-16T15:01:48Z",
+        "pushed_at": "2025-04-16T15:01:45Z",
         "git_url": "git://github.com/tdassonville/keyple-less-reader-nfcmobile-kmp-lib.git",
         "ssh_url": "git@github.com:tdassonville/keyple-less-reader-nfcmobile-kmp-lib.git",
         "clone_url": "https://github.com/tdassonville/keyple-less-reader-nfcmobile-kmp-lib.git",
         "svn_url": "https://github.com/tdassonville/keyple-less-reader-nfcmobile-kmp-lib",
         "homepage": "https://keyple.org/",
-        "size": 348,
+        "size": 358,
         "stargazers_count": 0,
         "watchers_count": 0,
         "language": "Kotlin",
@@ -351,7 +351,7 @@
         "href": "https://api.github.com/repos/eclipse-keyple/keypleless-reader-nfcmobile-kmp-lib/pulls/4/commits"
       },
       "statuses": {
-        "href": "https://api.github.com/repos/eclipse-keyple/keypleless-reader-nfcmobile-kmp-lib/statuses/da237ce033196201e01d7e541a3485e55e904abb"
+        "href": "https://api.github.com/repos/eclipse-keyple/keypleless-reader-nfcmobile-kmp-lib/statuses/698d7164a2cfc6cf80ed7b69aa7bedb8978220e0"
       }
     },
     "author_association": "CONTRIBUTOR",
