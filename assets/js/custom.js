@@ -76,6 +76,18 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.DISTRIBUTED_REMOTE_API, "3.1.1")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.DISTRIBUTED_LOCAL_API, "2.2.1")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.PLUGIN_API, "2.3.2")
+));
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.COMMON_API, "2.0.2")
+));
+releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.CALYPSO_CARD_LIB, "3.1.8")
 ));
 releaseTrains.push(new ReleaseTrain(
