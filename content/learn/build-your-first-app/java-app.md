@@ -73,7 +73,7 @@ dependencies {
     implementation 'org.eclipse.keyple:keyple-util-java-lib:2.4.0'
     implementation 'org.eclipse.keyple:keyple-service-java-lib:3.3.5'
     implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.8'
-    implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.4.2'
+    implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.5.0'
 }
 {{< /code >}}
 
