@@ -72,9 +72,12 @@ function ReleaseTrain (...releases) {
 /******************************************************************************
  * Release trains of the dependency check tool
  *
- * Caution: always add on first position!
+ * Caution: always add at the first position!
  *****************************************************************************/
 let releaseTrains = [];
+releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.PLUGIN_PCSC_LIB, "2.5.0")
+));
 releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.DISTRIBUTED_REMOTE_API, "3.1.1")
 ));
