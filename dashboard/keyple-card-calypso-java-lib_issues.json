@@ -47,12 +47,12 @@
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "type": null,
+    "active_lock_reason": null,
     "sub_issues_summary": {
       "total": 0,
       "completed": 0,
       "percent_completed": 0
     },
-    "active_lock_reason": null,
     "body": "Most Prime cards have an APDU buffer that supports 250 input (excluding header) or output (excluding status) data.\r\n→ identify Prime products with smaller APDU buffer size to prepare card commands accordingly",
     "closed_by": null,
     "reactions": {
@@ -167,12 +167,12 @@
     "closed_at": null,
     "author_association": "NONE",
     "type": null,
+    "active_lock_reason": null,
     "sub_issues_summary": {
       "total": 0,
       "completed": 0,
       "percent_completed": 0
     },
-    "active_lock_reason": null,
     "body": "Hello Team,\r\nIn Keyple V1, we used to catch exceptions like **_CalypsoSamAccessForbiddenException_** to report errors with a fine granularity.\r\nIn the latest versions of this package, these exception are not thrown directly but rather encapsulated in a generic one. The original exception is still present in a **_cause_** but the exception have become package private.\r\nIs there any reason for this visibility change? I understand why it's final but I don't see why it's package private.\r\nIs there any other way to get this information?\r\nThan you for your help.",
     "closed_by": null,
     "reactions": {
