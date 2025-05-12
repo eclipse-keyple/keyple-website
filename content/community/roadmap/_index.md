@@ -109,14 +109,18 @@ The porting in C++ of Keyple Java is based on the same Object-Oriented Model. Th
     <td>2.0.0</td>
     <td>2021/10</td>
     <td>2022/07</td>
-   <td><ul><li><b>Calypso terminal compliance</b>
-   <ul><li>The <a href="https://keyple.org/components/core/keyple-service-lib/">Keyple Service</a> component implements the <a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-reader-api/">Reader API 1.0</a> and <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/">Card API 1.0</a> standardized for the reader layer of Calypso terminals. The implementation is compliant with the <a href="https://calypsonet.org/calypso-for-terminals/">reader layer requirements</a> for Calypso terminals</li>
-   <li>The <a href="https://keyple.org/components/card-extensions/keyple-card-calypso-lib/">Calypso card extension</a> library in version 2.0.0 follows also the <a href="https://calypsonet.org/calypso-for-terminals/">Calypso layer requirements</a> defined for Calypso terminals, it implements the <a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-calypso-api/">Calypso API 1.0</a>.</li></ul>
-    <li><b>Removal of dependencies</b> between Keyple components (Core, Calypso extension, and specific plugins): all components are released with their own version number and could evolve separately.
-      <ul><li>Until the version 1.0.0, the source code of all the Keyple Java components was hosted in a single repository: <a href="https://github.com/eclipse-keyple/keyple-java">https://github.com/eclipse-keyple/keyple-java</a>. It was the same for Keyple C++ components hosted in <a href="https://github.com/eclipse-keyple/keyple-cpp">https://github.com/eclipse-keyple/keyple-cpp</a>. For the version 1.0.0 and below, there were strong dependencies between the Keyple components which had all to be released in the same version number.</li>
-      <li>To facilitate the evolution and the maintenance, the version 2.0.0 proposes a full reorganization of the code. All the components are split in different repositories in order to allow them to evolve independently. The public interfaces are also separated to the specific implementations: the repositories are dedicated to host API or library implementation.</li>
-      <li>The Keyple Java components are managed through <a href="https://keyple.org/project-dashboard/">16 repositories</a>.</li></ul>
-     <li>The API for plugin implementation and for distributed architecture configuration have been simplified</li></ul></td>
+    <td><ul>
+      <li><b>Calypso terminal compliance</b><ul>
+        <li>The <a href="https://keyple.org/components/core/keyple-service-lib/">Keyple Service</a> component implements the <a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-reader-api/">Reader API 1.0</a> and <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/">Card API 1.0</a> standardized for the reader layer of Calypso terminals. The implementation is compliant with the <a href="https://calypsonet.org/calypso-for-terminals/">reader layer requirements</a> for Calypso terminals</li>
+        <li>The <a href="https://keyple.org/components/card-extensions/keyple-card-calypso-lib/">Calypso card extension</a> library in version 2.0.0 follows also the <a href="https://calypsonet.org/calypso-for-terminals/">Calypso layer requirements</a> defined for Calypso terminals, it implements the <a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-calypso-api/">Calypso API 1.0</a>.</li>
+      </ul></li>
+      <li><b>Removal of dependencies</b> between Keyple components (Core, Calypso extension, and specific plugins): all components are released with their own version number and could evolve separately.<ul>
+        <li>Until the version 1.0.0, the source code of all the Keyple Java components was hosted in a single repository: <a href="https://github.com/eclipse-keyple/keyple-java">https://github.com/eclipse-keyple/keyple-java</a>. It was the same for Keyple C++ components hosted in <a href="https://github.com/eclipse-keyple/keyple-cpp">https://github.com/eclipse-keyple/keyple-cpp</a>. For the version 1.0.0 and below, there were strong dependencies between the Keyple components which had all to be released in the same version number.</li>
+        <li>To facilitate the evolution and the maintenance, the version 2.0.0 proposes a full reorganization of the code. All the components are split in different repositories in order to allow them to evolve independently. The public interfaces are also separated to the specific implementations: the repositories are dedicated to host API or library implementation.</li>
+        <li>The Keyple Java components are managed through <a href="https://keyple.org/project-dashboard/">16 repositories</a>.</li>
+      </ul></li>
+      <li>The API for plugin implementation and for distributed architecture configuration have been simplified</li>
+    </ul></td>
   </tr>
   <tr>
     <td>1.0.0</td>
