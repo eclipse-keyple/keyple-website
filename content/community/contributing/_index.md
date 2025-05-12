@@ -4,7 +4,7 @@ linktitle: Contributing
 summary: Find out how to contribute to the Keyple project and how it can benefit your organization.
 type: book
 toc: true
-weight: 1
+weight: 2
 ---
 
 <br>
