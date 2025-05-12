@@ -34,7 +34,7 @@ weight: 3
 </thead>
 <tbody>
   <tr>
-    <td colspan="2" align="center">2025/05</td>
+    <td colspan="2" style="text-align: center;">2025/05</td>
     <td><ul><li><b>Interoperability libraries for Keyple Distributed Service</b> (Keyple dependency-free client application connected to a Keyple Distributed server): 2 Kotlin MultiPlatform libraries that can be compiled for <b>any</b> environment, artifacts for the Java runtime environment and native artifacts for Windows, Linux, macOS, Android & iOS systems.
     <ul><li>library for managing the JSON Keyple Distributed protocol</li>
     <li>libraries for interfacing a local reader of a device: NFC reader on Android or iOS mobile, or PC/SC reader on PC.</li></ul></li></ul></td>
