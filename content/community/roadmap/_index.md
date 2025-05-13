@@ -4,15 +4,15 @@ linktitle: Roadmap
 summary: Overview of past and future Keyple Releases.
 type: book
 toc: true
-weight: 2
+weight: 3
 ---
 
 ## Current work 
  - Java implementation
    - supply a Calypso security extension library to manage the Calypso OpenSAM security module
  - C++ implementation
-   - Porting current components updated with Keypop APIs.
-   - Next for the future, support for building a Keyple Distributed C++ client (interacting with a Keyple Distributed Java server).
+   - Ongoing updates to the C++ port of the latest versions 3.x of the Keyple Core and Keyple Calypso Prime Extended libraries (based on Keypop APIs).
+   - In the future, C++ libraries will be added to develop a Keyple Distributed client.
 
 ## Long-term study 
  - to provide a Hoplink extension (based on a high-level API on top of the Calypso Card API).
@@ -34,22 +34,22 @@ weight: 2
 </thead>
 <tbody>
   <tr>
-    <td colspan="2">2024/12</td>
-    <td><ul><li><b>Keyple-less distributed client design support</b> (Keyple dependency-free application connected to a Keyple Distributed server): 2 Kotlin MultiPlatform libraries that can be compiled for <b>any</b> environment, artifacts for the Java runtime environment and native artifacts for Windows, Linux, macOS, Android & iOS systems.
+    <td colspan="2" style="text-align: center;">2025/05</td>
+    <td><ul><li><b>Interoperability libraries for Keyple Distributed Service</b> (Keyple dependency-free client application connected to a Keyple Distributed server): 2 Kotlin MultiPlatform libraries that can be compiled for <b>any</b> environment, artifacts for the Java runtime environment and native artifacts for Windows, Linux, macOS, Android & iOS systems.
     <ul><li>library for managing the JSON Keyple Distributed protocol</li>
-    <li>library for interfacing a contactless reader to any device: NFC reader on Android or iOS mobile, or PC/SC reader on PC.</li></ul></li></ul></td>
+    <li>libraries for interfacing a local reader of a device: NFC reader on Android or iOS mobile, or PC/SC reader on PC.</li></ul></li></ul></td>
   </tr>
 
   <tr>
     <td>2024/04</td>
-    <td><mark>in progress (scheduled Q1/2025)</mark></td>
+    <td>-</td>
     <td><ul><li><b>Support of Calypso Prime PKI</b>
     <ul><li>Capability to manage a simple asymmetric authentication of a Calypso card without involving a SAM (REV3.3 Prime PKI based on ECC)</li>
     </ul></li></ul></td>
   </tr>
   <tr>
     <td>2023/11</td>
-    <td><mark>in progress (scheduled Q1/2025)</mark></td>
+    <td><mark>in progress (scheduled Q2/2025)</mark></td>
     <td><ul><li><b>Adoption of the Eclipse Keypop API</b>
     <ul><li>The Keyple middleware is enhanced by the Eclipse Keypop project with new UML-compliant interfaces and APIs.</li>
     <li>The Keyple Calypso Card library can be extended with other libraries to handle SAM security features or PKI cryptography.</li>
@@ -57,7 +57,7 @@ weight: 2
   </tr>
   <tr>
     <td>2023/04</td>
-    <td><mark>not supported</mark></td>
+    <td><mark>not yet supported</mark><ul><li>client side planned for the future</li></ul></td>
     <td><ul><li><b>Specification of the JSON objects used by Keyple Distributed</b>
     <ul><li>It facilitates the implementation of non-Keyple based clients communicating with a Keyple Distributed server</li>
 e.g. the smart card readers of a terminal without Keyple software can be remotely controlled by a Keyple service. 
@@ -65,7 +65,7 @@ e.g. the smart card readers of a terminal without Keyple software can be remotel
   </tr>
   <tr>
     <td>2022/12</td>
-    <td><mark>in progress (scheduled Q1/2025)</mark></td>
+    <td><mark>in progress (scheduled Q2/2025)</mark></td>
     <td><ul><li><b>Support of Calypso Prime Extended</b>
     <ul><li>Capability to operate a Calypso secure session in confidential mode and to support intermediate authentications</li>
     </ul></li></ul></td>
@@ -109,15 +109,18 @@ The porting in C++ of Keyple Java is based on the same Object-Oriented Model. Th
     <td>2.0.0</td>
     <td>2021/10</td>
     <td>2022/07</td>
-   <td><ul><li><b>Calypso terminal compliance</b>
-   <ul><li>The <a href="https://keyple.org/components/core/keyple-service-lib/">Keyple Service</a> component implements the <a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-reader-api/">Reader API 1.0</a> and <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/">Card API 1.0</a> standardized for the reader layer of Calypso terminals. The implementation is compliant with the <a href="https://calypsonet.org/calypso-for-terminals/">reader layer requirements</a> for Calypso terminals</li>
-   <li>The <a href="https://keyple.org/components/card-extensions/keyple-card-calypso-lib/">Calypso card extension</a> library in version 2.0.0 follows also the <a href="https://calypsonet.org/calypso-for-terminals/">Calypso layer requirements</a> defined for Calypso terminals, it implements the <a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-calypso-api/">Calypso API 1.0</a>.</li></ul>
-    <li><b>Removal of dependencies</b> between Keyple components (Core, Calypso extension, and specific plugins): all components are released with their own version number and could evolve separately.
-     <ul><li>Until the version 1.0.0, the source code of all the Keyple Java components was hosted in a single repository: <a href="https://github.com/eclipse-keyple/keyple-java">https://github.com/eclipse-keyple/keyple-java</a>. It was the same for Keyple C++ components hosted in <a href="https://github.com/eclipse-keyple/keyple-cpp">https://github.com/eclipse-keyple/keyple-cpp</a>. For the version 1.0.0 and below, there were strong dependencies between the Keyple components which had all to be released in the same version number.</li>
-<li>To facilitate the evolution and the maintenance, the version 2.0.0 proposes a full reorganization of the code. All the components are split in different repositories in order to allow them to evolve independently. The public interfaces are also separated to the specific implementations: the repositories are dedicated to host API or library implementation.</li>
-<li>The Keyple Java components are managed through <a href="https://keyple.org/project-dashboard/">16 repositories</a>.</li>
-     </li></ul>
-     <li>The API for plugin implementation and for distributed architecture configuration have been simplified</li></ul></td>
+    <td><ul>
+      <li><b>Calypso terminal compliance</b><ul>
+        <li>The <a href="https://keyple.org/components/core/keyple-service-lib/">Keyple Service</a> component implements the <a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-reader-api/">Reader API 1.0</a> and <a href="https://terminal-api.calypsonet.org/apis/calypsonet-terminal-card-api/">Card API 1.0</a> standardized for the reader layer of Calypso terminals. The implementation is compliant with the <a href="https://calypsonet.org/calypso-for-terminals/">reader layer requirements</a> for Calypso terminals</li>
+        <li>The <a href="https://keyple.org/components/card-extensions/keyple-card-calypso-lib/">Calypso card extension</a> library in version 2.0.0 follows also the <a href="https://calypsonet.org/calypso-for-terminals/">Calypso layer requirements</a> defined for Calypso terminals, it implements the <a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-calypso-api/">Calypso API 1.0</a>.</li>
+      </ul></li>
+      <li><b>Removal of dependencies</b> between Keyple components (Core, Calypso extension, and specific plugins): all components are released with their own version number and could evolve separately.<ul>
+        <li>Until the version 1.0.0, the source code of all the Keyple Java components was hosted in a single repository: <a href="https://github.com/eclipse-keyple/keyple-java">https://github.com/eclipse-keyple/keyple-java</a>. It was the same for Keyple C++ components hosted in <a href="https://github.com/eclipse-keyple/keyple-cpp">https://github.com/eclipse-keyple/keyple-cpp</a>. For the version 1.0.0 and below, there were strong dependencies between the Keyple components which had all to be released in the same version number.</li>
+        <li>To facilitate the evolution and the maintenance, the version 2.0.0 proposes a full reorganization of the code. All the components are split in different repositories in order to allow them to evolve independently. The public interfaces are also separated to the specific implementations: the repositories are dedicated to host API or library implementation.</li>
+        <li>The Keyple Java components are managed through <a href="https://keyple.org/project-dashboard/">16 repositories</a>.</li>
+      </ul></li>
+      <li>The API for plugin implementation and for distributed architecture configuration have been simplified</li>
+    </ul></td>
   </tr>
   <tr>
     <td>1.0.0</td>
