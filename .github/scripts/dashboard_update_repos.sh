@@ -74,9 +74,9 @@ echo "," >> dashboard/repository_list.json
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-cpp-meta master false false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keypleless-reader-nfcmobile-kmp-lib main true false
+../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-interop-localreader-nfcmobile-kmp-lib main true false
 echo "," >> dashboard/repository_list.json
-../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keypleless-distributed-client-kmp-lib main true false
+../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-interop-jsonapi-client-kmp-lib main true false
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-actions main false false
 echo "," >> dashboard/repository_list.json
