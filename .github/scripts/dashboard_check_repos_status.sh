@@ -133,11 +133,11 @@ fi
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keypleless-reader-nfcmobile-kmp-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keyple-interop-localreader-nfcmobile-kmp-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keypleless-distributed-client-kmp-lib
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keyple-interop-jsonapi-client-kmp-lib
 if [ $? -eq 0 ]; then
   exit 0
 fi
