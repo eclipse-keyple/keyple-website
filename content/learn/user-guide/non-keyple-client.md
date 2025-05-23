@@ -6,4 +6,4 @@ type: book
 toc: false
 weight: 3
 ---
-{{< redirect "/user-guides/non-keyple-client/overview/" >}}
+{{< redirect "/user-guides/non-keyple-client/content/" >}}
