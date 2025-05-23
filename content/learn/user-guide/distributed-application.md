@@ -12,17 +12,17 @@ weight: 2
 
 ## Overview
 
-Keyple provides the "Keyple Distributed" solution which allows an application to communicate with a smart card reader 
+Keyple provides the **Keyple Distributed** solution which allows an application to communicate with a smart card reader 
 interfaced with another host.
 
 In this way, you can manage transactions seamlessly within a distributed architecture.
 
-The "Keyple Distributed" solution can be deployed in two ways:
-- both client and server embed Keyple components,
-- only the server embeds Keyple components, the client has its own libraries to communicate with its card reader.
+The Keyple Distributed solution can be deployed in two ways:
+- both client and server embed Keyple middleware,
+- only the server embeds Keyple middleware, the client has its own libraries to communicate with its card reader.
 
 The diagram below illustrates the first way, the use of the Keyple Distributed components when both client and 
-server embed Keyple components (note that the card reader can be either client-side or server-side):
+server embed Keyple middleware (note that the card reader can be either client-side or server-side):
 
 {{< figure src="/media/learn/user-guide/distributed-application/distributed_solution_1_layers_overview.drawio.svg" caption="Keyple on both client and server sides" numbered="true" >}}
 
@@ -34,7 +34,7 @@ Keyple-based server:
 ### User guides
 
 - [How to build a full Keyple distributed application](#full-keyple-distributed-application)
-- [How to make a non-Keyple client interact with a Keyple-based server application]({{< ref "/user-guides/non-keyple-client/overview" >}})
+- [How to make a non-Keyple client interact with a Keyple-based server application]({{< ref "/user-guides/non-keyple-client/content" >}})
 
 ## 
 ---
