@@ -1,0 +1,88 @@
+@startuml
+
+' == THEME ==
+
+skinparam RoundCorner 10
+'skinparam sequenceArrowThickness 2
+
+' == CONTENT ==
+
+entity "Card" as card
+box "Client" #F0F0F0
+participant "Application" as client
+participant "**Keyple Interop Local Reader NFC Mobile**\n<< LocalReader >>\nMultiplatformNfcReader" as localreader #LightBlue
+participant "**Keyple Interop JSON API Client**\nKeypleTerminal" as jsonapiclient #LightBlue
+participant "<< <back:#LightBlue>SyncNetworkClient</back> >>\nNetwork Endpoint" as endpointclient
+end box
+participant "Server" as server
+
+== Initialization ==
+
+activate client #LightGrey
+client -> server ++ #LightGrey : Retrieve card selection scenario
+return <color:#27AE60>**CardSelectionScenarioJsonString**
+
+|||
+
+client -> endpointclient ** : New
+client -> localreader ** : New
+client -> jsonapiclient ** : New (LocalReader, SyncNetworkClient,\n\t<color:#27AE60>**CardSelectionScenarioJsonString**</color>, etc.)
+
+== Wait for card ==
+
+client -> jsonapiclient ++ #LightBlue : Wait for card
+
+jsonapiclient -> localreader ++ #LightBlue : Wait for card
+
+|||
+
+card -->> localreader #LightGrey : Card inserted event
+activate card #LightGrey
+
+jsonapiclient <-- localreader --
+
+client <-- jsonapiclient --
+
+== Execute remote service ==
+
+client -> jsonapiclient ++ #LightBlue : Execute remote service
+
+note over jsonapiclient
+    Process card selection scenario
+end note
+
+loop while there are cases to be processed in the card selection scenario
+    jsonapiclient -> localreader ++ #LightBlue : APDU Request
+    localreader -> card : APDU Command
+    localreader <-- card : APDU Response
+    jsonapiclient <-- localreader -- : APDU Response
+end
+
+note over jsonapiclient
+    Execute remote service
+end note
+
+jsonapiclient -> endpointclient ++ #LightGrey : Server Request
+endpointclient -> server ++ #LightGrey : HTTP Request
+
+loop while there are actions to be performed with the card or the terminal's reader
+    endpointclient <-- server -- : HTTP Response
+    jsonapiclient <-- endpointclient -- : Server Response
+    jsonapiclient -> localreader ++ #LightBlue : APDU Command
+    localreader -> card : APDU Command
+    localreader <-- card : APDU Response
+    jsonapiclient <-- localreader -- : APDU Response
+    jsonapiclient -> endpointclient ++ #LightGrey : Server Request
+    endpointclient -> server ++ #LightGrey : HTTP Request
+end
+
+endpointclient <-- server -- : HTTP Response
+jsonapiclient <-- endpointclient -- : Server Response
+
+client <-- jsonapiclient -- : Result
+
+card -->> client -- : Card removed event
+deactivate client
+deactivate card
+
+@enduml

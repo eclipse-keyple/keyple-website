@@ -443,16 +443,16 @@ physical channels and stop the observation threads.&lt;/p>
 &lt;li>&lt;a href="https://keyple.org/components/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Distributed Application User Guide</title><link>https://keyple.org/learn/user-guide/distributed-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/distributed-application/</guid><description>&lt;br>
 &lt;h2 id="overview">Overview&lt;/h2>
-&lt;p>Keyple provides the &amp;ldquo;Keyple Distributed&amp;rdquo; solution which allows an application to communicate with a smart card reader
+&lt;p>Keyple provides the &lt;strong>Keyple Distributed&lt;/strong> solution which allows an application to communicate with a smart card reader
 interfaced with another host.&lt;/p>
 &lt;p>In this way, you can manage transactions seamlessly within a distributed architecture.&lt;/p>
-&lt;p>The &amp;ldquo;Keyple Distributed&amp;rdquo; solution can be deployed in two ways:&lt;/p>
+&lt;p>The Keyple Distributed solution can be deployed in two ways:&lt;/p>
 &lt;ul>
-&lt;li>both client and server embed Keyple components,&lt;/li>
-&lt;li>only the server embeds Keyple components, the client has its own libraries to communicate with its card reader.&lt;/li>
+&lt;li>both client and server embed Keyple middleware,&lt;/li>
+&lt;li>only the server embeds Keyple middleware, the client has its own libraries to communicate with its card reader.&lt;/li>
 &lt;/ul>
 &lt;p>The diagram below illustrates the first way, the use of the Keyple Distributed components when both client and
-server embed Keyple components (note that the card reader can be either client-side or server-side):&lt;/p>
+server embed Keyple middleware (note that the card reader can be either client-side or server-side):&lt;/p>
 &lt;figure id="figure-keyple-on-both-client-and-server-sides">
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../media/learn/user-guide/distributed-application/distributed_solution_1_layers_overview.drawio.svg" alt="Keyple on both client and server sides" loading="lazy" data-zoomable />&lt;/div>
@@ -470,7 +470,7 @@ Keyple on server side only
 &lt;h3 id="user-guides">User guides&lt;/h3>
 &lt;ul>
 &lt;li>&lt;a href="#full-keyple-distributed-application">How to build a full Keyple distributed application&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/user-guides/non-keyple-client/overview/">How to make a non-Keyple client interact with a Keyple-based server application&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/user-guides/non-keyple-client/content/">How to make a non-Keyple client interact with a Keyple-based server application&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="heading">&lt;/h2>
 &lt;hr>
@@ -946,7 +946,7 @@ Asynchronous network implementation
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/components/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Non-Keyple Client User Guide</title><link>https://keyple.org/learn/user-guide/non-keyple-client/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/non-keyple-client/</guid><description>&lt;meta http-equiv="refresh" content="0; url=../../user-guides/non-keyple-client/overview/"></description></item><item><title>Calypso Application User Guide</title><link>https://keyple.org/learn/user-guide/calypso-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/calypso-application/</guid><description>&lt;br>
+&lt;/ul></description></item><item><title>Non-Keyple Client User Guide</title><link>https://keyple.org/learn/user-guide/non-keyple-client/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/non-keyple-client/</guid><description>&lt;meta http-equiv="refresh" content="0; url=../../user-guides/non-keyple-client/content/"></description></item><item><title>Calypso Application User Guide</title><link>https://keyple.org/learn/user-guide/calypso-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/calypso-application/</guid><description>&lt;br>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>Keyple provides a card extension add-on dedicated to the Calypso® card technology.&lt;/p>
 &lt;p>This component allows operating commands with a Calypso card and to manage a secure Calypso transaction in a simple way.
