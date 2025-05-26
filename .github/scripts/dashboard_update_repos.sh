@@ -50,7 +50,7 @@ echo "," >> dashboard/repository_list.json
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-util-java-lib main true true
 echo "," >> dashboard/repository_list.json
-../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-plugin-storage-card-java-api main true true
+../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-plugin-storagecard-java-api main true true
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-website master false false
 echo "," >> dashboard/repository_list.json

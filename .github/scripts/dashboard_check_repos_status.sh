@@ -89,7 +89,7 @@ fi
 if [ $? -eq 0 ]; then
   exit 0
 fi
-./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keyple-plugin-storage-card-java-api
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keyple-plugin-storagecard-java-api
 if [ $? -eq 0 ]; then
   exit 0
 fi
