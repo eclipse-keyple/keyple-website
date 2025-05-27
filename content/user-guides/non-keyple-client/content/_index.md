@@ -119,7 +119,8 @@ libraries:
    feature.<br><div class="alert alert-note"><div>Implementing early 
    card selection is **strongly recommended** for non-Keyple clients as it **increases performance** by reducing the 
    number of network exchanges, as the selection scenario can be processed autonomously by the terminal as
-   soon as a card is presented.</div></div>
+   soon as a card is presented.</div></div><div class="alert alert-note"><div>The scenario should be retrieved by 
+   the customer **well before a card is presented**, for example **during installation, updating or application startup**.</div></div>
 2. Build an instance of `KeypleTerminal`, providing a `LocalReader` implementation to access the card reader,
    a `SyncEndpointClient` implementation to access the server over HTTP,
    and possibly a card selection scenario export to be processed when a card is detected.<br><div class="alert alert-note"><div>The 

@@ -57,8 +57,7 @@ Android NFC plugin or one of the plugins available from the industrial
 partners of the project.
 
 For a complete list of available plugins, please see
-the [standard reader plugins]({{< ref "components/standard-reader-plugins/_index.md" >}}),
-the [specific reader plugins]({{< ref "components/specific-reader-plugins/_index.md" >}})
+the [standard reader plugins]({{< ref "components/standard-reader-plugins/_index.md" >}})
 or one of our [partners reader plugins]({{< ref "external-resources/index.md" >}}).
 
 {{% callout note %}}

@@ -23,7 +23,7 @@ If you are a Keyple user: first subscribe to the keyple-user mailing list, then 
 
 Moreover, everyone is welcome to contribute (https://keyple.org/community/contributing/) to the Eclipse Keyple project.
 
-In particular there is the possibility to include inside the Eclipse Keyple project additional specific plugins (https://keyple.org/components/specific-reader-plugins/).\
+In particular there is the possibility to include inside the Eclipse Keyple project additional specific plugins.\
 The Keyple project provides also the possibility to reference external add-ons (https://keyple.org/external-resources/): open source or closed add-ons like additional plugins, card extensions, specific libraries.\
 Terminal manufacturers could also reference their terminal solutions based on Keyple (https://keyple.org/external-resources/).
 
