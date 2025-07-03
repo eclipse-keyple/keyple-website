@@ -773,6 +773,10 @@ loadProjectDashboard = async function() {
     }
 
     async function getLatestTag(rowIndex, owner, repos) {
+        if (repos === "keyple-actions") {
+            // do not display useless tag for this repos
+            return;
+        }
         let cell = document.getElementById("latest-tag-" + rowIndex);
         try {
             const json = await getJsonRepositoryData(repos, "_tags");
@@ -782,39 +786,41 @@ loadProjectDashboard = async function() {
     }
 
     async function getStatus(rowIndex, owner, repos) {
-
         let cell = document.getElementById("repos-status-" + rowIndex);
         let json;
-        let branch;
+        let a = document.createElement('a');
+        let linkText = document.createTextNode("\u2b24");
+        a.appendChild(linkText);
+        a.target = "_blank";
 
         try {
-            json = await getJsonRepositoryData(repos, "_commits_status");
-            branch = "main";
+            json = await getJsonRepositoryData(repos, "_check_runs");
         } catch (err) {
         }
 
-        const a = document.createElement('a');
-        const linkText = document.createTextNode("\u2b24");
-        a.appendChild(linkText);
         a.title = "CI status page";
-        a.href = "https://ci.eclipse.org/keyple/job/Keyple/job/" + repos + "/job/" + branch + "/";
-        a.target = "_blank";
+        a.href = "https://github.com/" + owner + "/" + repos + "/actions";
 
-        switch (json.state) {
-            case "error":
-            case "failure":
-                a.style.color = "red";
-                a.title += ": failure";
-                break;
-            case "pending":
-                a.style.color = "orange";
-                a.title += ": pending";
-                break;
-            case "success":
-                a.style.color = "green";
-                a.title += ": success";
-                break;
+        if (json && json.check_runs && json.check_runs[0] && json.check_runs[0].status === "completed") {
+            switch (json.check_runs[0].conclusion) {
+                case "failure":
+                case "action_required":
+                case "cancelled":
+                case "skipped":
+                case "timed-out":
+                    a.style.color = "red";
+                    break;
+                case "neutral":
+                    a.style.color = "lightgreen";
+                    break;
+                case "success":
+                    a.style.color = "green";
+                    break;
+            }
+        } else {
+            a.style.color = "orange";
         }
+
         cell.appendChild(a);
     }
 
