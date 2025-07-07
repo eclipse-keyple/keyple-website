@@ -1,13 +1,13 @@
 [
   {
-    "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/10",
-    "id": 2367590512,
-    "node_id": "PR_kwDODMWZEs6NHpBw",
-    "html_url": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pull/10",
-    "diff_url": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pull/10.diff",
-    "patch_url": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pull/10.patch",
-    "issue_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/10",
-    "number": 10,
+    "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/12",
+    "id": 2647604312,
+    "node_id": "PR_kwDODMWZEs6dzzxY",
+    "html_url": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pull/12",
+    "diff_url": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pull/12.diff",
+    "patch_url": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pull/12.patch",
+    "issue_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/12",
+    "number": 12,
     "state": "open",
     "locked": false,
     "title": "feat: add MIFARE Ultralight support and storage card API",
@@ -32,38 +32,18 @@
       "user_view_type": "public",
       "site_admin": false
     },
-    "body": "- Add support for NXP MIFARE Ultralight protocol.\r\n- Introduce `keyple-plugin-storage-card-java-api:1.0.0` dependency.\r\n- Add `apduInterpreterFactory` property to `AndroidNfcConfig`.\r\n- Update Gradle version to 8.12.1\r\n- Update the plugin version to 3.1.0",
-    "created_at": "2025-03-03T09:20:29Z",
-    "updated_at": "2025-06-23T09:44:28Z",
+    "body": null,
+    "created_at": "2025-07-07T18:43:42Z",
+    "updated_at": "2025-07-07T18:44:22Z",
     "closed_at": null,
     "merged_at": null,
-    "merge_commit_sha": null,
+    "merge_commit_sha": "f8512a0bb80c6b8337169279645627e83443d658",
     "assignee": null,
     "assignees": [
 
     ],
     "requested_reviewers": [
-      {
-        "login": "andrei-cristea",
-        "id": 26622621,
-        "node_id": "MDQ6VXNlcjI2NjIyNjIx",
-        "avatar_url": "https://avatars.githubusercontent.com/u/26622621?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/andrei-cristea",
-        "html_url": "https://github.com/andrei-cristea",
-        "followers_url": "https://api.github.com/users/andrei-cristea/followers",
-        "following_url": "https://api.github.com/users/andrei-cristea/following{/other_user}",
-        "gists_url": "https://api.github.com/users/andrei-cristea/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/andrei-cristea/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/andrei-cristea/subscriptions",
-        "organizations_url": "https://api.github.com/users/andrei-cristea/orgs",
-        "repos_url": "https://api.github.com/users/andrei-cristea/repos",
-        "events_url": "https://api.github.com/users/andrei-cristea/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/andrei-cristea/received_events",
-        "type": "User",
-        "user_view_type": "public",
-        "site_admin": false
-      }
+
     ],
     "requested_teams": [
 
@@ -73,15 +53,15 @@
     ],
     "milestone": null,
     "draft": false,
-    "commits_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/10/commits",
-    "review_comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/10/comments",
+    "commits_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/12/commits",
+    "review_comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/12/comments",
     "review_comment_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/comments{/number}",
-    "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/10/comments",
-    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/statuses/541a18144b4bc8a0826275a928c795d1309b8133",
+    "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/12/comments",
+    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/statuses/5c2b8bb91955a6d343e2d9ff300a90d51ef318b1",
     "head": {
-      "label": "eclipse-keyple:storage-card-api",
-      "ref": "storage-card-api",
-      "sha": "541a18144b4bc8a0826275a928c795d1309b8133",
+      "label": "eclipse-keyple:storagecard-api",
+      "ref": "storagecard-api",
+      "sha": "5c2b8bb91955a6d343e2d9ff300a90d51ef318b1",
       "user": {
         "login": "eclipse-keyple",
         "id": 157523070,
@@ -172,7 +152,7 @@
         "deployments_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/deployments",
         "created_at": "2019-10-10T20:10:33Z",
         "updated_at": "2025-07-03T08:33:45Z",
-        "pushed_at": "2025-07-03T08:35:47Z",
+        "pushed_at": "2025-07-07T18:44:08Z",
         "git_url": "git://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib.git",
         "ssh_url": "git@github.com:eclipse-keyple/keyple-plugin-android-nfc-java-lib.git",
         "clone_url": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib.git",
@@ -218,7 +198,7 @@
     "base": {
       "label": "eclipse-keyple:main",
       "ref": "main",
-      "sha": "edccbb8aa1f69ecbf1f058bb4dcf4c55f9134ddf",
+      "sha": "a1c4fe025799dd589b2d7c8765ed1f6f3a7aa7ac",
       "user": {
         "login": "eclipse-keyple",
         "id": 157523070,
@@ -309,7 +289,7 @@
         "deployments_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/deployments",
         "created_at": "2019-10-10T20:10:33Z",
         "updated_at": "2025-07-03T08:33:45Z",
-        "pushed_at": "2025-07-03T08:35:47Z",
+        "pushed_at": "2025-07-07T18:44:08Z",
         "git_url": "git://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib.git",
         "ssh_url": "git@github.com:eclipse-keyple/keyple-plugin-android-nfc-java-lib.git",
         "clone_url": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib.git",
@@ -354,28 +334,28 @@
     },
     "_links": {
       "self": {
-        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/10"
+        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/12"
       },
       "html": {
-        "href": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pull/10"
+        "href": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pull/12"
       },
       "issue": {
-        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/10"
+        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/12"
       },
       "comments": {
-        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/10/comments"
+        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/12/comments"
       },
       "review_comments": {
-        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/10/comments"
+        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/12/comments"
       },
       "review_comment": {
         "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/comments{/number}"
       },
       "commits": {
-        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/10/commits"
+        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/pulls/12/commits"
       },
       "statuses": {
-        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/statuses/541a18144b4bc8a0826275a928c795d1309b8133"
+        "href": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/statuses/5c2b8bb91955a6d343e2d9ff300a90d51ef318b1"
       }
     },
     "author_association": "CONTRIBUTOR",
