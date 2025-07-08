@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/releases/205796623",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/releases/205796623/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/releases/205796623/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/releases/tag/3.0.0",
-  "id": 205796623,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/releases/230763781",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/releases/230763781/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/releases/230763781/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/releases/tag/3.1.0",
+  "id": 230763781,
   "author": {
     "login": "jeanpierrefortune",
     "id": 1011563,
@@ -25,19 +25,19 @@
     "user_view_type": "public",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWZEs4MRDUP",
-  "tag_name": "3.0.0",
+  "node_id": "RE_kwDODMWZEs4NwS0F",
+  "tag_name": "3.1.0",
   "target_commitish": "main",
   "name": "",
   "draft": false,
   "immutable": false,
   "prerelease": false,
-  "created_at": "2025-02-10T16:21:09Z",
-  "published_at": "2025-03-14T09:18:56Z",
+  "created_at": "2025-07-08T09:57:55Z",
+  "published_at": "2025-07-08T09:59:02Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/tarball/3.0.0",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/zipball/3.0.0",
-  "body": "### Breaking changes\r\n- Replaced `AndroidNfcPluginFactoryProvider.getFactory()` by\r\n  `AndroidNfcPluginFactoryProvider.provideFactory(config: AndroidNfcConfig)`.\r\n- Moved `presenceCheckDelay`, `noPlateformSound`, and `skipNdefCheck` properties from\r\n  `AndroidNfcReader` to `AndroidNfcConfig`.\r\n- Removed methods `printTagId()`, `processIntent(Intent)` from `AndroidNfcReader`.\r\n- Removed constant `READER_NAME` from `AndroidNfcReader` to `AndroidNfcConstants`.\r\n- Removed constant `PLUGIN_NAME` from `AndroidNfcPlugin` to `AndroidNfcConstants`.\r\n- Removed support for the `CardReader.isCardPresent()` method. This method is incompatible with the\r\n  Android NFC model.\r\n### Added\r\n- Added `AndroidNfcConfig` to encapsulate plugin configuration.\r\n- Added `AndroidNfcConstants` for plugin-related constants.\r\n### Fixed\r\n- Latency issue related to card removal.\r\n### Changed\r\n- Refactored `AndroidNfcPluginFactoryProvider` to provide factories with a configuration.\r\n- Refactored `AndroidNfcSupportedProtocols` to align with the new model.\r\n- Removed useless dependencies.\r\n- Updated Gradle wrapper.\r\n- Improved logging.\r\n### Documentation\r\n- Improved documentation to reflect the new event-driven model."
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/tarball/3.1.0",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/zipball/3.1.0",
+  "body": "### Added\r\n- Added `keyple-plugin-storagecard-java-api:1.0.0` dependency to enable storage card support.\r\n### Changed\r\n- Migrated the CI pipeline from Jenkins to GitHub Actions."
 }
