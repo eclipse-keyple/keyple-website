@@ -26,14 +26,12 @@ done < "$REPOS_LIST"
 # Concatenate all .md files into a new changelog file, sorted in reverse alphabetical order by their names
 echo "Concatenating .md files into changelog..."
 touch changelog
-for md_file in $(ls ./*.md 2>/dev/null | sort -r); do
+for md_file in $(ls ./*.md | sort -r); do
   cat "$md_file" >> changelog
 done
 
 # Insert changelog into the destination page
 echo "Inserting changelog text into destination page..."
-awk -v replacement="$(cat ./changelog)" \
-    '{gsub("<!-- CHANGELOG_CONTENT -->", replacement)}1' "$CHANGELOG_PAGE" > temp.md
+awk -v replacement="$(cat ./changelog)" '{gsub("<!-- CHANGELOG_CONTENT -->", replacement)}1' "$CHANGELOG_PAGE" > temp.md
 mv temp.md "$CHANGELOG_PAGE"
-
 cat "$CHANGELOG_PAGE"
