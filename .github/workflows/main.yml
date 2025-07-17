@@ -41,6 +41,8 @@ jobs:
       - name: Create project changelog
         working-directory: .
         run: ./.github/scripts/changelog_generate_page.sh
+        env:
+          ORG_GITHUB_BOT_TOKEN: ${{ secrets.ORG_GITHUB_BOT_TOKEN }}
         continue-on-error: true
 
       - name: Build
