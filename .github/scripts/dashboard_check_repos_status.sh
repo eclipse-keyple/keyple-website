@@ -129,6 +129,10 @@ fi
 if [ $? -eq 0 ]; then
   exit 0
 fi
+./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keyple-card-calypso-crypto-legacysam-cpp-lib
+if [ $? -eq 0 ]; then
+  exit 0
+fi
 ./.github/scripts/dashboard_check_repos_status_curl.sh $token eclipse-keyple keyple-cpp-example
 if [ $? -eq 0 ]; then
   exit 0
