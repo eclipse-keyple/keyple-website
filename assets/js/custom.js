@@ -76,6 +76,9 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 releaseTrains.push(new ReleaseTrain(
+    new Release(ComponentName.CALYPSO_PKI_LIB, "0.2.2")
+));
+releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.1.0")
 ));
 releaseTrains.push(new ReleaseTrain(
