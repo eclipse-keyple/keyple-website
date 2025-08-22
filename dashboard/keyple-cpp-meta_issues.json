@@ -53,6 +53,12 @@
       "completed": 0,
       "percent_completed": 0
     },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
     "body": "Hi!\r\n\r\nı'm tried to run your Usecases but i received some exception  error. I'm using G++4.9.2. When i searched error, i discovered this.\r\n// KeypleStd.h\r\ntemplate <typename out>\r\ninline void split(const std::string &s, const std::regex& re, out result)\r\n{\r\n    std::sregex_token_iterator d(s.begin(), s.end(), re, -1);\r\n    std::sregex_token_iterator end;\r\n\r\n    while (d != end) {\r\n        *result++ = *d++;\r\n    }\r\n} \r\n\r\nAnd I fixed it like this and my problem was solved.\r\n\r\ntemplate <typename out>\r\ninline void split(const std::string &s, const std::regex& re, out result)\r\n{\r\n    std::sregex_token_iterator d(s.begin(), s.end(), re, -1);\r\n    std::sregex_token_iterator end;\r\n\r\n    while (d != end) {\r\n        *result = *d;\r\n        result++;\r\n        d++;\r\n    }\r\n}\r\n\r\nJust wanted to share in case anyone else has the same problem.\r\nThanks ",
     "closed_by": null,
     "reactions": {
@@ -124,6 +130,12 @@
       "total": 0,
       "completed": 0,
       "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
     },
     "body": "Hi Keyple team \r\n\r\nI am trying to fetch the keyple-cpp-meta repository and build in my local machine with windowns x86 environment using VSCode, but i face several linking error during the compilation of the cpp examples. Below is an example:\r\nError\tLNK2019\tunresolved external symbol \"__declspec(dllimport) public: __thiscall keyple::plugin::stub::StubPluginFactoryBuilder::Builder::~Builder(void)\" (__imp_??1Builder@StubPluginFactoryBuilder@stub@plugin@keyple@@QAE@XZ) referenced in function \"public: void * __thiscall keyple::plugin::stub::StubPluginFactoryBuilder::Builder::`scalar deleting destructor'(unsigned int)\" (??_GBuilder@StubPluginFactoryBuilder@stub@plugin@keyple@@QAEPAXI@Z)\tunder project : UseCase1_ExplicitSelectionAid_Stub\tand file :Main_ExplicitSelectionAid_Stub.obj\r\n\r\nthe keyplepluginstubcpplib.lib has exported under build\\externals\\keyple-plugin-stub-cpp-lib\\src\\main\\Debug, thus i may seek your help regarding the linking error. \r\n\r\nBest regards\r\nAnn\r\n",
     "closed_by": null,
