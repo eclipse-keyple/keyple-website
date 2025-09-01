@@ -80,6 +80,13 @@ package "Plugin API\norg.eclipse.keyple.core.plugin.spi" as pluginSpi {
     }
 }
 
+package "Plugin Storage Card API\norg.eclipse.keyple.core.plugin.storagecard.internal" as pluginStorageCardApi {
+    +interface CommandProcessorApi {
+        --
+        ...
+    }
+}
+
 package "Plugin Xxx\norg.eclipse.keyple.plugin.xxx" as specificPluginApi {
     +class "**final** XxxPluginFactoryProvider" as XxxPluginFactoryProvider {
         +{static} XxxPluginFactory getFactory ()
@@ -106,7 +113,7 @@ package "Plugin Xxx\norg.eclipse.keyple.plugin.xxx" as specificPluginApi {
             --
             ...
         }
-        ~class "**final** XxxReaderAdapter" as XxxReaderAdapter implements XxxReader, pluginSpi.ReaderSpi {
+        ~class "**final** XxxReaderAdapter" as XxxReaderAdapter implements XxxReader, pluginSpi.ReaderSpi, pluginStorageCardApi.CommandProcessorApi {
             --
             ...
         }
@@ -124,12 +131,14 @@ XxxPluginAdapter .> XxxReaderAdapter #C_LINK : provide >
 commonApi -[hidden]- specificPluginApi
 XxxPluginFactoryAdapter -[hidden]- PluginFactorySpi
 XxxReaderAdapter -[hidden]- ReaderSpi
+XxxReaderAdapter -[hidden]- CommandProcessorApi
 XxxPluginAdapter -[hidden]- PluginSpi
 
 ' == STYLE ==
 
 package commonApi #C_GREY1 {}
 package pluginSpi #C_GREY1 {}
+package pluginStorageCardApi #C_GREY1 {}
 package specificPluginApi #C_GREY1 {}
 
 class specificPluginApi.XxxReaderAdapter <<blue>>
@@ -138,5 +147,6 @@ class specificPluginApi.XxxPluginFactoryAdapter <<blue>>
 interface pluginSpi.ReaderSpi <<purple>>
 interface pluginSpi.PluginSpi <<purple>>
 interface pluginSpi.PluginFactorySpi <<purple>>
+interface pluginStorageCardApi.CommandProcessorApi <<purple>>
 
 @enduml

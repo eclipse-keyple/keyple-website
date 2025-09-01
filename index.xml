@@ -617,27 +617,37 @@ and also by allowing the execution of commands immediately following application
 &lt;li>Learn the &lt;a href="#plugin-architecture">plugin architecture&lt;/a> concepts&lt;/li>
 &lt;li>&lt;a href="#select-predefined-features">Select the predefined features&lt;/a> that meet your need&lt;/li>
 &lt;li>&lt;a href="#define-specific-features">Define specific features&lt;/a> (optional)&lt;/li>
-&lt;li>&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;br>
 &lt;h2 id="plugin-architecture">Plugin architecture&lt;/h2>
-&lt;p>A Keyple reader plugin consists of three objects, a &lt;strong>plugin factory&lt;/strong>, a &lt;strong>plugin&lt;/strong> and a &lt;strong>reader&lt;/strong>, which meet the following two interface specifications:&lt;/p>
+&lt;p>A Keyple reader plugin consists of three objects, a &lt;strong>plugin factory&lt;/strong>, a &lt;strong>plugin&lt;/strong> and a &lt;strong>reader&lt;/strong>, which meet the
+following interface specifications:&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>Common API&lt;/strong>: public contract containing only generic types common to all plugins.&lt;/li>
 &lt;li>&lt;strong>Plugin API&lt;/strong>: private contract based on two types of interfaces:
 &lt;ul>
-&lt;li>&lt;strong>API&lt;/strong> (Application Programming Interface): interface implemented by Keyple Service and directly usable by the plugin code.&lt;/li>
+&lt;li>&lt;strong>API&lt;/strong> (Application Programming Interface): interface implemented by Keyple Service and directly usable by the
+plugin code.&lt;/li>
 &lt;li>&lt;strong>SPI&lt;/strong> (Service Provider Interface): interface to be implemented by the plugin and directly used by Keyple Service.&lt;/li>
 &lt;/ul>
 &lt;/li>
+&lt;li>&lt;strong>Plugin Storage Card API&lt;/strong> &lt;em>(optional)&lt;/em>: private contract that may be involved when interactions with storage cards
+are required, in order to rely on an APDU interpreter. It is also based on two types of interfaces:
+&lt;ul>
+&lt;li>&lt;strong>API&lt;/strong> (Application Programming Interface): interface implemented by the plugin and directly usable by the APDU
+interpreter, allowing the interpreter to call back into the plugin to handle specific behaviors required during
+storage card interactions.&lt;/li>
+&lt;li>&lt;strong>SPI&lt;/strong> (Service Provider Interface): interface to be implemented by the APDU interpreter and directly usable by the plugin, allowing the plugin to invoke interpreter functions for storage card operations.&lt;/li>
 &lt;/ul>
-&lt;p>The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the application:
+&lt;/li>
+&lt;/ul>
+&lt;p>The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the
+public APIs exposed to the application:&lt;/p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./media/learn/developer-guide/component-dependencies/plugin_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="./media/learn/developer-guide/component-dependencies/Component_ReaderPluginAddOn.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;/p>
 &lt;br>
 &lt;h2 id="select-predefined-features">Select predefined features&lt;/h2>
 &lt;p>The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
@@ -664,37 +674,10 @@ The API will then be directly accessible from the application through the &lt;co
 The API will then be directly accessible from the application through the &lt;code>getReaderExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
 &lt;/ul>
 &lt;br>
-&lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
-&lt;div class="alert alert-warning">
-&lt;div>
-For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of applications.
-&lt;/div>
-&lt;/div>
-&lt;p>If the reader plugin add-on is to be integrated into the Eclipse Keyple® project, it must use one of the following project templates:&lt;/p>
-&lt;dl>
-&lt;dt>&lt;a href="./media/project-templates/java/keyple-plugin-[READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>&lt;/dt>
-&lt;dd>adapt fields &lt;code>[READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
-&lt;dt>&lt;a href="./media/project-templates/android/keyple-plugin-[ANDROID_READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Android template&lt;/a>&lt;/dt>
-&lt;dd>adapt fields &lt;code>[ANDROID_READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
-&lt;/dl>
-&lt;div class="alert alert-warning">
-&lt;div>
-&lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:&lt;/p>
-&lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;gradlew&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/check_version.sh&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;p>If examples are proposed, they should be placed in the &lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
-&lt;p>The contribution procedure is described &lt;a href="./community/contributing/">here&lt;/a>.&lt;/p>
-&lt;br>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
-It is important to hide the internal Keyple interfaces of the &lt;strong>Plugin API&lt;/strong> from the application.
+It is recommended to hide the internal Keyple interfaces of the &lt;strong>Plugin API&lt;/strong> from the application.
 &lt;/div>
 &lt;/div>
 &lt;p>For this purpose, it is suggested to respect the following programming pattern based on the use of:&lt;/p>
@@ -719,6 +702,7 @@ Thus, the factory does not expose any method.
 &lt;ul>
 &lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-java-api" target="_blank" rel="noopener">Keyple Plugin API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-storagecard-java-api/" target="_blank" rel="noopener">Keyple Plugin Storage Card API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -1344,7 +1328,6 @@ technology.&lt;/p>
 &lt;li>Learn the &lt;a href="#card-extension-architecture">card extension architecture&lt;/a> concepts&lt;/li>
 &lt;li>Take note of the &lt;a href="#minimal-requirements">minimal requirements&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#define-the-card-commands">Define the card commands&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;br>
@@ -1368,7 +1351,7 @@ Keyple Service.&lt;/li>
 well as the public APIs exposed to the application:
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./media/learn/developer-guide/component-dependencies/card_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="./media/learn/developer-guide/component-dependencies/Component_CardExtensionAddOn.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/p>
 &lt;br>
@@ -1446,39 +1429,10 @@ This can then be cast internally to a &lt;code>ProxyReaderApi&lt;/code> of the C
 card commands.&lt;/p>
 &lt;p>Each card extension is free to define the APIs it considers relevant to perform card transactions.&lt;/p>
 &lt;br>
-&lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
-&lt;div class="alert alert-warning">
-&lt;div>
-For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of
-applications.
-&lt;/div>
-&lt;/div>
-&lt;p>If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project
-template:&lt;/p>
-&lt;dl>
-&lt;dt>&lt;a href="./media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>&lt;/dt>
-&lt;dd>adapt fields &lt;code>[CARD_EXTENSION_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
-&lt;/dl>
-&lt;div class="alert alert-warning">
-&lt;div>
-&lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the
-following commands:&lt;/p>
-&lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;gradlew&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/check_version.sh&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;p>If examples are proposed, they should be placed in
-the &lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
-&lt;p>The contribution procedure is described &lt;a href="./community/contributing/">here&lt;/a>.&lt;/p>
-&lt;br>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
-It is important to hide the internal interfaces of the &lt;strong>Keypop Card API&lt;/strong> from the application.
+It is recommended to hide the internal interfaces of the &lt;strong>Keypop Card API&lt;/strong> from the application.
 &lt;/div>
 &lt;/div>
 &lt;p>For this purpose, it is suggested to respect the following programming pattern based on the use of:&lt;/p>
@@ -4177,6 +4131,10 @@ Choose your project profile and copy/paste the generated result into your projec
 &lt;input type="checkbox" id="cardCalypsoPki" onclick="javascript:updateAppDependencies(1, this);">
 &lt;label for="cardCalypsoPki">Calypso PKI (required for PKI card transactions)&lt;/label>
 &lt;/div>
+&lt;div>
+&lt;input type="checkbox" id="cardStorageCard" onclick="javascript:updateAppDependencies(1, this);">
+&lt;label for="cardStorageCard">Storage Card&lt;/label>
+&lt;/div>
 &lt;/blockquote>
 &lt;/li>
 &lt;li>
@@ -4271,6 +4229,16 @@ id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
 &lt;/div>
 &lt;br>
 &lt;h2 id="reader-plugin-add-on">Reader plugin add-on&lt;/h2>
+&lt;ul>
+&lt;li>Do you need additional features?
+&lt;blockquote>
+&lt;div>
+&lt;input type="checkbox" id="pluginStorageCard" onclick="javascript:updatePluginDependencies(2, this);">
+&lt;label for="pluginStorageCard">Storage cards support&lt;/label>
+&lt;/div>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
 &lt;ul class="nav nav-tabs" id="tabs-2" role="tablist">&lt;li class="nav-item">
 &lt;a class="nav-link active tab-Gradle-Kotlin"
 id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
@@ -4294,45 +4262,21 @@ Maven
 &lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
 id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// Begin Keyple configuration (generated by &amp;#39;https://keyple.org/components/overview/configuration-wizard/&amp;#39;)
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-common-java-api:2.0.2&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-plugin-java-api:2.3.2&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-util-java-lib:2.4.0&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// End Keyple configuration&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// Begin Keyple configuration (generated by &amp;#39;https://keyple.org/components/overview/configuration-wizard/&amp;#39;)
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-common-java-api:2.0.2&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-plugin-java-api:2.3.2&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-util-java-lib:2.4.0&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">//&lt;/span> &lt;span class="n">End&lt;/span> &lt;span class="n">Keyple&lt;/span> &lt;span class="n">configuration&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;div class="tab-pane fade"
 id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
 &lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="c">&amp;lt;!-- Begin Keyple configuration (generated by &amp;#39;https://keyple.org/components/overview/configuration-wizard/&amp;#39;) --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-common-java-api&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.0.2&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-java-api&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.3.2&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-util-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.4.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&amp;lt;!-- End Keyple configuration --&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
@@ -4548,15 +4492,18 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-distributed-local-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-distributed-local-java-lib:2.5.2'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-network-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-distributed-network-java-lib:2.5.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-remote-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-distributed-remote-java-lib:2.5.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-plugin-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-java-api:2.3.2'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-nfc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:3.1.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-omapi-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.1.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-cardresource-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-pcsc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.5.2'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-stub-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-stub-java-lib:2.2.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-plugin-storagecard-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keyple:keyple-plugin-storagecard-java-api:1.0.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-reader-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-reader-java-api:2.0.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-card-java-api:2.0.1'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-calypso-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-calypso-card-java-api:2.1.2'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-calypso-crypto-legacysam-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.7.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keypop-storagecard-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">'org.eclipse.keypop:keypop-storagecard-java-api:0.3.0'&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;/code>
 &lt;!-- All kotlin dependencies -->
 &lt;code id="all-kotlin-dependencies" style="display:none">
@@ -4571,15 +4518,18 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span id="keyple-distributed-local-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-distributed-local-java-lib:2.5.2"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-network-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-distributed-network-java-lib:2.5.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-distributed-remote-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-distributed-remote-java-lib:2.5.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-plugin-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-java-api:2.3.2"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-nfc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:3.1.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-omapi-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:2.1.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-cardresource-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-cardresource-java-lib:2.0.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-pcsc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-pcsc-java-lib:2.5.2"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-stub-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-stub-java-lib:2.2.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-plugin-storagecard-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keyple:keyple-plugin-storagecard-java-api:1.0.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-reader-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-reader-java-api:2.0.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-card-java-api:2.0.1"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-calypso-card-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-calypso-card-java-api:2.1.2"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-calypso-crypto-legacysam-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:0.7.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keypop-storagecard-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">"org.eclipse.keypop:keypop-storagecard-java-api:0.3.0"&lt;/span>)&lt;/span>&lt;/span>&lt;/span>
 &lt;/code>
 &lt;!-- All maven dependencies -->
 &lt;pre style="display:none">
@@ -4639,6 +4589,11 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-distributed-remote-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.5.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-plugin-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-java-api&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.3.2&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keyple-plugin-android-nfc-java-lib">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-android-nfc-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
@@ -4664,6 +4619,11 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-stub-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.2.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keyple-plugin-storagecard-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-plugin-storagecard-java-api&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;span id="keypop-reader-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keypop&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keypop-reader-java-api&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
@@ -4684,11 +4644,17 @@ id="tabs-5-2" role="tabpanel" aria-labelled-by="tabs-5-2-tab">
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keypop-calypso-crypto-legacysam-java-api&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>0.7.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
 &lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
+&lt;span id="keypop-storagecard-java-api">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keypop&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keypop-storagecard-java-api&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>0.3.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>&lt;/span>&lt;/span>
+&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/span>
 &lt;/code>
 &lt;/pre>
 &lt;script type="text/javascript">
 document.body.onload = function() {
 updateAppDependencies(1, null);
+updatePluginDependencies(2, null);
 updateCardDependencies(3, null);
 };
 &lt;/script></description></item><item><title>Why trust Eclipse Keyple®?</title><link>https://keyple.org/what-is-keyple/why-trust/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/what-is-keyple/why-trust/</guid><description>&lt;p>Eclipse Keyple® is an Eclipse open source project currently leaded by Calypso Networks Association, which has been the leader in contactless
@@ -4851,7 +4817,7 @@ as they only concern documentation updates.
 &lt;thead class="text-center">
 &lt;tr>
 &lt;th colspan="6" class="bg-orange">Keypop APIs&lt;/th>
-&lt;th colspan="4" class="bg-yellow">Core APIs&lt;/th>
+&lt;th colspan="5" class="bg-yellow">Core APIs&lt;/th>
 &lt;th colspan="3" class="bg-blue">Core libraries&lt;/th>
 &lt;th colspan="3" class="bg-purple">Distributed systems libraries&lt;/th>
 &lt;th colspan="4" class="bg-green">Card extensions libraries&lt;/th>
@@ -4868,6 +4834,7 @@ as they only concern documentation updates.
 &lt;th class="bg-yellow c-grey">Distributed Local&lt;br>API*&lt;/th>
 &lt;th class="bg-yellow c-grey">Distributed Remote&lt;br>API*&lt;/th>
 &lt;th class="bg-yellow c-grey">Plugin&lt;br>API*&lt;/th>
+&lt;th class="bg-yellow c-grey">Plugin Storage Card&lt;br>API*&lt;/th>
 &lt;th class="bg-blue">Util&lt;br>Lib&lt;/th>
 &lt;th class="bg-blue">Service&lt;br>Lib&lt;/th>
 &lt;th class="bg-blue">Service Resource&lt;br>Lib&lt;/th>

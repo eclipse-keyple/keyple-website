@@ -7,27 +7,37 @@
 &lt;li>Learn the &lt;a href="#plugin-architecture">plugin architecture&lt;/a> concepts&lt;/li>
 &lt;li>&lt;a href="#select-predefined-features">Select the predefined features&lt;/a> that meet your need&lt;/li>
 &lt;li>&lt;a href="#define-specific-features">Define specific features&lt;/a> (optional)&lt;/li>
-&lt;li>&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;br>
 &lt;h2 id="plugin-architecture">Plugin architecture&lt;/h2>
-&lt;p>A Keyple reader plugin consists of three objects, a &lt;strong>plugin factory&lt;/strong>, a &lt;strong>plugin&lt;/strong> and a &lt;strong>reader&lt;/strong>, which meet the following two interface specifications:&lt;/p>
+&lt;p>A Keyple reader plugin consists of three objects, a &lt;strong>plugin factory&lt;/strong>, a &lt;strong>plugin&lt;/strong> and a &lt;strong>reader&lt;/strong>, which meet the
+following interface specifications:&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>Common API&lt;/strong>: public contract containing only generic types common to all plugins.&lt;/li>
 &lt;li>&lt;strong>Plugin API&lt;/strong>: private contract based on two types of interfaces:
 &lt;ul>
-&lt;li>&lt;strong>API&lt;/strong> (Application Programming Interface): interface implemented by Keyple Service and directly usable by the plugin code.&lt;/li>
+&lt;li>&lt;strong>API&lt;/strong> (Application Programming Interface): interface implemented by Keyple Service and directly usable by the
+plugin code.&lt;/li>
 &lt;li>&lt;strong>SPI&lt;/strong> (Service Provider Interface): interface to be implemented by the plugin and directly used by Keyple Service.&lt;/li>
 &lt;/ul>
 &lt;/li>
+&lt;li>&lt;strong>Plugin Storage Card API&lt;/strong> &lt;em>(optional)&lt;/em>: private contract that may be involved when interactions with storage cards
+are required, in order to rely on an APDU interpreter. It is also based on two types of interfaces:
+&lt;ul>
+&lt;li>&lt;strong>API&lt;/strong> (Application Programming Interface): interface implemented by the plugin and directly usable by the APDU
+interpreter, allowing the interpreter to call back into the plugin to handle specific behaviors required during
+storage card interactions.&lt;/li>
+&lt;li>&lt;strong>SPI&lt;/strong> (Service Provider Interface): interface to be implemented by the APDU interpreter and directly usable by the plugin, allowing the plugin to invoke interpreter functions for storage card operations.&lt;/li>
 &lt;/ul>
-&lt;p>The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the application:
+&lt;/li>
+&lt;/ul>
+&lt;p>The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the
+public APIs exposed to the application:&lt;/p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/plugin_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/Component_ReaderPluginAddOn.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;/p>
 &lt;br>
 &lt;h2 id="select-predefined-features">Select predefined features&lt;/h2>
 &lt;p>The diagram below helps you to determine exactly which interfaces to implement according to the characteristics of the reader:
@@ -54,37 +64,10 @@ The API will then be directly accessible from the application through the &lt;co
 The API will then be directly accessible from the application through the &lt;code>getReaderExtension(...)&lt;/code> method of the reader provided by the plugin registered with Keyple Service.&lt;/li>
 &lt;/ul>
 &lt;br>
-&lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
-&lt;div class="alert alert-warning">
-&lt;div>
-For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of applications.
-&lt;/div>
-&lt;/div>
-&lt;p>If the reader plugin add-on is to be integrated into the Eclipse Keyple® project, it must use one of the following project templates:&lt;/p>
-&lt;dl>
-&lt;dt>&lt;a href="../../media/project-templates/java/keyple-plugin-[READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>&lt;/dt>
-&lt;dd>adapt fields &lt;code>[READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
-&lt;dt>&lt;a href="../../media/project-templates/android/keyple-plugin-[ANDROID_READER_PLUGIN_NAME]-java-lib.zip" target="_blank">Android template&lt;/a>&lt;/dt>
-&lt;dd>adapt fields &lt;code>[ANDROID_READER_PLUGIN_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
-&lt;/dl>
-&lt;div class="alert alert-warning">
-&lt;div>
-&lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:&lt;/p>
-&lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;gradlew&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/check_version.sh&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;p>If examples are proposed, they should be placed in the &lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
-&lt;p>The contribution procedure is described &lt;a href="../../community/contributing/">here&lt;/a>.&lt;/p>
-&lt;br>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
-It is important to hide the internal Keyple interfaces of the &lt;strong>Plugin API&lt;/strong> from the application.
+It is recommended to hide the internal Keyple interfaces of the &lt;strong>Plugin API&lt;/strong> from the application.
 &lt;/div>
 &lt;/div>
 &lt;p>For this purpose, it is suggested to respect the following programming pattern based on the use of:&lt;/p>
@@ -109,6 +92,7 @@ Thus, the factory does not expose any method.
 &lt;ul>
 &lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-java-api" target="_blank" rel="noopener">Keyple Plugin API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-storagecard-java-api/" target="_blank" rel="noopener">Keyple Plugin Storage Card API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -124,7 +108,6 @@ technology.&lt;/p>
 &lt;li>Learn the &lt;a href="#card-extension-architecture">card extension architecture&lt;/a> concepts&lt;/li>
 &lt;li>Take note of the &lt;a href="#minimal-requirements">minimal requirements&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#define-the-card-commands">Define the card commands&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#set-up-dev-environment">Set up the development environment&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#implement-the-solution">Implement the solution&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;br>
@@ -148,7 +131,7 @@ Keyple Service.&lt;/li>
 well as the public APIs exposed to the application:
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/card_api.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
+&lt;div class="w-100" >&lt;img src="../../media/learn/developer-guide/component-dependencies/Component_CardExtensionAddOn.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/p>
 &lt;br>
@@ -226,39 +209,10 @@ This can then be cast internally to a &lt;code>ProxyReaderApi&lt;/code> of the C
 card commands.&lt;/p>
 &lt;p>Each card extension is free to define the APIs it considers relevant to perform card transactions.&lt;/p>
 &lt;br>
-&lt;h2 id="set-up-dev-environment">Set up dev environment&lt;/h2>
-&lt;div class="alert alert-warning">
-&lt;div>
-For Java and Android projects, the code should be compliant with &lt;strong>Java 1.6&lt;/strong> in order to address a wide range of
-applications.
-&lt;/div>
-&lt;/div>
-&lt;p>If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project
-template:&lt;/p>
-&lt;dl>
-&lt;dt>&lt;a href="../../media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" target="_blank">Java template&lt;/a>&lt;/dt>
-&lt;dd>adapt fields &lt;code>[CARD_EXTENSION_NAME]&lt;/code>, &lt;code>Xxx&lt;/code>, &lt;code>xxx&lt;/code>, &lt;code>TODO&lt;/code>&lt;/dd>
-&lt;/dl>
-&lt;div class="alert alert-warning">
-&lt;div>
-&lt;p>Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the
-following commands:&lt;/p>
-&lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;gradlew&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/check_version.sh&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">git update-index --chmod&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">+x &amp;#34;scripts/prepare_javadoc.sh&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;p>If examples are proposed, they should be placed in
-the &lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
-&lt;p>The contribution procedure is described &lt;a href="../../community/contributing/">here&lt;/a>.&lt;/p>
-&lt;br>
 &lt;h2 id="implement-the-solution">Implement the solution&lt;/h2>
 &lt;div class="alert alert-warning">
 &lt;div>
-It is important to hide the internal interfaces of the &lt;strong>Keypop Card API&lt;/strong> from the application.
+It is recommended to hide the internal interfaces of the &lt;strong>Keypop Card API&lt;/strong> from the application.
 &lt;/div>
 &lt;/div>
 &lt;p>For this purpose, it is suggested to respect the following programming pattern based on the use of:&lt;/p>
