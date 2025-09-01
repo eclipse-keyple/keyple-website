@@ -38,7 +38,7 @@ as they only concern documentation updates.
     <thead class="text-center">
         <tr>
             <th colspan="6" class="bg-orange">Keypop APIs</th>
-            <th colspan="4" class="bg-yellow">Core APIs</th>
+            <th colspan="5" class="bg-yellow">Core APIs</th>
             <th colspan="3" class="bg-blue">Core libraries</th>
             <th colspan="3" class="bg-purple">Distributed systems libraries</th>
             <th colspan="4" class="bg-green">Card extensions libraries</th>
@@ -55,6 +55,7 @@ as they only concern documentation updates.
             <th class="bg-yellow c-grey">Distributed Local<br>API*</th>
             <th class="bg-yellow c-grey">Distributed Remote<br>API*</th>
             <th class="bg-yellow c-grey">Plugin<br>API*</th>
+            <th class="bg-yellow c-grey">Plugin Storage Card<br>API*</th>
             <th class="bg-blue">Util<br>Lib</th>
             <th class="bg-blue">Service<br>Lib</th>
             <th class="bg-blue">Service Resource<br>Lib</th>

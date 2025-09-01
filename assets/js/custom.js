@@ -19,6 +19,7 @@ const ComponentName = {
     DISTRIBUTED_LOCAL_API: "distributedLocalApi",
     DISTRIBUTED_REMOTE_API: "distributedRemoteApi",
     PLUGIN_API: "pluginApi",
+    PLUGIN_STORAGECARD_API: "pluginStorageCardApi",
     UTIL_LIB: "utilLib",
     SERVICE_LIB: "serviceLib",
     SERVICE_RESOURCE_LIB: "serviceResourceLib",
@@ -46,6 +47,7 @@ const componentNames = [
     ComponentName.DISTRIBUTED_LOCAL_API,
     ComponentName.DISTRIBUTED_REMOTE_API,
     ComponentName.PLUGIN_API,
+    ComponentName.PLUGIN_STORAGECARD_API,
     ComponentName.UTIL_LIB,
     ComponentName.SERVICE_LIB,
     ComponentName.SERVICE_RESOURCE_LIB,
@@ -79,7 +81,8 @@ releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.CALYPSO_PKI_LIB, "0.2.2")
 ));
 releaseTrains.push(new ReleaseTrain(
-    new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.1.0")
+    new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.1.0"),
+    new Release(ComponentName.PLUGIN_STORAGECARD_API, "1.0.0")
 ));
 releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.PLUGIN_PCSC_LIB, "2.5.2")
@@ -514,6 +517,10 @@ computeAppContent = function(language) {
     if (appDependencies.has("cardCalypsoLegacySam")) {
         contentHtml += "\n" + $(tagPrefix+'keypop-calypso-crypto-legacysam-java-api').html();
     }
+    if (appDependencies.has("cardStorageCard")) {
+        contentHtml += "\n" + $(tagPrefix+'keypop-storagecard-java-api').html();
+        contentHtml += "\n!!! You must add a dependency to a library that implements the 'keypop-storagecard-java-api' !!!";
+    }
     contentHtml += "\n" + $(tagPrefix+'keyple-common-java-api').html()
         + "\n" + $(tagPrefix+'keyple-util-java-lib').html()
         + "\n" + $(tagPrefix+'keyple-service-java-lib').html();
@@ -543,6 +550,10 @@ computeAppContent = function(language) {
     }
     if (appDependencies.has("pluginAndroidNfc")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-plugin-android-nfc-java-lib').html();
+        if (appDependencies.has("cardStorageCard")) {
+            contentHtml += "\n" + $(tagPrefix+'keyple-plugin-storagecard-java-api').html();
+            contentHtml += "\n!!! You must add a dependency to a library that implements the 'keyple-plugin-storagecard-java-api' !!!";
+        }
     }
     if (appDependencies.has("pluginAndroidOmapi")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-plugin-android-omapi-java-lib').html();
@@ -576,6 +587,32 @@ updateAppDependencies = function (tabRef, checkbox) {
     $(tabContentId+" .language-gradle")[0].innerHTML = msgWizardGeneratedBeginDefault + computeAppContent("groovy") + msgWizardGeneratedEndDefault;
     $(tabContentId+" .language-kotlin")[0].innerHTML = msgWizardGeneratedBeginDefault + computeAppContent("kotlin") + msgWizardGeneratedEndDefault;
     $(tabContentId+" .language-xml")[0].innerHTML = msgWizardGeneratedBeginXml + computeAppContent("maven") + msgWizardGeneratedEndXml;
+}
+
+// Dynamic dependencies for "custom Keyple reader plugin" profile of "configuration wizard" java page
+const pluginDependencies = new Set();
+computePluginContent = function(language) {
+    let tagPrefix = 'code#all-'+language+'-dependencies span#';
+    let contentHtml = $(tagPrefix+'keyple-common-java-api').html()
+        + "\n" + $(tagPrefix+'keyple-plugin-java-api').html()
+        + "\n" + $(tagPrefix+'keyple-util-java-lib').html();
+    if (pluginDependencies.has("pluginStorageCard")) {
+        contentHtml += "\n" + $(tagPrefix+'keyple-plugin-storagecard-java-api').html();
+    }
+    return contentHtml;
+}
+updatePluginDependencies = function(tabRef, checkbox) {
+    if (checkbox != null) {
+        if (checkbox.checked === true) {
+            pluginDependencies.add(checkbox.id);
+        } else {
+            pluginDependencies.delete(checkbox.id);
+        }
+    }
+    let tabContentId = "#tabs-"+tabRef+"-content";
+    $(tabContentId+" .language-gradle")[0].innerHTML = msgWizardGeneratedBeginDefault + computePluginContent("groovy") + msgWizardGeneratedEndDefault;
+    $(tabContentId+" .language-kotlin")[0].innerHTML = msgWizardGeneratedBeginDefault + computePluginContent("kotlin") + msgWizardGeneratedEndDefault;
+    $(tabContentId+" .language-xml")[0].innerHTML = msgWizardGeneratedBeginXml + computePluginContent("maven") + msgWizardGeneratedEndXml;
 }
 
 // Dynamic dependencies for "custom Keyple card extension" profile of "configuration wizard" java page
