@@ -20,21 +20,31 @@ This guide is intended to help developers who want to create a Keyple reader plu
 1. Learn the [plugin architecture](#plugin-architecture) concepts
 2. [Select the predefined features](#select-predefined-features) that meet your need
 3. [Define specific features](#define-specific-features) (optional)
-4. [Set up the development environment](#set-up-dev-environment)
-5. [Implement the solution](#implement-the-solution)
+4. [Implement the solution](#implement-the-solution)
 
 <br>
 
 ## Plugin architecture
 
-A Keyple reader plugin consists of three objects, a **plugin factory**, a **plugin** and a **reader**, which meet the following two interface specifications:
+A Keyple reader plugin consists of three objects, a **plugin factory**, a **plugin** and a **reader**, which meet the
+following interface specifications:
+
 * **Common API**: public contract containing only generic types common to all plugins.
 * **Plugin API**: private contract based on two types of interfaces:
-  * **API** (Application Programming Interface): interface implemented by Keyple Service and directly usable by the plugin code.
-  * **SPI** (Service Provider Interface): interface to be implemented by the plugin and directly used by Keyple Service.
+    * **API** (Application Programming Interface): interface implemented by Keyple Service and directly usable by the
+      plugin code.
+    * **SPI** (Service Provider Interface): interface to be implemented by the plugin and directly used by Keyple Service.
+* **Plugin Storage Card API** _(optional)_: private contract that may be involved when interactions with storage cards
+  are required, in order to rely on an APDU interpreter. It is also based on two types of interfaces:
+    * **API** (Application Programming Interface): interface implemented by the plugin and directly usable by the APDU
+      interpreter, allowing the interpreter to call back into the plugin to handle specific behaviors required during
+      storage card interactions.
+    * **SPI** (Service Provider Interface): interface to be implemented by the APDU interpreter and directly usable by the plugin, allowing the plugin to invoke interpreter functions for storage card operations.
 
-The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the public APIs exposed to the application:
-{{< figure src="/media/learn/developer-guide/component-dependencies/plugin_api.svg" caption="" numbered="true" >}}
+The component diagram below illustrates the internal API/SPI links between the plugin and Keyple Service, as well as the
+public APIs exposed to the application:
+
+{{< figure src="/media/learn/developer-guide/component-dependencies/Component_ReaderPluginAddOn.svg" caption="" numbered="true" >}}
 
 <br>
 
@@ -63,37 +73,10 @@ These features can be exposed at three levels:
 
 <br>
 
-## Set up dev environment
-
-{{% callout warning %}}
-For Java and Android projects, the code should be compliant with **Java 1.6** in order to address a wide range of applications.
-{{% /callout %}}
-
-If the reader plugin add-on is to be integrated into the Eclipse Keyple® project, it must use one of the following project templates:
-
-{{% staticref "media/project-templates/java/keyple-plugin-[READER_PLUGIN_NAME]-java-lib.zip" "newtab" %}}Java template{{% /staticref %}}: adapt fields `[READER_PLUGIN_NAME]`, `Xxx`, `xxx`, `TODO`
-
-{{% staticref "media/project-templates/android/keyple-plugin-[ANDROID_READER_PLUGIN_NAME]-java-lib.zip" "newtab" %}}Android template{{% /staticref %}}: adapt fields `[ANDROID_READER_PLUGIN_NAME]`, `Xxx`, `xxx`, `TODO`
-
-{{% callout warning %}}
-Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the following commands:
-{{< code lang="ini" >}}
-git update-index --chmod=+x "gradlew"
-git update-index --chmod=+x "scripts/check_version.sh"
-git update-index --chmod=+x "scripts/prepare_javadoc.sh"
-{{< /code >}}
-{{% /callout %}}
-
-If examples are proposed, they should be placed in the [keyple-java-example](https://github.com/eclipse-keyple/keyple-java-example) repository.
-
-The contribution procedure is described [here]({{< relref "contributing.md" >}}).
-
-<br>
-
 ## Implement the solution
 
 {{% callout warning %}}
-It is important to hide the internal Keyple interfaces of the **Plugin API** from the application.
+It is recommended to hide the internal Keyple interfaces of the **Plugin API** from the application.
 {{% /callout %}}
 
 For this purpose, it is suggested to respect the following programming pattern based on the use of:
@@ -113,6 +96,7 @@ Thus, the factory does not expose any method.
 
 * [Keyple Common API](https://docs.keyple.org/keyple-common-java-api)
 * [Keyple Plugin API](https://docs.keyple.org/keyple-plugin-java-api)
+* [Keyple Plugin Storage Card API](https://docs.keyple.org/keyple-plugin-storagecard-java-api/)
 
 <br>
 

@@ -147,13 +147,15 @@ libraries:
 
 ### API
 
-{{% callout note %}} Coming soon {{% /callout %}}
+* [Keyple Interop JSON API Client API](https://docs.keyple.org/keyple-interop-jsonapi-client-kmp-lib/)
+* [Keyple Interop Local Reader NFC Mobile API](https://docs.keyple.org/keyple-interop-localreader-nfcmobile-kmp-lib/)
 
 <br>
 
 ### Examples
 
-{{% callout note %}} Coming soon {{% /callout %}}
+Calypso Networks Association has provided an example of how to integrate these libraries.
+It is available [here](https://github.com/calypsonet/keyple-demo-ticketing/tree/main/src/reloading-remote/client/interop-mobile-multiplatform).
 
 <br>
 

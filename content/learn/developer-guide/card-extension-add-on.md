@@ -9,7 +9,6 @@ weight: 2
 
 <br>
 
-
 ## Overview
 
 This guide is intended to help developers who want to create a Keyple card extension add-on for a specific card
@@ -17,17 +16,14 @@ technology.
 
 <br>
 
-
 ## Operating mode
 
 1. Learn the [card extension architecture](#card-extension-architecture) concepts
 2. Take note of the [minimal requirements](#minimal-requirements)
 3. [Define the card commands](#define-the-card-commands)
-4. [Set up the development environment](#set-up-dev-environment)
-5. [Implement the solution](#implement-the-solution)
+4. [Implement the solution](#implement-the-solution)
 
 <br>
-
 
 ## Card extension architecture
 
@@ -45,10 +41,9 @@ A Keyple card extension contains a set of objects which meet the following three
 
 The component diagram below illustrates the internal API/SPI links between the card extension and Keyple Service, as
 well as the public APIs exposed to the application:
-{{< figure src="/media/learn/developer-guide/component-dependencies/card_api.svg" caption="" numbered="true" >}}
+{{< figure src="/media/learn/developer-guide/component-dependencies/Component_CardExtensionAddOn.svg" caption="" numbered="true" >}}
 
 <br>
-
 
 ## Minimal requirements
 
@@ -74,7 +69,6 @@ This will allow the transport of this object through the network when using the 
 
 <br>
 
-
 ## Define the card commands
 
 The card extension takes part in the communication with the card in two ways:
@@ -93,41 +87,10 @@ Each card extension is free to define the APIs it considers relevant to perform 
 
 <br>
 
-
-## Set up dev environment
-
-{{% callout warning %}}
-For Java and Android projects, the code should be compliant with **Java 1.6** in order to address a wide range of
-applications.
-{{% /callout %}}
-
-If the card extension add-on is to be integrated into the Eclipse Keyple® project, it must use the following project
-template:
-
-{{% staticref "media/project-templates/java/keyple-card-[CARD_EXTENSION_NAME]-java-lib.zip" "newtab" %}}Java template{{% /staticref %}}: adapt fields `[CARD_EXTENSION_NAME]`, `Xxx`, `xxx`, `TODO`
-
-{{% callout warning %}}
-Before pushing the project to GitHub the first time, you must give write permission to some scripts files via the
-following commands:
-{{< code lang="ini" >}}
-git update-index --chmod=+x "gradlew"
-git update-index --chmod=+x "scripts/check_version.sh"
-git update-index --chmod=+x "scripts/prepare_javadoc.sh"
-{{< /code >}}
-{{% /callout %}}
-
-If examples are proposed, they should be placed in
-the [keyple-java-example](https://github.com/eclipse-keyple/keyple-java-example) repository.
-
-The contribution procedure is described [here]({{< relref "contributing.md" >}}).
-
-<br>
-
-
 ## Implement the solution
 
 {{% callout warning %}}
-It is important to hide the internal interfaces of the **Keypop Card API** from the application.
+It is recommended to hide the internal interfaces of the **Keypop Card API** from the application.
 {{% /callout %}}
 
 For this purpose, it is suggested to respect the following programming pattern based on the use of:
@@ -138,7 +101,6 @@ For this purpose, it is suggested to respect the following programming pattern b
 
 <br>
 
-
 ## API
 
 * [Keyple Common API](https://docs.keyple.org/keyple-common-java-api)
@@ -146,7 +108,6 @@ For this purpose, it is suggested to respect the following programming pattern b
 * [Keypop Card API](https://keypop.org/apis/reader-layer/card-api/)
 
 <br>
-
 
 ## Download
 

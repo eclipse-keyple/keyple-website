@@ -3,9 +3,10 @@
 !define C_GREY1 F8F9F9
 !define C_GREY2 F2F3F4
 !define C_YELLOW FEFECE
-!define C_PURPLE F4ECF7
-!define C_BLUE EBF5FB
-!define C_GREEN E9F7EF
+!define C_PURPLE E8DAEF
+!define C_BLUE D6EAF8
+!define C_GREEN D4EFDF
+!define C_RED F5B7B1
 <style>
 activityDiagram {
     diamond {
@@ -28,6 +29,7 @@ legend top
     * <back:C_GREEN>Common API</back>
     * <back:C_PURPLE>Plugin Xxx API</back>
     * <back:C_YELLOW>Plugin API</back>
+    * <back:C_RED>Plugin Storage Card API</back>
 end legend
 
 start
@@ -83,6 +85,14 @@ partition "  Reader object  " {
     else (no)
     endif
 
+    if (Does the plugin need to support storage cards?) then (yes)
+        if (Does the reader comply with the PC/SC standard\nfor storage card management?) then (yes)
+        else (no)
+            #C_RED:**CommandProcessorApi**;
+        endif
+    else (no)
+    endif
+
     if (Is it necessary\nto dynamically manage\ncard insertions and removals?) then (yes)
         #C_YELLOW:**ObservableReaderSpi**;
         if (Does the reader\nwork autonomously\nto detect card insertions?) then (yes)
@@ -93,6 +103,10 @@ partition "  Reader object  " {
             endif
         else (no)
             #C_YELLOW:**CardInsertionWaiterNonBlockingSpi**;
+        endif
+        if (Is the reader able to detect and notify\nthe removal of a card during processing\nbetween two APDU commands?) then (yes)
+            #C_YELLOW:**CardPresenceMonitorBlockingSpi**;
+        else (no)
         endif
         if (Does the reader\nwork autonomously\nto detect card removals?) then (yes)
             if (Does the reader generate\nasynchronous events\nwhen a card is removed?) then (yes)
