@@ -27,39 +27,48 @@ For API components (i.e. artifacts suffixed with `-api`), the incrementation of 
 
 ## Continuous integration
 
-Keyple continuous integration works with the [Jenkins server](https://ci.eclipse.org/keyple/job/Keyple/) of the Eclipse Foundation.
+Keyple continuous integration is based on **GitHub Actions** and uses the reusable
+workflows defined in the dedicated [Keyple Actions repository](https://github.com/eclipse-keyple/keyple-actions).
 
-The build process uses the home-made gradle plugin **Keyple Gradle** available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-gradle) and whose sources are available on [GitHub](https://github.com/eclipse-keyple/keyple-ops).
-
-The CI automates the following tasks (defined in the `Jenkinsfile` file):
+The CI automates the following tasks:
 * verify the validity of the version;
-* verify the code formatting using [Spotless](https://github.com/diffplug/spotless);
+* verify the code formatting using [spotless](https://github.com/diffplug/spotless);
 * build the code;
 * execute unit tests;
 * sign and publish artifacts to Maven Central Repository;
-* publish the javadoc to the corresponding GitHub Pages;
+* publish the API documentation to the unified [Keyple's documentation GitHub pages](https://docs.keyple.org/);
 * publish the code quality report to [SonarCloud](https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date).
 
 <br>
 
 ## Snapshot publication
 
-A snapshot artifact (suffixed with `-SNAPSHOT`) is automatically published after each commit on the `main` branch, except in the case of a release (see [Release publication](#release-publication)).
+A new **snapshot** version (suffixed with `-SNAPSHOT`) is automatically built and published each time a commit is pushed
+to the `main` branch.
+
+This allows developers to use the latest development state of Keyple without waiting for an official release. The
+published SNAPSHOT artifacts are available from
+the [Eclipse Maven Snapshots repository](https://central.sonatype.com/service/rest/repository/browse/maven-snapshots).
 
 {{% callout warning %}}
-The artifact version defined in the `gradle.properties` file must not have a `-SNAPSHOT` suffix because the suffix is automatically added by the Keyple Gradle plugin.
+The component version defined in `gradle.properties` must contain the `-SNAPSHOT` suffix.
 {{% /callout %}}
 
 <br>
 
 ## Release publication
 
-A release artifact is automatically published if and only if the following two conditions are met:
-* The commit is done on the `main` branch or on a `release-X.Y.Z` branch.
-* The commit message starts with `Release X.Y.Z`.
+A new **release** version is automatically built and published whenever a GitHub release is created.
+
+The generated artifact is based on the **commit referenced by the newly created tag**, ensuring full traceability
+between the source code and the published artifacts.
 
 {{% callout warning %}}
-`X.Y.Z` must be the version defined in the `gradle.properties` file.
+The GitHub release **tag name** must strictly match the version declared in the `gradle.properties` file (without the
+`-SNAPSHOT` suffix).
+
+For example, if the component version in `gradle.properties` is `2.5.0-SNAPSHOT`, the GitHub release tag must be
+`2.5.0`.
 {{% /callout %}}
 
 <br>
@@ -68,11 +77,13 @@ A release artifact is automatically published if and only if the following two c
 
 Integration tests are defined in an independent GitHub repository: [keyple-integration-java-test](https://github.com/eclipse-keyple/keyple-integration-java-test)
 
+<br>
+
 ## Release procedure
 
 1. Create a branch dedicated to the current release.
 2. Check `gradle.properties` file:
-    - Check the consistency of the version.
+    - Check the consistency of the version (**do not remove** `-SNAPSHOT` suffix).
 3. Check `build.gradle.kts` file:
     - Use only released dependencies.
     - Upgrade Keyple dependencies to their latest released versions.
@@ -80,24 +91,22 @@ Integration tests are defined in an independent GitHub repository: [keyple-integ
     - Verify the consistency of the `Unreleased` section.
     - Move content of `Unreleased` section to a new "release" section.
     - Update bottom links.
-5. Build and test the component.
-6. Commit the modified files using the commit message `Release x.y.z`.
+5. Build and test the component locally.
+6. Commit the modified files.
 7. Push and create a pull request to merge the branch into `main`.
-8. Await the success of the build by the CI.
+8. Await the success of the build by the CI on source branch.
 9. Squash and merge the pull request.
-10. Await the success of the build by the CI.
-11. Connect to [Nexus Repository Manager](https://oss.sonatype.org/#welcome) of Eclipse Keyple and go to "Staging Repositories" page:
-    - Select the correct folder to Close & Release. It must contain the manifests, the JAR and all the others elements (sources, javadoc).
-    - Close the folder.
-    - Release the folder.
-    - The other unwanted folders could be dropped.
-12. Check the availability of the release on the [Maven Repository](https://repo.maven.apache.org/maven2/org/eclipse/keyple/). This step may take from 10 minutes to 2 hours.
-13. Create a release on GitHub:
+10. Await the success of the **snapshot** publication by the CI on `main` branch.
+11. Create a release on GitHub:
     - Set tag `x.y.z`
     - Set release name `x.y.z`
-    - Set the content by copying/pasting the content of the current release description in the `CHANGELOG.md` file without the bottom links.
-14. Increment the version in the `gradle.properties` file and commit it to prepare the code for the next release (e.g. `2.0.0 -> 2.0.1`).
-15. Update this website:
+    - Set the content by copying/pasting the content of the current release description in the `CHANGELOG.md` file
+      without the bottom links.
+12. Await the success of the **release** publication by the CI on `main` branch.
+13. Check the availability of the release on
+    the [Maven Repository](https://repo.maven.apache.org/maven2/org/eclipse/keyple/). This step may take from 10 minutes
+    to 2 hours.
+14. Update this website:
     - Update version in `params.yaml` file.
     - Update table content of `dependency-check.md` file.
     - Update others elements if needed (user guides, developer guides, etc...).

@@ -11,7 +11,7 @@ the projects has changed.
 Last dashboard refresh date: **<span id="project-dashboard-datetime"></span>**
 
 When displayed, icons in columns **Doc** and **Status** are clickable and lead respectively to the **API documentation**
-and the **Jenkins CI status page**.
+and the **GitHub CI status page**.
 {{% /callout %}}
 
 <table id="project-dashboard-table" class="table table-striped" data-sort-name="updated" data-sort-order="desc">
