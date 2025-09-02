@@ -17,7 +17,7 @@ The ordinate indicates the total number of lines of code in the repository, and 
     <thead class="text-center">
         <tr>
             <th scope="col" data-orderable="false"><input type="checkbox" id="checkbox-select-all"></th>
-            <th scope="col">Component</th>
+            <th scope="col" class="text-left">Component</th>
             <th scope="col" data-orderable="false">Color</th>
             <th scope="col">Latest release</th>
             <th scope="col">Date</th>
