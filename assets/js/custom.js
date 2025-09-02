@@ -1176,7 +1176,8 @@ loadStatistics = async function() {
                     });
 
                 row.append("td")
-                    .text(dataset.repo);
+                    .text(dataset.repo)
+                    .addClass("text-left");
 
                 row.append("td")
                     .style("background-color", colorsMap.get(dataset.repo));
