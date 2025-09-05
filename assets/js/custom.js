@@ -82,7 +82,7 @@ releaseTrains.push(new ReleaseTrain(
 ));
 releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.1.0"),
-    new Release(ComponentName.PLUGIN_STORAGECARD_API, "1.0.0")
+    new Release(ComponentName.PLUGIN_STORAGECARD_API, "1.0.+")
 ));
 releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.PLUGIN_PCSC_LIB, "2.5.2")
@@ -94,25 +94,12 @@ releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.PLUGIN_PCSC_LIB, "2.5.0")
 ));
 releaseTrains.push(new ReleaseTrain(
-    new Release(ComponentName.DISTRIBUTED_REMOTE_API, "3.1.1")
-));
-releaseTrains.push(new ReleaseTrain(
-    new Release(ComponentName.DISTRIBUTED_LOCAL_API, "2.2.1")
-));
-releaseTrains.push(new ReleaseTrain(
-    new Release(ComponentName.PLUGIN_API, "2.3.2")
-));
-releaseTrains.push(new ReleaseTrain(
-    new Release(ComponentName.COMMON_API, "2.0.2")
-));
-releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.CALYPSO_CARD_LIB, "3.1.8")
 ));
 releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.SERVICE_LIB, "3.3.5")
 ));
 releaseTrains.push(new ReleaseTrain(
-    new Release(ComponentName.CALYPSO_API, "2.1.2"),
     new Release(ComponentName.CALYPSO_CARD_LIB, "3.1.7")
 ));
 releaseTrains.push(new ReleaseTrain(
@@ -137,7 +124,7 @@ releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.SERVICE_LIB, "3.3.4")
 ));
 releaseTrains.push(new ReleaseTrain(
-    new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.7.0"),
+    new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.7.+"),
     new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "0.9.0")
 ));
 releaseTrains.push(new ReleaseTrain(
@@ -224,7 +211,7 @@ releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "0.7.0")
 ));
 releaseTrains.push(new ReleaseTrain(
-    new Release(ComponentName.CARD_API, "2.0.1+"),
+    new Release(ComponentName.CARD_API, "2.0.+"),
     new Release(ComponentName.CALYPSO_API, "2.1.+"),
     new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.5.+"),
     new Release(ComponentName.CALYPSO_ASYMMETRIC_API, "0.2.+"),
@@ -280,7 +267,7 @@ releaseTrains.push(new ReleaseTrain(
 ));
 releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.READER_API, "2.0.+"),
-    new Release(ComponentName.CARD_API, "2.0.0"),
+    new Release(ComponentName.CARD_API, "2.0.+"),
     new Release(ComponentName.CALYPSO_API, "2.0.+"),
     new Release(ComponentName.CALYPSO_SYMMETRIC_API, "0.1.+"),
     new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.3.+"),
