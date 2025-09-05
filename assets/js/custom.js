@@ -211,11 +211,9 @@ releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "0.7.0")
 ));
 releaseTrains.push(new ReleaseTrain(
-    new Release(ComponentName.CARD_API, "2.0.+"),
     new Release(ComponentName.CALYPSO_API, "2.1.+"),
     new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.5.+"),
     new Release(ComponentName.CALYPSO_ASYMMETRIC_API, "0.2.+"),
-    new Release(ComponentName.PLUGIN_API, "2.3.+"),
     new Release(ComponentName.UTIL_LIB, "2.4.0"),
     new Release(ComponentName.SERVICE_LIB, "3.2.1"),
     new Release(ComponentName.SERVICE_RESOURCE_LIB, "3.0.1"),
