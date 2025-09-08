@@ -26,6 +26,8 @@ const ComponentName = {
     DISTRIBUTED_LOCAL_LIB: "distributedLocalLib",
     DISTRIBUTED_NETWORK_LIB: "distributedNetworkLib",
     DISTRIBUTED_REMOTE_LIB: "distributedRemoteLib",
+    INTEROP_JSONAPI_CLIENT_LIB: "interopJsonApiClientLib",
+    INTEROP_LOCALREADER_NFCMOBILE_LIB: "interopLocalReaderNfcMobileLib",
     CALYPSO_CARD_LIB: "calypsoCardLib",
     CALYPSO_LEGACY_SAM_LIB: "calypsoLegacySamLib",
     CALYPSO_PKI_LIB: "calypsoPkiLib",
@@ -54,6 +56,8 @@ const componentNames = [
     ComponentName.DISTRIBUTED_LOCAL_LIB,
     ComponentName.DISTRIBUTED_NETWORK_LIB,
     ComponentName.DISTRIBUTED_REMOTE_LIB,
+    ComponentName.INTEROP_JSONAPI_CLIENT_LIB,
+    ComponentName.INTEROP_LOCALREADER_NFCMOBILE_LIB,
     ComponentName.CALYPSO_CARD_LIB,
     ComponentName.CALYPSO_LEGACY_SAM_LIB,
     ComponentName.CALYPSO_PKI_LIB,
@@ -182,7 +186,9 @@ releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.DISTRIBUTED_NETWORK_LIB, "2.5.0"),
     new Release(ComponentName.DISTRIBUTED_LOCAL_LIB, "2.5.0"),
     new Release(ComponentName.DISTRIBUTED_REMOTE_LIB, "2.5.0"),
-    new Release(ComponentName.SERVICE_LIB, "3.3.0")
+    new Release(ComponentName.SERVICE_LIB, "3.3.0"),
+    new Release(ComponentName.INTEROP_JSONAPI_CLIENT_LIB, "0.1.6"),
+    new Release(ComponentName.INTEROP_LOCALREADER_NFCMOBILE_LIB, "0.1.6")
 ));
 releaseTrains.push(new ReleaseTrain(
     new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "0.7.1")

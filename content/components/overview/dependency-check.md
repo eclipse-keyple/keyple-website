@@ -41,6 +41,7 @@ as they only concern documentation updates.
             <th colspan="5" class="bg-yellow">Core APIs</th>
             <th colspan="3" class="bg-blue">Core libraries</th>
             <th colspan="3" class="bg-purple">Distributed systems libraries</th>
+            <th colspan="2" class="bg-violet">Interop libraries</th>
             <th colspan="4" class="bg-green">Card extensions libraries</th>
             <th colspan="5" class="bg-red">Standard reader plugins libraries</th>
         </tr>
@@ -62,6 +63,8 @@ as they only concern documentation updates.
             <th class="bg-purple">Local<br>Lib</th>
             <th class="bg-purple">Network<br>Lib</th>
             <th class="bg-purple">Remote<br>Lib</th>
+            <th class="bg-violet">JSON API Client<br>Lib</th>
+            <th class="bg-violet">Local Reader NFC Mobile<br>Lib</th>
             <th class="bg-green">Calypso Card<br>Lib</th>
             <th class="bg-green">Calypso Legacy SAM<br>Lib</th>
             <th class="bg-green">Calypso PKI<br>Lib</th>
