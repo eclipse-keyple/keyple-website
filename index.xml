@@ -4109,6 +4109,12 @@ Choose your project profile and copy/paste the generated result into your projec
 &lt;li>&lt;a href="#card-extension-add-on">A specific card extension add-on&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#distributed-solution-add-on">An alternate distributed solution add-on&lt;/a>&lt;/li>
 &lt;/ul>
+&lt;div class="alert alert-note">
+&lt;div>
+&lt;strong>Keyple Interop libraries&lt;/strong> used in non-Keyple client applications are outside the scope of this configuration wizard&amp;rsquo;s
+services.
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h2 id="application">Application&lt;/h2>
 &lt;ul>
@@ -4821,6 +4827,7 @@ as they only concern documentation updates.
 &lt;th colspan="5" class="bg-yellow">Core APIs&lt;/th>
 &lt;th colspan="3" class="bg-blue">Core libraries&lt;/th>
 &lt;th colspan="3" class="bg-purple">Distributed systems libraries&lt;/th>
+&lt;th colspan="2" class="bg-violet">Interop libraries&lt;/th>
 &lt;th colspan="4" class="bg-green">Card extensions libraries&lt;/th>
 &lt;th colspan="5" class="bg-red">Standard reader plugins libraries&lt;/th>
 &lt;/tr>
@@ -4842,6 +4849,8 @@ as they only concern documentation updates.
 &lt;th class="bg-purple">Local&lt;br>Lib&lt;/th>
 &lt;th class="bg-purple">Network&lt;br>Lib&lt;/th>
 &lt;th class="bg-purple">Remote&lt;br>Lib&lt;/th>
+&lt;th class="bg-violet">JSON API Client&lt;br>Lib&lt;/th>
+&lt;th class="bg-violet">Local Reader NFC Mobile&lt;br>Lib&lt;/th>
 &lt;th class="bg-green">Calypso Card&lt;br>Lib&lt;/th>
 &lt;th class="bg-green">Calypso Legacy SAM&lt;br>Lib&lt;/th>
 &lt;th class="bg-green">Calypso PKI&lt;br>Lib&lt;/th>
