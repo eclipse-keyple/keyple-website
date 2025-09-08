@@ -18,6 +18,11 @@ What type of Keyple component are you working on?
 - [A specific card extension add-on](#card-extension-add-on)
 - [An alternate distributed solution add-on](#distributed-solution-add-on)
 
+{{% callout note %}}
+**Keyple Interop libraries** used in non-Keyple client applications are outside the scope of this configuration wizard's
+services.
+{{% /callout %}}
+
 <br>
 
 ## Application
