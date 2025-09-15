@@ -507,7 +507,8 @@ copyCodeContentToClipboard = function(codeId, button) {
 const appDependencies = new Set();
 computeAppContent = function(language) {
     let tagPrefix = 'code#all-'+language+'-dependencies span#';
-    let contentHtml = $(tagPrefix+'keypop-reader-java-api').html();
+    let contentHtml = $(tagPrefix+'keyple-java-bom').html();
+    contentHtml += "\n" + $(tagPrefix+'keypop-reader-java-api').html();
     if (appDependencies.has("cardCalypso")) {
         contentHtml += "\n" + $(tagPrefix+'keypop-calypso-card-java-api').html();
     }
@@ -589,7 +590,7 @@ updateAppDependencies = function (tabRef, checkbox) {
 // Dynamic dependencies for "custom Keyple reader plugin" profile of "configuration wizard" java page
 const pluginDependencies = new Set();
 computePluginContent = function(language) {
-    let tagPrefix = 'code#all-'+language+'-dependencies span#';
+    let tagPrefix = 'code#all-'+language+'-dependencies span#specific-';
     let contentHtml = $(tagPrefix+'keyple-common-java-api').html()
         + "\n" + $(tagPrefix+'keyple-plugin-java-api').html()
         + "\n" + $(tagPrefix+'keyple-util-java-lib').html();
@@ -615,7 +616,7 @@ updatePluginDependencies = function(tabRef, checkbox) {
 // Dynamic dependencies for "custom Keyple card extension" profile of "configuration wizard" java page
 const cardDependencies = new Set();
 computeCardContent = function(language) {
-    let tagPrefix = 'code#all-'+language+'-dependencies span#';
+    let tagPrefix = 'code#all-'+language+'-dependencies span#specific-';
     let contentHtml = $(tagPrefix+'keypop-reader-java-api').html()
         + "\n" + $(tagPrefix+'keypop-card-java-api').html()
         + "\n" + $(tagPrefix+'keyple-common-java-api').html()
