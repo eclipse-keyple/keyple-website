@@ -11,6 +11,14 @@ toc: false
 
 This online tool helps you to check the compatibility of Keyple components according to their API versions.
 
+{{% callout warning %}}
+**Advanced usage only**
+
+This tool is intended for advanced users who need fine-grained control over API compatibility. In most cases, it is 
+**strongly recommended to rely on the** [Keyple BOM]({{< relref "keyple-java-bom" >}}), which is easier to use and
+guarantees consistent and validated versions of all **Keyple** (and required **Keypop**) dependencies.
+{{% /callout %}}
+
 Select the targeted versions of the APIs to show the associated compliant libraries versions (internal APIs are marked with an asterisk *):
 
 <!-- 

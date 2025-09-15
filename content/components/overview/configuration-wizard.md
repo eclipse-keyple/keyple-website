@@ -244,175 +244,216 @@ implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 
 <!-- All groovy dependencies -->
 <code id="all-groovy-dependencies" style="display:none">
-<span id="keyple-common-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}'</span></span></span></span>
-<span id="keyple-service-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-service-java-lib:{{% keyple-service-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-service-resource-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-service-resource-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-util-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-card-calypso-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-card-calypso-java-lib:{{% keyple-card-calypso-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-card-calypso-crypto-legacysam-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:{{% keyple-card-calypso-crypto-legacysam-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-card-calypso-crypto-pki-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:{{% keyple-card-calypso-crypto-pki-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-card-generic-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-card-generic-java-lib:{{% keyple-card-generic-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-distributed-local-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-distributed-local-java-lib:{{% keyple-distributed-local-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-distributed-network-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-distributed-network-java-lib:{{% keyple-distributed-network-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-distributed-remote-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-distributed-remote-java-lib:{{% keyple-distributed-remote-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-plugin-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}'</span></span></span></span>
-<span id="keyple-plugin-android-nfc-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:{{% keyple-plugin-android-nfc-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-plugin-android-omapi-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:{{% keyple-plugin-android-omapi-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-plugin-cardresource-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-cardresource-java-lib:{{% keyple-plugin-cardresource-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-plugin-pcsc-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin-pcsc-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-plugin-stub-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-stub-java-lib:{{% keyple-plugin-stub-java-lib-version %}}'</span></span></span></span>
-<span id="keyple-plugin-storagecard-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-storagecard-java-api:{{% keyple-plugin-storagecard-java-api-version %}}'</span></span></span></span>
-<span id="keypop-reader-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-reader-java-api:{{% keypop-reader-java-api-version %}}'</span></span></span></span>
-<span id="keypop-card-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-card-java-api:{{% keypop-card-java-api-version %}}'</span></span></span></span>
-<span id="keypop-calypso-card-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-calypso-card-java-api:{{% keypop-calypso-card-java-api-version %}}'</span></span></span></span>
-<span id="keypop-calypso-crypto-legacysam-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:{{% keypop-calypso-crypto-legacysam-java-api-version %}}'</span></span></span></span>
-<span id="keypop-storagecard-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-storagecard-java-api:{{% keypop-storagecard-java-api-version %}}'</span></span></span></span>
+<span id="keyple-java-bom"><span class="line"><span class="cl"><span class="n">implementation platform(</span><span class="s1">'org.eclipse.keyple:keyple-java-bom:{{% keyple-java-bom-version %}}'</span><span class="n">)</span></span></span></span>
+<span id="keyple-common-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-common-java-api'</span></span></span></span>
+<span id="keyple-service-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-service-java-lib'</span></span></span></span>
+<span id="keyple-service-resource-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-service-resource-java-lib'</span></span></span></span>
+<span id="keyple-util-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-util-java-lib'</span></span></span></span>
+<span id="keyple-card-calypso-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-card-calypso-java-lib'</span></span></span></span>
+<span id="keyple-card-calypso-crypto-legacysam-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib'</span></span></span></span>
+<span id="keyple-card-calypso-crypto-pki-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib'</span></span></span></span>
+<span id="keyple-card-generic-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-card-generic-java-lib'</span></span></span></span>
+<span id="keyple-distributed-local-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-distributed-local-java-lib'</span></span></span></span>
+<span id="keyple-distributed-network-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-distributed-network-java-lib'</span></span></span></span>
+<span id="keyple-distributed-remote-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-distributed-remote-java-lib'</span></span></span></span>
+<span id="keyple-plugin-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-java-api'</span></span></span></span>
+<span id="keyple-plugin-android-nfc-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-android-nfc-java-lib'</span></span></span></span>
+<span id="keyple-plugin-android-omapi-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-android-omapi-java-lib'</span></span></span></span>
+<span id="keyple-plugin-cardresource-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-cardresource-java-lib'</span></span></span></span>
+<span id="keyple-plugin-pcsc-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-pcsc-java-lib'</span></span></span></span>
+<span id="keyple-plugin-stub-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-stub-java-lib'</span></span></span></span>
+<span id="keyple-plugin-storagecard-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-storagecard-java-api'</span></span></span></span>
+<span id="keypop-reader-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-reader-java-api'</span></span></span></span>
+<span id="keypop-card-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-card-java-api'</span></span></span></span>
+<span id="keypop-calypso-card-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-calypso-card-java-api'</span></span></span></span>
+<span id="keypop-calypso-crypto-legacysam-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api'</span></span></span></span>
+<span id="keypop-storagecard-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-storagecard-java-api'</span></span></span></span>
+
+<span id="specific-keyple-common-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}'</span></span></span></span>
+<span id="specific-keyple-service-resource-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-service-resource-java-lib-version %}}'</span></span></span></span>
+<span id="specific-keyple-util-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}'</span></span></span></span>
+<span id="specific-keyple-plugin-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}'</span></span></span></span>
+<span id="specific-keyple-plugin-storagecard-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-plugin-storagecard-java-api:{{% keyple-plugin-storagecard-java-api-version %}}'</span></span></span></span>
+<span id="specific-keypop-reader-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-reader-java-api:{{% keypop-reader-java-api-version %}}'</span></span></span></span>
+<span id="specific-keypop-card-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-card-java-api:{{% keypop-card-java-api-version %}}'</span></span></span></span>
 </code>
 
 <!-- All kotlin dependencies -->
 <code id="all-kotlin-dependencies" style="display:none">
-<span id="keyple-common-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}"</span>)</span></span></span>
-<span id="keyple-service-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-service-java-lib:{{% keyple-service-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-service-resource-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-service-resource-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-util-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-card-calypso-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-card-calypso-java-lib:{{% keyple-card-calypso-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-card-calypso-crypto-legacysam-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:{{% keyple-card-calypso-crypto-legacysam-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-card-calypso-crypto-pki-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:{{% keyple-card-calypso-crypto-pki-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-card-generic-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-card-generic-java-lib:{{% keyple-card-generic-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-distributed-local-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-distributed-local-java-lib:{{% keyple-distributed-local-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-distributed-network-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-distributed-network-java-lib:{{% keyple-distributed-network-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-distributed-remote-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-distributed-remote-java-lib:{{% keyple-distributed-remote-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-plugin-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}"</span>)</span></span></span>
-<span id="keyple-plugin-android-nfc-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-plugin-android-nfc-java-lib:{{% keyple-plugin-android-nfc-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-plugin-android-omapi-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-plugin-android-omapi-java-lib:{{% keyple-plugin-android-omapi-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-plugin-cardresource-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-plugin-cardresource-java-lib:{{% keyple-plugin-cardresource-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-plugin-pcsc-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin-pcsc-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-plugin-stub-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-plugin-stub-java-lib:{{% keyple-plugin-stub-java-lib-version %}}"</span>)</span></span></span>
-<span id="keyple-plugin-storagecard-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keyple:keyple-plugin-storagecard-java-api:{{% keyple-plugin-storagecard-java-api-version %}}"</span>)</span></span></span>
-<span id="keypop-reader-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keypop:keypop-reader-java-api:{{% keypop-reader-java-api-version %}}"</span>)</span></span></span>
-<span id="keypop-card-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keypop:keypop-card-java-api:{{% keypop-card-java-api-version %}}"</span>)</span></span></span>
-<span id="keypop-calypso-card-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keypop:keypop-calypso-card-java-api:{{% keypop-calypso-card-java-api-version %}}"</span>)</span></span></span>
-<span id="keypop-calypso-crypto-legacysam-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api:{{% keypop-calypso-crypto-legacysam-java-api-version %}}"</span>)</span></span></span>
-<span id="keypop-storagecard-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span><span class="p">(</span><span class="s2">"org.eclipse.keypop:keypop-storagecard-java-api:{{% keypop-storagecard-java-api-version %}}"</span>)</span></span></span>
+<span id="keyple-java-bom"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation(platform</span>(<span class="s2">"org.eclipse.keyple:keyple-java-bom:{{% keyple-java-bom-version %}}"</span>))</span></span></span>
+<span id="keyple-common-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-common-java-api"</span>)</span></span></span>
+<span id="keyple-service-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-service-java-lib"</span>)</span></span></span>
+<span id="keyple-service-resource-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-service-resource-java-lib"</span>)</span></span></span>
+<span id="keyple-util-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-util-java-lib"</span>)</span></span></span>
+<span id="keyple-card-calypso-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-card-calypso-java-lib"</span>)</span></span></span>
+<span id="keyple-card-calypso-crypto-legacysam-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib"</span>)</span></span></span>
+<span id="keyple-card-calypso-crypto-pki-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib"</span>)</span></span></span>
+<span id="keyple-card-generic-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-card-generic-java-lib"</span>)</span></span></span>
+<span id="keyple-distributed-local-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-distributed-local-java-lib"</span>)</span></span></span>
+<span id="keyple-distributed-network-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-distributed-network-java-lib"</span>)</span></span></span>
+<span id="keyple-distributed-remote-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-distributed-remote-java-lib"</span>)</span></span></span>
+<span id="keyple-plugin-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-plugin-java-api"</span>)</span></span></span>
+<span id="keyple-plugin-android-nfc-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-plugin-android-nfc-java-lib"</span>)</span></span></span>
+<span id="keyple-plugin-android-omapi-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-plugin-android-omapi-java-lib"</span>)</span></span></span>
+<span id="keyple-plugin-cardresource-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-plugin-cardresource-java-lib"</span>)</span></span></span>
+<span id="keyple-plugin-pcsc-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-plugin-pcsc-java-lib"</span>)</span></span></span>
+<span id="keyple-plugin-stub-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-plugin-stub-java-lib"</span>)</span></span></span>
+<span id="keyple-plugin-storagecard-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-plugin-storagecard-java-api"</span>)</span></span></span>
+<span id="keypop-reader-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keypop:keypop-reader-java-api"</span>)</span></span></span>
+<span id="keypop-card-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keypop:keypop-card-java-api"</span>)</span></span></span>
+<span id="keypop-calypso-card-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keypop:keypop-calypso-card-java-api"</span>)</span></span></span>
+<span id="keypop-calypso-crypto-legacysam-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api"</span>)</span></span></span>
+<span id="keypop-storagecard-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keypop:keypop-storagecard-java-api"</span>)</span></span></span>
+
+<span id="specific-keyple-common-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}"</span>)</span></span></span>
+<span id="specific-keyple-service-resource-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-service-resource-java-lib-version %}}"</span>)</span></span></span>
+<span id="specific-keyple-util-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib-version %}}"</span>)</span></span></span>
+<span id="specific-keyple-plugin-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-plugin-java-api:{{% keyple-plugin-java-api-version %}}"</span>)</span></span></span>
+<span id="specific-keyple-plugin-storagecard-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-plugin-storagecard-java-api:{{% keyple-plugin-storagecard-java-api-version %}}"</span>)</span></span></span>
+<span id="specific-keypop-reader-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keypop:keypop-reader-java-api:{{% keypop-reader-java-api-version %}}"</span>)</span></span></span>
+<span id="specific-keypop-card-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keypop:keypop-card-java-api:{{% keypop-card-java-api-version %}}"</span>)</span></span></span>
 </code>
 
 <!-- All maven dependencies -->
 <pre style="display:none">
 <code id="all-maven-dependencies">
+<span id="keyple-java-bom">!!! Declare the following Keyple BOM dependency in your <span class="nt">&lt;dependencyManagement&gt;</span> section:
+<span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-java-bom<span class="nt">&lt;/artifactId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-java-bom-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;type&gt;</span>pom<span class="nt">&lt;/type&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;scope&gt;</span>import<span class="nt">&lt;/scope&gt;</span></span></span>
+<span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span>
+
+!!! Declare other Keyple dependencies as usual, without versions, since they are managed by the BOM:</span>
 <span id="keyple-common-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-common-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-common-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-service-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-service-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-service-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-service-resource-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-service-resource-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-service-resource-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-util-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-util-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-util-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-card-calypso-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-card-calypso-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-card-calypso-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-card-calypso-crypto-legacysam-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-card-calypso-crypto-legacysam-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-card-calypso-crypto-legacysam-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-card-calypso-crypto-pki-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-card-calypso-crypto-pki-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-card-calypso-crypto-pki-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-card-generic-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-card-generic-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-card-generic-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-distributed-local-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-distributed-local-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-distributed-local-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-distributed-network-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-distributed-network-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-distributed-network-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-distributed-remote-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-distributed-remote-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-distributed-remote-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-plugin-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-plugin-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-plugin-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-plugin-android-nfc-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-plugin-android-nfc-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-plugin-android-nfc-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-plugin-android-omapi-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-plugin-android-omapi-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-plugin-android-omapi-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-plugin-cardresource-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-plugin-cardresource-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-plugin-cardresource-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-plugin-pcsc-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-plugin-pcsc-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-plugin-pcsc-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-plugin-stub-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-plugin-stub-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-plugin-stub-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keyple-plugin-storagecard-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-plugin-storagecard-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-plugin-storagecard-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keypop-reader-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keypop<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keypop-reader-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keypop-reader-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keypop-card-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keypop<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keypop-card-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keypop-card-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keypop-calypso-card-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keypop<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keypop-calypso-card-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keypop-calypso-card-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keypop-calypso-crypto-legacysam-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keypop<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keypop-calypso-crypto-legacysam-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keypop-calypso-crypto-legacysam-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 <span id="keypop-storagecard-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keypop<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keypop-storagecard-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
-  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keypop-storagecard-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
+<span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
+
+<span id="specific-keyple-common-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-common-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-common-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
+<span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
+<span id="specific-keyple-service-resource-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-service-resource-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-service-resource-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
+<span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
+<span id="specific-keyple-util-java-lib"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-util-java-lib<span class="nt">&lt;/artifactId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-util-java-lib-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
+<span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
+<span id="specific-keyple-plugin-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-plugin-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-plugin-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
+<span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
+<span id="specific-keyple-plugin-storagecard-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keyple<span class="nt">&lt;/groupId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keyple-plugin-storagecard-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keyple-plugin-storagecard-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
+<span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
+<span id="specific-keypop-reader-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keypop<span class="nt">&lt;/groupId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keypop-reader-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keypop-reader-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
+<span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
+<span id="specific-keypop-card-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keypop<span class="nt">&lt;/groupId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keypop-card-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>{{% keypop-card-java-api-version %}}<span class="nt">&lt;/version&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 </code>
 </pre>

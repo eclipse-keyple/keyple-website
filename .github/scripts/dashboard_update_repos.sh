@@ -8,6 +8,8 @@ mkdir dashboard/
 echo "{ \"datetime\":\"`date --utc --iso-8601=seconds`\"}" > dashboard/datetime.json
 
 echo "[" >> dashboard/repository_list.json
+../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-java-bom main false true
+echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-card-calypso-java-lib main true true
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-card-calypso-crypto-legacysam-java-lib main true true
