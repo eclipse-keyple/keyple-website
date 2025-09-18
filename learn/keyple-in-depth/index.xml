@@ -69,12 +69,24 @@ workflows defined in the dedicated &lt;a href="https://github.com/eclipse-keyple
 &lt;ul>
 &lt;li>verify the validity of the version;&lt;/li>
 &lt;li>verify the code formatting using &lt;a href="https://github.com/diffplug/spotless" target="_blank" rel="noopener">spotless&lt;/a>;&lt;/li>
+&lt;li>verify the licenses of third-party dependencies using the &lt;a href="https://github.com/eclipse-dash/dash-licenses" target="_blank" rel="noopener">Eclipse Dash License Tool&lt;/a>;&lt;/li>
 &lt;li>build the code;&lt;/li>
 &lt;li>execute unit tests;&lt;/li>
 &lt;li>sign and publish artifacts to Maven Central Repository;&lt;/li>
 &lt;li>publish the API documentation to the unified &lt;a href="https://docs.keyple.org/" target="_blank" rel="noopener">Keyple&amp;rsquo;s documentation GitHub pages&lt;/a>;&lt;/li>
 &lt;li>publish the code quality report to &lt;a href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&amp;amp;sort=-analysis_date" target="_blank" rel="noopener">SonarCloud&lt;/a>.&lt;/li>
 &lt;/ul>
+&lt;br>
+&lt;h2 id="license-verification">License verification&lt;/h2>
+&lt;p>The &lt;strong>Eclipse Dash License Tool&lt;/strong> analyzes the project&amp;rsquo;s dependencies to identify their licenses and verify compliance
+with the &lt;a href="https://www.eclipse.org/org/documents/" target="_blank" rel="noopener">Eclipse Foundation Governance Documents&lt;/a>. It retrieves license
+information from the Eclipse Foundation&amp;rsquo;s database and the ClearlyDefined service.&lt;/p>
+&lt;p>The license check is an integral part of the build workflow. If the &lt;strong>Eclipse Dash License Tool&lt;/strong> detects dependencies
+that require manual review, the build fails with an error. In such cases, a committer must intervene.&lt;/p>
+&lt;p>A &lt;a href="https://github.com/eclipse-keyple/keyple-actions/tree/main/tools/dash-licenses" target="_blank" rel="noopener">script&lt;/a>, available in the
+&lt;strong>Keyple Actions repository&lt;/strong>, supports committers by automatically publishing the necessary issues to the
+dedicated &lt;a href="https://gitlab.eclipse.org/eclipsefdn/emo-team/iplab/-/issues" target="_blank" rel="noopener">repository&lt;/a> of the Eclipse Foundation
+for license-related matters. This step is performed manually by the committer from a local workstation.&lt;/p>
 &lt;br>
 &lt;h2 id="snapshot-publication">Snapshot publication&lt;/h2>
 &lt;p>A new &lt;strong>snapshot&lt;/strong> version (suffixed with &lt;code>-SNAPSHOT&lt;/code>) is automatically built and published each time a commit is pushed
