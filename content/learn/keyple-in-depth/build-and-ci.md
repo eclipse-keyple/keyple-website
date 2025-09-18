@@ -40,6 +40,8 @@ The CI automates the following tasks:
 * publish the API documentation to the unified [Keyple's documentation GitHub pages](https://docs.keyple.org/);
 * publish the code quality report to [SonarCloud](https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date).
 
+<br>
+
 ## License verification
 
 The **Eclipse Dash License Tool** analyzes the project's dependencies to identify their licenses and verify compliance
@@ -52,7 +54,9 @@ that require manual review, the build fails with an error. In such cases, a comm
 A [script](https://github.com/eclipse-keyple/keyple-actions/tree/main/tools/dash-licenses), available in the
 **Keyple Actions repository**, supports committers by automatically publishing the necessary issues to the
 dedicated [repository](https://gitlab.eclipse.org/eclipsefdn/emo-team/iplab/-/issues) of the Eclipse Foundation
-for license-related matters. This step is performed manually by a committer from a local workstation.
+for license-related matters. This step is performed manually by the committer from a local workstation.
+
+<br>
 
 ## Snapshot publication
 
