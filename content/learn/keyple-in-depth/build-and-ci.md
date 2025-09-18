@@ -33,13 +33,26 @@ workflows defined in the dedicated [Keyple Actions repository](https://github.co
 The CI automates the following tasks:
 * verify the validity of the version;
 * verify the code formatting using [spotless](https://github.com/diffplug/spotless);
+* verify the licenses of third-party dependencies using the [Eclipse Dash License Tool](https://github.com/eclipse-dash/dash-licenses);
 * build the code;
 * execute unit tests;
 * sign and publish artifacts to Maven Central Repository;
 * publish the API documentation to the unified [Keyple's documentation GitHub pages](https://docs.keyple.org/);
 * publish the code quality report to [SonarCloud](https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date).
 
-<br>
+## License verification
+
+The **Eclipse Dash License Tool** analyzes the project's dependencies to identify their licenses and verify compliance
+with the [Eclipse Foundation Governance Documents](https://www.eclipse.org/org/documents/). It retrieves license
+information from the Eclipse Foundation's database and the ClearlyDefined service.
+
+The license check is an integral part of the build workflow. If the **Eclipse Dash License Tool** detects dependencies
+that require manual review, the build fails with an error. In such cases, a committer must intervene.
+
+A [script](https://github.com/eclipse-keyple/keyple-actions/tree/main/tools/dash-licenses), available in the
+**Keyple Actions repository**, supports committers by automatically publishing the necessary issues to the
+dedicated [repository](https://gitlab.eclipse.org/eclipsefdn/emo-team/iplab/-/issues) of the Eclipse Foundation
+for license-related matters. This step is performed manually by a committer from a local workstation.
 
 ## Snapshot publication
 
