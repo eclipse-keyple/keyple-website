@@ -8,9 +8,10 @@ toc: true
 
 <br>
 
-The **Keyple Distributed Remote API** defines the **internal API** dedicated to the development of remote plugins components of the Keyple distributed solution.
+The **Keyple Distributed Remote API** defines the **internal API** dedicated to the development of remote plugins
+components of the Keyple distributed solution.
 
-Therefore, it must be used only by developers of custom remote plugins.
+It is therefore intended for developers of custom remote plugins only.
 
 {{% callout note %}}
 The third version number (x.y.**z**) only concerns updates of the public API documentation because this component does not contain any implementation.

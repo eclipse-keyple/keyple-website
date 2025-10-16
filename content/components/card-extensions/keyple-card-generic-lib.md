@@ -10,7 +10,7 @@ toc: true
 
 The **Keyple Card Generic Library** is an add-on to manage cards with low-level API.
 
-Therefore, it should be used only by application developers.
+It is therefore intended for application developers only.
 
 <br>
 
@@ -52,3 +52,19 @@ implementation 'org.eclipse.keyple:keyple-card-generic-java-lib:{{% keyple-card-
 {{< /code>}}
 {{< /tab >}}
 {{< /tabpane >}}
+
+<br>
+
+## C++ component
+
+{{% callout note %}}
+**`{{% keyple-card-generic-cpp-lib-version %}}`**
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-card-generic-cpp-lib/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [History](https://github.com/eclipse-keyple/keyple-card-generic-cpp-lib/releases)</span>
+{{% /callout %}}
+
+### Documentation
+
+* [API documentation](https://docs.keyple.org/keyple-card-generic-cpp-lib)
+
+{{< content-include file="note-about-cpp" >}}

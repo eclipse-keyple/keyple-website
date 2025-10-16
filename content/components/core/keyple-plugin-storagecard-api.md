@@ -11,7 +11,7 @@ toc: true
 The **Keyple Plugin Storage Card API** defines the **internal API** dedicated to standardize communication between
 Keyple plugins and APDU interpreters for storage card processing.
 
-Therefore, it must be used only by developers of custom reader plugins and storage card APDU interpreters.
+It is therefore intended for developers of custom reader plugins and storage card APDU interpreters only.
 
 {{% callout note %}}
 The third version number (x.y.**z**) only concerns updates of the public API documentation because this component does not contain any implementation.

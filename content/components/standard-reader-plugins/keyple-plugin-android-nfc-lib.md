@@ -10,7 +10,7 @@ toc: true
 
 The **Keyple Plugin Android NFC Library** is an add-on to manage **Android NFC** readers.
 
-Therefore, it should be used only by application developers.
+It is therefore intended for application developers only.
 
 It is compatible with **Android 4.4 minimum**.
 

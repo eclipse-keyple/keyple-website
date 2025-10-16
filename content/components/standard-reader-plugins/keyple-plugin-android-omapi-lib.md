@@ -10,7 +10,7 @@ toc: true
 
 The **Keyple Plugin Android OMAPI Library** is an add-on to manage **Android OMAPI** readers.
 
-Therefore, it should be used only by application developers.
+It is therefore intended for application developers only.
 
 It is compatible with **Android 4.4 minimum**.
 

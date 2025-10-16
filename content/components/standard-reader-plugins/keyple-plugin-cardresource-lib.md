@@ -11,7 +11,7 @@ toc: true
 The **Keyple Plugin Card Resource Library** is a **PoolPlugin** to manage readers provided by the 
 [**Card Resource Service**]({{< relref "/components/core/keyple-service-resource-lib" >}}).
 
-Therefore, it should be used only by application developers.
+It is therefore intended for application developers only.
 
 The main role of the plugin is to allow remote access to the **Card Resource Service** via the **Keyple Distributed 
 Solution** components. 

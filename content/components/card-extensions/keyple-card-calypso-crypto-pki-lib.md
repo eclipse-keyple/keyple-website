@@ -15,7 +15,7 @@ While it's nearly stable, future migration steps might be necessary. We aim to m
 
 The **Keyple Card Calypso Crypto PKI Library** is an add-on to enable Calypso® PKI card transactions.
 
-Therefore, it should be used only by application developers.
+It is therefore intended for application developers only.
 
 <br>
 

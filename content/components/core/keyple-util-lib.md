@@ -10,7 +10,7 @@ toc: true
 
 The **Keyple Util Library** contains utility classes used by all Keyple libraries.
 
-Therefore, it can be used by all developers.
+It is therefore intended for all developers.
 
 {{% callout warning %}}
 Since this library is used by all Keyple libraries, it is recommended to import it explicitly.
@@ -56,3 +56,19 @@ implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 {{< /code>}}
 {{< /tab >}}
 {{< /tabpane >}}
+
+<br>
+
+## C++ component
+
+{{% callout note %}}
+**`{{% keyple-util-cpp-lib-version %}}`**
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-util-cpp-lib/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [History](https://github.com/eclipse-keyple/keyple-util-cpp-lib/releases)</span>
+{{% /callout %}}
+
+### Documentation
+
+* [API documentation](https://docs.keyple.org/keyple-util-cpp-lib)
+
+{{< content-include file="note-about-cpp" >}}

@@ -10,7 +10,7 @@ toc: true
 
 The **Keyple Common API** defines the public elements shared between all Keyple libraries.
 
-Therefore, it must be used by all developers.
+It is therefore intended for all developers.
 
 {{% callout note %}}
 The third version number (x.y.**z**) only concerns updates of the public API documentation because this component does not contain any implementation.
@@ -57,3 +57,20 @@ implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java
 {{< /code>}}
 {{< /tab >}}
 {{< /tabpane >}}
+
+<br>
+
+## C++ component
+
+{{% callout note %}}
+**`{{% keyple-common-cpp-api-version %}}`**
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-common-cpp-api/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [History](https://github.com/eclipse-keyple/keyple-common-cpp-api/releases)</span>
+{{% /callout %}}
+
+### Documentation
+
+* [API documentation](https://docs.keyple.org/keyple-common-cpp-api)
+* [User guide]({{< relref "/learn/user-guide/standalone-application" >}})
+
+{{< content-include file="note-about-cpp" >}}

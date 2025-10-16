@@ -10,12 +10,13 @@ toc: true
 
 The **Keyple Card Calypso Library** is an add-on to manage Calypso® cards.
 
-Therefore, it should be used only by application developers.
+It is therefore intended for application developers only.
 
 {{% callout warning %}}
 For card transactions that need to be secured by cryptographic calculations using symmetrical keys (SAM or HSM) or
 asymmetrical keys (PKI), **it is mandatory to use one of the dedicated crypto libraries** (Open SAM, Legacy SAM, PKI).
-At present, only the [Calypso Crypto Legacy SAM]({{< relref "keyple-card-calypso-crypto-legacysam-lib" >}}) library is available.
+At present, only the [Calypso Crypto Legacy SAM]({{< relref "keyple-card-calypso-crypto-legacysam-lib" >}}) 
+and the [Calypso Crypto PKI]({{< relref "keyple-card-calypso-crypto-pki-lib" >}}) libraries are available.
 {{% /callout %}}
 
 <br>
@@ -59,3 +60,20 @@ implementation 'org.eclipse.keyple:keyple-card-calypso-java-lib:{{% keyple-card-
 {{< /code>}}
 {{< /tab >}}
 {{< /tabpane >}}
+
+<br>
+
+## C++ component
+
+{{% callout note %}}
+**`{{% keyple-card-calypso-cpp-lib-version %}}`**
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [History](https://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib/releases)</span>
+{{% /callout %}}
+
+### Documentation
+
+* [API documentation](https://docs.keyple.org/keyple-card-calypso-cpp-lib)
+* [User guide]({{< relref "/learn/user-guide/calypso-application" >}})
+
+{{< content-include file="note-about-cpp" >}}

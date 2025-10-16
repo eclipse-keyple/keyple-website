@@ -8,9 +8,10 @@ toc: true
 
 <br>
 
-The **Keyple Service Library** contains the implementation of the core Keyple components and services, such as the smart card service, the card selection manager or the card and reader event manager.
+The **Keyple Service Library** contains the implementation of the core Keyple components and services, such as the smart
+card service, the card selection manager or the card and reader event manager.
 
-Therefore, it must be used only by application developers.
+It is therefore intended for application developers only.
 
 <br>
 
@@ -53,3 +54,20 @@ implementation 'org.eclipse.keyple:keyple-service-java-lib:{{% keyple-service-ja
 {{< /code>}}
 {{< /tab >}}
 {{< /tabpane >}}
+
+<br>
+
+## C++ component
+
+{{% callout note %}}
+**`{{% keyple-service-cpp-lib-version %}}`**
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-service-cpp-lib/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [History](https://github.com/eclipse-keyple/keyple-service-cpp-lib/releases)</span>
+{{% /callout %}}
+
+### Documentation
+
+* [API documentation](https://docs.keyple.org/keyple-service-cpp-lib)
+* [User guide]({{< relref "/learn/user-guide/standalone-application" >}})
+
+{{< content-include file="note-about-cpp" >}}

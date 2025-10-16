@@ -8,9 +8,11 @@ toc: true
 
 <br>
 
-The **Keyple Distributed Remote Library** is the part of the **Keyple Distributed** solution which contains all the **remote** plugins.
+The **Keyple Distributed Remote Library** is the part of the **Keyple Distributed** solution which contains all the 
+**remote** plugins.
 
-Therefore, it should be used only by developers of applications installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely.
+It is therefore intended for developers of applications installed on the terminal not having local access to the smart
+card reader and that wishes to control the reader remotely.
 
 It is compatible with **Windows**, **Linux**, **macOS** and **Android** platforms.
 

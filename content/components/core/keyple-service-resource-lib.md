@@ -10,7 +10,7 @@ toc: true
 
 The **Keyple Service Resource Library** is an **add-on** providing profile-based card resource allocation mechanism.
 
-Therefore, it can be used by developers of applications or card extensions.
+It is therefore intended for developers of applications or card extensions only.
 
 <br>
 
@@ -53,3 +53,20 @@ implementation 'org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-s
 {{< /code>}}
 {{< /tab >}}
 {{< /tabpane >}}
+
+<br>
+
+## C++ component
+
+{{% callout note %}}
+**`{{% keyple-service-resource-cpp-lib-version %}}`**
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-service-resource-cpp-lib/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [History](https://github.com/eclipse-keyple/keyple-service-resource-cpp-lib/releases)</span>
+{{% /callout %}}
+
+### Documentation
+
+* [API documentation](https://docs.keyple.org/keyple-service-resource-cpp-lib)
+* [User guide]({{< relref "/learn/user-guide/card-resource-service" >}})
+
+{{< content-include file="note-about-cpp" >}}

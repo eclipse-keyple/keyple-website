@@ -8,9 +8,10 @@ toc: true
 
 <br>
 
-The **Keyple Distributed Network Library** is the part of the **Keyple Distributed** solution which contains the common network elements used by **Local** and **Remote** components.
+The **Keyple Distributed Network Library** is the part of the **Keyple Distributed** solution which contains the common
+network elements used by **Local** and **Remote** components.
 
-Therefore, it should be used only by developers of distributed applications.
+It is therefore intended for developers of distributed applications only.
 
 It is compatible with **Windows**, **Linux**, **macOS** and **Android** platforms.
 

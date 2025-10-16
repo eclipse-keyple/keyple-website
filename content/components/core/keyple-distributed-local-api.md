@@ -8,9 +8,10 @@ toc: true
 
 <br>
 
-The **Keyple Distributed Local API** defines the **internal API** dedicated to the development of local services components of the Keyple distributed solution.
+The **Keyple Distributed Local API** defines the **internal API** dedicated to the development of local services
+components of the Keyple distributed solution.
 
-Therefore, it must be used only by developers of custom local services.
+It is therefore intended for developers of custom local services only.
 
 {{% callout note %}}
 The third version number (x.y.**z**) only concerns updates of the public API documentation because this component does not contain any implementation.

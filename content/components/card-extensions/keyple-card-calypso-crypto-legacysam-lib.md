@@ -16,7 +16,7 @@ While it's nearly stable, future migration steps might be necessary. We aim to m
 
 The **Keyple Card Calypso Crypto Legacy SAM Library** is an add-on to manage Calypso® legacy SAMs (SAM-C1, HSM-C1, etc.).
 
-Therefore, it should be used only by application developers.
+It is therefore intended for application developers only.
 
 <br>
 
@@ -58,3 +58,19 @@ implementation 'org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib
 {{< /code >}}
 {{< /tab >}}
 {{< /tabpane >}}
+
+<br>
+
+## C++ component
+
+{{% callout note %}}
+**`{{% keyple-card-calypso-crypto-legacysam-cpp-lib-version %}}`**
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-card-calypso-crypto-legacysam-cpp-lib/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [History](https://github.com/eclipse-keyple/keyple-card-calypso-crypto-legacysam-cpp-lib/releases)</span>
+{{% /callout %}}
+
+### Documentation
+
+* [API documentation](https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-cpp-lib)
+
+{{< content-include file="note-about-cpp" >}}

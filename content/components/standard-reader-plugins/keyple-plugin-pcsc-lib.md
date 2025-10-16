@@ -10,7 +10,7 @@ toc: true
 
 The **Keyple Plugin PC/SC Library** is an add-on to manage **PC/SC** readers.
 
-Therefore, it should be used only by application developers.
+It is therefore intended for application developers only.
 
 It is compatible with **PC/SC Reader** (Windows PC/SC WinScard API, Unix PC/SC lite API) equipment.
 
@@ -54,3 +54,19 @@ implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin
 {{< /code>}}
 {{< /tab >}}
 {{< /tabpane >}}
+
+<br>
+
+## C++ component
+
+{{% callout note %}}
+**`{{% keyple-plugin-pcsc-cpp-lib-version %}}`**
+<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-plugin-pcsc-cpp-lib/)</span>
+<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [History](https://github.com/eclipse-keyple/keyple-plugin-pcsc-cpp-lib/releases)</span>
+{{% /callout %}}
+
+### Documentation
+
+* [API documentation](https://docs.keyple.org/keyple-plugin-pcsc-cpp-lib)
+
+{{< content-include file="note-about-cpp" >}}
