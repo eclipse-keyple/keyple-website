@@ -1,0 +1,1 @@
+The third version digit (x.y.**z**) applies only to documentation updates, as this component contains no implementation.

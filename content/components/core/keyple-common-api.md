@@ -5,72 +5,96 @@ summary: Public API which defines the elements shared between all Keyple librari
 type: book
 toc: true
 ---
+<style>
+table th:nth-child(1) {
+  width: 11rem;
+}
+</style>
 
-<br>
+## Overview
 
-The **Keyple Common API** defines the public elements shared between all Keyple libraries.
+|                                                                |                                                                                      |
+|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| {{< icon name="file-alt" pack="fas" >}} **Description**        | The **Keyple Common API** provides public interfaces shared by all Keyple libraries. |
+| {{< icon name="users" pack="fas" >}} **Intended Audience**     | All developers.                                                                      |
+| {{< icon name="code-branch" pack="fas" >}} **Versioning Note** | {{< content-include file="api-versioning-note" >}}                                   |
 
-It is therefore intended for all developers.
+## Implementations
 
-{{% callout note %}}
-The third version number (x.y.**z**) only concerns updates of the public API documentation because this component does not contain any implementation.
-{{% /callout %}}
+{{< tabpane showCopyButton="false" >}}
 
-<br>
+{{< tab header="Java" >}}
 
-## Java component
+<table>
+<thead><tr><th></th><th></th></tr></thead>
+<tbody>
+  <tr>
+    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong></td>
+    <td><strong><code>{{% keyple-common-java-api-version %}}</code></strong></td>
+  </tr>
+  <tr>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} <strong>Changelog</strong></td>
+    <td>{{< external-link url="https://github.com/eclipse-keyple/keyple-common-java-api/blob/main/CHANGELOG.md" >}}</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="github" pack="fab" >}} <strong>GitHub</strong></td>
+    <td>{{< external-link url="https://github.com/eclipse-keyple/keyple-common-java-api/" >}}</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="book" pack="fas" >}} <strong>User Guide</strong></td>
+    <td>{{< internal-link url="/learn/user-guide/standalone-application" >}}</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="file-code" pack="fas" >}} <strong>API Reference</strong></td>
+    <td>{{< external-link url="https://docs.keyple.org/keyple-common-java-api/" >}}</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="sitemap" pack="fas" >}} <strong>UML Class Diagram</strong></td>
+    <td>{{< external-link url="https://docs.keyple.org/keyple-common-java-api/" >}}</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="database" pack="fas" >}} <strong>Maven Central</strong></td>
+    <td>{{< external-link url="https://central.sonatype.com/search?q=keyple-common-java-api" >}}</td>
+  </tr>
+</tbody>
+</table>
 
-{{% callout note %}}
-**`{{% keyple-common-java-api-version %}}`**
-<span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-common-java-api/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-common-java-api/blob/main/CHANGELOG.md)</span>
-{{% /callout %}}
-
-### Documentation
-
-* [API documentation](https://docs.keyple.org/keyple-common-java-api)
-* [User guide]({{< relref "/learn/user-guide/standalone-application" >}})
- 
-### Download
-
-All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-common-java-api) or by using one of the project resource managers below:
-
-{{< tabpane >}}
-{{< tab header="Gradle Kotlin" >}}
-{{< code lang="kotlin" copy="true">}}
-implementation("org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}")
-{{< /code>}}
 {{< /tab >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation 'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}'
-{{< /code>}}
-{{< /tab >}}
-{{< tab header="Maven" >}}
-{{< code lang="xml" copy="true">}}
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-common-java-api</artifactId>
-  <version>{{% keyple-common-java-api-version %}}</version>
-</dependency>
-{{< /code>}}
-{{< /tab >}}
-{{< /tabpane >}}
 
-<br>
+{{< tab header="C++" >}}
 
-## C++ component
-
-{{% callout note %}}
-**`{{% keyple-common-cpp-api-version %}}`**
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-common-cpp-api/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [History](https://github.com/eclipse-keyple/keyple-common-cpp-api/releases)</span>
-{{% /callout %}}
-
-### Documentation
-
-* [API documentation](https://docs.keyple.org/keyple-common-cpp-api)
-* [User guide]({{< relref "/learn/user-guide/standalone-application" >}})
+<table>
+<thead><tr><th></th><th></th></tr></thead>
+<tbody>
+  <tr>
+    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong></td>
+    <td><strong><code>{{% keyple-common-cpp-api-version %}}</code></strong></td>
+  </tr>
+  <tr>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} <strong>Release History</strong></td>
+    <td>{{< external-link url="https://github.com/eclipse-keyple/keyple-common-cpp-api/releases/" >}}</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="github" pack="fab" >}} <strong>GitHub</strong></td>
+    <td>{{< external-link url="https://github.com/eclipse-keyple/keyple-common-cpp-api/" >}}</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="book" pack="fas" >}} <strong>User Guide</strong></td>
+    <td>{{< internal-link url="/learn/user-guide/standalone-application" >}}</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="file-code" pack="fas" >}} <strong>API Reference</strong></td>
+    <td>{{< external-link url="https://docs.keyple.org/keyple-common-cpp-api/" >}}</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="sitemap" pack="fas" >}} <strong>UML Class Diagram</strong></td>
+    <td>{{< external-link url="https://docs.keyple.org/keyple-common-java-api/" >}}</td>
+  </tr>
+</tbody>
+</table>
 
 {{< content-include file="note-about-cpp" >}}
+
+{{< /tab >}}
+
+{{< /tabpane >}}
