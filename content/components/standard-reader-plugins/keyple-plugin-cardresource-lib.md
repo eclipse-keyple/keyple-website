@@ -5,63 +5,60 @@ summary: Add-on to manage readers provided by the Card Resource Service.
 type: book
 toc: true
 ---
+<style>
+table th:nth-child(1) {
+  width: 13rem;
+}
+</style>
 
-<br>
+## Overview
 
-The **Keyple Plugin Card Resource Library** is a **PoolPlugin** to manage readers provided by the 
-[**Card Resource Service**]({{< relref "/components/core/keyple-service-resource-lib" >}}).
+|                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| {{< icon name="file-alt" pack="fas" >}} **Description**    | The **Keyple Plugin Card Resource Library** is a **PoolPlugin** to manage readers provided by the [**Card Resource Service**]({{< relref "/components/core/keyple-service-resource-lib" >}}).<br><br>The main role of the plugin is to allow remote access to the **Card Resource Service** via the **Keyple Distributed Solution** components. It provides an interface for allocating and deallocating readers by profiles that are part of those configured at the **Card Resource Service** level.<br><br>A typical use would be for the realization of a server providing cryptographic services through a pool of SAMs, each inserted in a dedicated PC/SC reader. |
+| {{< icon name="users" pack="fas" >}} **Intended Audience** | Developers creating Keyple-based distributed applications with remote HSM/pool of SAMs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| {{< icon name="laptop" pack="fas" >}} **Compatible OS**    | Windows, Linux, macOS, Android.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
-It is therefore intended for application developers only.
+## Implementations
 
-The main role of the plugin is to allow remote access to the **Card Resource Service** via the **Keyple Distributed 
-Solution** components. 
-It provides an interface for allocating and deallocating readers by profiles that are part of those configured at the 
-**Card Resource Service** level.
+{{< tabpane showCopyButton="false" >}}
 
-A typical use would be for the realization of a server providing cryptographic services through a pool of SAMs, each 
-inserted in a dedicated PC/SC reader.
+{{< tab header="Java" >}}
 
-<br>
+<table>
+<thead><tr><th></th><th></th></tr></thead>
+<tbody>
+  <tr>
+    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong></td>
+    <td><strong><code>{{% keyple-plugin-cardresource-java-lib-version %}}</code></strong></td>
+  </tr>
+  <tr>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-plugin-cardresource-java-lib/blob/main/CHANGELOG.md" name="Changelog" >}}</td>
+    <td>List of changes and new features introduced in each release.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="github" pack="fab" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-plugin-cardresource-java-lib/" name="GitHub" >}}</td>
+    <td>Source code repository and issue tracker for the Java project.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="book" pack="fas" >}} {{< internal-link url="/learn/user-guide/card-resource-service" name="User Guide" >}}</td>
+    <td>Step-by-step guide to learn how to configure and use the Keyple card resource service.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="file-code" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-plugin-cardresource-java-lib/" name="API Reference" >}}</td>
+    <td>Complete documentation of all classes and methods in the Java API.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="sitemap" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-plugin-cardresource-java-lib/" name="UML Class Diagram" >}}</td>
+    <td>UML diagram showing the structure and relationships between classes.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="database" pack="fas" >}} {{< external-link url="https://central.sonatype.com/search?q=keyple-plugin-cardresource-java-lib" name="Maven Central" >}}</td>
+    <td>Official Maven Central page to include the Java component in your project.</td>
+  </tr>
+</tbody>
+</table>
 
-## Java component
-
-{{% callout note %}}
-**`{{% keyple-plugin-cardresource-java-lib-version %}}`**
-<span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}}
-[GitHub](https://github.com/eclipse-keyple/keyple-plugin-cardresource-java-lib/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}}
-[Changelog](https://github.com/eclipse-keyple/keyple-plugin-cardresource-java-lib/blob/main/CHANGELOG.md)</span>
-{{% /callout %}}
-
-### Documentation
-
-* [API documentation](https://docs.keyple.org/keyple-plugin-cardresource-java-lib)
-
-### Download
-
-All deliverables are available directly from the 
-[Maven Central Repository](https://central.sonatype.com/search?q=keyple-plugin-cardresource-java-lib) or by using one 
-of the project resource managers below:
-
-{{< tabpane >}}
-{{< tab header="Gradle Kotlin" >}}
-{{< code lang="kotlin" copy="true">}}
-implementation("org.eclipse.keyple:keyple-plugin-cardresource-java-lib:{{% keyple-plugin-cardresource-java-lib-version %}}")
-{{< /code>}}
 {{< /tab >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation 'org.eclipse.keyple:keyple-plugin-cardresource-java-lib:{{% keyple-plugin-cardresource-java-lib-version %}}'
-{{< /code>}}
-{{< /tab >}}
-{{< tab header="Maven" >}}
-{{< code lang="xml" copy="true">}}
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-plugin-cardresource-java-lib</artifactId>
-  <version>{{% keyple-plugin-cardresource-java-lib-version %}}</version>
-</dependency>
-{{< /code>}}
-{{< /tab >}}
+
 {{< /tabpane >}}

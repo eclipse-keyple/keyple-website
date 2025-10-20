@@ -5,55 +5,57 @@ summary: Internal API dedicated to the development of custom remote plugins comp
 type: book
 toc: true
 ---
+<style>
+table th:nth-child(1) {
+  width: 13rem;
+}
+</style>
 
-<br>
+## Overview
 
-The **Keyple Distributed Remote API** defines the **internal API** dedicated to the development of remote plugins
-components of the Keyple distributed solution.
+|                                                                |                                                                                                                                                                            |
+|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| {{< icon name="file-alt" pack="fas" >}} **Description**        | The **Keyple Distributed Remote API** defines the **internal interfaces** used to build the **remote plugin** components that are part of the Keyple Distributed solution. |
+| {{< icon name="users" pack="fas" >}} **Intended Audience**     | Developers creating or extending remote Keyple distributed plugins.                                                                                                        |
+| {{< icon name="laptop" pack="fas" >}} **Compatible OS**        | Windows, Linux, macOS, Android.                                                                                                                                            |
+| {{< icon name="code-branch" pack="fas" >}} **Versioning Note** | {{< content-include file="api-versioning-note" >}}                                                                                                                         |
 
-It is therefore intended for developers of custom remote plugins only.
+## Implementations
 
-{{% callout note %}}
-The third version number (x.y.**z**) only concerns updates of the public API documentation because this component does not contain any implementation.
-{{% /callout %}}
+{{< tabpane showCopyButton="false" >}}
 
-<br>
+{{< tab header="Java" >}}
 
-## Java component
+<table>
+<thead><tr><th></th><th></th></tr></thead>
+<tbody>
+  <tr>
+    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong></td>
+    <td><strong><code>{{% keyple-distributed-remote-java-api-version %}}</code></strong></td>
+  </tr>
+  <tr>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-distributed-remote-java-api/blob/main/CHANGELOG.md" name="Changelog" >}}</td>
+    <td>List of changes and new features introduced in each release.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="github" pack="fab" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-distributed-remote-java-api/" name="GitHub" >}}</td>
+    <td>Source code repository and issue tracker for the Java project.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="file-code" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-distributed-remote-java-api/" name="API Reference" >}}</td>
+    <td>Complete documentation of all classes and methods in the Java API.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="sitemap" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-distributed-remote-java-api/" name="UML Class Diagram" >}}</td>
+    <td>UML diagram showing the structure and relationships between classes.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="database" pack="fas" >}} {{< external-link url="https://central.sonatype.com/search?q=keyple-distributed-remote-java-api" name="Maven Central" >}}</td>
+    <td>Official Maven Central page to include the Java component in your project.</td>
+  </tr>
+</tbody>
+</table>
 
-{{% callout note %}}
-**`{{% keyple-distributed-remote-java-api-version %}}`**
-<span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-distributed-remote-java-api/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-distributed-remote-java-api/blob/main/CHANGELOG.md)</span>
-{{% /callout %}}
-
-### Documentation
-
-* [API documentation](https://docs.keyple.org/keyple-distributed-remote-java-api)
-
-### Download
-
-All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-distributed-remote-java-api) or by using one of the project resource managers below:
-
-{{< tabpane >}}
-{{< tab header="Gradle Kotlin" >}}
-{{< code lang="kotlin" copy="true">}}
-implementation("org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-version %}}")
-{{< /code>}}
 {{< /tab >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation 'org.eclipse.keyple:keyple-distributed-remote-java-api:{{% keyple-distributed-remote-java-api-version %}}'
-{{< /code>}}
-{{< /tab >}}
-{{< tab header="Maven" >}}
-{{< code lang="xml" copy="true">}}
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-distributed-remote-java-api</artifactId>
-  <version>{{% keyple-distributed-remote-java-api-version %}}</version>
-</dependency>
-{{< /code>}}
-{{< /tab >}}
+
 {{< /tabpane >}}

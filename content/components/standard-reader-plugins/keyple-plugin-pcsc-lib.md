@@ -5,68 +5,92 @@ summary: Add-on to manage PC/SC readers.
 type: book
 toc: true
 ---
+<style>
+table th:nth-child(1) {
+  width: 13rem;
+}
+</style>
 
-<br>
+## Overview
 
-The **Keyple Plugin PC/SC Library** is an add-on to manage **PC/SC** readers.
+|                                                            |                                                                                             |
+|------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| {{< icon name="file-alt" pack="fas" >}} **Description**    | The **Keyple Plugin PC/SC Library** is an reader plugin add-on to manage **PC/SC** readers. |
+| {{< icon name="users" pack="fas" >}} **Intended Audience** | Developers creating Keyple-based applications using PC/SC readers.                          |
+| {{< icon name="laptop" pack="fas" >}} **Compatible OS**    | Equipment supporting PC/SC Reader (e.g. Windows PC/SC WinScard API, Unix PC/SC lite API).   |
 
-It is therefore intended for application developers only.
+## Implementations
 
-It is compatible with **PC/SC Reader** (Windows PC/SC WinScard API, Unix PC/SC lite API) equipment.
+{{< tabpane showCopyButton="false" >}}
 
-<br>
+{{< tab header="Java" >}}
 
-## Java component
+<table>
+<thead><tr><th></th><th></th></tr></thead>
+<tbody>
+  <tr>
+    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong></td>
+    <td><strong><code>{{% keyple-plugin-pcsc-java-lib-version %}}</code></strong></td>
+  </tr>
+  <tr>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/blob/main/CHANGELOG.md" name="Changelog" >}}</td>
+    <td>List of changes and new features introduced in each release.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="github" pack="fab" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/" name="GitHub" >}}</td>
+    <td>Source code repository and issue tracker for the Java project.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="file-code" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-plugin-pcsc-java-lib/" name="API Reference" >}}</td>
+    <td>Complete documentation of all classes and methods in the Java API.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="sitemap" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-plugin-pcsc-java-lib/" name="UML Class Diagram" >}}</td>
+    <td>UML diagram showing the structure and relationships between classes.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="database" pack="fas" >}} {{< external-link url="https://central.sonatype.com/search?q=keyple-plugin-pcsc-java-lib" name="Maven Central" >}}</td>
+    <td>Official Maven Central page to include the Java component in your project.</td>
+  </tr>
+</tbody>
+</table>
 
-{{% callout note %}}
-**`{{% keyple-plugin-pcsc-java-lib-version %}}`**
-<span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/blob/main/CHANGELOG.md)</span>
-{{% /callout %}}
-
-### Documentation
-
-* [API documentation](https://docs.keyple.org/keyple-plugin-pcsc-java-lib)
-
-### Download
-
-All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-plugin-pcsc-java-lib) or by using one of the project resource managers below:
-
-{{< tabpane >}}
-{{< tab header="Gradle Kotlin" >}}
-{{< code lang="kotlin" copy="true">}}
-implementation("org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin-pcsc-java-lib-version %}}")
-{{< /code>}}
 {{< /tab >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation 'org.eclipse.keyple:keyple-plugin-pcsc-java-lib:{{% keyple-plugin-pcsc-java-lib-version %}}'
-{{< /code>}}
-{{< /tab >}}
-{{< tab header="Maven" >}}
-{{< code lang="xml" copy="true">}}
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-plugin-pcsc-java-lib</artifactId>
-  <version>{{% keyple-plugin-pcsc-java-lib-version %}}</version>
-</dependency>
-{{< /code>}}
-{{< /tab >}}
-{{< /tabpane >}}
 
-<br>
+{{< tab header="C++" >}}
 
-## C++ component
+<table>
+<thead><tr><th></th><th></th></tr></thead>
+<tbody>
+  <tr>
+    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong> <strong><sup>1</sup></strong></td>
+    <td><strong><code>{{% keyple-plugin-pcsc-cpp-lib-version %}}</code></strong></td>
+  </tr>
+  <tr>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-plugin-pcsc-cpp-lib/releases/" name="Release History" >}} <strong><sup>1</sup></strong></td>
+    <td>List of published releases and related release notes.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="github" pack="fab" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-plugin-pcsc-cpp-lib/" name="GitHub" >}}</td>
+    <td>Source code repository and documentation for the C++ project.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="file-code" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-plugin-pcsc-cpp-lib/" name="API Reference" >}}</td>
+    <td>Complete documentation of all classes and functions in the C++ API.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="sitemap" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-plugin-pcsc-uml-lib/" name="UML Class Diagram" >}} <strong><sup>1</sup></strong></td>
+    <td>UML class diagram of the Java implementation, from which the C++ code is derived.</td>
+  </tr>
+</tbody>
+</table>
 
-{{% callout note %}}
-**`{{% keyple-plugin-pcsc-cpp-lib-version %}}`**
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-plugin-pcsc-cpp-lib/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [History](https://github.com/eclipse-keyple/keyple-plugin-pcsc-cpp-lib/releases)</span>
-{{% /callout %}}
-
-### Documentation
-
-* [API documentation](https://docs.keyple.org/keyple-plugin-pcsc-cpp-lib)
+<blockquote>
+    <p>1. See the note below for key C++ specifics.</p>
+</blockquote>
 
 {{< content-include file="note-about-cpp" >}}
+
+{{< /tab >}}
+
+{{< /tabpane >}}

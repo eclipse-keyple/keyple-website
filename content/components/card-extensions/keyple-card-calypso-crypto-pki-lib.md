@@ -11,49 +11,60 @@ This library is currently in **Beta** version.
 While it's nearly stable, future migration steps might be necessary. We aim to minimize any changes you'll need to make.
 {{% /callout %}}
 
-<br>
+<style>
+table th:nth-child(1) {
+  width: 13rem;
+}
+</style>
 
-The **Keyple Card Calypso Crypto PKI Library** is an add-on to enable Calypso® PKI card transactions.
+## Overview
 
-It is therefore intended for application developers only.
+|                                                            |                                                                                                                     |
+|------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| {{< icon name="file-alt" pack="fas" >}} **Description**    | The **Keyple Card Calypso Crypto PKI Library** is a card extension add-on to enable Calypso® PKI card transactions. |
+| {{< icon name="users" pack="fas" >}} **Intended Audience** | Developers creating Keyple-based Calypso applications using PKI security mechanisms.                                |
+| {{< icon name="laptop" pack="fas" >}} **Compatible OS**    | Windows, Linux, macOS, Android.                                                                                     |
 
-<br>
+## Implementations
 
-## Java component
+{{< tabpane showCopyButton="false" >}}
 
-{{% callout note %}}
-**`{{% keyple-card-calypso-crypto-pki-java-lib-version %}}`**
-<span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/blob/main/CHANGELOG.md)</span>
-{{% /callout %}}
+{{< tab header="Java" >}}
 
-### Documentation
+<table>
+<thead><tr><th></th><th></th></tr></thead>
+<tbody>
+  <tr>
+    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong></td>
+    <td><strong><code>{{% keyple-card-calypso-crypto-pki-java-lib-version %}}</code></strong></td>
+  </tr>
+  <tr>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/blob/main/CHANGELOG.md" name="Changelog" >}}</td>
+    <td>List of changes and new features introduced in each release.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="github" pack="fab" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/" name="GitHub" >}}</td>
+    <td>Source code repository and issue tracker for the Java project.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="book" pack="fas" >}} {{< internal-link url="/learn/user-guide/calypso-application" name="User Guide" >}}</td>
+    <td>Step-by-step guide to learn how to build a Keyple-based Calypso application.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="file-code" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-card-calypso-crypto-pki-java-lib/" name="API Reference" >}}</td>
+    <td>Complete documentation of all classes and methods in the Java API.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="sitemap" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-card-calypso-crypto-pki-java-lib/" name="UML Class Diagram" >}}</td>
+    <td>UML diagram showing the structure and relationships between classes.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="database" pack="fas" >}} {{< external-link url="https://central.sonatype.com/search?q=keyple-card-calypso-crypto-pki-java-lib" name="Maven Central" >}}</td>
+    <td>Official Maven Central page to include the Java component in your project.</td>
+  </tr>
+</tbody>
+</table>
 
-* [API documentation](https://docs.keyple.org/keyple-card-calypso-crypto-pki-java-lib)
-
-### Download
-
-All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-card-calypso-crypto-pki-java-lib) or by using one of the project resource managers below:
-
-{{< tabpane >}}
-{{< tab header="Gradle Kotlin" >}}
-{{< code lang="kotlin" copy="true">}}
-implementation("org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:{{% keyple-card-calypso-crypto-pki-java-lib-version %}}")
-{{< /code>}}
 {{< /tab >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation 'org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:{{% keyple-card-calypso-crypto-pki-java-lib-version %}}'
-{{< /code>}}
-{{< /tab >}}
-{{< tab header="Maven" >}}
-{{< code lang="xml" copy="true">}}
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-card-calypso-crypto-pki-java-lib</artifactId>
-  <version>{{% keyple-card-calypso-crypto-pki-java-lib-version %}}</version>
-</dependency>
-{{< /code>}}
-{{< /tab >}}
+
 {{< /tabpane >}}
