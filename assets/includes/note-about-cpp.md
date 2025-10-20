@@ -1,5 +1,5 @@
 {{% callout note %}}
-### C++ Implementation Notes
+### C++ Specific Information
 
 #### Versioning
 

@@ -378,13 +378,6 @@ table>tbody>tr:nth-child(odd)>td, table>tbody>tr:nth-child(odd)>th {
   margin-left: 1px !important;
 }
 
-// Add an external link icon to all portfolio card-text
-.card-text a::after {
-  content: "\f08e"; // Code Unicode of external link icon
-  font-family: "Font Awesome 5 Free", sans-serif;
-  margin-left: 10px;
-}
-
 // Tooltip statistics
 .tooltip-statistics {
   font-size: .7rem;
@@ -396,4 +389,10 @@ table>tbody>tr:nth-child(odd)>td, table>tbody>tr:nth-child(odd)>th {
 // Table header
 thead {
   background-color: #DDD;
+}
+
+/* Add ↗ after all external links */
+a[href^="http"]:not([href*="keyple.org"])::after {
+  content: "\00a0↗"; /* non-breaking space + arrow ↗ */
+  font-size: 0.85em;
 }

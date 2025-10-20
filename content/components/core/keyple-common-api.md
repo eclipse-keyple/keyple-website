@@ -68,11 +68,11 @@ table th:nth-child(1) {
 <thead><tr><th></th><th></th></tr></thead>
 <tbody>
   <tr>
-    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong> <strong><sup>1</sup></strong></td>
+    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong></td>
     <td><strong><code>{{% keyple-common-cpp-api-version %}}</code></strong></td>
   </tr>
   <tr>
-    <td>{{< icon name="exchange-alt" pack="fas" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-common-cpp-api/releases/" name="Release History" >}} <strong><sup>1</sup></strong></td>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-common-cpp-api/releases/" name="Release History" >}}</td>
     <td>List of published releases and related release notes.</td>
   </tr>
   <tr>
@@ -80,7 +80,7 @@ table th:nth-child(1) {
     <td>Source code repository and documentation for the C++ project.</td>
   </tr>
   <tr>
-    <td>{{< icon name="book" pack="fas" >}} {{< internal-link url="/learn/user-guide/standalone-application" name="User Guide" >}} <strong><sup>1</sup></strong></td>
+    <td>{{< icon name="book" pack="fas" >}} {{< internal-link url="/learn/user-guide/standalone-application" name="User Guide" >}}</td>
     <td>Step-by-step guide to learn how to build a Keyple-based standalone application.</td>
   </tr>
   <tr>
@@ -88,15 +88,11 @@ table th:nth-child(1) {
     <td>Complete documentation of all classes and functions in the C++ API.</td>
   </tr>
   <tr>
-    <td>{{< icon name="sitemap" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-common-uml-api/" name="UML Class Diagram" >}} <strong><sup>1</sup></strong></td>
+    <td>{{< icon name="sitemap" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-common-uml-api/" name="UML Class Diagram" >}}</td>
     <td>UML class diagram of the Java implementation, from which the C++ code is derived.</td>
   </tr>
 </tbody>
 </table>
-
-<blockquote>
-    <p>1. See the note below for key C++ specifics.</p>
-</blockquote>
 
 {{< content-include file="note-about-cpp" >}}
 
