@@ -34,23 +34,23 @@ table th:nth-child(1) {
     <td><strong><code>{{% keyple-distributed-local-java-api-version %}}</code></strong></td>
   </tr>
   <tr>
-    <td>{{< icon name="exchange-alt" pack="fas" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-distributed-local-java-api/blob/main/CHANGELOG.md" name="Changelog" >}}</td>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} <a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-api/blob/main/CHANGELOG.md">Changelog</a></td>
     <td>List of changes and new features introduced in each release.</td>
   </tr>
   <tr>
-    <td>{{< icon name="github" pack="fab" >}} {{< external-link url="https://github.com/eclipse-keyple/keyple-distributed-local-java-api/" name="GitHub" >}}</td>
+    <td>{{< icon name="github" pack="fab" >}} <a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-api/">GitHub</a></td>
     <td>Source code repository and issue tracker for the Java project.</td>
   </tr>
   <tr>
-    <td>{{< icon name="file-code" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-distributed-local-java-api/" name="API Reference" >}}</td>
+    <td>{{< icon name="file-code" pack="fas" >}} <a href="https://docs.keyple.org/keyple-distributed-local-java-api/">API Reference</a></td>
     <td>Complete documentation of all classes and methods in the Java API.</td>
   </tr>
   <tr>
-    <td>{{< icon name="sitemap" pack="fas" >}} {{< external-link url="https://docs.keyple.org/keyple-distributed-local-java-api/" name="UML Class Diagram" >}}</td>
+    <td>{{< icon name="sitemap" pack="fas" >}} <a href="https://docs.keyple.org/keyple-distributed-local-java-api/">UML Class Diagram</a></td>
     <td>UML diagram showing the structure and relationships between classes.</td>
   </tr>
   <tr>
-    <td>{{< icon name="database" pack="fas" >}} {{< external-link url="https://central.sonatype.com/search?q=keyple-distributed-local-java-api" name="Maven Central" >}}</td>
+    <td>{{< icon name="database" pack="fas" >}} <a href="https://central.sonatype.com/search?q=keyple-distributed-local-java-api">Maven Central</a></td>
     <td>Official Maven Central page to include the Java component in your project.</td>
   </tr>
 </tbody>
