@@ -15,93 +15,264 @@
 &lt;li>All libraries are &lt;strong>public&lt;/strong>.&lt;/li>
 &lt;li>All &lt;strong>libraries&lt;/strong> and &lt;strong>public APIs&lt;/strong> can be used by the developer of the application.&lt;/li>
 &lt;li>The &lt;strong>internal APIs&lt;/strong> are intended for the developer of Keyple add-ons only (e.g. custom reader plugin, custom card extension or custom distributed solution).&lt;/li>
-&lt;/ul></description></item><item><title>Keyple Bill of Materials (BOM)</title><link>https://keyple.org/components/overview/keyple-java-bom/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/overview/keyple-java-bom/</guid><description>&lt;br>
-&lt;p>The &lt;strong>Keyple BOM&lt;/strong> provides a centralized way to manage the versions of all Keyple artifacts for applications.
-It ensures that projects using multiple Keyple libraries stay consistent and compatible without requiring
-explicit version declarations for each dependency.&lt;/p>
-&lt;div class="alert alert-note">
-&lt;div>
-The BOM also includes the versions of the &lt;a href="https://keypop.org/" target="_blank" rel="noopener">Keypop&lt;/a> dependencies required by Keyple, so you
-don’t need to manage them separately.
-&lt;/div>
-&lt;/div>
+&lt;/ul></description></item><item><title>Keyple Implementations &amp; Compatibility</title><link>https://keyple.org/components/overview/implementations-and-compatibility/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/overview/implementations-and-compatibility/</guid><description>&lt;style>
+table th:nth-child(1) {
+width: 20rem;
+}
+table th:nth-child(2), table th:nth-child(3) {
+width: 3rem;
+}
+.table td {
+padding-top: 0;
+padding-bottom: 0;
+}
+.item {
+margin-left: 1rem;
+}
+&lt;/style>
 &lt;br>
-&lt;h2 id="versioning">Versioning&lt;/h2>
-&lt;p>This project follows a date-based versioning scheme:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Format&lt;/strong>: &lt;code>YYYY.MM.DD&lt;/code> (year, month, day).&lt;/li>
-&lt;li>&lt;strong>Release cadence&lt;/strong>: A new version is released whenever one or more Keyple artifacts are updated.&lt;/li>
-&lt;li>&lt;strong>Interpretation&lt;/strong>: The version number indicates the release date, not the compatibility level.
-Users should check the release notes to see which artifacts were updated.&lt;/li>
-&lt;/ul>
-&lt;br>
-&lt;h2 id="java-component">Java component&lt;/h2>
-&lt;div class="alert alert-note">
-&lt;div>
-&lt;strong>&lt;code>2025.09.12&lt;/code>&lt;/strong>
-&lt;span class="component-metadata">
-&lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
-&lt;span class="component-metadata">
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-java-bom/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
-&lt;span class="component-metadata">
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-java-bom/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
-&lt;/div>
-&lt;/div>
-&lt;h3 id="download">Download&lt;/h3>
-&lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-java-bom" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
-&lt;ul class="nav nav-tabs" id="tabs-2" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Gradle-Kotlin"
-id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
-aria-controls="tabs-2-0" aria-selected="true">
-Gradle Kotlin
-&lt;/a>
-&lt;/li>&lt;li class="nav-item">
-&lt;a class="nav-link tab-Gradle-Groovy"
-id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
-aria-controls="tabs-2-1" aria-selected="false">
-Gradle Groovy
-&lt;/a>
-&lt;/li>&lt;li class="nav-item">
-&lt;a class="nav-link tab-Maven"
-id="tabs-2-2-tab" data-toggle="tab" href="#tabs-2-2" role="tab" onclick="handleClick(&amp;#34;Maven&amp;#34;);"
-aria-controls="tabs-2-2" aria-selected="false">
-Maven
+&lt;p>Keyple components are available in multiple languages and configurations.&lt;/p>
+&lt;p>All &lt;strong>Java components&lt;/strong> released after &lt;strong>April 2024&lt;/strong> are compiled with &lt;strong>Java API level 8&lt;/strong>, ensuring compatibility with any platform running &lt;strong>Java SE 8+&lt;/strong>, as well as with &lt;strong>Android 7+&lt;/strong> systems.&lt;/p>
+&lt;p>&lt;strong>C++ components&lt;/strong> are developed in compliance with the &lt;strong>C++ 11&lt;/strong> standard, ensuring wide portability and interoperability across modern C++ environments.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Component&lt;/th>
+&lt;th style="text-align:center">Java&lt;/th>
+&lt;th style="text-align:center">C++&lt;/th>
+&lt;th>KMP&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Core&lt;/strong>&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/core/keyple-common-api/">Common API&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/core/keyple-distributed-local-api/">Distributed Local API&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/core/keyple-distributed-remote-api/">Distributed Remote API&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/core/keyple-plugin-api/">Plugin API&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/core/keyple-plugin-storagecard-api/">Plugin Storage Card API&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/core/keyple-service-lib/">Service Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/core/keyple-service-resource-lib/">Service Resource Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/core/keyple-util-lib/">Util Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Distributed Systems&lt;/strong>&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/distributed/keyple-distributed-local-lib/">Distributed Local Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/distributed/keyple-distributed-network-lib/">Distributed Network Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/distributed/keyple-distributed-remote-lib/">Distributed Remote Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Card Extensions&lt;/strong>&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/card-extensions/keyple-card-calypso-lib/">Card Calypso Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/">Card Calypso Crypto Legacy SAM Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/card-extensions/keyple-card-calypso-crypto-pki-lib/">Card Calypso Crypto PKI Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/card-extensions/keyple-card-generic-lib/">Card Generic Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Standard Reader Plugins&lt;/strong>&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/standard-reader-plugins/keyple-plugin-android-nfc-lib/">Plugin Android NFC Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/standard-reader-plugins/keyple-plugin-android-omapi-lib/">Plugin Android OMAPI Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/standard-reader-plugins/keyple-plugin-cardresource-lib/">Plugin Card Resource Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/standard-reader-plugins/keyple-plugin-pcsc-lib/">Plugin PC/SC Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/standard-reader-plugins/keyple-plugin-stub-lib/">Plugin Stub Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td style="text-align:center">✅&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Interop Components&lt;/strong>&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/interop-components/keyple-interop-jsonapi-client-kmp-lib/">Interop JSON API Client Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>✅&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;span class="item" />&lt;a href="../../components/interop-components/keyple-interop-localreader-nfcmobile-kmp-lib/">Interop Local Reader NFC Mobile Library&lt;/a>&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;td>✅&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>Keyple Java Bill of Materials (BOM)</title><link>https://keyple.org/components/overview/keyple-java-bom/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/overview/keyple-java-bom/</guid><description>&lt;style>
+table th:nth-child(1) {
+width: 12rem;
+}
+&lt;/style>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-file-alt pr-1 fa-fw">&lt;/i> &lt;strong>Description&lt;/strong>&lt;/td>
+&lt;td>The &lt;strong>Keyple BOM&lt;/strong> provides a centralized way to manage the versions of all Keyple artifacts for applications. It ensures that projects using multiple Keyple libraries stay consistent and compatible without requiring explicit version declarations for each dependency.&lt;br>&lt;br>&lt;strong>Important Note:&lt;/strong> The BOM also includes the versions of the &lt;a href="https://keypop.org/" target="_blank" rel="noopener">Keypop&lt;/a> dependencies required by Keyple, so you don’t need to manage them separately.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-users pr-1 fa-fw">&lt;/i> &lt;strong>Intended Audience&lt;/strong>&lt;/td>
+&lt;td>Developers creating Keyple-based applications.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-laptop pr-1 fa-fw">&lt;/i> &lt;strong>Compatible OS&lt;/strong>&lt;/td>
+&lt;td>Windows, Linux, macOS, Android.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-code-branch pr-1 fa-fw">&lt;/i> &lt;strong>Versioning Note&lt;/strong>&lt;/td>
+&lt;td>This project follows a &lt;strong>date-based&lt;/strong> versioning scheme:&lt;ul>&lt;li>&lt;strong>Format&lt;/strong>: &lt;code>YYYY.MM.DD&lt;/code> (year, month, day).&lt;/li>&lt;li>&lt;strong>Release cadence&lt;/strong>: A new version is released whenever one or more Keyple artifacts are updated.&lt;/li>&lt;li>&lt;strong>Interpretation&lt;/strong>: The version number indicates the release date, not the compatibility level. Users should check the release notes to see which artifacts were updated.&lt;/li>&lt;/ul>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="implementations">Implementations&lt;/h2>
+&lt;ul class="nav nav-tabs" id="tabs-4" role="tablist">&lt;li class="nav-item">
+&lt;a class="nav-link active tab-Java"
+id="tabs-4-0-tab" data-toggle="tab" href="#tabs-4-0" role="tab" onclick="handleClick(&amp;#34;Java&amp;#34;);"
+aria-controls="tabs-4-0" aria-selected="true">
+Java
 &lt;/a>
 &lt;/li>&lt;/ul>
-&lt;div class="bd-clipboard">
-&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard"
-onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>
-&lt;/div>
-&lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
-id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
-&lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">platform&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-java-bom:2025.09.12&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;div class="tab-pane fade"
-id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
-&lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="nf">platform&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-java-bom:2025.09.12&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;div class="tab-pane fade"
-id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
-&lt;div class="code relative" id="">
-&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependencyManagement&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;dependencies&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-java-bom&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2025.09.12&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;type&amp;gt;&lt;/span>pom&lt;span class="nt">&amp;lt;/type&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;scope&amp;gt;&lt;/span>import&lt;span class="nt">&amp;lt;/scope&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;/dependencies&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependencyManagement&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
-&lt;/div>
-&lt;/div>
+&lt;div class="tab-content" id="tabs-4-content">&lt;div class="tab-pane fade show active"
+id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab">
+&lt;table>
+&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>&lt;code>2025.09.12&lt;/code>&lt;/strong>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-java-bom/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/td>
+&lt;td>Provides a detailed mapping of Keyple component versions included in each BOM release.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-java-bom/">GitHub&lt;/a>&lt;/td>
+&lt;td>Source code repository containing useful information for importing the Java BOM in your project.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;/div>
 &lt;/div></description></item><item><title>Configuration wizard</title><link>https://keyple.org/components/overview/configuration-wizard/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/overview/configuration-wizard/</guid><description>&lt;br>
 &lt;p>This online tool generates for you the &lt;code>dependencies&lt;/code> section of Gradle or Maven configuration files.
