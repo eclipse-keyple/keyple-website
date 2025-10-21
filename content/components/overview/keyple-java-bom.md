@@ -1,72 +1,50 @@
 ---
-title: Keyple Bill of Materials (BOM)
-linktitle: Bill of Materials (BOM)
+title: Keyple Java Bill of Materials (BOM)
+linktitle: Java BOM
 summary: A Bill of Materials (BOM) for applications to manage the versions of all Keyple artifacts.
 type: book
 weight: 15
 toc: true
 ---
+<style>
+table th:nth-child(1) {
+  width: 12rem;
+}
+</style>
 
-<br>
+## Overview
 
-The **Keyple BOM** provides a centralized way to manage the versions of all Keyple artifacts for applications. 
-It ensures that projects using multiple Keyple libraries stay consistent and compatible without requiring
-explicit version declarations for each dependency.
+|                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| {{< icon name="file-alt" pack="fas" >}} **Description**        | The **Keyple BOM** provides a centralized way to manage the versions of all Keyple artifacts for applications. It ensures that projects using multiple Keyple libraries stay consistent and compatible without requiring explicit version declarations for each dependency.<br><br>**Important Note:** The BOM also includes the versions of the [Keypop](https://keypop.org/) dependencies required by Keyple, so you don’t need to manage them separately. |
+| {{< icon name="users" pack="fas" >}} **Intended Audience**     | Developers creating Keyple-based applications.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| {{< icon name="laptop" pack="fas" >}} **Compatible OS**        | Windows, Linux, macOS, Android.                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| {{< icon name="code-branch" pack="fas" >}} **Versioning Note** | This project follows a **date-based** versioning scheme:<ul><li>**Format**: `YYYY.MM.DD` (year, month, day).</li><li>**Release cadence**: A new version is released whenever one or more Keyple artifacts are updated.</li><li>**Interpretation**: The version number indicates the release date, not the compatibility level. Users should check the release notes to see which artifacts were updated.</li></ul>                                           |
 
-{{% callout note %}}
-The BOM also includes the versions of the [Keypop](https://keypop.org/) dependencies required by Keyple, so you
-don’t need to manage them separately.
-{{% /callout %}}
+## Implementations
 
-<br>
+{{< tabpane showCopyButton="false" >}}
 
-## Versioning
+{{< tab header="Java" >}}
 
-This project follows a date-based versioning scheme:
-- **Format**: `YYYY.MM.DD` (year, month, day).
-- **Release cadence**: A new version is released whenever one or more Keyple artifacts are updated.
-- **Interpretation**: The version number indicates the release date, not the compatibility level.
-  Users should check the release notes to see which artifacts were updated.
+<table>
+<thead><tr><th></th><th></th></tr></thead>
+<tbody>
+  <tr>
+    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong></td>
+    <td><strong><code>{{% keyple-java-bom-version %}}</code></strong></td>
+  </tr>
+  <tr>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} <a href="https://github.com/eclipse-keyple/keyple-java-bom/blob/main/CHANGELOG.md">Changelog</a></td>
+    <td>Provides a detailed mapping of Keyple component versions included in each BOM release.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="github" pack="fab" >}} <a href="https://github.com/eclipse-keyple/keyple-java-bom/">GitHub</a></td>
+    <td>Source code repository containing useful information for importing the Java BOM in your project.</td>
+  </tr>
+</tbody>
+</table>
 
-<br>
-
-## Java component
-
-{{% callout note %}}
-**`{{% keyple-java-bom-version %}}`**
-<span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-java-bom/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-java-bom/blob/main/CHANGELOG.md)</span>
-{{% /callout %}}
- 
-### Download
-
-All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-java-bom) or by using one of the project resource managers below:
-
-{{< tabpane >}}
-{{< tab header="Gradle Kotlin" >}}
-{{< code lang="kotlin" copy="true">}}
-implementation(platform("org.eclipse.keyple:keyple-java-bom:{{% keyple-java-bom-version %}}"))
-{{< /code>}}
 {{< /tab >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation platform('org.eclipse.keyple:keyple-java-bom:{{% keyple-java-bom-version %}}')
-{{< /code>}}
-{{< /tab >}}
-{{< tab header="Maven" >}}
-{{< code lang="xml" copy="true">}}
-<dependencyManagement>
-  <dependencies>
-    <dependency>
-      <groupId>org.eclipse.keyple</groupId>
-      <artifactId>keyple-java-bom</artifactId>
-      <version>{{% keyple-java-bom-version %}}</version>
-      <type>pom</type>
-      <scope>import</scope>
-    </dependency>
-  </dependencies>
-</dependencyManagement>
-{{< /code>}}
-{{< /tab >}}
+
 {{< /tabpane >}}
