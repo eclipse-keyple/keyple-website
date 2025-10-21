@@ -1,6 +1,6 @@
 ---
-title: Keyple Bill of Materials (BOM)
-linktitle: Bill of Materials (BOM)
+title: Keyple Java Bill of Materials (BOM)
+linktitle: Java BOM
 summary: A Bill of Materials (BOM) for applications to manage the versions of all Keyple artifacts.
 type: book
 weight: 15

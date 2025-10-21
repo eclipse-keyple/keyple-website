@@ -23,7 +23,7 @@ table th:nth-child(1) {
 
 {{< tabpane showCopyButton="false" >}}
 
-{{< tab header="Java" >}}
+{{< tab header="Kotlin Multiplatform" >}}
 
 <table>
 <thead><tr><th></th><th></th></tr></thead>
