@@ -677,7 +677,6 @@ loadProjectDashboard = async function() {
         a.appendChild(linkText);
         a.title = json.name;
         a.href = json.html_url;
-        a.target = "_blank";
         cell.appendChild(a);
 
         // column doc
@@ -691,7 +690,6 @@ loadProjectDashboard = async function() {
             a.innerHTML = "<i class=\"fas fa-book\"></i>";
             a.title = "API documentation for " + json.name;
             a.href = "https://docs.keyple.org/" + json.name;
-            a.target = "_blank";
             cell.appendChild(a);
         }
 
@@ -832,7 +830,6 @@ loadProjectDashboard = async function() {
         let a = document.createElement('a');
         let linkText = document.createTextNode("\u2b24");
         a.appendChild(linkText);
-        a.target = "_blank";
 
         try {
             json = await getJsonRepositoryData(repos, "_check_runs");

@@ -391,8 +391,12 @@ thead {
   background-color: #DDD;
 }
 
-/* Add ↗ after all external links */
-a[href^="http"]:not([href*="//keyple.org"])::after {
+/* Add ↗ after all external links, except when the link contains an image or an icon */
+a[href^="http"]:not([href*="//keyple.org"]):not(:has(img)):not(:has(i))::after {
   content: "\00a0↗"; /* non-breaking space + arrow ↗ */
   font-size: 0.85em;
+}
+/* Exceptions */
+#project-dashboard-table a::after {
+  content: "" !important;
 }
