@@ -1,247 +1,208 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keyple distributed systems components | Eclipse Keyple</title><link>https://keyple.org/components/distributed/</link><atom:link href="https://keyple.org/components/distributed/index.xml" rel="self" type="application/rss+xml"/><description>Keyple distributed systems components</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://keyple.org/media/logo.svg</url><title>Keyple distributed systems components</title><link>https://keyple.org/components/distributed/</link></image><item><title>Keyple Distributed Local Library</title><link>https://keyple.org/components/distributed/keyple-distributed-local-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/distributed/keyple-distributed-local-lib/</guid><description>&lt;style>
-table th:nth-child(1) {
-width: 13rem;
-}
-&lt;/style>
-&lt;h2 id="overview">Overview&lt;/h2>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-alt pr-1 fa-fw">&lt;/i> &lt;strong>Description&lt;/strong>&lt;/td>
-&lt;td>The &lt;strong>Keyple Distributed Local Library&lt;/strong> is the part of the &lt;strong>Keyple Distributed&lt;/strong> solution which contains all the &lt;strong>local&lt;/strong> services.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-users pr-1 fa-fw">&lt;/i> &lt;strong>Intended Audience&lt;/strong>&lt;/td>
-&lt;td>Developers creating applications installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote Keyple-based application.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-laptop pr-1 fa-fw">&lt;/i> &lt;strong>Compatible OS&lt;/strong>&lt;/td>
-&lt;td>Windows, Linux, macOS, Android.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="implementations">Implementations&lt;/h2>
-&lt;ul class="nav nav-tabs" id="tabs-3" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Java"
-id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab" onclick="handleClick(&amp;#34;Java&amp;#34;);"
-aria-controls="tabs-3-0" aria-selected="true">
-Java
-&lt;/a>
-&lt;/li>&lt;/ul>
-&lt;div class="tab-content" id="tabs-3-content">&lt;div class="tab-pane fade show active"
-id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
-&lt;table>
-&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
-&lt;td>&lt;strong>&lt;code>2.5.2&lt;/code>&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/td>
-&lt;td>List of changes and new features introduced in each release.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-lib/">GitHub&lt;/a>&lt;/td>
-&lt;td>Source code repository and issue tracker for the Java project.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="../../learn/user-guide/distributed-application">User Guide&lt;/a>&lt;/td>
-&lt;td>Step-by-step guide to learn how to build a Keyple-based distributed application.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-code pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-distributed-local-java-lib/">API Reference&lt;/a>&lt;/td>
-&lt;td>Complete documentation of all classes and methods in the Java API.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-sitemap pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-distributed-local-java-lib/">UML Class Diagram&lt;/a>&lt;/td>
-&lt;td>UML diagram showing the structure and relationships between classes.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-database pr-1 fa-fw">&lt;/i> &lt;a href="https://central.sonatype.com/search?q=keyple-distributed-local-java-lib">Maven Central&lt;/a>&lt;/td>
-&lt;td>Official Maven Central page to include the Java component in your project.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keyple distributed systems components | Eclipse Keyple</title><link>https://keyple.org/components/distributed/</link><atom:link href="https://keyple.org/components/distributed/index.xml" rel="self" type="application/rss+xml"/><description>Keyple distributed systems components</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://keyple.org/media/logo.svg</url><title>Keyple distributed systems components</title><link>https://keyple.org/components/distributed/</link></image><item><title>Keyple Distributed Local Library</title><link>https://keyple.org/components/distributed/keyple-distributed-local-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/distributed/keyple-distributed-local-lib/</guid><description>&lt;br>
+&lt;p>The &lt;strong>Keyple Distributed Local Library&lt;/strong> is the part of the &lt;strong>Keyple Distributed&lt;/strong> solution which contains all the &lt;strong>local&lt;/strong> services.&lt;/p>
+&lt;p>Therefore, it should be used only by developers of applications installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.&lt;/p>
+&lt;p>It is compatible with &lt;strong>Windows&lt;/strong>, &lt;strong>Linux&lt;/strong>, &lt;strong>macOS&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
+&lt;br>
+&lt;h2 id="java-component">Java component&lt;/h2>
+&lt;div class="alert alert-note">
+&lt;div>
+&lt;strong>&lt;code>2.5.2&lt;/code>&lt;/strong>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
 &lt;/div>
-&lt;/div></description></item><item><title>Keyple Distributed Network Library</title><link>https://keyple.org/components/distributed/keyple-distributed-network-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/distributed/keyple-distributed-network-lib/</guid><description>&lt;style>
-table th:nth-child(1) {
-width: 13rem;
-}
-&lt;/style>
-&lt;h2 id="overview">Overview&lt;/h2>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-alt pr-1 fa-fw">&lt;/i> &lt;strong>Description&lt;/strong>&lt;/td>
-&lt;td>The &lt;strong>Keyple Distributed Network Library&lt;/strong> is the part of the &lt;strong>Keyple Distributed&lt;/strong> solution which contains the common network elements used by &lt;strong>Local&lt;/strong> and &lt;strong>Remote&lt;/strong> components.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-users pr-1 fa-fw">&lt;/i> &lt;strong>Intended Audience&lt;/strong>&lt;/td>
-&lt;td>Developers creating Keyple-based distributed applications.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-laptop pr-1 fa-fw">&lt;/i> &lt;strong>Compatible OS&lt;/strong>&lt;/td>
-&lt;td>Windows, Linux, macOS, Android.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="implementations">Implementations&lt;/h2>
-&lt;ul class="nav nav-tabs" id="tabs-3" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Java"
-id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab" onclick="handleClick(&amp;#34;Java&amp;#34;);"
-aria-controls="tabs-3-0" aria-selected="true">
-Java
-&lt;/a>
-&lt;/li>&lt;/ul>
-&lt;div class="tab-content" id="tabs-3-content">&lt;div class="tab-pane fade show active"
-id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
-&lt;table>
-&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
-&lt;td>&lt;strong>&lt;code>2.5.1&lt;/code>&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/td>
-&lt;td>List of changes and new features introduced in each release.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/">GitHub&lt;/a>&lt;/td>
-&lt;td>Source code repository and issue tracker for the Java project.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="../../learn/user-guide/distributed-application">User Guide&lt;/a>&lt;/td>
-&lt;td>Step-by-step guide to learn how to build a Keyple-based distributed application.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-code pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-distributed-network-java-lib/">API Reference&lt;/a>&lt;/td>
-&lt;td>Complete documentation of all classes and methods in the Java API.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-sitemap pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-distributed-network-java-lib/">UML Class Diagram&lt;/a>&lt;/td>
-&lt;td>UML diagram showing the structure and relationships between classes.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-database pr-1 fa-fw">&lt;/i> &lt;a href="https://central.sonatype.com/search?q=keyple-distributed-network-java-lib">Maven Central&lt;/a>&lt;/td>
-&lt;td>Official Maven Central page to include the Java component in your project.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Keyple Distributed Remote Library</title><link>https://keyple.org/components/distributed/keyple-distributed-remote-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/distributed/keyple-distributed-remote-lib/</guid><description>&lt;style>
-table th:nth-child(1) {
-width: 13rem;
-}
-&lt;/style>
-&lt;h2 id="overview">Overview&lt;/h2>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-alt pr-1 fa-fw">&lt;/i> &lt;strong>Description&lt;/strong>&lt;/td>
-&lt;td>The &lt;strong>Keyple Distributed Local Library&lt;/strong> is the part of the &lt;strong>Keyple Distributed&lt;/strong> solution which contains all the &lt;strong>remote&lt;/strong> plugins.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-users pr-1 fa-fw">&lt;/i> &lt;strong>Intended Audience&lt;/strong>&lt;/td>
-&lt;td>Developers creating Keyple-based applications installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-laptop pr-1 fa-fw">&lt;/i> &lt;strong>Compatible OS&lt;/strong>&lt;/td>
-&lt;td>Windows, Linux, macOS, Android.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="implementations">Implementations&lt;/h2>
-&lt;ul class="nav nav-tabs" id="tabs-3" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Java"
-id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab" onclick="handleClick(&amp;#34;Java&amp;#34;);"
-aria-controls="tabs-3-0" aria-selected="true">
-Java
+&lt;h3 id="documentation">Documentation&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-local-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../learn/user-guide/distributed-application/">User guide&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="download">Download&lt;/h3>
+&lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-distributed-local-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
+&lt;ul class="nav nav-tabs" id="tabs-2" role="tablist">&lt;li class="nav-item">
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+aria-controls="tabs-2-0" aria-selected="true">
+Gradle Kotlin
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+aria-controls="tabs-2-1" aria-selected="false">
+Gradle Groovy
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Maven"
+id="tabs-2-2-tab" data-toggle="tab" href="#tabs-2-2" role="tab" onclick="handleClick(&amp;#34;Maven&amp;#34;);"
+aria-controls="tabs-2-2" aria-selected="false">
+Maven
 &lt;/a>
 &lt;/li>&lt;/ul>
-&lt;div class="tab-content" id="tabs-3-content">&lt;div class="tab-pane fade show active"
-id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
-&lt;table>
-&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
-&lt;td>&lt;strong>&lt;code>2.5.1&lt;/code>&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-remote-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/td>
-&lt;td>List of changes and new features introduced in each release.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-remote-java-lib/">GitHub&lt;/a>&lt;/td>
-&lt;td>Source code repository and issue tracker for the Java project.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="../../learn/user-guide/distributed-application">User Guide&lt;/a>&lt;/td>
-&lt;td>Step-by-step guide to learn how to build a Keyple-based distributed application.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-code pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-distributed-remote-java-lib/">API Reference&lt;/a>&lt;/td>
-&lt;td>Complete documentation of all classes and methods in the Java API.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-sitemap pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-distributed-remote-java-lib/">UML Class Diagram&lt;/a>&lt;/td>
-&lt;td>UML diagram showing the structure and relationships between classes.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-database pr-1 fa-fw">&lt;/i> &lt;a href="https://central.sonatype.com/search?q=keyple-distributed-remote-java-lib">Maven Central&lt;/a>&lt;/td>
-&lt;td>Official Maven Central page to include the Java component in your project.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>&lt;/div>
+&lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
+id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-distributed-local-java-lib:2.5.2&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-distributed-local-java-lib:2.5.2&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-distributed-local-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.5.2&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div></description></item><item><title>Keyple Distributed Network Library</title><link>https://keyple.org/components/distributed/keyple-distributed-network-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/distributed/keyple-distributed-network-lib/</guid><description>&lt;br>
+&lt;p>The &lt;strong>Keyple Distributed Network Library&lt;/strong> is the part of the &lt;strong>Keyple Distributed&lt;/strong> solution which contains the common network elements used by &lt;strong>Local&lt;/strong> and &lt;strong>Remote&lt;/strong> components.&lt;/p>
+&lt;p>Therefore, it should be used only by developers of distributed applications.&lt;/p>
+&lt;p>It is compatible with &lt;strong>Windows&lt;/strong>, &lt;strong>Linux&lt;/strong>, &lt;strong>macOS&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
+&lt;br>
+&lt;h2 id="java-component">Java component&lt;/h2>
+&lt;div class="alert alert-note">
+&lt;div>
+&lt;strong>&lt;code>2.5.1&lt;/code>&lt;/strong>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
+&lt;/div>
+&lt;/div>
+&lt;h3 id="documentation">Documentation&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-network-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../learn/user-guide/distributed-application/">User guide&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="download">Download&lt;/h3>
+&lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-distributed-network-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
+&lt;ul class="nav nav-tabs" id="tabs-2" role="tablist">&lt;li class="nav-item">
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+aria-controls="tabs-2-0" aria-selected="true">
+Gradle Kotlin
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+aria-controls="tabs-2-1" aria-selected="false">
+Gradle Groovy
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Maven"
+id="tabs-2-2-tab" data-toggle="tab" href="#tabs-2-2" role="tab" onclick="handleClick(&amp;#34;Maven&amp;#34;);"
+aria-controls="tabs-2-2" aria-selected="false">
+Maven
+&lt;/a>
+&lt;/li>&lt;/ul>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>&lt;/div>
+&lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
+id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-distributed-network-java-lib:2.5.1&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-distributed-network-java-lib:2.5.1&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-distributed-network-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.5.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div></description></item><item><title>Keyple Distributed Remote Library</title><link>https://keyple.org/components/distributed/keyple-distributed-remote-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/distributed/keyple-distributed-remote-lib/</guid><description>&lt;br>
+&lt;p>The &lt;strong>Keyple Distributed Remote Library&lt;/strong> is the part of the &lt;strong>Keyple Distributed&lt;/strong> solution which contains all the &lt;strong>remote&lt;/strong> plugins.&lt;/p>
+&lt;p>Therefore, it should be used only by developers of applications installed on the terminal not having local access to the smart card reader and that wishes to control the reader remotely.&lt;/p>
+&lt;p>It is compatible with &lt;strong>Windows&lt;/strong>, &lt;strong>Linux&lt;/strong>, &lt;strong>macOS&lt;/strong> and &lt;strong>Android&lt;/strong> platforms.&lt;/p>
+&lt;br>
+&lt;h2 id="java-component">Java component&lt;/h2>
+&lt;div class="alert alert-note">
+&lt;div>
+&lt;strong>&lt;code>2.5.1&lt;/code>&lt;/strong>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-remote-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-remote-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
+&lt;/div>
+&lt;/div>
+&lt;h3 id="documentation">Documentation&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-remote-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../learn/user-guide/distributed-application/">User guide&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="download">Download&lt;/h3>
+&lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-distributed-remote-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
+&lt;ul class="nav nav-tabs" id="tabs-2" role="tablist">&lt;li class="nav-item">
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+aria-controls="tabs-2-0" aria-selected="true">
+Gradle Kotlin
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+aria-controls="tabs-2-1" aria-selected="false">
+Gradle Groovy
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Maven"
+id="tabs-2-2-tab" data-toggle="tab" href="#tabs-2-2" role="tab" onclick="handleClick(&amp;#34;Maven&amp;#34;);"
+aria-controls="tabs-2-2" aria-selected="false">
+Maven
+&lt;/a>
+&lt;/li>&lt;/ul>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>&lt;/div>
+&lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
+id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-distributed-remote-java-lib:2.5.1&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-distributed-remote-java-lib:2.5.1&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-distributed-remote-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>2.5.1&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;/div></description></item></channel></rss>

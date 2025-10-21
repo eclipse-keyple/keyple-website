@@ -1,154 +1,75 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keyple card extensions components | Eclipse Keyple</title><link>https://keyple.org/components/card-extensions/</link><atom:link href="https://keyple.org/components/card-extensions/index.xml" rel="self" type="application/rss+xml"/><description>Keyple card extensions components</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://keyple.org/media/logo.svg</url><title>Keyple card extensions components</title><link>https://keyple.org/components/card-extensions/</link></image><item><title>Keyple Card Calypso Library</title><link>https://keyple.org/components/card-extensions/keyple-card-calypso-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/card-extensions/keyple-card-calypso-lib/</guid><description>&lt;style>
-table th:nth-child(1) {
-width: 13rem;
-}
-&lt;/style>
-&lt;h2 id="overview">Overview&lt;/h2>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-alt pr-1 fa-fw">&lt;/i> &lt;strong>Description&lt;/strong>&lt;/td>
-&lt;td>The &lt;strong>Keyple Card Calypso Library&lt;/strong> is a card extension add-on to manage Calypso® cards.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-users pr-1 fa-fw">&lt;/i> &lt;strong>Intended Audience&lt;/strong>&lt;/td>
-&lt;td>Developers creating Keyple-based Calypso applications.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-laptop pr-1 fa-fw">&lt;/i> &lt;strong>Compatible OS&lt;/strong>&lt;/td>
-&lt;td>Windows, Linux, macOS, Android.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-lock pr-1 fa-fw">&lt;/i> &lt;strong>Security Note&lt;/strong>&lt;/td>
-&lt;td>For card transactions that need to be secured by cryptographic calculations using symmetrical keys (SAM or HSM) or asymmetrical keys (PKI), &lt;strong>it is mandatory to use one of the dedicated crypto libraries&lt;/strong> (Open SAM, Legacy SAM, PKI). At present, only the &lt;a href="../../components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/">Calypso Crypto Legacy SAM&lt;/a> and the &lt;a href="../../components/card-extensions/keyple-card-calypso-crypto-pki-lib/">Calypso Crypto PKI&lt;/a> libraries are available.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="implementations">Implementations&lt;/h2>
-&lt;ul class="nav nav-tabs" id="tabs-6" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Java"
-id="tabs-6-0-tab" data-toggle="tab" href="#tabs-6-0" role="tab" onclick="handleClick(&amp;#34;Java&amp;#34;);"
-aria-controls="tabs-6-0" aria-selected="true">
-Java
-&lt;/a>
-&lt;/li>&lt;li class="nav-item">
-&lt;a class="nav-link tab-C--"
-id="tabs-6-1-tab" data-toggle="tab" href="#tabs-6-1" role="tab" onclick="handleClick(&amp;#34;C--&amp;#34;);"
-aria-controls="tabs-6-1" aria-selected="false">
-C&amp;#43;&amp;#43;
-&lt;/a>
-&lt;/li>&lt;/ul>
-&lt;div class="tab-content" id="tabs-6-content">&lt;div class="tab-pane fade show active"
-id="tabs-6-0" role="tabpanel" aria-labelled-by="tabs-6-0-tab">
-&lt;table>
-&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
-&lt;td>&lt;strong>&lt;code>3.1.9&lt;/code>&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/td>
-&lt;td>List of changes and new features introduced in each release.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-java-lib/">GitHub&lt;/a>&lt;/td>
-&lt;td>Source code repository and issue tracker for the Java project.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="../../learn/user-guide/calypso-application">User Guide&lt;/a>&lt;/td>
-&lt;td>Step-by-step guide to learn how to build a Keyple-based Calypso application.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-code pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-calypso-java-lib/">API Reference&lt;/a>&lt;/td>
-&lt;td>Complete documentation of all classes and methods in the Java API.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-sitemap pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-calypso-java-lib/">UML Class Diagram&lt;/a>&lt;/td>
-&lt;td>UML diagram showing the structure and relationships between classes.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-database pr-1 fa-fw">&lt;/i> &lt;a href="https://central.sonatype.com/search?q=keyple-card-calypso-java-lib">Maven Central&lt;/a>&lt;/td>
-&lt;td>Official Maven Central page to include the Java component in your project.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keyple card extensions components | Eclipse Keyple</title><link>https://keyple.org/components/card-extensions/</link><atom:link href="https://keyple.org/components/card-extensions/index.xml" rel="self" type="application/rss+xml"/><description>Keyple card extensions components</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><image><url>https://keyple.org/media/logo.svg</url><title>Keyple card extensions components</title><link>https://keyple.org/components/card-extensions/</link></image><item><title>Keyple Card Calypso Library</title><link>https://keyple.org/components/card-extensions/keyple-card-calypso-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/card-extensions/keyple-card-calypso-lib/</guid><description>&lt;br>
+&lt;p>The &lt;strong>Keyple Card Calypso Library&lt;/strong> is an add-on to manage Calypso® cards.&lt;/p>
+&lt;p>Therefore, it should be used only by application developers.&lt;/p>
+&lt;div class="alert alert-warning">
+&lt;div>
+For card transactions that need to be secured by cryptographic calculations using symmetrical keys (SAM or HSM) or
+asymmetrical keys (PKI), &lt;strong>it is mandatory to use one of the dedicated crypto libraries&lt;/strong> (Open SAM, Legacy SAM, PKI).
+At present, only the &lt;a href="../../components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/">Calypso Crypto Legacy SAM&lt;/a> library is available.
 &lt;/div>
-&lt;div class="tab-pane fade"
-id="tabs-6-1" role="tabpanel" aria-labelled-by="tabs-6-1-tab">
-&lt;table>
-&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
-&lt;td>&lt;strong>&lt;code>2.2.5.5&lt;/code>&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib/releases/">Release History&lt;/a>&lt;/td>
-&lt;td>List of published releases and related release notes.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib/">GitHub&lt;/a>&lt;/td>
-&lt;td>Source code repository and documentation for the C++ project.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="../../learn/user-guide/calypso-application">User Guide&lt;/a>&lt;/td>
-&lt;td>Step-by-step guide to learn how to build a Keyple-based Calypso application.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-code pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-calypso-cpp-lib/">API Reference&lt;/a>&lt;/td>
-&lt;td>Complete documentation of all classes and functions in the C++ API.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-sitemap pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-calypso-uml-lib/">UML Class Diagram&lt;/a>&lt;/td>
-&lt;td>UML class diagram of the Java implementation, from which the C++ code is derived.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
+&lt;/div>
+&lt;br>
+&lt;h2 id="java-component">Java component&lt;/h2>
 &lt;div class="alert alert-note">
 &lt;div>
-&lt;h3 id="c-specific-information">C++ Specific Information&lt;/h3>
-&lt;h4 id="versioning">Versioning&lt;/h4>
-&lt;p>The Keyple C++ implementation is a transposition of the Java version. As a result, the C++ version may lag
-behind the Java version by one or more release cycles.&lt;/p>
-&lt;p>To make version correspondence explicit:&lt;/p>
+&lt;strong>&lt;code>3.1.9&lt;/code>&lt;/strong>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
+&lt;/div>
+&lt;/div>
+&lt;h3 id="documentation">Documentation&lt;/h3>
 &lt;ul>
-&lt;li>The &lt;strong>Java implementation&lt;/strong> follows Semantic Versioning (SemVer) with &lt;strong>three digits&lt;/strong>:&lt;br>
-&lt;code>MAJOR.MINOR.PATCH&lt;/code>&lt;/li>
-&lt;li>The &lt;strong>C++ implementation&lt;/strong> uses &lt;strong>four digits&lt;/strong>:&lt;br>
-&lt;code>MAJOR.MINOR.PATCH.CPP_FIX&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../../learn/user-guide/calypso-application/">User guide&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>In this scheme, the first three digits of the C++ version reflect the corresponding Java source version, while
-the fourth digit represents any C++-specific fixes or adjustments.&lt;/p>
-&lt;h4 id="uml-class-diagrams">UML Class Diagrams&lt;/h4>
-&lt;p>The class structure of the C++ implementation is directly inspired by the UML class diagrams of
-the Java version, ensuring conceptual and architectural consistency between both languages.&lt;/p>
-&lt;h4 id="user-guides">User Guides&lt;/h4>
-&lt;p>The user guides mainly provide Java code snippets, but the same concepts and logic are directly transposable to
-the C++ implementation.&lt;/p>
+&lt;h3 id="download">Download&lt;/h3>
+&lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-card-calypso-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
+&lt;ul class="nav nav-tabs" id="tabs-3" role="tablist">&lt;li class="nav-item">
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+aria-controls="tabs-3-0" aria-selected="true">
+Gradle Kotlin
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-3-1-tab" data-toggle="tab" href="#tabs-3-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+aria-controls="tabs-3-1" aria-selected="false">
+Gradle Groovy
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Maven"
+id="tabs-3-2-tab" data-toggle="tab" href="#tabs-3-2" role="tab" onclick="handleClick(&amp;#34;Maven&amp;#34;);"
+aria-controls="tabs-3-2" aria-selected="false">
+Maven
+&lt;/a>
+&lt;/li>&lt;/ul>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-3', this);">Copy&lt;/button>&lt;/div>
+&lt;div class="tab-content" id="tabs-3-content">&lt;div class="tab-pane fade show active"
+id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.9&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-card-calypso-java-lib:3.1.9&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-3-2" role="tabpanel" aria-labelled-by="tabs-3-2-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-card-calypso-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>3.1.9&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
@@ -159,152 +80,70 @@ which is also in &lt;strong>Beta&lt;/strong>.
 While it&amp;rsquo;s nearly stable, future migration steps might be necessary. We aim to minimize any changes you&amp;rsquo;ll need to make.
 &lt;/div>
 &lt;/div>
-&lt;style>
-table th:nth-child(1) {
-width: 13rem;
-}
-&lt;/style>
-&lt;h2 id="overview">Overview&lt;/h2>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-alt pr-1 fa-fw">&lt;/i> &lt;strong>Description&lt;/strong>&lt;/td>
-&lt;td>The &lt;strong>Keyple Card Calypso Crypto Legacy SAM Library&lt;/strong> is a card extension add-on to manage Calypso® legacy SAMs (SAM-C1, HSM-C1, etc.).&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-users pr-1 fa-fw">&lt;/i> &lt;strong>Intended Audience&lt;/strong>&lt;/td>
-&lt;td>Developers creating Keyple-based Calypso applications using legacy SAMs for cryptographic calculations.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-laptop pr-1 fa-fw">&lt;/i> &lt;strong>Compatible OS&lt;/strong>&lt;/td>
-&lt;td>Windows, Linux, macOS, Android.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="implementations">Implementations&lt;/h2>
-&lt;ul class="nav nav-tabs" id="tabs-4" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Java"
-id="tabs-4-0-tab" data-toggle="tab" href="#tabs-4-0" role="tab" onclick="handleClick(&amp;#34;Java&amp;#34;);"
-aria-controls="tabs-4-0" aria-selected="true">
-Java
-&lt;/a>
-&lt;/li>&lt;li class="nav-item">
-&lt;a class="nav-link tab-C--"
-id="tabs-4-1-tab" data-toggle="tab" href="#tabs-4-1" role="tab" onclick="handleClick(&amp;#34;C--&amp;#34;);"
-aria-controls="tabs-4-1" aria-selected="false">
-C&amp;#43;&amp;#43;
-&lt;/a>
-&lt;/li>&lt;/ul>
-&lt;div class="tab-content" id="tabs-4-content">&lt;div class="tab-pane fade show active"
-id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab">
-&lt;table>
-&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
-&lt;td>&lt;strong>&lt;code>0.9.0&lt;/code>&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/td>
-&lt;td>List of changes and new features introduced in each release.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/">GitHub&lt;/a>&lt;/td>
-&lt;td>Source code repository and issue tracker for the Java project.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="../../learn/user-guide/calypso-application">User Guide&lt;/a>&lt;/td>
-&lt;td>Step-by-step guide to learn how to build a Keyple-based Calypso application.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-code pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-java-lib/">API Reference&lt;/a>&lt;/td>
-&lt;td>Complete documentation of all classes and methods in the Java API.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-sitemap pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-java-lib/">UML Class Diagram&lt;/a>&lt;/td>
-&lt;td>UML diagram showing the structure and relationships between classes.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-database pr-1 fa-fw">&lt;/i> &lt;a href="https://central.sonatype.com/search?q=keyple-card-calypso-crypto-legacysam-java-lib">Maven Central&lt;/a>&lt;/td>
-&lt;td>Official Maven Central page to include the Java component in your project.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;/div>
-&lt;div class="tab-pane fade"
-id="tabs-4-1" role="tabpanel" aria-labelled-by="tabs-4-1-tab">
-&lt;table>
-&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
-&lt;td>&lt;strong>&lt;code>Not yet released&lt;/code>&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-legacysam-cpp-lib/releases/">Release History&lt;/a>&lt;/td>
-&lt;td>List of published releases and related release notes.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-legacysam-cpp-lib/">GitHub&lt;/a>&lt;/td>
-&lt;td>Source code repository and documentation for the C++ project.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="../../learn/user-guide/calypso-application">User Guide&lt;/a>&lt;/td>
-&lt;td>Step-by-step guide to learn how to build a Keyple-based Calypso application.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-code pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-cpp-lib/">API Reference&lt;/a>&lt;/td>
-&lt;td>Complete documentation of all classes and functions in the C++ API.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-sitemap pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-uml-lib/">UML Class Diagram&lt;/a>&lt;/td>
-&lt;td>UML class diagram of the Java implementation, from which the C++ code is derived.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
+&lt;br>
+&lt;p>The &lt;strong>Keyple Card Calypso Crypto Legacy SAM Library&lt;/strong> is an add-on to manage Calypso® legacy SAMs (SAM-C1, HSM-C1, etc.).&lt;/p>
+&lt;p>Therefore, it should be used only by application developers.&lt;/p>
+&lt;br>
+&lt;h2 id="java-component">Java component&lt;/h2>
 &lt;div class="alert alert-note">
 &lt;div>
-&lt;h3 id="c-specific-information">C++ Specific Information&lt;/h3>
-&lt;h4 id="versioning">Versioning&lt;/h4>
-&lt;p>The Keyple C++ implementation is a transposition of the Java version. As a result, the C++ version may lag
-behind the Java version by one or more release cycles.&lt;/p>
-&lt;p>To make version correspondence explicit:&lt;/p>
+&lt;strong>&lt;code>0.9.0&lt;/code>&lt;/strong>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
+&lt;/div>
+&lt;/div>
+&lt;h3 id="documentation">Documentation&lt;/h3>
 &lt;ul>
-&lt;li>The &lt;strong>Java implementation&lt;/strong> follows Semantic Versioning (SemVer) with &lt;strong>three digits&lt;/strong>:&lt;br>
-&lt;code>MAJOR.MINOR.PATCH&lt;/code>&lt;/li>
-&lt;li>The &lt;strong>C++ implementation&lt;/strong> uses &lt;strong>four digits&lt;/strong>:&lt;br>
-&lt;code>MAJOR.MINOR.PATCH.CPP_FIX&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>In this scheme, the first three digits of the C++ version reflect the corresponding Java source version, while
-the fourth digit represents any C++-specific fixes or adjustments.&lt;/p>
-&lt;h4 id="uml-class-diagrams">UML Class Diagrams&lt;/h4>
-&lt;p>The class structure of the C++ implementation is directly inspired by the UML class diagrams of
-the Java version, ensuring conceptual and architectural consistency between both languages.&lt;/p>
-&lt;h4 id="user-guides">User Guides&lt;/h4>
-&lt;p>The user guides mainly provide Java code snippets, but the same concepts and logic are directly transposable to
-the C++ implementation.&lt;/p>
+&lt;h3 id="download">Download&lt;/h3>
+&lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-card-calypso-crypto-legacysam-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
+&lt;ul class="nav nav-tabs" id="tabs-2" role="tablist">&lt;li class="nav-item">
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+aria-controls="tabs-2-0" aria-selected="true">
+Gradle Kotlin
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+aria-controls="tabs-2-1" aria-selected="false">
+Gradle Groovy
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Maven"
+id="tabs-2-2-tab" data-toggle="tab" href="#tabs-2-2" role="tab" onclick="handleClick(&amp;#34;Maven&amp;#34;);"
+aria-controls="tabs-2-2" aria-selected="false">
+Maven
+&lt;/a>
+&lt;/li>&lt;/ul>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>&lt;/div>
+&lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
+id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.9.0&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-card-calypso-crypto-legacysam-java-lib:0.9.0&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-card-calypso-crypto-legacysam-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>0.9.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
@@ -314,224 +153,137 @@ This library is currently in &lt;strong>Beta&lt;/strong> version.
 While it&amp;rsquo;s nearly stable, future migration steps might be necessary. We aim to minimize any changes you&amp;rsquo;ll need to make.
 &lt;/div>
 &lt;/div>
-&lt;style>
-table th:nth-child(1) {
-width: 13rem;
-}
-&lt;/style>
-&lt;h2 id="overview">Overview&lt;/h2>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-alt pr-1 fa-fw">&lt;/i> &lt;strong>Description&lt;/strong>&lt;/td>
-&lt;td>The &lt;strong>Keyple Card Calypso Crypto PKI Library&lt;/strong> is a card extension add-on to enable Calypso® PKI card transactions.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-users pr-1 fa-fw">&lt;/i> &lt;strong>Intended Audience&lt;/strong>&lt;/td>
-&lt;td>Developers creating Keyple-based Calypso applications using PKI security mechanisms.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-laptop pr-1 fa-fw">&lt;/i> &lt;strong>Compatible OS&lt;/strong>&lt;/td>
-&lt;td>Windows, Linux, macOS, Android.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="implementations">Implementations&lt;/h2>
-&lt;ul class="nav nav-tabs" id="tabs-4" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Java"
-id="tabs-4-0-tab" data-toggle="tab" href="#tabs-4-0" role="tab" onclick="handleClick(&amp;#34;Java&amp;#34;);"
-aria-controls="tabs-4-0" aria-selected="true">
-Java
-&lt;/a>
-&lt;/li>&lt;/ul>
-&lt;div class="tab-content" id="tabs-4-content">&lt;div class="tab-pane fade show active"
-id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab">
-&lt;table>
-&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
-&lt;td>&lt;strong>&lt;code>0.2.3&lt;/code>&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/td>
-&lt;td>List of changes and new features introduced in each release.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/">GitHub&lt;/a>&lt;/td>
-&lt;td>Source code repository and issue tracker for the Java project.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="../../learn/user-guide/calypso-application">User Guide&lt;/a>&lt;/td>
-&lt;td>Step-by-step guide to learn how to build a Keyple-based Calypso application.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-code pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-pki-java-lib/">API Reference&lt;/a>&lt;/td>
-&lt;td>Complete documentation of all classes and methods in the Java API.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-sitemap pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-pki-java-lib/">UML Class Diagram&lt;/a>&lt;/td>
-&lt;td>UML diagram showing the structure and relationships between classes.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-database pr-1 fa-fw">&lt;/i> &lt;a href="https://central.sonatype.com/search?q=keyple-card-calypso-crypto-pki-java-lib">Maven Central&lt;/a>&lt;/td>
-&lt;td>Official Maven Central page to include the Java component in your project.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>Keyple Card Generic Library</title><link>https://keyple.org/components/card-extensions/keyple-card-generic-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/card-extensions/keyple-card-generic-lib/</guid><description>&lt;style>
-table th:nth-child(1) {
-width: 13rem;
-}
-&lt;/style>
-&lt;h2 id="overview">Overview&lt;/h2>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>&lt;/th>
-&lt;th>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-alt pr-1 fa-fw">&lt;/i> &lt;strong>Description&lt;/strong>&lt;/td>
-&lt;td>The &lt;strong>Keyple Card Generic Library&lt;/strong> is a card extension add-on to manage cards with low-level API.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-users pr-1 fa-fw">&lt;/i> &lt;strong>Intended Audience&lt;/strong>&lt;/td>
-&lt;td>Developers creating Keyple-based applications.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-laptop pr-1 fa-fw">&lt;/i> &lt;strong>Compatible OS&lt;/strong>&lt;/td>
-&lt;td>Windows, Linux, macOS, Android.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="implementations">Implementations&lt;/h2>
-&lt;ul class="nav nav-tabs" id="tabs-3" role="tablist">&lt;li class="nav-item">
-&lt;a class="nav-link active tab-Java"
-id="tabs-3-0-tab" data-toggle="tab" href="#tabs-3-0" role="tab" onclick="handleClick(&amp;#34;Java&amp;#34;);"
-aria-controls="tabs-3-0" aria-selected="true">
-Java
-&lt;/a>
-&lt;/li>&lt;li class="nav-item">
-&lt;a class="nav-link tab-C--"
-id="tabs-3-1-tab" data-toggle="tab" href="#tabs-3-1" role="tab" onclick="handleClick(&amp;#34;C--&amp;#34;);"
-aria-controls="tabs-3-1" aria-selected="false">
-C&amp;#43;&amp;#43;
-&lt;/a>
-&lt;/li>&lt;/ul>
-&lt;div class="tab-content" id="tabs-3-content">&lt;div class="tab-pane fade show active"
-id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
-&lt;table>
-&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
-&lt;td>&lt;strong>&lt;code>3.1.2&lt;/code>&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-generic-java-lib/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/td>
-&lt;td>List of changes and new features introduced in each release.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-generic-java-lib/">GitHub&lt;/a>&lt;/td>
-&lt;td>Source code repository and issue tracker for the Java project.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-code pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-generic-java-lib/">API Reference&lt;/a>&lt;/td>
-&lt;td>Complete documentation of all classes and methods in the Java API.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-sitemap pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-generic-java-lib/">UML Class Diagram&lt;/a>&lt;/td>
-&lt;td>UML diagram showing the structure and relationships between classes.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-database pr-1 fa-fw">&lt;/i> &lt;a href="https://central.sonatype.com/search?q=keyple-card-generic-java-lib">Maven Central&lt;/a>&lt;/td>
-&lt;td>Official Maven Central page to include the Java component in your project.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;/div>
-&lt;div class="tab-pane fade"
-id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab">
-&lt;table>
-&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
-&lt;td>&lt;strong>&lt;code>2.0.2.1&lt;/code>&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-generic-cpp-lib/releases/">Release History&lt;/a>&lt;/td>
-&lt;td>List of published releases and related release notes.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-generic-cpp-lib/">GitHub&lt;/a>&lt;/td>
-&lt;td>Source code repository and documentation for the C++ project.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-file-code pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-generic-cpp-lib/">API Reference&lt;/a>&lt;/td>
-&lt;td>Complete documentation of all classes and functions in the C++ API.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>
-&lt;i class="fas fa-sitemap pr-1 fa-fw">&lt;/i> &lt;a href="https://docs.keyple.org/keyple-card-generic-uml-lib/">UML Class Diagram&lt;/a>&lt;/td>
-&lt;td>UML class diagram of the Java implementation, from which the C++ code is derived.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
+&lt;br>
+&lt;p>The &lt;strong>Keyple Card Calypso Crypto PKI Library&lt;/strong> is an add-on to enable Calypso® PKI card transactions.&lt;/p>
+&lt;p>Therefore, it should be used only by application developers.&lt;/p>
+&lt;br>
+&lt;h2 id="java-component">Java component&lt;/h2>
 &lt;div class="alert alert-note">
 &lt;div>
-&lt;h3 id="c-specific-information">C++ Specific Information&lt;/h3>
-&lt;h4 id="versioning">Versioning&lt;/h4>
-&lt;p>The Keyple C++ implementation is a transposition of the Java version. As a result, the C++ version may lag
-behind the Java version by one or more release cycles.&lt;/p>
-&lt;p>To make version correspondence explicit:&lt;/p>
+&lt;strong>&lt;code>0.2.3&lt;/code>&lt;/strong>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
+&lt;/div>
+&lt;/div>
+&lt;h3 id="documentation">Documentation&lt;/h3>
 &lt;ul>
-&lt;li>The &lt;strong>Java implementation&lt;/strong> follows Semantic Versioning (SemVer) with &lt;strong>three digits&lt;/strong>:&lt;br>
-&lt;code>MAJOR.MINOR.PATCH&lt;/code>&lt;/li>
-&lt;li>The &lt;strong>C++ implementation&lt;/strong> uses &lt;strong>four digits&lt;/strong>:&lt;br>
-&lt;code>MAJOR.MINOR.PATCH.CPP_FIX&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-pki-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>In this scheme, the first three digits of the C++ version reflect the corresponding Java source version, while
-the fourth digit represents any C++-specific fixes or adjustments.&lt;/p>
-&lt;h4 id="uml-class-diagrams">UML Class Diagrams&lt;/h4>
-&lt;p>The class structure of the C++ implementation is directly inspired by the UML class diagrams of
-the Java version, ensuring conceptual and architectural consistency between both languages.&lt;/p>
-&lt;h4 id="user-guides">User Guides&lt;/h4>
-&lt;p>The user guides mainly provide Java code snippets, but the same concepts and logic are directly transposable to
-the C++ implementation.&lt;/p>
+&lt;h3 id="download">Download&lt;/h3>
+&lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-card-calypso-crypto-pki-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
+&lt;ul class="nav nav-tabs" id="tabs-2" role="tablist">&lt;li class="nav-item">
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-2-0-tab" data-toggle="tab" href="#tabs-2-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+aria-controls="tabs-2-0" aria-selected="true">
+Gradle Kotlin
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-2-1-tab" data-toggle="tab" href="#tabs-2-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+aria-controls="tabs-2-1" aria-selected="false">
+Gradle Groovy
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Maven"
+id="tabs-2-2-tab" data-toggle="tab" href="#tabs-2-2" role="tab" onclick="handleClick(&amp;#34;Maven&amp;#34;);"
+aria-controls="tabs-2-2" aria-selected="false">
+Maven
+&lt;/a>
+&lt;/li>&lt;/ul>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-2', this);">Copy&lt;/button>&lt;/div>
+&lt;div class="tab-content" id="tabs-2-content">&lt;div class="tab-pane fade show active"
+id="tabs-2-0" role="tabpanel" aria-labelled-by="tabs-2-0-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:0.2.3&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-2-1" role="tabpanel" aria-labelled-by="tabs-2-1-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-card-calypso-crypto-pki-java-lib:0.2.3&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-2-2" role="tabpanel" aria-labelled-by="tabs-2-2-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-card-calypso-crypto-pki-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>0.2.3&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div></description></item><item><title>Keyple Card Generic Library</title><link>https://keyple.org/components/card-extensions/keyple-card-generic-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/card-extensions/keyple-card-generic-lib/</guid><description>&lt;br>
+&lt;p>The &lt;strong>Keyple Card Generic Library&lt;/strong> is an add-on to manage cards with low-level API.&lt;/p>
+&lt;p>Therefore, it should be used only by application developers.&lt;/p>
+&lt;br>
+&lt;h2 id="java-component">Java component&lt;/h2>
+&lt;div class="alert alert-note">
+&lt;div>
+&lt;strong>&lt;code>3.1.2&lt;/code>&lt;/strong>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> &lt;a href="#download">Download&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-generic-java-lib/" target="_blank" rel="noopener">GitHub&lt;/a>&lt;/span>
+&lt;span class="component-metadata">
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-card-generic-java-lib/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog&lt;/a>&lt;/span>
+&lt;/div>
+&lt;/div>
+&lt;h3 id="documentation">Documentation&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-generic-java-lib" target="_blank" rel="noopener">API documentation&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="download">Download&lt;/h3>
+&lt;p>All deliverables are available directly from the &lt;a href="https://central.sonatype.com/search?q=keyple-card-generic-java-lib" target="_blank" rel="noopener">Maven Central Repository&lt;/a> or by using one of the project resource managers below:&lt;/p>
+&lt;ul class="nav nav-tabs" id="tabs-1" role="tablist">&lt;li class="nav-item">
+&lt;a class="nav-link active tab-Gradle-Kotlin"
+id="tabs-1-0-tab" data-toggle="tab" href="#tabs-1-0" role="tab" onclick="handleClick(&amp;#34;Gradle-Kotlin&amp;#34;);"
+aria-controls="tabs-1-0" aria-selected="true">
+Gradle Kotlin
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Gradle-Groovy"
+id="tabs-1-1-tab" data-toggle="tab" href="#tabs-1-1" role="tab" onclick="handleClick(&amp;#34;Gradle-Groovy&amp;#34;);"
+aria-controls="tabs-1-1" aria-selected="false">
+Gradle Groovy
+&lt;/a>
+&lt;/li>&lt;li class="nav-item">
+&lt;a class="nav-link tab-Maven"
+id="tabs-1-2-tab" data-toggle="tab" href="#tabs-1-2" role="tab" onclick="handleClick(&amp;#34;Maven&amp;#34;);"
+aria-controls="tabs-1-2" aria-selected="false">
+Maven
+&lt;/a>
+&lt;/li>&lt;/ul>
+&lt;div class="bd-clipboard">&lt;button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-1', this);">Copy&lt;/button>&lt;/div>
+&lt;div class="tab-content" id="tabs-1-content">&lt;div class="tab-pane fade show active"
+id="tabs-1-0" role="tabpanel" aria-labelled-by="tabs-1-0-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.eclipse.keyple:keyple-card-generic-java-lib:3.1.2&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-1-1" role="tabpanel" aria-labelled-by="tabs-1-1-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-card-generic-java-lib:3.1.2&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="tab-pane fade"
+id="tabs-1-2" role="tabpanel" aria-labelled-by="tabs-1-2-tab">
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>keyple-card-generic-java-lib&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>3.1.2&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;/div>
