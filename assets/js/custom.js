@@ -677,7 +677,6 @@ loadProjectDashboard = async function() {
         a.appendChild(linkText);
         a.title = json.name;
         a.href = json.html_url;
-        a.target = "_blank";
         cell.appendChild(a);
 
         // column doc
@@ -691,7 +690,6 @@ loadProjectDashboard = async function() {
             a.innerHTML = "<i class=\"fas fa-book\"></i>";
             a.title = "API documentation for " + json.name;
             a.href = "https://docs.keyple.org/" + json.name;
-            a.target = "_blank";
             cell.appendChild(a);
         }
 
@@ -832,7 +830,6 @@ loadProjectDashboard = async function() {
         let a = document.createElement('a');
         let linkText = document.createTextNode("\u2b24");
         a.appendChild(linkText);
-        a.target = "_blank";
 
         try {
             json = await getJsonRepositoryData(repos, "_check_runs");
@@ -1207,3 +1204,14 @@ loadStatistics = async function() {
     // Call the function to create the chart
     createChart().catch(error => console.error('Error creating chart:', error));
 }
+
+// Additional automations
+document.addEventListener("DOMContentLoaded", () => {
+    // Select all external links (http) except those pointing to keyple.org
+    // and add target="_blank" and rel="noopener noreferrer" for security and privacy
+    const externalLinks = document.querySelectorAll('a[href^="http"]:not([href*="//keyple.org"])');
+    externalLinks.forEach(link => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+    });
+});

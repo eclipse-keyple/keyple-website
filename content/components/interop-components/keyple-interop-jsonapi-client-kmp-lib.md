@@ -5,37 +5,66 @@ summary: A multiplatform client library implementing the Keyple Server JSON API 
 type: book
 toc: true
 ---
+<style>
+table th:nth-child(1) {
+  width: 13rem;
+}
+</style>
 
-<br>
+## Overview
 
-The **Keyple Interop JSON API Client Library** is a Kotlin Multiplatform client library designed to facilitate communication
-between [non-Keyple]({{< ref "user-guides/non-keyple-client/content" >}}) client applications and Keyple servers.
+|                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| {{< icon name="file-alt" pack="fas" >}} **Description**    | The **Keyple Interop JSON API Client Library** is a Kotlin Multiplatform client library designed to facilitate communication between [non-Keyple]({{< ref "user-guides/non-keyple-client/content" >}}) client applications and Keyple servers.<br><br>It implements the Keyple [Server JSON API]({{< ref "user-guides/non-keyple-client/server-json-api" >}}) and the [Selection JSON Specification]({{< ref "user-guides/non-keyple-client/selection-json-specification" >}}), enabling seamless data exchange over HTTP. |
+| {{< icon name="users" pack="fas" >}} **Intended Audience** | Developers creating non-Keyple client applications.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| {{< icon name="laptop" pack="fas" >}} **Compatible OS**    | Windows, Linux, macOS, Android, iOS.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
-It implements the Keyple [Server JSON API]({{< ref "user-guides/non-keyple-client/server-json-api" >}}) 
-and the [Selection JSON Specification]({{< ref "user-guides/non-keyple-client/selection-json-specification" >}}),
-enabling seamless data exchange over HTTP.
+## Implementations
 
-This library is fully compatible with **Windows**, **Linux**, **macOS**, **Android** and **iOS** platforms, allowing
-applications on these devices to easily interact with Keyple servers and access the full functionality of the Keyple
-ecosystem.
+{{< tabpane showCopyButton="false" >}}
 
-<br>
+{{< tab header="Java" >}}
 
-## Kotlin Multiplatform components
+<table>
+<thead><tr><th></th><th></th></tr></thead>
+<tbody>
+  <tr>
+    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong></td>
+    <td><strong><code>{{% keyple-interop-jsonapi-client-kmp-lib-version %}}</code></strong></td>
+  </tr>
+  <tr>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} <a href="https://github.com/eclipse-keyple/keyple-interop-jsonapi-client-kmp-lib/blob/main/CHANGELOG.md">Changelog</a></td>
+    <td>List of changes and new features introduced in each release.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="github" pack="fab" >}} <a href="https://github.com/eclipse-keyple/keyple-interop-jsonapi-client-kmp-lib/">GitHub</a></td>
+    <td>Source code repository and issue tracker for the Java project.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="book" pack="fas" >}} <a href="/user-guides/non-keyple-client/content">User Guide</a></td>
+    <td>Step-by-step guide to learn how to build a non-Keyple client.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="file-code" pack="fas" >}} <a href="https://docs.keyple.org/keyple-interop-jsonapi-client-kmp-lib/">API Reference</a></td>
+    <td>Complete documentation of all classes and methods in the Java API.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="sitemap" pack="fas" >}} <a href="https://docs.keyple.org/keyple-interop-jsonapi-client-kmp-lib/">UML Class Diagram</a></td>
+    <td>UML diagram showing the structure and relationships between classes.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="database" pack="fas" >}} <a href="https://central.sonatype.com/search?q=keyple-interop-jsonapi-client-kmp-lib">Maven Central</a></td>
+    <td>Official Maven Central page to include the Java component in your project.</td>
+  </tr>
+</tbody>
+</table>
+
+{{< /tab >}}
+
+{{< /tabpane >}}
 
 {{% callout note %}}
-**`{{% keyple-interop-jsonapi-client-kmp-lib-version %}}`**
-<span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-interop-jsonapi-client-kmp-lib/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-interop-jsonapi-client-kmp-lib/blob/main/CHANGELOG.md)</span>
-{{% /callout %}}
-
-### Documentation
-
-* [API documentation](https://docs.keyple.org/keyple-interop-jsonapi-client-kmp-lib)
-* [User guide]({{< ref "user-guides/non-keyple-client/content" >}})
-
-### Download
+### Kotlin Multiplatform Note
 
 Here is a summary table describing the purpose and usage of each target module generated by this Kotlin Multiplatform
 library, including the root (no-suffix) module and platform-specific variants:
@@ -59,33 +88,7 @@ library, including the root (no-suffix) module and platform-specific variants:
 }
 </style>
 
-{{% callout note %}}
-Key Notes:
 - The root module serves as the entry point for consumers. When you add `implementation("[root-lib]")`, Gradle
   automatically selects the correct variant (jvm, android, etc.) based on the target platform.
 - The platform-specific modules (android, jvm, etc.) contain compiled code that can be executed or packaged directly.
 {{% /callout %}}
-
-All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-interop-jsonapi-client-kmp-lib) or by using one of the project resource managers below:
-
-{{< tabpane >}}
-{{< tab header="Gradle Kotlin" >}}
-{{< code lang="kotlin" copy="true">}}
-implementation("org.eclipse.keyple:[ARTIFACT_ID]:{{% keyple-interop-jsonapi-client-kmp-lib-version %}}")
-{{< /code>}}
-{{< /tab >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation 'org.eclipse.keyple:[ARTIFACT_ID]:{{% keyple-interop-jsonapi-client-kmp-lib-version %}}'
-{{< /code>}}
-{{< /tab >}}
-{{< tab header="Maven" >}}
-{{< code lang="xml" copy="true">}}
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>[ARTIFACT_ID]</artifactId>
-  <version>{{% keyple-interop-jsonapi-client-kmp-lib-version %}}</version>
-</dependency>
-{{< /code>}}
-{{< /tab >}}
-{{< /tabpane >}}

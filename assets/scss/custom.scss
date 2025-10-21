@@ -58,9 +58,9 @@ footer li {
 .project-tab #tabs .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
   color: #0062cc;
-  background-color: transparent;
+  background-color: #ddd;
   border-color: transparent transparent #f3f3f3;
-  border-bottom: 3px solid !important;
+  //border-bottom: 1px solid !important;
   font-size: 1em;
   font-weight: bold;
 }
@@ -378,13 +378,6 @@ table>tbody>tr:nth-child(odd)>td, table>tbody>tr:nth-child(odd)>th {
   margin-left: 1px !important;
 }
 
-// Add an external link icon to all portfolio card-text
-.card-text a::after {
-  content: "\f08e"; // Code Unicode of external link icon
-  font-family: "Font Awesome 5 Free", sans-serif;
-  margin-left: 10px;
-}
-
 // Tooltip statistics
 .tooltip-statistics {
   font-size: .7rem;
@@ -396,4 +389,14 @@ table>tbody>tr:nth-child(odd)>td, table>tbody>tr:nth-child(odd)>th {
 // Table header
 thead {
   background-color: #DDD;
+}
+
+/* Add ↗ after all external links, except when the link contains an image or an icon */
+a[href^="http"]:not([href*="//keyple.org"]):not(:has(img)):not(:has(i))::after {
+  content: "\00a0↗"; /* non-breaking space + arrow ↗ */
+  font-size: 0.85em;
+}
+/* Exceptions */
+#project-dashboard-table a::after {
+  content: "" !important;
 }

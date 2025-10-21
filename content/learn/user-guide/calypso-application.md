@@ -253,6 +253,7 @@ private static byte[] extractHceValidityToken(byte[] selectApplicationResponse) 
 ## Examples
 
 * [Java examples](https://github.com/eclipse-keyple/keyple-java-example)
+* [C++ examples](https://github.com/eclipse-keyple/keyple-cpp-example)
 
 <br>
 

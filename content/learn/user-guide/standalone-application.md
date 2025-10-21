@@ -491,6 +491,7 @@ smartCardService.unregisterPlugin(plugin.getName());
 ## Examples
 
 * [Java examples](https://github.com/eclipse-keyple/keyple-java-example)
+* [C++ examples](https://github.com/eclipse-keyple/keyple-cpp-example)
 
 <br>
 

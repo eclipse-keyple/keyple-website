@@ -1,0 +1,4 @@
+{{ $path := .Get "file" }}
+{{ with readFile (printf "assets/includes/%s.md" $path) }}
+{{ . | markdownify }}
+{{ end }}

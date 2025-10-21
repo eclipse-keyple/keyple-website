@@ -18,7 +18,7 @@ sections:
                 });
             </script>
             <div class="eclipsefdn-adopters"></div>
-            <a href="https://iot.eclipse.org/adopters/" target="_blank" rel="noopener">Follow this link to discover how to be listed as an adopter of Eclipse Keyple®</a>'
+            <a href="https://iot.eclipse.org/adopters/">Follow this link to discover how to be listed as an adopter of Eclipse Keyple®</a>'
   - block: portfolio
     id: testimonials
     content:

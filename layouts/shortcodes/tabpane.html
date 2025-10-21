@@ -6,6 +6,14 @@
   {{ $ref = $.Get "ref" }}
 {{ end }}
 
+{{/* Read optional parameter showCopyButton (default true) */}}
+{{ $showCopyButton := true }}
+{{ with $.Get "showCopyButton" }}
+  {{ if eq (lower .) "false" }}
+    {{ $showCopyButton = false }}
+  {{ end }}
+{{ end }}
+
 <ul class="nav nav-tabs" id="tabs-{{- $ref -}}" role="tablist">
   {{- range $index, $element := $.Scratch.Get "tabs" -}}
     <li class="nav-item">
@@ -25,7 +33,13 @@
 </ul>
 
 <!-- Inner content -->
-<div class="bd-clipboard"><button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard" onClick="javascript:copyTabContentToClipboard('tabs-{{- $ref -}}', this);">Copy</button></div>
+{{ if $showCopyButton }}
+<div class="bd-clipboard">
+  <button type="button" class="btn btn-clipboard btn-outline-light" title="Copy to clipboard"
+    onClick="javascript:copyTabContentToClipboard('tabs-{{- $ref -}}', this);">Copy</button>
+</div>
+{{ end }}
+
 <div class="tab-content" id="tabs-{{- $ref -}}-content">
   {{- range $index, $element := $.Scratch.Get "tabs" -}}
     {{- $tabid := printf "tabs-%v-%v-tab" $ref $index | anchorize -}}

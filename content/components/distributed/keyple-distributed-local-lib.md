@@ -5,53 +5,60 @@ summary: Part of the Keyple Distributed solution which contains all the local se
 type: book
 toc: true
 ---
+<style>
+table th:nth-child(1) {
+  width: 13rem;
+}
+</style>
 
-<br>
+## Overview
 
-The **Keyple Distributed Local Library** is the part of the **Keyple Distributed** solution which contains all the **local** services.
+|                                                            |                                                                                                                                                                                                              |
+|------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| {{< icon name="file-alt" pack="fas" >}} **Description**    | The **Keyple Distributed Local Library** is the part of the **Keyple Distributed** solution which contains all the **local** services.                                                                       |
+| {{< icon name="users" pack="fas" >}} **Intended Audience** | Developers creating applications installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote Keyple-based application. |
+| {{< icon name="laptop" pack="fas" >}} **Compatible OS**    | Windows, Linux, macOS, Android.                                                                                                                                                                              |
 
-Therefore, it should be used only by developers of applications installed on the terminal having local access to the smart card reader but wishes to delegate all or part of the ticketing processing to a remote application.
+## Implementations
 
-It is compatible with **Windows**, **Linux**, **macOS** and **Android** platforms.
+{{< tabpane showCopyButton="false" >}}
 
-<br>
+{{< tab header="Java" >}}
 
-## Java component
+<table>
+<thead><tr><th></th><th></th></tr></thead>
+<tbody>
+  <tr>
+    <td>{{< icon name="tag" pack="fas" >}} <strong>Latest Version</strong></td>
+    <td><strong><code>{{% keyple-distributed-local-java-lib-version %}}</code></strong></td>
+  </tr>
+  <tr>
+    <td>{{< icon name="exchange-alt" pack="fas" >}} <a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-lib/blob/main/CHANGELOG.md">Changelog</a></td>
+    <td>List of changes and new features introduced in each release.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="github" pack="fab" >}} <a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-lib/">GitHub</a></td>
+    <td>Source code repository and issue tracker for the Java project.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="book" pack="fas" >}} <a href="/learn/user-guide/distributed-application">User Guide</a></td>
+    <td>Step-by-step guide to learn how to build a Keyple-based distributed application.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="file-code" pack="fas" >}} <a href="https://docs.keyple.org/keyple-distributed-local-java-lib/">API Reference</a></td>
+    <td>Complete documentation of all classes and methods in the Java API.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="sitemap" pack="fas" >}} <a href="https://docs.keyple.org/keyple-distributed-local-java-lib/">UML Class Diagram</a></td>
+    <td>UML diagram showing the structure and relationships between classes.</td>
+  </tr>
+  <tr>
+    <td>{{< icon name="database" pack="fas" >}} <a href="https://central.sonatype.com/search?q=keyple-distributed-local-java-lib">Maven Central</a></td>
+    <td>Official Maven Central page to include the Java component in your project.</td>
+  </tr>
+</tbody>
+</table>
 
-{{% callout note %}}
-**`{{% keyple-distributed-local-java-lib-version %}}`**
-<span class="component-metadata">{{< icon name="download" pack="fas" >}} [Download](#download)</span>
-<span class="component-metadata">{{< icon name="github" pack="fab" >}} [GitHub](https://github.com/eclipse-keyple/keyple-distributed-local-java-lib/)</span>
-<span class="component-metadata">{{< icon name="exchange-alt" pack="fas" >}} [Changelog](https://github.com/eclipse-keyple/keyple-distributed-local-java-lib/blob/main/CHANGELOG.md)</span>
-{{% /callout %}}
-
-### Documentation
-
-* [API documentation](https://docs.keyple.org/keyple-distributed-local-java-lib)
-* [User guide]({{< relref "/learn/user-guide/distributed-application" >}})
-
-### Download
-
-All deliverables are available directly from the [Maven Central Repository](https://central.sonatype.com/search?q=keyple-distributed-local-java-lib) or by using one of the project resource managers below:
-
-{{< tabpane >}}
-{{< tab header="Gradle Kotlin" >}}
-{{< code lang="kotlin" copy="true">}}
-implementation("org.eclipse.keyple:keyple-distributed-local-java-lib:{{% keyple-distributed-local-java-lib-version %}}")
-{{< /code>}}
 {{< /tab >}}
-{{< tab header="Gradle Groovy" >}}
-{{< code lang="gradle" copy="true">}}
-implementation 'org.eclipse.keyple:keyple-distributed-local-java-lib:{{% keyple-distributed-local-java-lib-version %}}'
-{{< /code>}}
-{{< /tab >}}
-{{< tab header="Maven" >}}
-{{< code lang="xml" copy="true">}}
-<dependency>
-  <groupId>org.eclipse.keyple</groupId>
-  <artifactId>keyple-distributed-local-java-lib</artifactId>
-  <version>{{% keyple-distributed-local-java-lib-version %}}</version>
-</dependency>
-{{< /code>}}
-{{< /tab >}}
+
 {{< /tabpane >}}

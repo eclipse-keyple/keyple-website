@@ -1,0 +1,1 @@
+The third version digit `x.y.Z` refers only to documentation updates, as this component contains no implementation.
