@@ -1207,3 +1207,14 @@ loadStatistics = async function() {
     // Call the function to create the chart
     createChart().catch(error => console.error('Error creating chart:', error));
 }
+
+// Additional automations
+document.addEventListener("DOMContentLoaded", () => {
+    // Select all external links (http) except those pointing to keyple.org
+    // and add target="_blank" and rel="noopener noreferrer" for security and privacy
+    const externalLinks = document.querySelectorAll('a[href^="http"]:not([href*="//keyple.org"])');
+    externalLinks.forEach(link => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+    });
+});

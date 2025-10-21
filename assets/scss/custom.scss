@@ -392,7 +392,7 @@ thead {
 }
 
 /* Add ↗ after all external links */
-a[href^="http"]:not([href*="keyple.org"])::after {
+a[href^="http"]:not([href*="//keyple.org"])::after {
   content: "\00a0↗"; /* non-breaking space + arrow ↗ */
   font-size: 0.85em;
 }

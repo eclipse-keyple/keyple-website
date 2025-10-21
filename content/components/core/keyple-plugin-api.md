@@ -42,7 +42,7 @@ table th:nth-child(1) {
     <td>Source code repository and issue tracker for the Java project.</td>
   </tr>
   <tr>
-    <td>{{< icon name="book" pack="fas" >}} {{< internal-link url="/learn/developer-guide/reader-plugin-add-on" name="User Guide" >}}</td>
+    <td>{{< icon name="book" pack="fas" >}} <a href="/learn/developer-guide/reader-plugin-add-on">User Guide</a></td>
     <td>Step-by-step guide to learn how to create a Keyple reader plugin add-on.</td>
   </tr>
   <tr>
@@ -80,7 +80,7 @@ table th:nth-child(1) {
     <td>Source code repository and documentation for the C++ project.</td>
   </tr>
   <tr>
-    <td>{{< icon name="book" pack="fas" >}} {{< internal-link url="/learn/developer-guide/reader-plugin-add-on" name="User Guide" >}}</td>
+    <td>{{< icon name="book" pack="fas" >}} <a href="/learn/developer-guide/reader-plugin-add-on">User Guide</a></td>
     <td>Step-by-step guide to learn how to create a Keyple reader plugin add-on.</td>
   </tr>
   <tr>

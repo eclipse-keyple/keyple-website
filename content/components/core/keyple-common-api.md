@@ -42,7 +42,7 @@ table th:nth-child(1) {
     <td>Source code repository and issue tracker for the Java project.</td>
   </tr>
   <tr>
-    <td>{{< icon name="book" pack="fas" >}} {{< internal-link url="/learn/user-guide/standalone-application" name="User Guide" >}}</td>
+    <td>{{< icon name="book" pack="fas" >}} <a href="/learn/user-guide/standalone-application">User Guide</a></td>
     <td>Step-by-step guide to learn how to build a Keyple-based standalone application.</td>
   </tr>
   <tr>
@@ -80,7 +80,7 @@ table th:nth-child(1) {
     <td>Source code repository and documentation for the C++ project.</td>
   </tr>
   <tr>
-    <td>{{< icon name="book" pack="fas" >}} {{< internal-link url="/learn/user-guide/standalone-application" name="User Guide" >}}</td>
+    <td>{{< icon name="book" pack="fas" >}} <a href="/learn/user-guide/standalone-application">User Guide</a></td>
     <td>Step-by-step guide to learn how to build a Keyple-based standalone application.</td>
   </tr>
   <tr>
