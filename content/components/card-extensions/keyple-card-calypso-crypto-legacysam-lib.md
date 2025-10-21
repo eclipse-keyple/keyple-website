@@ -14,7 +14,7 @@ While it's nearly stable, future migration steps might be necessary. We aim to m
 
 <style>
 table th:nth-child(1) {
-  width: 13rem;
+  width: 12rem;
 }
 </style>
 

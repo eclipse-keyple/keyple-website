@@ -7,7 +7,7 @@ toc: true
 ---
 <style>
 table th:nth-child(1) {
-  width: 13rem;
+  width: 12rem;
 }
 </style>
 
