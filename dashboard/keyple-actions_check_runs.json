@@ -1,144 +1,28 @@
 {
-  "total_count": 4,
+  "total_count": 3,
   "check_runs": [
     {
-      "id": 53397459337,
-      "name": "Upload Results",
-      "node_id": "CR_kwDONTyCwM8AAAAMbryRiQ",
-      "head_sha": "20cf62c3cabd7966997e6b732622195e45eacadc",
-      "external_id": "7c881e6b-f587-5fc2-b9ec-b4423ff0741a",
-      "url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53397459337",
-      "html_url": "https://github.com/eclipse-keyple/keyple-actions/actions/runs/18722208197/job/53397459337",
-      "details_url": "https://github.com/eclipse-keyple/keyple-actions/actions/runs/18722208197/job/53397459337",
-      "status": "completed",
-      "conclusion": "success",
-      "started_at": "2025-10-22T15:58:24Z",
-      "completed_at": "2025-10-22T15:58:46Z",
-      "output": {
-        "title": null,
-        "summary": null,
-        "text": null,
-        "annotations_count": 0,
-        "annotations_url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53397459337/annotations"
-      },
-      "check_suite": {
-        "id": 48177321907
-      },
-      "app": {
-        "id": 15368,
-        "client_id": "Iv1.05c79e9ad1f6bdfa",
-        "slug": "github-actions",
-        "node_id": "MDM6QXBwMTUzNjg=",
-        "owner": {
-          "login": "github",
-          "id": 9919,
-          "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
-          "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
-          "gravatar_id": "",
-          "url": "https://api.github.com/users/github",
-          "html_url": "https://github.com/github",
-          "followers_url": "https://api.github.com/users/github/followers",
-          "following_url": "https://api.github.com/users/github/following{/other_user}",
-          "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
-          "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
-          "subscriptions_url": "https://api.github.com/users/github/subscriptions",
-          "organizations_url": "https://api.github.com/users/github/orgs",
-          "repos_url": "https://api.github.com/users/github/repos",
-          "events_url": "https://api.github.com/users/github/events{/privacy}",
-          "received_events_url": "https://api.github.com/users/github/received_events",
-          "type": "Organization",
-          "user_view_type": "public",
-          "site_admin": false
-        },
-        "name": "GitHub Actions",
-        "description": "Automate your workflow from idea to production",
-        "external_url": "https://help.github.com/en/actions",
-        "html_url": "https://github.com/apps/github-actions",
-        "created_at": "2018-07-30T09:30:17Z",
-        "updated_at": "2025-03-07T16:35:00Z",
-        "permissions": {
-          "actions": "write",
-          "administration": "read",
-          "attestations": "write",
-          "checks": "write",
-          "contents": "write",
-          "deployments": "write",
-          "discussions": "write",
-          "issues": "write",
-          "merge_queues": "write",
-          "metadata": "read",
-          "models": "read",
-          "packages": "write",
-          "pages": "write",
-          "pull_requests": "write",
-          "repository_hooks": "write",
-          "repository_projects": "write",
-          "security_events": "write",
-          "statuses": "write",
-          "vulnerability_alerts": "read"
-        },
-        "events": [
-          "branch_protection_rule",
-          "check_run",
-          "check_suite",
-          "create",
-          "delete",
-          "deployment",
-          "deployment_status",
-          "discussion",
-          "discussion_comment",
-          "fork",
-          "gollum",
-          "issues",
-          "issue_comment",
-          "label",
-          "merge_group",
-          "milestone",
-          "page_build",
-          "project",
-          "project_card",
-          "project_column",
-          "public",
-          "pull_request",
-          "pull_request_review",
-          "pull_request_review_comment",
-          "push",
-          "registry_package",
-          "release",
-          "repository",
-          "repository_dispatch",
-          "status",
-          "watch",
-          "workflow_dispatch",
-          "workflow_run"
-        ]
-      },
-      "pull_requests": [
-
-      ]
-    },
-    {
-      "id": 53397399075,
+      "id": 53464682869,
       "name": "SonarCloud Code Analysis",
-      "node_id": "CR_kwDONTyCwM8AAAAMbrumIw",
-      "head_sha": "20cf62c3cabd7966997e6b732622195e45eacadc",
+      "node_id": "CR_kwDONTyCwM8AAAAMcr5RdQ",
+      "head_sha": "6338bd8010150ae185188eaf1261cb671f52a32d",
       "external_id": "",
-      "url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53397399075",
-      "html_url": "https://github.com/eclipse-keyple/keyple-actions/runs/53397399075",
+      "url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53464682869",
+      "html_url": "https://github.com/eclipse-keyple/keyple-actions/runs/53464682869",
       "details_url": "https://sonarcloud.io/dashboard?id=eclipse-keyple_keyple-actions&branch=main",
       "status": "completed",
       "conclusion": "failure",
-      "started_at": "2025-10-22T15:57:22Z",
-      "completed_at": "2025-10-22T15:57:36Z",
+      "started_at": "2025-10-23T09:06:30Z",
+      "completed_at": "2025-10-23T09:06:45Z",
       "output": {
         "title": "Quality Gate failed",
-        "summary": "Failed conditions  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/failed.svg '') [14 Security Hotspots](https://sonarcloud.io/project/security_hotspots?id=eclipse-keyple_keyple-actions&branch=main&issueStatuses=OPEN,CONFIRMED&sinceLeakPeriod=true)  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/failed.svg '') [E Security Rating on New Code](https://sonarcloud.io/dashboard?id=eclipse-keyple_keyple-actions&branch=main) (required ≥ A)  \n  \n[See analysis details on SonarQube Cloud](https://sonarcloud.io/dashboard?id=eclipse-keyple_keyple-actions&branch=main)\n\n##   \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/light_bulb.svg '') Catch issues before they fail your Quality Gate with our IDE extension ![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/sonarlint.svg '') [SonarQube for IDE](https://www.sonarsource.com/products/sonarlint/features/connected-mode/?referrer=pull-request)\n\n",
+        "summary": "Failed conditions  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/failed.svg '') [16 Security Hotspots](https://sonarcloud.io/project/security_hotspots?id=eclipse-keyple_keyple-actions&branch=main&issueStatuses=OPEN,CONFIRMED&sinceLeakPeriod=true)  \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/failed.svg '') [E Security Rating on New Code](https://sonarcloud.io/dashboard?id=eclipse-keyple_keyple-actions&branch=main) (required ≥ A)  \n  \n[See analysis details on SonarQube Cloud](https://sonarcloud.io/dashboard?id=eclipse-keyple_keyple-actions&branch=main)\n\n##   \n![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/light_bulb.svg '') Catch issues before they fail your Quality Gate with our IDE extension ![](https://sonarsource.github.io/sonarcloud-github-static-resources/v2/common/sonarlint.svg '') [SonarQube for IDE](https://www.sonarsource.com/products/sonarlint/features/connected-mode/?referrer=pull-request)\n\n",
         "text": null,
         "annotations_count": 0,
-        "annotations_url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53397399075/annotations"
+        "annotations_url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53464682869/annotations"
       },
       "check_suite": {
-        "id": 48177320068
+        "id": 48243097141
       },
       "app": {
         "id": 12526,
@@ -196,27 +80,27 @@
       ]
     },
     {
-      "id": 53397377137,
-      "name": "Analyze (python)",
-      "node_id": "CR_kwDONTyCwM8AAAAMbrtQcQ",
-      "head_sha": "20cf62c3cabd7966997e6b732622195e45eacadc",
-      "external_id": "1a56fc3d-b39e-5be0-9f46-b0cd40fd78f4",
-      "url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53397377137",
-      "html_url": "https://github.com/eclipse-keyple/keyple-actions/actions/runs/18722208197/job/53397377137",
-      "details_url": "https://github.com/eclipse-keyple/keyple-actions/actions/runs/18722208197/job/53397377137",
+      "id": 53464657632,
+      "name": "Analyze (actions)",
+      "node_id": "CR_kwDONTyCwM8AAAAMcr3u4A",
+      "head_sha": "6338bd8010150ae185188eaf1261cb671f52a32d",
+      "external_id": "a10ff237-4ed7-58f7-8cec-5b582013d3e1",
+      "url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53464657632",
+      "html_url": "https://github.com/eclipse-keyple/keyple-actions/actions/runs/18743323509/job/53464657632",
+      "details_url": "https://github.com/eclipse-keyple/keyple-actions/actions/runs/18743323509/job/53464657632",
       "status": "completed",
       "conclusion": "success",
-      "started_at": "2025-10-22T15:57:29Z",
-      "completed_at": "2025-10-22T15:58:16Z",
+      "started_at": "2025-10-23T09:06:57Z",
+      "completed_at": "2025-10-23T09:07:40Z",
       "output": {
         "title": null,
         "summary": null,
         "text": null,
         "annotations_count": 0,
-        "annotations_url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53397377137/annotations"
+        "annotations_url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53464657632/annotations"
       },
       "check_suite": {
-        "id": 48177321907
+        "id": 48243098245
       },
       "app": {
         "id": 15368,
@@ -312,27 +196,27 @@
       ]
     },
     {
-      "id": 53397377120,
-      "name": "Analyze (actions)",
-      "node_id": "CR_kwDONTyCwM8AAAAMbrtQYA",
-      "head_sha": "20cf62c3cabd7966997e6b732622195e45eacadc",
-      "external_id": "391c9832-6c4e-5f69-a53d-7bbe54c4677b",
-      "url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53397377120",
-      "html_url": "https://github.com/eclipse-keyple/keyple-actions/actions/runs/18722208197/job/53397377120",
-      "details_url": "https://github.com/eclipse-keyple/keyple-actions/actions/runs/18722208197/job/53397377120",
+      "id": 53464657606,
+      "name": "Analyze (python)",
+      "node_id": "CR_kwDONTyCwM8AAAAMcr3uxg",
+      "head_sha": "6338bd8010150ae185188eaf1261cb671f52a32d",
+      "external_id": "43c64d7a-a986-51fc-8f52-06ac09a8f648",
+      "url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53464657606",
+      "html_url": "https://github.com/eclipse-keyple/keyple-actions/actions/runs/18743323509/job/53464657606",
+      "details_url": "https://github.com/eclipse-keyple/keyple-actions/actions/runs/18743323509/job/53464657606",
       "status": "completed",
       "conclusion": "success",
-      "started_at": "2025-10-22T15:57:29Z",
-      "completed_at": "2025-10-22T15:58:09Z",
+      "started_at": "2025-10-23T09:06:39Z",
+      "completed_at": "2025-10-23T09:07:25Z",
       "output": {
         "title": null,
         "summary": null,
         "text": null,
         "annotations_count": 0,
-        "annotations_url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53397377120/annotations"
+        "annotations_url": "https://api.github.com/repos/eclipse-keyple/keyple-actions/check-runs/53464657606/annotations"
       },
       "check_suite": {
-        "id": 48177321907
+        "id": 48243098245
       },
       "app": {
         "id": 15368,
