@@ -84,6 +84,8 @@ echo "," >> dashboard/repository_list.json
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-interop-jsonapi-client-kmp-lib main true true
 echo "," >> dashboard/repository_list.json
+../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-interop-ios-xcframework main false true
+echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-actions main false false
 echo "," >> dashboard/repository_list.json
 ../.github/scripts/dashboard_update_repo.sh $token eclipse-keyple keyple-api-docs main false false

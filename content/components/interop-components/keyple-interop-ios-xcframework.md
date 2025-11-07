@@ -1,29 +1,29 @@
 ---
 title: Keyple Interop iOS XCFramework
 linktitle: iOS XCFramework
-summary: A native iOS framework providing a LocalReader SPI implementation to allow non-Keyple mobile applications to control their local NFC smart card reader on iOS devices.
+summary: A native iOS XCFramework acting as a unified umbrella project, bundling a multiplatform Keyple Server JSON client library for HTTP interaction with a Keyple-based server, and a multiplatform LocalReader adapter enabling control of the local NFC smart card reader on mobile.
 type: book
 toc: true
 ---
 <style>
 table th:nth-child(1) {
-  width: 12rem;
+  width: 13rem;
 }
 </style>
 
 ## Overview
 
-|                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| {{< icon name="file-alt" pack="fas" >}} **Description**    | The **Keyple Interop iOS XCFramework** is a native iOS adapter that provides an implementation of the `LocalReader` SPI required by the [Keyple Interop JSON API Client Library]({{< relref "keyple-interop-jsonapi-client-kmp-lib.md" >}}), specifically designed for iOS NFC readers.<br><br>It enables non-Keyple applications to interact with the built-in NFC readers of **iOS** devices, making it possible to perform smart card communication in compliance with the Keyple interop model. This framework is optimized for the iOS platform and serves as a bridge between the application logic and the device's native NFC capabilities, facilitating seamless integration without requiring a full Keyple stack. |
-| {{< icon name="users" pack="fas" >}} **Intended Audience** | Developers creating non-Keyple client applications for iOS.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| {{< icon name="laptop" pack="fas" >}} **Compatible OS**    | iOS.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| {{< icon name="file-alt" pack="fas" >}} **Description**    | The **Keyple Interop iOS XCFramework** is a native iOS XCFramework acting as a unified umbrella project, bundling the [Keyple Interop JSON API Client Library]({{< relref "keyple-interop-jsonapi-client-kmp-lib.md" >}}) and the [Keyple Interop Local Reader NFC Mobile Library]({{< relref "keyple-interop-localreader-nfcmobile-kmp-lib.md" >}}).<br><br>It enables non-Keyple applications to interact with a Keyple-based server and the built-in NFC readers of **iOS** devices |
+| {{< icon name="users" pack="fas" >}} **Intended Audience** | Developers creating non-Keyple client applications for iOS.                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| {{< icon name="laptop" pack="fas" >}} **Compatible OS**    | iOS.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 ## Implementations
 
 {{< tabpane showCopyButton="false" >}}
 
-{{< tab header="iOS" >}}
+{{< tab header="iOS XCFramework" >}}
 
 <table>
 <thead><tr><th></th><th></th></tr></thead>
@@ -45,19 +45,7 @@ table th:nth-child(1) {
     <td>Step-by-step guide to learn how to build a non-Keyple client.</td>
   </tr>
   <tr>
-    <td>{{< icon name="file-code" pack="fas" >}} <a href="https://docs.keyple.org/keyple-interop-ios-xcframework/">API Reference</a></td>
-    <td>Complete documentation of all classes and methods in the iOS API.</td>
-  </tr>
-  <tr>
-    <td>{{< icon name="sitemap" pack="fas" >}} <a href="https://docs.keyple.org/keyple-interop-ios-xcframework/">UML Class Diagram</a></td>
-    <td>UML diagram showing the structure and relationships between classes.</td>
-  </tr>
-  <tr>
-    <td>{{< icon name="database" pack="fas" >}} <a href="https://cocoapods.org/pods/KeypleInteropIosXcframework">CocoaPods</a></td>
-    <td>Official CocoaPods page to include the iOS framework in your project.</td>
-  </tr>
-  <tr>
-    <td>{{< icon name="cube" pack="fas" >}} <a href="https://github.com/eclipse-keyple/keyple-interop-ios-xcframework">Swift Package Manager</a></td>
+    <td>{{< icon name="database" pack="fas" >}} <a href="https://github.com/eclipse-keyple/keyple-interop-ios-xcframework">Swift Package Manager</a></td>
     <td>Add the framework to your project using Swift Package Manager.</td>
   </tr>
 </tbody>
@@ -66,34 +54,3 @@ table th:nth-child(1) {
 {{< /tab >}}
 
 {{< /tabpane >}}
-
-{{% callout note %}}
-### iOS XCFramework Note
-
-This component is distributed as a prebuilt XCFramework, which is a unified binary framework format that supports multiple platforms and architectures in a single bundle.
-
-**Supported Architectures:**
-- **Real iOS Devices:** ARM64 (iPhone, iPad)
-- **iOS Simulator:** ARM64 (Apple Silicon Macs) and x86_64 (Intel-based Macs)
-
-**Integration Methods:**
-
-**CocoaPods:**
-```ruby
-pod 'KeypleInteropIosXcframework', '~> [version]'
-```
-
-**Swift Package Manager:**
-Add the following dependency to your `Package.swift`:
-```swift
-dependencies: [
-    .package(url: "https://github.com/eclipse-keyple/keyple-interop-ios-xcframework.git", from: "[version]")
-]
-```
-
-Or add it directly in Xcode via File → Add Package Dependencies.
-
-**Manual Integration:**
-Download the XCFramework from the GitHub releases page and drag it into your Xcode project.
-
-{{% /callout %}}
