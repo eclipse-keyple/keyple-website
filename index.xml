@@ -15573,6 +15573,78 @@ the C++ implementation.&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;/div>
+&lt;/div></description></item><item><title>Keyple Interop iOS XCFramework</title><link>https://keyple.org/components/interop-components/keyple-interop-ios-xcframework/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/interop-components/keyple-interop-ios-xcframework/</guid><description>&lt;style>
+table th:nth-child(1) {
+width: 13rem;
+}
+&lt;/style>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-file-alt pr-1 fa-fw">&lt;/i> &lt;strong>Description&lt;/strong>&lt;/td>
+&lt;td>The &lt;strong>Keyple Interop iOS XCFramework&lt;/strong> is a native iOS XCFramework acting as a unified umbrella project, bundling the &lt;a href="./components/interop-components/keyple-interop-jsonapi-client-kmp-lib/">Keyple Interop JSON API Client Library&lt;/a> and the &lt;a href="./components/interop-components/keyple-interop-localreader-nfcmobile-kmp-lib/">Keyple Interop Local Reader NFC Mobile Library&lt;/a>.&lt;br>&lt;br>It enables non-Keyple applications to interact with a Keyple-based server and the built-in NFC readers of &lt;strong>iOS&lt;/strong> devices&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-users pr-1 fa-fw">&lt;/i> &lt;strong>Intended Audience&lt;/strong>&lt;/td>
+&lt;td>Developers creating non-Keyple client applications for iOS.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-laptop pr-1 fa-fw">&lt;/i> &lt;strong>Compatible OS&lt;/strong>&lt;/td>
+&lt;td>iOS.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="implementations">Implementations&lt;/h2>
+&lt;ul class="nav nav-tabs" id="tabs-5" role="tablist">&lt;li class="nav-item">
+&lt;a class="nav-link active tab-iOS-XCFramework"
+id="tabs-5-0-tab" data-toggle="tab" href="#tabs-5-0" role="tab" onclick="handleClick(&amp;#34;iOS-XCFramework&amp;#34;);"
+aria-controls="tabs-5-0" aria-selected="true">
+iOS XCFramework
+&lt;/a>
+&lt;/li>&lt;/ul>
+&lt;div class="tab-content" id="tabs-5-content">&lt;div class="tab-pane fade show active"
+id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab">
+&lt;table>
+&lt;thead>&lt;tr>&lt;th>&lt;/th>&lt;th>&lt;/th>&lt;/tr>&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-tag pr-1 fa-fw">&lt;/i> &lt;strong>Latest Version&lt;/strong>&lt;/td>
+&lt;td>&lt;strong>&lt;code>1.0.0&lt;/code>&lt;/strong>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-interop-ios-xcframework/blob/main/CHANGELOG.md">Changelog&lt;/a>&lt;/td>
+&lt;td>List of changes and new features introduced in each release.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-interop-ios-xcframework/">GitHub&lt;/a>&lt;/td>
+&lt;td>Source code repository and issue tracker for the iOS project.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./user-guides/non-keyple-client/content">User Guide&lt;/a>&lt;/td>
+&lt;td>Step-by-step guide to learn how to build a non-Keyple client.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>
+&lt;i class="fas fa-database pr-1 fa-fw">&lt;/i> &lt;a href="https://github.com/eclipse-keyple/keyple-interop-ios-xcframework">Swift Package Manager&lt;/a>&lt;/td>
+&lt;td>Add the framework to your project using Swift Package Manager.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;/div>
 &lt;/div></description></item><item><title>Keyple Interop JSON API Client Library</title><link>https://keyple.org/components/interop-components/keyple-interop-jsonapi-client-kmp-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/interop-components/keyple-interop-jsonapi-client-kmp-lib/</guid><description>&lt;style>
 table th:nth-child(1) {
 width: 12rem;
@@ -15666,7 +15738,7 @@ library, including the root (no-suffix) module and platform-specific variants:&l
 &lt;thead>
 &lt;tr>
 &lt;th>Artifact ID&lt;/th>
-&lt;th>Format&lt;/th>
+&lt;th style="text-align:center">Format&lt;/th>
 &lt;th>Purpose&lt;/th>
 &lt;th>Main Use Case&lt;/th>
 &lt;/tr>
@@ -15674,43 +15746,43 @@ library, including the root (no-suffix) module and platform-specific variants:&l
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-jsonapi-client-kmp-lib&lt;/code>&lt;/td>
-&lt;td>&lt;code>.jar&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.jar&lt;/code>&lt;/td>
 &lt;td>Common code shared across all platforms&lt;/td>
 &lt;td>Used by multiplatform consumers to pull platform variants&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-jsonapi-client-kmp-lib-jvm&lt;/code>&lt;/td>
-&lt;td>&lt;code>.jar&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.jar&lt;/code>&lt;/td>
 &lt;td>Non-Android JVM applications&lt;/td>
 &lt;td>Used in backend apps, desktop apps, or CLI&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-jsonapi-client-kmp-lib-android&lt;/code>&lt;/td>
-&lt;td>&lt;code>.aar&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.aar&lt;/code>&lt;/td>
 &lt;td>Production Android apps&lt;/td>
 &lt;td>Integrated into final APK/AAB builds&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-jsonapi-client-kmp-lib-iosarm64&lt;/code>&lt;/td>
-&lt;td>&lt;code>.klib&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.klib&lt;/code>&lt;/td>
 &lt;td>Real iOS devices (ARM64 architecture)&lt;/td>
 &lt;td>Required for running the app on physical iPhones&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-jsonapi-client-kmp-lib-iossimulatorarm64&lt;/code>&lt;/td>
-&lt;td>&lt;code>.klib&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.klib&lt;/code>&lt;/td>
 &lt;td>iOS Simulator on Apple Silicon Macs (ARM64)&lt;/td>
 &lt;td>Used for development/testing on simulators on M1/M2 Macs&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-jsonapi-client-kmp-lib-iosx64&lt;/code>&lt;/td>
-&lt;td>&lt;code>.klib&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.klib&lt;/code>&lt;/td>
 &lt;td>iOS Simulator on Intel-based Macs (x86_64)&lt;/td>
 &lt;td>Used for development/testing on simulators on Intel Macs&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>iOS artifact&lt;/td>
-&lt;td>TBD&lt;/td>
+&lt;td>&lt;a href="./components/interop-components/keyple-interop-ios-xcframework/">Keyple Interop iOS XCFramework&lt;/a>&lt;/td>
+&lt;td style="text-align:center">XCFramework&lt;/td>
 &lt;td>iOS applications&lt;/td>
 &lt;td>Integrated directly into final iOS apps&lt;/td>
 &lt;/tr>
@@ -15903,7 +15975,7 @@ library, including the root (no-suffix) module and platform-specific variants:&l
 &lt;thead>
 &lt;tr>
 &lt;th>Artifact ID&lt;/th>
-&lt;th>Format&lt;/th>
+&lt;th style="text-align:center">Format&lt;/th>
 &lt;th>Purpose&lt;/th>
 &lt;th>Main Use Case&lt;/th>
 &lt;/tr>
@@ -15911,43 +15983,43 @@ library, including the root (no-suffix) module and platform-specific variants:&l
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-localreader-nfcmobile-kmp-lib&lt;/code>&lt;/td>
-&lt;td>&lt;code>.jar&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.jar&lt;/code>&lt;/td>
 &lt;td>Common code shared across all platforms&lt;/td>
 &lt;td>Used by multiplatform consumers to pull platform variants&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-localreader-nfcmobile-kmp-lib-jvm&lt;/code>&lt;/td>
-&lt;td>&lt;code>.jar&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.jar&lt;/code>&lt;/td>
 &lt;td>Non-Android JVM applications&lt;/td>
 &lt;td>Used in backend apps, desktop apps, or CLI&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-localreader-nfcmobile-kmp-lib-android&lt;/code>&lt;/td>
-&lt;td>&lt;code>.aar&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.aar&lt;/code>&lt;/td>
 &lt;td>Production Android apps&lt;/td>
 &lt;td>Integrated into final APK/AAB builds&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-localreader-nfcmobile-kmp-lib-iosarm64&lt;/code>&lt;/td>
-&lt;td>&lt;code>.klib&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.klib&lt;/code>&lt;/td>
 &lt;td>Real iOS devices (ARM64 architecture)&lt;/td>
 &lt;td>Required for running the app on physical iPhones&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-localreader-nfcmobile-kmp-lib-iossimulatorarm64&lt;/code>&lt;/td>
-&lt;td>&lt;code>.klib&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.klib&lt;/code>&lt;/td>
 &lt;td>iOS Simulator on Apple Silicon Macs (ARM64)&lt;/td>
 &lt;td>Used for development/testing on simulators on M1/M2 Macs&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>keyple-interop-localreader-nfcmobile-kmp-lib-iosx64&lt;/code>&lt;/td>
-&lt;td>&lt;code>.klib&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>.klib&lt;/code>&lt;/td>
 &lt;td>iOS Simulator on Intel-based Macs (x86_64)&lt;/td>
 &lt;td>Used for development/testing on simulators on Intel Macs&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>iOS artifact&lt;/td>
-&lt;td>TBD&lt;/td>
+&lt;td>&lt;a href="./components/interop-components/keyple-interop-ios-xcframework/">Keyple Interop iOS XCFramework&lt;/a>&lt;/td>
+&lt;td style="text-align:center">XCFramework&lt;/td>
 &lt;td>iOS applications&lt;/td>
 &lt;td>Integrated directly into final iOS apps&lt;/td>
 &lt;/tr>
