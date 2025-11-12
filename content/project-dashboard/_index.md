@@ -22,7 +22,6 @@ and the **GitHub CI status page**.
         <th scope="col" class="text-center">Status</th>
         <th scope="col" class="text-center">Latest release</th>
         <th scope="col" class="text-center">Date</th>
-        <th scope="col" class="text-center">Latest tag</th>
         <th scope="col" class="text-center">Issues</th>
         <th scope="col" class="text-center">Branches</th>
         <th scope="col" class="text-center">PRs</th>
