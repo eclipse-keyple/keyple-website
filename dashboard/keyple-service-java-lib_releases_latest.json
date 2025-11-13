@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/256626160",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/256626160/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/256626160/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-service-java-lib/releases/tag/3.3.6",
-  "id": 256626160,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/262134211",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/262134211/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-service-java-lib/releases/262134211/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-service-java-lib/releases/tag/3.3.7",
+  "id": 262134211,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -25,20 +25,20 @@
     "user_view_type": "public",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWeus4PS83w",
-  "tag_name": "3.3.6",
+  "node_id": "RE_kwDODMWeus4Pn9nD",
+  "tag_name": "3.3.7",
   "target_commitish": "main",
-  "name": "",
+  "name": "3.3.7",
   "draft": false,
   "immutable": false,
   "prerelease": false,
-  "created_at": "2025-10-23T09:37:15Z",
-  "updated_at": "2025-10-23T09:40:16Z",
-  "published_at": "2025-10-23T09:40:16Z",
+  "created_at": "2025-11-13T14:25:38Z",
+  "updated_at": "2025-11-13T14:34:03Z",
+  "published_at": "2025-11-13T14:34:03Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/tarball/3.3.6",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/zipball/3.3.6",
-  "body": "### Added\r\n- Added an internal configuration option for specific integration scenarios.\r\n### Fixed\r\n- Changes the log level from `error` to `warning` when errors occur during unregistration of the plugin/reader and no longer displays the useless stacktrace.\r\n### Changed\r\n- Migrated the CI pipeline from Jenkins to GitHub Actions."
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/tarball/3.3.7",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-java-lib/zipball/3.3.7",
+  "body": "### Fixed\r\n- Fixed automatic chaining of APDU responses with `61XX` status words to properly accumulate all data segments when the card returns chained responses (issue [#86]).\r\n### Upgraded\r\n- Keyple Common API `2.0.1` -> `2.0.2` (documentation improvements)"
 }
