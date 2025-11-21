@@ -81,7 +81,7 @@ function ReleaseTrain (...releases) {
  * Caution: always add at the first position!
  *****************************************************************************/
 let releaseTrains = [];
-initReleaseTrains = function() {
+let initReleaseTrains = function() {
     releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.READER_API, "2.1.+"),
         new Release(ComponentName.CALYPSO_API, "2.2.+"),
