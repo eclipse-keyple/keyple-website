@@ -5,13 +5,6 @@ summary: Add-on to manage Calypso® legacy SAMs (SAM-C1, HSM-C1, etc...).
 type: book
 toc: true
 ---
-
-{{% callout warning %}}
-This library is currently in **Beta** version as it implements the [Keypop Calypso Crypto Legacy SAM API](https://keypop.org/apis/calypso-layer/calypso-legacysam-api/),
-which is also in **Beta**.
-While it's nearly stable, future migration steps might be necessary. We aim to minimize any changes you'll need to make.
-{{% /callout %}}
-
 <style>
 table th:nth-child(1) {
   width: 12rem;
