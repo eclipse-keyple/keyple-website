@@ -1,3 +1,80 @@
 [
+  {
+    "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/issues/29",
+    "repository_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib",
+    "labels_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/issues/29/labels{/name}",
+    "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/issues/29/comments",
+    "events_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/issues/29/events",
+    "html_url": "https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/issues/29",
+    "id": 3659438894,
+    "node_id": "I_kwDODMWf6s7aHpsu",
+    "number": 29,
+    "title": "Issue with differentiating B & B' cards in the Java PCSC plugin libraries",
+    "user": {
+      "login": "ThomasParenteau",
+      "id": 71703095,
+      "node_id": "MDQ6VXNlcjcxNzAzMDk1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71703095?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ThomasParenteau",
+      "html_url": "https://github.com/ThomasParenteau",
+      "followers_url": "https://api.github.com/users/ThomasParenteau/followers",
+      "following_url": "https://api.github.com/users/ThomasParenteau/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ThomasParenteau/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ThomasParenteau/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ThomasParenteau/subscriptions",
+      "organizations_url": "https://api.github.com/users/ThomasParenteau/orgs",
+      "repos_url": "https://api.github.com/users/ThomasParenteau/repos",
+      "events_url": "https://api.github.com/users/ThomasParenteau/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ThomasParenteau/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
 
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2025-11-24T15:36:25Z",
+    "updated_at": "2025-11-24T15:36:25Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "### Description\n\nWe’re facing an issue when trying to distinguish between **type B** and **type B prime** transport cards in the PCSC plugin java lib (using the 2.5.2 version).\n\nUntil now, we filtered cards using their **AID**, so we didn’t need to explicitly distinguish between B and B prime. However, we now have **type B** and **type B prime cards sharing the same AID**, which forces us to distinguish them **by protocol**, using their ATR.\n\nWhen implementing protocol-based differentiation, we noticed that, in the PCSC plugin, some **B prime cards** are matched with protocol `ISO_14443_4` instead of `INNOVATRON_B_PRIME`, based on their ATR.\n\n---\n\n### ATR examples\n\n**Type B cards:**\n\n- `3B 88 80 01 00 00 00 00 91 71 71 00 98`\n\n**Type B prime cards:**\n\n- `3B 8F 80 01 80 5A 08 06 08 20 02 00 10 49 67 55 82 90 00 89`  \n- `3B 8F 80 01 80 5A 08 06 08 20 02 00 10 49 67 59 82 90 00 85`\n\n---\n\n### Current regex in the PCSC library\nIn [PcscCardCommunicationProtocol.java](https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/blob/main/src/main/java/org/eclipse/keyple/plugin/pcsc/PcscCardCommunicationProtocol.java)\n\n```java\n  ISO_14443_4(\"3B8[0-9A-F]8001(?!.*5A0A)(?!804F0CA000000306).*\"),\n  INNOVATRON_B_PRIME(\"3B8.8001(80)?5A0A.*\"),\n```\n---\n\n### Observed behavior\n\n- The ATRs of our **B prime cards** (see above) **match the `ISO_14443_4` regex**.\n- They **do not match** the `INNOVATRON_B_PRIME` regex.\n\nThe main reason: in our ATRs, we have `5A 08` at the relevant bytes, while the `INNOVATRON_B_PRIME` regex explicitly expects `5A0A`.\n\nExample for one B prime card:  \n\n`3B 8F 80 01 80 5A 08 06 08 20 02 00 10 49 67 59 82 90 00 85`  \n\n→ as a continuous string:  \n`3B8F8001805A0806082002001049675982900085`  \n\n- This string **matches** the `ISO_14443_4` regex.  \n- It **does not match** the `INNOVATRON_B_PRIME` regex because of `5A08` instead of `5A0A`.\n\nWe confirmed this behavior using regex testing tools (e.g. regex101).\n\n<img width=\"2268\" height=\"724\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8dfa830a-3c08-404f-9434-e59e5c23ef02\" />\n\n<img width=\"2268\" height=\"706\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9cba2a3d-7519-4c90-8cad-b1f8f058e1df\" />\n\n---\n\n### Expected behavior\n\n- These B prime cards should **not** be classified as `ISO_14443_4` based on their ATR.\n- Ideally, they should be recognized as `INNOVATRON_B_PRIME`, or at least **not falsely categorized** as `ISO_14443_4`.\n\n---\n\n### Questions / possible directions\n\n- Is the `INNOVATRON_B_PRIME` regex (`...5A0A.*`) too strict or outdated for some B prime cards that now use `5A 08` in their ATR?\n- Should we:\n  - relax the `INNOVATRON_B_PRIME` regex, or  \n  - adjust the `ISO_14443_4` regex to exclude those cases, or  \n  - introduce a specific rule for B prime cards with `5A 08`?\n\nAny clarification on the intended protocol detection logic and the proper way to distinguish these cards in the library would be very helpful.\n\nThanks in advance!",
+    "closed_by": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/issues/29/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/issues/29/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null
+  }
 ]
