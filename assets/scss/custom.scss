@@ -344,6 +344,9 @@ table {
   margin-bottom: 0;
   background: #ddd;
 }
+#changelog-table table {
+  width: auto;
+}
 #changelog-table table th,
 #changelog-table table td {
   font-size: .8rem !important;
@@ -356,6 +359,9 @@ table {
   width: 5rem;
 }
 #changelog-table table th:nth-child(3) {
+  width: 5rem;
+}
+#changelog-table table th:nth-child(4) {
   width: 5rem;
 }
 
