@@ -344,6 +344,20 @@ table {
   margin-bottom: 0;
   background: #ddd;
 }
+#changelog-table table th,
+#changelog-table table td {
+  font-size: .8rem !important;
+  padding: 0;
+}
+#changelog-table table th:nth-child(1) {
+  width: 22rem;
+}
+#changelog-table table th:nth-child(2) {
+  width: 5rem;
+}
+#changelog-table table th:nth-child(3) {
+  width: 5rem;
+}
 
 // Button alignment on navbar
 .navbar-light {
