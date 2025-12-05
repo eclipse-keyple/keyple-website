@@ -1,5 +1,83 @@
 [
   {
+    "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/129",
+    "repository_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib",
+    "labels_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/129/labels{/name}",
+    "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/129/comments",
+    "events_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/129/events",
+    "html_url": "https://github.com/eclipse-keyple/keyple-card-calypso-java-lib/issues/129",
+    "id": 3698145537,
+    "node_id": "I_kwDODMWfVs7cbTkB",
+    "number": 129,
+    "title": "Possible buffer overflow exception on CardCert GetData",
+    "user": {
+      "login": "nlko",
+      "id": 5183366,
+      "node_id": "MDQ6VXNlcjUxODMzNjY=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5183366?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/nlko",
+      "html_url": "https://github.com/nlko",
+      "followers_url": "https://api.github.com/users/nlko/followers",
+      "following_url": "https://api.github.com/users/nlko/following{/other_user}",
+      "gists_url": "https://api.github.com/users/nlko/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/nlko/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/nlko/subscriptions",
+      "organizations_url": "https://api.github.com/users/nlko/orgs",
+      "repos_url": "https://api.github.com/users/nlko/repos",
+      "events_url": "https://api.github.com/users/nlko/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/nlko/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2025-12-05T09:18:23Z",
+    "updated_at": "2025-12-05T09:18:47Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Hello,\n\nTypically the card should return a total of 316 bytes for all the GetData commands for the CardCert.\n\nBut for some reason, if the card returns more data there is a java.nio.BufferOverflowException is thrown [here](https://github.com/eclipse-keyple/keyple-card-calypso-java-lib/blob/2c322b2e5432f263270784109aee5894dd14a564/src/main/java/org/eclipse/keyple/card/calypso/CalypsoCardAdapter.java#L1164) in the addCardCertificateBytes function.\n\nIt might be useful to have a better exception indicating that the CardCert is wrong (size not equal to 316).\n\nHave a good day, \n\nNicolas",
+    "closed_by": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/129/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/129/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null
+  },
+  {
     "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/116",
     "repository_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib",
     "labels_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/116/labels{/name}",
