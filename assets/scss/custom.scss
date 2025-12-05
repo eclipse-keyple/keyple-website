@@ -354,19 +354,16 @@ table {
 #changelog-table table th,
 #changelog-table table td {
   font-size: .8rem !important;
-  padding: 0;
+  padding: 0 .5rem 0 .5rem;
+  vertical-align: middle;
 }
 #changelog-table table th:nth-child(1) {
   width: 22rem;
 }
-#changelog-table table th:nth-child(2) {
-  width: 5rem;
-}
-#changelog-table table th:nth-child(3) {
-  width: 5rem;
-}
+#changelog-table table th:nth-child(2),
+#changelog-table table th:nth-child(3),
 #changelog-table table th:nth-child(4) {
-  width: 5rem;
+  width: auto;
 }
 
 // Button alignment on navbar
