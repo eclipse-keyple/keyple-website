@@ -1,3 +1,80 @@
 [
+  {
+    "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/issues/8",
+    "repository_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib",
+    "labels_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/issues/8/labels{/name}",
+    "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/issues/8/comments",
+    "events_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/issues/8/events",
+    "html_url": "https://github.com/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/issues/8",
+    "id": 3723694498,
+    "node_id": "I_kwDOLQGlX87d8xGi",
+    "number": 8,
+    "title": "Android EC support in AlgorithmParameters",
+    "user": {
+      "login": "amessara-billettiqueservices",
+      "id": 106753080,
+      "node_id": "U_kgDOBlzsOA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/106753080?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/amessara-billettiqueservices",
+      "html_url": "https://github.com/amessara-billettiqueservices",
+      "followers_url": "https://api.github.com/users/amessara-billettiqueservices/followers",
+      "following_url": "https://api.github.com/users/amessara-billettiqueservices/following{/other_user}",
+      "gists_url": "https://api.github.com/users/amessara-billettiqueservices/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/amessara-billettiqueservices/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/amessara-billettiqueservices/subscriptions",
+      "organizations_url": "https://api.github.com/users/amessara-billettiqueservices/orgs",
+      "repos_url": "https://api.github.com/users/amessara-billettiqueservices/repos",
+      "events_url": "https://api.github.com/users/amessara-billettiqueservices/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/amessara-billettiqueservices/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
 
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2025-12-12T14:51:16Z",
+    "updated_at": "2025-12-12T14:51:16Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "`AsymmetricCryptoCardTransactionManagerAdapter` request an instance of `AlgorithmParameters` for Elliptic curve but it's only supported for API level 26+\nhttps://developer.android.com/reference/java/security/AlgorithmParameters\n\nIt ends up in an exception when run on Android 7\n```\n12-12 15:43:47.093 I/System.out( 6966): java.lang.IllegalStateException: EC AlgorithmParameters not available\n12-12 15:43:47.097 I/System.out( 6966): \tat org.eclipse.keyple.card.calypso.crypto.pki.AsymmetricCryptoCardTransactionManagerAdapter.<init>(AsymmetricCryptoCardTransactionManagerAdapter.java:63)\n12-12 15:43:47.097 I/System.out( 6966): \tat org.eclipse.keyple.card.calypso.crypto.pki.AsymmetricCryptoCardTransactionManagerFactoryAdapter.createCardTransactionManager(AsymmetricCryptoCardTransactionManagerFactoryAdapter.java:34)\n12-12 15:43:47.097 I/System.out( 6966): \tat org.eclipse.keyple.card.calypso.SecurePkiModeTransactionManagerAdapter.<init>(SecurePkiModeTransactionManagerAdapter.java:86)\n\n```\n\nTo keep it on the safe side, I tried extracting the parameters from a dummy key\n\n```kotlin\nAsymmetricCryptoCardTransactionManagerAdapter() {\n    try {\n      signature = Signature.getInstance(CARD_SESSION_SIGNATURE_SCHEME);\n\n      // Build ECParameterSpec for secp256r1 (P-256) from dummy key pair\n      KeyPairGenerator kpg = KeyPairGenerator.getInstance(ELLIPTIC_CURVE);\n      kpg.initialize(new ECGenParameterSpec(EC_DOMAIN_PARAMETERS_NAME));\n      ecParameterSpec = ((ECPublicKey) kpg.generateKeyPair().getPublic()).getParams();\n\n      keyFactory = KeyFactory.getInstance(ELLIPTIC_CURVE);\n    } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {\n      throw new IllegalStateException(e.getMessage(), e);\n    }\n  }\n```\n\nThis approche seems to work. The unit test are still green and no exception on Android.\nAlthough I don't have a complete set up yet, to it further than the creation of the transactionmanager.",
+    "closed_by": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/issues/8/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-pki-java-lib/issues/8/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null
+  }
 ]
