@@ -83,6 +83,12 @@ function ReleaseTrain (...releases) {
 let releaseTrains = [];
 let initReleaseTrains = function() {
     releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.PLUGIN_PCSC_LIB, "2.6.0")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.CALYPSO_CARD_LIB, "3.2.1")
+    ));
+    releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.READER_API, "2.1.+"),
         new Release(ComponentName.CALYPSO_API, "2.2.+"),
         new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "1.0.+"),
@@ -99,9 +105,6 @@ let initReleaseTrains = function() {
     ));
     releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.GENERIC_LIB, "3.1.3")
-    ));
-    releaseTrains.push(new ReleaseTrain(
-        new Release(ComponentName.PLUGIN_PCSC_LIB, "2.5.3")
     ));
     releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.CALYPSO_CARD_LIB, "3.1.9")
