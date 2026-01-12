@@ -1,3 +1,80 @@
 [
+  {
+    "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/13",
+    "repository_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib",
+    "labels_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/13/labels{/name}",
+    "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/13/comments",
+    "events_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/13/events",
+    "html_url": "https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/13",
+    "id": 3805068841,
+    "node_id": "I_kwDODMWZEs7izL4p",
+    "number": 13,
+    "title": "Reading NTAG213/MifareClassic",
+    "user": {
+      "login": "mbigant",
+      "id": 97614620,
+      "node_id": "U_kgDOBdF7HA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/97614620?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mbigant",
+      "html_url": "https://github.com/mbigant",
+      "followers_url": "https://api.github.com/users/mbigant/followers",
+      "following_url": "https://api.github.com/users/mbigant/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mbigant/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mbigant/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mbigant/subscriptions",
+      "organizations_url": "https://api.github.com/users/mbigant/orgs",
+      "repos_url": "https://api.github.com/users/mbigant/repos",
+      "events_url": "https://api.github.com/users/mbigant/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mbigant/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
 
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-01-12T16:30:18Z",
+    "updated_at": "2026-01-12T16:30:18Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "Hi,\nI'm trying to read NTAG213 and MifareClassic card but issuing an `java.lang.NullPointerException `in AndroidNfcReaderAdapter.kt:94.\nAfter some researches I found that `tagTechnology` is null and I notice that it is not set (like `currentCardProtocol` also) in every case in the `onTagDiscovered` method.\n\n```kotlin\noverride fun onTagDiscovered(tag: Tag) {\n    logger.info(\"{}: card discovered: {}\", name, tag)\n    isCardChannelOpen = false\n    try {\n      for (technology in tag.techList) when (technology) {\n        IsoDep::class.qualifiedName -> {\n          currentCardProtocol = IsoDep::class.qualifiedName!!\n          tagTechnology = IsoDep.get(tag)\n        }\n        MifareUltralight::class.qualifiedName -> {\n          currentCardProtocol = MifareUltralight::class.qualifiedName!!\n          tagTechnology = MifareUltralight.get(tag)\n        }\n        NfcA::class.qualifiedName -> {\n          val tagA = NfcA.get(tag)\n          uid = tagA.tag.id\n          powerOnData =\n              JSONObject()\n                  .put(\"type\", \"A\")\n                  .put(\"uid\", HexUtil.toHex(uid))\n                  .put(\"atqa\", HexUtil.toHex(tagA.atqa))\n                  .put(\"sak\", HexUtil.toHex(tagA.sak))\n                  .toString()\n        }\n        NfcB::class.qualifiedName -> {\n          val tagB = NfcB.get(tag)\n          uid = tagB.tag.id\n          powerOnData =\n              JSONObject()\n                  .put(\"type\", \"B\")\n                  .put(\"uid\", HexUtil.toHex(uid))\n                  .put(\"applicationData\", HexUtil.toHex(tagB.applicationData))\n                  .put(\"protocolInfo\", HexUtil.toHex(tagB.protocolInfo))\n                  .toString()\n        }\n        else -> logger.warn(\"{}: unreachable code\", name)\n      }\n      cardInsertionWaiterAsynchronousApi.onCardInserted()\n    } catch (_: NoSuchElementException) {\n      tagTechnology = null\n      logger.warn(\"{}: unsupported card technology\", name)\n    }\n  }\n```\n\nWhen matching NfcA or NfcB which is my case there is no tagTechnology affectation. Is there any reason ?\n\nThank you.",
+    "closed_by": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/13/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-nfc-java-lib/issues/13/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null
+  }
 ]
