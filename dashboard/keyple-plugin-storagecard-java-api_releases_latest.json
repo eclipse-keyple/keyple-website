@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-storagecard-java-api/releases/230737742",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-storagecard-java-api/releases/230737742/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-storagecard-java-api/releases/230737742/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-storagecard-java-api/releases/tag/1.0.0",
-  "id": 230737742,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-storagecard-java-api/releases/283681555",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-storagecard-java-api/releases/283681555/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-storagecard-java-api/releases/283681555/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-storagecard-java-api/releases/tag/1.1.0",
+  "id": 283681555,
   "author": {
     "login": "jeanpierrefortune",
     "id": 1011563,
@@ -25,20 +25,20 @@
     "user_view_type": "public",
     "site_admin": false
   },
-  "node_id": "RE_kwDOOCgpi84NwMdO",
-  "tag_name": "1.0.0",
+  "node_id": "RE_kwDOOCgpi84Q6KMT",
+  "tag_name": "1.1.0",
   "target_commitish": "main",
-  "name": "",
+  "name": "1.1.0",
   "draft": false,
   "immutable": false,
   "prerelease": false,
-  "created_at": "2025-07-08T08:51:44Z",
-  "updated_at": "2025-07-08T08:53:02Z",
-  "published_at": "2025-07-08T08:53:02Z",
+  "created_at": "2026-02-06T09:43:52Z",
+  "updated_at": "2026-02-06T09:47:04Z",
+  "published_at": "2026-02-06T09:47:04Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-storagecard-java-api/tarball/1.0.0",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-storagecard-java-api/zipball/1.0.0",
-  "body": "This is the initial release."
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-storagecard-java-api/tarball/1.1.0",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-storagecard-java-api/zipball/1.1.0",
+  "body": "### Added\r\n- Documentation of recommended status words for ApduInterpreterSpi implementations\r\n- Exception handling guidelines for CommandProcessorApi implementations\r\n- Added `KeyStorageType` enum to specify memory type (VOLATILE or NON_VOLATILE).\r\n- Added `loadKey` method to `CommandProcessorApi` interface using `KeyStorageType` for loading card-specific authentication keys into reader memory.\r\n- Added `generalAuthenticate` method to `CommandProcessorApi` interface for performing authentication to contactless cards using previously loaded keys.\r\n### Changed\r\n- Enhanced JavaDoc with comprehensive error handling information\r\n- Added status word reference table following ISO 7816-4 and PC/SC standards"
 }
