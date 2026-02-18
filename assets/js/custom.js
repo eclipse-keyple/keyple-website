@@ -695,7 +695,14 @@ loadProjectDashboard = async function() {
 
         // get complementary data
         await getBranches(rowIndex, owner, project[0]);
-        await getPullData(rowIndex, owner, project[0]);
+        const prCount = await getPullData(rowIndex, owner, project[0]);
+        // Correct issues count: GitHub's open_issues_count includes pull requests
+        const issuesCell = document.getElementById("issue-" + rowIndex);
+        const realIssuesCount = json.open_issues_count - prCount;
+        issuesCell.innerHTML = realIssuesCount.toString();
+        if (realIssuesCount <= 0) {
+            issuesCell.style.backgroundColor = "";
+        }
         await getLatestRelease(rowIndex, owner, project[0]);
         await getReleaseDate(rowIndex, owner, project[0]);
         if (project[2] === true) {
@@ -722,6 +729,7 @@ loadProjectDashboard = async function() {
             cell.style.backgroundColor = "orange";
         }
         cell.innerHTML = json.length;
+        return json.length;
     }
 
     async function getLatestRelease(rowIndex, owner, repos) {
