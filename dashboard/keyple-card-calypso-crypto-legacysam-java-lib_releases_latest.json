@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/releases/264289016",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/releases/264289016/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/releases/264289016/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/releases/tag/1.0.0",
-  "id": 264289016,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/releases/288647661",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/releases/288647661/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/releases/288647661/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/releases/tag/1.0.1",
+  "id": 288647661,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -25,20 +25,20 @@
     "user_view_type": "public",
     "site_admin": false
   },
-  "node_id": "RE_kwDOIlQf7c4PwLr4",
-  "tag_name": "1.0.0",
+  "node_id": "RE_kwDOIlQf7c4RNGnt",
+  "tag_name": "1.0.1",
   "target_commitish": "main",
-  "name": "1.0.0",
+  "name": "1.0.1",
   "draft": false,
   "immutable": false,
   "prerelease": false,
-  "created_at": "2025-11-21T10:53:46Z",
-  "updated_at": "2025-11-21T10:56:12Z",
-  "published_at": "2025-11-21T10:56:12Z",
+  "created_at": "2026-02-20T09:42:59Z",
+  "updated_at": "2026-02-20T09:44:02Z",
+  "published_at": "2026-02-20T09:44:02Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/tarball/1.0.0",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/zipball/1.0.0",
-  "body": "### Changed\r\n- Added `processCommands` methods using `org.eclipse.keypop.reader.ChannelControl` from Reader API in transaction managers to replace deprecated methods using Calypso Card API.\r\n### Deprecated\r\n- `FreeTransactionManager.processCommands()` method.\r\n  Use `processCommands(org.eclipse.keypop.reader.ChannelControl)` instead.\r\n- `SecureWriteTransactionManager.processCommands()` method.\r\n  Use `processCommands(org.eclipse.keypop.reader.ChannelControl)` instead.\r\n- `AsyncTransactionExecutorManager.processCommands()` method.\r\n  Use `processCommands(org.eclipse.keypop.reader.ChannelControl)` instead.\r\n- `AsyncTransactionCreatorManager.processCommands()` method.\r\n  Use `processCommands(org.eclipse.keypop.reader.ChannelControl)` instead.\r\n### Upgraded\r\n- Keypop Reader API `2.0.1` -> `2.1.0`\r\n- Keypop Calypso Card API `2.1.2` -> `2.2.0`\r\n- Keypop Calypso Crypto Legacy SAM API `0.7.0` -> `1.0.0`"
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/tarball/1.0.1",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-crypto-legacysam-java-lib/zipball/1.0.1",
+  "body": "### Changed\r\n- Normalized logging and error messages using Keyple coding standards.\r\n### Upgraded\r\n- `keyple-service-resource-java-lib` from `3.1.0` to `3.1.1` (source code not impacted)\r\n- `keyple-util-java-lib` from `2.4.0` to `2.4.1` (source code not impacted)\r\n- `slf4j-api` from `1.7.32` to `1.7.36` (`compileOnly`)"
 }
