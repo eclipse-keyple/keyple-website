@@ -83,10 +83,53 @@ function ReleaseTrain (...releases) {
 let releaseTrains = [];
 let initReleaseTrains = function() {
     releaseTrains.push(new ReleaseTrain(
-        new Release(ComponentName.PLUGIN_PCSC_LIB, "2.6.0")
+        new Release(ComponentName.GENERIC_LIB, "3.2.1")
     ));
     releaseTrains.push(new ReleaseTrain(
-        new Release(ComponentName.CALYPSO_CARD_LIB, "3.2.1")
+        new Release(ComponentName.CALYPSO_PKI_LIB, "0.2.4")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.CALYPSO_LEGACY_SAM_LIB, "1.0.1")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.CALYPSO_CARD_LIB, "3.2.2")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.DISTRIBUTED_REMOTE_LIB, "2.5.2")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.DISTRIBUTED_LOCAL_LIB, "2.5.3")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.DISTRIBUTED_NETWORK_LIB, "2.5.2")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.PLUGIN_CARD_RESOURCE_LIB, "2.0.2")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.SERVICE_RESOURCE_LIB, "3.1.1")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.SERVICE_LIB, "3.4.1")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.PLUGIN_STUB_LIB, "2.2.2")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.PLUGIN_ANDROID_OMAPI_LIB, "2.1.1")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.PLUGIN_PCSC_LIB, "2.6.2")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.2.2")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.2.0"),
+        new Release(ComponentName.PLUGIN_STORAGECARD_API, "1.1.+")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.UTIL_LIB, "2.4.1")
     ));
     releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.READER_API, "2.1.+"),
@@ -110,17 +153,11 @@ let initReleaseTrains = function() {
         new Release(ComponentName.CALYPSO_CARD_LIB, "3.1.9")
     ));
     releaseTrains.push(new ReleaseTrain(
-        new Release(ComponentName.CALYPSO_PKI_LIB, "0.2.3")
-    ));
-    releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.1.0"),
         new Release(ComponentName.PLUGIN_STORAGECARD_API, "1.0.+")
     ));
     releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.0.0")
-    ));
-    releaseTrains.push(new ReleaseTrain(
-        new Release(ComponentName.DISTRIBUTED_LOCAL_LIB, "2.5.2")
     ));
     releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.CALYPSO_LEGACY_SAM_API, "0.7.+"),
