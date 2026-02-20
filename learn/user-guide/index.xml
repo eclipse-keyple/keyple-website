@@ -1373,6 +1373,125 @@ resources are accessible.&lt;/p>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/components/overview/configuration-wizard/">Java components&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Android Platform User Guide</title><link>https://keyple.org/learn/user-guide/android-platform/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/android-platform/</guid><description>&lt;br>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This guide is intended for Android application integrators using Keyple and other third-party libraries that rely on SLF4J for logging.&lt;/p>
+&lt;p>Its goal is to explain:&lt;/p>
+&lt;ul>
+&lt;li>how to configure logging properly in an Android application,&lt;/li>
+&lt;li>how to disable low-level logs in production,&lt;/li>
+&lt;li>and how to avoid unnecessary performance overhead.&lt;/li>
+&lt;/ul>
+&lt;br>
+&lt;h2 id="logging-configuration">Logging configuration&lt;/h2>
+&lt;h3 id="using-timber-recommended">Using Timber (recommended)&lt;/h3>
+&lt;p>Keyple and several third-party libraries use SLF4J as a logging facade.
+On Android, the recommended setup is to bridge SLF4J to Timber, which itself delegates to the Android Log system.&lt;/p>
+&lt;p>Recommended dependencies:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// Logging stack:
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// - SLF4J API is used by Keyple and other third-party libraries.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// - slf4j-timber bridges SLF4J calls to Timber.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// - Timber is the actual Android logging implementation.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.slf4j:slf4j-api:1.7.36&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;com.arcao:slf4j-timber:3.1@aar&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;com.jakewharton.timber:timber:5.0.1&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;br>
+&lt;p>This setup ensures:&lt;/p>
+&lt;ul>
+&lt;li>a single logging API across the whole project,&lt;/li>
+&lt;li>consistent log routing on Android,&lt;/li>
+&lt;li>minimal coupling between libraries and logging backends.&lt;/li>
+&lt;/ul>
+&lt;h3 id="using-android-log">Using Android Log&lt;/h3>
+&lt;p>If you prefer to use Android&amp;rsquo;s native logging system directly without Timber, you can bridge SLF4J to the Android Log API.&lt;/p>
+&lt;p>Recommended dependencies:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// Logging stack:
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// - SLF4J API is used by Keyple and other third-party libraries.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// - slf4j-android bridges SLF4J calls directly to Android Log.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.slf4j:slf4j-api:1.7.36&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;org.slf4j:slf4j-android:1.7.36&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;br>
+&lt;p>This setup provides:&lt;/p>
+&lt;ul>
+&lt;li>direct integration with Android&amp;rsquo;s native logging system,&lt;/li>
+&lt;li>simple configuration with minimal dependencies,&lt;/li>
+&lt;li>automatic log tag generation based on logger names.&lt;/li>
+&lt;/ul>
+&lt;br>
+&lt;h2 id="proguardr8-setup">ProGuard/R8 setup&lt;/h2>
+&lt;h3 id="disabling-debug-and-trace-logs-in-production">Disabling debug and trace logs in production&lt;/h3>
+&lt;p>In release builds, low-level logs (DEBUG / TRACE) should be disabled to:&lt;/p>
+&lt;ul>
+&lt;li>reduce runtime overhead,&lt;/li>
+&lt;li>remove unnecessary string allocations,&lt;/li>
+&lt;li>improve startup and execution performance.&lt;/li>
+&lt;/ul>
+&lt;p>Add the following rule to your &lt;code>proguard-rules.pro&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Disable SLF4J debug and trace checks in optimized builds.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Calls to isDebugEnabled() and isTraceEnabled() will always return false,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># allowing R8 to remove guarded logging blocks.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># This applies to application code as well as third-party libraries (e.g. Keyple).&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-assumenosideeffects interface org.slf4j.Logger &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> public boolean isTraceEnabled&lt;span class="o">()&lt;/span> &lt;span class="k">return&lt;/span> false&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> public boolean isDebugEnabled&lt;span class="o">()&lt;/span> &lt;span class="k">return&lt;/span> false&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;br>
+&lt;div class="alert alert-warning">
+&lt;div>
+&lt;p>&lt;strong>Important limitation&lt;/strong>&lt;/p>
+&lt;p>R8 cannot reliably remove unguarded calls such as:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">debug&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Only logging statements protected by &lt;code>isDebugEnabled()&lt;/code> / &lt;code>isTraceEnabled()&lt;/code> can be safely eliminated.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;br>
+&lt;h2 id="performance-optimization-best-practices">Performance optimization best practices&lt;/h2>
+&lt;h3 id="always-guard-debug-and-trace-logs">Always guard debug and trace logs&lt;/h3>
+&lt;p>Recommended pattern:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// ❌ Avoid&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">debug&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Card detected [powerOnData={}]&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardPowerOnData&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// ✅ Valid&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">isDebugEnabled&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">debug&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Card detected [powerOnData={}]&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardPowerOnData&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;br>
+&lt;p>This allows R8 to:&lt;/p>
+&lt;ul>
+&lt;li>remove the entire block in optimized builds,&lt;/li>
+&lt;li>skip argument evaluation,&lt;/li>
+&lt;li>eliminate string concatenations and temporary objects.&lt;/li>
+&lt;/ul>
+&lt;h3 id="avoid-unguarded-logging">Avoid unguarded logging&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// ❌ Avoid&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">info&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Card detected [powerOnData=&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardPowerOnData&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;]&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// ✅ Valid&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">info&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Card detected [powerOnData={}]&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">cardPowerOnData&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;br>
+&lt;p>Even if logging is disabled, argument evaluation may still occur.&lt;/p>
+&lt;br>
+&lt;h2 id="debug-builds-with-release-like-performance">Debug builds with release-like performance&lt;/h2>
+&lt;p>Sometimes it is useful to test performance with minification enabled even in debug builds.&lt;/p>
+&lt;p>Example &lt;code>build.gradle.kts&lt;/code> configuration:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// Debug configuration with release-like optimizations enabled.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// This setup is intended for performance testing during development.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// To get full debug logs, this block can be commented out or relaxed.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">getByName&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;debug&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">isMinifyEnabled&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">isShrinkResources&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proguardFiles&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">getDefaultProguardFile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;proguard-android-optimize.txt&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;proguard-rules.pro&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;br>
+&lt;h2 id="summary-for-integrators">Summary for integrators&lt;/h2>
+&lt;ul>
+&lt;li>SLF4J is used by Keyple and third-party libraries.&lt;/li>
+&lt;li>Timber is the recommended Android backend.&lt;/li>
+&lt;li>Use ProGuard/R8 to disable debug and trace logging in production.&lt;/li>
+&lt;li>Always prefer guarded logging for optimal performance.&lt;/li>
 &lt;/ul></description></item><item><title>Upgrade from an earlier version of Keyple</title><link>https://keyple.org/learn/user-guide/migration-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/migration-guide/</guid><description>&lt;br>
 &lt;p>This guide is intended to help a user of a previous version of Keyple Java to upgrade his application to a new version of the library.&lt;/p>
 &lt;p>Upgrade from:&lt;/p>
