@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/175919718",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/175919718/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/175919718/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/releases/tag/2.5.1",
-  "id": 175919718,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/288629469",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/288629469/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/288629469/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/releases/tag/2.5.2",
+  "id": 288629469,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -25,20 +25,20 @@
     "user_view_type": "public",
     "site_admin": false
   },
-  "node_id": "RE_kwDOEgs9cc4KfFJm",
-  "tag_name": "2.5.1",
+  "node_id": "RE_kwDOEgs9cc4RNCLd",
+  "tag_name": "2.5.2",
   "target_commitish": "main",
-  "name": "",
+  "name": "2.5.2",
   "draft": false,
   "immutable": false,
   "prerelease": false,
-  "created_at": "2024-09-19T14:53:41Z",
-  "updated_at": "2024-09-19T15:07:35Z",
-  "published_at": "2024-09-19T15:07:35Z",
+  "created_at": "2026-02-20T08:40:55Z",
+  "updated_at": "2026-02-20T08:41:49Z",
+  "published_at": "2026-02-20T08:41:49Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/tarball/2.5.1",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/zipball/2.5.1",
-  "body": "### Fixed\r\n- Fixed the backward compatibility for clients that do not transmit the `apiLevel` field\r\n  (issue [eclipse-keyple/keyple-distributed-remote-java-lib#15])."
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/tarball/2.5.2",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/zipball/2.5.2",
+  "body": "### Changed\r\n- Normalized logging and error messages using Keyple coding standards.\r\n- Migrated the CI pipeline from Jenkins to GitHub Actions.\r\n### Upgraded\r\n- `keyple-util-java-lib` from `2.4.0` to `2.4.1` (source code not impacted)\r\n- `slf4j-api` from `1.7.32` to `1.7.36` (`compileOnly`)"
 }
