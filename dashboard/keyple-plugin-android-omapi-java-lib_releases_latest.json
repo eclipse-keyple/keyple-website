@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-omapi-java-lib/releases/150927119",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-omapi-java-lib/releases/150927119/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-android-omapi-java-lib/releases/150927119/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-android-omapi-java-lib/releases/tag/2.1.0",
-  "id": 150927119,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-omapi-java-lib/releases/288620155",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-omapi-java-lib/releases/288620155/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-android-omapi-java-lib/releases/288620155/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-android-omapi-java-lib/releases/tag/2.1.1",
+  "id": 288620155,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -25,20 +25,20 @@
     "user_view_type": "public",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWcr84I_vcP",
-  "tag_name": "2.1.0",
+  "node_id": "RE_kwDODMWcr84RM_57",
+  "tag_name": "2.1.1",
   "target_commitish": "main",
-  "name": "",
+  "name": "2.1.1",
   "draft": false,
   "immutable": false,
   "prerelease": false,
-  "created_at": "2024-04-12T12:55:07Z",
-  "updated_at": "2024-04-12T13:06:32Z",
-  "published_at": "2024-04-12T13:06:32Z",
+  "created_at": "2026-02-20T08:09:46Z",
+  "updated_at": "2026-02-20T08:11:04Z",
+  "published_at": "2026-02-20T08:11:04Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-omapi-java-lib/tarball/2.1.0",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-omapi-java-lib/zipball/2.1.0",
-  "body": "### Changed\r\n- Java source and target levels `1.6` -> `1.8`\r\n- Kotlin version `1.4.20` -> `1.7.20`\r\n### Upgraded\r\n- Keyple Plugin API `2.0.0` -> `2.3.1`\r\n- Keyple Util Lib `2.1.0` -> `2.4.0`\r\n- Gradle `6.8.3` -> `7.6.4`\r\n### Added\r\n- Added project status badges on `README.md` file.\r\n### Fixed\r\n- CI: code coverage report when releasing.\r\n### Removed\r\n- Dependency to logger implementation."
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-omapi-java-lib/tarball/2.1.1",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-android-omapi-java-lib/zipball/2.1.1",
+  "body": "### Changed\r\n- Normalized logging and error messages using Keyple coding standards.\r\n- Migrated the CI pipeline from Jenkins to GitHub Actions.\r\n### Upgraded\r\n- `keyple-util-java-lib` from `2.4.0` to `2.4.1`\r\n- `slf4j-api` from `1.7.32` to `1.7.36` (compileOnly)"
 }
