@@ -1,0 +1,194 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.1 Chrome/142.0.7444.265 Electron/39.8.0 Safari/537.36" version="29.6.1">
+  <diagram id="ugRn2NZ_iOeZW2UWXEU1" name="Page-1">
+    <mxGraphModel dx="1041" dy="626" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-16" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="Keypop Reader Layer" vertex="1">
+          <mxGeometry height="240" width="280" x="420" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-4" parent="ppmKoIEsNBY7Kqpl7rI8-16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontStyle=1;fontColor=#000000;" value="Keypop Reader API" vertex="1">
+          <mxGeometry height="60" width="240" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-5" parent="ppmKoIEsNBY7Kqpl7rI8-16" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontStyle=1;dashed=1;fillStyle=hatch;strokeWidth=2;fontColor=#000000;" value="Keypop Card API" vertex="1">
+          <mxGeometry height="60" width="240" x="20" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-48" edge="1" parent="1" source="V6izYeQOWG8l3TrPsfdA-14" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#fff2cc;strokeColor=#d6b656;" target="V6izYeQOWG8l3TrPsfdA-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=0" value="&lt;b&gt;Reader Plugin add-on&lt;/b&gt;&lt;br&gt;(PC/SC, etc.)&lt;br&gt;use&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color); background-color: rgb(255, 255, 153);&quot;&gt;Keyple Util Lib&lt;/b&gt;&lt;br&gt;use &lt;b style=&quot;background-color: rgb(153, 255, 255);&quot;&gt;Keyple Common API&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="1400" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-40" edge="1" parent="1" source="V6izYeQOWG8l3TrPsfdA-29" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;curved=1;" target="V6izYeQOWG8l3TrPsfdA-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=0;" value="&lt;b&gt;Keyple Service Resource Lib&lt;/b&gt;&lt;br&gt;use&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color); background-color: rgb(255, 255, 153);&quot;&gt;Keyple Util Lib&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="760" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-44" edge="1" parent="1" source="V6izYeQOWG8l3TrPsfdA-28" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;" target="V6izYeQOWG8l3TrPsfdA-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-45" edge="1" parent="1" source="V6izYeQOWG8l3TrPsfdA-28" style="edgeStyle=orthogonalEdgeStyle;curved=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" target="V6izYeQOWG8l3TrPsfdA-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-46" edge="1" parent="1" source="V6izYeQOWG8l3TrPsfdA-28" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;" target="V6izYeQOWG8l3TrPsfdA-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-9" edge="1" parent="1" source="V6izYeQOWG8l3TrPsfdA-28" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;" target="P8h1JKQHrEOADxgDFcXR-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-10" edge="1" parent="1" source="V6izYeQOWG8l3TrPsfdA-28" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;" target="P8h1JKQHrEOADxgDFcXR-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-28" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=0" value="&lt;b&gt;Keyple Service Lib&lt;/b&gt;&lt;br&gt;use&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color); background-color: rgb(255, 255, 153);&quot;&gt;Keyple Util Lib&lt;/b&gt;&lt;br&gt;use &lt;b style=&quot;background-color: rgb(153, 255, 255);&quot;&gt;Keyple Common API&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="760" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-49" edge="1" parent="1" source="V6izYeQOWG8l3TrPsfdA-25" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;" target="V6izYeQOWG8l3TrPsfdA-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-1" edge="1" parent="1" source="V6izYeQOWG8l3TrPsfdA-25" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;rounded=1;" target="V6izYeQOWG8l3TrPsfdA-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=0" value="&lt;b&gt;Distributed Solution add-on&lt;/b&gt;&lt;br&gt;use&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color); background-color: rgb(255, 255, 153);&quot;&gt;Keyple Util Lib&lt;/b&gt;&lt;br&gt;use &lt;b style=&quot;background-color: rgb(153, 255, 255);&quot;&gt;Keyple Common API&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="1400" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;dashed=1;fillStyle=hatch;glass=0;shadow=0;perimeterSpacing=0;strokeWidth=2;" value="Keyple Plugin API" vertex="1">
+          <mxGeometry height="60" width="240" x="1080" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;dashed=1;strokeWidth=2;fillStyle=hatch;" value="Keyple Distributed Remote API" vertex="1">
+          <mxGeometry height="60" width="240" x="1080" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;dashed=1;strokeWidth=2;fillStyle=hatch;" value="Keyple Distributed Local API" vertex="1">
+          <mxGeometry height="60" width="240" x="1080" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-68" parent="1" style="swimlane;whiteSpace=wrap;html=1;shadow=0;glass=0;labelBackgroundColor=#B3B3B3;fillStyle=auto;strokeWidth=1;fillColor=#B3B3B3;gradientColor=none;rounded=1;swimlaneFillColor=none;swimlaneLine=1;fontColor=#FFFFFF;" value="Legend" vertex="1">
+          <mxGeometry height="220" width="460" x="170" y="520" as="geometry">
+            <mxRectangle height="30" width="80" x="40" y="680" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-80" edge="1" parent="V6izYeQOWG8l3TrPsfdA-68" style="endArrow=classic;html=1;strokeWidth=2;curved=1;strokeColor=#666666;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="20" y="123.5" as="sourcePoint" />
+            <mxPoint x="220" y="123.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-81" connectable="0" parent="V6izYeQOWG8l3TrPsfdA-80" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" value="&amp;nbsp;Dependency&amp;nbsp;" vertex="1">
+          <mxGeometry relative="1" x="-0.095" y="1" as="geometry">
+            <mxPoint x="15" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-26" parent="V6izYeQOWG8l3TrPsfdA-68" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6E6E6;strokeColor=#666666;fontStyle=1;strokeWidth=1;fillStyle=auto;fontColor=#333333;gradientColor=none;labelBackgroundColor=none;" value="Public API&lt;br&gt;(accessible from application)" vertex="1">
+          <mxGeometry height="30" width="200" x="20" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-25" parent="V6izYeQOWG8l3TrPsfdA-68" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B3B3B3;strokeColor=#666666;fontStyle=1;strokeWidth=2;fillStyle=hatch;fontColor=#333333;gradientColor=none;dashed=1;labelBackgroundColor=default;" value="Internal API&lt;br&gt;(invisible from application)" vertex="1">
+          <mxGeometry height="30" width="200" x="20" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-16" parent="V6izYeQOWG8l3TrPsfdA-68" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f0a30a;strokeColor=#BD7000;strokeWidth=1;fontColor=#000000;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="240" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-18" parent="V6izYeQOWG8l3TrPsfdA-68" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=1;fontStyle=1" value="Keypop API" vertex="1">
+          <mxGeometry height="30" width="180" x="270" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-19" parent="V6izYeQOWG8l3TrPsfdA-68" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="240" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-20" parent="V6izYeQOWG8l3TrPsfdA-68" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=1;fontStyle=1" value="Keyple core component" vertex="1">
+          <mxGeometry height="30" width="180" x="270" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-21" parent="V6izYeQOWG8l3TrPsfdA-68" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="240" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-22" parent="V6izYeQOWG8l3TrPsfdA-68" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=1;fontStyle=1" value="Keyple card extension add-on" vertex="1">
+          <mxGeometry height="30" width="180" x="270" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-23" parent="V6izYeQOWG8l3TrPsfdA-68" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="240" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-24" parent="V6izYeQOWG8l3TrPsfdA-68" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=1;fontStyle=1" value="Keyple reader plugin add-on" vertex="1">
+          <mxGeometry height="30" width="180" x="270" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-82" edge="1" parent="V6izYeQOWG8l3TrPsfdA-68" style="endArrow=classic;html=1;strokeWidth=2;curved=1;dashed=1;strokeColor=#666666;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="20" y="148" as="sourcePoint" />
+            <mxPoint x="220" y="148" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V6izYeQOWG8l3TrPsfdA-83" connectable="0" parent="V6izYeQOWG8l3TrPsfdA-82" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" value="&amp;nbsp;Optional dependency&amp;nbsp;" vertex="1">
+          <mxGeometry relative="1" x="-0.095" y="1" as="geometry">
+            <mxPoint x="15" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-1" parent="V6izYeQOWG8l3TrPsfdA-68" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="240" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-2" parent="V6izYeQOWG8l3TrPsfdA-68" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=1;fontStyle=1" value="Keyple distributed components" vertex="1">
+          <mxGeometry height="30" width="190" x="270" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-10" parent="V6izYeQOWG8l3TrPsfdA-68" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#b0e3e6;strokeColor=#0e8088;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="240" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-11" parent="V6izYeQOWG8l3TrPsfdA-68" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=1;fontStyle=1" value="Keyple interop components" vertex="1">
+          <mxGeometry height="30" width="180" x="270" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-7" edge="1" parent="1" source="P8h1JKQHrEOADxgDFcXR-6" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;" target="P8h1JKQHrEOADxgDFcXR-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-8" edge="1" parent="1" source="KDbw2VJpgdKMkO9motzZ-4" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;" target="P8h1JKQHrEOADxgDFcXR-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;dashed=1;fillStyle=hatch;glass=0;shadow=0;perimeterSpacing=0;strokeWidth=2;" value="Keyple Plugin Storage Card API" vertex="1">
+          <mxGeometry height="60" width="240" x="1720" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-9" edge="1" parent="1" source="ppmKoIEsNBY7Kqpl7rI8-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fillColor=#fff2cc;strokeColor=#d6b656;" target="ppmKoIEsNBY7Kqpl7rI8-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=0;" value="&lt;b&gt;Storage Card APDU Interpreter add-on&lt;br&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="1720" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-8" edge="1" parent="1" source="V6izYeQOWG8l3TrPsfdA-14" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#fff2cc;strokeColor=#d6b656;dashed=1;" target="ppmKoIEsNBY7Kqpl7rI8-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1410" y="80" as="sourcePoint" />
+            <mxPoint x="1330" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-14" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="Keyple Interop Components" vertex="1">
+          <mxGeometry height="230" width="280" x="1540" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-3" parent="ppmKoIEsNBY7Kqpl7rI8-14" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;fontStyle=0;" value="&lt;b&gt;Keyple Interop&lt;br&gt;JSON API Client Lib&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-4" parent="ppmKoIEsNBY7Kqpl7rI8-14" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;fontStyle=0;" value="&lt;b&gt;Keyple Interop&lt;br&gt;Local Reader NFC Mobile Lib&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="20" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="ppmKoIEsNBY7Kqpl7rI8-5" edge="1" parent="ppmKoIEsNBY7Kqpl7rI8-14" source="ppmKoIEsNBY7Kqpl7rI8-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#b1ddf0;strokeColor=#10739e;strokeWidth=2;" target="ppmKoIEsNBY7Kqpl7rI8-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KDbw2VJpgdKMkO9motzZ-1" edge="1" parent="1" source="P8h1JKQHrEOADxgDFcXR-6" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;" target="V6izYeQOWG8l3TrPsfdA-29">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="460" />
+              <mxPoint x="880" y="460" />
+            </Array>
+            <mxPoint x="370" y="-20" as="sourcePoint" />
+            <mxPoint x="1250" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KDbw2VJpgdKMkO9motzZ-2" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="Card Extension add-on" vertex="1">
+          <mxGeometry height="240" width="280" x="100" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="P8h1JKQHrEOADxgDFcXR-6" parent="KDbw2VJpgdKMkO9motzZ-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=0" value="&lt;b&gt;Card Solution Lib&lt;/b&gt;&lt;br&gt;(Calypso, Generic, Storage Card, etc.)&lt;br&gt;use &lt;b style=&quot;background-color: rgb(255, 255, 153);&quot;&gt;Keyple Util Lib&lt;/b&gt;&lt;br&gt;use &lt;span style=&quot;background-color: rgb(153, 255, 255);&quot;&gt;&lt;b&gt;Keyple Common API&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="20" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="KDbw2VJpgdKMkO9motzZ-4" parent="KDbw2VJpgdKMkO9motzZ-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" value="Card Solution API&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;(Keypop Calypso Card, etc.)&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KDbw2VJpgdKMkO9motzZ-5" edge="1" parent="KDbw2VJpgdKMkO9motzZ-2" source="P8h1JKQHrEOADxgDFcXR-6" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;" target="KDbw2VJpgdKMkO9motzZ-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="180" as="sourcePoint" />
+            <mxPoint x="380" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
