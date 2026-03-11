@@ -4,14 +4,16 @@ linktitle: Components map
 summary: General presentation of the dependencies between the different Keyple components.
 type: book
 weight: 10
-toc: false
+toc: true
 ---
 
 <br>
 
+## Overview
+
 The dependencies between the Keyple components are shown in the diagram below:
 
-{{< figure src="/media/learn/developer-guide/component-dependencies/component_dependencies_overview.drawio.svg" caption="" numbered="" >}}
+{{< figure src="/media/learn/developer-guide/component-dependencies/Component_DependenciesOverview.svg" caption="" numbered="" >}}
 
 Key points:
 * Each component has its **own life cycle**.
@@ -23,3 +25,15 @@ Key points:
 * All libraries are **public**.
 * All **libraries** and **public APIs** can be used by the developer of the application.
 * The **internal APIs** are intended for the developer of Keyple add-ons only (e.g. custom reader plugin, custom card extension or custom distributed solution). 
+
+<br>
+
+## Card extension add-ons
+
+### Calypso
+
+{{< figure src="/media/learn/developer-guide/component-dependencies/Component_DependenciesOverview_CalypsoExtensionAddOns.svg" caption="" numbered="" >}}
+
+### Generic card
+
+{{< figure src="/media/learn/developer-guide/component-dependencies/Component_DependenciesOverview_GenericExtensionAddOn.svg" caption="" numbered="" >}}
