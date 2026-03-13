@@ -333,6 +333,7 @@ int firstCaseIndex = cardSelectionManager.prepareSelection(
         .createIsoCardSelector()
         .filterByDfName(AID1),
     GenericExtensionService.getInstance()
+        .getGenericCardApiFactory()
         .createGenericCardSelectionExtension());
 
 // prepare a selection for application 2
@@ -341,6 +342,7 @@ int secondCaseIndex = cardSelectionManager.prepareSelection(
         .createIsoCardSelector()
         .filterByDfName(AID2),
     GenericExtensionService.getInstance()
+        .getGenericCardApiFactory()
         .createGenericCardSelectionExtension());
 {{< /code >}}
 
