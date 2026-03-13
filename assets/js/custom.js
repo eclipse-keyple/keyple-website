@@ -504,7 +504,6 @@ computeAppContent = function(language) {
     }
     if (appDependencies.has("cardGeneric")) {
         contentHtml += "\n" + $(tagPrefix+'keypop-genericcard-jvm-api').html();
-        contentHtml += "\n!!! You must add a dependency to a library that implements the 'keypop-genericcard-jvm-api' !!!";
     }
     contentHtml += "\n" + $(tagPrefix+'keyple-common-java-api').html()
         + "\n" + $(tagPrefix+'keyple-util-java-lib').html()
@@ -529,6 +528,9 @@ computeAppContent = function(language) {
     }
     if (appDependencies.has("cardCalypsoPki")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-card-calypso-crypto-pki-java-lib').html();
+    }
+    if (appDependencies.has("cardGeneric")) {
+        contentHtml += "\n" + $(tagPrefix+'keyple-card-generic-java-lib').html();
     }
     if (appDependencies.has("pluginAndroidNfc")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-plugin-android-nfc-java-lib').html();
