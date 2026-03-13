@@ -268,6 +268,7 @@ implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <span id="keypop-calypso-card-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-calypso-card-java-api'</span></span></span></span>
 <span id="keypop-calypso-crypto-legacysam-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api'</span></span></span></span>
 <span id="keypop-storagecard-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-storagecard-java-api'</span></span></span></span>
+<span id="keypop-genericcard-jvm-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keypop:keypop-genericcard-jvm-api'</span></span></span></span>
 
 <span id="specific-keyple-common-java-api"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}'</span></span></span></span>
 <span id="specific-keyple-service-resource-java-lib"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">'org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-service-resource-java-lib-version %}}'</span></span></span></span>
@@ -304,6 +305,7 @@ implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <span id="keypop-calypso-card-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keypop:keypop-calypso-card-java-api"</span>)</span></span></span>
 <span id="keypop-calypso-crypto-legacysam-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keypop:keypop-calypso-crypto-legacysam-java-api"</span>)</span></span></span>
 <span id="keypop-storagecard-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keypop:keypop-storagecard-java-api"</span>)</span></span></span>
+<span id="keypop-genericcard-jvm-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keypop:keypop-genericcard-jvm-api"</span>)</span></span></span>
 
 <span id="specific-keyple-common-java-api"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-common-java-api:{{% keyple-common-java-api-version %}}"</span>)</span></span></span>
 <span id="specific-keyple-service-resource-java-lib"><span class="line"><span class="cl"><span class="c1"></span><span class="n">implementation</span>(<span class="s2">"org.eclipse.keyple:keyple-service-resource-java-lib:{{% keyple-service-resource-java-lib-version %}}"</span>)</span></span></span>
@@ -418,6 +420,10 @@ implementation 'org.eclipse.keyple:keyple-util-java-lib:{{% keyple-util-java-lib
 <span id="keypop-storagecard-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keypop<span class="nt">&lt;/groupId&gt;</span></span></span>
   <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keypop-storagecard-java-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
+<span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
+<span id="keypop-genericcard-jvm-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.eclipse.keypop<span class="nt">&lt;/groupId&gt;</span></span></span>
+  <span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>keypop-genericcard-jvm-api<span class="nt">&lt;/artifactId&gt;</span></span></span>
 <span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span></span></span></span>
 
 <span id="specific-keyple-common-java-api"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span></span></span>

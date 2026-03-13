@@ -502,6 +502,10 @@ computeAppContent = function(language) {
         contentHtml += "\n" + $(tagPrefix+'keypop-storagecard-java-api').html();
         contentHtml += "\n!!! You must add a dependency to a library that implements the 'keypop-storagecard-java-api' !!!";
     }
+    if (appDependencies.has("cardGeneric")) {
+        contentHtml += "\n" + $(tagPrefix+'keypop-genericcard-jvm-api').html();
+        contentHtml += "\n!!! You must add a dependency to a library that implements the 'keypop-genericcard-jvm-api' !!!";
+    }
     contentHtml += "\n" + $(tagPrefix+'keyple-common-java-api').html()
         + "\n" + $(tagPrefix+'keyple-util-java-lib').html()
         + "\n" + $(tagPrefix+'keyple-service-java-lib').html();
@@ -516,9 +520,6 @@ computeAppContent = function(language) {
     }
     if (appDependencies.has("distributedRemote")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-distributed-remote-java-lib').html();
-    }
-    if (appDependencies.has("cardGeneric")) {
-        contentHtml += "\n" + $(tagPrefix+'keyple-card-generic-java-lib').html();
     }
     if (appDependencies.has("cardCalypso")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-card-calypso-java-lib').html();
