@@ -20,6 +20,7 @@ const ComponentName = {
     DISTRIBUTED_REMOTE_API: "distributedRemoteApi",
     PLUGIN_API: "pluginApi",
     PLUGIN_STORAGECARD_API: "pluginStorageCardApi",
+    GENERIC_API: "genericApi",
     UTIL_LIB: "utilLib",
     SERVICE_LIB: "serviceLib",
     SERVICE_RESOURCE_LIB: "serviceResourceLib",
@@ -50,6 +51,7 @@ const componentNames = [
     ComponentName.DISTRIBUTED_REMOTE_API,
     ComponentName.PLUGIN_API,
     ComponentName.PLUGIN_STORAGECARD_API,
+    ComponentName.GENERIC_API,
     ComponentName.UTIL_LIB,
     ComponentName.SERVICE_LIB,
     ComponentName.SERVICE_RESOURCE_LIB,
@@ -82,6 +84,10 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 let initReleaseTrains = function() {
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.GENERIC_API, "1.0.0"),
+        new Release(ComponentName.GENERIC_LIB, "4.0.0")
+    ))
     releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.GENERIC_LIB, "3.2.1")
     ));
