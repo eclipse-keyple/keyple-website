@@ -45,7 +45,7 @@ as they only concern documentation updates.
 <table id="datatable-dependency-check" class="display compact stripe nowrap" style="width:100%">
     <thead class="text-center">
         <tr>
-            <th colspan="6" class="bg-orange">Keypop APIs</th>
+            <th colspan="7" class="bg-orange">Keypop APIs</th>
             <th colspan="5" class="bg-yellow">Core APIs</th>
             <th colspan="3" class="bg-blue">Core libraries</th>
             <th colspan="3" class="bg-purple">Distributed systems libraries</th>
@@ -60,6 +60,7 @@ as they only concern documentation updates.
             <th class="bg-orange c-grey">Calypso Crypto Symmetric<br>API*</th>
             <th class="bg-orange">Calypso Legacy SAM<br>API</th>
             <th class="bg-orange c-grey">Calypso Crypto Asymmetric<br>API*</th>
+            <th class="bg-orange">Generic Card<br>API</th>
             <th class="bg-yellow">Common<br>API</th>
             <th class="bg-yellow c-grey">Distributed Local<br>API*</th>
             <th class="bg-yellow c-grey">Distributed Remote<br>API*</th>

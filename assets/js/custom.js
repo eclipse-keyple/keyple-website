@@ -15,6 +15,7 @@ const ComponentName = {
     CALYPSO_SYMMETRIC_API: "calypsoSymmetricApi",
     CALYPSO_LEGACY_SAM_API: "calypsoLegacySamApi",
     CALYPSO_ASYMMETRIC_API: "calypsoAsymmetricApi",
+    GENERIC_API: "genericApi",
     COMMON_API: "commonApi",
     DISTRIBUTED_LOCAL_API: "distributedLocalApi",
     DISTRIBUTED_REMOTE_API: "distributedRemoteApi",
@@ -45,6 +46,7 @@ const componentNames = [
     ComponentName.CALYPSO_SYMMETRIC_API,
     ComponentName.CALYPSO_LEGACY_SAM_API,
     ComponentName.CALYPSO_ASYMMETRIC_API,
+    ComponentName.GENERIC_API,
     ComponentName.COMMON_API,
     ComponentName.DISTRIBUTED_LOCAL_API,
     ComponentName.DISTRIBUTED_REMOTE_API,
@@ -82,6 +84,10 @@ function ReleaseTrain (...releases) {
  *****************************************************************************/
 let releaseTrains = [];
 let initReleaseTrains = function() {
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.GENERIC_API, "1.0.0"),
+        new Release(ComponentName.GENERIC_LIB, "4.0.0")
+    ))
     releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.GENERIC_LIB, "3.2.1")
     ));
@@ -496,6 +502,9 @@ computeAppContent = function(language) {
         contentHtml += "\n" + $(tagPrefix+'keypop-storagecard-java-api').html();
         contentHtml += "\n!!! You must add a dependency to a library that implements the 'keypop-storagecard-java-api' !!!";
     }
+    if (appDependencies.has("cardGeneric")) {
+        contentHtml += "\n" + $(tagPrefix+'keypop-genericcard-jvm-api').html();
+    }
     contentHtml += "\n" + $(tagPrefix+'keyple-common-java-api').html()
         + "\n" + $(tagPrefix+'keyple-util-java-lib').html()
         + "\n" + $(tagPrefix+'keyple-service-java-lib').html();
@@ -511,9 +520,6 @@ computeAppContent = function(language) {
     if (appDependencies.has("distributedRemote")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-distributed-remote-java-lib').html();
     }
-    if (appDependencies.has("cardGeneric")) {
-        contentHtml += "\n" + $(tagPrefix+'keyple-card-generic-java-lib').html();
-    }
     if (appDependencies.has("cardCalypso")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-card-calypso-java-lib').html();
     }
@@ -522,6 +528,9 @@ computeAppContent = function(language) {
     }
     if (appDependencies.has("cardCalypsoPki")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-card-calypso-crypto-pki-java-lib').html();
+    }
+    if (appDependencies.has("cardGeneric")) {
+        contentHtml += "\n" + $(tagPrefix+'keyple-card-generic-java-lib').html();
     }
     if (appDependencies.has("pluginAndroidNfc")) {
         contentHtml += "\n" + $(tagPrefix+'keyple-plugin-android-nfc-java-lib').html();
