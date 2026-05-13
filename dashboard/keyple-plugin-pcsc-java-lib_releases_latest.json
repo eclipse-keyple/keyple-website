@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/288623662",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/288623662/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/288623662/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/tag/2.6.2",
-  "id": 288623662,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/321682878",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/321682878/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/321682878/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/tag/2.6.3",
+  "id": 321682878,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -25,20 +25,20 @@
     "user_view_type": "public",
     "site_admin": false
   },
-  "node_id": "RE_kwDODMWf6s4RNAwu",
-  "tag_name": "2.6.2",
+  "node_id": "RE_kwDODMWf6s4TLH2-",
+  "tag_name": "2.6.3",
   "target_commitish": "main",
-  "name": "2.6.2",
+  "name": "2.6.3",
   "draft": false,
   "immutable": false,
   "prerelease": false,
-  "created_at": "2026-02-20T08:21:53Z",
-  "updated_at": "2026-02-20T08:23:00Z",
-  "published_at": "2026-02-20T08:23:00Z",
+  "created_at": "2026-05-13T07:32:28Z",
+  "updated_at": "2026-05-13T07:34:22Z",
+  "published_at": "2026-05-13T07:34:22Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/tarball/2.6.2",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/zipball/2.6.2",
-  "body": "### Changed\r\n- Normalized logging and error messages using Keyple coding standards."
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/tarball/2.6.3",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-plugin-pcsc-java-lib/zipball/2.6.3",
+  "body": "### Fixed\r\n- Fixed card removal wait for `INNOVATRON_B_PRIME` protocol cards: APDU polling is now bypassed in favor of the standard PC/SC absence detection, and disconnection is unconditionally performed with `UNPOWER` regardless of the configured disconnection mode.\r\n"
 }
