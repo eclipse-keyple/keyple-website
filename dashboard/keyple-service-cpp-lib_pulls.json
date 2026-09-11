@@ -34,10 +34,10 @@
     },
     "body": "Five changes in the observation and executor layers, found while running the PC/SC examples of `keyple-cpp-example` on Windows with SpringCard Puck and Identive readers, including plugging and unplugging readers during a run.\n\nFour are divergences from the Java reference implementation. The fifth, `d44637e`, is a deliberate divergence and is discussed below.\n\nOne commit per defect, each message stating the observed symptom.\n\n### Commits\n\n- `07c976f` **print the status word as hexadecimal.** It went through the default integer formatting, so logs read 36864 where the APDU and its data were already shown in hex. Adds the two standard library includes the formatting needs, which the translation unit was only getting transitively.\n- `78597dd` **route observer notification failures to the exception handler.** An exception thrown while notifying an observer escaped the reader event thread. It now reaches the observation exception handler, and a failure of the handler itself is logged together with the original cause.\n- `ec955a1` **keep the worker alive when a job throws.** `run()` called `job->run()` unguarded, so an exception a job did not catch escaped the thread function and terminated the process. A Java `ThreadPoolExecutor` captures a task's exception in its `Future` and keeps the pool alive.\n- `26d36d3` **reject jobs submitted after shutdown.** `execute()` started a fresh worker thread whenever `mThread` was null, which `shutdown()` had just reset. A job armed after shutdown therefore resurrected the executor on a thread nobody would ever join, letting the job outlive the object that submitted it. A Java `ThreadPoolExecutor` rejects tasks once shut down.\n- `d44637e` **keep plugin monitoring alive across an enumeration outage.**\n\n### About the last commit\n\nThis one is a deliberate divergence from the Java reference, where the `catch` sits outside the polling loop so that the first `PluginIOException` ends plugin monitoring for good. That behaviour is defensible on a platform where an enumeration failure means the subsystem is gone.\n\nOn Windows it is not: unplugging the *last* reader stops the Smart Card service, and the enumeration call fails until a reader comes back. With the upstream structure the plugin was left permanently deaf, so `UseCase7_PluginAndReaderObservation` never saw the readers return. The outage is now reported once, then polling continues. The sleep runs whether or not the cycle failed, and `InterruptedException` still ends the thread as before.\n\nIf you would rather keep strict parity with Java here, this commit can be dropped from the PR without affecting the other four. The companion fix in `keyple-plugin-pcsc-cpp-lib` that re-establishes the PC/SC context is a separate PR and is needed either way.\n\n### Validation\n\nValidated on hardware by unplugging and replugging each reader, including the last one, during `UseCase7_PluginAndReaderObservation`, and by re-running the Calypso and Service examples for regression. The 167 unit tests of this library pass on this branch.\n",
     "created_at": "2026-09-11T13:32:06Z",
-    "updated_at": "2026-09-11T15:30:14Z",
+    "updated_at": "2026-09-11T20:02:06Z",
     "closed_at": null,
     "merged_at": null,
-    "merge_commit_sha": "6c7a46899e068567effe9942b0f4792b4d4b172b",
+    "merge_commit_sha": "f30165c6ebf51bcdd8e53ae712fe80f1d93dcb02",
     "assignees": [
 
     ],
@@ -56,11 +56,11 @@
     "review_comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/pulls/14/comments",
     "review_comment_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/pulls/comments{/number}",
     "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/issues/14/comments",
-    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/statuses/d44637e873200e9fb35e08cb7b61f78cc5510be0",
+    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/statuses/be121e827b84742b2d4a2fef000fcedcd4b72b97",
     "head": {
       "label": "eclipse-keyple:develop-3.3.5-fix-win",
       "ref": "develop-3.3.5-fix-win",
-      "sha": "d44637e873200e9fb35e08cb7b61f78cc5510be0",
+      "sha": "be121e827b84742b2d4a2fef000fcedcd4b72b97",
       "user": {
         "login": "eclipse-keyple",
         "id": 157523070,
@@ -151,7 +151,7 @@
         "deployments_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/deployments",
         "created_at": "2022-04-18T18:32:35Z",
         "updated_at": "2025-10-04T08:32:24Z",
-        "pushed_at": "2026-09-11T15:06:32Z",
+        "pushed_at": "2026-09-11T20:01:17Z",
         "git_url": "git://github.com/eclipse-keyple/keyple-service-cpp-lib.git",
         "ssh_url": "git@github.com:eclipse-keyple/keyple-service-cpp-lib.git",
         "clone_url": "https://github.com/eclipse-keyple/keyple-service-cpp-lib.git",
@@ -288,7 +288,7 @@
         "deployments_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/deployments",
         "created_at": "2022-04-18T18:32:35Z",
         "updated_at": "2025-10-04T08:32:24Z",
-        "pushed_at": "2026-09-11T15:06:32Z",
+        "pushed_at": "2026-09-11T20:01:17Z",
         "git_url": "git://github.com/eclipse-keyple/keyple-service-cpp-lib.git",
         "ssh_url": "git@github.com:eclipse-keyple/keyple-service-cpp-lib.git",
         "clone_url": "https://github.com/eclipse-keyple/keyple-service-cpp-lib.git",
@@ -354,7 +354,7 @@
         "href": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/pulls/14/commits"
       },
       "statuses": {
-        "href": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/statuses/d44637e873200e9fb35e08cb7b61f78cc5510be0"
+        "href": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/statuses/be121e827b84742b2d4a2fef000fcedcd4b72b97"
       }
     },
     "author_association": "CONTRIBUTOR",
@@ -397,10 +397,10 @@
     },
     "body": null,
     "created_at": "2025-10-04T16:25:04Z",
-    "updated_at": "2026-09-10T09:42:17Z",
+    "updated_at": "2026-09-11T19:41:16Z",
     "closed_at": null,
     "merged_at": null,
-    "merge_commit_sha": "585232ee281b8211661f473c507c87c8557b44eb",
+    "merge_commit_sha": "cebf99f5f0ba277a105e5b9c4849528f30b9dcde",
     "assignees": [
 
     ],
@@ -419,11 +419,11 @@
     "review_comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/pulls/10/comments",
     "review_comment_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/pulls/comments{/number}",
     "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/issues/10/comments",
-    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/statuses/ba4371ec5461cd74f8741d81cbfdc2d337f8d9b7",
+    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/statuses/3f248c43e05cdc216bb7c0a8e18968f5c7c6fdec",
     "head": {
       "label": "eclipse-keyple:develop-3.3.5",
       "ref": "develop-3.3.5",
-      "sha": "ba4371ec5461cd74f8741d81cbfdc2d337f8d9b7",
+      "sha": "3f248c43e05cdc216bb7c0a8e18968f5c7c6fdec",
       "user": {
         "login": "eclipse-keyple",
         "id": 157523070,
@@ -514,7 +514,7 @@
         "deployments_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/deployments",
         "created_at": "2022-04-18T18:32:35Z",
         "updated_at": "2025-10-04T08:32:24Z",
-        "pushed_at": "2026-09-11T15:06:32Z",
+        "pushed_at": "2026-09-11T20:01:17Z",
         "git_url": "git://github.com/eclipse-keyple/keyple-service-cpp-lib.git",
         "ssh_url": "git@github.com:eclipse-keyple/keyple-service-cpp-lib.git",
         "clone_url": "https://github.com/eclipse-keyple/keyple-service-cpp-lib.git",
@@ -651,7 +651,7 @@
         "deployments_url": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/deployments",
         "created_at": "2022-04-18T18:32:35Z",
         "updated_at": "2025-10-04T08:32:24Z",
-        "pushed_at": "2026-09-11T15:06:32Z",
+        "pushed_at": "2026-09-11T20:01:17Z",
         "git_url": "git://github.com/eclipse-keyple/keyple-service-cpp-lib.git",
         "ssh_url": "git@github.com:eclipse-keyple/keyple-service-cpp-lib.git",
         "clone_url": "https://github.com/eclipse-keyple/keyple-service-cpp-lib.git",
@@ -717,7 +717,7 @@
         "href": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/pulls/10/commits"
       },
       "statuses": {
-        "href": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/statuses/ba4371ec5461cd74f8741d81cbfdc2d337f8d9b7"
+        "href": "https://api.github.com/repos/eclipse-keyple/keyple-service-cpp-lib/statuses/3f248c43e05cdc216bb7c0a8e18968f5c7c6fdec"
       }
     },
     "author_association": "CONTRIBUTOR",
