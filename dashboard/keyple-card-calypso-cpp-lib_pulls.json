@@ -34,10 +34,10 @@
     },
     "body": null,
     "created_at": "2026-09-17T10:09:43Z",
-    "updated_at": "2026-09-18T08:26:21Z",
+    "updated_at": "2026-09-18T09:36:22Z",
     "closed_at": null,
     "merged_at": null,
-    "merge_commit_sha": "1d338d0a8e4359b1eb832ea3b20b1d111e016044",
+    "merge_commit_sha": "5966005186cf05bf1870d421c7067498f617a0c0",
     "assignees": [
 
     ],
@@ -56,11 +56,11 @@
     "review_comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/pulls/15/comments",
     "review_comment_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/pulls/comments{/number}",
     "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/issues/15/comments",
-    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/statuses/17e9202888bf3da5a907783e1deaaf07d9f2e24a",
+    "statuses_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/statuses/f4a3660c3ca9b49971ef11a6794cc5953b6ddeed",
     "head": {
       "label": "eclipse-keyple:develop-3.2.2",
       "ref": "develop-3.2.2",
-      "sha": "17e9202888bf3da5a907783e1deaaf07d9f2e24a",
+      "sha": "f4a3660c3ca9b49971ef11a6794cc5953b6ddeed",
       "user": {
         "login": "eclipse-keyple",
         "id": 157523070,
@@ -151,7 +151,7 @@
         "deployments_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/deployments",
         "created_at": "2022-04-18T18:36:38Z",
         "updated_at": "2025-12-09T23:20:45Z",
-        "pushed_at": "2026-09-18T08:25:29Z",
+        "pushed_at": "2026-09-18T09:35:04Z",
         "git_url": "git://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib.git",
         "ssh_url": "git@github.com:eclipse-keyple/keyple-card-calypso-cpp-lib.git",
         "clone_url": "https://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib.git",
@@ -288,7 +288,7 @@
         "deployments_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/deployments",
         "created_at": "2022-04-18T18:36:38Z",
         "updated_at": "2025-12-09T23:20:45Z",
-        "pushed_at": "2026-09-18T08:25:29Z",
+        "pushed_at": "2026-09-18T09:35:04Z",
         "git_url": "git://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib.git",
         "ssh_url": "git@github.com:eclipse-keyple/keyple-card-calypso-cpp-lib.git",
         "clone_url": "https://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib.git",
@@ -354,7 +354,7 @@
         "href": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/pulls/15/commits"
       },
       "statuses": {
-        "href": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/statuses/17e9202888bf3da5a907783e1deaaf07d9f2e24a"
+        "href": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/statuses/f4a3660c3ca9b49971ef11a6794cc5953b6ddeed"
       }
     },
     "author_association": "CONTRIBUTOR",
@@ -397,7 +397,7 @@
     },
     "body": "Eight defects found while running the PC/SC examples of `keyple-cpp-example` against a SpringCard Puck Contactless reader, a SpringCard Puck SAM and an Identive CLOUD 2700 R, with Calypso cards in both regular and extended mode.\n\nAll eight are divergences from the Java reference implementation, not Windows workarounds. Nothing here is conditional on the platform or the compiler, although three of them only become visible under the MSVC debug heap, which fills uninitialised memory with a recognisable pattern instead of zeros.\n\nOne commit per defect, each message stating the observed symptom.\n\n### Commits\n\n- `5a3464a` **build `Command::STATUS_TABLE` from an empty map.** The initialiser copied the very object being initialised. The DLL failed to load with 0xC0000142.\n- `c95a8ab` **throw command exceptions instead of returning them by value.** `buildCommandException` returned a `CardCommandException` by value, slicing every derived exception to the base class, which made each `catch` on a derived type unreachable. Renamed `throwCommandException`, declared `[[noreturn]] void`.\n- `9b37ee4` **feed the anticipated counter response to the SAM digest.** The terminal session MAC was updated with the constant 9000 instead of `buildAnticipatedResponse()`, so the digest missed the new counter value. Every Increase or Decrease inside a secure session failed with 6988 on Close Secure Session.\n- `feacf35` **test the postponed counter value, not the pointer.** The guard tested the `shared_ptr` for null rather than the value it holds, which shifted the stored value postponed data index for cards that do not postpone their counter.\n- `760e287` **run the transaction cleanup for every exception type.** 38 blocks emulated a `finally` with `catch (const RuntimeException&)`. Keyple's `RuntimeException` and the Keypop API's `std::runtime_error` are disjoint hierarchies in C++, where they share a single ancestor in Java, so public API exceptions escaped the cleanup, left the command queue unpurged and replayed already executed commands on the next `processCommands`.\n- `9ce0f28` **enable encrypted mode when ciphering a new PIN.** The constructor taking the ciphering KIF and KVC left `mIsPinEncryptedMode` false, so the SAM was never consulted and the new PIN reached the card in clear, refused with 6982.\n- `0be4720` **initialise two members read before being written.** `mPreOpenWriteAccessLevel` and `mIsLegacyCase1` had no initialiser. The first cancelled pre-open mode on every session, logging a comparison against -842150451. The second silently forced Rev 1 settings on any card.\n- `0d00b73` **do not dereference a null `Le` in SV Reload.** `computeLe()` returns null when the session is open, an in-session stored value command being ISO case 3, and `finalizeCommand` dereferenced it unconditionally, killing the process.\n\n### On the last commit\n\nThis branch originally carried the same fix for `CommandSvDebitOrUndebit` as well. That half is already on this base: the guard is in place in `CommandSvDebitOrUndebit::finalizeCommand`, and in the constructor of `CommandSvReload`.\n\n`CommandSvReload::finalizeCommand` was missed, and still dereferences the null pointer, so a stored value reload prepared inside a secure session crashes. The commit applies the existing guard to that one remaining site, in the very same shape as its sibling, so the two files read alike.\n\n### Validation\n\nEach fix was validated on hardware through the example that exposed it, then the other Calypso examples were re-run for regression. `UseCase6_VerifyPin`, `UseCase7_StoredValue_SimpleReloading`, `UseCase8_StoredValue_DebitInSession`, `UseCase9_ChangePin`, `UseCase11_DataSigning` and `UseCase12_PerformanceMeasurement` all complete, and the resulting APDU traces were compared against the output of the Java examples on the same cards.\n\nThe 440 unit tests of this library pass on this branch.\n",
     "created_at": "2026-09-11T13:31:54Z",
-    "updated_at": "2026-09-18T08:25:31Z",
+    "updated_at": "2026-09-18T09:35:05Z",
     "closed_at": null,
     "merged_at": null,
     "merge_commit_sha": null,
@@ -514,7 +514,7 @@
         "deployments_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/deployments",
         "created_at": "2022-04-18T18:36:38Z",
         "updated_at": "2025-12-09T23:20:45Z",
-        "pushed_at": "2026-09-18T08:25:29Z",
+        "pushed_at": "2026-09-18T09:35:04Z",
         "git_url": "git://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib.git",
         "ssh_url": "git@github.com:eclipse-keyple/keyple-card-calypso-cpp-lib.git",
         "clone_url": "https://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib.git",
@@ -560,7 +560,7 @@
     "base": {
       "label": "eclipse-keyple:develop-3.2.2",
       "ref": "develop-3.2.2",
-      "sha": "17e9202888bf3da5a907783e1deaaf07d9f2e24a",
+      "sha": "f4a3660c3ca9b49971ef11a6794cc5953b6ddeed",
       "user": {
         "login": "eclipse-keyple",
         "id": 157523070,
@@ -651,7 +651,7 @@
         "deployments_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-cpp-lib/deployments",
         "created_at": "2022-04-18T18:36:38Z",
         "updated_at": "2025-12-09T23:20:45Z",
-        "pushed_at": "2026-09-18T08:25:29Z",
+        "pushed_at": "2026-09-18T09:35:04Z",
         "git_url": "git://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib.git",
         "ssh_url": "git@github.com:eclipse-keyple/keyple-card-calypso-cpp-lib.git",
         "clone_url": "https://github.com/eclipse-keyple/keyple-card-calypso-cpp-lib.git",
