@@ -1,83 +1,5 @@
 [
   {
-    "url": "https://api.github.com/repos/eclipse-keyple/keyple-cpp-example/issues/10",
-    "repository_url": "https://api.github.com/repos/eclipse-keyple/keyple-cpp-example",
-    "labels_url": "https://api.github.com/repos/eclipse-keyple/keyple-cpp-example/issues/10/labels{/name}",
-    "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-cpp-example/issues/10/comments",
-    "events_url": "https://api.github.com/repos/eclipse-keyple/keyple-cpp-example/issues/10/events",
-    "html_url": "https://github.com/eclipse-keyple/keyple-cpp-example/pull/10",
-    "id": 5424912531,
-    "node_id": "PR_kwDOHMlWN88AAAABDJk45w",
-    "number": 10,
-    "title": "fix: make the examples report their failures, plus six correctness fixes",
-    "user": {
-      "login": "jeanpierrefortune",
-      "id": 1011563,
-      "node_id": "MDQ6VXNlcjEwMTE1NjM=",
-      "avatar_url": "https://avatars.githubusercontent.com/u/1011563?v=4",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/jeanpierrefortune",
-      "html_url": "https://github.com/jeanpierrefortune",
-      "followers_url": "https://api.github.com/users/jeanpierrefortune/followers",
-      "following_url": "https://api.github.com/users/jeanpierrefortune/following{/other_user}",
-      "gists_url": "https://api.github.com/users/jeanpierrefortune/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/jeanpierrefortune/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/jeanpierrefortune/subscriptions",
-      "organizations_url": "https://api.github.com/users/jeanpierrefortune/orgs",
-      "repos_url": "https://api.github.com/users/jeanpierrefortune/repos",
-      "events_url": "https://api.github.com/users/jeanpierrefortune/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/jeanpierrefortune/received_events",
-      "type": "User",
-      "user_view_type": "public",
-      "site_admin": false
-    },
-    "labels": [
-
-    ],
-    "state": "open",
-    "locked": false,
-    "assignees": [
-
-    ],
-    "milestone": null,
-    "comments": 1,
-    "created_at": "2026-09-11T13:33:05Z",
-    "updated_at": "2026-09-19T14:31:48Z",
-    "closed_at": null,
-    "assignee": null,
-    "author_association": "CONTRIBUTOR",
-    "issue_field_values": [
-
-    ],
-    "type": null,
-    "active_lock_reason": null,
-    "draft": false,
-    "pull_request": {
-      "url": "https://api.github.com/repos/eclipse-keyple/keyple-cpp-example/pulls/10",
-      "html_url": "https://github.com/eclipse-keyple/keyple-cpp-example/pull/10",
-      "diff_url": "https://github.com/eclipse-keyple/keyple-cpp-example/pull/10.diff",
-      "patch_url": "https://github.com/eclipse-keyple/keyple-cpp-example/pull/10.patch",
-      "merged_at": null
-    },
-    "body": "Eight changes to the examples, found while running the whole PC/SC suite on Windows with SpringCard Puck and Identive readers. Two of them are about error reporting and were a prerequisite to diagnosing everything else: before them, a failing example printed nothing at all.\n\nThe library fixes these examples exposed are in separate PRs on `keyple-card-calypso-cpp-lib`, `keyple-card-calypso-crypto-legacysam-cpp-lib`, `keyple-service-cpp-lib`, `keyple-plugin-pcsc-cpp-lib`, `keyple-util-cpp-lib` and `keypop-calypso-card-cpp-api`.\n\nOne commit per subject.\n\n### Error reporting\n\n- `8d20977` **report the cause in the reader observer callbacks.** Two format strings passed one argument more than they had placeholders, so the logger threw from inside the error path and the cause of an observation error was never printed.\n- `9119e5e` **catch and report the exceptions escaping the examples.** Each `main` becomes a `runExample()` called from a `main` that catches, logs the message and returns 1. An escaping exception used to reach `abort()` with exit code 3, no message, and the buffered log was lost whenever output was redirected.\n\n### Correctness\n\n- `58b2810` **do not finalize card processing on an `UNAVAILABLE` event.** The guard excluded only `CARD_REMOVED`, so `UNAVAILABLE` restarted a monitoring job on a reader being unregistered. The guard keeps the log from showing a card removal sequence starting on a reader that just vanished.\n- `dcadda4` **select the Innovatron protocol by the name the plugin registers.** `UseCase3_Rev1Selection` activated the protocol under the name of the deprecated `PcscSupportedContactlessProtocol`, whose Innovatron constant carries a `_CARD` suffix. See the note below on how this interacts with the plugin.\n- `8e5f8e2` **take the PIN key references from the shared constants.** `UseCase6_VerifyPin` and `UseCase9_ChangePin` each declared their own copies, which had drifted away from `common/CalypsoConstants`. Details below.\n- `15c890d` **check `findReader` for null before dereferencing the reader.** `findReader` returns null when no reader name matches the regex, where the Java original throws. Every caller then called `getName()` on that null pointer, so a missing or renamed reader ended in an access violation with no diagnostic at all. The seven call sites now throw an `IllegalStateException` naming the regex that matched nothing.\n\n### Housekeeping\n\n- `40a83d5` **point the Calypso examples at the current test card AID.** Thirteen files including the shared `CalypsoConstants`. The Service and PC/SC examples keep the previous AID because the cards available for those tests carry the old application, and the four stub files keep it because the simulated card *is* that application.\n- `755260a` **migrate the examples off the deprecated PC/SC protocol classes.** 19 contactless and 9 contact call sites move to `PcscCardCommunicationProtocol`. Both moves are behaviour-neutral: the contactless name is the same string in both classes, and the three contact rules share the same ATR pattern. One call site keeps the deprecated class on purpose, `UseCase2_ProtocolBasedSelection`, because `MIFARE_CLASSIC` does not exist in the current one.\n\nThis migration depends on the export fix in the `keyple-plugin-pcsc-cpp-lib` PR: without it, `PcscCardCommunicationProtocol` does not link on Windows.\n\n### On the PIN key references\n\n`CalypsoConstants` was until now used by nobody but its own translation unit, which is how the two example copies drifted apart from it unnoticed. Both examples now take all four references, and the PIN values, from that one file.\n\nOne of the four was wrong there. The verification ciphering key carried KVC 79h where the card under test expects 74h, the value both examples shipped. An encrypted Verify PIN answered 63C2, read as a wrong PIN, although the same PIN succeeded in plain form on the line above. With 74h in the shared file, `UseCase6_VerifyPin` runs its five steps and the attempt counter goes 3, 3, 2, 2, 3 as expected.\n\nThe modification ciphering key keeps the 21h/79h of the shared file. It is worth saying plainly that this pair does not work either: `UseCase9_ChangePin` answers 6988, incorrect cryptogram, with 21h/79h exactly as it does with the 21h/74h the examples shipped. So neither shipped value matches the key this card expects, and the right one is still unknown. The untried candidate is KIF 30h with KVC 74h, the key that works for verification. That question is separate from the de-duplication done here, and this PR does not claim to answer it.\n\n### Note on the Innovatron commit\n\nWhen this was found, the plugin keyed its default rules only from `PcscCardCommunicationProtocol`, without the `_CARD` suffix, so the example failed with \"The card protocol INNOVATRON_B_PRIME_CARD is not supported\". The PC/SC plugin has since started registering the deprecated names alongside the current ones, so the old name resolves again and the example is no longer broken by this.\n\nThe commit is kept because it moves the example onto the non-deprecated name, consistently with the migration commit above. It is now a migration rather than a fix, and can be dropped if you prefer.\n\n### A format string this base corrects differently\n\nThis base changes the `%%` of the `UseCase12` and `UseCase13` failure messages to `%s`. `Logger::printf` treats a bare `%` as the placeholder and `%%` as an escaped percent, so `%s` consumes the argument and then prints a literal `s`. The restructuring commit uses `% %`, three placeholders for three arguments, which is why it conflicts there. Worth a separate look on your side.\n\n### Validation\n\nThe whole suite was run on hardware. Every example either completes or exits 1 with a message naming its cause, the one exception being `UseCase9_ChangePin` and its open 6988 described above. The stub examples and the 761 unit tests of the dependency chain pass.\n",
-    "closed_by": null,
-    "reactions": {
-      "url": "https://api.github.com/repos/eclipse-keyple/keyple-cpp-example/issues/10/reactions",
-      "total_count": 0,
-      "+1": 0,
-      "-1": 0,
-      "laugh": 0,
-      "hooray": 0,
-      "confused": 0,
-      "heart": 0,
-      "rocket": 0,
-      "eyes": 0
-    },
-    "timeline_url": "https://api.github.com/repos/eclipse-keyple/keyple-cpp-example/issues/10/timeline",
-    "performed_via_github_app": null,
-    "state_reason": null
-  },
-  {
     "url": "https://api.github.com/repos/eclipse-keyple/keyple-cpp-example/issues/7",
     "repository_url": "https://api.github.com/repos/eclipse-keyple/keyple-cpp-example",
     "labels_url": "https://api.github.com/repos/eclipse-keyple/keyple-cpp-example/issues/7/labels{/name}",
@@ -120,7 +42,7 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2025-10-14T03:16:46Z",
-    "updated_at": "2026-09-19T13:55:28Z",
+    "updated_at": "2026-09-20T19:58:56Z",
     "closed_at": null,
     "assignee": null,
     "author_association": "CONTRIBUTOR",
