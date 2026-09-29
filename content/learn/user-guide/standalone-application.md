@@ -458,6 +458,19 @@ calling the "Execute Remote Service" function. This data can be included in eith
 In both cases, it must be encapsulated within an object recognized by the server.
 {{% /callout %}}
 
+{{% callout note %}}
+**Important information regarding card extensions not provided by the Eclipse Keyple project!**
+
+Since version `3.5.0` of the Keyple Service library, when a card selection scenario involves a card extension that is
+not provided by the Eclipse Keyple project (i.e. outside the `org.eclipse.keyple` package), this card extension must be
+registered beforehand by invoking the `checkCardExtension(...)` method of the smart card service
+(e.g. `SmartCardServiceProvider.getService().checkCardExtension(myCardExtensionService)`).
+This must be done before importing a card selection scenario or a processed card selection scenario, as well as before
+allocating a reader of a remote pool plugin.
+
+Otherwise, the card selections are replaced by a default type and the selected smart cards are not provided.
+{{% /callout %}}
+
 <br>
 
 ## Perform a transaction
