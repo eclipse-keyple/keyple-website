@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-integration-java-test/releases/297871081",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-integration-java-test/releases/297871081/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-integration-java-test/releases/297871081/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-integration-java-test/releases/tag/2026-03-17",
-  "id": 297871081,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-integration-java-test/releases/399247556",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-integration-java-test/releases/399247556/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-integration-java-test/releases/399247556/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-integration-java-test/releases/tag/2026-09-29",
+  "id": 399247556,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -25,20 +25,20 @@
     "user_view_type": "public",
     "site_admin": false
   },
-  "node_id": "RE_kwDOFuGtfM4RwSbp",
-  "tag_name": "2026-03-17",
+  "node_id": "RE_kwDOFuGtfM4XzAjE",
+  "tag_name": "2026-09-29",
   "target_commitish": "main",
-  "name": "2026-03-17",
+  "name": "2026-09-29",
   "draft": false,
   "immutable": false,
   "prerelease": false,
-  "created_at": "2026-03-17T10:24:11Z",
-  "updated_at": "2026-03-17T10:25:07Z",
-  "published_at": "2026-03-17T10:25:07Z",
+  "created_at": "2026-09-29T14:43:58Z",
+  "updated_at": "2026-09-29T14:47:21Z",
+  "published_at": "2026-09-29T14:47:21Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-integration-java-test/tarball/2026-03-17",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-integration-java-test/zipball/2026-03-17",
-  "body": "### Upgraded\r\n- Upgraded [Keyple Java BOM](https://github.com/eclipse-keyple/keyple-java-bom) to `2026.03.16`"
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-integration-java-test/tarball/2026-09-29",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-integration-java-test/zipball/2026-09-29",
+  "body": "### Added\r\n- Tests for the registration of card extensions not provided by the Eclipse Keyple project.\r\n- Tests for the Keyple Distributed components:\r\n  - server JSON API client,\r\n  - propagation of exceptions thrown by remote services,\r\n  - asynchronous node with a regular (non-pool) plugin,\r\n  - remote observation of plugins and readers with a long polling strategy.\r\n- `keyple-plugin-java-api:2.3.2` test dependency.\r\n### Changed\r\n- Each test class now runs in its own JVM.\r\n- Uses of `SmartCardService.checkCardExtension(...)` and `RemoteReaderServer.getInitialCardContent(Class<T>)`.\r\n### Upgraded\r\n- Upgraded [Keyple Java BOM](https://github.com/eclipse-keyple/keyple-java-bom) to `2026.09.29`"
 }
