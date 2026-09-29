@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/288629469",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/288629469/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/288629469/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/releases/tag/2.5.2",
-  "id": 288629469,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/399150579",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/399150579/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/releases/399150579/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/releases/tag/2.6.0",
+  "id": 399150579,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -25,20 +25,20 @@
     "user_view_type": "public",
     "site_admin": false
   },
-  "node_id": "RE_kwDOEgs9cc4RNCLd",
-  "tag_name": "2.5.2",
+  "node_id": "RE_kwDOEgs9cc4Xyo3z",
+  "tag_name": "2.6.0",
   "target_commitish": "main",
-  "name": "2.5.2",
+  "name": "2.6.0",
   "draft": false,
   "immutable": false,
   "prerelease": false,
-  "created_at": "2026-02-20T08:40:55Z",
-  "updated_at": "2026-02-20T08:41:49Z",
-  "published_at": "2026-02-20T08:41:49Z",
+  "created_at": "2026-09-29T12:57:52Z",
+  "updated_at": "2026-09-29T12:59:09Z",
+  "published_at": "2026-09-29T12:59:09Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/tarball/2.5.2",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/zipball/2.5.2",
-  "body": "### Changed\r\n- Normalized logging and error messages using Keyple coding standards.\r\n- Migrated the CI pipeline from Jenkins to GitHub Actions.\r\n### Upgraded\r\n- `keyple-util-java-lib` from `2.4.0` to `2.4.1` (source code not impacted)\r\n- `slf4j-api` from `1.7.32` to `1.7.36` (`compileOnly`)"
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/tarball/2.6.0",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-distributed-network-java-lib/zipball/2.6.0",
+  "body": "### Added\r\n- Internal method allowing the libraries using a server node to check the activity of a client.\r\n### Changed\r\n- `SyncNodeServer`: the long polling duration is now limited to the node timeout (20 seconds if the timeout is zero).\r\n- `SyncNodeServer`: the clients which no longer check their events are now released after 10 minutes of inactivity (or twice the node timeout if greater), instead of 1 day.\r\n- `SyncNodeServer`: the number of clients observing plugin events (respectively reader events) is now limited to 10000.\r\n- `SyncNodeClient`: the delay between two reconnection attempts is now limited to 60 seconds.\r\n### Upgraded\r\n- `keyple-util-java-lib` from `2.4.1` to `2.5.0`"
 }

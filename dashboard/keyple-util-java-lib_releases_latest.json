@@ -1,9 +1,9 @@
 {
-  "url": "https://api.github.com/repos/eclipse-keyple/keyple-util-java-lib/releases/283301045",
-  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-util-java-lib/releases/283301045/assets",
-  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-util-java-lib/releases/283301045/assets{?name,label}",
-  "html_url": "https://github.com/eclipse-keyple/keyple-util-java-lib/releases/tag/2.4.1",
-  "id": 283301045,
+  "url": "https://api.github.com/repos/eclipse-keyple/keyple-util-java-lib/releases/399126821",
+  "assets_url": "https://api.github.com/repos/eclipse-keyple/keyple-util-java-lib/releases/399126821/assets",
+  "upload_url": "https://uploads.github.com/repos/eclipse-keyple/keyple-util-java-lib/releases/399126821/assets{?name,label}",
+  "html_url": "https://github.com/eclipse-keyple/keyple-util-java-lib/releases/tag/2.5.0",
+  "id": 399126821,
   "author": {
     "login": "andrei-cristea",
     "id": 26622621,
@@ -25,20 +25,20 @@
     "user_view_type": "public",
     "site_admin": false
   },
-  "node_id": "RE_kwDOEgs-3c4Q4tS1",
-  "tag_name": "2.4.1",
+  "node_id": "RE_kwDOEgs-3c4XyjEl",
+  "tag_name": "2.5.0",
   "target_commitish": "main",
-  "name": "2.4.1",
+  "name": "2.5.0",
   "draft": false,
   "immutable": false,
   "prerelease": false,
-  "created_at": "2026-02-05T10:44:29Z",
-  "updated_at": "2026-02-05T10:46:08Z",
-  "published_at": "2026-02-05T10:46:08Z",
+  "created_at": "2026-09-29T12:28:08Z",
+  "updated_at": "2026-09-29T12:30:17Z",
+  "published_at": "2026-09-29T12:30:17Z",
   "assets": [
 
   ],
-  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-util-java-lib/tarball/2.4.1",
-  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-util-java-lib/zipball/2.4.1",
-  "body": "### Changed\r\n- Migrated the CI pipeline from Jenkins to GitHub Actions.\r\n### Removed\r\n- Removed useless SLF4J API dependency"
+  "tarball_url": "https://api.github.com/repos/eclipse-keyple/keyple-util-java-lib/tarball/2.5.0",
+  "zipball_url": "https://api.github.com/repos/eclipse-keyple/keyple-util-java-lib/zipball/2.5.0",
+  "body": "### Changed\r\n- `BodyErrorJsonDeserializer` now rebuilds the original exception only for the exceptions of the `java`, `org.eclipse.keyple` and `org.eclipse.keypop` packages (and their sub-packages). The other exceptions, as well as the exceptions that cannot be rebuilt, are now provided as a `RuntimeException` whose message contains the original class name and message (`Remote exception [<class name>]: <message>`), instead of a `JsonParseException`."
 }
