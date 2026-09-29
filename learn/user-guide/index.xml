@@ -411,6 +411,18 @@ calling the &amp;ldquo;Execute Remote Service&amp;rdquo; function. This data can
 &lt;p>In both cases, it must be encapsulated within an object recognized by the server.&lt;/p>
 &lt;/div>
 &lt;/div>
+&lt;div class="alert alert-note">
+&lt;div>
+&lt;p>&lt;strong>Important information regarding card extensions not provided by the Eclipse Keyple project!&lt;/strong>&lt;/p>
+&lt;p>Since version &lt;code>3.5.0&lt;/code> of the Keyple Service library, when a card selection scenario involves a card extension that is
+not provided by the Eclipse Keyple project (i.e. outside the &lt;code>org.eclipse.keyple&lt;/code> package), this card extension must be
+registered beforehand by invoking the &lt;code>checkCardExtension(...)&lt;/code> method of the smart card service
+(e.g. &lt;code>SmartCardServiceProvider.getService().checkCardExtension(myCardExtensionService)&lt;/code>).
+This must be done before importing a card selection scenario or a processed card selection scenario, as well as before
+allocating a reader of a remote pool plugin.&lt;/p>
+&lt;p>Otherwise, the card selections are replaced by a default type and the selected smart cards are not provided.&lt;/p>
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h2 id="perform-a-transaction">Perform a transaction&lt;/h2>
 &lt;p>Once the smart card is referenced in the system it is possible to perform the desired transaction using the appropriate
