@@ -1,5 +1,87 @@
 [
   {
+    "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/131",
+    "repository_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib",
+    "labels_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/131/labels{/name}",
+    "comments_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/131/comments",
+    "events_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/131/events",
+    "html_url": "https://github.com/eclipse-keyple/keyple-card-calypso-java-lib/issues/131",
+    "id": 5776552730,
+    "node_id": "I_kwDODMWfVs8AAAABWE8zGg",
+    "number": 131,
+    "title": "Support PUT DATA with the AID tag (4F)",
+    "user": {
+      "login": "lbureau-billettiqueservices",
+      "id": 102300863,
+      "node_id": "U_kgDOBhj8vw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/102300863?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/lbureau-billettiqueservices",
+      "html_url": "https://github.com/lbureau-billettiqueservices",
+      "followers_url": "https://api.github.com/users/lbureau-billettiqueservices/followers",
+      "following_url": "https://api.github.com/users/lbureau-billettiqueservices/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lbureau-billettiqueservices/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lbureau-billettiqueservices/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lbureau-billettiqueservices/subscriptions",
+      "organizations_url": "https://api.github.com/users/lbureau-billettiqueservices/orgs",
+      "repos_url": "https://api.github.com/users/lbureau-billettiqueservices/repos",
+      "events_url": "https://api.github.com/users/lbureau-billettiqueservices/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lbureau-billettiqueservices/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2026-10-09T10:21:09Z",
+    "updated_at": "2026-10-09T10:21:09Z",
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "NONE",
+    "issue_field_values": [
+
+    ],
+    "type": null,
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "body": "`preparePutData` only accepts the PKI tags of PutDataTag.\n\nThe Calypso Prime PUT DATA command also accepts tag 4F to write the application AID, which is the only way to update the AID on cards without an EF 2004.\n\nPlease support it: a new PutDataTag value (Keypop API change needed) and the matching handling in CommandPutData.",
+    "closed_by": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/131/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/131/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null
+  },
+  {
     "url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/116",
     "repository_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib",
     "labels_url": "https://api.github.com/repos/eclipse-keyple/keyple-card-calypso-java-lib/issues/116/labels{/name}",
