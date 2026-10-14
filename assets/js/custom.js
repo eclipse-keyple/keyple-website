@@ -140,9 +140,6 @@ let initReleaseTrains = function() {
         new Release(ComponentName.PLUGIN_ANDROID_OMAPI_LIB, "2.1.1")
     ));
     releaseTrains.push(new ReleaseTrain(
-        new Release(ComponentName.PLUGIN_PCSC_LIB, "2.6.2")
-    ));
-    releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.2.2")
     ));
     releaseTrains.push(new ReleaseTrain(
