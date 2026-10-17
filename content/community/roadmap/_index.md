@@ -8,15 +8,15 @@ weight: 3
 ---
 
 ## Current work 
- - Java implementation
+ - JVM-based implementation
+   - Integration of terminal APIs in version 3.x: support for multiple logical channels, anti-relay countermeasures, new POP (Protocol-Oriented Programming) paradigm replacing OOP (Object-Oriented Programming), etc... → on this occasion, replacement of the “Java” programming language with “Kotlin MultiPlatform” while maintaining target compatibility with JVM platforms.
    - supply a Calypso security extension library to manage the Calypso OpenSAM security module
- - C++ implementation
-   - Ongoing updates to the C++ port of the latest versions 3.x of the Keyple Core and Keyple Calypso Prime Extended libraries (based on Keypop APIs).
-   - In the future, C++ libraries will be added to develop a Keyple Distributed client.
+ - Native implementation
+   - Completion of the Keyple C++ port for the Calypso Card extension, with the integration of the Prime PKI feature.
 
-## Long-term study 
- - to provide a Hoplink extension (based on a high-level API on top of the Calypso Card API).
- - looking to migrate the Java implementation in Kotlin Multiplatform in order to handle iOS & some native target for ticketing application based on a generic code compliant with Java environment.
+## Mid-term study 
+ - Going forward with native implementation: when integrating the Terminal APIs in version 3.x, replace the “C++” programming language with “Rust.”
+ - Provision of a Hoplink extension (based on a high-level API on top of the Calypso Card API).
 
 ## Evolutions log
 ### Major improvements in Keyple after the version 2.0.0
@@ -34,7 +34,7 @@ weight: 3
 </thead>
 <tbody>
   <tr>
-    <td colspan="2" style="text-align: center;">2025/05</td>
+    <td colspan="2" style="text-align: center;">KMP 2025/05</td>
     <td><ul><li><b>Interoperability libraries for Keyple Distributed Service</b> (Keyple dependency-free client application connected to a Keyple Distributed server): 2 Kotlin MultiPlatform libraries that can be compiled for <b>any</b> environment, artifacts for the Java runtime environment and native artifacts for Windows, Linux, macOS, Android & iOS systems.
     <ul><li>library for managing the JSON Keyple Distributed protocol</li>
     <li>libraries for interfacing a local reader of a device: NFC reader on Android or iOS mobile, or PC/SC reader on PC.</li></ul></li></ul></td>
@@ -42,14 +42,14 @@ weight: 3
 
   <tr>
     <td>2024/04</td>
-    <td>-</td>
+    <td><mark>in progress (scheduled Q1/2027)</mark></td>
     <td><ul><li><b>Support of Calypso Prime PKI</b>
     <ul><li>Capability to manage a simple asymmetric authentication of a Calypso card without involving a SAM (REV3.3 Prime PKI based on ECC)</li>
     </ul></li></ul></td>
   </tr>
   <tr>
     <td>2023/11</td>
-    <td><mark>in progress (scheduled Q2/2025)</mark></td>
+    <td>2026/09</td>
     <td><ul><li><b>Adoption of the Eclipse Keypop API</b>
     <ul><li>The Keyple middleware is enhanced by the Eclipse Keypop project with new UML-compliant interfaces and APIs.</li>
     <li>The Keyple Calypso Card library can be extended with other libraries to handle SAM security features or PKI cryptography.</li>
@@ -65,7 +65,7 @@ e.g. the smart card readers of a terminal without Keyple software can be remotel
   </tr>
   <tr>
     <td>2022/12</td>
-    <td><mark>in progress (scheduled Q2/2025)</mark></td>
+    <td>2026/09</td>
     <td><ul><li><b>Support of Calypso Prime Extended</b>
     <ul><li>Capability to operate a Calypso secure session in confidential mode and to support intermediate authentications</li>
     </ul></li></ul></td>
