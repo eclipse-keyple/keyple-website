@@ -19,4 +19,4 @@ Most of the improvements concerns the Keyple Core:
 - the setting of smart card reader has also been simplified.
 The NFC & OMAPI Android plugins have been optimized for all Android versions from 4.4.
 
-A new [Keyple website](https://keyple.org/) provides the documentation and guides to handle the Keyple solution.
+A new [Keyple website](/) provides the documentation and guides to handle the Keyple solution.

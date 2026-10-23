@@ -1,0 +1,29 @@
+{{- /* Overrides the HugoBlox link render hook (same output) and fails the build when an internal link does not resolve to a page, a file or a heading anchor. */ -}}
+{{- $dest := .Destination -}}
+{{- $u := urls.Parse $dest -}}
+{{- /* External links, and destinations produced by a ref/relref shortcode (already checked by Hugo), are not checked here. */ -}}
+{{- if not (or $u.Scheme $u.Host (strings.Contains $dest "HAHAHUGOSHORTCODE")) -}}
+  {{- $target := .Page -}}
+  {{- $src := printf "%s page %q" $.Page.Kind $.Page.Title -}}
+  {{- with $.Page.File }}{{ $src = .Path }}{{ end -}}
+  {{- with $u.Path -}}
+    {{- /* Relative links are resolved like the browser does, from the URL of the page (the site root for headless home widgets). */ -}}
+    {{- $p := . -}}
+    {{- if not (strings.HasPrefix $p "/") -}}
+      {{- $p = path.Join ($.Page.RelPermalink | default "/") $p -}}
+    {{- end -}}
+    {{- /* site.GetPage does not resolve a regular page from a path ending with a slash. */ -}}
+    {{- $p = path.Clean $p -}}
+    {{- $target = site.GetPage $p -}}
+    {{- if and (not $target) (not (or (os.FileExists (path.Join "static" $p)) (os.FileExists (path.Join "content" $p)))) -}}
+      {{- errorf "%s: broken link %q: no page or file found at %q" $src $dest $p -}}
+    {{- end -}}
+  {{- end -}}
+  {{- /* Anchors are not checked on the home page and its headless widgets: they target widget sections, not headings, and content rendered in the home page context (search index) cannot be traced back to its page. */ -}}
+  {{- with $u.Fragment -}}
+    {{- if and $target $target.RelPermalink (not $target.IsHome) (not ($target.Fragments.Identifiers.Contains .)) -}}
+      {{- errorf "%s: broken link %q: no heading with id %q in %q" $src $dest . $target.RelPermalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>

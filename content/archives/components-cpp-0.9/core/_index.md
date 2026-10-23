@@ -31,7 +31,7 @@ It is compatible with **PC** and **MAC** platforms.
 ## Documentation
 
 <ul>
-    <li><a href="../../../../archives/docs-1.0/developer-guide/standalone-application">Developer guide</a></li>
+    <li><a href="{{< relref "/archives/docs-1.0/developer-guide/standalone-application" >}}">Developer guide</a></li>
 </ul>
 
 ## Download

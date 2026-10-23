@@ -35,7 +35,7 @@ This allows the app to benefit from enhanced SE-based security services.
 ## Documentation
 
 * [Developer guide]({{< ref "archives/docs-1.0/developer-guide/standalone-application.md" >}})
-* <a href="../../../../archives/docs-1.0/api-reference/java-api/keyple-android-plugin-omapi/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
+* <a href="{{< relref "/archives/docs-1.0/api-reference/java-api" >}}">JavaDoc API</a>
 
 ## Download
 
