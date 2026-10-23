@@ -1,4 +1,4 @@
-{{- /* Overrides the HugoBlox link render hook (same output) and fails the build when an internal link does not resolve to a page, a file or a heading anchor. */ -}}
+{{- /* Overrides the HugoBlox link render hook, without its target/rel attributes (custom.js adds them to every external link), and fails the build when an internal link does not resolve to a page, a file or a heading anchor. */ -}}
 {{- $dest := .Destination -}}
 {{- $u := urls.Parse $dest -}}
 {{- /* External links, and destinations produced by a ref/relref shortcode (already checked by Hugo), are not checked here. */ -}}
@@ -26,4 +26,4 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
-<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
