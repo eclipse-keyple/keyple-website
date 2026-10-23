@@ -155,7 +155,7 @@ libraries:
 ### Examples
 
 Calypso Networks Association has provided an example of how to integrate these libraries.
-It is available [here](https://github.com/calypsonet/keyple-demo-ticketing/tree/main/src/reloading-remote/client/interop-mobile-multiplatform).
+It is available [here](https://github.com/calypsonet/keyple-demo-ticketing/tree/main/src/sales/client/interop-mobile-multiplatform).
 
 <br>
 
