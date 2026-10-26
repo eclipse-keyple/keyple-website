@@ -78,7 +78,7 @@ concepts on which Keyple is based.&lt;/li>
 &lt;li>Any implementation of a Keyple application starts with the
 implementation of &lt;strong>Keyple Core&lt;/strong>, please study the
 &lt;a href="#workflow">workflow&lt;/a> proposed in the following chapter.&lt;/li>
-&lt;li>Explore the &lt;a href="#keyplecoreapi">Keyple Core API&lt;/a> to discover all the
+&lt;li>Explore the &lt;a href="#keyple-core-api">Keyple Core API&lt;/a> to discover all the
 possibilities offered by &lt;strong>Keyple Core&lt;/strong>.&lt;/li>
 &lt;li>Take inspiration from the &lt;a href="#examples">examples&lt;/a>.&lt;/li>
 &lt;li>Follow the explanations given in the &lt;a href="https://keyple.org/archives/docs-1.0/build-your-first-app/">Build your first app&lt;/a> section to configure your
@@ -518,38 +518,38 @@ operations.
 &lt;p>To help in the implementation of the different facilities offered by
 Keyple to process smart cards, a set of examples is present in the
 project repository
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone" target="_blank" rel="noopener">
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone">
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> examples&lt;/a>&lt;/p>
 &lt;p>Nevertheless, you will find below a brief description of them:&lt;/p>
 &lt;h3 id="explicit-selection">Explicit Selection&lt;/h3>
 &lt;p>Shows the use of Keyple to make a card selection without observing the
 reader, based on testing the presence of the card by the application.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid">see the code&lt;/a>&lt;/p>
 &lt;h3 id="default-selection">Default Selection&lt;/h3>
 &lt;p>Shows the use of Keyple to make a card selection with observation of the
 reader. A default selection is prepared, the presentation of a card
 triggers the notification of a reader event to the application.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification">see the code&lt;/a>&lt;/p>
 &lt;h3 id="sequential-multiple-selection">Sequential Multiple Selection&lt;/h3>
 &lt;p>Executes successively several independent selection operations with the
 use of the ISO &amp;lsquo;NEXT&amp;rsquo; navigation flag.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection">see the code&lt;/a>&lt;/p>
 &lt;p>Illustrates the case of a card exploration with maintenance of the physical channel open.&lt;/p>
 &lt;h3 id="grouped-multiple-selection">Grouped Multiple Selection&lt;/h3>
 &lt;p>Executes a multiple selection with logical channel closure between each
 selection.&lt;/p>
 &lt;p>Allows the exploration of the applications of a card in a single
 operation but without selection at the end.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection">see the code&lt;/a>&lt;/p>
 &lt;h3 id="demo-card-protocol-detection">Demo Card Protocol Detection&lt;/h3>
 &lt;p>Demonstrates the use of Keyple in a context where several card
 technologies are likely to be processed by the application.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection">see the code&lt;/a>&lt;/p>
 &lt;h3 id="demo-observable-reader-notification">Demo Observable Reader Notification&lt;/h3>
 &lt;p>Demonstrates the use of Keyple to implement the observation of a plugin
 and its readers. Readers are dynamically created and an observer is
 assigned to them.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification">see the code&lt;/a>&lt;/p>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;p>The artifact &lt;strong>Keyple Core&lt;/strong> and how to integrate it into your
@@ -1248,19 +1248,19 @@ width: 240px;
 &lt;/table>
 &lt;p>The associated &lt;strong>API&lt;/strong> documentations are accessible from the page &lt;a href="https://keyple.org/archives/docs-1.0/api-reference/">API Reference&lt;/a>.&lt;/p>
 &lt;h3 id="network-api">Network API&lt;/h3>
-&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../api-reference/java-api/keyple-java-distributed-network/1.0.0/index.html">here&lt;/a>.&lt;/p>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../../archives/docs-1.0/api-reference/java-api/">here&lt;/a>.&lt;/p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../../media/archive-1.0/distributed-application/class/Distributed_Class_Network_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;h3 id="remote-api">Remote API&lt;/h3>
-&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../api-reference/java-api/keyple-java-distributed-remote/1.0.0/index.html">here&lt;/a>.&lt;/p>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../../archives/docs-1.0/api-reference/java-api/">here&lt;/a>.&lt;/p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../../media/archive-1.0/distributed-application/class/Distributed_Class_Remote_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;h3 id="local-api">Local API&lt;/h3>
-&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../api-reference/java-api/keyple-java-distributed-local/1.0.0/index.html">here&lt;/a>.&lt;/p>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../../archives/docs-1.0/api-reference/java-api/">here&lt;/a>.&lt;/p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="../../../media/archive-1.0/distributed-application/class/Distributed_Class_Local_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
@@ -1268,7 +1268,7 @@ width: 240px;
 &lt;br>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/distributed" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/distributed">Java examples&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -1295,7 +1295,7 @@ secure Calypso transaction seamlessly. It completely hides the details of the AP
 &lt;li>Read the &lt;a href="../../../archives/docs-1.0/developer-guide/common-concepts/">common concepts&lt;/a> page and become familiar with the basic concepts on which Keyple is based.&lt;/li>
 &lt;li>Any implementation of a Keyple application starts with the implementation of &lt;strong>Keyple Core&lt;/strong>, please study the &lt;a href="../../../archives/docs-1.0/developer-guide/standalone-application/">workflow&lt;/a> proposed in Standalone application guide.&lt;/li>
 &lt;li>Read chapter &lt;a href="#concepts">Concepts&lt;/a> to understand the main terms and concepts of the &lt;strong>Keyple Calypso Extension&lt;/strong> API.&lt;/li>
-&lt;li>Explore the &lt;a href="#keyplecalypsoapi">Keyple Calypso API&lt;/a> to discover all the possibilities offered by &lt;strong>Keyple Calypso Extension&lt;/strong>.&lt;/li>
+&lt;li>Explore the &lt;a href="https://keyple.org/archives/docs-1.0/api-reference/">Keyple Calypso API&lt;/a> to discover all the possibilities offered by &lt;strong>Keyple Calypso Extension&lt;/strong>.&lt;/li>
 &lt;li>Take inspiration from the &lt;a href="#examples">examples&lt;/a>.&lt;/li>
 &lt;li>Follow the explanations given in the &lt;a href="https://keyple.org/archives/docs-1.0/build-your-first-app/">Build your first app&lt;/a> section to configure your environment.&lt;/li>
 &lt;li>Using the &lt;a href="https://keyple.org/archives/components-java-1.0/core/">Java components&lt;/a> or &lt;a href="https://keyple.org/archives/components-cpp-0.9/core/">C++ components&lt;/a> pages, import &lt;strong>Keyple Core&lt;/strong> into your project.&lt;/li>
@@ -1640,8 +1640,8 @@ all in detail but here is an example from which other variants can be obtained.&
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;p>Detailed use case examples can be seen here:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/calypso/src/main/java/org/eclipse/keyple/example/calypso" target="_blank" rel="noopener">PC&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/android" target="_blank" rel="noopener">Android&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/calypso/src/main/java/org/eclipse/keyple/example/calypso">PC&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/android">Android&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Create a plugin</title><link>https://keyple.org/archives/docs-1.0/developer-guide/create-plugin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/docs-1.0/developer-guide/create-plugin/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
@@ -2007,4 +2007,4 @@ In the class &lt;code>SelectionsResult&lt;/code> (see &lt;code>processDefaultSel
 &lt;p>Since version 0.9, all Keyple exceptions are of the RuntimeException type.&lt;/p>
 &lt;p>Catching exceptions is therefore now optional.&lt;/p>
 &lt;p>However, it is possible to selectively catch certain exceptions in order to deal with particular cases.&lt;/p>
-&lt;p>The new hierarchy of Keyple exceptions is shown &lt;a href="https://keyple.atlassian.net/projects/KEYP/issues/KEYP-154?filter=allissues&amp;amp;orderby=priority%20DESC&amp;amp;keyword=exceptions" target="_blank" rel="noopener">here&lt;/a>&lt;/p></description></item></channel></rss>
+&lt;p>The new hierarchy of Keyple exceptions is shown &lt;a href="https://keyple.atlassian.net/projects/KEYP/issues/KEYP-154?filter=allissues&amp;amp;orderby=priority%20DESC&amp;amp;keyword=exceptions">here&lt;/a>&lt;/p></description></item></channel></rss>

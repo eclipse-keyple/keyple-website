@@ -20,7 +20,7 @@ add-on to handle the commands sent to the Calypso card and the Calypso SAM,&lt;/
 &lt;li>&lt;a href="./components/standard-reader-plugins/keyple-plugin-pcsc-lib/">Keyple Plugin PC/SC&lt;/a>
 add-on to provide the ability to manage PC/SC readers.&lt;/li>
 &lt;/ul>
-&lt;p>In this guide &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation
+&lt;p>In this guide &lt;a href="https://gradle.org/">Gradle&lt;/a> is used as build automation
 tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.&lt;/p>
 &lt;p>See &lt;a href="./components/overview/configuration-wizard/">here&lt;/a> for the configuration of the dependencies.&lt;/p>
@@ -28,11 +28,11 @@ such as Maven for example.&lt;/p>
 installed in your machine, you will need to download :&lt;/p>
 &lt;ul>
 &lt;li>Java 8+&lt;/li>
-&lt;li>&lt;a href="https://gradle.org/install/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://gradle.org/install/">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>We recommend that you use a Java IDE like
-&lt;a href="https://www.eclipse.org/ide/" target="_blank" rel="noopener">Eclipse&lt;/a> or
-&lt;a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">Intellij IDEA&lt;/a> to create your new
+&lt;a href="https://www.eclipse.org/ide/">Eclipse&lt;/a> or
+&lt;a href="https://www.jetbrains.com/idea/">Intellij IDEA&lt;/a> to create your new
 Gradle project.&lt;/p>
 &lt;br>
 &lt;h2 id="create-a-gradle-based-empty-project">Create a Gradle-based empty project&lt;/h2>
@@ -566,7 +566,7 @@ the PC/SC plugin so far.&lt;/p>
 &lt;p>The reader concept also applies to the hardware interfaces used to communicate with security elements such as SAMs (Secure Access Modules),
 which are sometimes integrated into devices and the virtual interfaces represented by the remote implementations.&lt;/p>
 &lt;p>To define the interface between an application and a reader,
-Keyple relies on the &lt;a href="https://keypop.org/apis/reader-layer/reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a> based on the standard Terminal API specifications proposed by Calypso Networks Association and thus inherits an existing modeling effort.&lt;/p>
+Keyple relies on the &lt;a href="https://keypop.org/apis/reader-layer/reader-api/">Keypop Reader API&lt;/a> based on the standard Terminal API specifications proposed by Calypso Networks Association and thus inherits an existing modeling effort.&lt;/p>
 &lt;p>Another benefit of using this terminal API is the ability to certify the functioning of a Keyple terminal via the associated certification process.&lt;/p>
 &lt;p>This certification provides a guarantee that the terminal will function as expected.&lt;/p>
 &lt;br>
@@ -701,9 +701,9 @@ Thus, the factory does not expose any method.
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-java-api" target="_blank" rel="noopener">Keyple Plugin API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-storagecard-java-api/" target="_blank" rel="noopener">Keyple Plugin Storage Card API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-java-api">Keyple Plugin API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-storagecard-java-api/">Keyple Plugin Storage Card API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -1152,15 +1152,15 @@ physical channels and stop the observation threads.&lt;/p>
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-service-java-lib" target="_blank" rel="noopener">Keyple Service API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/">Keypop Reader API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-service-java-lib">Keyple Service API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-cpp-example" target="_blank" rel="noopener">C++ examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example">Java examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-cpp-example">C++ examples&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -1169,7 +1169,7 @@ physical channels and stop the observation threads.&lt;/p>
 &lt;/ul></description></item><item><title>Build your first Android application</title><link>https://keyple.org/learn/build-your-first-app/android-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/android-app/</guid><description>&lt;br>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The development of an Android application based on Keyple follows the same principles as those exposed in the Java part.&lt;/p>
-&lt;p>However, this guide points out the specificities of this environment based on the &lt;strong>Android NFC application&lt;/strong> example provided in the &lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
+&lt;p>However, this guide points out the specificities of this environment based on the &lt;strong>Android NFC application&lt;/strong> example provided in the &lt;a href="https://github.com/eclipse-keyple/keyple-java-example">keyple-java-example&lt;/a> repository.&lt;/p>
 &lt;p>We recommend that Android application developers clone this example to better understand how Keyple works on Android.&lt;/p>
 &lt;div class="alert alert-warning">
 &lt;div>
@@ -1190,7 +1190,7 @@ add-on to handle the commands sent to the Calypso card,&lt;/li>
 &lt;li>&lt;a href="./components/standard-reader-plugins/keyple-plugin-android-nfc-lib/">Keyple Plugin Android NFC&lt;/a>
 add-on to provide the ability to drive the NFC reader.&lt;/li>
 &lt;/ul>
-&lt;p>&lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation tool, but it is easy to transpose these explanations to another tool
+&lt;p>&lt;a href="https://gradle.org/">Gradle&lt;/a> is used as build automation tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.&lt;/p>
 &lt;br>
 &lt;h2 id="project-setup">Project setup&lt;/h2>
@@ -1426,7 +1426,7 @@ well as the public APIs exposed to the application:
 &lt;p>In the case where the smart card object has fields of type &lt;code>interface&lt;/code>,
 it will then be necessary to define for each of them and recursively a JSON deserializer and register it during the
 service initialization with the method &lt;code>JsonUtil.registerTypeAdapter(...)&lt;/code> provided by the
-&lt;a href="https://keyple.org/components/core/keyple-util-lib/" target="_blank" rel="noopener">Keyple Util&lt;/a> library.&lt;/p>
+&lt;a href="https://keyple.org/components/core/keyple-util-lib/">Keyple Util&lt;/a> library.&lt;/p>
 &lt;p>This will allow the transport of this object through the network when using the Keyple Distributed solution.&lt;/p>
 &lt;/div>
 &lt;/div>
@@ -1464,9 +1464,9 @@ It is recommended to hide the internal interfaces of the &lt;strong>Keypop Card 
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/card-api/" target="_blank" rel="noopener">Keypop Card API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/">Keypop Reader API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/card-api/">Keypop Card API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -1964,14 +1964,14 @@ Asynchronous network implementation
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-local-java-lib" target="_blank" rel="noopener">Local API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-network-java-lib" target="_blank" rel="noopener">Network API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-remote-java-lib" target="_blank" rel="noopener">Remote API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-local-java-lib">Local API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-network-java-lib">Network API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-remote-java-lib">Remote API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example">Java examples&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -2009,7 +2009,7 @@ add-on to provide the ability to manage PC/SC readers.&lt;/li>
 &lt;p>Here are the prerequisites to build the keyple components (dynamic libraries):&lt;/p>
 &lt;ul>
 &lt;li>G++ 6 and higher, MSVC++ 14 (other compilers untested)&lt;/li>
-&lt;li>&lt;a href="https://cmake.org/" target="_blank" rel="noopener">CMake&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://cmake.org/">CMake&lt;/a>&lt;/li>
 &lt;li>libpcsclite1 and libpcsclite-dev packages installed (Linux) to build the PC/SC plugin&lt;/li>
 &lt;/ul>
 &lt;/div>
@@ -2019,7 +2019,7 @@ add-on to provide the ability to manage PC/SC readers.&lt;/li>
 &lt;h2 id="create-the-build-environment">Create the build environment&lt;/h2>
 &lt;p>The building of all the necessary components is facilitated by a dedicated &amp;ldquo;meta-project&amp;rdquo; allowing to get all the
 components and dependencies in a single step.&lt;/p>
-&lt;p>Git checkout the &lt;a href="https://github.com/eclipse-keyple/keyple-cpp-meta" target="_blank" rel="noopener">meta project&lt;/a> into a directory of you local disk, then
+&lt;p>Git checkout the &lt;a href="https://github.com/eclipse-keyple/keyple-cpp-meta">meta project&lt;/a> into a directory of you local disk, then
 enter the created directory and execute the following commands:&lt;/p>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkdir build
@@ -2030,7 +2030,7 @@ enter the created directory and execute the following commands:&lt;/p>
 &lt;/div>
 &lt;div class="alert alert-note">
 &lt;div>
-&lt;code>gcc-linux&lt;/code> may be replaced by one of the build configurations available &lt;a href="https://github.com/eclipse-keyple/keyple-cpp-meta/tree/master/toolchain" target="_blank" rel="noopener">here&lt;/a>.
+&lt;code>gcc-linux&lt;/code> may be replaced by one of the build configurations available &lt;a href="https://github.com/eclipse-keyple/keyple-cpp-meta/tree/master/toolchain">here&lt;/a>.
 &lt;/div>
 &lt;/div>
 &lt;br>
@@ -2654,10 +2654,10 @@ This pattern is mandatory in &lt;strong>all Keyple code&lt;/strong>, without exc
 &lt;li>Never rely on ProGuard to remove unguarded logs&lt;/li>
 &lt;li>Write logs with integrators and performance in mind&lt;/li>
 &lt;/ul></description></item><item><title>Keypop API</title><link>https://keyple.org/learn/overview/keypop-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/overview/keypop-api/</guid><description>&lt;br>
-&lt;p>Keyple is compliant with the &lt;strong>Terminal API&lt;/strong> specifications provided by the &lt;a href="https://calypsonet.org" target="_blank" rel="noopener">Calypso Networks Association&lt;/a> that standardize how to manage cards, readers, reader events and card selection.&lt;/p>
+&lt;p>Keyple is compliant with the &lt;strong>Terminal API&lt;/strong> specifications provided by the &lt;a href="https://calypsonet.org">Calypso Networks Association&lt;/a> that standardize how to manage cards, readers, reader events and card selection.&lt;/p>
 &lt;p>This compliance allows Keyple to obtain certifications from the Calypso Networks Association.
 It is a guarantee of reliability and reproducibility of the processes implemented on a variety of devices.&lt;/p>
-&lt;p>The open source &lt;a href="https://keypop.org" target="_blank" rel="noopener">Eclipse Keypop&lt;/a> project exposes the &lt;strong>Terminal API&lt;/strong> specifications in the form of
+&lt;p>The open source &lt;a href="https://keypop.org">Eclipse Keypop&lt;/a> project exposes the &lt;strong>Terminal API&lt;/strong> specifications in the form of
 &lt;strong>Java&lt;/strong> and &lt;strong>C++&lt;/strong> interfaces,
 and Keyple is based on these interfaces.&lt;/p>
 &lt;p>Keyple also defines additional public interface for plugin integration, remote reader management, etc.&lt;/p></description></item><item><title>Non-Keyple Client User Guide</title><link>https://keyple.org/learn/user-guide/non-keyple-client/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/non-keyple-client/</guid><description>&lt;meta http-equiv="refresh" content="0; url=./user-guides/non-keyple-client/content/"></description></item><item><title>Calypso Application User Guide</title><link>https://keyple.org/learn/user-guide/calypso-application/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/user-guide/calypso-application/</guid><description>&lt;br>
@@ -2831,7 +2831,9 @@ the previously prepared operations.&lt;/li>
 with these cards in secure sessions only APDU commands for which the size of the response data can be predetermined.&lt;/p>
 &lt;p>For a Keyple-based processing, this means that the following methods of the &lt;code>TransactionManager&lt;/code> must not be used
 within a secure session: &lt;code>prepareReadRecord(...)&lt;/code>, &lt;code>prepareReadRecordsPartially(...)&lt;/code>, &lt;code>prepareSearchRecords(...)&lt;/code> and
-&lt;code>prepareGetData(...)&lt;/code>.&lt;/p>
+&lt;code>prepareGetData(...)&lt;/code>.
+The only exception is &lt;code>prepareGetData(GetDataTag.FCI_FOR_CURRENT_DF)&lt;/code>, which is allowed within a secure session since
+the size of its response data is known.&lt;/p>
 &lt;p>As these methods could be useful for high-performance identification of some card data, here&amp;rsquo;s how to use them safely on
 legacy cards:&lt;/p>
 &lt;ul>
@@ -2866,21 +2868,61 @@ easily obtained using the following snippet:&lt;/p>
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">]&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
+&lt;h3 id="ratification-mechanism">Ratification mechanism&lt;/h3>
+&lt;p>In contactless mode, the card may be removed before the terminal has received the acknowledgement of the
+&lt;em>Close Secure Session&lt;/em> command: the terminal then cannot know whether the card has actually committed the
+modifications made during the session.&lt;/p>
+&lt;p>The &lt;strong>ratification mechanism&lt;/strong> handles this early card removal. It is enabled on the security settings by calling
+&lt;code>enableRatificationMechanism()&lt;/code> (disabled by default):&lt;/p>
+&lt;ul>
+&lt;li>a ratification command is added after the closing command in contactless mode,&lt;/li>
+&lt;li>the card considers the secure session &lt;em>ratified&lt;/em> only once it has processed that command: if the card is removed
+beforehand, the session stays &lt;strong>unratified&lt;/strong> in the card, which thus keeps the proof that the terminal may not have
+been informed of the outcome,&lt;/li>
+&lt;li>on cards where ratification happens on deselect, no ratification command is required (see
+&lt;code>CalypsoCard.isRatificationOnDeselectSupported()&lt;/code>).&lt;/li>
+&lt;/ul>
+&lt;p>When a new secure session is opened, &lt;code>CalypsoCard.isDfRatified()&lt;/code> tells whether the previous session has been
+ratified, allowing the terminal to detect an interrupted transaction and to handle its resumption.&lt;/p>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// Build the security settings with the ratification mechanism enabled&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">symmetricCryptoSecuritySetting&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoCardApiFactory&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">createSymmetricCryptoSecuritySetting&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">LegacySamExtensionService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getInstance&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getLegacySamApiFactory&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">createSymmetricCryptoCardTransactionManagerFactory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">samReader&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sam&lt;/span>&lt;span class="p">))&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">enableRatificationMechanism&lt;/span>&lt;span class="p">();&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Whether to enable the mechanism depends on which terminal resumes an interrupted transaction:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>enable it&lt;/strong> when the resumption may be handled by &lt;strong>another terminal&lt;/strong>, since the proof of the interruption is
+then carried by the card itself. Typical case: several gates on the same access line of a network,&lt;/li>
+&lt;li>&lt;strong>leave it disabled&lt;/strong> when the resumption is necessarily handled by the &lt;strong>same terminal&lt;/strong>, which keeps the context
+of the interrupted transaction. Typical case: a remote ticket reloading server.&lt;/li>
+&lt;/ul>
+&lt;div class="alert alert-note">
+&lt;div>
+The ratification mechanism can only be used within the &lt;strong>anti-passback delay&lt;/strong> defined by the transport operator:
+beyond this delay, an unratified session can no longer be handled as the resumption of an interrupted transaction.
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-card-api/" target="_blank" rel="noopener">Keypop Calypso Card API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-legacysam-api/" target="_blank" rel="noopener">Keypop Calypso Crypto Legacy SAM API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-java-lib" target="_blank" rel="noopener">Keyple Card Calypso API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-java-lib" target="_blank" rel="noopener">Keyple Card Calypso Crypto Legacy SAM API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/">Keypop Reader API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-card-api/">Keypop Calypso Card API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-legacysam-api/">Keypop Calypso Crypto Legacy SAM API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-java-lib">Keyple Card Calypso API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-java-lib">Keyple Card Calypso Crypto Legacy SAM API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-cpp-example" target="_blank" rel="noopener">C++ examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example">Java examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-cpp-example">C++ examples&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -3076,12 +3118,12 @@ resources are accessible.&lt;/p>
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-service-resource-java-lib" target="_blank" rel="noopener">API documentation &amp;amp; class diagram&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-service-resource-java-lib">API documentation &amp;amp; class diagram&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="example">Example&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">Java example&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example">Java example&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -3881,10 +3923,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/tree/master/component/keyple-calypso" target="_blank" rel="noopener">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/tree/master/component/keyple-calypso">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/releases/">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -3895,7 +3937,7 @@ Keyple project
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/developer-guide/calypso-application/">Developer guide&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="download">Download&lt;/h2>
-&lt;p>All sources are available on &lt;a href="https://github.com/eclipse-keyple/keyple-cpp/" target="_blank" rel="noopener">GitHub&lt;/a>.&lt;/p></description></item><item><title>Keyple Calypso</title><link>https://keyple.org/archives/components-java-1.0/extensions/calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/extensions/calypso/</guid><description>&lt;div class="alert alert-warning">
+&lt;p>All sources are available on &lt;a href="https://github.com/eclipse-keyple/keyple-cpp/">GitHub&lt;/a>.&lt;/p></description></item><item><title>Keyple Calypso</title><link>https://keyple.org/archives/components-java-1.0/extensions/calypso/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/extensions/calypso/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -3911,10 +3953,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-calypso" target="_blank" rel="noopener">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-calypso">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -3923,16 +3965,16 @@ Keyple project
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/developer-guide/calypso-application/">Developer guide&lt;/a>&lt;/li>
-&lt;li>&lt;a href="../../../../archives/docs-1.0/api-reference/java-api/keyple-java-calypso/1.0.0/index.html">JavaDoc API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="./archives/docs-1.0/api-reference/java-api/">JavaDoc API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="download">Download&lt;/h2>
-&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/" target="_blank" rel="noopener">Maven Central Repository&lt;/a>.&lt;/p>
+&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/">Maven Central Repository&lt;/a>.&lt;/p>
 &lt;ul>
-&lt;li>Using &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://gradle.org/">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-java-calypso:1.0.0&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Using &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://maven.apache.org/">Maven&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
@@ -3940,12 +3982,12 @@ Keyple project
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-calypso" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
+&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-calypso">download&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>CNA Terminal API</title><link>https://keyple.org/components/standards-compliance/cna-terminal-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/standards-compliance/cna-terminal-api/</guid><description>&lt;br>
-&lt;p>Keyple is compliant with the &lt;strong>Terminal API&lt;/strong> specifications provided by the &lt;a href="https://calypsonet.org" target="_blank" rel="noopener">Calypso Networks Association&lt;/a> that standardize how to manage cards, readers, reader events and card selection.&lt;/p>
+&lt;p>Keyple is compliant with the &lt;strong>Terminal API&lt;/strong> specifications provided by the &lt;a href="https://calypsonet.org">Calypso Networks Association&lt;/a> that standardize how to manage cards, readers, reader events and card selection.&lt;/p>
 &lt;p>This compliance allows Keyple to obtain certifications from the Calypso Networks Association.
 It is a guarantee of reliability and reproducibility of the processes implemented on a variety of devices.&lt;/p>
-&lt;p>The open source &lt;a href="https://keypop.org" target="_blank" rel="noopener">Eclipse Keypop&lt;/a> project exposes the &lt;strong>Terminal API&lt;/strong> specifications in the form of
+&lt;p>The open source &lt;a href="https://keypop.org">Eclipse Keypop&lt;/a> project exposes the &lt;strong>Terminal API&lt;/strong> specifications in the form of
 &lt;strong>Java&lt;/strong> and &lt;strong>C++&lt;/strong> interfaces,
 and Keyple is based on these interfaces.&lt;/p>
 &lt;br>
@@ -3954,16 +3996,16 @@ and Keyple is based on these interfaces.&lt;/p>
 They are generic and apply to all card and reader technologies.&lt;/p>
 &lt;p>The &lt;strong>Reader API&lt;/strong> must be used by developers of applications and card extensions, while the &lt;strong>Card API&lt;/strong> must be used &lt;strong>only&lt;/strong> by developers of card extensions.&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/card-api/" target="_blank" rel="noopener">Keypop Card API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/">Keypop Reader API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/card-api/">Keypop Card API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="calypso-apis">Calypso APIs&lt;/h2>
 &lt;p>These high-level APIs standardizes the way to interact with a Calypso® product (card, NFC smartphone applet/application, SAM, etc&amp;hellip;).&lt;/p>
 &lt;p>These APIs should be used by developers of Calypso applications.&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-card-api/" target="_blank" rel="noopener">Keypop Calypso Card API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-legacysam-api/" target="_blank" rel="noopener">Keypop Calypso Crypto Legacy SAM API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-card-api/">Keypop Calypso Card API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-legacysam-api/">Keypop Calypso Crypto Legacy SAM API&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Components map</title><link>https://keyple.org/components/overview/components-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/overview/components-map/</guid><description>&lt;br>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The dependencies between the Keyple components are shown in the diagram below:&lt;/p>
@@ -3975,7 +4017,7 @@ They are generic and apply to all card and reader technologies.&lt;/p>
 &lt;ul>
 &lt;li>Each component has its &lt;strong>own life cycle&lt;/strong>.&lt;/li>
 &lt;li>There are two types of Keyple components: &lt;strong>APIs&lt;/strong> and &lt;strong>libraries&lt;/strong>.&lt;/li>
-&lt;li>Some APIs are provided by the &lt;a href="https://keypop.org" target="_blank" rel="noopener">Eclipse Keypop&lt;/a> open source project.&lt;/li>
+&lt;li>Some APIs are provided by the &lt;a href="https://keypop.org">Eclipse Keypop&lt;/a> open source project.&lt;/li>
 &lt;li>APIs contain &lt;strong>only interfaces&lt;/strong>.&lt;/li>
 &lt;li>Libraries contain &lt;strong>interfaces and their implementation&lt;/strong>.&lt;/li>
 &lt;li>Some APIs are &lt;strong>public&lt;/strong> while others are &lt;strong>internal&lt;/strong>.&lt;/li>
@@ -4042,7 +4084,7 @@ They are generic and apply to all card and reader technologies.&lt;/p>
 &lt;/p></description></item><item><title>Java examples</title><link>https://keyple.org/learn/code-samples/java-example/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/code-samples/java-example/</guid><description>&lt;br>
 &lt;p>For Java reference implementations and usage demonstrations, please refer to the Java example repository available at:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">https://github.com/eclipse-keyple/keyple-java-example&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example">https://github.com/eclipse-keyple/keyple-java-example&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Keyple Distributed Local</title><link>https://keyple.org/archives/components-java-1.0/distributed-systems/local/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/distributed-systems/local/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
@@ -4059,10 +4101,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/local" target="_blank" rel="noopener">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/local">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -4073,16 +4115,16 @@ Keyple project
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/developer-guide/distributed-application/">Developer guide&lt;/a>&lt;/li>
-&lt;li>&lt;a href="../../../../archives/docs-1.0/api-reference/java-api/keyple-java-distributed-local/1.0.0/index.html">JavaDoc API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="./archives/docs-1.0/api-reference/java-api/">JavaDoc API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="download">Download&lt;/h2>
-&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/" target="_blank" rel="noopener">Maven Central Repository&lt;/a>.&lt;/p>
+&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/">Maven Central Repository&lt;/a>.&lt;/p>
 &lt;ul>
-&lt;li>Using &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://gradle.org/">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-java-distributed-local:1.0.0&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Using &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://maven.apache.org/">Maven&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
@@ -4090,7 +4132,7 @@ Keyple project
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-distributed-local" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
+&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-distributed-local">download&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Keyple Distributed Network</title><link>https://keyple.org/archives/components-java-1.0/distributed-systems/network/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/distributed-systems/network/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
@@ -4107,10 +4149,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/network" target="_blank" rel="noopener">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/network">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -4120,16 +4162,16 @@ Keyple project
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/developer-guide/distributed-application/">Developer guide&lt;/a>&lt;/li>
-&lt;li>&lt;a href="../../../../archives/docs-1.0/api-reference/java-api/keyple-java-distributed-network/1.0.0/index.html">JavaDoc API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="./archives/docs-1.0/api-reference/java-api/">JavaDoc API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="download">Download&lt;/h2>
-&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/" target="_blank" rel="noopener">Maven Central Repository&lt;/a>.&lt;/p>
+&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/">Maven Central Repository&lt;/a>.&lt;/p>
 &lt;ul>
-&lt;li>Using &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://gradle.org/">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-java-distributed-network:1.0.0&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Using &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://maven.apache.org/">Maven&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
@@ -4137,7 +4179,7 @@ Keyple project
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-distributed-network" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
+&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-distributed-network">download&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Keyple Plugin NFC</title><link>https://keyple.org/archives/components-java-1.0/plugins/nfc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/plugins/nfc/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
@@ -4154,10 +4196,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/android/keyple-plugin/android-nfc" target="_blank" rel="noopener">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/android/keyple-plugin/android-nfc">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -4166,16 +4208,16 @@ Keyple project
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/developer-guide/standalone-application/">Developer guide&lt;/a>&lt;/li>
-&lt;li>&lt;a href="../../../../archives/docs-1.0/api-reference/java-api/keyple-android-plugin-nfc/1.0.0/index.html">JavaDoc API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="./archives/docs-1.0/api-reference/java-api/">JavaDoc API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="download">Download&lt;/h2>
-&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/" target="_blank" rel="noopener">Maven Central Repository&lt;/a>.&lt;/p>
+&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/">Maven Central Repository&lt;/a>.&lt;/p>
 &lt;ul>
-&lt;li>Using &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://gradle.org/">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-android-plugin-nfc:1.0.0&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Using &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://maven.apache.org/">Maven&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
@@ -4183,7 +4225,7 @@ Keyple project
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-android-plugin-nfc" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
+&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-android-plugin-nfc">download&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Keyple Plugin OMAPI</title><link>https://keyple.org/archives/components-java-1.0/plugins/omapi/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/plugins/omapi/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
@@ -4200,10 +4242,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/android/keyple-plugin/android-omapi" target="_blank" rel="noopener">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/android/keyple-plugin/android-omapi">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -4214,16 +4256,16 @@ This allows the app to benefit from enhanced SE-based security services.&lt;/p>
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/developer-guide/standalone-application/">Developer guide&lt;/a>&lt;/li>
-&lt;li>&lt;a href="../../../../archives/docs-1.0/api-reference/java-api/keyple-android-plugin-omapi/1.0.0/index.html">JavaDoc API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="./archives/docs-1.0/api-reference/java-api/">JavaDoc API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="download">Download&lt;/h2>
-&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/" target="_blank" rel="noopener">Maven Central Repository&lt;/a>.&lt;/p>
+&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/">Maven Central Repository&lt;/a>.&lt;/p>
 &lt;ul>
-&lt;li>Using &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://gradle.org/">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-android-plugin-omapi:1.0.0&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Using &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://maven.apache.org/">Maven&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
@@ -4231,7 +4273,7 @@ This allows the app to benefit from enhanced SE-based security services.&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-android-plugin-omapi" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
+&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-android-plugin-omapi">download&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Overview</title><link>https://keyple.org/what-is-keyple/overview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/what-is-keyple/overview/</guid><description>&lt;p>Coming from a rather closed technical environment, ticketing for transport is essentially based on proprietary solutions provided by manufacturers.
 However, in order for the concept of Mobility as a Service to become a reality, and at a reasonable cost, the ecosystem should, as far as possible,
 rely on open standards, APIs and middlewares as well as Open Source technologies. This openness has already been a reality for several years in the field
@@ -4261,10 +4303,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/tree/master/component/keyple-plugin/pcsc" target="_blank" rel="noopener">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/tree/master/component/keyple-plugin/pcsc">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/releases/">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -4275,7 +4317,7 @@ Keyple project
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/developer-guide/standalone-application/">Developer guide&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="download">Download&lt;/h2>
-&lt;p>All sources are available on &lt;a href="https://github.com/eclipse-keyple/keyple-cpp/" target="_blank" rel="noopener">GitHub&lt;/a>.&lt;/p></description></item><item><title>Keyple Plugin PC/SC</title><link>https://keyple.org/archives/components-java-1.0/plugins/pcsc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/plugins/pcsc/</guid><description>&lt;div class="alert alert-warning">
+&lt;p>All sources are available on &lt;a href="https://github.com/eclipse-keyple/keyple-cpp/">GitHub&lt;/a>.&lt;/p></description></item><item><title>Keyple Plugin PC/SC</title><link>https://keyple.org/archives/components-java-1.0/plugins/pcsc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/plugins/pcsc/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -4291,10 +4333,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-plugin/pcsc" target="_blank" rel="noopener">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-plugin/pcsc">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -4303,16 +4345,16 @@ Keyple project
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/developer-guide/standalone-application/">Developer guide&lt;/a>&lt;/li>
-&lt;li>&lt;a href="../../../../archives/docs-1.0/api-reference/java-api/keyple-java-plugin-pcsc/1.0.0/index.html">JavaDoc API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="./archives/docs-1.0/api-reference/java-api/">JavaDoc API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="download">Download&lt;/h2>
-&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/" target="_blank" rel="noopener">Maven Central Repository&lt;/a>.&lt;/p>
+&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/">Maven Central Repository&lt;/a>.&lt;/p>
 &lt;ul>
-&lt;li>Using &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://gradle.org/">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-java-plugin-pcsc:1.0.0&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Using &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://maven.apache.org/">Maven&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
@@ -4320,7 +4362,7 @@ Keyple project
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-plugin-pcsc" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
+&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-plugin-pcsc">download&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Keyple Distributed Remote</title><link>https://keyple.org/archives/components-java-1.0/distributed-systems/remote/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/distributed-systems/remote/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
@@ -4337,10 +4379,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/remote" target="_blank" rel="noopener">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-distributed/remote">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -4351,16 +4393,16 @@ Keyple project
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/developer-guide/distributed-application/">Developer guide&lt;/a>&lt;/li>
-&lt;li>&lt;a href="../../../../archives/docs-1.0/api-reference/java-api/keyple-java-distributed-remote/1.0.0/index.html">JavaDoc API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="./archives/docs-1.0/api-reference/java-api/">JavaDoc API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="download">Download&lt;/h2>
-&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/" target="_blank" rel="noopener">Maven Central Repository&lt;/a>.&lt;/p>
+&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/">Maven Central Repository&lt;/a>.&lt;/p>
 &lt;ul>
-&lt;li>Using &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://gradle.org/">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-java-distributed-remote:1.0.0&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Using &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://maven.apache.org/">Maven&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
@@ -4368,7 +4410,7 @@ Keyple project
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-distributed-remote" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
+&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-distributed-remote">download&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Keyple Plugin Stub</title><link>https://keyple.org/archives/components-cpp-0.9/plugins/stub/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-cpp-0.9/plugins/stub/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 0.9 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
@@ -4385,10 +4427,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/tree/master/component/keyple-plugin/stub" target="_blank" rel="noopener">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/tree/master/component/keyple-plugin/stub">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-cpp/releases/">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -4399,7 +4441,7 @@ Keyple project
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/developer-guide/standalone-application/">Developer guide&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="download">Download&lt;/h2>
-&lt;p>All sources are available on &lt;a href="https://github.com/eclipse-keyple/keyple-cpp/" target="_blank" rel="noopener">GitHub&lt;/a>.&lt;/p></description></item><item><title>Keyple Plugin Stub</title><link>https://keyple.org/archives/components-java-1.0/plugins/stub/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/plugins/stub/</guid><description>&lt;div class="alert alert-warning">
+&lt;p>All sources are available on &lt;a href="https://github.com/eclipse-keyple/keyple-cpp/">GitHub&lt;/a>.&lt;/p></description></item><item><title>Keyple Plugin Stub</title><link>https://keyple.org/archives/components-java-1.0/plugins/stub/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/components-java-1.0/plugins/stub/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -4415,10 +4457,10 @@ Keyple project
 &lt;a href="#download">Download&lt;/a>
      
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-plugin/stub" target="_blank" rel="noopener">GitHub&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/component/keyple-plugin/stub">GitHub&lt;/a>
      
 &lt;i class="fas fa-exchange-alt pr-1 fa-fw">&lt;/i>
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/" target="_blank" rel="noopener">Changelogs&lt;/a>
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/">Changelogs&lt;/a>
 &lt;/div>
 &lt;/div>
 &lt;h2 id="overview">Overview&lt;/h2>
@@ -4427,16 +4469,16 @@ Keyple project
 &lt;h2 id="documentation">Documentation&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/developer-guide/standalone-application/">Developer guide&lt;/a>&lt;/li>
-&lt;li>&lt;a href="../../../../archives/docs-1.0/api-reference/java-api/keyple-java-plugin-stub/1.0.0/index.html">JavaDoc API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="./archives/docs-1.0/api-reference/java-api/">JavaDoc API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h2 id="download">Download&lt;/h2>
-&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/" target="_blank" rel="noopener">Maven Central Repository&lt;/a>.&lt;/p>
+&lt;p>All deliverables are available on the &lt;a href="https://search.maven.org/">Maven Central Repository&lt;/a>.&lt;/p>
 &lt;ul>
-&lt;li>Using &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://gradle.org/">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">implementation&lt;/span> &lt;span class="s1">&amp;#39;org.eclipse.keyple:keyple-java-plugin-stub:1.0.0&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Using &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener">Maven&lt;/a>&lt;/li>
+&lt;li>Using &lt;a href="https://maven.apache.org/">Maven&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.eclipse.keyple&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
@@ -4444,7 +4486,7 @@ Keyple project
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>1.0.0&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-plugin-stub" target="_blank" rel="noopener">download&lt;/a>&lt;/li>
+&lt;li>Direct &lt;a href="https://central.sonatype.com/search?q=keyple-java-plugin-stub">download&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Keyple Implementations &amp; Compatibility</title><link>https://keyple.org/components/overview/implementations-and-compatibility/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/overview/implementations-and-compatibility/</guid><description>&lt;style>
 table th:nth-child(1) {
 width: 20rem;
@@ -4654,7 +4696,7 @@ width: 12rem;
 &lt;tr>
 &lt;td>
 &lt;i class="fas fa-file-alt pr-1 fa-fw">&lt;/i> &lt;strong>Description&lt;/strong>&lt;/td>
-&lt;td>The &lt;strong>Keyple BOM&lt;/strong> provides a centralized way to manage the versions of all Keyple artifacts for applications. It ensures that projects using multiple Keyple libraries stay consistent and compatible without requiring explicit version declarations for each dependency.&lt;br>&lt;br>&lt;strong>Important Note:&lt;/strong> The BOM also includes the versions of the &lt;a href="https://keypop.org/" target="_blank" rel="noopener">Keypop&lt;/a> dependencies required by Keyple, so you don’t need to manage them separately.&lt;/td>
+&lt;td>The &lt;strong>Keyple BOM&lt;/strong> provides a centralized way to manage the versions of all Keyple artifacts for applications. It ensures that projects using multiple Keyple libraries stay consistent and compatible without requiring explicit version declarations for each dependency.&lt;br>&lt;br>&lt;strong>Important Note:&lt;/strong> The BOM also includes the versions of the &lt;a href="https://keypop.org/">Keypop&lt;/a> dependencies required by Keyple, so you don’t need to manage them separately.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>
@@ -4707,7 +4749,7 @@ id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab">
 &lt;/div></description></item><item><title>C++ examples</title><link>https://keyple.org/learn/code-samples/cpp-example/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/code-samples/cpp-example/</guid><description>&lt;br>
 &lt;p>For C++ reference implementations and usage demonstrations, please refer to the C++ example repository available at:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-cpp-example" target="_blank" rel="noopener">https://github.com/eclipse-keyple/keyple-cpp-example&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-cpp-example">https://github.com/eclipse-keyple/keyple-cpp-example&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Calypso card extension</title><link>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/keyple-in-depth/calypso-card-extension/</guid><description>&lt;br>
 &lt;p>The diagram below illustrates the sequence of exchanges and the grouping of APDU commands during a secure Calypso transaction:&lt;/p>
 &lt;figure id="figure-calypso-secure-transaction">
@@ -5379,7 +5421,7 @@ electronic ticketing transportation standards since 2003.&lt;/p>
 &lt;p>Keyple uses Gradle.&lt;/p>
 &lt;br>
 &lt;h2 id="versioning-rules">Versioning rules&lt;/h2>
-&lt;p>Keyple components are versioned according to &lt;a href="https://semver.org" target="_blank" rel="noopener">Semantic Versioning 2.0.0&lt;/a> which is based on the three numbers &lt;code>X.Y.Z&lt;/code>&lt;/p>
+&lt;p>Keyple components are versioned according to &lt;a href="https://semver.org">Semantic Versioning 2.0.0&lt;/a> which is based on the three numbers &lt;code>X.Y.Z&lt;/code>&lt;/p>
 &lt;div class="alert alert-note">
 &lt;div>
 For API components (i.e. artifacts suffixed with &lt;code>-api&lt;/code>), the incrementation of &lt;code>Z&lt;/code> indicates only a documentation update.
@@ -5388,28 +5430,28 @@ For API components (i.e. artifacts suffixed with &lt;code>-api&lt;/code>), the i
 &lt;br>
 &lt;h2 id="continuous-integration">Continuous integration&lt;/h2>
 &lt;p>Keyple continuous integration is based on &lt;strong>GitHub Actions&lt;/strong> and uses the reusable
-workflows defined in the dedicated &lt;a href="https://github.com/eclipse-keyple/keyple-actions" target="_blank" rel="noopener">Keyple Actions repository&lt;/a>.&lt;/p>
+workflows defined in the dedicated &lt;a href="https://github.com/eclipse-keyple/keyple-actions">Keyple Actions repository&lt;/a>.&lt;/p>
 &lt;p>The CI automates the following tasks:&lt;/p>
 &lt;ul>
 &lt;li>verify the validity of the version;&lt;/li>
-&lt;li>verify the code formatting using &lt;a href="https://github.com/diffplug/spotless" target="_blank" rel="noopener">spotless&lt;/a>;&lt;/li>
-&lt;li>verify the licenses of third-party dependencies using the &lt;a href="https://github.com/eclipse-dash/dash-licenses" target="_blank" rel="noopener">Eclipse Dash License Tool&lt;/a>;&lt;/li>
+&lt;li>verify the code formatting using &lt;a href="https://github.com/diffplug/spotless">spotless&lt;/a>;&lt;/li>
+&lt;li>verify the licenses of third-party dependencies using the &lt;a href="https://github.com/eclipse-dash/dash-licenses">Eclipse Dash License Tool&lt;/a>;&lt;/li>
 &lt;li>build the code;&lt;/li>
 &lt;li>execute unit tests;&lt;/li>
 &lt;li>sign and publish artifacts to Maven Central Repository;&lt;/li>
-&lt;li>publish the API documentation to the unified &lt;a href="https://docs.keyple.org/" target="_blank" rel="noopener">Keyple&amp;rsquo;s documentation GitHub pages&lt;/a>;&lt;/li>
-&lt;li>publish the code quality report to &lt;a href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&amp;amp;sort=-analysis_date" target="_blank" rel="noopener">SonarCloud&lt;/a>.&lt;/li>
+&lt;li>publish the API documentation to the unified &lt;a href="https://docs.keyple.org/">Keyple&amp;rsquo;s documentation GitHub pages&lt;/a>;&lt;/li>
+&lt;li>publish the code quality report to &lt;a href="https://sonarcloud.io/organizations/eclipse/projects?search=keyple&amp;amp;sort=-analysis_date">SonarCloud&lt;/a>.&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="license-verification">License verification&lt;/h2>
 &lt;p>The &lt;strong>Eclipse Dash License Tool&lt;/strong> analyzes the project&amp;rsquo;s dependencies to identify their licenses and verify compliance
-with the &lt;a href="https://www.eclipse.org/org/documents/" target="_blank" rel="noopener">Eclipse Foundation Governance Documents&lt;/a>. It retrieves license
+with the &lt;a href="https://www.eclipse.org/org/documents/">Eclipse Foundation Governance Documents&lt;/a>. It retrieves license
 information from the Eclipse Foundation&amp;rsquo;s database and the ClearlyDefined service.&lt;/p>
 &lt;p>The license check is an integral part of the build workflow. If the &lt;strong>Eclipse Dash License Tool&lt;/strong> detects dependencies
 that require manual review, the build fails with an error. In such cases, a committer must intervene.&lt;/p>
-&lt;p>A &lt;a href="https://github.com/eclipse-keyple/keyple-actions/tree/main/tools/dash-licenses" target="_blank" rel="noopener">script&lt;/a>, available in the
+&lt;p>A &lt;a href="https://github.com/eclipse-keyple/keyple-actions/tree/main/tools/dash-licenses">script&lt;/a>, available in the
 &lt;strong>Keyple Actions repository&lt;/strong>, supports committers by automatically publishing the necessary issues to the
-dedicated &lt;a href="https://gitlab.eclipse.org/eclipsefdn/emo-team/iplab/-/issues" target="_blank" rel="noopener">repository&lt;/a> of the Eclipse Foundation
+dedicated &lt;a href="https://gitlab.eclipse.org/eclipsefdn/emo-team/iplab/-/issues">repository&lt;/a> of the Eclipse Foundation
 for license-related matters. This step is performed manually by the committer from a local workstation.&lt;/p>
 &lt;br>
 &lt;h2 id="snapshot-publication">Snapshot publication&lt;/h2>
@@ -5417,7 +5459,7 @@ for license-related matters. This step is performed manually by the committer fr
 to the &lt;code>main&lt;/code> branch.&lt;/p>
 &lt;p>This allows developers to use the latest development state of Keyple without waiting for an official release. The
 published SNAPSHOT artifacts are available from
-the &lt;a href="https://central.sonatype.com/service/rest/repository/browse/maven-snapshots" target="_blank" rel="noopener">Eclipse Maven Snapshots repository&lt;/a>.&lt;/p>
+the &lt;a href="https://central.sonatype.com/service/rest/repository/browse/maven-snapshots">Eclipse Maven Snapshots repository&lt;/a>.&lt;/p>
 &lt;div class="alert alert-warning">
 &lt;div>
 The component version defined in &lt;code>gradle.properties&lt;/code> must contain the &lt;code>-SNAPSHOT&lt;/code> suffix.
@@ -5438,7 +5480,7 @@ between the source code and the published artifacts.&lt;/p>
 &lt;/div>
 &lt;br>
 &lt;h2 id="integration-tests">Integration tests&lt;/h2>
-&lt;p>Integration tests are defined in an independent GitHub repository: &lt;a href="https://github.com/eclipse-keyple/keyple-integration-java-test" target="_blank" rel="noopener">keyple-integration-java-test&lt;/a>&lt;/p>
+&lt;p>Integration tests are defined in an independent GitHub repository: &lt;a href="https://github.com/eclipse-keyple/keyple-integration-java-test">keyple-integration-java-test&lt;/a>&lt;/p>
 &lt;br>
 &lt;h2 id="release-procedure">Release procedure&lt;/h2>
 &lt;ol>
@@ -5477,7 +5519,7 @@ without the bottom links.&lt;/li>
 &lt;/li>
 &lt;li>Await the success of the &lt;strong>release&lt;/strong> publication by the CI on &lt;code>main&lt;/code> branch.&lt;/li>
 &lt;li>Check the availability of the release on
-the &lt;a href="https://repo.maven.apache.org/maven2/org/eclipse/keyple/" target="_blank" rel="noopener">Maven Repository&lt;/a>. This step may take from 10 minutes
+the &lt;a href="https://repo.maven.apache.org/maven2/org/eclipse/keyple/">Maven Repository&lt;/a>. This step may take from 10 minutes
 to 2 hours.&lt;/li>
 &lt;li>Update this website:
 &lt;ul>
@@ -6080,7 +6122,7 @@ It brings to his user a guarantee of security and interoperability which relies 
 (ISO 14443, ISO 7816-4, Global Platform). The Calypso® standard is managed by the Calypso Networks Association (CNA),
 which is led by transports operators and public authorities in order to ensure openness and independence from industrials
 in confront of other proprietary schemes.&lt;/p>
-&lt;p>Discover more about Calypso® here : &lt;a href="https://calypsonet.org/solutions-overview/" target="_blank" rel="noopener">https://calypsonet.org/solutions-overview/&lt;/a>&lt;/p></description></item><item><title>Keyple's main features</title><link>https://keyple.org/what-is-keyple/main-features/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/what-is-keyple/main-features/</guid><description>&lt;p>The goal of Eclipse Keyple® is to allow developers to easily implement fast and secure off-line contactless transactions
+&lt;p>Discover more about Calypso® here : &lt;a href="https://calypsonet.org/solutions-overview/">https://calypsonet.org/solutions-overview/&lt;/a>&lt;/p></description></item><item><title>Keyple's main features</title><link>https://keyple.org/what-is-keyple/main-features/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/what-is-keyple/main-features/</guid><description>&lt;p>The goal of Eclipse Keyple® is to allow developers to easily implement fast and secure off-line contactless transactions
 (using NFC cards, mobile phones, …) based on ticket processing integrating technologies other than Calypso® the Calypso standard.&lt;/p>
 &lt;p>More specifically, Keyple is a set of open source libraries that will initially be available in Java and C++,
 designed on the same mutual Object-Oriented Model compatible with any terminal architecture: mobile, embedded
@@ -6119,9 +6161,9 @@ width: 9rem;
 &lt;div>
 &lt;p>This API is compliant with the following Keyple server side components:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/" target="_blank" rel="noopener">Keyple Service Library&lt;/a> version &lt;code>3.3.0+&lt;/code>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-network-lib/" target="_blank" rel="noopener">Keyple Distributed Network Library&lt;/a> version &lt;code>2.5.0+&lt;/code>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-remote-lib/" target="_blank" rel="noopener">Keyple Distributed Remote Library&lt;/a> version &lt;code>2.5.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/">Keyple Service Library&lt;/a> version &lt;code>3.3.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-network-lib/">Keyple Distributed Network Library&lt;/a> version &lt;code>2.5.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-remote-lib/">Keyple Distributed Remote Library&lt;/a> version &lt;code>2.5.0+&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;/div>
 &lt;/div>
@@ -7332,9 +7374,9 @@ width: 9rem;
 &lt;div>
 &lt;p>This API is compliant with the following Keyple server side components:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/" target="_blank" rel="noopener">Keyple Service Library&lt;/a> version &lt;code>3.0.0+&lt;/code>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-network-lib/" target="_blank" rel="noopener">Keyple Distributed Network Library&lt;/a> version &lt;code>2.3.0+&lt;/code>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-remote-lib/" target="_blank" rel="noopener">Keyple Distributed Remote Library&lt;/a> version &lt;code>2.3.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/">Keyple Service Library&lt;/a> version &lt;code>3.0.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-network-lib/">Keyple Distributed Network Library&lt;/a> version &lt;code>2.3.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-remote-lib/">Keyple Distributed Remote Library&lt;/a> version &lt;code>2.3.0+&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;/div>
 &lt;/div>
@@ -8738,7 +8780,7 @@ width: 9rem;
 &lt;div>
 &lt;p>This specification is compliant with the following Keyple server side components:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/" target="_blank" rel="noopener">Keyple Service Library&lt;/a> version &lt;code>3.0.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/">Keyple Service Library&lt;/a> version &lt;code>3.0.0+&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;/div>
 &lt;/div>
@@ -9091,9 +9133,9 @@ width: 9rem;
 &lt;div>
 &lt;p>This API is compliant with the following Keyple server side components:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/" target="_blank" rel="noopener">Keyple Service Library&lt;/a> version &lt;code>2.1.4+&lt;/code>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-network-lib/" target="_blank" rel="noopener">Keyple Distributed Network Library&lt;/a> version &lt;code>2.2.0+&lt;/code>&lt;/li>
-&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-remote-lib/" target="_blank" rel="noopener">Keyple Distributed Remote Library&lt;/a> version &lt;code>2.2.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/core/keyple-service-lib/">Keyple Service Library&lt;/a> version &lt;code>2.1.4+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-network-lib/">Keyple Distributed Network Library&lt;/a> version &lt;code>2.2.0+&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://keyple.org/components/distributed/keyple-distributed-remote-lib/">Keyple Distributed Remote Library&lt;/a> version &lt;code>2.2.0+&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;/div>
 &lt;/div>
@@ -10801,7 +10843,7 @@ Calypso packages
 &lt;!-- The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages. -->
 &lt;br>
 &lt;h2 id="calypso-portable-object-selection">Calypso Portable Object Selection&lt;/h2>
-&lt;p>Compared to the generic Card Selection API (cf. &lt;a href="https://keyple.org/learn/architecture/keyple-core/#card-selection%29" target="_blank" rel="noopener">https://keyple.org/learn/architecture/keyple-core/#card-selection)&lt;/a>, a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
+&lt;p>Compared to the generic Card Selection API (cf. &lt;a href="./archives/docs-1.0/architecture/keyple-core/#service-interface---card-selection">Card Selection&lt;/a>), a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
 &lt;p>In addition, a PO Selection Request provides methods:&lt;/p>
 &lt;ul>
 &lt;li>to prepare Select File command (useful in particular to manage REV1 Calypso PO for which the select of the targeted DF is required).&lt;/li>
@@ -10903,18 +10945,18 @@ to provide the ability to manage PC/SC readers,&lt;/li>
 &lt;li>&lt;a href="https://keyple.org/archives/components-java-1.0/extensions/calypso/">Keyple Calypso extension&lt;/a>
 to handle the commands sent to the Calypso PO and the Calypso SAM.&lt;/li>
 &lt;/ul>
-&lt;p>In this guide &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation
+&lt;p>In this guide &lt;a href="https://gradle.org/">Gradle&lt;/a> is used as build automation
 tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.&lt;/p>
 &lt;p>The example can run on any machine: Linux, Windows and macOS. If not
 installed in your machine, you will need to download :&lt;/p>
 &lt;ul>
 &lt;li>Java 1.6 or newer&lt;/li>
-&lt;li>&lt;a href="https://gradle.org/install/" target="_blank" rel="noopener">Gradle (any version)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://gradle.org/install/">Gradle (any version)&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>We recommend that you use a Java IDE like
-&lt;a href="https://www.eclipse.org/ide/" target="_blank" rel="noopener">Eclipse&lt;/a> or
-&lt;a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">Intellij IDEA&lt;/a> to create your new
+&lt;a href="https://www.eclipse.org/ide/">Eclipse&lt;/a> or
+&lt;a href="https://www.jetbrains.com/idea/">Intellij IDEA&lt;/a> to create your new
 Gradle project.&lt;/p>
 &lt;br>
 &lt;h2 id="create-a-gradle-based-empty-project">Create a Gradle-based empty project&lt;/h2>
@@ -11330,8 +11372,8 @@ Version 1.0 of the documentation is no longer actively maintained. The site that
 &lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;h3 id="overview">Overview&lt;/h3>
 &lt;p>&lt;strong>Since Keyple is supported by the Android operating system, developers can take advantage of this quick and easy way to implement solution to provide SmartCard communication functionalities in their own mobile application.&lt;/strong>&lt;/p>
-&lt;p>For example, Keyple could be used to facilitate the development of a ticketing application based on the use of conteners on a SIM card and relying on &lt;a href="https://developer.android.com/reference/android/se/omapi/package-summary" target="_blank" rel="noopener">Android SE OMAPI&lt;/a>.
-Keyple could also be used to develop an application reading SmartCard content through NFC using &lt;a href="https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc" target="_blank" rel="noopener">Android NFC&lt;/a>.&lt;/p>
+&lt;p>For example, Keyple could be used to facilitate the development of a ticketing application based on the use of conteners on a SIM card and relying on &lt;a href="https://developer.android.com/reference/android/se/omapi/package-summary">Android SE OMAPI&lt;/a>.
+Keyple could also be used to develop an application reading SmartCard content through NFC using &lt;a href="https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc">Android NFC&lt;/a>.&lt;/p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="./media/archive-1.0/android-app/component/Android_App_Overview.png" alt="" loading="lazy" data-zoomable />&lt;/div>
@@ -11708,7 +11750,7 @@ If you do not activate any protocol, no card will be detected by the Keyple libr
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>Where can I see more examples&lt;/strong>&lt;/p>
-&lt;p>Android native plugins are provided with example applications. Check it to see more use cases: &lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example" target="_blank" rel="noopener">Examples&lt;/a>&lt;/p></description></item><item><title>Build your first C++ application</title><link>https://keyple.org/archives/docs-1.0/build-your-first-app/cpp-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/docs-1.0/build-your-first-app/cpp-app/</guid><description>&lt;div class="alert alert-warning">
+&lt;p>Android native plugins are provided with example applications. Check it to see more use cases: &lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example">Examples&lt;/a>&lt;/p></description></item><item><title>Build your first C++ application</title><link>https://keyple.org/archives/docs-1.0/build-your-first-app/cpp-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/docs-1.0/build-your-first-app/cpp-app/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
 &lt;/div>
@@ -11736,7 +11778,7 @@ to handle the commands sent to the Calypso PO and the Calypso SAM.&lt;/li>
 &lt;p>The example can run on any machine: Linux, Windows and macOS. If not installed in your machine, you
 will need to download :&lt;/p>
 &lt;ul>
-&lt;li>CMake 2.8 or newer &lt;a href="https://cmake.org/install/" target="_blank" rel="noopener">(download)&lt;/a>&lt;/li>
+&lt;li>CMake 2.8 or newer &lt;a href="https://cmake.org/install/">(download)&lt;/a>&lt;/li>
 &lt;li>GCC / CLang / MSVC compiler&lt;/li>
 &lt;/ul>
 &lt;br>
@@ -12644,7 +12686,7 @@ concepts on which Keyple is based.&lt;/li>
 &lt;li>Any implementation of a Keyple application starts with the
 implementation of &lt;strong>Keyple Core&lt;/strong>, please study the
 &lt;a href="#workflow">workflow&lt;/a> proposed in the following chapter.&lt;/li>
-&lt;li>Explore the &lt;a href="#keyplecoreapi">Keyple Core API&lt;/a> to discover all the
+&lt;li>Explore the &lt;a href="#keyple-core-api">Keyple Core API&lt;/a> to discover all the
 possibilities offered by &lt;strong>Keyple Core&lt;/strong>.&lt;/li>
 &lt;li>Take inspiration from the &lt;a href="#examples">examples&lt;/a>.&lt;/li>
 &lt;li>Follow the explanations given in the &lt;a href="https://keyple.org/archives/docs-1.0/build-your-first-app/">Build your first app&lt;/a> section to configure your
@@ -13084,38 +13126,38 @@ operations.
 &lt;p>To help in the implementation of the different facilities offered by
 Keyple to process smart cards, a set of examples is present in the
 project repository
-&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone" target="_blank" rel="noopener">
+&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone">
 &lt;i class="fab fa-github pr-1 fa-fw">&lt;/i> examples&lt;/a>&lt;/p>
 &lt;p>Nevertheless, you will find below a brief description of them:&lt;/p>
 &lt;h3 id="explicit-selection">Explicit Selection&lt;/h3>
 &lt;p>Shows the use of Keyple to make a card selection without observing the
 reader, based on testing the presence of the card by the application.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase1_ExplicitSelectionAid">see the code&lt;/a>&lt;/p>
 &lt;h3 id="default-selection">Default Selection&lt;/h3>
 &lt;p>Shows the use of Keyple to make a card selection with observation of the
 reader. A default selection is prepared, the presentation of a card
 triggers the notification of a reader event to the application.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase2_DefaultSelectionNotification">see the code&lt;/a>&lt;/p>
 &lt;h3 id="sequential-multiple-selection">Sequential Multiple Selection&lt;/h3>
 &lt;p>Executes successively several independent selection operations with the
 use of the ISO &amp;lsquo;NEXT&amp;rsquo; navigation flag.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase3_SequentialMultiSelection">see the code&lt;/a>&lt;/p>
 &lt;p>Illustrates the case of a card exploration with maintenance of the physical channel open.&lt;/p>
 &lt;h3 id="grouped-multiple-selection">Grouped Multiple Selection&lt;/h3>
 &lt;p>Executes a multiple selection with logical channel closure between each
 selection.&lt;/p>
 &lt;p>Allows the exploration of the applications of a card in a single
 operation but without selection at the end.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/blob/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/UseCase4_GroupedMultiSelection">see the code&lt;/a>&lt;/p>
 &lt;h3 id="demo-card-protocol-detection">Demo Card Protocol Detection&lt;/h3>
 &lt;p>Demonstrates the use of Keyple in a context where several card
 technologies are likely to be processed by the application.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_CardProtocolDetection">see the code&lt;/a>&lt;/p>
 &lt;h3 id="demo-observable-reader-notification">Demo Observable Reader Notification&lt;/h3>
 &lt;p>Demonstrates the use of Keyple to implement the observation of a plugin
 and its readers. Readers are dynamically created and an observer is
 assigned to them.&lt;/p>
-&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification" target="_blank" rel="noopener">see the code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/standalone/src/main/java/org/eclipse/keyple/example/generic/centralized/Demo_ObservableReaderNotification">see the code&lt;/a>&lt;/p>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
 &lt;p>The artifact &lt;strong>Keyple Core&lt;/strong> and how to integrate it into your
@@ -13814,19 +13856,19 @@ width: 240px;
 &lt;/table>
 &lt;p>The associated &lt;strong>API&lt;/strong> documentations are accessible from the page &lt;a href="https://keyple.org/archives/docs-1.0/api-reference/">API Reference&lt;/a>.&lt;/p>
 &lt;h3 id="network-api">Network API&lt;/h3>
-&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../api-reference/java-api/keyple-java-distributed-network/1.0.0/index.html">here&lt;/a>.&lt;/p>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="./archives/docs-1.0/api-reference/java-api/">here&lt;/a>.&lt;/p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="./media/archive-1.0/distributed-application/class/Distributed_Class_Network_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;h3 id="remote-api">Remote API&lt;/h3>
-&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../api-reference/java-api/keyple-java-distributed-remote/1.0.0/index.html">here&lt;/a>.&lt;/p>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="./archives/docs-1.0/api-reference/java-api/">here&lt;/a>.&lt;/p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="./media/archive-1.0/distributed-application/class/Distributed_Class_Remote_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;h3 id="local-api">Local API&lt;/h3>
-&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="../../api-reference/java-api/keyple-java-distributed-local/1.0.0/index.html">here&lt;/a>.&lt;/p>
+&lt;p>The associated &lt;strong>API&lt;/strong> documentation is available &lt;a href="./archives/docs-1.0/api-reference/java-api/">here&lt;/a>.&lt;/p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="./media/archive-1.0/distributed-application/class/Distributed_Class_Local_API.svg" alt="" loading="lazy" data-zoomable />&lt;/div>
@@ -13834,7 +13876,7 @@ width: 240px;
 &lt;br>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/distributed" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/distributed">Java examples&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -13861,7 +13903,7 @@ secure Calypso transaction seamlessly. It completely hides the details of the AP
 &lt;li>Read the &lt;a href="./archives/docs-1.0/developer-guide/common-concepts/">common concepts&lt;/a> page and become familiar with the basic concepts on which Keyple is based.&lt;/li>
 &lt;li>Any implementation of a Keyple application starts with the implementation of &lt;strong>Keyple Core&lt;/strong>, please study the &lt;a href="./archives/docs-1.0/developer-guide/standalone-application/">workflow&lt;/a> proposed in Standalone application guide.&lt;/li>
 &lt;li>Read chapter &lt;a href="#concepts">Concepts&lt;/a> to understand the main terms and concepts of the &lt;strong>Keyple Calypso Extension&lt;/strong> API.&lt;/li>
-&lt;li>Explore the &lt;a href="#keyplecalypsoapi">Keyple Calypso API&lt;/a> to discover all the possibilities offered by &lt;strong>Keyple Calypso Extension&lt;/strong>.&lt;/li>
+&lt;li>Explore the &lt;a href="https://keyple.org/archives/docs-1.0/api-reference/">Keyple Calypso API&lt;/a> to discover all the possibilities offered by &lt;strong>Keyple Calypso Extension&lt;/strong>.&lt;/li>
 &lt;li>Take inspiration from the &lt;a href="#examples">examples&lt;/a>.&lt;/li>
 &lt;li>Follow the explanations given in the &lt;a href="https://keyple.org/archives/docs-1.0/build-your-first-app/">Build your first app&lt;/a> section to configure your environment.&lt;/li>
 &lt;li>Using the &lt;a href="https://keyple.org/archives/components-java-1.0/core/">Java components&lt;/a> or &lt;a href="https://keyple.org/archives/components-cpp-0.9/core/">C++ components&lt;/a> pages, import &lt;strong>Keyple Core&lt;/strong> into your project.&lt;/li>
@@ -14206,8 +14248,8 @@ all in detail but here is an example from which other variants can be obtained.&
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;p>Detailed use case examples can be seen here:&lt;/p>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/calypso/src/main/java/org/eclipse/keyple/example/calypso" target="_blank" rel="noopener">PC&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/android" target="_blank" rel="noopener">Android&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/calypso/src/main/java/org/eclipse/keyple/example/calypso">PC&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java/tree/master/java/example/generic/android">Android&lt;/a>&lt;/li>
 &lt;/ul></description></item><item><title>Create a plugin</title><link>https://keyple.org/archives/docs-1.0/developer-guide/create-plugin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/docs-1.0/developer-guide/create-plugin/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot. For up-to-date documentation, see the latest version.
@@ -14573,7 +14615,7 @@ In the class &lt;code>SelectionsResult&lt;/code> (see &lt;code>processDefaultSel
 &lt;p>Since version 0.9, all Keyple exceptions are of the RuntimeException type.&lt;/p>
 &lt;p>Catching exceptions is therefore now optional.&lt;/p>
 &lt;p>However, it is possible to selectively catch certain exceptions in order to deal with particular cases.&lt;/p>
-&lt;p>The new hierarchy of Keyple exceptions is shown &lt;a href="https://keyple.atlassian.net/projects/KEYP/issues/KEYP-154?filter=allissues&amp;amp;orderby=priority%20DESC&amp;amp;keyword=exceptions" target="_blank" rel="noopener">here&lt;/a>&lt;/p></description></item><item><title>Java API reference</title><link>https://keyple.org/archives/docs-1.0/api-reference/java-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/docs-1.0/api-reference/java-api/</guid><description>&lt;div class="alert alert-warning">
+&lt;p>The new hierarchy of Keyple exceptions is shown &lt;a href="https://keyple.atlassian.net/projects/KEYP/issues/KEYP-154?filter=allissues&amp;amp;orderby=priority%20DESC&amp;amp;keyword=exceptions">here&lt;/a>&lt;/p></description></item><item><title>Java API reference</title><link>https://keyple.org/archives/docs-1.0/api-reference/java-api/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/archives/docs-1.0/api-reference/java-api/</guid><description>&lt;div class="alert alert-warning">
 &lt;div>
 Version 1.0 of the documentation is no longer actively maintained. The site that you are currently viewing is an archived snapshot.
 For up-to-date documentation, see the latest version.
@@ -14599,7 +14641,7 @@ continue the card transaction, as well as the JSON format of the involved data.&
 &lt;p>For more information, please visit the &lt;a href="https://keyple.org/learn/user-guide/non-keyple-client/">user guide&lt;/a>&lt;/p></description></item><item><title>Keyple supports Calypso Prime PKI cards!</title><link>https://keyple.org/post/pki-support/</link><pubDate>Wed, 29 May 2024 00:00:00 +0100</pubDate><guid>https://keyple.org/post/pki-support/</guid><description>&lt;p>Since April, Keyple supports sessions secured by public key cryptography on Calypso Prime PKI cards. This enables
 strong authentication of both the card and the data read from it, without necessarily requiring a SAM.&lt;/p>
 &lt;h4 id="keypop-apis-for-pki-based-ticketing-systems">Keypop APIs for PKI-based Ticketing Systems&lt;/h4>
-&lt;p>The &lt;a href="https://keypop.org/apis/calypso-layer/calypso-card-api/" target="_blank" rel="noopener">Keypop Calypso Card API&lt;/a> now includes features for
+&lt;p>The &lt;a href="https://keypop.org/apis/calypso-layer/calypso-card-api/">Keypop Calypso Card API&lt;/a> now includes features for
 managing Public Key Infrastructure (PKI) mode, offering integrators the flexibility to define any type of chain-of-trust
 model for a PKI-based ticketing system.&lt;/p>
 &lt;h4 id="extensible-certificate-format-support">Extensible Certificate Format Support&lt;/h4>
@@ -14625,13 +14667,13 @@ with these tools.&lt;/p>
 of development environments.
 With the diminishing presence of Java 6 and Android versions prior to 7 in the installed base,
 continuing support for these older platforms is no longer warranted.&lt;/p></description></item><item><title>Keyple Card Calypso Crypto Legacy SAM Java Lib (0.5.0) is available!</title><link>https://keyple.org/post/release-2024-01-10-java/</link><pubDate>Wed, 10 Jan 2024 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2024-01-10-java/</guid><description>&lt;p>Published on January 10, 2024, this version implements the
-&lt;a href="https://keypop.org/apis/calypso-layer/calypso-legacysam-api/" target="_blank" rel="noopener">Keypop Calypso Crypto Legacy SAM Java API (0.4.0)&lt;/a>
+&lt;a href="https://keypop.org/apis/calypso-layer/calypso-legacysam-api/">Keypop Calypso Crypto Legacy SAM Java API (0.4.0)&lt;/a>
 and therefore adds support for advanced SAM unlocking mechanisms (static and dynamic modes).&lt;/p>
 &lt;p>For more information, please visit the component
 &lt;a href="https://keyple.org/components/card-extensions/keyple-card-calypso-crypto-legacysam-lib/">page&lt;/a>.&lt;/p></description></item><item><title>Keyple adopts the Eclipse Keypop API!</title><link>https://keyple.org/post/keypop/</link><pubDate>Tue, 28 Nov 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/keypop/</guid><description>&lt;p>The field of compliance management for ticketing terminals has recently seen a paradigm shift with the launch of the
-&lt;a href="https://keypop.org" target="_blank" rel="noopener">Eclipse Keypop&lt;/a> project.
+&lt;a href="https://keypop.org">Eclipse Keypop&lt;/a> project.
 This initiative defines a series of UML-compliant interfaces established by
-the &lt;a href="https://calypsonet.org" target="_blank" rel="noopener">Calypso Networks Association&lt;/a>.&lt;/p>
+the &lt;a href="https://calypsonet.org">Calypso Networks Association&lt;/a>.&lt;/p>
 &lt;p>As a result, the Keyple SDK components are upgraded to a new version, which adopts the Keypop APIs in place of the CNA
 Terminal APIs.
 As well as implementing these new APIs, this upgrade removes classes and methods previously marked as deprecated and
@@ -14672,7 +14714,7 @@ repository and the Keyple website has been updated accordingly.&lt;/p>
 &lt;/ul>
 &lt;/li>
 &lt;/ul></description></item><item><title>Keyple Service Java Lib (2.3.0) is available!</title><link>https://keyple.org/post/release-2023-05-22-java/</link><pubDate>Mon, 22 May 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2023-05-22-java/</guid><description>&lt;p>Published on May 22, 2023, this minor version implements the
-&lt;a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-reader-api/" target="_blank" rel="noopener">Calypsonet Terminal Reader Java API (1.3.0)&lt;/a>
+&lt;a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-reader-api/">Calypsonet Terminal Reader Java API (1.3.0)&lt;/a>
 and therefore introduced a new capability to export a locally processed card selection scenario to be imported and
 analyzed remotely by another card selection manager.&lt;/p>
 &lt;p>For this purpose, the following two methods have been added to the &lt;code>CardSelectionManager&lt;/code> interface:&lt;/p>
@@ -14704,7 +14746,7 @@ to a Keyple server.&lt;/p>
 &lt;p>This allows the development of a distributed solution in which the client reader terminal delegates the entire
 management of the card transaction to the server.&lt;/p>
 &lt;p>For more information, please visit the &lt;a href="https://keyple.org/learn/user-guide/non-keyple-client/">user guide&lt;/a>&lt;/p></description></item><item><title>Keyple Card Calypso Crypto Legacy SAM Java Lib (0.3.0) is available!</title><link>https://keyple.org/post/release-2023-02-27-java/</link><pubDate>Mon, 27 Feb 2023 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2023-02-27-java/</guid><description>&lt;p>Published on February 27, 2023, this version implements the
-&lt;a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-calypso-crypto-legacysam-api/" target="_blank" rel="noopener">Calypsonet Terminal Calypso Crypto Legacy SAM Java API (0.2.0)&lt;/a>
+&lt;a href="https://terminal-api.calypsonet.org/archives/apis/calypsonet-terminal-calypso-crypto-legacysam-api/">Calypsonet Terminal Calypso Crypto Legacy SAM Java API (0.2.0)&lt;/a>
 and therefore adds the counters ceilings management feature in static mode.
 This allows to update remotely the key ceilings of the reloading SAMs.&lt;/p>
 &lt;p>For more information, please visit the component
@@ -14727,7 +14769,7 @@ Calypso® legacy SAMs (SAM-C1, HSM-C1, etc&amp;hellip;).&lt;/p>
 &lt;/div>&lt;/figure>
 &lt;/li>
 &lt;/ul>
-&lt;p>You are interested in being listed as an adopter of Eclipse Keyple? Follow this link: &lt;a href="https://iot.eclipse.org/adopters/" target="_blank" rel="noopener">https://iot.eclipse.org/adopters/&lt;/a>&lt;/p>
+&lt;p>You are interested in being listed as an adopter of Eclipse Keyple? Follow this link: &lt;a href="https://iot.eclipse.org/adopters/">https://iot.eclipse.org/adopters/&lt;/a>&lt;/p>
 &lt;p>You would like to get in touch with other Keyple friends, or to be informed of the latest news about Keyple?&lt;br>
 If you are a Keyple contributor: first subscribe to the keyple-dev mailing list, then post a message to &lt;a href="mailto:keyple-dev@eclipse.org">keyple-dev@eclipse.org&lt;/a>&lt;br>
 If you are a Keyple user: first subscribe to the keyple-user mailing list, then post a message to &lt;a href="mailto:keyple-user@eclipse.org">keyple-user@eclipse.org&lt;/a>.&lt;/p>
@@ -14737,23 +14779,23 @@ The Keyple project provides also the possibility to reference &lt;a href="./exte
 Terminal manufacturers could also reference their &lt;a href="./external-resources/">terminal solutions&lt;/a> based on Keyple.&lt;/p>
 &lt;p>Eclipse Keyple team&lt;/p></description></item><item><title>6 new adopters of Eclipse Keyple®</title><link>https://keyple.org/post/6-new-adopters/</link><pubDate>Thu, 09 Dec 2021 12:00:00 +0100</pubDate><guid>https://keyple.org/post/6-new-adopters/</guid><description>&lt;p>Dear Keyple friends,&lt;/p>
 &lt;p>Eclipse Keyple is pleased to welcome 6 new adopters: Bluebird, Coppernic, Flowbird, Ile-de-France Mobilités, SNCF, SopraSteria.&lt;/p>
-&lt;p>You are interested in being listed as an adopter of Eclipse Keyple? Follow this link: &lt;a href="https://iot.eclipse.org/adopters/" target="_blank" rel="noopener">https://iot.eclipse.org/adopters/&lt;/a>&lt;/p>
+&lt;p>You are interested in being listed as an adopter of Eclipse Keyple? Follow this link: &lt;a href="https://iot.eclipse.org/adopters/">https://iot.eclipse.org/adopters/&lt;/a>&lt;/p>
 &lt;p>You would like to get in touch with other Keyple friends, or to be informed of the latest news about Keyple?&lt;br>
 If you are a Keyple contributor: first subscribe to the keyple-dev mailing list, then post a message to &lt;a href="mailto:keyple-dev@eclipse.org">keyple-dev@eclipse.org&lt;/a>&lt;br>
 If you are a Keyple user: first subscribe to the keyple-user mailing list, then post a message to &lt;a href="mailto:keyple-user@eclipse.org">keyple-user@eclipse.org&lt;/a>.&lt;/p>
-&lt;p>Moreover, everyone is welcome to contribute (&lt;a href="https://keyple.org/community/contributing/" target="_blank" rel="noopener">https://keyple.org/community/contributing/&lt;/a>) to the Eclipse Keyple project.&lt;/p>
+&lt;p>Moreover, everyone is welcome to &lt;a href="./community/contributing/">contribute&lt;/a> to the Eclipse Keyple project.&lt;/p>
 &lt;p>In particular there is the possibility to include inside the Eclipse Keyple project additional specific plugins.&lt;br>
-The Keyple project provides also the possibility to reference external add-ons (&lt;a href="https://keyple.org/external-resources/%29" target="_blank" rel="noopener">https://keyple.org/external-resources/)&lt;/a>: open source or closed add-ons like additional plugins, card extensions, specific libraries.&lt;br>
-Terminal manufacturers could also reference their terminal solutions based on Keyple (&lt;a href="https://keyple.org/external-resources/%29" target="_blank" rel="noopener">https://keyple.org/external-resources/)&lt;/a>.&lt;/p>
+The Keyple project provides also the possibility to reference &lt;a href="./external-resources/">external add-ons&lt;/a>: open source or closed add-ons like additional plugins, card extensions, specific libraries.&lt;br>
+Terminal manufacturers could also reference their &lt;a href="./external-resources/">terminal solutions based on Keyple&lt;/a>.&lt;/p>
 &lt;p>Eclipse Keyple team&lt;/p></description></item><item><title>Release 2.0.0 of Eclipse Keyple® Java</title><link>https://keyple.org/post/release-2-0-0-java/</link><pubDate>Wed, 06 Oct 2021 12:00:00 +0100</pubDate><guid>https://keyple.org/post/release-2-0-0-java/</guid><description>&lt;p>All the components of Eclipse Keyple Java have been release in version 2.0.0:&lt;/p>
 &lt;ul>
-&lt;li>at the core level: the &lt;a href="https://github.com/eclipse-keyple/keyple-service-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">Keyple Service&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-java-api/releases/tag/2.0.0" target="_blank" rel="noopener">Plugin API&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-common-java-api/releases/tag/2.0.0" target="_blank" rel="noopener">shared references&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-util-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">helper functions&lt;/a>, and the &lt;a href="https://github.com/eclipse-keyple/keyple-service-resource-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">card resource manager&lt;/a>,&lt;/li>
-&lt;li>the distribution module inluding: the &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-remote-java-api/releases/tag/2.0.0" target="_blank" rel="noopener">remote API&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-remote-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">remote lib&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-api/releases/tag/2.0.0" target="_blank" rel="noopener">local API&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">local lib&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">network messaging lib&lt;/a>,&lt;/li>
-&lt;li>the card extension libraries for &lt;a href="https://github.com/eclipse-keyple/keyple-card-generic-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">generic card&lt;/a>, and &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">Calypso card&lt;/a>,&lt;/li>
-&lt;li>the standard plugins for &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">PC/SC&lt;/a>, &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-stub-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">Stub reader&lt;/a>, &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">NFC Android&lt;/a>, and &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-omapi-java-lib/releases/tag/2.0.0" target="_blank" rel="noopener">OMAPI Android&lt;/a>.&lt;/li>
+&lt;li>at the core level: the &lt;a href="https://github.com/eclipse-keyple/keyple-service-java-lib/releases/tag/2.0.0">Keyple Service&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-java-api/releases/tag/2.0.0">Plugin API&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-common-java-api/releases/tag/2.0.0">shared references&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-util-java-lib/releases/tag/2.0.0">helper functions&lt;/a>, and the &lt;a href="https://github.com/eclipse-keyple/keyple-service-resource-java-lib/releases/tag/2.0.0">card resource manager&lt;/a>,&lt;/li>
+&lt;li>the distribution module inluding: the &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-remote-java-api/releases/tag/2.0.0">remote API&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-remote-java-lib/releases/tag/2.0.0">remote lib&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-api/releases/tag/2.0.0">local API&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-local-java-lib/releases/tag/2.0.0">local lib&lt;/a>, the &lt;a href="https://github.com/eclipse-keyple/keyple-distributed-network-java-lib/releases/tag/2.0.0">network messaging lib&lt;/a>,&lt;/li>
+&lt;li>the card extension libraries for &lt;a href="https://github.com/eclipse-keyple/keyple-card-generic-java-lib/releases/tag/2.0.0">generic card&lt;/a>, and &lt;a href="https://github.com/eclipse-keyple/keyple-card-calypso-java-lib/releases/tag/2.0.0">Calypso card&lt;/a>,&lt;/li>
+&lt;li>the standard plugins for &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-pcsc-java-lib/releases/tag/2.0.0">PC/SC&lt;/a>, &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-stub-java-lib/releases/tag/2.0.0">Stub reader&lt;/a>, &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-nfc-java-lib/releases/tag/2.0.0">NFC Android&lt;/a>, and &lt;a href="https://github.com/eclipse-keyple/keyple-plugin-android-omapi-java-lib/releases/tag/2.0.0">OMAPI Android&lt;/a>.&lt;/li>
 &lt;/ul>
 &lt;p>The components have no longer dependency on each other and can evolve separately.
-Keyple Java follows now the version 1.0 of the &lt;a href="https://terminal-api.calypsonet.org/" target="_blank" rel="noopener">Calypso terminal API&lt;/a> defined by the &lt;a href="https://calypsonet.org/" target="_blank" rel="noopener">Calypso Networks Association&lt;/a>.&lt;/p></description></item><item><title>Release 0.9.0 C++ on the field</title><link>https://keyple.org/post/release-0-9-0-cpp/</link><pubDate>Tue, 26 Jan 2021 14:57:56 +0200</pubDate><guid>https://keyple.org/post/release-0-9-0-cpp/</guid><description>&lt;p>We are pleased to announce that the version 0.9.0 of the C++ implementation of Eclipse Keyple® was released January 26th, 2021.&lt;/p>
+Keyple Java follows now the version 1.0 of the &lt;a href="https://terminal-api.calypsonet.org/">Calypso terminal API&lt;/a> defined by the &lt;a href="https://calypsonet.org/">Calypso Networks Association&lt;/a>.&lt;/p></description></item><item><title>Release 0.9.0 C++ on the field</title><link>https://keyple.org/post/release-0-9-0-cpp/</link><pubDate>Tue, 26 Jan 2021 14:57:56 +0200</pubDate><guid>https://keyple.org/post/release-0-9-0-cpp/</guid><description>&lt;p>We are pleased to announce that the version 0.9.0 of the C++ implementation of Eclipse Keyple® was released January 26th, 2021.&lt;/p>
 &lt;p>This 0.9.0 C++ Keyple implementation follows the API design for the 0.9.0 Java Keyple implementation.&lt;/p>
 &lt;ul>
 &lt;li>New simplifications are introduced on the Calypso API. Keyple 0.8 had a high-level API for building map commands, but the map response data needed to be parsed with a low-level API. The Calypso 0.9.0 API provided a high-level API for retrieving map response data from a map image for which the file structure could be browsed.&lt;/li>
@@ -14761,12 +14803,12 @@ Keyple Java follows now the version 1.0 of the &lt;a href="https://terminal-api.
 &lt;/ul>
 &lt;p>&lt;a href="https://keyple.org/archives/docs-1.0/api-reference/cpp-api/">C++ API reference&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://keyple.org/archives/docs-1.0/build-your-first-app/cpp-app/">Build your first C++ application&lt;/a>&lt;/p>
-&lt;p>The source of Keyple C++ is available on &lt;a href="https://github.com/eclipse-keyple/keyple-cpp" target="_blank" rel="noopener">https://github.com/eclipse-keyple/keyple-cpp&lt;/a>.
+&lt;p>The source of Keyple C++ is available on &lt;a href="https://github.com/eclipse-keyple/keyple-cpp">https://github.com/eclipse-keyple/keyple-cpp&lt;/a>.
 Some dedicated support is provided on keyple.org:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/api-reference/cpp-api/">the documentation of the C++ API&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://keyple.org/archives/docs-1.0/build-your-first-app/cpp-app/">a guide to Build a first C++ application&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Release 1.0.0 of Eclipse Keyple® Java</title><link>https://keyple.org/post/release-1-0-0-java/</link><pubDate>Thu, 17 Dec 2020 17:24:41 +0100</pubDate><guid>https://keyple.org/post/release-1-0-0-java/</guid><description>&lt;p>The &lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/tag/1.0.0" target="_blank" rel="noopener">release 1.0.0 of Eclipse Keyple® Java&lt;/a> is available.&lt;/p>
+&lt;/ul></description></item><item><title>Release 1.0.0 of Eclipse Keyple® Java</title><link>https://keyple.org/post/release-1-0-0-java/</link><pubDate>Thu, 17 Dec 2020 17:24:41 +0100</pubDate><guid>https://keyple.org/post/release-1-0-0-java/</guid><description>&lt;p>The &lt;a href="https://github.com/eclipse-keyple/keyple-java/releases/tag/1.0.0">release 1.0.0 of Eclipse Keyple® Java&lt;/a> is available.&lt;/p>
 &lt;p>Most of the improvements concerns the Keyple Core:&lt;/p>
 &lt;ul>
 &lt;li>the new Core extension to manage &amp;ldquo;distributed architecture&amp;rdquo; and operate remote smart card readers,&lt;/li>
@@ -14774,7 +14816,7 @@ Some dedicated support is provided on keyple.org:&lt;/p>
 &lt;li>the setting of smart card reader has also been simplified.
 The NFC &amp;amp; OMAPI Android plugins have been optimized for all Android versions from 4.4.&lt;/li>
 &lt;/ul>
-&lt;p>A new &lt;a href="https://keyple.org/" target="_blank" rel="noopener">Keyple website&lt;/a> provides the documentation and guides to handle the Keyple solution.&lt;/p></description></item><item><title>Webinar Eclipse Keyple® for Developers, Thursday, October 15, 2020</title><link>https://keyple.org/post/webinar-eclipse-keyple-developers-oct15-2020/</link><pubDate>Fri, 25 Sep 2020 14:57:23 +0200</pubDate><guid>https://keyple.org/post/webinar-eclipse-keyple-developers-oct15-2020/</guid><description>&lt;h2 id="are-you-a-mobility-aggregator-a-system-integrator-an-event-manager-a-developer-or-a-multi-mobility-startup">Are you a mobility aggregator, a system integrator, an event manager, a developer or a multi-mobility startup?&lt;/h2>
+&lt;p>A new &lt;a href="./">Keyple website&lt;/a> provides the documentation and guides to handle the Keyple solution.&lt;/p></description></item><item><title>Webinar Eclipse Keyple® for Developers, Thursday, October 15, 2020</title><link>https://keyple.org/post/webinar-eclipse-keyple-developers-oct15-2020/</link><pubDate>Fri, 25 Sep 2020 14:57:23 +0200</pubDate><guid>https://keyple.org/post/webinar-eclipse-keyple-developers-oct15-2020/</guid><description>&lt;h2 id="are-you-a-mobility-aggregator-a-system-integrator-an-event-manager-a-developer-or-a-multi-mobility-startup">Are you a mobility aggregator, a system integrator, an event manager, a developer or a multi-mobility startup?&lt;/h2>
 &lt;p>Do you want to have easy access to a highly secure and interoperable standard, Calypso®, to reduce your costs and
 accelerate your developments, to move from a black box to an open and modular solution with access to multiple
 hardware platforms, to enable partnerships with multimodal transport, building facilities including parking,
@@ -14786,7 +14828,7 @@ tourism and events… or just discover what Eclipse Keyple® is and how it works
 &lt;/div>
 &lt;/p>
 &lt;p>
-&lt;i class="fas fa-file-pdf pr-1 fa-fw">&lt;/i> Discover the &lt;a href="https://drive.google.com/file/d/1HdrThZD70bFIun8jFLYKfgozyCvX9SQg/view" target="_blank" rel="noopener">presentation&lt;/a>.&lt;/p></description></item><item><title>Release 0.9.0 Java on the field</title><link>https://keyple.org/post/release-0-9-0-java/</link><pubDate>Fri, 18 Sep 2020 14:57:56 +0200</pubDate><guid>https://keyple.org/post/release-0-9-0-java/</guid><description>&lt;p>We are pleased to announce that the version 0.9.0 of the Java implementation of Eclipse Keyple® was released September 11th, 2020.&lt;/p>
+&lt;i class="fas fa-file-pdf pr-1 fa-fw">&lt;/i> Discover the &lt;a href="https://drive.google.com/file/d/1HdrThZD70bFIun8jFLYKfgozyCvX9SQg/view">presentation&lt;/a>.&lt;/p></description></item><item><title>Release 0.9.0 Java on the field</title><link>https://keyple.org/post/release-0-9-0-java/</link><pubDate>Fri, 18 Sep 2020 14:57:56 +0200</pubDate><guid>https://keyple.org/post/release-0-9-0-java/</guid><description>&lt;p>We are pleased to announce that the version 0.9.0 of the Java implementation of Eclipse Keyple® was released September 11th, 2020.&lt;/p>
 &lt;p>The main improvement on the Calypso® extension is the addition of high-level API to manage the portable object response.
 Now the APDU responses of the Calypso® cards are automatically parsed to fill card images.
 Currently all the components of Eclipse Keyple® Java are following the same versioning.&lt;/p>
@@ -14807,9 +14849,9 @@ to Manon Chaix, Jean-Pierre Fortune, Olivier Delcroix, Ludovic Teixeira Costa an
 &lt;/div>
 &lt;/p>
 &lt;p>
-&lt;i class="fas fa-file-pdf pr-1 fa-fw">&lt;/i> Discover the &lt;a href="https://drive.google.com/file/d/1GAAhW-mv-E6kxqVySv8-KSjMJ15tZBkM/view" target="_blank" rel="noopener">presentation&lt;/a>.&lt;/p>
+&lt;i class="fas fa-file-pdf pr-1 fa-fw">&lt;/i> Discover the &lt;a href="https://drive.google.com/file/d/1GAAhW-mv-E6kxqVySv8-KSjMJ15tZBkM/view">presentation&lt;/a>.&lt;/p>
 &lt;p>
-&lt;i class="fas fa-images pr-1 fa-fw">&lt;/i> Discover the &lt;a href="https://drive.google.com/drive/folders/1StRgiAxKrn0mHsP9WwIQ_bopQW-eGVb8" target="_blank" rel="noopener">photos&lt;/a>.&lt;/p></description></item><item><title>Avantronics S.A De C.V.</title><link>https://keyple.org/suppliers/avantronics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/suppliers/avantronics/</guid><description/></item><item><title>Calypso Networks Association</title><link>https://keyple.org/suppliers/cna/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/suppliers/cna/</guid><description/></item><item><title>Secretaría de Movilidad (Mexico City)</title><link>https://keyple.org/suppliers/semovi/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/suppliers/semovi/</guid><description/></item><item><title>SpringCard</title><link>https://keyple.org/suppliers/springcard/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/suppliers/springcard/</guid><description>&lt;br>
+&lt;i class="fas fa-images pr-1 fa-fw">&lt;/i> Discover the &lt;a href="https://drive.google.com/drive/folders/1StRgiAxKrn0mHsP9WwIQ_bopQW-eGVb8">photos&lt;/a>.&lt;/p></description></item><item><title>Avantronics S.A De C.V.</title><link>https://keyple.org/suppliers/avantronics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/suppliers/avantronics/</guid><description/></item><item><title>Calypso Networks Association</title><link>https://keyple.org/suppliers/cna/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/suppliers/cna/</guid><description/></item><item><title>Secretaría de Movilidad (Mexico City)</title><link>https://keyple.org/suppliers/semovi/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/suppliers/semovi/</guid><description/></item><item><title>SpringCard</title><link>https://keyple.org/suppliers/springcard/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/suppliers/springcard/</guid><description>&lt;br>
 &lt;p>SpringCard is happy to contribute to the Keyple project by providing a plugin that makes it possible to use SpringCard
 PC/SC couplers from a stock Android tablet or mobile phone.&lt;/p>
 &lt;p>The plugin works&lt;/p>
@@ -14817,20 +14859,20 @@ PC/SC couplers from a stock Android tablet or mobile phone.&lt;/p>
 &lt;li>with all SpringCard PC/SC over USB devices.&lt;/li>
 &lt;/ul>
 &lt;p>This includes all the SpringCard Puck family (for instance SpringCard Puck One, featuring contactless+SAM:
-&lt;a href="https://www.springcard.com/en/products/puck-one%29" target="_blank" rel="noopener">https://www.springcard.com/en/products/puck-one)&lt;/a>,
-SpringCard Prox&amp;rsquo;N&amp;rsquo;Roll (&lt;a href="https://www.springcard.com/en/products/proxnroll-pcsc-hsp" target="_blank" rel="noopener">https://www.springcard.com/en/products/proxnroll-pcsc-hsp&lt;/a>)
+&lt;a href="https://www.springcard.com/en/products/puck-one%29">https://www.springcard.com/en/products/puck-one)&lt;/a>,
+SpringCard Prox&amp;rsquo;N&amp;rsquo;Roll (&lt;a href="https://www.springcard.com/en/products/proxnroll-pcsc-hsp">https://www.springcard.com/en/products/proxnroll-pcsc-hsp&lt;/a>)
 and virtually all PC/SC over USB (CCID) devices.&lt;/p>
-&lt;p>The Android host must be a complete USB host (&lt;a href="https://developer.android.com/guide/topics/connectivity/usb/host%29" target="_blank" rel="noopener">https://developer.android.com/guide/topics/connectivity/usb/host)&lt;/a>.
+&lt;p>The Android host must be a complete USB host (&lt;a href="https://developer.android.com/guide/topics/connectivity/usb/host%29">https://developer.android.com/guide/topics/connectivity/usb/host)&lt;/a>.
 USB on-the-go (OTG) is not enough!
 Pay attention that the Android host must also be able to provide enough power to the reader (more than 250mA),
 which is not the case for many tablets and mobile phones. Using a USB 3 hub with power delivery is generally the solution.&lt;/p>
 &lt;ul>
 &lt;li>with SpringCard PC/SC over BLE (Bluetooth Low Energy) devices.&lt;/li>
 &lt;/ul>
-&lt;p>First BLE PC/SC reader in SpringCard&amp;rsquo;s portfolio is SpringCard Puck Blue (&lt;a href="https://www.springcard.com/en/products/puck-blue%29" target="_blank" rel="noopener">https://www.springcard.com/en/products/puck-blue)&lt;/a>.
-Other devices will be introduced in the future. The Android host must support BLE (&lt;a href="https://developer.android.com/guide/topics/connectivity/bluetooth/ble-overview%29" target="_blank" rel="noopener">https://developer.android.com/guide/topics/connectivity/bluetooth/ble-overview)&lt;/a>.&lt;/p>
-&lt;p>The plugin is hosted on GitHub: &lt;a href="https://github.com/springcard/android-keyple" target="_blank" rel="noopener">https://github.com/springcard/android-keyple&lt;/a>&lt;/p>
-&lt;p>It is based on SpringCard&amp;rsquo;s PC/SC-Like for Android libraries (&lt;a href="https://github.com/springcard/android-pcsclike" target="_blank" rel="noopener">https://github.com/springcard/android-pcsclike&lt;/a>)
+&lt;p>First BLE PC/SC reader in SpringCard&amp;rsquo;s portfolio is SpringCard Puck Blue (&lt;a href="https://www.springcard.com/en/products/puck-blue%29">https://www.springcard.com/en/products/puck-blue)&lt;/a>.
+Other devices will be introduced in the future. The Android host must support BLE (&lt;a href="https://developer.android.com/guide/topics/connectivity/bluetooth/ble-overview%29">https://developer.android.com/guide/topics/connectivity/bluetooth/ble-overview)&lt;/a>.&lt;/p>
+&lt;p>The plugin is hosted on GitHub: &lt;a href="https://github.com/springcard/android-keyple">https://github.com/springcard/android-keyple&lt;/a>&lt;/p>
+&lt;p>It is based on SpringCard&amp;rsquo;s PC/SC-Like for Android libraries (&lt;a href="https://github.com/springcard/android-pcsclike">https://github.com/springcard/android-pcsclike&lt;/a>)
 that connects to the reader in BLE or USB using only &amp;lsquo;user-land&amp;rsquo; methods.&lt;/p></description></item><item><title>Billettique Services</title><link>https://keyple.org/testimonials/billettique-services/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/testimonials/billettique-services/</guid><description/></item><item><title>Adopters &amp; Testimonials</title><link>https://keyple.org/adopters-and-testimonials/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/adopters-and-testimonials/</guid><description/></item><item><title>Keyple Plugin Android NFC Library</title><link>https://keyple.org/components/standard-reader-plugins/keyple-plugin-android-nfc-lib/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/components/standard-reader-plugins/keyple-plugin-android-nfc-lib/</guid><description>&lt;style>
 table th:nth-child(1) {
 width: 12rem;
@@ -15057,7 +15099,7 @@ id="tabs-6-0" role="tabpanel" aria-labelled-by="tabs-6-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/calypso-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/calypso-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based Calypso application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -15100,7 +15142,7 @@ id="tabs-6-1" role="tabpanel" aria-labelled-by="tabs-6-1-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/calypso-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/calypso-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based Calypso application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -15206,7 +15248,7 @@ id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/calypso-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/calypso-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based Calypso application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -15249,7 +15291,7 @@ id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/calypso-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/calypso-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based Calypso application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -15355,7 +15397,7 @@ id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/calypso-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/calypso-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based Calypso application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -15437,7 +15479,7 @@ id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/card-resource-service">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/card-resource-service/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to configure and use the Keyple card resource service.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -15532,7 +15574,7 @@ id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/standalone-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/standalone-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based standalone application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -15575,7 +15617,7 @@ id="tabs-5-1" role="tabpanel" aria-labelled-by="tabs-5-1-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/standalone-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/standalone-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based standalone application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -15982,7 +16024,7 @@ id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./user-guides/non-keyple-client/content">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./user-guides/non-keyple-client/content/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a non-Keyple client.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -16054,7 +16096,7 @@ id="tabs-6-0" role="tabpanel" aria-labelled-by="tabs-6-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./user-guides/non-keyple-client/content">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./user-guides/non-keyple-client/content/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a non-Keyple client.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -16209,7 +16251,7 @@ id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/distributed-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/distributed-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based distributed application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -16291,7 +16333,7 @@ id="tabs-4-0" role="tabpanel" aria-labelled-by="tabs-4-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./user-guides/non-keyple-client/content">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./user-guides/non-keyple-client/content/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a non-Keyple client.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -16446,7 +16488,7 @@ id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/distributed-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/distributed-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based distributed application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -16680,7 +16722,7 @@ id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/developer-guide/reader-plugin-add-on">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/developer-guide/reader-plugin-add-on/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to create a Keyple reader plugin add-on.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -16723,7 +16765,7 @@ id="tabs-5-1" role="tabpanel" aria-labelled-by="tabs-5-1-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/developer-guide/reader-plugin-add-on">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/developer-guide/reader-plugin-add-on/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to create a Keyple reader plugin add-on.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -16830,7 +16872,7 @@ id="tabs-5-0" role="tabpanel" aria-labelled-by="tabs-5-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/developer-guide/reader-plugin-add-on">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/developer-guide/reader-plugin-add-on/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to create a Keyple reader plugin add-on.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -16912,7 +16954,7 @@ id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/distributed-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/distributed-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based distributed application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -17000,7 +17042,7 @@ id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/standalone-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/standalone-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based standalone application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -17043,7 +17085,7 @@ id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/standalone-application">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/standalone-application/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to build a Keyple-based standalone application.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -17149,7 +17191,7 @@ id="tabs-3-0" role="tabpanel" aria-labelled-by="tabs-3-0-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/card-resource-service">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/card-resource-service/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to configure and use the Keyple card resource service.&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -17192,7 +17234,7 @@ id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab">
 &lt;/tr>
 &lt;tr>
 &lt;td>
-&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/card-resource-service">User Guide&lt;/a>&lt;/td>
+&lt;i class="fas fa-book pr-1 fa-fw">&lt;/i> &lt;a href="./learn/user-guide/card-resource-service/">User Guide&lt;/a>&lt;/td>
 &lt;td>Step-by-step guide to learn how to configure and use the Keyple card resource service.&lt;/td>
 &lt;/tr>
 &lt;tr>

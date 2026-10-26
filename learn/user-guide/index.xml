@@ -441,15 +441,15 @@ physical channels and stop the observation threads.&lt;/p>
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-service-java-lib" target="_blank" rel="noopener">Keyple Service API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/">Keypop Reader API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-service-java-lib">Keyple Service API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-cpp-example" target="_blank" rel="noopener">C++ examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example">Java examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-cpp-example">C++ examples&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -947,14 +947,14 @@ Asynchronous network implementation
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-local-java-lib" target="_blank" rel="noopener">Local API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-network-java-lib" target="_blank" rel="noopener">Network API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-remote-java-lib" target="_blank" rel="noopener">Remote API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-local-java-lib">Local API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-network-java-lib">Network API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-distributed-remote-java-lib">Remote API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example">Java examples&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -1131,7 +1131,9 @@ the previously prepared operations.&lt;/li>
 with these cards in secure sessions only APDU commands for which the size of the response data can be predetermined.&lt;/p>
 &lt;p>For a Keyple-based processing, this means that the following methods of the &lt;code>TransactionManager&lt;/code> must not be used
 within a secure session: &lt;code>prepareReadRecord(...)&lt;/code>, &lt;code>prepareReadRecordsPartially(...)&lt;/code>, &lt;code>prepareSearchRecords(...)&lt;/code> and
-&lt;code>prepareGetData(...)&lt;/code>.&lt;/p>
+&lt;code>prepareGetData(...)&lt;/code>.
+The only exception is &lt;code>prepareGetData(GetDataTag.FCI_FOR_CURRENT_DF)&lt;/code>, which is allowed within a secure session since
+the size of its response data is known.&lt;/p>
 &lt;p>As these methods could be useful for high-performance identification of some card data, here&amp;rsquo;s how to use them safely on
 legacy cards:&lt;/p>
 &lt;ul>
@@ -1166,21 +1168,61 @@ easily obtained using the following snippet:&lt;/p>
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">]&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
 &lt;/div>
+&lt;h3 id="ratification-mechanism">Ratification mechanism&lt;/h3>
+&lt;p>In contactless mode, the card may be removed before the terminal has received the acknowledgement of the
+&lt;em>Close Secure Session&lt;/em> command: the terminal then cannot know whether the card has actually committed the
+modifications made during the session.&lt;/p>
+&lt;p>The &lt;strong>ratification mechanism&lt;/strong> handles this early card removal. It is enabled on the security settings by calling
+&lt;code>enableRatificationMechanism()&lt;/code> (disabled by default):&lt;/p>
+&lt;ul>
+&lt;li>a ratification command is added after the closing command in contactless mode,&lt;/li>
+&lt;li>the card considers the secure session &lt;em>ratified&lt;/em> only once it has processed that command: if the card is removed
+beforehand, the session stays &lt;strong>unratified&lt;/strong> in the card, which thus keeps the proof that the terminal may not have
+been informed of the outcome,&lt;/li>
+&lt;li>on cards where ratification happens on deselect, no ratification command is required (see
+&lt;code>CalypsoCard.isRatificationOnDeselectSupported()&lt;/code>).&lt;/li>
+&lt;/ul>
+&lt;p>When a new secure session is opened, &lt;code>CalypsoCard.isDfRatified()&lt;/code> tells whether the previous session has been
+ratified, allowing the terminal to detect an interrupted transaction and to handle its resumption.&lt;/p>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// Build the security settings with the ratification mechanism enabled&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">symmetricCryptoSecuritySetting&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoCardApiFactory&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">createSymmetricCryptoSecuritySetting&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">LegacySamExtensionService&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getInstance&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getLegacySamApiFactory&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">createSymmetricCryptoCardTransactionManagerFactory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">samReader&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">sam&lt;/span>&lt;span class="p">))&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">enableRatificationMechanism&lt;/span>&lt;span class="p">();&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>Whether to enable the mechanism depends on which terminal resumes an interrupted transaction:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>enable it&lt;/strong> when the resumption may be handled by &lt;strong>another terminal&lt;/strong>, since the proof of the interruption is
+then carried by the card itself. Typical case: several gates on the same access line of a network,&lt;/li>
+&lt;li>&lt;strong>leave it disabled&lt;/strong> when the resumption is necessarily handled by the &lt;strong>same terminal&lt;/strong>, which keeps the context
+of the interrupted transaction. Typical case: a remote ticket reloading server.&lt;/li>
+&lt;/ul>
+&lt;div class="alert alert-note">
+&lt;div>
+The ratification mechanism can only be used within the &lt;strong>anti-passback delay&lt;/strong> defined by the transport operator:
+beyond this delay, an unratified session can no longer be handled as the resumption of an interrupted transaction.
+&lt;/div>
+&lt;/div>
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-card-api/" target="_blank" rel="noopener">Keypop Calypso Card API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-legacysam-api/" target="_blank" rel="noopener">Keypop Calypso Crypto Legacy SAM API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-java-lib" target="_blank" rel="noopener">Keyple Card Calypso API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-java-lib" target="_blank" rel="noopener">Keyple Card Calypso Crypto Legacy SAM API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/">Keypop Reader API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-card-api/">Keypop Calypso Card API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/calypso-layer/calypso-legacysam-api/">Keypop Calypso Crypto Legacy SAM API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-java-lib">Keyple Card Calypso API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-card-calypso-crypto-legacysam-java-lib">Keyple Card Calypso Crypto Legacy SAM API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="examples">Examples&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">Java examples&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-cpp-example" target="_blank" rel="noopener">C++ examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example">Java examples&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-cpp-example">C++ examples&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -1376,12 +1418,12 @@ resources are accessible.&lt;/p>
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-service-resource-java-lib" target="_blank" rel="noopener">API documentation &amp;amp; class diagram&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-service-resource-java-lib">API documentation &amp;amp; class diagram&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="example">Example&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">Java example&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/eclipse-keyple/keyple-java-example">Java example&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>

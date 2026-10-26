@@ -20,7 +20,7 @@ add-on to handle the commands sent to the Calypso card and the Calypso SAM,&lt;/
 &lt;li>&lt;a href="../../components/standard-reader-plugins/keyple-plugin-pcsc-lib/">Keyple Plugin PC/SC&lt;/a>
 add-on to provide the ability to manage PC/SC readers.&lt;/li>
 &lt;/ul>
-&lt;p>In this guide &lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation
+&lt;p>In this guide &lt;a href="https://gradle.org/">Gradle&lt;/a> is used as build automation
 tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.&lt;/p>
 &lt;p>See &lt;a href="../../components/overview/configuration-wizard/">here&lt;/a> for the configuration of the dependencies.&lt;/p>
@@ -28,11 +28,11 @@ such as Maven for example.&lt;/p>
 installed in your machine, you will need to download :&lt;/p>
 &lt;ul>
 &lt;li>Java 8+&lt;/li>
-&lt;li>&lt;a href="https://gradle.org/install/" target="_blank" rel="noopener">Gradle&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://gradle.org/install/">Gradle&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>We recommend that you use a Java IDE like
-&lt;a href="https://www.eclipse.org/ide/" target="_blank" rel="noopener">Eclipse&lt;/a> or
-&lt;a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">Intellij IDEA&lt;/a> to create your new
+&lt;a href="https://www.eclipse.org/ide/">Eclipse&lt;/a> or
+&lt;a href="https://www.jetbrains.com/idea/">Intellij IDEA&lt;/a> to create your new
 Gradle project.&lt;/p>
 &lt;br>
 &lt;h2 id="create-a-gradle-based-empty-project">Create a Gradle-based empty project&lt;/h2>
@@ -553,7 +553,7 @@ the PC/SC plugin so far.&lt;/p>
 &lt;/div></description></item><item><title>Build your first Android application</title><link>https://keyple.org/learn/build-your-first-app/android-app/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://keyple.org/learn/build-your-first-app/android-app/</guid><description>&lt;br>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>The development of an Android application based on Keyple follows the same principles as those exposed in the Java part.&lt;/p>
-&lt;p>However, this guide points out the specificities of this environment based on the &lt;strong>Android NFC application&lt;/strong> example provided in the &lt;a href="https://github.com/eclipse-keyple/keyple-java-example" target="_blank" rel="noopener">keyple-java-example&lt;/a> repository.&lt;/p>
+&lt;p>However, this guide points out the specificities of this environment based on the &lt;strong>Android NFC application&lt;/strong> example provided in the &lt;a href="https://github.com/eclipse-keyple/keyple-java-example">keyple-java-example&lt;/a> repository.&lt;/p>
 &lt;p>We recommend that Android application developers clone this example to better understand how Keyple works on Android.&lt;/p>
 &lt;div class="alert alert-warning">
 &lt;div>
@@ -574,7 +574,7 @@ add-on to handle the commands sent to the Calypso card,&lt;/li>
 &lt;li>&lt;a href="../../components/standard-reader-plugins/keyple-plugin-android-nfc-lib/">Keyple Plugin Android NFC&lt;/a>
 add-on to provide the ability to drive the NFC reader.&lt;/li>
 &lt;/ul>
-&lt;p>&lt;a href="https://gradle.org/" target="_blank" rel="noopener">Gradle&lt;/a> is used as build automation tool, but it is easy to transpose these explanations to another tool
+&lt;p>&lt;a href="https://gradle.org/">Gradle&lt;/a> is used as build automation tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.&lt;/p>
 &lt;br>
 &lt;h2 id="project-setup">Project setup&lt;/h2>
@@ -732,7 +732,7 @@ add-on to provide the ability to manage PC/SC readers.&lt;/li>
 &lt;p>Here are the prerequisites to build the keyple components (dynamic libraries):&lt;/p>
 &lt;ul>
 &lt;li>G++ 6 and higher, MSVC++ 14 (other compilers untested)&lt;/li>
-&lt;li>&lt;a href="https://cmake.org/" target="_blank" rel="noopener">CMake&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://cmake.org/">CMake&lt;/a>&lt;/li>
 &lt;li>libpcsclite1 and libpcsclite-dev packages installed (Linux) to build the PC/SC plugin&lt;/li>
 &lt;/ul>
 &lt;/div>
@@ -742,7 +742,7 @@ add-on to provide the ability to manage PC/SC readers.&lt;/li>
 &lt;h2 id="create-the-build-environment">Create the build environment&lt;/h2>
 &lt;p>The building of all the necessary components is facilitated by a dedicated &amp;ldquo;meta-project&amp;rdquo; allowing to get all the
 components and dependencies in a single step.&lt;/p>
-&lt;p>Git checkout the &lt;a href="https://github.com/eclipse-keyple/keyple-cpp-meta" target="_blank" rel="noopener">meta project&lt;/a> into a directory of you local disk, then
+&lt;p>Git checkout the &lt;a href="https://github.com/eclipse-keyple/keyple-cpp-meta">meta project&lt;/a> into a directory of you local disk, then
 enter the created directory and execute the following commands:&lt;/p>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkdir build
@@ -753,7 +753,7 @@ enter the created directory and execute the following commands:&lt;/p>
 &lt;/div>
 &lt;div class="alert alert-note">
 &lt;div>
-&lt;code>gcc-linux&lt;/code> may be replaced by one of the build configurations available &lt;a href="https://github.com/eclipse-keyple/keyple-cpp-meta/tree/master/toolchain" target="_blank" rel="noopener">here&lt;/a>.
+&lt;code>gcc-linux&lt;/code> may be replaced by one of the build configurations available &lt;a href="https://github.com/eclipse-keyple/keyple-cpp-meta/tree/master/toolchain">here&lt;/a>.
 &lt;/div>
 &lt;/div>
 &lt;br>

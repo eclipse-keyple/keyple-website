@@ -404,7 +404,7 @@ Calypso packages
 &lt;!-- The only exception is the implementation a Calypso PO/SAM test tool, the setting of low-level APDU commands with wrong settings could require the usage of the Calypso command packages. -->
 &lt;br>
 &lt;h2 id="calypso-portable-object-selection">Calypso Portable Object Selection&lt;/h2>
-&lt;p>Compared to the generic Card Selection API (cf. &lt;a href="https://keyple.org/learn/architecture/keyple-core/#card-selection%29" target="_blank" rel="noopener">https://keyple.org/learn/architecture/keyple-core/#card-selection)&lt;/a>, a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
+&lt;p>Compared to the generic Card Selection API (cf. &lt;a href="../../../archives/docs-1.0/architecture/keyple-core/#service-interface---card-selection">Card Selection&lt;/a>), a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn&amp;rsquo;t selected).&lt;/p>
 &lt;p>In addition, a PO Selection Request provides methods:&lt;/p>
 &lt;ul>
 &lt;li>to prepare Select File command (useful in particular to manage REV1 Calypso PO for which the select of the targeted DF is required).&lt;/li>

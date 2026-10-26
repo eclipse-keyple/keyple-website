@@ -29,12 +29,12 @@ Calypso PO (contactless smart card, mobile phone with contactless
 communication) and a Calypso Secure Access Module (SAM).</div></div><p>We will use three main components of Keyple:</p><ul><li><a href=https://keyple.org/archives/components-java-1.0/core/>Keyple Core</a>
 which is the base component to which all the others refer,</li><li><a href=https://keyple.org/archives/components-java-1.0/plugins/pcsc/>Keyple PC/SC plugin</a>
 to provide the ability to manage PC/SC readers,</li><li><a href=https://keyple.org/archives/components-java-1.0/extensions/calypso/>Keyple Calypso extension</a>
-to handle the commands sent to the Calypso PO and the Calypso SAM.</li></ul><p>In this guide <a href=https://gradle.org/ target=_blank rel=noopener>Gradle</a> is used as build automation
+to handle the commands sent to the Calypso PO and the Calypso SAM.</li></ul><p>In this guide <a href=https://gradle.org/>Gradle</a> is used as build automation
 tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.</p><p>The example can run on any machine: Linux, Windows and macOS. If not
-installed in your machine, you will need to download :</p><ul><li>Java 1.6 or newer</li><li><a href=https://gradle.org/install/ target=_blank rel=noopener>Gradle (any version)</a></li></ul><p>We recommend that you use a Java IDE like
-<a href=https://www.eclipse.org/ide/ target=_blank rel=noopener>Eclipse</a> or
-<a href=https://www.jetbrains.com/idea/ target=_blank rel=noopener>Intellij IDEA</a> to create your new
+installed in your machine, you will need to download :</p><ul><li>Java 1.6 or newer</li><li><a href=https://gradle.org/install/>Gradle (any version)</a></li></ul><p>We recommend that you use a Java IDE like
+<a href=https://www.eclipse.org/ide/>Eclipse</a> or
+<a href=https://www.jetbrains.com/idea/>Intellij IDEA</a> to create your new
 Gradle project.</p><br><h2 id=create-a-gradle-based-empty-project>Create a Gradle-based empty project</h2><p>Create a new Java project and add the following statements to your
 <code>build.gradle</code> file to import the Keyple components into your
 project:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-gradle data-lang=gradle><span class=line><span class=cl><span class=n>apply</span> <span class=nl>plugin:</span> <span class=s1>&#39;java&#39;</span>

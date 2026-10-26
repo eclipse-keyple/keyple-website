@@ -90,9 +90,9 @@ Thus, the factory does not expose any method.
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-java-api" target="_blank" rel="noopener">Keyple Plugin API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-storagecard-java-api/" target="_blank" rel="noopener">Keyple Plugin Storage Card API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-java-api">Keyple Plugin API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-plugin-storagecard-java-api/">Keyple Plugin Storage Card API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>
@@ -190,7 +190,7 @@ well as the public APIs exposed to the application:
 &lt;p>In the case where the smart card object has fields of type &lt;code>interface&lt;/code>,
 it will then be necessary to define for each of them and recursively a JSON deserializer and register it during the
 service initialization with the method &lt;code>JsonUtil.registerTypeAdapter(...)&lt;/code> provided by the
-&lt;a href="https://keyple.org/components/core/keyple-util-lib/" target="_blank" rel="noopener">Keyple Util&lt;/a> library.&lt;/p>
+&lt;a href="https://keyple.org/components/core/keyple-util-lib/">Keyple Util&lt;/a> library.&lt;/p>
 &lt;p>This will allow the transport of this object through the network when using the Keyple Distributed solution.&lt;/p>
 &lt;/div>
 &lt;/div>
@@ -228,9 +228,9 @@ It is recommended to hide the internal interfaces of the &lt;strong>Keypop Card 
 &lt;br>
 &lt;h2 id="api">API&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api" target="_blank" rel="noopener">Keyple Common API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/" target="_blank" rel="noopener">Keypop Reader API&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/card-api/" target="_blank" rel="noopener">Keypop Card API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.keyple.org/keyple-common-java-api">Keyple Common API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/reader-api/">Keypop Reader API&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://keypop.org/apis/reader-layer/card-api/">Keypop Card API&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;br>
 &lt;h2 id="download">Download&lt;/h2>

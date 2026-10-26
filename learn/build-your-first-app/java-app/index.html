@@ -26,12 +26,12 @@
 a Calypso Card involving two smart card readers.</p><div class="alert alert-warning"><div><p>The demonstration application created for this quick start requires:</p><ul><li>a Calypso Card (contactless smart card, NFC mobile phone with a Calypso applet or application),</li><li>a Calypso SAM (Secure Access Module).</li></ul></div></div><p>We will use three main components of Keyple:</p><ul><li><a href=../../../components/core/>Keyple Service Java Library</a>
 which is the base component to which all the others refer,</li><li><a href=../../../components/card-extensions/keyple-card-calypso-lib/>Keyple Card Calypso</a>
 add-on to handle the commands sent to the Calypso card and the Calypso SAM,</li><li><a href=../../../components/standard-reader-plugins/keyple-plugin-pcsc-lib/>Keyple Plugin PC/SC</a>
-add-on to provide the ability to manage PC/SC readers.</li></ul><p>In this guide <a href=https://gradle.org/ target=_blank rel=noopener>Gradle</a> is used as build automation
+add-on to provide the ability to manage PC/SC readers.</li></ul><p>In this guide <a href=https://gradle.org/>Gradle</a> is used as build automation
 tool, but it is easy to transpose these explanations to another tool
 such as Maven for example.</p><p>See <a href=../../../components/overview/configuration-wizard/>here</a> for the configuration of the dependencies.</p><p>The example can run on any machine: Linux, Windows and macOS. If not
-installed in your machine, you will need to download :</p><ul><li>Java 8+</li><li><a href=https://gradle.org/install/ target=_blank rel=noopener>Gradle</a></li></ul><p>We recommend that you use a Java IDE like
-<a href=https://www.eclipse.org/ide/ target=_blank rel=noopener>Eclipse</a> or
-<a href=https://www.jetbrains.com/idea/ target=_blank rel=noopener>Intellij IDEA</a> to create your new
+installed in your machine, you will need to download :</p><ul><li>Java 8+</li><li><a href=https://gradle.org/install/>Gradle</a></li></ul><p>We recommend that you use a Java IDE like
+<a href=https://www.eclipse.org/ide/>Eclipse</a> or
+<a href=https://www.jetbrains.com/idea/>Intellij IDEA</a> to create your new
 Gradle project.</p><br><h2 id=create-a-gradle-based-empty-project>Create a Gradle-based empty project</h2><p>Create a new Java project and add the following statements to your
 <code>build.gradle</code> file to import the Keyple components into your
 project:</p><div class="code relative"><div class="code-copy-content nt3"><div class=highlight><pre tabindex=0 class=chroma><code class=language-gradle data-lang=gradle><span class=line><span class=cl><span class=n>plugins</span> <span class=o>{</span>
