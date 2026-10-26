@@ -32,7 +32,7 @@ It is compatible with **Android 4.4 minimum**.
 ## Documentation
 
 * [Developer guide]({{< ref "archives/docs-1.0/developer-guide/standalone-application.md" >}})
-* <a href="../../../../archives/docs-1.0/api-reference/java-api/keyple-android-plugin-nfc/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
+* <a href="{{< relref "/archives/docs-1.0/api-reference/java-api" >}}">JavaDoc API</a>
 
 ## Download
 

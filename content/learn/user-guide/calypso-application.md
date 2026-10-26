@@ -199,6 +199,8 @@ with these cards in secure sessions only APDU commands for which the size of the
 For a Keyple-based processing, this means that the following methods of the `TransactionManager` must not be used 
 within a secure session: `prepareReadRecord(...)`, `prepareReadRecordsPartially(...)`, `prepareSearchRecords(...)` and
 `prepareGetData(...)`.
+The only exception is `prepareGetData(GetDataTag.FCI_FOR_CURRENT_DF)`, which is allowed within a secure session since
+the size of its response data is known.
 
 As these methods could be useful for high-performance identification of some card data, here's how to use them safely on
 legacy cards:
@@ -236,6 +238,46 @@ private static byte[] extractHceValidityToken(byte[] selectApplicationResponse) 
 
 [...]
 {{< /code >}}
+
+### Ratification mechanism
+
+In contactless mode, the card may be removed before the terminal has received the acknowledgement of the
+*Close Secure Session* command: the terminal then cannot know whether the card has actually committed the
+modifications made during the session.
+
+The **ratification mechanism** handles this early card removal. It is enabled on the security settings by calling
+`enableRatificationMechanism()` (disabled by default):
+- a ratification command is added after the closing command in contactless mode,
+- the card considers the secure session *ratified* only once it has processed that command: if the card is removed
+  beforehand, the session stays **unratified** in the card, which thus keeps the proof that the terminal may not have
+  been informed of the outcome,
+- on cards where ratification happens on deselect, no ratification command is required (see
+  `CalypsoCard.isRatificationOnDeselectSupported()`).
+
+When a new secure session is opened, `CalypsoCard.isDfRatified()` tells whether the previous session has been
+ratified, allowing the terminal to detect an interrupted transaction and to handle its resumption.
+
+{{< code lang="java" >}}
+// Build the security settings with the ratification mechanism enabled
+symmetricCryptoSecuritySetting =
+    calypsoCardApiFactory
+        .createSymmetricCryptoSecuritySetting(
+            LegacySamExtensionService.getInstance()
+                .getLegacySamApiFactory()
+                .createSymmetricCryptoCardTransactionManagerFactory(samReader, sam))
+        .enableRatificationMechanism();
+{{< /code >}}
+
+Whether to enable the mechanism depends on which terminal resumes an interrupted transaction:
+- **enable it** when the resumption may be handled by **another terminal**, since the proof of the interruption is
+  then carried by the card itself. Typical case: several gates on the same access line of a network,
+- **leave it disabled** when the resumption is necessarily handled by the **same terminal**, which keeps the context
+  of the interrupted transaction. Typical case: a remote ticket reloading server.
+
+{{% callout note %}}
+The ratification mechanism can only be used within the **anti-passback delay** defined by the transport operator:
+beyond this delay, an unratified session can no longer be handled as the resumption of an interrupted transaction.
+{{% /callout %}}
 
 <br>
 

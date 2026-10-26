@@ -32,7 +32,7 @@ It can be used on **PC**, **MAC** and **Android** platforms.
 ## Documentation
 
 * [Developer guide]({{< ref "archives/docs-1.0/developer-guide/calypso-application.md" >}})
-* <a href="../../../../archives/docs-1.0/api-reference/java-api/keyple-java-calypso/{{% keyple-java-version %}}/index.html">JavaDoc API</a>
+* <a href="{{< relref "/archives/docs-1.0/api-reference/java-api" >}}">JavaDoc API</a>
 
 ## Download
 

@@ -21,10 +21,10 @@ You would like to get in touch with other Keyple friends, or to be informed of t
 If you are a Keyple contributor: first subscribe to the keyple-dev mailing list, then post a message to keyple-dev@eclipse.org\
 If you are a Keyple user: first subscribe to the keyple-user mailing list, then post a message to keyple-user@eclipse.org.
 
-Moreover, everyone is welcome to contribute (https://keyple.org/community/contributing/) to the Eclipse Keyple project.
+Moreover, everyone is welcome to [contribute](/community/contributing/) to the Eclipse Keyple project.
 
 In particular there is the possibility to include inside the Eclipse Keyple project additional specific plugins.\
-The Keyple project provides also the possibility to reference external add-ons (https://keyple.org/external-resources/): open source or closed add-ons like additional plugins, card extensions, specific libraries.\
-Terminal manufacturers could also reference their terminal solutions based on Keyple (https://keyple.org/external-resources/).
+The Keyple project provides also the possibility to reference [external add-ons](/external-resources/): open source or closed add-ons like additional plugins, card extensions, specific libraries.\
+Terminal manufacturers could also reference their [terminal solutions based on Keyple](/external-resources/).
 
 Eclipse Keyple team

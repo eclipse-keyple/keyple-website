@@ -18,7 +18,7 @@ from the community.
 ## LIBRARIES
 All Keyple libraries are published under the [Eclipse Public License 2.0 (EPL)](https://www.eclipse.org/legal/epl-2.0/),
 offering strong copyleft protection.
-> Any modification of a Keyple library by the community must be re-shared with the [Eclipse Keyple project](https://keyple.org/).
+> Any modification of a Keyple library by the community must be re-shared with the [Eclipse Keyple project](/).
 
 <br>
 

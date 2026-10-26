@@ -1,1 +1,7 @@
-<meta http-equiv="refresh" content="0; url={{ .Get 0 }}">
+{{- /* Redirects to the given site page and fails the build when that page does not exist. */ -}}
+{{- $target := .Get 0 -}}
+{{- /* site.GetPage does not resolve a regular page from a path ending with a slash. */ -}}
+{{- if not (site.GetPage (strings.TrimSuffix "/" $target | default "/")) -}}
+  {{- errorf "%s: redirect target %q does not match any page" .Position $target -}}
+{{- end -}}
+<meta http-equiv="refresh" content="0; url={{ $target }}">

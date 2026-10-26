@@ -37,7 +37,7 @@ title="" >}}
 2. Any implementation of a Keyple application starts with the
    implementation of **Keyple Core**, please study the
    [workflow](#workflow) proposed in the following chapter.
-3. Explore the [Keyple Core API](#keyplecoreapi) to discover all the
+3. Explore the [Keyple Core API](#keyple-core-api) to discover all the
    possibilities offered by **Keyple Core**.
 4. Take inspiration from the [examples](#examples).
 5. Follow the explanations given in the [Build your first app]({{<

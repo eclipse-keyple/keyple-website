@@ -41,7 +41,7 @@ table th:nth-child(1) {
     <td>Source code repository and issue tracker for the Java project.</td>
   </tr>
   <tr>
-    <td>{{< icon name="book" pack="fas" >}} <a href="/learn/user-guide/card-resource-service">User Guide</a></td>
+    <td>{{< icon name="book" pack="fas" >}} <a href="{{< relref "/learn/user-guide/card-resource-service" >}}">User Guide</a></td>
     <td>Step-by-step guide to learn how to configure and use the Keyple card resource service.</td>
   </tr>
   <tr>

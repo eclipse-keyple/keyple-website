@@ -61,7 +61,7 @@ Ticketing terminal applications must import only the high-level Calypso transact
 <br>
 
 ## Calypso Portable Object Selection
-Compared to the generic Card Selection API (cf. https://keyple.org/learn/architecture/keyple-core/#card-selection), a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn't selected).
+Compared to the generic Card Selection API (cf. [Card Selection](/archives/docs-1.0/architecture/keyple-core/#service-interface---card-selection)), a PO Selector could be defined to accept only non-invalidated Portable Object (in this cas an invalidated PO isn't selected).
 
 In addition, a PO Selection Request provides methods:
 
