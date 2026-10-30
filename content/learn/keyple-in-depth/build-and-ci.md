@@ -38,7 +38,7 @@ The CI automates the following tasks:
 * execute unit tests;
 * sign and publish artifacts to Maven Central Repository;
 * publish the API documentation to the unified [Keyple's documentation GitHub pages](https://docs.keyple.org/);
-* publish the code quality report to [SonarCloud](https://sonarcloud.io/organizations/eclipse/projects?search=keyple&sort=-analysis_date).
+* publish the code quality report to [SonarCloud](https://sonarcloud.io/organizations/eclipse-keyple/projects).
 
 <br>
 

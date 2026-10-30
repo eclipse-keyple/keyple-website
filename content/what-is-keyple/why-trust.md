@@ -12,7 +12,7 @@ electronic ticketing transportation standards since 2003.
 
 | Free, easy-to-use and flexible      | Built by developers, for developers | Tailored to public entities requirements | 
 |-------------------------------------|-------------------------------------|-------------------------------------------|
-| Interoperable with any smart card reader solution (standard/proprietary, local/remote) | Open source libraries in Java and C++|Audit and certification|
+| Interoperable with any smart card reader solution (standard/proprietary, local/remote) | Open source libraries in Java and C++|Audit, certification and [CRA compliance](/community/cra/)|
 | Compatible with any terminal architecture (mobile, embedded, server)|Developer-friendly, up-to-date documentation, code samples and how-to guides|Permanent compliance to the latest Calypso® release|
 | Options for creating add-on features that incorporate Calypso’s advanced security together with non-Calypso smart cards for ticketing and payment|Accredited and hosted by the Eclipse foundation|Exchange platform between providers and transport authorities|
 | |Help desk-Separate maintenance for software and equipment|Online and offline trainings available that will help you get the most of Keyple|
