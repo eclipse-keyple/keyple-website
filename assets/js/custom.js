@@ -85,6 +85,12 @@ function ReleaseTrain (...releases) {
 let releaseTrains = [];
 let initReleaseTrains = function() {
     releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.CALYPSO_CARD_LIB, "3.3.1")
+    ));
+    releaseTrains.push(new ReleaseTrain(
+        new Release(ComponentName.PLUGIN_ANDROID_OMAPI_LIB, "2.1.2")
+    ));
+    releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.CALYPSO_API, "2.3.+"),
         new Release(ComponentName.CALYPSO_CARD_LIB, "3.3.0")
     ));
@@ -135,9 +141,6 @@ let initReleaseTrains = function() {
     ));
     releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.PLUGIN_STUB_LIB, "2.2.2")
-    ));
-    releaseTrains.push(new ReleaseTrain(
-        new Release(ComponentName.PLUGIN_ANDROID_OMAPI_LIB, "2.1.1")
     ));
     releaseTrains.push(new ReleaseTrain(
         new Release(ComponentName.PLUGIN_ANDROID_NFC_LIB, "3.2.2")
