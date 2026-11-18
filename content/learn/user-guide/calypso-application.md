@@ -211,11 +211,66 @@ legacy cards:
 
 ### HCE service handling
 
-In the context of access control, it is necessary to check the validity of the **HCE token** in order to accept and
-authenticate card solutions based on an HCE-type NFC service.
+In the context of access control, it is necessary to check the validity of the **debit key** of a Calypso HCE
+application in order to accept and authenticate card solutions based on an HCE-type NFC service.
 
-While the `CalypsoCard` API doesn't directly provide this information, the two bytes of the HCE validity token can be 
-easily obtained using the following snippet:
+That validity is carried by the **SN Header**, the two most significant bytes of the serial number of such an
+application. It encodes the end of validity of the debit key, as a number of half-days elapsed since 1 January 2010
+at 0:00 **local time**, and is not significant when equal to `0`. Nothing in the card dialogue reveals an outdated
+key: the header takes part in its own diversification, so a mobile whose validity window has passed still
+authenticates normally. The check therefore belongs to the terminal.
+
+#### With the Terminal APIs 3.0 (recommended)
+
+Version 3 of the Terminal APIs will handle that validity directly, the application only providing the time
+reference it trusts.
+
+- The application implements the `HceTimeProvider` SPI, whose single operation `getCurrentLocalEpochSeconds()`
+  returns the current time **in the same reference as the SN Header**, that is local time, as a number of seconds
+  elapsed since 1 January 1970 at 0:00 in that same reference. In Java, this is
+  `LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)`, and *not* `Instant.now().getEpochSecond()`, which would be
+  counted in UTC and would make an expired key appear valid for the duration of the time zone offset.
+- The provider is registered once on the factory, with `setHceTimeProvider(provider)`. It is consulted when the
+  selection response is parsed, by the environment holding the Calypso card extension: in a distributed
+  architecture, that is the client when it embeds the extension, and the server when the client is a thin one.
+- The card extension then decodes the header, converts it and compares it. The result is exposed by the card image:
+  `isHceDebitKeyValid()` returns the verdict, or `null` when the application is not HCE, when its header is not
+  significant, or when no provider was registered; `getHceDebitKeyExpiryLocalEpochSeconds()` returns the expiry
+  itself, ready to be displayed to the holder.
+- A card whose debit key has expired **is still selected**: the ticketing layer decides what to do, refuse the
+  service, invite the holder to renew the key, or simply log the event.
+- Opening a secure session with such a card is however forbidden, whatever the session mode and the write access
+  level, unless the security settings explicitly allow it with `authorizeExpiredHceDebitKey()`.
+
+{{< code lang="java" >}}
+// Provide the time reference in which the HCE debit keys were provisioned
+calypsoCardApiFactory.setHceTimeProvider(
+    () -> LocalDateTime.now().toEpochSecond(ZoneOffset.UTC));
+
+[...]
+
+// After the selection, the verdict is carried by the card image
+Boolean hceDebitKeyValid = calypsoCard.isHceDebitKeyValid();
+if (Boolean.FALSE.equals(hceDebitKeyValid)) {
+  // Expired debit key: the card is selected, the decision belongs to the ticketing layer
+  long expiry = calypsoCard.getHceDebitKeyExpiryLocalEpochSeconds();
+  [...]
+}
+{{< /code >}}
+
+<br>
+
+{{% callout note %}}
+This mechanism comes with version 3 of the Terminal APIs. Until Keyple is aligned with them, use the manual
+extraction described below.
+{{% /callout %}}
+
+#### Manual extraction (alternative)
+
+Until the above is available, and for applications that stay on the current versions, the two bytes of the
+SN Header can be obtained from the response to the *Select Application* command. This approach leaves the
+decoding, the comparison and the protection of the secure session entirely to the application, and will no longer
+be the recommended one.
 
 {{< code lang="java" >}}
 
@@ -224,14 +279,14 @@ import org.eclipse.keyple.core.util.BerTlvUtil;
 [...]
 
     if (calypsoCard.isHce()) {
-      byte[] hceValidityToken = extractHceValidityToken(calypsoCard.getSelectApplicationResponse());
+      byte[] snHeader = extractSnHeader(calypsoCard.getSelectApplicationResponse());
       // Check the validity for the current
       [...]
     }
 
 [...]
 
-private static byte[] extractHceValidityToken(byte[] selectApplicationResponse) {
+private static byte[] extractSnHeader(byte[] selectApplicationResponse) {
     byte[] fullSerialNumber = BerTlvUtil.parseSimple(selectApplicationResponse, true).get(0xC7);
     return Arrays.copyOf(fullSerialNumber, 2);
 }
