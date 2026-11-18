@@ -1143,24 +1143,76 @@ card data,&lt;/li>
 sensitive data within the session, using commands that predetermine the size of the response data.&lt;/li>
 &lt;/ul>
 &lt;h3 id="hce-service-handling">HCE service handling&lt;/h3>
-&lt;p>In the context of access control, it is necessary to check the validity of the &lt;strong>HCE token&lt;/strong> in order to accept and
-authenticate card solutions based on an HCE-type NFC service.&lt;/p>
-&lt;p>While the &lt;code>CalypsoCard&lt;/code> API doesn&amp;rsquo;t directly provide this information, the two bytes of the HCE validity token can be
-easily obtained using the following snippet:&lt;/p>
+&lt;p>In the context of access control, it is necessary to check the validity of the &lt;strong>debit key&lt;/strong> of a Calypso HCE
+application in order to accept and authenticate card solutions based on an HCE-type NFC service.&lt;/p>
+&lt;p>That validity is carried by the &lt;strong>SN Header&lt;/strong>, the two most significant bytes of the serial number of such an
+application. It encodes the end of validity of the debit key, as a number of half-days elapsed since 1 January 2010
+at 0:00 &lt;strong>local time&lt;/strong>, and is not significant when equal to &lt;code>0&lt;/code>. Nothing in the card dialogue reveals an outdated
+key: the header takes part in its own diversification, so a mobile whose validity window has passed still
+authenticates normally. The check therefore belongs to the terminal.&lt;/p>
+&lt;h4 id="with-the-terminal-apis-30-recommended">With the Terminal APIs 3.0 (recommended)&lt;/h4>
+&lt;p>Version 3 of the Terminal APIs will handle that validity directly, the application only providing the time
+reference it trusts.&lt;/p>
+&lt;ul>
+&lt;li>The application implements the &lt;code>HceTimeProvider&lt;/code> SPI, whose single operation &lt;code>getCurrentLocalEpochSeconds()&lt;/code>
+returns the current time &lt;strong>in the same reference as the SN Header&lt;/strong>, that is local time, as a number of seconds
+elapsed since 1 January 1970 at 0:00 in that same reference. In Java, this is
+&lt;code>LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)&lt;/code>, and &lt;em>not&lt;/em> &lt;code>Instant.now().getEpochSecond()&lt;/code>, which would be
+counted in UTC and would make an expired key appear valid for the duration of the time zone offset.&lt;/li>
+&lt;li>The provider is registered once on the factory, with &lt;code>setHceTimeProvider(provider)&lt;/code>. It is consulted when the
+selection response is parsed, by the environment holding the Calypso card extension: in a distributed
+architecture, that is the client when it embeds the extension, and the server when the client is a thin one.&lt;/li>
+&lt;li>The card extension then decodes the header, converts it and compares it. The result is exposed by the card image:
+&lt;code>isHceDebitKeyValid()&lt;/code> returns the verdict, or &lt;code>null&lt;/code> when the application is not HCE, when its header is not
+significant, or when no provider was registered; &lt;code>getHceDebitKeyExpiryLocalEpochSeconds()&lt;/code> returns the expiry
+itself, ready to be displayed to the holder.&lt;/li>
+&lt;li>A card whose debit key has expired &lt;strong>is still selected&lt;/strong>: the ticketing layer decides what to do, refuse the
+service, invite the holder to renew the key, or simply log the event.&lt;/li>
+&lt;li>Opening a secure session with such a card is however forbidden, whatever the session mode and the write access
+level, unless the security settings explicitly allow it with &lt;code>authorizeExpiredHceDebitKey()&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;div class="code relative" id="">
+&lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// Provide the time reference in which the HCE debit keys were provisioned&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">calypsoCardApiFactory&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">setHceTimeProvider&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">LocalDateTime&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">now&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">toEpochSecond&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ZoneOffset&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">UTC&lt;/span>&lt;span class="p">));&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">]&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// After the selection, the verdict is carried by the card image&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">Boolean&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">hceDebitKeyValid&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoCard&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">isHceDebitKeyValid&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Boolean&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">FALSE&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">equals&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">hceDebitKeyValid&lt;/span>&lt;span class="p">))&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Expired debit key: the card is selected, the decision belongs to the ticketing layer&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kt">long&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">expiry&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">calypsoCard&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getHceDebitKeyExpiryLocalEpochSeconds&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">]&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;br>
+&lt;div class="alert alert-note">
+&lt;div>
+This mechanism comes with version 3 of the Terminal APIs. Until Keyple is aligned with them, use the manual
+extraction described below.
+&lt;/div>
+&lt;/div>
+&lt;h4 id="manual-extraction-alternative">Manual extraction (alternative)&lt;/h4>
+&lt;p>Until the above is available, and for applications that stay on the current versions, the two bytes of the
+SN Header can be obtained from the response to the &lt;em>Select Application&lt;/em> command. This approach leaves the
+decoding, the comparison and the protection of the secure session entirely to the application, and will no longer
+be the recommended one.&lt;/p>
 &lt;div class="code relative" id="">
 &lt;div class="code-copy-content nt3">&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nn">org.eclipse.keyple.core.util.BerTlvUtil&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">]&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">calypsoCard&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">isHce&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">hceValidityToken&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">extractHceValidityToken&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">calypsoCard&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getSelectApplicationResponse&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">snHeader&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">extractSnHeader&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">calypsoCard&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getSelectApplicationResponse&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Check the validity for the current&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">]&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">]&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">private&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">static&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">extractHceValidityToken&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">selectApplicationResponse&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">private&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">static&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">extractSnHeader&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">selectApplicationResponse&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="o">[]&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">fullSerialNumber&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">BerTlvUtil&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">parseSimple&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">selectApplicationResponse&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="na">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">0xC7&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Arrays&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">copyOf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fullSerialNumber&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">2&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
