@@ -413,6 +413,18 @@ This switches the underlying monitoring thread into a state of waiting for the c
 Not doing this can lead to blocking states of the card insertion/removal monitoring mechanism.
 {{% /callout %}}
 
+{{% callout note %}}
+With version 3 of the Terminal APIs, this operation is renamed `endCardProcessing()` and carried by `CardReader`
+instead of `ObservableCardReader`: **every** reader, observed or not, will be able to close the dialogue with the
+card. It will also remove the power from the card and, on a contactless reader, switch the field off, except while
+the reader goes on using it — to observe the departure of the card, then to detect the next one when detection is
+active in `REPEATING` mode. Those electrical effects are provided on a best-effort basis: a reader that cannot
+carry them out does nothing and raises no error.
+
+Until Keyple is aligned with those versions, `finalizeCardProcessing()` remains the operation to call, and only on
+an observable reader.
+{{% /callout %}}
+
 ### Import/Export a scenario
 
 In some cases, it may be useful or even necessary to be able to import/export a prepared or processed card selection 
