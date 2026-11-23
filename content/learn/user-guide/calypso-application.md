@@ -211,14 +211,17 @@ legacy cards:
 
 ### HCE service handling
 
-In the context of access control, it is necessary to check the validity of the **debit key** of a Calypso HCE
+In the context of access control, it is necessary to check the validity of the **token** of a Calypso HCE
 application in order to accept and authenticate card solutions based on an HCE-type NFC service.
 
 That validity is carried by the **SN Header**, the two most significant bytes of the serial number of such an
-application. It encodes the end of validity of the debit key, as a number of half-days elapsed since 1 January 2010
-at 0:00 **local time**, and is not significant when equal to `0`. Nothing in the card dialogue reveals an outdated
-key: the header takes part in its own diversification, so a mobile whose validity window has passed still
-authenticates normally. The check therefore belongs to the terminal.
+application. It encodes the end of validity of the token, as a number of half-days elapsed since 1 January 2010
+at 0:00 **local time**, and is not significant when equal to `0`. What that validity materialises depends on the
+cryptographic nature of the transaction: in symmetric-key mode it is the end of validity of the **debit key**; in
+PKI mode it is the expiry date of the key carried by the card certificate. Nothing in the card dialogue reveals an
+outdated header: in symmetric-key mode the header takes part in the diversification of the keys, so a mobile whose
+validity window has passed still authenticates normally, and in PKI mode the expiry is attested by the card
+certificate and is not signalled by the card either. The check therefore belongs to the terminal.
 
 #### With the Terminal APIs 3.0 (recommended)
 
@@ -229,31 +232,31 @@ reference it trusts.
   returns the current time **in the same reference as the SN Header**, that is local time, as a number of seconds
   elapsed since 1 January 1970 at 0:00 in that same reference. In Java, this is
   `LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)`, and *not* `Instant.now().getEpochSecond()`, which would be
-  counted in UTC and would make an expired key appear valid for the duration of the time zone offset.
+  counted in UTC and would make an expired token appear valid for the duration of the time zone offset.
 - The provider is registered once on the factory, with `setHceTimeProvider(provider)`. It is consulted when the
   selection response is parsed, by the environment holding the Calypso card extension: in a distributed
   architecture, that is the client when it embeds the extension, and the server when the client is a thin one.
 - The card extension then decodes the header, converts it and compares it. The result is exposed by the card image:
-  `isHceDebitKeyValid()` returns the verdict, or `null` when the application is not HCE, when its header is not
-  significant, or when no provider was registered; `getHceDebitKeyExpiryLocalEpochSeconds()` returns the expiry
+  `isHceTokenValid()` returns the verdict, or `null` when the application is not HCE, when its header is not
+  significant, or when no provider was registered; `getHceTokenExpiryLocalEpochSeconds()` returns the expiry
   itself, ready to be displayed to the holder.
-- A card whose debit key has expired **is still selected**: the ticketing layer decides what to do, refuse the
-  service, invite the holder to renew the key, or simply log the event.
+- A card whose token has expired **is still selected**: the ticketing layer decides what to do, refuse the
+  service, invite the holder to renew the token, or simply log the event.
 - Opening a secure session with such a card is however forbidden, whatever the session mode and the write access
-  level, unless the security settings explicitly allow it with `authorizeExpiredHceDebitKey()`.
+  level, unless the security settings explicitly allow it with `authorizeExpiredHceToken()`.
 
 {{< code lang="java" >}}
-// Provide the time reference in which the HCE debit keys were provisioned
+// Provide the time reference in which the HCE tokens were provisioned
 calypsoCardApiFactory.setHceTimeProvider(
     () -> LocalDateTime.now().toEpochSecond(ZoneOffset.UTC));
 
 [...]
 
 // After the selection, the verdict is carried by the card image
-Boolean hceDebitKeyValid = calypsoCard.isHceDebitKeyValid();
-if (Boolean.FALSE.equals(hceDebitKeyValid)) {
-  // Expired debit key: the card is selected, the decision belongs to the ticketing layer
-  long expiry = calypsoCard.getHceDebitKeyExpiryLocalEpochSeconds();
+Boolean hceTokenValid = calypsoCard.isHceTokenValid();
+if (Boolean.FALSE.equals(hceTokenValid)) {
+  // Expired token: the card is selected, the decision belongs to the ticketing layer
+  long expiry = calypsoCard.getHceTokenExpiryLocalEpochSeconds();
   [...]
 }
 {{< /code >}}
@@ -293,6 +296,29 @@ private static byte[] extractSnHeader(byte[] selectApplicationResponse) {
 
 [...]
 {{< /code >}}
+
+### Card revocation
+
+An issuer may withdraw a card from service — one reported lost or stolen, one that is the subject of a dispute, one
+whose holder's entitlement has ended. Nothing in the card records that decision: it lives in a list the issuer
+maintains, outside the card, so the check belongs to the terminal.
+
+Version 3 of the Terminal APIs performs it, the application only providing the list it trusts:
+
+- the application implements the `CardRevocationStatusProvider` SPI and registers it once on the factory, with
+  `setCardRevocationStatusProvider(...)`. It is consulted while the card is in front of the reader, so it must
+  answer from an in-memory structure or a local cache, never through a blocking remote call,
+- a revoked card **is still selected**: `isRevoked()` returns the verdict and the ticketing layer decides what to
+  do, refuse the service, raise an alert, or simply log the event,
+- opening a secure session with such a card is forbidden, whatever the session mode and the write access level,
+  unless the security settings explicitly allow it with `authorizeRevokedCard()`.
+
+{{% callout warning %}}
+**The check is fail-closed, including when no provider is registered.** Absent a `CardRevocationStatusProvider`,
+the status counts as unverified and no secure session can be opened until `authorizeRevokedCard()` is called.
+Every application will therefore have to state one or the other when Keyple is aligned with version 3: provide a
+revocation list, or explicitly accept cards whose revocation status is unknown.
+{{% /callout %}}
 
 ### Ratification mechanism
 
